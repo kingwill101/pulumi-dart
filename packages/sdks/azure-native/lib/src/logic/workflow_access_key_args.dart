@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_logic_workflow_access_key_args_doc}
 class WorkflowAccessKeyArgs {
   /// The workflow access key name.
-  final pulumi.Input<String>? accessKeyName;
+  final pulumi.Input<String?>? accessKeyName;
   /// Gets or sets the resource id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets the not-after time.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// Gets or sets the not-before time.
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The workflow name.

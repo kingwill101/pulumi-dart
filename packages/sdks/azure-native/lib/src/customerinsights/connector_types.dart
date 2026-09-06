@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of connector.
-enum ConnectorTypes {
+enum ConnectorTypes implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueCRM("CRM"),
   valueAzureBlob("AzureBlob"),
@@ -8,6 +10,7 @@ enum ConnectorTypes {
   valueOutbound("Outbound");
 
   const ConnectorTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorTypes fromValue(String value) {

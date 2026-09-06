@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ClusterEndpointEncryptionTypeEnumValue
 class ClusterEndpointEncryptionTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ClusterEndpointEncryptionTypeEnumValueResponse].
   /// [value] Property value

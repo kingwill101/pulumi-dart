@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'nacos_component.dart';
 
 /// {@template pulumi_app_java_component_args_doc}
 /// The set of arguments for JavaComponent.
@@ -11,9 +10,9 @@ class JavaComponentArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// Name of the Java Component.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Java Component resource specific properties
-  final pulumi.Input<NacosComponent>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,7 +32,7 @@ class JavaComponentArgs {
     return <String, dynamic>{
       'environmentName': environmentName,
       'name': ?name,
-      'properties': ?pulumi.Input.mapOptionalInputValue<NacosComponent, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -42,7 +41,7 @@ class JavaComponentArgs {
     return JavaComponentArgs(
       environmentName: pulumi.Input.fromValue(map['environmentName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NacosComponent.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

@@ -10,9 +10,9 @@ class IdentityResponse {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user identities associated with the resource. The user identity dictionary key references will be resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserAssignedResourceIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedResourceIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of resource identity.

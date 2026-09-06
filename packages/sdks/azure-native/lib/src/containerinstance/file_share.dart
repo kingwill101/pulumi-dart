@@ -5,10 +5,10 @@ import 'file_share_properties.dart';
 
 /// File shares that can be mounted on container groups.
 class FileShare {
-  final pulumi.Input<String>? name;
-  final pulumi.Input<FileShareProperties>? properties;
-  final pulumi.Input<String>? resourceGroupName;
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<FileShareProperties?>? properties;
+  final pulumi.Input<String?>? resourceGroupName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [FileShare].
   /// [name] Optional.

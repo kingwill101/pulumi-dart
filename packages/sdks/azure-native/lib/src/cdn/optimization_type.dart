@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
-enum OptimizationType {
+enum OptimizationType implements pulumi.PulumiEnum<String> {
   generalWebDelivery("GeneralWebDelivery"),
   generalMediaStreaming("GeneralMediaStreaming"),
   videoOnDemandMediaStreaming("VideoOnDemandMediaStreaming"),
@@ -7,6 +9,7 @@ enum OptimizationType {
   dynamicSiteAcceleration("DynamicSiteAcceleration");
 
   const OptimizationType(this.wireValue);
+  @override
   final String wireValue;
 
   static OptimizationType fromValue(String value) {

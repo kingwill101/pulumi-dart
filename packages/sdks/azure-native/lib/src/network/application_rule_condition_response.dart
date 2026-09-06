@@ -6,24 +6,24 @@ import 'firewall_policy_rule_condition_application_protocol_response.dart';
 /// Rule condition of type application.
 class ApplicationRuleConditionResponse {
   /// Description of the rule condition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses or Service Tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of FQDN Tags for this rule condition.
-  final pulumi.Input<List<String>>? fqdnTags;
+  final pulumi.Input<List<String>?>? fqdnTags;
   /// Name of the rule condition.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Array of Application Protocols.
-  final pulumi.Input<List<FirewallPolicyRuleConditionApplicationProtocolResponse>>? protocols;
+  final pulumi.Input<List<FirewallPolicyRuleConditionApplicationProtocolResponse>?>? protocols;
   /// Rule Condition Type.
   /// Expected value is 'ApplicationRuleCondition'.
   final pulumi.Input<String> ruleConditionType;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// List of FQDNs for this rule condition.
-  final pulumi.Input<List<String>>? targetFqdns;
+  final pulumi.Input<List<String>?>? targetFqdns;
 
   /// Creates a new [ApplicationRuleConditionResponse].
   /// [description] Description of the rule condition.

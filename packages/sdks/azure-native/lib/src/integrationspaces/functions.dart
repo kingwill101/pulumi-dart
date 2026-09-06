@@ -32,6 +32,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// The get business process development artifact action.
 ///
 /// Uses Azure REST API version 2023-11-14-preview.
@@ -48,6 +59,17 @@ Future<GetApplicationBusinessProcessDevelopmentArtifactResult> getApplicationBus
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationBusinessProcessDevelopmentArtifactResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationBusinessProcessDevelopmentArtifactResult> getApplicationBusinessProcessDevelopmentArtifactOutput(
+  GetApplicationBusinessProcessDevelopmentArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getApplicationBusinessProcessDevelopmentArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationBusinessProcessDevelopmentArtifactResult.fromMap);
 }
 
 /// Get a ApplicationResource
@@ -68,6 +90,17 @@ Future<GetApplicationResourceResult> getApplicationResource(
   return GetApplicationResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResourceResult> getApplicationResourceOutput(
+  GetApplicationResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getApplicationResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResourceResult.fromMap);
+}
+
 /// Get a BusinessProcess
 ///
 /// Uses Azure REST API version 2023-11-14-preview.
@@ -84,6 +117,17 @@ Future<GetBusinessProcessResult> getBusinessProcess(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBusinessProcessResult.fromMap(result);
+}
+
+pulumi.Output<GetBusinessProcessResult> getBusinessProcessOutput(
+  GetBusinessProcessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getBusinessProcess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBusinessProcessResult.fromMap);
 }
 
 /// Get a InfrastructureResource
@@ -104,6 +148,17 @@ Future<GetInfrastructureResourceResult> getInfrastructureResource(
   return GetInfrastructureResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetInfrastructureResourceResult> getInfrastructureResourceOutput(
+  GetInfrastructureResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getInfrastructureResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInfrastructureResourceResult.fromMap);
+}
+
 /// Get a Space
 ///
 /// Uses Azure REST API version 2023-11-14-preview.
@@ -122,6 +177,17 @@ Future<GetSpaceResult> getSpace(
   return GetSpaceResult.fromMap(result);
 }
 
+pulumi.Output<GetSpaceResult> getSpaceOutput(
+  GetSpaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:getSpace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpaceResult.fromMap);
+}
+
 /// The list business process development artifacts action.
 ///
 /// Uses Azure REST API version 2023-11-14-preview.
@@ -138,4 +204,15 @@ Future<ListApplicationBusinessProcessDevelopmentArtifactsResult> listApplication
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap(result);
+}
+
+pulumi.Output<ListApplicationBusinessProcessDevelopmentArtifactsResult> listApplicationBusinessProcessDevelopmentArtifactsOutput(
+  ListApplicationBusinessProcessDevelopmentArtifactsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:integrationspaces:listApplicationBusinessProcessDevelopmentArtifacts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplicationBusinessProcessDevelopmentArtifactsResult.fromMap);
 }

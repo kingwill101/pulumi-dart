@@ -10,9 +10,9 @@ class HuntRelationArgs {
   /// The hunt id (GUID)
   final pulumi.Input<String> huntId;
   /// The hunt relation id (GUID)
-  final pulumi.Input<String>? huntRelationId;
+  final pulumi.Input<String?>? huntRelationId;
   /// List of labels relevant to this hunt
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The id of the related resource
   final pulumi.Input<String> relatedResourceId;
   /// The name of the resource group. The name is case insensitive.

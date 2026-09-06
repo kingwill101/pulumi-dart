@@ -9,25 +9,25 @@ import 'system_data_response.dart';
 /// Result data returned by getExternalNetwork.
 class GetExternalNetworkResult {
   /// Administrative state of the resource.
-  final String administrativeState;
+  final String? administrativeState;
   /// Switch configuration description.
   final String? annotation;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Configuration state of the resource.
-  final String configurationState;
+  final String? configurationState;
   /// Export Route Policy either IPv4 or IPv6.
   final ExportRoutePolicyResponse? exportRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   final String? exportRoutePolicyId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Import Route Policy either IPv4 or IPv6.
   final ImportRoutePolicyResponse? importRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
   final String? importRoutePolicyId;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// ARM Resource ID of the networkToNetworkInterconnectId of the ExternalNetwork resource.
   final String? networkToNetworkInterconnectId;
   /// option A properties object
@@ -35,13 +35,13 @@ class GetExternalNetworkResult {
   /// option B properties object
   final L3OptionBPropertiesResponse? optionBProperties;
   /// Peering option list.
-  final String peeringOption;
+  final String? peeringOption;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetExternalNetworkResult].
   /// [administrativeState] Administrative state of the resource.
@@ -62,66 +62,66 @@ class GetExternalNetworkResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetExternalNetworkResult({
-    required this.administrativeState,
+    this.administrativeState,
     this.annotation,
-    required this.azureApiVersion,
-    required this.configurationState,
+    this.azureApiVersion,
+    this.configurationState,
     this.exportRoutePolicy,
     this.exportRoutePolicyId,
-    required this.id,
+    this.id,
     this.importRoutePolicy,
     this.importRoutePolicyId,
-    required this.name,
+    this.name,
     this.networkToNetworkInterconnectId,
     this.optionAProperties,
     this.optionBProperties,
-    required this.peeringOption,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.peeringOption,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrativeState': administrativeState,
+      'administrativeState': ?administrativeState,
       'annotation': ?annotation,
-      'azureApiVersion': azureApiVersion,
-      'configurationState': configurationState,
+      'azureApiVersion': ?azureApiVersion,
+      'configurationState': ?configurationState,
       'exportRoutePolicy': ?exportRoutePolicy?.toMap(),
       'exportRoutePolicyId': ?exportRoutePolicyId,
-      'id': id,
+      'id': ?id,
       'importRoutePolicy': ?importRoutePolicy?.toMap(),
       'importRoutePolicyId': ?importRoutePolicyId,
-      'name': name,
+      'name': ?name,
       'networkToNetworkInterconnectId': ?networkToNetworkInterconnectId,
       'optionAProperties': ?optionAProperties?.toMap(),
       'optionBProperties': ?optionBProperties?.toMap(),
-      'peeringOption': peeringOption,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'peeringOption': ?peeringOption,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetExternalNetworkResult.fromMap(Map<String, dynamic> map) {
     return GetExternalNetworkResult(
-      administrativeState: map['administrativeState'] as String,
+      administrativeState: (() { final guardedValue = map['administrativeState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      configurationState: map['configurationState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationState: (() { final guardedValue = map['configurationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       exportRoutePolicy: (() { final guardedValue = map['exportRoutePolicy']; if (guardedValue == null) return null; return ExportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       exportRoutePolicyId: (() { final guardedValue = map['exportRoutePolicyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       importRoutePolicy: (() { final guardedValue = map['importRoutePolicy']; if (guardedValue == null) return null; return ImportRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       importRoutePolicyId: (() { final guardedValue = map['importRoutePolicyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkToNetworkInterconnectId: (() { final guardedValue = map['networkToNetworkInterconnectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       optionAProperties: (() { final guardedValue = map['optionAProperties']; if (guardedValue == null) return null; return ExternalNetworkPropertiesResponseOptionAProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       optionBProperties: (() { final guardedValue = map['optionBProperties']; if (guardedValue == null) return null; return L3OptionBPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      peeringOption: map['peeringOption'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      peeringOption: (() { final guardedValue = map['peeringOption']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

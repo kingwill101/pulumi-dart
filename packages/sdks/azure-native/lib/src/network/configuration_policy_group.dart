@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_policy_group_args.dart';
+import 'sub_resource_response.dart';
+import 'vpn_server_configuration_policy_group_member_response.dart';
 
 /// VpnServerConfigurationPolicyGroup Resource.
 ///
@@ -252,9 +254,9 @@ class ConfigurationPolicyGroup extends pulumi.CustomResource {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
   /// List of references to P2SConnectionConfigurations.
-  late final pulumi.Output<List<Map<String, dynamic>>> p2SConnectionConfigurations;
+  late final pulumi.Output<List<SubResourceResponse>> p2SConnectionConfigurations;
   /// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
-  late final pulumi.Output<List<Map<String, dynamic>>?> policyMembers;
+  late final pulumi.Output<List<VpnServerConfigurationPolicyGroupMemberResponse>?> policyMembers;
   /// Priority for VpnServerConfigurationPolicyGroup.
   late final pulumi.Output<int?> priority;
   /// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
@@ -280,8 +282,28 @@ class ConfigurationPolicyGroup extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String?>('name');
-    p2SConnectionConfigurations = registerOutput<List<Map<String, dynamic>>>('p2SConnectionConfigurations');
-    policyMembers = registerOutput<List<Map<String, dynamic>>?>('policyMembers');
+    p2SConnectionConfigurations = registerOutput<List<SubResourceResponse>>('p2SConnectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyMembers = registerOutput<List<VpnServerConfigurationPolicyGroupMemberResponse>?>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(guardedValue, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationPolicyGroup] resource.
+  ConfigurationPolicyGroup.reference(String urn)
+    : super(
+        'azure-native:network:ConfigurationPolicyGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    isDefault = registerOutput<bool?>('isDefault');
+    this.name = registerOutput<String?>('name');
+    p2SConnectionConfigurations = registerOutput<List<SubResourceResponse>>('p2SConnectionConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyMembers = registerOutput<List<VpnServerConfigurationPolicyGroupMemberResponse>?>('policyMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(guardedValue, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>())); });
     priority = registerOutput<int?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');

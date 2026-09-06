@@ -32,7 +32,7 @@ class ApplicationServerConfigurationResponse {
 
   factory ApplicationServerConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationServerConfigurationResponse(
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as double),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toDouble()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       virtualMachineConfiguration: pulumi.Input.fromValue(VirtualMachineConfigurationResponse.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );

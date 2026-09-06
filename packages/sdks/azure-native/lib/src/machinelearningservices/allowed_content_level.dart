@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Level at which content is filtered.
-enum AllowedContentLevel {
+enum AllowedContentLevel implements pulumi.PulumiEnum<String> {
   valueLow("Low"),
   valueMedium("Medium"),
   valueHigh("High");
 
   const AllowedContentLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static AllowedContentLevel fromValue(String value) {

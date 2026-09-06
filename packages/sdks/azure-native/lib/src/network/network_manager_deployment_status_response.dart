@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network Manager Deployment Status.
 class NetworkManagerDeploymentStatusResponse {
   /// Commit Time.
-  final pulumi.Input<String>? commitTime;
+  final pulumi.Input<String?>? commitTime;
   /// List of configuration ids.
-  final pulumi.Input<List<String>>? configurationIds;
+  final pulumi.Input<List<String>?>? configurationIds;
   /// Deployment Status.
-  final pulumi.Input<String>? deploymentStatus;
+  final pulumi.Input<String?>? deploymentStatus;
   /// Configuration Deployment Type.
-  final pulumi.Input<String>? deploymentType;
+  final pulumi.Input<String?>? deploymentType;
   /// Error Message.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Region Name.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [NetworkManagerDeploymentStatusResponse].
   /// [commitTime] Commit Time.

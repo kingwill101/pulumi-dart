@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Hub Item.
 class Hub {
   /// Resource Id.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Resource Type.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [Hub].
   /// [resourceId] Resource Id.

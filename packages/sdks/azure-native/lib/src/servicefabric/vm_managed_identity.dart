@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identities for the virtual machine scale set under the node type.
 class VmManagedIdentity {
   /// The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [VmManagedIdentity].
   /// [userAssignedIdentities] The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.

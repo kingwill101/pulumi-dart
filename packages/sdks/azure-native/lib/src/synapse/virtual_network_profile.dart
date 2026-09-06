@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Virtual Network Profile
 class VirtualNetworkProfile {
   /// Subnet ID used for computes in workspace
-  final pulumi.Input<String>? computeSubnetId;
+  final pulumi.Input<String?>? computeSubnetId;
 
   /// Creates a new [VirtualNetworkProfile].
   /// [computeSubnetId] Subnet ID used for computes in workspace

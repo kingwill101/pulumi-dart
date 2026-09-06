@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The private link scope resource reference.
 class PrivateLinkScopedResourceResponse {
   /// The full resource Id of the private link scope resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The private link scope unique Identifier.
-  final pulumi.Input<String>? scopeId;
+  final pulumi.Input<String?>? scopeId;
 
   /// Creates a new [PrivateLinkScopedResourceResponse].
   /// [resourceId] The full resource Id of the private link scope resource.

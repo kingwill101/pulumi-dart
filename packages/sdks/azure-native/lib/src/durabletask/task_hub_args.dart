@@ -12,7 +12,7 @@ class TaskHubArgs {
   /// The name of the Scheduler
   final pulumi.Input<String> schedulerName;
   /// The name of the TaskHub
-  final pulumi.Input<String>? taskHubName;
+  final pulumi.Input<String?>? taskHubName;
 
   /// Creates a new [TaskHubArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

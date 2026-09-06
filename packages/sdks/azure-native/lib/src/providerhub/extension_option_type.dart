@@ -1,9 +1,12 @@
-enum ExtensionOptionType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExtensionOptionType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   doNotMergeExistingReadOnlyAndSecretProperties("DoNotMergeExistingReadOnlyAndSecretProperties"),
   includeInternalMetadata("IncludeInternalMetadata");
 
   const ExtensionOptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ExtensionOptionType fromValue(String value) {

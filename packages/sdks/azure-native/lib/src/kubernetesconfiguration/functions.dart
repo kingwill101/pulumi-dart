@@ -30,6 +30,17 @@ Future<GetExtensionResult> getExtension(
   return GetExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetExtensionResult> getExtensionOutput(
+  GetExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesconfiguration:getExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionResult.fromMap);
+}
+
 /// Gets details of the Flux Configuration.
 ///
 /// Uses Azure REST API version 2023-05-01.
@@ -48,6 +59,17 @@ Future<GetFluxConfigurationResult> getFluxConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFluxConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetFluxConfigurationResult> getFluxConfigurationOutput(
+  GetFluxConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesconfiguration:getFluxConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFluxConfigurationResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -70,6 +92,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesconfiguration:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Returns a Azure Arc PrivateLinkScope.
 ///
 /// Uses Azure REST API version 2022-04-02-preview.
@@ -90,6 +123,17 @@ Future<GetPrivateLinkScopeResult> getPrivateLinkScope(
   return GetPrivateLinkScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkScopeResult> getPrivateLinkScopeOutput(
+  GetPrivateLinkScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesconfiguration:getPrivateLinkScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkScopeResult.fromMap);
+}
+
 /// Gets details of the Source Control Configuration.
 ///
 /// Uses Azure REST API version 2023-05-01.
@@ -108,4 +152,15 @@ Future<GetSourceControlConfigurationResult> getSourceControlConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceControlConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetSourceControlConfigurationResult> getSourceControlConfigurationOutput(
+  GetSourceControlConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetesconfiguration:getSourceControlConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceControlConfigurationResult.fromMap);
 }

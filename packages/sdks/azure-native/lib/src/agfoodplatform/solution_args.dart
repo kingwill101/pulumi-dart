@@ -11,11 +11,11 @@ class SolutionArgs {
   /// DataManagerForAgriculture resource name.
   final pulumi.Input<String> dataManagerForAgricultureResourceName;
   /// Solution resource properties.
-  final pulumi.Input<SolutionProperties>? properties;
+  final pulumi.Input<SolutionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SolutionId for Data Manager For Agriculture Resource.
-  final pulumi.Input<String>? solutionId;
+  final pulumi.Input<String?>? solutionId;
 
   /// Creates a new [SolutionArgs].
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.

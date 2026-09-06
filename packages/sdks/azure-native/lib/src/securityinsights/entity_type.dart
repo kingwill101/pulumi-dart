@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the query's source entity
-enum EntityType {
+enum EntityType implements pulumi.PulumiEnum<String> {
   valueAccount("Account"),
   valueHost("Host"),
   valueFile("File"),
@@ -24,6 +26,7 @@ enum EntityType {
   valueNic("Nic");
 
   const EntityType(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityType fromValue(String value) {

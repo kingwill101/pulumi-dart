@@ -7,17 +7,17 @@ import 'tag_response.dart';
 /// Definition of awsNetworkFirewallFirewallPolicy
 class AwsNetworkFirewallFirewallPolicyPropertiesResponse {
   /// Property description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property firewallPolicy
-  final pulumi.Input<FirewallPolicyResponse>? firewallPolicy;
+  final pulumi.Input<FirewallPolicyResponse?>? firewallPolicy;
   /// A resource ARN.
-  final pulumi.Input<String>? firewallPolicyArn;
+  final pulumi.Input<String?>? firewallPolicyArn;
   /// Property firewallPolicyId
-  final pulumi.Input<String>? firewallPolicyId;
+  final pulumi.Input<String?>? firewallPolicyId;
   /// Property firewallPolicyName
-  final pulumi.Input<String>? firewallPolicyName;
+  final pulumi.Input<String?>? firewallPolicyName;
   /// Property tags
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
 
   /// Creates a new [AwsNetworkFirewallFirewallPolicyPropertiesResponse].
   /// [description] Property description

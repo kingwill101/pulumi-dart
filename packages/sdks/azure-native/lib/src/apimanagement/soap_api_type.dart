@@ -1,10 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of API to create.
 /// * `http` creates a REST API
 /// * `soap` creates a SOAP pass-through API
 /// * `websocket` creates websocket API
 /// * `graphql` creates GraphQL API.
 /// New types can be added in the future.
-enum SoapApiType {
+enum SoapApiType implements pulumi.PulumiEnum<String> {
   soapToRest("http"),
   soapPassThrough("soap"),
   webSocket("websocket"),
@@ -13,6 +15,7 @@ enum SoapApiType {
   gRPC("grpc");
 
   const SoapApiType(this.wireValue);
+  @override
   final String wireValue;
 
   static SoapApiType fromValue(String value) {

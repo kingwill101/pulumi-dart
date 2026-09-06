@@ -9,17 +9,17 @@ class AddStorageAccountWithAccountParameters {
   /// The unique name of the Azure Storage account to add.
   final pulumi.Input<String> name;
   /// The optional suffix for the storage account.
-  final pulumi.Input<String>? suffix;
+  final pulumi.Input<String?>? suffix;
 
   /// Creates a new [AddStorageAccountWithAccountParameters].
   /// [accessKey] The access key associated with this Azure Storage account that will be used to connect to it.
   /// [name] The unique name of the Azure Storage account to add.
   /// [suffix] The optional suffix for the storage account.
-  const AddStorageAccountWithAccountParameters({
+  AddStorageAccountWithAccountParameters({
     required this.accessKey,
     required this.name,
-    this.suffix,
-  });
+    pulumi.Input<String?>? suffix,
+  }) : suffix = suffix ?? pulumi.Input.fromValue('azuredatalakestore.net');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

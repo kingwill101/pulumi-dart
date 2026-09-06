@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Solution builder extension (SBE) partner properties object.
 class SbePartnerProperties {
   /// SBE partner property name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// SBE partner property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SbePartnerProperties].
   /// [name] SBE partner property name.

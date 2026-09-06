@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Multichannel setting. Applies to Premium FileStorage only.
 class Multichannel {
   /// Indicates whether multichannel is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [Multichannel].
   /// [enabled] Indicates whether multichannel is enabled

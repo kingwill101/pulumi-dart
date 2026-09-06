@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Different External storage skus.
-enum ExternalStorageType {
+enum ExternalStorageType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   none("None"),
   anfStandard("AnfStandard"),
@@ -7,6 +9,7 @@ enum ExternalStorageType {
   anfUltra("AnfUltra");
 
   const ExternalStorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static ExternalStorageType fromValue(String value) {

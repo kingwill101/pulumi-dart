@@ -1,6 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'frontend_ipconfiguration_response.dart';
+import 'network_interface_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'private_link_service_args.dart';
+import 'private_link_service_ip_configuration_response.dart';
 import 'private_link_service_properties_response_auto_approval.dart';
 import 'private_link_service_properties_response_visibility.dart';
 
@@ -380,17 +384,17 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
   /// The list of Fqdn.
   late final pulumi.Output<List<String>?> fqdns;
   /// An array of private link service IP configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+  late final pulumi.Output<List<PrivateLinkServiceIpConfigurationResponse>?> ipConfigurations;
   /// An array of references to the load balancer IP configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancerFrontendIpConfigurations;
+  late final pulumi.Output<List<FrontendIPConfigurationResponse>?> loadBalancerFrontendIpConfigurations;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// An array of references to the network interfaces created for this private link service.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfaceResponse>> networkInterfaces;
   /// An array of list about connections to the private endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioning state of the private link service resource.
   late final pulumi.Output<String> provisioningState;
   /// Resource tags.
@@ -421,15 +425,44 @@ class PrivateLinkServiceNetwork extends pulumi.CustomResource {
     enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    fqdns = registerOutput<List<String>?>('fqdns');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
-    loadBalancerFrontendIpConfigurations = registerOutput<List<Map<String, dynamic>>?>('loadBalancerFrontendIpConfigurations');
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipConfigurations = registerOutput<List<PrivateLinkServiceIpConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(guardedValue, (value) => PrivateLinkServiceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancerFrontendIpConfigurations = registerOutput<List<FrontendIPConfigurationResponse>?>('loadBalancerFrontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendIPConfigurationResponse>(guardedValue, (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    visibility = registerOutput<PrivateLinkServicePropertiesResponseVisibility?>('visibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServicePropertiesResponseVisibility.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [PrivateLinkServiceNetwork] resource.
+  PrivateLinkServiceNetwork.reference(String urn)
+    : super(
+        'azure-native:network:PrivateLinkService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alias = registerOutput<String>('alias');
+    autoApproval = registerOutput<PrivateLinkServicePropertiesResponseAutoApproval?>('autoApproval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServicePropertiesResponseAutoApproval.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destinationIPAddress = registerOutput<String?>('destinationIPAddress');
+    enableProxyProtocol = registerOutput<bool?>('enableProxyProtocol');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fqdns = registerOutput<List<String>?>('fqdns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipConfigurations = registerOutput<List<PrivateLinkServiceIpConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkServiceIpConfigurationResponse>(guardedValue, (value) => PrivateLinkServiceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancerFrontendIpConfigurations = registerOutput<List<FrontendIPConfigurationResponse>?>('loadBalancerFrontendIpConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontendIPConfigurationResponse>(guardedValue, (value) => FrontendIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfaceResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceResponse>(guardedValue, (value) => NetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     visibility = registerOutput<PrivateLinkServicePropertiesResponseVisibility?>('visibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServicePropertiesResponseVisibility.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -8,23 +8,23 @@ import 'vlan_match_condition_response.dart';
 /// Defines the match condition that is supported to filter the traffic.
 class AccessControlListMatchConditionResponse {
   /// List of DSCP Markings that need to be matched.
-  final pulumi.Input<List<String>>? dscpMarkings;
+  final pulumi.Input<List<String>?>? dscpMarkings;
   /// List of ether type values that need to be matched.
-  final pulumi.Input<List<String>>? etherTypes;
+  final pulumi.Input<List<String>?>? etherTypes;
   /// List of IP fragment packets that need to be matched.
-  final pulumi.Input<List<String>>? fragments;
+  final pulumi.Input<List<String>?>? fragments;
   /// IP condition that needs to be matched.
-  final pulumi.Input<IpMatchConditionResponse>? ipCondition;
+  final pulumi.Input<IpMatchConditionResponse?>? ipCondition;
   /// List of IP Lengths that need to be matched.
-  final pulumi.Input<List<String>>? ipLengths;
+  final pulumi.Input<List<String>?>? ipLengths;
   /// Defines the port condition that needs to be matched.
-  final pulumi.Input<AccessControlListPortConditionResponse>? portCondition;
+  final pulumi.Input<AccessControlListPortConditionResponse?>? portCondition;
   /// List of the protocols that need to be matched.
-  final pulumi.Input<List<String>>? protocolTypes;
+  final pulumi.Input<List<String>?>? protocolTypes;
   /// List of TTL [Time To Live] values that need to be matched.
-  final pulumi.Input<List<String>>? ttlValues;
+  final pulumi.Input<List<String>?>? ttlValues;
   /// Vlan match condition that needs to be matched.
-  final pulumi.Input<VlanMatchConditionResponse>? vlanMatchCondition;
+  final pulumi.Input<VlanMatchConditionResponse?>? vlanMatchCondition;
 
   /// Creates a new [AccessControlListMatchConditionResponse].
   /// [dscpMarkings] List of DSCP Markings that need to be matched.

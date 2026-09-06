@@ -7,11 +7,11 @@ import 'vmdisk_security_profile.dart';
 /// Describes the parameters of a ScaleSet managed disk.
 class VirtualMachineScaleSetManagedDiskParameters {
   /// Specifies the customer managed disk encryption set resource id for the managed disk.
-  final pulumi.Input<DiskEncryptionSetParameters>? diskEncryptionSet;
+  final pulumi.Input<DiskEncryptionSetParameters?>? diskEncryptionSet;
   /// Specifies the security profile for the managed disk.
-  final pulumi.Input<VMDiskSecurityProfile>? securityProfile;
+  final pulumi.Input<VMDiskSecurityProfile?>? securityProfile;
   /// Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<dynamic>? storageAccountType;
 
   /// Creates a new [VirtualMachineScaleSetManagedDiskParameters].
   /// [diskEncryptionSet] Specifies the customer managed disk encryption set resource id for the managed disk.
@@ -35,7 +35,7 @@ class VirtualMachineScaleSetManagedDiskParameters {
     return VirtualMachineScaleSetManagedDiskParameters(
       diskEncryptionSet: (() { final guardedValue = map['diskEncryptionSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskEncryptionSetParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VMDiskSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

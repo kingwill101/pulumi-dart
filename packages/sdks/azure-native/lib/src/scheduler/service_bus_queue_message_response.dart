@@ -6,19 +6,19 @@ import 'service_bus_brokered_message_properties_response.dart';
 
 class ServiceBusQueueMessageResponse {
   /// Gets or sets the Service Bus authentication.
-  final pulumi.Input<ServiceBusAuthenticationResponse>? authentication;
+  final pulumi.Input<ServiceBusAuthenticationResponse?>? authentication;
   /// Gets or sets the brokered message properties.
-  final pulumi.Input<ServiceBusBrokeredMessagePropertiesResponse>? brokeredMessageProperties;
+  final pulumi.Input<ServiceBusBrokeredMessagePropertiesResponse?>? brokeredMessageProperties;
   /// Gets or sets the custom message properties.
-  final pulumi.Input<Map<String, String>>? customMessageProperties;
+  final pulumi.Input<Map<String, String>?>? customMessageProperties;
   /// Gets or sets the message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Gets or sets the namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Gets or sets the queue name.
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? queueName;
   /// Gets or sets the transport type.
-  final pulumi.Input<String>? transportType;
+  final pulumi.Input<String?>? transportType;
 
   /// Creates a new [ServiceBusQueueMessageResponse].
   /// [authentication] Gets or sets the Service Bus authentication.

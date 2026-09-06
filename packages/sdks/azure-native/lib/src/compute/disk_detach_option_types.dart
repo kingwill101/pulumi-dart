@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the detach behavior to be used while detaching a disk or which is already in the process of detachment from the virtual machine. Supported values: **ForceDetach.** detachOption: **ForceDetach** is applicable only for managed data disks. If a previous detachment attempt of the data disk did not complete due to an unexpected failure from the virtual machine and the disk is still not released then use force-detach as a last resort option to detach the disk forcibly from the VM. All writes might not have been flushed when using this detach behavior. **This feature is still in preview**. To force-detach a data disk update toBeDetached to 'true' along with setting detachOption: 'ForceDetach'.
-enum DiskDetachOptionTypes {
+enum DiskDetachOptionTypes implements pulumi.PulumiEnum<String> {
   forceDetach("ForceDetach");
 
   const DiskDetachOptionTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskDetachOptionTypes fromValue(String value) {

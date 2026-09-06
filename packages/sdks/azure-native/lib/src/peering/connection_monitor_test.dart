@@ -217,7 +217,28 @@ class ConnectionMonitorTest extends pulumi.CustomResource {
     destinationPort = registerOutput<int?>('destinationPort');
     isTestSuccessful = registerOutput<bool>('isTestSuccessful');
     this.name = registerOutput<String>('name');
-    path = registerOutput<List<String>>('path');
+    path = registerOutput<List<String>>('path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceAgent = registerOutput<String?>('sourceAgent');
+    testFrequencyInSec = registerOutput<int?>('testFrequencyInSec');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConnectionMonitorTest] resource.
+  ConnectionMonitorTest.reference(String urn)
+    : super(
+        'azure-native:peering:ConnectionMonitorTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destination = registerOutput<String?>('destination');
+    destinationPort = registerOutput<int?>('destinationPort');
+    isTestSuccessful = registerOutput<bool>('isTestSuccessful');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<List<String>>('path', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     sourceAgent = registerOutput<String?>('sourceAgent');
     testFrequencyInSec = registerOutput<int?>('testFrequencyInSec');

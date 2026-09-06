@@ -14,7 +14,7 @@ class BlobContainerDataSetMappingArgs {
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
   /// The name of the data set mapping to be created.
-  final pulumi.Input<String>? dataSetMappingName;
+  final pulumi.Input<String?>? dataSetMappingName;
   /// Kind of data set mapping.
   /// Expected value is 'Container'.
   final pulumi.Input<String> kind;

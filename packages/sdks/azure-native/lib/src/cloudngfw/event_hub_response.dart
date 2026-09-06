@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// EventHub configurations
 class EventHubResponse {
   /// Resource ID of EventHub
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// EventHub name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// EventHub namespace
-  final pulumi.Input<String>? nameSpace;
+  final pulumi.Input<String?>? nameSpace;
   /// EventHub policy name
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [EventHubResponse].
   /// [id] Resource ID of EventHub

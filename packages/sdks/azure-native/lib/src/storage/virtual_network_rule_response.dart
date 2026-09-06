@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Virtual Network rule.
 class VirtualNetworkRuleResponse {
   /// The action of virtual network rule.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Gets the state of virtual network rule.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   final pulumi.Input<String> virtualNetworkResourceId;
 
@@ -15,11 +15,11 @@ class VirtualNetworkRuleResponse {
   /// [action] The action of virtual network rule.
   /// [state] Gets the state of virtual network rule.
   /// [virtualNetworkResourceId] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-  const VirtualNetworkRuleResponse({
-    this.action,
+  VirtualNetworkRuleResponse({
+    pulumi.Input<String?>? action,
     this.state,
     required this.virtualNetworkResourceId,
-  });
+  }) : action = action ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

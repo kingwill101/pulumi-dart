@@ -6,16 +6,16 @@ import 'private_endpoint_outbound_rule_destination_response.dart';
 /// Private Endpoint outbound rule for the managed network of a cognitive services account.
 class PrivateEndpointOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Private Endpoint destination.
-  final pulumi.Input<PrivateEndpointOutboundRuleDestinationResponse>? destination;
+  final pulumi.Input<PrivateEndpointOutboundRuleDestinationResponse?>? destination;
   /// Error information about an outbound rule of a cognitive services account if RuleStatus is failed.
   final pulumi.Input<String> errorInformation;
   /// List of FQDNs associated with the private endpoint outbound rule.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   final pulumi.Input<List<String>> parentRuleNames;
   /// Type of a managed network Outbound Rule of a cognitive services account.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of a managed network Outbound Rule of a cognitive services account.
   /// Expected value is 'PrivateEndpoint'.
   final pulumi.Input<String> type;

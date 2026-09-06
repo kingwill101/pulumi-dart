@@ -13,35 +13,35 @@ import 'sku.dart';
 /// {@macro pulumi_containerregistry_registry_args_doc}
 class RegistryArgs {
   /// The value that indicates whether the admin user is enabled.
-  final pulumi.Input<bool>? adminUserEnabled;
+  final pulumi.Input<bool?>? adminUserEnabled;
   /// Enables registry-wide pull from unauthenticated clients.
-  final pulumi.Input<bool>? anonymousPullEnabled;
+  final pulumi.Input<bool?>? anonymousPullEnabled;
   /// Enable a single data endpoint per region for serving data.
-  final pulumi.Input<bool>? dataEndpointEnabled;
+  final pulumi.Input<bool?>? dataEndpointEnabled;
   /// The encryption settings of container registry.
-  final pulumi.Input<EncryptionProperty>? encryption;
+  final pulumi.Input<EncryptionProperty?>? encryption;
   /// The identity of the container registry.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether to allow trusted Azure services to access a network restricted registry.
-  final pulumi.Input<String>? networkRuleBypassOptions;
+  final pulumi.Input<dynamic>? networkRuleBypassOptions;
   /// The network rule set for a container registry.
-  final pulumi.Input<NetworkRuleSet>? networkRuleSet;
+  final pulumi.Input<NetworkRuleSet?>? networkRuleSet;
   /// The policies for a container registry.
-  final pulumi.Input<Policies>? policies;
+  final pulumi.Input<Policies?>? policies;
   /// Whether or not public network access is allowed for the container registry.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the container registry.
-  final pulumi.Input<String>? registryName;
+  final pulumi.Input<String?>? registryName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the container registry.
   final pulumi.Input<Sku> sku;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether or not zone redundancy is enabled for this container registry
-  final pulumi.Input<String>? zoneRedundancy;
+  final pulumi.Input<dynamic>? zoneRedundancy;
 
   /// Creates a new [RegistryArgs].
   /// [adminUserEnabled] The value that indicates whether the admin user is enabled.
@@ -59,23 +59,23 @@ class RegistryArgs {
   /// [sku] The SKU of the container registry.
   /// [tags] The tags of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry
-  const RegistryArgs({
-    this.adminUserEnabled,
-    this.anonymousPullEnabled,
+  RegistryArgs({
+    pulumi.Input<bool?>? adminUserEnabled,
+    pulumi.Input<bool?>? anonymousPullEnabled,
     this.dataEndpointEnabled,
     this.encryption,
     this.identity,
     this.location,
-    this.networkRuleBypassOptions,
+    pulumi.Input<dynamic>? networkRuleBypassOptions,
     this.networkRuleSet,
     this.policies,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     this.registryName,
     required this.resourceGroupName,
     required this.sku,
     this.tags,
-    this.zoneRedundancy,
-  });
+    pulumi.Input<dynamic>? zoneRedundancy,
+  }) : adminUserEnabled = adminUserEnabled ?? pulumi.Input.fromValue(false), anonymousPullEnabled = anonymousPullEnabled ?? pulumi.Input.fromValue(false), networkRuleBypassOptions = networkRuleBypassOptions ?? pulumi.Input.fromValue('AzureServices'), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), zoneRedundancy = zoneRedundancy ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,15 +105,15 @@ class RegistryArgs {
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionProperty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkRuleBypassOptions: (() { final guardedValue = map['networkRuleBypassOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkRuleBypassOptions: (() { final guardedValue = map['networkRuleBypassOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkRuleSet: (() { final guardedValue = map['networkRuleSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       policies: (() { final guardedValue = map['policies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Policies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       registryName: (() { final guardedValue = map['registryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

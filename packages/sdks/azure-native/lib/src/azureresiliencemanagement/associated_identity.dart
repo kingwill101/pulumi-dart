@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of associated identity linked with the various resources.
 class AssociatedIdentity {
   /// Identity type linked with the resource
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// User assigned identity id linked with the resource
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [AssociatedIdentity].
   /// [type] Identity type linked with the resource
@@ -26,7 +26,7 @@ class AssociatedIdentity {
 
   factory AssociatedIdentity.fromMap(Map<String, dynamic> map) {
     return AssociatedIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

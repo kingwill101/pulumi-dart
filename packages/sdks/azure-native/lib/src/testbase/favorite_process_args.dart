@@ -10,7 +10,7 @@ class FavoriteProcessArgs {
   /// The actual name of the favorite process. It will be equal to resource name except for the scenario that the process name contains characters that are not allowed in the resource name.
   final pulumi.Input<String> actualProcessName;
   /// The resource name of a favorite process in a package. If the process name contains characters that are not allowed in Azure Resource Name, we use 'actualProcessName' in request body to submit the name.
-  final pulumi.Input<String>? favoriteProcessResourceName;
+  final pulumi.Input<String?>? favoriteProcessResourceName;
   /// The resource name of the Test Base Package.
   final pulumi.Input<String> packageName;
   /// The name of the resource group. The name is case insensitive.

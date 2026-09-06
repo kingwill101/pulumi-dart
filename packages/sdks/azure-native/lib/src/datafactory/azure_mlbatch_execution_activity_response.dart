@@ -10,30 +10,30 @@ import 'user_property_response.dart';
 /// Azure ML Batch Execution activity.
 class AzureMLBatchExecutionActivityResponse {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
   final pulumi.Input<dynamic>? globalParameters;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'AzureMLBatchExecution'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
   /// Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Inputs to AzureMLWebServiceFile objects specifying the input Blob locations.. This information will be passed in the WebServiceInputs property of the Azure ML batch execution request.
-  final pulumi.Input<Map<String, AzureMLWebServiceFileResponse>>? webServiceInputs;
+  final pulumi.Input<Map<String, AzureMLWebServiceFileResponse>?>? webServiceInputs;
   /// Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Outputs to AzureMLWebServiceFile objects specifying the output Blob locations. This information will be passed in the WebServiceOutputs property of the Azure ML batch execution request.
-  final pulumi.Input<Map<String, AzureMLWebServiceFileResponse>>? webServiceOutputs;
+  final pulumi.Input<Map<String, AzureMLWebServiceFileResponse>?>? webServiceOutputs;
 
   /// Creates a new [AzureMLBatchExecutionActivityResponse].
   /// [dependsOn] Activity depends on condition.

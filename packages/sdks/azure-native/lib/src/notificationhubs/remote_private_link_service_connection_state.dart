@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// State of the Private Link Service connection.
 class RemotePrivateLinkServiceConnectionState {
   /// State of Private Link Connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [RemotePrivateLinkServiceConnectionState].
   /// [status] State of Private Link Connection.
@@ -21,7 +21,7 @@ class RemotePrivateLinkServiceConnectionState {
 
   factory RemotePrivateLinkServiceConnectionState.fromMap(Map<String, dynamic> map) {
     return RemotePrivateLinkServiceConnectionState(
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private endpoint which a connection belongs to.
 class PrivateEndpoint {
   /// The resource ID of the private endpoint
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [PrivateEndpoint].
   /// [id] The resource ID of the private endpoint

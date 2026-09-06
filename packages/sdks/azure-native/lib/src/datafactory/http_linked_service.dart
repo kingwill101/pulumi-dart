@@ -1,34 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
 /// Linked service for an HTTP source.
 class HttpLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The additional HTTP headers in the request to RESTful API used for authorization. Type: key value pairs (value should be string type).
   final pulumi.Input<dynamic>? authHeaders;
   /// The authentication type to be used to connect to the HTTP server.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// Thumbprint of certificate for ClientCertificate authentication. Only valid for on-premises copy. For on-premises copy with ClientCertificate authentication, either CertThumbprint or EmbeddedCertData/Password should be specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? certThumbprint;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Base64 encoded certificate data for ClientCertificate authentication. For on-premises copy with ClientCertificate authentication, either CertThumbprint or EmbeddedCertData/Password should be specified. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? embeddedCertData;
   /// If true, validate the HTTPS server SSL certificate. Default value is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableServerCertificateValidation;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Password for Basic, Digest, Windows, or ClientCertificate with EmbeddedCertData authentication.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// Type of linked service.
   /// Expected value is 'HttpServer'.
   final pulumi.Input<String> type;
@@ -37,7 +36,7 @@ class HttpLinkedService {
   /// User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [HttpLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -85,7 +84,7 @@ class HttpLinkedService {
       'enableServerCertificateValidation': ?enableServerCertificateValidation,
       'encryptedCredential': ?encryptedCredential,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'type': type,
       'url': url,
       'userName': ?userName,
@@ -97,7 +96,7 @@ class HttpLinkedService {
     return HttpLinkedService(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       authHeaders: (() { final guardedValue = map['authHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       certThumbprint: (() { final guardedValue = map['certThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -105,7 +104,7 @@ class HttpLinkedService {
       enableServerCertificateValidation: (() { final guardedValue = map['enableServerCertificateValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),
       userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

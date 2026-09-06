@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of SQL Server ESU license.
 class SqlServerEsuLicenseProperties {
   /// The activation state of the license.
-  final pulumi.Input<String> activationState;
+  final pulumi.Input<dynamic> activationState;
   /// SQL Server ESU license type.
-  final pulumi.Input<String> billingPlan;
+  final pulumi.Input<dynamic> billingPlan;
   /// The number of total cores of the license covers.
   final pulumi.Input<int> physicalCores;
   /// The Azure scope to which the license will apply.
-  final pulumi.Input<String> scopeType;
+  final pulumi.Input<dynamic> scopeType;
   /// The SQL Server version the license covers.
-  final pulumi.Input<String> version;
+  final pulumi.Input<dynamic> version;
 
   /// Creates a new [SqlServerEsuLicenseProperties].
   /// [activationState] The activation state of the license.
@@ -41,11 +41,11 @@ class SqlServerEsuLicenseProperties {
 
   factory SqlServerEsuLicenseProperties.fromMap(Map<String, dynamic> map) {
     return SqlServerEsuLicenseProperties(
-      activationState: pulumi.Input.fromValue(map['activationState'] as String),
-      billingPlan: pulumi.Input.fromValue(map['billingPlan'] as String),
-      physicalCores: pulumi.Input.fromValue(map['physicalCores'] as int),
-      scopeType: pulumi.Input.fromValue(map['scopeType'] as String),
-      version: pulumi.Input.fromValue(map['version'] as String),
+      activationState: pulumi.Input.fromValue(map['activationState']),
+      billingPlan: pulumi.Input.fromValue(map['billingPlan']),
+      physicalCores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physicalCores'])),
+      scopeType: pulumi.Input.fromValue(map['scopeType']),
+      version: pulumi.Input.fromValue(map['version']),
     );
   }
 }

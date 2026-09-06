@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Information about the connected appliance.
-enum Provider {
+enum Provider implements pulumi.PulumiEnum<String> {
   vMWare("VMWare"),
   hCI("HCI"),
   sCVMM("SCVMM");
 
   const Provider(this.wireValue);
+  @override
   final String wireValue;
 
   static Provider fromValue(String value) {

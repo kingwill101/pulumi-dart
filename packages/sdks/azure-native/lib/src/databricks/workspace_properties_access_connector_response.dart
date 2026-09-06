@@ -9,7 +9,7 @@ class WorkspacePropertiesAccessConnectorResponse {
   /// The identity type of the Access Connector Resource.
   final pulumi.Input<String> identityType;
   /// The resource ID of the User Assigned Identity associated with the Access Connector Resource. This is required for type 'UserAssigned' and not valid for type 'SystemAssigned'.
-  final pulumi.Input<String>? userAssignedIdentityId;
+  final pulumi.Input<String?>? userAssignedIdentityId;
 
   /// Creates a new [WorkspacePropertiesAccessConnectorResponse].
   /// [id] The resource ID of Azure Databricks Access Connector Resource.

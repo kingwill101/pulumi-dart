@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The detail of firewall rule.
 class IPv4FirewallRuleResponse {
   /// The rule name.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The end range of IPv4.
-  final pulumi.Input<String>? rangeEnd;
+  final pulumi.Input<String?>? rangeEnd;
   /// The start range of IPv4.
-  final pulumi.Input<String>? rangeStart;
+  final pulumi.Input<String?>? rangeStart;
 
   /// Creates a new [IPv4FirewallRuleResponse].
   /// [firewallRuleName] The rule name.

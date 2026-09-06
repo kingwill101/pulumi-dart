@@ -6,21 +6,21 @@ import 'system_data_response.dart';
 /// Result data returned by getPrivateEndpointConnection.
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Etag.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The location of the private endpoint connection
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Resource properties.
-  final PrivateEndpointConnectionPropertiesResponse properties;
+  final PrivateEndpointConnectionPropertiesResponse? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPrivateEndpointConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetPrivateEndpointConnectionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateEndpointConnectionResult({
-    required this.azureApiVersion,
-    required this.etag,
-    required this.id,
+    this.azureApiVersion,
+    this.etag,
+    this.id,
     this.location,
-    required this.name,
-    required this.properties,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.properties,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: PrivateEndpointConnectionPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return PrivateEndpointConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

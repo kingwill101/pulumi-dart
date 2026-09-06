@@ -8,11 +8,11 @@ import 'os_disk.dart';
 /// Specifies the storage settings for the virtual machine disks.
 class StorageProfile {
   /// Specifies the parameters that are used to add a data disk to a virtual machine.
-  final pulumi.Input<List<DataDisk>>? dataDisks;
+  final pulumi.Input<List<DataDisk>?>? dataDisks;
   /// The image reference properties.
-  final pulumi.Input<ImageReference>? imageReference;
+  final pulumi.Input<ImageReference?>? imageReference;
   /// Specifies information about the operating system disk used by the virtual machine.
-  final pulumi.Input<OsDisk>? osDisk;
+  final pulumi.Input<OsDisk?>? osDisk;
 
   /// Creates a new [StorageProfile].
   /// [dataDisks] Specifies the parameters that are used to add a data disk to a virtual machine.

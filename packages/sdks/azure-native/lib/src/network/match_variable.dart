@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Define match variables.
 class MatchVariable {
   /// The selector of match variable.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Match Variable.
-  final pulumi.Input<String> variableName;
+  final pulumi.Input<dynamic> variableName;
 
   /// Creates a new [MatchVariable].
   /// [selector] The selector of match variable.
@@ -27,7 +27,7 @@ class MatchVariable {
   factory MatchVariable.fromMap(Map<String, dynamic> map) {
     return MatchVariable(
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      variableName: pulumi.Input.fromValue(map['variableName'] as String),
+      variableName: pulumi.Input.fromValue(map['variableName']),
     );
   }
 }

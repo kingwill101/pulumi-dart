@@ -41,7 +41,7 @@ class InitContainerPropertiesDefinitionResponseInstanceView {
       currentState: pulumi.Input.fromValue(ContainerStateResponse.fromMap((map['currentState']! as Map).cast<String, dynamic>())),
       events: pulumi.Input.fromValue(pulumi.Input.decodeList<EventResponse>(map['events']!, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>()))),
       previousState: pulumi.Input.fromValue(ContainerStateResponse.fromMap((map['previousState']! as Map).cast<String, dynamic>())),
-      restartCount: pulumi.Input.fromValue(map['restartCount'] as int),
+      restartCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['restartCount'])),
     );
   }
 }

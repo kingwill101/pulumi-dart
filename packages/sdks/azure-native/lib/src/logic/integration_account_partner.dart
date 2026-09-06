@@ -286,7 +286,28 @@ class IntegrationAccountPartner extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     partnerType = registerOutput<String>('partnerType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountPartner] resource.
+  IntegrationAccountPartner.reference(String urn)
+    : super(
+        'azure-native:logic:IntegrationAccountPartner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<PartnerContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartnerContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTime = registerOutput<String>('createdTime');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    partnerType = registerOutput<String>('partnerType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout.
-enum SharedPrivateLinkResourceStatus {
+enum SharedPrivateLinkResourceStatus implements pulumi.PulumiEnum<String> {
   valuePending("Pending"),
   valueApproved("Approved"),
   valueRejected("Rejected"),
@@ -7,6 +9,7 @@ enum SharedPrivateLinkResourceStatus {
   valueTimeout("Timeout");
 
   const SharedPrivateLinkResourceStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SharedPrivateLinkResourceStatus fromValue(String value) {

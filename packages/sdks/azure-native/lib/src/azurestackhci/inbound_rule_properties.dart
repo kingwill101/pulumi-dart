@@ -13,7 +13,7 @@ class InboundRuleProperties {
   /// Frontend Port for the inbound rule
   final pulumi.Input<int> frontendPort;
   /// Protocol for the NAT rule
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// Public IP Address for this NAT rule
   final pulumi.Input<PublicIPAddressArmReference> publicIPAddress;
 
@@ -44,9 +44,9 @@ class InboundRuleProperties {
   factory InboundRuleProperties.fromMap(Map<String, dynamic> map) {
     return InboundRuleProperties(
       backendIPConfiguration: pulumi.Input.fromValue(IPConfigurationArmReference.fromMap((map['backendIPConfiguration']! as Map).cast<String, dynamic>())),
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
-      frontendPort: pulumi.Input.fromValue(map['frontendPort'] as int),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
+      frontendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPort'])),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       publicIPAddress: pulumi.Input.fromValue(PublicIPAddressArmReference.fromMap((map['publicIPAddress']! as Map).cast<String, dynamic>())),
     );
   }

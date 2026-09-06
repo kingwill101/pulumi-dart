@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Frontend port of an application gateway.
 class ApplicationGatewayFrontendPort {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the frontend port that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Frontend port.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [ApplicationGatewayFrontendPort].
   /// [id] Resource ID.
@@ -33,7 +33,7 @@ class ApplicationGatewayFrontendPort {
     return ApplicationGatewayFrontendPort(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

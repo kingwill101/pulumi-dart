@@ -11,21 +11,21 @@ import 'runtime_script_action.dart';
 /// The HDInsight cluster application GET response.
 class ApplicationProperties {
   /// The application type.
-  final pulumi.Input<String>? applicationType;
+  final pulumi.Input<String?>? applicationType;
   /// The list of roles in the cluster.
-  final pulumi.Input<ComputeProfile>? computeProfile;
+  final pulumi.Input<ComputeProfile?>? computeProfile;
   /// The list of errors.
-  final pulumi.Input<List<Errors>>? errors;
+  final pulumi.Input<List<Errors>?>? errors;
   /// The list of application HTTPS endpoints.
-  final pulumi.Input<List<ApplicationGetHttpsEndpoint>>? httpsEndpoints;
+  final pulumi.Input<List<ApplicationGetHttpsEndpoint>?>? httpsEndpoints;
   /// The list of install script actions.
-  final pulumi.Input<List<RuntimeScriptAction>>? installScriptActions;
+  final pulumi.Input<List<RuntimeScriptAction>?>? installScriptActions;
   /// The private link configurations.
-  final pulumi.Input<List<PrivateLinkConfiguration>>? privateLinkConfigurations;
+  final pulumi.Input<List<PrivateLinkConfiguration>?>? privateLinkConfigurations;
   /// The list of application SSH endpoints.
-  final pulumi.Input<List<ApplicationGetEndpoint>>? sshEndpoints;
+  final pulumi.Input<List<ApplicationGetEndpoint>?>? sshEndpoints;
   /// The list of uninstall script actions.
-  final pulumi.Input<List<RuntimeScriptAction>>? uninstallScriptActions;
+  final pulumi.Input<List<RuntimeScriptAction>?>? uninstallScriptActions;
 
   /// Creates a new [ApplicationProperties].
   /// [applicationType] The application type.

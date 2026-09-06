@@ -6,13 +6,13 @@ import 'basic_dependency_response.dart';
 /// Deployment dependency information.
 class DependencyResponse {
   /// The list of dependencies.
-  final pulumi.Input<List<BasicDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<BasicDependencyResponse>?>? dependsOn;
   /// The ID of the dependency.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The dependency resource name.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The dependency resource type.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
 
   /// Creates a new [DependencyResponse].
   /// [dependsOn] The list of dependencies.

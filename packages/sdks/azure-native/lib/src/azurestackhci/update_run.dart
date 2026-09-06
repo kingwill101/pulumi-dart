@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'step_response.dart';
 import 'system_data_response.dart';
 import 'update_run_args.dart';
 
@@ -310,7 +311,7 @@ class UpdateRun extends pulumi.CustomResource {
   /// Status of the step, bubbled up from the ECE action plan for installation attempts. Values are: 'Success', 'Error', 'InProgress', and 'Unknown status'.
   late final pulumi.Output<String?> status;
   /// Recursive model for child steps of this step.
-  late final pulumi.Output<List<Map<String, dynamic>>?> steps;
+  late final pulumi.Output<List<StepResponse>?> steps;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Timestamp of the update run was started.
@@ -346,7 +347,36 @@ class UpdateRun extends pulumi.CustomResource {
     startTimeUtc = registerOutput<String?>('startTimeUtc');
     state = registerOutput<String?>('state');
     status = registerOutput<String?>('status');
-    steps = registerOutput<List<Map<String, dynamic>>?>('steps');
+    steps = registerOutput<List<StepResponse>?>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepResponse>(guardedValue, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeStarted = registerOutput<String?>('timeStarted');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UpdateRun] resource.
+  UpdateRun.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:UpdateRun',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    duration = registerOutput<String?>('duration');
+    endTimeUtc = registerOutput<String?>('endTimeUtc');
+    errorMessage = registerOutput<String?>('errorMessage');
+    expectedExecutionTime = registerOutput<String?>('expectedExecutionTime');
+    lastUpdatedTime = registerOutput<String?>('lastUpdatedTime');
+    lastUpdatedTimeUtc = registerOutput<String?>('lastUpdatedTimeUtc');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    startTimeUtc = registerOutput<String?>('startTimeUtc');
+    state = registerOutput<String?>('state');
+    status = registerOutput<String?>('status');
+    steps = registerOutput<List<StepResponse>?>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepResponse>(guardedValue, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeStarted = registerOutput<String?>('timeStarted');
     type = registerOutput<String>('type');

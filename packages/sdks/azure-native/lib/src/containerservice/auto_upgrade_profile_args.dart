@@ -9,22 +9,22 @@ import 'auto_upgrade_node_image_selection.dart';
 /// {@macro pulumi_containerservice_auto_upgrade_profile_args_doc}
 class AutoUpgradeProfileArgs {
   /// The name of the AutoUpgradeProfile resource.
-  final pulumi.Input<String>? autoUpgradeProfileName;
+  final pulumi.Input<String?>? autoUpgradeProfileName;
   /// Configures how auto-upgrade will be run.
-  final pulumi.Input<String> channel;
+  final pulumi.Input<dynamic> channel;
   /// If set to False: the auto upgrade has effect - target managed clusters will be upgraded on schedule.
   /// If set to True: the auto upgrade has no effect - no upgrade will be run on the target managed clusters.
   /// This is a boolean and not an enum because enabled/disabled are all available states of the auto upgrade profile.
   /// By default, this is set to False.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
   /// The node image upgrade to be applied to the target clusters in auto upgrade.
-  final pulumi.Input<AutoUpgradeNodeImageSelection>? nodeImageSelection;
+  final pulumi.Input<AutoUpgradeNodeImageSelection?>? nodeImageSelection;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
-  final pulumi.Input<String>? updateStrategyId;
+  final pulumi.Input<String?>? updateStrategyId;
 
   /// Creates a new [AutoUpgradeProfileArgs].
   /// [autoUpgradeProfileName] The name of the AutoUpgradeProfile resource.
@@ -59,7 +59,7 @@ class AutoUpgradeProfileArgs {
   factory AutoUpgradeProfileArgs.fromMap(Map<String, dynamic> map) {
     return AutoUpgradeProfileArgs(
       autoUpgradeProfileName: (() { final guardedValue = map['autoUpgradeProfileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      channel: pulumi.Input.fromValue(map['channel'] as String),
+      channel: pulumi.Input.fromValue(map['channel']),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fleetName: pulumi.Input.fromValue(map['fleetName'] as String),
       nodeImageSelection: (() { final guardedValue = map['nodeImageSelection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoUpgradeNodeImageSelection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage discovery sku
-enum StorageDiscoverySku {
+enum StorageDiscoverySku implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   free("Free");
 
   const StorageDiscoverySku(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageDiscoverySku fromValue(String value) {

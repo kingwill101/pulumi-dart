@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_args.dart';
+import 'endpoint_properties_custom_headers_item_response.dart';
+import 'endpoint_properties_subnets_item_response.dart';
 
 /// Class representing a Traffic Manager endpoint.
 ///
@@ -1033,7 +1035,7 @@ class EndpointTrafficmanager extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of custom headers.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customHeaders;
+  late final pulumi.Output<List<EndpointPropertiesCustomHeadersItemResponse>?> customHeaders;
   /// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
   late final pulumi.Output<String?> endpointLocation;
   /// The monitoring status of the endpoint.
@@ -1053,7 +1055,7 @@ class EndpointTrafficmanager extends pulumi.CustomResource {
   /// The priority of this endpoint when using the 'Priority' traffic routing method. Possible values are from 1 to 1000, lower values represent higher priority. This is an optional parameter.  If specified, it must be specified on all endpoints, and no two endpoints can share the same priority value.
   late final pulumi.Output<double?> priority;
   /// The list of subnets, IP addresses, and/or address ranges mapped to this endpoint when using the 'Subnet' traffic routing method. An empty list will match all ranges not covered by other endpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<EndpointPropertiesSubnetsItemResponse>?> subnets;
   /// The fully-qualified DNS name or IP address of the endpoint. Traffic Manager returns this value in DNS responses to direct traffic to this endpoint.
   late final pulumi.Output<String?> target;
   /// The Azure Resource URI of the of the endpoint. Not applicable to endpoints of type 'ExternalEndpoints'.
@@ -1079,17 +1081,45 @@ class EndpointTrafficmanager extends pulumi.CustomResource {
         ) {
     alwaysServe = registerOutput<String?>('alwaysServe');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customHeaders = registerOutput<List<Map<String, dynamic>>?>('customHeaders');
+    customHeaders = registerOutput<List<EndpointPropertiesCustomHeadersItemResponse>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesCustomHeadersItemResponse>(guardedValue, (value) => EndpointPropertiesCustomHeadersItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     endpointLocation = registerOutput<String?>('endpointLocation');
     endpointMonitorStatus = registerOutput<String?>('endpointMonitorStatus');
     endpointStatus = registerOutput<String?>('endpointStatus');
-    geoMapping = registerOutput<List<String>?>('geoMapping');
+    geoMapping = registerOutput<List<String>?>('geoMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     minChildEndpoints = registerOutput<double?>('minChildEndpoints');
     minChildEndpointsIPv4 = registerOutput<double?>('minChildEndpointsIPv4');
     minChildEndpointsIPv6 = registerOutput<double?>('minChildEndpointsIPv6');
     this.name = registerOutput<String?>('name');
     priority = registerOutput<double?>('priority');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
+    subnets = registerOutput<List<EndpointPropertiesSubnetsItemResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesSubnetsItemResponse>(guardedValue, (value) => EndpointPropertiesSubnetsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    target = registerOutput<String?>('target');
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    type = registerOutput<String?>('type');
+    weight = registerOutput<double?>('weight');
+  }
+
+  /// Creates a typed reference to an existing [EndpointTrafficmanager] resource.
+  EndpointTrafficmanager.reference(String urn)
+    : super(
+        'azure-native:trafficmanager:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alwaysServe = registerOutput<String?>('alwaysServe');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customHeaders = registerOutput<List<EndpointPropertiesCustomHeadersItemResponse>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesCustomHeadersItemResponse>(guardedValue, (value) => EndpointPropertiesCustomHeadersItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    endpointLocation = registerOutput<String?>('endpointLocation');
+    endpointMonitorStatus = registerOutput<String?>('endpointMonitorStatus');
+    endpointStatus = registerOutput<String?>('endpointStatus');
+    geoMapping = registerOutput<List<String>?>('geoMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    minChildEndpoints = registerOutput<double?>('minChildEndpoints');
+    minChildEndpointsIPv4 = registerOutput<double?>('minChildEndpointsIPv4');
+    minChildEndpointsIPv6 = registerOutput<double?>('minChildEndpointsIPv6');
+    this.name = registerOutput<String?>('name');
+    priority = registerOutput<double?>('priority');
+    subnets = registerOutput<List<EndpointPropertiesSubnetsItemResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesSubnetsItemResponse>(guardedValue, (value) => EndpointPropertiesSubnetsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     target = registerOutput<String?>('target');
     targetResourceId = registerOutput<String?>('targetResourceId');
     type = registerOutput<String?>('type');

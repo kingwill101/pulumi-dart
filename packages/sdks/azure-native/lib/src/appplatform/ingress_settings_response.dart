@@ -6,17 +6,17 @@ import 'ingress_settings_response_client_auth.dart';
 /// App ingress settings payload.
 class IngressSettingsResponse {
   /// How ingress should communicate with this app backend service.
-  final pulumi.Input<String>? backendProtocol;
+  final pulumi.Input<String?>? backendProtocol;
   /// Client-Certification Authentication.
-  final pulumi.Input<IngressSettingsResponseClientAuth>? clientAuth;
+  final pulumi.Input<IngressSettingsResponseClientAuth?>? clientAuth;
   /// Ingress read time out in seconds.
-  final pulumi.Input<int>? readTimeoutInSeconds;
+  final pulumi.Input<int?>? readTimeoutInSeconds;
   /// Ingress send time out in seconds.
-  final pulumi.Input<int>? sendTimeoutInSeconds;
+  final pulumi.Input<int?>? sendTimeoutInSeconds;
   /// Type of the affinity, set this to Cookie to enable session affinity.
-  final pulumi.Input<String>? sessionAffinity;
+  final pulumi.Input<String?>? sessionAffinity;
   /// Time in seconds until the cookie expires.
-  final pulumi.Input<int>? sessionCookieMaxAge;
+  final pulumi.Input<int?>? sessionCookieMaxAge;
 
   /// Creates a new [IngressSettingsResponse].
   /// [backendProtocol] How ingress should communicate with this app backend service.
@@ -49,10 +49,10 @@ class IngressSettingsResponse {
     return IngressSettingsResponse(
       backendProtocol: (() { final guardedValue = map['backendProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientAuth: (() { final guardedValue = map['clientAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressSettingsResponseClientAuth.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      readTimeoutInSeconds: (() { final guardedValue = map['readTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sendTimeoutInSeconds: (() { final guardedValue = map['sendTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readTimeoutInSeconds: (() { final guardedValue = map['readTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sendTimeoutInSeconds: (() { final guardedValue = map['sendTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionCookieMaxAge: (() { final guardedValue = map['sessionCookieMaxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionCookieMaxAge: (() { final guardedValue = map['sessionCookieMaxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

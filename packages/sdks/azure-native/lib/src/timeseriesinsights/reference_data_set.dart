@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'reference_data_set_args.dart';
+import 'reference_data_set_key_property_response.dart';
 
 /// A reference data set provides metadata about the events in an environment. Metadata in the reference data set will be joined with events as they are read from event sources. The metadata that makes up the reference data set is uploaded or modified through the Time Series Insights data plane APIs.
 ///
@@ -229,7 +230,7 @@ class ReferenceDataSet extends pulumi.CustomResource {
   /// The reference data set key comparison behavior can be set using this property. By default, the value is 'Ordinal' - which means case sensitive key comparison will be performed while joining reference data with events or while adding new reference data. When 'OrdinalIgnoreCase' is set, case insensitive comparison will be used.
   late final pulumi.Output<String?> dataStringComparisonBehavior;
   /// The list of key properties for the reference data set.
-  late final pulumi.Output<List<Map<String, dynamic>>> keyProperties;
+  late final pulumi.Output<List<ReferenceDataSetKeyPropertyResponse>> keyProperties;
   /// Resource location
   late final pulumi.Output<String> location;
   /// Resource name
@@ -258,11 +259,31 @@ class ReferenceDataSet extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationTime = registerOutput<String>('creationTime');
     dataStringComparisonBehavior = registerOutput<String?>('dataStringComparisonBehavior');
-    keyProperties = registerOutput<List<Map<String, dynamic>>>('keyProperties');
+    keyProperties = registerOutput<List<ReferenceDataSetKeyPropertyResponse>>('keyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceDataSetKeyPropertyResponse>(guardedValue, (value) => ReferenceDataSetKeyPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ReferenceDataSet] resource.
+  ReferenceDataSet.reference(String urn)
+    : super(
+        'azure-native:timeseriesinsights:ReferenceDataSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    dataStringComparisonBehavior = registerOutput<String?>('dataStringComparisonBehavior');
+    keyProperties = registerOutput<List<ReferenceDataSetKeyPropertyResponse>>('keyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferenceDataSetKeyPropertyResponse>(guardedValue, (value) => ReferenceDataSetKeyPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

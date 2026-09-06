@@ -8,18 +8,18 @@ class ImageTemplatePlatformImageSourceResponse {
   /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.
   final pulumi.Input<String> exactVersion;
   /// Image offer from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// Optional configuration of purchase plan for platform image.
-  final pulumi.Input<PlatformImagePurchasePlanResponse>? planInfo;
+  final pulumi.Input<PlatformImagePurchasePlanResponse?>? planInfo;
   /// Image Publisher in [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Image sku from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Specifies the type of source image you want to start with.
   /// Expected value is 'PlatformImage'.
   final pulumi.Input<String> type;
   /// Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). If 'latest' is specified here, the version is evaluated when the image build takes place, not when the template is submitted.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImageTemplatePlatformImageSourceResponse].
   /// [exactVersion] Image version from the [Azure Gallery Images](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachineimages). This readonly field differs from 'version', only if the value specified in 'version' field is 'latest'.

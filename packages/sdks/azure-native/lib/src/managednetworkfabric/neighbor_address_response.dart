@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Neighbor Address properties.
 class NeighborAddressResponse {
   /// IP Address.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Configuration state of the resource.
   final pulumi.Input<String> configurationState;
 

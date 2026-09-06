@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username / Password Credentials to connect to guest.
 class GuestCredentialVMInstanceGuestAgentResponse {
   /// Private key used to authenticate to a virtual machine through ssh.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Gets or sets username to connect with the guest.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GuestCredentialVMInstanceGuestAgentResponse].
   /// [privateKey] Private key used to authenticate to a virtual machine through ssh.

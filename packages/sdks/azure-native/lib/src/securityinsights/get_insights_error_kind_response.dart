@@ -9,7 +9,7 @@ class GetInsightsErrorKindResponse {
   /// the query kind
   final pulumi.Input<String> kind;
   /// the query id
-  final pulumi.Input<String>? queryId;
+  final pulumi.Input<String?>? queryId;
 
   /// Creates a new [GetInsightsErrorKindResponse].
   /// [errorMessage] the error message

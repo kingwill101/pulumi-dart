@@ -2,11 +2,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'apiserver_profile_response.dart';
 import 'cluster_profile_response.dart';
 import 'console_profile_response.dart';
+import 'ingress_profile_response.dart';
 import 'master_profile_response.dart';
 import 'network_profile_response.dart';
 import 'open_shift_cluster_args.dart';
 import 'service_principal_profile_response.dart';
 import 'system_data_response.dart';
+import 'worker_profile_response.dart';
 
 /// OpenShiftCluster represents an Azure Red Hat OpenShift cluster.
 ///
@@ -476,7 +478,7 @@ class OpenShiftCluster extends pulumi.CustomResource {
   /// The console profile.
   late final pulumi.Output<ConsoleProfileResponse?> consoleProfile;
   /// The cluster ingress profiles.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ingressProfiles;
+  late final pulumi.Output<List<IngressProfileResponse>?> ingressProfiles;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The cluster master profile.
@@ -496,9 +498,9 @@ class OpenShiftCluster extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The cluster worker profiles.
-  late final pulumi.Output<List<Map<String, dynamic>>?> workerProfiles;
+  late final pulumi.Output<List<WorkerProfileResponse>?> workerProfiles;
   /// The cluster worker profiles status.
-  late final pulumi.Output<List<Map<String, dynamic>>> workerProfilesStatus;
+  late final pulumi.Output<List<WorkerProfileResponse>> workerProfilesStatus;
 
   /// Creates a new [OpenShiftCluster].
   /// [name] The Pulumi resource name.
@@ -518,7 +520,7 @@ class OpenShiftCluster extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterProfile = registerOutput<ClusterProfileResponse?>('clusterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consoleProfile = registerOutput<ConsoleProfileResponse?>('consoleProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsoleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ingressProfiles = registerOutput<List<Map<String, dynamic>>?>('ingressProfiles');
+    ingressProfiles = registerOutput<List<IngressProfileResponse>?>('ingressProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IngressProfileResponse>(guardedValue, (value) => IngressProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     masterProfile = registerOutput<MasterProfileResponse?>('masterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MasterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -526,9 +528,36 @@ class OpenShiftCluster extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     servicePrincipalProfile = registerOutput<ServicePrincipalProfileResponse?>('servicePrincipalProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    workerProfiles = registerOutput<List<Map<String, dynamic>>?>('workerProfiles');
-    workerProfilesStatus = registerOutput<List<Map<String, dynamic>>>('workerProfilesStatus');
+    workerProfiles = registerOutput<List<WorkerProfileResponse>?>('workerProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    workerProfilesStatus = registerOutput<List<WorkerProfileResponse>>('workerProfilesStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [OpenShiftCluster] resource.
+  OpenShiftCluster.reference(String urn)
+    : super(
+        'azure-native:redhatopenshift:OpenShiftCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiserverProfile = registerOutput<APIServerProfileResponse?>('apiserverProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return APIServerProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterProfile = registerOutput<ClusterProfileResponse?>('clusterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    consoleProfile = registerOutput<ConsoleProfileResponse?>('consoleProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsoleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ingressProfiles = registerOutput<List<IngressProfileResponse>?>('ingressProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IngressProfileResponse>(guardedValue, (value) => IngressProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    masterProfile = registerOutput<MasterProfileResponse?>('masterProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MasterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String?>('provisioningState');
+    servicePrincipalProfile = registerOutput<ServicePrincipalProfileResponse?>('servicePrincipalProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    workerProfiles = registerOutput<List<WorkerProfileResponse>?>('workerProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    workerProfilesStatus = registerOutput<List<WorkerProfileResponse>>('workerProfilesStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

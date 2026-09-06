@@ -9,19 +9,19 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_security_partner_provider_args_doc}
 class SecurityPartnerProviderArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Security Partner Provider.
-  final pulumi.Input<String>? securityPartnerProviderName;
+  final pulumi.Input<String?>? securityPartnerProviderName;
   /// The security provider name.
-  final pulumi.Input<String>? securityProviderName;
+  final pulumi.Input<dynamic>? securityProviderName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The virtualHub to which the Security Partner Provider belongs.
-  final pulumi.Input<SubResource>? virtualHub;
+  final pulumi.Input<SubResource?>? virtualHub;
 
   /// Creates a new [SecurityPartnerProviderArgs].
   /// [id] Resource ID.
@@ -59,7 +59,7 @@ class SecurityPartnerProviderArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       securityPartnerProviderName: (() { final guardedValue = map['securityPartnerProviderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      securityProviderName: (() { final guardedValue = map['securityProviderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityProviderName: (() { final guardedValue = map['securityProviderName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

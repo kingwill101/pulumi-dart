@@ -5,27 +5,27 @@ import 'system_data_response.dart';
 /// Result data returned by getStorageAccount.
 class GetStorageAccountResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// BlobEndpoint of Storage Account
-  final String blobEndpoint;
+  final String? blobEndpoint;
   /// The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud.
-  final int containerCount;
+  final int? containerCount;
   /// Data policy of the storage Account.
-  final String dataPolicy;
+  final String? dataPolicy;
   /// Description for the storage Account.
   final String? description;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// The object name.
-  final String name;
+  final String? name;
   /// Storage Account Credential Id
   final String? storageAccountCredentialId;
   /// Current status of the storage account
   final String? storageAccountStatus;
   /// Metadata pertaining to creation and last modification of StorageAccount
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetStorageAccountResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetStorageAccountResult {
   /// [systemData] Metadata pertaining to creation and last modification of StorageAccount
   /// [type] The hierarchical type of the object.
   const GetStorageAccountResult({
-    required this.azureApiVersion,
-    required this.blobEndpoint,
-    required this.containerCount,
-    required this.dataPolicy,
+    this.azureApiVersion,
+    this.blobEndpoint,
+    this.containerCount,
+    this.dataPolicy,
     this.description,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.storageAccountCredentialId,
     this.storageAccountStatus,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'blobEndpoint': blobEndpoint,
-      'containerCount': containerCount,
-      'dataPolicy': dataPolicy,
+      'azureApiVersion': ?azureApiVersion,
+      'blobEndpoint': ?blobEndpoint,
+      'containerCount': ?containerCount,
+      'dataPolicy': ?dataPolicy,
       'description': ?description,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'storageAccountCredentialId': ?storageAccountCredentialId,
       'storageAccountStatus': ?storageAccountStatus,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetStorageAccountResult.fromMap(Map<String, dynamic> map) {
     return GetStorageAccountResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      blobEndpoint: map['blobEndpoint'] as String,
-      containerCount: map['containerCount'] as int,
-      dataPolicy: map['dataPolicy'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      blobEndpoint: (() { final guardedValue = map['blobEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      containerCount: (() { final guardedValue = map['containerCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      dataPolicy: (() { final guardedValue = map['dataPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountCredentialId: (() { final guardedValue = map['storageAccountCredentialId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountStatus: (() { final guardedValue = map['storageAccountStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

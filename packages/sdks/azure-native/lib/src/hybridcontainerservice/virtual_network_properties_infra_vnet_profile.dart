@@ -5,7 +5,7 @@ import 'virtual_network_properties_hci.dart';
 
 class VirtualNetworkPropertiesInfraVnetProfile {
   /// Infrastructure network profile for HCI platform
-  final pulumi.Input<VirtualNetworkPropertiesHci>? hci;
+  final pulumi.Input<VirtualNetworkPropertiesHci?>? hci;
 
   /// Creates a new [VirtualNetworkPropertiesInfraVnetProfile].
   /// [hci] Infrastructure network profile for HCI platform

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The structure of the property that a time series id can have. An environment can have multiple such properties.
 class TimeSeriesIdPropertyResponse {
   /// The name of the property.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the property.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TimeSeriesIdPropertyResponse].
   /// [name] The name of the property.

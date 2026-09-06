@@ -252,12 +252,12 @@ class Lab extends pulumi.CustomResource {
     defaultPremiumStorageAccount = registerOutput<String>('defaultPremiumStorageAccount');
     defaultStorageAccount = registerOutput<String>('defaultStorageAccount');
     environmentPermission = registerOutput<String?>('environmentPermission');
-    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     labStorageType = registerOutput<String?>('labStorageType');
     loadBalancerId = registerOutput<String>('loadBalancerId');
     location = registerOutput<String?>('location');
-    mandatoryArtifactsResourceIdsLinux = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsLinux');
-    mandatoryArtifactsResourceIdsWindows = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsWindows');
+    mandatoryArtifactsResourceIdsLinux = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsLinux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mandatoryArtifactsResourceIdsWindows = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
     premiumDataDiskStorageAccount = registerOutput<String>('premiumDataDiskStorageAccount');
@@ -266,7 +266,44 @@ class Lab extends pulumi.CustomResource {
     publicIpId = registerOutput<String>('publicIpId');
     support = registerOutput<LabSupportPropertiesResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    vaultName = registerOutput<String>('vaultName');
+    vmCreationResourceGroup = registerOutput<String>('vmCreationResourceGroup');
+  }
+
+  /// Creates a typed reference to an existing [Lab] resource.
+  Lab.reference(String urn)
+    : super(
+        'azure-native:devtestlab:Lab',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    announcement = registerOutput<LabAnnouncementPropertiesResponse?>('announcement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabAnnouncementPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifactsStorageAccount = registerOutput<String>('artifactsStorageAccount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    defaultPremiumStorageAccount = registerOutput<String>('defaultPremiumStorageAccount');
+    defaultStorageAccount = registerOutput<String>('defaultStorageAccount');
+    environmentPermission = registerOutput<String?>('environmentPermission');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    labStorageType = registerOutput<String?>('labStorageType');
+    loadBalancerId = registerOutput<String>('loadBalancerId');
+    location = registerOutput<String?>('location');
+    mandatoryArtifactsResourceIdsLinux = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsLinux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    mandatoryArtifactsResourceIdsWindows = registerOutput<List<String>?>('mandatoryArtifactsResourceIdsWindows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    networkSecurityGroupId = registerOutput<String>('networkSecurityGroupId');
+    premiumDataDiskStorageAccount = registerOutput<String>('premiumDataDiskStorageAccount');
+    premiumDataDisks = registerOutput<String?>('premiumDataDisks');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIpId = registerOutput<String>('publicIpId');
+    support = registerOutput<LabSupportPropertiesResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     vaultName = registerOutput<String>('vaultName');

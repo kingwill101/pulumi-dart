@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schema for MSIX Package Application properties.
 class MsixPackageApplicationsResponse {
   /// Package Application Id, found in appxmanifest.xml.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
-  final pulumi.Input<String>? appUserModelID;
+  final pulumi.Input<String?>? appUserModelID;
   /// Description of Package Application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly name.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// User friendly name.
-  final pulumi.Input<String>? iconImageName;
+  final pulumi.Input<String?>? iconImageName;
   /// the icon a 64 bit string as a byte array.
-  final pulumi.Input<String>? rawIcon;
+  final pulumi.Input<String?>? rawIcon;
   /// the icon a 64 bit string as a byte array.
-  final pulumi.Input<String>? rawPng;
+  final pulumi.Input<String?>? rawPng;
 
   /// Creates a new [MsixPackageApplicationsResponse].
   /// [appId] Package Application Id, found in appxmanifest.xml.

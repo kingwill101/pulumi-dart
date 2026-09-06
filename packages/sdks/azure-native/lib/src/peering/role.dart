@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The role of the contact.
-enum Role {
+enum Role implements pulumi.PulumiEnum<String> {
   valueNoc("Noc"),
   valuePolicy("Policy"),
   valueTechnical("Technical"),
@@ -8,6 +10,7 @@ enum Role {
   valueOther("Other");
 
   const Role(this.wireValue);
+  @override
   final String wireValue;
 
   static Role fromValue(String value) {

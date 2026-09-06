@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Scope at which the operator will be installed.
-enum OperatorScopeType {
+enum OperatorScopeType implements pulumi.PulumiEnum<String> {
   valueCluster("cluster"),
   valueNamespace("namespace");
 
   const OperatorScopeType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperatorScopeType fromValue(String value) {

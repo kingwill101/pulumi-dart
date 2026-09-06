@@ -7,15 +7,15 @@ import 'mapper_dsl_connector_properties.dart';
 /// Source connection details.
 class MapperConnection {
   /// List of name/value pairs for connection properties.
-  final pulumi.Input<List<MapperDslConnectorProperties>>? commonDslConnectorProperties;
+  final pulumi.Input<List<MapperDslConnectorProperties>?>? commonDslConnectorProperties;
   /// A boolean indicating whether linked service is of type inline dataset. Currently only inline datasets are supported.
-  final pulumi.Input<bool>? isInlineDataset;
+  final pulumi.Input<bool?>? isInlineDataset;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedService;
+  final pulumi.Input<LinkedServiceReference?>? linkedService;
   /// Type of the linked service e.g.: AzureBlobFS.
-  final pulumi.Input<String>? linkedServiceType;
+  final pulumi.Input<String?>? linkedServiceType;
   /// Type of connection via linked service or dataset.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [MapperConnection].
   /// [commonDslConnectorProperties] List of name/value pairs for connection properties.
@@ -47,7 +47,7 @@ class MapperConnection {
       isInlineDataset: (() { final guardedValue = map['isInlineDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       linkedService: (() { final guardedValue = map['linkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceType: (() { final guardedValue = map['linkedServiceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

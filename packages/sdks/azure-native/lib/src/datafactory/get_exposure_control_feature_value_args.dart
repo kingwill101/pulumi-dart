@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datafactory_get_exposure_control_feature_value_args_doc}
 class GetExposureControlFeatureValueArgs {
   /// The feature name.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// The feature type.
-  final pulumi.Input<String>? featureType;
+  final pulumi.Input<String?>? featureType;
   /// The location identifier.
   final pulumi.Input<String> locationId;
 

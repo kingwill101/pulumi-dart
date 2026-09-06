@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of value copied from source.
-enum ValueType {
+enum ValueType implements pulumi.PulumiEnum<String> {
   actual("actual"),
   display("display");
 
   const ValueType(this.wireValue);
+  @override
   final String wireValue;
 
   static ValueType fromValue(String value) {

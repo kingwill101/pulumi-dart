@@ -12,15 +12,15 @@ class SqlServerAvailabilityGroupResourcePropertiesResponse {
   /// Timestamp for when the data was collected from the client machine.
   final pulumi.Input<String> collectionTimestamp;
   /// A list of Availability Group Database Replicas.
-  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesResponseDatabases>? databases;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesResponseDatabases?>? databases;
   /// Availability Group Info
-  final pulumi.Input<AvailabilityGroupInfoResponse>? info;
+  final pulumi.Input<AvailabilityGroupInfoResponse?>? info;
   /// the SQL Server Instance name.
   final pulumi.Input<String> instanceName;
   /// The provisioning state of the Arc-enabled SQL Server availability group resource.
   final pulumi.Input<String> provisioningState;
   /// A list of Availability Group Replicas.
-  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesResponseReplicas>? replicas;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesResponseReplicas?>? replicas;
   /// the SQL server name.
   final pulumi.Input<String> serverName;
   /// The unique ID of the hybrid machine that this resource belongs to.

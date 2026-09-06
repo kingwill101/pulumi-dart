@@ -6,17 +6,17 @@ import 'authorization_rule_response.dart';
 /// Broker AuthorizationConfig properties
 class AuthorizationConfigResponse {
   /// Enable caching of the authorization rules.
-  final pulumi.Input<String>? cache;
+  final pulumi.Input<String?>? cache;
   /// The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  final pulumi.Input<List<AuthorizationRuleResponse>>? rules;
+  final pulumi.Input<List<AuthorizationRuleResponse>?>? rules;
 
   /// Creates a new [AuthorizationConfigResponse].
   /// [cache] Enable caching of the authorization rules.
   /// [rules] The authorization rules to follow. If no rule is set, but Authorization Resource is used that would mean DenyAll.
-  const AuthorizationConfigResponse({
-    this.cache,
+  AuthorizationConfigResponse({
+    pulumi.Input<String?>? cache,
     this.rules,
-  });
+  }) : cache = cache ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

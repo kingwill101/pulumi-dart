@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_data_response.dart';
-import 'excel_performance_data_response.dart';
 import 'sapmigrate_error_server_instance_response.dart';
 import 'server_instance_args.dart';
 import 'system_data_response.dart';
@@ -171,7 +170,7 @@ class ServerInstance extends pulumi.CustomResource {
   /// This is Operating System on which the host server is running.
   late final pulumi.Output<String> operatingSystem;
   /// Configuration data for this server instance.
-  late final pulumi.Output<ExcelPerformanceDataResponse> performanceData;
+  late final pulumi.Output<dynamic> performanceData;
   /// Defines the provisioning states.
   late final pulumi.Output<String> provisioningState;
   /// Defines the type SAP instance on this server instance.
@@ -207,7 +206,32 @@ class ServerInstance extends pulumi.CustomResource {
     instanceSid = registerOutput<String>('instanceSid');
     this.name = registerOutput<String>('name');
     operatingSystem = registerOutput<String>('operatingSystem');
-    performanceData = registerOutput<ExcelPerformanceDataResponse>('performanceData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExcelPerformanceDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    performanceData = registerOutput<dynamic>('performanceData');
+    provisioningState = registerOutput<String>('provisioningState');
+    sapInstanceType = registerOutput<String>('sapInstanceType');
+    sapProduct = registerOutput<String>('sapProduct');
+    sapProductVersion = registerOutput<String>('sapProductVersion');
+    serverName = registerOutput<String>('serverName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerInstance] resource.
+  ServerInstance.reference(String urn)
+    : super(
+        'azure-native:workloads:ServerInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationData = registerOutput<ConfigurationDataResponse>('configurationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    errors = registerOutput<SAPMigrateErrorServerInstanceResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAPMigrateErrorServerInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceSid = registerOutput<String>('instanceSid');
+    this.name = registerOutput<String>('name');
+    operatingSystem = registerOutput<String>('operatingSystem');
+    performanceData = registerOutput<dynamic>('performanceData');
     provisioningState = registerOutput<String>('provisioningState');
     sapInstanceType = registerOutput<String>('sapInstanceType');
     sapProduct = registerOutput<String>('sapProduct');

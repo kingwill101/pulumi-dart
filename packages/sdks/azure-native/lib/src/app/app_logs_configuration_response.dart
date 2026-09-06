@@ -6,9 +6,9 @@ import 'log_analytics_configuration_response.dart';
 /// Configuration of application logs
 class AppLogsConfigurationResponse {
   /// Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
-  final pulumi.Input<LogAnalyticsConfigurationResponse>? logAnalyticsConfiguration;
+  final pulumi.Input<LogAnalyticsConfigurationResponse?>? logAnalyticsConfiguration;
 
   /// Creates a new [AppLogsConfigurationResponse].
   /// [destination] Logs destination, can be 'log-analytics', 'azure-monitor' or 'none'

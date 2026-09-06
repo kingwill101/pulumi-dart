@@ -273,4 +273,19 @@ class DefenderForStorage extends pulumi.CustomResource {
     properties = registerOutput<DefenderForStorageSettingPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefenderForStorageSettingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DefenderForStorage] resource.
+  DefenderForStorage.reference(String urn)
+    : super(
+        'azure-native:security:DefenderForStorage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<DefenderForStorageSettingPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DefenderForStorageSettingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

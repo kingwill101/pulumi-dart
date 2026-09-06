@@ -12,9 +12,9 @@ class SqlPoolTransparentDataEncryptionArgs {
   /// SQL pool name
   final pulumi.Input<String> sqlPoolName;
   /// The status of the database transparent data encryption.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// The name of the transparent data encryption configuration.
-  final pulumi.Input<String>? transparentDataEncryptionName;
+  final pulumi.Input<String?>? transparentDataEncryptionName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -46,7 +46,7 @@ class SqlPoolTransparentDataEncryptionArgs {
     return SqlPoolTransparentDataEncryptionArgs(
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sqlPoolName: pulumi.Input.fromValue(map['sqlPoolName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       transparentDataEncryptionName: (() { final guardedValue = map['transparentDataEncryptionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

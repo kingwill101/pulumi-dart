@@ -6,7 +6,7 @@ import 'istio_service_mesh_response.dart';
 /// Service mesh profile for a managed cluster.
 class ServiceMeshProfileResponse {
   /// Istio service mesh configuration.
-  final pulumi.Input<IstioServiceMeshResponse>? istio;
+  final pulumi.Input<IstioServiceMeshResponse?>? istio;
   /// Mode of the service mesh.
   final pulumi.Input<String> mode;
 

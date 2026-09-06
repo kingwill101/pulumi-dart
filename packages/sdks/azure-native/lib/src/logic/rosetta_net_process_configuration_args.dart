@@ -12,15 +12,15 @@ class RosettaNetProcessConfigurationArgs {
   /// The RosettaNet process configuration activity settings.
   final pulumi.Input<RosettaNetPipActivitySettings> activitySettings;
   /// The integration account RosettaNet ProcessConfiguration properties.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The RosettaNet initiator role settings.
   final pulumi.Input<RosettaNetPipRoleSettings> initiatorRoleSettings;
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The integration account RosettaNet process code.
   final pulumi.Input<String> processCode;
   /// The integration account RosettaNet process name.
@@ -32,9 +32,9 @@ class RosettaNetProcessConfigurationArgs {
   /// The RosettaNet responder role settings.
   final pulumi.Input<RosettaNetPipRoleSettings> responderRoleSettings;
   /// The integration account RosettaNet ProcessConfiguration name.
-  final pulumi.Input<String>? rosettaNetProcessConfigurationName;
+  final pulumi.Input<String?>? rosettaNetProcessConfigurationName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RosettaNetProcessConfigurationArgs].
   /// [activitySettings] The RosettaNet process configuration activity settings.

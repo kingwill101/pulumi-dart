@@ -6,11 +6,11 @@ import 'cache_type_enum_value.dart';
 /// Definition of ProjectCache
 class ProjectCache {
   /// &lt;p&gt;Information about the cache location: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NO_CACHE&lt;/code&gt; or &lt;code&gt;LOCAL&lt;/code&gt;: This value is ignored.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: This is the S3 bucket name/prefix.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// &lt;p&gt;An array of strings that specify the local cache modes. You can use one or more local cache modes at the same time. This is only used for &lt;code&gt;LOCAL&lt;/code&gt; cache types.&lt;/p&gt; &lt;p&gt;Possible values are:&lt;/p&gt; &lt;dl&gt; &lt;dt&gt;LOCAL_SOURCE_CACHE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;Caches Git metadata for primary and secondary sources. After the cache is created, subsequent builds pull only the change between commits. This mode is a good choice for projects with a clean working directory and a source that is a large Git repository. If you choose this option and your project does not use a Git repository (GitHub, GitHub Enterprise, or Bitbucket), the option is ignored. &lt;/p&gt; &lt;/dd&gt; &lt;dt&gt;LOCAL_DOCKER_LAYER_CACHE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;Caches existing Docker layers. This mode is a good choice for projects that build or pull large Docker images. It can prevent the performance issues caused by pulling large Docker images down from the network. &lt;/p&gt; &lt;note&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;You can use a Docker layer cache in the Linux environment only. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;The &lt;code&gt;privileged&lt;/code&gt; flag must be set so that your project has the required Docker permissions. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;You should consider the security implications before you use a Docker layer cache. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/note&gt; &lt;/dd&gt; &lt;dt&gt;LOCAL_CUSTOM_CACHE&lt;/dt&gt; &lt;dd&gt; &lt;p&gt;Caches directories you specify in the buildspec file. This mode is a good choice if your build scenario is not suited to one of the other three local cache modes. If you use a custom cache: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Only directories can be specified for caching. You cannot specify individual files. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Symlinks are used to reference cached directories. &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Cached directories are linked to your build before it downloads its project sources. Cached items are overridden if a source item has the same name. Directories are specified using cache paths in the buildspec file. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/dd&gt; &lt;/dl&gt;
-  final pulumi.Input<List<String>>? modes;
+  final pulumi.Input<List<dynamic>?>? modes;
   /// &lt;p&gt;The type of cache used by the build project. Valid values include:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NO_CACHE&lt;/code&gt;: The build project does not use any cache.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: The build project reads and writes from and to S3.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;LOCAL&lt;/code&gt;: The build project stores a cache locally on a build host that is only available to that build host.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<CacheTypeEnumValue>? type;
+  final pulumi.Input<CacheTypeEnumValue?>? type;
 
   /// Creates a new [ProjectCache].
   /// [location] &lt;p&gt;Information about the cache location: &lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NO_CACHE&lt;/code&gt; or &lt;code&gt;LOCAL&lt;/code&gt;: This value is ignored.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;S3&lt;/code&gt;: This is the S3 bucket name/prefix.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
@@ -33,7 +33,7 @@ class ProjectCache {
   factory ProjectCache.fromMap(Map<String, dynamic> map) {
     return ProjectCache(
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      modes: (() { final guardedValue = map['modes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      modes: (() { final guardedValue = map['modes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CacheTypeEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

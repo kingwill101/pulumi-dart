@@ -61,7 +61,7 @@ class DeviceInsightResponse {
       endTimestampUtc: pulumi.Input.fromValue(map['endTimestampUtc'] as String),
       eventCategory: pulumi.Input.fromValue(map['eventCategory'] as String),
       eventClass: pulumi.Input.fromValue(map['eventClass'] as String),
-      eventCount: pulumi.Input.fromValue(map['eventCount'] as int),
+      eventCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['eventCount'])),
       eventType: pulumi.Input.fromValue(map['eventType'] as String),
       startTimestampUtc: pulumi.Input.fromValue(map['startTimestampUtc'] as String),
     );

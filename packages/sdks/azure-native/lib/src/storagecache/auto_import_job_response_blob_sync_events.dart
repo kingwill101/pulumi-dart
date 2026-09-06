@@ -81,19 +81,19 @@ class AutoImportJobResponseBlobSyncEvents {
 
   factory AutoImportJobResponseBlobSyncEvents.fromMap(Map<String, dynamic> map) {
     return AutoImportJobResponseBlobSyncEvents(
-      deletions: pulumi.Input.fromValue(map['deletions'] as double),
-      importedDirectories: pulumi.Input.fromValue(map['importedDirectories'] as double),
-      importedFiles: pulumi.Input.fromValue(map['importedFiles'] as double),
-      importedSymlinks: pulumi.Input.fromValue(map['importedSymlinks'] as double),
+      deletions: pulumi.Input.fromValue((map['deletions'] as num).toDouble()),
+      importedDirectories: pulumi.Input.fromValue((map['importedDirectories'] as num).toDouble()),
+      importedFiles: pulumi.Input.fromValue((map['importedFiles'] as num).toDouble()),
+      importedSymlinks: pulumi.Input.fromValue((map['importedSymlinks'] as num).toDouble()),
       lastChangeFeedEventConsumedTime: pulumi.Input.fromValue(map['lastChangeFeedEventConsumedTime'] as String),
       lastTimeFullySynchronized: pulumi.Input.fromValue(map['lastTimeFullySynchronized'] as String),
-      preexistingDirectories: pulumi.Input.fromValue(map['preexistingDirectories'] as double),
-      preexistingFiles: pulumi.Input.fromValue(map['preexistingFiles'] as double),
-      preexistingSymlinks: pulumi.Input.fromValue(map['preexistingSymlinks'] as double),
-      rateOfBlobImport: pulumi.Input.fromValue(map['rateOfBlobImport'] as double),
-      totalBlobsImported: pulumi.Input.fromValue(map['totalBlobsImported'] as double),
-      totalConflicts: pulumi.Input.fromValue(map['totalConflicts'] as double),
-      totalErrors: pulumi.Input.fromValue(map['totalErrors'] as double),
+      preexistingDirectories: pulumi.Input.fromValue((map['preexistingDirectories'] as num).toDouble()),
+      preexistingFiles: pulumi.Input.fromValue((map['preexistingFiles'] as num).toDouble()),
+      preexistingSymlinks: pulumi.Input.fromValue((map['preexistingSymlinks'] as num).toDouble()),
+      rateOfBlobImport: pulumi.Input.fromValue((map['rateOfBlobImport'] as num).toDouble()),
+      totalBlobsImported: pulumi.Input.fromValue((map['totalBlobsImported'] as num).toDouble()),
+      totalConflicts: pulumi.Input.fromValue((map['totalConflicts'] as num).toDouble()),
+      totalErrors: pulumi.Input.fromValue((map['totalErrors'] as num).toDouble()),
     );
   }
 }

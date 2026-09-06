@@ -1,8 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'first_party_app_definition_response.dart';
+import 'gallery_app_definition_response.dart';
 import 'inplace_upgrade_osinfo_response.dart';
 import 'intune_enrollment_metadata_response.dart';
 import 'package_args.dart';
+import 'package_validation_result_response.dart';
 import 'system_data_response.dart';
+import 'target_osinfo_response.dart';
+import 'test_response.dart';
 
 /// The Test Base Package resource.
 ///
@@ -715,11 +720,11 @@ class Package extends pulumi.CustomResource {
   /// The id of draft package. Used to create or update this package from a draft package.
   late final pulumi.Output<String?> draftPackageId;
   /// The list of first party applications to test along with user application.
-  late final pulumi.Output<List<Map<String, dynamic>>?> firstPartyApps;
+  late final pulumi.Output<List<FirstPartyAppDefinitionResponse>?> firstPartyApps;
   /// The flighting ring for feature update.
   late final pulumi.Output<String?> flightingRing;
   /// The list of gallery apps to test along with user application.
-  late final pulumi.Output<List<Map<String, dynamic>>> galleryApps;
+  late final pulumi.Output<List<GalleryAppDefinitionResponse>> galleryApps;
   /// Specifies the baseline os and target os for inplace upgrade.
   late final pulumi.Output<InplaceUpgradeOSInfoResponse?> inplaceUpgradeOSPair;
   /// The metadata of Intune enrollment.
@@ -741,15 +746,15 @@ class Package extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Specifies the target OSs of specific OS Update types.
-  late final pulumi.Output<List<Map<String, dynamic>>?> targetOSList;
+  late final pulumi.Output<List<TargetOSInfoResponse>?> targetOSList;
   /// OOB, functional or flow driven. Mapped to the data in 'tests' property.
   late final pulumi.Output<List<String>> testTypes;
   /// The detailed test information.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tests;
+  late final pulumi.Output<List<TestResponse>?> tests;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The validation results. There's validation on package when it's created or updated.
-  late final pulumi.Output<List<Map<String, dynamic>>> validationResults;
+  late final pulumi.Output<List<PackageValidationResultResponse>> validationResults;
   /// Application version
   late final pulumi.Output<String> version;
 
@@ -771,9 +776,9 @@ class Package extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blobPath = registerOutput<String?>('blobPath');
     draftPackageId = registerOutput<String?>('draftPackageId');
-    firstPartyApps = registerOutput<List<Map<String, dynamic>>?>('firstPartyApps');
+    firstPartyApps = registerOutput<List<FirstPartyAppDefinitionResponse>?>('firstPartyApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirstPartyAppDefinitionResponse>(guardedValue, (value) => FirstPartyAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     flightingRing = registerOutput<String?>('flightingRing');
-    galleryApps = registerOutput<List<Map<String, dynamic>>>('galleryApps');
+    galleryApps = registerOutput<List<GalleryAppDefinitionResponse>>('galleryApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryAppDefinitionResponse>(guardedValue, (value) => GalleryAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isEnabled = registerOutput<bool>('isEnabled');
@@ -783,12 +788,46 @@ class Package extends pulumi.CustomResource {
     packageStatus = registerOutput<String>('packageStatus');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetOSList = registerOutput<List<Map<String, dynamic>>?>('targetOSList');
-    testTypes = registerOutput<List<String>>('testTypes');
-    tests = registerOutput<List<Map<String, dynamic>>?>('tests');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetOSList = registerOutput<List<TargetOSInfoResponse>?>('targetOSList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetOSInfoResponse>(guardedValue, (value) => TargetOSInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTypes = registerOutput<List<String>>('testTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tests = registerOutput<List<TestResponse>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestResponse>(guardedValue, (value) => TestResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
-    validationResults = registerOutput<List<Map<String, dynamic>>>('validationResults');
+    validationResults = registerOutput<List<PackageValidationResultResponse>>('validationResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageValidationResultResponse>(guardedValue, (value) => PackageValidationResultResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [Package] resource.
+  Package.reference(String urn)
+    : super(
+        'azure-native:testbase:Package',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationName = registerOutput<String>('applicationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobPath = registerOutput<String?>('blobPath');
+    draftPackageId = registerOutput<String?>('draftPackageId');
+    firstPartyApps = registerOutput<List<FirstPartyAppDefinitionResponse>?>('firstPartyApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirstPartyAppDefinitionResponse>(guardedValue, (value) => FirstPartyAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    flightingRing = registerOutput<String?>('flightingRing');
+    galleryApps = registerOutput<List<GalleryAppDefinitionResponse>>('galleryApps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryAppDefinitionResponse>(guardedValue, (value) => GalleryAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    inplaceUpgradeOSPair = registerOutput<InplaceUpgradeOSInfoResponse?>('inplaceUpgradeOSPair', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    intuneEnrollmentMetadata = registerOutput<IntuneEnrollmentMetadataResponse?>('intuneEnrollmentMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isEnabled = registerOutput<bool>('isEnabled');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    packageStatus = registerOutput<String>('packageStatus');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetOSList = registerOutput<List<TargetOSInfoResponse>?>('targetOSList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetOSInfoResponse>(guardedValue, (value) => TargetOSInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTypes = registerOutput<List<String>>('testTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tests = registerOutput<List<TestResponse>?>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestResponse>(guardedValue, (value) => TestResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    validationResults = registerOutput<List<PackageValidationResultResponse>>('validationResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageValidationResultResponse>(guardedValue, (value) => PackageValidationResultResponse.fromMap((value as Map).cast<String, dynamic>())); });
     version = registerOutput<String>('version');
   }
 }

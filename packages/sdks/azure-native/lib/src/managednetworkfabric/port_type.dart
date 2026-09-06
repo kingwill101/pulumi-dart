@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Port type that needs to be matched.
-enum PortType {
+enum PortType implements pulumi.PulumiEnum<String> {
   valueSourcePort("SourcePort"),
   valueDestinationPort("DestinationPort");
 
   const PortType(this.wireValue);
+  @override
   final String wireValue;
 
   static PortType fromValue(String value) {

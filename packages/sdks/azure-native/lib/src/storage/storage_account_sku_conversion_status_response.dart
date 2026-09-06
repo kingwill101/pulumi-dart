@@ -11,7 +11,7 @@ class StorageAccountSkuConversionStatusResponse {
   /// This property represents the sku conversion start time.
   final pulumi.Input<String> startTime;
   /// This property represents the target sku name to which the account sku is being converted asynchronously.
-  final pulumi.Input<String>? targetSkuName;
+  final pulumi.Input<String?>? targetSkuName;
 
   /// Creates a new [StorageAccountSkuConversionStatusResponse].
   /// [endTime] This property represents the sku conversion end time.

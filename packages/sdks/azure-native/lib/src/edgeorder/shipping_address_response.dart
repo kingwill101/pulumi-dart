@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Shipping address where customer wishes to receive the device.
 class ShippingAddressResponse {
   /// Type of address.
-  final pulumi.Input<String>? addressType;
+  final pulumi.Input<String?>? addressType;
   /// Name of the City.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// Name of the company.
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
   /// Name of the Country.
   final pulumi.Input<String> country;
   /// Postal code.
-  final pulumi.Input<String>? postalCode;
+  final pulumi.Input<String?>? postalCode;
   /// Name of the State or Province.
-  final pulumi.Input<String>? stateOrProvince;
+  final pulumi.Input<String?>? stateOrProvince;
   /// Street Address line 1.
-  final pulumi.Input<String>? streetAddress1;
+  final pulumi.Input<String?>? streetAddress1;
   /// Street Address line 2.
-  final pulumi.Input<String>? streetAddress2;
+  final pulumi.Input<String?>? streetAddress2;
   /// Street Address line 3.
-  final pulumi.Input<String>? streetAddress3;
+  final pulumi.Input<String?>? streetAddress3;
   /// Extended Zip Code.
-  final pulumi.Input<String>? zipExtendedCode;
+  final pulumi.Input<String?>? zipExtendedCode;
 
   /// Creates a new [ShippingAddressResponse].
   /// [addressType] Type of address.

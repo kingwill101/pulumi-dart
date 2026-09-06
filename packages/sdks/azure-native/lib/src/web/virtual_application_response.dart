@@ -6,13 +6,13 @@ import 'virtual_directory_response.dart';
 /// Virtual application in an app.
 class VirtualApplicationResponse {
   /// Physical path.
-  final pulumi.Input<String>? physicalPath;
+  final pulumi.Input<String?>? physicalPath;
   /// &lt;code&gt;true&lt;/code&gt; if preloading is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? preloadEnabled;
+  final pulumi.Input<bool?>? preloadEnabled;
   /// Virtual directories for virtual application.
-  final pulumi.Input<List<VirtualDirectoryResponse>>? virtualDirectories;
+  final pulumi.Input<List<VirtualDirectoryResponse>?>? virtualDirectories;
   /// Virtual path.
-  final pulumi.Input<String>? virtualPath;
+  final pulumi.Input<String?>? virtualPath;
 
   /// Creates a new [VirtualApplicationResponse].
   /// [physicalPath] Physical path.

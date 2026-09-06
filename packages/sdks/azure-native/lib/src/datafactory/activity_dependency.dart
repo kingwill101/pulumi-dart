@@ -7,7 +7,7 @@ class ActivityDependency {
   /// Activity name.
   final pulumi.Input<String> activity;
   /// Match-Condition for the dependency.
-  final pulumi.Input<List<String>> dependencyConditions;
+  final pulumi.Input<List<dynamic>> dependencyConditions;
 
   /// Creates a new [ActivityDependency].
   /// [activity] Activity name.
@@ -27,7 +27,7 @@ class ActivityDependency {
   factory ActivityDependency.fromMap(Map<String, dynamic> map) {
     return ActivityDependency(
       activity: pulumi.Input.fromValue(map['activity'] as String),
-      dependencyConditions: pulumi.Input.fromValue((map['dependencyConditions'] as List).cast<String>()),
+      dependencyConditions: pulumi.Input.fromValue((map['dependencyConditions'] as List).cast<dynamic>()),
     );
   }
 }

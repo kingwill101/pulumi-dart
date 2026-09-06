@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized.
 class AFDDomainHttpsCustomizedCipherSuiteSetResponse {
   /// Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
-  final pulumi.Input<List<String>>? cipherSuiteSetForTls12;
+  final pulumi.Input<List<String>?>? cipherSuiteSetForTls12;
   /// Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-  final pulumi.Input<List<String>>? cipherSuiteSetForTls13;
+  final pulumi.Input<List<String>?>? cipherSuiteSetForTls13;
 
   /// Creates a new [AFDDomainHttpsCustomizedCipherSuiteSetResponse].
   /// [cipherSuiteSetForTls12] Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.

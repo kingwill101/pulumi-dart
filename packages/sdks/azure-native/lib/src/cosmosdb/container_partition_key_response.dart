@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration of the partition key to be used for partitioning data into multiple partitions
 class ContainerPartitionKeyResponse {
   /// Indicates the kind of algorithm used for partitioning
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// List of paths using which data within the container can be partitioned
-  final pulumi.Input<List<String>>? paths;
+  final pulumi.Input<List<String>?>? paths;
 
   /// Creates a new [ContainerPartitionKeyResponse].
   /// [kind] Indicates the kind of algorithm used for partitioning
   /// [paths] List of paths using which data within the container can be partitioned
-  const ContainerPartitionKeyResponse({
-    this.kind,
+  ContainerPartitionKeyResponse({
+    pulumi.Input<String?>? kind,
     this.paths,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Hash');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Authentication mode for the endpoint.
-enum AuthMode {
+enum AuthMode implements pulumi.PulumiEnum<String> {
   valueAAD("AAD");
 
   const AuthMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthMode fromValue(String value) {

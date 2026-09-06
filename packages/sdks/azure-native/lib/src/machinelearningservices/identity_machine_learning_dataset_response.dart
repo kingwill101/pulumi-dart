@@ -10,9 +10,9 @@ class IdentityMachineLearningDatasetResponse {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user assigned identities associated with the resource.
-  final pulumi.Input<Map<String, UserAssignedIdentityMachineLearningDatasetResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityMachineLearningDatasetResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityMachineLearningDatasetResponse].
   /// [principalId] The principal ID of resource identity.

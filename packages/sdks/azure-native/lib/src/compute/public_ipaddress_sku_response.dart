@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
 class PublicIPAddressSkuResponse {
   /// Specify public IP sku name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specify public IP sku tier
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [PublicIPAddressSkuResponse].
   /// [name] Specify public IP sku name

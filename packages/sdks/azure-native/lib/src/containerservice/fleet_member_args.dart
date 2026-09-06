@@ -10,11 +10,11 @@ class FleetMemberArgs {
   /// The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'.
   final pulumi.Input<String> clusterResourceId;
   /// The name of the Fleet member resource.
-  final pulumi.Input<String>? fleetMemberName;
+  final pulumi.Input<String?>? fleetMemberName;
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
   /// The group this member belongs to for multi-cluster update management.
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -15,7 +15,7 @@ class InboundNatPool {
   /// The name must be unique within a Batch pool, can contain letters, numbers, underscores, periods, and hyphens. Names must start with a letter or number, must end with a letter, number, or underscore, and cannot exceed 77 characters.  If any invalid values are provided the request fails with HTTP status code 400.
   final pulumi.Input<String> name;
   /// The maximum number of rules that can be specified across all the endpoints on a Batch pool is 25. If no network security group rules are specified, a default rule will be created to allow inbound access to the specified backendPort. If the maximum number of network security group rules is exceeded the request fails with HTTP status code 400.
-  final pulumi.Input<List<NetworkSecurityGroupRule>>? networkSecurityGroupRules;
+  final pulumi.Input<List<NetworkSecurityGroupRule>?>? networkSecurityGroupRules;
   /// The protocol of the endpoint.
   final pulumi.Input<InboundEndpointProtocol> protocol;
 
@@ -48,9 +48,9 @@ class InboundNatPool {
 
   factory InboundNatPool.fromMap(Map<String, dynamic> map) {
     return InboundNatPool(
-      backendPort: pulumi.Input.fromValue(map['backendPort'] as int),
-      frontendPortRangeEnd: pulumi.Input.fromValue(map['frontendPortRangeEnd'] as int),
-      frontendPortRangeStart: pulumi.Input.fromValue(map['frontendPortRangeStart'] as int),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
+      frontendPortRangeEnd: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPortRangeEnd'])),
+      frontendPortRangeStart: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPortRangeStart'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkSecurityGroupRules: (() { final guardedValue = map['networkSecurityGroupRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkSecurityGroupRule>(guardedValue, (value) => NetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       protocol: pulumi.Input.fromValue(InboundEndpointProtocol.fromValue(map['protocol']! as String)),

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The opt in headers.
-enum OptInHeaderType {
+enum OptInHeaderType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   signedUserToken("SignedUserToken"),
   clientGroupMembership("ClientGroupMembership"),
@@ -14,6 +16,7 @@ enum OptInHeaderType {
   mSIResourceIdEncoded("MSIResourceIdEncoded");
 
   const OptInHeaderType(this.wireValue);
+  @override
   final String wireValue;
 
   static OptInHeaderType fromValue(String value) {

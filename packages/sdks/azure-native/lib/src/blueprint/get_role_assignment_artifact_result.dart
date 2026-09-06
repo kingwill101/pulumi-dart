@@ -4,7 +4,7 @@
 /// Result data returned by getRoleAssignmentArtifact.
 class GetRoleAssignmentArtifactResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Artifacts which need to be deployed before the specified artifact.
   final List<String>? dependsOn;
   /// Multi-line explain this resource.
@@ -12,20 +12,20 @@ class GetRoleAssignmentArtifactResult {
   /// One-liner string explain this resource.
   final String? displayName;
   /// String Id used to locate any resource on Azure.
-  final String id;
+  final String? id;
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'roleAssignment'.
-  final String kind;
+  final String? kind;
   /// Name of this resource.
-  final String name;
+  final String? name;
   /// Array of user or group identities in Azure Active Directory. The roleDefinition will apply to each identity.
   final dynamic principalIds;
   /// RoleAssignment will be scope to this resourceGroup. If empty, it scopes to the subscription.
   final String? resourceGroup;
   /// Azure resource ID of the RoleDefinition.
-  final String roleDefinitionId;
+  final String? roleDefinitionId;
   /// Type of this resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRoleAssignmentArtifactResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetRoleAssignmentArtifactResult {
   /// [roleDefinitionId] Azure resource ID of the RoleDefinition.
   /// [type] Type of this resource.
   const GetRoleAssignmentArtifactResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.dependsOn,
     this.description,
     this.displayName,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.principalIds,
+    this.id,
+    this.kind,
+    this.name,
+    this.principalIds,
     this.resourceGroup,
-    required this.roleDefinitionId,
-    required this.type,
+    this.roleDefinitionId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'dependsOn': ?dependsOn,
       'description': ?description,
       'displayName': ?displayName,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'principalIds': principalIds,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'principalIds': ?principalIds,
       'resourceGroup': ?resourceGroup,
-      'roleDefinitionId': roleDefinitionId,
-      'type': type,
+      'roleDefinitionId': ?roleDefinitionId,
+      'type': ?type,
     };
   }
 
   factory GetRoleAssignmentArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentArtifactResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      principalIds: map['principalIds'],
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      principalIds: (() { final guardedValue = map['principalIds']; if (guardedValue == null) return null; return guardedValue; })(),
       resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      roleDefinitionId: map['roleDefinitionId'] as String,
-      type: map['type'] as String,
+      roleDefinitionId: (() { final guardedValue = map['roleDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

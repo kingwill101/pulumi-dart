@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VM-Host placement policy properties
 class VmHostPlacementPolicyProperties {
   /// vm-host placement policy affinity strength (should/must)
-  final pulumi.Input<String>? affinityStrength;
+  final pulumi.Input<dynamic>? affinityStrength;
   /// placement policy affinity type
-  final pulumi.Input<String> affinityType;
+  final pulumi.Input<dynamic> affinityType;
   /// placement policy azure hybrid benefit opt-in type
-  final pulumi.Input<String>? azureHybridBenefitType;
+  final pulumi.Input<dynamic>? azureHybridBenefitType;
   /// Display name of the placement policy
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Host members list
   final pulumi.Input<List<String>> hostMembers;
   /// Whether the placement policy is enabled or disabled
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Placement Policy type
   /// Expected value is 'VmHost'.
   final pulumi.Input<String> type;
@@ -57,12 +57,12 @@ class VmHostPlacementPolicyProperties {
 
   factory VmHostPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmHostPlacementPolicyProperties(
-      affinityStrength: (() { final guardedValue = map['affinityStrength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      affinityType: pulumi.Input.fromValue(map['affinityType'] as String),
-      azureHybridBenefitType: (() { final guardedValue = map['azureHybridBenefitType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      affinityStrength: (() { final guardedValue = map['affinityStrength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      affinityType: pulumi.Input.fromValue(map['affinityType']),
+      azureHybridBenefitType: (() { final guardedValue = map['azureHybridBenefitType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostMembers: pulumi.Input.fromValue((map['hostMembers'] as List).cast<String>()),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       vmMembers: pulumi.Input.fromValue((map['vmMembers'] as List).cast<String>()),
     );

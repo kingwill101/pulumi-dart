@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GPU properties - describes the GPU configuration.
 class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU {
   /// GPU assignment type
-  final pulumi.Input<String> assignmentType;
+  final pulumi.Input<dynamic> assignmentType;
   /// Name of the GPU
-  final pulumi.Input<String>? gpuName;
+  final pulumi.Input<String?>? gpuName;
   /// Size of gpu partition in MB for GPU-P
-  final pulumi.Input<double>? partitionSizeMB;
+  final pulumi.Input<double?>? partitionSizeMB;
 
   /// Creates a new [VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU].
   /// [assignmentType] GPU assignment type
@@ -31,9 +31,9 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU {
 
   factory VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU.fromMap(Map<String, dynamic> map) {
     return VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPU(
-      assignmentType: pulumi.Input.fromValue(map['assignmentType'] as String),
+      assignmentType: pulumi.Input.fromValue(map['assignmentType']),
       gpuName: (() { final guardedValue = map['gpuName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionSizeMB: (() { final guardedValue = map['partitionSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      partitionSizeMB: (() { final guardedValue = map['partitionSizeMB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

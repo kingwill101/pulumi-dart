@@ -9,15 +9,15 @@ import 'throttling_policy.dart';
 /// {@macro pulumi_eventhub_application_group_args_doc}
 class ApplicationGroupArgs {
   /// The Application Group name
-  final pulumi.Input<String>? applicationGroupName;
+  final pulumi.Input<String?>? applicationGroupName;
   /// The Unique identifier for application group.Supports SAS(SASKeyName=KeyName) or AAD(AADAppID=Guid)
   final pulumi.Input<String> clientAppGroupIdentifier;
   /// Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
   /// List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-  final pulumi.Input<List<ThrottlingPolicy>>? policies;
+  final pulumi.Input<List<ThrottlingPolicy>?>? policies;
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 

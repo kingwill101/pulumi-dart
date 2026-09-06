@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The encryption algorithm.
-enum EncryptionAlgorithm {
+enum EncryptionAlgorithm implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNone("None"),
   valueDES3("DES3"),
@@ -9,6 +11,7 @@ enum EncryptionAlgorithm {
   valueAES256("AES256");
 
   const EncryptionAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionAlgorithm fromValue(String value) {

@@ -15,9 +15,9 @@ class GetFactoryGitHubAccessTokenArgs {
   /// GitHub access token base URL.
   final pulumi.Input<String> gitHubAccessTokenBaseUrl;
   /// GitHub application client ID.
-  final pulumi.Input<String>? gitHubClientId;
+  final pulumi.Input<String?>? gitHubClientId;
   /// GitHub bring your own app client secret information.
-  final pulumi.Input<GitHubClientSecret>? gitHubClientSecret;
+  final pulumi.Input<GitHubClientSecret?>? gitHubClientSecret;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

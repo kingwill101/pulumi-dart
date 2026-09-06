@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action to take when a NFS volume is deleted. Default is Delete
-enum NfsDirectoryActionOnVolumeDeletion {
+enum NfsDirectoryActionOnVolumeDeletion implements pulumi.PulumiEnum<String> {
   delete("Delete"),
   retain("Retain");
 
   const NfsDirectoryActionOnVolumeDeletion(this.wireValue);
+  @override
   final String wireValue;
 
   static NfsDirectoryActionOnVolumeDeletion fromValue(String value) {

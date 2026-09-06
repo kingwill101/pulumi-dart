@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the endpoint properties
 class EndpointResponse {
   /// The endpoint URL
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The name of the endpoint
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [EndpointResponse].
   /// [endpoint] The endpoint URL

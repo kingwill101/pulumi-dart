@@ -17,37 +17,37 @@ import 'strata_cloud_manager_config.dart';
 /// {@macro pulumi_cloudngfw_firewall_args_doc}
 class FirewallArgs {
   /// Associated Rulestack
-  final pulumi.Input<RulestackDetails>? associatedRulestack;
+  final pulumi.Input<RulestackDetails?>? associatedRulestack;
   /// DNS settings for Firewall
   final pulumi.Input<DNSSettings> dnsSettings;
   /// Firewall resource name
-  final pulumi.Input<String>? firewallName;
+  final pulumi.Input<String?>? firewallName;
   /// Frontend settings for Firewall
-  final pulumi.Input<List<FrontendSetting>>? frontEndSettings;
+  final pulumi.Input<List<FrontendSetting>?>? frontEndSettings;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<AzureResourceManagerManagedIdentityProperties>? identity;
+  final pulumi.Input<AzureResourceManagerManagedIdentityProperties?>? identity;
   /// Panorama Managed: Default is False. Default will be CloudSec managed
-  final pulumi.Input<String>? isPanoramaManaged;
+  final pulumi.Input<dynamic>? isPanoramaManaged;
   /// Strata Cloud Managed: Default is False. Default will be CloudSec managed
-  final pulumi.Input<String>? isStrataCloudManaged;
+  final pulumi.Input<dynamic>? isStrataCloudManaged;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Marketplace details
   final pulumi.Input<MarketplaceDetails> marketplaceDetails;
   /// Network settings
   final pulumi.Input<NetworkProfile> networkProfile;
   /// panEtag info
-  final pulumi.Input<String>? panEtag;
+  final pulumi.Input<String?>? panEtag;
   /// Panorama Configuration
-  final pulumi.Input<PanoramaConfig>? panoramaConfig;
+  final pulumi.Input<PanoramaConfig?>? panoramaConfig;
   /// Billing plan information.
   final pulumi.Input<PlanData> planData;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Strata Cloud Manager Configuration, only applicable if Strata Cloud Manager is selected.
-  final pulumi.Input<StrataCloudManagerConfig>? strataCloudManagerConfig;
+  final pulumi.Input<StrataCloudManagerConfig?>? strataCloudManagerConfig;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FirewallArgs].
   /// [associatedRulestack] Associated Rulestack
@@ -113,8 +113,8 @@ class FirewallArgs {
       firewallName: (() { final guardedValue = map['firewallName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frontEndSettings: (() { final guardedValue = map['frontEndSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontendSetting>(guardedValue, (value) => FrontendSetting.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureResourceManagerManagedIdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      isPanoramaManaged: (() { final guardedValue = map['isPanoramaManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isStrataCloudManaged: (() { final guardedValue = map['isStrataCloudManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isPanoramaManaged: (() { final guardedValue = map['isPanoramaManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      isStrataCloudManaged: (() { final guardedValue = map['isStrataCloudManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       marketplaceDetails: pulumi.Input.fromValue(MarketplaceDetails.fromMap((map['marketplaceDetails']! as Map).cast<String, dynamic>())),
       networkProfile: pulumi.Input.fromValue(NetworkProfile.fromMap((map['networkProfile']! as Map).cast<String, dynamic>())),

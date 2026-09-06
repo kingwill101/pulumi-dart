@@ -10,7 +10,7 @@ class GetCustomIPPrefixArgs {
   /// The name of the custom IP prefix.
   final pulumi.Input<String> customIpPrefixName;
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

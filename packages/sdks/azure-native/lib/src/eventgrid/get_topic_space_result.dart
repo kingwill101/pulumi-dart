@@ -5,17 +5,17 @@ import 'system_data_response.dart';
 /// Result data returned by getTopicSpace.
 class GetTopicSpaceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description for the Topic Space resource.
   final String? description;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the TopicSpace resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The topic filters in the topic space.
   /// Example: "topicTemplates": [
   /// "devices/foo/bar",
@@ -23,7 +23,7 @@ class GetTopicSpaceResult {
   /// "devices/${principal.name}/${principal.attributes.keyName}" ].
   final List<String>? topicTemplates;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTopicSpaceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -35,39 +35,39 @@ class GetTopicSpaceResult {
   /// [topicTemplates] The topic filters in the topic space.
   /// [type] Type of the resource.
   const GetTopicSpaceResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.topicTemplates,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'topicTemplates': ?topicTemplates,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetTopicSpaceResult.fromMap(Map<String, dynamic> map) {
     return GetTopicSpaceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       topicTemplates: (() { final guardedValue = map['topicTemplates']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

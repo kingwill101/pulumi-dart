@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled'
-enum RoutingRuleEnabledState {
+enum RoutingRuleEnabledState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const RoutingRuleEnabledState(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingRuleEnabledState fromValue(String value) {

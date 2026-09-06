@@ -8,16 +8,16 @@ import 'depends_on_profile.dart';
 /// Azure core network function Template application definition.
 class AzureCoreNetworkFunctionArmTemplateApplication {
   /// Azure template artifact profile.
-  final pulumi.Input<AzureCoreArmTemplateArtifactProfile>? artifactProfile;
+  final pulumi.Input<AzureCoreArmTemplateArtifactProfile?>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'ArmTemplate'.
   final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final pulumi.Input<DependsOnProfile>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfile?>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureCoreArmTemplateDeployMappingRuleProfile>? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureCoreArmTemplateDeployMappingRuleProfile?>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureCoreNetworkFunctionArmTemplateApplication].
   /// [artifactProfile] Azure template artifact profile.

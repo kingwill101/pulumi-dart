@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// When present, these are the credentials for the secure LDAP connection.
 class CacheUsernameDownloadSettingsCredentials {
   /// The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  final pulumi.Input<String>? bindDn;
+  final pulumi.Input<String?>? bindDn;
   /// The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  final pulumi.Input<String>? bindPassword;
+  final pulumi.Input<String?>? bindPassword;
 
   /// Creates a new [CacheUsernameDownloadSettingsCredentials].
   /// [bindDn] The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.

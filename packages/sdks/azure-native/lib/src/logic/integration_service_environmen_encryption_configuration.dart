@@ -6,7 +6,7 @@ import 'integration_service_environmen_encryption_key_reference.dart';
 /// The encryption configuration for the integration service environment.
 class IntegrationServiceEnvironmenEncryptionConfiguration {
   /// The encryption key reference.
-  final pulumi.Input<IntegrationServiceEnvironmenEncryptionKeyReference>? encryptionKeyReference;
+  final pulumi.Input<IntegrationServiceEnvironmenEncryptionKeyReference?>? encryptionKeyReference;
 
   /// Creates a new [IntegrationServiceEnvironmenEncryptionConfiguration].
   /// [encryptionKeyReference] The encryption key reference.

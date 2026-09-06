@@ -10,7 +10,7 @@ class SharedLimitArgs {
   /// The name of the Azure region.
   final pulumi.Input<String> location;
   /// The name of the SharedLimit
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SharedLimitArgs].
   /// [location] The name of the Azure region.

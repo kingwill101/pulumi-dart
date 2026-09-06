@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a certificate used for authenticating a token.
 class TokenCertificateResponse {
   /// Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.
-  final pulumi.Input<String>? encodedPemCertificate;
+  final pulumi.Input<String?>? encodedPemCertificate;
   /// The expiry datetime of the certificate.
-  final pulumi.Input<String>? expiry;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? expiry;
+  final pulumi.Input<String?>? name;
   /// The thumbprint of the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [TokenCertificateResponse].
   /// [encodedPemCertificate] Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token.

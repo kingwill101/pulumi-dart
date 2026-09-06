@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guest_agent_args.dart';
 import 'guest_credential_response.dart';
 import 'http_proxy_configuration_response.dart';
+import 'resource_status_response.dart';
 import 'system_data_response.dart';
 
 /// Defines the GuestAgent.
@@ -236,7 +237,7 @@ class GuestAgent extends pulumi.CustomResource {
   /// Gets or sets the guest agent status.
   late final pulumi.Output<String> status;
   /// The resource status information.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -267,7 +268,31 @@ class GuestAgent extends pulumi.CustomResource {
     provisioningAction = registerOutput<String?>('provisioningAction');
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<String>('status');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [GuestAgent] resource.
+  GuestAgent.reference(String urn)
+    : super(
+        'azure-native:connectedvmwarevsphere:GuestAgent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    credentials = registerOutput<GuestCredentialResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customResourceName = registerOutput<String>('customResourceName');
+    httpProxyConfig = registerOutput<HttpProxyConfigurationResponse?>('httpProxyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
+    provisioningAction = registerOutput<String?>('provisioningAction');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');

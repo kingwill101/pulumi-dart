@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A list of AzureVMSS instances which can be included or excluded to run packet capture. If both included and excluded are empty, then the packet capture will run on all instances of AzureVMSS.
 class PacketCaptureMachineScope {
   /// List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.
-  final pulumi.Input<List<String>>? exclude;
+  final pulumi.Input<List<String>?>? exclude;
   /// List of AzureVMSS instances to run packet capture on.
-  final pulumi.Input<List<String>>? include;
+  final pulumi.Input<List<String>?>? include;
 
   /// Creates a new [PacketCaptureMachineScope].
   /// [exclude] List of AzureVMSS instances which has to be excluded from the AzureVMSS from running packet capture.

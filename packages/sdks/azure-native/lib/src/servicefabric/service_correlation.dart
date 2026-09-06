@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Creates a particular correlation between services.
 class ServiceCorrelation {
   /// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
-  final pulumi.Input<String> scheme;
+  final pulumi.Input<dynamic> scheme;
   /// The Arm Resource ID of the service that the correlation relationship is established with.
   final pulumi.Input<String> serviceName;
 
@@ -26,7 +26,7 @@ class ServiceCorrelation {
 
   factory ServiceCorrelation.fromMap(Map<String, dynamic> map) {
     return ServiceCorrelation(
-      scheme: pulumi.Input.fromValue(map['scheme'] as String),
+      scheme: pulumi.Input.fromValue(map['scheme']),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }

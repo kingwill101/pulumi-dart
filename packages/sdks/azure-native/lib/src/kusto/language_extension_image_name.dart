@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The language extension image name.
-enum LanguageExtensionImageName {
+enum LanguageExtensionImageName implements pulumi.PulumiEnum<String> {
   valueR("R"),
   valuePython365("Python3_6_5"),
   valuePython3108("Python3_10_8"),
@@ -9,6 +11,7 @@ enum LanguageExtensionImageName {
   valuePython3117DL("Python3_11_7_DL");
 
   const LanguageExtensionImageName(this.wireValue);
+  @override
   final String wireValue;
 
   static LanguageExtensionImageName fromValue(String value) {

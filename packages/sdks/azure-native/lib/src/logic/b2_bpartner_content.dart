@@ -6,7 +6,7 @@ import 'business_identity.dart';
 /// The B2B partner content.
 class B2BPartnerContent {
   /// The list of partner business identities.
-  final pulumi.Input<List<BusinessIdentity>>? businessIdentities;
+  final pulumi.Input<List<BusinessIdentity>?>? businessIdentities;
 
   /// Creates a new [B2BPartnerContent].
   /// [businessIdentities] The list of partner business identities.

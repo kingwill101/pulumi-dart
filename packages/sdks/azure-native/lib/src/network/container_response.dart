@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to container resource in remote resource provider.
 class ContainerResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ContainerResponse].
   /// [id] Resource ID.

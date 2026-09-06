@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AKS Deployment Specification.
 class AKSDeploymentSpecificationResponse {
   /// Gets or sets the Merged Deployment and service Yaml.
-  final pulumi.Input<String>? kubernetesObjectsYaml;
+  final pulumi.Input<String?>? kubernetesObjectsYaml;
   /// Gets or sets the load balancer type.
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<String?>? loadBalancerType;
   /// Gets or sets the replica count to be created in AKS.
-  final pulumi.Input<String>? replicaCount;
+  final pulumi.Input<String?>? replicaCount;
 
   /// Creates a new [AKSDeploymentSpecificationResponse].
   /// [kubernetesObjectsYaml] Gets or sets the Merged Deployment and service Yaml.

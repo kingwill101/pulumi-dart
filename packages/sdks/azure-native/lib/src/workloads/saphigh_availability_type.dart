@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The high availability type.
-enum SAPHighAvailabilityType {
+enum SAPHighAvailabilityType implements pulumi.PulumiEnum<String> {
   availabilitySet("AvailabilitySet"),
   availabilityZone("AvailabilityZone");
 
   const SAPHighAvailabilityType(this.wireValue);
+  @override
   final String wireValue;
 
   static SAPHighAvailabilityType fromValue(String value) {

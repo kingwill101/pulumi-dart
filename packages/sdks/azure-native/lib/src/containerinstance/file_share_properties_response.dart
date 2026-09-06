@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FileSharePropertiesResponse {
   /// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
-  final pulumi.Input<String>? shareAccessTier;
+  final pulumi.Input<String?>? shareAccessTier;
   /// Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-  final pulumi.Input<String>? shareAccessType;
+  final pulumi.Input<String?>? shareAccessType;
 
   /// Creates a new [FileSharePropertiesResponse].
   /// [shareAccessTier] Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium. Learn more at: https://learn.microsoft.com/en-us/rest/api/storagerp/file-shares/create?tabs=HTTP#shareaccesstier
   /// [shareAccessType] Specifies how Container Groups can access the Azure file share i.e. all CG will share same Azure file share or going to have exclusive file share.
-  const FileSharePropertiesResponse({
-    this.shareAccessTier,
+  FileSharePropertiesResponse({
+    pulumi.Input<String?>? shareAccessTier,
     this.shareAccessType,
-  });
+  }) : shareAccessTier = shareAccessTier ?? pulumi.Input.fromValue('TransactionOptimized');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

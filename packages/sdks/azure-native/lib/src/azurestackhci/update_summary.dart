@@ -246,4 +246,30 @@ class UpdateSummary extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [UpdateSummary] resource.
+  UpdateSummary.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:UpdateSummary',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentOemVersion = registerOutput<String?>('currentOemVersion');
+    currentSbeVersion = registerOutput<String?>('currentSbeVersion');
+    currentVersion = registerOutput<String?>('currentVersion');
+    hardwareModel = registerOutput<String?>('hardwareModel');
+    healthCheckDate = registerOutput<String?>('healthCheckDate');
+    lastChecked = registerOutput<String?>('lastChecked');
+    lastUpdated = registerOutput<String?>('lastUpdated');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    oemFamily = registerOutput<String?>('oemFamily');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

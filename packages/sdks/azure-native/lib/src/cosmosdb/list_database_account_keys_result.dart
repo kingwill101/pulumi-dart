@@ -4,13 +4,13 @@
 /// Result data returned by listDatabaseAccountKeys.
 class ListDatabaseAccountKeysResult {
   /// Base 64 encoded value of the primary read-write key.
-  final String primaryMasterKey;
+  final String? primaryMasterKey;
   /// Base 64 encoded value of the primary read-only key.
-  final String primaryReadonlyMasterKey;
+  final String? primaryReadonlyMasterKey;
   /// Base 64 encoded value of the secondary read-write key.
-  final String secondaryMasterKey;
+  final String? secondaryMasterKey;
   /// Base 64 encoded value of the secondary read-only key.
-  final String secondaryReadonlyMasterKey;
+  final String? secondaryReadonlyMasterKey;
 
   /// Creates a new [ListDatabaseAccountKeysResult].
   /// [primaryMasterKey] Base 64 encoded value of the primary read-write key.
@@ -18,27 +18,27 @@ class ListDatabaseAccountKeysResult {
   /// [secondaryMasterKey] Base 64 encoded value of the secondary read-write key.
   /// [secondaryReadonlyMasterKey] Base 64 encoded value of the secondary read-only key.
   const ListDatabaseAccountKeysResult({
-    required this.primaryMasterKey,
-    required this.primaryReadonlyMasterKey,
-    required this.secondaryMasterKey,
-    required this.secondaryReadonlyMasterKey,
+    this.primaryMasterKey,
+    this.primaryReadonlyMasterKey,
+    this.secondaryMasterKey,
+    this.secondaryReadonlyMasterKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryMasterKey': primaryMasterKey,
-      'primaryReadonlyMasterKey': primaryReadonlyMasterKey,
-      'secondaryMasterKey': secondaryMasterKey,
-      'secondaryReadonlyMasterKey': secondaryReadonlyMasterKey,
+      'primaryMasterKey': ?primaryMasterKey,
+      'primaryReadonlyMasterKey': ?primaryReadonlyMasterKey,
+      'secondaryMasterKey': ?secondaryMasterKey,
+      'secondaryReadonlyMasterKey': ?secondaryReadonlyMasterKey,
     };
   }
 
   factory ListDatabaseAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListDatabaseAccountKeysResult(
-      primaryMasterKey: map['primaryMasterKey'] as String,
-      primaryReadonlyMasterKey: map['primaryReadonlyMasterKey'] as String,
-      secondaryMasterKey: map['secondaryMasterKey'] as String,
-      secondaryReadonlyMasterKey: map['secondaryReadonlyMasterKey'] as String,
+      primaryMasterKey: (() { final guardedValue = map['primaryMasterKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryReadonlyMasterKey: (() { final guardedValue = map['primaryReadonlyMasterKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryMasterKey: (() { final guardedValue = map['secondaryMasterKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryReadonlyMasterKey: (() { final guardedValue = map['secondaryReadonlyMasterKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

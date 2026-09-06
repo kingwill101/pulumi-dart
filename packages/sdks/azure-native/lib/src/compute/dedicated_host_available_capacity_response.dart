@@ -6,7 +6,7 @@ import 'dedicated_host_allocatable_vmresponse.dart';
 /// Dedicated host unutilized capacity.
 class DedicatedHostAvailableCapacityResponse {
   /// The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.
-  final pulumi.Input<List<DedicatedHostAllocatableVMResponse>>? allocatableVMs;
+  final pulumi.Input<List<DedicatedHostAllocatableVMResponse>?>? allocatableVMs;
 
   /// Creates a new [DedicatedHostAvailableCapacityResponse].
   /// [allocatableVMs] The unutilized capacity of the dedicated host represented in terms of each VM size that is allowed to be deployed to the dedicated host.

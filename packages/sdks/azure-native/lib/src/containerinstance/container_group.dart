@@ -1,14 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'confidential_compute_properties_response.dart';
+import 'container_container_group_response.dart';
 import 'container_group_args.dart';
 import 'container_group_diagnostics_response.dart';
 import 'container_group_identity_response.dart';
 import 'container_group_profile_reference_definition_response.dart';
 import 'container_group_properties_response_instance_view.dart';
+import 'container_group_subnet_id_response.dart';
+import 'deployment_extension_spec_response.dart';
 import 'dns_configuration_response.dart';
 import 'encryption_properties_response.dart';
+import 'image_registry_credential_container_group_response.dart';
+import 'init_container_definition_container_group_response.dart';
 import 'ip_address_response.dart';
 import 'standby_pool_profile_definition_response.dart';
+import 'volume_container_group_response.dart';
 
 /// A container group.
 ///
@@ -1406,7 +1412,7 @@ class ContainerGroup extends pulumi.CustomResource {
   /// The reference container group profile properties.
   late final pulumi.Output<ContainerGroupProfileReferenceDefinitionResponse?> containerGroupProfile;
   /// The containers within the container group.
-  late final pulumi.Output<List<Map<String, dynamic>>> containers;
+  late final pulumi.Output<List<ContainerContainerGroupResponse>> containers;
   /// The diagnostic information for a container group.
   late final pulumi.Output<ContainerGroupDiagnosticsResponse?> diagnostics;
   /// The DNS config information for a container group.
@@ -1414,13 +1420,13 @@ class ContainerGroup extends pulumi.CustomResource {
   /// The encryption properties for a container group.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryptionProperties;
   /// extensions used by virtual kubelet
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<DeploymentExtensionSpecResponse>?> extensions;
   /// The identity of the container group, if configured.
   late final pulumi.Output<ContainerGroupIdentityResponse?> identity;
   /// The image registry credentials by which the container group is created from.
-  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
+  late final pulumi.Output<List<ImageRegistryCredentialContainerGroupResponse>?> imageRegistryCredentials;
   /// The init containers for a container group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
+  late final pulumi.Output<List<InitContainerDefinitionContainerGroupResponse>?> initContainers;
   /// The instance view of the container group. Only valid in response.
   late final pulumi.Output<ContainerGroupPropertiesResponseInstanceView> instanceView;
   /// The IP address type of the container group.
@@ -1447,13 +1453,13 @@ class ContainerGroup extends pulumi.CustomResource {
   /// The reference standby pool profile properties.
   late final pulumi.Output<StandbyPoolProfileDefinitionResponse?> standbyPoolProfile;
   /// The subnet resource IDs for a container group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnetIds;
+  late final pulumi.Output<List<ContainerGroupSubnetIdResponse>?> subnetIds;
   /// The resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The resource type.
   late final pulumi.Output<String> type;
   /// The list of volumes that can be mounted by containers in this container group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<VolumeContainerGroupResponse>?> volumes;
   /// The zones for the container group.
   late final pulumi.Output<List<String>?> zones;
 
@@ -1474,14 +1480,14 @@ class ContainerGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     confidentialComputeProperties = registerOutput<ConfidentialComputePropertiesResponse?>('confidentialComputeProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     containerGroupProfile = registerOutput<ContainerGroupProfileReferenceDefinitionResponse?>('containerGroupProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupProfileReferenceDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    containers = registerOutput<List<ContainerContainerGroupResponse>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerContainerGroupResponse>(guardedValue, (value) => ContainerContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dnsConfig = registerOutput<DnsConfigurationResponse?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<DeploymentExtensionSpecResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ContainerGroupIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
-    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
+    imageRegistryCredentials = registerOutput<List<ImageRegistryCredentialContainerGroupResponse>?>('imageRegistryCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialContainerGroupResponse>(guardedValue, (value) => ImageRegistryCredentialContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    initContainers = registerOutput<List<InitContainerDefinitionContainerGroupResponse>?>('initContainers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionContainerGroupResponse>(guardedValue, (value) => InitContainerDefinitionContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instanceView = registerOutput<ContainerGroupPropertiesResponseInstanceView>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupPropertiesResponseInstanceView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipAddress = registerOutput<IpAddressResponse?>('ipAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isCreatedFromStandbyPool = registerOutput<bool>('isCreatedFromStandbyPool');
@@ -1493,10 +1499,48 @@ class ContainerGroup extends pulumi.CustomResource {
     restartPolicy = registerOutput<String?>('restartPolicy');
     sku = registerOutput<String?>('sku');
     standbyPoolProfile = registerOutput<StandbyPoolProfileDefinitionResponse?>('standbyPoolProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandbyPoolProfileDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    subnetIds = registerOutput<List<Map<String, dynamic>>?>('subnetIds');
-    tags = registerOutput<Map<String, String>?>('tags');
+    subnetIds = registerOutput<List<ContainerGroupSubnetIdResponse>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerGroupSubnetIdResponse>(guardedValue, (value) => ContainerGroupSubnetIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
-    zones = registerOutput<List<String>?>('zones');
+    volumes = registerOutput<List<VolumeContainerGroupResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeContainerGroupResponse>(guardedValue, (value) => VolumeContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ContainerGroup] resource.
+  ContainerGroup.reference(String urn)
+    : super(
+        'azure-native:containerinstance:ContainerGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    confidentialComputeProperties = registerOutput<ConfidentialComputePropertiesResponse?>('confidentialComputeProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containerGroupProfile = registerOutput<ContainerGroupProfileReferenceDefinitionResponse?>('containerGroupProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupProfileReferenceDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containers = registerOutput<List<ContainerContainerGroupResponse>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerContainerGroupResponse>(guardedValue, (value) => ContainerContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dnsConfig = registerOutput<DnsConfigurationResponse?>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DnsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extensions = registerOutput<List<DeploymentExtensionSpecResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ContainerGroupIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageRegistryCredentials = registerOutput<List<ImageRegistryCredentialContainerGroupResponse>?>('imageRegistryCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialContainerGroupResponse>(guardedValue, (value) => ImageRegistryCredentialContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    initContainers = registerOutput<List<InitContainerDefinitionContainerGroupResponse>?>('initContainers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionContainerGroupResponse>(guardedValue, (value) => InitContainerDefinitionContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceView = registerOutput<ContainerGroupPropertiesResponseInstanceView>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupPropertiesResponseInstanceView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipAddress = registerOutput<IpAddressResponse?>('ipAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isCreatedFromStandbyPool = registerOutput<bool>('isCreatedFromStandbyPool');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String?>('osType');
+    priority = registerOutput<String?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    restartPolicy = registerOutput<String?>('restartPolicy');
+    sku = registerOutput<String?>('sku');
+    standbyPoolProfile = registerOutput<StandbyPoolProfileDefinitionResponse?>('standbyPoolProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandbyPoolProfileDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetIds = registerOutput<List<ContainerGroupSubnetIdResponse>?>('subnetIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerGroupSubnetIdResponse>(guardedValue, (value) => ContainerGroupSubnetIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    volumes = registerOutput<List<VolumeContainerGroupResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeContainerGroupResponse>(guardedValue, (value) => VolumeContainerGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -6,11 +6,11 @@ import 'gpu_resource.dart';
 /// The resource limits.
 class ResourceLimits {
   /// The CPU limit of this container instance.
-  final pulumi.Input<double>? cpu;
+  final pulumi.Input<double?>? cpu;
   /// The GPU limit of this container instance.
-  final pulumi.Input<GpuResource>? gpu;
+  final pulumi.Input<GpuResource?>? gpu;
   /// The memory limit in GB of this container instance.
-  final pulumi.Input<double>? memoryInGB;
+  final pulumi.Input<double?>? memoryInGB;
 
   /// Creates a new [ResourceLimits].
   /// [cpu] The CPU limit of this container instance.
@@ -32,9 +32,9 @@ class ResourceLimits {
 
   factory ResourceLimits.fromMap(Map<String, dynamic> map) {
     return ResourceLimits(
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       gpu: (() { final guardedValue = map['gpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GpuResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application Insights Configuration
 class ApplicationInsightsConfiguration {
   /// The Application ID for the Application Insights resource
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// The connection string for the Application Insights resource
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
 
   /// Creates a new [ApplicationInsightsConfiguration].
   /// [appId] The Application ID for the Application Insights resource

@@ -7,15 +7,15 @@ import 'reconciliation_policy_properties_response.dart';
 /// Instance Properties
 class InstancePropertiesResponse {
   /// State of instance
-  final pulumi.Input<String>? activeState;
+  final pulumi.Input<String?>? activeState;
   /// Deployment timestamp of instance
   final pulumi.Input<double> deploymentTimestampEpoch;
   /// Provisioning state of resource
   final pulumi.Input<String> provisioningState;
   /// Reconciliation policy of instance
-  final pulumi.Input<ReconciliationPolicyPropertiesResponse>? reconciliationPolicy;
+  final pulumi.Input<ReconciliationPolicyPropertiesResponse?>? reconciliationPolicy;
   /// Scope of instance
-  final pulumi.Input<String>? solutionScope;
+  final pulumi.Input<String?>? solutionScope;
   /// Solution version of instance
   final pulumi.Input<String> solutionVersionId;
   /// Status of instance
@@ -59,7 +59,7 @@ class InstancePropertiesResponse {
   factory InstancePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return InstancePropertiesResponse(
       activeState: (() { final guardedValue = map['activeState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deploymentTimestampEpoch: pulumi.Input.fromValue(map['deploymentTimestampEpoch'] as double),
+      deploymentTimestampEpoch: pulumi.Input.fromValue((map['deploymentTimestampEpoch'] as num).toDouble()),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       reconciliationPolicy: (() { final guardedValue = map['reconciliationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ReconciliationPolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       solutionScope: (() { final guardedValue = map['solutionScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

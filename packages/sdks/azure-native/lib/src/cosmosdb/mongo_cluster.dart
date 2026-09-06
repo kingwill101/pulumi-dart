@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_cluster_args.dart';
+import 'node_group_spec_response.dart';
 import 'system_data_response.dart';
 
 /// Represents a mongo cluster resource.
@@ -407,7 +408,7 @@ class MongoCluster extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of node group specs in the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nodeGroupSpecs;
+  late final pulumi.Output<List<NodeGroupSpecResponse>?> nodeGroupSpecs;
   /// A provisioning state of the mongo cluster.
   late final pulumi.Output<String> provisioningState;
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
@@ -440,11 +441,35 @@ class MongoCluster extends pulumi.CustomResource {
     earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nodeGroupSpecs = registerOutput<List<Map<String, dynamic>>?>('nodeGroupSpecs');
+    nodeGroupSpecs = registerOutput<List<NodeGroupSpecResponse>?>('nodeGroupSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupSpecResponse>(guardedValue, (value) => NodeGroupSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     serverVersion = registerOutput<String?>('serverVersion');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MongoCluster] resource.
+  MongoCluster.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:MongoCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterStatus = registerOutput<String>('clusterStatus');
+    connectionString = registerOutput<String>('connectionString');
+    earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodeGroupSpecs = registerOutput<List<NodeGroupSpecResponse>?>('nodeGroupSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NodeGroupSpecResponse>(guardedValue, (value) => NodeGroupSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    serverVersion = registerOutput<String?>('serverVersion');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

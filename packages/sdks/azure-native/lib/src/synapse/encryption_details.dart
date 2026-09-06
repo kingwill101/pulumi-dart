@@ -6,7 +6,7 @@ import 'customer_managed_key_details.dart';
 /// Details of the encryption associated with the workspace
 class EncryptionDetails {
   /// Customer Managed Key Details
-  final pulumi.Input<CustomerManagedKeyDetails>? cmk;
+  final pulumi.Input<CustomerManagedKeyDetails?>? cmk;
 
   /// Creates a new [EncryptionDetails].
   /// [cmk] Customer Managed Key Details

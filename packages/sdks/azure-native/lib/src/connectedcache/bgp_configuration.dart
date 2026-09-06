@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Bgp configuration of cache node
 class BgpConfiguration {
   /// Asn to ip address mapping
-  final pulumi.Input<String>? asnToIpAddressMapping;
+  final pulumi.Input<String?>? asnToIpAddressMapping;
 
   /// Creates a new [BgpConfiguration].
   /// [asnToIpAddressMapping] Asn to ip address mapping

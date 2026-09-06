@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// CPU architecture supported by an OS disk.
-enum Architecture {
+enum Architecture implements pulumi.PulumiEnum<String> {
   x64("x64"),
   arm64("Arm64");
 
   const Architecture(this.wireValue);
+  @override
   final String wireValue;
 
   static Architecture fromValue(String value) {

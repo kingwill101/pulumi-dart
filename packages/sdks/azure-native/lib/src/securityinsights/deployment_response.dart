@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description about a deployment.
 class DeploymentResponse {
   /// Deployment identifier.
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Url to access repository action logs.
-  final pulumi.Input<String>? deploymentLogsUrl;
+  final pulumi.Input<String?>? deploymentLogsUrl;
   /// The outcome of the deployment.
-  final pulumi.Input<String>? deploymentResult;
+  final pulumi.Input<String?>? deploymentResult;
   /// Current status of the deployment.
-  final pulumi.Input<String>? deploymentState;
+  final pulumi.Input<String?>? deploymentState;
   /// The time when the deployment finished.
-  final pulumi.Input<String>? deploymentTime;
+  final pulumi.Input<String?>? deploymentTime;
 
   /// Creates a new [DeploymentResponse].
   /// [deploymentId] Deployment identifier.

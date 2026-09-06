@@ -6,11 +6,11 @@ import 'release_properties.dart';
 /// The properties of an operating system.
 class OsProperties {
   /// Specify the referenced Test Base Custom Image Id if available.
-  final pulumi.Input<String>? customImageId;
+  final pulumi.Input<String?>? customImageId;
   /// The name of the OS.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// The properties of the OS release.
-  final pulumi.Input<ReleaseProperties>? releaseProperties;
+  final pulumi.Input<ReleaseProperties?>? releaseProperties;
 
   /// Creates a new [OsProperties].
   /// [customImageId] Specify the referenced Test Base Custom Image Id if available.

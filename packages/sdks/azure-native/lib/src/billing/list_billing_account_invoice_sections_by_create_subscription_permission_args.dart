@@ -10,7 +10,7 @@ class ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs {
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
   /// The filter query option allows clients to filter a collection of resources that are addressed by a request URL.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
 
   /// Creates a new [ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs].
   /// [billingAccountName] The ID that uniquely identifies a billing account.

@@ -4,27 +4,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SingleQueryResultResponse {
   /// Describes what is the signature enforces
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Describes the list of destination ports related to this signature
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Describes in which direction signature is being enforced: 0 - OutBound, 1 - InBound, 2 - Any, 3 - Internal, 4 - InternalOutbound, 5 - InternalInbound
-  final pulumi.Input<int>? direction;
+  final pulumi.Input<int?>? direction;
   /// Describes the groups the signature belongs to
-  final pulumi.Input<String>? group;
+  final pulumi.Input<String?>? group;
   /// Describes if this override is inherited from base policy or not
-  final pulumi.Input<bool>? inheritedFromParentPolicy;
+  final pulumi.Input<bool?>? inheritedFromParentPolicy;
   /// Describes the last updated time of the signature (provided from 3rd party vendor)
-  final pulumi.Input<String>? lastUpdated;
+  final pulumi.Input<String?>? lastUpdated;
   /// The current mode enforced, 0 - Disabled, 1 - Alert, 2 -Deny
-  final pulumi.Input<int>? mode;
+  final pulumi.Input<int?>? mode;
   /// Describes the protocol the signatures is being enforced in
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Describes the severity of signature: 1 - High, 2 - Medium, 3 - Low
-  final pulumi.Input<int>? severity;
+  final pulumi.Input<int?>? severity;
   /// The ID of the signature
-  final pulumi.Input<int>? signatureId;
+  final pulumi.Input<int?>? signatureId;
   /// Describes the list of source ports related to this signature
-  final pulumi.Input<List<String>>? sourcePorts;
+  final pulumi.Input<List<String>?>? sourcePorts;
 
   /// Creates a new [SingleQueryResultResponse].
   /// [description] Describes what is the signature enforces
@@ -72,14 +72,14 @@ class SingleQueryResultResponse {
     return SingleQueryResultResponse(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationPorts: (() { final guardedValue = map['destinationPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       group: (() { final guardedValue = map['group']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inheritedFromParentPolicy: (() { final guardedValue = map['inheritedFromParentPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lastUpdated: (() { final guardedValue = map['lastUpdated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      signatureId: (() { final guardedValue = map['signatureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      signatureId: (() { final guardedValue = map['signatureId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourcePorts: (() { final guardedValue = map['sourcePorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

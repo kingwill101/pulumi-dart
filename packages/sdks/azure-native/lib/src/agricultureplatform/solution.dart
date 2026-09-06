@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Installed data manager for Agriculture solution detail.
 class Solution {
   /// Application name of the solution.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// Marketplace publisher Id.
-  final pulumi.Input<String>? marketPlacePublisherId;
+  final pulumi.Input<String?>? marketPlacePublisherId;
   /// Partner Id.
-  final pulumi.Input<String>? partnerId;
+  final pulumi.Input<String?>? partnerId;
   /// Plan Id.
-  final pulumi.Input<String>? planId;
+  final pulumi.Input<String?>? planId;
   /// Saas subscription Id.
-  final pulumi.Input<String>? saasSubscriptionId;
+  final pulumi.Input<String?>? saasSubscriptionId;
   /// Saas subscription name.
-  final pulumi.Input<String>? saasSubscriptionName;
+  final pulumi.Input<String?>? saasSubscriptionName;
 
   /// Creates a new [Solution].
   /// [applicationName] Application name of the solution.

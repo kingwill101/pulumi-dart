@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'kubernetes_secret_object_mapping_response.dart';
 import 'secret_sync_args.dart';
 import 'secret_sync_status_response.dart';
 import 'system_data_response.dart';
@@ -266,7 +267,7 @@ class SecretSync extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// An array of SecretObjectData that maps secret data from the external secret provider to the Kubernetes secret. Each entry specifies the source secret in the external provider and the corresponding key in the Kubernetes secret.
-  late final pulumi.Output<List<Map<String, dynamic>>> objectSecretMapping;
+  late final pulumi.Output<List<KubernetesSecretObjectMappingResponse>> objectSecretMapping;
   /// Provisioning state of the SecretSync instance.
   late final pulumi.Output<String> provisioningState;
   /// SecretProviderClassName specifies the name of the SecretProviderClass resource, which contains the information needed to access the cloud provider secret store.
@@ -302,13 +303,38 @@ class SecretSync extends pulumi.CustomResource {
     kubernetesSecretType = registerOutput<String>('kubernetesSecretType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    objectSecretMapping = registerOutput<List<Map<String, dynamic>>>('objectSecretMapping');
+    objectSecretMapping = registerOutput<List<KubernetesSecretObjectMappingResponse>>('objectSecretMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesSecretObjectMappingResponse>(guardedValue, (value) => KubernetesSecretObjectMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     secretProviderClassName = registerOutput<String>('secretProviderClassName');
     serviceAccountName = registerOutput<String>('serviceAccountName');
     status = registerOutput<SecretSyncStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecretSync] resource.
+  SecretSync.reference(String urn)
+    : super(
+        'azure-native:secretsynccontroller:SecretSync',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceSynchronization = registerOutput<String?>('forceSynchronization');
+    kubernetesSecretType = registerOutput<String>('kubernetesSecretType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    objectSecretMapping = registerOutput<List<KubernetesSecretObjectMappingResponse>>('objectSecretMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesSecretObjectMappingResponse>(guardedValue, (value) => KubernetesSecretObjectMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    secretProviderClassName = registerOutput<String>('secretProviderClassName');
+    serviceAccountName = registerOutput<String>('serviceAccountName');
+    status = registerOutput<SecretSyncStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

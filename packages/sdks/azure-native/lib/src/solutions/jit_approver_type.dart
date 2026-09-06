@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The approver type.
-enum JitApproverType {
+enum JitApproverType implements pulumi.PulumiEnum<String> {
   valueUser("user"),
   valueGroup("group");
 
   const JitApproverType(this.wireValue);
+  @override
   final String wireValue;
 
   static JitApproverType fromValue(String value) {

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apicenter_workspace_args_doc}
 class WorkspaceArgs {
   /// Workspace description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of Azure API Center service.
@@ -16,7 +16,7 @@ class WorkspaceArgs {
   /// Workspace title.
   final pulumi.Input<String> title;
   /// The name of the workspace.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [description] Workspace description.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_network_interface_args_doc}
 class GetNetworkInterfaceArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the network interface.
   final pulumi.Input<String> networkInterfaceName;
   /// The name of the resource group.

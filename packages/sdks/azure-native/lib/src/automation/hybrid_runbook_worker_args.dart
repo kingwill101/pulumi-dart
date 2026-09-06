@@ -12,11 +12,11 @@ class HybridRunbookWorkerArgs {
   /// The hybrid runbook worker group name
   final pulumi.Input<String> hybridRunbookWorkerGroupName;
   /// The hybrid runbook worker id
-  final pulumi.Input<String>? hybridRunbookWorkerId;
+  final pulumi.Input<String?>? hybridRunbookWorkerId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Resource Manager Id for a virtual machine.
-  final pulumi.Input<String>? vmResourceId;
+  final pulumi.Input<String?>? vmResourceId;
 
   /// Creates a new [HybridRunbookWorkerArgs].
   /// [automationAccountName] The name of the automation account.

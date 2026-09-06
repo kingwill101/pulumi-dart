@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] OneLake artifact type
-enum OneLakeArtifactType {
+enum OneLakeArtifactType implements pulumi.PulumiEnum<String> {
   lakeHouse("LakeHouse");
 
   const OneLakeArtifactType(this.wireValue);
+  @override
   final String wireValue;
 
   static OneLakeArtifactType fromValue(String value) {

@@ -46,10 +46,29 @@ class WebAppSlotConfigurationNames extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    appSettingNames = registerOutput<List<String>?>('appSettingNames');
+    appSettingNames = registerOutput<List<String>?>('appSettingNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    azureStorageConfigNames = registerOutput<List<String>?>('azureStorageConfigNames');
-    connectionStringNames = registerOutput<List<String>?>('connectionStringNames');
+    azureStorageConfigNames = registerOutput<List<String>?>('azureStorageConfigNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionStringNames = registerOutput<List<String>?>('connectionStringNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WebAppSlotConfigurationNames] resource.
+  WebAppSlotConfigurationNames.reference(String urn)
+    : super(
+        'azure-native:web:WebAppSlotConfigurationNames',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appSettingNames = registerOutput<List<String>?>('appSettingNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureStorageConfigNames = registerOutput<List<String>?>('azureStorageConfigNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionStringNames = registerOutput<List<String>?>('connectionStringNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     kind = registerOutput<String?>('kind');
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

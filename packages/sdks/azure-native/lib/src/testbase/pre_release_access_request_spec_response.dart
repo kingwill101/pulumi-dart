@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreReleaseAccessRequestSpecResponse {
-  final pulumi.Input<String>? city;
-  final pulumi.Input<String>? companyWebsite;
-  final pulumi.Input<String>? countryAndRegion;
-  final pulumi.Input<String>? email;
-  final pulumi.Input<List<String>>? engagements;
-  final pulumi.Input<String>? organizationName;
-  final pulumi.Input<String>? stateOrProvince;
-  final pulumi.Input<String>? streetAddress;
-  final pulumi.Input<String>? zipCode;
+  final pulumi.Input<String?>? city;
+  final pulumi.Input<String?>? companyWebsite;
+  final pulumi.Input<String?>? countryAndRegion;
+  final pulumi.Input<String?>? email;
+  final pulumi.Input<List<String>?>? engagements;
+  final pulumi.Input<String?>? organizationName;
+  final pulumi.Input<String?>? stateOrProvince;
+  final pulumi.Input<String?>? streetAddress;
+  final pulumi.Input<String?>? zipCode;
 
   /// Creates a new [PreReleaseAccessRequestSpecResponse].
   /// [city] Optional.

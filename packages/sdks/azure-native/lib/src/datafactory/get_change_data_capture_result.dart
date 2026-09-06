@@ -12,29 +12,29 @@ class GetChangeDataCaptureResult {
   /// A boolean to determine if the vnet configuration needs to be overwritten.
   final bool? allowVNetOverride;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The description of the change data capture.
   final String? description;
   /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
-  final String etag;
+  final String? etag;
   /// The folder that this CDC is in. If not specified, CDC will appear at the root level.
   final ChangeDataCaptureFolderResponse? folder;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// CDC policy
-  final MapperPolicyResponse policy;
+  final MapperPolicyResponse? policy;
   /// List of sources connections that can be used as sources in the CDC.
-  final List<MapperSourceConnectionsInfoResponse> sourceConnectionsInfo;
+  final List<MapperSourceConnectionsInfoResponse>? sourceConnectionsInfo;
   /// Status of the CDC as to if it is running or stopped.
   final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// List of target connections that can be used as sources in the CDC.
-  final List<MapperTargetConnectionsInfoResponse> targetConnectionsInfo;
+  final List<MapperTargetConnectionsInfoResponse>? targetConnectionsInfo;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetChangeDataCaptureResult].
   /// [allowVNetOverride] A boolean to determine if the vnet configuration needs to be overwritten.
@@ -52,53 +52,53 @@ class GetChangeDataCaptureResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetChangeDataCaptureResult({
     this.allowVNetOverride,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.etag,
+    this.etag,
     this.folder,
-    required this.id,
-    required this.name,
-    required this.policy,
-    required this.sourceConnectionsInfo,
+    this.id,
+    this.name,
+    this.policy,
+    this.sourceConnectionsInfo,
     this.status,
-    required this.systemData,
-    required this.targetConnectionsInfo,
-    required this.type,
+    this.systemData,
+    this.targetConnectionsInfo,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowVNetOverride': ?allowVNetOverride,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'etag': etag,
+      'etag': ?etag,
       'folder': ?folder?.toMap(),
-      'id': id,
-      'name': name,
-      'policy': policy.toMap(),
-      'sourceConnectionsInfo': pulumi.Input.encodeList<MapperSourceConnectionsInfoResponse, Map<String, dynamic>>(sourceConnectionsInfo, (value) => value.toMap()),
+      'id': ?id,
+      'name': ?name,
+      'policy': ?policy?.toMap(),
+      'sourceConnectionsInfo': ?(() { final guardedValue = sourceConnectionsInfo; if (guardedValue == null) return null; return pulumi.Input.encodeList<MapperSourceConnectionsInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'status': ?status,
-      'systemData': systemData.toMap(),
-      'targetConnectionsInfo': pulumi.Input.encodeList<MapperTargetConnectionsInfoResponse, Map<String, dynamic>>(targetConnectionsInfo, (value) => value.toMap()),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'targetConnectionsInfo': ?(() { final guardedValue = targetConnectionsInfo; if (guardedValue == null) return null; return pulumi.Input.encodeList<MapperTargetConnectionsInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
     };
   }
 
   factory GetChangeDataCaptureResult.fromMap(Map<String, dynamic> map) {
     return GetChangeDataCaptureResult(
       allowVNetOverride: (() { final guardedValue = map['allowVNetOverride']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return ChangeDataCaptureFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      policy: MapperPolicyResponse.fromMap((map['policy']! as Map).cast<String, dynamic>()),
-      sourceConnectionsInfo: pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(map['sourceConnectionsInfo']!, (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return MapperPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sourceConnectionsInfo: (() { final guardedValue = map['sourceConnectionsInfo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperSourceConnectionsInfoResponse>(guardedValue, (value) => MapperSourceConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      targetConnectionsInfo: pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(map['targetConnectionsInfo']!, (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      targetConnectionsInfo: (() { final guardedValue = map['targetConnectionsInfo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MapperTargetConnectionsInfoResponse>(guardedValue, (value) => MapperTargetConnectionsInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -11,30 +11,30 @@ class AzureFunctionActivity {
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? body;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the Function that the Azure Function Activity will call. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic> functionName;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? headers;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Rest API method for target endpoint.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'AzureFunctionActivity'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [AzureFunctionActivity].
   /// [body] Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
@@ -92,11 +92,11 @@ class AzureFunctionActivity {
       functionName: pulumi.Input.fromValue(map['functionName']),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

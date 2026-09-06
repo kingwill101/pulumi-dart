@@ -9,27 +9,27 @@ class GuestConfigurationNavigationResponse {
   /// Specifies the origin of the configuration.
   final pulumi.Input<String> assignmentSource;
   /// Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
-  final pulumi.Input<String>? assignmentType;
+  final pulumi.Input<String?>? assignmentType;
   /// The configuration parameters for the guest configuration.
-  final pulumi.Input<List<ConfigurationParameterResponse>>? configurationParameter;
+  final pulumi.Input<List<ConfigurationParameterResponse>?>? configurationParameter;
   /// The protected configuration parameters for the guest configuration.
-  final pulumi.Input<List<ConfigurationParameterResponse>>? configurationProtectedParameter;
+  final pulumi.Input<List<ConfigurationParameterResponse>?>? configurationProtectedParameter;
   /// The configuration setting for the guest configuration.
   final pulumi.Input<ConfigurationSettingResponse> configurationSetting;
   /// Combined hash of the guest configuration package and configuration parameters.
-  final pulumi.Input<String>? contentHash;
+  final pulumi.Input<String?>? contentHash;
   /// Managed identity with storage access of the guest configuration package and configuration parameters.
-  final pulumi.Input<String>? contentManagedIdentity;
+  final pulumi.Input<String?>? contentManagedIdentity;
   /// Specifies the content type of the configuration. Possible values could be Builtin or Custom.
   final pulumi.Input<String> contentType;
   /// Uri of the storage where guest configuration package is uploaded.
-  final pulumi.Input<String>? contentUri;
+  final pulumi.Input<String?>? contentUri;
   /// Kind of the guest configuration. For example:DSC
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the guest configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Version of the guest configuration.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GuestConfigurationNavigationResponse].
   /// [assignmentSource] Specifies the origin of the configuration.

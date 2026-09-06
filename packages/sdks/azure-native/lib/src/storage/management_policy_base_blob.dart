@@ -6,17 +6,17 @@ import 'date_after_modification.dart';
 /// Management policy action for base blob.
 class ManagementPolicyBaseBlob {
   /// The function to delete the blob
-  final pulumi.Input<DateAfterModification>? delete;
+  final pulumi.Input<DateAfterModification?>? delete;
   /// This property enables auto tiering of a blob from cool to hot on a blob access. This property requires tierToCool.daysAfterLastAccessTimeGreaterThan.
-  final pulumi.Input<bool>? enableAutoTierToHotFromCool;
+  final pulumi.Input<bool?>? enableAutoTierToHotFromCool;
   /// The function to tier blobs to archive storage.
-  final pulumi.Input<DateAfterModification>? tierToArchive;
+  final pulumi.Input<DateAfterModification?>? tierToArchive;
   /// The function to tier blobs to cold storage.
-  final pulumi.Input<DateAfterModification>? tierToCold;
+  final pulumi.Input<DateAfterModification?>? tierToCold;
   /// The function to tier blobs to cool storage.
-  final pulumi.Input<DateAfterModification>? tierToCool;
+  final pulumi.Input<DateAfterModification?>? tierToCool;
   /// The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
-  final pulumi.Input<DateAfterModification>? tierToHot;
+  final pulumi.Input<DateAfterModification?>? tierToHot;
 
   /// Creates a new [ManagementPolicyBaseBlob].
   /// [delete] The function to delete the blob

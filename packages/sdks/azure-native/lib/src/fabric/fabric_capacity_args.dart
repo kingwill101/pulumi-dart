@@ -12,15 +12,15 @@ class FabricCapacityArgs {
   /// The capacity administration
   final pulumi.Input<CapacityAdministration> administration;
   /// The name of the Microsoft Fabric capacity. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? capacityName;
+  final pulumi.Input<String?>? capacityName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU details
   final pulumi.Input<RpSku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FabricCapacityArgs].
   /// [administration] The capacity administration

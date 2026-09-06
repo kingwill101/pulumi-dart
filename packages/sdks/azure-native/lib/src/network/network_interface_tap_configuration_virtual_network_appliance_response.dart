@@ -8,15 +8,15 @@ class NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the network interface tap configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The reference to the Virtual Network Tap resource.
-  final pulumi.Input<VirtualNetworkTapVirtualNetworkApplianceResponse>? virtualNetworkTap;
+  final pulumi.Input<VirtualNetworkTapVirtualNetworkApplianceResponse?>? virtualNetworkTap;
 
   /// Creates a new [NetworkInterfaceTapConfigurationVirtualNetworkApplianceResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

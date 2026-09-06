@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'log_analytics_query_signal_definition_properties.dart';
 
 /// {@template pulumi_monitor_signal_definition_args_doc}
 /// The set of arguments for SignalDefinition.
@@ -13,11 +12,11 @@ class SignalDefinitionArgs {
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LogAnalyticsQuerySignalDefinitionProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the signal definition. Must be unique within a health model.
-  final pulumi.Input<String>? signalDefinitionName;
+  final pulumi.Input<String?>? signalDefinitionName;
 
   /// Creates a new [SignalDefinitionArgs].
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
@@ -37,7 +36,7 @@ class SignalDefinitionArgs {
     return <String, dynamic>{
       'azureMonitorWorkspaceName': azureMonitorWorkspaceName,
       'healthModelName': healthModelName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<LogAnalyticsQuerySignalDefinitionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
       'signalDefinitionName': ?signalDefinitionName,
     };
@@ -47,7 +46,7 @@ class SignalDefinitionArgs {
     return SignalDefinitionArgs(
       azureMonitorWorkspaceName: pulumi.Input.fromValue(map['azureMonitorWorkspaceName'] as String),
       healthModelName: pulumi.Input.fromValue(map['healthModelName'] as String),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogAnalyticsQuerySignalDefinitionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       signalDefinitionName: (() { final guardedValue = map['signalDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

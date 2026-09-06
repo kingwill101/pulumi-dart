@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The event hub messages compression type
-enum Compression {
+enum Compression implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueGZip("GZip");
 
   const Compression(this.wireValue);
+  @override
   final String wireValue;
 
   static Compression fromValue(String value) {

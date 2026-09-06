@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'assignment_response.dart';
 import 'pool_args.dart';
 import 'pool_type_response.dart';
 import 'resource_operational_status_response.dart';
@@ -309,7 +310,7 @@ import 'system_data_response.dart';
 /// ```
 class Pool extends pulumi.CustomResource {
   /// List of resources that should have access to the pool. Typically ARM references to AKS clusters or ACI Container Groups. For local and standard this must be a single reference. For ElasticSAN there can be many.
-  late final pulumi.Output<List<Map<String, dynamic>>?> assignments;
+  late final pulumi.Output<List<AssignmentResponse>?> assignments;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The geo-location where the resource lives
@@ -349,7 +350,7 @@ class Pool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignments = registerOutput<List<Map<String, dynamic>>?>('assignments');
+    assignments = registerOutput<List<AssignmentResponse>?>('assignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssignmentResponse>(guardedValue, (value) => AssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -359,8 +360,32 @@ class Pool extends pulumi.CustomResource {
     resources = registerOutput<ResourcesResponse?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<ResourceOperationalStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationalStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure-native:containerstorage:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignments = registerOutput<List<AssignmentResponse>?>('assignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssignmentResponse>(guardedValue, (value) => AssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    poolType = registerOutput<PoolTypeResponse>('poolType', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolTypeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    reclaimPolicy = registerOutput<String?>('reclaimPolicy');
+    resources = registerOutput<ResourcesResponse?>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ResourceOperationalStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceOperationalStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

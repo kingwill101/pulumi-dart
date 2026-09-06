@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class AdditionalUnattendContentResponse {
   /// The component name. Currently, the only allowable value is
   /// Microsoft-Windows-Shell-Setup.
-  final pulumi.Input<String>? componentName;
+  final pulumi.Input<String?>? componentName;
   /// The pass name. Currently, the only allowable value is OobeSystem.
-  final pulumi.Input<String>? passName;
+  final pulumi.Input<String?>? passName;
   /// Specifies the name of the setting to which the content applies. Possible values
   /// are: FirstLogonCommands and AutoLogon.
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<String?>? settingName;
 
   /// Creates a new [AdditionalUnattendContentResponse].
   /// [componentName] The component name. Currently, the only allowable value is

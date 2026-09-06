@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_relay_hybrid_connection_args_doc}
 class HybridConnectionArgs {
   /// The hybrid connection name.
-  final pulumi.Input<String>? hybridConnectionName;
+  final pulumi.Input<String?>? hybridConnectionName;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// Returns true if client authorization is needed for this hybrid connection; otherwise, false.
-  final pulumi.Input<bool>? requiresClientAuthorization;
+  final pulumi.Input<bool?>? requiresClientAuthorization;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  final pulumi.Input<String>? userMetadata;
+  final pulumi.Input<String?>? userMetadata;
 
   /// Creates a new [HybridConnectionArgs].
   /// [hybridConnectionName] The hybrid connection name.

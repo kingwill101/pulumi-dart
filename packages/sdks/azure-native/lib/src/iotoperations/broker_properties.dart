@@ -10,17 +10,17 @@ import 'generate_resource_limits.dart';
 /// Broker Resource properties
 class BrokerProperties {
   /// Advanced settings of Broker.
-  final pulumi.Input<AdvancedSettings>? advanced;
+  final pulumi.Input<AdvancedSettings?>? advanced;
   /// The cardinality details of the broker.
-  final pulumi.Input<Cardinality>? cardinality;
+  final pulumi.Input<Cardinality?>? cardinality;
   /// Spec defines the desired identities of Broker diagnostics settings.
-  final pulumi.Input<BrokerDiagnostics>? diagnostics;
+  final pulumi.Input<BrokerDiagnostics?>? diagnostics;
   /// Settings of Disk Backed Message Buffer.
-  final pulumi.Input<DiskBackedMessageBuffer>? diskBackedMessageBuffer;
+  final pulumi.Input<DiskBackedMessageBuffer?>? diskBackedMessageBuffer;
   /// This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
-  final pulumi.Input<GenerateResourceLimits>? generateResourceLimits;
+  final pulumi.Input<GenerateResourceLimits?>? generateResourceLimits;
   /// Memory profile of Broker.
-  final pulumi.Input<String>? memoryProfile;
+  final pulumi.Input<dynamic>? memoryProfile;
 
   /// Creates a new [BrokerProperties].
   /// [advanced] Advanced settings of Broker.
@@ -29,14 +29,14 @@ class BrokerProperties {
   /// [diskBackedMessageBuffer] Settings of Disk Backed Message Buffer.
   /// [generateResourceLimits] This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
   /// [memoryProfile] Memory profile of Broker.
-  const BrokerProperties({
+  BrokerProperties({
     this.advanced,
     this.cardinality,
     this.diagnostics,
     this.diskBackedMessageBuffer,
     this.generateResourceLimits,
-    this.memoryProfile,
-  });
+    pulumi.Input<dynamic>? memoryProfile,
+  }) : memoryProfile = memoryProfile ?? pulumi.Input.fromValue('Medium');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -56,7 +56,7 @@ class BrokerProperties {
       diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BrokerDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskBackedMessageBuffer: (() { final guardedValue = map['diskBackedMessageBuffer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskBackedMessageBuffer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       generateResourceLimits: (() { final guardedValue = map['generateResourceLimits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GenerateResourceLimits.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      memoryProfile: (() { final guardedValue = map['memoryProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memoryProfile: (() { final guardedValue = map['memoryProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -9,19 +9,19 @@ import 'ssh_configuration.dart';
 /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 class LinuxConfiguration {
   /// Specifies whether password authentication should be disabled.
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual
   /// machine. Default value is false.
-  final pulumi.Input<bool>? enableVMAgentPlatformUpdates;
+  final pulumi.Input<bool?>? enableVMAgentPlatformUpdates;
   /// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
-  final pulumi.Input<LinuxPatchSettings>? patchSettings;
+  final pulumi.Input<LinuxPatchSettings?>? patchSettings;
   /// Indicates whether virtual machine agent should be provisioned on the virtual
   /// machine. When this property is not specified in the request body, default
   /// behavior is to set it to true. This will ensure that VM Agent is installed on
   /// the VM so that extensions can be added to the VM later.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// Specifies the ssh key configuration for a Linux OS.
-  final pulumi.Input<SshConfiguration>? ssh;
+  final pulumi.Input<SshConfiguration?>? ssh;
 
   /// Creates a new [LinuxConfiguration].
   /// [disablePasswordAuthentication] Specifies whether password authentication should be disabled.

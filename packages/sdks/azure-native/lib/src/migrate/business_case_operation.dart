@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'business_case_operation_args.dart';
+import 'report_details_response.dart';
 import 'settings_response.dart';
 import 'system_data_response.dart';
 
@@ -887,7 +888,7 @@ class BusinessCaseOperation extends pulumi.CustomResource {
   /// The status of the last operation.
   late final pulumi.Output<String> provisioningState;
   /// Gets the state of business case reports.
-  late final pulumi.Output<List<Map<String, dynamic>>> reportStatusDetails;
+  late final pulumi.Output<List<ReportDetailsResponse>> reportStatusDetails;
   /// Business case settings.
   late final pulumi.Output<SettingsResponse?> settings;
   /// Business case state.
@@ -914,7 +915,26 @@ class BusinessCaseOperation extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    reportStatusDetails = registerOutput<List<Map<String, dynamic>>>('reportStatusDetails');
+    reportStatusDetails = registerOutput<List<ReportDetailsResponse>>('reportStatusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportDetailsResponse>(guardedValue, (value) => ReportDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    settings = registerOutput<SettingsResponse?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [BusinessCaseOperation] resource.
+  BusinessCaseOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:BusinessCaseOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    reportStatusDetails = registerOutput<List<ReportDetailsResponse>>('reportStatusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportDetailsResponse>(guardedValue, (value) => ReportDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     settings = registerOutput<SettingsResponse?>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -9,7 +9,7 @@ import 'system_data_response.dart';
 /// Result data returned by getBusinessProcess.
 class GetBusinessProcessResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The business process mapping.
   final Map<String, BusinessProcessMappingItemResponse>? businessProcessMapping;
   /// The business process stages.
@@ -17,23 +17,23 @@ class GetBusinessProcessResult {
   /// The description of the business process.
   final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The business process identifier.
   final BusinessProcessIdentifierResponse? identifier;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The table name of the business process.
   final String? tableName;
   /// The tracking data store reference name.
   final String? trackingDataStoreReferenceName;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The version of the business process.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetBusinessProcessResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -50,54 +50,54 @@ class GetBusinessProcessResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the business process.
   const GetBusinessProcessResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.businessProcessMapping,
     this.businessProcessStages,
     this.description,
-    required this.id,
+    this.id,
     this.identifier,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tableName,
     this.trackingDataStoreReferenceName,
-    required this.type,
-    required this.version,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'businessProcessMapping': ?(() { final guardedValue = businessProcessMapping; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<BusinessProcessMappingItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'businessProcessStages': ?(() { final guardedValue = businessProcessStages; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<BusinessProcessStageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'description': ?description,
-      'id': id,
+      'id': ?id,
       'identifier': ?identifier?.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tableName': ?tableName,
       'trackingDataStoreReferenceName': ?trackingDataStoreReferenceName,
-      'type': type,
-      'version': version,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetBusinessProcessResult.fromMap(Map<String, dynamic> map) {
     return GetBusinessProcessResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       businessProcessMapping: (() { final guardedValue = map['businessProcessMapping']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessMappingItemResponse>(guardedValue, (value) => BusinessProcessMappingItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       businessProcessStages: (() { final guardedValue = map['businessProcessStages']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<BusinessProcessStageResponse>(guardedValue, (value) => BusinessProcessStageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return BusinessProcessIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       trackingDataStoreReferenceName: (() { final guardedValue = map['trackingDataStoreReferenceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

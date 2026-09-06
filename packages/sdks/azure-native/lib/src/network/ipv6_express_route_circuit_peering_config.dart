@@ -7,15 +7,15 @@ import 'sub_resource.dart';
 /// Contains IPv6 peering config.
 class Ipv6ExpressRouteCircuitPeeringConfig {
   /// The Microsoft peering configuration.
-  final pulumi.Input<ExpressRouteCircuitPeeringConfig>? microsoftPeeringConfig;
+  final pulumi.Input<ExpressRouteCircuitPeeringConfig?>? microsoftPeeringConfig;
   /// The primary address prefix.
-  final pulumi.Input<String>? primaryPeerAddressPrefix;
+  final pulumi.Input<String?>? primaryPeerAddressPrefix;
   /// The reference to the RouteFilter resource.
-  final pulumi.Input<SubResource>? routeFilter;
+  final pulumi.Input<SubResource?>? routeFilter;
   /// The secondary address prefix.
-  final pulumi.Input<String>? secondaryPeerAddressPrefix;
+  final pulumi.Input<String?>? secondaryPeerAddressPrefix;
   /// The state of peering.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [Ipv6ExpressRouteCircuitPeeringConfig].
   /// [microsoftPeeringConfig] The Microsoft peering configuration.
@@ -47,7 +47,7 @@ class Ipv6ExpressRouteCircuitPeeringConfig {
       primaryPeerAddressPrefix: (() { final guardedValue = map['primaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeFilter: (() { final guardedValue = map['routeFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secondaryPeerAddressPrefix: (() { final guardedValue = map['secondaryPeerAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

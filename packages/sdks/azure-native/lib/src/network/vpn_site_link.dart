@@ -7,17 +7,17 @@ import 'vpn_link_provider_properties.dart';
 /// VpnSiteLink Resource.
 class VpnSiteLink {
   /// The set of bgp properties.
-  final pulumi.Input<VpnLinkBgpSettings>? bgpProperties;
+  final pulumi.Input<VpnLinkBgpSettings?>? bgpProperties;
   /// FQDN of vpn-site-link.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The ip-address for the vpn-site-link.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The link provider properties.
-  final pulumi.Input<VpnLinkProviderProperties>? linkProperties;
+  final pulumi.Input<VpnLinkProviderProperties?>? linkProperties;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [VpnSiteLink].
   /// [bgpProperties] The set of bgp properties.

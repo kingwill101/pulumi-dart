@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AttachmentStatus {
+enum AttachmentStatus implements pulumi.PulumiEnum<String> {
   attached("attached"),
   attaching("attaching"),
   detached("detached"),
   detaching("detaching");
 
   const AttachmentStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AttachmentStatus fromValue(String value) {

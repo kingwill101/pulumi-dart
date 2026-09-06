@@ -11,19 +11,19 @@ class VpnGatewayNatRuleResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The private IP address external mapping for NAT.
-  final pulumi.Input<List<VpnNatRuleMappingResponse>>? externalMappings;
+  final pulumi.Input<List<VpnNatRuleMappingResponse>?>? externalMappings;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// List of ingress VpnSiteLinkConnections.
   final pulumi.Input<List<SubResourceResponse>> ingressVpnSiteLinkConnections;
   /// The private IP address internal mapping for NAT.
-  final pulumi.Input<List<VpnNatRuleMappingResponse>>? internalMappings;
+  final pulumi.Input<List<VpnNatRuleMappingResponse>?>? internalMappings;
   /// The IP Configuration ID this NAT rule applies to.
-  final pulumi.Input<String>? ipConfigurationId;
+  final pulumi.Input<String?>? ipConfigurationId;
   /// The Source NAT direction of a VPN NAT.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the NAT Rule resource.
   final pulumi.Input<String> provisioningState;
   /// Resource type.

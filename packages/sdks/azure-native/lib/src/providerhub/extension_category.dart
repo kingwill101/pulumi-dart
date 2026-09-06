@@ -1,4 +1,6 @@
-enum ExtensionCategory {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExtensionCategory implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   resourceCreationValidate("ResourceCreationValidate"),
   resourceCreationBegin("ResourceCreationBegin"),
@@ -19,6 +21,7 @@ enum ExtensionCategory {
   subscriptionLifecycleNotificationDeletion("SubscriptionLifecycleNotificationDeletion");
 
   const ExtensionCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static ExtensionCategory fromValue(String value) {

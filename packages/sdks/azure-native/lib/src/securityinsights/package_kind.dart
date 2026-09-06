@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// the packageKind of the package contains this template
-enum PackageKind {
+enum PackageKind implements pulumi.PulumiEnum<String> {
   valueSolution("Solution"),
   valueStandalone("Standalone");
 
   const PackageKind(this.wireValue);
+  @override
   final String wireValue;
 
   static PackageKind fromValue(String value) {

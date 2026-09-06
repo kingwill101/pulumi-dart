@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of LDAP server for flexcache volume.
-enum LdapServerType {
+enum LdapServerType implements pulumi.PulumiEnum<String> {
   activeDirectory("ActiveDirectory"),
   openLDAP("OpenLDAP");
 
   const LdapServerType(this.wireValue);
+  @override
   final String wireValue;
 
   static LdapServerType fromValue(String value) {

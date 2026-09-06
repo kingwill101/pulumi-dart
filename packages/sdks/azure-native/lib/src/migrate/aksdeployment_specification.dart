@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AKS Deployment Specification.
 class AKSDeploymentSpecification {
   /// Gets or sets the Merged Deployment and service Yaml.
-  final pulumi.Input<String>? kubernetesObjectsYaml;
+  final pulumi.Input<String?>? kubernetesObjectsYaml;
   /// Gets or sets the load balancer type.
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<dynamic>? loadBalancerType;
   /// Gets or sets the replica count to be created in AKS.
-  final pulumi.Input<String>? replicaCount;
+  final pulumi.Input<String?>? replicaCount;
 
   /// Creates a new [AKSDeploymentSpecification].
   /// [kubernetesObjectsYaml] Gets or sets the Merged Deployment and service Yaml.
@@ -32,7 +32,7 @@ class AKSDeploymentSpecification {
   factory AKSDeploymentSpecification.fromMap(Map<String, dynamic> map) {
     return AKSDeploymentSpecification(
       kubernetesObjectsYaml: (() { final guardedValue = map['kubernetesObjectsYaml']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      loadBalancerType: (() { final guardedValue = map['loadBalancerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

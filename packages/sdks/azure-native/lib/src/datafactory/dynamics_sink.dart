@@ -28,7 +28,7 @@ class DynamicsSink {
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
   /// The write behavior for the operation.
-  final pulumi.Input<String> writeBehavior;
+  final pulumi.Input<dynamic> writeBehavior;
 
   /// Creates a new [DynamicsSink].
   /// [alternateKeyName] The logical name of the alternate key which will be used when upserting records. Type: string (or Expression with resultType string).
@@ -88,7 +88,7 @@ class DynamicsSink {
       type: pulumi.Input.fromValue(map['type'] as String),
       writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      writeBehavior: pulumi.Input.fromValue(map['writeBehavior'] as String),
+      writeBehavior: pulumi.Input.fromValue(map['writeBehavior']),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a setting for the container. The setting file path can be fetched from environment variable "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The path for Linux container is "/var/secrets".
 class Setting {
   /// The name of the setting.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the setting.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Setting].
   /// [name] The name of the setting.

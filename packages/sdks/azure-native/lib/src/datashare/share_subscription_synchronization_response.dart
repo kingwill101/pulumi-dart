@@ -51,7 +51,7 @@ class ShareSubscriptionSynchronizationResponse {
 
   factory ShareSubscriptionSynchronizationResponse.fromMap(Map<String, dynamic> map) {
     return ShareSubscriptionSynchronizationResponse(
-      durationMs: pulumi.Input.fromValue(map['durationMs'] as int),
+      durationMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationMs'])),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),

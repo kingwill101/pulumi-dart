@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trigger based on range of status codes.
 class StatusCodesRangeBasedTriggerResponse {
   /// Request Count.
-  final pulumi.Input<int>? count;
-  final pulumi.Input<String>? path;
+  final pulumi.Input<int?>? count;
+  final pulumi.Input<String?>? path;
   /// HTTP status code.
-  final pulumi.Input<String>? statusCodes;
+  final pulumi.Input<String?>? statusCodes;
   /// Time interval.
-  final pulumi.Input<String>? timeInterval;
+  final pulumi.Input<String?>? timeInterval;
 
   /// Creates a new [StatusCodesRangeBasedTriggerResponse].
   /// [count] Request Count.
@@ -35,7 +35,7 @@ class StatusCodesRangeBasedTriggerResponse {
 
   factory StatusCodesRangeBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return StatusCodesRangeBasedTriggerResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statusCodes: (() { final guardedValue = map['statusCodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

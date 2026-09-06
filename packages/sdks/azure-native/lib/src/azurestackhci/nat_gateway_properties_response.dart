@@ -9,11 +9,11 @@ import 'virtual_network_subnet_arm_reference_response.dart';
 /// Nat Gateway resource properties
 class NatGatewayPropertiesResponse {
   /// List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet. Removed in 2026-04-01-preview; use InboundRule Child resource instead.
-  final pulumi.Input<List<InboundNATRuleResponse>>? inboundNATRules;
+  final pulumi.Input<List<InboundNATRuleResponse>?>? inboundNATRules;
   /// Provisioning state of the public IP
   final pulumi.Input<String> provisioningState;
   /// List of public ip addresses that the gateway can use for NAT.
-  final pulumi.Input<List<PublicIPAddressArmReferenceResponse>>? publicIPAddresses;
+  final pulumi.Input<List<PublicIPAddressArmReferenceResponse>?>? publicIPAddresses;
   /// The observed state of Nat Gateway
   final pulumi.Input<NatGatewayStatusResponse> status;
   /// List of subnets associated with the nat gateway. These can only be vnet subnets and must be from the same vnet

@@ -13,9 +13,9 @@ class RulesEngineArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// A list of rules that define a particular Rules Engine Configuration.
-  final pulumi.Input<List<RulesEngineRule>>? rules;
+  final pulumi.Input<List<RulesEngineRule>?>? rules;
   /// Name of the Rules Engine which is unique within the Front Door.
-  final pulumi.Input<String>? rulesEngineName;
+  final pulumi.Input<String?>? rulesEngineName;
 
   /// Creates a new [RulesEngineArgs].
   /// [frontDoorName] Name of the Front Door which is globally unique.

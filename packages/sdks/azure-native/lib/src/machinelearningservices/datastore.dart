@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_blob_datastore_response.dart';
 import 'datastore_args.dart';
 import 'system_data_response.dart';
 
@@ -1105,7 +1104,7 @@ class Datastore extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// [Required] Additional attributes of the entity.
-  late final pulumi.Output<AzureBlobDatastoreResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1127,7 +1126,23 @@ class Datastore extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AzureBlobDatastoreResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Datastore] resource.
+  Datastore.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:Datastore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

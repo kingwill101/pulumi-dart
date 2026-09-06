@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// denySettings Mode that defines denied actions.
-enum DenySettingsMode {
+enum DenySettingsMode implements pulumi.PulumiEnum<String> {
   denyDelete("denyDelete"),
   denyWriteAndDelete("denyWriteAndDelete"),
   none("none");
 
   const DenySettingsMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DenySettingsMode fromValue(String value) {

@@ -12,7 +12,7 @@ class ListListFlowsByPipelineArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Connection ID to target
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [ListListFlowsByPipelineArgs].
   /// [pipelineName] The name of the pipeline on which to operate.

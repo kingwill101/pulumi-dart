@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the type of deployment for the agent.
-enum AgentDeploymentType {
+enum AgentDeploymentType implements pulumi.PulumiEnum<String> {
   managed("Managed"),
   hosted("Hosted"),
   custom("Custom");
 
   const AgentDeploymentType(this.wireValue);
+  @override
   final String wireValue;
 
   static AgentDeploymentType fromValue(String value) {

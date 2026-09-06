@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the SAP Product type.
-enum SAPProductType {
+enum SAPProductType implements pulumi.PulumiEnum<String> {
   eCC("ECC"),
   s4HANA("S4HANA"),
   other("Other");
 
   const SAPProductType(this.wireValue);
+  @override
   final String wireValue;
 
   static SAPProductType fromValue(String value) {

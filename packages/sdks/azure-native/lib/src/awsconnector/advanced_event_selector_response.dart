@@ -6,9 +6,9 @@ import 'advanced_field_selector_response.dart';
 /// Definition of AdvancedEventSelector
 class AdvancedEventSelectorResponse {
   /// Contains all selector statements in an advanced event selector.
-  final pulumi.Input<List<AdvancedFieldSelectorResponse>>? fieldSelectors;
+  final pulumi.Input<List<AdvancedFieldSelectorResponse>?>? fieldSelectors;
   /// An optional, descriptive name for an advanced event selector, such as 'Log data events for only two S3 buckets'.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AdvancedEventSelectorResponse].
   /// [fieldSelectors] Contains all selector statements in an advanced event selector.

@@ -7,9 +7,9 @@ import 'runtime_java.dart';
 /// Container App Runtime configuration.
 class Runtime {
   /// .NET app configuration
-  final pulumi.Input<RuntimeDotnet>? dotnet;
+  final pulumi.Input<RuntimeDotnet?>? dotnet;
   /// Java app configuration
-  final pulumi.Input<RuntimeJava>? java;
+  final pulumi.Input<RuntimeJava?>? java;
 
   /// Creates a new [Runtime].
   /// [dotnet] .NET app configuration

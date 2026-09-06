@@ -9,15 +9,15 @@ import 'cloud_trail_trail_properties.dart';
 /// {@macro pulumi_awsconnector_cloud_trail_trail_args_doc}
 class CloudTrailTrailArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of CloudTrailTrail
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<CloudTrailTrailProperties>? properties;
+  final pulumi.Input<CloudTrailTrailProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CloudTrailTrailArgs].
   /// [location] The geo-location where the resource lives

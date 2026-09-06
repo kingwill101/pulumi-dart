@@ -5,17 +5,17 @@ import 'workflow_trigger_list_callback_url_queries_response.dart';
 /// Result data returned by listIntegrationAccountAssemblyContentCallbackUrl.
 class ListIntegrationAccountAssemblyContentCallbackUrlResult {
   /// Gets the workflow trigger callback URL base path.
-  final String basePath;
+  final String? basePath;
   /// Gets the workflow trigger callback URL HTTP method.
-  final String method;
+  final String? method;
   /// Gets the workflow trigger callback URL query parameters.
   final WorkflowTriggerListCallbackUrlQueriesResponse? queries;
   /// Gets the workflow trigger callback URL relative path.
-  final String relativePath;
+  final String? relativePath;
   /// Gets the workflow trigger callback URL relative path parameters.
   final List<String>? relativePathParameters;
   /// Gets the workflow trigger callback URL.
-  final String value;
+  final String? value;
 
   /// Creates a new [ListIntegrationAccountAssemblyContentCallbackUrlResult].
   /// [basePath] Gets the workflow trigger callback URL base path.
@@ -25,33 +25,33 @@ class ListIntegrationAccountAssemblyContentCallbackUrlResult {
   /// [relativePathParameters] Gets the workflow trigger callback URL relative path parameters.
   /// [value] Gets the workflow trigger callback URL.
   const ListIntegrationAccountAssemblyContentCallbackUrlResult({
-    required this.basePath,
-    required this.method,
+    this.basePath,
+    this.method,
     this.queries,
-    required this.relativePath,
+    this.relativePath,
     this.relativePathParameters,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basePath': basePath,
-      'method': method,
+      'basePath': ?basePath,
+      'method': ?method,
       'queries': ?queries?.toMap(),
-      'relativePath': relativePath,
+      'relativePath': ?relativePath,
       'relativePathParameters': ?relativePathParameters,
-      'value': value,
+      'value': ?value,
     };
   }
 
   factory ListIntegrationAccountAssemblyContentCallbackUrlResult.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountAssemblyContentCallbackUrlResult(
-      basePath: map['basePath'] as String,
-      method: map['method'] as String,
+      basePath: (() { final guardedValue = map['basePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      method: (() { final guardedValue = map['method']; if (guardedValue == null) return null; return guardedValue as String; })(),
       queries: (() { final guardedValue = map['queries']; if (guardedValue == null) return null; return WorkflowTriggerListCallbackUrlQueriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      relativePath: map['relativePath'] as String,
+      relativePath: (() { final guardedValue = map['relativePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       relativePathParameters: (() { final guardedValue = map['relativePathParameters']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      value: map['value'] as String,
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

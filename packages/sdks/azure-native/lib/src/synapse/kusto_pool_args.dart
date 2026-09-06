@@ -10,25 +10,25 @@ import 'optimized_autoscale.dart';
 /// {@macro pulumi_synapse_kusto_pool_args_doc}
 class KustoPoolArgs {
   /// A boolean value that indicates if the purge operations are enabled.
-  final pulumi.Input<bool>? enablePurge;
+  final pulumi.Input<bool?>? enablePurge;
   /// A boolean value that indicates if the streaming ingest is enabled.
-  final pulumi.Input<bool>? enableStreamingIngest;
+  final pulumi.Input<bool?>? enableStreamingIngest;
   /// The name of the Kusto pool.
-  final pulumi.Input<String>? kustoPoolName;
+  final pulumi.Input<String?>? kustoPoolName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optimized auto scale definition.
-  final pulumi.Input<OptimizedAutoscale>? optimizedAutoscale;
+  final pulumi.Input<OptimizedAutoscale?>? optimizedAutoscale;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the kusto pool.
   final pulumi.Input<AzureSku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
   /// The workspace unique identifier.
-  final pulumi.Input<String>? workspaceUID;
+  final pulumi.Input<String?>? workspaceUID;
 
   /// Creates a new [KustoPoolArgs].
   /// [enablePurge] A boolean value that indicates if the purge operations are enabled.
@@ -41,9 +41,9 @@ class KustoPoolArgs {
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
   /// [workspaceUID] The workspace unique identifier.
-  const KustoPoolArgs({
-    this.enablePurge,
-    this.enableStreamingIngest,
+  KustoPoolArgs({
+    pulumi.Input<bool?>? enablePurge,
+    pulumi.Input<bool?>? enableStreamingIngest,
     this.kustoPoolName,
     this.location,
     this.optimizedAutoscale,
@@ -52,7 +52,7 @@ class KustoPoolArgs {
     this.tags,
     required this.workspaceName,
     this.workspaceUID,
-  });
+  }) : enablePurge = enablePurge ?? pulumi.Input.fromValue(false), enableStreamingIngest = enableStreamingIngest ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

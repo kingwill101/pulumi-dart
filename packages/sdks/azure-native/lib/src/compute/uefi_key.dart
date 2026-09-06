@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A UEFI key signature.
 class UefiKey {
   /// The type of key signature.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The value of the key signature.
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [UefiKey].
   /// [type] The type of key signature.
@@ -26,7 +26,7 @@ class UefiKey {
 
   factory UefiKey.fromMap(Map<String, dynamic> map) {
     return UefiKey(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

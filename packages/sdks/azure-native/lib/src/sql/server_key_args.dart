@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_server_key_args_doc}
 class ServerKeyArgs {
   /// The name of the server key to be operated on (updated or created). The key name is required to be in the format of 'vault_key_version'. For example, if the keyId is https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then the server key name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The server key type like 'ServiceManaged', 'AzureKeyVault'.
-  final pulumi.Input<String> serverKeyType;
+  final pulumi.Input<dynamic> serverKeyType;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The URI of the server key. If the ServerKeyType is AzureKeyVault, then the URI is required. The AKV URI is required to be in this format: 'https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion'
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ServerKeyArgs].
   /// [keyName] The name of the server key to be operated on (updated or created). The key name is required to be in the format of 'vault_key_version'. For example, if the keyId is https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion, then the server key name should be formatted as: YourVaultName_YourKeyName_YourKeyVersion
@@ -46,7 +46,7 @@ class ServerKeyArgs {
     return ServerKeyArgs(
       keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      serverKeyType: pulumi.Input.fromValue(map['serverKeyType'] as String),
+      serverKeyType: pulumi.Input.fromValue(map['serverKeyType']),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

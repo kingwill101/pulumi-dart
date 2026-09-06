@@ -4,25 +4,25 @@
 /// Result data returned by getDedicatedCloudService.
 class GetDedicatedCloudServiceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// gateway Subnet for the account. It will collect the subnet address and always treat it as /28
-  final String gatewaySubnet;
+  final String? gatewaySubnet;
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName}
-  final String id;
+  final String? id;
   /// indicates whether account onboarded or not in a given region
-  final String isAccountOnboarded;
+  final String? isAccountOnboarded;
   /// Azure region
-  final String location;
+  final String? location;
   /// {dedicatedCloudServiceName}
-  final String name;
+  final String? name;
   /// total nodes purchased
-  final int nodes;
+  final int? nodes;
   /// link to a service management web portal
-  final String serviceURL;
+  final String? serviceURL;
   /// The list of tags
   final Map<String, String>? tags;
   /// {resourceProviderNamespace}/{resourceType}
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDedicatedCloudServiceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -36,45 +36,45 @@ class GetDedicatedCloudServiceResult {
   /// [tags] The list of tags
   /// [type] {resourceProviderNamespace}/{resourceType}
   const GetDedicatedCloudServiceResult({
-    required this.azureApiVersion,
-    required this.gatewaySubnet,
-    required this.id,
-    required this.isAccountOnboarded,
-    required this.location,
-    required this.name,
-    required this.nodes,
-    required this.serviceURL,
+    this.azureApiVersion,
+    this.gatewaySubnet,
+    this.id,
+    this.isAccountOnboarded,
+    this.location,
+    this.name,
+    this.nodes,
+    this.serviceURL,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'gatewaySubnet': gatewaySubnet,
-      'id': id,
-      'isAccountOnboarded': isAccountOnboarded,
-      'location': location,
-      'name': name,
-      'nodes': nodes,
-      'serviceURL': serviceURL,
+      'azureApiVersion': ?azureApiVersion,
+      'gatewaySubnet': ?gatewaySubnet,
+      'id': ?id,
+      'isAccountOnboarded': ?isAccountOnboarded,
+      'location': ?location,
+      'name': ?name,
+      'nodes': ?nodes,
+      'serviceURL': ?serviceURL,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDedicatedCloudServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedCloudServiceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      gatewaySubnet: map['gatewaySubnet'] as String,
-      id: map['id'] as String,
-      isAccountOnboarded: map['isAccountOnboarded'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      nodes: map['nodes'] as int,
-      serviceURL: map['serviceURL'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewaySubnet: (() { final guardedValue = map['gatewaySubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isAccountOnboarded: (() { final guardedValue = map['isAccountOnboarded']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodes: (() { final guardedValue = map['nodes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      serviceURL: (() { final guardedValue = map['serviceURL']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

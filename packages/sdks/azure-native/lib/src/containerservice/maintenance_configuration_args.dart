@@ -11,17 +11,17 @@ import 'time_span.dart';
 /// {@macro pulumi_containerservice_maintenance_configuration_args_doc}
 class MaintenanceConfigurationArgs {
   /// The name of the maintenance configuration.
-  final pulumi.Input<String>? configName;
+  final pulumi.Input<String?>? configName;
   /// Maintenance window for the maintenance configuration.
-  final pulumi.Input<MaintenanceWindow>? maintenanceWindow;
+  final pulumi.Input<MaintenanceWindow?>? maintenanceWindow;
   /// Time slots on which upgrade is not allowed.
-  final pulumi.Input<List<TimeSpan>>? notAllowedTime;
+  final pulumi.Input<List<TimeSpan>?>? notAllowedTime;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
   /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-  final pulumi.Input<List<TimeInWeek>>? timeInWeek;
+  final pulumi.Input<List<TimeInWeek>?>? timeInWeek;
 
   /// Creates a new [MaintenanceConfigurationArgs].
   /// [configName] The name of the maintenance configuration.

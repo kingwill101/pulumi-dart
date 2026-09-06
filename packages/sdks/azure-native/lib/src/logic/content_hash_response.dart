@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The content hash.
 class ContentHashResponse {
   /// The algorithm of the content hash.
-  final pulumi.Input<String>? algorithm;
+  final pulumi.Input<String?>? algorithm;
   /// The value of the content hash.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ContentHashResponse].
   /// [algorithm] The algorithm of the content hash.

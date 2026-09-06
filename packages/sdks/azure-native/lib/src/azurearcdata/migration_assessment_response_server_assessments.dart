@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'migration_assessment_response_impacted_objects.dart';
 
 class MigrationAssessmentResponseServerAssessments {
-  final pulumi.Input<String>? appliesToMigrationTargetPlatform;
-  final pulumi.Input<String>? featureId;
-  final pulumi.Input<List<MigrationAssessmentResponseImpactedObjects>>? impactedObjects;
-  final pulumi.Input<String>? issueCategory;
-  final pulumi.Input<String>? moreInformation;
+  final pulumi.Input<String?>? appliesToMigrationTargetPlatform;
+  final pulumi.Input<String?>? featureId;
+  final pulumi.Input<List<MigrationAssessmentResponseImpactedObjects>?>? impactedObjects;
+  final pulumi.Input<String?>? issueCategory;
+  final pulumi.Input<String?>? moreInformation;
 
   /// Creates a new [MigrationAssessmentResponseServerAssessments].
   /// [appliesToMigrationTargetPlatform] Optional.

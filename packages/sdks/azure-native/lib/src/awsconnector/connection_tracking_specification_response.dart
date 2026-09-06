@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ConnectionTrackingSpecification
 class ConnectionTrackingSpecificationResponse {
   /// Property tcpEstablishedTimeout
-  final pulumi.Input<int>? tcpEstablishedTimeout;
+  final pulumi.Input<int?>? tcpEstablishedTimeout;
   /// Property udpStreamTimeout
-  final pulumi.Input<int>? udpStreamTimeout;
+  final pulumi.Input<int?>? udpStreamTimeout;
   /// Property udpTimeout
-  final pulumi.Input<int>? udpTimeout;
+  final pulumi.Input<int?>? udpTimeout;
 
   /// Creates a new [ConnectionTrackingSpecificationResponse].
   /// [tcpEstablishedTimeout] Property tcpEstablishedTimeout
@@ -31,9 +31,9 @@ class ConnectionTrackingSpecificationResponse {
 
   factory ConnectionTrackingSpecificationResponse.fromMap(Map<String, dynamic> map) {
     return ConnectionTrackingSpecificationResponse(
-      tcpEstablishedTimeout: (() { final guardedValue = map['tcpEstablishedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      udpStreamTimeout: (() { final guardedValue = map['udpStreamTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      udpTimeout: (() { final guardedValue = map['udpTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      tcpEstablishedTimeout: (() { final guardedValue = map['tcpEstablishedTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      udpStreamTimeout: (() { final guardedValue = map['udpStreamTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      udpTimeout: (() { final guardedValue = map['udpTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

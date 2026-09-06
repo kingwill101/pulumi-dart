@@ -6,17 +6,17 @@ import 'x509_certificate_name_response.dart';
 /// Properties of the Service Fabric Type Backend.
 class BackendServiceFabricClusterPropertiesResponse {
   /// The client certificate id for the management endpoint.
-  final pulumi.Input<String>? clientCertificateId;
+  final pulumi.Input<String?>? clientCertificateId;
   /// The client certificate thumbprint for the management endpoint. Will be ignored if certificatesIds are provided
-  final pulumi.Input<String>? clientCertificatethumbprint;
+  final pulumi.Input<String?>? clientCertificatethumbprint;
   /// The cluster management endpoint.
   final pulumi.Input<List<String>> managementEndpoints;
   /// Maximum number of retries while attempting resolve the partition.
-  final pulumi.Input<int>? maxPartitionResolutionRetries;
+  final pulumi.Input<int?>? maxPartitionResolutionRetries;
   /// Thumbprints of certificates cluster management service uses for tls communication
-  final pulumi.Input<List<String>>? serverCertificateThumbprints;
+  final pulumi.Input<List<String>?>? serverCertificateThumbprints;
   /// Server X509 Certificate Names Collection
-  final pulumi.Input<List<X509CertificateNameResponse>>? serverX509Names;
+  final pulumi.Input<List<X509CertificateNameResponse>?>? serverX509Names;
 
   /// Creates a new [BackendServiceFabricClusterPropertiesResponse].
   /// [clientCertificateId] The client certificate id for the management endpoint.
@@ -50,7 +50,7 @@ class BackendServiceFabricClusterPropertiesResponse {
       clientCertificateId: (() { final guardedValue = map['clientCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientCertificatethumbprint: (() { final guardedValue = map['clientCertificatethumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managementEndpoints: pulumi.Input.fromValue((map['managementEndpoints'] as List).cast<String>()),
-      maxPartitionResolutionRetries: (() { final guardedValue = map['maxPartitionResolutionRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxPartitionResolutionRetries: (() { final guardedValue = map['maxPartitionResolutionRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serverCertificateThumbprints: (() { final guardedValue = map['serverCertificateThumbprints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       serverX509Names: (() { final guardedValue = map['serverX509Names']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<X509CertificateNameResponse>(guardedValue, (value) => X509CertificateNameResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

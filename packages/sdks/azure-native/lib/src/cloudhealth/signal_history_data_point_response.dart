@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A data point in the signal time series
 class SignalHistoryDataPointResponse {
   /// Additional context as provided by the submitter
-  final pulumi.Input<String>? additionalContext;
+  final pulumi.Input<String?>? additionalContext;
   /// Health state at this point in time
   final pulumi.Input<String> healthState;
   /// Timestamp of the data point
   final pulumi.Input<String> occurredAt;
   /// Signal value at this point in time
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [SignalHistoryDataPointResponse].
   /// [additionalContext] Additional context as provided by the submitter
@@ -39,7 +39,7 @@ class SignalHistoryDataPointResponse {
       additionalContext: (() { final guardedValue = map['additionalContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthState: pulumi.Input.fromValue(map['healthState'] as String),
       occurredAt: pulumi.Input.fromValue(map['occurredAt'] as String),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

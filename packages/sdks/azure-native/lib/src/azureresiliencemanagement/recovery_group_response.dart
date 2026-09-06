@@ -11,7 +11,7 @@ class RecoveryGroupResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RecoveryGroupPropertiesResponse>? properties;
+  final pulumi.Input<RecoveryGroupPropertiesResponse?>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

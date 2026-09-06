@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LocationSpecResponse {
   /// Name of location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource provisioning state in this location.
-  final pulumi.Input<String>? provisioningStatus;
+  final pulumi.Input<String?>? provisioningStatus;
 
   /// Creates a new [LocationSpecResponse].
   /// [location] Name of location.

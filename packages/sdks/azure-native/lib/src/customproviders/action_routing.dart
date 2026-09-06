@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The routing types that are supported for action requests.
-enum ActionRouting {
+enum ActionRouting implements pulumi.PulumiEnum<String> {
   valueProxy("Proxy");
 
   const ActionRouting(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionRouting fromValue(String value) {

@@ -11,7 +11,7 @@ class AgentApplicationArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Name for the Agent Application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of Cognitive Services account's project.
   final pulumi.Input<String> projectName;
   /// [Required] Additional attributes of the entity.

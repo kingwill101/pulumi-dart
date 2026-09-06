@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The integration service environment sku.
 class IntegrationServiceEnvironmentSkuResponse {
   /// The sku capacity.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// The sku name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IntegrationServiceEnvironmentSkuResponse].
   /// [capacity] The sku capacity.
@@ -26,7 +26,7 @@ class IntegrationServiceEnvironmentSkuResponse {
 
   factory IntegrationServiceEnvironmentSkuResponse.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentSkuResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -399,4 +399,24 @@ class WorkloadGroup extends pulumi.CustomResource {
     queryExecutionTimeout = registerOutput<int?>('queryExecutionTimeout');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkloadGroup] resource.
+  WorkloadGroup.reference(String urn)
+    : super(
+        'azure-native:sql:WorkloadGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    importance = registerOutput<String?>('importance');
+    maxResourcePercent = registerOutput<int>('maxResourcePercent');
+    maxResourcePercentPerRequest = registerOutput<double?>('maxResourcePercentPerRequest');
+    minResourcePercent = registerOutput<int>('minResourcePercent');
+    minResourcePercentPerRequest = registerOutput<double>('minResourcePercentPerRequest');
+    this.name = registerOutput<String>('name');
+    queryExecutionTimeout = registerOutput<int?>('queryExecutionTimeout');
+    type = registerOutput<String>('type');
+  }
 }

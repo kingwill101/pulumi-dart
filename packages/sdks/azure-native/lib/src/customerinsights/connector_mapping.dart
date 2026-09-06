@@ -483,4 +483,33 @@ class ConnectorMapping extends pulumi.CustomResource {
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ConnectorMapping] resource.
+  ConnectorMapping.reference(String urn)
+    : super(
+        'azure-native:customerinsights:ConnectorMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorMappingName = registerOutput<String>('connectorMappingName');
+    connectorName = registerOutput<String>('connectorName');
+    connectorType = registerOutput<String?>('connectorType');
+    created = registerOutput<String>('created');
+    dataFormatId = registerOutput<String>('dataFormatId');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    entityType = registerOutput<String>('entityType');
+    entityTypeName = registerOutput<String>('entityTypeName');
+    lastModified = registerOutput<String>('lastModified');
+    mappingProperties = registerOutput<ConnectorMappingPropertiesResponse>('mappingProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    runId = registerOutput<String>('runId');
+    state = registerOutput<String>('state');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

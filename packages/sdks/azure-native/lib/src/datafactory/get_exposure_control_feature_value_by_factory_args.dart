@@ -10,9 +10,9 @@ class GetExposureControlFeatureValueByFactoryArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The feature name.
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// The feature type.
-  final pulumi.Input<String>? featureType;
+  final pulumi.Input<String?>? featureType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The gateway installation reference
 class ConnectionGatewayReference {
   /// Resource reference id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource reference location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource reference name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource reference type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConnectionGatewayReference].
   /// [id] Resource reference id

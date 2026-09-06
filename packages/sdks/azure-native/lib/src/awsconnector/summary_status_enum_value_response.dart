@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SummaryStatusEnumValue
 class SummaryStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SummaryStatusEnumValueResponse].
   /// [value] Property value

@@ -8,7 +8,7 @@ class DeviceResponse {
   /// SKU of the chip
   final pulumi.Input<String> chipSku;
   /// Device ID
-  final pulumi.Input<String>? deviceId;
+  final pulumi.Input<String?>? deviceId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// OS version available for installation when update requested

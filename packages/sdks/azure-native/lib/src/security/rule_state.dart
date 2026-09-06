@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Possible states of the rule
-enum RuleState {
+enum RuleState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled"),
   expired("Expired");
 
   const RuleState(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleState fromValue(String value) {

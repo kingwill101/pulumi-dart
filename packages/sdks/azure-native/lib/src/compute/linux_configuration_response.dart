@@ -7,15 +7,15 @@ import 'ssh_configuration_response.dart';
 /// Specifies the Linux operating system settings on the virtual machine. For a list of supported Linux distributions, see [Linux on Azure-Endorsed Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 class LinuxConfigurationResponse {
   /// Specifies whether password authentication should be disabled.
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// Indicates whether VMAgent Platform Updates is enabled for the Linux virtual machine. Default value is false.
-  final pulumi.Input<bool>? enableVMAgentPlatformUpdates;
+  final pulumi.Input<bool?>? enableVMAgentPlatformUpdates;
   /// [Preview Feature] Specifies settings related to VM Guest Patching on Linux.
-  final pulumi.Input<LinuxPatchSettingsResponse>? patchSettings;
+  final pulumi.Input<LinuxPatchSettingsResponse?>? patchSettings;
   /// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// Specifies the ssh key configuration for a Linux OS.
-  final pulumi.Input<SshConfigurationResponse>? ssh;
+  final pulumi.Input<SshConfigurationResponse?>? ssh;
 
   /// Creates a new [LinuxConfigurationResponse].
   /// [disablePasswordAuthentication] Specifies whether password authentication should be disabled.

@@ -7,22 +7,22 @@ import 'versioned_agent_reference.dart';
 /// Represents a managed agent deployment where the underlying infrastructure is managed by the platform in the deployer's subscription.
 class ManagedAgentDeployment {
   /// Returns a flat list of agent:version deployed in this deployment.
-  final pulumi.Input<List<VersionedAgentReference>>? agents;
+  final pulumi.Input<List<VersionedAgentReference>?>? agents;
   /// Gets or sets the unique identifier of the deployment.
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed.
   /// Expected value is 'Managed'.
   final pulumi.Input<String> deploymentType;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the display name of the deployment.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Gets or sets the supported protocol types and versions exposed by this deployment.
-  final pulumi.Input<List<AgentProtocolVersion>>? protocols;
+  final pulumi.Input<List<AgentProtocolVersion>?>? protocols;
   /// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedAgentDeployment].
   /// [agents] Returns a flat list of agent:version deployed in this deployment.
@@ -65,7 +65,7 @@ class ManagedAgentDeployment {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocols: (() { final guardedValue = map['protocols']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentProtocolVersion>(guardedValue, (value) => AgentProtocolVersion.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class to refer resources which contains namespace and name
 class NamespacedNameResourceResponse {
   /// Name of the resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace in which the resource exists
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [NamespacedNameResourceResponse].
   /// [name] Name of the resource

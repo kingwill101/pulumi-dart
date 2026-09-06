@@ -6,11 +6,11 @@ import 'connect_to_source_sql_server_task_input.dart';
 /// Properties for the task that validates connection to SQL Server and also validates source server requirements
 class ConnectToSourceSqlServerTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToSourceSqlServerTaskInput>? input;
+  final pulumi.Input<ConnectToSourceSqlServerTaskInput?>? input;
   /// Task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'ConnectToSource.SqlServer'.
   final pulumi.Input<String> taskType;

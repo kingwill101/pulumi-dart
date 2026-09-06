@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage Account configurations
 class StorageAccountResponse {
   /// Storage account name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Resource ID of storage account
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [StorageAccountResponse].
   /// [accountName] Storage account name

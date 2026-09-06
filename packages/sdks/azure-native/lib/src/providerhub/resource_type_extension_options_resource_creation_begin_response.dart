@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource creation begin.
 class ResourceTypeExtensionOptionsResourceCreationBeginResponse {
   /// The request.
-  final pulumi.Input<List<String>>? request;
+  final pulumi.Input<List<String>?>? request;
   /// The response.
-  final pulumi.Input<List<String>>? response;
+  final pulumi.Input<List<String>?>? response;
 
   /// Creates a new [ResourceTypeExtensionOptionsResourceCreationBeginResponse].
   /// [request] The request.

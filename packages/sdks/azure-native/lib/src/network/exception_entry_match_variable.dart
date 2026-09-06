@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The variable on which we evaluate the exception condition
-enum ExceptionEntryMatchVariable {
+enum ExceptionEntryMatchVariable implements pulumi.PulumiEnum<String> {
   valueRequestURI("RequestURI"),
   valueRemoteAddr("RemoteAddr"),
   valueRequestHeader("RequestHeader");
 
   const ExceptionEntryMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static ExceptionEntryMatchVariable fromValue(String value) {

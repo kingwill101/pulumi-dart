@@ -42,7 +42,7 @@ class AssetStatusResponse {
       datasets: pulumi.Input.fromValue(pulumi.Input.decodeList<AssetStatusDatasetResponse>(map['datasets']!, (value) => AssetStatusDatasetResponse.fromMap((value as Map).cast<String, dynamic>()))),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<AssetStatusErrorResponse>(map['errors']!, (value) => AssetStatusErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       events: pulumi.Input.fromValue(pulumi.Input.decodeList<AssetStatusEventResponse>(map['events']!, (value) => AssetStatusEventResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      version: pulumi.Input.fromValue(map['version'] as double),
+      version: pulumi.Input.fromValue((map['version'] as num).toDouble()),
     );
   }
 }

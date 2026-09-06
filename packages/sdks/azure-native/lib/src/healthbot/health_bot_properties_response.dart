@@ -8,7 +8,7 @@ class HealthBotPropertiesResponse {
   /// The link.
   final pulumi.Input<String> botManagementPortalLink;
   /// KeyVault properties for the resource encryption.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
   /// The provisioning state of the Azure Health Bot resource.
   final pulumi.Input<String> provisioningState;
 

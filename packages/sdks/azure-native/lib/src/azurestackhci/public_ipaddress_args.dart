@@ -10,17 +10,17 @@ import 'public_ipaddress_properties.dart';
 /// {@macro pulumi_azurestackhci_public_ipaddress_args_doc}
 class PublicIPAddressArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<PublicIPAddressProperties>? properties;
+  final pulumi.Input<PublicIPAddressProperties?>? properties;
   /// Name of the public IP
-  final pulumi.Input<String>? publicIPAddressName;
+  final pulumi.Input<String?>? publicIPAddressName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PublicIPAddressArgs].
   /// [extendedLocation] The extendedLocation of the resource.

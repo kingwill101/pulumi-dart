@@ -11,7 +11,7 @@ class ManagementPolicyArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
   /// The name of the Storage Account Management Policy. It should always be 'default'
-  final pulumi.Input<String>? managementPolicyName;
+  final pulumi.Input<String?>? managementPolicyName;
   /// The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   final pulumi.Input<ManagementPolicySchema> policy;
   /// The name of the resource group within the user's subscription. The name is case insensitive.

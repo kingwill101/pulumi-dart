@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The workload type of the subscription. It can be either Production or DevTest.
-enum Workload {
+enum Workload implements pulumi.PulumiEnum<String> {
   valueProduction("Production"),
   valueDevTest("DevTest");
 
   const Workload(this.wireValue);
+  @override
   final String wireValue;
 
   static Workload fromValue(String value) {

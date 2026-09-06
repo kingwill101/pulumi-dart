@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The User Assigned Identity
 class UserAssignedIdentity {
   /// The tenant id of user assigned identity.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [UserAssignedIdentity].
   /// [tenantId] The tenant id of user assigned identity.

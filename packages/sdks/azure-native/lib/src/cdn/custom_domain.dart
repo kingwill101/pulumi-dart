@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cdn_managed_https_parameters_response.dart';
 import 'custom_domain_args.dart';
 import 'system_data_response.dart';
 
@@ -168,7 +167,7 @@ class CustomDomain extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Certificate parameters for securing custom HTTPS
-  late final pulumi.Output<CdnManagedHttpsParametersResponse?> customHttpsParameters;
+  late final pulumi.Output<dynamic> customHttpsParameters;
   /// Provisioning status of the custom domain.
   late final pulumi.Output<String> customHttpsProvisioningState;
   /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step.
@@ -203,7 +202,29 @@ class CustomDomain extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customHttpsParameters = registerOutput<CdnManagedHttpsParametersResponse?>('customHttpsParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CdnManagedHttpsParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customHttpsParameters = registerOutput<dynamic>('customHttpsParameters');
+    customHttpsProvisioningState = registerOutput<String>('customHttpsProvisioningState');
+    customHttpsProvisioningSubstate = registerOutput<String>('customHttpsProvisioningSubstate');
+    hostName = registerOutput<String>('hostName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    validationData = registerOutput<String?>('validationData');
+  }
+
+  /// Creates a typed reference to an existing [CustomDomain] resource.
+  CustomDomain.reference(String urn)
+    : super(
+        'azure-native:cdn:CustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customHttpsParameters = registerOutput<dynamic>('customHttpsParameters');
     customHttpsProvisioningState = registerOutput<String>('customHttpsProvisioningState');
     customHttpsProvisioningSubstate = registerOutput<String>('customHttpsProvisioningSubstate');
     hostName = registerOutput<String>('hostName');

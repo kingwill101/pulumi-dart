@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The commitment tier for the next month.
-enum TierType {
+enum TierType implements pulumi.PulumiEnum<String> {
   valueConsumption("Consumption"),
   valueCommitment100AUHours("Commitment_100AUHours"),
   valueCommitment500AUHours("Commitment_500AUHours"),
@@ -11,6 +13,7 @@ enum TierType {
   valueCommitment500000AUHours("Commitment_500000AUHours");
 
   const TierType(this.wireValue);
+  @override
   final String wireValue;
 
   static TierType fromValue(String value) {

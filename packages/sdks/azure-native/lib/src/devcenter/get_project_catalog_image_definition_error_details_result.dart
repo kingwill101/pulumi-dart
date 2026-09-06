@@ -6,23 +6,23 @@ import 'catalog_error_details_response.dart';
 /// Result data returned by getProjectCatalogImageDefinitionErrorDetails.
 class GetProjectCatalogImageDefinitionErrorDetailsResult {
   /// Errors associated with resources synchronized from the catalog.
-  final List<CatalogErrorDetailsResponse> errors;
+  final List<CatalogErrorDetailsResponse>? errors;
 
   /// Creates a new [GetProjectCatalogImageDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
   const GetProjectCatalogImageDefinitionErrorDetailsResult({
-    required this.errors,
+    this.errors,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'errors': pulumi.Input.encodeList<CatalogErrorDetailsResponse, Map<String, dynamic>>(errors, (value) => value.toMap()),
+      'errors': ?(() { final guardedValue = errors; if (guardedValue == null) return null; return pulumi.Input.encodeList<CatalogErrorDetailsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetProjectCatalogImageDefinitionErrorDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetProjectCatalogImageDefinitionErrorDetailsResult(
-      errors: pulumi.Input.decodeList<CatalogErrorDetailsResponse>(map['errors']!, (value) => CatalogErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<CatalogErrorDetailsResponse>(guardedValue, (value) => CatalogErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

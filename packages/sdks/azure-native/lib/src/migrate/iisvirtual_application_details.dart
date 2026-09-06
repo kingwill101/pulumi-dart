@@ -6,9 +6,9 @@ import 'directory_path.dart';
 /// IIS virtual application details.
 class IISVirtualApplicationDetails {
   /// Gets or sets the list of directories.
-  final pulumi.Input<List<DirectoryPath>>? directories;
+  final pulumi.Input<List<DirectoryPath>?>? directories;
   /// Second level entity for virtual directories.
-  final pulumi.Input<DirectoryPath>? path;
+  final pulumi.Input<DirectoryPath?>? path;
 
   /// Creates a new [IISVirtualApplicationDetails].
   /// [directories] Gets or sets the list of directories.

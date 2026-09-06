@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The error code compose of code and message.
 class Error {
   /// The code of error.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The message of error.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [Error].
   /// [code] The code of error.

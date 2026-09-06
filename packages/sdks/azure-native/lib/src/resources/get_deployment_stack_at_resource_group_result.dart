@@ -15,37 +15,37 @@ import 'system_data_response.dart';
 /// Result data returned by getDeploymentStackAtResourceGroup.
 class GetDeploymentStackAtResourceGroupResult {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
-  final ActionOnUnmanageResponse actionOnUnmanage;
+  final ActionOnUnmanageResponse? actionOnUnmanage;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The correlation id of the last Deployment stack upsert or delete operation. It is in GUID format and is used for tracing.
-  final String correlationId;
+  final String? correlationId;
   /// The debug setting of the deployment.
   final DeploymentStacksDebugSettingResponse? debugSetting;
   /// An array of resources that were deleted during the most recent Deployment stack update. Deleted means that the resource was removed from the template and relevant deletion operations were specified.
-  final List<ResourceReferenceResponse> deletedResources;
+  final List<ResourceReferenceResponse>? deletedResources;
   /// Defines how resources deployed by the stack are locked.
-  final DenySettingsResponse denySettings;
+  final DenySettingsResponse? denySettings;
   /// The resourceId of the deployment resource created by the deployment stack.
-  final String deploymentId;
+  final String? deploymentId;
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
   final String? deploymentScope;
   /// Deployment stack description. Max length of 4096 characters.
   final String? description;
   /// An array of resources that were detached during the most recent Deployment stack update. Detached means that the resource was removed from the template, but no relevant deletion operations were specified. So, the resource still exists while no longer being associated with the stack.
-  final List<ResourceReferenceResponse> detachedResources;
+  final List<ResourceReferenceResponse>? detachedResources;
   /// The duration of the last successful Deployment stack update.
-  final String duration;
+  final String? duration;
   /// The error detail.
-  final ErrorDetailResponse error;
+  final ErrorDetailResponse? error;
   /// An array of resources that failed to reach goal state during the most recent update. Each resourceId is accompanied by an error message.
-  final List<ResourceReferenceExtendedResponse> failedResources;
+  final List<ResourceReferenceExtendedResponse>? failedResources;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives. Required for subscription and management group scoped stacks. The location is inherited from the resource group for resource group scoped stacks.
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The outputs of the deployment resource created by the deployment stack.
   final dynamic outputs;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
@@ -53,15 +53,15 @@ class GetDeploymentStackAtResourceGroupResult {
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
   final DeploymentStacksParametersLinkResponse? parametersLink;
   /// State of the deployment stack.
-  final String provisioningState;
+  final String? provisioningState;
   /// An array of resources currently managed by the deployment stack.
-  final List<ManagedResourceReferenceResponse> resources;
+  final List<ManagedResourceReferenceResponse>? resources;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDeploymentStackAtResourceGroupResult].
   /// [actionOnUnmanage] Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
@@ -89,87 +89,87 @@ class GetDeploymentStackAtResourceGroupResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetDeploymentStackAtResourceGroupResult({
-    required this.actionOnUnmanage,
-    required this.azureApiVersion,
-    required this.correlationId,
+    this.actionOnUnmanage,
+    this.azureApiVersion,
+    this.correlationId,
     this.debugSetting,
-    required this.deletedResources,
-    required this.denySettings,
-    required this.deploymentId,
+    this.deletedResources,
+    this.denySettings,
+    this.deploymentId,
     this.deploymentScope,
     this.description,
-    required this.detachedResources,
-    required this.duration,
-    required this.error,
-    required this.failedResources,
-    required this.id,
+    this.detachedResources,
+    this.duration,
+    this.error,
+    this.failedResources,
+    this.id,
     this.location,
-    required this.name,
-    required this.outputs,
+    this.name,
+    this.outputs,
     this.parameters,
     this.parametersLink,
-    required this.provisioningState,
-    required this.resources,
-    required this.systemData,
+    this.provisioningState,
+    this.resources,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actionOnUnmanage': actionOnUnmanage.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'correlationId': correlationId,
+      'actionOnUnmanage': ?actionOnUnmanage?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'correlationId': ?correlationId,
       'debugSetting': ?debugSetting?.toMap(),
-      'deletedResources': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(deletedResources, (value) => value.toMap()),
-      'denySettings': denySettings.toMap(),
-      'deploymentId': deploymentId,
+      'deletedResources': ?(() { final guardedValue = deletedResources; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'denySettings': ?denySettings?.toMap(),
+      'deploymentId': ?deploymentId,
       'deploymentScope': ?deploymentScope,
       'description': ?description,
-      'detachedResources': pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(detachedResources, (value) => value.toMap()),
-      'duration': duration,
-      'error': error.toMap(),
-      'failedResources': pulumi.Input.encodeList<ResourceReferenceExtendedResponse, Map<String, dynamic>>(failedResources, (value) => value.toMap()),
-      'id': id,
+      'detachedResources': ?(() { final guardedValue = detachedResources; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'duration': ?duration,
+      'error': ?error?.toMap(),
+      'failedResources': ?(() { final guardedValue = failedResources; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceExtendedResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'outputs': outputs,
+      'name': ?name,
+      'outputs': ?outputs,
       'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<DeploymentParameterResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'parametersLink': ?parametersLink?.toMap(),
-      'provisioningState': provisioningState,
-      'resources': pulumi.Input.encodeList<ManagedResourceReferenceResponse, Map<String, dynamic>>(resources, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'resources': ?(() { final guardedValue = resources; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagedResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDeploymentStackAtResourceGroupResult.fromMap(Map<String, dynamic> map) {
     return GetDeploymentStackAtResourceGroupResult(
-      actionOnUnmanage: ActionOnUnmanageResponse.fromMap((map['actionOnUnmanage']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
-      correlationId: map['correlationId'] as String,
+      actionOnUnmanage: (() { final guardedValue = map['actionOnUnmanage']; if (guardedValue == null) return null; return ActionOnUnmanageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      correlationId: (() { final guardedValue = map['correlationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       debugSetting: (() { final guardedValue = map['debugSetting']; if (guardedValue == null) return null; return DeploymentStacksDebugSettingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      deletedResources: pulumi.Input.decodeList<ResourceReferenceResponse>(map['deletedResources']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      denySettings: DenySettingsResponse.fromMap((map['denySettings']! as Map).cast<String, dynamic>()),
-      deploymentId: map['deploymentId'] as String,
+      deletedResources: (() { final guardedValue = map['deletedResources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      denySettings: (() { final guardedValue = map['denySettings']; if (guardedValue == null) return null; return DenySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deploymentScope: (() { final guardedValue = map['deploymentScope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      detachedResources: pulumi.Input.decodeList<ResourceReferenceResponse>(map['detachedResources']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      duration: map['duration'] as String,
-      error: ErrorDetailResponse.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      failedResources: pulumi.Input.decodeList<ResourceReferenceExtendedResponse>(map['failedResources']!, (value) => ResourceReferenceExtendedResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
+      detachedResources: (() { final guardedValue = map['detachedResources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      failedResources: (() { final guardedValue = map['failedResources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceExtendedResponse>(guardedValue, (value) => ResourceReferenceExtendedResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      outputs: map['outputs'],
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      outputs: (() { final guardedValue = map['outputs']; if (guardedValue == null) return null; return guardedValue; })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<DeploymentParameterResponse>(guardedValue, (value) => DeploymentParameterResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       parametersLink: (() { final guardedValue = map['parametersLink']; if (guardedValue == null) return null; return DeploymentStacksParametersLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      resources: pulumi.Input.decodeList<ManagedResourceReferenceResponse>(map['resources']!, (value) => ManagedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedResourceReferenceResponse>(guardedValue, (value) => ManagedResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

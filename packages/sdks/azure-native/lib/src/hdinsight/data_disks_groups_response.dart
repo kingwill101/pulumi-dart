@@ -7,7 +7,7 @@ class DataDisksGroupsResponse {
   /// ReadOnly. The DiskSize in GB. Do not set this value.
   final pulumi.Input<int> diskSizeGB;
   /// The number of disks per node.
-  final pulumi.Input<int>? disksPerNode;
+  final pulumi.Input<int?>? disksPerNode;
   /// ReadOnly. The storage account type. Do not set this value.
   final pulumi.Input<String> storageAccountType;
 
@@ -31,8 +31,8 @@ class DataDisksGroupsResponse {
 
   factory DataDisksGroupsResponse.fromMap(Map<String, dynamic> map) {
     return DataDisksGroupsResponse(
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
-      disksPerNode: (() { final guardedValue = map['disksPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGB'])),
+      disksPerNode: (() { final guardedValue = map['disksPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),
     );
   }

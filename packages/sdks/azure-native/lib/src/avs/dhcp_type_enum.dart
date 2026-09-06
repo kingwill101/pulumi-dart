@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of DHCP: SERVER or RELAY.
-enum DhcpTypeEnum {
+enum DhcpTypeEnum implements pulumi.PulumiEnum<String> {
   sERVER("SERVER"),
   rELAY("RELAY");
 
   const DhcpTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static DhcpTypeEnum fromValue(String value) {

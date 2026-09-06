@@ -7,9 +7,9 @@ class RelationshipProperties {
   /// Resource name of the child entity
   final pulumi.Input<String> childEntityName;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional set of labels (key-value pairs)
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Resource name of the parent entity
   final pulumi.Input<String> parentEntityName;
 

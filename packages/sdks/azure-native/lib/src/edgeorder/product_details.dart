@@ -10,9 +10,9 @@ class ProductDetails {
   /// Hierarchy of the product which uniquely identifies the product.
   final pulumi.Input<HierarchyInformation> hierarchyInformation;
   /// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
-  final pulumi.Input<List<AdditionalConfiguration>>? optInAdditionalConfigurations;
+  final pulumi.Input<List<AdditionalConfiguration>?>? optInAdditionalConfigurations;
   /// Device Provisioning Details for Parent.
-  final pulumi.Input<ProvisioningDetails>? parentProvisioningDetails;
+  final pulumi.Input<ProvisioningDetails?>? parentProvisioningDetails;
 
   /// Creates a new [ProductDetails].
   /// [hierarchyInformation] Hierarchy of the product which uniquely identifies the product.

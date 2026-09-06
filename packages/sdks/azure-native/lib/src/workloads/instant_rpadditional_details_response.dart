@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Instant recovery point additional details.
 class InstantRPAdditionalDetailsResponse {
   /// Azure backup resource group name prefix.
-  final pulumi.Input<String>? azureBackupRGNamePrefix;
+  final pulumi.Input<String?>? azureBackupRGNamePrefix;
   /// Azure backup resource group name suffix.
-  final pulumi.Input<String>? azureBackupRGNameSuffix;
+  final pulumi.Input<String?>? azureBackupRGNameSuffix;
 
   /// Creates a new [InstantRPAdditionalDetailsResponse].
   /// [azureBackupRGNamePrefix] Azure backup resource group name prefix.

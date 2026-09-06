@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_endpoint_connection_for_private_link_hub_basic_response.dart';
 import 'private_link_hub_args.dart';
 
 /// A privateLinkHub
@@ -175,7 +176,7 @@ class PrivateLinkHub extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of private endpoint connections
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionForPrivateLinkHubBasicResponse>> privateEndpointConnections;
   /// PrivateLinkHub provisioning state
   late final pulumi.Output<String?> provisioningState;
   /// Resource tags.
@@ -200,9 +201,27 @@ class PrivateLinkHub extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionForPrivateLinkHubBasicResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionForPrivateLinkHubBasicResponse>(guardedValue, (value) => PrivateEndpointConnectionForPrivateLinkHubBasicResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrivateLinkHub] resource.
+  PrivateLinkHub.reference(String urn)
+    : super(
+        'azure-native:synapse:PrivateLinkHub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionForPrivateLinkHubBasicResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionForPrivateLinkHubBasicResponse>(guardedValue, (value) => PrivateEndpointConnectionForPrivateLinkHubBasicResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String?>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

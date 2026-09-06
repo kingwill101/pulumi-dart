@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server edition type.
-enum SqlImageSku {
+enum SqlImageSku implements pulumi.PulumiEnum<String> {
   developer("Developer"),
   express("Express"),
   standard("Standard"),
@@ -7,6 +9,7 @@ enum SqlImageSku {
   web("Web");
 
   const SqlImageSku(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlImageSku fromValue(String value) {

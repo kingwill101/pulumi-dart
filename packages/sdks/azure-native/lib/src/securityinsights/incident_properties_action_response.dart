@@ -6,19 +6,19 @@ import 'incident_owner_info_response.dart';
 
 class IncidentPropertiesActionResponse {
   /// The reason the incident was closed
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<String?>? classification;
   /// Describes the reason the incident was closed.
-  final pulumi.Input<String>? classificationComment;
+  final pulumi.Input<String?>? classificationComment;
   /// The classification reason the incident was closed with
-  final pulumi.Input<String>? classificationReason;
+  final pulumi.Input<String?>? classificationReason;
   /// List of labels to add to the incident.
-  final pulumi.Input<List<IncidentLabelResponse>>? labels;
+  final pulumi.Input<List<IncidentLabelResponse>?>? labels;
   /// Information on the user an incident is assigned to
-  final pulumi.Input<IncidentOwnerInfoResponse>? owner;
+  final pulumi.Input<IncidentOwnerInfoResponse?>? owner;
   /// The severity of the incident
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// The status of the incident
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [IncidentPropertiesActionResponse].
   /// [classification] The reason the incident was closed

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   equals("Equals"),
   greaterThan("GreaterThan"),
   greaterThanOrEqualTo("GreaterThanOrEqualTo"),
@@ -11,6 +13,7 @@ enum Operator {
   endsWith("EndsWith");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

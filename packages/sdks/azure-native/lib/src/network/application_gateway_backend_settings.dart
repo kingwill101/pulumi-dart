@@ -6,23 +6,23 @@ import 'sub_resource.dart';
 /// Backend address pool settings of an application gateway.
 class ApplicationGatewayBackendSettings {
   /// Server name indication to be sent to the backend servers for Tls protocol.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the backend settings that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether to pick server name indication from the host name of the backend server for Tls protocol. Default value is false.
-  final pulumi.Input<bool>? pickHostNameFromBackendAddress;
+  final pulumi.Input<bool?>? pickHostNameFromBackendAddress;
   /// The destination port on the backend.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Probe resource of an application gateway.
-  final pulumi.Input<SubResource>? probe;
+  final pulumi.Input<SubResource?>? probe;
   /// The protocol used to communicate with the backend.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// Connection timeout in seconds. Application Gateway will fail the request if response is not received within ConnectionTimeout. Acceptable values are from 1 second to 86400 seconds.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// Array of references to application gateway trusted root certificates.
-  final pulumi.Input<List<SubResource>>? trustedRootCertificates;
+  final pulumi.Input<List<SubResource>?>? trustedRootCertificates;
 
   /// Creates a new [ApplicationGatewayBackendSettings].
   /// [hostName] Server name indication to be sent to the backend servers for Tls protocol.
@@ -66,10 +66,10 @@ class ApplicationGatewayBackendSettings {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pickHostNameFromBackendAddress: (() { final guardedValue = map['pickHostNameFromBackendAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       probe: (() { final guardedValue = map['probe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       trustedRootCertificates: (() { final guardedValue = map['trustedRootCertificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

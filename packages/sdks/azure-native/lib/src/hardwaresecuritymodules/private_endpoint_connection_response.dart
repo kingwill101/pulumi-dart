@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 /// The private endpoint connection resource.
 class PrivateEndpointConnectionResponse {
   /// Modified whenever there is a change in the state of private endpoint connection.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The group ids for the private endpoint resource.
   final pulumi.Input<List<String>> groupIds;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -16,7 +16,7 @@ class PrivateEndpointConnectionResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The private endpoint resource.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.

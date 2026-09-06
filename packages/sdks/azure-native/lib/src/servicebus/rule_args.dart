@@ -12,19 +12,19 @@ import 'sql_filter.dart';
 /// {@macro pulumi_servicebus_rule_args_doc}
 class RuleArgs {
   /// Represents the filter actions which are allowed for the transformation of a message that have been matched by a filter expression.
-  final pulumi.Input<Action>? action;
+  final pulumi.Input<Action?>? action;
   /// Properties of correlationFilter
-  final pulumi.Input<CorrelationFilter>? correlationFilter;
+  final pulumi.Input<CorrelationFilter?>? correlationFilter;
   /// Filter type that is evaluated against a BrokeredMessage.
-  final pulumi.Input<FilterType>? filterType;
+  final pulumi.Input<FilterType?>? filterType;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The rule name.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// Properties of sqlFilter
-  final pulumi.Input<SqlFilter>? sqlFilter;
+  final pulumi.Input<SqlFilter?>? sqlFilter;
   /// The subscription name.
   final pulumi.Input<String> subscriptionName;
   /// The topic name.

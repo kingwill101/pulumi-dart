@@ -9,7 +9,7 @@ import 'schedule_item.dart';
 /// {@macro pulumi_sql_start_stop_managed_instance_schedule_args_doc}
 class StartStopManagedInstanceScheduleArgs {
   /// The description of the schedule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -17,9 +17,9 @@ class StartStopManagedInstanceScheduleArgs {
   /// Schedule list.
   final pulumi.Input<List<ScheduleItem>> scheduleList;
   /// Name of the managed instance Start/Stop schedule.
-  final pulumi.Input<String>? startStopScheduleName;
+  final pulumi.Input<String?>? startStopScheduleName;
   /// The time zone of the schedule.
-  final pulumi.Input<String>? timeZoneId;
+  final pulumi.Input<String?>? timeZoneId;
 
   /// Creates a new [StartStopManagedInstanceScheduleArgs].
   /// [description] The description of the schedule.
@@ -28,14 +28,14 @@ class StartStopManagedInstanceScheduleArgs {
   /// [scheduleList] Schedule list.
   /// [startStopScheduleName] Name of the managed instance Start/Stop schedule.
   /// [timeZoneId] The time zone of the schedule.
-  const StartStopManagedInstanceScheduleArgs({
-    this.description,
+  StartStopManagedInstanceScheduleArgs({
+    pulumi.Input<String?>? description,
     required this.managedInstanceName,
     required this.resourceGroupName,
     required this.scheduleList,
     this.startStopScheduleName,
-    this.timeZoneId,
-  });
+    pulumi.Input<String?>? timeZoneId,
+  }) : description = description ?? pulumi.Input.fromValue(''), timeZoneId = timeZoneId ?? pulumi.Input.fromValue('UTC');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

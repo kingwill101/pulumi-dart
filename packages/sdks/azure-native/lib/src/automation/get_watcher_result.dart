@@ -5,9 +5,9 @@ import 'system_data_response.dart';
 /// Result data returned by getWatcher.
 class GetWatcherResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the creation time.
-  final String creationTime;
+  final String? creationTime;
   /// Gets or sets the description.
   final String? description;
   /// Gets or sets the etag of the resource.
@@ -15,15 +15,15 @@ class GetWatcherResult {
   /// Gets or sets the frequency at which the watcher is invoked.
   final double? executionFrequencyInSeconds;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Details of the user who last modified the watcher.
-  final String lastModifiedBy;
+  final String? lastModifiedBy;
   /// Gets or sets the last modified time.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The geo-location where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Gets or sets the name of the script the watcher is attached to, i.e. the name of an existing runbook.
   final String? scriptName;
   /// Gets or sets the parameters of the script.
@@ -31,13 +31,13 @@ class GetWatcherResult {
   /// Gets or sets the name of the hybrid worker group the watcher will run on.
   final String? scriptRunOn;
   /// Gets the current status of the watcher.
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWatcherResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -58,66 +58,66 @@ class GetWatcherResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWatcherResult({
-    required this.azureApiVersion,
-    required this.creationTime,
+    this.azureApiVersion,
+    this.creationTime,
     this.description,
     this.etag,
     this.executionFrequencyInSeconds,
-    required this.id,
-    required this.lastModifiedBy,
-    required this.lastModifiedTime,
+    this.id,
+    this.lastModifiedBy,
+    this.lastModifiedTime,
     this.location,
-    required this.name,
+    this.name,
     this.scriptName,
     this.scriptParameters,
     this.scriptRunOn,
-    required this.status,
-    required this.systemData,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'creationTime': creationTime,
+      'azureApiVersion': ?azureApiVersion,
+      'creationTime': ?creationTime,
       'description': ?description,
       'etag': ?etag,
       'executionFrequencyInSeconds': ?executionFrequencyInSeconds,
-      'id': id,
-      'lastModifiedBy': lastModifiedBy,
-      'lastModifiedTime': lastModifiedTime,
+      'id': ?id,
+      'lastModifiedBy': ?lastModifiedBy,
+      'lastModifiedTime': ?lastModifiedTime,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'scriptName': ?scriptName,
       'scriptParameters': ?scriptParameters,
       'scriptRunOn': ?scriptRunOn,
-      'status': status,
-      'systemData': systemData.toMap(),
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetWatcherResult.fromMap(Map<String, dynamic> map) {
     return GetWatcherResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      executionFrequencyInSeconds: (() { final guardedValue = map['executionFrequencyInSeconds']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      id: map['id'] as String,
-      lastModifiedBy: map['lastModifiedBy'] as String,
-      lastModifiedTime: map['lastModifiedTime'] as String,
+      executionFrequencyInSeconds: (() { final guardedValue = map['executionFrequencyInSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scriptName: (() { final guardedValue = map['scriptName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scriptParameters: (() { final guardedValue = map['scriptParameters']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       scriptRunOn: (() { final guardedValue = map['scriptRunOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

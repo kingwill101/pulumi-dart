@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Monitored Address Family.
-enum BmpMonitoredAddressFamily {
+enum BmpMonitoredAddressFamily implements pulumi.PulumiEnum<String> {
   ipv4Unicast("ipv4Unicast"),
   ipv6Unicast("ipv6Unicast"),
   vpnIpv4("vpnIpv4"),
@@ -7,6 +9,7 @@ enum BmpMonitoredAddressFamily {
   all("All");
 
   const BmpMonitoredAddressFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static BmpMonitoredAddressFamily fromValue(String value) {

@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_service_endpoint_policy_definition_args_doc}
 class ServiceEndpointPolicyDefinitionArgs {
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Service endpoint name.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// The name of the service endpoint policy definition name.
-  final pulumi.Input<String>? serviceEndpointPolicyDefinitionName;
+  final pulumi.Input<String?>? serviceEndpointPolicyDefinitionName;
   /// The name of the service endpoint policy.
   final pulumi.Input<String> serviceEndpointPolicyName;
   /// A list of service resources.
-  final pulumi.Input<List<String>>? serviceResources;
+  final pulumi.Input<List<String>?>? serviceResources;
   /// The type of the resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServiceEndpointPolicyDefinitionArgs].
   /// [description] A description for this rule. Restricted to 140 chars.

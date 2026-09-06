@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the peering.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueDirect("Direct"),
   valueExchange("Exchange");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

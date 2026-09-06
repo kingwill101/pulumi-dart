@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of authentication in SqlServer.
-enum Mode {
+enum Mode implements pulumi.PulumiEnum<String> {
   valueMixed("Mixed"),
   valueWindows("Windows"),
   valueUndefined("Undefined");
 
   const Mode(this.wireValue);
+  @override
   final String wireValue;
 
   static Mode fromValue(String value) {

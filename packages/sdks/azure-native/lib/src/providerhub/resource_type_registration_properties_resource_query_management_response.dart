@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource query management options.
 class ResourceTypeRegistrationPropertiesResourceQueryManagementResponse {
   /// Filter option.
-  final pulumi.Input<String>? filterOption;
+  final pulumi.Input<String?>? filterOption;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceQueryManagementResponse].
   /// [filterOption] Filter option.

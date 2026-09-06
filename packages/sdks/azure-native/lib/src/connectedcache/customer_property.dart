@@ -7,9 +7,9 @@ import 'customer_entity.dart';
 /// Model representing customer for connectedCache resource
 class CustomerProperty {
   /// Mcc customer resource additional properties.
-  final pulumi.Input<AdditionalCustomerProperties>? additionalCustomerProperties;
+  final pulumi.Input<AdditionalCustomerProperties?>? additionalCustomerProperties;
   /// Mcc customer resource (customer entity).
-  final pulumi.Input<CustomerEntity>? customer;
+  final pulumi.Input<CustomerEntity?>? customer;
 
   /// Creates a new [CustomerProperty].
   /// [additionalCustomerProperties] Mcc customer resource additional properties.

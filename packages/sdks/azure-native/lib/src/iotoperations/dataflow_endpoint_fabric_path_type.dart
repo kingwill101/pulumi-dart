@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of location of the data in the workspace. Can be either tables or files.
-enum DataflowEndpointFabricPathType {
+enum DataflowEndpointFabricPathType implements pulumi.PulumiEnum<String> {
   files("Files"),
   tables("Tables");
 
   const DataflowEndpointFabricPathType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowEndpointFabricPathType fromValue(String value) {

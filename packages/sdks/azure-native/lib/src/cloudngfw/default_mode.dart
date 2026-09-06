@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode for default rules creation
-enum DefaultMode {
+enum DefaultMode implements pulumi.PulumiEnum<String> {
   valueIPS("IPS"),
   valueFIREWALL("FIREWALL"),
   valueNONE("NONE");
 
   const DefaultMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultMode fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage mapping properties.
 class StorageClassificationMappingPropertiesResponse {
   /// Target storage object Id.
-  final pulumi.Input<String>? targetStorageClassificationId;
+  final pulumi.Input<String?>? targetStorageClassificationId;
 
   /// Creates a new [StorageClassificationMappingPropertiesResponse].
   /// [targetStorageClassificationId] Target storage object Id.

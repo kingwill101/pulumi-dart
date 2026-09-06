@@ -7,13 +7,13 @@ class KeyVaultCertificatePropertiesResponse {
   /// The activate date of certificate.
   final pulumi.Input<String> activateDate;
   /// Indicates whether to automatically synchronize certificate from key vault or not.
-  final pulumi.Input<String>? autoSync;
+  final pulumi.Input<String?>? autoSync;
   /// The certificate version of key vault.
-  final pulumi.Input<String>? certVersion;
+  final pulumi.Input<String?>? certVersion;
   /// The domain list of certificate.
   final pulumi.Input<List<String>> dnsNames;
   /// Optional. If set to true, it will not import private key from key vault.
-  final pulumi.Input<bool>? excludePrivateKey;
+  final pulumi.Input<bool?>? excludePrivateKey;
   /// The expiration date of certificate.
   final pulumi.Input<String> expirationDate;
   /// The issue date of certificate.
@@ -49,12 +49,12 @@ class KeyVaultCertificatePropertiesResponse {
   /// [thumbprint] The thumbprint of certificate.
   /// [type] The type of the certificate source.
   /// [vaultUri] The vault uri of user key vault.
-  const KeyVaultCertificatePropertiesResponse({
+  KeyVaultCertificatePropertiesResponse({
     required this.activateDate,
-    this.autoSync,
+    pulumi.Input<String?>? autoSync,
     this.certVersion,
     required this.dnsNames,
-    this.excludePrivateKey,
+    pulumi.Input<bool?>? excludePrivateKey,
     required this.expirationDate,
     required this.issuedDate,
     required this.issuer,
@@ -64,7 +64,7 @@ class KeyVaultCertificatePropertiesResponse {
     required this.thumbprint,
     required this.type,
     required this.vaultUri,
-  });
+  }) : autoSync = autoSync ?? pulumi.Input.fromValue('Disabled'), excludePrivateKey = excludePrivateKey ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

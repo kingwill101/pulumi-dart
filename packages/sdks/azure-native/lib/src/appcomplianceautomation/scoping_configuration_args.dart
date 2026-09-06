@@ -9,11 +9,11 @@ import 'scoping_answer.dart';
 /// {@macro pulumi_appcomplianceautomation_scoping_configuration_args_doc}
 class ScopingConfigurationArgs {
   /// List of scoping question answers.
-  final pulumi.Input<List<ScopingAnswer>>? answers;
+  final pulumi.Input<List<ScopingAnswer>?>? answers;
   /// Report Name.
   final pulumi.Input<String> reportName;
   /// The scoping configuration of the specific report.
-  final pulumi.Input<String>? scopingConfigurationName;
+  final pulumi.Input<String?>? scopingConfigurationName;
 
   /// Creates a new [ScopingConfigurationArgs].
   /// [answers] List of scoping question answers.

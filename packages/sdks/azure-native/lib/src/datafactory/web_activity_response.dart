@@ -12,46 +12,46 @@ import 'web_activity_authentication_response.dart';
 /// Web activity.
 class WebActivityResponse {
   /// Authentication method used for calling the endpoint.
-  final pulumi.Input<WebActivityAuthenticationResponse>? authentication;
+  final pulumi.Input<WebActivityAuthenticationResponse?>? authentication;
   /// Represents the payload that will be sent to the endpoint. Required for POST/PUT method, not allowed for GET method Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? body;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// List of datasets passed to web endpoint.
-  final pulumi.Input<List<DatasetReferenceResponse>>? datasets;
+  final pulumi.Input<List<DatasetReferenceResponse>?>? datasets;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// When set to true, Certificate validation will be disabled.
-  final pulumi.Input<bool>? disableCertValidation;
+  final pulumi.Input<bool?>? disableCertValidation;
   /// Represents the headers that will be sent to the request. For example, to set the language and type on a request: "headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? headers;
   /// Timeout for the HTTP request to get a response. Format is in TimeSpan (hh:mm:ss). This value is the timeout to get a response, not the activity timeout. The default value is 00:01:00 (1 minute). The range is from 1 to 10 minutes
   final pulumi.Input<dynamic>? httpRequestTimeout;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// List of linked services passed to web endpoint.
-  final pulumi.Input<List<LinkedServiceReferenceResponse>>? linkedServices;
+  final pulumi.Input<List<LinkedServiceReferenceResponse>?>? linkedServices;
   /// Rest API method for target endpoint.
   final pulumi.Input<String> method;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Option to disable invoking HTTP GET on location given in response header of a HTTP 202 Response. If set true, it stops invoking HTTP GET on http location given in response header. If set false then continues to invoke HTTP GET call on location given in http response headers.
-  final pulumi.Input<bool>? turnOffAsync;
+  final pulumi.Input<bool?>? turnOffAsync;
   /// Type of activity.
   /// Expected value is 'WebActivity'.
   final pulumi.Input<String> type;
   /// Web activity target endpoint and path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [WebActivityResponse].
   /// [authentication] Authentication method used for calling the endpoint.

@@ -7,9 +7,9 @@ import 'sub_resource.dart';
 /// Log Analytics Resources for Firewall Policy Insights.
 class FirewallPolicyLogAnalyticsResources {
   /// The default workspace Id for Firewall Policy Insights.
-  final pulumi.Input<SubResource>? defaultWorkspaceId;
+  final pulumi.Input<SubResource?>? defaultWorkspaceId;
   /// List of workspaces for Firewall Policy Insights.
-  final pulumi.Input<List<FirewallPolicyLogAnalyticsWorkspace>>? workspaces;
+  final pulumi.Input<List<FirewallPolicyLogAnalyticsWorkspace>?>? workspaces;
 
   /// Creates a new [FirewallPolicyLogAnalyticsResources].
   /// [defaultWorkspaceId] The default workspace Id for Firewall Policy Insights.

@@ -9,18 +9,18 @@ import 'site_properties.dart';
 /// {@macro pulumi_offazure_hyper_vsite_args_doc}
 class HyperVSiteArgs {
   /// eTag for concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Azure location in which Sites is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Hyper-V site.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Nested properties of Hyper-V site.
-  final pulumi.Input<SiteProperties>? properties;
+  final pulumi.Input<SiteProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site name.
-  final pulumi.Input<String>? siteName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? siteName;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HyperVSiteArgs].
   /// [eTag] eTag for concurrency control.

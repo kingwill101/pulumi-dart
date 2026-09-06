@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag to define if the user allows for crash dump collection.
-enum AllowCrashDumpCollection {
+enum AllowCrashDumpCollection implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const AllowCrashDumpCollection(this.wireValue);
+  @override
   final String wireValue;
 
   static AllowCrashDumpCollection fromValue(String value) {

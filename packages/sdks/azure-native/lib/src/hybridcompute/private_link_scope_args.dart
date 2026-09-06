@@ -9,15 +9,15 @@ import 'hybrid_compute_private_link_scope_properties.dart';
 /// {@macro pulumi_hybridcompute_private_link_scope_args_doc}
 class PrivateLinkScopeArgs {
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties that define a Azure Arc PrivateLinkScope resource.
-  final pulumi.Input<HybridComputePrivateLinkScopeProperties>? properties;
+  final pulumi.Input<HybridComputePrivateLinkScopeProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure Arc PrivateLinkScope resource.
-  final pulumi.Input<String>? scopeName;
+  final pulumi.Input<String?>? scopeName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateLinkScopeArgs].
   /// [location] Resource location

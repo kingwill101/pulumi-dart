@@ -7,7 +7,7 @@ import 'policy_parameters.dart';
 class PolicyInfo {
   final pulumi.Input<String> policyId;
   /// Policy parameters for the backup instance
-  final pulumi.Input<PolicyParameters>? policyParameters;
+  final pulumi.Input<PolicyParameters?>? policyParameters;
 
   /// Creates a new [PolicyInfo].
   /// [policyId] Required.

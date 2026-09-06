@@ -9,15 +9,15 @@ import 'secret_resource_properties.dart';
 /// {@macro pulumi_servicefabricmesh_secret_args_doc}
 class SecretArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Describes the properties of a secret resource.
   final pulumi.Input<SecretResourceProperties> properties;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// The name of the secret resource.
-  final pulumi.Input<String>? secretResourceName;
+  final pulumi.Input<String?>? secretResourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SecretArgs].
   /// [location] The geo-location where the resource lives

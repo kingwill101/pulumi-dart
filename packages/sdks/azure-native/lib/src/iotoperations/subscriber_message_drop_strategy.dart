@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The strategy to use for dropping messages from the queue.
-enum SubscriberMessageDropStrategy {
+enum SubscriberMessageDropStrategy implements pulumi.PulumiEnum<String> {
   none("None"),
   dropOldest("DropOldest");
 
   const SubscriberMessageDropStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static SubscriberMessageDropStrategy fromValue(String value) {

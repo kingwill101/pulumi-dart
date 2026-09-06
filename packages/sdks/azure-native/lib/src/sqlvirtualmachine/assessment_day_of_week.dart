@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Day of the week to run assessment.
-enum AssessmentDayOfWeek {
+enum AssessmentDayOfWeek implements pulumi.PulumiEnum<String> {
   valueMonday("Monday"),
   valueTuesday("Tuesday"),
   valueWednesday("Wednesday"),
@@ -9,6 +11,7 @@ enum AssessmentDayOfWeek {
   valueSunday("Sunday");
 
   const AssessmentDayOfWeek(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentDayOfWeek fromValue(String value) {

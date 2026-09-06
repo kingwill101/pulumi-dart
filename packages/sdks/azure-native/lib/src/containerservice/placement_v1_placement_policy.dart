@@ -7,13 +7,13 @@ import 'placement_v1_toleration.dart';
 /// PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected.
 class PlacementV1PlacementPolicy {
   /// Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".
-  final pulumi.Input<PlacementV1Affinity>? affinity;
+  final pulumi.Input<PlacementV1Affinity?>? affinity;
   /// ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed"
-  final pulumi.Input<List<String>>? clusterNames;
+  final pulumi.Input<List<String>?>? clusterNames;
   /// Type of placement. Can be "PickAll", "PickN" or "PickFixed". Default is PickAll.
-  final pulumi.Input<String>? placementType;
+  final pulumi.Input<dynamic>? placementType;
   /// If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature.
-  final pulumi.Input<List<PlacementV1Toleration>>? tolerations;
+  final pulumi.Input<List<PlacementV1Toleration>?>? tolerations;
 
   /// Creates a new [PlacementV1PlacementPolicy].
   /// [affinity] Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".
@@ -40,7 +40,7 @@ class PlacementV1PlacementPolicy {
     return PlacementV1PlacementPolicy(
       affinity: (() { final guardedValue = map['affinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlacementV1Affinity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterNames: (() { final guardedValue = map['clusterNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      placementType: (() { final guardedValue = map['placementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      placementType: (() { final guardedValue = map['placementType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tolerations: (() { final guardedValue = map['tolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlacementV1Toleration>(guardedValue, (value) => PlacementV1Toleration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

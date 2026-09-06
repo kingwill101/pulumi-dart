@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'billing_hub_execution_usage_detail_response.dart';
 
 class BillingHubUsageGroupResponse {
-  final pulumi.Input<List<BillingHubExecutionUsageDetailResponse>>? executionUsageDetails;
-  final pulumi.Input<String>? osBuild;
-  final pulumi.Input<String>? productFamily;
-  final pulumi.Input<String>? release;
-  final pulumi.Input<String>? releaseBuildDate;
-  final pulumi.Input<double>? releaseBuildNumber;
-  final pulumi.Input<double>? releaseBuildRevision;
-  final pulumi.Input<String>? testType;
-  final pulumi.Input<double>? totalCharges;
-  final pulumi.Input<double>? totalUsedBillableHours;
-  final pulumi.Input<double>? totalUsedFreeHours;
+  final pulumi.Input<List<BillingHubExecutionUsageDetailResponse>?>? executionUsageDetails;
+  final pulumi.Input<String?>? osBuild;
+  final pulumi.Input<String?>? productFamily;
+  final pulumi.Input<String?>? release;
+  final pulumi.Input<String?>? releaseBuildDate;
+  final pulumi.Input<double?>? releaseBuildNumber;
+  final pulumi.Input<double?>? releaseBuildRevision;
+  final pulumi.Input<String?>? testType;
+  final pulumi.Input<double?>? totalCharges;
+  final pulumi.Input<double?>? totalUsedBillableHours;
+  final pulumi.Input<double?>? totalUsedFreeHours;
 
   /// Creates a new [BillingHubUsageGroupResponse].
   /// [executionUsageDetails] Optional.
@@ -65,12 +65,12 @@ class BillingHubUsageGroupResponse {
       productFamily: (() { final guardedValue = map['productFamily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       release: (() { final guardedValue = map['release']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       releaseBuildDate: (() { final guardedValue = map['releaseBuildDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      releaseBuildNumber: (() { final guardedValue = map['releaseBuildNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      releaseBuildRevision: (() { final guardedValue = map['releaseBuildRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      releaseBuildNumber: (() { final guardedValue = map['releaseBuildNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      releaseBuildRevision: (() { final guardedValue = map['releaseBuildRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       testType: (() { final guardedValue = map['testType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalCharges: (() { final guardedValue = map['totalCharges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalUsedBillableHours: (() { final guardedValue = map['totalUsedBillableHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalUsedFreeHours: (() { final guardedValue = map['totalUsedFreeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalCharges: (() { final guardedValue = map['totalCharges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalUsedBillableHours: (() { final guardedValue = map['totalUsedBillableHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalUsedFreeHours: (() { final guardedValue = map['totalUsedFreeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

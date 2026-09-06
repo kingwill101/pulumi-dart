@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains information about the soft deletion policy of the gallery.
 class SoftDeletePolicyResponse {
   /// Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.
-  final pulumi.Input<bool>? isSoftDeleteEnabled;
+  final pulumi.Input<bool?>? isSoftDeleteEnabled;
 
   /// Creates a new [SoftDeletePolicyResponse].
   /// [isSoftDeleteEnabled] Enables soft-deletion for resources in this gallery, allowing them to be recovered within retention time.

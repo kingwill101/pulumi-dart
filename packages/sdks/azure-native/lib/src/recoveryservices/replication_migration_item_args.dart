@@ -11,7 +11,7 @@ class ReplicationMigrationItemArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// Migration item name.
-  final pulumi.Input<String>? migrationItemName;
+  final pulumi.Input<String?>? migrationItemName;
   /// Enable migration input properties.
   final pulumi.Input<EnableMigrationInputProperties> properties;
   /// Protection container name.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Workload identity settings for the security profile.
 class ManagedClusterSecurityProfileWorkloadIdentity {
   /// Whether to enable workload identity.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedClusterSecurityProfileWorkloadIdentity].
   /// [enabled] Whether to enable workload identity.

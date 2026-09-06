@@ -6,7 +6,7 @@ import 'download_request.dart';
 /// Represents the properties of Download Os job.
 class DownloadOsJobProperties {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<dynamic>? deploymentMode;
   /// Download OS request.
   final pulumi.Input<DownloadRequest> downloadRequest;
   /// Job Type supported.
@@ -33,7 +33,7 @@ class DownloadOsJobProperties {
 
   factory DownloadOsJobProperties.fromMap(Map<String, dynamic> map) {
     return DownloadOsJobProperties(
-      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       downloadRequest: pulumi.Input.fromValue(DownloadRequest.fromMap((map['downloadRequest']! as Map).cast<String, dynamic>())),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
     );

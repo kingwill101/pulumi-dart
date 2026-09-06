@@ -6,12 +6,12 @@ import 'k8s_active_directory_connector.dart';
 /// The kubernetes active directory information.
 class K8sActiveDirectory {
   /// Account name for AAD
-  final pulumi.Input<String>? accountName;
-  final pulumi.Input<K8sActiveDirectoryConnector>? connector;
+  final pulumi.Input<String?>? accountName;
+  final pulumi.Input<K8sActiveDirectoryConnector?>? connector;
   /// An array of encryption types
-  final pulumi.Input<List<String>>? encryptionTypes;
+  final pulumi.Input<List<String>?>? encryptionTypes;
   /// Keytab secret used to authenticate with Active Directory.
-  final pulumi.Input<String>? keytabSecret;
+  final pulumi.Input<String?>? keytabSecret;
 
   /// Creates a new [K8sActiveDirectory].
   /// [accountName] Account name for AAD

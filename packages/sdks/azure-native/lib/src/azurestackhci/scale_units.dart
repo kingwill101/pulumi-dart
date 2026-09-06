@@ -9,7 +9,7 @@ class ScaleUnits {
   /// Deployment Data to deploy AzureStackHCI Cluster.
   final pulumi.Input<DeploymentData> deploymentData;
   /// Solution builder extension (SBE) partner properties
-  final pulumi.Input<SbePartnerInfo>? sbePartnerInfo;
+  final pulumi.Input<SbePartnerInfo?>? sbePartnerInfo;
 
   /// Creates a new [ScaleUnits].
   /// [deploymentData] Deployment Data to deploy AzureStackHCI Cluster.

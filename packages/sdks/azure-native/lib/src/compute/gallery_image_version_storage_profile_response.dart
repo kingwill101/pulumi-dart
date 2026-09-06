@@ -8,11 +8,11 @@ import 'gallery_osdisk_image_response.dart';
 /// This is the storage profile of a Gallery Image Version.
 class GalleryImageVersionStorageProfileResponse {
   /// A list of data disk images.
-  final pulumi.Input<List<GalleryDataDiskImageResponse>>? dataDiskImages;
+  final pulumi.Input<List<GalleryDataDiskImageResponse>?>? dataDiskImages;
   /// This is the OS disk image.
-  final pulumi.Input<GalleryOSDiskImageResponse>? osDiskImage;
+  final pulumi.Input<GalleryOSDiskImageResponse?>? osDiskImage;
   /// The source of the gallery artifact version.
-  final pulumi.Input<GalleryArtifactVersionFullSourceResponse>? source;
+  final pulumi.Input<GalleryArtifactVersionFullSourceResponse?>? source;
 
   /// Creates a new [GalleryImageVersionStorageProfileResponse].
   /// [dataDiskImages] A list of data disk images.

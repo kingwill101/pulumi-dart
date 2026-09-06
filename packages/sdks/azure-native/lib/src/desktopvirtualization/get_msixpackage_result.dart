@@ -8,11 +8,11 @@ import 'system_data_response.dart';
 /// Result data returned by getMSIXPackage.
 class GetMSIXPackageResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// User friendly Name to be displayed in the portal.
   final String? displayName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// VHD/CIM image path on Network Share.
   final String? imagePath;
   /// Make this version of the package the active one across the hostpool.
@@ -22,7 +22,7 @@ class GetMSIXPackageResult {
   /// Date Package was last updated, found in the appxmanifest.xml.
   final String? lastUpdated;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// List of package applications.
   final List<MsixPackageApplicationsResponse>? packageApplications;
   /// List of package dependencies.
@@ -34,9 +34,9 @@ class GetMSIXPackageResult {
   /// Relative Path to the package inside the image.
   final String? packageRelativePath;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Package version found in the appxmanifest.xml.
   final String? version;
 
@@ -58,62 +58,62 @@ class GetMSIXPackageResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Package version found in the appxmanifest.xml.
   const GetMSIXPackageResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.displayName,
-    required this.id,
+    this.id,
     this.imagePath,
     this.isActive,
     this.isRegularRegistration,
     this.lastUpdated,
-    required this.name,
+    this.name,
     this.packageApplications,
     this.packageDependencies,
     this.packageFamilyName,
     this.packageName,
     this.packageRelativePath,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'displayName': ?displayName,
-      'id': id,
+      'id': ?id,
       'imagePath': ?imagePath,
       'isActive': ?isActive,
       'isRegularRegistration': ?isRegularRegistration,
       'lastUpdated': ?lastUpdated,
-      'name': name,
+      'name': ?name,
       'packageApplications': ?(() { final guardedValue = packageApplications; if (guardedValue == null) return null; return pulumi.Input.encodeList<MsixPackageApplicationsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'packageDependencies': ?(() { final guardedValue = packageDependencies; if (guardedValue == null) return null; return pulumi.Input.encodeList<MsixPackageDependenciesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'packageFamilyName': ?packageFamilyName,
       'packageName': ?packageName,
       'packageRelativePath': ?packageRelativePath,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'version': ?version,
     };
   }
 
   factory GetMSIXPackageResult.fromMap(Map<String, dynamic> map) {
     return GetMSIXPackageResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imagePath: (() { final guardedValue = map['imagePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isActive: (() { final guardedValue = map['isActive']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isRegularRegistration: (() { final guardedValue = map['isRegularRegistration']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       lastUpdated: (() { final guardedValue = map['lastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageApplications: (() { final guardedValue = map['packageApplications']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MsixPackageApplicationsResponse>(guardedValue, (value) => MsixPackageApplicationsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       packageDependencies: (() { final guardedValue = map['packageDependencies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MsixPackageDependenciesResponse>(guardedValue, (value) => MsixPackageDependenciesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       packageFamilyName: (() { final guardedValue = map['packageFamilyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageRelativePath: (() { final guardedValue = map['packageRelativePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

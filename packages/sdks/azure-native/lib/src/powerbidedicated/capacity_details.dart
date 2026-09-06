@@ -288,7 +288,31 @@ class CapacityDetails extends pulumi.CustomResource {
     sku = registerOutput<CapacitySkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacitySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CapacityDetails] resource.
+  CapacityDetails.reference(String urn)
+    : super(
+        'azure-native:powerbidedicated:CapacityDetails',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administration = registerOutput<DedicatedCapacityAdministratorsResponse?>('administration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedCapacityAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    friendlyName = registerOutput<String>('friendlyName');
+    location = registerOutput<String>('location');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<CapacitySkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacitySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

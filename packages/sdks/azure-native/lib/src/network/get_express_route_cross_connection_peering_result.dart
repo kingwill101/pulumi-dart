@@ -6,11 +6,11 @@ import 'ipv6_express_route_circuit_peering_config_response.dart';
 /// Result data returned by getExpressRouteCrossConnectionPeering.
 class GetExpressRouteCrossConnectionPeeringResult {
   /// The Azure ASN.
-  final int azureASN;
+  final int? azureASN;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// The GatewayManager Etag.
   final String? gatewayManagerEtag;
   /// Resource ID.
@@ -18,7 +18,7 @@ class GetExpressRouteCrossConnectionPeeringResult {
   /// The IPv6 peering configuration.
   final Ipv6ExpressRouteCircuitPeeringConfigResponse? ipv6PeeringConfig;
   /// Who was the last to modify the peering.
-  final String lastModifiedBy;
+  final String? lastModifiedBy;
   /// The Microsoft peering configuration.
   final ExpressRouteCircuitPeeringConfigResponse? microsoftPeeringConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -28,13 +28,13 @@ class GetExpressRouteCrossConnectionPeeringResult {
   /// The peering type.
   final String? peeringType;
   /// The primary port.
-  final String primaryAzurePort;
+  final String? primaryAzurePort;
   /// The primary address prefix.
   final String? primaryPeerAddressPrefix;
   /// The provisioning state of the express route cross connection peering resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The secondary port.
-  final String secondaryAzurePort;
+  final String? secondaryAzurePort;
   /// The secondary address prefix.
   final String? secondaryPeerAddressPrefix;
   /// The shared key.
@@ -65,21 +65,21 @@ class GetExpressRouteCrossConnectionPeeringResult {
   /// [state] The peering state.
   /// [vlanId] The VLAN ID.
   const GetExpressRouteCrossConnectionPeeringResult({
-    required this.azureASN,
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureASN,
+    this.azureApiVersion,
+    this.etag,
     this.gatewayManagerEtag,
     this.id,
     this.ipv6PeeringConfig,
-    required this.lastModifiedBy,
+    this.lastModifiedBy,
     this.microsoftPeeringConfig,
     this.name,
     this.peerASN,
     this.peeringType,
-    required this.primaryAzurePort,
+    this.primaryAzurePort,
     this.primaryPeerAddressPrefix,
-    required this.provisioningState,
-    required this.secondaryAzurePort,
+    this.provisioningState,
+    this.secondaryAzurePort,
     this.secondaryPeerAddressPrefix,
     this.sharedKey,
     this.state,
@@ -88,21 +88,21 @@ class GetExpressRouteCrossConnectionPeeringResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureASN': azureASN,
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureASN': ?azureASN,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'gatewayManagerEtag': ?gatewayManagerEtag,
       'id': ?id,
       'ipv6PeeringConfig': ?ipv6PeeringConfig?.toMap(),
-      'lastModifiedBy': lastModifiedBy,
+      'lastModifiedBy': ?lastModifiedBy,
       'microsoftPeeringConfig': ?microsoftPeeringConfig?.toMap(),
       'name': ?name,
       'peerASN': ?peerASN,
       'peeringType': ?peeringType,
-      'primaryAzurePort': primaryAzurePort,
+      'primaryAzurePort': ?primaryAzurePort,
       'primaryPeerAddressPrefix': ?primaryPeerAddressPrefix,
-      'provisioningState': provisioningState,
-      'secondaryAzurePort': secondaryAzurePort,
+      'provisioningState': ?provisioningState,
+      'secondaryAzurePort': ?secondaryAzurePort,
       'secondaryPeerAddressPrefix': ?secondaryPeerAddressPrefix,
       'sharedKey': ?sharedKey,
       'state': ?state,
@@ -112,25 +112,25 @@ class GetExpressRouteCrossConnectionPeeringResult {
 
   factory GetExpressRouteCrossConnectionPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCrossConnectionPeeringResult(
-      azureASN: map['azureASN'] as int,
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureASN: (() { final guardedValue = map['azureASN']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gatewayManagerEtag: (() { final guardedValue = map['gatewayManagerEtag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6PeeringConfig: (() { final guardedValue = map['ipv6PeeringConfig']; if (guardedValue == null) return null; return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      lastModifiedBy: map['lastModifiedBy'] as String,
+      lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       microsoftPeeringConfig: (() { final guardedValue = map['microsoftPeeringConfig']; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       peeringType: (() { final guardedValue = map['peeringType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      primaryAzurePort: map['primaryAzurePort'] as String,
+      primaryAzurePort: (() { final guardedValue = map['primaryAzurePort']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryPeerAddressPrefix: (() { final guardedValue = map['primaryPeerAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      secondaryAzurePort: map['secondaryAzurePort'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryAzurePort: (() { final guardedValue = map['secondaryAzurePort']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryPeerAddressPrefix: (() { final guardedValue = map['secondaryPeerAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

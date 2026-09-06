@@ -10,7 +10,7 @@ class ADLSGen1FileDataSetArgs {
   /// The ADLS account name.
   final pulumi.Input<String> accountName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// The file name in the ADLS account.
   final pulumi.Input<String> fileName;
   /// The folder path within the ADLS account.

@@ -7,13 +7,13 @@ import 'login_scopes.dart';
 /// The configuration settings of the Facebook provider.
 class Facebook {
   /// &lt;code&gt;false&lt;/code&gt; if the Facebook provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The version of the Facebook api to be used while logging in.
-  final pulumi.Input<String>? graphApiVersion;
+  final pulumi.Input<String?>? graphApiVersion;
   /// The configuration settings of the login flow.
-  final pulumi.Input<LoginScopes>? login;
+  final pulumi.Input<LoginScopes?>? login;
   /// The configuration settings of the app registration for the Facebook provider.
-  final pulumi.Input<AppRegistration>? registration;
+  final pulumi.Input<AppRegistration?>? registration;
 
   /// Creates a new [Facebook].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Facebook provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

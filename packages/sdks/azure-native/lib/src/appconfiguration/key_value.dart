@@ -233,7 +233,29 @@ class KeyValue extends pulumi.CustomResource {
     lastModified = registerOutput<String>('lastModified');
     locked = registerOutput<bool>('locked');
     this.name = registerOutput<String>('name');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
+  }
+
+  /// Creates a typed reference to an existing [KeyValue] resource.
+  KeyValue.reference(String urn)
+    : super(
+        'azure-native:appconfiguration:KeyValue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentType = registerOutput<String?>('contentType');
+    eTag = registerOutput<String>('eTag');
+    key = registerOutput<String>('key');
+    label = registerOutput<String>('label');
+    lastModified = registerOutput<String>('lastModified');
+    locked = registerOutput<bool>('locked');
+    this.name = registerOutput<String>('name');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     value = registerOutput<String?>('value');
   }

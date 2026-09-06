@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for classic alerts
 class ClassicAlertSettings {
-  final pulumi.Input<String>? alertsForCriticalOperations;
-  final pulumi.Input<String>? emailNotificationsForSiteRecovery;
+  final pulumi.Input<dynamic>? alertsForCriticalOperations;
+  final pulumi.Input<dynamic>? emailNotificationsForSiteRecovery;
 
   /// Creates a new [ClassicAlertSettings].
   /// [alertsForCriticalOperations] Optional.
@@ -24,8 +24,8 @@ class ClassicAlertSettings {
 
   factory ClassicAlertSettings.fromMap(Map<String, dynamic> map) {
     return ClassicAlertSettings(
-      alertsForCriticalOperations: (() { final guardedValue = map['alertsForCriticalOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      emailNotificationsForSiteRecovery: (() { final guardedValue = map['emailNotificationsForSiteRecovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      alertsForCriticalOperations: (() { final guardedValue = map['alertsForCriticalOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      emailNotificationsForSiteRecovery: (() { final guardedValue = map['emailNotificationsForSiteRecovery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

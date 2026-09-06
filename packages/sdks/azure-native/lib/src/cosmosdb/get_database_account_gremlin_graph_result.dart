@@ -8,7 +8,7 @@ import 'unique_key_policy_response.dart';
 /// Result data returned by getDatabaseAccountGremlinGraph.
 class GetDatabaseAccountGremlinGraphResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The conflict resolution policy for the graph.
   final ConflictResolutionPolicyResponse? conflictResolutionPolicy;
   /// Default time to live
@@ -16,13 +16,13 @@ class GetDatabaseAccountGremlinGraphResult {
   /// A system generated property representing the resource etag required for optimistic concurrency control.
   final String? etag;
   /// The unique resource identifier of the database account.
-  final String id;
+  final String? id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the graph
   final IndexingPolicyResponse? indexingPolicy;
   /// The location of the resource group to which the resource belongs.
   final String? location;
   /// The name of the database account.
-  final String name;
+  final String? name;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
   final ContainerPartitionKeyResponse? partitionKey;
   /// A system generated property. A unique identifier.
@@ -32,7 +32,7 @@ class GetDatabaseAccountGremlinGraphResult {
   /// A system generated property that denotes the last updated timestamp of the resource.
   final dynamic ts;
   /// The type of Azure resource.
-  final String type;
+  final String? type;
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
   final UniqueKeyPolicyResponse? uniqueKeyPolicy;
 
@@ -52,56 +52,56 @@ class GetDatabaseAccountGremlinGraphResult {
   /// [type] The type of Azure resource.
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
   const GetDatabaseAccountGremlinGraphResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.conflictResolutionPolicy,
     this.defaultTtl,
     this.etag,
-    required this.id,
+    this.id,
     this.indexingPolicy,
     this.location,
-    required this.name,
+    this.name,
     this.partitionKey,
     this.rid,
     this.tags,
     this.ts,
-    required this.type,
+    this.type,
     this.uniqueKeyPolicy,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'conflictResolutionPolicy': ?conflictResolutionPolicy?.toMap(),
       'defaultTtl': ?defaultTtl,
       'etag': ?etag,
-      'id': id,
+      'id': ?id,
       'indexingPolicy': ?indexingPolicy?.toMap(),
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'partitionKey': ?partitionKey?.toMap(),
       'rid': ?rid,
       'tags': ?tags,
       'ts': ?ts,
-      'type': type,
+      'type': ?type,
       'uniqueKeyPolicy': ?uniqueKeyPolicy?.toMap(),
     };
   }
 
   factory GetDatabaseAccountGremlinGraphResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseAccountGremlinGraphResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       conflictResolutionPolicy: (() { final guardedValue = map['conflictResolutionPolicy']; if (guardedValue == null) return null; return ConflictResolutionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       indexingPolicy: (() { final guardedValue = map['indexingPolicy']; if (guardedValue == null) return null; return IndexingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       partitionKey: (() { final guardedValue = map['partitionKey']; if (guardedValue == null) return null; return ContainerPartitionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       rid: (() { final guardedValue = map['rid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       ts: (() { final guardedValue = map['ts']; if (guardedValue == null) return null; return guardedValue; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uniqueKeyPolicy: (() { final guardedValue = map['uniqueKeyPolicy']; if (guardedValue == null) return null; return UniqueKeyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

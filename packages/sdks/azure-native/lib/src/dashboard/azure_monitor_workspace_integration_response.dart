@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Integrations for Azure Monitor Workspace.
 class AzureMonitorWorkspaceIntegrationResponse {
   /// The resource Id of the connected Azure Monitor Workspace.
-  final pulumi.Input<String>? azureMonitorWorkspaceResourceId;
+  final pulumi.Input<String?>? azureMonitorWorkspaceResourceId;
 
   /// Creates a new [AzureMonitorWorkspaceIntegrationResponse].
   /// [azureMonitorWorkspaceResourceId] The resource Id of the connected Azure Monitor Workspace.

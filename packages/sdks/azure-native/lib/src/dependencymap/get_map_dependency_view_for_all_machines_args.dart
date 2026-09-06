@@ -9,7 +9,7 @@ import 'dependency_process_filter.dart';
 /// {@macro pulumi_dependencymap_get_map_dependency_view_for_all_machines_args_doc}
 class GetMapDependencyViewForAllMachinesArgs {
   /// Filters for GetDependencyViewForAllMachines
-  final pulumi.Input<DependencyProcessFilter>? filters;
+  final pulumi.Input<DependencyProcessFilter?>? filters;
   /// Maps resource name
   final pulumi.Input<String> mapName;
   /// The name of the resource group. The name is case insensitive.

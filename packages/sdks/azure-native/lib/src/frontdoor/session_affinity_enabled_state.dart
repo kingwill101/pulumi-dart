@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
-enum SessionAffinityEnabledState {
+enum SessionAffinityEnabledState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const SessionAffinityEnabledState(this.wireValue);
+  @override
   final String wireValue;
 
   static SessionAffinityEnabledState fromValue(String value) {

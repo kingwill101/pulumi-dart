@@ -8,27 +8,27 @@ import 'registry_info.dart';
 /// Configuration properties that define the mutable settings of a Container App SourceControl
 class GithubActionConfiguration {
   /// AzureCredentials configurations.
-  final pulumi.Input<AzureCredentials>? azureCredentials;
+  final pulumi.Input<AzureCredentials?>? azureCredentials;
   /// List of environment variables to be passed to the build.
-  final pulumi.Input<List<EnvironmentVariable>>? buildEnvironmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? buildEnvironmentVariables;
   /// Context path
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// Dockerfile path
-  final pulumi.Input<String>? dockerfilePath;
+  final pulumi.Input<String?>? dockerfilePath;
   /// One time Github PAT to configure github environment
-  final pulumi.Input<String>? githubPersonalAccessToken;
+  final pulumi.Input<String?>? githubPersonalAccessToken;
   /// Image name
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Operation system
-  final pulumi.Input<String>? os;
+  final pulumi.Input<String?>? os;
   /// Code or Image
-  final pulumi.Input<String>? publishType;
+  final pulumi.Input<String?>? publishType;
   /// Registry configurations.
-  final pulumi.Input<RegistryInfo>? registryInfo;
+  final pulumi.Input<RegistryInfo?>? registryInfo;
   /// Runtime stack
-  final pulumi.Input<String>? runtimeStack;
+  final pulumi.Input<String?>? runtimeStack;
   /// Runtime version
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [GithubActionConfiguration].
   /// [azureCredentials] AzureCredentials configurations.

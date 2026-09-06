@@ -7,11 +7,11 @@ import 'self_managed_upgrade_profile.dart';
 /// AppLinkMember upgrade profile.
 class UpgradeProfile {
   /// Fully managed upgrade profile.
-  final pulumi.Input<FullyManagedUpgradeProfile>? fullyManagedUpgradeProfile;
+  final pulumi.Input<FullyManagedUpgradeProfile?>? fullyManagedUpgradeProfile;
   /// Upgrade mode.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// Self managed upgrade profile.
-  final pulumi.Input<SelfManagedUpgradeProfile>? selfManagedUpgradeProfile;
+  final pulumi.Input<SelfManagedUpgradeProfile?>? selfManagedUpgradeProfile;
 
   /// Creates a new [UpgradeProfile].
   /// [fullyManagedUpgradeProfile] Fully managed upgrade profile.
@@ -34,7 +34,7 @@ class UpgradeProfile {
   factory UpgradeProfile.fromMap(Map<String, dynamic> map) {
     return UpgradeProfile(
       fullyManagedUpgradeProfile: (() { final guardedValue = map['fullyManagedUpgradeProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FullyManagedUpgradeProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
       selfManagedUpgradeProfile: (() { final guardedValue = map['selfManagedUpgradeProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SelfManagedUpgradeProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -7,7 +7,7 @@ class GetSourceControlResult {
   /// The auto sync of the source control. Default is false.
   final bool? autoSync;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The repo branch of the source control. Include branch as empty string for VsoTfvc.
   final String? branch;
   /// The creation time.
@@ -17,11 +17,11 @@ class GetSourceControlResult {
   /// The folder path of the source control.
   final String? folderPath;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The last modified time.
   final String? lastModifiedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The auto publish of the source control. Default is true.
   final bool? publishRunbook;
   /// The repo url of the source control.
@@ -29,9 +29,9 @@ class GetSourceControlResult {
   /// The source type. Must be one of VsoGit, VsoTfvc, GitHub.
   final String? sourceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSourceControlResult].
   /// [autoSync] The auto sync of the source control. Default is false.
@@ -50,56 +50,56 @@ class GetSourceControlResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSourceControlResult({
     this.autoSync,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.branch,
     this.creationTime,
     this.description,
     this.folderPath,
-    required this.id,
+    this.id,
     this.lastModifiedTime,
-    required this.name,
+    this.name,
     this.publishRunbook,
     this.repoUrl,
     this.sourceType,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoSync': ?autoSync,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'branch': ?branch,
       'creationTime': ?creationTime,
       'description': ?description,
       'folderPath': ?folderPath,
-      'id': id,
+      'id': ?id,
       'lastModifiedTime': ?lastModifiedTime,
-      'name': name,
+      'name': ?name,
       'publishRunbook': ?publishRunbook,
       'repoUrl': ?repoUrl,
       'sourceType': ?sourceType,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSourceControlResult.fromMap(Map<String, dynamic> map) {
     return GetSourceControlResult(
       autoSync: (() { final guardedValue = map['autoSync']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publishRunbook: (() { final guardedValue = map['publishRunbook']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       repoUrl: (() { final guardedValue = map['repoUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

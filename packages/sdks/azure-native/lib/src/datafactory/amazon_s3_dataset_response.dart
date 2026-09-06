@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'avro_format_response.dart';
 import 'dataset_compression_response.dart';
 import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
@@ -10,17 +9,17 @@ import 'parameter_specification_response.dart';
 /// A single Amazon Simple Storage Service (S3) object or a set of S3 objects.
 class AmazonS3DatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The name of the Amazon S3 bucket. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> bucketName;
   /// The data compression method used for the Amazon S3 object.
-  final pulumi.Input<DatasetCompressionResponse>? compression;
+  final pulumi.Input<DatasetCompressionResponse?>? compression;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolderResponse>? folder;
+  final pulumi.Input<DatasetFolderResponse?>? folder;
   /// The format of files.
-  final pulumi.Input<AvroFormatResponse>? format;
+  final pulumi.Input<dynamic>? format;
   /// The key of the Amazon S3 object. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? key;
   /// Linked service reference.
@@ -30,7 +29,7 @@ class AmazonS3DatasetResponse {
   /// The start of S3 object's modified datetime. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The prefix filter for the S3 object name. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? prefix;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
@@ -86,7 +85,7 @@ class AmazonS3DatasetResponse {
       'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
-      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'format': ?format,
       'key': ?key,
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'modifiedDatetimeEnd': ?modifiedDatetimeEnd,
@@ -107,7 +106,7 @@ class AmazonS3DatasetResponse {
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetCompressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       modifiedDatetimeEnd: (() { final guardedValue = map['modifiedDatetimeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

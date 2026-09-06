@@ -16,73 +16,73 @@ import 'vpn_client_configuration_response.dart';
 /// A common class for general resource information.
 class VirtualNetworkGatewayResponse {
   /// ActiveActive flag.
-  final pulumi.Input<bool>? activeActive;
+  final pulumi.Input<bool?>? activeActive;
   /// Property to indicate if the Express Route Gateway serves traffic when there are multiple Express Route Gateways in the vnet
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<String?>? adminState;
   /// Configure this gateway to accept traffic from other Azure Virtual Networks. This configuration does not support connectivity to Azure Virtual WAN.
-  final pulumi.Input<bool>? allowRemoteVnetTraffic;
+  final pulumi.Input<bool?>? allowRemoteVnetTraffic;
   /// Configures this gateway to accept traffic from remote Virtual WAN networks.
-  final pulumi.Input<bool>? allowVirtualWanTraffic;
+  final pulumi.Input<bool?>? allowVirtualWanTraffic;
   /// Autoscale configuration for virutal network gateway
-  final pulumi.Input<VirtualNetworkGatewayAutoScaleConfigurationResponse>? autoScaleConfiguration;
+  final pulumi.Input<VirtualNetworkGatewayAutoScaleConfigurationResponse?>? autoScaleConfiguration;
   /// Virtual network gateway's BGP speaker settings.
-  final pulumi.Input<BgpSettingsResponse>? bgpSettings;
+  final pulumi.Input<BgpSettingsResponse?>? bgpSettings;
   /// The reference to the address space resource which represents the custom routes address space specified by the customer for virtual network gateway and VpnClient.
-  final pulumi.Input<AddressSpaceResponse>? customRoutes;
+  final pulumi.Input<AddressSpaceResponse?>? customRoutes;
   /// disableIPSecReplayProtection flag.
-  final pulumi.Input<bool>? disableIPSecReplayProtection;
+  final pulumi.Input<bool?>? disableIPSecReplayProtection;
   /// Whether BGP is enabled for this virtual network gateway or not.
-  final pulumi.Input<bool>? enableBgp;
+  final pulumi.Input<bool?>? enableBgp;
   /// EnableBgpRouteTranslationForNat flag.
-  final pulumi.Input<bool>? enableBgpRouteTranslationForNat;
+  final pulumi.Input<bool?>? enableBgpRouteTranslationForNat;
   /// Whether dns forwarding is enabled or not.
-  final pulumi.Input<bool>? enableDnsForwarding;
+  final pulumi.Input<bool?>? enableDnsForwarding;
   /// Whether private IP needs to be enabled on this gateway for connections or not.
-  final pulumi.Input<bool>? enablePrivateIpAddress;
+  final pulumi.Input<bool?>? enablePrivateIpAddress;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The extended location of type local virtual network gateway.
-  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? extendedLocation;
   /// The reference to the LocalNetworkGateway resource which represents local network site having default routes. Assign Null value in case of removing existing default site setting.
-  final pulumi.Input<SubResourceResponse>? gatewayDefaultSite;
+  final pulumi.Input<SubResourceResponse?>? gatewayDefaultSite;
   /// The type of this virtual network gateway.
-  final pulumi.Input<String>? gatewayType;
+  final pulumi.Input<String?>? gatewayType;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The identity of the virtual network gateway, if configured.
-  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse?>? identity;
   /// The IP address allocated by the gateway to which dns requests can be sent.
   final pulumi.Input<String> inboundDnsForwardingEndpoint;
   /// IP configurations for virtual network gateway.
-  final pulumi.Input<List<VirtualNetworkGatewayIPConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<VirtualNetworkGatewayIPConfigurationResponse>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// NatRules for virtual network gateway.
-  final pulumi.Input<List<VirtualNetworkGatewayNatRuleResponse>>? natRules;
+  final pulumi.Input<List<VirtualNetworkGatewayNatRuleResponse>?>? natRules;
   /// The provisioning state of the virtual network gateway resource.
   final pulumi.Input<String> provisioningState;
   /// Property to indicate if the Express Route Gateway has resiliency model of MultiHomed or SingleHomed
-  final pulumi.Input<String>? resiliencyModel;
+  final pulumi.Input<String?>? resiliencyModel;
   /// The resource GUID property of the virtual network gateway resource.
   final pulumi.Input<String> resourceGuid;
   /// The reference to the VirtualNetworkGatewaySku resource which represents the SKU selected for Virtual network gateway.
-  final pulumi.Input<VirtualNetworkGatewaySkuResponse>? sku;
+  final pulumi.Input<VirtualNetworkGatewaySkuResponse?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
   /// Customer vnet resource id. VirtualNetworkGateway of type local gateway is associated with the customer vnet.
-  final pulumi.Input<String>? vNetExtendedLocationResourceId;
+  final pulumi.Input<String?>? vNetExtendedLocationResourceId;
   /// The reference to the VirtualNetworkGatewayPolicyGroup resource which represents the available VirtualNetworkGatewayPolicyGroup for the gateway.
-  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupResponse>>? virtualNetworkGatewayPolicyGroups;
+  final pulumi.Input<List<VirtualNetworkGatewayPolicyGroupResponse>?>? virtualNetworkGatewayPolicyGroups;
   /// The reference to the VpnClientConfiguration resource which represents the P2S VpnClient configurations.
-  final pulumi.Input<VpnClientConfigurationResponse>? vpnClientConfiguration;
+  final pulumi.Input<VpnClientConfigurationResponse?>? vpnClientConfiguration;
   /// The generation for this VirtualNetworkGateway. Must be None if gatewayType is not VPN.
-  final pulumi.Input<String>? vpnGatewayGeneration;
+  final pulumi.Input<String?>? vpnGatewayGeneration;
   /// The type of this virtual network gateway.
-  final pulumi.Input<String>? vpnType;
+  final pulumi.Input<String?>? vpnType;
 
   /// Creates a new [VirtualNetworkGatewayResponse].
   /// [activeActive] ActiveActive flag.

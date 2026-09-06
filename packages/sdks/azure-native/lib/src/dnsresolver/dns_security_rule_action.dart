@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The action to take on DNS requests that match the DNS security rule.
 class DnsSecurityRuleAction {
   /// The type of action to take.
-  final pulumi.Input<String>? actionType;
+  final pulumi.Input<dynamic>? actionType;
   /// The response code for block actions.
-  final pulumi.Input<String>? blockResponseCode;
+  final pulumi.Input<dynamic>? blockResponseCode;
 
   /// Creates a new [DnsSecurityRuleAction].
   /// [actionType] The type of action to take.
@@ -26,8 +26,8 @@ class DnsSecurityRuleAction {
 
   factory DnsSecurityRuleAction.fromMap(Map<String, dynamic> map) {
     return DnsSecurityRuleAction(
-      actionType: (() { final guardedValue = map['actionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      blockResponseCode: (() { final guardedValue = map['blockResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      actionType: (() { final guardedValue = map['actionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      blockResponseCode: (() { final guardedValue = map['blockResponseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

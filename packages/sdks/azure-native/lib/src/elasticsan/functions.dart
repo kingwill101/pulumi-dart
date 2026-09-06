@@ -30,6 +30,17 @@ Future<GetElasticSanResult> getElasticSan(
   return GetElasticSanResult.fromMap(result);
 }
 
+pulumi.Output<GetElasticSanResult> getElasticSanOutput(
+  GetElasticSanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elasticsan:getElasticSan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticSanResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the Elastic San
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -48,6 +59,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elasticsan:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get an Volume.
@@ -70,6 +92,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elasticsan:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Get an VolumeGroups.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -90,6 +123,17 @@ Future<GetVolumeGroupResult> getVolumeGroup(
   return GetVolumeGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeGroupResult> getVolumeGroupOutput(
+  GetVolumeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elasticsan:getVolumeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeGroupResult.fromMap);
+}
+
 /// Get a Volume Snapshot.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -108,4 +152,15 @@ Future<GetVolumeSnapshotResult> getVolumeSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeSnapshotResult> getVolumeSnapshotOutput(
+  GetVolumeSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elasticsan:getVolumeSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeSnapshotResult.fromMap);
 }

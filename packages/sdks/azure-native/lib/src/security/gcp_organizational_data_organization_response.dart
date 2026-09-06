@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The gcpOrganization data for the parent account
 class GcpOrganizationalDataOrganizationResponse {
   /// If the multi cloud account is of membership type organization, list of accounts excluded from offering
-  final pulumi.Input<List<String>>? excludedProjectNumbers;
+  final pulumi.Input<List<String>?>? excludedProjectNumbers;
   /// The multi cloud account's membership type in the organization
   /// Expected value is 'Organization'.
   final pulumi.Input<String> organizationMembershipType;
   /// GCP organization name
   final pulumi.Input<String> organizationName;
   /// The service account email address which represents the organization level permissions container.
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The GCP workload identity provider id which represents the permissions required to auto provision security connectors
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [GcpOrganizationalDataOrganizationResponse].
   /// [excludedProjectNumbers] If the multi cloud account is of membership type organization, list of accounts excluded from offering

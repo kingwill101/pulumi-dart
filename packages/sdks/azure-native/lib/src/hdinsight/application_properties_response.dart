@@ -13,27 +13,27 @@ class ApplicationPropertiesResponse {
   /// The application state.
   final pulumi.Input<String> applicationState;
   /// The application type.
-  final pulumi.Input<String>? applicationType;
+  final pulumi.Input<String?>? applicationType;
   /// The list of roles in the cluster.
-  final pulumi.Input<ComputeProfileResponse>? computeProfile;
+  final pulumi.Input<ComputeProfileResponse?>? computeProfile;
   /// The application create date time.
   final pulumi.Input<String> createdDate;
   /// The list of errors.
-  final pulumi.Input<List<ErrorsResponse>>? errors;
+  final pulumi.Input<List<ErrorsResponse>?>? errors;
   /// The list of application HTTPS endpoints.
-  final pulumi.Input<List<ApplicationGetHttpsEndpointResponse>>? httpsEndpoints;
+  final pulumi.Input<List<ApplicationGetHttpsEndpointResponse>?>? httpsEndpoints;
   /// The list of install script actions.
-  final pulumi.Input<List<RuntimeScriptActionResponse>>? installScriptActions;
+  final pulumi.Input<List<RuntimeScriptActionResponse>?>? installScriptActions;
   /// The marketplace identifier.
   final pulumi.Input<String> marketplaceIdentifier;
   /// The private link configurations.
-  final pulumi.Input<List<PrivateLinkConfigurationResponse>>? privateLinkConfigurations;
+  final pulumi.Input<List<PrivateLinkConfigurationResponse>?>? privateLinkConfigurations;
   /// The provisioning state of the application.
   final pulumi.Input<String> provisioningState;
   /// The list of application SSH endpoints.
-  final pulumi.Input<List<ApplicationGetEndpointResponse>>? sshEndpoints;
+  final pulumi.Input<List<ApplicationGetEndpointResponse>?>? sshEndpoints;
   /// The list of uninstall script actions.
-  final pulumi.Input<List<RuntimeScriptActionResponse>>? uninstallScriptActions;
+  final pulumi.Input<List<RuntimeScriptActionResponse>?>? uninstallScriptActions;
 
   /// Creates a new [ApplicationPropertiesResponse].
   /// [applicationState] The application state.

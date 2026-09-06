@@ -5,8 +5,8 @@ import 'managed_service_identity_type.dart';
 
 class DefaultIdentity {
   /// Type of managed service identity.
-  final pulumi.Input<ManagedServiceIdentityType>? identityType;
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<ManagedServiceIdentityType?>? identityType;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [DefaultIdentity].
   /// [identityType] Type of managed service identity.

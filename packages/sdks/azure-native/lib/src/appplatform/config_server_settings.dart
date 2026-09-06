@@ -6,7 +6,7 @@ import 'config_server_git_property.dart';
 /// The settings of config server.
 class ConfigServerSettings {
   /// Property of git environment.
-  final pulumi.Input<ConfigServerGitProperty>? gitProperty;
+  final pulumi.Input<ConfigServerGitProperty?>? gitProperty;
 
   /// Creates a new [ConfigServerSettings].
   /// [gitProperty] Property of git environment.

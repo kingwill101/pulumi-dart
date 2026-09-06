@@ -6,7 +6,7 @@ import 'build_service_agent_pool_size_properties_response.dart';
 /// Build service agent pool properties
 class BuildServiceAgentPoolPropertiesResponse {
   /// build service agent pool size properties
-  final pulumi.Input<BuildServiceAgentPoolSizePropertiesResponse>? poolSize;
+  final pulumi.Input<BuildServiceAgentPoolSizePropertiesResponse?>? poolSize;
   /// Provisioning state of the build service agent pool
   final pulumi.Input<String> provisioningState;
 

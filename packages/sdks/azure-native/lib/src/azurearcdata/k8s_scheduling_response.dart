@@ -6,7 +6,7 @@ import 'k8s_scheduling_options_response.dart';
 /// The kubernetes scheduling information.
 class K8sSchedulingResponse {
   /// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
-  final pulumi.Input<K8sSchedulingOptionsResponse>? default_;
+  final pulumi.Input<K8sSchedulingOptionsResponse?>? default_;
 
   /// Creates a new [K8sSchedulingResponse].
   /// [default_] The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service

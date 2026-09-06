@@ -9,15 +9,15 @@ import 'collector_agent_properties_base.dart';
 /// {@macro pulumi_migrate_sql_collector_operation_args_doc}
 class SqlCollectorOperationArgs {
   /// Gets or sets the collector agent properties.
-  final pulumi.Input<CollectorAgentPropertiesBase>? agentProperties;
+  final pulumi.Input<CollectorAgentPropertiesBase?>? agentProperties;
   /// Sql collector ARM name.
-  final pulumi.Input<String>? collectorName;
+  final pulumi.Input<String?>? collectorName;
   /// Gets the discovery site id.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The status of the last operation.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -54,7 +54,7 @@ class SqlCollectorOperationArgs {
       collectorName: (() { final guardedValue = map['collectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       discoverySiteId: (() { final guardedValue = map['discoverySiteId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

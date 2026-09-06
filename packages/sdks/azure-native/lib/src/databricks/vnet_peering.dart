@@ -261,4 +261,29 @@ class VNetPeering extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
   }
+
+  /// Creates a typed reference to an existing [VNetPeering] resource.
+  VNetPeering.reference(String urn)
+    : super(
+        'azure-native:databricks:VNetPeering',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');
+    allowGatewayTransit = registerOutput<bool?>('allowGatewayTransit');
+    allowVirtualNetworkAccess = registerOutput<bool?>('allowVirtualNetworkAccess');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databricksAddressSpace = registerOutput<AddressSpaceResponse?>('databricksAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databricksVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse?>('databricksVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatDatabricksVirtualNetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    peeringState = registerOutput<String>('peeringState');
+    provisioningState = registerOutput<String>('provisioningState');
+    remoteAddressSpace = registerOutput<AddressSpaceResponse?>('remoteAddressSpace', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AddressSpaceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    remoteVirtualNetwork = registerOutput<VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse>('remoteVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkPeeringPropertiesFormatRemoteVirtualNetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    useRemoteGateways = registerOutput<bool?>('useRemoteGateways');
+  }
 }

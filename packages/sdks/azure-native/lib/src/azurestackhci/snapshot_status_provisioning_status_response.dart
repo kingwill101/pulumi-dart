@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Snapshot Status provisioning status
 class SnapshotStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the snapshot
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the snapshot [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Plan notification details
 class PlanNotificationDetailsResponse {
   /// Gets or sets the plan display name
-  final pulumi.Input<String>? planDisplayName;
+  final pulumi.Input<String?>? planDisplayName;
   /// Gets or sets the plan id
-  final pulumi.Input<String>? planId;
+  final pulumi.Input<String?>? planId;
 
   /// Creates a new [PlanNotificationDetailsResponse].
   /// [planDisplayName] Gets or sets the plan display name

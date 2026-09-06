@@ -9,15 +9,15 @@ import 'alert_processing_rule_properties.dart';
 /// {@macro pulumi_alertsmanagement_alert_processing_rule_by_name_args_doc}
 class AlertProcessingRuleByNameArgs {
   /// The name of the alert processing rule that needs to be fetched.
-  final pulumi.Input<String>? alertProcessingRuleName;
+  final pulumi.Input<String?>? alertProcessingRuleName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Alert processing rule properties.
-  final pulumi.Input<AlertProcessingRuleProperties>? properties;
+  final pulumi.Input<AlertProcessingRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AlertProcessingRuleByNameArgs].
   /// [alertProcessingRuleName] The name of the alert processing rule that needs to be fetched.

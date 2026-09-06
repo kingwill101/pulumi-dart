@@ -7,7 +7,7 @@ class KeyVaultSecretObjectResponse {
   /// KeyVault secret name.
   final pulumi.Input<String> name;
   /// KeyVault secret version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [KeyVaultSecretObjectResponse].
   /// [name] KeyVault secret name.

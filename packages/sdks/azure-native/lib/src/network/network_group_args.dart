@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_group_args_doc}
 class NetworkGroupArgs {
   /// A description of the network group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of the group member.
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<dynamic>? memberType;
   /// The name of the network group.
-  final pulumi.Input<String>? networkGroupName;
+  final pulumi.Input<String?>? networkGroupName;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
@@ -45,7 +45,7 @@ class NetworkGroupArgs {
   factory NetworkGroupArgs.fromMap(Map<String, dynamic> map) {
     return NetworkGroupArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memberType: (() { final guardedValue = map['memberType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memberType: (() { final guardedValue = map['memberType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkGroupName: (() { final guardedValue = map['networkGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

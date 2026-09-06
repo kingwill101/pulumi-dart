@@ -11,21 +11,21 @@ import 'soft_delete_policy.dart';
 /// {@macro pulumi_compute_gallery_args_doc}
 class GalleryArgs {
   /// The description of this Shared Image Gallery resource. This property is updatable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the Shared Image Gallery.
-  final pulumi.Input<String>? galleryName;
+  final pulumi.Input<String?>? galleryName;
   /// The identity of the gallery, if configured.
-  final pulumi.Input<GalleryIdentity>? identity;
+  final pulumi.Input<GalleryIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Profile for gallery sharing to subscription or tenant
-  final pulumi.Input<SharingProfile>? sharingProfile;
+  final pulumi.Input<SharingProfile?>? sharingProfile;
   /// Contains information about the soft deletion policy of the gallery.
-  final pulumi.Input<SoftDeletePolicy>? softDeletePolicy;
+  final pulumi.Input<SoftDeletePolicy?>? softDeletePolicy;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryArgs].
   /// [description] The description of this Shared Image Gallery resource. This property is updatable.

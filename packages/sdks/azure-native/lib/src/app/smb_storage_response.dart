@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SMB storage properties
 class SmbStorageResponse {
   /// Access mode for storage
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// The domain name for the user.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// The host name or IP address of the SMB server.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The password for the user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The path to the SMB shared folder.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// The user to log on to the SMB server.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SmbStorageResponse].
   /// [accessMode] Access mode for storage

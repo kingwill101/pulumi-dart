@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of the artifact signing account.
 class AccountSku {
   /// Name of the SKU.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [AccountSku].
   /// [name] Name of the SKU.
@@ -21,7 +21,7 @@ class AccountSku {
 
   factory AccountSku.fromMap(Map<String, dynamic> map) {
     return AccountSku(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

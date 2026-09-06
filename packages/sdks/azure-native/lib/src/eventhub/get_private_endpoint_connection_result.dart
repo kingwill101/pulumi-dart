@@ -7,13 +7,13 @@ import 'system_data_response.dart';
 /// Result data returned by getPrivateEndpointConnection.
 class GetPrivateEndpointConnectionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The Private Endpoint resource for this Connection.
   final PrivateEndpointResponse? privateEndpoint;
   /// Details about the state of the connection.
@@ -21,9 +21,9 @@ class GetPrivateEndpointConnectionResult {
   /// Provisioning state of the Private Endpoint Connection.
   final String? provisioningState;
   /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPrivateEndpointConnectionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -36,42 +36,42 @@ class GetPrivateEndpointConnectionResult {
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   const GetPrivateEndpointConnectionResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
       'privateEndpoint': ?privateEndpoint?.toMap(),
       'privateLinkServiceConnectionState': ?privateLinkServiceConnectionState?.toMap(),
       'provisioningState': ?provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetPrivateEndpointConnectionResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateEndpointConnectionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return ConnectionStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

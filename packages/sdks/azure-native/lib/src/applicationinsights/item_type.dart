@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum indicating the type of the Analytics item.
-enum ItemType {
+enum ItemType implements pulumi.PulumiEnum<String> {
   none("none"),
   query("query"),
   recent("recent"),
   function("function");
 
   const ItemType(this.wireValue);
+  @override
   final String wireValue;
 
   static ItemType fromValue(String value) {

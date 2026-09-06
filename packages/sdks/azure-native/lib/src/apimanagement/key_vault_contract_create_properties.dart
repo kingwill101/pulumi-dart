@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Create keyVault contract details.
 class KeyVaultContractCreateProperties {
   /// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
-  final pulumi.Input<String>? secretIdentifier;
+  final pulumi.Input<String?>? secretIdentifier;
 
   /// Creates a new [KeyVaultContractCreateProperties].
   /// [identityClientId] Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.

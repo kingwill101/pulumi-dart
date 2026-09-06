@@ -6,11 +6,11 @@ import 'network_security_group_status_provisioning_status_response.dart';
 /// The observed state of network security group
 class NetworkSecurityGroupStatusResponse {
   /// NetworkSecurityGroup provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// network security group provisioning status
-  final pulumi.Input<NetworkSecurityGroupStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<NetworkSecurityGroupStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [NetworkSecurityGroupStatusResponse].
   /// [errorCode] NetworkSecurityGroup provisioning error code

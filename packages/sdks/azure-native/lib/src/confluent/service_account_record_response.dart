@@ -6,15 +6,15 @@ import 'metadata_entity_response.dart';
 /// Record of the service account
 class ServiceAccountRecordResponse {
   /// Description of the service account
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the service account
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Id of the service account
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of account
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
 
   /// Creates a new [ServiceAccountRecordResponse].
   /// [description] Description of the service account

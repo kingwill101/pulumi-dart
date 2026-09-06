@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The size of the virtual machine.
-enum VirtualMachineSizeTypes {
+enum VirtualMachineSizeTypes implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueStandardD1V2("Standard_D1_v2"),
   valueStandardD2V2("Standard_D2_v2"),
@@ -29,6 +31,7 @@ enum VirtualMachineSizeTypes {
   valueStandardF16s("Standard_F16s");
 
   const VirtualMachineSizeTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachineSizeTypes fromValue(String value) {

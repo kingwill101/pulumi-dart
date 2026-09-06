@@ -11,19 +11,19 @@ class VirtualNetworkArgs {
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Gets or sets the inventory Item ID for the resource.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Unique ID of the virtual network.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
   /// Name of the VirtualNetwork.
-  final pulumi.Input<String>? virtualNetworkName;
+  final pulumi.Input<String?>? virtualNetworkName;
   /// ARM Id of the vmmServer resource in which this resource resides.
-  final pulumi.Input<String>? vmmServerId;
+  final pulumi.Input<String?>? vmmServerId;
 
   /// Creates a new [VirtualNetworkArgs].
   /// [extendedLocation] The extended location.

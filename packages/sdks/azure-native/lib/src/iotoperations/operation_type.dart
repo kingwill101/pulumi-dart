@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of operation.
-enum OperationType {
+enum OperationType implements pulumi.PulumiEnum<String> {
   source("Source"),
   destination("Destination"),
   builtInTransformation("BuiltInTransformation");
 
   const OperationType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationType fromValue(String value) {

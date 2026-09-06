@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a resource currently being monitored by the Datadog monitor resource.
 class MonitoredResourceResponse {
   /// The ARM id of the resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Reason for why the resource is sending logs (or why it is not sending).
-  final pulumi.Input<String>? reasonForLogsStatus;
+  final pulumi.Input<String?>? reasonForLogsStatus;
   /// Reason for why the resource is sending metrics (or why it is not sending).
-  final pulumi.Input<String>? reasonForMetricsStatus;
+  final pulumi.Input<String?>? reasonForMetricsStatus;
   /// Flag indicating if resource is sending logs to Datadog.
-  final pulumi.Input<bool>? sendingLogs;
+  final pulumi.Input<bool?>? sendingLogs;
   /// Flag indicating if resource is sending metrics to Datadog.
-  final pulumi.Input<bool>? sendingMetrics;
+  final pulumi.Input<bool?>? sendingMetrics;
 
   /// Creates a new [MonitoredResourceResponse].
   /// [id] The ARM id of the resource.

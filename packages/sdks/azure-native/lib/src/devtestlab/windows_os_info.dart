@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a Windows OS.
 class WindowsOsInfo {
   /// The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-  final pulumi.Input<String>? windowsOsState;
+  final pulumi.Input<dynamic>? windowsOsState;
 
   /// Creates a new [WindowsOsInfo].
   /// [windowsOsState] The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
@@ -21,7 +21,7 @@ class WindowsOsInfo {
 
   factory WindowsOsInfo.fromMap(Map<String, dynamic> map) {
     return WindowsOsInfo(
-      windowsOsState: (() { final guardedValue = map['windowsOsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      windowsOsState: (() { final guardedValue = map['windowsOsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

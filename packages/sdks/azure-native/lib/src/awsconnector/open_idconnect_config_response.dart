@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OpenIDConnectConfig
 class OpenIDConnectConfigResponse {
   /// &lt;p&gt;The number of milliseconds that a token is valid after being authenticated.&lt;/p&gt;
-  final pulumi.Input<double>? authTTL;
+  final pulumi.Input<double?>? authTTL;
   /// &lt;p&gt;The client identifier of the relying party at the OpenID identity provider. This identifier is typically obtained when the relying party is registered with the OpenID identity provider. You can specify a regular expression so that AppSync can validate against multiple client identifiers at a time.&lt;/p&gt;
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// &lt;p&gt;The number of milliseconds that a token is valid after it's issued to a user.&lt;/p&gt;
-  final pulumi.Input<double>? iatTTL;
+  final pulumi.Input<double?>? iatTTL;
   /// &lt;p&gt;The issuer for the OIDC configuration. The issuer returned by discovery must exactly match the value of &lt;code&gt;iss&lt;/code&gt; in the ID token.&lt;/p&gt;
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
 
   /// Creates a new [OpenIDConnectConfigResponse].
   /// [authTTL] &lt;p&gt;The number of milliseconds that a token is valid after being authenticated.&lt;/p&gt;
@@ -36,9 +36,9 @@ class OpenIDConnectConfigResponse {
 
   factory OpenIDConnectConfigResponse.fromMap(Map<String, dynamic> map) {
     return OpenIDConnectConfigResponse(
-      authTTL: (() { final guardedValue = map['authTTL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      authTTL: (() { final guardedValue = map['authTTL']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      iatTTL: (() { final guardedValue = map['iatTTL']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      iatTTL: (() { final guardedValue = map['iatTTL']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

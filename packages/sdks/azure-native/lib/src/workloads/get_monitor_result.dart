@@ -13,15 +13,15 @@ class GetMonitorResult {
   /// App service plan configuration
   final AppServicePlanConfigurationResponse? appServicePlanConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Defines the SAP monitor errors.
-  final ErrorDetailResponse errors;
+  final ErrorDetailResponse? errors;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The ARM ID of the Log Analytics Workspace that is used for SAP monitoring.
   final String? logAnalyticsWorkspaceArmId;
   /// Managed resource group configuration
@@ -29,21 +29,21 @@ class GetMonitorResult {
   /// The subnet which the SAP monitor will be deployed in
   final String? monitorSubnet;
   /// The ARM ID of the MSI used for SAP monitoring.
-  final String msiArmId;
+  final String? msiArmId;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// State of provisioning of the SAP monitor.
-  final String provisioningState;
+  final String? provisioningState;
   /// Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET.
   final String? routingPreference;
   /// The ARM ID of the Storage account used for SAP monitoring.
-  final String storageAccountArmId;
+  final String? storageAccountArmId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
   final String? zoneRedundancyPreference;
 
@@ -70,22 +70,22 @@ class GetMonitorResult {
   const GetMonitorResult({
     this.appLocation,
     this.appServicePlanConfiguration,
-    required this.azureApiVersion,
-    required this.errors,
-    required this.id,
+    this.azureApiVersion,
+    this.errors,
+    this.id,
     this.identity,
-    required this.location,
+    this.location,
     this.logAnalyticsWorkspaceArmId,
     this.managedResourceGroupConfiguration,
     this.monitorSubnet,
-    required this.msiArmId,
-    required this.name,
-    required this.provisioningState,
+    this.msiArmId,
+    this.name,
+    this.provisioningState,
     this.routingPreference,
-    required this.storageAccountArmId,
-    required this.systemData,
+    this.storageAccountArmId,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.zoneRedundancyPreference,
   });
 
@@ -93,22 +93,22 @@ class GetMonitorResult {
     return <String, dynamic>{
       'appLocation': ?appLocation,
       'appServicePlanConfiguration': ?appServicePlanConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'errors': errors.toMap(),
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'errors': ?errors?.toMap(),
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
+      'location': ?location,
       'logAnalyticsWorkspaceArmId': ?logAnalyticsWorkspaceArmId,
       'managedResourceGroupConfiguration': ?managedResourceGroupConfiguration?.toMap(),
       'monitorSubnet': ?monitorSubnet,
-      'msiArmId': msiArmId,
-      'name': name,
-      'provisioningState': provisioningState,
+      'msiArmId': ?msiArmId,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'routingPreference': ?routingPreference,
-      'storageAccountArmId': storageAccountArmId,
-      'systemData': systemData.toMap(),
+      'storageAccountArmId': ?storageAccountArmId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'zoneRedundancyPreference': ?zoneRedundancyPreference,
     };
   }
@@ -117,22 +117,22 @@ class GetMonitorResult {
     return GetMonitorResult(
       appLocation: (() { final guardedValue = map['appLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       appServicePlanConfiguration: (() { final guardedValue = map['appServicePlanConfiguration']; if (guardedValue == null) return null; return AppServicePlanConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      errors: ErrorDetailResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logAnalyticsWorkspaceArmId: (() { final guardedValue = map['logAnalyticsWorkspaceArmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedResourceGroupConfiguration: (() { final guardedValue = map['managedResourceGroupConfiguration']; if (guardedValue == null) return null; return ManagedResourceGroupConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       monitorSubnet: (() { final guardedValue = map['monitorSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      msiArmId: map['msiArmId'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      msiArmId: (() { final guardedValue = map['msiArmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routingPreference: (() { final guardedValue = map['routingPreference']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      storageAccountArmId: map['storageAccountArmId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      storageAccountArmId: (() { final guardedValue = map['storageAccountArmId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneRedundancyPreference: (() { final guardedValue = map['zoneRedundancyPreference']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

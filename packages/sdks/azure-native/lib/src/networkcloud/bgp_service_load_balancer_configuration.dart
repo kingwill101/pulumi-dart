@@ -7,25 +7,25 @@ import 'service_load_balancer_bgp_peer.dart';
 
 class BgpServiceLoadBalancerConfiguration {
   /// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-  final pulumi.Input<List<BgpAdvertisement>>? bgpAdvertisements;
+  final pulumi.Input<List<BgpAdvertisement>?>? bgpAdvertisements;
   /// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
-  final pulumi.Input<List<ServiceLoadBalancerBgpPeer>>? bgpPeers;
+  final pulumi.Input<List<ServiceLoadBalancerBgpPeer>?>? bgpPeers;
   /// The indicator to specify if the load balancer peers with the network fabric.
-  final pulumi.Input<String>? fabricPeeringEnabled;
+  final pulumi.Input<dynamic>? fabricPeeringEnabled;
   /// The list of pools of IP addresses that can be allocated to load balancer services.
-  final pulumi.Input<List<IpAddressPool>>? ipAddressPools;
+  final pulumi.Input<List<IpAddressPool>?>? ipAddressPools;
 
   /// Creates a new [BgpServiceLoadBalancerConfiguration].
   /// [bgpAdvertisements] The association of IP address pools to the communities and peers, allowing for announcement of IPs.
   /// [bgpPeers] The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
   /// [fabricPeeringEnabled] The indicator to specify if the load balancer peers with the network fabric.
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  const BgpServiceLoadBalancerConfiguration({
+  BgpServiceLoadBalancerConfiguration({
     this.bgpAdvertisements,
     this.bgpPeers,
-    this.fabricPeeringEnabled,
+    pulumi.Input<dynamic>? fabricPeeringEnabled,
     this.ipAddressPools,
-  });
+  }) : fabricPeeringEnabled = fabricPeeringEnabled ?? pulumi.Input.fromValue('True');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,7 +40,7 @@ class BgpServiceLoadBalancerConfiguration {
     return BgpServiceLoadBalancerConfiguration(
       bgpAdvertisements: (() { final guardedValue = map['bgpAdvertisements']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BgpAdvertisement>(guardedValue, (value) => BgpAdvertisement.fromMap((value as Map).cast<String, dynamic>()))); })(),
       bgpPeers: (() { final guardedValue = map['bgpPeers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceLoadBalancerBgpPeer>(guardedValue, (value) => ServiceLoadBalancerBgpPeer.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      fabricPeeringEnabled: (() { final guardedValue = map['fabricPeeringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fabricPeeringEnabled: (() { final guardedValue = map['fabricPeeringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipAddressPools: (() { final guardedValue = map['ipAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpAddressPool>(guardedValue, (value) => IpAddressPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

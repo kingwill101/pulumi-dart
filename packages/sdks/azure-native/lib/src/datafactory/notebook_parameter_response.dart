@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Notebook parameter.
 class NotebookParameterResponse {
   /// Notebook parameter type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Notebook parameter value. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? value;
 

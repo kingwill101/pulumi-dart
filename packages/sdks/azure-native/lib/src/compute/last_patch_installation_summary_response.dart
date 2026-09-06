@@ -73,14 +73,14 @@ class LastPatchInstallationSummaryResponse {
   factory LastPatchInstallationSummaryResponse.fromMap(Map<String, dynamic> map) {
     return LastPatchInstallationSummaryResponse(
       error: pulumi.Input.fromValue(ApiErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
-      excludedPatchCount: pulumi.Input.fromValue(map['excludedPatchCount'] as int),
-      failedPatchCount: pulumi.Input.fromValue(map['failedPatchCount'] as int),
+      excludedPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['excludedPatchCount'])),
+      failedPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failedPatchCount'])),
       installationActivityId: pulumi.Input.fromValue(map['installationActivityId'] as String),
-      installedPatchCount: pulumi.Input.fromValue(map['installedPatchCount'] as int),
+      installedPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['installedPatchCount'])),
       lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
       maintenanceWindowExceeded: pulumi.Input.fromValue(map['maintenanceWindowExceeded'] as bool),
-      notSelectedPatchCount: pulumi.Input.fromValue(map['notSelectedPatchCount'] as int),
-      pendingPatchCount: pulumi.Input.fromValue(map['pendingPatchCount'] as int),
+      notSelectedPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['notSelectedPatchCount'])),
+      pendingPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pendingPatchCount'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

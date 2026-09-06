@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A possible role to configure sending security notification alerts to
-enum SecurityContactRole {
+enum SecurityContactRole implements pulumi.PulumiEnum<String> {
   accountAdmin("AccountAdmin"),
   serviceAdmin("ServiceAdmin"),
   owner("Owner"),
   contributor("Contributor");
 
   const SecurityContactRole(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityContactRole fromValue(String value) {

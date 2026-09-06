@@ -9,15 +9,15 @@ import 'web_proxy_configuration.dart';
 /// Device configuration.
 class TargetDeviceConfiguration {
   /// Hostname of the device.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Network configuration.
-  final pulumi.Input<NetworkConfiguration>? network;
+  final pulumi.Input<NetworkConfiguration?>? network;
   /// Storage configuration.
-  final pulumi.Input<StorageConfiguration>? storage;
+  final pulumi.Input<StorageConfiguration?>? storage;
   /// Time configuration.
-  final pulumi.Input<TimeConfiguration>? time;
+  final pulumi.Input<TimeConfiguration?>? time;
   /// Web proxy configuration.
-  final pulumi.Input<WebProxyConfiguration>? webProxy;
+  final pulumi.Input<WebProxyConfiguration?>? webProxy;
 
   /// Creates a new [TargetDeviceConfiguration].
   /// [hostName] Hostname of the device.

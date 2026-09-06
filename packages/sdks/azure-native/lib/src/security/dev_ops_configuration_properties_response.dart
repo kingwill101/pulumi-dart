@@ -7,9 +7,9 @@ import 'dev_ops_capability_response.dart';
 /// DevOps Configuration properties.
 class DevOpsConfigurationPropertiesResponse {
   /// Authorization payload.
-  final pulumi.Input<AuthorizationResponse>? authorization;
+  final pulumi.Input<AuthorizationResponse?>? authorization;
   /// AutoDiscovery states.
-  final pulumi.Input<String>? autoDiscovery;
+  final pulumi.Input<String?>? autoDiscovery;
   /// List of capabilities assigned to the DevOps configuration during the discovery process.
   final pulumi.Input<List<DevOpsCapabilityResponse>> capabilities;
   /// The provisioning state of the resource.
@@ -21,14 +21,14 @@ class DevOpsConfigurationPropertiesResponse {
   /// PendingDeletion - Deletion pending.
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Gets or sets resource status message.
   final pulumi.Input<String> provisioningStatusMessage;
   /// Gets or sets time when resource was last checked.
   final pulumi.Input<String> provisioningStatusUpdateTimeUtc;
   /// List of top-level inventory to select when AutoDiscovery is disabled.
   /// This field is ignored when AutoDiscovery is enabled.
-  final pulumi.Input<List<String>>? topLevelInventoryList;
+  final pulumi.Input<List<String>?>? topLevelInventoryList;
 
   /// Creates a new [DevOpsConfigurationPropertiesResponse].
   /// [authorization] Authorization payload.

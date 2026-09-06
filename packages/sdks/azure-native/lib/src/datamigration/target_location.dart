@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target Location details for optional copy of backups
 class TargetLocation {
   /// Storage Account Key.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Resource Id of the storage account copying backups.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [TargetLocation].
   /// [accountKey] Storage Account Key.

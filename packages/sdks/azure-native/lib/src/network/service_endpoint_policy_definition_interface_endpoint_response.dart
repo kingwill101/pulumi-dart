@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service Endpoint policy definitions.
 class ServiceEndpointPolicyDefinitionInterfaceEndpointResponse {
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the service end point policy definition. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   final pulumi.Input<String> provisioningState;
   /// Service endpoint name.
-  final pulumi.Input<String>? service;
+  final pulumi.Input<String?>? service;
   /// A list of service resources.
-  final pulumi.Input<List<String>>? serviceResources;
+  final pulumi.Input<List<String>?>? serviceResources;
 
   /// Creates a new [ServiceEndpointPolicyDefinitionInterfaceEndpointResponse].
   /// [description] A description for this rule. Restricted to 140 chars.

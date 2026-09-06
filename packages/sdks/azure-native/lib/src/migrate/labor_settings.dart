@@ -31,9 +31,9 @@ class LaborSettings {
 
   factory LaborSettings.fromMap(Map<String, dynamic> map) {
     return LaborSettings(
-      hourlyAdminCost: pulumi.Input.fromValue(map['hourlyAdminCost'] as double),
-      physicalServersPerAdmin: pulumi.Input.fromValue(map['physicalServersPerAdmin'] as int),
-      virtualMachinesPerAdmin: pulumi.Input.fromValue(map['virtualMachinesPerAdmin'] as int),
+      hourlyAdminCost: pulumi.Input.fromValue((map['hourlyAdminCost'] as num).toDouble()),
+      physicalServersPerAdmin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['physicalServersPerAdmin'])),
+      virtualMachinesPerAdmin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['virtualMachinesPerAdmin'])),
     );
   }
 }

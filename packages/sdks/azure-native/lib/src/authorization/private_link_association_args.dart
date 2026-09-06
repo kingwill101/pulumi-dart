@@ -11,9 +11,9 @@ class PrivateLinkAssociationArgs {
   /// The management group ID.
   final pulumi.Input<String> groupId;
   /// The ID of the PLA
-  final pulumi.Input<String>? plaId;
+  final pulumi.Input<String?>? plaId;
   /// The properties of the PrivateLinkAssociation.
-  final pulumi.Input<PrivateLinkAssociationProperties>? properties;
+  final pulumi.Input<PrivateLinkAssociationProperties?>? properties;
 
   /// Creates a new [PrivateLinkAssociationArgs].
   /// [groupId] The management group ID.

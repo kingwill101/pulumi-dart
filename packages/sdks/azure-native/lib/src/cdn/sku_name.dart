@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the pricing tier.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   standardVerizon("Standard_Verizon"),
   premiumVerizon("Premium_Verizon"),
   customVerizon("Custom_Verizon"),
@@ -15,6 +17,7 @@ enum SkuName {
   standardPlusAvgBandWidthChinaCdn("StandardPlus_AvgBandWidth_ChinaCdn");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

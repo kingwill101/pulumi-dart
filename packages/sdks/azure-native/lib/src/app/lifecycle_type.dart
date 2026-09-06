@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The lifecycle type of the session pool.
-enum LifecycleType {
+enum LifecycleType implements pulumi.PulumiEnum<String> {
   valueTimed("Timed"),
   valueOnContainerExit("OnContainerExit");
 
   const LifecycleType(this.wireValue);
+  @override
   final String wireValue;
 
   static LifecycleType fromValue(String value) {

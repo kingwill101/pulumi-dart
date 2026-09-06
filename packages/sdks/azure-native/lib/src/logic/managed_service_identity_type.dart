@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of managed service identity. The type 'SystemAssigned' includes an implicitly created identity. The type 'None' will remove any identities from the resource.
-enum ManagedServiceIdentityType {
+enum ManagedServiceIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned"),
   valueNone("None");
 
   const ManagedServiceIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedServiceIdentityType fromValue(String value) {

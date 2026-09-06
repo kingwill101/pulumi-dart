@@ -5,7 +5,7 @@ import 'playbook_action_properties.dart';
 
 /// Describes an automation rule action to run a playbook
 class AutomationRuleRunPlaybookAction {
-  final pulumi.Input<PlaybookActionProperties>? actionConfiguration;
+  final pulumi.Input<PlaybookActionProperties?>? actionConfiguration;
   /// The type of the automation rule action.
   /// Expected value is 'RunPlaybook'.
   final pulumi.Input<String> actionType;
@@ -33,7 +33,7 @@ class AutomationRuleRunPlaybookAction {
     return AutomationRuleRunPlaybookAction(
       actionConfiguration: (() { final guardedValue = map['actionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PlaybookActionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

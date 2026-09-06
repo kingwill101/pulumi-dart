@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Parameter used for deploying a Firewall: Select 'No' to skip deployment, 'Standard' to deploy the Standard SKU, or 'Premium' to deploy the Premium SKU.
-enum FirewallCreationOptions {
+enum FirewallCreationOptions implements pulumi.PulumiEnum<String> {
   none("None"),
   standard("Standard"),
   premium("Premium");
 
   const FirewallCreationOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallCreationOptions fromValue(String value) {

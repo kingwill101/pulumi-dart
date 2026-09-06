@@ -8,11 +8,11 @@ import 'akri_connector_template_helm_upgrade_configuration.dart';
 /// AkriConnectorTemplateHelmAdvancedConfiguration properties.
 class AkriConnectorTemplateHelmAdvancedConfiguration {
   /// Delete operation configuration for the Helm chart.
-  final pulumi.Input<AkriConnectorTemplateHelmDeleteConfiguration>? delete;
+  final pulumi.Input<AkriConnectorTemplateHelmDeleteConfiguration?>? delete;
   /// Install operation configuration for the Helm chart.
-  final pulumi.Input<AkriConnectorTemplateHelmInstallConfiguration>? install;
+  final pulumi.Input<AkriConnectorTemplateHelmInstallConfiguration?>? install;
   /// Upgrade operation configuration for the Helm chart.
-  final pulumi.Input<AkriConnectorTemplateHelmUpgradeConfiguration>? upgrade;
+  final pulumi.Input<AkriConnectorTemplateHelmUpgradeConfiguration?>? upgrade;
 
   /// Creates a new [AkriConnectorTemplateHelmAdvancedConfiguration].
   /// [delete] Delete operation configuration for the Helm chart.

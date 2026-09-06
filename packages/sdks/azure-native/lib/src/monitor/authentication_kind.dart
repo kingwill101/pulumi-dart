@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the authentication setting
-enum AuthenticationKind {
+enum AuthenticationKind implements pulumi.PulumiEnum<String> {
   managedIdentity("ManagedIdentity");
 
   const AuthenticationKind(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationKind fromValue(String value) {

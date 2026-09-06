@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CognitoUserPoolConfig
 class CognitoUserPoolConfig {
   /// &lt;p&gt;A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.&lt;/p&gt;
-  final pulumi.Input<String>? appIdClientRegex;
+  final pulumi.Input<String?>? appIdClientRegex;
   /// &lt;p&gt;The Amazon Web Services Region in which the user pool was created.&lt;/p&gt;
-  final pulumi.Input<String>? awsRegion;
+  final pulumi.Input<String?>? awsRegion;
   /// &lt;p&gt;The user pool ID.&lt;/p&gt;
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [CognitoUserPoolConfig].
   /// [appIdClientRegex] &lt;p&gt;A regular expression for validating the incoming Amazon Cognito user pool app client ID. If this value isn't set, no filtering is applied.&lt;/p&gt;

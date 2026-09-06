@@ -6,17 +6,17 @@ import 'wait_statistics_response.dart';
 /// Description about the errors happen while performing migration validation
 class ExecutionStatisticsResponse {
   /// CPU Time in millisecond(s) for the query execution
-  final pulumi.Input<double>? cpuTimeMs;
+  final pulumi.Input<double?>? cpuTimeMs;
   /// Time taken in millisecond(s) for executing the query
-  final pulumi.Input<double>? elapsedTimeMs;
+  final pulumi.Input<double?>? elapsedTimeMs;
   /// No. of query executions
-  final pulumi.Input<double>? executionCount;
+  final pulumi.Input<double?>? executionCount;
   /// Indicates whether the query resulted in an error
-  final pulumi.Input<bool>? hasErrors;
+  final pulumi.Input<bool?>? hasErrors;
   /// List of sql Errors
-  final pulumi.Input<List<String>>? sqlErrors;
+  final pulumi.Input<List<String>?>? sqlErrors;
   /// Dictionary of sql query execution wait types and the respective statistics
-  final pulumi.Input<Map<String, WaitStatisticsResponse>>? waitStats;
+  final pulumi.Input<Map<String, WaitStatisticsResponse>?>? waitStats;
 
   /// Creates a new [ExecutionStatisticsResponse].
   /// [cpuTimeMs] CPU Time in millisecond(s) for the query execution
@@ -47,9 +47,9 @@ class ExecutionStatisticsResponse {
 
   factory ExecutionStatisticsResponse.fromMap(Map<String, dynamic> map) {
     return ExecutionStatisticsResponse(
-      cpuTimeMs: (() { final guardedValue = map['cpuTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      elapsedTimeMs: (() { final guardedValue = map['elapsedTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpuTimeMs: (() { final guardedValue = map['cpuTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      elapsedTimeMs: (() { final guardedValue = map['elapsedTimeMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      executionCount: (() { final guardedValue = map['executionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       hasErrors: (() { final guardedValue = map['hasErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sqlErrors: (() { final guardedValue = map['sqlErrors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       waitStats: (() { final guardedValue = map['waitStats']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<WaitStatisticsResponse>(guardedValue, (value) => WaitStatisticsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

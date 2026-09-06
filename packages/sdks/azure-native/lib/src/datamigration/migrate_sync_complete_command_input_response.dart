@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input for command that completes sync migration for a database.
 class MigrateSyncCompleteCommandInputResponse {
   /// Time stamp to complete
-  final pulumi.Input<String>? commitTimeStamp;
+  final pulumi.Input<String?>? commitTimeStamp;
   /// Name of database
   final pulumi.Input<String> databaseName;
 

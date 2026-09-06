@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the Azure plan.
 class AzurePlan {
   /// The ID that uniquely identifies a product.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// The sku description.
-  final pulumi.Input<String>? skuDescription;
+  final pulumi.Input<String?>? skuDescription;
   /// The ID that uniquely identifies a sku.
-  final pulumi.Input<String>? skuId;
+  final pulumi.Input<String?>? skuId;
 
   /// Creates a new [AzurePlan].
   /// [productId] The ID that uniquely identifies a product.

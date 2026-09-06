@@ -9,11 +9,11 @@ import 'private_endpoint_connection_request_properties.dart';
 /// {@macro pulumi_apimanagement_private_endpoint_connection_by_name_args_doc}
 class PrivateEndpointConnectionByNameArgs {
   /// Private Endpoint Connection Resource Id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The connection state of the private endpoint connection.
-  final pulumi.Input<PrivateEndpointConnectionRequestProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionRequestProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

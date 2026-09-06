@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TCPFlagField
 class TCPFlagField {
   /// Property flags
-  final pulumi.Input<List<String>>? flags;
+  final pulumi.Input<List<String>?>? flags;
   /// Property masks
-  final pulumi.Input<List<String>>? masks;
+  final pulumi.Input<List<String>?>? masks;
 
   /// Creates a new [TCPFlagField].
   /// [flags] Property flags

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The container config map.
 class ConfigMapResponse {
   /// The key value pairs dictionary in the config map.
-  final pulumi.Input<Map<String, String>>? keyValuePairs;
+  final pulumi.Input<Map<String, String>?>? keyValuePairs;
 
   /// Creates a new [ConfigMapResponse].
   /// [keyValuePairs] The key value pairs dictionary in the config map.

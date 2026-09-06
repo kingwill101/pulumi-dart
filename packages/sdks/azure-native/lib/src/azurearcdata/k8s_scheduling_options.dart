@@ -6,7 +6,7 @@ import 'k8s_resource_requirements.dart';
 /// The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
 class K8sSchedulingOptions {
   /// The kubernetes resource limits and requests used to restrict or reserve resource usage.
-  final pulumi.Input<K8sResourceRequirements>? resources;
+  final pulumi.Input<K8sResourceRequirements?>? resources;
 
   /// Creates a new [K8sSchedulingOptions].
   /// [resources] The kubernetes resource limits and requests used to restrict or reserve resource usage.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the definition of a first party application of the Test Base package.
 class FirstPartyAppDefinition {
   /// The architecture of a first party application of a Test Base Account.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<dynamic>? architecture;
   /// The channel info of a first party application of a Test Base Account.
-  final pulumi.Input<String>? channel;
+  final pulumi.Input<String?>? channel;
   /// Specifies how the first party applications should be inter-operated with user's application.
-  final pulumi.Input<String>? interopExecutionMode;
+  final pulumi.Input<dynamic>? interopExecutionMode;
   /// The media name of a first party application of a Test Base Account.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The ring info of a first party application of a Test Base Account.
-  final pulumi.Input<String>? ring;
+  final pulumi.Input<String?>? ring;
 
   /// Creates a new [FirstPartyAppDefinition].
   /// [architecture] The architecture of a first party application of a Test Base Account.
@@ -21,13 +21,13 @@ class FirstPartyAppDefinition {
   /// [interopExecutionMode] Specifies how the first party applications should be inter-operated with user's application.
   /// [name] The media name of a first party application of a Test Base Account.
   /// [ring] The ring info of a first party application of a Test Base Account.
-  const FirstPartyAppDefinition({
+  FirstPartyAppDefinition({
     this.architecture,
     this.channel,
-    this.interopExecutionMode,
+    pulumi.Input<dynamic>? interopExecutionMode,
     this.name,
     this.ring,
-  });
+  }) : interopExecutionMode = interopExecutionMode ?? pulumi.Input.fromValue('firstPartyAppWithTests');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,9 +41,9 @@ class FirstPartyAppDefinition {
 
   factory FirstPartyAppDefinition.fromMap(Map<String, dynamic> map) {
     return FirstPartyAppDefinition(
-      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       channel: (() { final guardedValue = map['channel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interopExecutionMode: (() { final guardedValue = map['interopExecutionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      interopExecutionMode: (() { final guardedValue = map['interopExecutionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ring: (() { final guardedValue = map['ring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

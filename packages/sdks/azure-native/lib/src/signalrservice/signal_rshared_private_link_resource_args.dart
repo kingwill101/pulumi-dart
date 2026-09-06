@@ -12,13 +12,13 @@ class SignalRSharedPrivateLinkResourceArgs {
   /// The resource id of the resource the shared private link resource is for
   final pulumi.Input<String> privateLinkResourceId;
   /// The request message for requesting approval of the shared private link resource
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.
   final pulumi.Input<String> resourceName;
   /// The name of the shared private link resource.
-  final pulumi.Input<String>? sharedPrivateLinkResourceName;
+  final pulumi.Input<String?>? sharedPrivateLinkResourceName;
 
   /// Creates a new [SignalRSharedPrivateLinkResourceArgs].
   /// [groupId] The group id from the provider of resource the shared private link resource is for

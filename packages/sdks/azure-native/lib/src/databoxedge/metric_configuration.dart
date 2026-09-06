@@ -8,9 +8,9 @@ class MetricConfiguration {
   /// Host name for the IoT hub associated to the device.
   final pulumi.Input<List<MetricCounterSet>> counterSets;
   /// The MDM account to which the counters should be pushed.
-  final pulumi.Input<String>? mdmAccount;
+  final pulumi.Input<String?>? mdmAccount;
   /// The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
-  final pulumi.Input<String>? metricNameSpace;
+  final pulumi.Input<String?>? metricNameSpace;
   /// The Resource ID on which the metrics should be pushed.
   final pulumi.Input<String> resourceId;
 

@@ -6,7 +6,7 @@ class SpringbootappsPropertiesApplicationConfigurations {
   /// The application config file name.
   final pulumi.Input<String> key;
   /// The application config file content, only contains config keys.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SpringbootappsPropertiesApplicationConfigurations].
   /// [key] The application config file name.

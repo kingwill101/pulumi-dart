@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of host for Azure Arc SQL Server
-enum HostType {
+enum HostType implements pulumi.PulumiEnum<String> {
   valueAzureVirtualMachine("Azure Virtual Machine"),
   valueAzureVMWareVirtualMachine("Azure VMWare Virtual Machine"),
   valueAzureKubernetesService("Azure Kubernetes Service"),
@@ -15,6 +17,7 @@ enum HostType {
   valueOther("Other");
 
   const HostType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostType fromValue(String value) {

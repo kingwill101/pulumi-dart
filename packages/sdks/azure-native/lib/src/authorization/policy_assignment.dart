@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_response.dart';
+import 'non_compliance_message_response.dart';
+import 'override_response.dart';
 import 'parameter_values_value_response.dart';
 import 'policy_assignment_args.dart';
+import 'resource_selector_response.dart';
 import 'system_data_response.dart';
 
 /// The policy assignment.
@@ -1801,17 +1804,17 @@ class PolicyAssignment extends pulumi.CustomResource {
   /// The name of the policy assignment.
   late final pulumi.Output<String> name;
   /// The messages that describe why a resource is non-compliant with the policy.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nonComplianceMessages;
+  late final pulumi.Output<List<NonComplianceMessageResponse>?> nonComplianceMessages;
   /// The policy's excluded scopes.
   late final pulumi.Output<List<String>?> notScopes;
   /// The policy property value override.
-  late final pulumi.Output<List<Map<String, dynamic>>?> overrides;
+  late final pulumi.Output<List<OverrideResponse>?> overrides;
   /// The parameter values for the assigned policy rule. The keys are the parameter names.
   late final pulumi.Output<Map<String, ParameterValuesValueResponse>?> parameters;
   /// The ID of the policy definition or policy set definition being assigned.
   late final pulumi.Output<String?> policyDefinitionId;
   /// The resource selector list to filter policies by resource properties.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourceSelectors;
+  late final pulumi.Output<List<ResourceSelectorResponse>?> resourceSelectors;
   /// The scope for the policy assignment.
   late final pulumi.Output<String> scope;
   /// The system metadata relating to this resource.
@@ -1846,12 +1849,45 @@ class PolicyAssignment extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
-    nonComplianceMessages = registerOutput<List<Map<String, dynamic>>?>('nonComplianceMessages');
-    notScopes = registerOutput<List<String>?>('notScopes');
-    overrides = registerOutput<List<Map<String, dynamic>>?>('overrides');
+    nonComplianceMessages = registerOutput<List<NonComplianceMessageResponse>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NonComplianceMessageResponse>(guardedValue, (value) => NonComplianceMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<OverrideResponse>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OverrideResponse>(guardedValue, (value) => OverrideResponse.fromMap((value as Map).cast<String, dynamic>())); });
     parameters = registerOutput<Map<String, ParameterValuesValueResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValuesValueResponse>(guardedValue, (value) => ParameterValuesValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
     policyDefinitionId = registerOutput<String?>('policyDefinitionId');
-    resourceSelectors = registerOutput<List<Map<String, dynamic>>?>('resourceSelectors');
+    resourceSelectors = registerOutput<List<ResourceSelectorResponse>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSelectorResponse>(guardedValue, (value) => ResourceSelectorResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scope = registerOutput<String>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PolicyAssignment] resource.
+  PolicyAssignment.reference(String urn)
+    : super(
+        'azure-native:authorization:PolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignmentType = registerOutput<String?>('assignmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    definitionVersion = registerOutput<String?>('definitionVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effectiveDefinitionVersion = registerOutput<String>('effectiveDefinitionVersion');
+    enforcementMode = registerOutput<String?>('enforcementMode');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceId = registerOutput<String>('instanceId');
+    latestDefinitionVersion = registerOutput<String>('latestDefinitionVersion');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    nonComplianceMessages = registerOutput<List<NonComplianceMessageResponse>?>('nonComplianceMessages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NonComplianceMessageResponse>(guardedValue, (value) => NonComplianceMessageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    notScopes = registerOutput<List<String>?>('notScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    overrides = registerOutput<List<OverrideResponse>?>('overrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OverrideResponse>(guardedValue, (value) => OverrideResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    parameters = registerOutput<Map<String, ParameterValuesValueResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValuesValueResponse>(guardedValue, (value) => ParameterValuesValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionId = registerOutput<String?>('policyDefinitionId');
+    resourceSelectors = registerOutput<List<ResourceSelectorResponse>?>('resourceSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceSelectorResponse>(guardedValue, (value) => ResourceSelectorResponse.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String>('scope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

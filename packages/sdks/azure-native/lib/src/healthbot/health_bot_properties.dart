@@ -6,7 +6,7 @@ import 'key_vault_properties.dart';
 /// The properties of a Azure Health Bot. The Health Bot Service is a cloud platform that empowers developers in Healthcare organizations to build and deploy their compliant, AI-powered virtual health assistants and health bots, that help them improve processes and reduce costs.
 class HealthBotProperties {
   /// KeyVault properties for the resource encryption.
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [HealthBotProperties].
   /// [keyVaultProperties] KeyVault properties for the resource encryption.

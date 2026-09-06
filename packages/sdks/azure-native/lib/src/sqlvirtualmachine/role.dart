@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Replica Role in availability group.
-enum Role {
+enum Role implements pulumi.PulumiEnum<String> {
   primary("Primary"),
   secondary("Secondary");
 
   const Role(this.wireValue);
+  @override
   final String wireValue;
 
   static Role fromValue(String value) {

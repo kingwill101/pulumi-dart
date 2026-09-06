@@ -7,9 +7,9 @@ import 'virtual_machine_configuration.dart';
 /// Gets or sets the database configuration.
 class DatabaseConfiguration {
   /// The database type.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<dynamic>? databaseType;
   /// Gets or sets the disk configuration.
-  final pulumi.Input<DiskConfiguration>? diskConfiguration;
+  final pulumi.Input<DiskConfiguration?>? diskConfiguration;
   /// The number of database VMs.
   final pulumi.Input<double> instanceCount;
   /// The subnet id.
@@ -43,9 +43,9 @@ class DatabaseConfiguration {
 
   factory DatabaseConfiguration.fromMap(Map<String, dynamic> map) {
     return DatabaseConfiguration(
-      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       diskConfiguration: (() { final guardedValue = map['diskConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as double),
+      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toDouble()),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       virtualMachineConfiguration: pulumi.Input.fromValue(VirtualMachineConfiguration.fromMap((map['virtualMachineConfiguration']! as Map).cast<String, dynamic>())),
     );

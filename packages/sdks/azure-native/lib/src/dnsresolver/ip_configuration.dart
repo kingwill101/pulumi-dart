@@ -6,9 +6,9 @@ import 'sub_resource.dart';
 /// IP configuration.
 class IpConfiguration {
   /// Private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Private IP address allocation method.
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<dynamic>? privateIpAllocationMethod;
   /// The reference to the subnet bound to the IP configuration.
   final pulumi.Input<SubResource> subnet;
 
@@ -16,11 +16,11 @@ class IpConfiguration {
   /// [privateIpAddress] Private IP address of the IP configuration.
   /// [privateIpAllocationMethod] Private IP address allocation method.
   /// [subnet] The reference to the subnet bound to the IP configuration.
-  const IpConfiguration({
+  IpConfiguration({
     this.privateIpAddress,
-    this.privateIpAllocationMethod,
+    pulumi.Input<dynamic>? privateIpAllocationMethod,
     required this.subnet,
-  });
+  }) : privateIpAllocationMethod = privateIpAllocationMethod ?? pulumi.Input.fromValue('Dynamic');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class IpConfiguration {
   factory IpConfiguration.fromMap(Map<String, dynamic> map) {
     return IpConfiguration(
       privateIpAddress: (() { final guardedValue = map['privateIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateIpAllocationMethod: (() { final guardedValue = map['privateIpAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIpAllocationMethod: (() { final guardedValue = map['privateIpAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subnet: pulumi.Input.fromValue(SubResource.fromMap((map['subnet']! as Map).cast<String, dynamic>())),
     );
   }

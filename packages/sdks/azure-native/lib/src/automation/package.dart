@@ -261,7 +261,31 @@ class Package extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sizeInBytes = registerOutput<double?>('sizeInBytes');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Package] resource.
+  Package.reference(String urn)
+    : super(
+        'azure-native:automation:Package',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allOf = registerOutput<SystemDataResponse>('allOf', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentLink = registerOutput<ContentLinkResponse?>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    default_ = registerOutput<bool?>('default');
+    error = registerOutput<PackageErrorInfoResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PackageErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sizeInBytes = registerOutput<double?>('sizeInBytes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

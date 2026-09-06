@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the specific object - used for deserializing
-enum ResourcePropertiesObjectType {
+enum ResourcePropertiesObjectType implements pulumi.PulumiEnum<String> {
   valueDefaultResourceProperties("DefaultResourceProperties");
 
   const ResourcePropertiesObjectType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourcePropertiesObjectType fromValue(String value) {

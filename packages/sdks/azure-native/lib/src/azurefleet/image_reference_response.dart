@@ -10,23 +10,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ImageReferenceResponse {
   /// Specified the community gallery image unique id for vm deployment. This can be
   /// fetched from community gallery image GET call.
-  final pulumi.Input<String>? communityGalleryImageId;
+  final pulumi.Input<String?>? communityGalleryImageId;
   /// Specifies in decimal numbers, the version of platform image or marketplace
   /// image used to create the virtual machine. This readonly field differs from 'version',
   /// only if the value specified in 'version' field is 'latest'.
   final pulumi.Input<String> exactVersion;
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the offer of the platform image or marketplace image used to create
   /// the virtual machine.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// The image publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Specified the shared gallery image unique id for vm deployment. This can be
   /// fetched from shared gallery image GET call.
-  final pulumi.Input<String>? sharedGalleryImageId;
+  final pulumi.Input<String?>? sharedGalleryImageId;
   /// The image SKU.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Specifies the version of the platform image or marketplace image used to create
   /// the virtual machine. The allowed formats are Major.Minor.Build or 'latest'.
   /// Major, Minor, and Build are decimal numbers. Specify 'latest' to use the latest
@@ -37,7 +37,7 @@ class ImageReferenceResponse {
   /// version of gallery image, just set
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/images/{imageName}'
   /// in the 'id' field without version input.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImageReferenceResponse].
   /// [communityGalleryImageId] Specified the community gallery image unique id for vm deployment. This can be

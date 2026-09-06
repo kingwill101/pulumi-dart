@@ -13,9 +13,9 @@ import 'scope.dart';
 /// {@macro pulumi_kubernetesconfiguration_extension_args_doc}
 class ExtensionArgs {
   /// Identity of the Extension resource in an AKS cluster
-  final pulumi.Input<ExtensionAksAssignedIdentity>? aksAssignedIdentity;
+  final pulumi.Input<ExtensionAksAssignedIdentity?>? aksAssignedIdentity;
   /// Flag to note if this extension participates in auto upgrade of minor version, or not.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// The name of the kubernetes cluster.
   final pulumi.Input<String> clusterName;
   /// The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
@@ -23,27 +23,27 @@ class ExtensionArgs {
   /// The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   final pulumi.Input<String> clusterRp;
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
-  final pulumi.Input<Map<String, String>>? configurationProtectedSettings;
+  final pulumi.Input<Map<String, String>?>? configurationProtectedSettings;
   /// Configuration settings, as name-value pairs for configuring this extension.
-  final pulumi.Input<Map<String, String>>? configurationSettings;
+  final pulumi.Input<Map<String, String>?>? configurationSettings;
   /// Name of the Extension.
-  final pulumi.Input<String>? extensionName;
+  final pulumi.Input<String?>? extensionName;
   /// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
-  final pulumi.Input<String>? extensionType;
+  final pulumi.Input<String?>? extensionType;
   /// Identity of the Extension resource
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The plan information.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
-  final pulumi.Input<String>? releaseTrain;
+  final pulumi.Input<String?>? releaseTrain;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Scope at which the extension is installed.
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Status from this extension.
-  final pulumi.Input<List<ExtensionStatus>>? statuses;
+  final pulumi.Input<List<ExtensionStatus>?>? statuses;
   /// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ExtensionArgs].
   /// [aksAssignedIdentity] Identity of the Extension resource in an AKS cluster
@@ -62,9 +62,9 @@ class ExtensionArgs {
   /// [scope] Scope at which the extension is installed.
   /// [statuses] Status from this extension.
   /// [version] User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
-  const ExtensionArgs({
+  ExtensionArgs({
     this.aksAssignedIdentity,
-    this.autoUpgradeMinorVersion,
+    pulumi.Input<bool?>? autoUpgradeMinorVersion,
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,
@@ -74,12 +74,12 @@ class ExtensionArgs {
     this.extensionType,
     this.identity,
     this.plan,
-    this.releaseTrain,
+    pulumi.Input<String?>? releaseTrain,
     required this.resourceGroupName,
     this.scope,
     this.statuses,
     this.version,
-  });
+  }) : autoUpgradeMinorVersion = autoUpgradeMinorVersion ?? pulumi.Input.fromValue(true), releaseTrain = releaseTrain ?? pulumi.Input.fromValue('Stable');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

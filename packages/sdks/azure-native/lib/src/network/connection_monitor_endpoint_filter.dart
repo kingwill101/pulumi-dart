@@ -6,9 +6,9 @@ import 'connection_monitor_endpoint_filter_item.dart';
 /// Describes the connection monitor endpoint filter.
 class ConnectionMonitorEndpointFilter {
   /// List of items in the filter.
-  final pulumi.Input<List<ConnectionMonitorEndpointFilterItem>>? items;
+  final pulumi.Input<List<ConnectionMonitorEndpointFilterItem>?>? items;
   /// The behavior of the endpoint filter. Currently only 'Include' is supported.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [ConnectionMonitorEndpointFilter].
   /// [items] List of items in the filter.
@@ -28,7 +28,7 @@ class ConnectionMonitorEndpointFilter {
   factory ConnectionMonitorEndpointFilter.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorEndpointFilter(
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectionMonitorEndpointFilterItem>(guardedValue, (value) => ConnectionMonitorEndpointFilterItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

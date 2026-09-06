@@ -31,7 +31,7 @@ class SqlServerSinkResponse {
   /// Expected value is 'SqlServerSink'.
   final pulumi.Input<String> type;
   /// SQL upsert settings.
-  final pulumi.Input<SqlUpsertSettingsResponse>? upsertSettings;
+  final pulumi.Input<SqlUpsertSettingsResponse?>? upsertSettings;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

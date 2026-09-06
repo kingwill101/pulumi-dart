@@ -7,9 +7,9 @@ class ConnectionPropertiesResponse {
   /// The connection status.
   final pulumi.Input<String> connectionStatus;
   /// A description for the Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of job definitions associated with this connection.
-  final pulumi.Input<List<String>>? jobList;
+  final pulumi.Input<List<String>?>? jobList;
   /// The PrivateEndpointName associated with the connection.
   final pulumi.Input<String> privateEndpointName;
   /// The privateEndpoint resource Id

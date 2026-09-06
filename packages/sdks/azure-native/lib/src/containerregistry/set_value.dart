@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a overridable value that can be passed to a task template.
 class SetValue {
   /// Flag to indicate whether the value represents a secret or not.
-  final pulumi.Input<bool>? isSecret;
+  final pulumi.Input<bool?>? isSecret;
   /// The name of the overridable value.
   final pulumi.Input<String> name;
   /// The overridable value.
@@ -15,11 +15,11 @@ class SetValue {
   /// [isSecret] Flag to indicate whether the value represents a secret or not.
   /// [name] The name of the overridable value.
   /// [value] The overridable value.
-  const SetValue({
-    this.isSecret,
+  SetValue({
+    pulumi.Input<bool?>? isSecret,
     required this.name,
     required this.value,
-  });
+  }) : isSecret = isSecret ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

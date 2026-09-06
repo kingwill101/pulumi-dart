@@ -10,7 +10,7 @@ class MccCacheNodeIssueHistoryPropertiesResponse {
   /// Mcc customer resource Id.
   final pulumi.Input<String> customerId;
   /// Cache node resource issue details history.
-  final pulumi.Input<List<MccIssueResponse>>? mccIssueHistory;
+  final pulumi.Input<List<MccIssueResponse>?>? mccIssueHistory;
 
   /// Creates a new [MccCacheNodeIssueHistoryPropertiesResponse].
   /// [cacheNodeId] Mcc cache node resource Id.

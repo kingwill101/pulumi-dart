@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The resource sub type.
-enum ResourceSubType {
+enum ResourceSubType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   asyncOperation("AsyncOperation");
 
   const ResourceSubType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceSubType fromValue(String value) {

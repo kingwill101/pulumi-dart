@@ -6,17 +6,17 @@ import 'group_members_item_response.dart';
 /// The network configuration group resource
 class ConfigurationGroupResponse {
   /// Network group conditional filter.
-  final pulumi.Input<String>? conditionalMembership;
+  final pulumi.Input<String?>? conditionalMembership;
   /// A description of the network group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A friendly name for the network group.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Group members of network group.
-  final pulumi.Input<List<GroupMembersItemResponse>>? groupMembers;
+  final pulumi.Input<List<GroupMembersItemResponse>?>? groupMembers;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Group member type.
-  final pulumi.Input<String>? memberType;
+  final pulumi.Input<String?>? memberType;
   /// The provisioning state of the scope assignment resource.
   final pulumi.Input<String> provisioningState;
 

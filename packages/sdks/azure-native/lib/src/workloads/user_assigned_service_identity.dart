@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed service identity (user assigned identities)
 class UserAssignedServiceIdentity {
   /// Type of manage identity
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// User assigned identities dictionary
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [UserAssignedServiceIdentity].
   /// [type] Type of manage identity
@@ -26,7 +26,7 @@ class UserAssignedServiceIdentity {
 
   factory UserAssignedServiceIdentity.fromMap(Map<String, dynamic> map) {
     return UserAssignedServiceIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

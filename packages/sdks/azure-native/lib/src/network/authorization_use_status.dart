@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authorization use status.
-enum AuthorizationUseStatus {
+enum AuthorizationUseStatus implements pulumi.PulumiEnum<String> {
   valueAvailable("Available"),
   valueInUse("InUse");
 
   const AuthorizationUseStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthorizationUseStatus fromValue(String value) {

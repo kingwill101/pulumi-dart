@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The classification reason the incident was closed with
-enum IncidentClassificationReason {
+enum IncidentClassificationReason implements pulumi.PulumiEnum<String> {
   valueSuspiciousActivity("SuspiciousActivity"),
   valueSuspiciousButExpected("SuspiciousButExpected"),
   valueIncorrectAlertLogic("IncorrectAlertLogic"),
   valueInaccurateData("InaccurateData");
 
   const IncidentClassificationReason(this.wireValue);
+  @override
   final String wireValue;
 
   static IncidentClassificationReason fromValue(String value) {

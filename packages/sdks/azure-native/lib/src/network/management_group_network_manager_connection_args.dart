@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_management_group_network_manager_connection_args_doc}
 class ManagementGroupNetworkManagerConnectionArgs {
   /// A description of the network manager connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The management group Id which uniquely identify the Microsoft Azure management group.
   final pulumi.Input<String> managementGroupId;
   /// Name for the network manager connection.
-  final pulumi.Input<String>? networkManagerConnectionName;
+  final pulumi.Input<String?>? networkManagerConnectionName;
   /// Network Manager Id.
-  final pulumi.Input<String>? networkManagerId;
+  final pulumi.Input<String?>? networkManagerId;
 
   /// Creates a new [ManagementGroupNetworkManagerConnectionArgs].
   /// [description] A description of the network manager connection.

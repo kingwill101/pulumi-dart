@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SubnetMapping
 class SubnetMapping {
   /// [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
-  final pulumi.Input<String>? allocationId;
+  final pulumi.Input<String?>? allocationId;
   /// [Network Load Balancers] The IPv6 address.
-  final pulumi.Input<String>? iPv6Address;
+  final pulumi.Input<String?>? iPv6Address;
   /// A IPAddressType
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// [Network Load Balancers] The private IPv4 address for an internal load balancer.
-  final pulumi.Input<String>? privateIPv4Address;
+  final pulumi.Input<String?>? privateIPv4Address;
   /// A SubnetId.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [SubnetMapping].
   /// [allocationId] [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.

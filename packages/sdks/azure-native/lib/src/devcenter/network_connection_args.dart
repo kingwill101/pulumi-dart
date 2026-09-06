@@ -8,27 +8,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devcenter_network_connection_args_doc}
 class NetworkConnectionArgs {
   /// AAD Join type.
-  final pulumi.Input<String> domainJoinType;
+  final pulumi.Input<dynamic> domainJoinType;
   /// Active Directory domain name
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The password for the account used to join domain
-  final pulumi.Input<String>? domainPassword;
+  final pulumi.Input<String?>? domainPassword;
   /// The username of an Active Directory account (user or service account) that has permissions to create computer objects in Active Directory. Required format: admin@contoso.com.
-  final pulumi.Input<String>? domainUsername;
+  final pulumi.Input<String?>? domainUsername;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Network Connection that can be applied to a Pool.
-  final pulumi.Input<String>? networkConnectionName;
+  final pulumi.Input<String?>? networkConnectionName;
   /// The name for resource group where NICs will be placed.
-  final pulumi.Input<String>? networkingResourceGroupName;
+  final pulumi.Input<String?>? networkingResourceGroupName;
   /// Active Directory domain Organization Unit (OU)
-  final pulumi.Input<String>? organizationUnit;
+  final pulumi.Input<String?>? organizationUnit;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The subnet to attach Virtual Machines to
   final pulumi.Input<String> subnetId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkConnectionArgs].
   /// [domainJoinType] AAD Join type.
@@ -74,7 +74,7 @@ class NetworkConnectionArgs {
 
   factory NetworkConnectionArgs.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionArgs(
-      domainJoinType: pulumi.Input.fromValue(map['domainJoinType'] as String),
+      domainJoinType: pulumi.Input.fromValue(map['domainJoinType']),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainPassword: (() { final guardedValue = map['domainPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainUsername: (() { final guardedValue = map['domainUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

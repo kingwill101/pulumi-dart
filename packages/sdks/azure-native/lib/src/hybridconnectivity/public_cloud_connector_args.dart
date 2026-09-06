@@ -11,15 +11,15 @@ class PublicCloudConnectorArgs {
   /// Cloud profile for AWS.
   final pulumi.Input<AwsCloudProfile> awsCloudProfile;
   /// Host cloud the public cloud connector.
-  final pulumi.Input<String> hostType;
+  final pulumi.Input<dynamic> hostType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Represent public cloud connectors resource.
-  final pulumi.Input<String>? publicCloudConnector;
+  final pulumi.Input<String?>? publicCloudConnector;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PublicCloudConnectorArgs].
   /// [awsCloudProfile] Cloud profile for AWS.
@@ -51,7 +51,7 @@ class PublicCloudConnectorArgs {
   factory PublicCloudConnectorArgs.fromMap(Map<String, dynamic> map) {
     return PublicCloudConnectorArgs(
       awsCloudProfile: pulumi.Input.fromValue(AwsCloudProfile.fromMap((map['awsCloudProfile']! as Map).cast<String, dynamic>())),
-      hostType: pulumi.Input.fromValue(map['hostType'] as String),
+      hostType: pulumi.Input.fromValue(map['hostType']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicCloudConnector: (() { final guardedValue = map['publicCloudConnector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

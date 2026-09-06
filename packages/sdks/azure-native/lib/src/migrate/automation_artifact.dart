@@ -6,12 +6,12 @@ import 'azure_file_share_hydration_profile.dart';
 /// Class for automation artifact.
 class AutomationArtifact {
   /// Gets or sets the artifacts.
-  final pulumi.Input<Map<String, String>>? artifacts;
+  final pulumi.Input<Map<String, String>?>? artifacts;
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final pulumi.Input<AzureFileShareHydrationProfile>? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfile?>? azureFileShareProfile;
   /// Gets or sets the status of automation artifacts.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [AutomationArtifact].
   /// [artifacts] Gets or sets the artifacts.
@@ -35,7 +35,7 @@ class AutomationArtifact {
     return AutomationArtifact(
       artifacts: (() { final guardedValue = map['artifacts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       azureFileShareProfile: (() { final guardedValue = map['azureFileShareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFileShareHydrationProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -7,13 +7,13 @@ import 'virtual_network_subnet_arm_reference_response.dart';
 /// FrontendIP Configuration object for a load balancer.
 class FrontendIPConfigurationPropertiesResponse {
   /// Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// privateIPAllocationMethod - set to Static for requesting a specific IP
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// Public IP
-  final pulumi.Input<PublicIPAddressArmReferenceResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressArmReferenceResponse?>? publicIPAddress;
   /// subnet - the subnet from which to allocate the private IP
-  final pulumi.Input<VirtualNetworkSubnetArmReferenceResponse>? subnet;
+  final pulumi.Input<VirtualNetworkSubnetArmReferenceResponse?>? subnet;
 
   /// Creates a new [FrontendIPConfigurationPropertiesResponse].
   /// [privateIPAddress] Private IP Address that was allocated (dynamic) or is to be allocated (static) from the subnet.

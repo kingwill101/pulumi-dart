@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The API resource policies.
 class ApiResourcePoliciesResponse {
   /// The API level only policies XML as embedded content.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The content link to the policies.
-  final pulumi.Input<String>? contentLink;
+  final pulumi.Input<String?>? contentLink;
 
   /// Creates a new [ApiResourcePoliciesResponse].
   /// [content] The API level only policies XML as embedded content.

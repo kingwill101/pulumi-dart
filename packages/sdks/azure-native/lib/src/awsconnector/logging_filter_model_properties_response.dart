@@ -6,9 +6,9 @@ import 'filter_wafv2_logging_configuration_response.dart';
 /// Definition of LoggingFilterModelProperties
 class LoggingFilterModelPropertiesResponse {
   /// Default handling for logs that don't match any of the specified filtering conditions.
-  final pulumi.Input<String>? defaultBehavior;
+  final pulumi.Input<String?>? defaultBehavior;
   /// The filters that you want to apply to the logs.
-  final pulumi.Input<List<FilterWafv2LoggingConfigurationResponse>>? filters;
+  final pulumi.Input<List<FilterWafv2LoggingConfigurationResponse>?>? filters;
 
   /// Creates a new [LoggingFilterModelPropertiesResponse].
   /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions.

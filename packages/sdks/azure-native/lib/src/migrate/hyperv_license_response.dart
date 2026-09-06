@@ -26,7 +26,7 @@ class HypervLicenseResponse {
 
   factory HypervLicenseResponse.fromMap(Map<String, dynamic> map) {
     return HypervLicenseResponse(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
       licenseType: pulumi.Input.fromValue(map['licenseType'] as String),
     );
   }

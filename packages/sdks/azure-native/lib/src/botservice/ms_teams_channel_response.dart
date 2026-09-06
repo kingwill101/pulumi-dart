@@ -9,11 +9,11 @@ class MsTeamsChannelResponse {
   /// Expected value is 'MsTeamsChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to Microsoft Teams channel resource
-  final pulumi.Input<MsTeamsChannelPropertiesResponse>? properties;
+  final pulumi.Input<MsTeamsChannelPropertiesResponse?>? properties;
   /// Provisioning state of the resource
   final pulumi.Input<String> provisioningState;
 
@@ -23,13 +23,13 @@ class MsTeamsChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Microsoft Teams channel resource
   /// [provisioningState] Provisioning state of the resource
-  const MsTeamsChannelResponse({
+  MsTeamsChannelResponse({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
     required this.provisioningState,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

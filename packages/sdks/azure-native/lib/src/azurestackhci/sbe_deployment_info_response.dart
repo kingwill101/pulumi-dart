@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Solution builder extension (SBE) package and manifest information for the solution builder extension staged for AzureStackHCI cluster deployment.
 class SbeDeploymentInfoResponse {
   /// SBE family name.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// SBE manifest publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// SBE Manifest Creation Date.
-  final pulumi.Input<String>? sbeManifestCreationDate;
+  final pulumi.Input<String?>? sbeManifestCreationDate;
   /// SBE Manifest Source.
-  final pulumi.Input<String>? sbeManifestSource;
+  final pulumi.Input<String?>? sbeManifestSource;
   /// SBE package version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [SbeDeploymentInfoResponse].
   /// [family] SBE family name.

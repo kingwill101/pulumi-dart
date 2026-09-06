@@ -6,7 +6,7 @@ import 'linux_operating_system_profile_response.dart';
 /// The Linux operation systems profile.
 class OsProfileResponse {
   /// The Linux OS profile.
-  final pulumi.Input<LinuxOperatingSystemProfileResponse>? linuxOperatingSystemProfile;
+  final pulumi.Input<LinuxOperatingSystemProfileResponse?>? linuxOperatingSystemProfile;
 
   /// Creates a new [OsProfileResponse].
   /// [linuxOperatingSystemProfile] The Linux OS profile.

@@ -9,25 +9,25 @@ import 'event.dart';
 /// {@macro pulumi_devtestlab_notification_channel_args_doc}
 class NotificationChannelArgs {
   /// Description of notification.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
-  final pulumi.Input<String>? emailRecipient;
+  final pulumi.Input<String?>? emailRecipient;
   /// The list of event for which this notification is enabled.
-  final pulumi.Input<List<Event>>? events;
+  final pulumi.Input<List<Event>?>? events;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the notification channel.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The locale to use when sending a notification (fallback for unsupported languages is EN).
-  final pulumi.Input<String>? notificationLocale;
+  final pulumi.Input<String?>? notificationLocale;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The webhook URL to send notifications to.
-  final pulumi.Input<String>? webHookUrl;
+  final pulumi.Input<String?>? webHookUrl;
 
   /// Creates a new [NotificationChannelArgs].
   /// [description] Description of notification.

@@ -6,21 +6,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// depending on each OAuth2 provider's implementation.
 class ConnectionOAuth2Response {
   /// Required by Concur connection category
-  final pulumi.Input<String>? authUrl;
+  final pulumi.Input<String?>? authUrl;
   /// Client id in the format of UUID
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? clientSecret;
   /// Required by GoogleAdWords connection category
-  final pulumi.Input<String>? developerToken;
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? developerToken;
+  final pulumi.Input<String?>? password;
   /// Required by GoogleBigQuery, GoogleAdWords, Hubspot, QuickBooks, Square, Xero, Zoho
   /// where user needs to get RefreshToken offline
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// Required by QuickBooks and Xero connection categories
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Concur, ServiceNow auth server AccessToken grant type is 'Password'
   /// which requires UsernamePassword
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ConnectionOAuth2Response].
   /// [authUrl] Required by Concur connection category

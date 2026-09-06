@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enterprise settings of a Grafana instance
 class EnterpriseConfigurationsResponse {
   /// The AutoRenew setting of the Enterprise subscription
-  final pulumi.Input<String>? marketplaceAutoRenew;
+  final pulumi.Input<String?>? marketplaceAutoRenew;
   /// The Plan Id of the Azure Marketplace subscription for the Enterprise plugins
-  final pulumi.Input<String>? marketplacePlanId;
+  final pulumi.Input<String?>? marketplacePlanId;
 
   /// Creates a new [EnterpriseConfigurationsResponse].
   /// [marketplaceAutoRenew] The AutoRenew setting of the Enterprise subscription

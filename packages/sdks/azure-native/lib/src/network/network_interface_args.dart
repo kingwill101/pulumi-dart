@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location.dart';
 import 'network_interface_dns_settings.dart';
 import 'network_interface_ipconfiguration.dart';
-import 'network_security_group_network.dart';
-import 'private_link_service_network.dart';
+import 'network_security_group.dart';
+import 'private_link_service.dart';
 
 /// {@template pulumi_network_network_interface_args_doc}
 /// The set of arguments for NetworkInterface.
@@ -13,41 +13,41 @@ import 'private_link_service_network.dart';
 /// {@macro pulumi_network_network_interface_args_doc}
 class NetworkInterfaceArgs {
   /// Auxiliary mode of Network Interface resource.
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<dynamic>? auxiliaryMode;
   /// Auxiliary sku of Network Interface resource.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<dynamic>? auxiliarySku;
   /// Indicates whether to disable tcp state tracking.
-  final pulumi.Input<bool>? disableTcpStateTracking;
+  final pulumi.Input<bool?>? disableTcpStateTracking;
   /// The DNS settings in network interface.
-  final pulumi.Input<NetworkInterfaceDnsSettings>? dnsSettings;
+  final pulumi.Input<NetworkInterfaceDnsSettings?>? dnsSettings;
   /// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Indicates whether IP forwarding is enabled on this network interface.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// The extended location of the network interface.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of IPConfigurations of the network interface.
-  final pulumi.Input<List<NetworkInterfaceIPConfiguration>>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfiguration>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Migration phase of Network Interface resource.
-  final pulumi.Input<String>? migrationPhase;
+  final pulumi.Input<dynamic>? migrationPhase;
   /// The name of the network interface.
-  final pulumi.Input<String>? networkInterfaceName;
+  final pulumi.Input<String?>? networkInterfaceName;
   /// The reference to the NetworkSecurityGroup resource.
-  final pulumi.Input<NetworkSecurityGroupNetwork>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroup?>? networkSecurityGroup;
   /// Type of Network Interface resource.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<dynamic>? nicType;
   /// Privatelinkservice of the network interface resource.
-  final pulumi.Input<PrivateLinkServiceNetwork>? privateLinkService;
+  final pulumi.Input<PrivateLinkService?>? privateLinkService;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// WorkloadType of the NetworkInterface for BareMetal resources
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [NetworkInterfaceArgs].
   /// [auxiliaryMode] Auxiliary mode of Network Interface resource.
@@ -103,9 +103,9 @@ class NetworkInterfaceArgs {
       'location': ?location,
       'migrationPhase': ?migrationPhase,
       'networkInterfaceName': ?networkInterfaceName,
-      'networkSecurityGroup': ?networkSecurityGroup,
+      'networkSecurityGroup': ?pulumi.Input.mapOptionalInputValue<NetworkSecurityGroup, Map<String, dynamic>>(networkSecurityGroup, (value) => value.toMap()),
       'nicType': ?nicType,
-      'privateLinkService': ?privateLinkService,
+      'privateLinkService': ?pulumi.Input.mapOptionalInputValue<PrivateLinkService, Map<String, dynamic>>(privateLinkService, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'workloadType': ?workloadType,
@@ -114,8 +114,8 @@ class NetworkInterfaceArgs {
 
   factory NetworkInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceArgs(
-      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disableTcpStateTracking: (() { final guardedValue = map['disableTcpStateTracking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableAcceleratedNetworking: (() { final guardedValue = map['enableAcceleratedNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -124,11 +124,11 @@ class NetworkInterfaceArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkInterfaceIPConfiguration>(guardedValue, (value) => NetworkInterfaceIPConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      migrationPhase: (() { final guardedValue = map['migrationPhase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrationPhase: (() { final guardedValue = map['migrationPhase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkInterfaceName: (() { final guardedValue = map['networkInterfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkSecurityGroup: (() { final guardedValue = map['networkSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as NetworkSecurityGroupNetwork); })(),
-      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateLinkService: (() { final guardedValue = map['privateLinkService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as PrivateLinkServiceNetwork); })(),
+      networkSecurityGroup: (() { final guardedValue = map['networkSecurityGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkSecurityGroup.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      privateLinkService: (() { final guardedValue = map['privateLinkService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workloadType: (() { final guardedValue = map['workloadType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

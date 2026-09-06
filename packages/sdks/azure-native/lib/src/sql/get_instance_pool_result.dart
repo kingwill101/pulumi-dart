@@ -5,29 +5,29 @@ import 'sku_response.dart';
 /// Result data returned by getInstancePool.
 class GetInstancePoolResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The Dns Zone that the managed instance pool is in.
-  final String dnsZone;
+  final String? dnsZone;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The license type. Possible values are 'LicenseIncluded' (price for SQL license is included) and 'BasePrice' (without SQL license price).
-  final String licenseType;
+  final String? licenseType;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Specifies maintenance configuration id to apply to this managed instance.
   final String? maintenanceConfigurationId;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The name and tier of the SKU.
   final SkuResponse? sku;
   /// Resource ID of the subnet to place this instance pool in.
-  final String subnetId;
+  final String? subnetId;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// Count of vCores belonging to this instance pool.
-  final int vCores;
+  final int? vCores;
 
   /// Creates a new [GetInstancePoolResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,51 +43,51 @@ class GetInstancePoolResult {
   /// [type] Resource type.
   /// [vCores] Count of vCores belonging to this instance pool.
   const GetInstancePoolResult({
-    required this.azureApiVersion,
-    required this.dnsZone,
-    required this.id,
-    required this.licenseType,
-    required this.location,
+    this.azureApiVersion,
+    this.dnsZone,
+    this.id,
+    this.licenseType,
+    this.location,
     this.maintenanceConfigurationId,
-    required this.name,
+    this.name,
     this.sku,
-    required this.subnetId,
+    this.subnetId,
     this.tags,
-    required this.type,
-    required this.vCores,
+    this.type,
+    this.vCores,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dnsZone': dnsZone,
-      'id': id,
-      'licenseType': licenseType,
-      'location': location,
+      'azureApiVersion': ?azureApiVersion,
+      'dnsZone': ?dnsZone,
+      'id': ?id,
+      'licenseType': ?licenseType,
+      'location': ?location,
       'maintenanceConfigurationId': ?maintenanceConfigurationId,
-      'name': name,
+      'name': ?name,
       'sku': ?sku?.toMap(),
-      'subnetId': subnetId,
+      'subnetId': ?subnetId,
       'tags': ?tags,
-      'type': type,
-      'vCores': vCores,
+      'type': ?type,
+      'vCores': ?vCores,
     };
   }
 
   factory GetInstancePoolResult.fromMap(Map<String, dynamic> map) {
     return GetInstancePoolResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dnsZone: map['dnsZone'] as String,
-      id: map['id'] as String,
-      licenseType: map['licenseType'] as String,
-      location: map['location'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dnsZone: (() { final guardedValue = map['dnsZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maintenanceConfigurationId: (() { final guardedValue = map['maintenanceConfigurationId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      subnetId: map['subnetId'] as String,
+      subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      vCores: map['vCores'] as int,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vCores: (() { final guardedValue = map['vCores']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Analytical storage specific properties.
 class AnalyticalStorageConfiguration {
   /// Describes the types of schema for analytical storage.
-  final pulumi.Input<String>? schemaType;
+  final pulumi.Input<dynamic>? schemaType;
 
   /// Creates a new [AnalyticalStorageConfiguration].
   /// [schemaType] Describes the types of schema for analytical storage.
@@ -21,7 +21,7 @@ class AnalyticalStorageConfiguration {
 
   factory AnalyticalStorageConfiguration.fromMap(Map<String, dynamic> map) {
     return AnalyticalStorageConfiguration(
-      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

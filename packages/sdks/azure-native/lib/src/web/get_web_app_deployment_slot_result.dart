@@ -11,7 +11,7 @@ class GetWebAppDeploymentSlotResult {
   /// Author email.
   final String? authorEmail;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Who performed the deployment.
   final String? deployer;
   /// Details on deployment.
@@ -19,21 +19,21 @@ class GetWebAppDeploymentSlotResult {
   /// End time.
   final String? endTime;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Details about deployment status.
   final String? message;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Start time.
   final String? startTime;
   /// Deployment status.
   final int? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWebAppDeploymentSlotResult].
   /// [active] True if deployment is currently active, false if completed and null if not started.
@@ -55,18 +55,18 @@ class GetWebAppDeploymentSlotResult {
     this.active,
     this.author,
     this.authorEmail,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.deployer,
     this.details,
     this.endTime,
-    required this.id,
+    this.id,
     this.kind,
     this.message,
-    required this.name,
+    this.name,
     this.startTime,
     this.status,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -74,18 +74,18 @@ class GetWebAppDeploymentSlotResult {
       'active': ?active,
       'author': ?author,
       'authorEmail': ?authorEmail,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'deployer': ?deployer,
       'details': ?details,
       'endTime': ?endTime,
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
       'message': ?message,
-      'name': name,
+      'name': ?name,
       'startTime': ?startTime,
       'status': ?status,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
@@ -94,18 +94,18 @@ class GetWebAppDeploymentSlotResult {
       active: (() { final guardedValue = map['active']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorEmail: (() { final guardedValue = map['authorEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deployer: (() { final guardedValue = map['deployer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

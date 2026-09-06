@@ -10,7 +10,7 @@ class RouteTableResponse {
   /// Resource name.
   final pulumi.Input<String> name;
   /// Collection of routes contained within a route table.
-  final pulumi.Input<List<RouteResponse>>? routes;
+  final pulumi.Input<List<RouteResponse>?>? routes;
   /// Resource type.
   final pulumi.Input<String> type;
 

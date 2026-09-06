@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Addon type.
-enum AddonType {
+enum AddonType implements pulumi.PulumiEnum<String> {
   valueIotEdge("IotEdge"),
   valueArcForKubernetes("ArcForKubernetes");
 
   const AddonType(this.wireValue);
+  @override
   final String wireValue;
 
   static AddonType fromValue(String value) {

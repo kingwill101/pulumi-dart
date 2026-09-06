@@ -5,7 +5,7 @@ import 'elastic_profile_container_group_naming_policy_guid_naming_policy.dart';
 
 /// Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
 class ElasticProfileContainerGroupNamingPolicy {
-  final pulumi.Input<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy>? guidNamingPolicy;
+  final pulumi.Input<ElasticProfileContainerGroupNamingPolicyGuidNamingPolicy?>? guidNamingPolicy;
 
   /// Creates a new [ElasticProfileContainerGroupNamingPolicy].
   /// [guidNamingPolicy] Optional.

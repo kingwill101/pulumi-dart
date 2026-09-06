@@ -311,14 +311,14 @@ class L3Network extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterId = registerOutput<String>('clusterId');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hybridAksIpamEnabled = registerOutput<String?>('hybridAksIpamEnabled');
     hybridAksPluginType = registerOutput<String?>('hybridAksPluginType');
     interfaceName = registerOutput<String?>('interfaceName');
@@ -330,9 +330,43 @@ class L3Network extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vlan = registerOutput<double>('vlan');
+  }
+
+  /// Creates a typed reference to an existing [L3Network] resource.
+  L3Network.reference(String urn)
+    : super(
+        'azure-native:networkcloud:L3Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hybridAksIpamEnabled = registerOutput<String?>('hybridAksIpamEnabled');
+    hybridAksPluginType = registerOutput<String?>('hybridAksPluginType');
+    interfaceName = registerOutput<String?>('interfaceName');
+    ipAllocationType = registerOutput<String?>('ipAllocationType');
+    ipv4ConnectedPrefix = registerOutput<String?>('ipv4ConnectedPrefix');
+    ipv6ConnectedPrefix = registerOutput<String?>('ipv6ConnectedPrefix');
+    l3IsolationDomainId = registerOutput<String>('l3IsolationDomainId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vlan = registerOutput<double>('vlan');
   }
 }

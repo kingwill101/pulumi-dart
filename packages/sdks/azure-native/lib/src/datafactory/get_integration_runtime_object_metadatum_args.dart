@@ -12,7 +12,7 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   /// The integration runtime name.
   final pulumi.Input<String> integrationRuntimeName;
   /// Metadata path.
-  final pulumi.Input<String>? metadataPath;
+  final pulumi.Input<String?>? metadataPath;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

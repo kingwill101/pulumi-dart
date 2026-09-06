@@ -7,11 +7,11 @@ import 'deployment_stacks_what_if_property_change_response.dart';
 /// Predicted changes to the deployment stack deny settings.
 class DeploymentStacksWhatIfChangeResponseDenySettingsChange {
   /// The predicted value after the deployment is executed.
-  final pulumi.Input<DenySettingsResponse>? after;
+  final pulumi.Input<DenySettingsResponse?>? after;
   /// The predicted value before the deployment is executed.
-  final pulumi.Input<DenySettingsResponse>? before;
+  final pulumi.Input<DenySettingsResponse?>? before;
   /// The predicted changes to the properties."
-  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>? delta;
+  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>?>? delta;
 
   /// Creates a new [DeploymentStacksWhatIfChangeResponseDenySettingsChange].
   /// [after] The predicted value after the deployment is executed.

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the error.
 class Error {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The detailed error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The error possible cause.
-  final pulumi.Input<String>? possibleCause;
+  final pulumi.Input<String?>? possibleCause;
   /// Gets description of the checkpoint.
-  final pulumi.Input<String>? recommendedAction;
+  final pulumi.Input<String?>? recommendedAction;
   /// The account ID used to login.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// Gets description of the severity.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// The summarized error message.
-  final pulumi.Input<String>? summaryMessage;
+  final pulumi.Input<String?>? summaryMessage;
   /// Time when this error was last updated.
-  final pulumi.Input<String>? updatedTimeStamp;
+  final pulumi.Input<String?>? updatedTimeStamp;
 
   /// Creates a new [Error].
   /// [code] The error code.

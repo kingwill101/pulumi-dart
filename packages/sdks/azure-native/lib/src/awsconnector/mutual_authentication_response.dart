@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MutualAuthentication
 class MutualAuthenticationResponse {
   /// Indicates whether expired client certificates are ignored.
-  final pulumi.Input<bool>? ignoreClientCertificateExpiry;
+  final pulumi.Input<bool?>? ignoreClientCertificateExpiry;
   /// The client certificate handling method. Options are ``off``, ``passthrough`` or ``verify``. The default value is ``off``.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The Amazon Resource Name (ARN) of the trust store.
-  final pulumi.Input<String>? trustStoreArn;
+  final pulumi.Input<String?>? trustStoreArn;
 
   /// Creates a new [MutualAuthenticationResponse].
   /// [ignoreClientCertificateExpiry] Indicates whether expired client certificates are ignored.

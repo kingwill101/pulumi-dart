@@ -9,7 +9,7 @@ class RepositoryResponse {
   /// Url to access repository action logs.
   final pulumi.Input<String> deploymentLogsUrl;
   /// Display url of repository.
-  final pulumi.Input<String>? displayUrl;
+  final pulumi.Input<String?>? displayUrl;
   /// Url of repository.
   final pulumi.Input<String> url;
 

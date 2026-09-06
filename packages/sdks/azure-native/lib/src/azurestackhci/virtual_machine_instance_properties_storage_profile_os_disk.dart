@@ -6,11 +6,11 @@ import 'virtual_machine_instance_managed_disk_parameters.dart';
 /// VHD to attach as OS disk
 class VirtualMachineInstancePropertiesStorageProfileOsDisk {
   /// The Azure Resource ID for a Virtual Hard Disk.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The managed disk parameters.
-  final pulumi.Input<VirtualMachineInstanceManagedDiskParameters>? managedDisk;
+  final pulumi.Input<VirtualMachineInstanceManagedDiskParameters?>? managedDisk;
   /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: Windows, Linux.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
 
   /// Creates a new [VirtualMachineInstancePropertiesStorageProfileOsDisk].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.
@@ -34,7 +34,7 @@ class VirtualMachineInstancePropertiesStorageProfileOsDisk {
     return VirtualMachineInstancePropertiesStorageProfileOsDisk(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineInstanceManagedDiskParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

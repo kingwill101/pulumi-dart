@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Open Telemetry logs
 class LogsConfiguration {
   /// Open telemetry logs destinations
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
 
   /// Creates a new [LogsConfiguration].
   /// [destinations] Open telemetry logs destinations

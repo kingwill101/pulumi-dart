@@ -10,46 +10,46 @@ class ActiveSecurityAdminRuleResponse {
   /// Indicates the access allowed for this particular rule
   final pulumi.Input<String> access;
   /// Deployment time string.
-  final pulumi.Input<String>? commitTime;
+  final pulumi.Input<String?>? commitTime;
   /// A description of the security admin configuration.
-  final pulumi.Input<String>? configurationDescription;
+  final pulumi.Input<String?>? configurationDescription;
   /// A display name of the security admin configuration.
-  final pulumi.Input<String>? configurationDisplayName;
+  final pulumi.Input<String?>? configurationDisplayName;
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? destinations;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final pulumi.Input<String> direction;
   /// A friendly name for the rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> kind;
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Network protocol this rule applies to.
   final pulumi.Input<String> protocol;
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Deployment region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Groups for rule collection
-  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse>>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistActiveSecurityAdminRuleResponse>?>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDescription;
+  final pulumi.Input<String?>? ruleCollectionDescription;
   /// A display name of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDisplayName;
+  final pulumi.Input<String?>? ruleCollectionDisplayName;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? ruleGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? ruleGroups;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? sources;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? sources;
 
   /// Creates a new [ActiveSecurityAdminRuleResponse].
   /// [access] Indicates the access allowed for this particular rule
@@ -136,7 +136,7 @@ class ActiveSecurityAdminRuleResponse {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

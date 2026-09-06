@@ -39,6 +39,22 @@ class BlobContainerLegalHold extends pulumi.CustomResource {
     allowProtectedAppendWritesAll = registerOutput<bool?>('allowProtectedAppendWritesAll');
     containerName = registerOutput<String?>('containerName');
     resourceGroupName = registerOutput<String?>('resourceGroupName');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [BlobContainerLegalHold] resource.
+  BlobContainerLegalHold.reference(String urn)
+    : super(
+        'azure-native:storage:BlobContainerLegalHold',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountName = registerOutput<String?>('accountName');
+    allowProtectedAppendWritesAll = registerOutput<bool?>('allowProtectedAppendWritesAll');
+    containerName = registerOutput<String?>('containerName');
+    resourceGroupName = registerOutput<String?>('resourceGroupName');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information on the azure container registry
 class ACR {
   /// ACR registry
-  final pulumi.Input<String>? acrRegistryName;
+  final pulumi.Input<String?>? acrRegistryName;
   /// ACR repository
-  final pulumi.Input<String>? acrRepositoryName;
+  final pulumi.Input<String?>? acrRepositoryName;
   /// ACR resource group
-  final pulumi.Input<String>? acrResourceGroup;
+  final pulumi.Input<String?>? acrResourceGroup;
   /// ACR subscription id
-  final pulumi.Input<String>? acrSubscriptionId;
+  final pulumi.Input<String?>? acrSubscriptionId;
 
   /// Creates a new [ACR].
   /// [acrRegistryName] ACR registry

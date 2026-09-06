@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'append_variable_activity.dart';
 import 'parameter_specification.dart';
 import 'pipeline_folder.dart';
 import 'pipeline_policy.dart';
@@ -13,29 +12,29 @@ import 'variable_specification.dart';
 /// {@macro pulumi_datafactory_pipeline_args_doc}
 class PipelineArgs {
   /// List of activities in pipeline.
-  final pulumi.Input<List<AppendVariableActivity>>? activities;
+  final pulumi.Input<List<dynamic>?>? activities;
   /// List of tags that can be used for describing the Pipeline.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The max number of concurrent runs for the pipeline.
-  final pulumi.Input<int>? concurrency;
+  final pulumi.Input<int?>? concurrency;
   /// The description of the pipeline.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
-  final pulumi.Input<PipelineFolder>? folder;
+  final pulumi.Input<PipelineFolder?>? folder;
   /// List of parameters for pipeline.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The pipeline name.
-  final pulumi.Input<String>? pipelineName;
+  final pulumi.Input<String?>? pipelineName;
   /// Pipeline Policy.
-  final pulumi.Input<PipelinePolicy>? policy;
+  final pulumi.Input<PipelinePolicy?>? policy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Dimensions emitted by Pipeline.
   final pulumi.Input<dynamic>? runDimensions;
   /// List of variables for pipeline.
-  final pulumi.Input<Map<String, VariableSpecification>>? variables;
+  final pulumi.Input<Map<String, VariableSpecification>?>? variables;
 
   /// Creates a new [PipelineArgs].
   /// [activities] List of activities in pipeline.
@@ -67,7 +66,7 @@ class PipelineArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivity>, List<Map<String, dynamic>>>(activities, (value) => pulumi.Input.encodeList<AppendVariableActivity, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'activities': ?activities,
       'annotations': ?annotations,
       'concurrency': ?concurrency,
       'description': ?description,
@@ -84,9 +83,9 @@ class PipelineArgs {
 
   factory PipelineArgs.fromMap(Map<String, dynamic> map) {
     return PipelineArgs(
-      activities: (() { final guardedValue = map['activities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivity>(guardedValue, (value) => AppendVariableActivity.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      activities: (() { final guardedValue = map['activities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      concurrency: (() { final guardedValue = map['concurrency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

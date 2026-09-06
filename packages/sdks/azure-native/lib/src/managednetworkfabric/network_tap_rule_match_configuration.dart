@@ -7,15 +7,15 @@ import 'network_tap_rule_match_condition.dart';
 /// Defines the match configuration that are supported to filter the traffic.
 class NetworkTapRuleMatchConfiguration {
   /// List of actions that need to be performed for the matched conditions.
-  final pulumi.Input<List<NetworkTapRuleAction>>? actions;
+  final pulumi.Input<List<NetworkTapRuleAction>?>? actions;
   /// Type of IP Address. IPv4 or IPv6
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<dynamic>? ipAddressType;
   /// List of the match conditions.
-  final pulumi.Input<List<NetworkTapRuleMatchCondition>>? matchConditions;
+  final pulumi.Input<List<NetworkTapRuleMatchCondition>?>? matchConditions;
   /// The name of the match configuration.
-  final pulumi.Input<String>? matchConfigurationName;
+  final pulumi.Input<String?>? matchConfigurationName;
   /// Sequence Number of the match configuration..
-  final pulumi.Input<double>? sequenceNumber;
+  final pulumi.Input<double?>? sequenceNumber;
 
   /// Creates a new [NetworkTapRuleMatchConfiguration].
   /// [actions] List of actions that need to be performed for the matched conditions.
@@ -44,10 +44,10 @@ class NetworkTapRuleMatchConfiguration {
   factory NetworkTapRuleMatchConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleMatchConfiguration(
       actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkTapRuleAction>(guardedValue, (value) => NetworkTapRuleAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkTapRuleMatchCondition>(guardedValue, (value) => NetworkTapRuleMatchCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       matchConfigurationName: (() { final guardedValue = map['matchConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

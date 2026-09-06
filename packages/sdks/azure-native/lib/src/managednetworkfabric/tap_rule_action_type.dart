@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of actions that can be performed.
-enum TapRuleActionType {
+enum TapRuleActionType implements pulumi.PulumiEnum<String> {
   valueDrop("Drop"),
   valueCount("Count"),
   valueLog("Log"),
@@ -9,6 +11,7 @@ enum TapRuleActionType {
   valueMirror("Mirror");
 
   const TapRuleActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static TapRuleActionType fromValue(String value) {

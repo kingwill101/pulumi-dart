@@ -6,7 +6,7 @@ import 'service_provider_properties_response.dart';
 /// Service Provider Definition
 class ServiceProviderResponse {
   /// The Properties of a Service Provider Object
-  final pulumi.Input<ServiceProviderPropertiesResponse>? properties;
+  final pulumi.Input<ServiceProviderPropertiesResponse?>? properties;
 
   /// Creates a new [ServiceProviderResponse].
   /// [properties] The Properties of a Service Provider Object

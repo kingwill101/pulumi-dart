@@ -10,11 +10,11 @@ class GetExpressRouteCircuitConnectionResult {
   /// The authorization key.
   final String? authorizationKey;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Express Route Circuit connection state.
-  final String circuitConnectionStatus;
+  final String? circuitConnectionStatus;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
   final SubResourceResponse? expressRouteCircuitPeering;
   /// Resource ID.
@@ -26,9 +26,9 @@ class GetExpressRouteCircuitConnectionResult {
   /// Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   final SubResourceResponse? peerExpressRouteCircuitPeering;
   /// The provisioning state of the express route circuit connection resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetExpressRouteCircuitConnectionResult].
   /// [addressPrefix] /29 IP address space to carve out Customer addresses for tunnels.
@@ -46,32 +46,32 @@ class GetExpressRouteCircuitConnectionResult {
   const GetExpressRouteCircuitConnectionResult({
     this.addressPrefix,
     this.authorizationKey,
-    required this.azureApiVersion,
-    required this.circuitConnectionStatus,
-    required this.etag,
+    this.azureApiVersion,
+    this.circuitConnectionStatus,
+    this.etag,
     this.expressRouteCircuitPeering,
     this.id,
     this.ipv6CircuitConnectionConfig,
     this.name,
     this.peerExpressRouteCircuitPeering,
-    required this.provisioningState,
-    required this.type,
+    this.provisioningState,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPrefix': ?addressPrefix,
       'authorizationKey': ?authorizationKey,
-      'azureApiVersion': azureApiVersion,
-      'circuitConnectionStatus': circuitConnectionStatus,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'circuitConnectionStatus': ?circuitConnectionStatus,
+      'etag': ?etag,
       'expressRouteCircuitPeering': ?expressRouteCircuitPeering?.toMap(),
       'id': ?id,
       'ipv6CircuitConnectionConfig': ?ipv6CircuitConnectionConfig?.toMap(),
       'name': ?name,
       'peerExpressRouteCircuitPeering': ?peerExpressRouteCircuitPeering?.toMap(),
-      'provisioningState': provisioningState,
-      'type': type,
+      'provisioningState': ?provisioningState,
+      'type': ?type,
     };
   }
 
@@ -79,16 +79,16 @@ class GetExpressRouteCircuitConnectionResult {
     return GetExpressRouteCircuitConnectionResult(
       addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       authorizationKey: (() { final guardedValue = map['authorizationKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      circuitConnectionStatus: map['circuitConnectionStatus'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      circuitConnectionStatus: (() { final guardedValue = map['circuitConnectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expressRouteCircuitPeering: (() { final guardedValue = map['expressRouteCircuitPeering']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6CircuitConnectionConfig: (() { final guardedValue = map['ipv6CircuitConnectionConfig']; if (guardedValue == null) return null; return Ipv6CircuitConnectionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       peerExpressRouteCircuitPeering: (() { final guardedValue = map['peerExpressRouteCircuitPeering']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

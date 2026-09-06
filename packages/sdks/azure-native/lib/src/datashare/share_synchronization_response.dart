@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A ShareSynchronization data transfer object.
 class ShareSynchronizationResponse {
   /// Email of the user who created the synchronization
-  final pulumi.Input<String>? consumerEmail;
+  final pulumi.Input<String?>? consumerEmail;
   /// Name of the user who created the synchronization
-  final pulumi.Input<String>? consumerName;
+  final pulumi.Input<String?>? consumerName;
   /// Tenant name of the consumer who created the synchronization
-  final pulumi.Input<String>? consumerTenantName;
+  final pulumi.Input<String?>? consumerTenantName;
   /// synchronization duration
-  final pulumi.Input<int>? durationMs;
+  final pulumi.Input<int?>? durationMs;
   /// End time of synchronization
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// message of synchronization
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// start time of synchronization
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Raw Status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Synchronization id
-  final pulumi.Input<String>? synchronizationId;
+  final pulumi.Input<String?>? synchronizationId;
   /// Synchronization mode
   final pulumi.Input<String> synchronizationMode;
 
@@ -69,7 +69,7 @@ class ShareSynchronizationResponse {
       consumerEmail: (() { final guardedValue = map['consumerEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       consumerName: (() { final guardedValue = map['consumerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       consumerTenantName: (() { final guardedValue = map['consumerTenantName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      durationMs: (() { final guardedValue = map['durationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      durationMs: (() { final guardedValue = map['durationMs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

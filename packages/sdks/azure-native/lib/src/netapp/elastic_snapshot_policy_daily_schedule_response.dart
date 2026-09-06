@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Daily Schedule properties used to create NetApp snapshot policy
 class ElasticSnapshotPolicyDailyScheduleResponse {
   /// Indicates which hour in UTC timezone a snapshot should be taken
-  final pulumi.Input<int>? hour;
+  final pulumi.Input<int?>? hour;
   /// Indicates which minute snapshot should be taken
-  final pulumi.Input<int>? minute;
+  final pulumi.Input<int?>? minute;
   /// Daily snapshot count to keep
-  final pulumi.Input<int>? snapshotsToKeep;
+  final pulumi.Input<int?>? snapshotsToKeep;
 
   /// Creates a new [ElasticSnapshotPolicyDailyScheduleResponse].
   /// [hour] Indicates which hour in UTC timezone a snapshot should be taken
@@ -31,9 +31,9 @@ class ElasticSnapshotPolicyDailyScheduleResponse {
 
   factory ElasticSnapshotPolicyDailyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return ElasticSnapshotPolicyDailyScheduleResponse(
-      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      snapshotsToKeep: (() { final guardedValue = map['snapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hour: (() { final guardedValue = map['hour']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minute: (() { final guardedValue = map['minute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      snapshotsToKeep: (() { final guardedValue = map['snapshotsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

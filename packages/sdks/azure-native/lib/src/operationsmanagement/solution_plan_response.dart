@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Plan for solution object supported by the OperationsManagement resource provider.
 class SolutionPlanResponse {
   /// name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/&lt;solutionType&gt;. This is case sensitive
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// promotionCode, Not really used now, can you left as empty
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// Publisher name. For gallery solution, it is Microsoft.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
 
   /// Creates a new [SolutionPlanResponse].
   /// [name] name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.

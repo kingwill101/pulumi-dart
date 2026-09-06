@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a weekly schedule.
 class WeekDetails {
   /// The time of the day the schedule will occur.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
   /// The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-  final pulumi.Input<List<String>>? weekdays;
+  final pulumi.Input<List<String>?>? weekdays;
 
   /// Creates a new [WeekDetails].
   /// [time] The time of the day the schedule will occur.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A collection of information about the state of the connection between service consumer and provider.
 class PrivateLinkServiceConnectionState {
   /// A message indicating if changes on the service provider require any updates on the consumer.
-  final pulumi.Input<String>? actionRequired;
+  final pulumi.Input<String?>? actionRequired;
   /// The reason for approval/rejection of the connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionState].
   /// [actionRequired] A message indicating if changes on the service provider require any updates on the consumer.
@@ -33,7 +33,7 @@ class PrivateLinkServiceConnectionState {
     return PrivateLinkServiceConnectionState(
       actionRequired: (() { final guardedValue = map['actionRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

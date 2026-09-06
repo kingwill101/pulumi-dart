@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode of generation to be used for generating Manifest.
-enum ManifestGenerationMode {
+enum ManifestGenerationMode implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const ManifestGenerationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ManifestGenerationMode fromValue(String value) {

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_configuration_args.dart';
+import 'scheduled_entry_response.dart';
 import 'system_data_response.dart';
 
 /// Information about the Maintenance Configuration resource.
@@ -196,7 +197,7 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of maintenance schedules for a managed environment.
-  late final pulumi.Output<List<Map<String, dynamic>>> scheduledEntries;
+  late final pulumi.Output<List<ScheduledEntryResponse>> scheduledEntries;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -218,7 +219,23 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    scheduledEntries = registerOutput<List<Map<String, dynamic>>>('scheduledEntries');
+    scheduledEntries = registerOutput<List<ScheduledEntryResponse>>('scheduledEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledEntryResponse>(guardedValue, (value) => ScheduledEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceConfiguration] resource.
+  MaintenanceConfiguration.reference(String urn)
+    : super(
+        'azure-native:app:MaintenanceConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    scheduledEntries = registerOutput<List<ScheduledEntryResponse>>('scheduledEntries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledEntryResponse>(guardedValue, (value) => ScheduledEntryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'gallery_application_args.dart';
+import 'gallery_application_custom_action_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the gallery Application Definition that you want to create or update.
@@ -290,7 +291,7 @@ class GalleryApplication extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of custom actions that can be performed with all of the Gallery Application Versions within this Gallery Application.
-  late final pulumi.Output<List<Map<String, dynamic>>?> customActions;
+  late final pulumi.Output<List<GalleryApplicationCustomActionResponse>?> customActions;
   /// The description of this gallery Application Definition resource. This property is updatable.
   late final pulumi.Output<String?> description;
   /// The end of life date of the gallery Application Definition. This property can be used for decommissioning purposes. This property is updatable.
@@ -329,7 +330,7 @@ class GalleryApplication extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customActions = registerOutput<List<Map<String, dynamic>>?>('customActions');
+    customActions = registerOutput<List<GalleryApplicationCustomActionResponse>?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(guardedValue, (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');
     eula = registerOutput<String?>('eula');
@@ -339,7 +340,31 @@ class GalleryApplication extends pulumi.CustomResource {
     releaseNoteUri = registerOutput<String?>('releaseNoteUri');
     supportedOSType = registerOutput<String>('supportedOSType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GalleryApplication] resource.
+  GalleryApplication.reference(String urn)
+    : super(
+        'azure-native:compute:GalleryApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customActions = registerOutput<List<GalleryApplicationCustomActionResponse>?>('customActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryApplicationCustomActionResponse>(guardedValue, (value) => GalleryApplicationCustomActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String?>('description');
+    endOfLifeDate = registerOutput<String?>('endOfLifeDate');
+    eula = registerOutput<String?>('eula');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privacyStatementUri = registerOutput<String?>('privacyStatementUri');
+    releaseNoteUri = registerOutput<String?>('releaseNoteUri');
+    supportedOSType = registerOutput<String>('supportedOSType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

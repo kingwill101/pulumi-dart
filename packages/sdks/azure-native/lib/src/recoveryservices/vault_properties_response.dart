@@ -17,11 +17,11 @@ class VaultPropertiesResponse {
   /// Security levels of Recovery Services Vault for business continuity and disaster recovery
   final pulumi.Input<String> bcdrSecurityLevel;
   /// Customer Managed Key details of the resource.
-  final pulumi.Input<VaultPropertiesResponseEncryption>? encryption;
+  final pulumi.Input<VaultPropertiesResponseEncryption?>? encryption;
   /// Monitoring Settings of the vault
-  final pulumi.Input<MonitoringSettingsResponse>? monitoringSettings;
+  final pulumi.Input<MonitoringSettingsResponse?>? monitoringSettings;
   /// The details of the latest move operation performed on the Azure Resource
-  final pulumi.Input<VaultPropertiesResponseMoveDetails>? moveDetails;
+  final pulumi.Input<VaultPropertiesResponseMoveDetails?>? moveDetails;
   /// The State of the Resource after the move operation
   final pulumi.Input<String> moveState;
   /// List of private endpoint connection.
@@ -33,19 +33,19 @@ class VaultPropertiesResponse {
   /// Provisioning State.
   final pulumi.Input<String> provisioningState;
   /// property to enable or disable resource provider inbound network traffic from public clients
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The redundancy Settings of a Vault
-  final pulumi.Input<VaultPropertiesResponseRedundancySettings>? redundancySettings;
+  final pulumi.Input<VaultPropertiesResponseRedundancySettings?>? redundancySettings;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Restore Settings of the vault
-  final pulumi.Input<RestoreSettingsResponse>? restoreSettings;
+  final pulumi.Input<RestoreSettingsResponse?>? restoreSettings;
   /// Secure Score of Recovery Services Vault
   final pulumi.Input<String> secureScore;
   /// Security Settings of the vault
-  final pulumi.Input<SecuritySettingsResponse>? securitySettings;
+  final pulumi.Input<SecuritySettingsResponse?>? securitySettings;
   /// Details for upgrading vault.
-  final pulumi.Input<UpgradeDetailsResponse>? upgradeDetails;
+  final pulumi.Input<UpgradeDetailsResponse?>? upgradeDetails;
 
   /// Creates a new [VaultPropertiesResponse].
   /// [backupStorageVersion] Backup storage version

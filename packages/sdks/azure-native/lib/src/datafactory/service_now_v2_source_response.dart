@@ -10,7 +10,7 @@ class ServiceNowV2SourceResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Expression to filter data from source.
-  final pulumi.Input<ExpressionV2Response>? expression;
+  final pulumi.Input<ExpressionV2Response?>? expression;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Page size of the result. Type: integer (or Expression with resultType integer).

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Upstream auth type enum.
-enum UpstreamAuthType {
+enum UpstreamAuthType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueManagedIdentity("ManagedIdentity");
 
   const UpstreamAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static UpstreamAuthType fromValue(String value) {

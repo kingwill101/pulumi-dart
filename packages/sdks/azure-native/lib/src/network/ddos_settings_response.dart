@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// Contains the DDoS protection settings of the public IP.
 class DdosSettingsResponse {
   /// The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled
-  final pulumi.Input<SubResourceResponse>? ddosProtectionPlan;
+  final pulumi.Input<SubResourceResponse?>? ddosProtectionPlan;
   /// The DDoS protection mode of the public IP
-  final pulumi.Input<String>? protectionMode;
+  final pulumi.Input<String?>? protectionMode;
 
   /// Creates a new [DdosSettingsResponse].
   /// [ddosProtectionPlan] The DDoS protection plan associated with the public IP. Can only be set if ProtectionMode is Enabled

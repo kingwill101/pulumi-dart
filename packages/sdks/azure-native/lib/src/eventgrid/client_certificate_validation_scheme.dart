@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The validation scheme used to authenticate the client. Default value is SubjectMatchesAuthenticationName.
-enum ClientCertificateValidationScheme {
+enum ClientCertificateValidationScheme implements pulumi.PulumiEnum<String> {
   valueSubjectMatchesAuthenticationName("SubjectMatchesAuthenticationName"),
   valueDnsMatchesAuthenticationName("DnsMatchesAuthenticationName"),
   valueUriMatchesAuthenticationName("UriMatchesAuthenticationName"),
@@ -8,6 +10,7 @@ enum ClientCertificateValidationScheme {
   valueThumbprintMatch("ThumbprintMatch");
 
   const ClientCertificateValidationScheme(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientCertificateValidationScheme fromValue(String value) {

@@ -19,3 +19,14 @@ Future<GetAuthorityResult> getAuthority(
   );
   return GetAuthorityResult.fromMap(result);
 }
+
+pulumi.Output<GetAuthorityResult> getAuthorityOutput(
+  GetAuthorityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:verifiedid:getAuthority',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorityResult.fromMap);
+}

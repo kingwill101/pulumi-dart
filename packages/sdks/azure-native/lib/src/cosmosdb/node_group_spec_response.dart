@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification for a node group.
 class NodeGroupSpecResponse {
   /// The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
-  final pulumi.Input<double>? diskSizeGB;
+  final pulumi.Input<double?>? diskSizeGB;
   /// Whether high availability is enabled on the node group.
-  final pulumi.Input<bool>? enableHa;
+  final pulumi.Input<bool?>? enableHa;
   /// The node type deployed in the node group.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The number of nodes in the node group.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// The resource sku for the node group. This defines the size of CPU and memory that is provisioned for each node. Example values: 'M30', 'M40'.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
 
   /// Creates a new [NodeGroupSpecResponse].
   /// [diskSizeGB] The disk storage size for the node group in GB. Example values: 128, 256, 512, 1024.
@@ -41,10 +41,10 @@ class NodeGroupSpecResponse {
 
   factory NodeGroupSpecResponse.fromMap(Map<String, dynamic> map) {
     return NodeGroupSpecResponse(
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       enableHa: (() { final guardedValue = map['enableHa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

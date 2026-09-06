@@ -11,19 +11,19 @@ import 'sql_managed_instance_sku.dart';
 /// {@macro pulumi_azurearcdata_sql_managed_instance_args_doc}
 class SqlManagedInstanceArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// null
   final pulumi.Input<SqlManagedInstanceProperties> properties;
   /// The name of the Azure resource group
   final pulumi.Input<String> resourceGroupName;
   /// Resource sku.
-  final pulumi.Input<SqlManagedInstanceSku>? sku;
+  final pulumi.Input<SqlManagedInstanceSku?>? sku;
   /// Name of SQL Managed Instance
-  final pulumi.Input<String>? sqlManagedInstanceName;
+  final pulumi.Input<String?>? sqlManagedInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlManagedInstanceArgs].
   /// [extendedLocation] The extendedLocation of the resource.

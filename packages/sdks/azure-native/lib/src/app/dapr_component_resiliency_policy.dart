@@ -964,4 +964,21 @@ class DaprComponentResiliencyPolicy extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DaprComponentResiliencyPolicy] resource.
+  DaprComponentResiliencyPolicy.reference(String urn)
+    : super(
+        'azure-native:app:DaprComponentResiliencyPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    inboundPolicy = registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>('inboundPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprComponentResiliencyPolicyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    outboundPolicy = registerOutput<DaprComponentResiliencyPolicyConfigurationResponse?>('outboundPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprComponentResiliencyPolicyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -7,11 +7,11 @@ import 'mapper_table_schema.dart';
 /// CDC table details.
 class MapperTable {
   /// List of name/value pairs for connection properties.
-  final pulumi.Input<List<MapperDslConnectorProperties>>? dslConnectorProperties;
+  final pulumi.Input<List<MapperDslConnectorProperties>?>? dslConnectorProperties;
   /// Name of the table.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of columns for the source table.
-  final pulumi.Input<List<MapperTableSchema>>? schema;
+  final pulumi.Input<List<MapperTableSchema>?>? schema;
 
   /// Creates a new [MapperTable].
   /// [dslConnectorProperties] List of name/value pairs for connection properties.

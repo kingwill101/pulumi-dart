@@ -7,19 +7,19 @@ class HighlightedFileResponse {
   /// The path of the highlighted file.
   final pulumi.Input<String> path;
   /// The name of sections to highlight.
-  final pulumi.Input<List<String>>? sections;
+  final pulumi.Input<List<String>?>? sections;
   /// A flag to save whether this file is viewed by user.
-  final pulumi.Input<bool>? visited;
+  final pulumi.Input<bool?>? visited;
 
   /// Creates a new [HighlightedFileResponse].
   /// [path] The path of the highlighted file.
   /// [sections] The name of sections to highlight.
   /// [visited] A flag to save whether this file is viewed by user.
-  const HighlightedFileResponse({
+  HighlightedFileResponse({
     required this.path,
     this.sections,
-    this.visited,
-  });
+    pulumi.Input<bool?>? visited,
+  }) : visited = visited ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

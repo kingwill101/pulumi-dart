@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the properties of an HCI Collect Log job.
 class HciCollectLogJobProperties {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<dynamic>? deploymentMode;
   /// From date for log collection.
   final pulumi.Input<String> fromDate;
   /// Job Type supported.
@@ -37,7 +37,7 @@ class HciCollectLogJobProperties {
 
   factory HciCollectLogJobProperties.fromMap(Map<String, dynamic> map) {
     return HciCollectLogJobProperties(
-      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       fromDate: pulumi.Input.fromValue(map['fromDate'] as String),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
       toDate: pulumi.Input.fromValue(map['toDate'] as String),

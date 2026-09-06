@@ -1,7 +1,10 @@
-enum AutomationRulePropertyArrayChangedConditionSupportedChangeType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AutomationRulePropertyArrayChangedConditionSupportedChangeType implements pulumi.PulumiEnum<String> {
   valueAdded("Added");
 
   const AutomationRulePropertyArrayChangedConditionSupportedChangeType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRulePropertyArrayChangedConditionSupportedChangeType fromValue(String value) {

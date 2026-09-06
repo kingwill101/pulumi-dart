@@ -9,11 +9,11 @@ import 'job_details.dart';
 /// {@macro pulumi_importexport_job_args_doc}
 class JobArgs {
   /// The name of the import/export job.
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// Specifies the supported Azure location where the job should be created
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the job properties
-  final pulumi.Input<JobDetails>? properties;
+  final pulumi.Input<JobDetails?>? properties;
   /// The resource group name uniquely identifies the resource group within the user subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the tags that will be assigned to the job.

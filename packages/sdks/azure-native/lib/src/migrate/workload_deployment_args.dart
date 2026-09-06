@@ -11,15 +11,15 @@ class WorkloadDeploymentArgs {
   /// ModernizeProject name.
   final pulumi.Input<String> modernizeProjectName;
   /// Workload deployment model properties.
-  final pulumi.Input<WorkloadDeploymentModelProperties>? properties;
+  final pulumi.Input<WorkloadDeploymentModelProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Subscription Id in which project was created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Workload deployment name.
-  final pulumi.Input<String>? workloadDeploymentName;
+  final pulumi.Input<String?>? workloadDeploymentName;
 
   /// Creates a new [WorkloadDeploymentArgs].
   /// [modernizeProjectName] ModernizeProject name.

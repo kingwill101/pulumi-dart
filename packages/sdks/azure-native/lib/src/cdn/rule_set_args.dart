@@ -12,7 +12,7 @@ class RuleSetArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the rule set under the profile which is unique globally.
-  final pulumi.Input<String>? ruleSetName;
+  final pulumi.Input<String?>? ruleSetName;
 
   /// Creates a new [RuleSetArgs].
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.

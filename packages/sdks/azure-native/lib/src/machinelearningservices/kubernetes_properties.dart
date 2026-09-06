@@ -6,21 +6,21 @@ import 'instance_type_schema.dart';
 /// Kubernetes properties
 class KubernetesProperties {
   /// Default instance type
-  final pulumi.Input<String>? defaultInstanceType;
+  final pulumi.Input<String?>? defaultInstanceType;
   /// Extension instance release train.
-  final pulumi.Input<String>? extensionInstanceReleaseTrain;
+  final pulumi.Input<String?>? extensionInstanceReleaseTrain;
   /// Extension principal-id.
-  final pulumi.Input<String>? extensionPrincipalId;
+  final pulumi.Input<String?>? extensionPrincipalId;
   /// Instance Type Schema
-  final pulumi.Input<Map<String, InstanceTypeSchema>>? instanceTypes;
+  final pulumi.Input<Map<String, InstanceTypeSchema>?>? instanceTypes;
   /// Compute namespace
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Relay connection string.
-  final pulumi.Input<String>? relayConnectionString;
+  final pulumi.Input<String?>? relayConnectionString;
   /// ServiceBus connection string.
-  final pulumi.Input<String>? serviceBusConnectionString;
+  final pulumi.Input<String?>? serviceBusConnectionString;
   /// VC name.
-  final pulumi.Input<String>? vcName;
+  final pulumi.Input<String?>? vcName;
 
   /// Creates a new [KubernetesProperties].
   /// [defaultInstanceType] Default instance type
@@ -31,16 +31,16 @@ class KubernetesProperties {
   /// [relayConnectionString] Relay connection string.
   /// [serviceBusConnectionString] ServiceBus connection string.
   /// [vcName] VC name.
-  const KubernetesProperties({
+  KubernetesProperties({
     this.defaultInstanceType,
     this.extensionInstanceReleaseTrain,
     this.extensionPrincipalId,
     this.instanceTypes,
-    this.namespace,
+    pulumi.Input<String?>? namespace,
     this.relayConnectionString,
     this.serviceBusConnectionString,
     this.vcName,
-  });
+  }) : namespace = namespace ?? pulumi.Input.fromValue('default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

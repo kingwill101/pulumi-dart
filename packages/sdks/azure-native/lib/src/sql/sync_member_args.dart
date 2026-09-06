@@ -10,29 +10,29 @@ class SyncMemberArgs {
   /// Database name of the member database in the sync member.
   final pulumi.Input<String> databaseName;
   /// Database type of the sync member.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<dynamic>? databaseType;
   /// Password of the member database in the sync member.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Server name of the member database in the sync member
   final pulumi.Input<String> serverName;
   /// SQL Server database id of the sync member.
-  final pulumi.Input<String>? sqlServerDatabaseId;
+  final pulumi.Input<String?>? sqlServerDatabaseId;
   /// ARM resource id of the sync agent in the sync member.
-  final pulumi.Input<String>? syncAgentId;
+  final pulumi.Input<String?>? syncAgentId;
   /// Sync direction of the sync member.
-  final pulumi.Input<String>? syncDirection;
+  final pulumi.Input<dynamic>? syncDirection;
   /// The name of the sync group on which the sync member is hosted.
   final pulumi.Input<String> syncGroupName;
   /// ARM resource id of the sync member logical database, for sync members in Azure.
-  final pulumi.Input<String>? syncMemberAzureDatabaseResourceId;
+  final pulumi.Input<String?>? syncMemberAzureDatabaseResourceId;
   /// The name of the sync member.
-  final pulumi.Input<String>? syncMemberName;
+  final pulumi.Input<String?>? syncMemberName;
   /// Whether to use private link connection.
-  final pulumi.Input<bool>? usePrivateLinkConnection;
+  final pulumi.Input<bool?>? usePrivateLinkConnection;
   /// User name of the member database in the sync member.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SyncMemberArgs].
   /// [databaseName] Database name of the member database in the sync member.
@@ -85,13 +85,13 @@ class SyncMemberArgs {
   factory SyncMemberArgs.fromMap(Map<String, dynamic> map) {
     return SyncMemberArgs(
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       sqlServerDatabaseId: (() { final guardedValue = map['sqlServerDatabaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       syncAgentId: (() { final guardedValue = map['syncAgentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncDirection: (() { final guardedValue = map['syncDirection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      syncDirection: (() { final guardedValue = map['syncDirection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       syncGroupName: pulumi.Input.fromValue(map['syncGroupName'] as String),
       syncMemberAzureDatabaseResourceId: (() { final guardedValue = map['syncMemberAzureDatabaseResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       syncMemberName: (() { final guardedValue = map['syncMemberName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,25 +6,25 @@ import 'connection_type.dart';
 /// Connection profile for how users connect to lab virtual machines.
 class ConnectionProfile {
   /// The enabled access level for Client Access over RDP.
-  final pulumi.Input<ConnectionType>? clientRdpAccess;
+  final pulumi.Input<ConnectionType?>? clientRdpAccess;
   /// The enabled access level for Client Access over SSH.
-  final pulumi.Input<ConnectionType>? clientSshAccess;
+  final pulumi.Input<ConnectionType?>? clientSshAccess;
   /// The enabled access level for Web Access over RDP.
-  final pulumi.Input<ConnectionType>? webRdpAccess;
+  final pulumi.Input<ConnectionType?>? webRdpAccess;
   /// The enabled access level for Web Access over SSH.
-  final pulumi.Input<ConnectionType>? webSshAccess;
+  final pulumi.Input<ConnectionType?>? webSshAccess;
 
   /// Creates a new [ConnectionProfile].
   /// [clientRdpAccess] The enabled access level for Client Access over RDP.
   /// [clientSshAccess] The enabled access level for Client Access over SSH.
   /// [webRdpAccess] The enabled access level for Web Access over RDP.
   /// [webSshAccess] The enabled access level for Web Access over SSH.
-  const ConnectionProfile({
-    this.clientRdpAccess,
-    this.clientSshAccess,
-    this.webRdpAccess,
-    this.webSshAccess,
-  });
+  ConnectionProfile({
+    pulumi.Input<ConnectionType?>? clientRdpAccess,
+    pulumi.Input<ConnectionType?>? clientSshAccess,
+    pulumi.Input<ConnectionType?>? webRdpAccess,
+    pulumi.Input<ConnectionType?>? webSshAccess,
+  }) : clientRdpAccess = clientRdpAccess ?? pulumi.Input.fromValue(ConnectionType.fromValue('None')), clientSshAccess = clientSshAccess ?? pulumi.Input.fromValue(ConnectionType.fromValue('None')), webRdpAccess = webRdpAccess ?? pulumi.Input.fromValue(ConnectionType.fromValue('None')), webSshAccess = webSshAccess ?? pulumi.Input.fromValue(ConnectionType.fromValue('None'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

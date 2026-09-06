@@ -18,52 +18,52 @@ import 'volume.dart';
 /// {@macro pulumi_containerinstance_cgprofile_args_doc}
 class CGProfileArgs {
   /// The properties for confidential container group
-  final pulumi.Input<ConfidentialComputeProperties>? confidentialComputeProperties;
+  final pulumi.Input<ConfidentialComputeProperties?>? confidentialComputeProperties;
   /// ContainerGroupProfile name.
-  final pulumi.Input<String>? containerGroupProfileName;
+  final pulumi.Input<String?>? containerGroupProfileName;
   /// The containers within the container group.
   final pulumi.Input<List<Container>> containers;
   /// The diagnostic information for a container group.
-  final pulumi.Input<ContainerGroupDiagnostics>? diagnostics;
+  final pulumi.Input<ContainerGroupDiagnostics?>? diagnostics;
   /// The encryption properties for a container group.
-  final pulumi.Input<EncryptionProperties>? encryptionProperties;
+  final pulumi.Input<EncryptionProperties?>? encryptionProperties;
   /// extensions used by virtual kubelet
-  final pulumi.Input<List<DeploymentExtensionSpec>>? extensions;
+  final pulumi.Input<List<DeploymentExtensionSpec>?>? extensions;
   /// The image registry credentials by which the container group is created from.
-  final pulumi.Input<List<ImageRegistryCredential>>? imageRegistryCredentials;
+  final pulumi.Input<List<ImageRegistryCredential>?>? imageRegistryCredentials;
   /// The init containers for a container group.
-  final pulumi.Input<List<InitContainerDefinition>>? initContainers;
+  final pulumi.Input<List<InitContainerDefinition>?>? initContainers;
   /// The IP address type of the container group.
-  final pulumi.Input<IpAddress>? ipAddress;
+  final pulumi.Input<IpAddress?>? ipAddress;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The operating system type required by the containers in the container group.
-  final pulumi.Input<String> osType;
+  final pulumi.Input<dynamic> osType;
   /// The priority of the container group.
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<dynamic>? priority;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Restart policy for all containers within the container group.
   /// - `Always` Always restart
   /// - `OnFailure` Restart on failure
   /// - `Never` Never restart
-  final pulumi.Input<String>? restartPolicy;
+  final pulumi.Input<dynamic>? restartPolicy;
   /// The container security properties.
-  final pulumi.Input<SecurityContextDefinition>? securityContext;
+  final pulumi.Input<SecurityContextDefinition?>? securityContext;
   /// Shutdown grace period for containers in a container group.
-  final pulumi.Input<String>? shutdownGracePeriod;
+  final pulumi.Input<String?>? shutdownGracePeriod;
   /// The SKU for a container group.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<dynamic>? sku;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Post completion time to live for containers of a CG
-  final pulumi.Input<String>? timeToLive;
+  final pulumi.Input<String?>? timeToLive;
   /// Gets or sets Krypton use property.
-  final pulumi.Input<bool>? useKrypton;
+  final pulumi.Input<bool?>? useKrypton;
   /// The list of volumes that can be mounted by containers in this container group.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
   /// The zones for the container group.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [CGProfileArgs].
   /// [confidentialComputeProperties] The properties for confidential container group
@@ -152,13 +152,13 @@ class CGProfileArgs {
       initContainers: (() { final guardedValue = map['initContainers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InitContainerDefinition>(guardedValue, (value) => InitContainerDefinition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpAddress.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      osType: pulumi.Input.fromValue(map['osType'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: pulumi.Input.fromValue(map['osType']),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      restartPolicy: (() { final guardedValue = map['restartPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       securityContext: (() { final guardedValue = map['securityContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityContextDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       shutdownGracePeriod: (() { final guardedValue = map['shutdownGracePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeToLive: (() { final guardedValue = map['timeToLive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       useKrypton: (() { final guardedValue = map['useKrypton']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

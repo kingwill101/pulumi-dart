@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the source to which filter applies.
 class CustomBlocklistConfigResponse {
   /// If blocking would occur.
-  final pulumi.Input<bool>? blocking;
+  final pulumi.Input<bool?>? blocking;
   /// Name of ContentFilter.
-  final pulumi.Input<String>? blocklistName;
+  final pulumi.Input<String?>? blocklistName;
   /// Content source to apply the Content Filters.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [CustomBlocklistConfigResponse].
   /// [blocking] If blocking would occur.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Lock owner properties.
 class ManagementLockOwnerResponse {
   /// The application ID of the lock owner.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
 
   /// Creates a new [ManagementLockOwnerResponse].
   /// [applicationId] The application ID of the lock owner.

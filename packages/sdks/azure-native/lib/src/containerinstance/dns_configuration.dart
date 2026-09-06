@@ -7,9 +7,9 @@ class DnsConfiguration {
   /// The DNS servers for the container group.
   final pulumi.Input<List<String>> nameServers;
   /// The DNS options for the container group.
-  final pulumi.Input<String>? options;
+  final pulumi.Input<String?>? options;
   /// The DNS search domains for hostname lookup in the container group.
-  final pulumi.Input<String>? searchDomains;
+  final pulumi.Input<String?>? searchDomains;
 
   /// Creates a new [DnsConfiguration].
   /// [nameServers] The DNS servers for the container group.

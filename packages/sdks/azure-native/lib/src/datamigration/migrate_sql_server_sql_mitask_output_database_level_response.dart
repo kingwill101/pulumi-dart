@@ -73,7 +73,7 @@ class MigrateSqlServerSqlMITaskOutputDatabaseLevelResponse {
       id: pulumi.Input.fromValue(map['id'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
-      sizeMB: pulumi.Input.fromValue(map['sizeMB'] as double),
+      sizeMB: pulumi.Input.fromValue((map['sizeMB'] as num).toDouble()),
       stage: pulumi.Input.fromValue(map['stage'] as String),
       startedOn: pulumi.Input.fromValue(map['startedOn'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),

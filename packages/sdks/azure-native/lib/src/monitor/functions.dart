@@ -76,6 +76,17 @@ Future<GetActionGroupResult> getActionGroup(
   return GetActionGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetActionGroupResult> getActionGroupOutput(
+  GetActionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getActionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActionGroupResult.fromMap);
+}
+
 /// Get an Activity Log Alert rule.
 ///
 /// Uses Azure REST API version 2020-10-01.
@@ -96,6 +107,17 @@ Future<GetActivityLogAlertResult> getActivityLogAlert(
   return GetActivityLogAlertResult.fromMap(result);
 }
 
+pulumi.Output<GetActivityLogAlertResult> getActivityLogAlertOutput(
+  GetActivityLogAlertArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getActivityLogAlert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActivityLogAlertResult.fromMap);
+}
+
 /// Get a AuthenticationSetting
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -114,6 +136,17 @@ Future<GetAuthenticationSettingResult> getAuthenticationSetting(
   return GetAuthenticationSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthenticationSettingResult> getAuthenticationSettingOutput(
+  GetAuthenticationSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getAuthenticationSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthenticationSettingResult.fromMap);
+}
+
 /// Gets an autoscale setting
 ///
 /// Uses Azure REST API version 2021-05-01-preview.
@@ -130,6 +163,17 @@ Future<GetAutoscaleSettingResult> getAutoscaleSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoscaleSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoscaleSettingResult> getAutoscaleSettingOutput(
+  GetAutoscaleSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getAutoscaleSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoscaleSettingResult.fromMap);
 }
 
 /// Returns the specified Azure Monitor Workspace
@@ -152,6 +196,17 @@ Future<GetAzureMonitorWorkspaceResult> getAzureMonitorWorkspace(
   return GetAzureMonitorWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetAzureMonitorWorkspaceResult> getAzureMonitorWorkspaceOutput(
+  GetAzureMonitorWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getAzureMonitorWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureMonitorWorkspaceResult.fromMap);
+}
+
 /// Definition of ARM tracked top level resource.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -170,6 +225,17 @@ Future<GetDataCollectionEndpointResult> getDataCollectionEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataCollectionEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetDataCollectionEndpointResult> getDataCollectionEndpointOutput(
+  GetDataCollectionEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getDataCollectionEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectionEndpointResult.fromMap);
 }
 
 /// Definition of ARM tracked top level resource.
@@ -192,6 +258,17 @@ Future<GetDataCollectionRuleResult> getDataCollectionRule(
   return GetDataCollectionRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetDataCollectionRuleResult> getDataCollectionRuleOutput(
+  GetDataCollectionRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getDataCollectionRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectionRuleResult.fromMap);
+}
+
 /// Definition of generic ARM proxy resource.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -212,6 +289,17 @@ Future<GetDataCollectionRuleAssociationResult> getDataCollectionRuleAssociation(
   return GetDataCollectionRuleAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetDataCollectionRuleAssociationResult> getDataCollectionRuleAssociationOutput(
+  GetDataCollectionRuleAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getDataCollectionRuleAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataCollectionRuleAssociationResult.fromMap);
+}
+
 /// Gets the active diagnostic settings for the specified resource.
 ///
 /// Uses Azure REST API version 2021-05-01-preview.
@@ -228,6 +316,17 @@ Future<GetDiagnosticSettingResult> getDiagnosticSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiagnosticSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetDiagnosticSettingResult> getDiagnosticSettingOutput(
+  GetDiagnosticSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getDiagnosticSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiagnosticSettingResult.fromMap);
 }
 
 /// Get a DiscoveryRule
@@ -248,6 +347,17 @@ Future<GetDiscoveryRuleResult> getDiscoveryRule(
   return GetDiscoveryRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetDiscoveryRuleResult> getDiscoveryRuleOutput(
+  GetDiscoveryRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getDiscoveryRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveryRuleResult.fromMap);
+}
+
 /// Get a Entity
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -266,6 +376,17 @@ Future<GetEntityResult> getEntity(
   return GetEntityResult.fromMap(result);
 }
 
+pulumi.Output<GetEntityResult> getEntityOutput(
+  GetEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityResult.fromMap);
+}
+
 /// Get a HealthModel
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -282,6 +403,17 @@ Future<GetHealthModelResult> getHealthModel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHealthModelResult.fromMap(result);
+}
+
+pulumi.Output<GetHealthModelResult> getHealthModelOutput(
+  GetHealthModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getHealthModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthModelResult.fromMap);
 }
 
 /// Get issue properties
@@ -304,6 +436,17 @@ Future<GetIssueResult> getIssue(
   return GetIssueResult.fromMap(result);
 }
 
+pulumi.Output<GetIssueResult> getIssueOutput(
+  GetIssueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getIssue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIssueResult.fromMap);
+}
+
 /// Gets the active management group diagnostic settings for the specified resource.
 ///
 /// Uses Azure REST API version 2021-05-01-preview.
@@ -320,6 +463,17 @@ Future<GetManagementGroupDiagnosticSettingResult> getManagementGroupDiagnosticSe
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagementGroupDiagnosticSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetManagementGroupDiagnosticSettingResult> getManagementGroupDiagnosticSettingOutput(
+  GetManagementGroupDiagnosticSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getManagementGroupDiagnosticSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementGroupDiagnosticSettingResult.fromMap);
 }
 
 /// Retrieve an alert rule definition.
@@ -342,6 +496,17 @@ Future<GetMetricAlertResult> getMetricAlert(
   return GetMetricAlertResult.fromMap(result);
 }
 
+pulumi.Output<GetMetricAlertResult> getMetricAlertOutput(
+  GetMetricAlertArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getMetricAlert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetricAlertResult.fromMap);
+}
+
 /// Returns the specific pipeline group instance.
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -360,6 +525,17 @@ Future<GetPipelineGroupResult> getPipelineGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPipelineGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetPipelineGroupResult> getPipelineGroupOutput(
+  GetPipelineGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getPipelineGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineGroupResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -382,6 +558,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Returns a Azure Monitor PrivateLinkScope.
 ///
 /// Uses Azure REST API version 2023-06-01-preview.
@@ -400,6 +587,17 @@ Future<GetPrivateLinkScopeResult> getPrivateLinkScope(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateLinkScopeResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateLinkScopeResult> getPrivateLinkScopeOutput(
+  GetPrivateLinkScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getPrivateLinkScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkScopeResult.fromMap);
 }
 
 /// Gets a scoped resource in a private link scope.
@@ -422,6 +620,17 @@ Future<GetPrivateLinkScopedResourceResult> getPrivateLinkScopedResource(
   return GetPrivateLinkScopedResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkScopedResourceResult> getPrivateLinkScopedResourceOutput(
+  GetPrivateLinkScopedResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getPrivateLinkScopedResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkScopedResourceResult.fromMap);
+}
+
 /// Get a Relationship
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -438,6 +647,17 @@ Future<GetRelationshipResult> getRelationship(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRelationshipResult.fromMap(result);
+}
+
+pulumi.Output<GetRelationshipResult> getRelationshipOutput(
+  GetRelationshipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getRelationship',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRelationshipResult.fromMap);
 }
 
 /// Retrieve an scheduled query rule definition.
@@ -460,6 +680,17 @@ Future<GetScheduledQueryRuleResult> getScheduledQueryRule(
   return GetScheduledQueryRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduledQueryRuleResult> getScheduledQueryRuleOutput(
+  GetScheduledQueryRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getScheduledQueryRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledQueryRuleResult.fromMap);
+}
+
 /// Get a SignalDefinition
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -476,6 +707,17 @@ Future<GetSignalDefinitionResult> getSignalDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSignalDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetSignalDefinitionResult> getSignalDefinitionOutput(
+  GetSignalDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getSignalDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalDefinitionResult.fromMap);
 }
 
 /// Gets an SLI resource.
@@ -496,6 +738,17 @@ Future<GetSliResult> getSli(
   return GetSliResult.fromMap(result);
 }
 
+pulumi.Output<GetSliResult> getSliOutput(
+  GetSliArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getSli',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSliResult.fromMap);
+}
+
 /// Gets the active subscription diagnostic settings for the specified resource.
 ///
 /// Uses Azure REST API version 2021-05-01-preview.
@@ -512,6 +765,17 @@ Future<GetSubscriptionDiagnosticSettingResult> getSubscriptionDiagnosticSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionDiagnosticSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionDiagnosticSettingResult> getSubscriptionDiagnosticSettingOutput(
+  GetSubscriptionDiagnosticSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getSubscriptionDiagnosticSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionDiagnosticSettingResult.fromMap);
 }
 
 /// Get a tenant action group.
@@ -532,6 +796,17 @@ Future<GetTenantActionGroupResult> getTenantActionGroup(
   return GetTenantActionGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetTenantActionGroupResult> getTenantActionGroupOutput(
+  GetTenantActionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:getTenantActionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTenantActionGroupResult.fromMap);
+}
+
 /// Lists the diagnostic settings categories for the specified resource.
 ///
 /// Uses Azure REST API version 2021-05-01-preview.
@@ -548,6 +823,17 @@ Future<ListDiagnosticSettingsCategoryResult> listDiagnosticSettingsCategory(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListDiagnosticSettingsCategoryResult.fromMap(result);
+}
+
+pulumi.Output<ListDiagnosticSettingsCategoryResult> listDiagnosticSettingsCategoryOutput(
+  ListDiagnosticSettingsCategoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:listDiagnosticSettingsCategory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDiagnosticSettingsCategoryResult.fromMap);
 }
 
 /// List all alerts in the issue - this method uses pagination to return all alerts
@@ -570,6 +856,17 @@ Future<ListIssueAlertsResult> listIssueAlerts(
   return ListIssueAlertsResult.fromMap(result);
 }
 
+pulumi.Output<ListIssueAlertsResult> listIssueAlertsOutput(
+  ListIssueAlertsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:listIssueAlerts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIssueAlertsResult.fromMap);
+}
+
 /// List all resources in the issue - this method uses pagination to return all resources
 ///
 /// Uses Azure REST API version 2025-05-03-preview.
@@ -588,4 +885,15 @@ Future<ListIssueResourcesResult> listIssueResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIssueResourcesResult.fromMap(result);
+}
+
+pulumi.Output<ListIssueResourcesResult> listIssueResourcesOutput(
+  ListIssueResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:monitor:listIssueResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIssueResourcesResult.fromMap);
 }

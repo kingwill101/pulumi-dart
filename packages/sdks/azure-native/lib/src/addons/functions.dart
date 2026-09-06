@@ -19,3 +19,14 @@ Future<GetSupportPlanTypeResult> getSupportPlanType(
   );
   return GetSupportPlanTypeResult.fromMap(result);
 }
+
+pulumi.Output<GetSupportPlanTypeResult> getSupportPlanTypeOutput(
+  GetSupportPlanTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:addons:getSupportPlanType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSupportPlanTypeResult.fromMap);
+}

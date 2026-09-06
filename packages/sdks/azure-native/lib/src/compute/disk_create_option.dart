@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This enumerates the possible sources of a disk's creation.
-enum DiskCreateOption {
+enum DiskCreateOption implements pulumi.PulumiEnum<String> {
   empty("Empty"),
   attach("Attach"),
   fromImage("FromImage"),
@@ -13,6 +15,7 @@ enum DiskCreateOption {
   copyFromSanSnapshot("CopyFromSanSnapshot");
 
   const DiskCreateOption(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskCreateOption fromValue(String value) {

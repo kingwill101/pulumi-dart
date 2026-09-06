@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flow type for the specified resource
-enum FlowType {
+enum FlowType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueComplex("Complex"),
   valueDevSecOps("DevSecOps"),
@@ -14,6 +16,7 @@ enum FlowType {
   valueMissionOpaqueXML("MissionOpaqueXML");
 
   const FlowType(this.wireValue);
+  @override
   final String wireValue;
 
   static FlowType fromValue(String value) {

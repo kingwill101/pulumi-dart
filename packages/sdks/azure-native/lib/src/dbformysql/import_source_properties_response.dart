@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Import source related properties.
 class ImportSourcePropertiesResponse {
   /// Relative path of data directory in storage.
-  final pulumi.Input<String>? dataDirPath;
+  final pulumi.Input<String?>? dataDirPath;
   /// Storage type of import source.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// Uri of the import source storage.
-  final pulumi.Input<String>? storageUrl;
+  final pulumi.Input<String?>? storageUrl;
 
   /// Creates a new [ImportSourcePropertiesResponse].
   /// [dataDirPath] Relative path of data directory in storage.

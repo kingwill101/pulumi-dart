@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The application source, what it affects, e.g. Assessments
-enum ApplicationSourceResourceType {
+enum ApplicationSourceResourceType implements pulumi.PulumiEnum<String> {
   assessments("Assessments");
 
   const ApplicationSourceResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationSourceResourceType fromValue(String value) {

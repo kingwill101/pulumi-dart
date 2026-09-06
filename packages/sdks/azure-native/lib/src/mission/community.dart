@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'approval_settings_response.dart';
 import 'community_args.dart';
+import 'governed_service_item_response.dart';
 import 'maintenance_mode_configuration_model_response.dart';
 import 'managed_on_behalf_of_configuration_response.dart';
 import 'managed_service_identity_response.dart';
+import 'role_assignment_item_response.dart';
 import 'system_data_response.dart';
 
 /// Community Model Resource
@@ -26,13 +28,13 @@ class Community extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Community role assignments
-  late final pulumi.Output<List<Map<String, dynamic>>?> communityRoleAssignments;
+  late final pulumi.Output<List<RoleAssignmentItemResponse>?> communityRoleAssignments;
   /// DNS Servers.
   late final pulumi.Output<List<String>?> dnsServers;
   /// SKU of the community's Azure Firewall (Basic, Standard, Premium). Standard is the default
   late final pulumi.Output<String?> firewallSku;
   /// List of services governed by a community.
-  late final pulumi.Output<List<Map<String, dynamic>>?> governedServiceList;
+  late final pulumi.Output<List<GovernedServiceItemResponse>?> governedServiceList;
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// The geo-location where the resource lives
@@ -75,10 +77,10 @@ class Community extends pulumi.CustomResource {
     addressSpace = registerOutput<String?>('addressSpace');
     approvalSettings = registerOutput<ApprovalSettingsResponse?>('approvalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    communityRoleAssignments = registerOutput<List<Map<String, dynamic>>?>('communityRoleAssignments');
-    dnsServers = registerOutput<List<String>?>('dnsServers');
+    communityRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('communityRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     firewallSku = registerOutput<String?>('firewallSku');
-    governedServiceList = registerOutput<List<Map<String, dynamic>>?>('governedServiceList');
+    governedServiceList = registerOutput<List<GovernedServiceItemResponse>?>('governedServiceList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GovernedServiceItemResponse>(guardedValue, (value) => GovernedServiceItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     maintenanceModeConfiguration = registerOutput<MaintenanceModeConfigurationModelResponse?>('maintenanceModeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceModeConfigurationModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -87,9 +89,39 @@ class Community extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policyOverride = registerOutput<String?>('policyOverride');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceCollection = registerOutput<List<String>>('resourceCollection');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Community] resource.
+  Community.reference(String urn)
+    : super(
+        'azure-native:mission:Community',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressSpace = registerOutput<String?>('addressSpace');
+    approvalSettings = registerOutput<ApprovalSettingsResponse?>('approvalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApprovalSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    communityRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('communityRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    firewallSku = registerOutput<String?>('firewallSku');
+    governedServiceList = registerOutput<List<GovernedServiceItemResponse>?>('governedServiceList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GovernedServiceItemResponse>(guardedValue, (value) => GovernedServiceItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceModeConfiguration = registerOutput<MaintenanceModeConfigurationModelResponse?>('maintenanceModeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceModeConfigurationModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedOnBehalfOfConfiguration = registerOutput<ManagedOnBehalfOfConfigurationResponse>('managedOnBehalfOfConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedOnBehalfOfConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    this.name = registerOutput<String>('name');
+    policyOverride = registerOutput<String?>('policyOverride');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

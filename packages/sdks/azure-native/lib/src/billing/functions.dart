@@ -32,6 +32,17 @@ Future<GetAssociatedTenantResult> getAssociatedTenant(
   return GetAssociatedTenantResult.fromMap(result);
 }
 
+pulumi.Output<GetAssociatedTenantResult> getAssociatedTenantOutput(
+  GetAssociatedTenantArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getAssociatedTenant',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssociatedTenantResult.fromMap);
+}
+
 /// Gets a billing profile by its ID. The operation is supported for billing accounts with agreement type Microsoft Customer Agreement and Microsoft Partner Agreement.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -48,6 +59,17 @@ Future<GetBillingProfileResult> getBillingProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingProfileResult> getBillingProfileOutput(
+  GetBillingProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getBillingProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingProfileResult.fromMap);
 }
 
 /// Gets a role assignment for the caller on a billing account. The operation is supported for billing accounts with agreement type Microsoft Partner Agreement, Microsoft Customer Agreement or Enterprise Agreement.
@@ -70,6 +92,17 @@ Future<GetBillingRoleAssignmentByBillingAccountResult> getBillingRoleAssignmentB
   return GetBillingRoleAssignmentByBillingAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingRoleAssignmentByBillingAccountResult> getBillingRoleAssignmentByBillingAccountOutput(
+  GetBillingRoleAssignmentByBillingAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getBillingRoleAssignmentByBillingAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingRoleAssignmentByBillingAccountResult.fromMap);
+}
+
 /// Gets a role assignment for the caller on a department. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -88,6 +121,17 @@ Future<GetBillingRoleAssignmentByDepartmentResult> getBillingRoleAssignmentByDep
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBillingRoleAssignmentByDepartmentResult.fromMap(result);
+}
+
+pulumi.Output<GetBillingRoleAssignmentByDepartmentResult> getBillingRoleAssignmentByDepartmentOutput(
+  GetBillingRoleAssignmentByDepartmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getBillingRoleAssignmentByDepartment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingRoleAssignmentByDepartmentResult.fromMap);
 }
 
 /// Gets a role assignment for the caller on a enrollment Account. The operation is supported only for billing accounts with agreement type Enterprise Agreement.
@@ -110,6 +154,17 @@ Future<GetBillingRoleAssignmentByEnrollmentAccountResult> getBillingRoleAssignme
   return GetBillingRoleAssignmentByEnrollmentAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingRoleAssignmentByEnrollmentAccountResult> getBillingRoleAssignmentByEnrollmentAccountOutput(
+  GetBillingRoleAssignmentByEnrollmentAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getBillingRoleAssignmentByEnrollmentAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingRoleAssignmentByEnrollmentAccountResult.fromMap);
+}
+
 /// Gets an invoice section by its ID. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -126,6 +181,17 @@ Future<GetInvoiceSectionResult> getInvoiceSection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInvoiceSectionResult.fromMap(result);
+}
+
+pulumi.Output<GetInvoiceSectionResult> getInvoiceSectionOutput(
+  GetInvoiceSectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:getInvoiceSection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInvoiceSectionResult.fromMap);
 }
 
 /// Lists the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.
@@ -146,4 +212,15 @@ Future<ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult> li
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap(result);
+}
+
+pulumi.Output<ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult> listBillingAccountInvoiceSectionsByCreateSubscriptionPermissionOutput(
+  ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:billing:listBillingAccountInvoiceSectionsByCreateSubscriptionPermission',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBillingAccountInvoiceSectionsByCreateSubscriptionPermissionResult.fromMap);
 }

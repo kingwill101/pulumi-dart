@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Ssl Policy.
-enum ApplicationGatewaySslPolicyType {
+enum ApplicationGatewaySslPolicyType implements pulumi.PulumiEnum<String> {
   valuePredefined("Predefined"),
   valueCustom("Custom"),
   valueCustomV2("CustomV2");
 
   const ApplicationGatewaySslPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewaySslPolicyType fromValue(String value) {

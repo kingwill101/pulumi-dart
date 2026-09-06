@@ -7,13 +7,13 @@ import 'tag_filter.dart';
 /// Definition of AnalyticsConfiguration
 class AnalyticsConfiguration {
   /// The ID that identifies the analytics configuration.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The prefix that an object must have to be included in the analytics results.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Contains data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes. Specifies data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes for an Amazon S3 bucket.
-  final pulumi.Input<StorageClassAnalysis>? storageClassAnalysis;
+  final pulumi.Input<StorageClassAnalysis?>? storageClassAnalysis;
   /// The tags to use when evaluating an analytics filter. The analytics only includes objects that meet the filter's criteria. If no filter is specified, all of the contents of the bucket are included in the analysis.
-  final pulumi.Input<List<TagFilter>>? tagFilters;
+  final pulumi.Input<List<TagFilter>?>? tagFilters;
 
   /// Creates a new [AnalyticsConfiguration].
   /// [id] The ID that identifies the analytics configuration.

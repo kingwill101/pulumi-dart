@@ -8,15 +8,15 @@ import 'virtual_hard_disk_upload_status_response.dart';
 /// The observed state of virtual hard disks
 class VirtualHardDiskStatusResponse {
   /// The download status of the virtual hard disk
-  final pulumi.Input<VirtualHardDiskDownloadStatusResponse>? downloadStatus;
+  final pulumi.Input<VirtualHardDiskDownloadStatusResponse?>? downloadStatus;
   /// VirtualHardDisk provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Provisioning status of the vhd
-  final pulumi.Input<VirtualHardDiskStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<VirtualHardDiskStatusProvisioningStatusResponse?>? provisioningStatus;
   /// The upload status of the virtual hard disk
-  final pulumi.Input<VirtualHardDiskUploadStatusResponse>? uploadStatus;
+  final pulumi.Input<VirtualHardDiskUploadStatusResponse?>? uploadStatus;
 
   /// Creates a new [VirtualHardDiskStatusResponse].
   /// [downloadStatus] The download status of the virtual hard disk

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Public IP Address associated with azure firewall.
 class AzureFirewallPublicIPAddress {
   /// Public IP Address value.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [AzureFirewallPublicIPAddress].
   /// [address] Public IP Address value.

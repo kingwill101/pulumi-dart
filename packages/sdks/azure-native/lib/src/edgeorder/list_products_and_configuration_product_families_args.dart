@@ -10,13 +10,13 @@ import 'filterable_property.dart';
 /// {@macro pulumi_edgeorder_list_products_and_configuration_product_families_args_doc}
 class ListProductsAndConfigurationProductFamiliesArgs {
   /// Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.
-  final pulumi.Input<CustomerSubscriptionDetails>? customerSubscriptionDetails;
+  final pulumi.Input<CustomerSubscriptionDetails?>? customerSubscriptionDetails;
   /// $expand is supported on configurations parameter for product, which provides details on the configurations for the product.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Dictionary of filterable properties on product family.
   final pulumi.Input<Map<String, List<FilterableProperty>>> filterableProperties;
   /// $skipToken is supported on list of product families, which provides the next page in the list of product families.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
 
   /// Creates a new [ListProductsAndConfigurationProductFamiliesArgs].
   /// [customerSubscriptionDetails] Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details.

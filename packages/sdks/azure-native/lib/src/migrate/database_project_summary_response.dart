@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The database project summary class.
 class DatabaseProjectSummaryResponse {
   /// Gets or sets the extended summary.
-  final pulumi.Input<Map<String, String>>? extendedSummary;
+  final pulumi.Input<Map<String, String>?>? extendedSummary;
   /// Gets the Instance type.
   /// Expected value is 'Databases'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the time when summary was last refreshed.
-  final pulumi.Input<String>? lastSummaryRefreshedTime;
+  final pulumi.Input<String?>? lastSummaryRefreshedTime;
   /// Gets or sets the state of refresh summary.
-  final pulumi.Input<String>? refreshSummaryState;
+  final pulumi.Input<String?>? refreshSummaryState;
 
   /// Creates a new [DatabaseProjectSummaryResponse].
   /// [extendedSummary] Gets or sets the extended summary.

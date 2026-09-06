@@ -7,23 +7,23 @@ import 'lbfrontend_ipconfiguration_resource_settings.dart';
 /// Defines the load balancer resource settings.
 class LoadBalancerResourceSettings {
   /// Gets or sets the backend address pools of the load balancer.
-  final pulumi.Input<List<LBBackendAddressPoolResourceSettings>>? backendAddressPools;
+  final pulumi.Input<List<LBBackendAddressPoolResourceSettings>?>? backendAddressPools;
   /// Gets or sets the frontend IP configurations of the load balancer.
-  final pulumi.Input<List<LBFrontendIPConfigurationResourceSettings>>? frontendIPConfigurations;
+  final pulumi.Input<List<LBFrontendIPConfigurationResourceSettings>?>? frontendIPConfigurations;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/loadBalancers'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets load balancer sku (Basic/Standard).
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
   /// Gets or sets the csv list of zones common for all frontend IP configurations. Note this is given
   /// precedence only if frontend IP configurations settings are not present.
-  final pulumi.Input<String>? zones;
+  final pulumi.Input<String?>? zones;
 
   /// Creates a new [LoadBalancerResourceSettings].
   /// [backendAddressPools] Gets or sets the backend address pools of the load balancer.

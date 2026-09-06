@@ -10,22 +10,22 @@ class FilterActivity {
   /// Condition to be used for filtering the input.
   final pulumi.Input<Expression> condition;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Input array on which filter should be applied.
   final pulumi.Input<Expression> items;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'Filter'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [FilterActivity].
   /// [condition] Condition to be used for filtering the input.
@@ -70,8 +70,8 @@ class FilterActivity {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       items: pulumi.Input.fromValue(Expression.fromMap((map['items']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

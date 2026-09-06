@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DeleteDependencyResponse {
   /// Linked property.
-  final pulumi.Input<String>? linkedProperty;
+  final pulumi.Input<String?>? linkedProperty;
   /// Linked type.
-  final pulumi.Input<String>? linkedType;
+  final pulumi.Input<String?>? linkedType;
   /// Required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [DeleteDependencyResponse].
   /// [linkedProperty] Linked property.

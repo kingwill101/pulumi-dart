@@ -11,13 +11,13 @@ class EncryptionScopeArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// The name of the encryptionScope associated with the Cognitive Services Account
-  final pulumi.Input<String>? encryptionScopeName;
+  final pulumi.Input<String?>? encryptionScopeName;
   /// Properties of Cognitive Services EncryptionScope.
-  final pulumi.Input<EncryptionScopeProperties>? properties;
+  final pulumi.Input<EncryptionScopeProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EncryptionScopeArgs].
   /// [accountName] The name of Cognitive Services account.

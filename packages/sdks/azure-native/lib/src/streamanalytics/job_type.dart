@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the type of the job. Valid modes are `Cloud` and 'Edge'.
-enum JobType {
+enum JobType implements pulumi.PulumiEnum<String> {
   valueCloud("Cloud"),
   valueEdge("Edge");
 
   const JobType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobType fromValue(String value) {

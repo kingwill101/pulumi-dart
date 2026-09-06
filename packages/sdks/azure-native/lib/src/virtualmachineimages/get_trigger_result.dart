@@ -6,21 +6,21 @@ import 'trigger_status_response.dart';
 /// Result data returned by getTrigger.
 class GetTriggerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The kind of trigger.
-  final String kind;
+  final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the resource
-  final String provisioningState;
+  final String? provisioningState;
   /// Trigger status
-  final TriggerStatusResponse status;
+  final TriggerStatusResponse? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTriggerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetTriggerResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetTriggerResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.provisioningState,
-    required this.status,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.kind,
+    this.name,
+    this.provisioningState,
+    this.status,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'provisioningState': provisioningState,
-      'status': status.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'status': ?status?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetTriggerResult.fromMap(Map<String, dynamic> map) {
     return GetTriggerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: TriggerStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return TriggerStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'avro_format_response.dart';
 import 'dataset_compression_response.dart';
 import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
@@ -14,19 +13,19 @@ class HttpDatasetResponse {
   /// request-header-name-n:request-header-value-n Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? additionalHeaders;
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The data compression method used on files.
-  final pulumi.Input<DatasetCompressionResponse>? compression;
+  final pulumi.Input<DatasetCompressionResponse?>? compression;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolderResponse>? folder;
+  final pulumi.Input<DatasetFolderResponse?>? folder;
   /// The format of files.
-  final pulumi.Input<AvroFormatResponse>? format;
+  final pulumi.Input<dynamic>? format;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The relative URL based on the URL in the HttpLinkedService refers to an HTTP file Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? relativeUrl;
   /// The body for the HTTP request. Type: string (or Expression with resultType string).
@@ -80,7 +79,7 @@ class HttpDatasetResponse {
       'compression': ?pulumi.Input.mapOptionalInputValue<DatasetCompressionResponse, Map<String, dynamic>>(compression, (value) => value.toMap()),
       'description': ?description,
       'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
-      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormatResponse, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'format': ?format,
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'relativeUrl': ?relativeUrl,
@@ -99,7 +98,7 @@ class HttpDatasetResponse {
       compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetCompressionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormatResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       relativeUrl: (() { final guardedValue = map['relativeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

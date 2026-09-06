@@ -10,13 +10,13 @@ import 'extended_location.dart';
 /// {@macro pulumi_iotoperations_dataflow_profile_args_doc}
 class DataflowProfileArgs {
   /// Name of Instance dataflowProfile resource
-  final pulumi.Input<String>? dataflowProfileName;
+  final pulumi.Input<String?>? dataflowProfileName;
   /// Edge location of the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DataflowProfileProperties>? properties;
+  final pulumi.Input<DataflowProfileProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

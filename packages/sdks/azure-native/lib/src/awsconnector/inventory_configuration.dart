@@ -6,19 +6,19 @@ import 'destination.dart';
 /// Definition of InventoryConfiguration
 class InventoryConfiguration {
   /// Contains information about where to publish the inventory results. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
-  final pulumi.Input<Destination>? destination;
+  final pulumi.Input<Destination?>? destination;
   /// Specifies whether the inventory is enabled or disabled. If set to ``True``, an inventory list is generated. If set to ``False``, no inventory list is generated.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The ID used to identify the inventory configuration.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Object versions to include in the inventory list. If set to ``All``, the list includes all the object versions, which adds the version-related fields ``VersionId``, ``IsLatest``, and ``DeleteMarker`` to the list. If set to ``Current``, the list does not contain these version-related fields.
-  final pulumi.Input<String>? includedObjectVersions;
+  final pulumi.Input<dynamic>? includedObjectVersions;
   /// Contains the optional fields that are included in the inventory results.
-  final pulumi.Input<List<String>>? optionalFields;
+  final pulumi.Input<List<dynamic>?>? optionalFields;
   /// Specifies the inventory filter prefix.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Specifies the schedule for generating inventory results.
-  final pulumi.Input<String>? scheduleFrequency;
+  final pulumi.Input<dynamic>? scheduleFrequency;
 
   /// Creates a new [InventoryConfiguration].
   /// [destination] Contains information about where to publish the inventory results. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
@@ -55,10 +55,10 @@ class InventoryConfiguration {
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Destination.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      includedObjectVersions: (() { final guardedValue = map['includedObjectVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      optionalFields: (() { final guardedValue = map['optionalFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      includedObjectVersions: (() { final guardedValue = map['includedObjectVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      optionalFields: (() { final guardedValue = map['optionalFields']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scheduleFrequency: (() { final guardedValue = map['scheduleFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleFrequency: (() { final guardedValue = map['scheduleFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

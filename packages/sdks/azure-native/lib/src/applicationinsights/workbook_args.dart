@@ -11,29 +11,29 @@ class WorkbookArgs {
   /// Workbook category, as defined by the user at creation time.
   final pulumi.Input<String> category;
   /// The description of the workbook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The user-defined name (display name) of the workbook.
   final pulumi.Input<String> displayName;
   /// Identity used for BYOS
-  final pulumi.Input<WorkbookResourceIdentity>? identity;
+  final pulumi.Input<WorkbookResourceIdentity?>? identity;
   /// The kind of workbook. Only valid value is shared.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workbook resource. The value must be an UUID.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Configuration of this particular workbook. Configuration data is a string containing valid JSON
   final pulumi.Input<String> serializedData;
   /// ResourceId for a source resource.
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
   /// The resourceId to the storage account when bring your own storage is used
-  final pulumi.Input<String>? storageUri;
+  final pulumi.Input<String?>? storageUri;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [WorkbookArgs].
   /// [category] Workbook category, as defined by the user at creation time.
@@ -89,7 +89,7 @@ class WorkbookArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkbookResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -14,7 +14,7 @@ class ElasticSnapshotArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the ElasticSnapshot
-  final pulumi.Input<String>? snapshotName;
+  final pulumi.Input<String?>? snapshotName;
   /// The name of the ElasticVolume
   final pulumi.Input<String> volumeName;
 

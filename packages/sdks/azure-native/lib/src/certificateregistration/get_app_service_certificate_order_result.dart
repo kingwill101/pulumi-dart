@@ -8,57 +8,57 @@ import 'certificate_order_contact_response.dart';
 /// Result data returned by getAppServiceCertificateOrder.
 class GetAppServiceCertificateOrderResult {
   /// Reasons why App Service Certificate is not renewable at the current moment.
-  final List<String> appServiceCertificateNotRenewableReasons;
+  final List<String>? appServiceCertificateNotRenewableReasons;
   /// &lt;code&gt;true&lt;/code&gt; if the certificate should be automatically renewed when it expires; otherwise, &lt;code&gt;false&lt;/code&gt;.
   final bool? autoRenew;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// State of the Key Vault secret.
   final Map<String, AppServiceCertificateResponse>? certificates;
   /// Contact info
-  final CertificateOrderContactResponse contact;
+  final CertificateOrderContactResponse? contact;
   /// Last CSR that was created for this order.
   final String? csr;
   /// Certificate distinguished name.
   final String? distinguishedName;
   /// Domain verification token.
-  final String domainVerificationToken;
+  final String? domainVerificationToken;
   /// Certificate expiration time.
-  final String expirationTime;
+  final String? expirationTime;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Intermediate certificate.
-  final CertificateDetailsResponse intermediate;
+  final CertificateDetailsResponse? intermediate;
   /// &lt;code&gt;true&lt;/code&gt; if private key is external; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final bool isPrivateKeyExternal;
+  final bool? isPrivateKeyExternal;
   /// Certificate key size.
   final int? keySize;
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
   /// Certificate last issuance time.
-  final String lastCertificateIssuanceTime;
+  final String? lastCertificateIssuanceTime;
   /// Resource Location.
-  final String location;
+  final String? location;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// Time stamp when the certificate would be auto renewed next
-  final String nextAutoRenewalTimeStamp;
+  final String? nextAutoRenewalTimeStamp;
   /// Certificate product type.
-  final String productType;
+  final String? productType;
   /// Status of certificate order.
-  final String provisioningState;
+  final String? provisioningState;
   /// Root certificate.
-  final CertificateDetailsResponse root;
+  final CertificateDetailsResponse? root;
   /// Current serial number of the certificate.
-  final String serialNumber;
+  final String? serialNumber;
   /// Signed certificate.
-  final CertificateDetailsResponse signedCertificate;
+  final CertificateDetailsResponse? signedCertificate;
   /// Current order status.
-  final String status;
+  final String? status;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
   /// Duration in years (must be 1).
   final int? validityInYears;
 
@@ -90,97 +90,97 @@ class GetAppServiceCertificateOrderResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [validityInYears] Duration in years (must be 1).
-  const GetAppServiceCertificateOrderResult({
-    required this.appServiceCertificateNotRenewableReasons,
-    this.autoRenew,
-    required this.azureApiVersion,
+  GetAppServiceCertificateOrderResult({
+    this.appServiceCertificateNotRenewableReasons,
+    bool? autoRenew,
+    this.azureApiVersion,
     this.certificates,
-    required this.contact,
+    this.contact,
     this.csr,
     this.distinguishedName,
-    required this.domainVerificationToken,
-    required this.expirationTime,
-    required this.id,
-    required this.intermediate,
-    required this.isPrivateKeyExternal,
-    this.keySize,
+    this.domainVerificationToken,
+    this.expirationTime,
+    this.id,
+    this.intermediate,
+    this.isPrivateKeyExternal,
+    int? keySize,
     this.kind,
-    required this.lastCertificateIssuanceTime,
-    required this.location,
-    required this.name,
-    required this.nextAutoRenewalTimeStamp,
-    required this.productType,
-    required this.provisioningState,
-    required this.root,
-    required this.serialNumber,
-    required this.signedCertificate,
-    required this.status,
+    this.lastCertificateIssuanceTime,
+    this.location,
+    this.name,
+    this.nextAutoRenewalTimeStamp,
+    this.productType,
+    this.provisioningState,
+    this.root,
+    this.serialNumber,
+    this.signedCertificate,
+    this.status,
     this.tags,
-    required this.type,
-    this.validityInYears,
-  });
+    this.type,
+    int? validityInYears,
+  }) : autoRenew = autoRenew ?? true, keySize = keySize ?? 2048, validityInYears = validityInYears ?? 1;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appServiceCertificateNotRenewableReasons': appServiceCertificateNotRenewableReasons,
+      'appServiceCertificateNotRenewableReasons': ?appServiceCertificateNotRenewableReasons,
       'autoRenew': ?autoRenew,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'certificates': ?(() { final guardedValue = certificates; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<AppServiceCertificateResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'contact': contact.toMap(),
+      'contact': ?contact?.toMap(),
       'csr': ?csr,
       'distinguishedName': ?distinguishedName,
-      'domainVerificationToken': domainVerificationToken,
-      'expirationTime': expirationTime,
-      'id': id,
-      'intermediate': intermediate.toMap(),
-      'isPrivateKeyExternal': isPrivateKeyExternal,
+      'domainVerificationToken': ?domainVerificationToken,
+      'expirationTime': ?expirationTime,
+      'id': ?id,
+      'intermediate': ?intermediate?.toMap(),
+      'isPrivateKeyExternal': ?isPrivateKeyExternal,
       'keySize': ?keySize,
       'kind': ?kind,
-      'lastCertificateIssuanceTime': lastCertificateIssuanceTime,
-      'location': location,
-      'name': name,
-      'nextAutoRenewalTimeStamp': nextAutoRenewalTimeStamp,
-      'productType': productType,
-      'provisioningState': provisioningState,
-      'root': root.toMap(),
-      'serialNumber': serialNumber,
-      'signedCertificate': signedCertificate.toMap(),
-      'status': status,
+      'lastCertificateIssuanceTime': ?lastCertificateIssuanceTime,
+      'location': ?location,
+      'name': ?name,
+      'nextAutoRenewalTimeStamp': ?nextAutoRenewalTimeStamp,
+      'productType': ?productType,
+      'provisioningState': ?provisioningState,
+      'root': ?root?.toMap(),
+      'serialNumber': ?serialNumber,
+      'signedCertificate': ?signedCertificate?.toMap(),
+      'status': ?status,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'validityInYears': ?validityInYears,
     };
   }
 
   factory GetAppServiceCertificateOrderResult.fromMap(Map<String, dynamic> map) {
     return GetAppServiceCertificateOrderResult(
-      appServiceCertificateNotRenewableReasons: (map['appServiceCertificateNotRenewableReasons'] as List).cast<String>(),
+      appServiceCertificateNotRenewableReasons: (() { final guardedValue = map['appServiceCertificateNotRenewableReasons']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       autoRenew: (() { final guardedValue = map['autoRenew']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<AppServiceCertificateResponse>(guardedValue, (value) => AppServiceCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      contact: CertificateOrderContactResponse.fromMap((map['contact']! as Map).cast<String, dynamic>()),
+      contact: (() { final guardedValue = map['contact']; if (guardedValue == null) return null; return CertificateOrderContactResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       csr: (() { final guardedValue = map['csr']; if (guardedValue == null) return null; return guardedValue as String; })(),
       distinguishedName: (() { final guardedValue = map['distinguishedName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      domainVerificationToken: map['domainVerificationToken'] as String,
-      expirationTime: map['expirationTime'] as String,
-      id: map['id'] as String,
-      intermediate: CertificateDetailsResponse.fromMap((map['intermediate']! as Map).cast<String, dynamic>()),
-      isPrivateKeyExternal: map['isPrivateKeyExternal'] as bool,
-      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      domainVerificationToken: (() { final guardedValue = map['domainVerificationToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      intermediate: (() { final guardedValue = map['intermediate']; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      isPrivateKeyExternal: (() { final guardedValue = map['isPrivateKeyExternal']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      keySize: (() { final guardedValue = map['keySize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastCertificateIssuanceTime: map['lastCertificateIssuanceTime'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      nextAutoRenewalTimeStamp: map['nextAutoRenewalTimeStamp'] as String,
-      productType: map['productType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      root: CertificateDetailsResponse.fromMap((map['root']! as Map).cast<String, dynamic>()),
-      serialNumber: map['serialNumber'] as String,
-      signedCertificate: CertificateDetailsResponse.fromMap((map['signedCertificate']! as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
+      lastCertificateIssuanceTime: (() { final guardedValue = map['lastCertificateIssuanceTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nextAutoRenewalTimeStamp: (() { final guardedValue = map['nextAutoRenewalTimeStamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      productType: (() { final guardedValue = map['productType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      root: (() { final guardedValue = map['root']; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      signedCertificate: (() { final guardedValue = map['signedCertificate']; if (guardedValue == null) return null; return CertificateDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      validityInYears: (() { final guardedValue = map['validityInYears']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validityInYears: (() { final guardedValue = map['validityInYears']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

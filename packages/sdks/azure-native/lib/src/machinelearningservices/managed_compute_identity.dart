@@ -9,7 +9,7 @@ class ManagedComputeIdentity {
   /// Expected value is 'ManagedIdentity'.
   final pulumi.Input<String> computeIdentityType;
   /// The identity which will be leveraged by the monitoring jobs.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
 
   /// Creates a new [ManagedComputeIdentity].
   /// [computeIdentityType] Monitor compute identity type enum.

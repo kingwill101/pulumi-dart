@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A value that indicates whether capture description is enabled.
 class CaptureIdentityResponse {
   /// Type of Azure Active Directory Managed Identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [CaptureIdentityResponse].
   /// [type] Type of Azure Active Directory Managed Identity.

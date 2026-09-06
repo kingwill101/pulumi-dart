@@ -10,15 +10,15 @@ class DedicatedHubArgs {
   /// The name of the communityResource Resource
   final pulumi.Input<String> communityName;
   /// The name of the Dedicated Hub Resource
-  final pulumi.Input<String>? dedicatedHubName;
+  final pulumi.Input<String?>? dedicatedHubName;
   /// Designation of hub resource allocation (Pooled or Reserved)
-  final pulumi.Input<String>? designation;
+  final pulumi.Input<dynamic>? designation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DedicatedHubArgs].
   /// [communityName] The name of the communityResource Resource
@@ -51,7 +51,7 @@ class DedicatedHubArgs {
     return DedicatedHubArgs(
       communityName: pulumi.Input.fromValue(map['communityName'] as String),
       dedicatedHubName: (() { final guardedValue = map['dedicatedHubName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      designation: (() { final guardedValue = map['designation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      designation: (() { final guardedValue = map['designation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

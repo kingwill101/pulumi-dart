@@ -6,13 +6,13 @@ import 'storage_adapter_ipinfo_response.dart';
 /// The StorageNetworks of a cluster.
 class StorageNetworksResponse {
   /// Name of the storage network.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the storage network adapter.
-  final pulumi.Input<String>? networkAdapterName;
+  final pulumi.Input<String?>? networkAdapterName;
   /// List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<StorageAdapterIPInfoResponse>>? storageAdapterIPInfo;
+  final pulumi.Input<List<StorageAdapterIPInfoResponse>?>? storageAdapterIPInfo;
   /// ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-  final pulumi.Input<String>? vlanId;
+  final pulumi.Input<String?>? vlanId;
 
   /// Creates a new [StorageNetworksResponse].
   /// [name] Name of the storage network.

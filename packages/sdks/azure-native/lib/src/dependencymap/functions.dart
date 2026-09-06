@@ -26,6 +26,17 @@ Future<GetDiscoverySourceResult> getDiscoverySource(
   return GetDiscoverySourceResult.fromMap(result);
 }
 
+pulumi.Output<GetDiscoverySourceResult> getDiscoverySourceOutput(
+  GetDiscoverySourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dependencymap:getDiscoverySource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoverySourceResult.fromMap);
+}
+
 /// Get a MapsResource
 ///
 /// Uses Azure REST API version 2025-01-31-preview.
@@ -46,6 +57,17 @@ Future<GetMapResult> getMap(
   return GetMapResult.fromMap(result);
 }
 
+pulumi.Output<GetMapResult> getMapOutput(
+  GetMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dependencymap:getMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMapResult.fromMap);
+}
+
 /// Get dependencies for all machines
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -62,4 +84,15 @@ Future<GetMapDependencyViewForAllMachinesResult> getMapDependencyViewForAllMachi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMapDependencyViewForAllMachinesResult.fromMap(result);
+}
+
+pulumi.Output<GetMapDependencyViewForAllMachinesResult> getMapDependencyViewForAllMachinesOutput(
+  GetMapDependencyViewForAllMachinesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dependencymap:getMapDependencyViewForAllMachines',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMapDependencyViewForAllMachinesResult.fromMap);
 }

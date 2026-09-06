@@ -6,21 +6,21 @@ import 'key_vault_properties_response.dart';
 /// Properties to configure Encryption
 class EncryptionResponse {
   /// Enumerates the possible value of keySource for Encryption
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Properties of KeyVault
-  final pulumi.Input<List<KeyVaultPropertiesResponse>>? keyVaultProperties;
+  final pulumi.Input<List<KeyVaultPropertiesResponse>?>? keyVaultProperties;
   /// Enable Infrastructure Encryption (Double Encryption)
-  final pulumi.Input<bool>? requireInfrastructureEncryption;
+  final pulumi.Input<bool?>? requireInfrastructureEncryption;
 
   /// Creates a new [EncryptionResponse].
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
   /// [requireInfrastructureEncryption] Enable Infrastructure Encryption (Double Encryption)
-  const EncryptionResponse({
-    this.keySource,
+  EncryptionResponse({
+    pulumi.Input<String?>? keySource,
     this.keyVaultProperties,
     this.requireInfrastructureEncryption,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Microsoft.KeyVault');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

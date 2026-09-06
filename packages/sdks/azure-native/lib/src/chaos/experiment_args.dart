@@ -10,17 +10,17 @@ import 'experiment_properties.dart';
 /// {@macro pulumi_chaos_experiment_args_doc}
 class ExperimentArgs {
   /// String that represents a Experiment resource name.
-  final pulumi.Input<String>? experimentName;
+  final pulumi.Input<String?>? experimentName;
   /// The identity of the experiment resource.
-  final pulumi.Input<ExperimentIdentity>? identity;
+  final pulumi.Input<ExperimentIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The properties of the experiment resource.
   final pulumi.Input<ExperimentProperties> properties;
   /// String that represents an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ExperimentArgs].
   /// [experimentName] String that represents a Experiment resource name.

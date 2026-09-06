@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The traffic routing method of the Traffic Manager profile.
-enum TrafficRoutingMethod {
+enum TrafficRoutingMethod implements pulumi.PulumiEnum<String> {
   performance("Performance"),
   priority("Priority"),
   weighted("Weighted"),
@@ -8,6 +10,7 @@ enum TrafficRoutingMethod {
   subnet("Subnet");
 
   const TrafficRoutingMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static TrafficRoutingMethod fromValue(String value) {

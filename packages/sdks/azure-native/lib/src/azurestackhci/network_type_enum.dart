@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the network
-enum NetworkTypeEnum {
+enum NetworkTypeEnum implements pulumi.PulumiEnum<String> {
   valueNAT("NAT"),
   valueTransparent("Transparent"),
   valueL2Bridge("L2Bridge"),
@@ -11,6 +13,7 @@ enum NetworkTypeEnum {
   valueMirrored("Mirrored");
 
   const NetworkTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkTypeEnum fromValue(String value) {

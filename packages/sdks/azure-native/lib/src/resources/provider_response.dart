@@ -8,9 +8,9 @@ class ProviderResponse {
   /// The provider ID.
   final pulumi.Input<String> id;
   /// The namespace of the resource provider.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The provider authorization consent state.
-  final pulumi.Input<String>? providerAuthorizationConsentState;
+  final pulumi.Input<String?>? providerAuthorizationConsentState;
   /// The registration policy of the resource provider.
   final pulumi.Input<String> registrationPolicy;
   /// The registration state of the resource provider.

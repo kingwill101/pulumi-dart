@@ -6,9 +6,9 @@ import 'container_resource_settings.dart';
 /// Resource requirements for each container instance within an online deployment.
 class ContainerResourceRequirements {
   /// Container resource limit info:
-  final pulumi.Input<ContainerResourceSettings>? containerResourceLimits;
+  final pulumi.Input<ContainerResourceSettings?>? containerResourceLimits;
   /// Container resource request info:
-  final pulumi.Input<ContainerResourceSettings>? containerResourceRequests;
+  final pulumi.Input<ContainerResourceSettings?>? containerResourceRequests;
 
   /// Creates a new [ContainerResourceRequirements].
   /// [containerResourceLimits] Container resource limit info:

@@ -6,7 +6,7 @@ import 'managed_cluster_pod_identity_provisioning_error_body_response.dart';
 /// An error response from the pod identity provisioning.
 class ManagedClusterPodIdentityProvisioningErrorResponse {
   /// Details about the error.
-  final pulumi.Input<ManagedClusterPodIdentityProvisioningErrorBodyResponse>? error;
+  final pulumi.Input<ManagedClusterPodIdentityProvisioningErrorBodyResponse?>? error;
 
   /// Creates a new [ManagedClusterPodIdentityProvisioningErrorResponse].
   /// [error] Details about the error.

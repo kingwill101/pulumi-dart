@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Get or Set Kind property.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueGen2("Gen2");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

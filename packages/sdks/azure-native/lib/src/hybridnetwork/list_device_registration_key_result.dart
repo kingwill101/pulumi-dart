@@ -4,23 +4,23 @@
 /// Result data returned by listDeviceRegistrationKey.
 class ListDeviceRegistrationKeyResult {
   /// The registration key for the device.
-  final String registrationKey;
+  final String? registrationKey;
 
   /// Creates a new [ListDeviceRegistrationKeyResult].
   /// [registrationKey] The registration key for the device.
   const ListDeviceRegistrationKeyResult({
-    required this.registrationKey,
+    this.registrationKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'registrationKey': registrationKey,
+      'registrationKey': ?registrationKey,
     };
   }
 
   factory ListDeviceRegistrationKeyResult.fromMap(Map<String, dynamic> map) {
     return ListDeviceRegistrationKeyResult(
-      registrationKey: map['registrationKey'] as String,
+      registrationKey: (() { final guardedValue = map['registrationKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the revoked VPN client certificate of VpnServerConfiguration.
 class VpnServerConfigVpnClientRevokedCertificate {
   /// The certificate name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The revoked VPN client certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [VpnServerConfigVpnClientRevokedCertificate].
   /// [name] The certificate name.

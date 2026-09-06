@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Billing settings class.
 class BillingSettingsResponse {
   /// Gets or sets the licensing program.
-  final pulumi.Input<String>? licensingProgram;
+  final pulumi.Input<String?>? licensingProgram;
   /// Gets or sets the subscription ID for licensing program selected.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [BillingSettingsResponse].
   /// [licensingProgram] Gets or sets the licensing program.

@@ -6,13 +6,13 @@ import 'collector_agent_spn_properties_base.dart';
 /// Collector agent property class.
 class CollectorAgentPropertiesBase {
   /// Gets the collector agent id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets the collector last heartbeat time.
-  final pulumi.Input<String>? lastHeartbeatUtc;
+  final pulumi.Input<String?>? lastHeartbeatUtc;
   /// Gets or sets the SPN details.
-  final pulumi.Input<CollectorAgentSpnPropertiesBase>? spnDetails;
+  final pulumi.Input<CollectorAgentSpnPropertiesBase?>? spnDetails;
   /// Gets the collector agent version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CollectorAgentPropertiesBase].
   /// [id] Gets the collector agent id.

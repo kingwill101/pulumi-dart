@@ -8,7 +8,7 @@ class VirtualMachineNetworkInterfaceIPConfiguration {
   /// The IP configuration name.
   final pulumi.Input<String> name;
   /// Describes a virtual machine network interface IP configuration properties.
-  final pulumi.Input<VirtualMachineNetworkInterfaceIPConfigurationProperties>? properties;
+  final pulumi.Input<VirtualMachineNetworkInterfaceIPConfigurationProperties?>? properties;
 
   /// Creates a new [VirtualMachineNetworkInterfaceIPConfiguration].
   /// [name] The IP configuration name.

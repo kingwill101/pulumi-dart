@@ -8,18 +8,18 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
   final pulumi.Input<String> creationTime;
   /// DedicatedGatewayType for the service.
-  final pulumi.Input<String>? dedicatedGatewayType;
+  final pulumi.Input<String?>? dedicatedGatewayType;
   /// Instance count for the service.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance type for the service.
-  final pulumi.Input<String>? instanceSize;
+  final pulumi.Input<String?>? instanceSize;
   /// An array that contains all of the locations for the service.
   final pulumi.Input<List<SqlDedicatedGatewayRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
   /// Expected value is 'SqlDedicatedGateway'.
   final pulumi.Input<String> serviceType;
   /// SqlDedicatedGateway endpoint for the service.
-  final pulumi.Input<String>? sqlDedicatedGatewayEndpoint;
+  final pulumi.Input<String?>? sqlDedicatedGatewayEndpoint;
   /// Describes the status of a service.
   final pulumi.Input<String> status;
 
@@ -60,7 +60,7 @@ class SqlDedicatedGatewayServiceResourcePropertiesResponse {
     return SqlDedicatedGatewayServiceResourcePropertiesResponse(
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       dedicatedGatewayType: (() { final guardedValue = map['dedicatedGatewayType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSize: (() { final guardedValue = map['instanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: pulumi.Input.fromValue(pulumi.Input.decodeList<SqlDedicatedGatewayRegionalServiceResourceResponse>(map['locations']!, (value) => SqlDedicatedGatewayRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),

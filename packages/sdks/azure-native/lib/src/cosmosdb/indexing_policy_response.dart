@@ -7,25 +7,25 @@ import 'included_path_response.dart';
 /// Cosmos DB indexing policy
 class IndexingPolicyResponse {
   /// Indicates if the indexing policy is automatic
-  final pulumi.Input<bool>? automatic;
+  final pulumi.Input<bool?>? automatic;
   /// List of paths to exclude from indexing
-  final pulumi.Input<List<ExcludedPathResponse>>? excludedPaths;
+  final pulumi.Input<List<ExcludedPathResponse>?>? excludedPaths;
   /// List of paths to include in the indexing
-  final pulumi.Input<List<IncludedPathResponse>>? includedPaths;
+  final pulumi.Input<List<IncludedPathResponse>?>? includedPaths;
   /// Indicates the indexing mode.
-  final pulumi.Input<String>? indexingMode;
+  final pulumi.Input<String?>? indexingMode;
 
   /// Creates a new [IndexingPolicyResponse].
   /// [automatic] Indicates if the indexing policy is automatic
   /// [excludedPaths] List of paths to exclude from indexing
   /// [includedPaths] List of paths to include in the indexing
   /// [indexingMode] Indicates the indexing mode.
-  const IndexingPolicyResponse({
+  IndexingPolicyResponse({
     this.automatic,
     this.excludedPaths,
     this.includedPaths,
-    this.indexingMode,
-  });
+    pulumi.Input<String?>? indexingMode,
+  }) : indexingMode = indexingMode ?? pulumi.Input.fromValue('Consistent');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -50,7 +50,7 @@ class AmlFilesystemArchiveResponseStatus {
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       lastCompletionTime: pulumi.Input.fromValue(map['lastCompletionTime'] as String),
       lastStartedTime: pulumi.Input.fromValue(map['lastStartedTime'] as String),
-      percentComplete: pulumi.Input.fromValue(map['percentComplete'] as int),
+      percentComplete: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percentComplete'])),
       state: pulumi.Input.fromValue(map['state'] as String),
     );
   }

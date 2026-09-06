@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The disk type.
-enum DiskAccountType {
+enum DiskAccountType implements pulumi.PulumiEnum<String> {
   valueStandardLRS("Standard_LRS"),
   valuePremiumLRS("Premium_LRS"),
   valueStandardSSDLRS("StandardSSD_LRS"),
@@ -9,6 +11,7 @@ enum DiskAccountType {
   valuePremiumZRS("Premium_ZRS");
 
   const DiskAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskAccountType fromValue(String value) {

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_control_list_args.dart';
+import 'access_control_list_match_configuration_response.dart';
+import 'common_dynamic_match_configuration_response.dart';
 import 'system_data_response.dart';
 
 /// The Access Control List resource definition.
@@ -701,13 +703,13 @@ class AccessControlList extends pulumi.CustomResource {
   /// Default action that needs to be applied when no condition is matched. Example: Permit | Deny.
   late final pulumi.Output<String?> defaultAction;
   /// List of dynamic match configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dynamicMatchConfigurations;
+  late final pulumi.Output<List<CommonDynamicMatchConfigurationResponse>?> dynamicMatchConfigurations;
   /// The last synced timestamp.
   late final pulumi.Output<String> lastSyncedTime;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// List of match configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> matchConfigurations;
+  late final pulumi.Output<List<AccessControlListMatchConfigurationResponse>?> matchConfigurations;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state of the resource.
@@ -740,14 +742,41 @@ class AccessControlList extends pulumi.CustomResource {
     configurationState = registerOutput<String>('configurationState');
     configurationType = registerOutput<String>('configurationType');
     defaultAction = registerOutput<String?>('defaultAction');
-    dynamicMatchConfigurations = registerOutput<List<Map<String, dynamic>>?>('dynamicMatchConfigurations');
+    dynamicMatchConfigurations = registerOutput<List<CommonDynamicMatchConfigurationResponse>?>('dynamicMatchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(guardedValue, (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lastSyncedTime = registerOutput<String>('lastSyncedTime');
     location = registerOutput<String>('location');
-    matchConfigurations = registerOutput<List<Map<String, dynamic>>?>('matchConfigurations');
+    matchConfigurations = registerOutput<List<AccessControlListMatchConfigurationResponse>?>('matchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessControlListMatchConfigurationResponse>(guardedValue, (value) => AccessControlListMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AccessControlList] resource.
+  AccessControlList.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:AccessControlList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclsUrl = registerOutput<String?>('aclsUrl');
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    configurationType = registerOutput<String>('configurationType');
+    defaultAction = registerOutput<String?>('defaultAction');
+    dynamicMatchConfigurations = registerOutput<List<CommonDynamicMatchConfigurationResponse>?>('dynamicMatchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CommonDynamicMatchConfigurationResponse>(guardedValue, (value) => CommonDynamicMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lastSyncedTime = registerOutput<String>('lastSyncedTime');
+    location = registerOutput<String>('location');
+    matchConfigurations = registerOutput<List<AccessControlListMatchConfigurationResponse>?>('matchConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessControlListMatchConfigurationResponse>(guardedValue, (value) => AccessControlListMatchConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -11,19 +11,19 @@ import 'sku.dart';
 /// {@macro pulumi_agricultureplatform_agri_service_args_doc}
 class AgriServiceArgs {
   /// The name of the AgriService resource.
-  final pulumi.Input<String>? agriServiceResourceName;
+  final pulumi.Input<String?>? agriServiceResourceName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AgriServiceResourceProperties>? properties;
+  final pulumi.Input<AgriServiceResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU (Stock Keeping Unit) assigned to this resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AgriServiceArgs].
   /// [agriServiceResourceName] The name of the AgriService resource.

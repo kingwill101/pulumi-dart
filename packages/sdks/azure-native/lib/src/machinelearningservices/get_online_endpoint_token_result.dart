@@ -17,12 +17,12 @@ class GetOnlineEndpointTokenResult {
   /// [expiryTimeUtc] Access token expiry time (UTC).
   /// [refreshAfterTimeUtc] Refresh access token after time (UTC).
   /// [tokenType] Access token type.
-  const GetOnlineEndpointTokenResult({
+  GetOnlineEndpointTokenResult({
     this.accessToken,
-    this.expiryTimeUtc,
-    this.refreshAfterTimeUtc,
+    double? expiryTimeUtc,
+    double? refreshAfterTimeUtc,
     this.tokenType,
-  });
+  }) : expiryTimeUtc = expiryTimeUtc ?? 0, refreshAfterTimeUtc = refreshAfterTimeUtc ?? 0;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,8 +36,8 @@ class GetOnlineEndpointTokenResult {
   factory GetOnlineEndpointTokenResult.fromMap(Map<String, dynamic> map) {
     return GetOnlineEndpointTokenResult(
       accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      expiryTimeUtc: (() { final guardedValue = map['expiryTimeUtc']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      refreshAfterTimeUtc: (() { final guardedValue = map['refreshAfterTimeUtc']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      expiryTimeUtc: (() { final guardedValue = map['expiryTimeUtc']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      refreshAfterTimeUtc: (() { final guardedValue = map['refreshAfterTimeUtc']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       tokenType: (() { final guardedValue = map['tokenType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

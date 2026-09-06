@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IPSec encryption algorithm (IKE phase 1).
-enum IpsecEncryption {
+enum IpsecEncryption implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueDES("DES"),
   valueDES3("DES3"),
@@ -11,6 +13,7 @@ enum IpsecEncryption {
   valueGCMAES256("GCMAES256");
 
   const IpsecEncryption(this.wireValue);
+  @override
   final String wireValue;
 
   static IpsecEncryption fromValue(String value) {

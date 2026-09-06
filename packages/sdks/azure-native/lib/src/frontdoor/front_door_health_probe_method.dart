@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configures which HTTP method to use to probe the backends defined under backendPools.
-enum FrontDoorHealthProbeMethod {
+enum FrontDoorHealthProbeMethod implements pulumi.PulumiEnum<String> {
   gET("GET"),
   hEAD("HEAD");
 
   const FrontDoorHealthProbeMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontDoorHealthProbeMethod fromValue(String value) {

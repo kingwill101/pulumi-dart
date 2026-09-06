@@ -6,7 +6,7 @@ import 'akri_connectors_image_pull_secret.dart';
 /// AkriConnectorsContainerRegistry properties.
 class AkriConnectorsContainerRegistrySettings {
   /// Optional list of references to secrets in the same namespace to use for pulling the connector image.
-  final pulumi.Input<List<AkriConnectorsImagePullSecret>>? imagePullSecrets;
+  final pulumi.Input<List<AkriConnectorsImagePullSecret>?>? imagePullSecrets;
   /// The container registry to use for the artifact.
   final pulumi.Input<String> registry;
 

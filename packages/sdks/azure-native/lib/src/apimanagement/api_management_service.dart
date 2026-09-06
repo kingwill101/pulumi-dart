@@ -1,9 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'additional_location_response.dart';
 import 'api_management_service_args.dart';
 import 'api_management_service_identity_response.dart';
 import 'api_management_service_sku_properties_response.dart';
 import 'api_version_constraint_response.dart';
+import 'certificate_configuration_response.dart';
 import 'configuration_api_response.dart';
+import 'hostname_configuration_response.dart';
+import 'remote_private_endpoint_connection_wrapper_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_configuration_response.dart';
 
@@ -3465,13 +3469,13 @@ import 'virtual_network_configuration_response.dart';
 /// ```
 class ApiManagementService extends pulumi.CustomResource {
   /// Additional datacenter locations of the API Management service.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalLocations;
+  late final pulumi.Output<List<AdditionalLocationResponse>?> additionalLocations;
   /// Control Plane Apis version constraint for the API Management service.
   late final pulumi.Output<ApiVersionConstraintResponse?> apiVersionConstraint;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
-  late final pulumi.Output<List<Map<String, dynamic>>?> certificates;
+  late final pulumi.Output<List<CertificateConfigurationResponse>?> certificates;
   /// Configuration API configuration of the API Management service.
   late final pulumi.Output<ConfigurationApiResponse?> configurationApi;
   /// Creation UTC date of the API Management service.The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
@@ -3493,7 +3497,7 @@ class ApiManagementService extends pulumi.CustomResource {
   /// Gateway URL of the API Management service.
   late final pulumi.Output<String> gatewayUrl;
   /// Custom hostname configuration of the API Management service.
-  late final pulumi.Output<List<Map<String, dynamic>>?> hostnameConfigurations;
+  late final pulumi.Output<List<HostnameConfigurationResponse>?> hostnameConfigurations;
   /// Managed service identity of the Api Management service.
   late final pulumi.Output<ApiManagementServiceIdentityResponse?> identity;
   /// Status of legacy portal in the API Management service.
@@ -3515,7 +3519,7 @@ class ApiManagementService extends pulumi.CustomResource {
   /// Publisher portal endpoint Url of the API Management service.
   late final pulumi.Output<String> portalUrl;
   /// List of Private Endpoint Connections of this service.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
+  late final pulumi.Output<List<RemotePrivateEndpointConnectionWrapperResponse>?> privateEndpointConnections;
   /// Private Static Load Balanced IP addresses of the API Management service in Primary region which is deployed in an Internal Virtual Network. Available only for Basic, Standard, Premium and Isolated SKU.
   late final pulumi.Output<List<String>> privateIPAddresses;
   /// The current provisioning state of the API Management service which can be one of the following: Created/Activating/Succeeded/Updating/Failed/Stopped/Terminating/TerminationFailed/Deleted.
@@ -3565,13 +3569,13 @@ class ApiManagementService extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalLocations = registerOutput<List<Map<String, dynamic>>?>('additionalLocations');
+    additionalLocations = registerOutput<List<AdditionalLocationResponse>?>('additionalLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AdditionalLocationResponse>(guardedValue, (value) => AdditionalLocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     apiVersionConstraint = registerOutput<ApiVersionConstraintResponse?>('apiVersionConstraint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiVersionConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    certificates = registerOutput<List<Map<String, dynamic>>?>('certificates');
+    certificates = registerOutput<List<CertificateConfigurationResponse>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateConfigurationResponse>(guardedValue, (value) => CertificateConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     configurationApi = registerOutput<ConfigurationApiResponse?>('configurationApi', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationApiResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdAtUtc = registerOutput<String>('createdAtUtc');
-    customProperties = registerOutput<Map<String, String>?>('customProperties');
+    customProperties = registerOutput<Map<String, String>?>('customProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     developerPortalStatus = registerOutput<String?>('developerPortalStatus');
     developerPortalUrl = registerOutput<String>('developerPortalUrl');
     disableGateway = registerOutput<bool?>('disableGateway');
@@ -3579,7 +3583,7 @@ class ApiManagementService extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
     gatewayUrl = registerOutput<String>('gatewayUrl');
-    hostnameConfigurations = registerOutput<List<Map<String, dynamic>>?>('hostnameConfigurations');
+    hostnameConfigurations = registerOutput<List<HostnameConfigurationResponse>?>('hostnameConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostnameConfigurationResponse>(guardedValue, (value) => HostnameConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ApiManagementServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiManagementServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     legacyPortalStatus = registerOutput<String?>('legacyPortalStatus');
     location = registerOutput<String>('location');
@@ -3587,13 +3591,13 @@ class ApiManagementService extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     natGatewayState = registerOutput<String?>('natGatewayState');
     notificationSenderEmail = registerOutput<String?>('notificationSenderEmail');
-    outboundPublicIPAddresses = registerOutput<List<String>>('outboundPublicIPAddresses');
+    outboundPublicIPAddresses = registerOutput<List<String>>('outboundPublicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     platformVersion = registerOutput<String>('platformVersion');
     portalUrl = registerOutput<String>('portalUrl');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
-    privateIPAddresses = registerOutput<List<String>>('privateIPAddresses');
+    privateEndpointConnections = registerOutput<List<RemotePrivateEndpointConnectionWrapperResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemotePrivateEndpointConnectionWrapperResponse>(guardedValue, (value) => RemotePrivateEndpointConnectionWrapperResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateIPAddresses = registerOutput<List<String>>('privateIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
-    publicIPAddresses = registerOutput<List<String>>('publicIPAddresses');
+    publicIPAddresses = registerOutput<List<String>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     publicIpAddressId = registerOutput<String?>('publicIpAddressId');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publisherEmail = registerOutput<String>('publisherEmail');
@@ -3602,11 +3606,65 @@ class ApiManagementService extends pulumi.CustomResource {
     scmUrl = registerOutput<String>('scmUrl');
     sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiManagementServiceSkuPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetProvisioningState = registerOutput<String>('targetProvisioningState');
     type = registerOutput<String>('type');
     virtualNetworkConfiguration = registerOutput<VirtualNetworkConfigurationResponse?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApiManagementService] resource.
+  ApiManagementService.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiManagementService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalLocations = registerOutput<List<AdditionalLocationResponse>?>('additionalLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AdditionalLocationResponse>(guardedValue, (value) => AdditionalLocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    apiVersionConstraint = registerOutput<ApiVersionConstraintResponse?>('apiVersionConstraint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiVersionConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificates = registerOutput<List<CertificateConfigurationResponse>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateConfigurationResponse>(guardedValue, (value) => CertificateConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    configurationApi = registerOutput<ConfigurationApiResponse?>('configurationApi', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationApiResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAtUtc = registerOutput<String>('createdAtUtc');
+    customProperties = registerOutput<Map<String, String>?>('customProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    developerPortalStatus = registerOutput<String?>('developerPortalStatus');
+    developerPortalUrl = registerOutput<String>('developerPortalUrl');
+    disableGateway = registerOutput<bool?>('disableGateway');
+    enableClientCertificate = registerOutput<bool?>('enableClientCertificate');
+    etag = registerOutput<String>('etag');
+    gatewayRegionalUrl = registerOutput<String>('gatewayRegionalUrl');
+    gatewayUrl = registerOutput<String>('gatewayUrl');
+    hostnameConfigurations = registerOutput<List<HostnameConfigurationResponse>?>('hostnameConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostnameConfigurationResponse>(guardedValue, (value) => HostnameConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ApiManagementServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiManagementServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    legacyPortalStatus = registerOutput<String?>('legacyPortalStatus');
+    location = registerOutput<String>('location');
+    managementApiUrl = registerOutput<String>('managementApiUrl');
+    this.name = registerOutput<String>('name');
+    natGatewayState = registerOutput<String?>('natGatewayState');
+    notificationSenderEmail = registerOutput<String?>('notificationSenderEmail');
+    outboundPublicIPAddresses = registerOutput<List<String>>('outboundPublicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    platformVersion = registerOutput<String>('platformVersion');
+    portalUrl = registerOutput<String>('portalUrl');
+    privateEndpointConnections = registerOutput<List<RemotePrivateEndpointConnectionWrapperResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RemotePrivateEndpointConnectionWrapperResponse>(guardedValue, (value) => RemotePrivateEndpointConnectionWrapperResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateIPAddresses = registerOutput<List<String>>('privateIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddresses = registerOutput<List<String>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    publicIpAddressId = registerOutput<String?>('publicIpAddressId');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publisherEmail = registerOutput<String>('publisherEmail');
+    publisherName = registerOutput<String>('publisherName');
+    restore = registerOutput<bool?>('restore');
+    scmUrl = registerOutput<String>('scmUrl');
+    sku = registerOutput<ApiManagementServiceSkuPropertiesResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiManagementServiceSkuPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetProvisioningState = registerOutput<String>('targetProvisioningState');
+    type = registerOutput<String>('type');
+    virtualNetworkConfiguration = registerOutput<VirtualNetworkConfigurationResponse?>('virtualNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

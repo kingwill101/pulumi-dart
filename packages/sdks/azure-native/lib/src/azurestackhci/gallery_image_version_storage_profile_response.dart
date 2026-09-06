@@ -6,7 +6,7 @@ import 'gallery_osdisk_image_response.dart';
 /// This is the storage profile of a Gallery Image Version.
 class GalleryImageVersionStorageProfileResponse {
   /// This is the OS disk image.
-  final pulumi.Input<GalleryOSDiskImageResponse>? osDiskImage;
+  final pulumi.Input<GalleryOSDiskImageResponse?>? osDiskImage;
 
   /// Creates a new [GalleryImageVersionStorageProfileResponse].
   /// [osDiskImage] This is the OS disk image.

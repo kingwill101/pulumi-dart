@@ -6,9 +6,9 @@ import 'scan_status_enum_value_response.dart';
 /// Definition of ImageScanStatus
 class ImageScanStatusResponse {
   /// &lt;p&gt;The description of the image scan status.&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The current state of an image scan.&lt;/p&gt;
-  final pulumi.Input<ScanStatusEnumValueResponse>? status;
+  final pulumi.Input<ScanStatusEnumValueResponse?>? status;
 
   /// Creates a new [ImageScanStatusResponse].
   /// [description] &lt;p&gt;The description of the image scan status.&lt;/p&gt;

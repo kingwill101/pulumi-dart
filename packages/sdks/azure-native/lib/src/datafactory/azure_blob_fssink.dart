@@ -12,7 +12,7 @@ class AzureBlobFSSink {
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final pulumi.Input<List<MetadataItem>>? metadata;
+  final pulumi.Input<List<MetadataItem>?>? metadata;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? sinkRetryCount;
   /// Sink retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

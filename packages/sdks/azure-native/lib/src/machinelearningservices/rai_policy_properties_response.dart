@@ -7,14 +7,14 @@ import 'rai_policy_content_filter_response.dart';
 /// Azure OpenAI Content Filters properties.
 class RaiPolicyPropertiesResponse {
   /// Name of the base Content Filters.
-  final pulumi.Input<String>? basePolicyName;
-  final pulumi.Input<List<RaiBlocklistConfigResponse>>? completionBlocklists;
-  final pulumi.Input<List<RaiPolicyContentFilterResponse>>? contentFilters;
+  final pulumi.Input<String?>? basePolicyName;
+  final pulumi.Input<List<RaiBlocklistConfigResponse>?>? completionBlocklists;
+  final pulumi.Input<List<RaiPolicyContentFilterResponse>?>? contentFilters;
   /// Content Filters mode.
-  final pulumi.Input<String>? mode;
-  final pulumi.Input<List<RaiBlocklistConfigResponse>>? promptBlocklists;
+  final pulumi.Input<String?>? mode;
+  final pulumi.Input<List<RaiBlocklistConfigResponse>?>? promptBlocklists;
   /// Content Filters policy type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RaiPolicyPropertiesResponse].
   /// [basePolicyName] Name of the base Content Filters.

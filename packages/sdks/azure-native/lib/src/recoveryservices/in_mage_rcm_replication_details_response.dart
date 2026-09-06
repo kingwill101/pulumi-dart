@@ -16,7 +16,7 @@ class InMageRcmReplicationDetailsResponse {
   /// The agent version to which last agent upgrade was attempted.
   final pulumi.Input<String> agentUpgradeAttemptToVersion;
   /// The agent upgrade blocking error information.
-  final pulumi.Input<List<InMageRcmAgentUpgradeBlockingErrorDetailsResponse>>? agentUpgradeBlockingErrorDetails;
+  final pulumi.Input<List<InMageRcmAgentUpgradeBlockingErrorDetailsResponse>?>? agentUpgradeBlockingErrorDetails;
   /// The agent upgrade job Id.
   final pulumi.Input<String> agentUpgradeJobId;
   /// The agent auto upgrade state.
@@ -24,7 +24,7 @@ class InMageRcmReplicationDetailsResponse {
   /// The allocated memory in MB.
   final pulumi.Input<double> allocatedMemoryInMB;
   /// The discovered VM details.
-  final pulumi.Input<InMageRcmDiscoveredProtectedVmDetailsResponse>? discoveredVmDetails;
+  final pulumi.Input<InMageRcmDiscoveredProtectedVmDetailsResponse?>? discoveredVmDetails;
   /// The type of the discovered VM.
   final pulumi.Input<String> discoveryType;
   /// The ARM Id of the discovered VM.
@@ -51,7 +51,7 @@ class InMageRcmReplicationDetailsResponse {
   /// A value indicating whether last agent upgrade was successful or not.
   final pulumi.Input<String> isLastUpgradeSuccessful;
   /// The last agent upgrade error information.
-  final pulumi.Input<List<InMageRcmLastAgentUpgradeErrorDetailsResponse>>? lastAgentUpgradeErrorDetails;
+  final pulumi.Input<List<InMageRcmLastAgentUpgradeErrorDetailsResponse>?>? lastAgentUpgradeErrorDetails;
   /// The last agent upgrade type.
   final pulumi.Input<String> lastAgentUpgradeType;
   /// The last recovery point Id.
@@ -63,15 +63,15 @@ class InMageRcmReplicationDetailsResponse {
   /// The last recovery point objective value.
   final pulumi.Input<double> lastRpoInSeconds;
   /// License Type of the VM to be used.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The license type for Linux VM's.
-  final pulumi.Input<String>? linuxLicenseType;
+  final pulumi.Input<String?>? linuxLicenseType;
   /// The mobility agent information.
-  final pulumi.Input<InMageRcmMobilityAgentDetailsResponse>? mobilityAgentDetails;
+  final pulumi.Input<InMageRcmMobilityAgentDetailsResponse?>? mobilityAgentDetails;
   /// The multi VM group name.
   final pulumi.Input<String> multiVmGroupName;
   /// The OS name associated with VM.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// The type of the OS on the VM.
   final pulumi.Input<String> osType;
   /// The IP address of the primary network interface.
@@ -83,7 +83,7 @@ class InMageRcmReplicationDetailsResponse {
   /// The processor core count.
   final pulumi.Input<int> processorCoreCount;
   /// The list of protected disks.
-  final pulumi.Input<List<InMageRcmProtectedDiskDetailsResponse>>? protectedDisks;
+  final pulumi.Input<List<InMageRcmProtectedDiskDetailsResponse>?>? protectedDisks;
   /// The resync processed bytes. This includes sum of total bytes transferred and matched bytes on all selected disks in source VM.
   final pulumi.Input<double> resyncProcessedBytes;
   /// The resync progress health.
@@ -99,47 +99,47 @@ class InMageRcmReplicationDetailsResponse {
   /// The run-as account Id.
   final pulumi.Input<String> runAsAccountId;
   /// The tags for the seed managed disks.
-  final pulumi.Input<List<UserCreatedResourceTagResponse>>? seedManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTagResponse>?>? seedManagedDiskTags;
   /// The SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<String?>? sqlServerLicenseType;
   /// The replication storage account ARM Id. This is applicable only for the blob based replication test hook.
   final pulumi.Input<String> storageAccountId;
   /// A value indicating the inplace OS Upgrade version.
-  final pulumi.Input<List<String>>? supportedOSVersions;
+  final pulumi.Input<List<String>?>? supportedOSVersions;
   /// The target availability set Id.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String?>? targetBootDiagnosticsStorageAccountId;
   /// The target generation.
   final pulumi.Input<String> targetGeneration;
   /// The target location.
-  final pulumi.Input<String>? targetLocation;
+  final pulumi.Input<String?>? targetLocation;
   /// The tags for the target managed disks.
-  final pulumi.Input<List<UserCreatedResourceTagResponse>>? targetManagedDiskTags;
+  final pulumi.Input<List<UserCreatedResourceTagResponse>?>? targetManagedDiskTags;
   /// The target network Id.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// The tags for the target NICs.
-  final pulumi.Input<List<UserCreatedResourceTagResponse>>? targetNicTags;
+  final pulumi.Input<List<UserCreatedResourceTagResponse>?>? targetNicTags;
   /// The target proximity placement group Id.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The target resource group Id.
-  final pulumi.Input<String>? targetResourceGroupId;
+  final pulumi.Input<String?>? targetResourceGroupId;
   /// Target VM name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// The target VM security profile.
-  final pulumi.Input<SecurityProfilePropertiesResponse>? targetVmSecurityProfile;
+  final pulumi.Input<SecurityProfilePropertiesResponse?>? targetVmSecurityProfile;
   /// The target VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// The target VM tags.
-  final pulumi.Input<List<UserCreatedResourceTagResponse>>? targetVmTags;
+  final pulumi.Input<List<UserCreatedResourceTagResponse>?>? targetVmTags;
   /// The test network Id.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
   /// The list of unprotected disks.
-  final pulumi.Input<List<InMageRcmUnProtectedDiskDetailsResponse>>? unprotectedDisks;
+  final pulumi.Input<List<InMageRcmUnProtectedDiskDetailsResponse>?>? unprotectedDisks;
   /// The network details.
-  final pulumi.Input<List<InMageRcmNicDetailsResponse>>? vmNics;
+  final pulumi.Input<List<InMageRcmNicDetailsResponse>?>? vmNics;
 
   /// Creates a new [InMageRcmReplicationDetailsResponse].
   /// [agentUpgradeAttemptToVersion] The agent version to which last agent upgrade was attempted.
@@ -345,16 +345,16 @@ class InMageRcmReplicationDetailsResponse {
       agentUpgradeBlockingErrorDetails: (() { final guardedValue = map['agentUpgradeBlockingErrorDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageRcmAgentUpgradeBlockingErrorDetailsResponse>(guardedValue, (value) => InMageRcmAgentUpgradeBlockingErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       agentUpgradeJobId: pulumi.Input.fromValue(map['agentUpgradeJobId'] as String),
       agentUpgradeState: pulumi.Input.fromValue(map['agentUpgradeState'] as String),
-      allocatedMemoryInMB: pulumi.Input.fromValue(map['allocatedMemoryInMB'] as double),
+      allocatedMemoryInMB: pulumi.Input.fromValue((map['allocatedMemoryInMB'] as num).toDouble()),
       discoveredVmDetails: (() { final guardedValue = map['discoveredVmDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InMageRcmDiscoveredProtectedVmDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       discoveryType: pulumi.Input.fromValue(map['discoveryType'] as String),
       fabricDiscoveryMachineId: pulumi.Input.fromValue(map['fabricDiscoveryMachineId'] as String),
       failoverRecoveryPointId: pulumi.Input.fromValue(map['failoverRecoveryPointId'] as String),
       firmwareType: pulumi.Input.fromValue(map['firmwareType'] as String),
-      initialReplicationProcessedBytes: pulumi.Input.fromValue(map['initialReplicationProcessedBytes'] as double),
+      initialReplicationProcessedBytes: pulumi.Input.fromValue((map['initialReplicationProcessedBytes'] as num).toDouble()),
       initialReplicationProgressHealth: pulumi.Input.fromValue(map['initialReplicationProgressHealth'] as String),
-      initialReplicationProgressPercentage: pulumi.Input.fromValue(map['initialReplicationProgressPercentage'] as int),
-      initialReplicationTransferredBytes: pulumi.Input.fromValue(map['initialReplicationTransferredBytes'] as double),
+      initialReplicationProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialReplicationProgressPercentage'])),
+      initialReplicationTransferredBytes: pulumi.Input.fromValue((map['initialReplicationTransferredBytes'] as num).toDouble()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       internalIdentifier: pulumi.Input.fromValue(map['internalIdentifier'] as String),
       isAgentRegistrationSuccessfulAfterFailover: pulumi.Input.fromValue(map['isAgentRegistrationSuccessfulAfterFailover'] as bool),
@@ -364,7 +364,7 @@ class InMageRcmReplicationDetailsResponse {
       lastRecoveryPointId: pulumi.Input.fromValue(map['lastRecoveryPointId'] as String),
       lastRecoveryPointReceived: pulumi.Input.fromValue(map['lastRecoveryPointReceived'] as String),
       lastRpoCalculatedTime: pulumi.Input.fromValue(map['lastRpoCalculatedTime'] as String),
-      lastRpoInSeconds: pulumi.Input.fromValue(map['lastRpoInSeconds'] as double),
+      lastRpoInSeconds: pulumi.Input.fromValue((map['lastRpoInSeconds'] as num).toDouble()),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mobilityAgentDetails: (() { final guardedValue = map['mobilityAgentDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InMageRcmMobilityAgentDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -374,14 +374,14 @@ class InMageRcmReplicationDetailsResponse {
       primaryNicIpAddress: pulumi.Input.fromValue(map['primaryNicIpAddress'] as String),
       processServerId: pulumi.Input.fromValue(map['processServerId'] as String),
       processServerName: pulumi.Input.fromValue(map['processServerName'] as String),
-      processorCoreCount: pulumi.Input.fromValue(map['processorCoreCount'] as int),
+      processorCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['processorCoreCount'])),
       protectedDisks: (() { final guardedValue = map['protectedDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageRcmProtectedDiskDetailsResponse>(guardedValue, (value) => InMageRcmProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      resyncProcessedBytes: pulumi.Input.fromValue(map['resyncProcessedBytes'] as double),
+      resyncProcessedBytes: pulumi.Input.fromValue((map['resyncProcessedBytes'] as num).toDouble()),
       resyncProgressHealth: pulumi.Input.fromValue(map['resyncProgressHealth'] as String),
-      resyncProgressPercentage: pulumi.Input.fromValue(map['resyncProgressPercentage'] as int),
+      resyncProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resyncProgressPercentage'])),
       resyncRequired: pulumi.Input.fromValue(map['resyncRequired'] as String),
       resyncState: pulumi.Input.fromValue(map['resyncState'] as String),
-      resyncTransferredBytes: pulumi.Input.fromValue(map['resyncTransferredBytes'] as double),
+      resyncTransferredBytes: pulumi.Input.fromValue((map['resyncTransferredBytes'] as num).toDouble()),
       runAsAccountId: pulumi.Input.fromValue(map['runAsAccountId'] as String),
       seedManagedDiskTags: (() { final guardedValue = map['seedManagedDiskTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserCreatedResourceTagResponse>(guardedValue, (value) => UserCreatedResourceTagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,7 +6,7 @@ import 'firewall_policy_certificate_authority_response.dart';
 /// Configuration needed to perform TLS termination & initiation.
 class FirewallPolicyTransportSecurityResponse {
   /// The CA used for intermediate CA generation.
-  final pulumi.Input<FirewallPolicyCertificateAuthorityResponse>? certificateAuthority;
+  final pulumi.Input<FirewallPolicyCertificateAuthorityResponse?>? certificateAuthority;
 
   /// Creates a new [FirewallPolicyTransportSecurityResponse].
   /// [certificateAuthority] The CA used for intermediate CA generation.

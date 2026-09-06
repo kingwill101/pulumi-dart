@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SourceConfiguration
 class SourceConfiguration {
   /// The name of the application associated with the configuration.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// The name of the configuration template.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
 
   /// Creates a new [SourceConfiguration].
   /// [applicationName] The name of the application associated with the configuration.

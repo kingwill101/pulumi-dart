@@ -9,7 +9,7 @@ import 'retention_policy_properties.dart';
 /// {@macro pulumi_durabletask_retention_policy_args_doc}
 class RetentionPolicyArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RetentionPolicyProperties>? properties;
+  final pulumi.Input<RetentionPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Scheduler

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_partition_names_response.dart';
 
 class EnergyServicePropertiesResponse {
-  final pulumi.Input<String>? authAppId;
-  final pulumi.Input<List<DataPartitionNamesResponse>>? dataPartitionNames;
+  final pulumi.Input<String?>? authAppId;
+  final pulumi.Input<List<DataPartitionNamesResponse>?>? dataPartitionNames;
   final pulumi.Input<String> dnsName;
   final pulumi.Input<String> provisioningState;
 

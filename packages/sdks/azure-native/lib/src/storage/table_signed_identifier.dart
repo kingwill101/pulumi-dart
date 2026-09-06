@@ -6,7 +6,7 @@ import 'table_access_policy.dart';
 /// Object to set Table Access Policy.
 class TableSignedIdentifier {
   /// Access policy
-  final pulumi.Input<TableAccessPolicy>? accessPolicy;
+  final pulumi.Input<TableAccessPolicy?>? accessPolicy;
   /// unique-64-character-value of the stored access policy.
   final pulumi.Input<String> id;
 

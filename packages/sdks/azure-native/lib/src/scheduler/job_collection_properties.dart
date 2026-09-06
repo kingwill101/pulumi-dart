@@ -7,11 +7,11 @@ import 'sku.dart';
 
 class JobCollectionProperties {
   /// Gets or sets the job collection quota.
-  final pulumi.Input<JobCollectionQuota>? quota;
+  final pulumi.Input<JobCollectionQuota?>? quota;
   /// Gets or sets the SKU.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Gets or sets the state.
-  final pulumi.Input<JobCollectionState>? state;
+  final pulumi.Input<JobCollectionState?>? state;
 
   /// Creates a new [JobCollectionProperties].
   /// [quota] Gets or sets the job collection quota.

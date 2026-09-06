@@ -10,23 +10,23 @@ class DataflowEndpointKafka {
   /// Authentication configuration. NOTE - only authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointKafkaAuthentication> authentication;
   /// Batching configuration.
-  final pulumi.Input<DataflowEndpointKafkaBatching>? batching;
+  final pulumi.Input<DataflowEndpointKafkaBatching?>? batching;
   /// Cloud event mapping config.
-  final pulumi.Input<String>? cloudEventAttributes;
+  final pulumi.Input<dynamic>? cloudEventAttributes;
   /// Compression. Can be none, gzip, lz4, or snappy. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? compression;
+  final pulumi.Input<dynamic>? compression;
   /// Consumer group ID.
-  final pulumi.Input<String>? consumerGroupId;
+  final pulumi.Input<String?>? consumerGroupId;
   /// Copy Broker properties. No effect if the endpoint is used as a source or if the dataflow doesn't have an Broker source.
-  final pulumi.Input<String>? copyMqttProperties;
+  final pulumi.Input<dynamic>? copyMqttProperties;
   /// Kafka endpoint host.
   final pulumi.Input<String> host;
   /// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? kafkaAcks;
+  final pulumi.Input<dynamic>? kafkaAcks;
   /// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-  final pulumi.Input<String>? partitionStrategy;
+  final pulumi.Input<dynamic>? partitionStrategy;
   /// TLS configuration.
-  final pulumi.Input<TlsProperties>? tls;
+  final pulumi.Input<TlsProperties?>? tls;
 
   /// Creates a new [DataflowEndpointKafka].
   /// [authentication] Authentication configuration. NOTE - only authentication property is allowed per entry.
@@ -39,18 +39,18 @@ class DataflowEndpointKafka {
   /// [kafkaAcks] Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
   /// [partitionStrategy] Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
   /// [tls] TLS configuration.
-  const DataflowEndpointKafka({
+  DataflowEndpointKafka({
     required this.authentication,
     this.batching,
     this.cloudEventAttributes,
-    this.compression,
+    pulumi.Input<dynamic>? compression,
     this.consumerGroupId,
-    this.copyMqttProperties,
+    pulumi.Input<dynamic>? copyMqttProperties,
     required this.host,
-    this.kafkaAcks,
-    this.partitionStrategy,
+    pulumi.Input<dynamic>? kafkaAcks,
+    pulumi.Input<dynamic>? partitionStrategy,
     this.tls,
-  });
+  }) : compression = compression ?? pulumi.Input.fromValue('None'), copyMqttProperties = copyMqttProperties ?? pulumi.Input.fromValue('Enabled'), kafkaAcks = kafkaAcks ?? pulumi.Input.fromValue('All'), partitionStrategy = partitionStrategy ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,13 +71,13 @@ class DataflowEndpointKafka {
     return DataflowEndpointKafka(
       authentication: pulumi.Input.fromValue(DataflowEndpointKafkaAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       batching: (() { final guardedValue = map['batching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointKafkaBatching.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      cloudEventAttributes: (() { final guardedValue = map['cloudEventAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cloudEventAttributes: (() { final guardedValue = map['cloudEventAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      compression: (() { final guardedValue = map['compression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       consumerGroupId: (() { final guardedValue = map['consumerGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      copyMqttProperties: (() { final guardedValue = map['copyMqttProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      copyMqttProperties: (() { final guardedValue = map['copyMqttProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       host: pulumi.Input.fromValue(map['host'] as String),
-      kafkaAcks: (() { final guardedValue = map['kafkaAcks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      partitionStrategy: (() { final guardedValue = map['partitionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kafkaAcks: (() { final guardedValue = map['kafkaAcks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      partitionStrategy: (() { final guardedValue = map['partitionStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TlsProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

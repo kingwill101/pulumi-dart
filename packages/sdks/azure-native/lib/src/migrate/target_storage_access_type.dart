@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the target storage access type.
-enum TargetStorageAccessType {
+enum TargetStorageAccessType implements pulumi.PulumiEnum<String> {
   valueShared("Shared"),
   valueExclusive("Exclusive");
 
   const TargetStorageAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetStorageAccessType fromValue(String value) {

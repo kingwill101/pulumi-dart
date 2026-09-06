@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_ssh_public_key_args_doc}
 class SshPublicKeyArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// SSH public key used to authenticate to a virtual machine through ssh. If this property is not initially provided when the resource is created, the publicKey property will be populated when generateKeyPair is called. If the public key is provided upon resource creation, the provided public key needs to be at least 2048-bit and in ssh-rsa format.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the SSH public key.
-  final pulumi.Input<String>? sshPublicKeyName;
+  final pulumi.Input<String?>? sshPublicKeyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SshPublicKeyArgs].
   /// [location] The geo-location where the resource lives

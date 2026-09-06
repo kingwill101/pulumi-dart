@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of integration runtime.
-enum IntegrationRuntimeReferenceType {
+enum IntegrationRuntimeReferenceType implements pulumi.PulumiEnum<String> {
   integrationRuntimeReference("IntegrationRuntimeReference");
 
   const IntegrationRuntimeReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationRuntimeReferenceType fromValue(String value) {

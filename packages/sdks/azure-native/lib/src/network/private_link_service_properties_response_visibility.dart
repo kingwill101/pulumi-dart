@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The visibility list of the private link service.
 class PrivateLinkServicePropertiesResponseVisibility {
   /// The list of subscriptions.
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
 
   /// Creates a new [PrivateLinkServicePropertiesResponseVisibility].
   /// [subscriptions] The list of subscriptions.

@@ -11,9 +11,9 @@ class PrivateEndpointArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// A list of connections to the remote resource. Immutable after it is set.
-  final pulumi.Input<List<PrivateLinkServiceConnection>>? manualPrivateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnection>?>? manualPrivateLinkServiceConnections;
   /// The name of the private endpoint.
-  final pulumi.Input<String>? privateEndpointName;
+  final pulumi.Input<String?>? privateEndpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

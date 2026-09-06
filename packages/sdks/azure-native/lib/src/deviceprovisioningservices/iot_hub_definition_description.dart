@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of the IoT hub.
 class IotHubDefinitionDescription {
   /// weight to apply for a given iot h.
-  final pulumi.Input<int>? allocationWeight;
+  final pulumi.Input<int?>? allocationWeight;
   /// flag for applying allocationPolicy or not for a given iot hub.
-  final pulumi.Input<bool>? applyAllocationPolicy;
+  final pulumi.Input<bool?>? applyAllocationPolicy;
   /// Connection string of the IoT hub.
   final pulumi.Input<String> connectionString;
   /// ARM region of the IoT hub.
@@ -36,7 +36,7 @@ class IotHubDefinitionDescription {
 
   factory IotHubDefinitionDescription.fromMap(Map<String, dynamic> map) {
     return IotHubDefinitionDescription(
-      allocationWeight: (() { final guardedValue = map['allocationWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocationWeight: (() { final guardedValue = map['allocationWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       applyAllocationPolicy: (() { final guardedValue = map['applyAllocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action of the command.
-enum Action {
+enum Action implements pulumi.PulumiEnum<String> {
   valueInstall("Install"),
   valueLaunch("Launch"),
   valueClose("Close"),
@@ -8,6 +10,7 @@ enum Action {
   valueFlowDrivenCustom("FlowDrivenCustom");
 
   const Action(this.wireValue);
+  @override
   final String wireValue;
 
   static Action fromValue(String value) {

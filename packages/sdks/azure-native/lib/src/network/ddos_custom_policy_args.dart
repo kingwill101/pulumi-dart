@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_ddos_custom_policy_args_doc}
 class DdosCustomPolicyArgs {
   /// The name of the DDoS custom policy.
-  final pulumi.Input<String>? ddosCustomPolicyName;
+  final pulumi.Input<String?>? ddosCustomPolicyName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DdosCustomPolicyArgs].
   /// [ddosCustomPolicyName] The name of the DDoS custom policy.

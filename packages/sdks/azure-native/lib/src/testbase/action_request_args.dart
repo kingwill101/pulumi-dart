@@ -8,9 +8,9 @@ import 'pre_release_access_request_spec.dart';
 /// {@endtemplate}
 /// {@macro pulumi_testbase_action_request_args_doc}
 class ActionRequestArgs {
-  final pulumi.Input<String>? actionRequestName;
-  final pulumi.Input<PreReleaseAccessRequestSpec>? preReleaseAccessRequestSpec;
-  final pulumi.Input<String> requestType;
+  final pulumi.Input<String?>? actionRequestName;
+  final pulumi.Input<PreReleaseAccessRequestSpec?>? preReleaseAccessRequestSpec;
+  final pulumi.Input<dynamic> requestType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource name of the Test Base Account.
@@ -44,7 +44,7 @@ class ActionRequestArgs {
     return ActionRequestArgs(
       actionRequestName: (() { final guardedValue = map['actionRequestName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       preReleaseAccessRequestSpec: (() { final guardedValue = map['preReleaseAccessRequestSpec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PreReleaseAccessRequestSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      requestType: pulumi.Input.fromValue(map['requestType'] as String),
+      requestType: pulumi.Input.fromValue(map['requestType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );

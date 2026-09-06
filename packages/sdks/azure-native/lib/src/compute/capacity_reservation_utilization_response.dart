@@ -27,7 +27,7 @@ class CapacityReservationUtilizationResponse {
 
   factory CapacityReservationUtilizationResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationUtilizationResponse(
-      currentCapacity: pulumi.Input.fromValue(map['currentCapacity'] as int),
+      currentCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentCapacity'])),
       virtualMachinesAllocated: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceReadOnlyResponse>(map['virtualMachinesAllocated']!, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

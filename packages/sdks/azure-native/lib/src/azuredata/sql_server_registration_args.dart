@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azuredata_sql_server_registration_args_doc}
 class SqlServerRegistrationArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional Properties as JSON string
-  final pulumi.Input<String>? propertyBag;
+  final pulumi.Input<String?>? propertyBag;
   /// Resource Group Name
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL Server registration.
-  final pulumi.Input<String>? sqlServerRegistrationName;
+  final pulumi.Input<String?>? sqlServerRegistrationName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerRegistrationArgs].
   /// [location] The geo-location where the resource lives

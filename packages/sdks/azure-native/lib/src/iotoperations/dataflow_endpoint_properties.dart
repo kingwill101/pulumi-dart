@@ -11,19 +11,19 @@ import 'dataflow_endpoint_mqtt.dart';
 /// DataflowEndpoint Resource properties. NOTE - Only one type of endpoint is supported for one Resource
 class DataflowEndpointProperties {
   /// Azure Data Explorer endpoint.
-  final pulumi.Input<DataflowEndpointDataExplorer>? dataExplorerSettings;
+  final pulumi.Input<DataflowEndpointDataExplorer?>? dataExplorerSettings;
   /// Azure Data Lake endpoint.
-  final pulumi.Input<DataflowEndpointDataLakeStorage>? dataLakeStorageSettings;
+  final pulumi.Input<DataflowEndpointDataLakeStorage?>? dataLakeStorageSettings;
   /// Endpoint Type.
-  final pulumi.Input<String> endpointType;
+  final pulumi.Input<dynamic> endpointType;
   /// Microsoft Fabric endpoint.
-  final pulumi.Input<DataflowEndpointFabricOneLake>? fabricOneLakeSettings;
+  final pulumi.Input<DataflowEndpointFabricOneLake?>? fabricOneLakeSettings;
   /// Kafka endpoint.
-  final pulumi.Input<DataflowEndpointKafka>? kafkaSettings;
+  final pulumi.Input<DataflowEndpointKafka?>? kafkaSettings;
   /// Local persistent volume endpoint.
-  final pulumi.Input<DataflowEndpointLocalStorage>? localStorageSettings;
+  final pulumi.Input<DataflowEndpointLocalStorage?>? localStorageSettings;
   /// Broker endpoint.
-  final pulumi.Input<DataflowEndpointMqtt>? mqttSettings;
+  final pulumi.Input<DataflowEndpointMqtt?>? mqttSettings;
 
   /// Creates a new [DataflowEndpointProperties].
   /// [dataExplorerSettings] Azure Data Explorer endpoint.
@@ -59,7 +59,7 @@ class DataflowEndpointProperties {
     return DataflowEndpointProperties(
       dataExplorerSettings: (() { final guardedValue = map['dataExplorerSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointDataExplorer.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataLakeStorageSettings: (() { final guardedValue = map['dataLakeStorageSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointDataLakeStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
+      endpointType: pulumi.Input.fromValue(map['endpointType']),
       fabricOneLakeSettings: (() { final guardedValue = map['fabricOneLakeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointFabricOneLake.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kafkaSettings: (() { final guardedValue = map['kafkaSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointKafka.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localStorageSettings: (() { final guardedValue = map['localStorageSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointLocalStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an Azure Resource Manager template parameter.
 class ArmTemplateParameterPropertiesResponse {
   /// The name of the template parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the template parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ArmTemplateParameterPropertiesResponse].
   /// [name] The name of the template parameter.

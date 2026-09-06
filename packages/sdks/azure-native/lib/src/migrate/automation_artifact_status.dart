@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the status of automation artifacts.
-enum AutomationArtifactStatus {
+enum AutomationArtifactStatus implements pulumi.PulumiEnum<String> {
   valueNotGenerated("NotGenerated"),
   valueGenerated("Generated");
 
   const AutomationArtifactStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationArtifactStatus fromValue(String value) {

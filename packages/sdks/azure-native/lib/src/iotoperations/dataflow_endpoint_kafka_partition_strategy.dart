@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Partition handling strategy. Can be default or static. No effect if the endpoint is used as a source.
-enum DataflowEndpointKafkaPartitionStrategy {
+enum DataflowEndpointKafkaPartitionStrategy implements pulumi.PulumiEnum<String> {
   default_("Default"),
   static("Static"),
   topic("Topic"),
   property("Property");
 
   const DataflowEndpointKafkaPartitionStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowEndpointKafkaPartitionStrategy fromValue(String value) {

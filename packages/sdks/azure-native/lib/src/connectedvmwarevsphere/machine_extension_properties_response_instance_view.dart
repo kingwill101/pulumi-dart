@@ -8,7 +8,7 @@ class MachineExtensionPropertiesResponseInstanceView {
   /// The machine extension name.
   final pulumi.Input<String> name;
   /// Instance view status.
-  final pulumi.Input<MachineExtensionInstanceViewResponseStatus>? status;
+  final pulumi.Input<MachineExtensionInstanceViewResponseStatus?>? status;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
   final pulumi.Input<String> type;
   /// Specifies the version of the script handler.

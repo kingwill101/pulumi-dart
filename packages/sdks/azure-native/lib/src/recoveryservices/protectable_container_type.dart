@@ -1,8 +1,10 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
 /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
 /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
 /// Backup is VMAppContainer
-enum ProtectableContainerType {
+enum ProtectableContainerType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueUnknown("Unknown"),
   valueIaasVMContainer("IaasVMContainer"),
@@ -23,6 +25,7 @@ enum ProtectableContainerType {
   valueAzureWorkloadContainer("AzureWorkloadContainer");
 
   const ProtectableContainerType(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtectableContainerType fromValue(String value) {

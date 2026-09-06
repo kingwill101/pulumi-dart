@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of provisioning of the AzureBareMetalStorageInstance
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueAccepted("Accepted"),
   valueCreating("Creating"),
   valueUpdating("Updating"),
@@ -10,6 +12,7 @@ enum ProvisioningState {
   valueMigrating("Migrating");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

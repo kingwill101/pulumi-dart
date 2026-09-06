@@ -7,11 +7,11 @@ import 'tcp_exporter_response.dart';
 /// Exporter Info.
 class ExporterResponse {
   /// Azure Monitor Workspace Logs specific configurations.
-  final pulumi.Input<AzureMonitorWorkspaceLogsExporterResponse>? azureMonitorWorkspaceLogs;
+  final pulumi.Input<AzureMonitorWorkspaceLogsExporterResponse?>? azureMonitorWorkspaceLogs;
   /// The name of exporter.
   final pulumi.Input<String> name;
   /// TCP based exporter. Used for pipelineGroup exporter.
-  final pulumi.Input<TcpExporterResponse>? tcp;
+  final pulumi.Input<TcpExporterResponse?>? tcp;
   /// The type of exporter.
   final pulumi.Input<String> type;
 

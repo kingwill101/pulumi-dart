@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Mobility Service update details.
 class MobilityServiceUpdateResponse {
   /// The OS type.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The reboot status of the update - whether it is required or not.
-  final pulumi.Input<String>? rebootStatus;
+  final pulumi.Input<String?>? rebootStatus;
   /// The version of the latest update.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MobilityServiceUpdateResponse].
   /// [osType] The OS type.

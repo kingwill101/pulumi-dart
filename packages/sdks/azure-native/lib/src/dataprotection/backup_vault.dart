@@ -9,15 +9,15 @@ import 'storage_setting.dart';
 /// Backup Vault
 class BackupVault {
   /// Feature Settings
-  final pulumi.Input<FeatureSettings>? featureSettings;
+  final pulumi.Input<FeatureSettings?>? featureSettings;
   /// Monitoring Settings
-  final pulumi.Input<MonitoringSettings>? monitoringSettings;
+  final pulumi.Input<MonitoringSettings?>? monitoringSettings;
   /// List of replicated regions for Backup Vault
-  final pulumi.Input<List<String>>? replicatedRegions;
+  final pulumi.Input<List<String>?>? replicatedRegions;
   /// ResourceGuardOperationRequests on which LAC check will be performed
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Security Settings
-  final pulumi.Input<SecuritySettings>? securitySettings;
+  final pulumi.Input<SecuritySettings?>? securitySettings;
   /// Storage Settings
   final pulumi.Input<List<StorageSetting>> storageSettings;
 

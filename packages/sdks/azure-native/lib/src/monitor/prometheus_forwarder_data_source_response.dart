@@ -7,12 +7,12 @@ class PrometheusForwarderDataSourceResponse {
   /// The list of label inclusion filters in the form of label "name-value" pairs.
   /// Currently only one label is supported: 'microsoft_metrics_include_label'.
   /// Label values are matched case-insensitively.
-  final pulumi.Input<Map<String, String>>? labelIncludeFilter;
+  final pulumi.Input<Map<String, String>?>? labelIncludeFilter;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of streams that this data source will be sent to.
-  final pulumi.Input<List<String>>? streams;
+  final pulumi.Input<List<String>?>? streams;
 
   /// Creates a new [PrometheusForwarderDataSourceResponse].
   /// [labelIncludeFilter] The list of label inclusion filters in the form of label "name-value" pairs.

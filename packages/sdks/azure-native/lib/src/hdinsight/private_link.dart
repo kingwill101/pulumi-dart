@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether or not private link is enabled.
-enum PrivateLink {
+enum PrivateLink implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const PrivateLink(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateLink fromValue(String value) {

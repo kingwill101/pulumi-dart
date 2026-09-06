@@ -9,17 +9,17 @@ class TimerTriggerResponse {
   /// The CRON expression for the task schedule
   final pulumi.Input<String> schedule;
   /// The current status of trigger.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [TimerTriggerResponse].
   /// [name] The name of the trigger.
   /// [schedule] The CRON expression for the task schedule
   /// [status] The current status of trigger.
-  const TimerTriggerResponse({
+  TimerTriggerResponse({
     required this.name,
     required this.schedule,
-    this.status,
-  });
+    pulumi.Input<String?>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

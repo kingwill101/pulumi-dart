@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Path to match for routing.
 class HttpRouteMatchPath {
   /// replacement string for matched part of the Uri.
-  final pulumi.Input<String>? rewrite;
+  final pulumi.Input<String?>? rewrite;
   /// how to match value in the Uri
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// Uri path to match for request.
   final pulumi.Input<String> value;
 
@@ -32,7 +32,7 @@ class HttpRouteMatchPath {
   factory HttpRouteMatchPath.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchPath(
       rewrite: (() { final guardedValue = map['rewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       value: pulumi.Input.fromValue(map['value'] as String),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the permissions for the script caller are kept following completion of the script.
-enum PrincipalPermissionsAction {
+enum PrincipalPermissionsAction implements pulumi.PulumiEnum<String> {
   valueRetainPermissionOnScriptCompletion("RetainPermissionOnScriptCompletion"),
   valueRemovePermissionOnScriptCompletion("RemovePermissionOnScriptCompletion");
 
   const PrincipalPermissionsAction(this.wireValue);
+  @override
   final String wireValue;
 
   static PrincipalPermissionsAction fromValue(String value) {

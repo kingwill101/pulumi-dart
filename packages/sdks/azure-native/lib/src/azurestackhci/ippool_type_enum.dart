@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the IP Pool [vm, vippool]
-enum IPPoolTypeEnum {
+enum IPPoolTypeEnum implements pulumi.PulumiEnum<String> {
   vm("vm"),
   vippool("vippool");
 
   const IPPoolTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static IPPoolTypeEnum fromValue(String value) {

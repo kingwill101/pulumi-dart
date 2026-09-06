@@ -34,6 +34,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Get a PublicCloudConnector
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -50,6 +61,17 @@ Future<GetPublicCloudConnectorResult> getPublicCloudConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicCloudConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicCloudConnectorResult> getPublicCloudConnectorOutput(
+  GetPublicCloudConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:getPublicCloudConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicCloudConnectorResult.fromMap);
 }
 
 /// Gets the details about the service to the resource.
@@ -72,6 +94,17 @@ Future<GetServiceConfigurationResult> getServiceConfiguration(
   return GetServiceConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceConfigurationResult> getServiceConfigurationOutput(
+  GetServiceConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:getServiceConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConfigurationResult.fromMap);
+}
+
 /// Get a SolutionConfiguration
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -88,6 +121,17 @@ Future<GetSolutionConfigurationResult> getSolutionConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionConfigurationResult> getSolutionConfigurationOutput(
+  GetSolutionConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:getSolutionConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionConfigurationResult.fromMap);
 }
 
 /// Gets the endpoint access credentials to the resource.
@@ -110,6 +154,17 @@ Future<ListEndpointCredentialsResult> listEndpointCredentials(
   return ListEndpointCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListEndpointCredentialsResult> listEndpointCredentialsOutput(
+  ListEndpointCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:listEndpointCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEndpointCredentialsResult.fromMap);
+}
+
 /// Gets the ingress gateway endpoint credentials
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -130,6 +185,17 @@ Future<ListEndpointIngressGatewayCredentialsResult> listEndpointIngressGatewayCr
   return ListEndpointIngressGatewayCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListEndpointIngressGatewayCredentialsResult> listEndpointIngressGatewayCredentialsOutput(
+  ListEndpointIngressGatewayCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:listEndpointIngressGatewayCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEndpointIngressGatewayCredentialsResult.fromMap);
+}
+
 /// Fetches the managed proxy details
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -148,4 +214,15 @@ Future<ListEndpointManagedProxyDetailsResult> listEndpointManagedProxyDetails(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListEndpointManagedProxyDetailsResult.fromMap(result);
+}
+
+pulumi.Output<ListEndpointManagedProxyDetailsResult> listEndpointManagedProxyDetailsOutput(
+  ListEndpointManagedProxyDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridconnectivity:listEndpointManagedProxyDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEndpointManagedProxyDetailsResult.fromMap);
 }

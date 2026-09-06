@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connected_environments_dapr_component_args.dart';
+import 'dapr_component_service_binding_response.dart';
+import 'dapr_metadata_response.dart';
+import 'secret_response.dart';
 import 'system_data_response.dart';
 
 /// Dapr Component.
@@ -430,7 +433,7 @@ class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
   /// Initialization timeout
   late final pulumi.Output<String?> initTimeout;
   /// Component metadata
-  late final pulumi.Output<List<Map<String, dynamic>>?> metadata;
+  late final pulumi.Output<List<DaprMetadataResponse>?> metadata;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state of the Connected Environment Dapr Component.
@@ -440,9 +443,9 @@ class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
   /// Name of a Dapr component to retrieve component secrets from
   late final pulumi.Output<String?> secretStoreComponent;
   /// Collection of secrets used by a Dapr component
-  late final pulumi.Output<List<Map<String, dynamic>>?> secrets;
+  late final pulumi.Output<List<SecretResponse>?> secrets;
   /// List of container app services that are bound to the Dapr component
-  late final pulumi.Output<List<Map<String, dynamic>>?> serviceComponentBind;
+  late final pulumi.Output<List<DaprComponentServiceBindingResponse>?> serviceComponentBind;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -469,13 +472,39 @@ class ConnectedEnvironmentsDaprComponent extends pulumi.CustomResource {
     deploymentErrors = registerOutput<String>('deploymentErrors');
     ignoreErrors = registerOutput<bool?>('ignoreErrors');
     initTimeout = registerOutput<String?>('initTimeout');
-    metadata = registerOutput<List<Map<String, dynamic>>?>('metadata');
+    metadata = registerOutput<List<DaprMetadataResponse>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaprMetadataResponse>(guardedValue, (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     secretStoreComponent = registerOutput<String?>('secretStoreComponent');
-    secrets = registerOutput<List<Map<String, dynamic>>?>('secrets');
-    serviceComponentBind = registerOutput<List<Map<String, dynamic>>?>('serviceComponentBind');
+    secrets = registerOutput<List<SecretResponse>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretResponse>(guardedValue, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceComponentBind = registerOutput<List<DaprComponentServiceBindingResponse>?>('serviceComponentBind', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaprComponentServiceBindingResponse>(guardedValue, (value) => DaprComponentServiceBindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [ConnectedEnvironmentsDaprComponent] resource.
+  ConnectedEnvironmentsDaprComponent.reference(String urn)
+    : super(
+        'azure-native:app:ConnectedEnvironmentsDaprComponent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    componentType = registerOutput<String?>('componentType');
+    deploymentErrors = registerOutput<String>('deploymentErrors');
+    ignoreErrors = registerOutput<bool?>('ignoreErrors');
+    initTimeout = registerOutput<String?>('initTimeout');
+    metadata = registerOutput<List<DaprMetadataResponse>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaprMetadataResponse>(guardedValue, (value) => DaprMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    secretStoreComponent = registerOutput<String?>('secretStoreComponent');
+    secrets = registerOutput<List<SecretResponse>?>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretResponse>(guardedValue, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceComponentBind = registerOutput<List<DaprComponentServiceBindingResponse>?>('serviceComponentBind', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DaprComponentServiceBindingResponse>(guardedValue, (value) => DaprComponentServiceBindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');

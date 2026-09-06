@@ -6,9 +6,9 @@ import 'hierarchy_information.dart';
 /// Child configuration filter.
 class ChildConfigurationFilter {
   /// Filter to fetch all child configurations belonging to the given list of configuration types.
-  final pulumi.Input<List<String>>? childConfigurationTypes;
+  final pulumi.Input<List<dynamic>?>? childConfigurationTypes;
   /// The list of child configuration hierarchy customer wants to filter for the given configuration.
-  final pulumi.Input<List<HierarchyInformation>>? hierarchyInformations;
+  final pulumi.Input<List<HierarchyInformation>?>? hierarchyInformations;
 
   /// Creates a new [ChildConfigurationFilter].
   /// [childConfigurationTypes] Filter to fetch all child configurations belonging to the given list of configuration types.
@@ -27,7 +27,7 @@ class ChildConfigurationFilter {
 
   factory ChildConfigurationFilter.fromMap(Map<String, dynamic> map) {
     return ChildConfigurationFilter(
-      childConfigurationTypes: (() { final guardedValue = map['childConfigurationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      childConfigurationTypes: (() { final guardedValue = map['childConfigurationTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       hierarchyInformations: (() { final guardedValue = map['hierarchyInformations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HierarchyInformation>(guardedValue, (value) => HierarchyInformation.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

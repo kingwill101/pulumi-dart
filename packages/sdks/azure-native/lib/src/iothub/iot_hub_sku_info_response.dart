@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the SKU of the IoT hub.
 class IotHubSkuInfoResponse {
   /// The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// The name of the SKU.
   final pulumi.Input<String> name;
   /// The billing tier for the IoT hub.
@@ -31,7 +31,7 @@ class IotHubSkuInfoResponse {
 
   factory IotHubSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return IotHubSkuInfoResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

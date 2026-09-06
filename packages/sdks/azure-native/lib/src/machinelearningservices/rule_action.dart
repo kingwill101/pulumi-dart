@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action enum for networking rule.
-enum RuleAction {
+enum RuleAction implements pulumi.PulumiEnum<String> {
   allow("Allow"),
   deny("Deny");
 
   const RuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleAction fromValue(String value) {

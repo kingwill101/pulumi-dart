@@ -6,23 +6,23 @@ import 'shared_public_ip_address_configuration_response.dart';
 /// Properties of a network interface.
 class NetworkInterfacePropertiesResponse {
   /// The DNS name.
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// The private IP address.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// The public IP address.
-  final pulumi.Input<String>? publicIpAddress;
+  final pulumi.Input<String?>? publicIpAddress;
   /// The resource ID of the public IP address.
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// The RdpAuthority property is a server DNS host name or IP address followed by the service port number for RDP (Remote Desktop Protocol).
-  final pulumi.Input<String>? rdpAuthority;
+  final pulumi.Input<String?>? rdpAuthority;
   /// The configuration for sharing a public IP address across multiple virtual machines.
-  final pulumi.Input<SharedPublicIpAddressConfigurationResponse>? sharedPublicIpAddressConfiguration;
+  final pulumi.Input<SharedPublicIpAddressConfigurationResponse?>? sharedPublicIpAddressConfiguration;
   /// The SshAuthority property is a server DNS host name or IP address followed by the service port number for SSH.
-  final pulumi.Input<String>? sshAuthority;
+  final pulumi.Input<String?>? sshAuthority;
   /// The resource ID of the sub net.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// The resource ID of the virtual network.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [NetworkInterfacePropertiesResponse].
   /// [dnsName] The DNS name.

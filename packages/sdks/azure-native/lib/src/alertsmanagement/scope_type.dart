@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// type of target scope
-enum ScopeType {
+enum ScopeType implements pulumi.PulumiEnum<String> {
   valueResourceGroup("ResourceGroup"),
   valueResource("Resource"),
   valueSubscription("Subscription");
 
   const ScopeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScopeType fromValue(String value) {

@@ -6,7 +6,7 @@ import 'private_endpoint_connection_properties_response.dart';
 /// A private endpoint connection for a project.
 class PrivateEndpointConnectionProjectResponse {
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Path reference to this private endpoint endpoint connection. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/assessmentProjects/{projectName}/privateEndpointConnections/{privateEndpointConnectionName}
   final pulumi.Input<String> id;
   /// Name of the private endpoint endpoint connection.

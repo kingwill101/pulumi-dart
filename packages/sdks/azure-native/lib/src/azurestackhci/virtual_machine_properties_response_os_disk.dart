@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VHD to attach as OS disk
 class VirtualMachinePropertiesResponseOsDisk {
   /// Resource ID of the OS disk
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualMachinePropertiesResponseOsDisk].
   /// [id] Resource ID of the OS disk

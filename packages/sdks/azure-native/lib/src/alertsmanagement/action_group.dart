@@ -9,13 +9,13 @@ class ActionGroup {
   /// Action group to trigger if action rule matches
   final pulumi.Input<String> actionGroupId;
   /// conditions on which alerts will be filtered
-  final pulumi.Input<Conditions>? conditions;
+  final pulumi.Input<Conditions?>? conditions;
   /// Description of action rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// scope on which action rule will apply
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Indicates if the given action rule is enabled or disabled
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Indicates type of action rule
   /// Expected value is 'ActionGroup'.
   final pulumi.Input<String> type;
@@ -53,7 +53,7 @@ class ActionGroup {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Conditions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Scope.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

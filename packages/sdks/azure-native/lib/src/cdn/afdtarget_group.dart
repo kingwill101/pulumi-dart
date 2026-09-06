@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'afdtarget_group_args.dart';
 import 'system_data_response.dart';
+import 'target_endpoint_response.dart';
 
 /// AFDTargetGroup comprises a list of Endpoints that is used for tunnelling protocols to allow certain traffic.
 ///
@@ -258,7 +259,7 @@ class AFDTargetGroup extends pulumi.CustomResource {
   /// Read only system data
   late final pulumi.Output<SystemDataResponse> systemData;
   /// TargetEndpoint list referenced by this target group.
-  late final pulumi.Output<List<Map<String, dynamic>>> targetEndpoints;
+  late final pulumi.Output<List<TargetEndpointResponse>> targetEndpoints;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -281,7 +282,25 @@ class AFDTargetGroup extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetEndpoints = registerOutput<List<Map<String, dynamic>>>('targetEndpoints');
+    targetEndpoints = registerOutput<List<TargetEndpointResponse>>('targetEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetEndpointResponse>(guardedValue, (value) => TargetEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AFDTargetGroup] resource.
+  AFDTargetGroup.reference(String urn)
+    : super(
+        'azure-native:cdn:AFDTargetGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetEndpoints = registerOutput<List<TargetEndpointResponse>>('targetEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetEndpointResponse>(guardedValue, (value) => TargetEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

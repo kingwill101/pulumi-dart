@@ -4,11 +4,11 @@
 /// Result data returned by getLinkedService.
 class GetLinkedServiceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the linked service.
   final String? provisioningState;
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require read access
@@ -16,7 +16,7 @@ class GetLinkedServiceResult {
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
   final String? writeAccessResourceId;
 
@@ -30,38 +30,38 @@ class GetLinkedServiceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [writeAccessResourceId] The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
   const GetLinkedServiceResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
+    this.azureApiVersion,
+    this.id,
+    this.name,
     this.provisioningState,
     this.resourceId,
     this.tags,
-    required this.type,
+    this.type,
     this.writeAccessResourceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
       'provisioningState': ?provisioningState,
       'resourceId': ?resourceId,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'writeAccessResourceId': ?writeAccessResourceId,
     };
   }
 
   factory GetLinkedServiceResult.fromMap(Map<String, dynamic> map) {
     return GetLinkedServiceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       writeAccessResourceId: (() { final guardedValue = map['writeAccessResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

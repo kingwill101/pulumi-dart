@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Environment variables of Spring Cloud Gateway
 class GatewayPropertiesResponseEnvironmentVariables {
   /// Non-sensitive properties
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Sensitive properties
-  final pulumi.Input<Map<String, String>>? secrets;
+  final pulumi.Input<Map<String, String>?>? secrets;
 
   /// Creates a new [GatewayPropertiesResponseEnvironmentVariables].
   /// [properties] Non-sensitive properties

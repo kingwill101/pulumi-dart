@@ -11,37 +11,37 @@ import 'volume_mount.dart';
 /// {@macro pulumi_web_web_app_site_container_slot_args_doc}
 class WebAppSiteContainerSlotArgs {
   /// Auth Type
-  final pulumi.Input<AuthType>? authType;
+  final pulumi.Input<AuthType?>? authType;
   /// Site Container Name
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// List of environment variables
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// Image Name
   final pulumi.Input<String> image;
   /// &lt;code&gt;true&lt;/code&gt; if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; &lt;code&gt;false&lt;/code&gt; otherwise.
-  final pulumi.Input<bool>? inheritAppSettingsAndConnectionStrings;
+  final pulumi.Input<bool?>? inheritAppSettingsAndConnectionStrings;
   /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
   final pulumi.Input<bool> isMain;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Password Secret
-  final pulumi.Input<String>? passwordSecret;
+  final pulumi.Input<String?>? passwordSecret;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the deployment slot. If a slot is not specified, the API will get the Site Container for the production slot.
   final pulumi.Input<String> slot;
   /// StartUp Command
-  final pulumi.Input<String>? startUpCommand;
+  final pulumi.Input<String?>? startUpCommand;
   /// Target Port
-  final pulumi.Input<String>? targetPort;
+  final pulumi.Input<String?>? targetPort;
   /// UserManagedIdentity ClientId
-  final pulumi.Input<String>? userManagedIdentityClientId;
+  final pulumi.Input<String?>? userManagedIdentityClientId;
   /// User Name
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
   /// List of volume mounts
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
 
   /// Creates a new [WebAppSiteContainerSlotArgs].
   /// [authType] Auth Type

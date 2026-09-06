@@ -210,7 +210,29 @@ class SchemaRegistry extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdAtUtc = registerOutput<String>('createdAtUtc');
     eTag = registerOutput<String>('eTag');
-    groupProperties = registerOutput<Map<String, String>?>('groupProperties');
+    groupProperties = registerOutput<Map<String, String>?>('groupProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    schemaCompatibility = registerOutput<String?>('schemaCompatibility');
+    schemaType = registerOutput<String?>('schemaType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedAtUtc = registerOutput<String>('updatedAtUtc');
+  }
+
+  /// Creates a typed reference to an existing [SchemaRegistry] resource.
+  SchemaRegistry.reference(String urn)
+    : super(
+        'azure-native:eventhub:SchemaRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAtUtc = registerOutput<String>('createdAtUtc');
+    eTag = registerOutput<String>('eTag');
+    groupProperties = registerOutput<Map<String, String>?>('groupProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     schemaCompatibility = registerOutput<String?>('schemaCompatibility');

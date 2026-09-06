@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The connectivity properties
 class ConnectivityEndpointResponse {
   /// The location of the endpoint.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the endpoint.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The port to connect to.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The private ip address of the endpoint.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The protocol of the endpoint.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [ConnectivityEndpointResponse].
   /// [location] The location of the endpoint.
@@ -43,7 +43,7 @@ class ConnectivityEndpointResponse {
     return ConnectivityEndpointResponse(
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

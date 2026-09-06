@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Credential type used to authentication with storage.
-enum SecretsType {
+enum SecretsType implements pulumi.PulumiEnum<String> {
   accountKey("AccountKey"),
   certificate("Certificate"),
   sas("Sas"),
   servicePrincipal("ServicePrincipal");
 
   const SecretsType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretsType fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// IP Protocol that the rule must load-balance
-enum LoadBalancerRuleTransportProtocol {
+enum LoadBalancerRuleTransportProtocol implements pulumi.PulumiEnum<String> {
   tCP("Tcp"),
   uDP("Udp"),
   all("All");
 
   const LoadBalancerRuleTransportProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerRuleTransportProtocol fromValue(String value) {

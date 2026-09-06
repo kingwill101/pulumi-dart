@@ -6,21 +6,21 @@ import 'sql_connection_info.dart';
 /// Input for the task that validates connection to SQL Server and also validates source server requirements
 class ConnectToSourceSqlServerTaskInput {
   /// Permission group for validations
-  final pulumi.Input<String>? checkPermissionsGroup;
+  final pulumi.Input<dynamic>? checkPermissionsGroup;
   /// Flag for whether to collect agent jobs from source server.
-  final pulumi.Input<bool>? collectAgentJobs;
+  final pulumi.Input<bool?>? collectAgentJobs;
   /// Flag for whether to collect databases from source server.
-  final pulumi.Input<bool>? collectDatabases;
+  final pulumi.Input<bool?>? collectDatabases;
   /// Flag for whether to collect logins from source server.
-  final pulumi.Input<bool>? collectLogins;
+  final pulumi.Input<bool?>? collectLogins;
   /// Flag for whether to collect TDE Certificate names from source server.
-  final pulumi.Input<bool>? collectTdeCertificateInfo;
+  final pulumi.Input<bool?>? collectTdeCertificateInfo;
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Connection information for Source SQL Server
   final pulumi.Input<SqlConnectionInfo> sourceConnectionInfo;
   /// Flag for whether to validate SSIS catalog is reachable on the source server.
-  final pulumi.Input<bool>? validateSsisCatalogOnly;
+  final pulumi.Input<bool?>? validateSsisCatalogOnly;
 
   /// Creates a new [ConnectToSourceSqlServerTaskInput].
   /// [checkPermissionsGroup] Permission group for validations
@@ -31,16 +31,16 @@ class ConnectToSourceSqlServerTaskInput {
   /// [encryptedKeyForSecureFields] encrypted key for secure fields
   /// [sourceConnectionInfo] Connection information for Source SQL Server
   /// [validateSsisCatalogOnly] Flag for whether to validate SSIS catalog is reachable on the source server.
-  const ConnectToSourceSqlServerTaskInput({
+  ConnectToSourceSqlServerTaskInput({
     this.checkPermissionsGroup,
-    this.collectAgentJobs,
-    this.collectDatabases,
-    this.collectLogins,
-    this.collectTdeCertificateInfo,
+    pulumi.Input<bool?>? collectAgentJobs,
+    pulumi.Input<bool?>? collectDatabases,
+    pulumi.Input<bool?>? collectLogins,
+    pulumi.Input<bool?>? collectTdeCertificateInfo,
     this.encryptedKeyForSecureFields,
     required this.sourceConnectionInfo,
-    this.validateSsisCatalogOnly,
-  });
+    pulumi.Input<bool?>? validateSsisCatalogOnly,
+  }) : collectAgentJobs = collectAgentJobs ?? pulumi.Input.fromValue(false), collectDatabases = collectDatabases ?? pulumi.Input.fromValue(true), collectLogins = collectLogins ?? pulumi.Input.fromValue(false), collectTdeCertificateInfo = collectTdeCertificateInfo ?? pulumi.Input.fromValue(false), validateSsisCatalogOnly = validateSsisCatalogOnly ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -57,7 +57,7 @@ class ConnectToSourceSqlServerTaskInput {
 
   factory ConnectToSourceSqlServerTaskInput.fromMap(Map<String, dynamic> map) {
     return ConnectToSourceSqlServerTaskInput(
-      checkPermissionsGroup: (() { final guardedValue = map['checkPermissionsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      checkPermissionsGroup: (() { final guardedValue = map['checkPermissionsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       collectAgentJobs: (() { final guardedValue = map['collectAgentJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       collectDatabases: (() { final guardedValue = map['collectDatabases']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       collectLogins: (() { final guardedValue = map['collectLogins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

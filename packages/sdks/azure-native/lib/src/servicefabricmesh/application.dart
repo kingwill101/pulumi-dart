@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
 import 'diagnostics_description_response.dart';
+import 'service_resource_description_response.dart';
 
 /// This type describes an application resource.
 ///
@@ -390,7 +391,7 @@ class Application extends pulumi.CustomResource {
   /// Names of the services in the application.
   late final pulumi.Output<List<String>> serviceNames;
   /// Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> services;
+  late final pulumi.Output<List<ServiceResourceDescriptionResponse>?> services;
   /// Status of the application.
   late final pulumi.Output<String> status;
   /// Gives additional information about the current status of the application.
@@ -424,11 +425,37 @@ class Application extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    serviceNames = registerOutput<List<String>>('serviceNames');
-    services = registerOutput<List<Map<String, dynamic>>?>('services');
+    serviceNames = registerOutput<List<String>>('serviceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    services = registerOutput<List<ServiceResourceDescriptionResponse>?>('services', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceResourceDescriptionResponse>(guardedValue, (value) => ServiceResourceDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    unhealthyEvaluation = registerOutput<String>('unhealthyEvaluation');
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure-native:servicefabricmesh:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    debugParams = registerOutput<String?>('debugParams');
+    description = registerOutput<String?>('description');
+    diagnostics = registerOutput<DiagnosticsDescriptionResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiagnosticsDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthState = registerOutput<String>('healthState');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceNames = registerOutput<List<String>>('serviceNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    services = registerOutput<List<ServiceResourceDescriptionResponse>?>('services', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceResourceDescriptionResponse>(guardedValue, (value) => ServiceResourceDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     unhealthyEvaluation = registerOutput<String>('unhealthyEvaluation');
   }

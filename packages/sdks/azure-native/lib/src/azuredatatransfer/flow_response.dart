@@ -11,19 +11,19 @@ class FlowResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse?>? identity;
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Details of the resource plan.
-  final pulumi.Input<PlanResponse>? plan;
+  final pulumi.Input<PlanResponse?>? plan;
   /// Properties of flow
-  final pulumi.Input<FlowPropertieslistListFlowsByPipelineResponse>? properties;
+  final pulumi.Input<FlowPropertieslistListFlowsByPipelineResponse?>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 

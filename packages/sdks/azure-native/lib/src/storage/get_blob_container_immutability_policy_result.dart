@@ -8,19 +8,19 @@ class GetBlobContainerImmutabilityPolicyResult {
   /// This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API. The 'allowProtectedAppendWrites' and 'allowProtectedAppendWritesAll' properties are mutually exclusive.
   final bool? allowProtectedAppendWritesAll;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource Etag.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The immutability period for the blobs in the container since the policy creation, in days.
   final int? immutabilityPeriodSinceCreationInDays;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
-  final String state;
+  final String? state;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBlobContainerImmutabilityPolicyResult].
   /// [allowProtectedAppendWrites] This property can only be changed for unlocked time-based retention policies. When enabled, new blocks can be written to an append blob while maintaining immutability protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted. This property cannot be changed with ExtendImmutabilityPolicy API.
@@ -35,26 +35,26 @@ class GetBlobContainerImmutabilityPolicyResult {
   const GetBlobContainerImmutabilityPolicyResult({
     this.allowProtectedAppendWrites,
     this.allowProtectedAppendWritesAll,
-    required this.azureApiVersion,
-    required this.etag,
-    required this.id,
+    this.azureApiVersion,
+    this.etag,
+    this.id,
     this.immutabilityPeriodSinceCreationInDays,
-    required this.name,
-    required this.state,
-    required this.type,
+    this.name,
+    this.state,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowProtectedAppendWrites': ?allowProtectedAppendWrites,
       'allowProtectedAppendWritesAll': ?allowProtectedAppendWritesAll,
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'id': ?id,
       'immutabilityPeriodSinceCreationInDays': ?immutabilityPeriodSinceCreationInDays,
-      'name': name,
-      'state': state,
-      'type': type,
+      'name': ?name,
+      'state': ?state,
+      'type': ?type,
     };
   }
 
@@ -62,13 +62,13 @@ class GetBlobContainerImmutabilityPolicyResult {
     return GetBlobContainerImmutabilityPolicyResult(
       allowProtectedAppendWrites: (() { final guardedValue = map['allowProtectedAppendWrites']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowProtectedAppendWritesAll: (() { final guardedValue = map['allowProtectedAppendWritesAll']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      immutabilityPeriodSinceCreationInDays: (() { final guardedValue = map['immutabilityPeriodSinceCreationInDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      immutabilityPeriodSinceCreationInDays: (() { final guardedValue = map['immutabilityPeriodSinceCreationInDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

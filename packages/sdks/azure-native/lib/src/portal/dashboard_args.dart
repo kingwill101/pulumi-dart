@@ -9,15 +9,15 @@ import 'dashboard_properties_with_provisioning_state.dart';
 /// {@macro pulumi_portal_dashboard_args_doc}
 class DashboardArgs {
   /// The name of the dashboard.
-  final pulumi.Input<String>? dashboardName;
+  final pulumi.Input<String?>? dashboardName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DashboardPropertiesWithProvisioningState>? properties;
+  final pulumi.Input<DashboardPropertiesWithProvisioningState?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DashboardArgs].
   /// [dashboardName] The name of the dashboard.

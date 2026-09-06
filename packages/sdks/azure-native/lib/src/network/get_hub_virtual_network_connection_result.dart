@@ -10,17 +10,17 @@ class GetHubVirtualNetworkConnectionResult {
   /// Deprecated: Allow RemoteVnet to use Virtual Hub's gateways.
   final bool? allowRemoteVnetToUseHubVnetGateways;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Enable internet security.
   final bool? enableInternetSecurity;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
   /// The provisioning state of the hub virtual network connection resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Reference to the remote virtual network.
   final SubResourceResponse? remoteVirtualNetwork;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
@@ -40,12 +40,12 @@ class GetHubVirtualNetworkConnectionResult {
   const GetHubVirtualNetworkConnectionResult({
     this.allowHubToRemoteVnetTransit,
     this.allowRemoteVnetToUseHubVnetGateways,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.enableInternetSecurity,
-    required this.etag,
+    this.etag,
     this.id,
     this.name,
-    required this.provisioningState,
+    this.provisioningState,
     this.remoteVirtualNetwork,
     this.routingConfiguration,
   });
@@ -54,12 +54,12 @@ class GetHubVirtualNetworkConnectionResult {
     return <String, dynamic>{
       'allowHubToRemoteVnetTransit': ?allowHubToRemoteVnetTransit,
       'allowRemoteVnetToUseHubVnetGateways': ?allowRemoteVnetToUseHubVnetGateways,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'enableInternetSecurity': ?enableInternetSecurity,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
       'name': ?name,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'remoteVirtualNetwork': ?remoteVirtualNetwork?.toMap(),
       'routingConfiguration': ?routingConfiguration?.toMap(),
     };
@@ -69,12 +69,12 @@ class GetHubVirtualNetworkConnectionResult {
     return GetHubVirtualNetworkConnectionResult(
       allowHubToRemoteVnetTransit: (() { final guardedValue = map['allowHubToRemoteVnetTransit']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       allowRemoteVnetToUseHubVnetGateways: (() { final guardedValue = map['allowRemoteVnetToUseHubVnetGateways']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableInternetSecurity: (() { final guardedValue = map['enableInternetSecurity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       remoteVirtualNetwork: (() { final guardedValue = map['remoteVirtualNetwork']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return RoutingConfigurationHubVirtualNetworkConnectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );

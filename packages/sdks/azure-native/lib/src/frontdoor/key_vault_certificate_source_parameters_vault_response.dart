@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Key Vault containing the SSL certificate
 class KeyVaultCertificateSourceParametersVaultResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [KeyVaultCertificateSourceParametersVaultResponse].
   /// [id] Resource ID.

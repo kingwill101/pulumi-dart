@@ -283,4 +283,28 @@ class SourceControl extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SourceControl] resource.
+  SourceControl.reference(String urn)
+    : super(
+        'azure-native:automation:SourceControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoSync = registerOutput<bool?>('autoSync');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    branch = registerOutput<String?>('branch');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    folderPath = registerOutput<String?>('folderPath');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    publishRunbook = registerOutput<bool?>('publishRunbook');
+    repoUrl = registerOutput<String?>('repoUrl');
+    sourceType = registerOutput<String?>('sourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

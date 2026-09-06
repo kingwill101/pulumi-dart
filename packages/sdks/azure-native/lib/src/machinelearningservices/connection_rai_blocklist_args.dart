@@ -13,9 +13,9 @@ class ConnectionRaiBlocklistArgs {
   /// RAI Custom Blocklist properties.
   final pulumi.Input<RaiBlocklistProperties> properties;
   /// Api version used by proxy call
-  final pulumi.Input<String>? proxyApiVersion;
+  final pulumi.Input<String?>? proxyApiVersion;
   /// The name of the RaiBlocklist.
-  final pulumi.Input<String>? raiBlocklistName;
+  final pulumi.Input<String?>? raiBlocklistName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Machine Learning Workspace Name

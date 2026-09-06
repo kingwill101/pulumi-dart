@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The policy.
-enum Policy {
+enum Policy implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   synchronizeBeginExtension("SynchronizeBeginExtension");
 
   const Policy(this.wireValue);
+  @override
   final String wireValue;
 
   static Policy fromValue(String value) {

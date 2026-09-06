@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'amazon_s3_compatible_read_settings_response.dart';
 import 'xml_read_settings_response.dart';
 
 /// A copy activity Xml source.
@@ -11,7 +10,7 @@ class XmlSourceResponse {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Xml format settings.
-  final pulumi.Input<XmlReadSettingsResponse>? formatSettings;
+  final pulumi.Input<XmlReadSettingsResponse?>? formatSettings;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Source retry count. Type: integer (or Expression with resultType integer).
@@ -19,7 +18,7 @@ class XmlSourceResponse {
   /// Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? sourceRetryWait;
   /// Xml store settings.
-  final pulumi.Input<AmazonS3CompatibleReadSettingsResponse>? storeSettings;
+  final pulumi.Input<dynamic>? storeSettings;
   /// Copy source type.
   /// Expected value is 'XmlSource'.
   final pulumi.Input<String> type;
@@ -52,7 +51,7 @@ class XmlSourceResponse {
       'maxConcurrentConnections': ?maxConcurrentConnections,
       'sourceRetryCount': ?sourceRetryCount,
       'sourceRetryWait': ?sourceRetryWait,
-      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AmazonS3CompatibleReadSettingsResponse, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
+      'storeSettings': ?storeSettings,
       'type': type,
     };
   }
@@ -65,7 +64,7 @@ class XmlSourceResponse {
       maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceRetryCount: (() { final guardedValue = map['sourceRetryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceRetryWait: (() { final guardedValue = map['sourceRetryWait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AmazonS3CompatibleReadSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

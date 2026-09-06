@@ -7,7 +7,7 @@ import 'execution_trigger_response.dart';
 /// Execution context of the storage task assignment.
 class StorageTaskAssignmentExecutionContextResponse {
   /// Execution target of the storage task assignment
-  final pulumi.Input<ExecutionTargetResponse>? target;
+  final pulumi.Input<ExecutionTargetResponse?>? target;
   /// Execution trigger of the storage task assignment
   final pulumi.Input<ExecutionTriggerResponse> trigger;
 

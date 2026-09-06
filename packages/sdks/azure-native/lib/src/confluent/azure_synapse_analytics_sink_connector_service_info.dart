@@ -8,13 +8,13 @@ class AzureSynapseAnalyticsSinkConnectorServiceInfo {
   /// Expected value is 'AzureSynapseAnalyticsSinkConnector'.
   final pulumi.Input<String> connectorServiceType;
   /// Azure Synapse Dedicated SQL Pool Database Name
-  final pulumi.Input<String>? synapseSqlDatabaseName;
+  final pulumi.Input<String?>? synapseSqlDatabaseName;
   /// Azure Synapse SQL login details
-  final pulumi.Input<String>? synapseSqlPassword;
+  final pulumi.Input<String?>? synapseSqlPassword;
   /// Azure Synapse Analytics SQL Server Name
-  final pulumi.Input<String>? synapseSqlServerName;
+  final pulumi.Input<String?>? synapseSqlServerName;
   /// Azure Synapse SQL login details
-  final pulumi.Input<String>? synapseSqlUser;
+  final pulumi.Input<String?>? synapseSqlUser;
 
   /// Creates a new [AzureSynapseAnalyticsSinkConnectorServiceInfo].
   /// [connectorServiceType] The connector service type.

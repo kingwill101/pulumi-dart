@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network interface IP configuration properties.
 class NetworkInterfaceIPConfigurationResponse {
   /// The list of DNS servers IP addresses.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// The value of the gateway.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// The value of the IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address allocation method.
-  final pulumi.Input<String>? ipAllocationMethod;
+  final pulumi.Input<String?>? ipAllocationMethod;
   /// IP address version.
-  final pulumi.Input<String>? ipVersion;
+  final pulumi.Input<String?>? ipVersion;
   /// The value of the subnet.
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [NetworkInterfaceIPConfigurationResponse].
   /// [dnsServers] The list of DNS servers IP addresses.

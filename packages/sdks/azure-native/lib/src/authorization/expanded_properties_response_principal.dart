@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the principal
 class ExpandedPropertiesResponsePrincipal {
   /// Display name of the principal
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Email id of the principal
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Id of the principal
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of the principal
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExpandedPropertiesResponsePrincipal].
   /// [displayName] Display name of the principal

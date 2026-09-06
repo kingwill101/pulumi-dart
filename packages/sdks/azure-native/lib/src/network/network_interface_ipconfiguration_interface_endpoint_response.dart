@@ -12,35 +12,35 @@ import 'virtual_network_tap_interface_endpoint_response.dart';
 /// IPConfiguration in a network interface.
 class NetworkInterfaceIPConfigurationInterfaceEndpointResponse {
   /// The reference of ApplicationGatewayBackendAddressPool resource.
-  final pulumi.Input<List<ApplicationGatewayBackendAddressPoolResponse>>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPoolResponse>?>? applicationGatewayBackendAddressPools;
   /// Application security groups in which the IP configuration is included.
-  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? applicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>?>? applicationSecurityGroups;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The reference of LoadBalancerBackendAddressPool resource.
-  final pulumi.Input<List<BackendAddressPoolInterfaceEndpointResponse>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<BackendAddressPoolInterfaceEndpointResponse>?>? loadBalancerBackendAddressPools;
   /// A list of references of LoadBalancerInboundNatRules.
-  final pulumi.Input<List<InboundNatRuleInterfaceEndpointResponse>>? loadBalancerInboundNatRules;
+  final pulumi.Input<List<InboundNatRuleInterfaceEndpointResponse>?>? loadBalancerInboundNatRules;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets whether this is a primary customer address on the network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Available from Api-Version 2016-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<String?>? privateIPAddressVersion;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the network interface IP configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Public IP address bound to the IP configuration.
-  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse?>? publicIPAddress;
   /// Subnet bound to the IP configuration.
-  final pulumi.Input<SubnetInterfaceEndpointResponse>? subnet;
+  final pulumi.Input<SubnetInterfaceEndpointResponse?>? subnet;
   /// The reference to Virtual Network Taps.
-  final pulumi.Input<List<VirtualNetworkTapInterfaceEndpointResponse>>? virtualNetworkTaps;
+  final pulumi.Input<List<VirtualNetworkTapInterfaceEndpointResponse>?>? virtualNetworkTaps;
 
   /// Creates a new [NetworkInterfaceIPConfigurationInterfaceEndpointResponse].
   /// [applicationGatewayBackendAddressPools] The reference of ApplicationGatewayBackendAddressPool resource.

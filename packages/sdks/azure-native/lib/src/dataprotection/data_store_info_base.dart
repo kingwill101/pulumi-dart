@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DataStoreInfo base
 class DataStoreInfoBase {
   /// type of datastore; Operational/Vault/Archive
-  final pulumi.Input<String> dataStoreType;
+  final pulumi.Input<dynamic> dataStoreType;
   /// Type of Datasource object, used to initialize the right inherited type
   final pulumi.Input<String> objectType;
 
@@ -26,7 +26,7 @@ class DataStoreInfoBase {
 
   factory DataStoreInfoBase.fromMap(Map<String, dynamic> map) {
     return DataStoreInfoBase(
-      dataStoreType: pulumi.Input.fromValue(map['dataStoreType'] as String),
+      dataStoreType: pulumi.Input.fromValue(map['dataStoreType']),
       objectType: pulumi.Input.fromValue(map['objectType'] as String),
     );
   }

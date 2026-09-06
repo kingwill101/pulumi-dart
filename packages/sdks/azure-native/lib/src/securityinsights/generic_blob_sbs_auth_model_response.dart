@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model for API authentication for working with service bus or storage account.
 class GenericBlobSbsAuthModelResponse {
   /// Credentials for service bus namespace, keyvault uri for access key
-  final pulumi.Input<Map<String, String>>? credentialsConfig;
+  final pulumi.Input<Map<String, String>?>? credentialsConfig;
   /// Credentials for storage account, keyvault uri for access key
-  final pulumi.Input<Map<String, String>>? storageAccountCredentialsConfig;
+  final pulumi.Input<Map<String, String>?>? storageAccountCredentialsConfig;
   /// Type of paging
   /// Expected value is 'ServiceBus'.
   final pulumi.Input<String> type;

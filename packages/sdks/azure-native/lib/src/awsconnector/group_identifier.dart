@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GroupIdentifier
 class GroupIdentifier {
   /// &lt;p&gt;The ID of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// &lt;p&gt;The name of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
 
   /// Creates a new [GroupIdentifier].
   /// [groupId] &lt;p&gt;The ID of the security group.&lt;/p&gt;

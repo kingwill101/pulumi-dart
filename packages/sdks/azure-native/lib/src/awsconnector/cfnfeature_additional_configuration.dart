@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CFNFeatureAdditionalConfiguration
 class CFNFeatureAdditionalConfiguration {
   /// Property name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Property status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [CFNFeatureAdditionalConfiguration].
   /// [name] Property name

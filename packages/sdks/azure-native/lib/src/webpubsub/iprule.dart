@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An IP rule
 class IPRule {
   /// Azure Networking ACL Action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// An IP or CIDR or ServiceTag
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [IPRule].
   /// [action] Azure Networking ACL Action.
@@ -26,7 +26,7 @@ class IPRule {
 
   factory IPRule.fromMap(Map<String, dynamic> map) {
     return IPRule(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -15,53 +15,53 @@ import 'storage_endpoint_properties_response.dart';
 /// The properties of an IoT hub.
 class IotHubPropertiesResponse {
   /// List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub.
-  final pulumi.Input<List<String>>? allowedFqdnList;
+  final pulumi.Input<List<String>?>? allowedFqdnList;
   /// The shared access policies you can use to secure a connection to the IoT hub.
-  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleResponse>>? authorizationPolicies;
+  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleResponse>?>? authorizationPolicies;
   /// The IoT hub cloud-to-device messaging properties.
-  final pulumi.Input<CloudToDevicePropertiesResponse>? cloudToDevice;
+  final pulumi.Input<CloudToDevicePropertiesResponse?>? cloudToDevice;
   /// IoT hub comments.
-  final pulumi.Input<String>? comments;
+  final pulumi.Input<String?>? comments;
   /// If true, all device(including Edge devices but excluding modules) scoped SAS keys cannot be used for authentication.
-  final pulumi.Input<bool>? disableDeviceSAS;
+  final pulumi.Input<bool?>? disableDeviceSAS;
   /// If true, SAS tokens with Iot hub scoped SAS keys cannot be used for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// If true, all module scoped SAS keys cannot be used for authentication.
-  final pulumi.Input<bool>? disableModuleSAS;
+  final pulumi.Input<bool?>? disableModuleSAS;
   /// This property when set to true, will enable data residency, thus, disabling disaster recovery.
-  final pulumi.Input<bool>? enableDataResidency;
+  final pulumi.Input<bool?>? enableDataResidency;
   /// If True, file upload notifications are enabled.
-  final pulumi.Input<bool>? enableFileUploadNotifications;
+  final pulumi.Input<bool?>? enableFileUploadNotifications;
   /// The Event Hub-compatible endpoint properties. The only possible keys to this dictionary is events. This key has to be present in the dictionary while making create or update calls for the IoT hub.
-  final pulumi.Input<Map<String, EventHubPropertiesResponse>>? eventHubEndpoints;
+  final pulumi.Input<Map<String, EventHubPropertiesResponse>?>? eventHubEndpoints;
   /// The capabilities and features enabled for the IoT hub.
-  final pulumi.Input<String>? features;
+  final pulumi.Input<String?>? features;
   /// The name of the host.
   final pulumi.Input<String> hostName;
   /// The IP filter rules.
-  final pulumi.Input<List<IpFilterRuleResponse>>? ipFilterRules;
+  final pulumi.Input<List<IpFilterRuleResponse>?>? ipFilterRules;
   /// Primary and secondary location for iot hub
   final pulumi.Input<List<IotHubLocationDescriptionResponse>> locations;
   /// The messaging endpoint properties for the file upload notification queue.
-  final pulumi.Input<Map<String, MessagingEndpointPropertiesResponse>>? messagingEndpoints;
+  final pulumi.Input<Map<String, MessagingEndpointPropertiesResponse>?>? messagingEndpoints;
   /// Specifies the minimum TLS version to support for this hub. Can be set to "1.2" to have clients that use a TLS version below 1.2 to be rejected.
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<String?>? minTlsVersion;
   /// Network Rule Set Properties of IotHub
-  final pulumi.Input<NetworkRuleSetPropertiesResponse>? networkRuleSets;
+  final pulumi.Input<NetworkRuleSetPropertiesResponse?>? networkRuleSets;
   /// Private endpoint connections created on this IotHub
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>?>? privateEndpointConnections;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Whether requests from Public Network are allowed
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// If true, egress from IotHub will be restricted to only the allowed FQDNs that are configured via allowedFqdnList.
-  final pulumi.Input<bool>? restrictOutboundNetworkAccess;
+  final pulumi.Input<bool?>? restrictOutboundNetworkAccess;
   /// The routing related properties of the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging
-  final pulumi.Input<RoutingPropertiesResponse>? routing;
+  final pulumi.Input<RoutingPropertiesResponse?>? routing;
   /// The hub state.
   final pulumi.Input<String> state;
   /// The list of Azure Storage endpoints where you can upload files. Currently you can configure only one Azure Storage account and that MUST have its key as $default. Specifying more than one storage account causes an error to be thrown. Not specifying a value for this property when the enableFileUploadNotifications property is set to True, causes an error to be thrown.
-  final pulumi.Input<Map<String, StorageEndpointPropertiesResponse>>? storageEndpoints;
+  final pulumi.Input<Map<String, StorageEndpointPropertiesResponse>?>? storageEndpoints;
 
   /// Creates a new [IotHubPropertiesResponse].
   /// [allowedFqdnList] List of allowed FQDNs(Fully Qualified Domain Name) for egress from Iot Hub.

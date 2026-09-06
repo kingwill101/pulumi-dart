@@ -24,6 +24,17 @@ Future<GetStandbyContainerGroupPoolResult> getStandbyContainerGroupPool(
   return GetStandbyContainerGroupPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetStandbyContainerGroupPoolResult> getStandbyContainerGroupPoolOutput(
+  GetStandbyContainerGroupPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:standbypool:getStandbyContainerGroupPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandbyContainerGroupPoolResult.fromMap);
+}
+
 /// Get a StandbyVirtualMachinePoolResource
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -42,4 +53,15 @@ Future<GetStandbyVirtualMachinePoolResult> getStandbyVirtualMachinePool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStandbyVirtualMachinePoolResult.fromMap(result);
+}
+
+pulumi.Output<GetStandbyVirtualMachinePoolResult> getStandbyVirtualMachinePoolOutput(
+  GetStandbyVirtualMachinePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:standbypool:getStandbyVirtualMachinePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandbyVirtualMachinePoolResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of KeyValuePair
 class KeyValuePairResponse {
   /// The name of the key-value pair. For environment variables, this is the name of the environment variable.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the key-value pair. For environment variables, this is the value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyValuePairResponse].
   /// [name] The name of the key-value pair. For environment variables, this is the name of the environment variable.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventgrid_ca_certificate_args_doc}
 class CaCertificateArgs {
   /// The CA certificate name.
-  final pulumi.Input<String>? caCertificateName;
+  final pulumi.Input<String?>? caCertificateName;
   /// Description for the CA Certificate resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
-  final pulumi.Input<String>? encodedCertificate;
+  final pulumi.Input<String?>? encodedCertificate;
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group within the user's subscription.

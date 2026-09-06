@@ -9,25 +9,25 @@ import 'resource_selector.dart';
 /// {@macro pulumi_authorization_policy_exemption_args_doc}
 class PolicyExemptionArgs {
   /// The option whether validate the exemption is at or under the assignment scope.
-  final pulumi.Input<String>? assignmentScopeValidation;
+  final pulumi.Input<dynamic>? assignmentScopeValidation;
   /// The description of the policy exemption.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy exemption.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The policy exemption category. Possible values are Waiver and Mitigated.
-  final pulumi.Input<String> exemptionCategory;
+  final pulumi.Input<dynamic> exemptionCategory;
   /// The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
-  final pulumi.Input<String>? expiresOn;
+  final pulumi.Input<String?>? expiresOn;
   /// The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The ID of the policy assignment that is being exempted.
   final pulumi.Input<String> policyAssignmentId;
   /// The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
-  final pulumi.Input<List<String>>? policyDefinitionReferenceIds;
+  final pulumi.Input<List<String>?>? policyDefinitionReferenceIds;
   /// The name of the policy exemption to delete.
-  final pulumi.Input<String>? policyExemptionName;
+  final pulumi.Input<String?>? policyExemptionName;
   /// The resource selector list to filter policies by resource properties.
-  final pulumi.Input<List<ResourceSelector>>? resourceSelectors;
+  final pulumi.Input<List<ResourceSelector>?>? resourceSelectors;
   /// The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   final pulumi.Input<String> scope;
 
@@ -43,8 +43,8 @@ class PolicyExemptionArgs {
   /// [policyExemptionName] The name of the policy exemption to delete.
   /// [resourceSelectors] The resource selector list to filter policies by resource properties.
   /// [scope] The scope of the policy exemption. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  const PolicyExemptionArgs({
-    this.assignmentScopeValidation,
+  PolicyExemptionArgs({
+    pulumi.Input<dynamic>? assignmentScopeValidation,
     this.description,
     this.displayName,
     required this.exemptionCategory,
@@ -55,7 +55,7 @@ class PolicyExemptionArgs {
     this.policyExemptionName,
     this.resourceSelectors,
     required this.scope,
-  });
+  }) : assignmentScopeValidation = assignmentScopeValidation ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,10 +75,10 @@ class PolicyExemptionArgs {
 
   factory PolicyExemptionArgs.fromMap(Map<String, dynamic> map) {
     return PolicyExemptionArgs(
-      assignmentScopeValidation: (() { final guardedValue = map['assignmentScopeValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assignmentScopeValidation: (() { final guardedValue = map['assignmentScopeValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      exemptionCategory: pulumi.Input.fromValue(map['exemptionCategory'] as String),
+      exemptionCategory: pulumi.Input.fromValue(map['exemptionCategory']),
       expiresOn: (() { final guardedValue = map['expiresOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policyAssignmentId: pulumi.Input.fromValue(map['policyAssignmentId'] as String),

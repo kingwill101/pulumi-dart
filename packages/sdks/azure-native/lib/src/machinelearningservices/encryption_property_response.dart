@@ -7,19 +7,19 @@ import 'key_vault_properties_response.dart';
 class EncryptionPropertyResponse {
   /// The byok cosmosdb account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? cosmosDbResourceId;
+  final pulumi.Input<String?>? cosmosDbResourceId;
   /// Identity to be used with the keyVault
-  final pulumi.Input<IdentityForCmkResponse>? identity;
+  final pulumi.Input<IdentityForCmkResponse?>? identity;
   /// KeyVault details to do the encryption
   final pulumi.Input<KeyVaultPropertiesResponse> keyVaultProperties;
   /// The byok search account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? searchAccountResourceId;
+  final pulumi.Input<String?>? searchAccountResourceId;
   /// Indicates whether or not the encryption is enabled for the workspace.
   final pulumi.Input<String> status;
   /// The byok storage account that customer brings to store customer's data
   /// with encryption
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [EncryptionPropertyResponse].
   /// [cosmosDbResourceId] The byok cosmosdb account that customer brings to store customer's data

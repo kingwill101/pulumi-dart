@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current status of the storage account
-enum StorageAccountStatus {
+enum StorageAccountStatus implements pulumi.PulumiEnum<String> {
   valueOK("OK"),
   valueOffline("Offline"),
   valueUnknown("Unknown"),
@@ -7,6 +9,7 @@ enum StorageAccountStatus {
   valueNeedsAttention("NeedsAttention");
 
   const StorageAccountStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAccountStatus fromValue(String value) {

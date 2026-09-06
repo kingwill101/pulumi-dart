@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies additional settings to be applied when patch mode AutomaticByPlatform is selected in Linux patch settings.
 class LinuxVMGuestPatchAutomaticByPlatformSettings {
   /// Enables customer to schedule patching without accidental upgrades
-  final pulumi.Input<bool>? bypassPlatformSafetyChecksOnUserSchedule;
+  final pulumi.Input<bool?>? bypassPlatformSafetyChecksOnUserSchedule;
   /// Specifies the reboot setting for all AutomaticByPlatform patch installation operations.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<dynamic>? rebootSetting;
 
   /// Creates a new [LinuxVMGuestPatchAutomaticByPlatformSettings].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades
@@ -27,7 +27,7 @@ class LinuxVMGuestPatchAutomaticByPlatformSettings {
   factory LinuxVMGuestPatchAutomaticByPlatformSettings.fromMap(Map<String, dynamic> map) {
     return LinuxVMGuestPatchAutomaticByPlatformSettings(
       bypassPlatformSafetyChecksOnUserSchedule: (() { final guardedValue = map['bypassPlatformSafetyChecksOnUserSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      rebootSetting: (() { final guardedValue = map['rebootSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rebootSetting: (() { final guardedValue = map['rebootSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -14,15 +14,15 @@ class SoftwareUpdateConfigurationByNameArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Details of provisioning error
-  final pulumi.Input<AutomationErrorResponse>? error;
+  final pulumi.Input<AutomationErrorResponse?>? error;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Schedule information for the Software update configuration
   final pulumi.Input<SUCScheduleProperties> scheduleInfo;
   /// The name of the software update configuration to be created.
-  final pulumi.Input<String>? softwareUpdateConfigurationName;
+  final pulumi.Input<String?>? softwareUpdateConfigurationName;
   /// Tasks information for the Software update configuration.
-  final pulumi.Input<SoftwareUpdateConfigurationTasks>? tasks;
+  final pulumi.Input<SoftwareUpdateConfigurationTasks?>? tasks;
   /// update specific properties for the Software update configuration
   final pulumi.Input<UpdateConfiguration> updateConfiguration;
 

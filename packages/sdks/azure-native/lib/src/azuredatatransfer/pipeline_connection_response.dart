@@ -15,7 +15,7 @@ class PipelineConnectionResponse {
   /// Connection name inside pipeline
   final pulumi.Input<String> name;
   /// Connection properties inside pipeline
-  final pulumi.Input<PipelineConnectionResponseProperties>? properties;
+  final pulumi.Input<PipelineConnectionResponseProperties?>? properties;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Connection type inside pipeline

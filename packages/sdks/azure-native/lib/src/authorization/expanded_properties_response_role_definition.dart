@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of role definition
 class ExpandedPropertiesResponseRoleDefinition {
   /// Display name of the role definition
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Id of the role definition
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of the role definition
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExpandedPropertiesResponseRoleDefinition].
   /// [displayName] Display name of the role definition

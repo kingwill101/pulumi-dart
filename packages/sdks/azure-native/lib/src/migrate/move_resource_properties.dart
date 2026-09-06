@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'availability_set_resource_settings.dart';
 import 'move_resource_dependency_override.dart';
 
 /// Defines the move resource properties.
 class MoveResourceProperties {
   /// Gets or sets the move resource dependencies overrides.
-  final pulumi.Input<List<MoveResourceDependencyOverride>>? dependsOnOverrides;
+  final pulumi.Input<List<MoveResourceDependencyOverride>?>? dependsOnOverrides;
   /// Gets or sets the existing target ARM Id of the resource.
-  final pulumi.Input<String>? existingTargetId;
+  final pulumi.Input<String?>? existingTargetId;
   /// Gets or sets the resource settings.
-  final pulumi.Input<AvailabilitySetResourceSettings>? resourceSettings;
+  final pulumi.Input<dynamic>? resourceSettings;
   /// Gets or sets the Source ARM Id of the resource.
   final pulumi.Input<String> sourceId;
 
@@ -31,7 +30,7 @@ class MoveResourceProperties {
     return <String, dynamic>{
       'dependsOnOverrides': ?pulumi.Input.mapOptionalInputValue<List<MoveResourceDependencyOverride>, List<Map<String, dynamic>>>(dependsOnOverrides, (value) => pulumi.Input.encodeList<MoveResourceDependencyOverride, Map<String, dynamic>>(value, (value) => value.toMap())),
       'existingTargetId': ?existingTargetId,
-      'resourceSettings': ?pulumi.Input.mapOptionalInputValue<AvailabilitySetResourceSettings, Map<String, dynamic>>(resourceSettings, (value) => value.toMap()),
+      'resourceSettings': ?resourceSettings,
       'sourceId': sourceId,
     };
   }
@@ -40,7 +39,7 @@ class MoveResourceProperties {
     return MoveResourceProperties(
       dependsOnOverrides: (() { final guardedValue = map['dependsOnOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MoveResourceDependencyOverride>(guardedValue, (value) => MoveResourceDependencyOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
       existingTargetId: (() { final guardedValue = map['existingTargetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceSettings: (() { final guardedValue = map['resourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvailabilitySetResourceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      resourceSettings: (() { final guardedValue = map['resourceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceId: pulumi.Input.fromValue(map['sourceId'] as String),
     );
   }

@@ -10,17 +10,17 @@ import 'nat_gateway_properties.dart';
 /// {@macro pulumi_azurestackhci_nat_gateway_args_doc}
 class NatGatewayArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the nat gateway
-  final pulumi.Input<String>? natGatewayName;
+  final pulumi.Input<String?>? natGatewayName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<NatGatewayProperties>? properties;
+  final pulumi.Input<NatGatewayProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NatGatewayArgs].
   /// [extendedLocation] The extendedLocation of the resource.

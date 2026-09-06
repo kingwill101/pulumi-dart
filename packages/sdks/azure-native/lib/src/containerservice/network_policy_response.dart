@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The network policy for the managed namespace.
 class NetworkPolicyResponse {
   /// The egress policy for the managed namespace.
-  final pulumi.Input<String>? egress;
+  final pulumi.Input<String?>? egress;
   /// The ingress policy for the managed namespace.
-  final pulumi.Input<String>? ingress;
+  final pulumi.Input<String?>? ingress;
 
   /// Creates a new [NetworkPolicyResponse].
   /// [egress] The egress policy for the managed namespace.

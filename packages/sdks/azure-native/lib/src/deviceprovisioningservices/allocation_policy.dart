@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allocation policy to be used by this provisioning service.
-enum AllocationPolicy {
+enum AllocationPolicy implements pulumi.PulumiEnum<String> {
   valueHashed("Hashed"),
   valueGeoLatency("GeoLatency"),
   valueStatic("Static");
 
   const AllocationPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static AllocationPolicy fromValue(String value) {

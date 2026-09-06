@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Backend address synchronous mode for the backend pool
-enum SyncMode {
+enum SyncMode implements pulumi.PulumiEnum<String> {
   valueAutomatic("Automatic"),
   valueManual("Manual");
 
   const SyncMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SyncMode fromValue(String value) {

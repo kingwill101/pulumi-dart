@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Permissions the identity has for keys, secrets, certificates and storage.
 class Permissions {
   /// Permissions to certificates
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<dynamic>?>? certificates;
   /// Permissions to keys
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<dynamic>?>? keys;
   /// Permissions to secrets
-  final pulumi.Input<List<String>>? secrets;
+  final pulumi.Input<List<dynamic>?>? secrets;
   /// Permissions to storage accounts
-  final pulumi.Input<List<String>>? storage;
+  final pulumi.Input<List<dynamic>?>? storage;
 
   /// Creates a new [Permissions].
   /// [certificates] Permissions to certificates
@@ -36,10 +36,10 @@ class Permissions {
 
   factory Permissions.fromMap(Map<String, dynamic> map) {
     return Permissions(
-      certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      keys: (() { final guardedValue = map['keys']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

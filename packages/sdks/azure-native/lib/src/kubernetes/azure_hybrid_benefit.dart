@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether Azure Hybrid Benefit is opted in
-enum AzureHybridBenefit {
+enum AzureHybridBenefit implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False"),
   valueNotApplicable("NotApplicable");
 
   const AzureHybridBenefit(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureHybridBenefit fromValue(String value) {

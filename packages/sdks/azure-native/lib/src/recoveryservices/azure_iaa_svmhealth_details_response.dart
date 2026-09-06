@@ -36,7 +36,7 @@ class AzureIaaSVMHealthDetailsResponse {
 
   factory AzureIaaSVMHealthDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AzureIaaSVMHealthDetailsResponse(
-      code: pulumi.Input.fromValue(map['code'] as int),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
       message: pulumi.Input.fromValue(map['message'] as String),
       recommendations: pulumi.Input.fromValue((map['recommendations'] as List).cast<String>()),
       title: pulumi.Input.fromValue(map['title'] as String),

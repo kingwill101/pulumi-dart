@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subgroup profile of the interconnect group resource.
 class SubgroupProfileResponse {
   /// Scope of the subgroup profile.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Size of the subgroup profile.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// VM size of the subgroup profile.
   final pulumi.Input<String> vmSize;
 
@@ -32,7 +32,7 @@ class SubgroupProfileResponse {
   factory SubgroupProfileResponse.fromMap(Map<String, dynamic> map) {
     return SubgroupProfileResponse(
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
     );
   }

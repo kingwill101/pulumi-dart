@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kafka acks. Can be all, one, or zero. No effect if the endpoint is used as a source.
-enum DataflowEndpointKafkaAcks {
+enum DataflowEndpointKafkaAcks implements pulumi.PulumiEnum<String> {
   zero("Zero"),
   one("One"),
   all("All");
 
   const DataflowEndpointKafkaAcks(this.wireValue);
+  @override
   final String wireValue;
 
   static DataflowEndpointKafkaAcks fromValue(String value) {

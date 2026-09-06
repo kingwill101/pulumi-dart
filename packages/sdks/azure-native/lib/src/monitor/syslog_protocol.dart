@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol to parse syslog messages. Default rfc3164
-enum SyslogProtocol {
+enum SyslogProtocol implements pulumi.PulumiEnum<String> {
   rfc3164("rfc3164"),
   rfc5424("rfc5424");
 
   const SyslogProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static SyslogProtocol fromValue(String value) {

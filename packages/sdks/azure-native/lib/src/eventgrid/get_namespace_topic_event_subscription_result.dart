@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 /// Result data returned by getNamespaceTopicEventSubscription.
 class GetNamespaceTopicEventSubscriptionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Information about the delivery configuration of the event subscription.
   final DeliveryConfigurationResponse? deliveryConfiguration;
   /// The event delivery schema for the event subscription.
@@ -17,15 +17,15 @@ class GetNamespaceTopicEventSubscriptionResult {
   /// Information about the filter for the event subscription.
   final FiltersConfigurationResponse? filtersConfiguration;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the event subscription.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNamespaceTopicEventSubscriptionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,45 +39,45 @@ class GetNamespaceTopicEventSubscriptionResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
   const GetNamespaceTopicEventSubscriptionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.deliveryConfiguration,
     this.eventDeliverySchema,
     this.expirationTimeUtc,
     this.filtersConfiguration,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'deliveryConfiguration': ?deliveryConfiguration?.toMap(),
       'eventDeliverySchema': ?eventDeliverySchema,
       'expirationTimeUtc': ?expirationTimeUtc,
       'filtersConfiguration': ?filtersConfiguration?.toMap(),
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetNamespaceTopicEventSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceTopicEventSubscriptionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deliveryConfiguration: (() { final guardedValue = map['deliveryConfiguration']; if (guardedValue == null) return null; return DeliveryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       eventDeliverySchema: (() { final guardedValue = map['eventDeliverySchema']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expirationTimeUtc: (() { final guardedValue = map['expirationTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filtersConfiguration: (() { final guardedValue = map['filtersConfiguration']; if (guardedValue == null) return null; return FiltersConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

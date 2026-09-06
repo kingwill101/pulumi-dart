@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum TargetHealthReasonEnum {
+enum TargetHealthReasonEnum implements pulumi.PulumiEnum<String> {
   elbInitialHealthChecking("Elb.InitialHealthChecking"),
   elbInternalError("Elb.InternalError"),
   elbRegistrationInProgress("Elb.RegistrationInProgress"),
@@ -14,6 +16,7 @@ enum TargetHealthReasonEnum {
   targetTimeout("Target.Timeout");
 
   const TargetHealthReasonEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetHealthReasonEnum fromValue(String value) {

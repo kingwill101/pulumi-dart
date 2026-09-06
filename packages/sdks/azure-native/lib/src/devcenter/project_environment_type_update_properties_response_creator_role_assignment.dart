@@ -6,7 +6,7 @@ import 'environment_role_response.dart';
 /// The role definition assigned to the environment creator on backing resources.
 class ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment {
   /// A map of roles to assign to the environment creator.
-  final pulumi.Input<Map<String, EnvironmentRoleResponse>>? roles;
+  final pulumi.Input<Map<String, EnvironmentRoleResponse>?>? roles;
 
   /// Creates a new [ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment].
   /// [roles] A map of roles to assign to the environment creator.

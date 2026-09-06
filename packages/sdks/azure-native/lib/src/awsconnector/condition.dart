@@ -7,9 +7,9 @@ import 'label_name_condition_model_properties.dart';
 /// Definition of Condition
 class Condition {
   /// A single action condition.
-  final pulumi.Input<ActionConditionModelProperties>? actionCondition;
+  final pulumi.Input<ActionConditionModelProperties?>? actionCondition;
   /// A single label name condition.
-  final pulumi.Input<LabelNameConditionModelProperties>? labelNameCondition;
+  final pulumi.Input<LabelNameConditionModelProperties?>? labelNameCondition;
 
   /// Creates a new [Condition].
   /// [actionCondition] A single action condition.

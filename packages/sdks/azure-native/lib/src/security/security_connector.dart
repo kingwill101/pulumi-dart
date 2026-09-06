@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aws_environment_data_response.dart';
 import 'security_connector_args.dart';
 import 'system_data_response.dart';
 
@@ -251,7 +250,7 @@ class SecurityConnector extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The security connector environment data.
-  late final pulumi.Output<AwsEnvironmentDataResponse?> environmentData;
+  late final pulumi.Output<dynamic> environmentData;
   /// The multi cloud resource's cloud name.
   late final pulumi.Output<String?> environmentName;
   /// Entity tag is used for comparing two or more entities from the same requested resource.
@@ -267,7 +266,7 @@ class SecurityConnector extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// A collection of offerings for the security connector.
-  late final pulumi.Output<List<Map<String, dynamic>>?> offerings;
+  late final pulumi.Output<List<dynamic>?> offerings;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -290,7 +289,7 @@ class SecurityConnector extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    environmentData = registerOutput<AwsEnvironmentDataResponse?>('environmentData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsEnvironmentDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentData = registerOutput<dynamic>('environmentData');
     environmentName = registerOutput<String?>('environmentName');
     etag = registerOutput<String?>('etag');
     hierarchyIdentifier = registerOutput<String?>('hierarchyIdentifier');
@@ -298,9 +297,33 @@ class SecurityConnector extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    offerings = registerOutput<List<Map<String, dynamic>>?>('offerings');
+    offerings = registerOutput<List<dynamic>?>('offerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityConnector] resource.
+  SecurityConnector.reference(String urn)
+    : super(
+        'azure-native:security:SecurityConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    environmentData = registerOutput<dynamic>('environmentData');
+    environmentName = registerOutput<String?>('environmentName');
+    etag = registerOutput<String?>('etag');
+    hierarchyIdentifier = registerOutput<String?>('hierarchyIdentifier');
+    hierarchyIdentifierTrialEndDate = registerOutput<String>('hierarchyIdentifierTrialEndDate');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    offerings = registerOutput<List<dynamic>?>('offerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

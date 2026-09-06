@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current status of task.
-enum TaskStatus {
+enum TaskStatus implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const TaskStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static TaskStatus fromValue(String value) {

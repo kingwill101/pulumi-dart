@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'route_policy_args.dart';
+import 'route_policy_statement_properties_response.dart';
 import 'system_data_response.dart';
 
 /// The RoutePolicy resource definition.
@@ -530,7 +531,7 @@ class RoutePolicy extends pulumi.CustomResource {
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Route Policy statements.
-  late final pulumi.Output<List<Map<String, dynamic>>> statements;
+  late final pulumi.Output<List<RoutePolicyStatementPropertiesResponse>> statements;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -562,9 +563,34 @@ class RoutePolicy extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkFabricId = registerOutput<String>('networkFabricId');
     provisioningState = registerOutput<String>('provisioningState');
-    statements = registerOutput<List<Map<String, dynamic>>>('statements');
+    statements = registerOutput<List<RoutePolicyStatementPropertiesResponse>>('statements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutePolicyStatementPropertiesResponse>(guardedValue, (value) => RoutePolicyStatementPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoutePolicy] resource.
+  RoutePolicy.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:RoutePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressFamilyType = registerOutput<String?>('addressFamilyType');
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    defaultAction = registerOutput<String?>('defaultAction');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    provisioningState = registerOutput<String>('provisioningState');
+    statements = registerOutput<List<RoutePolicyStatementPropertiesResponse>>('statements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutePolicyStatementPropertiesResponse>(guardedValue, (value) => RoutePolicyStatementPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

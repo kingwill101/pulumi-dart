@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureSku {
   /// SKU name
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// SKU tier
-  final pulumi.Input<String> tier;
+  final pulumi.Input<dynamic> tier;
 
   /// Creates a new [AzureSku].
   /// [name] SKU name
@@ -25,8 +25,8 @@ class AzureSku {
 
   factory AzureSku.fromMap(Map<String, dynamic> map) {
     return AzureSku(
-      name: pulumi.Input.fromValue(map['name'] as String),
-      tier: pulumi.Input.fromValue(map['tier'] as String),
+      name: pulumi.Input.fromValue(map['name']),
+      tier: pulumi.Input.fromValue(map['tier']),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'nic_ipaddress_settings_response.dart';
 /// Defines the network interface ip settings.
 class NicIPSettingsResponse {
   /// Gets or sets the nic allocation method.
-  final pulumi.Input<String>? allocationMethod;
+  final pulumi.Input<String?>? allocationMethod;
   /// Gets or sets the dns servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Gets or sets the gateway.
-  final pulumi.Input<List<String>>? gateway;
+  final pulumi.Input<List<String>?>? gateway;
   /// Gets or sets the ip address for the nic.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Gets or sets the IP address information being reported for this NIC. This contains the same IPv4 information above plus IPV6 information.
   final pulumi.Input<List<NicIPAddressSettingsResponse>> ipAddressInfo;
   /// Gets or sets the primary server.
@@ -20,7 +20,7 @@ class NicIPSettingsResponse {
   /// Gets or sets the secondary server.
   final pulumi.Input<String> secondaryWinsServer;
   /// Gets or sets the mask.
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
 
   /// Creates a new [NicIPSettingsResponse].
   /// [allocationMethod] Gets or sets the nic allocation method.

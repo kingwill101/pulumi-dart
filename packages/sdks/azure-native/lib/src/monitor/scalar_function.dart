@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Scalar function applied for filtering.
-enum ScalarFunction {
+enum ScalarFunction implements pulumi.PulumiEnum<String> {
   max("max"),
   min("min"),
   avg("avg"),
   sum("sum");
 
   const ScalarFunction(this.wireValue);
+  @override
   final String wireValue;
 
   static ScalarFunction fromValue(String value) {

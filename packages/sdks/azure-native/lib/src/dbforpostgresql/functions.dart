@@ -66,6 +66,17 @@ Future<GetAdministratorResult> getAdministrator(
   return GetAdministratorResult.fromMap(result);
 }
 
+pulumi.Output<GetAdministratorResult> getAdministratorOutput(
+  GetAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdministratorResult.fromMap);
+}
+
 /// Gets information about a server administrator associated to a Microsoft Entra principal.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -84,6 +95,17 @@ Future<GetAdministratorsMicrosoftEntraResult> getAdministratorsMicrosoftEntra(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAdministratorsMicrosoftEntraResult.fromMap(result);
+}
+
+pulumi.Output<GetAdministratorsMicrosoftEntraResult> getAdministratorsMicrosoftEntraOutput(
+  GetAdministratorsMicrosoftEntraArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getAdministratorsMicrosoftEntra',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdministratorsMicrosoftEntraResult.fromMap);
 }
 
 /// Gets information of an on demand backup, given its name.
@@ -106,6 +128,17 @@ Future<GetBackupResult> getBackup(
   return GetBackupResult.fromMap(result);
 }
 
+pulumi.Output<GetBackupResult> getBackupOutput(
+  GetBackupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getBackup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupResult.fromMap);
+}
+
 /// Gets information of an on demand backup, given its name.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -124,6 +157,17 @@ Future<GetBackupsAutomaticAndOnDemandResult> getBackupsAutomaticAndOnDemand(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackupsAutomaticAndOnDemandResult.fromMap(result);
+}
+
+pulumi.Output<GetBackupsAutomaticAndOnDemandResult> getBackupsAutomaticAndOnDemandOutput(
+  GetBackupsAutomaticAndOnDemandArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getBackupsAutomaticAndOnDemand',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackupsAutomaticAndOnDemandResult.fromMap);
 }
 
 /// Gets information about a specific configuration (also known as server parameter) of a server.
@@ -146,6 +190,17 @@ Future<GetConfigurationResult> getConfiguration(
   return GetConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
+}
+
 /// Gets information about an existing database.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -164,6 +219,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Gets information about a firewall rule in a server.
@@ -186,6 +252,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets the private DNS zone suffix.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -203,6 +280,17 @@ Future<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecut
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGetPrivateDnsZoneSuffixExecuteResult.fromMap(result);
+}
+
+pulumi.Output<GetGetPrivateDnsZoneSuffixExecuteResult> getGetPrivateDnsZoneSuffixExecuteOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getGetPrivateDnsZoneSuffixExecute',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetGetPrivateDnsZoneSuffixExecuteResult.fromMap);
 }
 
 /// Gets information about a migration.
@@ -225,6 +313,17 @@ Future<GetMigrationResult> getMigration(
   return GetMigrationResult.fromMap(result);
 }
 
+pulumi.Output<GetMigrationResult> getMigrationOutput(
+  GetMigrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getMigration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigrationResult.fromMap);
+}
+
 /// Gets the private DNS zone suffix.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -242,6 +341,17 @@ Future<GetPrivateDnsZoneSuffixResult> getPrivateDnsZoneSuffix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateDnsZoneSuffixResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateDnsZoneSuffixResult> getPrivateDnsZoneSuffixOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getPrivateDnsZoneSuffix',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetPrivateDnsZoneSuffixResult.fromMap);
 }
 
 /// Gets a private endpoint connection.
@@ -264,6 +374,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets information about an existing server.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -282,6 +403,17 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }
 
 /// Gets information about a cluster such as compute and storage configuration and cluster lifecycle metadata such as cluster creation date and time.
@@ -304,6 +436,17 @@ Future<GetServerGroupClusterResult> getServerGroupCluster(
   return GetServerGroupClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetServerGroupClusterResult> getServerGroupClusterOutput(
+  GetServerGroupClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getServerGroupCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerGroupClusterResult.fromMap);
+}
+
 /// Gets information about a cluster firewall rule.
 ///
 /// Uses Azure REST API version 2023-03-02-preview.
@@ -322,6 +465,17 @@ Future<GetServerGroupFirewallRuleResult> getServerGroupFirewallRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerGroupFirewallRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetServerGroupFirewallRuleResult> getServerGroupFirewallRuleOutput(
+  GetServerGroupFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getServerGroupFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerGroupFirewallRuleResult.fromMap);
 }
 
 /// Gets private endpoint connection.
@@ -344,6 +498,17 @@ Future<GetServerGroupPrivateEndpointConnectionResult> getServerGroupPrivateEndpo
   return GetServerGroupPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetServerGroupPrivateEndpointConnectionResult> getServerGroupPrivateEndpointConnectionOutput(
+  GetServerGroupPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getServerGroupPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerGroupPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets information about a cluster role.
 ///
 /// Uses Azure REST API version 2023-03-02-preview.
@@ -364,6 +529,17 @@ Future<GetServerGroupRoleResult> getServerGroupRole(
   return GetServerGroupRoleResult.fromMap(result);
 }
 
+pulumi.Output<GetServerGroupRoleResult> getServerGroupRoleOutput(
+  GetServerGroupRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getServerGroupRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerGroupRoleResult.fromMap);
+}
+
 /// Gets information about a server.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -380,6 +556,17 @@ Future<GetSingleServerResult> getSingleServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerResult> getSingleServerOutput(
+  GetSingleServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerResult.fromMap);
 }
 
 /// Gets information about a configuration of server.
@@ -400,6 +587,17 @@ Future<GetSingleServerConfigurationResult> getSingleServerConfiguration(
   return GetSingleServerConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerConfigurationResult> getSingleServerConfigurationOutput(
+  GetSingleServerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerConfigurationResult.fromMap);
+}
+
 /// Gets information about a database.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -416,6 +614,17 @@ Future<GetSingleServerDatabaseResult> getSingleServerDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerDatabaseResult> getSingleServerDatabaseOutput(
+  GetSingleServerDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerDatabaseResult.fromMap);
 }
 
 /// Gets information about a server firewall rule.
@@ -436,6 +645,17 @@ Future<GetSingleServerFirewallRuleResult> getSingleServerFirewallRule(
   return GetSingleServerFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerFirewallRuleResult> getSingleServerFirewallRuleOutput(
+  GetSingleServerFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerFirewallRuleResult.fromMap);
+}
+
 /// Gets information about a AAD server administrator.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -452,6 +672,17 @@ Future<GetSingleServerServerAdministratorResult> getSingleServerServerAdministra
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerServerAdministratorResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerServerAdministratorResult> getSingleServerServerAdministratorOutput(
+  GetSingleServerServerAdministratorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerServerAdministrator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerServerAdministratorResult.fromMap);
 }
 
 /// Get a server's security alert policy.
@@ -472,6 +703,17 @@ Future<GetSingleServerServerSecurityAlertPolicyResult> getSingleServerServerSecu
   return GetSingleServerServerSecurityAlertPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSingleServerServerSecurityAlertPolicyResult> getSingleServerServerSecurityAlertPolicyOutput(
+  GetSingleServerServerSecurityAlertPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerServerSecurityAlertPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerServerSecurityAlertPolicyResult.fromMap);
+}
+
 /// Gets a virtual network rule.
 ///
 /// Uses Azure REST API version 2017-12-01.
@@ -488,6 +730,17 @@ Future<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRul
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSingleServerVirtualNetworkRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetSingleServerVirtualNetworkRuleResult> getSingleServerVirtualNetworkRuleOutput(
+  GetSingleServerVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getSingleServerVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSingleServerVirtualNetworkRuleResult.fromMap);
 }
 
 /// Gets information about a pair of virtual endpoints.
@@ -508,4 +761,15 @@ Future<GetVirtualEndpointResult> getVirtualEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualEndpointResult> getVirtualEndpointOutput(
+  GetVirtualEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbforpostgresql:getVirtualEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualEndpointResult.fromMap);
 }

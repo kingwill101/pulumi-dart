@@ -9,7 +9,7 @@ class MongoDbDatabaseProgressResponse {
   /// The number of document bytes copied during the Copying stage
   final pulumi.Input<double> bytesCopied;
   /// The progress of the collections in the database. The keys are the unqualified names of the collections
-  final pulumi.Input<Map<String, MongoDbCollectionProgressResponse>>? collections;
+  final pulumi.Input<Map<String, MongoDbCollectionProgressResponse>?>? collections;
   /// The number of documents copied during the Copying stage
   final pulumi.Input<double> documentsCopied;
   /// The elapsed time in the format [ddd.]hh:mm:ss[.fffffff] (i.e. TimeSpan format)
@@ -21,13 +21,13 @@ class MongoDbDatabaseProgressResponse {
   /// The number of oplog events replayed so far
   final pulumi.Input<double> eventsReplayed;
   /// The timestamp of the last oplog event received, or null if no oplog event has been received yet
-  final pulumi.Input<String>? lastEventTime;
+  final pulumi.Input<String?>? lastEventTime;
   /// The timestamp of the last oplog event replayed, or null if no oplog event has been replayed yet
-  final pulumi.Input<String>? lastReplayTime;
+  final pulumi.Input<String?>? lastReplayTime;
   /// The name of the progress object. For a collection, this is the unqualified collection name. For a database, this is the database name. For the overall migration, this is null.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The qualified name of the progress object. For a collection, this is the database-qualified name. For a database, this is the database name. For the overall migration, this is null.
-  final pulumi.Input<String>? qualifiedName;
+  final pulumi.Input<String?>? qualifiedName;
   /// The type of progress object
   /// Expected value is 'Database'.
   final pulumi.Input<String> resultType;
@@ -93,21 +93,21 @@ class MongoDbDatabaseProgressResponse {
 
   factory MongoDbDatabaseProgressResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbDatabaseProgressResponse(
-      bytesCopied: pulumi.Input.fromValue(map['bytesCopied'] as double),
+      bytesCopied: pulumi.Input.fromValue((map['bytesCopied'] as num).toDouble()),
       collections: (() { final guardedValue = map['collections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<MongoDbCollectionProgressResponse>(guardedValue, (value) => MongoDbCollectionProgressResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      documentsCopied: pulumi.Input.fromValue(map['documentsCopied'] as double),
+      documentsCopied: pulumi.Input.fromValue((map['documentsCopied'] as num).toDouble()),
       elapsedTime: pulumi.Input.fromValue(map['elapsedTime'] as String),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<MongoDbErrorResponse>(map['errors']!, (value) => MongoDbErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      eventsPending: pulumi.Input.fromValue(map['eventsPending'] as double),
-      eventsReplayed: pulumi.Input.fromValue(map['eventsReplayed'] as double),
+      eventsPending: pulumi.Input.fromValue((map['eventsPending'] as num).toDouble()),
+      eventsReplayed: pulumi.Input.fromValue((map['eventsReplayed'] as num).toDouble()),
       lastEventTime: (() { final guardedValue = map['lastEventTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastReplayTime: (() { final guardedValue = map['lastReplayTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       qualifiedName: (() { final guardedValue = map['qualifiedName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
-      totalBytes: pulumi.Input.fromValue(map['totalBytes'] as double),
-      totalDocuments: pulumi.Input.fromValue(map['totalDocuments'] as double),
+      totalBytes: pulumi.Input.fromValue((map['totalBytes'] as num).toDouble()),
+      totalDocuments: pulumi.Input.fromValue((map['totalDocuments'] as num).toDouble()),
     );
   }
 }

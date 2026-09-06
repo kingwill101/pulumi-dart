@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriberResponse {
   /// Email of the subscriber
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Number specifying what notifications to receive
-  final pulumi.Input<double>? notifications;
+  final pulumi.Input<double?>? notifications;
 
   /// Creates a new [SubscriberResponse].
   /// [email] Email of the subscriber
@@ -26,7 +26,7 @@ class SubscriberResponse {
   factory SubscriberResponse.fromMap(Map<String, dynamic> map) {
     return SubscriberResponse(
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

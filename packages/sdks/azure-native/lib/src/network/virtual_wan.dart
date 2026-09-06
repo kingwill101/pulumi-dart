@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'sub_resource_response.dart';
 import 'virtual_wan_args.dart';
 
 /// VirtualWAN Resource.
@@ -205,9 +206,9 @@ class VirtualWan extends pulumi.CustomResource {
   /// Resource type.
   late final pulumi.Output<String> type;
   /// List of VirtualHubs in the VirtualWAN.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualHubs;
+  late final pulumi.Output<List<SubResourceResponse>> virtualHubs;
   /// List of VpnSites in the VirtualWAN.
-  late final pulumi.Output<List<Map<String, dynamic>>> vpnSites;
+  late final pulumi.Output<List<SubResourceResponse>> vpnSites;
 
   /// Creates a new [VirtualWan].
   /// [name] The Pulumi resource name.
@@ -232,9 +233,33 @@ class VirtualWan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     office365LocalBreakoutCategory = registerOutput<String>('office365LocalBreakoutCategory');
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualHubs = registerOutput<List<Map<String, dynamic>>>('virtualHubs');
-    vpnSites = registerOutput<List<Map<String, dynamic>>>('vpnSites');
+    virtualHubs = registerOutput<List<SubResourceResponse>>('virtualHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vpnSites = registerOutput<List<SubResourceResponse>>('vpnSites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualWan] resource.
+  VirtualWan.reference(String urn)
+    : super(
+        'azure-native:network:VirtualWan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowBranchToBranchTraffic = registerOutput<bool?>('allowBranchToBranchTraffic');
+    allowVnetToVnetTraffic = registerOutput<bool?>('allowVnetToVnetTraffic');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableVpnEncryption = registerOutput<bool?>('disableVpnEncryption');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    office365LocalBreakoutCategory = registerOutput<String>('office365LocalBreakoutCategory');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualHubs = registerOutput<List<SubResourceResponse>>('virtualHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vpnSites = registerOutput<List<SubResourceResponse>>('vpnSites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

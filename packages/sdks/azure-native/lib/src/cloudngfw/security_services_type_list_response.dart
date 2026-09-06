@@ -8,7 +8,7 @@ class SecurityServicesTypeListResponse {
   /// list
   final pulumi.Input<List<NameDescriptionObjectResponse>> entry;
   /// security services type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SecurityServicesTypeListResponse].
   /// [entry] list

@@ -5,9 +5,9 @@ import 'sku_capability_response.dart';
 
 class SkuZoneDetailResponse {
   /// The capabilities.
-  final pulumi.Input<List<SkuCapabilityResponse>>? capabilities;
+  final pulumi.Input<List<SkuCapabilityResponse>?>? capabilities;
   /// The name.
-  final pulumi.Input<List<String>>? name;
+  final pulumi.Input<List<String>?>? name;
 
   /// Creates a new [SkuZoneDetailResponse].
   /// [capabilities] The capabilities.

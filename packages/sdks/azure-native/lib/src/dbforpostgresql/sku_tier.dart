@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of the compute assigned to a server.
-enum SkuTier {
+enum SkuTier implements pulumi.PulumiEnum<String> {
   burstable("Burstable"),
   generalPurpose("GeneralPurpose"),
   memoryOptimized("MemoryOptimized");
 
   const SkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuTier fromValue(String value) {

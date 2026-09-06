@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Base type for destination rules.
 class CommunityEndpointDestinationRuleResponse {
   /// Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? destination;
   /// Destination Type.
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<String?>? destinationType;
   /// Endpoint Rule Name.
-  final pulumi.Input<String>? endpointRuleName;
+  final pulumi.Input<String?>? endpointRuleName;
   /// Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
-  final pulumi.Input<String>? ports;
+  final pulumi.Input<String?>? ports;
   /// Protocols. Options specified by Endpoint Protocol Enum.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// Transit Hub Resource Id.
-  final pulumi.Input<String>? transitHubResourceId;
+  final pulumi.Input<String?>? transitHubResourceId;
 
   /// Creates a new [CommunityEndpointDestinationRuleResponse].
   /// [destination] Destination address. Can include multiple CIDR/IP Addresses or fqdn tags or fqdns (for community endpoint) separated by commas.

@@ -11,21 +11,21 @@ class P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse {
   /// List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.
   final pulumi.Input<List<SubResourceResponse>> configurationPolicyGroupAssociations;
   /// Flag indicating whether the enable internet security flag is turned on for the P2S Connections or not.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of previous Configuration Policy Groups that this P2SConnectionConfiguration was attached to.
   final pulumi.Input<List<VpnServerConfigurationPolicyGroupResponse>> previousConfigurationPolicyGroupAssociations;
   /// The provisioning state of the P2SConnectionConfiguration resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse?>? routingConfiguration;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final pulumi.Input<AddressSpaceResponse>? vpnClientAddressPool;
+  final pulumi.Input<AddressSpaceResponse?>? vpnClientAddressPool;
 
   /// Creates a new [P2SConnectionConfigurationgetP2sVpnGatewayP2sVpnConnectionHealthResponse].
   /// [configurationPolicyGroupAssociations] List of Configuration Policy Groups that this P2SConnectionConfiguration is attached to.

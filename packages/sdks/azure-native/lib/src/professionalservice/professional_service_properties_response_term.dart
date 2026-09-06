@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The current Term object.
 class ProfessionalServicePropertiesResponseTerm {
   /// The end date of the current term
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The start date of the current term
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  final pulumi.Input<String>? termUnit;
+  final pulumi.Input<String?>? termUnit;
 
   /// Creates a new [ProfessionalServicePropertiesResponseTerm].
   /// [endDate] The end date of the current term

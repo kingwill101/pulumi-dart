@@ -7,7 +7,7 @@ class CustomMetricThreshold {
   /// [Required] The user-defined metric to calculate.
   final pulumi.Input<String> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final pulumi.Input<MonitoringThreshold>? threshold;
+  final pulumi.Input<MonitoringThreshold?>? threshold;
 
   /// Creates a new [CustomMetricThreshold].
   /// [metric] [Required] The user-defined metric to calculate.

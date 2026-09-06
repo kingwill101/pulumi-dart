@@ -6,19 +6,19 @@ import 'trigger_pipeline_reference.dart';
 /// Trigger that runs every time a Blob event occurs.
 class BlobEventsTrigger {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The blob path must begin with the pattern provided for trigger to fire. For example, '/records/blobs/december/' will only fire the trigger for blobs in the december folder under the records container. At least one of these must be provided: blobPathBeginsWith, blobPathEndsWith.
-  final pulumi.Input<String>? blobPathBeginsWith;
+  final pulumi.Input<String?>? blobPathBeginsWith;
   /// The blob path must end with the pattern provided for trigger to fire. For example, 'december/boxes.csv' will only fire the trigger for blobs named boxes in a december folder. At least one of these must be provided: blobPathBeginsWith, blobPathEndsWith.
-  final pulumi.Input<String>? blobPathEndsWith;
+  final pulumi.Input<String?>? blobPathEndsWith;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of events that cause this trigger to fire.
-  final pulumi.Input<List<String>> events;
+  final pulumi.Input<List<dynamic>> events;
   /// If set to true, blobs with zero bytes will be ignored.
-  final pulumi.Input<bool>? ignoreEmptyBlobs;
+  final pulumi.Input<bool?>? ignoreEmptyBlobs;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReference>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReference>?>? pipelines;
   /// The ARM resource ID of the Storage Account.
   final pulumi.Input<String> scope;
   /// Trigger type.
@@ -67,7 +67,7 @@ class BlobEventsTrigger {
       blobPathBeginsWith: (() { final guardedValue = map['blobPathBeginsWith']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       blobPathEndsWith: (() { final guardedValue = map['blobPathEndsWith']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      events: pulumi.Input.fromValue((map['events'] as List).cast<String>()),
+      events: pulumi.Input.fromValue((map['events'] as List).cast<dynamic>()),
       ignoreEmptyBlobs: (() { final guardedValue = map['ignoreEmptyBlobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       pipelines: (() { final guardedValue = map['pipelines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TriggerPipelineReference>(guardedValue, (value) => TriggerPipelineReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scope: pulumi.Input.fromValue(map['scope'] as String),

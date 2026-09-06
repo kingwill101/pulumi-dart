@@ -6,7 +6,7 @@ import 'unique_key_response.dart';
 /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
 class UniqueKeyPolicyResponse {
   /// List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
-  final pulumi.Input<List<UniqueKeyResponse>>? uniqueKeys;
+  final pulumi.Input<List<UniqueKeyResponse>?>? uniqueKeys;
 
   /// Creates a new [UniqueKeyPolicyResponse].
   /// [uniqueKeys] List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.

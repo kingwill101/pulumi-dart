@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_export_configuration_args_doc}
 class ExportConfigurationArgs {
   /// The name of destination storage account.
-  final pulumi.Input<String>? destinationAccountId;
+  final pulumi.Input<String?>? destinationAccountId;
   /// The SAS URL for the destination storage container. It must grant write permission.
-  final pulumi.Input<String>? destinationAddress;
+  final pulumi.Input<String?>? destinationAddress;
   /// The location ID of the destination storage container.
-  final pulumi.Input<String>? destinationStorageLocationId;
+  final pulumi.Input<String?>? destinationStorageLocationId;
   /// The subscription ID of the destination storage container.
-  final pulumi.Input<String>? destinationStorageSubscriptionId;
+  final pulumi.Input<String?>? destinationStorageSubscriptionId;
   /// The Continuous Export destination type. This has to be 'Blob'.
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<String?>? destinationType;
   /// The Continuous Export configuration ID. This is unique within a Application Insights component.
-  final pulumi.Input<String>? exportId;
+  final pulumi.Input<String?>? exportId;
   /// Set to 'true' to create a Continuous Export configuration as enabled, otherwise set it to 'false'.
-  final pulumi.Input<String>? isEnabled;
+  final pulumi.Input<String?>? isEnabled;
   /// Deprecated
-  final pulumi.Input<String>? notificationQueueEnabled;
+  final pulumi.Input<String?>? notificationQueueEnabled;
   /// Deprecated
-  final pulumi.Input<String>? notificationQueueUri;
+  final pulumi.Input<String?>? notificationQueueUri;
   /// The document types to be exported, as comma separated values. Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
-  final pulumi.Input<String>? recordTypes;
+  final pulumi.Input<String?>? recordTypes;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.

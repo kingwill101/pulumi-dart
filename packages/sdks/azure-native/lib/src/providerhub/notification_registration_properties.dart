@@ -5,13 +5,13 @@ import 'notification_endpoint.dart';
 
 class NotificationRegistrationProperties {
   /// The included events.
-  final pulumi.Input<List<String>>? includedEvents;
+  final pulumi.Input<List<String>?>? includedEvents;
   /// The message scope.
-  final pulumi.Input<String>? messageScope;
+  final pulumi.Input<dynamic>? messageScope;
   /// The notification endpoints.
-  final pulumi.Input<List<NotificationEndpoint>>? notificationEndpoints;
+  final pulumi.Input<List<NotificationEndpoint>?>? notificationEndpoints;
   /// The notification mode.
-  final pulumi.Input<String>? notificationMode;
+  final pulumi.Input<dynamic>? notificationMode;
 
   /// Creates a new [NotificationRegistrationProperties].
   /// [includedEvents] The included events.
@@ -37,9 +37,9 @@ class NotificationRegistrationProperties {
   factory NotificationRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return NotificationRegistrationProperties(
       includedEvents: (() { final guardedValue = map['includedEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      messageScope: (() { final guardedValue = map['messageScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      messageScope: (() { final guardedValue = map['messageScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       notificationEndpoints: (() { final guardedValue = map['notificationEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NotificationEndpoint>(guardedValue, (value) => NotificationEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      notificationMode: (() { final guardedValue = map['notificationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationMode: (() { final guardedValue = map['notificationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

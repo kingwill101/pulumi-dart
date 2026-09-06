@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_customerinsights_connector_args_doc}
 class ConnectorArgs {
   /// Name of the connector.
-  final pulumi.Input<String>? connectorName;
+  final pulumi.Input<String?>? connectorName;
   /// The connector properties.
   final pulumi.Input<Map<String, dynamic>> connectorProperties;
   /// Type of connector.
-  final pulumi.Input<String> connectorType;
+  final pulumi.Input<dynamic> connectorType;
   /// Description of the connector.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the connector.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// If this is an internal connector.
-  final pulumi.Input<bool>? isInternal;
+  final pulumi.Input<bool?>? isInternal;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 
@@ -61,7 +61,7 @@ class ConnectorArgs {
     return ConnectorArgs(
       connectorName: (() { final guardedValue = map['connectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectorProperties: pulumi.Input.fromValue((map['connectorProperties'] as Map).cast<String, dynamic>()),
-      connectorType: pulumi.Input.fromValue(map['connectorType'] as String),
+      connectorType: pulumi.Input.fromValue(map['connectorType']),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hubName: pulumi.Input.fromValue(map['hubName'] as String),

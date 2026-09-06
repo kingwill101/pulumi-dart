@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volume Snapshot Properties
 class VolumeSnapshotProperties {
   /// Snapshot Policy ResourceId
-  final pulumi.Input<String>? snapshotPolicyId;
+  final pulumi.Input<String?>? snapshotPolicyId;
 
   /// Creates a new [VolumeSnapshotProperties].
   /// [snapshotPolicyId] Snapshot Policy ResourceId

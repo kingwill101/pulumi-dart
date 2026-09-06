@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'component_properties_response.dart';
 import 'extended_location_response.dart';
 import 'reconciliation_policy_response.dart';
 import 'system_data_response.dart';
 import 'target_args.dart';
+import 'topologies_properties_response.dart';
 
 /// A Target resource belonging to an Instance resource.
 ///
@@ -349,7 +351,7 @@ class Target extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of components.
-  late final pulumi.Output<List<Map<String, dynamic>>?> components;
+  late final pulumi.Output<List<ComponentPropertiesResponse>?> components;
   /// Edge location of the resource.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
   /// The geo-location where the resource lives
@@ -367,7 +369,7 @@ class Target extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Defines the device topology for a target or instance.
-  late final pulumi.Output<List<Map<String, dynamic>>?> topologies;
+  late final pulumi.Output<List<TopologiesPropertiesResponse>?> topologies;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Version of the particular resource.
@@ -388,7 +390,7 @@ class Target extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    components = registerOutput<List<Map<String, dynamic>>?>('components');
+    components = registerOutput<List<ComponentPropertiesResponse>?>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ComponentPropertiesResponse>(guardedValue, (value) => ComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -396,8 +398,32 @@ class Target extends pulumi.CustomResource {
     reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>('reconciliationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReconciliationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scope = registerOutput<String?>('scope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    topologies = registerOutput<List<Map<String, dynamic>>?>('topologies');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topologies = registerOutput<List<TopologiesPropertiesResponse>?>('topologies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopologiesPropertiesResponse>(guardedValue, (value) => TopologiesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Target] resource.
+  Target.reference(String urn)
+    : super(
+        'azure-native:iotoperationsorchestrator:Target',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    components = registerOutput<List<ComponentPropertiesResponse>?>('components', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ComponentPropertiesResponse>(guardedValue, (value) => ComponentPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    reconciliationPolicy = registerOutput<ReconciliationPolicyResponse?>('reconciliationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReconciliationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    topologies = registerOutput<List<TopologiesPropertiesResponse>?>('topologies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TopologiesPropertiesResponse>(guardedValue, (value) => TopologiesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_ip_group_args_doc}
 class GetIpGroupArgs {
   /// Expands resourceIds (of Firewalls/Network Security Groups etc.) back referenced by the IpGroups resource.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the ipGroups.
   final pulumi.Input<String> ipGroupsName;
   /// The name of the resource group.

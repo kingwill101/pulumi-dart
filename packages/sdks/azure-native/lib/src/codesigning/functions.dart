@@ -24,6 +24,17 @@ Future<GetCertificateProfileResult> getCertificateProfile(
   return GetCertificateProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateProfileResult> getCertificateProfileOutput(
+  GetCertificateProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:codesigning:getCertificateProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateProfileResult.fromMap);
+}
+
 /// Get an artifact Signing Account.
 ///
 /// Uses Azure REST API version 2024-09-30-preview.
@@ -42,4 +53,15 @@ Future<GetCodeSigningAccountResult> getCodeSigningAccount(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCodeSigningAccountResult.fromMap(result);
+}
+
+pulumi.Output<GetCodeSigningAccountResult> getCodeSigningAccountOutput(
+  GetCodeSigningAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:codesigning:getCodeSigningAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeSigningAccountResult.fromMap);
 }

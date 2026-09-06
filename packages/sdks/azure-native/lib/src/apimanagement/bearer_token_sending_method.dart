@@ -1,8 +1,11 @@
-enum BearerTokenSendingMethod {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum BearerTokenSendingMethod implements pulumi.PulumiEnum<String> {
   valueAuthorizationHeader("authorizationHeader"),
   valueQuery("query");
 
   const BearerTokenSendingMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static BearerTokenSendingMethod fromValue(String value) {

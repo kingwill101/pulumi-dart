@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ConfigChangeStatusEnumValue
 class ConfigChangeStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ConfigChangeStatusEnumValueResponse].
   /// [value] Property value

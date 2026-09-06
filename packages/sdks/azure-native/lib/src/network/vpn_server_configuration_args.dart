@@ -9,19 +9,19 @@ import 'vpn_server_configuration_properties.dart';
 /// {@macro pulumi_network_vpn_server_configuration_args_doc}
 class VpnServerConfigurationArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of the P2SVpnServer configuration.
-  final pulumi.Input<VpnServerConfigurationProperties>? properties;
+  final pulumi.Input<VpnServerConfigurationProperties?>? properties;
   /// The resource group name of the VpnServerConfiguration.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the VpnServerConfiguration being created or updated.
-  final pulumi.Input<String>? vpnServerConfigurationName;
+  final pulumi.Input<String?>? vpnServerConfigurationName;
 
   /// Creates a new [VpnServerConfigurationArgs].
   /// [id] Resource ID.

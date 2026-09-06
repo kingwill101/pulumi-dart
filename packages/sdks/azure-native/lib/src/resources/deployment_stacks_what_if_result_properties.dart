@@ -16,33 +16,33 @@ class DeploymentStacksWhatIfResultProperties {
   /// Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
   final pulumi.Input<ActionOnUnmanage> actionOnUnmanage;
   /// The debug setting of the deployment.
-  final pulumi.Input<DeploymentStacksDebugSetting>? debugSetting;
+  final pulumi.Input<DeploymentStacksDebugSetting?>? debugSetting;
   /// Defines how resources deployed by the stack are locked.
   final pulumi.Input<DenySettings> denySettings;
   /// The scope at which the initial deployment should be created. If a scope is not specified, it will default to the scope of the deployment stack. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroupId}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
-  final pulumi.Input<String>? deploymentScope;
+  final pulumi.Input<String?>? deploymentScope;
   /// The deployment stack id to use as the basis for comparison.
   final pulumi.Input<String> deploymentStackResourceId;
   /// Deployment stack description. Max length of 4096 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The deployment extension configs. Keys of this object are extension aliases as defined in the deployment template.
-  final pulumi.Input<Map<String, Map<String, DeploymentExtensionConfigItem>>>? extensionConfigs;
+  final pulumi.Input<Map<String, Map<String, DeploymentExtensionConfigItem>>?>? extensionConfigs;
   /// External input definitions, used by external tooling to define expected external input values.
-  final pulumi.Input<Map<String, DeploymentExternalInputDefinition>>? externalInputDefinitions;
+  final pulumi.Input<Map<String, DeploymentExternalInputDefinition>?>? externalInputDefinitions;
   /// External input values, used by external tooling for parameter evaluation.
-  final pulumi.Input<Map<String, DeploymentExternalInput>>? externalInputs;
+  final pulumi.Input<Map<String, DeploymentExternalInput>?>? externalInputs;
   /// Name and value pairs that define the deployment parameters for the template. Use this element when providing the parameter values directly in the request, rather than linking to an existing parameter file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<Map<String, DeploymentParameter>>? parameters;
+  final pulumi.Input<Map<String, DeploymentParameter>?>? parameters;
   /// The URI of parameters file. Use this element to link to an existing parameters file. Use either the parametersLink property or the parameters property, but not both.
-  final pulumi.Input<DeploymentStacksParametersLink>? parametersLink;
+  final pulumi.Input<DeploymentStacksParametersLink?>? parametersLink;
   /// The interval to persist the deployment stack what-if result in ISO 8601 format.
   final pulumi.Input<String> retentionInterval;
   /// The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   final pulumi.Input<dynamic>? template;
   /// The URI of the template. Use either the templateLink property or the template property, but not both.
-  final pulumi.Input<DeploymentStacksTemplateLink>? templateLink;
+  final pulumi.Input<DeploymentStacksTemplateLink?>? templateLink;
   /// The validation level of the deployment stack
-  final pulumi.Input<String>? validationLevel;
+  final pulumi.Input<dynamic>? validationLevel;
 
   /// Creates a new [DeploymentStacksWhatIfResultProperties].
   /// [actionOnUnmanage] Defines the behavior of resources that are no longer managed after the Deployment stack is updated or deleted.
@@ -114,7 +114,7 @@ class DeploymentStacksWhatIfResultProperties {
       retentionInterval: pulumi.Input.fromValue(map['retentionInterval'] as String),
       template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       templateLink: (() { final guardedValue = map['templateLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeploymentStacksTemplateLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      validationLevel: (() { final guardedValue = map['validationLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      validationLevel: (() { final guardedValue = map['validationLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

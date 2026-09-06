@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The node type deployed in the node group.
-enum NodeKind {
+enum NodeKind implements pulumi.PulumiEnum<String> {
   valueShard("Shard");
 
   const NodeKind(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeKind fromValue(String value) {

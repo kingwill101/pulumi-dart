@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Tier
 class TierResponse {
   /// The name of this environment tier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of this environment tier.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TierResponse].
   /// [name] The name of this environment tier.

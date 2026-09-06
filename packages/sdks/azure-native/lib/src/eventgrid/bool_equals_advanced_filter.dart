@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// BoolEquals Advanced Filter.
 class BoolEqualsAdvancedFilter {
   /// The field/property in the event based on which you want to filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'BoolEquals'.
   final pulumi.Input<String> operatorType;
   /// The boolean filter value.
-  final pulumi.Input<bool>? value;
+  final pulumi.Input<bool?>? value;
 
   /// Creates a new [BoolEqualsAdvancedFilter].
   /// [key] The field/property in the event based on which you want to filter.

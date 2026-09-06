@@ -6,14 +6,14 @@ import 'role_management_policy_rule_target_response.dart';
 /// The role management policy enablement rule.
 class RoleManagementPolicyEnablementRuleResponse {
   /// The list of enabled rules.
-  final pulumi.Input<List<String>>? enabledRules;
+  final pulumi.Input<List<String>?>? enabledRules;
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyEnablementRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse?>? target;
 
   /// Creates a new [RoleManagementPolicyEnablementRuleResponse].
   /// [enabledRules] The list of enabled rules.

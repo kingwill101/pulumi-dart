@@ -1,8 +1,8 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'express_route_circuit_authorization_network.dart';
-import 'express_route_circuit_peering_network.dart';
+import 'express_route_circuit_authorization.dart';
+import 'express_route_circuit_peering.dart';
 import 'express_route_circuit_service_provider_properties.dart';
 import 'express_route_circuit_sku.dart';
 import 'sub_resource.dart';
@@ -13,47 +13,47 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_express_route_circuit_args_doc}
 class ExpressRouteCircuitArgs {
   /// Allow classic operations.
-  final pulumi.Input<bool>? allowClassicOperations;
+  final pulumi.Input<bool?>? allowClassicOperations;
   /// The authorizationKey.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The list of authorizations.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<ExpressRouteCircuitAuthorizationNetwork>>? authorizations;
+  final pulumi.Input<List<ExpressRouteCircuitAuthorization>?>? authorizations;
   /// The bandwidth of the circuit when the circuit is provisioned on an ExpressRoutePort resource.
-  final pulumi.Input<double>? bandwidthInGbps;
+  final pulumi.Input<double?>? bandwidthInGbps;
   /// The name of the circuit.
-  final pulumi.Input<String>? circuitName;
+  final pulumi.Input<String?>? circuitName;
   /// The CircuitProvisioningState state of the resource.
-  final pulumi.Input<String>? circuitProvisioningState;
+  final pulumi.Input<String?>? circuitProvisioningState;
   /// Flag denoting rate-limiting status of the ExpressRoute direct-port circuit.
-  final pulumi.Input<bool>? enableDirectPortRateLimit;
+  final pulumi.Input<bool?>? enableDirectPortRateLimit;
   /// The reference to the ExpressRoutePort resource when the circuit is provisioned on an ExpressRoutePort resource.
-  final pulumi.Input<SubResource>? expressRoutePort;
+  final pulumi.Input<SubResource?>? expressRoutePort;
   /// The GatewayManager Etag.
-  final pulumi.Input<String>? gatewayManagerEtag;
+  final pulumi.Input<String?>? gatewayManagerEtag;
   /// Flag denoting global reach status.
-  final pulumi.Input<bool>? globalReachEnabled;
+  final pulumi.Input<bool?>? globalReachEnabled;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The list of peerings.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<ExpressRouteCircuitPeeringNetwork>>? peerings;
+  final pulumi.Input<List<ExpressRouteCircuitPeering>?>? peerings;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The ServiceKey.
-  final pulumi.Input<String>? serviceKey;
+  final pulumi.Input<String?>? serviceKey;
   /// The ServiceProviderNotes.
-  final pulumi.Input<String>? serviceProviderNotes;
+  final pulumi.Input<String?>? serviceProviderNotes;
   /// The ServiceProviderProperties.
-  final pulumi.Input<ExpressRouteCircuitServiceProviderProperties>? serviceProviderProperties;
+  final pulumi.Input<ExpressRouteCircuitServiceProviderProperties?>? serviceProviderProperties;
   /// The ServiceProviderProvisioningState state of the resource.
-  final pulumi.Input<String>? serviceProviderProvisioningState;
+  final pulumi.Input<dynamic>? serviceProviderProvisioningState;
   /// The SKU.
-  final pulumi.Input<ExpressRouteCircuitSku>? sku;
+  final pulumi.Input<ExpressRouteCircuitSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ExpressRouteCircuitArgs].
   /// [allowClassicOperations] Allow classic operations.
@@ -103,7 +103,7 @@ class ExpressRouteCircuitArgs {
     return <String, dynamic>{
       'allowClassicOperations': ?allowClassicOperations,
       'authorizationKey': ?authorizationKey,
-      'authorizations': ?authorizations,
+      'authorizations': ?pulumi.Input.mapOptionalInputValue<List<ExpressRouteCircuitAuthorization>, List<Map<String, dynamic>>>(authorizations, (value) => pulumi.Input.encodeList<ExpressRouteCircuitAuthorization, Map<String, dynamic>>(value, (value) => value.toMap())),
       'bandwidthInGbps': ?bandwidthInGbps,
       'circuitName': ?circuitName,
       'circuitProvisioningState': ?circuitProvisioningState,
@@ -113,7 +113,7 @@ class ExpressRouteCircuitArgs {
       'globalReachEnabled': ?globalReachEnabled,
       'id': ?id,
       'location': ?location,
-      'peerings': ?peerings,
+      'peerings': ?pulumi.Input.mapOptionalInputValue<List<ExpressRouteCircuitPeering>, List<Map<String, dynamic>>>(peerings, (value) => pulumi.Input.encodeList<ExpressRouteCircuitPeering, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceGroupName': resourceGroupName,
       'serviceKey': ?serviceKey,
       'serviceProviderNotes': ?serviceProviderNotes,
@@ -128,8 +128,8 @@ class ExpressRouteCircuitArgs {
     return ExpressRouteCircuitArgs(
       allowClassicOperations: (() { final guardedValue = map['allowClassicOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       authorizationKey: (() { final guardedValue = map['authorizationKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      authorizations: (() { final guardedValue = map['authorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ExpressRouteCircuitAuthorizationNetwork>()); })(),
-      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      authorizations: (() { final guardedValue = map['authorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressRouteCircuitAuthorization>(guardedValue, (value) => ExpressRouteCircuitAuthorization.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      bandwidthInGbps: (() { final guardedValue = map['bandwidthInGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       circuitName: (() { final guardedValue = map['circuitName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       circuitProvisioningState: (() { final guardedValue = map['circuitProvisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableDirectPortRateLimit: (() { final guardedValue = map['enableDirectPortRateLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -138,12 +138,12 @@ class ExpressRouteCircuitArgs {
       globalReachEnabled: (() { final guardedValue = map['globalReachEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerings: (() { final guardedValue = map['peerings']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ExpressRouteCircuitPeeringNetwork>()); })(),
+      peerings: (() { final guardedValue = map['peerings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExpressRouteCircuitPeering>(guardedValue, (value) => ExpressRouteCircuitPeering.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceKey: (() { final guardedValue = map['serviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceProviderNotes: (() { final guardedValue = map['serviceProviderNotes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceProviderProperties: (() { final guardedValue = map['serviceProviderProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitServiceProviderProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      serviceProviderProvisioningState: (() { final guardedValue = map['serviceProviderProvisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceProviderProvisioningState: (() { final guardedValue = map['serviceProviderProvisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRouteCircuitSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -8,14 +8,14 @@ import 'odata_error_response.dart';
 /// Properties for the command that completes sync migration for a database.
 class MigrateSyncCompleteCommandPropertiesResponse {
   /// Command id
-  final pulumi.Input<String>? commandId;
+  final pulumi.Input<String?>? commandId;
   /// Command type.
   /// Expected value is 'Migrate.Sync.Complete.Database'.
   final pulumi.Input<String> commandType;
   /// Array of errors. This is ignored if submitted.
   final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Command input
-  final pulumi.Input<MigrateSyncCompleteCommandInputResponse>? input;
+  final pulumi.Input<MigrateSyncCompleteCommandInputResponse?>? input;
   /// Command output. This is ignored if submitted.
   final pulumi.Input<MigrateSyncCompleteCommandOutputResponse> output;
   /// The state of the command. This is ignored if submitted.

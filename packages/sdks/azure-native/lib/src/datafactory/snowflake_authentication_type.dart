@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type used for authentication. Type: string.
-enum SnowflakeAuthenticationType {
+enum SnowflakeAuthenticationType implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   keyPair("KeyPair"),
   aADServicePrincipal("AADServicePrincipal");
 
   const SnowflakeAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SnowflakeAuthenticationType fromValue(String value) {

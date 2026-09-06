@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_pool_volume_args.dart';
+import 'mount_target_properties_response.dart';
+import 'placement_key_value_pairs_response.dart';
 import 'system_data_response.dart';
 import 'volume_properties_response_data_protection.dart';
 import 'volume_properties_response_export_policy.dart';
@@ -264,7 +266,7 @@ class CapacityPoolVolume extends pulumi.CustomResource {
   /// Maximum number of files allowed. Needs a service request in order to be changed. Only allowed to be changed if volume quota is more than 4TiB.
   late final pulumi.Output<double> maximumNumberOfFiles;
   /// List of mount targets
-  late final pulumi.Output<List<Map<String, dynamic>>> mountTargets;
+  late final pulumi.Output<List<MountTargetPropertiesResponse>> mountTargets;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The original value of the network features type available to the volume at the time it was created.
@@ -274,7 +276,7 @@ class CapacityPoolVolume extends pulumi.CustomResource {
   /// Id of the snapshot or backup that the volume is restored from.
   late final pulumi.Output<String> originatingResourceId;
   /// Application specific placement rules for the particular volume
-  late final pulumi.Output<List<Map<String, dynamic>>?> placementRules;
+  late final pulumi.Output<List<PlacementKeyValuePairsResponse>?> placementRules;
   /// Set of protocol types, default NFSv3, CIFS for SMB protocol
   late final pulumi.Output<List<String>?> protocolTypes;
   /// The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides.
@@ -352,7 +354,7 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     coolnessPeriod = registerOutput<int?>('coolnessPeriod');
     creationToken = registerOutput<String>('creationToken');
     dataProtection = registerOutput<VolumePropertiesResponseDataProtection?>('dataProtection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumePropertiesResponseDataProtection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId');
+    dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultGroupQuotaInKiBs = registerOutput<double?>('defaultGroupQuotaInKiBs');
     defaultUserQuotaInKiBs = registerOutput<double?>('defaultUserQuotaInKiBs');
     deleteBaseSnapshot = registerOutput<bool?>('deleteBaseSnapshot');
@@ -372,13 +374,13 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     ldapEnabled = registerOutput<bool?>('ldapEnabled');
     location = registerOutput<String>('location');
     maximumNumberOfFiles = registerOutput<double>('maximumNumberOfFiles');
-    mountTargets = registerOutput<List<Map<String, dynamic>>>('mountTargets');
+    mountTargets = registerOutput<List<MountTargetPropertiesResponse>>('mountTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountTargetPropertiesResponse>(guardedValue, (value) => MountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     networkFeatures = registerOutput<String?>('networkFeatures');
     networkSiblingSetId = registerOutput<String>('networkSiblingSetId');
     originatingResourceId = registerOutput<String>('originatingResourceId');
-    placementRules = registerOutput<List<Map<String, dynamic>>?>('placementRules');
-    protocolTypes = registerOutput<List<String>?>('protocolTypes');
+    placementRules = registerOutput<List<PlacementKeyValuePairsResponse>?>('placementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(guardedValue, (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    protocolTypes = registerOutput<List<String>?>('protocolTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisionedAvailabilityZone = registerOutput<String>('provisionedAvailabilityZone');
     provisioningState = registerOutput<String>('provisioningState');
     proximityPlacementGroup = registerOutput<String?>('proximityPlacementGroup');
@@ -394,7 +396,7 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     subnetId = registerOutput<String>('subnetId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     t2Network = registerOutput<String>('t2Network');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputMibps = registerOutput<double?>('throughputMibps');
     type = registerOutput<String>('type');
     unixPermissions = registerOutput<String?>('unixPermissions');
@@ -402,6 +404,81 @@ class CapacityPoolVolume extends pulumi.CustomResource {
     volumeGroupName = registerOutput<String>('volumeGroupName');
     volumeSpecName = registerOutput<String?>('volumeSpecName');
     volumeType = registerOutput<String?>('volumeType');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CapacityPoolVolume] resource.
+  CapacityPoolVolume.reference(String urn)
+    : super(
+        'azure-native:netapp:CapacityPoolVolume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actualThroughputMibps = registerOutput<double>('actualThroughputMibps');
+    avsDataStore = registerOutput<String?>('avsDataStore');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupId = registerOutput<String?>('backupId');
+    baremetalTenantId = registerOutput<String>('baremetalTenantId');
+    capacityPoolResourceId = registerOutput<String?>('capacityPoolResourceId');
+    cloneProgress = registerOutput<int>('cloneProgress');
+    coolAccess = registerOutput<bool?>('coolAccess');
+    coolAccessRetrievalPolicy = registerOutput<String?>('coolAccessRetrievalPolicy');
+    coolAccessTieringPolicy = registerOutput<String?>('coolAccessTieringPolicy');
+    coolnessPeriod = registerOutput<int?>('coolnessPeriod');
+    creationToken = registerOutput<String>('creationToken');
+    dataProtection = registerOutput<VolumePropertiesResponseDataProtection?>('dataProtection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumePropertiesResponseDataProtection.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStoreResourceId = registerOutput<List<String>>('dataStoreResourceId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    defaultGroupQuotaInKiBs = registerOutput<double?>('defaultGroupQuotaInKiBs');
+    defaultUserQuotaInKiBs = registerOutput<double?>('defaultUserQuotaInKiBs');
+    deleteBaseSnapshot = registerOutput<bool?>('deleteBaseSnapshot');
+    effectiveNetworkFeatures = registerOutput<String>('effectiveNetworkFeatures');
+    enableSubvolumes = registerOutput<String?>('enableSubvolumes');
+    encrypted = registerOutput<bool>('encrypted');
+    encryptionKeySource = registerOutput<String?>('encryptionKeySource');
+    etag = registerOutput<String>('etag');
+    exportPolicy = registerOutput<VolumePropertiesResponseExportPolicy?>('exportPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumePropertiesResponseExportPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fileAccessLogs = registerOutput<String>('fileAccessLogs');
+    fileSystemId = registerOutput<String>('fileSystemId');
+    isDefaultQuotaEnabled = registerOutput<bool?>('isDefaultQuotaEnabled');
+    isLargeVolume = registerOutput<bool?>('isLargeVolume');
+    isRestoring = registerOutput<bool?>('isRestoring');
+    kerberosEnabled = registerOutput<bool?>('kerberosEnabled');
+    keyVaultPrivateEndpointResourceId = registerOutput<String?>('keyVaultPrivateEndpointResourceId');
+    ldapEnabled = registerOutput<bool?>('ldapEnabled');
+    location = registerOutput<String>('location');
+    maximumNumberOfFiles = registerOutput<double>('maximumNumberOfFiles');
+    mountTargets = registerOutput<List<MountTargetPropertiesResponse>>('mountTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountTargetPropertiesResponse>(guardedValue, (value) => MountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    networkFeatures = registerOutput<String?>('networkFeatures');
+    networkSiblingSetId = registerOutput<String>('networkSiblingSetId');
+    originatingResourceId = registerOutput<String>('originatingResourceId');
+    placementRules = registerOutput<List<PlacementKeyValuePairsResponse>?>('placementRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PlacementKeyValuePairsResponse>(guardedValue, (value) => PlacementKeyValuePairsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    protocolTypes = registerOutput<List<String>?>('protocolTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisionedAvailabilityZone = registerOutput<String>('provisionedAvailabilityZone');
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<String?>('proximityPlacementGroup');
+    securityStyle = registerOutput<String?>('securityStyle');
+    serviceLevel = registerOutput<String?>('serviceLevel');
+    smbAccessBasedEnumeration = registerOutput<String?>('smbAccessBasedEnumeration');
+    smbContinuouslyAvailable = registerOutput<bool?>('smbContinuouslyAvailable');
+    smbEncryption = registerOutput<bool?>('smbEncryption');
+    smbNonBrowsable = registerOutput<String?>('smbNonBrowsable');
+    snapshotDirectoryVisible = registerOutput<bool?>('snapshotDirectoryVisible');
+    snapshotId = registerOutput<String?>('snapshotId');
+    storageToNetworkProximity = registerOutput<String>('storageToNetworkProximity');
+    subnetId = registerOutput<String>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    t2Network = registerOutput<String>('t2Network');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputMibps = registerOutput<double?>('throughputMibps');
+    type = registerOutput<String>('type');
+    unixPermissions = registerOutput<String?>('unixPermissions');
+    usageThreshold = registerOutput<double>('usageThreshold');
+    volumeGroupName = registerOutput<String>('volumeGroupName');
+    volumeSpecName = registerOutput<String?>('volumeSpecName');
+    volumeType = registerOutput<String?>('volumeType');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

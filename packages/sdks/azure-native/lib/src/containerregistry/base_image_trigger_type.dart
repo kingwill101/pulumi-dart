@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the auto trigger for base image dependency updates.
-enum BaseImageTriggerType {
+enum BaseImageTriggerType implements pulumi.PulumiEnum<String> {
   valueAll("All"),
   valueRuntime("Runtime");
 
   const BaseImageTriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static BaseImageTriggerType fromValue(String value) {

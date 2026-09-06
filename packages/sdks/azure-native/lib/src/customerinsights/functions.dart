@@ -48,6 +48,17 @@ Future<GetConnectorResult> getConnector(
   return GetConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
+}
+
 /// Gets a connector mapping in the connector.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -64,6 +75,17 @@ Future<GetConnectorMappingResult> getConnectorMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectorMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectorMappingResult> getConnectorMappingOutput(
+  GetConnectorMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getConnectorMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorMappingResult.fromMap);
 }
 
 /// Gets information about the specified hub.
@@ -84,6 +106,17 @@ Future<GetHubResult> getHub(
   return GetHubResult.fromMap(result);
 }
 
+pulumi.Output<GetHubResult> getHubOutput(
+  GetHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHubResult.fromMap);
+}
+
 /// Gets data image upload URL.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -100,6 +133,17 @@ Future<GetImageUploadUrlForDataResult> getImageUploadUrlForData(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageUploadUrlForDataResult.fromMap(result);
+}
+
+pulumi.Output<GetImageUploadUrlForDataResult> getImageUploadUrlForDataOutput(
+  GetImageUploadUrlForDataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getImageUploadUrlForData',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageUploadUrlForDataResult.fromMap);
 }
 
 /// Gets entity type (profile or interaction) image upload URL.
@@ -120,6 +164,17 @@ Future<GetImageUploadUrlForEntityTypeResult> getImageUploadUrlForEntityType(
   return GetImageUploadUrlForEntityTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetImageUploadUrlForEntityTypeResult> getImageUploadUrlForEntityTypeOutput(
+  GetImageUploadUrlForEntityTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getImageUploadUrlForEntityType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageUploadUrlForEntityTypeResult.fromMap);
+}
+
 /// Gets a KPI in the hub.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -136,6 +191,17 @@ Future<GetKpiResult> getKpi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKpiResult.fromMap(result);
+}
+
+pulumi.Output<GetKpiResult> getKpiOutput(
+  GetKpiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getKpi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKpiResult.fromMap);
 }
 
 /// Gets a link in the hub.
@@ -156,6 +222,17 @@ Future<GetLinkResult> getLink(
   return GetLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetLinkResult> getLinkOutput(
+  GetLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkResult.fromMap);
+}
+
 /// Gets a Prediction in the hub.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -172,6 +249,17 @@ Future<GetPredictionResult> getPrediction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPredictionResult.fromMap(result);
+}
+
+pulumi.Output<GetPredictionResult> getPredictionOutput(
+  GetPredictionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getPrediction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPredictionResult.fromMap);
 }
 
 /// Gets model status of the prediction.
@@ -192,6 +280,17 @@ Future<GetPredictionModelStatusResult> getPredictionModelStatus(
   return GetPredictionModelStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetPredictionModelStatusResult> getPredictionModelStatusOutput(
+  GetPredictionModelStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getPredictionModelStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPredictionModelStatusResult.fromMap);
+}
+
 /// Gets training results.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -208,6 +307,17 @@ Future<GetPredictionTrainingResultsResult> getPredictionTrainingResults(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPredictionTrainingResultsResult.fromMap(result);
+}
+
+pulumi.Output<GetPredictionTrainingResultsResult> getPredictionTrainingResultsOutput(
+  GetPredictionTrainingResultsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getPredictionTrainingResults',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPredictionTrainingResultsResult.fromMap);
 }
 
 /// Gets information about the specified profile.
@@ -228,6 +338,17 @@ Future<GetProfileResult> getProfile(
   return GetProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetProfileResult> getProfileOutput(
+  GetProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileResult.fromMap);
+}
+
 /// Gets information about the specified relationship.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -244,6 +365,17 @@ Future<GetRelationshipResult> getRelationship(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRelationshipResult.fromMap(result);
+}
+
+pulumi.Output<GetRelationshipResult> getRelationshipOutput(
+  GetRelationshipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getRelationship',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRelationshipResult.fromMap);
 }
 
 /// Gets information about the specified relationship Link.
@@ -264,6 +396,17 @@ Future<GetRelationshipLinkResult> getRelationshipLink(
   return GetRelationshipLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetRelationshipLinkResult> getRelationshipLinkOutput(
+  GetRelationshipLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getRelationshipLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRelationshipLinkResult.fromMap);
+}
+
 /// Gets the role assignment in the hub.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -282,6 +425,17 @@ Future<GetRoleAssignmentResult> getRoleAssignment(
   return GetRoleAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleAssignmentResult> getRoleAssignmentOutput(
+  GetRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleAssignmentResult.fromMap);
+}
+
 /// Gets a view in the hub.
 ///
 /// Uses Azure REST API version 2017-04-26.
@@ -298,4 +452,15 @@ Future<GetViewResult> getView(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetViewResult.fromMap(result);
+}
+
+pulumi.Output<GetViewResult> getViewOutput(
+  GetViewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:customerinsights:getView',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetViewResult.fromMap);
 }

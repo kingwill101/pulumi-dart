@@ -13,7 +13,7 @@ class ReachabilityAnalysisRunArgs {
   /// Represents the Reachability Analysis Run properties.
   final pulumi.Input<ReachabilityAnalysisRunProperties> properties;
   /// Reachability Analysis Run name.
-  final pulumi.Input<String>? reachabilityAnalysisRunName;
+  final pulumi.Input<String?>? reachabilityAnalysisRunName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Workspace name.

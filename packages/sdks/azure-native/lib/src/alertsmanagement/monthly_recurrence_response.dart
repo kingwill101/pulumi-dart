@@ -7,12 +7,12 @@ class MonthlyRecurrenceResponse {
   /// Specifies the values for monthly recurrence pattern.
   final pulumi.Input<List<int>> daysOfMonth;
   /// End time for recurrence.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Monthly'.
   final pulumi.Input<String> recurrenceType;
   /// Start time for recurrence.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [MonthlyRecurrenceResponse].
   /// [daysOfMonth] Specifies the values for monthly recurrence pattern.

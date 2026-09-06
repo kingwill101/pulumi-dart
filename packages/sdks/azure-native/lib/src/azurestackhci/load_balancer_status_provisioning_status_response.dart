@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of load balancer operations
 class LoadBalancerStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the load balancer
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the loadbalancer [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

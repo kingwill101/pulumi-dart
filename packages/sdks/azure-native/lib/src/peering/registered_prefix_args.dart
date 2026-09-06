@@ -10,9 +10,9 @@ class RegisteredPrefixArgs {
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
   /// The customer's prefix from which traffic originates.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The name of the registered prefix.
-  final pulumi.Input<String>? registeredPrefixName;
+  final pulumi.Input<String?>? registeredPrefixName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

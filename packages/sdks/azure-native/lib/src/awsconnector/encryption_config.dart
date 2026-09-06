@@ -6,9 +6,9 @@ import 'provider.dart';
 /// Definition of EncryptionConfig
 class EncryptionConfig {
   /// &lt;p&gt;Key Management Service (KMS) key. Either the ARN or the alias can be used.&lt;/p&gt;
-  final pulumi.Input<Provider>? provider;
+  final pulumi.Input<Provider?>? provider;
   /// &lt;p&gt;Specifies the resources to be encrypted. The only supported value is &lt;code&gt;secrets&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [EncryptionConfig].
   /// [provider] &lt;p&gt;Key Management Service (KMS) key. Either the ARN or the alias can be used.&lt;/p&gt;

@@ -9,23 +9,23 @@ import 'workflow_run_response.dart';
 /// GitHub Workflow Profile
 class GitHubWorkflowProfileResponse {
   /// Information on the azure container registry
-  final pulumi.Input<ACRResponse>? acr;
+  final pulumi.Input<ACRResponse?>? acr;
   /// The Azure Kubernetes Cluster Resource the application will be deployed to.
-  final pulumi.Input<String>? aksResourceId;
+  final pulumi.Input<String?>? aksResourceId;
   /// Determines the authorization status of requests.
   final pulumi.Input<String> authStatus;
   /// Repository Branch Name
-  final pulumi.Input<String>? branchName;
-  final pulumi.Input<DeploymentPropertiesResponse>? deploymentProperties;
+  final pulumi.Input<String?>? branchName;
+  final pulumi.Input<DeploymentPropertiesResponse?>? deploymentProperties;
   /// Path to Dockerfile Build Context within the repository.
-  final pulumi.Input<String>? dockerBuildContext;
+  final pulumi.Input<String?>? dockerBuildContext;
   /// Path to the Dockerfile within the repository.
-  final pulumi.Input<String>? dockerfile;
-  final pulumi.Input<WorkflowRunResponse>? lastWorkflowRun;
+  final pulumi.Input<String?>? dockerfile;
+  final pulumi.Input<WorkflowRunResponse?>? lastWorkflowRun;
   /// Kubernetes namespace the application is deployed to.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The fields needed for OIDC with GitHub.
-  final pulumi.Input<GitHubWorkflowProfileResponseOidcCredentials>? oidcCredentials;
+  final pulumi.Input<GitHubWorkflowProfileResponseOidcCredentials?>? oidcCredentials;
   /// The status of the Pull Request submitted against the users repository.
   final pulumi.Input<String> prStatus;
   /// The URL to the Pull Request submitted against the users repository.
@@ -33,9 +33,9 @@ class GitHubWorkflowProfileResponse {
   /// The number associated with the submitted pull request.
   final pulumi.Input<int> pullNumber;
   /// Repository Name
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// Repository Owner
-  final pulumi.Input<String>? repositoryOwner;
+  final pulumi.Input<String?>? repositoryOwner;
 
   /// Creates a new [GitHubWorkflowProfileResponse].
   /// [acr] Information on the azure container registry
@@ -105,7 +105,7 @@ class GitHubWorkflowProfileResponse {
       oidcCredentials: (() { final guardedValue = map['oidcCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GitHubWorkflowProfileResponseOidcCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       prStatus: pulumi.Input.fromValue(map['prStatus'] as String),
       prURL: pulumi.Input.fromValue(map['prURL'] as String),
-      pullNumber: pulumi.Input.fromValue(map['pullNumber'] as int),
+      pullNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pullNumber'])),
       repositoryName: (() { final guardedValue = map['repositoryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryOwner: (() { final guardedValue = map['repositoryOwner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

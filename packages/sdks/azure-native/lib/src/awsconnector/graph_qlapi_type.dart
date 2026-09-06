@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum GraphQLApiType {
+enum GraphQLApiType implements pulumi.PulumiEnum<String> {
   gRAPHQL("GRAPHQL"),
   mERGED("MERGED");
 
   const GraphQLApiType(this.wireValue);
+  @override
   final String wireValue;
 
   static GraphQLApiType fromValue(String value) {

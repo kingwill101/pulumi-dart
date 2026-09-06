@@ -8,7 +8,7 @@ class AddonSrmPropertiesResponse {
   /// Expected value is 'SRM'.
   final pulumi.Input<String> addonType;
   /// The Site Recovery Manager (SRM) license
-  final pulumi.Input<String>? licenseKey;
+  final pulumi.Input<String?>? licenseKey;
   /// The state of the addon provisioning
   final pulumi.Input<String> provisioningState;
 

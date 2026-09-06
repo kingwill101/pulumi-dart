@@ -268,7 +268,33 @@ class DevBoxDefinition extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validationStatus = registerOutput<String>('validationStatus');
+  }
+
+  /// Creates a typed reference to an existing [DevBoxDefinition] resource.
+  DevBoxDefinition.reference(String urn)
+    : super(
+        'azure-native:devcenter:DevBoxDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeImageReference = registerOutput<ImageReferenceResponse>('activeImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hibernateSupport = registerOutput<String?>('hibernateSupport');
+    imageReference = registerOutput<ImageReferenceResponse>('imageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageValidationErrorDetails = registerOutput<ImageValidationErrorDetailsResponse>('imageValidationErrorDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageValidationErrorDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageValidationStatus = registerOutput<String>('imageValidationStatus');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osStorageType = registerOutput<String?>('osStorageType');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     validationStatus = registerOutput<String>('validationStatus');
   }

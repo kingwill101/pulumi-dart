@@ -6,25 +6,25 @@ import 'ssh_configuration.dart';
 /// LinuxConfiguration - linux specific configuration values for the virtual machine instance
 class VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
   /// DisablePasswordAuthentication - whether password authentication should be disabled
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
-  final pulumi.Input<bool>? provisionVMConfigAgent;
+  final pulumi.Input<bool?>? provisionVMConfigAgent;
   /// Specifies the ssh key configuration for a Linux OS.
-  final pulumi.Input<SshConfiguration>? ssh;
+  final pulumi.Input<SshConfiguration?>? ssh;
 
   /// Creates a new [VirtualMachineInstancePropertiesOsProfileLinuxConfiguration].
   /// [disablePasswordAuthentication] DisablePasswordAuthentication - whether password authentication should be disabled
   /// [provisionVMAgent] Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
   /// [provisionVMConfigAgent] Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  const VirtualMachineInstancePropertiesOsProfileLinuxConfiguration({
+  VirtualMachineInstancePropertiesOsProfileLinuxConfiguration({
     this.disablePasswordAuthentication,
-    this.provisionVMAgent,
-    this.provisionVMConfigAgent,
+    pulumi.Input<bool?>? provisionVMAgent,
+    pulumi.Input<bool?>? provisionVMConfigAgent,
     this.ssh,
-  });
+  }) : provisionVMAgent = provisionVMAgent ?? pulumi.Input.fromValue(true), provisionVMConfigAgent = provisionVMConfigAgent ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

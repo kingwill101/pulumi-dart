@@ -6,7 +6,7 @@ import 'pipeline_elapsed_time_metric_policy.dart';
 /// Pipeline Policy.
 class PipelinePolicy {
   /// Pipeline ElapsedTime Metric Policy.
-  final pulumi.Input<PipelineElapsedTimeMetricPolicy>? elapsedTimeMetric;
+  final pulumi.Input<PipelineElapsedTimeMetricPolicy?>? elapsedTimeMetric;
 
   /// Creates a new [PipelinePolicy].
   /// [elapsedTimeMetric] Pipeline ElapsedTime Metric Policy.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it.
 class SourceResponse {
   /// The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port.
-  final pulumi.Input<String>? addr;
+  final pulumi.Input<String?>? addr;
   /// The running instance of an application. Changes after each restart.
-  final pulumi.Input<String>? instanceID;
+  final pulumi.Input<String?>? instanceID;
 
   /// Creates a new [SourceResponse].
   /// [addr] The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port.

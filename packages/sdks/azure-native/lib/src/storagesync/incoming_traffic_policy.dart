@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Incoming Traffic Policy
-enum IncomingTrafficPolicy {
+enum IncomingTrafficPolicy implements pulumi.PulumiEnum<String> {
   allowAllTraffic("AllowAllTraffic"),
   allowVirtualNetworksOnly("AllowVirtualNetworksOnly");
 
   const IncomingTrafficPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static IncomingTrafficPolicy fromValue(String value) {

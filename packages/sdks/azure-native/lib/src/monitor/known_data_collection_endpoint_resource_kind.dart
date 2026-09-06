@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the resource.
-enum KnownDataCollectionEndpointResourceKind {
+enum KnownDataCollectionEndpointResourceKind implements pulumi.PulumiEnum<String> {
   valueLinux("Linux"),
   valueWindows("Windows");
 
   const KnownDataCollectionEndpointResourceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownDataCollectionEndpointResourceKind fromValue(String value) {

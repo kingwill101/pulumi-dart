@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VolumeTypeEnumValue
 class VolumeTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [VolumeTypeEnumValueResponse].
   /// [value] Property value

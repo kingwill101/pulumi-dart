@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The request header options.
 class ResourceProviderManifestPropertiesRequestHeaderOptionsResponse {
   /// The opt in headers.
-  final pulumi.Input<String>? optInHeaders;
+  final pulumi.Input<String?>? optInHeaders;
   /// The opt out headers.
-  final pulumi.Input<String>? optOutHeaders;
+  final pulumi.Input<String?>? optOutHeaders;
 
   /// Creates a new [ResourceProviderManifestPropertiesRequestHeaderOptionsResponse].
   /// [optInHeaders] The opt in headers.

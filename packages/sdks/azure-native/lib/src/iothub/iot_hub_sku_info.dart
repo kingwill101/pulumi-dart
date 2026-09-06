@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the SKU of the IoT hub.
 class IotHubSkuInfo {
   /// The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// The name of the SKU.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [IotHubSkuInfo].
   /// [capacity] The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
@@ -26,8 +26,8 @@ class IotHubSkuInfo {
 
   factory IotHubSkuInfo.fromMap(Map<String, dynamic> map) {
     return IotHubSkuInfo(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

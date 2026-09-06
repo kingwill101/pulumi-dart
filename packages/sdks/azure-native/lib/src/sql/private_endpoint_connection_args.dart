@@ -10,10 +10,10 @@ import 'private_link_service_connection_state_property.dart';
 /// {@macro pulumi_sql_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointProperty>? privateEndpoint;
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<PrivateEndpointProperty?>? privateEndpoint;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Connection state of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateProperty>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateProperty?>? privateLinkServiceConnectionState;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

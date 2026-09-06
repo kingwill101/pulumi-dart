@@ -10,30 +10,30 @@ import 'user_property.dart';
 /// Azure ML Batch Execution activity.
 class AzureMLBatchExecutionActivity {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Key,Value pairs to be passed to the Azure ML Batch Execution Service endpoint. Keys must match the names of web service parameters defined in the published Azure ML web service. Values will be passed in the GlobalParameters property of the Azure ML batch execution request.
   final pulumi.Input<dynamic>? globalParameters;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'AzureMLBatchExecution'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
   /// Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Inputs to AzureMLWebServiceFile objects specifying the input Blob locations.. This information will be passed in the WebServiceInputs property of the Azure ML batch execution request.
-  final pulumi.Input<Map<String, AzureMLWebServiceFile>>? webServiceInputs;
+  final pulumi.Input<Map<String, AzureMLWebServiceFile>?>? webServiceInputs;
   /// Key,Value pairs, mapping the names of Azure ML endpoint's Web Service Outputs to AzureMLWebServiceFile objects specifying the output Blob locations. This information will be passed in the WebServiceOutputs property of the Azure ML batch execution request.
-  final pulumi.Input<Map<String, AzureMLWebServiceFile>>? webServiceOutputs;
+  final pulumi.Input<Map<String, AzureMLWebServiceFile>?>? webServiceOutputs;
 
   /// Creates a new [AzureMLBatchExecutionActivity].
   /// [dependsOn] Activity depends on condition.
@@ -87,9 +87,9 @@ class AzureMLBatchExecutionActivity {
       globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
       webServiceInputs: (() { final guardedValue = map['webServiceInputs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<AzureMLWebServiceFile>(guardedValue, (value) => AzureMLWebServiceFile.fromMap((value as Map).cast<String, dynamic>()))); })(),

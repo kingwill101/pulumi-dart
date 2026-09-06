@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of a routing rule that your IoT hub uses to route messages to endpoints.
 class RoutePropertiesResponse {
   /// The condition that is evaluated to apply the routing rule. If no condition is provided, it evaluates to true by default. For grammar, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// The list of endpoints to which messages that satisfy the condition are routed. Currently only one endpoint is allowed.
   final pulumi.Input<List<String>> endpointNames;
   /// Used to specify whether a route is enabled.

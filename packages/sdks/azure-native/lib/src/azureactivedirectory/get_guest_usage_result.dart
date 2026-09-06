@@ -5,21 +5,21 @@ import 'system_data_response.dart';
 /// Result data returned by getGuestUsage.
 class GetGuestUsageResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// An identifier that represents the Guest Usages resource.
-  final String id;
+  final String? id;
   /// Location of the Guest Usages resource.
   final String? location;
   /// The name of the Guest Usages resource.
-  final String name;
+  final String? name;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Key-value pairs of additional resource provisioning properties.
   final Map<String, String>? tags;
   /// An identifier for the tenant for which the resource is being created
   final String? tenantId;
   /// The type of the Guest Usages resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGuestUsageResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -31,39 +31,39 @@ class GetGuestUsageResult {
   /// [tenantId] An identifier for the tenant for which the resource is being created
   /// [type] The type of the Guest Usages resource.
   const GetGuestUsageResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.location,
-    required this.name,
-    required this.systemData,
+    this.name,
+    this.systemData,
     this.tags,
     this.tenantId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'tenantId': ?tenantId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetGuestUsageResult.fromMap(Map<String, dynamic> map) {
     return GetGuestUsageResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -260,4 +260,32 @@ class AFDOrigin extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     weight = registerOutput<int?>('weight');
   }
+
+  /// Creates a typed reference to an existing [AFDOrigin] resource.
+  AFDOrigin.reference(String urn)
+    : super(
+        'azure-native:cdn:AFDOrigin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureOrigin = registerOutput<ResourceReferenceResponse?>('azureOrigin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    enabledState = registerOutput<String?>('enabledState');
+    enforceCertificateNameCheck = registerOutput<bool?>('enforceCertificateNameCheck');
+    hostName = registerOutput<String?>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
+    this.name = registerOutput<String>('name');
+    originGroupName = registerOutput<String>('originGroupName');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    sharedPrivateLinkResource = registerOutput<SharedPrivateLinkResourcePropertiesResponse?>('sharedPrivateLinkResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SharedPrivateLinkResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    weight = registerOutput<int?>('weight');
+  }
 }

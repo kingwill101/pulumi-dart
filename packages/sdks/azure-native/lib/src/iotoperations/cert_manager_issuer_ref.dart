@@ -7,7 +7,7 @@ class CertManagerIssuerRef {
   /// group of issuer.
   final pulumi.Input<String> group;
   /// kind of issuer (Issuer or ClusterIssuer).
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// name of issuer.
   final pulumi.Input<String> name;
 
@@ -15,11 +15,11 @@ class CertManagerIssuerRef {
   /// [group] group of issuer.
   /// [kind] kind of issuer (Issuer or ClusterIssuer).
   /// [name] name of issuer.
-  const CertManagerIssuerRef({
-    required this.group,
+  CertManagerIssuerRef({
+    pulumi.Input<String>? group,
     required this.kind,
     required this.name,
-  });
+  }) : group = group ?? pulumi.Input.fromValue('cert-manager.io');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,7 +32,7 @@ class CertManagerIssuerRef {
   factory CertManagerIssuerRef.fromMap(Map<String, dynamic> map) {
     return CertManagerIssuerRef(
       group: pulumi.Input.fromValue(map['group'] as String),
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

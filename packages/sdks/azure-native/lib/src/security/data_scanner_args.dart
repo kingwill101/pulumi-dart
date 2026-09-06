@@ -9,11 +9,11 @@ import 'system_assigned_service_identity.dart';
 /// {@macro pulumi_security_data_scanner_args_doc}
 class DataScannerArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// Data scanner resource properties.
   final pulumi.Input<dynamic>? properties;
   /// The name of the data scanner.
-  final pulumi.Input<String>? scannerName;
+  final pulumi.Input<String?>? scannerName;
   /// The scope of the data scanner. Valid scopes are a subscription (format: 'subscriptions/{subscriptionId}') or a resource group (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}').
   final pulumi.Input<String> scopeId;
 

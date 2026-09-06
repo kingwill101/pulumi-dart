@@ -12,7 +12,7 @@ class GetAndroidMAMPolicyByNameArgs {
   /// Unique name for the policy
   final pulumi.Input<String> policyName;
   /// select specific fields in entity.
-  final pulumi.Input<String>? select;
+  final pulumi.Input<String?>? select;
 
   /// Creates a new [GetAndroidMAMPolicyByNameArgs].
   /// [hostName] Location hostName for the tenant

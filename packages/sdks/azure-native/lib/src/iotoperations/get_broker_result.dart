@@ -7,19 +7,19 @@ import 'system_data_response.dart';
 /// Result data returned by getBroker.
 class GetBrokerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Edge location of the resource.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource-specific properties for this resource.
-  final BrokerPropertiesResponse properties;
+  final BrokerPropertiesResponse? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBrokerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -30,36 +30,36 @@ class GetBrokerResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetBrokerResult({
-    required this.azureApiVersion,
-    required this.extendedLocation,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.extendedLocation,
+    this.id,
+    this.name,
+    this.properties,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetBrokerResult.fromMap(Map<String, dynamic> map) {
     return GetBrokerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: BrokerPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return BrokerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

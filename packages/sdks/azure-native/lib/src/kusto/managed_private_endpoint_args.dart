@@ -12,13 +12,13 @@ class ManagedPrivateEndpointArgs {
   /// The groupId in which the managed private endpoint is created.
   final pulumi.Input<String> groupId;
   /// The name of the managed private endpoint.
-  final pulumi.Input<String>? managedPrivateEndpointName;
+  final pulumi.Input<String?>? managedPrivateEndpointName;
   /// The ARM resource ID of the resource for which the managed private endpoint is created.
   final pulumi.Input<String> privateLinkResourceId;
   /// The region of the resource to which the managed private endpoint is created.
-  final pulumi.Input<String>? privateLinkResourceRegion;
+  final pulumi.Input<String?>? privateLinkResourceRegion;
   /// The user request message.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether the public IP is v4 or v6. Defaults to IPv4
-enum PublicIPAddressType {
+enum PublicIPAddressType implements pulumi.PulumiEnum<String> {
   iPv4("IPv4"),
   iPv6("IPv6");
 
   const PublicIPAddressType(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicIPAddressType fromValue(String value) {

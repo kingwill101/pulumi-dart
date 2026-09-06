@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AccelerateConfiguration
 class AccelerateConfigurationResponse {
   /// Specifies the transfer acceleration status of the bucket.
-  final pulumi.Input<String>? accelerationStatus;
+  final pulumi.Input<String?>? accelerationStatus;
 
   /// Creates a new [AccelerateConfigurationResponse].
   /// [accelerationStatus] Specifies the transfer acceleration status of the bucket.

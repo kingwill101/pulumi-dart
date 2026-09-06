@@ -26,6 +26,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakestore:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Gets the specified Data Lake Store firewall rule.
 ///
 /// Uses Azure REST API version 2016-11-01.
@@ -42,6 +53,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakestore:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
 }
 
 /// Gets the specified Data Lake Store trusted identity provider.
@@ -62,6 +84,17 @@ Future<GetTrustedIdProviderResult> getTrustedIdProvider(
   return GetTrustedIdProviderResult.fromMap(result);
 }
 
+pulumi.Output<GetTrustedIdProviderResult> getTrustedIdProviderOutput(
+  GetTrustedIdProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakestore:getTrustedIdProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrustedIdProviderResult.fromMap);
+}
+
 /// Gets the specified Data Lake Store virtual network rule.
 ///
 /// Uses Azure REST API version 2016-11-01.
@@ -78,4 +111,15 @@ Future<GetVirtualNetworkRuleResult> getVirtualNetworkRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkRuleResult> getVirtualNetworkRuleOutput(
+  GetVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datalakestore:getVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkRuleResult.fromMap);
 }

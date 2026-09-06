@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration of connected storage
 class StorageConfigurationResponse {
   /// The filesystem name of connected storage account.
-  final pulumi.Input<String>? fileSystemName;
+  final pulumi.Input<String?>? fileSystemName;
   /// The resource id of connected storage account.
-  final pulumi.Input<String>? storageResourceId;
+  final pulumi.Input<String?>? storageResourceId;
 
   /// Creates a new [StorageConfigurationResponse].
   /// [fileSystemName] The filesystem name of connected storage account.

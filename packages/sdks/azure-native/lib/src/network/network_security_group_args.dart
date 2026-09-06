@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'security_rule_network.dart';
+import 'security_rule.dart';
 
 /// {@template pulumi_network_network_security_group_args_doc}
 /// The set of arguments for NetworkSecurityGroup.
@@ -9,20 +9,20 @@ import 'security_rule_network.dart';
 /// {@macro pulumi_network_network_security_group_args_doc}
 class NetworkSecurityGroupArgs {
   /// When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
-  final pulumi.Input<bool>? flushConnection;
+  final pulumi.Input<bool?>? flushConnection;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network security group.
-  final pulumi.Input<String>? networkSecurityGroupName;
+  final pulumi.Input<String?>? networkSecurityGroupName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// A collection of security rules of the network security group.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<SecurityRuleNetwork>>? securityRules;
+  final pulumi.Input<List<SecurityRule>?>? securityRules;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkSecurityGroupArgs].
   /// [flushConnection] When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updates. Initial enablement will trigger re-evaluation.
@@ -49,7 +49,7 @@ class NetworkSecurityGroupArgs {
       'location': ?location,
       'networkSecurityGroupName': ?networkSecurityGroupName,
       'resourceGroupName': resourceGroupName,
-      'securityRules': ?securityRules,
+      'securityRules': ?pulumi.Input.mapOptionalInputValue<List<SecurityRule>, List<Map<String, dynamic>>>(securityRules, (value) => pulumi.Input.encodeList<SecurityRule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
@@ -61,7 +61,7 @@ class NetworkSecurityGroupArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkSecurityGroupName: (() { final guardedValue = map['networkSecurityGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      securityRules: (() { final guardedValue = map['securityRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<SecurityRuleNetwork>()); })(),
+      securityRules: (() { final guardedValue = map['securityRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecurityRule>(guardedValue, (value) => SecurityRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

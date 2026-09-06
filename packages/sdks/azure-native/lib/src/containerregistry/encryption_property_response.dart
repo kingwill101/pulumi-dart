@@ -5,9 +5,9 @@ import 'key_vault_properties_response.dart';
 
 class EncryptionPropertyResponse {
   /// Key vault properties.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
   /// Indicates whether or not the encryption is enabled for container registry.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [EncryptionPropertyResponse].
   /// [keyVaultProperties] Key vault properties.

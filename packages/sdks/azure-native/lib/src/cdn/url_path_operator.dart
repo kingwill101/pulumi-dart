@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum UrlPathOperator {
+enum UrlPathOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -13,6 +15,7 @@ enum UrlPathOperator {
   regEx("RegEx");
 
   const UrlPathOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static UrlPathOperator fromValue(String value) {

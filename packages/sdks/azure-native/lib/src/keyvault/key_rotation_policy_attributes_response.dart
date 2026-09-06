@@ -6,7 +6,7 @@ class KeyRotationPolicyAttributesResponse {
   /// Creation time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double> created;
   /// The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'.
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// Last updated time in seconds since 1970-01-01T00:00:00Z.
   final pulumi.Input<double> updated;
 
@@ -30,9 +30,9 @@ class KeyRotationPolicyAttributesResponse {
 
   factory KeyRotationPolicyAttributesResponse.fromMap(Map<String, dynamic> map) {
     return KeyRotationPolicyAttributesResponse(
-      created: pulumi.Input.fromValue(map['created'] as double),
+      created: pulumi.Input.fromValue((map['created'] as num).toDouble()),
       expiryTime: (() { final guardedValue = map['expiryTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      updated: pulumi.Input.fromValue(map['updated'] as double),
+      updated: pulumi.Input.fromValue((map['updated'] as num).toDouble()),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// InMageRcm NIC details.
 class InMageRcmNicDetailsResponse {
   /// A value indicating whether this is the primary NIC.
-  final pulumi.Input<String>? isPrimaryNic;
+  final pulumi.Input<String?>? isPrimaryNic;
   /// A value indicating whether this NIC is selected for failover.
-  final pulumi.Input<String>? isSelectedForFailover;
+  final pulumi.Input<String?>? isSelectedForFailover;
   /// The NIC Id.
   final pulumi.Input<String> nicId;
   /// The source IP address.
@@ -19,19 +19,19 @@ class InMageRcmNicDetailsResponse {
   /// Source subnet name.
   final pulumi.Input<String> sourceSubnetName;
   /// The target IP address.
-  final pulumi.Input<String>? targetIPAddress;
+  final pulumi.Input<String?>? targetIPAddress;
   /// The target IP address type.
-  final pulumi.Input<String>? targetIPAddressType;
+  final pulumi.Input<String?>? targetIPAddressType;
   /// The target NIC name.
-  final pulumi.Input<String>? targetNicName;
+  final pulumi.Input<String?>? targetNicName;
   /// Target subnet name.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
   /// The test IP address.
-  final pulumi.Input<String>? testIPAddress;
+  final pulumi.Input<String?>? testIPAddress;
   /// The test IP address type.
-  final pulumi.Input<String>? testIPAddressType;
+  final pulumi.Input<String?>? testIPAddressType;
   /// Test subnet name.
-  final pulumi.Input<String>? testSubnetName;
+  final pulumi.Input<String?>? testSubnetName;
 
   /// Creates a new [InMageRcmNicDetailsResponse].
   /// [isPrimaryNic] A value indicating whether this is the primary NIC.

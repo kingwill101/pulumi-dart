@@ -8,7 +8,7 @@ class ManagementPolicyRuleResponse {
   /// An object that defines the Lifecycle rule.
   final pulumi.Input<ManagementPolicyDefinitionResponse> definition;
   /// Rule is enabled if set to true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// A rule name can contain any combination of alpha numeric characters. Rule name is case-sensitive. It must be unique within a policy.
   final pulumi.Input<String> name;
   /// The valid value is Lifecycle

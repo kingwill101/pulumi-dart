@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_endpoint_policy_args.dart';
+import 'service_endpoint_policy_definition_response.dart';
+import 'subnet_response.dart';
 
 /// Service End point policy resource.
 ///
@@ -369,9 +371,9 @@ class ServiceEndpointPolicyNetwork extends pulumi.CustomResource {
   /// The alias indicating if the policy belongs to a service
   late final pulumi.Output<String?> serviceAlias;
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  late final pulumi.Output<List<Map<String, dynamic>>?> serviceEndpointPolicyDefinitions;
+  late final pulumi.Output<List<ServiceEndpointPolicyDefinitionResponse>?> serviceEndpointPolicyDefinitions;
   /// A collection of references to subnets.
-  late final pulumi.Output<List<Map<String, dynamic>>> subnets;
+  late final pulumi.Output<List<SubnetResponse>> subnets;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -392,7 +394,7 @@ class ServiceEndpointPolicyNetwork extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contextualServiceEndpointPolicies = registerOutput<List<String>?>('contextualServiceEndpointPolicies');
+    contextualServiceEndpointPolicies = registerOutput<List<String>?>('contextualServiceEndpointPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     etag = registerOutput<String>('etag');
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');
@@ -400,9 +402,33 @@ class ServiceEndpointPolicyNetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
     serviceAlias = registerOutput<String?>('serviceAlias');
-    serviceEndpointPolicyDefinitions = registerOutput<List<Map<String, dynamic>>?>('serviceEndpointPolicyDefinitions');
-    subnets = registerOutput<List<Map<String, dynamic>>>('subnets');
-    tags = registerOutput<Map<String, String>?>('tags');
+    serviceEndpointPolicyDefinitions = registerOutput<List<ServiceEndpointPolicyDefinitionResponse>?>('serviceEndpointPolicyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(guardedValue, (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<SubnetResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServiceEndpointPolicyNetwork] resource.
+  ServiceEndpointPolicyNetwork.reference(String urn)
+    : super(
+        'azure-native:network:ServiceEndpointPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contextualServiceEndpointPolicies = registerOutput<List<String>?>('contextualServiceEndpointPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    serviceAlias = registerOutput<String?>('serviceAlias');
+    serviceEndpointPolicyDefinitions = registerOutput<List<ServiceEndpointPolicyDefinitionResponse>?>('serviceEndpointPolicyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceEndpointPolicyDefinitionResponse>(guardedValue, (value) => ServiceEndpointPolicyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subnets = registerOutput<List<SubnetResponse>>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

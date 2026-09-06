@@ -22,7 +22,7 @@ class StorageDataSharePropertiesResponse {
   /// URI Format - 'azds://&lt;location&gt;:&lt;dataShareName&gt;:&lt;dataShareIdentifier&gt;'.
   final pulumi.Input<String> dataShareUri;
   /// Arbitrary description of this Data Share. Max 250 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Represents the provisioning state of the storage datashare.
   final pulumi.Input<String> provisioningState;
 

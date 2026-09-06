@@ -7,7 +7,7 @@ import 'hci_reported_properties_response.dart';
 /// properties for Arc-enabled edge device with HCI OS.
 class HciEdgeDevicePropertiesResponse {
   /// Device Configuration
-  final pulumi.Input<DeviceConfigurationResponse>? deviceConfiguration;
+  final pulumi.Input<DeviceConfigurationResponse?>? deviceConfiguration;
   /// Provisioning state of edgeDevice resource
   final pulumi.Input<String> provisioningState;
   /// The instance view of all current configurations on HCI device.

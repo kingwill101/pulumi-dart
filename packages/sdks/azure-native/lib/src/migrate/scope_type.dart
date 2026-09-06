@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scope type
-enum ScopeType {
+enum ScopeType implements pulumi.PulumiEnum<String> {
   serverGroupId("ServerGroupId"),
   azureResourceGraphQuery("AzureResourceGraphQuery");
 
   const ScopeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScopeType fromValue(String value) {

@@ -4,19 +4,19 @@
 /// Result data returned by getVirtualNetworkRule.
 class GetVirtualNetworkRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Create firewall rule before the virtual network has vnet service endpoint enabled.
   final bool? ignoreMissingVnetServiceEndpoint;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Virtual Network Rule State
-  final String state;
+  final String? state;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The ARM resource id of the virtual network subnet.
-  final String virtualNetworkSubnetId;
+  final String? virtualNetworkSubnetId;
 
   /// Creates a new [GetVirtualNetworkRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,36 +27,36 @@ class GetVirtualNetworkRuleResult {
   /// [type] Resource type.
   /// [virtualNetworkSubnetId] The ARM resource id of the virtual network subnet.
   const GetVirtualNetworkRuleResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.ignoreMissingVnetServiceEndpoint,
-    required this.name,
-    required this.state,
-    required this.type,
-    required this.virtualNetworkSubnetId,
+    this.name,
+    this.state,
+    this.type,
+    this.virtualNetworkSubnetId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'ignoreMissingVnetServiceEndpoint': ?ignoreMissingVnetServiceEndpoint,
-      'name': name,
-      'state': state,
-      'type': type,
-      'virtualNetworkSubnetId': virtualNetworkSubnetId,
+      'name': ?name,
+      'state': ?state,
+      'type': ?type,
+      'virtualNetworkSubnetId': ?virtualNetworkSubnetId,
     };
   }
 
   factory GetVirtualNetworkRuleResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualNetworkRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ignoreMissingVnetServiceEndpoint: (() { final guardedValue = map['ignoreMissingVnetServiceEndpoint']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
-      state: map['state'] as String,
-      type: map['type'] as String,
-      virtualNetworkSubnetId: map['virtualNetworkSubnetId'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualNetworkSubnetId: (() { final guardedValue = map['virtualNetworkSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

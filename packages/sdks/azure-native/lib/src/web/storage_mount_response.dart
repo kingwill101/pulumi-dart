@@ -6,15 +6,15 @@ import 'key_vault_reference_with_status_response.dart';
 /// Server farm storage mount configuration.
 class StorageMountResponse {
   /// KV reference to the credentials to connect to the share.
-  final pulumi.Input<KeyVaultReferenceWithStatusResponse>? credentialsKeyVaultReference;
+  final pulumi.Input<KeyVaultReferenceWithStatusResponse?>? credentialsKeyVaultReference;
   /// Path on worker where storage will be mounted.
-  final pulumi.Input<String>? destinationPath;
+  final pulumi.Input<String?>? destinationPath;
   /// Name of the storage mount.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Source of the fileshare/storage.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Type of the storage mount.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [StorageMountResponse].
   /// [credentialsKeyVaultReference] KV reference to the credentials to connect to the share.

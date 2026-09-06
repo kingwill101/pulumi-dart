@@ -14,7 +14,7 @@ class TriggerArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the trigger
-  final pulumi.Input<String>? triggerName;
+  final pulumi.Input<String?>? triggerName;
 
   /// Creates a new [TriggerArgs].
   /// [imageTemplateName] The name of the image Template

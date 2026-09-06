@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ConnectionState information.
 class ConnectionStateResponse {
   /// Actions required (if any).
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// Description of the connection state.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Status of the connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ConnectionStateResponse].
   /// [actionsRequired] Actions required (if any).

@@ -9,11 +9,11 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 /// {@macro pulumi_edge_solution_args_doc}
 class SolutionArgs {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the solution
-  final pulumi.Input<String>? solutionName;
+  final pulumi.Input<String?>? solutionName;
   /// Name of the target
   final pulumi.Input<String> targetName;
 

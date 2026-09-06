@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ClusterStateChangeReasonCodeEnumValue
 class ClusterStateChangeReasonCodeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ClusterStateChangeReasonCodeEnumValueResponse].
   /// [value] Property value

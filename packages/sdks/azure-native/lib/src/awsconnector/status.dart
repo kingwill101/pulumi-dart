@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the account in the organization.
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   aCTIVE("ACTIVE"),
   pENDINGCLOSURE("PENDING_CLOSURE"),
   sUSPENDED("SUSPENDED");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

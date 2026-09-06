@@ -41,11 +41,11 @@ class AgentDiskDetailsResponse {
 
   factory AgentDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AgentDiskDetailsResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
       isOSDisk: pulumi.Input.fromValue(map['isOSDisk'] as String),
-      lunId: pulumi.Input.fromValue(map['lunId'] as int),
+      lunId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lunId'])),
     );
   }
 }

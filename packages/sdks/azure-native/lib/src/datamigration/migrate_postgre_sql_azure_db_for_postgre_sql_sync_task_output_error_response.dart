@@ -8,7 +8,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputErrorResponse {
   /// Migration error
   final pulumi.Input<ReportableExceptionResponse> error;
   /// List of error events
-  final pulumi.Input<List<SyncMigrationDatabaseErrorEventResponse>>? events;
+  final pulumi.Input<List<SyncMigrationDatabaseErrorEventResponse>?>? events;
   /// Result identifier
   final pulumi.Input<String> id;
   /// Result type

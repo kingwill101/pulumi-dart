@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the data lake storage account associated with the workspace
 class DataLakeStorageAccountDetailsResponse {
   /// Account URL
-  final pulumi.Input<String>? accountUrl;
+  final pulumi.Input<String?>? accountUrl;
   /// Create managed private endpoint to this storage account or not
-  final pulumi.Input<bool>? createManagedPrivateEndpoint;
+  final pulumi.Input<bool?>? createManagedPrivateEndpoint;
   /// Filesystem name
-  final pulumi.Input<String>? filesystem;
+  final pulumi.Input<String?>? filesystem;
   /// ARM resource Id of this storage account
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [DataLakeStorageAccountDetailsResponse].
   /// [accountUrl] Account URL

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format in which Lambda sends your function's application and system logs to CloudWatch. Select between plain text and structured JSON.
-enum LoggingConfigLogFormat {
+enum LoggingConfigLogFormat implements pulumi.PulumiEnum<String> {
   jSON("JSON"),
   text("Text");
 
   const LoggingConfigLogFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingConfigLogFormat fromValue(String value) {

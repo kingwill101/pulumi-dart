@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings concerning key vault encryption for a configuration store.
 class KeyVaultPropertiesResponse {
   /// The name of key used to encrypt data.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The key version of the key used to encrypt data.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// The URI of the key vault key used to encrypt data.
-  final pulumi.Input<String>? keyvaultUri;
+  final pulumi.Input<String?>? keyvaultUri;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [keyName] The name of key used to encrypt data.

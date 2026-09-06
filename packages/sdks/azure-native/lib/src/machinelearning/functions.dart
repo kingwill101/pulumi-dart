@@ -22,6 +22,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearning:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// List the authorization keys associated with this workspace.
 ///
 /// Uses Azure REST API version 2019-10-01.
@@ -38,4 +49,15 @@ Future<ListWorkspaceKeysResult> listWorkspaceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkspaceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkspaceKeysResult> listWorkspaceKeysOutput(
+  ListWorkspaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearning:listWorkspaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceKeysResult.fromMap);
 }

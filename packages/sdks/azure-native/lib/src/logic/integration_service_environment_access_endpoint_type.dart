@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The access endpoint type.
-enum IntegrationServiceEnvironmentAccessEndpointType {
+enum IntegrationServiceEnvironmentAccessEndpointType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueExternal("External"),
   valueInternal("Internal");
 
   const IntegrationServiceEnvironmentAccessEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationServiceEnvironmentAccessEndpointType fromValue(String value) {

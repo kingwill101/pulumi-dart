@@ -8,26 +8,26 @@ import 'system_data_response.dart';
 /// Endpoint Model properties.
 class EndpointModelPropertiesResponse {
   /// The capabilities.
-  final pulumi.Input<Map<String, String>>? capabilities;
-  final pulumi.Input<EndpointModelDeprecationPropertiesResponse>? deprecation;
+  final pulumi.Input<Map<String, String>?>? capabilities;
+  final pulumi.Input<EndpointModelDeprecationPropertiesResponse?>? deprecation;
   /// The capabilities for finetune models.
-  final pulumi.Input<Map<String, String>>? finetuneCapabilities;
+  final pulumi.Input<Map<String, String>?>? finetuneCapabilities;
   /// Deployment model format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// If the model is default version.
-  final pulumi.Input<bool>? isDefaultVersion;
+  final pulumi.Input<bool?>? isDefaultVersion;
   /// Model lifecycle status.
-  final pulumi.Input<String>? lifecycleStatus;
+  final pulumi.Input<String?>? lifecycleStatus;
   /// The max capacity.
-  final pulumi.Input<int>? maxCapacity;
+  final pulumi.Input<int?>? maxCapacity;
   /// Deployment model name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The list of Model Sku.
-  final pulumi.Input<List<EndpointModelSkuPropertiesResponse>>? skus;
+  final pulumi.Input<List<EndpointModelSkuPropertiesResponse>?>? skus;
   /// Metadata pertaining to creation and last modification of the resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Optional. Deployment model version. If version is not specified, a default version will be assigned. The default version is different for different models and might change when there is new version available for a model. Default version for a model could be found from list models API.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [EndpointModelPropertiesResponse].
   /// [capabilities] The capabilities.
@@ -79,7 +79,7 @@ class EndpointModelPropertiesResponse {
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isDefaultVersion: (() { final guardedValue = map['isDefaultVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       lifecycleStatus: (() { final guardedValue = map['lifecycleStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skus: (() { final guardedValue = map['skus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointModelSkuPropertiesResponse>(guardedValue, (value) => EndpointModelSkuPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),

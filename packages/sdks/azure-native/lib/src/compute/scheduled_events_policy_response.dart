@@ -8,11 +8,11 @@ import 'user_initiated_redeploy_response.dart';
 /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations.
 class ScheduledEventsPolicyResponse {
   /// The configuration parameters used while publishing scheduledEventsAdditionalPublishingTargets.
-  final pulumi.Input<ScheduledEventsAdditionalPublishingTargetsResponse>? scheduledEventsAdditionalPublishingTargets;
+  final pulumi.Input<ScheduledEventsAdditionalPublishingTargetsResponse?>? scheduledEventsAdditionalPublishingTargets;
   /// The configuration parameters used while creating userInitiatedReboot scheduled event setting creation.
-  final pulumi.Input<UserInitiatedRebootResponse>? userInitiatedReboot;
+  final pulumi.Input<UserInitiatedRebootResponse?>? userInitiatedReboot;
   /// The configuration parameters used while creating userInitiatedRedeploy scheduled event setting creation.
-  final pulumi.Input<UserInitiatedRedeployResponse>? userInitiatedRedeploy;
+  final pulumi.Input<UserInitiatedRedeployResponse?>? userInitiatedRedeploy;
 
   /// Creates a new [ScheduledEventsPolicyResponse].
   /// [scheduledEventsAdditionalPublishingTargets] The configuration parameters used while publishing scheduledEventsAdditionalPublishingTargets.

@@ -8,15 +8,15 @@ import 'response_based_origin_error_detection_parameters_response.dart';
 /// The origin group for CDN content which is added when creating a CDN endpoint. Traffic is sent to the origins within the origin group based on origin health.
 class DeepCreatedOriginGroupResponse {
   /// Health probe settings to the origin that is used to determine the health of the origin.
-  final pulumi.Input<HealthProbeParametersResponse>? healthProbeSettings;
+  final pulumi.Input<HealthProbeParametersResponse?>? healthProbeSettings;
   /// Origin group name which must be unique within the endpoint.
   final pulumi.Input<String> name;
   /// The source of the content being delivered via CDN within given origin group.
   final pulumi.Input<List<ResourceReferenceResponse>> origins;
   /// The JSON object that contains the properties to determine origin health using real requests/responses.This property is currently not supported.
-  final pulumi.Input<ResponseBasedOriginErrorDetectionParametersResponse>? responseBasedOriginErrorDetectionSettings;
+  final pulumi.Input<ResponseBasedOriginErrorDetectionParametersResponse?>? responseBasedOriginErrorDetectionSettings;
   /// Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
-  final pulumi.Input<int>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
+  final pulumi.Input<int?>? trafficRestorationTimeToHealedOrNewEndpointsInMinutes;
 
   /// Creates a new [DeepCreatedOriginGroupResponse].
   /// [healthProbeSettings] Health probe settings to the origin that is used to determine the health of the origin.
@@ -48,7 +48,7 @@ class DeepCreatedOriginGroupResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       origins: pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceReferenceResponse>(map['origins']!, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       responseBasedOriginErrorDetectionSettings: (() { final guardedValue = map['responseBasedOriginErrorDetectionSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResponseBasedOriginErrorDetectionParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() { final guardedValue = map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: (() { final guardedValue = map['trafficRestorationTimeToHealedOrNewEndpointsInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

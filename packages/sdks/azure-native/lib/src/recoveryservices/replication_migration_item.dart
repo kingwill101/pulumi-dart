@@ -321,4 +321,20 @@ class ReplicationMigrationItem extends pulumi.CustomResource {
     properties = registerOutput<MigrationItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ReplicationMigrationItem] resource.
+  ReplicationMigrationItem.reference(String urn)
+    : super(
+        'azure-native:recoveryservices:ReplicationMigrationItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<MigrationItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

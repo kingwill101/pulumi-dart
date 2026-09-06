@@ -16,9 +16,9 @@ class BrokerListenerArgs {
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// Name of Instance broker listener resource
-  final pulumi.Input<String>? listenerName;
+  final pulumi.Input<String?>? listenerName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<BrokerListenerProperties>? properties;
+  final pulumi.Input<BrokerListenerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

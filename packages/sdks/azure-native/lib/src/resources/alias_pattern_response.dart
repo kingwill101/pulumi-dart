@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The type of the pattern for an alias path.
 class AliasPatternResponse {
   /// The alias pattern phrase.
-  final pulumi.Input<String>? phrase;
+  final pulumi.Input<String?>? phrase;
   /// The type of alias pattern
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The alias pattern variable.
-  final pulumi.Input<String>? variable;
+  final pulumi.Input<String?>? variable;
 
   /// Creates a new [AliasPatternResponse].
   /// [phrase] The alias pattern phrase.

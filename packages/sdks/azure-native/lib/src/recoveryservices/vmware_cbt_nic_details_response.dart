@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VMwareCbt NIC details.
 class VMwareCbtNicDetailsResponse {
   /// A value indicating whether this is the primary NIC.
-  final pulumi.Input<String>? isPrimaryNic;
+  final pulumi.Input<String?>? isPrimaryNic;
   /// A value indicating whether this NIC is selected for migration.
-  final pulumi.Input<String>? isSelectedForMigration;
+  final pulumi.Input<String?>? isSelectedForMigration;
   /// The NIC Id.
   final pulumi.Input<String> nicId;
   /// The source IP address.
@@ -17,21 +17,21 @@ class VMwareCbtNicDetailsResponse {
   /// Source network Id.
   final pulumi.Input<String> sourceNetworkId;
   /// The target IP address.
-  final pulumi.Input<String>? targetIPAddress;
+  final pulumi.Input<String?>? targetIPAddress;
   /// The target IP address type.
-  final pulumi.Input<String>? targetIPAddressType;
+  final pulumi.Input<String?>? targetIPAddressType;
   /// Target NIC name.
-  final pulumi.Input<String>? targetNicName;
+  final pulumi.Input<String?>? targetNicName;
   /// Target subnet name.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
   /// The test IP address.
-  final pulumi.Input<String>? testIPAddress;
+  final pulumi.Input<String?>? testIPAddress;
   /// The test IP address type.
-  final pulumi.Input<String>? testIPAddressType;
+  final pulumi.Input<String?>? testIPAddressType;
   /// Source network Id.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
   /// Test subnet name.
-  final pulumi.Input<String>? testSubnetName;
+  final pulumi.Input<String?>? testSubnetName;
 
   /// Creates a new [VMwareCbtNicDetailsResponse].
   /// [isPrimaryNic] A value indicating whether this is the primary NIC.

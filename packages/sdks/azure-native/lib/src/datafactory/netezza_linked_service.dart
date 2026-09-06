@@ -8,25 +8,25 @@ import 'parameter_specification.dart';
 /// Netezza linked service.
 class NetezzaLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The port for the connection. Type: integer.
   final pulumi.Input<dynamic>? port;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReference>? pwd;
+  final pulumi.Input<AzureKeyVaultSecretReference?>? pwd;
   /// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
-  final pulumi.Input<String>? securityLevel;
+  final pulumi.Input<dynamic>? securityLevel;
   /// Server name for connection. Type: string.
   final pulumi.Input<dynamic>? server;
   /// Type of linked service.
@@ -35,7 +35,7 @@ class NetezzaLinkedService {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic>? uid;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NetezzaLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -99,7 +99,7 @@ class NetezzaLinkedService {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       pwd: (() { final guardedValue = map['pwd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      securityLevel: (() { final guardedValue = map['securityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityLevel: (() { final guardedValue = map['securityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

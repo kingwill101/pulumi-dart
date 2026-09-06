@@ -6,21 +6,21 @@ import 'default_resource_properties_response.dart';
 /// Datasource to be backed up
 class DatasourceResponse {
   /// DatasourceType of the resource.
-  final pulumi.Input<String>? datasourceType;
+  final pulumi.Input<String?>? datasourceType;
   /// Type of Datasource object, used to initialize the right inherited type
-  final pulumi.Input<String>? objectType;
+  final pulumi.Input<String?>? objectType;
   /// Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
   final pulumi.Input<String> resourceID;
   /// Location of datasource.
-  final pulumi.Input<String>? resourceLocation;
+  final pulumi.Input<String?>? resourceLocation;
   /// Unique identifier of the resource in the context of parent.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Properties specific to data source
-  final pulumi.Input<DefaultResourcePropertiesResponse>? resourceProperties;
+  final pulumi.Input<DefaultResourcePropertiesResponse?>? resourceProperties;
   /// Resource Type of Datasource.
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Uri of the resource.
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<String?>? resourceUri;
 
   /// Creates a new [DatasourceResponse].
   /// [datasourceType] DatasourceType of the resource.

@@ -11,13 +11,13 @@ class PrivateResolverVirtualNetworkLinkArgs {
   /// The name of the DNS forwarding ruleset.
   final pulumi.Input<String> dnsForwardingRulesetName;
   /// Metadata attached to the virtual network link.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The reference to the virtual network. This cannot be changed after creation.
   final pulumi.Input<SubResource> virtualNetwork;
   /// The name of the virtual network link.
-  final pulumi.Input<String>? virtualNetworkLinkName;
+  final pulumi.Input<String?>? virtualNetworkLinkName;
 
   /// Creates a new [PrivateResolverVirtualNetworkLinkArgs].
   /// [dnsForwardingRulesetName] The name of the DNS forwarding ruleset.

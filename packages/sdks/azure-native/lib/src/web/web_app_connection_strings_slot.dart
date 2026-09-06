@@ -46,4 +46,20 @@ class WebAppConnectionStringsSlot extends pulumi.CustomResource {
     properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(guardedValue, (value) => ConnStringValueTypePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WebAppConnectionStringsSlot] resource.
+  WebAppConnectionStringsSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppConnectionStringsSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<Map<String, ConnStringValueTypePairResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ConnStringValueTypePairResponse>(guardedValue, (value) => ConnStringValueTypePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -8,29 +8,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagesync_registered_server_args_doc}
 class RegisteredServerArgs {
   /// Registered Server Agent Version
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// Server ServicePrincipal Id
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Registered Server clusterId
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// Registered Server clusterName
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Friendly Name
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Apply server with newly discovered ApplicationId if available.
-  final pulumi.Input<bool>? identity;
+  final pulumi.Input<bool?>? identity;
   /// Registered Server last heart beat
-  final pulumi.Input<String>? lastHeartBeat;
+  final pulumi.Input<String?>? lastHeartBeat;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Registered Server Certificate
-  final pulumi.Input<String>? serverCertificate;
+  final pulumi.Input<String?>? serverCertificate;
   /// Registered Server serverId
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// Registered Server OS Version
-  final pulumi.Input<String>? serverOSVersion;
+  final pulumi.Input<String?>? serverOSVersion;
   /// Registered Server serverRole
-  final pulumi.Input<String>? serverRole;
+  final pulumi.Input<String?>? serverRole;
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
 

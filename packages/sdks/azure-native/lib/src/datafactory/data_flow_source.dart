@@ -8,17 +8,17 @@ import 'linked_service_reference.dart';
 /// Transformation for data flow source.
 class DataFlowSource {
   /// Dataset reference.
-  final pulumi.Input<DatasetReference>? dataset;
+  final pulumi.Input<DatasetReference?>? dataset;
   /// Transformation description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Flowlet Reference
-  final pulumi.Input<DataFlowReference>? flowlet;
+  final pulumi.Input<DataFlowReference?>? flowlet;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedService;
+  final pulumi.Input<LinkedServiceReference?>? linkedService;
   /// Transformation name.
   final pulumi.Input<String> name;
   /// Schema linked service reference.
-  final pulumi.Input<LinkedServiceReference>? schemaLinkedService;
+  final pulumi.Input<LinkedServiceReference?>? schemaLinkedService;
 
   /// Creates a new [DataFlowSource].
   /// [dataset] Dataset reference.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional SQL Server feature settings.
 class AdditionalFeaturesServerConfigurationsResponse {
   /// Enable or disable R services (SQL 2016 onwards).
-  final pulumi.Input<bool>? isRServicesEnabled;
+  final pulumi.Input<bool?>? isRServicesEnabled;
 
   /// Creates a new [AdditionalFeaturesServerConfigurationsResponse].
   /// [isRServicesEnabled] Enable or disable R services (SQL 2016 onwards).

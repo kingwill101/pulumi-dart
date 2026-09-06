@@ -10,11 +10,11 @@ class VirtualNetworkSubnetProperties {
   /// Subnet CIDR
   final pulumi.Input<String> addressPrefix;
   /// Nat Gateway attached to the subnet for non-vnet traffic.
-  final pulumi.Input<NatGatewayArmReference>? natGateway;
+  final pulumi.Input<NatGatewayArmReference?>? natGateway;
   /// Network Security Group attached to the subnet.
-  final pulumi.Input<NetworkSecurityGroupArmReference>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReference?>? networkSecurityGroup;
   /// RouteTable defining custom routes for the subnet.
-  final pulumi.Input<RouteTable>? routeTable;
+  final pulumi.Input<RouteTable?>? routeTable;
 
   /// Creates a new [VirtualNetworkSubnetProperties].
   /// [addressPrefix] Subnet CIDR

@@ -6,9 +6,9 @@ import 'aggregate_route_response.dart';
 /// List of IPv4 and IPv6 aggregate routes.
 class AggregateRouteConfigurationResponse {
   /// List of IPv4 Route prefixes.
-  final pulumi.Input<List<AggregateRouteResponse>>? ipv4Routes;
+  final pulumi.Input<List<AggregateRouteResponse>?>? ipv4Routes;
   /// List of Ipv6Routes prefixes.
-  final pulumi.Input<List<AggregateRouteResponse>>? ipv6Routes;
+  final pulumi.Input<List<AggregateRouteResponse>?>? ipv6Routes;
 
   /// Creates a new [AggregateRouteConfigurationResponse].
   /// [ipv4Routes] List of IPv4 Route prefixes.

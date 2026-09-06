@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'jit_network_access_policy_args.dart';
+import 'jit_network_access_policy_virtual_machine_response.dart';
+import 'jit_network_access_request_response.dart';
 import 'system_data_response.dart';
 
 /// Concrete proxy resource types can be created by aliasing this type using a specific property type.
@@ -399,13 +401,13 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Gets the provisioning state of the Just-in-Time policy.
   late final pulumi.Output<String> provisioningState;
-  late final pulumi.Output<List<Map<String, dynamic>>?> requests;
+  late final pulumi.Output<List<JitNetworkAccessRequestResponse>?> requests;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Configurations for Microsoft.Compute/virtualMachines resource type.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
+  late final pulumi.Output<List<JitNetworkAccessPolicyVirtualMachineResponse>> virtualMachines;
 
   /// Creates a new [JitNetworkAccessPolicy].
   /// [name] The Pulumi resource name.
@@ -426,9 +428,29 @@ class JitNetworkAccessPolicy extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    requests = registerOutput<List<Map<String, dynamic>>?>('requests');
+    requests = registerOutput<List<JitNetworkAccessRequestResponse>?>('requests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitNetworkAccessRequestResponse>(guardedValue, (value) => JitNetworkAccessRequestResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
+    virtualMachines = registerOutput<List<JitNetworkAccessPolicyVirtualMachineResponse>>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachineResponse>(guardedValue, (value) => JitNetworkAccessPolicyVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [JitNetworkAccessPolicy] resource.
+  JitNetworkAccessPolicy.reference(String urn)
+    : super(
+        'azure-native:security:JitNetworkAccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    requests = registerOutput<List<JitNetworkAccessRequestResponse>?>('requests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitNetworkAccessRequestResponse>(guardedValue, (value) => JitNetworkAccessRequestResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    virtualMachines = registerOutput<List<JitNetworkAccessPolicyVirtualMachineResponse>>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JitNetworkAccessPolicyVirtualMachineResponse>(guardedValue, (value) => JitNetworkAccessPolicyVirtualMachineResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

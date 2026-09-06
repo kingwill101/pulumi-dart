@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'kpi_properties_response.dart';
+import 'pivot_properties_response.dart';
 import 'report_config_dataset_response.dart';
 import 'report_config_time_period_response.dart';
 import 'view_by_scope_args.dart';
@@ -482,7 +484,7 @@ class ViewByScope extends pulumi.CustomResource {
   /// If true, report includes monetary commitment.
   late final pulumi.Output<bool?> includeMonetaryCommitment;
   /// List of KPIs to show in Cost Analysis UI.
-  late final pulumi.Output<List<Map<String, dynamic>>?> kpis;
+  late final pulumi.Output<List<KpiPropertiesResponse>?> kpis;
   /// Metric to use when displaying costs.
   late final pulumi.Output<String?> metric;
   /// Date when the user last modified this view.
@@ -490,7 +492,7 @@ class ViewByScope extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Configuration of 3 sub-views in the Cost Analysis UI.
-  late final pulumi.Output<List<Map<String, dynamic>>?> pivots;
+  late final pulumi.Output<List<PivotPropertiesResponse>?> pivots;
   /// Cost Management scope to save the view on. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId}' for Management Group scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   late final pulumi.Output<String?> scope;
   /// Has time period for pulling data for the report.
@@ -524,11 +526,41 @@ class ViewByScope extends pulumi.CustomResource {
     displayName = registerOutput<String?>('displayName');
     eTag = registerOutput<String?>('eTag');
     includeMonetaryCommitment = registerOutput<bool?>('includeMonetaryCommitment');
-    kpis = registerOutput<List<Map<String, dynamic>>?>('kpis');
+    kpis = registerOutput<List<KpiPropertiesResponse>?>('kpis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiPropertiesResponse>(guardedValue, (value) => KpiPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     metric = registerOutput<String?>('metric');
     modifiedOn = registerOutput<String?>('modifiedOn');
     this.name = registerOutput<String>('name');
-    pivots = registerOutput<List<Map<String, dynamic>>?>('pivots');
+    pivots = registerOutput<List<PivotPropertiesResponse>?>('pivots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PivotPropertiesResponse>(guardedValue, (value) => PivotPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scope = registerOutput<String?>('scope');
+    timePeriod = registerOutput<ReportConfigTimePeriodResponse?>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportConfigTimePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeframe = registerOutput<String>('timeframe');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ViewByScope] resource.
+  ViewByScope.reference(String urn)
+    : super(
+        'azure-native:costmanagement:ViewByScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accumulated = registerOutput<String?>('accumulated');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    chart = registerOutput<String?>('chart');
+    createdOn = registerOutput<String>('createdOn');
+    currency = registerOutput<String>('currency');
+    dataSet = registerOutput<ReportConfigDatasetResponse?>('dataSet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportConfigDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dateRange = registerOutput<String?>('dateRange');
+    displayName = registerOutput<String?>('displayName');
+    eTag = registerOutput<String?>('eTag');
+    includeMonetaryCommitment = registerOutput<bool?>('includeMonetaryCommitment');
+    kpis = registerOutput<List<KpiPropertiesResponse>?>('kpis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiPropertiesResponse>(guardedValue, (value) => KpiPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    metric = registerOutput<String?>('metric');
+    modifiedOn = registerOutput<String?>('modifiedOn');
+    this.name = registerOutput<String>('name');
+    pivots = registerOutput<List<PivotPropertiesResponse>?>('pivots', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PivotPropertiesResponse>(guardedValue, (value) => PivotPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     scope = registerOutput<String?>('scope');
     timePeriod = registerOutput<ReportConfigTimePeriodResponse?>('timePeriod', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportConfigTimePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeframe = registerOutput<String>('timeframe');

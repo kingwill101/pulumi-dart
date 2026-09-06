@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The write behavior for the operation. Default is Bulk Insert.
-enum AzurePostgreSqlWriteMethodEnum {
+enum AzurePostgreSqlWriteMethodEnum implements pulumi.PulumiEnum<String> {
   bulkInsert("BulkInsert"),
   copyCommand("CopyCommand"),
   upsert("Upsert");
 
   const AzurePostgreSqlWriteMethodEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzurePostgreSqlWriteMethodEnum fromValue(String value) {

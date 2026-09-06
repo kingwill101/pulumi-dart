@@ -6,9 +6,9 @@ import 'zone_preference.dart';
 /// ZoneAllocationPolicy for LaunchBulkInstancesOperation.
 class ZoneAllocationPolicy {
   /// Distribution strategy used for zone allocation policy.
-  final pulumi.Input<String> distributionStrategy;
+  final pulumi.Input<dynamic> distributionStrategy;
   /// Zone preferences, required when zone distribution strategy is Prioritized.
-  final pulumi.Input<List<ZonePreference>>? zonePreferences;
+  final pulumi.Input<List<ZonePreference>?>? zonePreferences;
 
   /// Creates a new [ZoneAllocationPolicy].
   /// [distributionStrategy] Distribution strategy used for zone allocation policy.
@@ -27,7 +27,7 @@ class ZoneAllocationPolicy {
 
   factory ZoneAllocationPolicy.fromMap(Map<String, dynamic> map) {
     return ZoneAllocationPolicy(
-      distributionStrategy: pulumi.Input.fromValue(map['distributionStrategy'] as String),
+      distributionStrategy: pulumi.Input.fromValue(map['distributionStrategy']),
       zonePreferences: (() { final guardedValue = map['zonePreferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZonePreference>(guardedValue, (value) => ZonePreference.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

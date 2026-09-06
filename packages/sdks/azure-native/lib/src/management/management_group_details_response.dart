@@ -7,19 +7,19 @@ import 'parent_group_info_response.dart';
 /// The details of a management group.
 class ManagementGroupDetailsResponse {
   /// The ancestors of the management group.
-  final pulumi.Input<List<String>>? managementGroupAncestors;
+  final pulumi.Input<List<String>?>? managementGroupAncestors;
   /// The ancestors of the management group displayed in reversed order, from immediate parent to the root.
-  final pulumi.Input<List<ManagementGroupPathElementResponse>>? managementGroupAncestorsChain;
+  final pulumi.Input<List<ManagementGroupPathElementResponse>?>? managementGroupAncestorsChain;
   /// (Optional) The ID of the parent management group.
-  final pulumi.Input<ParentGroupInfoResponse>? parent;
+  final pulumi.Input<ParentGroupInfoResponse?>? parent;
   /// The path from the root to the current group.
-  final pulumi.Input<List<ManagementGroupPathElementResponse>>? path;
+  final pulumi.Input<List<ManagementGroupPathElementResponse>?>? path;
   /// The identity of the principal or process that updated the object.
-  final pulumi.Input<String>? updatedBy;
+  final pulumi.Input<String?>? updatedBy;
   /// The date and time when this object was last updated.
-  final pulumi.Input<String>? updatedTime;
+  final pulumi.Input<String?>? updatedTime;
   /// The version number of the object.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [ManagementGroupDetailsResponse].
   /// [managementGroupAncestors] The ancestors of the management group.
@@ -59,7 +59,7 @@ class ManagementGroupDetailsResponse {
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagementGroupPathElementResponse>(guardedValue, (value) => ManagementGroupPathElementResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updatedBy: (() { final guardedValue = map['updatedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       updatedTime: (() { final guardedValue = map['updatedTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

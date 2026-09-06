@@ -6,7 +6,7 @@ import 'custom_rule_response.dart';
 /// Defines contents of custom rules
 class CustomRuleListResponse {
   /// List of rules
-  final pulumi.Input<List<CustomRuleResponse>>? rules;
+  final pulumi.Input<List<CustomRuleResponse>?>? rules;
 
   /// Creates a new [CustomRuleListResponse].
   /// [rules] List of rules

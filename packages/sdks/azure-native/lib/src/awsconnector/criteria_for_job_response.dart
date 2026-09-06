@@ -7,9 +7,9 @@ import 'tag_criterion_for_job_response.dart';
 /// Definition of CriteriaForJob
 class CriteriaForJobResponse {
   /// &lt;p&gt;A property-based condition that defines a property, operator, and one or more values for including or excluding buckets from the job.&lt;/p&gt;
-  final pulumi.Input<SimpleCriterionForJobResponse>? simpleCriterion;
+  final pulumi.Input<SimpleCriterionForJobResponse?>? simpleCriterion;
   /// &lt;p&gt;A tag-based condition that defines an operator and tag keys, tag values, or tag key and value pairs for including or excluding buckets from the job.&lt;/p&gt;
-  final pulumi.Input<TagCriterionForJobResponse>? tagCriterion;
+  final pulumi.Input<TagCriterionForJobResponse?>? tagCriterion;
 
   /// Creates a new [CriteriaForJobResponse].
   /// [simpleCriterion] &lt;p&gt;A property-based condition that defines a property, operator, and one or more values for including or excluding buckets from the job.&lt;/p&gt;

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterIngressProfileNginx {
   /// Ingress type for the default NginxIngressController custom resource
-  final pulumi.Input<String>? defaultIngressControllerType;
+  final pulumi.Input<dynamic>? defaultIngressControllerType;
 
   /// Creates a new [ManagedClusterIngressProfileNginx].
   /// [defaultIngressControllerType] Ingress type for the default NginxIngressController custom resource
@@ -20,7 +20,7 @@ class ManagedClusterIngressProfileNginx {
 
   factory ManagedClusterIngressProfileNginx.fromMap(Map<String, dynamic> map) {
     return ManagedClusterIngressProfileNginx(
-      defaultIngressControllerType: (() { final guardedValue = map['defaultIngressControllerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultIngressControllerType: (() { final guardedValue = map['defaultIngressControllerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

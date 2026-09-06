@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// JIT approver definition.
 class JitApproverDefinitionResponse {
   /// The approver display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The approver service principal Id.
   final pulumi.Input<String> id;
   /// The approver type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JitApproverDefinitionResponse].
   /// [displayName] The approver display name.

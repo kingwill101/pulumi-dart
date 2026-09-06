@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dedicated_host_group_args.dart';
 import 'dedicated_host_group_instance_view_response.dart';
 import 'dedicated_host_group_properties_additional_capabilities_response.dart';
+import 'sub_resource_read_only_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the dedicated host group that the dedicated hosts should be assigned to. Currently, a dedicated host can only be added to a dedicated host group at creation time. An existing dedicated host cannot be added to another dedicated host group.
@@ -401,7 +402,7 @@ class DedicatedHostGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of references to all dedicated hosts in the dedicated host group.
-  late final pulumi.Output<List<Map<String, dynamic>>> hosts;
+  late final pulumi.Output<List<SubResourceReadOnlyResponse>> hosts;
   /// The dedicated host group instance view, which has the list of instance view of the dedicated hosts under the dedicated host group.
   late final pulumi.Output<DedicatedHostGroupInstanceViewResponse> instanceView;
   /// The geo-location where the resource lives
@@ -437,15 +438,38 @@ class DedicatedHostGroup extends pulumi.CustomResource {
         ) {
     additionalCapabilities = registerOutput<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    hosts = registerOutput<List<Map<String, dynamic>>>('hosts');
+    hosts = registerOutput<List<SubResourceReadOnlyResponse>>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
     supportAutomaticPlacement = registerOutput<bool?>('supportAutomaticPlacement');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DedicatedHostGroup] resource.
+  DedicatedHostGroup.reference(String urn)
+    : super(
+        'azure-native:compute:DedicatedHostGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupPropertiesAdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hosts = registerOutput<List<SubResourceReadOnlyResponse>>('hosts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceView = registerOutput<DedicatedHostGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformFaultDomainCount = registerOutput<int>('platformFaultDomainCount');
+    supportAutomaticPlacement = registerOutput<bool?>('supportAutomaticPlacement');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

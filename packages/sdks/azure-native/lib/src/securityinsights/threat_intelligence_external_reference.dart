@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes external reference
 class ThreatIntelligenceExternalReference {
   /// External reference description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// External reference ID
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// External reference hashes
-  final pulumi.Input<Map<String, String>>? hashes;
+  final pulumi.Input<Map<String, String>?>? hashes;
   /// External reference source name
-  final pulumi.Input<String>? sourceName;
+  final pulumi.Input<String?>? sourceName;
   /// External reference URL
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ThreatIntelligenceExternalReference].
   /// [description] External reference description

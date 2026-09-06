@@ -9,13 +9,13 @@ class AFDDomainHttpsParametersResponse {
   /// Defines the source of the SSL certificate.
   final pulumi.Input<String> certificateType;
   /// cipher suite set type that will be used for Https
-  final pulumi.Input<String>? cipherSuiteSetType;
+  final pulumi.Input<String?>? cipherSuiteSetType;
   /// Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized.
-  final pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetResponse>? customizedCipherSuiteSet;
+  final pulumi.Input<AFDDomainHttpsCustomizedCipherSuiteSetResponse?>? customizedCipherSuiteSet;
   /// TLS protocol version that will be used for Https when cipherSuiteSetType is Customized.
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<String?>? minimumTlsVersion;
   /// Resource reference to the secret. ie. subs/rg/profile/secret
-  final pulumi.Input<ResourceReferenceResponse>? secret;
+  final pulumi.Input<ResourceReferenceResponse?>? secret;
 
   /// Creates a new [AFDDomainHttpsParametersResponse].
   /// [certificateType] Defines the source of the SSL certificate.

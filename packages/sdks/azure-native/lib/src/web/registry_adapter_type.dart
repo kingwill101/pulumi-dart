@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the registry adapter.
-enum RegistryAdapterType {
+enum RegistryAdapterType implements pulumi.PulumiEnum<String> {
   binary("Binary"),
   string_("String"),
   expandString("Expand_String"),
@@ -8,6 +10,7 @@ enum RegistryAdapterType {
   qWord("QWord");
 
   const RegistryAdapterType(this.wireValue);
+  @override
   final String wireValue;
 
   static RegistryAdapterType fromValue(String value) {

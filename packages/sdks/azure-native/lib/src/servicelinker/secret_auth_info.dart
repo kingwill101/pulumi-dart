@@ -1,19 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'key_vault_secret_reference_secret_info.dart';
 
 /// The authentication info when authType is secret
 class SecretAuthInfo {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final pulumi.Input<String>? authMode;
+  final pulumi.Input<dynamic>? authMode;
   /// The authentication type.
   /// Expected value is 'secret'.
   final pulumi.Input<String> authType;
   /// Username or account name for secret auth.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Password or key vault secret for secret auth.
-  final pulumi.Input<KeyVaultSecretReferenceSecretInfo>? secretInfo;
+  final pulumi.Input<dynamic>? secretInfo;
 
   /// Creates a new [SecretAuthInfo].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -32,16 +31,16 @@ class SecretAuthInfo {
       'authMode': ?authMode,
       'authType': authType,
       'name': ?name,
-      'secretInfo': ?pulumi.Input.mapOptionalInputValue<KeyVaultSecretReferenceSecretInfo, Map<String, dynamic>>(secretInfo, (value) => value.toMap()),
+      'secretInfo': ?secretInfo,
     };
   }
 
   factory SecretAuthInfo.fromMap(Map<String, dynamic> map) {
     return SecretAuthInfo(
-      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       authType: pulumi.Input.fromValue(map['authType'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secretInfo: (() { final guardedValue = map['secretInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultSecretReferenceSecretInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      secretInfo: (() { final guardedValue = map['secretInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

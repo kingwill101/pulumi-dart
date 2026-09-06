@@ -10,7 +10,7 @@ class GetGen1EnvironmentArgs {
   /// The name of the Time Series Insights environment associated with the specified resource group.
   final pulumi.Input<String> environmentName;
   /// Setting $expand=status will include the status of the internal services of the environment in the Time Series Insights service.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Name of an Azure Resource group.
   final pulumi.Input<String> resourceGroupName;
 

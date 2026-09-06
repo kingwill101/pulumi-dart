@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the Provisioning for the managed network of a cognitive services account.
 class ManagedNetworkProvisionStatusResponse {
   /// Status for the managed network of a cognitive services account.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ManagedNetworkProvisionStatusResponse].
   /// [status] Status for the managed network of a cognitive services account.

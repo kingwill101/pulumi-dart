@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ServiceArtifactReferenceResponse {
   /// The service artifact reference id in the form of
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ServiceArtifactReferenceResponse].
   /// [id] The service artifact reference id in the form of

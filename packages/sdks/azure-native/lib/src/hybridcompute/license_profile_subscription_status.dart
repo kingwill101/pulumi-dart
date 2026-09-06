@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the subscription status of the product.
-enum LicenseProfileSubscriptionStatus {
+enum LicenseProfileSubscriptionStatus implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueEnabling("Enabling"),
   valueEnabled("Enabled"),
@@ -8,6 +10,7 @@ enum LicenseProfileSubscriptionStatus {
   valueFailed("Failed");
 
   const LicenseProfileSubscriptionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseProfileSubscriptionStatus fromValue(String value) {

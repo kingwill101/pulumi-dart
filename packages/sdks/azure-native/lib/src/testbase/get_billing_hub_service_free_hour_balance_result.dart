@@ -26,7 +26,7 @@ class GetBillingHubServiceFreeHourBalanceResult {
   factory GetBillingHubServiceFreeHourBalanceResult.fromMap(Map<String, dynamic> map) {
     return GetBillingHubServiceFreeHourBalanceResult(
       incrementEntries: (() { final guardedValue = map['incrementEntries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingHubFreeHourIncrementEntryResponse>(guardedValue, (value) => BillingHubFreeHourIncrementEntryResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      totalRemainingFreeHours: (() { final guardedValue = map['totalRemainingFreeHours']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      totalRemainingFreeHours: (() { final guardedValue = map['totalRemainingFreeHours']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

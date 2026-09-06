@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of a Kusto offering.
-enum KustoOfferingType {
+enum KustoOfferingType implements pulumi.PulumiEnum<String> {
   adx("adx"),
   free("free"),
   fabric("fabric");
 
   const KustoOfferingType(this.wireValue);
+  @override
   final String wireValue;
 
   static KustoOfferingType fromValue(String value) {

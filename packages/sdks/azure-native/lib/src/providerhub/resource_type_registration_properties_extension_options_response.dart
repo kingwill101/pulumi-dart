@@ -6,7 +6,7 @@ import 'resource_type_extension_options_resource_creation_begin_response.dart';
 /// The extension options.
 class ResourceTypeRegistrationPropertiesExtensionOptionsResponse {
   /// Resource creation begin.
-  final pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginResponse>? resourceCreationBegin;
+  final pulumi.Input<ResourceTypeExtensionOptionsResourceCreationBeginResponse?>? resourceCreationBegin;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesExtensionOptionsResponse].
   /// [resourceCreationBegin] Resource creation begin.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the authentication for the origin.
-enum OriginAuthenticationType {
+enum OriginAuthenticationType implements pulumi.PulumiEnum<String> {
   systemAssignedIdentity("SystemAssignedIdentity"),
   userAssignedIdentity("UserAssignedIdentity");
 
   const OriginAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static OriginAuthenticationType fromValue(String value) {

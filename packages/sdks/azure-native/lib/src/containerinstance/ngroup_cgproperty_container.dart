@@ -6,9 +6,9 @@ import 'ngroup_cgproperty_container_properties.dart';
 /// Container properties that can be provided with NGroups object.
 class NGroupCGPropertyContainer {
   /// container name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// container properties
-  final pulumi.Input<NGroupCGPropertyContainerProperties>? properties;
+  final pulumi.Input<NGroupCGPropertyContainerProperties?>? properties;
 
   /// Creates a new [NGroupCGPropertyContainer].
   /// [name] container name

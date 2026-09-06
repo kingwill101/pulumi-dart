@@ -12,11 +12,11 @@ class DataLakeFabricStorage {
   /// DataLake fabric storage endpoint to use.
   final pulumi.Input<String> endpoint;
   /// Fabric path type to use.
-  final pulumi.Input<String> fabricPath;
+  final pulumi.Input<dynamic> fabricPath;
   /// Fabric one lake Guids.
-  final pulumi.Input<FabricGuids>? guids;
+  final pulumi.Input<FabricGuids?>? guids;
   /// Fabric one lake Names.
-  final pulumi.Input<FabricNames>? names;
+  final pulumi.Input<FabricNames?>? names;
 
   /// Creates a new [DataLakeFabricStorage].
   /// [authentication] DataLake fabric storage authentication details.
@@ -46,7 +46,7 @@ class DataLakeFabricStorage {
     return DataLakeFabricStorage(
       authentication: pulumi.Input.fromValue(DataLakeFabricStorageAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      fabricPath: pulumi.Input.fromValue(map['fabricPath'] as String),
+      fabricPath: pulumi.Input.fromValue(map['fabricPath']),
       guids: (() { final guardedValue = map['guids']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FabricGuids.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       names: (() { final guardedValue = map['names']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FabricNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

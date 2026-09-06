@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the token example enabled or disabled.
-enum TokenStatus {
+enum TokenStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const TokenStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static TokenStatus fromValue(String value) {

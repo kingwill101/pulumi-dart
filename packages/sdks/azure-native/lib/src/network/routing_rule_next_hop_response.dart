@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Next hop.
 class RoutingRuleNextHopResponse {
   /// Next hop address. Only required if the next hop type is VirtualAppliance.
-  final pulumi.Input<String>? nextHopAddress;
+  final pulumi.Input<String?>? nextHopAddress;
   /// Next hop type.
   final pulumi.Input<String> nextHopType;
 

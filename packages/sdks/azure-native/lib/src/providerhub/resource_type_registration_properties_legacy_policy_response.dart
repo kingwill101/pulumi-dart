@@ -5,8 +5,8 @@ import 'legacy_disallowed_condition_response.dart';
 
 /// The legacy policy.
 class ResourceTypeRegistrationPropertiesLegacyPolicyResponse {
-  final pulumi.Input<List<LegacyDisallowedConditionResponse>>? disallowedConditions;
-  final pulumi.Input<List<String>>? disallowedLegacyOperations;
+  final pulumi.Input<List<LegacyDisallowedConditionResponse>?>? disallowedConditions;
+  final pulumi.Input<List<String>?>? disallowedLegacyOperations;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesLegacyPolicyResponse].
   /// [disallowedConditions] Optional.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The VNet solution for linker
 class VNetSolution {
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<dynamic>? deleteOrUpdateBehavior;
   /// Type of VNet solution.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [VNetSolution].
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
@@ -26,8 +26,8 @@ class VNetSolution {
 
   factory VNetSolution.fromMap(Map<String, dynamic> map) {
     return VNetSolution(
-      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

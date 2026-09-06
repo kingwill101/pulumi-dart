@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connectedvmwarevsphere_hybrid_identity_metadatum_args_doc}
 class HybridIdentityMetadatumArgs {
   /// Name of the hybridIdentityMetadata.
-  final pulumi.Input<String>? metadataName;
+  final pulumi.Input<String?>? metadataName;
   /// Gets or sets the Public Key.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
   /// Gets or sets the Vm Id.
-  final pulumi.Input<String>? vmId;
+  final pulumi.Input<String?>? vmId;
 
   /// Creates a new [HybridIdentityMetadatumArgs].
   /// [metadataName] Name of the hybridIdentityMetadata.

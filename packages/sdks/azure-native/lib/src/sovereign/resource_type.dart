@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the resource.
-enum ResourceType {
+enum ResourceType implements pulumi.PulumiEnum<String> {
   azureFirewalls("azureFirewalls"),
   workspaces("workspaces"),
   automationAccounts("automationAccounts"),
@@ -12,6 +14,7 @@ enum ResourceType {
   routeTables("routeTables");
 
   const ResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network Virtual Appliance Sku Properties.
 class BreakOutCategoryPolicies {
   /// Flag to control breakout of o365 allow category.
-  final pulumi.Input<bool>? allow;
+  final pulumi.Input<bool?>? allow;
   /// Flag to control breakout of o365 default category.
-  final pulumi.Input<bool>? default_;
+  final pulumi.Input<bool?>? default_;
   /// Flag to control breakout of o365 optimize category.
-  final pulumi.Input<bool>? optimize;
+  final pulumi.Input<bool?>? optimize;
 
   /// Creates a new [BreakOutCategoryPolicies].
   /// [allow] Flag to control breakout of o365 allow category.

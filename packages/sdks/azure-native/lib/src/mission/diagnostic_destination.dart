@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Diagnostic Destination.
-enum DiagnosticDestination {
+enum DiagnosticDestination implements pulumi.PulumiEnum<String> {
   communityOnly("CommunityOnly"),
   enclaveOnly("EnclaveOnly"),
   both("Both");
 
   const DiagnosticDestination(this.wireValue);
+  @override
   final String wireValue;
 
   static DiagnosticDestination fromValue(String value) {

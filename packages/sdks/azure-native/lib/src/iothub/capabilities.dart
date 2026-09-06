@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The capabilities and features enabled for the IoT hub.
-enum Capabilities {
+enum Capabilities implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueDeviceManagement("DeviceManagement");
 
   const Capabilities(this.wireValue);
+  @override
   final String wireValue;
 
   static Capabilities fromValue(String value) {

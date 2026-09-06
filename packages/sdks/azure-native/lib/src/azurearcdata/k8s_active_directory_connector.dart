@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class K8sActiveDirectoryConnector {
   /// Name of the connector
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name space of the connector
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [K8sActiveDirectoryConnector].
   /// [name] Name of the connector

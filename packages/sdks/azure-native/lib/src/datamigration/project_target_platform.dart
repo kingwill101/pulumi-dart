@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target platform for the project
-enum ProjectTargetPlatform {
+enum ProjectTargetPlatform implements pulumi.PulumiEnum<String> {
   valueSQLDB("SQLDB"),
   valueSQLMI("SQLMI"),
   valueAzureDbForMySql("AzureDbForMySql"),
@@ -8,6 +10,7 @@ enum ProjectTargetPlatform {
   valueUnknown("Unknown");
 
   const ProjectTargetPlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static ProjectTargetPlatform fromValue(String value) {

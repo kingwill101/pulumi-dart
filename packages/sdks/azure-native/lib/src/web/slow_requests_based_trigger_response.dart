@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trigger based on request execution time.
 class SlowRequestsBasedTriggerResponse {
   /// Request Count.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Request Path.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Time interval.
-  final pulumi.Input<String>? timeInterval;
+  final pulumi.Input<String?>? timeInterval;
   /// Time taken.
-  final pulumi.Input<String>? timeTaken;
+  final pulumi.Input<String?>? timeTaken;
 
   /// Creates a new [SlowRequestsBasedTriggerResponse].
   /// [count] Request Count.
@@ -36,7 +36,7 @@ class SlowRequestsBasedTriggerResponse {
 
   factory SlowRequestsBasedTriggerResponse.fromMap(Map<String, dynamic> map) {
     return SlowRequestsBasedTriggerResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeTaken: (() { final guardedValue = map['timeTaken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

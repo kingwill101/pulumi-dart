@@ -6,25 +6,25 @@ import 'sub_resource.dart';
 /// Redirect configuration of an application gateway.
 class ApplicationGatewayRedirectConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Include path in the redirected url.
-  final pulumi.Input<bool>? includePath;
+  final pulumi.Input<bool?>? includePath;
   /// Include query string in the redirected url.
-  final pulumi.Input<bool>? includeQueryString;
+  final pulumi.Input<bool?>? includeQueryString;
   /// Name of the redirect configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rules specifying redirect configuration.
-  final pulumi.Input<List<SubResource>>? pathRules;
+  final pulumi.Input<List<SubResource>?>? pathRules;
   /// HTTP redirection type.
-  final pulumi.Input<String>? redirectType;
+  final pulumi.Input<dynamic>? redirectType;
   /// Request routing specifying redirect configuration.
-  final pulumi.Input<List<SubResource>>? requestRoutingRules;
+  final pulumi.Input<List<SubResource>?>? requestRoutingRules;
   /// Reference to a listener to redirect the request to.
-  final pulumi.Input<SubResource>? targetListener;
+  final pulumi.Input<SubResource?>? targetListener;
   /// Url to redirect the request to.
-  final pulumi.Input<String>? targetUrl;
+  final pulumi.Input<String?>? targetUrl;
   /// Url path maps specifying default redirect configuration.
-  final pulumi.Input<List<SubResource>>? urlPathMaps;
+  final pulumi.Input<List<SubResource>?>? urlPathMaps;
 
   /// Creates a new [ApplicationGatewayRedirectConfiguration].
   /// [id] Resource ID.
@@ -72,7 +72,7 @@ class ApplicationGatewayRedirectConfiguration {
       includeQueryString: (() { final guardedValue = map['includeQueryString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathRules: (() { final guardedValue = map['pathRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      redirectType: (() { final guardedValue = map['redirectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redirectType: (() { final guardedValue = map['redirectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       requestRoutingRules: (() { final guardedValue = map['requestRoutingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       targetListener: (() { final guardedValue = map['targetListener']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       targetUrl: (() { final guardedValue = map['targetUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

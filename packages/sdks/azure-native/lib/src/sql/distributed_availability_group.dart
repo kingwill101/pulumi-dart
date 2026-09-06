@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'distributed_availability_group_args.dart';
+import 'distributed_availability_group_database_response.dart';
 
 /// Distributed availability group between box and Sql Managed Instance.
 ///
@@ -399,7 +400,7 @@ class DistributedAvailabilityGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Databases in the distributed availability group
-  late final pulumi.Output<List<Map<String, dynamic>>?> databases;
+  late final pulumi.Output<List<DistributedAvailabilityGroupDatabaseResponse>?> databases;
   /// ID of the distributed availability group
   late final pulumi.Output<String> distributedAvailabilityGroupId;
   /// Name of the distributed availability group
@@ -440,7 +441,32 @@ class DistributedAvailabilityGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    databases = registerOutput<List<Map<String, dynamic>>?>('databases');
+    databases = registerOutput<List<DistributedAvailabilityGroupDatabaseResponse>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(guardedValue, (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    distributedAvailabilityGroupId = registerOutput<String>('distributedAvailabilityGroupId');
+    distributedAvailabilityGroupName = registerOutput<String>('distributedAvailabilityGroupName');
+    failoverMode = registerOutput<String?>('failoverMode');
+    instanceAvailabilityGroupName = registerOutput<String?>('instanceAvailabilityGroupName');
+    instanceLinkRole = registerOutput<String?>('instanceLinkRole');
+    this.name = registerOutput<String>('name');
+    partnerAvailabilityGroupName = registerOutput<String?>('partnerAvailabilityGroupName');
+    partnerEndpoint = registerOutput<String?>('partnerEndpoint');
+    partnerLinkRole = registerOutput<String>('partnerLinkRole');
+    replicationMode = registerOutput<String?>('replicationMode');
+    seedingMode = registerOutput<String?>('seedingMode');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DistributedAvailabilityGroup] resource.
+  DistributedAvailabilityGroup.reference(String urn)
+    : super(
+        'azure-native:sql:DistributedAvailabilityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databases = registerOutput<List<DistributedAvailabilityGroupDatabaseResponse>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DistributedAvailabilityGroupDatabaseResponse>(guardedValue, (value) => DistributedAvailabilityGroupDatabaseResponse.fromMap((value as Map).cast<String, dynamic>())); });
     distributedAvailabilityGroupId = registerOutput<String>('distributedAvailabilityGroupId');
     distributedAvailabilityGroupName = registerOutput<String>('distributedAvailabilityGroupName');
     failoverMode = registerOutput<String?>('failoverMode');

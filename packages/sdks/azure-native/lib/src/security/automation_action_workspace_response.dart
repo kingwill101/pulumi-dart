@@ -8,7 +8,7 @@ class AutomationActionWorkspaceResponse {
   /// Expected value is 'Workspace'.
   final pulumi.Input<String> actionType;
   /// The fully qualified Log Analytics Workspace Azure Resource ID.
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [AutomationActionWorkspaceResponse].
   /// [actionType] Enum. Indicates the action type.

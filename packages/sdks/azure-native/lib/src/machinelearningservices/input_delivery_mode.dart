@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to determine the input data delivery mode.
-enum InputDeliveryMode {
+enum InputDeliveryMode implements pulumi.PulumiEnum<String> {
   readOnlyMount("ReadOnlyMount"),
   readWriteMount("ReadWriteMount"),
   download("Download"),
@@ -8,6 +10,7 @@ enum InputDeliveryMode {
   evalDownload("EvalDownload");
 
   const InputDeliveryMode(this.wireValue);
+  @override
   final String wireValue;
 
   static InputDeliveryMode fromValue(String value) {

@@ -9,15 +9,15 @@ import 'storage_discovery_workspace_properties.dart';
 /// {@macro pulumi_storagediscovery_storage_discovery_workspace_args_doc}
 class StorageDiscoveryWorkspaceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<StorageDiscoveryWorkspaceProperties>? properties;
+  final pulumi.Input<StorageDiscoveryWorkspaceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the StorageDiscoveryWorkspace
-  final pulumi.Input<String>? storageDiscoveryWorkspaceName;
+  final pulumi.Input<String?>? storageDiscoveryWorkspaceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageDiscoveryWorkspaceArgs].
   /// [location] The geo-location where the resource lives

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The current Term object.
 class SaasPropertiesResponseTerm {
   /// The end date of the current term
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The start date of the current term
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// The unit indicating Monthly / Yearly
-  final pulumi.Input<String>? termUnit;
+  final pulumi.Input<String?>? termUnit;
 
   /// Creates a new [SaasPropertiesResponseTerm].
   /// [endDate] The end date of the current term

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aadauth_type_connection_properties.dart';
 
 /// {@template pulumi_cognitiveservices_account_connection_args_doc}
 /// The set of arguments for AccountConnection.
@@ -11,9 +10,9 @@ class AccountConnectionArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Friendly name of the connection
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Connection property base schema.
-  final pulumi.Input<AADAuthTypeConnectionProperties> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,7 +32,7 @@ class AccountConnectionArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'connectionName': ?connectionName,
-      'properties': pulumi.Input.mapInputValue<AADAuthTypeConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -42,7 +41,7 @@ class AccountConnectionArgs {
     return AccountConnectionArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: pulumi.Input.fromValue(AADAuthTypeConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

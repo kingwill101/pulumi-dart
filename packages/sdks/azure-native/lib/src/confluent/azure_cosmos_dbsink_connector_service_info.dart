@@ -8,15 +8,15 @@ class AzureCosmosDBSinkConnectorServiceInfo {
   /// Expected value is 'AzureCosmosDBSinkConnector'.
   final pulumi.Input<String> connectorServiceType;
   /// Azure Cosmos Database Connection Endpoint
-  final pulumi.Input<String>? cosmosConnectionEndpoint;
+  final pulumi.Input<String?>? cosmosConnectionEndpoint;
   /// Azure Cosmos Database Containers Topic Mapping
-  final pulumi.Input<String>? cosmosContainersTopicMapping;
+  final pulumi.Input<String?>? cosmosContainersTopicMapping;
   /// Azure Cosmos Database Name
-  final pulumi.Input<String>? cosmosDatabaseName;
+  final pulumi.Input<String?>? cosmosDatabaseName;
   /// Azure Cosmos Database Id Strategy
-  final pulumi.Input<String>? cosmosIdStrategy;
+  final pulumi.Input<String?>? cosmosIdStrategy;
   /// Azure Cosmos Database Master Key
-  final pulumi.Input<String>? cosmosMasterKey;
+  final pulumi.Input<String?>? cosmosMasterKey;
 
   /// Creates a new [AzureCosmosDBSinkConnectorServiceInfo].
   /// [connectorServiceType] The connector service type.

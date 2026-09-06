@@ -6,9 +6,9 @@ import 'allowed_principals_response.dart';
 /// The configuration settings of the Azure Active Directory default authorization policy.
 class DefaultAuthorizationPolicyResponse {
   /// The configuration settings of the Azure Active Directory allowed applications.
-  final pulumi.Input<List<String>>? allowedApplications;
+  final pulumi.Input<List<String>?>? allowedApplications;
   /// The configuration settings of the Azure Active Directory allowed principals.
-  final pulumi.Input<AllowedPrincipalsResponse>? allowedPrincipals;
+  final pulumi.Input<AllowedPrincipalsResponse?>? allowedPrincipals;
 
   /// Creates a new [DefaultAuthorizationPolicyResponse].
   /// [allowedApplications] The configuration settings of the Azure Active Directory allowed applications.

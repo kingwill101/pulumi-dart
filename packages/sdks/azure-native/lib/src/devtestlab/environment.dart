@@ -233,7 +233,30 @@ class Environment extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resourceGroupId = registerOutput<String>('resourceGroupId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'azure-native:devtestlab:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    armTemplateDisplayName = registerOutput<String?>('armTemplateDisplayName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdByUser = registerOutput<String>('createdByUser');
+    deploymentProperties = registerOutput<EnvironmentDeploymentPropertiesResponse?>('deploymentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentDeploymentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGroupId = registerOutput<String>('resourceGroupId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }

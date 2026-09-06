@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the managed inbound Load Balancer BackendPool.
-enum BackendPoolType {
+enum BackendPoolType implements pulumi.PulumiEnum<String> {
   valueNodeIPConfiguration("NodeIPConfiguration"),
   valueNodeIP("NodeIP");
 
   const BackendPoolType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackendPoolType fromValue(String value) {

@@ -9,7 +9,7 @@ class ContainerGroupProperties {
   /// Specifies container group profile of standby container groups.
   final pulumi.Input<ContainerGroupProfile> containerGroupProfile;
   /// Specifies subnet Ids for container group.
-  final pulumi.Input<List<Subnet>>? subnetIds;
+  final pulumi.Input<List<Subnet>?>? subnetIds;
 
   /// Creates a new [ContainerGroupProperties].
   /// [containerGroupProfile] Specifies container group profile of standby container groups.

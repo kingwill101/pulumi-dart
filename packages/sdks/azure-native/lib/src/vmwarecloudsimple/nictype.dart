@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// NIC type
-enum NICType {
+enum NICType implements pulumi.PulumiEnum<String> {
   valueE1000("E1000"),
   valueE1000E("E1000E"),
   valuePCNET32("PCNET32"),
@@ -8,6 +10,7 @@ enum NICType {
   valueVMXNET3("VMXNET3");
 
   const NICType(this.wireValue);
+  @override
   final String wireValue;
 
   static NICType fromValue(String value) {

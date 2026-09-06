@@ -9,9 +9,9 @@ import 'private_endpoint_connection_properties.dart';
 /// {@macro pulumi_search_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection to the Azure AI Search service with the specified resource group.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Describes the properties of an existing private endpoint connection to the Azure AI Search service.
-  final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure AI Search service associated with the specified resource group.

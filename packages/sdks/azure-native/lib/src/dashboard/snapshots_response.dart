@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Grafana Snapshots settings
 class SnapshotsResponse {
   /// Set to false to disable external snapshot publish endpoint
-  final pulumi.Input<bool>? externalEnabled;
+  final pulumi.Input<bool?>? externalEnabled;
 
   /// Creates a new [SnapshotsResponse].
   /// [externalEnabled] Set to false to disable external snapshot publish endpoint

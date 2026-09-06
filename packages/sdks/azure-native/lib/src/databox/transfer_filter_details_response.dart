@@ -8,25 +8,25 @@ import 'filter_file_details_response.dart';
 /// Details of the filtering the transfer of data.
 class TransferFilterDetailsResponse {
   /// Filter details to transfer Azure files.
-  final pulumi.Input<AzureFileFilterDetailsResponse>? azureFileFilterDetails;
+  final pulumi.Input<AzureFileFilterDetailsResponse?>? azureFileFilterDetails;
   /// Filter details to transfer blobs.
-  final pulumi.Input<BlobFilterDetailsResponse>? blobFilterDetails;
+  final pulumi.Input<BlobFilterDetailsResponse?>? blobFilterDetails;
   /// Type of the account of data.
   final pulumi.Input<String> dataAccountType;
   /// Details of the filter files to be used for data transfer.
-  final pulumi.Input<List<FilterFileDetailsResponse>>? filterFileDetails;
+  final pulumi.Input<List<FilterFileDetailsResponse>?>? filterFileDetails;
 
   /// Creates a new [TransferFilterDetailsResponse].
   /// [azureFileFilterDetails] Filter details to transfer Azure files.
   /// [blobFilterDetails] Filter details to transfer blobs.
   /// [dataAccountType] Type of the account of data.
   /// [filterFileDetails] Details of the filter files to be used for data transfer.
-  const TransferFilterDetailsResponse({
+  TransferFilterDetailsResponse({
     this.azureFileFilterDetails,
     this.blobFilterDetails,
-    required this.dataAccountType,
+    pulumi.Input<String>? dataAccountType,
     this.filterFileDetails,
-  });
+  }) : dataAccountType = dataAccountType ?? pulumi.Input.fromValue('StorageAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

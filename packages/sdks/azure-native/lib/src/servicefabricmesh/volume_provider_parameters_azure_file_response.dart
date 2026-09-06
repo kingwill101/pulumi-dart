@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This type describes a volume provided by an Azure Files file share.
 class VolumeProviderParametersAzureFileResponse {
   /// Access key of the Azure storage account for the File Share.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Name of the Azure storage account for the File Share.
   final pulumi.Input<String> accountName;
   /// Name of the Azure Files file share that provides storage for the volume.

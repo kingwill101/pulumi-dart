@@ -5,17 +5,17 @@ import 'virtual_machine_ssh_credentials.dart';
 
 class VirtualMachineSchemaProperties {
   /// Public IP address of the virtual machine.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Admin credentials for virtual machine
-  final pulumi.Input<VirtualMachineSshCredentials>? administratorAccount;
+  final pulumi.Input<VirtualMachineSshCredentials?>? administratorAccount;
   /// Indicates whether this compute will be used for running notebooks.
-  final pulumi.Input<bool>? isNotebookInstanceCompute;
+  final pulumi.Input<bool?>? isNotebookInstanceCompute;
   /// Notebook server port open for ssh connections.
-  final pulumi.Input<int>? notebookServerPort;
+  final pulumi.Input<int?>? notebookServerPort;
   /// Port open for ssh connections.
-  final pulumi.Input<int>? sshPort;
+  final pulumi.Input<int?>? sshPort;
   /// Virtual Machine size
-  final pulumi.Input<String>? virtualMachineSize;
+  final pulumi.Input<String?>? virtualMachineSize;
 
   /// Creates a new [VirtualMachineSchemaProperties].
   /// [address] Public IP address of the virtual machine.
@@ -49,8 +49,8 @@ class VirtualMachineSchemaProperties {
       address: (() { final guardedValue = map['address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       administratorAccount: (() { final guardedValue = map['administratorAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineSshCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isNotebookInstanceCompute: (() { final guardedValue = map['isNotebookInstanceCompute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      notebookServerPort: (() { final guardedValue = map['notebookServerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      sshPort: (() { final guardedValue = map['sshPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      notebookServerPort: (() { final guardedValue = map['notebookServerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sshPort: (() { final guardedValue = map['sshPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       virtualMachineSize: (() { final guardedValue = map['virtualMachineSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

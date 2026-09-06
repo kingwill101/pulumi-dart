@@ -282,7 +282,7 @@ class CustomLocation extends pulumi.CustomResource {
         ) {
     authentication = registerOutput<CustomLocationPropertiesAuthenticationResponse?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationPropertiesAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterExtensionIds = registerOutput<List<String>?>('clusterExtensionIds');
+    clusterExtensionIds = registerOutput<List<String>?>('clusterExtensionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String?>('displayName');
     hostResourceId = registerOutput<String?>('hostResourceId');
     hostType = registerOutput<String?>('hostType');
@@ -292,7 +292,32 @@ class CustomLocation extends pulumi.CustomResource {
     namespace = registerOutput<String?>('namespace');
     provisioningState = registerOutput<String?>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CustomLocation] resource.
+  CustomLocation.reference(String urn)
+    : super(
+        'azure-native:extendedlocation:CustomLocation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authentication = registerOutput<CustomLocationPropertiesAuthenticationResponse?>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomLocationPropertiesAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterExtensionIds = registerOutput<List<String>?>('clusterExtensionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String?>('displayName');
+    hostResourceId = registerOutput<String?>('hostResourceId');
+    hostType = registerOutput<String?>('hostType');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

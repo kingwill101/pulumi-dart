@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The governance email weekly notification configuration
 class GovernanceRuleEmailNotification {
   /// Defines whether manager email notifications are disabled
-  final pulumi.Input<bool>? disableManagerEmailNotification;
+  final pulumi.Input<bool?>? disableManagerEmailNotification;
   /// Defines whether owner email notifications are disabled
-  final pulumi.Input<bool>? disableOwnerEmailNotification;
+  final pulumi.Input<bool?>? disableOwnerEmailNotification;
 
   /// Creates a new [GovernanceRuleEmailNotification].
   /// [disableManagerEmailNotification] Defines whether manager email notifications are disabled

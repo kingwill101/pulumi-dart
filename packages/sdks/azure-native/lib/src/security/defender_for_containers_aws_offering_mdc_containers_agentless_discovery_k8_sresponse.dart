@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Microsoft Defender container agentless discovery K8s configuration
 class DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Is Microsoft Defender container agentless discovery K8s enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

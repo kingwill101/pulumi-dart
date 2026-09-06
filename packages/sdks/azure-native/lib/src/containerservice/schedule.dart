@@ -9,13 +9,13 @@ import 'weekly_schedule.dart';
 /// One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule.
 class Schedule {
   /// For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.
-  final pulumi.Input<AbsoluteMonthlySchedule>? absoluteMonthly;
+  final pulumi.Input<AbsoluteMonthlySchedule?>? absoluteMonthly;
   /// For schedules like: 'recur every day' or 'recur every 3 days'.
-  final pulumi.Input<DailySchedule>? daily;
+  final pulumi.Input<DailySchedule?>? daily;
   /// For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'.
-  final pulumi.Input<RelativeMonthlySchedule>? relativeMonthly;
+  final pulumi.Input<RelativeMonthlySchedule?>? relativeMonthly;
   /// For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'.
-  final pulumi.Input<WeeklySchedule>? weekly;
+  final pulumi.Input<WeeklySchedule?>? weekly;
 
   /// Creates a new [Schedule].
   /// [absoluteMonthly] For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'.

@@ -15,43 +15,43 @@ import 'service_statuses.dart';
 /// {@macro pulumi_hybridcompute_machine_args_doc}
 class MachineArgs {
   /// The info of the machine w.r.t Agent Upgrade
-  final pulumi.Input<AgentUpgrade>? agentUpgrade;
+  final pulumi.Input<AgentUpgrade?>? agentUpgrade;
   /// Public Key that the client provides to be used during initial resource onboarding
-  final pulumi.Input<String>? clientPublicKey;
+  final pulumi.Input<String?>? clientPublicKey;
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Machine Extensions information (deprecated field)
-  final pulumi.Input<List<MachineExtensionInstanceView>>? extensions;
+  final pulumi.Input<List<MachineExtensionInstanceView>?>? extensions;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Indicates which kind of Arc machine placement on-premises, such as HCI, SCVMM or VMware etc.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// Specifies the License related properties for a machine.
-  final pulumi.Input<LicenseProfileMachineInstanceView>? licenseProfile;
+  final pulumi.Input<LicenseProfileMachineInstanceView?>? licenseProfile;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Metadata pertaining to the geographic location of the resource.
-  final pulumi.Input<LocationData>? locationData;
+  final pulumi.Input<LocationData?>? locationData;
   /// The name of the hybrid machine.
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
   /// Specifies whether any MS SQL instance is discovered on the machine.
-  final pulumi.Input<String>? mssqlDiscovered;
+  final pulumi.Input<String?>? mssqlDiscovered;
   /// Specifies the operating system settings for the hybrid machine.
-  final pulumi.Input<OSProfile>? osProfile;
+  final pulumi.Input<OSProfile?>? osProfile;
   /// The type of Operating System (windows/linux).
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The resource id of the parent cluster (Azure HCI) this machine is assigned to, if any.
-  final pulumi.Input<String>? parentClusterResourceId;
+  final pulumi.Input<String?>? parentClusterResourceId;
   /// The resource id of the private link scope this machine is assigned to, if any.
-  final pulumi.Input<String>? privateLinkScopeResourceId;
+  final pulumi.Input<String?>? privateLinkScopeResourceId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Statuses of dependent services that are reported back to ARM.
-  final pulumi.Input<ServiceStatuses>? serviceStatuses;
+  final pulumi.Input<ServiceStatuses?>? serviceStatuses;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies the hybrid machine unique ID.
-  final pulumi.Input<String>? vmId;
+  final pulumi.Input<String?>? vmId;
 
   /// Creates a new [MachineArgs].
   /// [agentUpgrade] The info of the machine w.r.t Agent Upgrade
@@ -126,7 +126,7 @@ class MachineArgs {
       expand: (() { final guardedValue = map['expand']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MachineExtensionInstanceView>(guardedValue, (value) => MachineExtensionInstanceView.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       licenseProfile: (() { final guardedValue = map['licenseProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LicenseProfileMachineInstanceView.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locationData: (() { final guardedValue = map['locationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocationData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

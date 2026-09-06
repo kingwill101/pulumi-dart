@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of Sensitive Data Discovery.
 class SensitiveDataDiscoveryProperties {
   /// Indicates whether Sensitive Data Discovery should be enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
 
   /// Creates a new [SensitiveDataDiscoveryProperties].
   /// [isEnabled] Indicates whether Sensitive Data Discovery should be enabled.

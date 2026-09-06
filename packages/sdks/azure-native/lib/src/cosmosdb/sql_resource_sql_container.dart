@@ -1014,7 +1014,25 @@ class SqlResourceSqlContainer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<SqlContainerGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<SqlContainerGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SqlResourceSqlContainer] resource.
+  SqlResourceSqlContainer.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:SqlResourceSqlContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<SqlContainerGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resource = registerOutput<SqlContainerGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SqlContainerGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

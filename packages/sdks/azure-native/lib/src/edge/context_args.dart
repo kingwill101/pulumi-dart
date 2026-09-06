@@ -9,15 +9,15 @@ import 'context_properties.dart';
 /// {@macro pulumi_edge_context_args_doc}
 class ContextArgs {
   /// The name of the Context.
-  final pulumi.Input<String>? contextName;
+  final pulumi.Input<String?>? contextName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ContextProperties>? properties;
+  final pulumi.Input<ContextProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ContextArgs].
   /// [contextName] The name of the Context.

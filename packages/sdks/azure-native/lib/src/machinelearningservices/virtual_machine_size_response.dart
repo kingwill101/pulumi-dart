@@ -6,7 +6,7 @@ import 'estimated_vmprices_response.dart';
 /// Describes the properties of a VM size.
 class VirtualMachineSizeResponse {
   /// The estimated price information for using a VM.
-  final pulumi.Input<EstimatedVMPricesResponse>? estimatedVMPrices;
+  final pulumi.Input<EstimatedVMPricesResponse?>? estimatedVMPrices;
   /// The family name of the virtual machine size.
   final pulumi.Input<String> family;
   /// The number of gPUs supported by the virtual machine size.
@@ -24,7 +24,7 @@ class VirtualMachineSizeResponse {
   /// Specifies if the virtual machine size supports premium IO.
   final pulumi.Input<bool> premiumIO;
   /// Specifies the compute types supported by the virtual machine size.
-  final pulumi.Input<List<String>>? supportedComputeTypes;
+  final pulumi.Input<List<String>?>? supportedComputeTypes;
   /// The number of vCPUs supported by the virtual machine size.
   final pulumi.Input<int> vCPUs;
 
@@ -74,15 +74,15 @@ class VirtualMachineSizeResponse {
     return VirtualMachineSizeResponse(
       estimatedVMPrices: (() { final guardedValue = map['estimatedVMPrices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EstimatedVMPricesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       family: pulumi.Input.fromValue(map['family'] as String),
-      gpus: pulumi.Input.fromValue(map['gpus'] as int),
+      gpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gpus'])),
       lowPriorityCapable: pulumi.Input.fromValue(map['lowPriorityCapable'] as bool),
-      maxResourceVolumeMB: pulumi.Input.fromValue(map['maxResourceVolumeMB'] as int),
-      memoryGB: pulumi.Input.fromValue(map['memoryGB'] as double),
+      maxResourceVolumeMB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxResourceVolumeMB'])),
+      memoryGB: pulumi.Input.fromValue((map['memoryGB'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
-      osVhdSizeMB: pulumi.Input.fromValue(map['osVhdSizeMB'] as int),
+      osVhdSizeMB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['osVhdSizeMB'])),
       premiumIO: pulumi.Input.fromValue(map['premiumIO'] as bool),
       supportedComputeTypes: (() { final guardedValue = map['supportedComputeTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      vCPUs: pulumi.Input.fromValue(map['vCPUs'] as int),
+      vCPUs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vCPUs'])),
     );
   }
 }

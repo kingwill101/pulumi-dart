@@ -9,15 +9,15 @@ class RemotePrivateEndpointConnectionResponse {
   /// Resource Id.
   final pulumi.Input<String> id;
   /// Private IPAddresses mapped to the remote private endpoint
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Name.
   final pulumi.Input<String> name;
   /// PrivateEndpoint of a remote private endpoint connection
-  final pulumi.Input<ArmIdWrapperResponse>? privateEndpoint;
+  final pulumi.Input<ArmIdWrapperResponse?>? privateEndpoint;
   /// The state of a private link connection
-  final pulumi.Input<PrivateLinkConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkConnectionStateResponse?>? privateLinkServiceConnectionState;
   final pulumi.Input<String> provisioningState;
   /// Resource type.
   final pulumi.Input<String> type;

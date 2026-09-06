@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Read-only endpoint of the failover group instance.
 class FailoverGroupReadOnlyEndpoint {
   /// Failover policy of the read-only endpoint for the failover group.
-  final pulumi.Input<String>? failoverPolicy;
+  final pulumi.Input<dynamic>? failoverPolicy;
   /// The target partner server where the read-only endpoint points to.
-  final pulumi.Input<String>? targetServer;
+  final pulumi.Input<String?>? targetServer;
 
   /// Creates a new [FailoverGroupReadOnlyEndpoint].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.
@@ -26,7 +26,7 @@ class FailoverGroupReadOnlyEndpoint {
 
   factory FailoverGroupReadOnlyEndpoint.fromMap(Map<String, dynamic> map) {
     return FailoverGroupReadOnlyEndpoint(
-      failoverPolicy: (() { final guardedValue = map['failoverPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failoverPolicy: (() { final guardedValue = map['failoverPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetServer: (() { final guardedValue = map['targetServer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

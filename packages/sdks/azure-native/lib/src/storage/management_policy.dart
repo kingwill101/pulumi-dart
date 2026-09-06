@@ -3474,4 +3474,20 @@ class ManagementPolicy extends pulumi.CustomResource {
     policy = registerOutput<ManagementPolicySchemaResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementPolicySchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ManagementPolicy] resource.
+  ManagementPolicy.reference(String urn)
+    : super(
+        'azure-native:storage:ManagementPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<ManagementPolicySchemaResponse>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementPolicySchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

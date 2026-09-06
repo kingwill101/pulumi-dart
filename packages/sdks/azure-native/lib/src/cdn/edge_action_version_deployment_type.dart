@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The deployment type
-enum EdgeActionVersionDeploymentType {
+enum EdgeActionVersionDeploymentType implements pulumi.PulumiEnum<String> {
   zip("zip"),
   file("file"),
   others("others");
 
   const EdgeActionVersionDeploymentType(this.wireValue);
+  @override
   final String wireValue;
 
   static EdgeActionVersionDeploymentType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model that represents the Customer Managed Storage for an Experiment.
 class CustomerDataStoragePropertiesResponse {
   /// Name of the Azure Blob Storage container to use or create.
-  final pulumi.Input<String>? blobContainerName;
+  final pulumi.Input<String?>? blobContainerName;
   /// ARM Resource ID of the Storage account to use for Customer Data storage.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [CustomerDataStoragePropertiesResponse].
   /// [blobContainerName] Name of the Azure Blob Storage container to use or create.

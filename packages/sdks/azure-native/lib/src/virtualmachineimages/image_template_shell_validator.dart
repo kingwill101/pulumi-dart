@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Runs the specified shell script during the validation phase (Linux). Corresponds to Packer shell provisioner. Exactly one of 'scriptUri' or 'inline' can be specified.
 class ImageTemplateShellValidator {
   /// Array of shell commands to execute
-  final pulumi.Input<List<String>>? inline;
+  final pulumi.Input<List<String>?>? inline;
   /// Friendly Name to provide context on what this validation step does
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
-  final pulumi.Input<String>? scriptUri;
+  final pulumi.Input<String?>? scriptUri;
   /// SHA256 checksum of the shell script provided in the scriptUri field
-  final pulumi.Input<String>? sha256Checksum;
+  final pulumi.Input<String?>? sha256Checksum;
   /// The type of validation you want to use on the Image. For example, "Shell" can be shell validation
   /// Expected value is 'Shell'.
   final pulumi.Input<String> type;
@@ -22,13 +22,13 @@ class ImageTemplateShellValidator {
   /// [scriptUri] URI of the shell script to be run for validation. It can be a github link, Azure Storage URI, etc
   /// [sha256Checksum] SHA256 checksum of the shell script provided in the scriptUri field
   /// [type] The type of validation you want to use on the Image. For example, "Shell" can be shell validation
-  const ImageTemplateShellValidator({
+  ImageTemplateShellValidator({
     this.inline,
     this.name,
     this.scriptUri,
-    this.sha256Checksum,
+    pulumi.Input<String?>? sha256Checksum,
     required this.type,
-  });
+  }) : sha256Checksum = sha256Checksum ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

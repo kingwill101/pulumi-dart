@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_get_workspace_product_policy_args_doc}
 class GetWorkspaceProductPolicyArgs {
   /// Policy Export Format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The identifier of the Policy.
   final pulumi.Input<String> policyId;
   /// Product identifier. Must be unique in the current API Management service instance.

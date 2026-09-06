@@ -512,4 +512,21 @@ class ContentType extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }
+
+  /// Creates a typed reference to an existing [ContentType] resource.
+  ContentType.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ContentType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    schema = registerOutput<dynamic>('schema');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
 }

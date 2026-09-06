@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-enum TransformationSerializationFormat {
+enum TransformationSerializationFormat implements pulumi.PulumiEnum<String> {
   delta("Delta"),
   json("Json"),
   parquet("Parquet");
 
   const TransformationSerializationFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static TransformationSerializationFormat fromValue(String value) {

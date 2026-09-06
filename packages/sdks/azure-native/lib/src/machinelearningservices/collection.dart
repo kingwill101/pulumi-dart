@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Collection {
   /// The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Enable or disable data collection.
-  final pulumi.Input<String>? dataCollectionMode;
+  final pulumi.Input<dynamic>? dataCollectionMode;
   /// The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage.
-  final pulumi.Input<String>? dataId;
+  final pulumi.Input<String?>? dataId;
   /// The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default.
-  final pulumi.Input<double>? samplingRate;
+  final pulumi.Input<double?>? samplingRate;
 
   /// Creates a new [Collection].
   /// [clientId] The msi client id used to collect logging to blob storage. If it's null,backend will pick a registered endpoint identity to auth.
   /// [dataCollectionMode] Enable or disable data collection.
   /// [dataId] The data asset arm resource id. Client side will ensure data asset is pointing to the blob storage, and backend will collect data to the blob storage.
   /// [samplingRate] The sampling rate for collection. Sampling rate 1.0 means we collect 100% of data by default.
-  const Collection({
+  Collection({
     this.clientId,
-    this.dataCollectionMode,
+    pulumi.Input<dynamic>? dataCollectionMode,
     this.dataId,
-    this.samplingRate,
-  });
+    pulumi.Input<double?>? samplingRate,
+  }) : dataCollectionMode = dataCollectionMode ?? pulumi.Input.fromValue('Disabled'), samplingRate = samplingRate ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -36,9 +36,9 @@ class Collection {
   factory Collection.fromMap(Map<String, dynamic> map) {
     return Collection(
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataCollectionMode: (() { final guardedValue = map['dataCollectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataCollectionMode: (() { final guardedValue = map['dataCollectionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dataId: (() { final guardedValue = map['dataId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      samplingRate: (() { final guardedValue = map['samplingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      samplingRate: (() { final guardedValue = map['samplingRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

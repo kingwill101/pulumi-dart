@@ -7,7 +7,7 @@ class ManagedVirtualNetworkReference {
   /// Reference ManagedVirtualNetwork name.
   final pulumi.Input<String> referenceName;
   /// Managed Virtual Network reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ManagedVirtualNetworkReference].
   /// [referenceName] Reference ManagedVirtualNetwork name.
@@ -27,7 +27,7 @@ class ManagedVirtualNetworkReference {
   factory ManagedVirtualNetworkReference.fromMap(Map<String, dynamic> map) {
     return ManagedVirtualNetworkReference(
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

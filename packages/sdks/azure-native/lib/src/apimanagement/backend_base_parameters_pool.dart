@@ -5,7 +5,7 @@ import 'backend_pool_item.dart';
 
 class BackendBaseParametersPool {
   /// The list of backend entities belonging to a pool.
-  final pulumi.Input<List<BackendPoolItem>>? services;
+  final pulumi.Input<List<BackendPoolItem>?>? services;
 
   /// Creates a new [BackendBaseParametersPool].
   /// [services] The list of backend entities belonging to a pool.

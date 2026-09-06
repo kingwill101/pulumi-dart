@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-enum SkuTier {
+enum SkuTier implements pulumi.PulumiEnum<String> {
   valueFree("Free"),
   valueBasic("Basic"),
   valueStandard("Standard"),
   valuePremium("Premium");
 
   const SkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuTier fromValue(String value) {

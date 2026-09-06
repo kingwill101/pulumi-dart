@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum UrlFileExtensionOperator {
+enum UrlFileExtensionOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum UrlFileExtensionOperator {
   regEx("RegEx");
 
   const UrlFileExtensionOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static UrlFileExtensionOperator fromValue(String value) {

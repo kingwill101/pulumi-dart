@@ -15,11 +15,11 @@ class GetInferenceGroupStatusResult {
   /// [actualCapacityInfo] Gets or sets the actual capacity info for the group.
   /// [endpointCount] Gets or sets the actual number of endpoints in the group.
   /// [requestedCapacity] Gets or sets the request number of instances for the group.
-  const GetInferenceGroupStatusResult({
+  GetInferenceGroupStatusResult({
     this.actualCapacityInfo,
-    this.endpointCount,
-    this.requestedCapacity,
-  });
+    int? endpointCount,
+    int? requestedCapacity,
+  }) : endpointCount = endpointCount ?? 0, requestedCapacity = requestedCapacity ?? 0;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +32,8 @@ class GetInferenceGroupStatusResult {
   factory GetInferenceGroupStatusResult.fromMap(Map<String, dynamic> map) {
     return GetInferenceGroupStatusResult(
       actualCapacityInfo: (() { final guardedValue = map['actualCapacityInfo']; if (guardedValue == null) return null; return ActualCapacityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      endpointCount: (() { final guardedValue = map['endpointCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      requestedCapacity: (() { final guardedValue = map['requestedCapacity']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      endpointCount: (() { final guardedValue = map['endpointCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      requestedCapacity: (() { final guardedValue = map['requestedCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

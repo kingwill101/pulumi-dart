@@ -8,7 +8,7 @@ class TestResponse {
   /// The commands used in the test.
   final pulumi.Input<List<CommandResponse>> commands;
   /// Indicates if this test is active.It doesn't schedule test for not active Test.
-  final pulumi.Input<bool>? isActive;
+  final pulumi.Input<bool?>? isActive;
   /// The type of the test.
   final pulumi.Input<String> testType;
   /// Resource identifier of the validation test result.

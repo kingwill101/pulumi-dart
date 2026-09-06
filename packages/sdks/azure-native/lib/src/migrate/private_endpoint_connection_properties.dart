@@ -6,7 +6,7 @@ import 'private_link_service_connection_state.dart';
 /// Private endpoint connection properties.
 class PrivateEndpointConnectionProperties {
   /// State of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
 
   /// Creates a new [PrivateEndpointConnectionProperties].
   /// [privateLinkServiceConnectionState] State of the private endpoint connection.

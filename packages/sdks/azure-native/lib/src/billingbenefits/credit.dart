@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'commitment_response.dart';
 import 'credit_args.dart';
+import 'credit_breakdown_item_response.dart';
 import 'credit_policies_response.dart';
 import 'credit_reason_response.dart';
 import 'managed_service_identity_response.dart';
@@ -845,7 +846,7 @@ class Credit extends pulumi.CustomResource {
   /// Fully-qualified identifier of the billing profile where the benefit is applied. Present only for Field-led or Customer-led customers.
   late final pulumi.Output<String> billingProfileResourceId;
   /// Credit line-items/milestones/no-charge services breakdown
-  late final pulumi.Output<List<Map<String, dynamic>>?> breakdown;
+  late final pulumi.Output<List<CreditBreakdownItemResponse>?> breakdown;
   /// The entire investment amount for the credit contract, including currency and amount
   late final pulumi.Output<CommitmentResponse?> credit;
   /// Fully-qualified identifier of the customer where the savings plan is applied. Present only for Partner-led customers. Format is /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}
@@ -908,7 +909,7 @@ class Credit extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
     billingProfileResourceId = registerOutput<String>('billingProfileResourceId');
-    breakdown = registerOutput<List<Map<String, dynamic>>?>('breakdown');
+    breakdown = registerOutput<List<CreditBreakdownItemResponse>?>('breakdown', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CreditBreakdownItemResponse>(guardedValue, (value) => CreditBreakdownItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     credit = registerOutput<CommitmentResponse?>('credit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customerId = registerOutput<String>('customerId');
     endAt = registerOutput<String?>('endAt');
@@ -929,7 +930,44 @@ class Credit extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemId = registerOutput<String?>('systemId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Credit] resource.
+  Credit.reference(String urn)
+    : super(
+        'azure-native:billingbenefits:Credit',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingAccountResourceId = registerOutput<String?>('billingAccountResourceId');
+    billingProfileResourceId = registerOutput<String>('billingProfileResourceId');
+    breakdown = registerOutput<List<CreditBreakdownItemResponse>?>('breakdown', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CreditBreakdownItemResponse>(guardedValue, (value) => CreditBreakdownItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    credit = registerOutput<CommitmentResponse?>('credit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CommitmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerId = registerOutput<String>('customerId');
+    endAt = registerOutput<String?>('endAt');
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    this.name = registerOutput<String>('name');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    policies = registerOutput<CreditPoliciesResponse?>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreditPoliciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    reason = registerOutput<CreditReasonResponse?>('reason', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreditReasonResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceId = registerOutput<String?>('resourceId');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startAt = registerOutput<String?>('startAt');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemId = registerOutput<String?>('systemId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

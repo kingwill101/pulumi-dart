@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol either UDP or TCP.
-enum Protocol {
+enum Protocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP");
 
   const Protocol(this.wireValue);
+  @override
   final String wireValue;
 
   static Protocol fromValue(String value) {

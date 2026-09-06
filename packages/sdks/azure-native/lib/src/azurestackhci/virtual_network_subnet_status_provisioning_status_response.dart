@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of virtual network subnet operations
 class VirtualNetworkSubnetStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the virtual network subnet
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the virtual network subnet [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

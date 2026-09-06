@@ -60,4 +60,27 @@ class WebAppRelayServiceConnectionSlot extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WebAppRelayServiceConnectionSlot] resource.
+  WebAppRelayServiceConnectionSlot.reference(String urn)
+    : super(
+        'azure-native:web:WebAppRelayServiceConnectionSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    biztalkUri = registerOutput<String?>('biztalkUri');
+    entityConnectionString = registerOutput<String?>('entityConnectionString');
+    entityName = registerOutput<String?>('entityName');
+    hostname = registerOutput<String?>('hostname');
+    kind = registerOutput<String?>('kind');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    resourceConnectionString = registerOutput<String?>('resourceConnectionString');
+    resourceType = registerOutput<String?>('resourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

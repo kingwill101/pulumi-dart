@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Microsoft Defender Container image assessment configuration
 class DefenderCspmGcpOfferingMdcContainersImageAssessment {
   /// Is Microsoft Defender container image assessment enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The service account email address in GCP for this feature
-  final pulumi.Input<String>? serviceAccountEmailAddress;
+  final pulumi.Input<String?>? serviceAccountEmailAddress;
   /// The workload identity provider id in GCP for this feature
-  final pulumi.Input<String>? workloadIdentityProviderId;
+  final pulumi.Input<String?>? workloadIdentityProviderId;
 
   /// Creates a new [DefenderCspmGcpOfferingMdcContainersImageAssessment].
   /// [enabled] Is Microsoft Defender container image assessment enabled

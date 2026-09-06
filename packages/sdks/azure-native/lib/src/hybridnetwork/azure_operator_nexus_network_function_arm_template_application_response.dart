@@ -8,16 +8,16 @@ import 'depends_on_profile_response.dart';
 /// Azure Operator Distributed Services network function Template application definition.
 class AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse {
   /// Azure Operator Distributed Services Template artifact profile.
-  final pulumi.Input<AzureOperatorNexusArmTemplateArtifactProfileResponse>? artifactProfile;
+  final pulumi.Input<AzureOperatorNexusArmTemplateArtifactProfileResponse?>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'ArmTemplate'.
   final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfileResponse?>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse>? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse?>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureOperatorNexusNetworkFunctionArmTemplateApplicationResponse].
   /// [artifactProfile] Azure Operator Distributed Services Template artifact profile.

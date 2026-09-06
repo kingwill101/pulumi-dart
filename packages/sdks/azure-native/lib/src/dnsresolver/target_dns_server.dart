@@ -7,15 +7,15 @@ class TargetDnsServer {
   /// DNS server IP address.
   final pulumi.Input<String> ipAddress;
   /// DNS server port.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [TargetDnsServer].
   /// [ipAddress] DNS server IP address.
   /// [port] DNS server port.
-  const TargetDnsServer({
+  TargetDnsServer({
     required this.ipAddress,
-    this.port,
-  });
+    pulumi.Input<int?>? port,
+  }) : port = port ?? pulumi.Input.fromValue(53);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class TargetDnsServer {
   factory TargetDnsServer.fromMap(Map<String, dynamic> map) {
     return TargetDnsServer(
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -6,13 +6,13 @@ import 'commitment.dart';
 /// Award details for milestone completion
 class Award {
   /// Credit amount to be awarded
-  final pulumi.Input<Commitment>? credit;
+  final pulumi.Input<Commitment?>? credit;
   /// Duration for which the benefit is active. Will be in format P{int}M or P{int}Y. Any values representing up to 12 years are valid. Upper limit examples: P144M, P12Y.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// End date when the credit expires
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Start date when the credit becomes effective
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
 
   /// Creates a new [Award].
   /// [credit] Credit amount to be awarded

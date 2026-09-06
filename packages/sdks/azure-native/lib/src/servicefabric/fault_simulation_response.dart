@@ -6,15 +6,15 @@ import 'fault_simulation_details_response.dart';
 /// Fault simulation object with status.
 class FaultSimulationResponse {
   /// Fault simulation details
-  final pulumi.Input<FaultSimulationDetailsResponse>? details;
+  final pulumi.Input<FaultSimulationDetailsResponse?>? details;
   /// The end time of the fault simulation.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// unique identifier for the fault simulation.
-  final pulumi.Input<String>? simulationId;
+  final pulumi.Input<String?>? simulationId;
   /// The start time of the fault simulation.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Fault simulation status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [FaultSimulationResponse].
   /// [details] Fault simulation details

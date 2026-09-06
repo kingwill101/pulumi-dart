@@ -5,37 +5,37 @@ import 'content_link_response.dart';
 /// Result data returned by getIntegrationAccountSchema.
 class GetIntegrationAccountSchemaResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The changed time.
-  final String changedTime;
+  final String? changedTime;
   /// The content.
   final String? content;
   /// The content link.
-  final ContentLinkResponse contentLink;
+  final ContentLinkResponse? contentLink;
   /// The content type.
   final String? contentType;
   /// The created time.
-  final String createdTime;
+  final String? createdTime;
   /// The document name.
   final String? documentName;
   /// The file name.
   final String? fileName;
   /// The resource id.
-  final String id;
+  final String? id;
   /// The resource location.
   final String? location;
   /// The metadata.
   final dynamic metadata;
   /// Gets the resource name.
-  final String name;
+  final String? name;
   /// The schema type.
-  final String schemaType;
+  final String? schemaType;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The target namespace of the schema.
   final String? targetNamespace;
   /// Gets the resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIntegrationAccountSchemaResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,63 +55,63 @@ class GetIntegrationAccountSchemaResult {
   /// [targetNamespace] The target namespace of the schema.
   /// [type] Gets the resource type.
   const GetIntegrationAccountSchemaResult({
-    required this.azureApiVersion,
-    required this.changedTime,
+    this.azureApiVersion,
+    this.changedTime,
     this.content,
-    required this.contentLink,
+    this.contentLink,
     this.contentType,
-    required this.createdTime,
+    this.createdTime,
     this.documentName,
     this.fileName,
-    required this.id,
+    this.id,
     this.location,
     this.metadata,
-    required this.name,
-    required this.schemaType,
+    this.name,
+    this.schemaType,
     this.tags,
     this.targetNamespace,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'changedTime': changedTime,
+      'azureApiVersion': ?azureApiVersion,
+      'changedTime': ?changedTime,
       'content': ?content,
-      'contentLink': contentLink.toMap(),
+      'contentLink': ?contentLink?.toMap(),
       'contentType': ?contentType,
-      'createdTime': createdTime,
+      'createdTime': ?createdTime,
       'documentName': ?documentName,
       'fileName': ?fileName,
-      'id': id,
+      'id': ?id,
       'location': ?location,
       'metadata': ?metadata,
-      'name': name,
-      'schemaType': schemaType,
+      'name': ?name,
+      'schemaType': ?schemaType,
       'tags': ?tags,
       'targetNamespace': ?targetNamespace,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetIntegrationAccountSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetIntegrationAccountSchemaResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      changedTime: map['changedTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      changedTime: (() { final guardedValue = map['changedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      contentLink: ContentLinkResponse.fromMap((map['contentLink']! as Map).cast<String, dynamic>()),
+      contentLink: (() { final guardedValue = map['contentLink']; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      createdTime: map['createdTime'] as String,
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       documentName: (() { final guardedValue = map['documentName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return guardedValue; })(),
-      name: map['name'] as String,
-      schemaType: map['schemaType'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

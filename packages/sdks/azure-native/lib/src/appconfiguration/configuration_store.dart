@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'configuration_store_args.dart';
 import 'data_plane_proxy_properties_response.dart';
 import 'encryption_properties_response.dart';
+import 'private_endpoint_connection_reference_response.dart';
 import 'resource_identity_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
@@ -556,7 +557,7 @@ class ConfigurationStore extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of private endpoint connections that are set up for this resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionReferenceResponse>> privateEndpointConnections;
   /// The provisioning state of the configuration store.
   late final pulumi.Output<String> provisioningState;
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
@@ -596,13 +597,42 @@ class ConfigurationStore extends pulumi.CustomResource {
     identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionReferenceResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionReferenceResponse>(guardedValue, (value) => PrivateEndpointConnectionReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     softDeleteRetentionInDays = registerOutput<int?>('softDeleteRetentionInDays');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConfigurationStore] resource.
+  ConfigurationStore.reference(String urn)
+    : super(
+        'azure-native:appconfiguration:ConfigurationStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    dataPlaneProxy = registerOutput<DataPlaneProxyPropertiesResponse?>('dataPlaneProxy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataPlaneProxyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    enablePurgeProtection = registerOutput<bool?>('enablePurgeProtection');
+    encryption = registerOutput<EncryptionPropertiesResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpoint = registerOutput<String>('endpoint');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionReferenceResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionReferenceResponse>(guardedValue, (value) => PrivateEndpointConnectionReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    softDeleteRetentionInDays = registerOutput<int?>('softDeleteRetentionInDays');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

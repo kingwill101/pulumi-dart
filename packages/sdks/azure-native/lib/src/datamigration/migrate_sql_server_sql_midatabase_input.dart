@@ -6,11 +6,11 @@ import 'file_share.dart';
 /// Database specific information for SQL to Azure SQL DB Managed Instance migration task inputs
 class MigrateSqlServerSqlMIDatabaseInput {
   /// The list of backup files to be used in case of existing backups.
-  final pulumi.Input<List<String>>? backupFilePaths;
+  final pulumi.Input<List<String>?>? backupFilePaths;
   /// Backup file share information for backing up this database.
-  final pulumi.Input<FileShare>? backupFileShare;
+  final pulumi.Input<FileShare?>? backupFileShare;
   /// id of the database
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the database
   final pulumi.Input<String> name;
   /// Name of the database at destination

@@ -9,33 +9,33 @@ class GetProjectCatalogResult {
   /// Properties for an Azure DevOps catalog type.
   final GitCatalogResponse? adoGit;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The connection state of the catalog.
-  final String connectionState;
+  final String? connectionState;
   /// Properties for a GitHub catalog type.
   final GitCatalogResponse? gitHub;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// When the catalog was last connected.
-  final String lastConnectionTime;
+  final String? lastConnectionTime;
   /// Stats of the latest synchronization.
-  final SyncStatsResponse lastSyncStats;
+  final SyncStatsResponse? lastSyncStats;
   /// When the catalog was last synced.
-  final String lastSyncTime;
+  final String? lastSyncTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The synchronization state of the catalog.
-  final String syncState;
+  final String? syncState;
   /// Indicates the type of sync that is configured for the catalog.
   final String? syncType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetProjectCatalogResult].
   /// [adoGit] Properties for an Azure DevOps catalog type.
@@ -55,59 +55,59 @@ class GetProjectCatalogResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetProjectCatalogResult({
     this.adoGit,
-    required this.azureApiVersion,
-    required this.connectionState,
+    this.azureApiVersion,
+    this.connectionState,
     this.gitHub,
-    required this.id,
-    required this.lastConnectionTime,
-    required this.lastSyncStats,
-    required this.lastSyncTime,
-    required this.name,
-    required this.provisioningState,
-    required this.syncState,
+    this.id,
+    this.lastConnectionTime,
+    this.lastSyncStats,
+    this.lastSyncTime,
+    this.name,
+    this.provisioningState,
+    this.syncState,
     this.syncType,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'adoGit': ?adoGit?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'connectionState': connectionState,
+      'azureApiVersion': ?azureApiVersion,
+      'connectionState': ?connectionState,
       'gitHub': ?gitHub?.toMap(),
-      'id': id,
-      'lastConnectionTime': lastConnectionTime,
-      'lastSyncStats': lastSyncStats.toMap(),
-      'lastSyncTime': lastSyncTime,
-      'name': name,
-      'provisioningState': provisioningState,
-      'syncState': syncState,
+      'id': ?id,
+      'lastConnectionTime': ?lastConnectionTime,
+      'lastSyncStats': ?lastSyncStats?.toMap(),
+      'lastSyncTime': ?lastSyncTime,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'syncState': ?syncState,
       'syncType': ?syncType,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetProjectCatalogResult.fromMap(Map<String, dynamic> map) {
     return GetProjectCatalogResult(
       adoGit: (() { final guardedValue = map['adoGit']; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionState: map['connectionState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionState: (() { final guardedValue = map['connectionState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gitHub: (() { final guardedValue = map['gitHub']; if (guardedValue == null) return null; return GitCatalogResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      lastConnectionTime: map['lastConnectionTime'] as String,
-      lastSyncStats: SyncStatsResponse.fromMap((map['lastSyncStats']! as Map).cast<String, dynamic>()),
-      lastSyncTime: map['lastSyncTime'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      syncState: map['syncState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastConnectionTime: (() { final guardedValue = map['lastConnectionTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastSyncStats: (() { final guardedValue = map['lastSyncStats']; if (guardedValue == null) return null; return SyncStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lastSyncTime: (() { final guardedValue = map['lastSyncTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      syncState: (() { final guardedValue = map['syncState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       syncType: (() { final guardedValue = map['syncType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

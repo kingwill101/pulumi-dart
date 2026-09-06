@@ -12,7 +12,7 @@ class ExecutionV2PropertiesResponse {
   /// Status of ExecutionV2
   final pulumi.Input<ExecutionV2StatusResponse> status;
   /// Workflow version of ExecutionV2
-  final pulumi.Input<String>? workflowVersionId;
+  final pulumi.Input<String?>? workflowVersionId;
 
   /// Creates a new [ExecutionV2PropertiesResponse].
   /// [provisioningState] Provisioning state of resource

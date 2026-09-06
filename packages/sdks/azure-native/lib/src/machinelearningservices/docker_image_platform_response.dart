@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DockerImagePlatformResponse {
   /// The OS type the Environment.
-  final pulumi.Input<String>? operatingSystemType;
+  final pulumi.Input<String?>? operatingSystemType;
 
   /// Creates a new [DockerImagePlatformResponse].
   /// [operatingSystemType] The OS type the Environment.

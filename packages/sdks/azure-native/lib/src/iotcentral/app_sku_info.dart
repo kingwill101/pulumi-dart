@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the SKU of the IoT Central application.
 class AppSkuInfo {
   /// The name of the SKU.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [AppSkuInfo].
   /// [name] The name of the SKU.
@@ -21,7 +21,7 @@ class AppSkuInfo {
 
   factory AppSkuInfo.fromMap(Map<String, dynamic> map) {
     return AppSkuInfo(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

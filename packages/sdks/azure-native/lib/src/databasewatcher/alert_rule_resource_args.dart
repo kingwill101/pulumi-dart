@@ -10,13 +10,13 @@ class AlertRuleResourceArgs {
   /// The resource ID of the alert rule resource.
   final pulumi.Input<String> alertRuleResourceId;
   /// The alert rule proxy resource name.
-  final pulumi.Input<String>? alertRuleResourceName;
+  final pulumi.Input<String?>? alertRuleResourceName;
   /// The template ID associated with alert rule resource.
   final pulumi.Input<String> alertRuleTemplateId;
   /// The alert rule template version.
   final pulumi.Input<String> alertRuleTemplateVersion;
   /// The properties with which the alert rule resource was created.
-  final pulumi.Input<String> createdWithProperties;
+  final pulumi.Input<dynamic> createdWithProperties;
   /// The creation time of the alert rule resource.
   final pulumi.Input<String> creationTime;
   /// The name of the resource group. The name is case insensitive.
@@ -63,7 +63,7 @@ class AlertRuleResourceArgs {
       alertRuleResourceName: (() { final guardedValue = map['alertRuleResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       alertRuleTemplateId: pulumi.Input.fromValue(map['alertRuleTemplateId'] as String),
       alertRuleTemplateVersion: pulumi.Input.fromValue(map['alertRuleTemplateVersion'] as String),
-      createdWithProperties: pulumi.Input.fromValue(map['createdWithProperties'] as String),
+      createdWithProperties: pulumi.Input.fromValue(map['createdWithProperties']),
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),

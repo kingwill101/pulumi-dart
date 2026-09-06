@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API Definitions
 class ApiResourceDefinitionsResponse {
   /// The modified swagger URL
-  final pulumi.Input<String>? modifiedSwaggerUrl;
+  final pulumi.Input<String?>? modifiedSwaggerUrl;
   /// The original swagger URL
-  final pulumi.Input<String>? originalSwaggerUrl;
+  final pulumi.Input<String?>? originalSwaggerUrl;
 
   /// Creates a new [ApiResourceDefinitionsResponse].
   /// [modifiedSwaggerUrl] The modified swagger URL

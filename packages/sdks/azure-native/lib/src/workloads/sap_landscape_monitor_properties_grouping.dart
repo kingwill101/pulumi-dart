@@ -6,9 +6,9 @@ import 'sap_landscape_monitor_sid_mapping.dart';
 /// Gets or sets the SID groupings by landscape and Environment.
 class SapLandscapeMonitorPropertiesGrouping {
   /// Gets or sets the list of landscape to SID mappings.
-  final pulumi.Input<List<SapLandscapeMonitorSidMapping>>? landscape;
+  final pulumi.Input<List<SapLandscapeMonitorSidMapping>?>? landscape;
   /// Gets or sets the list of Sap Applications to SID mappings.
-  final pulumi.Input<List<SapLandscapeMonitorSidMapping>>? sapApplication;
+  final pulumi.Input<List<SapLandscapeMonitorSidMapping>?>? sapApplication;
 
   /// Creates a new [SapLandscapeMonitorPropertiesGrouping].
   /// [landscape] Gets or sets the list of landscape to SID mappings.

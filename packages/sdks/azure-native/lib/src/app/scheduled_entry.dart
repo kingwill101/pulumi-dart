@@ -32,8 +32,8 @@ class ScheduledEntry {
 
   factory ScheduledEntry.fromMap(Map<String, dynamic> map) {
     return ScheduledEntry(
-      durationHours: pulumi.Input.fromValue(map['durationHours'] as int),
-      startHourUtc: pulumi.Input.fromValue(map['startHourUtc'] as int),
+      durationHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationHours'])),
+      startHourUtc: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHourUtc'])),
       weekDay: pulumi.Input.fromValue(WeekDay.fromValue(map['weekDay']! as String)),
     );
   }

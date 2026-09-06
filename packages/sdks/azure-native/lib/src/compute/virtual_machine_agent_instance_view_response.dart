@@ -7,11 +7,11 @@ import 'virtual_machine_extension_handler_instance_view_response.dart';
 /// The instance view of the VM Agent running on the virtual machine.
 class VirtualMachineAgentInstanceViewResponse {
   /// The virtual machine extension handler instance view.
-  final pulumi.Input<List<VirtualMachineExtensionHandlerInstanceViewResponse>>? extensionHandlers;
+  final pulumi.Input<List<VirtualMachineExtensionHandlerInstanceViewResponse>?>? extensionHandlers;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
   /// The VM Agent full version.
-  final pulumi.Input<String>? vmAgentVersion;
+  final pulumi.Input<String?>? vmAgentVersion;
 
   /// Creates a new [VirtualMachineAgentInstanceViewResponse].
   /// [extensionHandlers] The virtual machine extension handler instance view.

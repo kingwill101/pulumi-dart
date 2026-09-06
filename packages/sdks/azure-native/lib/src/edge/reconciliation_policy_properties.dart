@@ -7,7 +7,7 @@ class ReconciliationPolicyProperties {
   /// Policy interval
   final pulumi.Input<String> interval;
   /// The state of the ReconciliationPolicy
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [ReconciliationPolicyProperties].
   /// [interval] Policy interval
@@ -27,7 +27,7 @@ class ReconciliationPolicyProperties {
   factory ReconciliationPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ReconciliationPolicyProperties(
       interval: pulumi.Input.fromValue(map['interval'] as String),
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Condition for a discount.
 class ConditionsItemResponse {
-  final pulumi.Input<String>? conditionName;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? conditionName;
+  final pulumi.Input<String?>? type;
   /// These items are open-ended strings.
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [ConditionsItemResponse].
   /// [conditionName] Optional.

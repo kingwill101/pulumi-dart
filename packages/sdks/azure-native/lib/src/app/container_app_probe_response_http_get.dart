@@ -6,15 +6,15 @@ import 'container_app_probe_response_http_headers.dart';
 /// HTTPGet specifies the http request to perform.
 class ContainerAppProbeResponseHttpGet {
   /// Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Custom headers to set in the request. HTTP allows repeated headers.
-  final pulumi.Input<List<ContainerAppProbeResponseHttpHeaders>>? httpHeaders;
+  final pulumi.Input<List<ContainerAppProbeResponseHttpHeaders>?>? httpHeaders;
   /// Path to access on the HTTP server.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
   final pulumi.Input<int> port;
   /// Scheme to use for connecting to the host. Defaults to HTTP.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
 
   /// Creates a new [ContainerAppProbeResponseHttpGet].
   /// [host] Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
@@ -45,7 +45,7 @@ class ContainerAppProbeResponseHttpGet {
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerAppProbeResponseHttpHeaders>(guardedValue, (value) => ContainerAppProbeResponseHttpHeaders.fromMap((value as Map).cast<String, dynamic>()))); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

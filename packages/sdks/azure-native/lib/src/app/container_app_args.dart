@@ -13,33 +13,33 @@ import 'template.dart';
 /// {@macro pulumi_app_container_app_args_doc}
 class ContainerAppArgs {
   /// Non versioned Container App configuration properties.
-  final pulumi.Input<Configuration>? configuration;
+  final pulumi.Input<Configuration?>? configuration;
   /// Name of the Container App.
-  final pulumi.Input<String>? containerAppName;
+  final pulumi.Input<String?>? containerAppName;
   /// Resource ID of environment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// The complex type of the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// managed identities for the Container App to interact with other Azure services without maintaining any secrets or credentials in code.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used to render different experiences for resources of the same type; e.g. WorkflowApp is a kind of Microsoft.App/ContainerApps type. If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// Deprecated. Resource ID of the Container App's environment.
-  final pulumi.Input<String>? managedEnvironmentId;
+  final pulumi.Input<String?>? managedEnvironmentId;
   /// Container App auto patch configuration.
-  final pulumi.Input<ContainerAppPatchingConfiguration>? patchingConfiguration;
+  final pulumi.Input<ContainerAppPatchingConfiguration?>? patchingConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Container App versioned application definition.
-  final pulumi.Input<Template>? template;
+  final pulumi.Input<Template?>? template;
   /// Workload profile name to pin for container app execution.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [ContainerAppArgs].
   /// [configuration] Non versioned Container App configuration properties.
@@ -99,7 +99,7 @@ class ContainerAppArgs {
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedEnvironmentId: (() { final guardedValue = map['managedEnvironmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

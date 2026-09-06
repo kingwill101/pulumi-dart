@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The selector expression.
 class SelectorResponse {
   /// The list of values to filter in.
-  final pulumi.Input<List<String>>? in_;
+  final pulumi.Input<List<String>?>? in_;
   /// The selector kind.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The list of values to filter out.
-  final pulumi.Input<List<String>>? notIn;
+  final pulumi.Input<List<String>?>? notIn;
 
   /// Creates a new [SelectorResponse].
   /// [in_] The list of values to filter in.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_content_type_args_doc}
 class ContentTypeArgs {
   /// Content type identifier.
-  final pulumi.Input<String>? contentTypeId;
+  final pulumi.Input<String?>? contentTypeId;
   /// Content type description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Content type identifier
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Content type name. Must be 1 to 250 characters long.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Content type schema.
@@ -22,7 +22,7 @@ class ContentTypeArgs {
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Content type version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ContentTypeArgs].
   /// [contentTypeId] Content type identifier.

@@ -195,7 +195,28 @@ class SolutionConfiguration extends pulumi.CustomResource {
     lastSyncTime = registerOutput<String>('lastSyncTime');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    solutionSettings = registerOutput<Map<String, String>?>('solutionSettings');
+    solutionSettings = registerOutput<Map<String, String>?>('solutionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    solutionType = registerOutput<String>('solutionType');
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<String>('statusDetails');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SolutionConfiguration] resource.
+  SolutionConfiguration.reference(String urn)
+    : super(
+        'azure-native:hybridconnectivity:SolutionConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    lastSyncTime = registerOutput<String>('lastSyncTime');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    solutionSettings = registerOutput<Map<String, String>?>('solutionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     solutionType = registerOutput<String>('solutionType');
     status = registerOutput<String>('status');
     statusDetails = registerOutput<String>('statusDetails');

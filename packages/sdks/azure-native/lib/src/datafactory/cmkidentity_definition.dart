@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed Identity used for CMK.
 class CMKIdentityDefinition {
   /// The resource id of the user assigned identity to authenticate to customer's key vault.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [CMKIdentityDefinition].
   /// [userAssignedIdentity] The resource id of the user assigned identity to authenticate to customer's key vault.

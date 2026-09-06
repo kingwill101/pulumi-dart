@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User assigned identity properties.
 class UserAssignedPropertiesResponse {
   /// Arm resource id for user assigned identity to be used to fetch MSI token.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [UserAssignedPropertiesResponse].
   /// [resourceId] Arm resource id for user assigned identity to be used to fetch MSI token.

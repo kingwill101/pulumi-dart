@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Indicates the type of storage account.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueStorage("Storage"),
   valueStorageV2("StorageV2"),
   valueBlobStorage("BlobStorage"),
@@ -7,6 +9,7 @@ enum Kind {
   valueBlockBlobStorage("BlockBlobStorage");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

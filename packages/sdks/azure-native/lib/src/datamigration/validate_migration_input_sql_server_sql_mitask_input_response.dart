@@ -11,13 +11,13 @@ class ValidateMigrationInputSqlServerSqlMITaskInputResponse {
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
   final pulumi.Input<BlobShareResponse> backupBlobShare;
   /// Backup file share information for all selected databases.
-  final pulumi.Input<FileShareResponse>? backupFileShare;
+  final pulumi.Input<FileShareResponse?>? backupFileShare;
   /// Backup Mode to specify whether to use existing backup or create new backup.
-  final pulumi.Input<String>? backupMode;
+  final pulumi.Input<String?>? backupMode;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
   /// Logins to migrate
-  final pulumi.Input<List<String>>? selectedLogins;
+  final pulumi.Input<List<String>?>? selectedLogins;
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// Information for connecting to target

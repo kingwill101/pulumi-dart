@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The additional options.
-enum AdditionalOptionsAsyncOperation {
+enum AdditionalOptionsAsyncOperation implements pulumi.PulumiEnum<String> {
   protectedAsyncOperationPolling("ProtectedAsyncOperationPolling"),
   protectedAsyncOperationPollingAuditOnly("ProtectedAsyncOperationPollingAuditOnly");
 
   const AdditionalOptionsAsyncOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static AdditionalOptionsAsyncOperation fromValue(String value) {

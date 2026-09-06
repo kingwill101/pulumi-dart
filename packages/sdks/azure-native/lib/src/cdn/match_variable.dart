@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the condition for the delivery rule.
-enum MatchVariable {
+enum MatchVariable implements pulumi.PulumiEnum<String> {
   remoteAddress("RemoteAddress"),
   requestMethod("RequestMethod"),
   queryString("QueryString"),
@@ -21,6 +23,7 @@ enum MatchVariable {
   sslProtocol("SslProtocol");
 
   const MatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static MatchVariable fromValue(String value) {

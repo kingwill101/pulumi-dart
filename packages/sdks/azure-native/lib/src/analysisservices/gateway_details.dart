@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The gateway details.
 class GatewayDetails {
   /// Gateway resource to be associated with the server.
-  final pulumi.Input<String>? gatewayResourceId;
+  final pulumi.Input<String?>? gatewayResourceId;
 
   /// Creates a new [GatewayDetails].
   /// [gatewayResourceId] Gateway resource to be associated with the server.

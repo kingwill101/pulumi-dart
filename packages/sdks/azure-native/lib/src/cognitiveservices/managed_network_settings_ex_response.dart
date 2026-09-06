@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'fqdn_outbound_rule_response.dart';
 import 'managed_network_provision_status_response.dart';
 
 class ManagedNetworkSettingsExResponse {
@@ -9,18 +8,18 @@ class ManagedNetworkSettingsExResponse {
   /// Public IP address assigned to the Azure Firewall.
   final pulumi.Input<String> firewallPublicIpAddress;
   /// Firewall Sku used for FQDN Rules
-  final pulumi.Input<String>? firewallSku;
+  final pulumi.Input<String?>? firewallSku;
   /// Isolation mode for the managed network of a cognitive services account.
-  final pulumi.Input<String>? isolationMode;
+  final pulumi.Input<String?>? isolationMode;
   /// The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
-  final pulumi.Input<String>? managedNetworkKind;
+  final pulumi.Input<String?>? managedNetworkKind;
   final pulumi.Input<String> networkId;
   /// Dictionary of &lt;OutboundRule&gt;
-  final pulumi.Input<Map<String, FqdnOutboundRuleResponse>>? outboundRules;
+  final pulumi.Input<Map<String, dynamic>?>? outboundRules;
   /// The provisioning state of the managed network settings.
   final pulumi.Input<String> provisioningState;
   /// Status of the Provisioning for the managed network of a cognitive services account.
-  final pulumi.Input<ManagedNetworkProvisionStatusResponse>? status;
+  final pulumi.Input<ManagedNetworkProvisionStatusResponse?>? status;
 
   /// Creates a new [ManagedNetworkSettingsExResponse].
   /// [changeableIsolationModes] Required.
@@ -52,7 +51,7 @@ class ManagedNetworkSettingsExResponse {
       'isolationMode': ?isolationMode,
       'managedNetworkKind': ?managedNetworkKind,
       'networkId': networkId,
-      'outboundRules': ?pulumi.Input.mapOptionalInputValue<Map<String, FqdnOutboundRuleResponse>, Map<String, Map<String, dynamic>>>(outboundRules, (value) => pulumi.Input.encodeMapValues<FqdnOutboundRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'outboundRules': ?outboundRules,
       'provisioningState': provisioningState,
       'status': ?pulumi.Input.mapOptionalInputValue<ManagedNetworkProvisionStatusResponse, Map<String, dynamic>>(status, (value) => value.toMap()),
     };
@@ -66,7 +65,7 @@ class ManagedNetworkSettingsExResponse {
       isolationMode: (() { final guardedValue = map['isolationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedNetworkKind: (() { final guardedValue = map['managedNetworkKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkId: pulumi.Input.fromValue(map['networkId'] as String),
-      outboundRules: (() { final guardedValue = map['outboundRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<FqdnOutboundRuleResponse>(guardedValue, (value) => FqdnOutboundRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      outboundRules: (() { final guardedValue = map['outboundRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedNetworkProvisionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

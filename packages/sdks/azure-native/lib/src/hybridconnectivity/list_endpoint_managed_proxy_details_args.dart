@@ -10,13 +10,13 @@ class ListEndpointManagedProxyDetailsArgs {
   /// The endpoint name.
   final pulumi.Input<String> endpointName;
   /// The target host name.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// The name of the service.
   final pulumi.Input<String> service;
   /// The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<dynamic>? serviceName;
 
   /// Creates a new [ListEndpointManagedProxyDetailsArgs].
   /// [endpointName] The endpoint name.
@@ -48,7 +48,7 @@ class ListEndpointManagedProxyDetailsArgs {
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceUri: pulumi.Input.fromValue(map['resourceUri'] as String),
       service: pulumi.Input.fromValue(map['service'] as String),
-      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

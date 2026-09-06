@@ -7,21 +7,21 @@ import 'sub_resource_response.dart';
 /// Load balancer backend addresses.
 class LoadBalancerBackendAddressResponse {
   /// A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.
-  final pulumi.Input<String>? adminState;
+  final pulumi.Input<String?>? adminState;
   /// Collection of inbound NAT rule port mappings.
   final pulumi.Input<List<NatRulePortMappingResponse>> inboundNatRulesPortMapping;
   /// IP Address belonging to the referenced virtual network.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Reference to the frontend ip address configuration defined in regional loadbalancer.
-  final pulumi.Input<SubResourceResponse>? loadBalancerFrontendIPConfiguration;
+  final pulumi.Input<SubResourceResponse?>? loadBalancerFrontendIPConfiguration;
   /// Name of the backend address.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference to IP address defined in network interfaces.
   final pulumi.Input<SubResourceResponse> networkInterfaceIPConfiguration;
   /// Reference to an existing subnet.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
   /// Reference to an existing virtual network.
-  final pulumi.Input<SubResourceResponse>? virtualNetwork;
+  final pulumi.Input<SubResourceResponse?>? virtualNetwork;
 
   /// Creates a new [LoadBalancerBackendAddressResponse].
   /// [adminState] A list of administrative states which once set can override health probe so that Load Balancer will always forward new connections to backend, or deny new connections and reset existing connections.

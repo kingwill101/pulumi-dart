@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VMware Cbt policy creation input.
 class VMwareCbtPolicyCreationInput {
   /// The app consistent snapshot frequency (in minutes).
-  final pulumi.Input<int>? appConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? appConsistentFrequencyInMinutes;
   /// The crash consistent snapshot frequency (in minutes).
-  final pulumi.Input<int>? crashConsistentFrequencyInMinutes;
+  final pulumi.Input<int?>? crashConsistentFrequencyInMinutes;
   /// The class type.
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
   /// The duration in minutes until which the recovery points need to be stored.
-  final pulumi.Input<int>? recoveryPointHistoryInMinutes;
+  final pulumi.Input<int?>? recoveryPointHistoryInMinutes;
 
   /// Creates a new [VMwareCbtPolicyCreationInput].
   /// [appConsistentFrequencyInMinutes] The app consistent snapshot frequency (in minutes).
@@ -37,10 +37,10 @@ class VMwareCbtPolicyCreationInput {
 
   factory VMwareCbtPolicyCreationInput.fromMap(Map<String, dynamic> map) {
     return VMwareCbtPolicyCreationInput(
-      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      appConsistentFrequencyInMinutes: (() { final guardedValue = map['appConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      crashConsistentFrequencyInMinutes: (() { final guardedValue = map['crashConsistentFrequencyInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      recoveryPointHistoryInMinutes: (() { final guardedValue = map['recoveryPointHistoryInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      recoveryPointHistoryInMinutes: (() { final guardedValue = map['recoveryPointHistoryInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

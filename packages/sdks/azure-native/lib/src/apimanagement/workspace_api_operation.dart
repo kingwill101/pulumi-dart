@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'parameter_contract_response.dart';
 import 'request_contract_response.dart';
+import 'response_contract_response.dart';
 import 'workspace_api_operation_args.dart';
 
 /// API Operation details.
@@ -380,9 +382,9 @@ class WorkspaceApiOperation extends pulumi.CustomResource {
   /// An entity containing request details.
   late final pulumi.Output<RequestContractResponse?> request;
   /// Array of Operation responses.
-  late final pulumi.Output<List<Map<String, dynamic>>?> responses;
+  late final pulumi.Output<List<ResponseContractResponse>?> responses;
   /// Collection of URL template parameters.
-  late final pulumi.Output<List<Map<String, dynamic>>?> templateParameters;
+  late final pulumi.Output<List<ParameterContractResponse>?> templateParameters;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
@@ -409,8 +411,30 @@ class WorkspaceApiOperation extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policies = registerOutput<String?>('policies');
     request = registerOutput<RequestContractResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RequestContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    responses = registerOutput<List<Map<String, dynamic>>?>('responses');
-    templateParameters = registerOutput<List<Map<String, dynamic>>?>('templateParameters');
+    responses = registerOutput<List<ResponseContractResponse>?>('responses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponseContractResponse>(guardedValue, (value) => ResponseContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    templateParameters = registerOutput<List<ParameterContractResponse>?>('templateParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterContractResponse>(guardedValue, (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    urlTemplate = registerOutput<String>('urlTemplate');
+  }
+
+  /// Creates a typed reference to an existing [WorkspaceApiOperation] resource.
+  WorkspaceApiOperation.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceApiOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    method = registerOutput<String>('method');
+    this.name = registerOutput<String>('name');
+    policies = registerOutput<String?>('policies');
+    request = registerOutput<RequestContractResponse?>('request', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RequestContractResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    responses = registerOutput<List<ResponseContractResponse>?>('responses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResponseContractResponse>(guardedValue, (value) => ResponseContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    templateParameters = registerOutput<List<ParameterContractResponse>?>('templateParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParameterContractResponse>(guardedValue, (value) => ParameterContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     urlTemplate = registerOutput<String>('urlTemplate');
   }

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The managed identity token for the managed app resource.
 class ManagedIdentityTokenResponse {
   /// The requested access token.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// The aud (audience) the access token was request for. This is the same as what was provided in the listTokens request.
-  final pulumi.Input<String>? authorizationAudience;
+  final pulumi.Input<String?>? authorizationAudience;
   /// The number of seconds the access token will be valid.
-  final pulumi.Input<String>? expiresIn;
+  final pulumi.Input<String?>? expiresIn;
   /// The timespan when the access token expires. This is represented as the number of seconds from epoch.
-  final pulumi.Input<String>? expiresOn;
+  final pulumi.Input<String?>? expiresOn;
   /// The timespan when the access token takes effect. This is represented as the number of seconds from epoch.
-  final pulumi.Input<String>? notBefore;
+  final pulumi.Input<String?>? notBefore;
   /// The Azure resource ID for the issued token. This is either the managed application ID or the user-assigned identity ID.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The type of the token.
-  final pulumi.Input<String>? tokenType;
+  final pulumi.Input<String?>? tokenType;
 
   /// Creates a new [ManagedIdentityTokenResponse].
   /// [accessToken] The requested access token.

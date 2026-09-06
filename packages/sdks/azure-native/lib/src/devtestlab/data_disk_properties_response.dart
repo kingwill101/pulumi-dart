@@ -6,11 +6,11 @@ import 'attach_new_data_disk_options_response.dart';
 /// Request body for adding a new or existing data disk to a virtual machine.
 class DataDiskPropertiesResponse {
   /// Specifies options to attach a new disk to the virtual machine.
-  final pulumi.Input<AttachNewDataDiskOptionsResponse>? attachNewDataDiskOptions;
+  final pulumi.Input<AttachNewDataDiskOptionsResponse?>? attachNewDataDiskOptions;
   /// Specifies the existing lab disk id to attach to virtual machine.
-  final pulumi.Input<String>? existingLabDiskId;
+  final pulumi.Input<String?>? existingLabDiskId;
   /// Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
-  final pulumi.Input<String>? hostCaching;
+  final pulumi.Input<String?>? hostCaching;
 
   /// Creates a new [DataDiskPropertiesResponse].
   /// [attachNewDataDiskOptions] Specifies options to attach a new disk to the virtual machine.

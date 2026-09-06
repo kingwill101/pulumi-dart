@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dapr Component Resiliency Policy Timeout Policy Configuration.
 class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
   /// The optional response timeout in seconds
-  final pulumi.Input<int>? responseTimeoutInSeconds;
+  final pulumi.Input<int?>? responseTimeoutInSeconds;
 
   /// Creates a new [DaprComponentResiliencyPolicyTimeoutPolicyConfiguration].
   /// [responseTimeoutInSeconds] The optional response timeout in seconds
@@ -21,7 +21,7 @@ class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
 
   factory DaprComponentResiliencyPolicyTimeoutPolicyConfiguration.fromMap(Map<String, dynamic> map) {
     return DaprComponentResiliencyPolicyTimeoutPolicyConfiguration(
-      responseTimeoutInSeconds: (() { final guardedValue = map['responseTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      responseTimeoutInSeconds: (() { final guardedValue = map['responseTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

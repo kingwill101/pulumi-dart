@@ -10,13 +10,13 @@ import 'tracked_resource.dart';
 /// {@macro pulumi_automation_package_args_doc}
 class PackageArgs {
   /// The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location'
-  final pulumi.Input<TrackedResource>? allOf;
+  final pulumi.Input<TrackedResource?>? allOf;
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the package content link.
   final pulumi.Input<ContentLink> contentLink;
   /// The Package name.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Runtime Environment.

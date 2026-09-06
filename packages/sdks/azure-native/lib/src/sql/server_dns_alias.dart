@@ -177,4 +177,19 @@ class ServerDnsAlias extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ServerDnsAlias] resource.
+  ServerDnsAlias.reference(String urn)
+    : super(
+        'azure-native:sql:ServerDnsAlias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureDnsRecord = registerOutput<String>('azureDnsRecord');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

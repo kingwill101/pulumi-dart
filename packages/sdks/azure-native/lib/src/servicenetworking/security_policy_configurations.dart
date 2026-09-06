@@ -6,7 +6,7 @@ import 'waf_security_policy.dart';
 /// SecurityPolicyConfigurations Subresource of Traffic Controller.
 class SecurityPolicyConfigurations {
   /// Contains reference to a WAF-type security policy.
-  final pulumi.Input<WafSecurityPolicy>? wafSecurityPolicy;
+  final pulumi.Input<WafSecurityPolicy?>? wafSecurityPolicy;
 
   /// Creates a new [SecurityPolicyConfigurations].
   /// [wafSecurityPolicy] Contains reference to a WAF-type security policy.

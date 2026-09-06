@@ -13,11 +13,11 @@ class StaticCidrArgs {
   /// IP Address Manager Pool resource name.
   final pulumi.Input<String> poolName;
   /// Properties of static CIDR resource.
-  final pulumi.Input<StaticCidrProperties>? properties;
+  final pulumi.Input<StaticCidrProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Static Cidr allocation name.
-  final pulumi.Input<String>? staticCidrName;
+  final pulumi.Input<String?>? staticCidrName;
 
   /// Creates a new [StaticCidrArgs].
   /// [networkManagerName] The name of the network manager.

@@ -297,4 +297,33 @@ class Origin extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     weight = registerOutput<int?>('weight');
   }
+
+  /// Creates a typed reference to an existing [Origin] resource.
+  Origin.reference(String urn)
+    : super(
+        'azure-native:cdn:Origin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enabled = registerOutput<bool?>('enabled');
+    hostName = registerOutput<String>('hostName');
+    httpPort = registerOutput<int?>('httpPort');
+    httpsPort = registerOutput<int?>('httpsPort');
+    this.name = registerOutput<String>('name');
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    priority = registerOutput<int?>('priority');
+    privateEndpointStatus = registerOutput<String>('privateEndpointStatus');
+    privateLinkAlias = registerOutput<String?>('privateLinkAlias');
+    privateLinkApprovalMessage = registerOutput<String?>('privateLinkApprovalMessage');
+    privateLinkLocation = registerOutput<String?>('privateLinkLocation');
+    privateLinkResourceId = registerOutput<String?>('privateLinkResourceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    weight = registerOutput<int?>('weight');
+  }
 }

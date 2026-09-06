@@ -9,7 +9,7 @@ class LinkedIntegrationRuntimeRbacAuthorizationResponse {
   /// Expected value is 'RBAC'.
   final pulumi.Input<String> authorizationType;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReferenceResponse>? credential;
+  final pulumi.Input<CredentialReferenceResponse?>? credential;
   /// The resource identifier of the integration runtime to be shared.
   final pulumi.Input<String> resourceId;
 

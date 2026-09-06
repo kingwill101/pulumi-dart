@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// List of possible provisioning service SKUs.
 class IotDpsSkuInfoResponse {
   /// The number of units to provision
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// Sku name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Pricing tier name of the provisioning service.
   final pulumi.Input<String> tier;
 
@@ -31,7 +31,7 @@ class IotDpsSkuInfoResponse {
 
   factory IotDpsSkuInfoResponse.fromMap(Map<String, dynamic> map) {
     return IotDpsSkuInfoResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

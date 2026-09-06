@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This specifies the behavior for the autoReview feature when an access review completes.
-enum DefaultDecisionType {
+enum DefaultDecisionType implements pulumi.PulumiEnum<String> {
   approve("Approve"),
   deny("Deny"),
   recommendation("Recommendation");
 
   const DefaultDecisionType(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultDecisionType fromValue(String value) {

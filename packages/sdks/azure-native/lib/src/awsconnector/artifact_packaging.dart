@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ArtifactPackaging {
+enum ArtifactPackaging implements pulumi.PulumiEnum<String> {
   nONE("NONE"),
   zIP("ZIP");
 
   const ArtifactPackaging(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactPackaging fromValue(String value) {

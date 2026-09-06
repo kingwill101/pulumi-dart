@@ -9,17 +9,17 @@ import 'community_endpoint_destination_rule.dart';
 /// {@macro pulumi_mission_community_endpoint_args_doc}
 class CommunityEndpointArgs {
   /// The name of the Community Endpoint Resource
-  final pulumi.Input<String>? communityEndpointName;
+  final pulumi.Input<String?>? communityEndpointName;
   /// The name of the communityResource Resource
   final pulumi.Input<String> communityName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Community Endpoint Rule Collection.
   final pulumi.Input<List<CommunityEndpointDestinationRule>> ruleCollection;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CommunityEndpointArgs].
   /// [communityEndpointName] The name of the Community Endpoint Resource

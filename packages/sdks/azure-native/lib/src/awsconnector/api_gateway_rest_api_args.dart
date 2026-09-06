@@ -9,15 +9,15 @@ import 'api_gateway_rest_api_properties.dart';
 /// {@macro pulumi_awsconnector_api_gateway_rest_api_args_doc}
 class ApiGatewayRestApiArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of ApiGatewayRestApi
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ApiGatewayRestApiProperties>? properties;
+  final pulumi.Input<ApiGatewayRestApiProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApiGatewayRestApiArgs].
   /// [location] The geo-location where the resource lives

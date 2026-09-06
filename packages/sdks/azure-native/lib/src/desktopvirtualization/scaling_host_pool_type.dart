@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HostPool type for desktop.
-enum ScalingHostPoolType {
+enum ScalingHostPoolType implements pulumi.PulumiEnum<String> {
   valuePooled("Pooled");
 
   const ScalingHostPoolType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScalingHostPoolType fromValue(String value) {

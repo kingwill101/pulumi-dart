@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Desired enablement state of the Defender For Servers service.
-enum DesiredEnablementState {
+enum DesiredEnablementState implements pulumi.PulumiEnum<String> {
   enable("Enable"),
   disable("Disable");
 
   const DesiredEnablementState(this.wireValue);
+  @override
   final String wireValue;
 
   static DesiredEnablementState fromValue(String value) {

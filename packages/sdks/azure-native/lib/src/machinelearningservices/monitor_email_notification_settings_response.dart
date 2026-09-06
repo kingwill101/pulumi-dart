@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitorEmailNotificationSettingsResponse {
   /// The email recipient list which has a limitation of 499 characters in total.
-  final pulumi.Input<List<String>>? emails;
+  final pulumi.Input<List<String>?>? emails;
 
   /// Creates a new [MonitorEmailNotificationSettingsResponse].
   /// [emails] The email recipient list which has a limitation of 499 characters in total.

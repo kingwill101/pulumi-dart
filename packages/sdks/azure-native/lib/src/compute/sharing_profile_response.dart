@@ -7,11 +7,11 @@ import 'sharing_profile_group_response.dart';
 /// Profile for gallery sharing to subscription or tenant
 class SharingProfileResponse {
   /// Information of community gallery if current gallery is shared to community.
-  final pulumi.Input<CommunityGalleryInfoResponse>? communityGalleryInfo;
+  final pulumi.Input<CommunityGalleryInfoResponse?>? communityGalleryInfo;
   /// A list of sharing profile groups.
   final pulumi.Input<List<SharingProfileGroupResponse>> groups;
   /// This property allows you to specify the permission of sharing gallery. Possible values are: **Private,** **Groups,** **Community.**
-  final pulumi.Input<String>? permissions;
+  final pulumi.Input<String?>? permissions;
 
   /// Creates a new [SharingProfileResponse].
   /// [communityGalleryInfo] Information of community gallery if current gallery is shared to community.

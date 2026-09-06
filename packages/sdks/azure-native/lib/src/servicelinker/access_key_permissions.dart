@@ -1,4 +1,6 @@
-enum AccessKeyPermissions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AccessKeyPermissions implements pulumi.PulumiEnum<String> {
   valueRead("Read"),
   valueWrite("Write"),
   valueListen("Listen"),
@@ -6,6 +8,7 @@ enum AccessKeyPermissions {
   valueManage("Manage");
 
   const AccessKeyPermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessKeyPermissions fromValue(String value) {

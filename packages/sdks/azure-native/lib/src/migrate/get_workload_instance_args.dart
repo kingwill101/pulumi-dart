@@ -12,7 +12,7 @@ class GetWorkloadInstanceArgs {
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Subscription Id in which project was created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Workload instance name.
   final pulumi.Input<String> workloadInstanceName;
 

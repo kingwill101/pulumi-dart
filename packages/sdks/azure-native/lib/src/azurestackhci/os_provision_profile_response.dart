@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Operating system profile.
 class OsProvisionProfileResponse {
   /// GPG Public Key used for package verification
-  final pulumi.Input<String>? gpgPubKey;
+  final pulumi.Input<String?>? gpgPubKey;
   /// Hash of the OS package downloaded
-  final pulumi.Input<String>? imageHash;
+  final pulumi.Input<String?>? imageHash;
   /// Operation sub type of OS Provisioning
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<String?>? operationType;
   /// Location of the operating system image.
-  final pulumi.Input<String>? osImageLocation;
+  final pulumi.Input<String?>? osImageLocation;
   /// Name of the operating system.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// Type of the operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Version of the operating system.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// Validated Solution Recipe version to be used for the job
-  final pulumi.Input<String>? vsrVersion;
+  final pulumi.Input<String?>? vsrVersion;
 
   /// Creates a new [OsProvisionProfileResponse].
   /// [gpgPubKey] GPG Public Key used for package verification
@@ -30,16 +30,16 @@ class OsProvisionProfileResponse {
   /// [osType] Type of the operating system.
   /// [osVersion] Version of the operating system.
   /// [vsrVersion] Validated Solution Recipe version to be used for the job
-  const OsProvisionProfileResponse({
+  OsProvisionProfileResponse({
     this.gpgPubKey,
     this.imageHash,
-    this.operationType,
+    pulumi.Input<String?>? operationType,
     this.osImageLocation,
     this.osName,
     this.osType,
     this.osVersion,
     this.vsrVersion,
-  });
+  }) : operationType = operationType ?? pulumi.Input.fromValue('Provision');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

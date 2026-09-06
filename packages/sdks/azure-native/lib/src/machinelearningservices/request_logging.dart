@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RequestLogging {
   /// For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.
-  final pulumi.Input<List<String>>? captureHeaders;
+  final pulumi.Input<List<String>?>? captureHeaders;
 
   /// Creates a new [RequestLogging].
   /// [captureHeaders] For payload logging, we only collect payload by default. If customers also want to collect the specified headers, they can set them in captureHeaders so that backend will collect those headers along with payload.

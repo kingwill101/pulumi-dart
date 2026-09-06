@@ -14,7 +14,7 @@ class ClusterReportedPropertiesResponse {
   /// Version of the cluster software.
   final pulumi.Input<String> clusterVersion;
   /// Level of diagnostic data emitted by the cluster.
-  final pulumi.Input<String>? diagnosticLevel;
+  final pulumi.Input<String?>? diagnosticLevel;
   /// IMDS attestation status of the cluster.
   final pulumi.Input<String> imdsAttestation;
   /// Last time the cluster reported the data.

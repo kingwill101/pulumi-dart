@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource reference.
 class ResourceReference {
   /// The resource id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ResourceReference].
   /// [id] The resource id.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the type of the datastore.
-enum StorageSettingStoreTypes {
+enum StorageSettingStoreTypes implements pulumi.PulumiEnum<String> {
   valueArchiveStore("ArchiveStore"),
   valueOperationalStore("OperationalStore"),
   valueVaultStore("VaultStore");
 
   const StorageSettingStoreTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageSettingStoreTypes fromValue(String value) {

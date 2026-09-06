@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status for individual validator after running diagnostics.
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueRunning("Running"),
   valueOK("OK"),
@@ -8,6 +10,7 @@ enum Status {
   valueSkipped("Skipped");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

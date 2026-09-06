@@ -88,6 +88,17 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
   return GetAvailabilitySetResult.fromMap(result);
 }
 
+pulumi.Output<GetAvailabilitySetResult> getAvailabilitySetOutput(
+  GetAvailabilitySetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getAvailabilitySet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilitySetResult.fromMap);
+}
+
 /// The operation that retrieves information about the capacity reservation.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -106,6 +117,17 @@ Future<GetCapacityReservationResult> getCapacityReservation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCapacityReservationResult.fromMap(result);
+}
+
+pulumi.Output<GetCapacityReservationResult> getCapacityReservationOutput(
+  GetCapacityReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getCapacityReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityReservationResult.fromMap);
 }
 
 /// The operation that retrieves information about a capacity reservation group.
@@ -128,6 +150,17 @@ Future<GetCapacityReservationGroupResult> getCapacityReservationGroup(
   return GetCapacityReservationGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetCapacityReservationGroupResult> getCapacityReservationGroupOutput(
+  GetCapacityReservationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getCapacityReservationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityReservationGroupResult.fromMap);
+}
+
 /// Retrieves information about a dedicated host.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -146,6 +179,17 @@ Future<GetDedicatedHostResult> getDedicatedHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedHostResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedHostResult> getDedicatedHostOutput(
+  GetDedicatedHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDedicatedHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHostResult.fromMap);
 }
 
 /// Retrieves information about a dedicated host group.
@@ -168,6 +212,17 @@ Future<GetDedicatedHostGroupResult> getDedicatedHostGroup(
   return GetDedicatedHostGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetDedicatedHostGroupResult> getDedicatedHostGroupOutput(
+  GetDedicatedHostGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDedicatedHostGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHostGroupResult.fromMap);
+}
+
 /// Gets information about a disk.
 ///
 /// Uses Azure REST API version 2024-03-02.
@@ -186,6 +241,17 @@ Future<GetDiskResult> getDisk(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskResult.fromMap(result);
+}
+
+pulumi.Output<GetDiskResult> getDiskOutput(
+  GetDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskResult.fromMap);
 }
 
 /// Gets information about a disk access resource.
@@ -208,6 +274,17 @@ Future<GetDiskAccessResult> getDiskAccess(
   return GetDiskAccessResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskAccessResult> getDiskAccessOutput(
+  GetDiskAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDiskAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskAccessResult.fromMap);
+}
+
 /// Gets information about a private endpoint connection under a disk access resource.
 ///
 /// Uses Azure REST API version 2024-03-02.
@@ -226,6 +303,17 @@ Future<GetDiskAccessAPrivateEndpointConnectionResult> getDiskAccessAPrivateEndpo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskAccessAPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetDiskAccessAPrivateEndpointConnectionResult> getDiskAccessAPrivateEndpointConnectionOutput(
+  GetDiskAccessAPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDiskAccessAPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskAccessAPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets information about a disk encryption set.
@@ -248,6 +336,17 @@ Future<GetDiskEncryptionSetResult> getDiskEncryptionSet(
   return GetDiskEncryptionSetResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskEncryptionSetResult> getDiskEncryptionSetOutput(
+  GetDiskEncryptionSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getDiskEncryptionSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskEncryptionSetResult.fromMap);
+}
+
 /// Retrieves information about a Shared Image Gallery.
 ///
 /// Uses Azure REST API version 2024-03-03.
@@ -266,6 +365,17 @@ Future<GetGalleryResult> getGallery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryResult> getGalleryOutput(
+  GetGalleryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGallery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryResult.fromMap);
 }
 
 /// Retrieves information about a gallery Application Definition.
@@ -288,6 +398,17 @@ Future<GetGalleryApplicationResult> getGalleryApplication(
   return GetGalleryApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetGalleryApplicationResult> getGalleryApplicationOutput(
+  GetGalleryApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryApplicationResult.fromMap);
+}
+
 /// Retrieves information about a gallery Application Version.
 ///
 /// Uses Azure REST API version 2024-03-03.
@@ -306,6 +427,17 @@ Future<GetGalleryApplicationVersionResult> getGalleryApplicationVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryApplicationVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryApplicationVersionResult> getGalleryApplicationVersionOutput(
+  GetGalleryApplicationVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryApplicationVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryApplicationVersionResult.fromMap);
 }
 
 /// Retrieves information about a gallery image definition.
@@ -328,6 +460,17 @@ Future<GetGalleryImageResult> getGalleryImage(
   return GetGalleryImageResult.fromMap(result);
 }
 
+pulumi.Output<GetGalleryImageResult> getGalleryImageOutput(
+  GetGalleryImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryImageResult.fromMap);
+}
+
 /// Retrieves information about a gallery image version.
 ///
 /// Uses Azure REST API version 2024-03-03.
@@ -346,6 +489,17 @@ Future<GetGalleryImageVersionResult> getGalleryImageVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryImageVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryImageVersionResult> getGalleryImageVersionOutput(
+  GetGalleryImageVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryImageVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryImageVersionResult.fromMap);
 }
 
 /// Retrieves information about a gallery inVMAccessControlProfile.
@@ -368,6 +522,17 @@ Future<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProf
   return GetGalleryInVMAccessControlProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetGalleryInVMAccessControlProfileResult> getGalleryInVMAccessControlProfileOutput(
+  GetGalleryInVMAccessControlProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryInVMAccessControlProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryInVMAccessControlProfileResult.fromMap);
+}
+
 /// Retrieves information about a gallery inVMAccessControlProfile version.
 ///
 /// Uses Azure REST API version 2024-03-03.
@@ -386,6 +551,17 @@ Future<GetGalleryInVMAccessControlProfileVersionResult> getGalleryInVMAccessCont
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryInVMAccessControlProfileVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryInVMAccessControlProfileVersionResult> getGalleryInVMAccessControlProfileVersionOutput(
+  GetGalleryInVMAccessControlProfileVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryInVMAccessControlProfileVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryInVMAccessControlProfileVersionResult.fromMap);
 }
 
 /// Retrieves information about a gallery script definition.
@@ -408,6 +584,17 @@ Future<GetGalleryScriptResult> getGalleryScript(
   return GetGalleryScriptResult.fromMap(result);
 }
 
+pulumi.Output<GetGalleryScriptResult> getGalleryScriptOutput(
+  GetGalleryScriptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryScript',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryScriptResult.fromMap);
+}
+
 /// Custom ArmResourceRead operation template with CloudError as Error
 ///
 /// Uses Azure REST API version 2025-03-03.
@@ -426,6 +613,17 @@ Future<GetGalleryScriptVersionResult> getGalleryScriptVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryScriptVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryScriptVersionResult> getGalleryScriptVersionOutput(
+  GetGalleryScriptVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getGalleryScriptVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryScriptVersionResult.fromMap);
 }
 
 /// Gets an image.
@@ -448,6 +646,17 @@ Future<GetImageResult> getImage(
   return GetImageResult.fromMap(result);
 }
 
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
+}
+
 /// Export logs that show Api requests made by this subscription in the given time window to show throttling activities.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -466,6 +675,17 @@ Future<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequ
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogAnalyticExportRequestRateByIntervalResult.fromMap(result);
+}
+
+pulumi.Output<GetLogAnalyticExportRequestRateByIntervalResult> getLogAnalyticExportRequestRateByIntervalOutput(
+  GetLogAnalyticExportRequestRateByIntervalArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getLogAnalyticExportRequestRateByInterval',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogAnalyticExportRequestRateByIntervalResult.fromMap);
 }
 
 /// Export logs that show total throttled Api requests for this subscription in the given time window.
@@ -488,6 +708,17 @@ Future<GetLogAnalyticExportThrottledRequestsResult> getLogAnalyticExportThrottle
   return GetLogAnalyticExportThrottledRequestsResult.fromMap(result);
 }
 
+pulumi.Output<GetLogAnalyticExportThrottledRequestsResult> getLogAnalyticExportThrottledRequestsOutput(
+  GetLogAnalyticExportThrottledRequestsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getLogAnalyticExportThrottledRequests',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogAnalyticExportThrottledRequestsResult.fromMap);
+}
+
 /// Retrieves information about a proximity placement group .
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -506,6 +737,17 @@ Future<GetProximityPlacementGroupResult> getProximityPlacementGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProximityPlacementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetProximityPlacementGroupResult> getProximityPlacementGroupOutput(
+  GetProximityPlacementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getProximityPlacementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProximityPlacementGroupResult.fromMap);
 }
 
 /// The operation to get the restore point.
@@ -528,6 +770,17 @@ Future<GetRestorePointResult> getRestorePoint(
   return GetRestorePointResult.fromMap(result);
 }
 
+pulumi.Output<GetRestorePointResult> getRestorePointOutput(
+  GetRestorePointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getRestorePoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePointResult.fromMap);
+}
+
 /// The operation to get the restore point collection.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -546,6 +799,17 @@ Future<GetRestorePointCollectionResult> getRestorePointCollection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRestorePointCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetRestorePointCollectionResult> getRestorePointCollectionOutput(
+  GetRestorePointCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getRestorePointCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestorePointCollectionResult.fromMap);
 }
 
 /// Gets information about a snapshot.
@@ -568,6 +832,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Retrieves information about an SSH public key.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -586,6 +861,17 @@ Future<GetSshPublicKeyResult> getSshPublicKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSshPublicKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetSshPublicKeyResult> getSshPublicKeyOutput(
+  GetSshPublicKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getSshPublicKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshPublicKeyResult.fromMap);
 }
 
 /// Retrieves information about the model view or the instance view of a virtual machine.
@@ -608,6 +894,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
   return GetVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
+}
+
 /// The operation to get the extension.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -626,6 +923,17 @@ Future<GetVirtualMachineExtensionResult> getVirtualMachineExtension(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineExtensionResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineExtensionResult> getVirtualMachineExtensionOutput(
+  GetVirtualMachineExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineExtensionResult.fromMap);
 }
 
 /// The operation to get the run command.
@@ -648,6 +956,17 @@ Future<GetVirtualMachineRunCommandByVirtualMachineResult> getVirtualMachineRunCo
   return GetVirtualMachineRunCommandByVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineRunCommandByVirtualMachineResult> getVirtualMachineRunCommandByVirtualMachineOutput(
+  GetVirtualMachineRunCommandByVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineRunCommandByVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineRunCommandByVirtualMachineResult.fromMap);
+}
+
 /// Display information about a virtual machine scale set.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -666,6 +985,17 @@ Future<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineScaleSetResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineScaleSetResult> getVirtualMachineScaleSetOutput(
+  GetVirtualMachineScaleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineScaleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetResult.fromMap);
 }
 
 /// The operation to get the extension.
@@ -688,6 +1018,17 @@ Future<GetVirtualMachineScaleSetExtensionResult> getVirtualMachineScaleSetExtens
   return GetVirtualMachineScaleSetExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineScaleSetExtensionResult> getVirtualMachineScaleSetExtensionOutput(
+  GetVirtualMachineScaleSetExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineScaleSetExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetExtensionResult.fromMap);
+}
+
 /// Gets a virtual machine from a VM scale set.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -706,6 +1047,17 @@ Future<GetVirtualMachineScaleSetVMResult> getVirtualMachineScaleSetVM(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineScaleSetVMResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineScaleSetVMResult> getVirtualMachineScaleSetVMOutput(
+  GetVirtualMachineScaleSetVMArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineScaleSetVM',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetVMResult.fromMap);
 }
 
 /// The operation to get the VMSS VM extension.
@@ -728,6 +1080,17 @@ Future<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMEx
   return GetVirtualMachineScaleSetVMExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineScaleSetVMExtensionResult> getVirtualMachineScaleSetVMExtensionOutput(
+  GetVirtualMachineScaleSetVMExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineScaleSetVMExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetVMExtensionResult.fromMap);
+}
+
 /// The operation to get the VMSS VM run command.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -746,4 +1109,15 @@ Future<GetVirtualMachineScaleSetVMRunCommandResult> getVirtualMachineScaleSetVMR
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineScaleSetVMRunCommandResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineScaleSetVMRunCommandResult> getVirtualMachineScaleSetVMRunCommandOutput(
+  GetVirtualMachineScaleSetVMRunCommandArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:compute:getVirtualMachineScaleSetVMRunCommand',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScaleSetVMRunCommandResult.fromMap);
 }

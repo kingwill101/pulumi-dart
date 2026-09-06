@@ -13,19 +13,19 @@ class ListContainerAppCustomHostNameAnalysisResult {
   /// CName records visible for this hostname.
   final List<String>? cNameRecords;
   /// &lt;code&gt;true&lt;/code&gt; if there is a conflict on the Container App's managed environment level custom domain; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final bool conflictWithEnvironmentCustomDomain;
+  final bool? conflictWithEnvironmentCustomDomain;
   /// Name of the conflicting Container App on the Managed Environment if it's within the same subscription.
-  final String conflictingContainerAppResourceId;
+  final String? conflictingContainerAppResourceId;
   /// Raw failure information if DNS verification fails.
-  final CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo customDomainVerificationFailureInfo;
+  final CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo? customDomainVerificationFailureInfo;
   /// DNS verification test result.
-  final String customDomainVerificationTest;
+  final String? customDomainVerificationTest;
   /// &lt;code&gt;true&lt;/code&gt; if there is a conflict on the Container App's managed environment; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final bool hasConflictOnManagedEnvironment;
+  final bool? hasConflictOnManagedEnvironment;
   /// Host name that was analyzed
-  final String hostName;
+  final String? hostName;
   /// &lt;code&gt;true&lt;/code&gt; if hostname is already verified; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final bool isHostnameAlreadyVerified;
+  final bool? isHostnameAlreadyVerified;
   /// TXT records visible for this hostname.
   final List<String>? txtRecords;
 
@@ -47,13 +47,13 @@ class ListContainerAppCustomHostNameAnalysisResult {
     this.alternateCNameRecords,
     this.alternateTxtRecords,
     this.cNameRecords,
-    required this.conflictWithEnvironmentCustomDomain,
-    required this.conflictingContainerAppResourceId,
-    required this.customDomainVerificationFailureInfo,
-    required this.customDomainVerificationTest,
-    required this.hasConflictOnManagedEnvironment,
-    required this.hostName,
-    required this.isHostnameAlreadyVerified,
+    this.conflictWithEnvironmentCustomDomain,
+    this.conflictingContainerAppResourceId,
+    this.customDomainVerificationFailureInfo,
+    this.customDomainVerificationTest,
+    this.hasConflictOnManagedEnvironment,
+    this.hostName,
+    this.isHostnameAlreadyVerified,
     this.txtRecords,
   });
 
@@ -63,13 +63,13 @@ class ListContainerAppCustomHostNameAnalysisResult {
       'alternateCNameRecords': ?alternateCNameRecords,
       'alternateTxtRecords': ?alternateTxtRecords,
       'cNameRecords': ?cNameRecords,
-      'conflictWithEnvironmentCustomDomain': conflictWithEnvironmentCustomDomain,
-      'conflictingContainerAppResourceId': conflictingContainerAppResourceId,
-      'customDomainVerificationFailureInfo': customDomainVerificationFailureInfo.toMap(),
-      'customDomainVerificationTest': customDomainVerificationTest,
-      'hasConflictOnManagedEnvironment': hasConflictOnManagedEnvironment,
-      'hostName': hostName,
-      'isHostnameAlreadyVerified': isHostnameAlreadyVerified,
+      'conflictWithEnvironmentCustomDomain': ?conflictWithEnvironmentCustomDomain,
+      'conflictingContainerAppResourceId': ?conflictingContainerAppResourceId,
+      'customDomainVerificationFailureInfo': ?customDomainVerificationFailureInfo?.toMap(),
+      'customDomainVerificationTest': ?customDomainVerificationTest,
+      'hasConflictOnManagedEnvironment': ?hasConflictOnManagedEnvironment,
+      'hostName': ?hostName,
+      'isHostnameAlreadyVerified': ?isHostnameAlreadyVerified,
       'txtRecords': ?txtRecords,
     };
   }
@@ -80,13 +80,13 @@ class ListContainerAppCustomHostNameAnalysisResult {
       alternateCNameRecords: (() { final guardedValue = map['alternateCNameRecords']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       alternateTxtRecords: (() { final guardedValue = map['alternateTxtRecords']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       cNameRecords: (() { final guardedValue = map['cNameRecords']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      conflictWithEnvironmentCustomDomain: map['conflictWithEnvironmentCustomDomain'] as bool,
-      conflictingContainerAppResourceId: map['conflictingContainerAppResourceId'] as String,
-      customDomainVerificationFailureInfo: CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo.fromMap((map['customDomainVerificationFailureInfo']! as Map).cast<String, dynamic>()),
-      customDomainVerificationTest: map['customDomainVerificationTest'] as String,
-      hasConflictOnManagedEnvironment: map['hasConflictOnManagedEnvironment'] as bool,
-      hostName: map['hostName'] as String,
-      isHostnameAlreadyVerified: map['isHostnameAlreadyVerified'] as bool,
+      conflictWithEnvironmentCustomDomain: (() { final guardedValue = map['conflictWithEnvironmentCustomDomain']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      conflictingContainerAppResourceId: (() { final guardedValue = map['conflictingContainerAppResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customDomainVerificationFailureInfo: (() { final guardedValue = map['customDomainVerificationFailureInfo']; if (guardedValue == null) return null; return CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      customDomainVerificationTest: (() { final guardedValue = map['customDomainVerificationTest']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hasConflictOnManagedEnvironment: (() { final guardedValue = map['hasConflictOnManagedEnvironment']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isHostnameAlreadyVerified: (() { final guardedValue = map['isHostnameAlreadyVerified']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       txtRecords: (() { final guardedValue = map['txtRecords']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

@@ -248,4 +248,24 @@ class MarkupRule extends pulumi.CustomResource {
     startDate = registerOutput<String>('startDate');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [MarkupRule] resource.
+  MarkupRule.reference(String urn)
+    : super(
+        'azure-native:costmanagement:MarkupRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customerDetails = registerOutput<CustomerMetadataResponse>('customerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    eTag = registerOutput<String?>('eTag');
+    endDate = registerOutput<String?>('endDate');
+    this.name = registerOutput<String>('name');
+    percentage = registerOutput<double>('percentage');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String>('type');
+  }
 }

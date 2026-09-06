@@ -10,9 +10,9 @@ class ApiReleaseArgs {
   /// Identifier of the API the release belongs to.
   final pulumi.Input<String> apiId;
   /// Release Notes
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// Release identifier within an API. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? releaseId;
+  final pulumi.Input<String?>? releaseId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

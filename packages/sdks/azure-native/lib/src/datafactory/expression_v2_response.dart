@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Nested representation of a complex expression.
 class ExpressionV2Response {
   /// List of nested expressions.
-  final pulumi.Input<List<ExpressionV2Response>>? operands;
+  final pulumi.Input<List<ExpressionV2Response>?>? operands;
   /// Expression operator value Type: list of strings.
-  final pulumi.Input<List<String>>? operators;
+  final pulumi.Input<List<String>?>? operators;
   /// Type of expressions supported by the system. Type: string.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Value for Constant/Field Type: object.
   final pulumi.Input<dynamic>? value;
 

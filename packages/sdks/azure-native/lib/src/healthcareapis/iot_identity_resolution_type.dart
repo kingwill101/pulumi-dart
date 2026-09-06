@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines how resource identity is resolved on the destination.
-enum IotIdentityResolutionType {
+enum IotIdentityResolutionType implements pulumi.PulumiEnum<String> {
   valueCreate("Create"),
   valueLookup("Lookup");
 
   const IotIdentityResolutionType(this.wireValue);
+  @override
   final String wireValue;
 
   static IotIdentityResolutionType fromValue(String value) {

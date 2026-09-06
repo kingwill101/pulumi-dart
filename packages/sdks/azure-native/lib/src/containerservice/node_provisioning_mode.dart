@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The node provisioning mode. If not specified, the default is Manual.
-enum NodeProvisioningMode {
+enum NodeProvisioningMode implements pulumi.PulumiEnum<String> {
   valueManual("Manual"),
   valueAuto("Auto");
 
   const NodeProvisioningMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeProvisioningMode fromValue(String value) {

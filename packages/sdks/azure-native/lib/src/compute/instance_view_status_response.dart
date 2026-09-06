@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Instance view status.
 class InstanceViewStatusResponse {
   /// The status code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The short localizable label for the status.
-  final pulumi.Input<String>? displayStatus;
+  final pulumi.Input<String?>? displayStatus;
   /// The level code.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// The detailed status message, including for alerts and error messages.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The time of the status.
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [InstanceViewStatusResponse].
   /// [code] The status code.

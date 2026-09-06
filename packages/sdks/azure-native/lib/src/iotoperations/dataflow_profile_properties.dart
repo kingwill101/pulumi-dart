@@ -6,17 +6,17 @@ import 'profile_diagnostics.dart';
 /// DataflowProfile Resource properties
 class DataflowProfileProperties {
   /// Spec defines the desired identities of NBC diagnostics settings.
-  final pulumi.Input<ProfileDiagnostics>? diagnostics;
+  final pulumi.Input<ProfileDiagnostics?>? diagnostics;
   /// To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
 
   /// Creates a new [DataflowProfileProperties].
   /// [diagnostics] Spec defines the desired identities of NBC diagnostics settings.
   /// [instanceCount] To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-  const DataflowProfileProperties({
+  DataflowProfileProperties({
     this.diagnostics,
-    this.instanceCount,
-  });
+    pulumi.Input<int?>? instanceCount,
+  }) : instanceCount = instanceCount ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,7 +28,7 @@ class DataflowProfileProperties {
   factory DataflowProfileProperties.fromMap(Map<String, dynamic> map) {
     return DataflowProfileProperties(
       diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProfileDiagnostics.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

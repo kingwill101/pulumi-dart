@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Reserved instance.
-enum AzureReservedInstance {
+enum AzureReservedInstance implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueRI1Year("RI1Year"),
   valueRI3Year("RI3Year");
 
   const AzureReservedInstance(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureReservedInstance fromValue(String value) {

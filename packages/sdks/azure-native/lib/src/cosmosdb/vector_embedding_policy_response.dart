@@ -6,7 +6,7 @@ import 'vector_embedding_response.dart';
 /// Cosmos DB Vector Embedding Policy
 class VectorEmbeddingPolicyResponse {
   /// List of vector embeddings
-  final pulumi.Input<List<VectorEmbeddingResponse>>? vectorEmbeddings;
+  final pulumi.Input<List<VectorEmbeddingResponse>?>? vectorEmbeddings;
 
   /// Creates a new [VectorEmbeddingPolicyResponse].
   /// [vectorEmbeddings] List of vector embeddings

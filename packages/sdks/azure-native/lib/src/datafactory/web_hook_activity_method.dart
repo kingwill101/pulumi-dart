@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Rest API method for target endpoint.
-enum WebHookActivityMethod {
+enum WebHookActivityMethod implements pulumi.PulumiEnum<String> {
   pOST("POST");
 
   const WebHookActivityMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static WebHookActivityMethod fromValue(String value) {

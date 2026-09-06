@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for PostArgs match conditions
 class PostArgsMatchConditionParametersResponse {
   /// The match value for the condition of the delivery rule
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
   /// Name of PostArg to be matched
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
   /// Expected value is 'DeliveryRulePostArgsConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -24,14 +24,14 @@ class PostArgsMatchConditionParametersResponse {
   /// [selector] Name of PostArg to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRulePostArgsConditionParameters'.
-  const PostArgsMatchConditionParametersResponse({
+  PostArgsMatchConditionParametersResponse({
     this.matchValues,
-    this.negateCondition,
+    pulumi.Input<bool?>? negateCondition,
     required this.operator,
     this.selector,
     this.transforms,
     required this.typeName,
-  });
+  }) : negateCondition = negateCondition ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

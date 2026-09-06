@@ -12,19 +12,19 @@ class JobAgentArgs {
   /// Resource ID of the database to store job metadata in.
   final pulumi.Input<String> databaseId;
   /// The identity of the job agent.
-  final pulumi.Input<JobAgentIdentity>? identity;
+  final pulumi.Input<JobAgentIdentity?>? identity;
   /// The name of the job agent to be created or updated.
-  final pulumi.Input<String>? jobAgentName;
+  final pulumi.Input<String?>? jobAgentName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// The name and tier of the SKU.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [JobAgentArgs].
   /// [databaseId] Resource ID of the database to store job metadata in.

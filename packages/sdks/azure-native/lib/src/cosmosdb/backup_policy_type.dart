@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the mode of backups.
-enum BackupPolicyType {
+enum BackupPolicyType implements pulumi.PulumiEnum<String> {
   valuePeriodic("Periodic"),
   valueContinuous("Continuous");
 
   const BackupPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupPolicyType fromValue(String value) {

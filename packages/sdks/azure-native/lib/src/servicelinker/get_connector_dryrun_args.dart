@@ -14,7 +14,7 @@ class GetConnectorDryrunArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The ID of the target subscription.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [GetConnectorDryrunArgs].
   /// [dryrunName] The name of dryrun.

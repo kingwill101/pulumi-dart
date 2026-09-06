@@ -11,13 +11,13 @@ class ProjectPolicyArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// The name of the project policy.
-  final pulumi.Input<String>? projectPolicyName;
+  final pulumi.Input<String?>? projectPolicyName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource policies that are a part of this project policy.
-  final pulumi.Input<List<ResourcePolicy>>? resourcePolicies;
+  final pulumi.Input<List<ResourcePolicy>?>? resourcePolicies;
   /// Resources that have access to the shared resources that are a part of this project policy.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [ProjectPolicyArgs].
   /// [devCenterName] The name of the devcenter.

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of API this fleetspace belongs to. Acceptable values: 'NoSQL'
-enum FleetspaceApiKind {
+enum FleetspaceApiKind implements pulumi.PulumiEnum<String> {
   valueNoSQL("NoSQL");
 
   const FleetspaceApiKind(this.wireValue);
+  @override
   final String wireValue;
 
   static FleetspaceApiKind fromValue(String value) {

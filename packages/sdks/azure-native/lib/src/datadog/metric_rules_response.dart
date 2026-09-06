@@ -6,7 +6,7 @@ import 'filtering_tag_response.dart';
 /// Set of rules for sending metrics for the Monitor resource.
 class MetricRulesResponse {
   /// List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  final pulumi.Input<List<FilteringTagResponse>>? filteringTags;
+  final pulumi.Input<List<FilteringTagResponse>?>? filteringTags;
 
   /// Creates a new [MetricRulesResponse].
   /// [filteringTags] List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.

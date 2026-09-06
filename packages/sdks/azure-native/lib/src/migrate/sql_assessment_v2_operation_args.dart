@@ -12,82 +12,82 @@ import 'sql_vm_settings.dart';
 /// {@macro pulumi_migrate_sql_assessment_v2_operation_args_doc}
 class SqlAssessmentV2OperationArgs {
   /// SQL Assessment arm name.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment type of the assessment.
-  final pulumi.Input<String>? assessmentType;
+  final pulumi.Input<dynamic>? assessmentType;
   /// Gets or sets user preference indicating intent of async commit mode.
-  final pulumi.Input<String>? asyncCommitModeIntent;
+  final pulumi.Input<dynamic>? asyncCommitModeIntent;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Azure Offer Code.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<dynamic>? azureOfferCode;
   /// Gets or sets Azure Offer Code for VM.
-  final pulumi.Input<String>? azureOfferCodeForVm;
+  final pulumi.Input<dynamic>? azureOfferCodeForVm;
   /// Gets or sets a value indicating azure security offering type.
-  final pulumi.Input<String>? azureSecurityOfferingType;
+  final pulumi.Input<dynamic>? azureSecurityOfferingType;
   /// Gets or sets user configurable SQL database settings.
-  final pulumi.Input<SqlDbSettings>? azureSqlDatabaseSettings;
+  final pulumi.Input<SqlDbSettings?>? azureSqlDatabaseSettings;
   /// Gets or sets user configurable SQL managed instance settings.
-  final pulumi.Input<SqlMiSettings>? azureSqlManagedInstanceSettings;
+  final pulumi.Input<SqlMiSettings?>? azureSqlManagedInstanceSettings;
   /// Gets or sets user configurable SQL VM settings.
-  final pulumi.Input<SqlVmSettings>? azureSqlVmSettings;
+  final pulumi.Input<SqlVmSettings?>? azureSqlVmSettings;
   /// Confidence Rating in Percentage.
-  final pulumi.Input<double>? confidenceRatingInPercentage;
+  final pulumi.Input<double?>? confidenceRatingInPercentage;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<dynamic>? currency;
   /// Gets or sets the Azure Location or Azure region where to which the machines
   /// will be migrated.
-  final pulumi.Input<String>? disasterRecoveryLocation;
+  final pulumi.Input<dynamic>? disasterRecoveryLocation;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets the Enterprise agreement subscription id.
-  final pulumi.Input<String>? eaSubscriptionId;
+  final pulumi.Input<String?>? eaSubscriptionId;
   /// Gets or sets a value indicating whether HADR assessments needs to be created.
-  final pulumi.Input<bool>? enableHadrAssessment;
+  final pulumi.Input<bool?>? enableHadrAssessment;
   /// Gets or sets the duration for which the entity (SQL, VMs) are up in the
   /// on-premises environment.
-  final pulumi.Input<EntityUptime>? entityUptime;
+  final pulumi.Input<EntityUptime?>? entityUptime;
   /// Gets or sets user configurable setting to display the environment type.
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<dynamic>? environmentType;
   /// Group ARM name
   final pulumi.Input<String> groupName;
   /// Gets the group type for the assessment.
-  final pulumi.Input<String>? groupType;
+  final pulumi.Input<dynamic>? groupType;
   /// Gets or sets a value indicating whether internet access is available.
-  final pulumi.Input<bool>? isInternetAccessAvailable;
+  final pulumi.Input<bool?>? isInternetAccessAvailable;
   /// Gets or sets user preference indicating intent of multi-subnet configuration.
-  final pulumi.Input<String>? multiSubnetIntent;
+  final pulumi.Input<dynamic>? multiSubnetIntent;
   /// Gets or sets SQL optimization logic.
-  final pulumi.Input<String>? optimizationLogic;
+  final pulumi.Input<dynamic>? optimizationLogic;
   /// Gets or sets user configurable setting to display the azure hybrid use benefit.
-  final pulumi.Input<String>? osLicense;
+  final pulumi.Input<dynamic>? osLicense;
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final pulumi.Input<String>? percentile;
+  final pulumi.Input<dynamic>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The status of the last operation.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Reserved instance.
-  final pulumi.Input<String>? reservedInstance;
+  final pulumi.Input<dynamic>? reservedInstance;
   /// Gets or sets azure reserved instance for VM.
-  final pulumi.Input<String>? reservedInstanceForVm;
+  final pulumi.Input<dynamic>? reservedInstanceForVm;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<dynamic>? sizingCriterion;
   /// SQL server license.
-  final pulumi.Input<String>? sqlServerLicense;
+  final pulumi.Input<dynamic>? sqlServerLicense;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final pulumi.Input<String>? timeRange;
+  final pulumi.Input<dynamic>? timeRange;
 
   /// Creates a new [SqlAssessmentV2OperationArgs].
   /// [assessmentName] SQL Assessment arm name.
@@ -209,41 +209,41 @@ class SqlAssessmentV2OperationArgs {
   factory SqlAssessmentV2OperationArgs.fromMap(Map<String, dynamic> map) {
     return SqlAssessmentV2OperationArgs(
       assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      asyncCommitModeIntent: (() { final guardedValue = map['asyncCommitModeIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      asyncCommitModeIntent: (() { final guardedValue = map['asyncCommitModeIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureOfferCodeForVm: (() { final guardedValue = map['azureOfferCodeForVm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureSecurityOfferingType: (() { final guardedValue = map['azureSecurityOfferingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureOfferCodeForVm: (() { final guardedValue = map['azureOfferCodeForVm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureSecurityOfferingType: (() { final guardedValue = map['azureSecurityOfferingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       azureSqlDatabaseSettings: (() { final guardedValue = map['azureSqlDatabaseSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlDbSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       azureSqlManagedInstanceSettings: (() { final guardedValue = map['azureSqlManagedInstanceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlMiSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       azureSqlVmSettings: (() { final guardedValue = map['azureSqlVmSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlVmSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      disasterRecoveryLocation: (() { final guardedValue = map['disasterRecoveryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      disasterRecoveryLocation: (() { final guardedValue = map['disasterRecoveryLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       eaSubscriptionId: (() { final guardedValue = map['eaSubscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableHadrAssessment: (() { final guardedValue = map['enableHadrAssessment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       entityUptime: (() { final guardedValue = map['entityUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityUptime.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
-      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       isInternetAccessAvailable: (() { final guardedValue = map['isInternetAccessAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      multiSubnetIntent: (() { final guardedValue = map['multiSubnetIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      optimizationLogic: (() { final guardedValue = map['optimizationLogic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      osLicense: (() { final guardedValue = map['osLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      multiSubnetIntent: (() { final guardedValue = map['multiSubnetIntent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      optimizationLogic: (() { final guardedValue = map['optimizationLogic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      osLicense: (() { final guardedValue = map['osLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservedInstanceForVm: (() { final guardedValue = map['reservedInstanceForVm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      reservedInstanceForVm: (() { final guardedValue = map['reservedInstanceForVm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sqlServerLicense: (() { final guardedValue = map['sqlServerLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sqlServerLicense: (() { final guardedValue = map['sqlServerLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

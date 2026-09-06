@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The partner connector type is KafkaAzureBlobStorageSource
 class KafkaAzureBlobStorageSourceConnectorInfoResponse {
   /// Kafka API Key
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// Kafka API Secret
-  final pulumi.Input<String>? apiSecret;
+  final pulumi.Input<String?>? apiSecret;
   /// Kafka Auth Type
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Kafka Input Data Format Type
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Maximum Tasks
-  final pulumi.Input<String>? maxTasks;
+  final pulumi.Input<String?>? maxTasks;
   /// Kafka Output Data Format Type
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Partner Connector type.
   /// Expected value is 'KafkaAzureBlobStorageSource'.
   final pulumi.Input<String> partnerConnectorType;
   /// Kafka Service Account Id
-  final pulumi.Input<String>? serviceAccountId;
+  final pulumi.Input<String?>? serviceAccountId;
   /// Kafka topics Regex pattern
-  final pulumi.Input<String>? topicRegex;
+  final pulumi.Input<String?>? topicRegex;
   /// Kafka topics directory
-  final pulumi.Input<String>? topicsDir;
+  final pulumi.Input<String?>? topicsDir;
 
   /// Creates a new [KafkaAzureBlobStorageSourceConnectorInfoResponse].
   /// [apiKey] Kafka API Key

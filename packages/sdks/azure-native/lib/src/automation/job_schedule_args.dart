@@ -12,13 +12,13 @@ class JobScheduleArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The job schedule name.
-  final pulumi.Input<String>? jobScheduleId;
+  final pulumi.Input<String?>? jobScheduleId;
   /// Gets or sets a list of job properties.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the hybrid worker group that the scheduled job should run on.
-  final pulumi.Input<String>? runOn;
+  final pulumi.Input<String?>? runOn;
   /// Gets or sets the runbook.
   final pulumi.Input<RunbookAssociationProperty> runbook;
   /// Gets or sets the schedule.

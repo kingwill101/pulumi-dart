@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes properties of a network resource.
 class NetworkResourceProperties {
   /// User readable description of the network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The type of a Service Fabric container network.
   /// Expected value is 'NetworkResourceProperties'.
   final pulumi.Input<String> kind;

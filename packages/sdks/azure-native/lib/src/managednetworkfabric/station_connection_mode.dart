@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Station Connection Mode.
-enum StationConnectionMode {
+enum StationConnectionMode implements pulumi.PulumiEnum<String> {
   active("Active"),
   passive("Passive");
 
   const StationConnectionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static StationConnectionMode fromValue(String value) {

@@ -6,15 +6,15 @@ import 'unauthenticated_client_action_v2.dart';
 /// The configuration settings that determines the validation flow of users using App Service Authentication/Authorization.
 class GlobalValidation {
   /// The paths for which unauthenticated flow would not be redirected to the login page.
-  final pulumi.Input<List<String>>? excludedPaths;
+  final pulumi.Input<List<String>?>? excludedPaths;
   /// The default authentication provider to use when multiple providers are configured.
   /// This setting is only needed if multiple providers are configured and the unauthenticated client
   /// action is set to "RedirectToLoginPage".
-  final pulumi.Input<String>? redirectToProvider;
+  final pulumi.Input<String?>? redirectToProvider;
   /// &lt;code&gt;true&lt;/code&gt; if the authentication flow is required any request is made; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? requireAuthentication;
+  final pulumi.Input<bool?>? requireAuthentication;
   /// The action to take when an unauthenticated client attempts to access the app.
-  final pulumi.Input<UnauthenticatedClientActionV2>? unauthenticatedClientAction;
+  final pulumi.Input<UnauthenticatedClientActionV2?>? unauthenticatedClientAction;
 
   /// Creates a new [GlobalValidation].
   /// [excludedPaths] The paths for which unauthenticated flow would not be redirected to the login page.

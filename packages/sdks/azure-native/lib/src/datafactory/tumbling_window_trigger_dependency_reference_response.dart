@@ -6,11 +6,11 @@ import 'trigger_reference_response.dart';
 /// Referenced tumbling window trigger dependency.
 class TumblingWindowTriggerDependencyReferenceResponse {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
-  final pulumi.Input<String>? offset;
+  final pulumi.Input<String?>? offset;
   /// Referenced trigger.
   final pulumi.Input<TriggerReferenceResponse> referenceTrigger;
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The type of dependency reference.
   /// Expected value is 'TumblingWindowTriggerDependencyReference'.
   final pulumi.Input<String> type;

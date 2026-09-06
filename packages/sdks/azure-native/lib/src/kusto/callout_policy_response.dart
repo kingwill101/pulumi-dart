@@ -7,11 +7,11 @@ class CalloutPolicyResponse {
   /// Unique identifier for the callout configuration.
   final pulumi.Input<String> calloutId;
   /// Type of the callout service, specifying the kind of external resource or service being accessed.
-  final pulumi.Input<String>? calloutType;
+  final pulumi.Input<String?>? calloutType;
   /// Regular expression or FQDN pattern for the callout URI.
-  final pulumi.Input<String>? calloutUriRegex;
+  final pulumi.Input<String?>? calloutUriRegex;
   /// Indicates whether outbound access is permitted for the specified URI pattern.
-  final pulumi.Input<String>? outboundAccess;
+  final pulumi.Input<String?>? outboundAccess;
 
   /// Creates a new [CalloutPolicyResponse].
   /// [calloutId] Unique identifier for the callout configuration.

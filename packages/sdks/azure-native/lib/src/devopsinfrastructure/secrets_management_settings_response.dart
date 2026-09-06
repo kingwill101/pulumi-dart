@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The secret management settings of the machines in the pool.
 class SecretsManagementSettingsResponse {
   /// Where to store certificates on the machine.
-  final pulumi.Input<String>? certificateStoreLocation;
+  final pulumi.Input<String?>? certificateStoreLocation;
   /// Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
-  final pulumi.Input<String>? certificateStoreName;
+  final pulumi.Input<String?>? certificateStoreName;
   /// Defines if the key of the certificates should be exportable.
   final pulumi.Input<bool> keyExportable;
   /// The list of certificates to install on all machines in the pool.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Isolation mode for the managed network of a cognitive services account.
-enum IsolationMode {
+enum IsolationMode implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   allowInternetOutbound("AllowInternetOutbound"),
   allowOnlyApprovedOutbound("AllowOnlyApprovedOutbound");
 
   const IsolationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static IsolationMode fromValue(String value) {

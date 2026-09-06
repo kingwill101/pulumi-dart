@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A custom response configuration for a rule.
 class CcpResponseConfig {
   /// The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
-  final pulumi.Input<String>? compressionAlgo;
+  final pulumi.Input<String?>? compressionAlgo;
   /// The value indicating whether the response isn't an array of events / logs.  By setting this flag to true it means the remote server will response with an object which each property has as a value an array of events / logs.
-  final pulumi.Input<bool>? convertChildPropertiesToArray;
+  final pulumi.Input<bool?>? convertChildPropertiesToArray;
   /// The csv delimiter, in case the response format is CSV.
-  final pulumi.Input<String>? csvDelimiter;
+  final pulumi.Input<String?>? csvDelimiter;
   /// The character used to escape characters in CSV.
-  final pulumi.Input<String>? csvEscape;
+  final pulumi.Input<String?>? csvEscape;
   /// The json paths, '$' char is the json root.
   final pulumi.Input<List<String>> eventsJsonPaths;
   /// The response format. possible values are json,csv,xml
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The value indicating whether the response has CSV boundary in case the response in CSV format.
-  final pulumi.Input<bool>? hasCsvBoundary;
+  final pulumi.Input<bool?>? hasCsvBoundary;
   /// The value indicating whether the response has headers in case the response in CSV format.
-  final pulumi.Input<bool>? hasCsvHeader;
+  final pulumi.Input<bool?>? hasCsvHeader;
   /// The value indicating whether the remote server support Gzip and we should expect Gzip response.
-  final pulumi.Input<bool>? isGzipCompressed;
+  final pulumi.Input<bool?>? isGzipCompressed;
   /// The value where the status message/code should appear in the response.
-  final pulumi.Input<String>? successStatusJsonPath;
+  final pulumi.Input<String?>? successStatusJsonPath;
   /// The status value.
-  final pulumi.Input<String>? successStatusValue;
+  final pulumi.Input<String?>? successStatusValue;
 
   /// Creates a new [CcpResponseConfig].
   /// [compressionAlgo] The compression algorithm. For Example: 'gzip', 'multi-gzip', 'deflate'.
@@ -39,19 +39,19 @@ class CcpResponseConfig {
   /// [isGzipCompressed] The value indicating whether the remote server support Gzip and we should expect Gzip response.
   /// [successStatusJsonPath] The value where the status message/code should appear in the response.
   /// [successStatusValue] The status value.
-  const CcpResponseConfig({
-    this.compressionAlgo,
+  CcpResponseConfig({
+    pulumi.Input<String?>? compressionAlgo,
     this.convertChildPropertiesToArray,
     this.csvDelimiter,
-    this.csvEscape,
+    pulumi.Input<String?>? csvEscape,
     required this.eventsJsonPaths,
-    this.format,
+    pulumi.Input<String?>? format,
     this.hasCsvBoundary,
     this.hasCsvHeader,
     this.isGzipCompressed,
     this.successStatusJsonPath,
     this.successStatusValue,
-  });
+  }) : compressionAlgo = compressionAlgo ?? pulumi.Input.fromValue('gzip'), csvEscape = csvEscape ?? pulumi.Input.fromValue('"'), format = format ?? pulumi.Input.fromValue('json');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

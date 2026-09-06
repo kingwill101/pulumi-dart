@@ -31,7 +31,7 @@ class IscsiLunResponse {
 
   factory IscsiLunResponse.fromMap(Map<String, dynamic> map) {
     return IscsiLunResponse(
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       managedDiskAzureResourceId: pulumi.Input.fromValue(map['managedDiskAzureResourceId'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

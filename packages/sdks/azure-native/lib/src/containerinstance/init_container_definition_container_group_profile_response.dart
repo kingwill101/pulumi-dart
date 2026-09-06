@@ -9,19 +9,19 @@ import 'volume_mount_response.dart';
 /// The init container definition.
 class InitContainerDefinitionContainerGroupProfileResponse {
   /// The command to execute within the init container in exec form.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// The environment variables to set in the init container.
-  final pulumi.Input<List<EnvironmentVariableContainerGroupProfileResponse>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariableContainerGroupProfileResponse>?>? environmentVariables;
   /// The image of the init container.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The instance view of the init container. Only valid in response.
   final pulumi.Input<InitContainerPropertiesDefinitionResponseInstanceView> instanceView;
   /// The name for the init container.
   final pulumi.Input<String> name;
   /// The container security properties.
-  final pulumi.Input<SecurityContextDefinitionResponse>? securityContext;
+  final pulumi.Input<SecurityContextDefinitionResponse?>? securityContext;
   /// The volume mounts available to the init container.
-  final pulumi.Input<List<VolumeMountResponse>>? volumeMounts;
+  final pulumi.Input<List<VolumeMountResponse>?>? volumeMounts;
 
   /// Creates a new [InitContainerDefinitionContainerGroupProfileResponse].
   /// [command] The command to execute within the init container in exec form.

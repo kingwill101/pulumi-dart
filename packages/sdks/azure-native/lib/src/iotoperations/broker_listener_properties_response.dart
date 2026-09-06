@@ -10,21 +10,21 @@ class BrokerListenerPropertiesResponse {
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Kubernetes Service name of this listener.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// Kubernetes Service type of this listener.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<String?>? serviceType;
 
   /// Creates a new [BrokerListenerPropertiesResponse].
   /// [ports] Ports on which this listener accepts client connections.
   /// [provisioningState] The status of the last operation.
   /// [serviceName] Kubernetes Service name of this listener.
   /// [serviceType] Kubernetes Service type of this listener.
-  const BrokerListenerPropertiesResponse({
+  BrokerListenerPropertiesResponse({
     required this.ports,
     required this.provisioningState,
     this.serviceName,
-    this.serviceType,
-  });
+    pulumi.Input<String?>? serviceType,
+  }) : serviceType = serviceType ?? pulumi.Input.fromValue('ClusterIp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

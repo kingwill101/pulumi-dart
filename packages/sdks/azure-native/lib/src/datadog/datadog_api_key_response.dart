@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogApiKeyResponse {
   /// The time of creation of the API key.
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// The user that created the API key.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// The value of the API key.
   final pulumi.Input<String> key;
   /// The name of the API key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatadogApiKeyResponse].
   /// [created] The time of creation of the API key.

@@ -8,24 +8,24 @@ class AADAuthTypeConnectionPropertiesResponse {
   /// Expected value is 'AAD'.
   final pulumi.Input<String> authType;
   /// Category of the connection
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   final pulumi.Input<String> createdByWorkspaceArmId;
   /// Provides the error message if the connection fails
-  final pulumi.Input<String>? error;
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? error;
+  final pulumi.Input<String?>? expiryTime;
   /// Group based on connection category
   final pulumi.Input<String> group;
-  final pulumi.Input<bool>? isSharedToAll;
+  final pulumi.Input<bool?>? isSharedToAll;
   /// Store user metadata for this connection
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Specifies how private endpoints are used with this connection: 'Required', 'NotRequired', or 'NotApplicable'.
-  final pulumi.Input<String>? peRequirement;
+  final pulumi.Input<String?>? peRequirement;
   /// Specifies the status of private endpoints for this connection: 'Inactive', 'Active', or 'NotApplicable'.
-  final pulumi.Input<String>? peStatus;
-  final pulumi.Input<List<String>>? sharedUserList;
+  final pulumi.Input<String?>? peStatus;
+  final pulumi.Input<List<String>?>? sharedUserList;
   /// The connection URL to be used.
-  final pulumi.Input<String>? target;
-  final pulumi.Input<bool>? useWorkspaceManagedIdentity;
+  final pulumi.Input<String?>? target;
+  final pulumi.Input<bool?>? useWorkspaceManagedIdentity;
 
   /// Creates a new [AADAuthTypeConnectionPropertiesResponse].
   /// [authType] Authentication type of the connection target

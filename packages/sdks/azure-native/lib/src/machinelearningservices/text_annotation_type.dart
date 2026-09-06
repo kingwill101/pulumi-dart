@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Annotation type of text labeling job.
-enum TextAnnotationType {
+enum TextAnnotationType implements pulumi.PulumiEnum<String> {
   valueClassification("Classification"),
   valueNamedEntityRecognition("NamedEntityRecognition");
 
   const TextAnnotationType(this.wireValue);
+  @override
   final String wireValue;
 
   static TextAnnotationType fromValue(String value) {

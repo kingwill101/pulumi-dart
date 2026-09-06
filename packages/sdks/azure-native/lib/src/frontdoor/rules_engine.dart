@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rules_engine_args.dart';
+import 'rules_engine_rule_response.dart';
 
 /// A rules engine configuration containing a list of rules that will run to modify the runtime behavior of the request and response.
 ///
@@ -671,7 +672,7 @@ class RulesEngine extends pulumi.CustomResource {
   /// Resource status.
   late final pulumi.Output<String> resourceState;
   /// A list of rules that define a particular Rules Engine Configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RulesEngineRuleResponse>?> rules;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -692,7 +693,23 @@ class RulesEngine extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     resourceState = registerOutput<String>('resourceState');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<RulesEngineRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRuleResponse>(guardedValue, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RulesEngine] resource.
+  RulesEngine.reference(String urn)
+    : super(
+        'azure-native:frontdoor:RulesEngine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    resourceState = registerOutput<String>('resourceState');
+    rules = registerOutput<List<RulesEngineRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RulesEngineRuleResponse>(guardedValue, (value) => RulesEngineRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

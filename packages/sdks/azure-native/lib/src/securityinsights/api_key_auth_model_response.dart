@@ -7,11 +7,11 @@ class ApiKeyAuthModelResponse {
   /// API Key for the user secret key credential
   final pulumi.Input<String> apiKey;
   /// API Key Identifier
-  final pulumi.Input<String>? apiKeyIdentifier;
+  final pulumi.Input<String?>? apiKeyIdentifier;
   /// API Key name
   final pulumi.Input<String> apiKeyName;
   /// Flag to indicate if API key is set in HTTP POST payload
-  final pulumi.Input<bool>? isApiKeyInPostPayload;
+  final pulumi.Input<bool?>? isApiKeyInPostPayload;
   /// Type of paging
   /// Expected value is 'APIKey'.
   final pulumi.Input<String> type;

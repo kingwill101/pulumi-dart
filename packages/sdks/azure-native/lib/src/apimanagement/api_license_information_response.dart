@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API license information
 class ApiLicenseInformationResponse {
   /// The license name used for the API
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A URL to the license used for the API. MUST be in the format of a URL
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ApiLicenseInformationResponse].
   /// [name] The license name used for the API

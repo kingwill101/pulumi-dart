@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container for environment specification versions.
 class EnvironmentContainerProperties {
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnvironmentContainerProperties].
   /// [description] The asset description text.
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const EnvironmentContainerProperties({
+  EnvironmentContainerProperties({
     this.description,
-    this.isArchived,
+    pulumi.Input<bool?>? isArchived,
     this.properties,
     this.tags,
-  });
+  }) : isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

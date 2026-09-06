@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SAP software installation type.
-enum SAPSoftwareInstallationType {
+enum SAPSoftwareInstallationType implements pulumi.PulumiEnum<String> {
   serviceInitiated("ServiceInitiated"),
   sAPInstallWithoutOSConfig("SAPInstallWithoutOSConfig"),
   external("External");
 
   const SAPSoftwareInstallationType(this.wireValue);
+  @override
   final String wireValue;
 
   static SAPSoftwareInstallationType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes an automation rule action to add a task to an incident.
 class AddIncidentTaskActionProperties {
   /// The description of the task.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The title of the task.
   final pulumi.Input<String> title;
 

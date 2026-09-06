@@ -6,9 +6,9 @@ import 'dbsnapshot_attribute.dart';
 /// Definition of awsRdsDBSnapshotAttributesResult
 class AwsRdsDBSnapshotAttributesResultProperties {
   /// &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;
-  final pulumi.Input<List<DBSnapshotAttribute>>? dbSnapshotAttributes;
+  final pulumi.Input<List<DBSnapshotAttribute>?>? dbSnapshotAttributes;
   /// &lt;p&gt;The identifier of the manual DB snapshot that the attributes apply to.&lt;/p&gt;
-  final pulumi.Input<String>? dbSnapshotIdentifier;
+  final pulumi.Input<String?>? dbSnapshotIdentifier;
 
   /// Creates a new [AwsRdsDBSnapshotAttributesResultProperties].
   /// [dbSnapshotAttributes] &lt;p&gt;The list of attributes and values for the manual DB snapshot.&lt;/p&gt;

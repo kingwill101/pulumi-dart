@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the compound assessment.
 class CompoundAssessmentDetailsResponse {
   /// Timestamp when the assessment was created.
-  final pulumi.Input<String>? createdTimestamp;
+  final pulumi.Input<String?>? createdTimestamp;
   /// Status of the assessment.
   final pulumi.Input<String> status;
   /// Timestamp when the assessment was last updated.
-  final pulumi.Input<String>? updatedTimestamp;
+  final pulumi.Input<String?>? updatedTimestamp;
 
   /// Creates a new [CompoundAssessmentDetailsResponse].
   /// [createdTimestamp] Timestamp when the assessment was created.

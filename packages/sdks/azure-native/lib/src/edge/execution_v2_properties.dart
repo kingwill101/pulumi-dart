@@ -7,7 +7,7 @@ class ExecutionV2Properties {
   /// ExecutionV2 specification
   final pulumi.Input<dynamic>? specification;
   /// Workflow version of ExecutionV2
-  final pulumi.Input<String>? workflowVersionId;
+  final pulumi.Input<String?>? workflowVersionId;
 
   /// Creates a new [ExecutionV2Properties].
   /// [specification] ExecutionV2 specification

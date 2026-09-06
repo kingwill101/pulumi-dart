@@ -11,13 +11,13 @@ class DataflowEndpointKafkaAuthenticationResponse {
   /// Mode of Authentication.
   final pulumi.Input<String> method;
   /// SASL authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSaslResponse>? saslSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSaslResponse?>? saslSettings;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse?>? userAssignedManagedIdentitySettings;
   /// X.509 certificate authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationX509Response>? x509CertificateSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationX509Response?>? x509CertificateSettings;
 
   /// Creates a new [DataflowEndpointKafkaAuthenticationResponse].
   /// [method] Mode of Authentication.

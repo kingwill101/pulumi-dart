@@ -7,7 +7,7 @@ class AnalyticsConnectorDataLakeDataDestinationResponse {
   /// The name for the Data Lake.
   final pulumi.Input<String> dataLakeName;
   /// Name of data destination.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of data destination.
   /// Expected value is 'datalake'.
   final pulumi.Input<String> type;

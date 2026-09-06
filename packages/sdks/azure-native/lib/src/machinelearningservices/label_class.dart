@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Label class definition
 class LabelClass {
   /// Display name of the label class.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Dictionary of subclasses of the label class.
-  final pulumi.Input<Map<String, LabelClass>>? subclasses;
+  final pulumi.Input<Map<String, LabelClass>?>? subclasses;
 
   /// Creates a new [LabelClass].
   /// [displayName] Display name of the label class.

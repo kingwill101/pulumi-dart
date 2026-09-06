@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Permissions the identity has for keys, secrets, certificates and storage.
 class PermissionsResponse {
   /// Permissions to certificates
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
   /// Permissions to keys
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
   /// Permissions to secrets
-  final pulumi.Input<List<String>>? secrets;
+  final pulumi.Input<List<String>?>? secrets;
   /// Permissions to storage accounts
-  final pulumi.Input<List<String>>? storage;
+  final pulumi.Input<List<String>?>? storage;
 
   /// Creates a new [PermissionsResponse].
   /// [certificates] Permissions to certificates

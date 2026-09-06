@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagesync_cloud_endpoint_args_doc}
 class CloudEndpointArgs {
   /// Azure file share name
-  final pulumi.Input<String>? azureFileShareName;
+  final pulumi.Input<String?>? azureFileShareName;
   /// Name of Cloud Endpoint object.
-  final pulumi.Input<String>? cloudEndpointName;
+  final pulumi.Input<String?>? cloudEndpointName;
   /// Friendly Name
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Storage Account Resource Id
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
   /// Storage Account Tenant Id
-  final pulumi.Input<String>? storageAccountTenantId;
+  final pulumi.Input<String?>? storageAccountTenantId;
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
   /// Name of Sync Group resource.

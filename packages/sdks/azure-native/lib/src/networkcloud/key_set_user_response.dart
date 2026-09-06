@@ -7,11 +7,11 @@ class KeySetUserResponse {
   /// The user name that will be used for access.
   final pulumi.Input<String> azureUserName;
   /// The free-form description for this user.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
   final pulumi.Input<SshPublicKeyResponse> sshPublicKey;
   /// The user principal name (email format) used to validate this user's group membership.
-  final pulumi.Input<String>? userPrincipalName;
+  final pulumi.Input<String?>? userPrincipalName;
 
   /// Creates a new [KeySetUserResponse].
   /// [azureUserName] The user name that will be used for access.

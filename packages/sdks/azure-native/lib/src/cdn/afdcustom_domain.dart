@@ -316,7 +316,32 @@ class AFDCustomDomain extends pulumi.CustomResource {
     azureDnsZone = registerOutput<ResourceReferenceResponse?>('azureDnsZone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentStatus = registerOutput<String>('deploymentStatus');
     domainValidationState = registerOutput<String>('domainValidationState');
-    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    hostName = registerOutput<String>('hostName');
+    this.name = registerOutput<String>('name');
+    preValidatedCustomDomainResourceId = registerOutput<ResourceReferenceResponse?>('preValidatedCustomDomainResourceId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    profileName = registerOutput<String>('profileName');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsSettings = registerOutput<AFDDomainHttpsParametersResponse?>('tlsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AFDDomainHttpsParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    validationProperties = registerOutput<DomainValidationPropertiesResponse>('validationProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainValidationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AFDCustomDomain] resource.
+  AFDCustomDomain.reference(String urn)
+    : super(
+        'azure-native:cdn:AFDCustomDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureDnsZone = registerOutput<ResourceReferenceResponse?>('azureDnsZone', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    domainValidationState = registerOutput<String>('domainValidationState');
+    extendedProperties = registerOutput<Map<String, String>?>('extendedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     hostName = registerOutput<String>('hostName');
     this.name = registerOutput<String>('name');
     preValidatedCustomDomainResourceId = registerOutput<ResourceReferenceResponse?>('preValidatedCustomDomainResourceId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

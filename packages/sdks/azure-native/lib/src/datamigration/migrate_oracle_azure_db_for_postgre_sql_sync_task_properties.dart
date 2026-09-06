@@ -6,9 +6,9 @@ import 'migrate_oracle_azure_db_postgre_sql_sync_task_input.dart';
 /// Properties for the task that migrates Oracle to Azure Database for PostgreSQL for online migrations
 class MigrateOracleAzureDbForPostgreSqlSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<MigrateOracleAzureDbPostgreSqlSyncTaskInput>? input;
+  final pulumi.Input<MigrateOracleAzureDbPostgreSqlSyncTaskInput?>? input;
   /// Task type.
   /// Expected value is 'Migrate.Oracle.AzureDbForPostgreSql.Sync'.
   final pulumi.Input<String> taskType;

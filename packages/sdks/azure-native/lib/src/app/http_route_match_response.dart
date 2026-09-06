@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Criteria to match on
 class HttpRouteMatchResponse {
   /// path case sensitive, default is true
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
   /// match on exact path
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// match on all prefix's. Not exact
-  final pulumi.Input<String>? pathSeparatedPrefix;
+  final pulumi.Input<String?>? pathSeparatedPrefix;
   /// match on all prefix's. Not exact
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [HttpRouteMatchResponse].
   /// [caseSensitive] path case sensitive, default is true

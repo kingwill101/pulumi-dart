@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current status of the free services
-enum FreeServicesStatus {
+enum FreeServicesStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   pending("Pending"),
   active("Active"),
@@ -7,6 +9,7 @@ enum FreeServicesStatus {
   completed("Completed");
 
   const FreeServicesStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static FreeServicesStatus fromValue(String value) {

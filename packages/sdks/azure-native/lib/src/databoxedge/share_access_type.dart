@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of access to be allowed for the user.
-enum ShareAccessType {
+enum ShareAccessType implements pulumi.PulumiEnum<String> {
   valueChange("Change"),
   valueRead("Read"),
   valueCustom("Custom");
 
   const ShareAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static ShareAccessType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// High availability properties of a server
 class HighAvailabilityResponse {
   /// High availability mode for a server.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Availability zone of the standby server.
-  final pulumi.Input<String>? standbyAvailabilityZone;
+  final pulumi.Input<String?>? standbyAvailabilityZone;
   /// The state of server high availability.
   final pulumi.Input<String> state;
 

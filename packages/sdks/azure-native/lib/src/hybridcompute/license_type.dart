@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the license resource.
-enum LicenseType {
+enum LicenseType implements pulumi.PulumiEnum<String> {
   valueESU("ESU");
 
   const LicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseType fromValue(String value) {

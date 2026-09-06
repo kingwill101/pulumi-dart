@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reconciliation Policy.
 class ReconciliationPolicy {
   /// Policy interval.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// Policy type
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ReconciliationPolicy].
   /// [interval] Policy interval.
@@ -27,7 +27,7 @@ class ReconciliationPolicy {
   factory ReconciliationPolicy.fromMap(Map<String, dynamic> map) {
     return ReconciliationPolicy(
       interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -5,7 +5,9 @@ import 'batch_account_identity_response.dart';
 import 'encryption_properties_response.dart';
 import 'key_vault_reference_response.dart';
 import 'network_profile_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
+import 'virtual_machine_family_core_quota_response.dart';
 
 /// Contains information about an Azure Batch account.
 ///
@@ -740,7 +742,7 @@ class BatchAccount extends pulumi.CustomResource {
   /// For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
   late final pulumi.Output<int> dedicatedCoreQuota;
   /// A list of the dedicated core quota per Virtual Machine family for the Batch account. For accounts with PoolAllocationMode set to UserSubscription, quota is managed on the subscription so this value is not returned.
-  late final pulumi.Output<List<Map<String, dynamic>>> dedicatedCoreQuotaPerVMFamily;
+  late final pulumi.Output<List<VirtualMachineFamilyCoreQuotaResponse>> dedicatedCoreQuotaPerVMFamily;
   /// If this flag is true, dedicated core quota is enforced via both the dedicatedCoreQuotaPerVMFamily and dedicatedCoreQuota properties on the account. If this flag is false, dedicated core quota is enforced only via the dedicatedCoreQuota property on the account and does not consider Virtual Machine family.
   late final pulumi.Output<bool> dedicatedCoreQuotaPerVMFamilyEnforced;
   /// Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
@@ -764,7 +766,7 @@ class BatchAccount extends pulumi.CustomResource {
   /// The pool quota for the Batch account.
   late final pulumi.Output<int> poolQuota;
   /// List of private endpoint connections associated with the Batch account
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioned state of the resource
   late final pulumi.Output<String> provisioningState;
   /// The network access type for operating on the resources in the Batch account.
@@ -792,11 +794,11 @@ class BatchAccount extends pulumi.CustomResource {
         ) {
     accountEndpoint = registerOutput<String>('accountEndpoint');
     activeJobAndJobScheduleQuota = registerOutput<int>('activeJobAndJobScheduleQuota');
-    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes');
+    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoStorage = registerOutput<AutoStoragePropertiesResponse>('autoStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoStoragePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dedicatedCoreQuota = registerOutput<int>('dedicatedCoreQuota');
-    dedicatedCoreQuotaPerVMFamily = registerOutput<List<Map<String, dynamic>>>('dedicatedCoreQuotaPerVMFamily');
+    dedicatedCoreQuotaPerVMFamily = registerOutput<List<VirtualMachineFamilyCoreQuotaResponse>>('dedicatedCoreQuotaPerVMFamily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineFamilyCoreQuotaResponse>(guardedValue, (value) => VirtualMachineFamilyCoreQuotaResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dedicatedCoreQuotaPerVMFamilyEnforced = registerOutput<bool>('dedicatedCoreQuotaPerVMFamilyEnforced');
     encryption = registerOutput<EncryptionPropertiesResponse>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<BatchAccountIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchAccountIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -808,11 +810,46 @@ class BatchAccount extends pulumi.CustomResource {
     nodeManagementEndpoint = registerOutput<String>('nodeManagementEndpoint');
     poolAllocationMode = registerOutput<String>('poolAllocationMode');
     poolQuota = registerOutput<int>('poolQuota');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [BatchAccount] resource.
+  BatchAccount.reference(String urn)
+    : super(
+        'azure-native:batch:BatchAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountEndpoint = registerOutput<String>('accountEndpoint');
+    activeJobAndJobScheduleQuota = registerOutput<int>('activeJobAndJobScheduleQuota');
+    allowedAuthenticationModes = registerOutput<List<String>>('allowedAuthenticationModes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    autoStorage = registerOutput<AutoStoragePropertiesResponse>('autoStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoStoragePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dedicatedCoreQuota = registerOutput<int>('dedicatedCoreQuota');
+    dedicatedCoreQuotaPerVMFamily = registerOutput<List<VirtualMachineFamilyCoreQuotaResponse>>('dedicatedCoreQuotaPerVMFamily', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineFamilyCoreQuotaResponse>(guardedValue, (value) => VirtualMachineFamilyCoreQuotaResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dedicatedCoreQuotaPerVMFamilyEnforced = registerOutput<bool>('dedicatedCoreQuotaPerVMFamilyEnforced');
+    encryption = registerOutput<EncryptionPropertiesResponse>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<BatchAccountIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BatchAccountIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    keyVaultReference = registerOutput<KeyVaultReferenceResponse>('keyVaultReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyVaultReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    lowPriorityCoreQuota = registerOutput<int>('lowPriorityCoreQuota');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeManagementEndpoint = registerOutput<String>('nodeManagementEndpoint');
+    poolAllocationMode = registerOutput<String>('poolAllocationMode');
+    poolQuota = registerOutput<int>('poolQuota');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

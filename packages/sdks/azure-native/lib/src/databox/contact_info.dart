@@ -7,11 +7,11 @@ class ContactInfo {
   /// Contact name of the person.
   final pulumi.Input<String> contactName;
   /// Mobile number of the contact person.
-  final pulumi.Input<String>? mobile;
+  final pulumi.Input<String?>? mobile;
   /// Phone number of the contact person.
   final pulumi.Input<String> phone;
   /// Phone extension number of the contact person.
-  final pulumi.Input<String>? phoneExtension;
+  final pulumi.Input<String?>? phoneExtension;
 
   /// Creates a new [ContactInfo].
   /// [contactName] Contact name of the person.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appcomplianceautomation_get_provider_action_collection_count_args_doc}
 class GetProviderActionCollectionCountArgs {
   /// The resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetProviderActionCollectionCountArgs].
   /// [type] The resource type.

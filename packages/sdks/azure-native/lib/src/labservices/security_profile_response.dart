@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The lab security profile.
 class SecurityProfileResponse {
   /// Whether any user or only specified users can register to a lab.
-  final pulumi.Input<String>? openAccess;
+  final pulumi.Input<String?>? openAccess;
   /// The registration code for the lab.
   final pulumi.Input<String> registrationCode;
 

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dapr application health check configuration
 class DaprResponseAppHealth {
   /// Boolean indicating if the health probe is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Path for the health probe
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Interval for the health probe in seconds
-  final pulumi.Input<int>? probeIntervalSeconds;
+  final pulumi.Input<int?>? probeIntervalSeconds;
   /// Timeout for the health probe in milliseconds
-  final pulumi.Input<int>? probeTimeoutMilliseconds;
+  final pulumi.Input<int?>? probeTimeoutMilliseconds;
   /// Threshold for the health probe
-  final pulumi.Input<int>? threshold;
+  final pulumi.Input<int?>? threshold;
 
   /// Creates a new [DaprResponseAppHealth].
   /// [enabled] Boolean indicating if the health probe is enabled
@@ -43,9 +43,9 @@ class DaprResponseAppHealth {
     return DaprResponseAppHealth(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      probeIntervalSeconds: (() { final guardedValue = map['probeIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      probeTimeoutMilliseconds: (() { final guardedValue = map['probeTimeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      probeIntervalSeconds: (() { final guardedValue = map['probeIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      probeTimeoutMilliseconds: (() { final guardedValue = map['probeTimeoutMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

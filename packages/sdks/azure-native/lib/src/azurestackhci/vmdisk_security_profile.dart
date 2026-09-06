@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the security profile settings for the managed disk. NOTE: It can only be set for Confidential VMs
 class VMDiskSecurityProfile {
   /// Specifies the EncryptionType of the managed disk. It is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob. NOTE: It can be set for only Confidential VMs.
-  final pulumi.Input<String>? securityEncryptionType;
+  final pulumi.Input<dynamic>? securityEncryptionType;
 
   /// Creates a new [VMDiskSecurityProfile].
   /// [securityEncryptionType] Specifies the EncryptionType of the managed disk. It is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob. NOTE: It can be set for only Confidential VMs.
@@ -21,7 +21,7 @@ class VMDiskSecurityProfile {
 
   factory VMDiskSecurityProfile.fromMap(Map<String, dynamic> map) {
     return VMDiskSecurityProfile(
-      securityEncryptionType: (() { final guardedValue = map['securityEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityEncryptionType: (() { final guardedValue = map['securityEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -7,21 +7,21 @@ import 'x509_credentials.dart';
 /// Definition of the client authentication mechanism to the server.
 class Authentication {
   /// Defines the method to authenticate the user of the client at the server.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// Defines the username and password references when UsernamePassword user authentication mode is selected.
-  final pulumi.Input<UsernamePasswordCredentials>? usernamePasswordCredentials;
+  final pulumi.Input<UsernamePasswordCredentials?>? usernamePasswordCredentials;
   /// Defines the certificate reference when Certificate user authentication mode is selected.
-  final pulumi.Input<X509Credentials>? x509Credentials;
+  final pulumi.Input<X509Credentials?>? x509Credentials;
 
   /// Creates a new [Authentication].
   /// [method] Defines the method to authenticate the user of the client at the server.
   /// [usernamePasswordCredentials] Defines the username and password references when UsernamePassword user authentication mode is selected.
   /// [x509Credentials] Defines the certificate reference when Certificate user authentication mode is selected.
-  const Authentication({
-    required this.method,
+  Authentication({
+    pulumi.Input<dynamic>? method,
     this.usernamePasswordCredentials,
     this.x509Credentials,
-  });
+  }) : method = method ?? pulumi.Input.fromValue('Certificate');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class Authentication {
 
   factory Authentication.fromMap(Map<String, dynamic> map) {
     return Authentication(
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       usernamePasswordCredentials: (() { final guardedValue = map['usernamePasswordCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UsernamePasswordCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       x509Credentials: (() { final guardedValue = map['x509Credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(X509Credentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

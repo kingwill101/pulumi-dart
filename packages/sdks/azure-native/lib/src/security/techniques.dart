@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Techniques of the assessment
-enum Techniques {
+enum Techniques implements pulumi.PulumiEnum<String> {
   valueAbuseElevationControlMechanism("Abuse Elevation Control Mechanism"),
   valueAccessTokenManipulation("Access Token Manipulation"),
   valueAccountDiscovery("Account Discovery"),
@@ -106,6 +108,7 @@ enum Techniques {
   valueFileAndDirectoryPermissionsModification("File and Directory Permissions Modification");
 
   const Techniques(this.wireValue);
+  @override
   final String wireValue;
 
   static Techniques fromValue(String value) {

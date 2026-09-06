@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource group lock option during move.
 class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove {
   /// The action verb that will be blocked when the resource group is locked during move.
-  final pulumi.Input<String>? blockActionVerb;
+  final pulumi.Input<dynamic>? blockActionVerb;
 
   /// Creates a new [ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove].
   /// [blockActionVerb] The action verb that will be blocked when the resource group is locked during move.
@@ -21,7 +21,7 @@ class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove {
 
   factory ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove(
-      blockActionVerb: (() { final guardedValue = map['blockActionVerb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blockActionVerb: (() { final guardedValue = map['blockActionVerb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -7,15 +7,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TieringPolicyResponse {
   /// Number of days/weeks/months/years to retain backups in current tier before tiering.
   /// Used only if TieringMode is set to TierAfter
-  final pulumi.Input<int>? duration;
+  final pulumi.Input<int?>? duration;
   /// Retention duration type: days/weeks/months/years
   /// Used only if TieringMode is set to TierAfter
-  final pulumi.Input<String>? durationType;
+  final pulumi.Input<String?>? durationType;
   /// Tiering Mode to control automatic tiering of recovery points. Supported values are:
   /// 1. TierRecommended: Tier all recovery points recommended to be tiered
   /// 2. TierAfter: Tier all recovery points after a fixed period, as specified in duration + durationType below.
   /// 3. DoNotTier: Do not tier any recovery points
-  final pulumi.Input<String>? tieringMode;
+  final pulumi.Input<String?>? tieringMode;
 
   /// Creates a new [TieringPolicyResponse].
   /// [duration] Number of days/weeks/months/years to retain backups in current tier before tiering.
@@ -37,7 +37,7 @@ class TieringPolicyResponse {
 
   factory TieringPolicyResponse.fromMap(Map<String, dynamic> map) {
     return TieringPolicyResponse(
-      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tieringMode: (() { final guardedValue = map['tieringMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

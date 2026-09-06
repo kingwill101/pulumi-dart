@@ -8,27 +8,27 @@ class ListCatalogDeviceGroupsResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The DeviceGroup items on this page
-  final List<DeviceGroupResponse> value;
+  final List<DeviceGroupResponse>? value;
 
   /// Creates a new [ListCatalogDeviceGroupsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The DeviceGroup items on this page
   const ListCatalogDeviceGroupsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<DeviceGroupResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<DeviceGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListCatalogDeviceGroupsResult.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeviceGroupsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<DeviceGroupResponse>(map['value']!, (value) => DeviceGroupResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceGroupResponse>(guardedValue, (value) => DeviceGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

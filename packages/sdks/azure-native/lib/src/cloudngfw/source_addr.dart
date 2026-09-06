@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Address properties
 class SourceAddr {
   /// special value 'any'
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
   /// list of countries
-  final pulumi.Input<List<String>>? countries;
+  final pulumi.Input<List<String>?>? countries;
   /// list of feeds
-  final pulumi.Input<List<String>>? feeds;
+  final pulumi.Input<List<String>?>? feeds;
   /// prefix list
-  final pulumi.Input<List<String>>? prefixLists;
+  final pulumi.Input<List<String>?>? prefixLists;
 
   /// Creates a new [SourceAddr].
   /// [cidrs] special value 'any'

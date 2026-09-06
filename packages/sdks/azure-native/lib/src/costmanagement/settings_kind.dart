@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the kind of settings.
-enum SettingsKind {
+enum SettingsKind implements pulumi.PulumiEnum<String> {
   valueTaginheritance("taginheritance");
 
   const SettingsKind(this.wireValue);
+  @override
   final String wireValue;
 
   static SettingsKind fromValue(String value) {

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'secret_store_properties_response.dart';
 
 class SecretStoreDetailsResponse {
-  final pulumi.Input<String>? secretStore;
-  final pulumi.Input<SecretStorePropertiesResponse>? secretStoreProperties;
+  final pulumi.Input<String?>? secretStore;
+  final pulumi.Input<SecretStorePropertiesResponse?>? secretStoreProperties;
 
   /// Creates a new [SecretStoreDetailsResponse].
   /// [secretStore] Optional.

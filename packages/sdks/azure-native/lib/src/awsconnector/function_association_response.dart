@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of FunctionAssociation
 class FunctionAssociationResponse {
   /// The event type of the function, either ``viewer-request`` or ``viewer-response``. You cannot use origin-facing event types (``origin-request`` and ``origin-response``) with a CloudFront function.
-  final pulumi.Input<String>? eventType;
+  final pulumi.Input<String?>? eventType;
   /// The Amazon Resource Name (ARN) of the function.
-  final pulumi.Input<String>? functionARN;
+  final pulumi.Input<String?>? functionARN;
 
   /// Creates a new [FunctionAssociationResponse].
   /// [eventType] The event type of the function, either ``viewer-request`` or ``viewer-response``. You cannot use origin-facing event types (``origin-request`` and ``origin-response``) with a CloudFront function.

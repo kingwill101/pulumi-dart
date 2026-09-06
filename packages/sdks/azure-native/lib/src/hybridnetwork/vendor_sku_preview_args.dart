@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_hybridnetwork_vendor_sku_preview_args_doc}
 class VendorSkuPreviewArgs {
   /// Preview subscription ID.
-  final pulumi.Input<String>? previewSubscription;
+  final pulumi.Input<String?>? previewSubscription;
   /// The name of the vendor sku.
   final pulumi.Input<String> skuName;
   /// The name of the vendor.

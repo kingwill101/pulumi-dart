@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container group log analytics information.
 class LogAnalytics {
   /// The log type to be used.
-  final pulumi.Input<String>? logType;
+  final pulumi.Input<dynamic>? logType;
   /// Metadata for log analytics.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The workspace id for log analytics
   final pulumi.Input<String> workspaceId;
   /// The workspace key for log analytics
   final pulumi.Input<String> workspaceKey;
   /// The workspace resource id for log analytics
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [LogAnalytics].
   /// [logType] The log type to be used.
@@ -41,7 +41,7 @@ class LogAnalytics {
 
   factory LogAnalytics.fromMap(Map<String, dynamic> map) {
     return LogAnalytics(
-      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      logType: (() { final guardedValue = map['logType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
       workspaceKey: pulumi.Input.fromValue(map['workspaceKey'] as String),

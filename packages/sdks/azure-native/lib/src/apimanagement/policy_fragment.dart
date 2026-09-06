@@ -207,4 +207,22 @@ class PolicyFragment extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String>('value');
   }
+
+  /// Creates a typed reference to an existing [PolicyFragment] resource.
+  PolicyFragment.reference(String urn)
+    : super(
+        'azure-native:apimanagement:PolicyFragment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    format = registerOutput<String?>('format');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    value = registerOutput<String>('value');
+  }
 }

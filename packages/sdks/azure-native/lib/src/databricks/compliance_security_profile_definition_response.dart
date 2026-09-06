@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of Compliance Security Profile feature.
 class ComplianceSecurityProfileDefinitionResponse {
   /// Compliance standards associated with the workspace.
-  final pulumi.Input<List<String>>? complianceStandards;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<List<String>?>? complianceStandards;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ComplianceSecurityProfileDefinitionResponse].
   /// [complianceStandards] Compliance standards associated with the workspace.

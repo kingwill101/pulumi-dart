@@ -9,21 +9,21 @@ import 'table_level_sharing_properties.dart';
 /// {@macro pulumi_synapse_kusto_pool_attached_database_configuration_args_doc}
 class KustoPoolAttachedDatabaseConfigurationArgs {
   /// The name of the attached database configuration.
-  final pulumi.Input<String>? attachedDatabaseConfigurationName;
+  final pulumi.Input<String?>? attachedDatabaseConfigurationName;
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   final pulumi.Input<String> databaseName;
   /// The default principals modification kind
-  final pulumi.Input<String> defaultPrincipalsModificationKind;
+  final pulumi.Input<dynamic> defaultPrincipalsModificationKind;
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
   /// The resource id of the kusto pool where the databases you would like to attach reside.
   final pulumi.Input<String> kustoPoolResourceId;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Table level sharing specifications
-  final pulumi.Input<TableLevelSharingProperties>? tableLevelSharingProperties;
+  final pulumi.Input<TableLevelSharingProperties?>? tableLevelSharingProperties;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -67,7 +67,7 @@ class KustoPoolAttachedDatabaseConfigurationArgs {
     return KustoPoolAttachedDatabaseConfigurationArgs(
       attachedDatabaseConfigurationName: (() { final guardedValue = map['attachedDatabaseConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      defaultPrincipalsModificationKind: pulumi.Input.fromValue(map['defaultPrincipalsModificationKind'] as String),
+      defaultPrincipalsModificationKind: pulumi.Input.fromValue(map['defaultPrincipalsModificationKind']),
       kustoPoolName: pulumi.Input.fromValue(map['kustoPoolName'] as String),
       kustoPoolResourceId: pulumi.Input.fromValue(map['kustoPoolResourceId'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

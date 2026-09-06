@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties associated with a Stream Analytics cluster.
 class ClusterInfoResponse {
   /// The resource id of cluster.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ClusterInfoResponse].
   /// [id] The resource id of cluster.

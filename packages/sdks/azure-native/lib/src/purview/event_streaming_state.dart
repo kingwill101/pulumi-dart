@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the event streaming service
-enum EventStreamingState {
+enum EventStreamingState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const EventStreamingState(this.wireValue);
+  @override
   final String wireValue;
 
   static EventStreamingState fromValue(String value) {

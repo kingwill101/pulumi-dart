@@ -9,19 +9,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LoggerArgs {
   /// The name and SendRule connection string of the event hub for azureEventHub logger.
   /// Instrumentation key for applicationInsights logger.
-  final pulumi.Input<Map<String, String>>? credentials;
+  final pulumi.Input<Map<String, String>?>? credentials;
   /// Logger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether records are buffered in the logger before publishing. Default is assumed to be true.
-  final pulumi.Input<bool>? isBuffered;
+  final pulumi.Input<bool?>? isBuffered;
   /// Logger identifier. Must be unique in the API Management service instance.
-  final pulumi.Input<String>? loggerId;
+  final pulumi.Input<String?>? loggerId;
   /// Logger type.
-  final pulumi.Input<String> loggerType;
+  final pulumi.Input<dynamic> loggerType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
 
@@ -64,7 +64,7 @@ class LoggerArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isBuffered: (() { final guardedValue = map['isBuffered']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loggerId: (() { final guardedValue = map['loggerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loggerType: pulumi.Input.fromValue(map['loggerType'] as String),
+      loggerType: pulumi.Input.fromValue(map['loggerType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),

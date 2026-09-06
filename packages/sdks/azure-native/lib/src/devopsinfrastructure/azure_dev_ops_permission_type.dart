@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines who has admin permissions to the Azure DevOps pool.
-enum AzureDevOpsPermissionType {
+enum AzureDevOpsPermissionType implements pulumi.PulumiEnum<String> {
   inherit("Inherit"),
   creatorOnly("CreatorOnly"),
   specificAccounts("SpecificAccounts");
 
   const AzureDevOpsPermissionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureDevOpsPermissionType fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A rule which is evaluated upon event interception. The rule is configured by comparing a specific value from the event model to an expected value. This comparison is done by using one of the supported operators set.
 class AutomationTriggeringRule {
   /// The expected value.
-  final pulumi.Input<String>? expectedValue;
+  final pulumi.Input<String?>? expectedValue;
   /// A valid comparer operator to use. A case-insensitive comparison will be applied for String PropertyType.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<dynamic>? operator;
   /// The JPath of the entity model property that should be checked.
-  final pulumi.Input<String>? propertyJPath;
+  final pulumi.Input<String?>? propertyJPath;
   /// The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
-  final pulumi.Input<String>? propertyType;
+  final pulumi.Input<dynamic>? propertyType;
 
   /// Creates a new [AutomationTriggeringRule].
   /// [expectedValue] The expected value.
@@ -37,9 +37,9 @@ class AutomationTriggeringRule {
   factory AutomationTriggeringRule.fromMap(Map<String, dynamic> map) {
     return AutomationTriggeringRule(
       expectedValue: (() { final guardedValue = map['expectedValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operator: (() { final guardedValue = map['operator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       propertyJPath: (() { final guardedValue = map['propertyJPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      propertyType: (() { final guardedValue = map['propertyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      propertyType: (() { final guardedValue = map['propertyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

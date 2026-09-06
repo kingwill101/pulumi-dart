@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// DNS Service log level.
-enum DnsServiceLogLevelEnum {
+enum DnsServiceLogLevelEnum implements pulumi.PulumiEnum<String> {
   dEBUG("DEBUG"),
   iNFO("INFO"),
   wARNING("WARNING"),
@@ -7,6 +9,7 @@ enum DnsServiceLogLevelEnum {
   fATAL("FATAL");
 
   const DnsServiceLogLevelEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsServiceLogLevelEnum fromValue(String value) {

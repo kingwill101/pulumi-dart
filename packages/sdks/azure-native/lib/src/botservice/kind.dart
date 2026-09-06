@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Gets or sets the Kind of the resource.
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   sdk("sdk"),
   designer("designer"),
   bot("bot"),
@@ -7,6 +9,7 @@ enum Kind {
   azurebot("azurebot");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

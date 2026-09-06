@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The auth type
-enum CcpAuthType {
+enum CcpAuthType implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueAPIKey("APIKey"),
   valueOAuth2("OAuth2"),
@@ -13,6 +15,7 @@ enum CcpAuthType {
   valueNone("None");
 
   const CcpAuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static CcpAuthType fromValue(String value) {

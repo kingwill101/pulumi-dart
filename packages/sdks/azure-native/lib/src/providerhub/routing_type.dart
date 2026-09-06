@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The resource routing type.
-enum RoutingType {
+enum RoutingType implements pulumi.PulumiEnum<String> {
   default_("Default"),
   proxyOnly("ProxyOnly"),
   hostBased("HostBased"),
@@ -16,6 +18,7 @@ enum RoutingType {
   serviceFanout("ServiceFanout");
 
   const RoutingType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingType fromValue(String value) {

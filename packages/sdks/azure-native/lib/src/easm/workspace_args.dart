@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_easm_workspace_args_doc}
 class WorkspaceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the Workspace.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [location] The geo-location where the resource lives

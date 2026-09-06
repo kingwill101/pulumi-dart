@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'digital_twin_args.dart';
 import 'digital_twins_identity_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// The description of the DigitalTwins service.
@@ -301,7 +302,7 @@ class DigitalTwin extends pulumi.CustomResource {
   /// The resource name.
   late final pulumi.Output<String> name;
   /// The private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>?> privateEndpointConnections;
   /// The provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// Public network access for the DigitalTwinsInstance.
@@ -334,11 +335,35 @@ class DigitalTwin extends pulumi.CustomResource {
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>?>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DigitalTwin] resource.
+  DigitalTwin.reference(String urn)
+    : super(
+        'azure-native:digitaltwins:DigitalTwin',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<DigitalTwinsIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DigitalTwinsIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>?>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

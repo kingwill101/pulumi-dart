@@ -8,18 +8,18 @@ import 'a2_azone_details_response.dart';
 /// Azure Fabric Specific Details.
 class AzureFabricSpecificDetailsResponse {
   /// The container Ids for the Azure fabric.
-  final pulumi.Input<List<String>>? containerIds;
+  final pulumi.Input<List<String>?>? containerIds;
   /// The ExtendedLocations.
-  final pulumi.Input<List<A2AExtendedLocationDetailsResponse>>? extendedLocations;
+  final pulumi.Input<List<A2AExtendedLocationDetailsResponse>?>? extendedLocations;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'Azure'.
   final pulumi.Input<String> instanceType;
   /// The Location for the Azure fabric.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The location details.
-  final pulumi.Input<List<A2AFabricSpecificLocationDetailsResponse>>? locationDetails;
+  final pulumi.Input<List<A2AFabricSpecificLocationDetailsResponse>?>? locationDetails;
   /// The zones.
-  final pulumi.Input<List<A2AZoneDetailsResponse>>? zones;
+  final pulumi.Input<List<A2AZoneDetailsResponse>?>? zones;
 
   /// Creates a new [AzureFabricSpecificDetailsResponse].
   /// [containerIds] The container Ids for the Azure fabric.

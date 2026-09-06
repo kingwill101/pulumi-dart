@@ -4,43 +4,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzurePostgreSqlSectionResponse {
   /// The authority URL used for authentication.
-  final pulumi.Input<String>? authorityUrl;
+  final pulumi.Input<String?>? authorityUrl;
   /// The content of the certificate used for authentication.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The Client ID/Application ID
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Sql Authentication type.
-  final pulumi.Input<String>? credentialType;
+  final pulumi.Input<String?>? credentialType;
   /// The Azure SQL database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Indicates SSL requirement of Azure Postgresql server.
-  final pulumi.Input<bool>? enableSsl;
+  final pulumi.Input<bool?>? enableSsl;
   /// The server host endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// Is it using certificate to authenticate. If false then use client secret.
-  final pulumi.Input<bool>? isCertAuth;
+  final pulumi.Input<bool?>? isCertAuth;
   /// / The Azure SQL port number.
-  final pulumi.Input<String>? portNumber;
+  final pulumi.Input<String?>? portNumber;
   /// Resource Group.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The resource the service principal/app has access to.
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<String?>? resourceUri;
   /// The Azure SQL server name.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String?>? serviceDataAccessAuthIdentity;
   /// Subscription ID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The ID of the tenant the service principal/app belongs to.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The thumbprint of the certificate above.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// The Azure SQL user id.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// The Azure SQL user password.
-  final pulumi.Input<String>? userPassword;
+  final pulumi.Input<String?>? userPassword;
 
   /// Creates a new [AzurePostgreSqlSectionResponse].
   /// [authorityUrl] The authority URL used for authentication.

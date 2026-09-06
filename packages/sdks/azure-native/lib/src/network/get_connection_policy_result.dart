@@ -5,17 +5,17 @@ import 'connection_policy_properties_response.dart';
 /// Result data returned by getConnectionPolicy.
 class GetConnectionPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Properties of the ConnectionPolicy resource.
-  final ConnectionPolicyPropertiesResponse properties;
+  final ConnectionPolicyPropertiesResponse? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConnectionPolicyResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -25,33 +25,33 @@ class GetConnectionPolicyResult {
   /// [properties] Properties of the ConnectionPolicy resource.
   /// [type] Resource type.
   const GetConnectionPolicyResult({
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.id,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'id': ?id,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetConnectionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetConnectionPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: ConnectionPolicyPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return ConnectionPolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

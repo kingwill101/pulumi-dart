@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property protocol
-enum LoggingConfigProtocol {
+enum LoggingConfigProtocol implements pulumi.PulumiEnum<String> {
   application("application"),
   firehose("firehose"),
   httpS("http/s"),
@@ -7,6 +9,7 @@ enum LoggingConfigProtocol {
   sqs("sqs");
 
   const LoggingConfigProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingConfigProtocol fromValue(String value) {

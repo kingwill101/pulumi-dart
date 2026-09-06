@@ -1,37 +1,36 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
 
 /// Open Database Connectivity (ODBC) linked service.
 class OdbcLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Type of authentication used to connect to the ODBC data store. Possible values are: Anonymous and Basic. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? authenticationType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The non-access credential portion of the connection string as well as an optional encrypted credential. Type: string, or SecureString, or AzureKeyVaultSecretReference, or Expression with resultType string.
   final pulumi.Input<dynamic> connectionString;
   /// The access credential portion of the connection string specified in driver-specific property-value format.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? credential;
+  final pulumi.Input<dynamic>? credential;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Password for Basic authentication.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<dynamic>? password;
   /// Type of linked service.
   /// Expected value is 'Odbc'.
   final pulumi.Input<String> type;
   /// User name for Basic authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [OdbcLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -67,11 +66,11 @@ class OdbcLinkedServiceResponse {
       'authenticationType': ?authenticationType,
       'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'connectionString': connectionString,
-      'credential': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
+      'credential': ?credential,
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'type': type,
       'userName': ?userName,
       'version': ?version,
@@ -84,11 +83,11 @@ class OdbcLinkedServiceResponse {
       authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionString: pulumi.Input.fromValue(map['connectionString']),
-      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

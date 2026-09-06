@@ -60,6 +60,17 @@ Future<GetACSSBackupConnectionResult> getACSSBackupConnection(
   return GetACSSBackupConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetACSSBackupConnectionResult> getACSSBackupConnectionOutput(
+  GetACSSBackupConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getACSSBackupConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetACSSBackupConnectionResult.fromMap);
+}
+
 /// Gets properties of an alert for the specified subscription, resource group, SAP monitor name, and resource name.
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -78,6 +89,17 @@ Future<GetAlertResult> getAlert(
   return GetAlertResult.fromMap(result);
 }
 
+pulumi.Output<GetAlertResult> getAlertOutput(
+  GetAlertArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getAlert',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertResult.fromMap);
+}
+
 /// Gets a connector resource
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -94,6 +116,17 @@ Future<GetConnectorResult> getConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectorResult> getConnectorOutput(
+  GetConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectorResult.fromMap);
 }
 
 /// Gets properties of a SAP monitor for the specified subscription, resource group, and resource name.
@@ -116,6 +149,17 @@ Future<GetMonitorResult> getMonitor(
   return GetMonitorResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitorResult> getMonitorOutput(
+  GetMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorResult.fromMap);
+}
+
 /// Gets properties of a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -134,6 +178,17 @@ Future<GetProviderInstanceResult> getProviderInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProviderInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetProviderInstanceResult> getProviderInstanceOutput(
+  GetProviderInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getProviderInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderInstanceResult.fromMap);
 }
 
 /// Get the recommended SAP Availability Zone Pair Details for your region.
@@ -156,6 +211,17 @@ Future<GetSAPAvailabilityZoneDetailsResult> getSAPAvailabilityZoneDetails(
   return GetSAPAvailabilityZoneDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetSAPAvailabilityZoneDetailsResult> getSAPAvailabilityZoneDetailsOutput(
+  GetSAPAvailabilityZoneDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSAPAvailabilityZoneDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSAPAvailabilityZoneDetailsResult.fromMap);
+}
+
 /// Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -174,6 +240,17 @@ Future<GetSAPDiskConfigurationsResult> getSAPDiskConfigurations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSAPDiskConfigurationsResult.fromMap(result);
+}
+
+pulumi.Output<GetSAPDiskConfigurationsResult> getSAPDiskConfigurationsOutput(
+  GetSAPDiskConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSAPDiskConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSAPDiskConfigurationsResult.fromMap);
 }
 
 /// Get SAP sizing recommendations by providing input SAPS for application tier and memory required for database tier
@@ -196,6 +273,17 @@ Future<GetSAPSizingRecommendationsResult> getSAPSizingRecommendations(
   return GetSAPSizingRecommendationsResult.fromMap(result);
 }
 
+pulumi.Output<GetSAPSizingRecommendationsResult> getSAPSizingRecommendationsOutput(
+  GetSAPSizingRecommendationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSAPSizingRecommendations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSAPSizingRecommendationsResult.fromMap);
+}
+
 /// Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -216,6 +304,17 @@ Future<GetSAPSupportedSkuResult> getSAPSupportedSku(
   return GetSAPSupportedSkuResult.fromMap(result);
 }
 
+pulumi.Output<GetSAPSupportedSkuResult> getSAPSupportedSkuOutput(
+  GetSAPSupportedSkuArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSAPSupportedSku',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSAPSupportedSkuResult.fromMap);
+}
+
 /// Gets the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -232,6 +331,17 @@ Future<GetSapApplicationServerInstanceResult> getSapApplicationServerInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSapApplicationServerInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSapApplicationServerInstanceResult> getSapApplicationServerInstanceOutput(
+  GetSapApplicationServerInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapApplicationServerInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapApplicationServerInstanceResult.fromMap);
 }
 
 /// Gets the SAP Central Services Instance resource.
@@ -252,6 +362,17 @@ Future<GetSapCentralServerInstanceResult> getSapCentralServerInstance(
   return GetSapCentralServerInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetSapCentralServerInstanceResult> getSapCentralServerInstanceOutput(
+  GetSapCentralServerInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapCentralServerInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapCentralServerInstanceResult.fromMap);
+}
+
 /// Gets the SAP Database Instance resource.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -268,6 +389,17 @@ Future<GetSapDatabaseInstanceResult> getSapDatabaseInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSapDatabaseInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSapDatabaseInstanceResult> getSapDatabaseInstanceOutput(
+  GetSapDatabaseInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapDatabaseInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapDatabaseInstanceResult.fromMap);
 }
 
 /// Gets a SAP Migration discovery site resource.
@@ -288,6 +420,17 @@ Future<GetSapDiscoverySiteResult> getSapDiscoverySite(
   return GetSapDiscoverySiteResult.fromMap(result);
 }
 
+pulumi.Output<GetSapDiscoverySiteResult> getSapDiscoverySiteOutput(
+  GetSapDiscoverySiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapDiscoverySite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapDiscoverySiteResult.fromMap);
+}
+
 /// Gets the SAP Instance resource.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -304,6 +447,17 @@ Future<GetSapInstanceResult> getSapInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSapInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSapInstanceResult> getSapInstanceOutput(
+  GetSapInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapInstanceResult.fromMap);
 }
 
 /// Gets configuration values for Single Pane Of Glass for SAP monitor for the specified subscription, resource group, and resource name.
@@ -326,6 +480,17 @@ Future<GetSapLandscapeMonitorResult> getSapLandscapeMonitor(
   return GetSapLandscapeMonitorResult.fromMap(result);
 }
 
+pulumi.Output<GetSapLandscapeMonitorResult> getSapLandscapeMonitorOutput(
+  GetSapLandscapeMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapLandscapeMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapLandscapeMonitorResult.fromMap);
+}
+
 /// Gets a Virtual Instance for SAP solutions resource
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -342,6 +507,17 @@ Future<GetSapVirtualInstanceResult> getSapVirtualInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSapVirtualInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetSapVirtualInstanceResult> getSapVirtualInstanceOutput(
+  GetSapVirtualInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapVirtualInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapVirtualInstanceResult.fromMap);
 }
 
 /// Get the recommended SAP Availability Zone Pair Details for your region.
@@ -362,6 +538,17 @@ Future<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult> getSapVirtualIn
   return GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult> getSapVirtualInstanceInvokeAvailabilityZoneDetailsOutput(
+  GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapVirtualInstanceInvokeAvailabilityZoneDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapVirtualInstanceInvokeAvailabilityZoneDetailsResult.fromMap);
+}
+
 /// Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -378,6 +565,17 @@ Future<GetSapVirtualInstanceInvokeDiskConfigurationsResult> getSapVirtualInstanc
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSapVirtualInstanceInvokeDiskConfigurationsResult.fromMap(result);
+}
+
+pulumi.Output<GetSapVirtualInstanceInvokeDiskConfigurationsResult> getSapVirtualInstanceInvokeDiskConfigurationsOutput(
+  GetSapVirtualInstanceInvokeDiskConfigurationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapVirtualInstanceInvokeDiskConfigurations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapVirtualInstanceInvokeDiskConfigurationsResult.fromMap);
 }
 
 /// Get a list of SAP supported SKUs for ASCS, Application and Database tier.
@@ -398,6 +596,17 @@ Future<GetSapVirtualInstanceInvokeSapSupportedSkuResult> getSapVirtualInstanceIn
   return GetSapVirtualInstanceInvokeSapSupportedSkuResult.fromMap(result);
 }
 
+pulumi.Output<GetSapVirtualInstanceInvokeSapSupportedSkuResult> getSapVirtualInstanceInvokeSapSupportedSkuOutput(
+  GetSapVirtualInstanceInvokeSapSupportedSkuArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapVirtualInstanceInvokeSapSupportedSku',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapVirtualInstanceInvokeSapSupportedSkuResult.fromMap);
+}
+
 /// Gets the sizing recommendations.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -416,6 +625,17 @@ Future<GetSapVirtualInstanceInvokeSizingRecommendationsResult> getSapVirtualInst
   return GetSapVirtualInstanceInvokeSizingRecommendationsResult.fromMap(result);
 }
 
+pulumi.Output<GetSapVirtualInstanceInvokeSizingRecommendationsResult> getSapVirtualInstanceInvokeSizingRecommendationsOutput(
+  GetSapVirtualInstanceInvokeSizingRecommendationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getSapVirtualInstanceInvokeSizingRecommendations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSapVirtualInstanceInvokeSizingRecommendationsResult.fromMap);
+}
+
 /// Gets the Server Instance resource.
 ///
 /// Uses Azure REST API version 2023-10-01-preview.
@@ -432,4 +652,15 @@ Future<GetServerInstanceResult> getServerInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetServerInstanceResult> getServerInstanceOutput(
+  GetServerInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:workloads:getServerInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerInstanceResult.fromMap);
 }

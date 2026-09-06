@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Selected tables for the migration
 class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse {
   /// Name of the table to migrate
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInputResponse].
   /// [name] Name of the table to migrate

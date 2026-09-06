@@ -8,19 +8,19 @@ import 'linked_service_reference.dart';
 /// Power query source.
 class PowerQuerySource {
   /// Dataset reference.
-  final pulumi.Input<DatasetReference>? dataset;
+  final pulumi.Input<DatasetReference?>? dataset;
   /// Transformation description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Flowlet Reference
-  final pulumi.Input<DataFlowReference>? flowlet;
+  final pulumi.Input<DataFlowReference?>? flowlet;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedService;
+  final pulumi.Input<LinkedServiceReference?>? linkedService;
   /// Transformation name.
   final pulumi.Input<String> name;
   /// Schema linked service reference.
-  final pulumi.Input<LinkedServiceReference>? schemaLinkedService;
+  final pulumi.Input<LinkedServiceReference?>? schemaLinkedService;
   /// source script.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
 
   /// Creates a new [PowerQuerySource].
   /// [dataset] Dataset reference.

@@ -7,14 +7,14 @@ import 'role_management_policy_rule_target_response.dart';
 /// The role management policy PIM only mode rule.
 class RoleManagementPolicyPimOnlyModeRuleResponse {
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The PIM Only Mode settings
-  final pulumi.Input<PIMOnlyModeSettingsResponse>? pimOnlyModeSettings;
+  final pulumi.Input<PIMOnlyModeSettingsResponse?>? pimOnlyModeSettings;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyPimOnlyModeRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse?>? target;
 
   /// Creates a new [RoleManagementPolicyPimOnlyModeRuleResponse].
   /// [id] The id of the rule.

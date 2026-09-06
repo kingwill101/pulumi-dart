@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The local administrator login properties.
 class AdministratorPropertiesResponse {
   /// The administrator user name.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [AdministratorPropertiesResponse].
   /// [userName] The administrator user name.

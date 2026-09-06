@@ -9,15 +9,15 @@ import 'app_attach_package_properties.dart';
 /// {@macro pulumi_desktopvirtualization_app_attach_package_args_doc}
 class AppAttachPackageArgs {
   /// The name of the App Attach package
-  final pulumi.Input<String>? appAttachPackageName;
+  final pulumi.Input<String?>? appAttachPackageName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Detailed properties for App Attach Package
   final pulumi.Input<AppAttachPackageProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppAttachPackageArgs].
   /// [appAttachPackageName] The name of the App Attach package

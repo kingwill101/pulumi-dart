@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Time interval that the query actually executed on.
 class EntityInsightItemResponseQueryTimeInterval {
   /// Insight query end time
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Insight query start time
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [EntityInsightItemResponseQueryTimeInterval].
   /// [endTime] Insight query end time

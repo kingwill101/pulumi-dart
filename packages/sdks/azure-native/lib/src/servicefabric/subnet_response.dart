@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a Subnet.
 class SubnetResponse {
   /// Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.
-  final pulumi.Input<bool>? enableIpv6;
+  final pulumi.Input<bool?>? enableIpv6;
   /// Subnet name.
   final pulumi.Input<String> name;
   /// Full resource id for the network security group.
-  final pulumi.Input<String>? networkSecurityGroupId;
+  final pulumi.Input<String?>? networkSecurityGroupId;
   /// Enable or Disable apply network policies on private end point in the subnet.
-  final pulumi.Input<String>? privateEndpointNetworkPolicies;
+  final pulumi.Input<String?>? privateEndpointNetworkPolicies;
   /// Enable or Disable apply network policies on private link service in the subnet.
-  final pulumi.Input<String>? privateLinkServiceNetworkPolicies;
+  final pulumi.Input<String?>? privateLinkServiceNetworkPolicies;
 
   /// Creates a new [SubnetResponse].
   /// [enableIpv6] Indicates wether to enable Ipv6 or not. If not provided, it will take the same configuration as the cluster.

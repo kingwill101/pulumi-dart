@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The template deployment options.
 class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
   /// The preflight options.
-  final pulumi.Input<List<String>>? preflightOptions;
+  final pulumi.Input<List<dynamic>?>? preflightOptions;
   /// Whether preflight is supported.
-  final pulumi.Input<bool>? preflightSupported;
+  final pulumi.Input<bool?>? preflightSupported;
 
   /// Creates a new [ResourceProviderManifestPropertiesTemplateDeploymentOptions].
   /// [preflightOptions] The preflight options.
@@ -26,7 +26,7 @@ class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
 
   factory ResourceProviderManifestPropertiesTemplateDeploymentOptions.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesTemplateDeploymentOptions(
-      preflightOptions: (() { final guardedValue = map['preflightOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      preflightOptions: (() { final guardedValue = map['preflightOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       preflightSupported: (() { final guardedValue = map['preflightSupported']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

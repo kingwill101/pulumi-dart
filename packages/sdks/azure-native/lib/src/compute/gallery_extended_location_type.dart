@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// It is type of the extended location.
-enum GalleryExtendedLocationType {
+enum GalleryExtendedLocationType implements pulumi.PulumiEnum<String> {
   edgeZone("EdgeZone"),
   unknown("Unknown");
 
   const GalleryExtendedLocationType(this.wireValue);
+  @override
   final String wireValue;
 
   static GalleryExtendedLocationType fromValue(String value) {

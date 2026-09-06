@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The programming language used.
-enum GenerationLanguage {
+enum GenerationLanguage implements pulumi.PulumiEnum<String> {
   valueClojure("clojure"),
   valueCsharp("csharp"),
   valueErlang("erlang"),
@@ -15,6 +17,7 @@ enum GenerationLanguage {
   valueSwift("swift");
 
   const GenerationLanguage(this.wireValue);
+  @override
   final String wireValue;
 
   static GenerationLanguage fromValue(String value) {

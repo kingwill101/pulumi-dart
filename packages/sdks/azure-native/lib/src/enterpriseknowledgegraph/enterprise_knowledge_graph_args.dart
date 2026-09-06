@@ -10,17 +10,17 @@ import 'sku.dart';
 /// {@macro pulumi_enterpriseknowledgegraph_enterprise_knowledge_graph_args_doc}
 class EnterpriseKnowledgeGraphArgs {
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to EnterpriseKnowledgeGraph resource
-  final pulumi.Input<EnterpriseKnowledgeGraphProperties>? properties;
+  final pulumi.Input<EnterpriseKnowledgeGraphProperties?>? properties;
   /// The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the EnterpriseKnowledgeGraph resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Gets or sets the SKU of the resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Contains resource tags defined as key/value pairs.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnterpriseKnowledgeGraphArgs].
   /// [location] Specifies the location of the resource.

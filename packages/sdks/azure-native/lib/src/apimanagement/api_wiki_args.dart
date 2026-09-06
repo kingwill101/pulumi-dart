@@ -11,7 +11,7 @@ class ApiWikiArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
   /// Collection wiki documents included into this wiki.
-  final pulumi.Input<List<WikiDocumentationContract>>? documents;
+  final pulumi.Input<List<WikiDocumentationContract>?>? documents;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

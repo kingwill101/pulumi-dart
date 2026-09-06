@@ -9,13 +9,13 @@ import 'security_mlanalytics_settings_data_source.dart';
 /// {@macro pulumi_securityinsights_anomaly_security_mlanalytics_settings_args_doc}
 class AnomalySecurityMLAnalyticsSettingsArgs {
   /// The anomaly settings version of the Anomaly security ml analytics settings that dictates whether job version gets updated or not.
-  final pulumi.Input<int>? anomalySettingsVersion;
+  final pulumi.Input<int?>? anomalySettingsVersion;
   /// The anomaly version of the AnomalySecurityMLAnalyticsSettings.
   final pulumi.Input<String> anomalyVersion;
   /// The customizable observations of the AnomalySecurityMLAnalyticsSettings.
   final pulumi.Input<dynamic>? customizableObservations;
   /// The description of the SecurityMLAnalyticsSettings.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for settings created by this SecurityMLAnalyticsSettings.
   final pulumi.Input<String> displayName;
   /// Determines whether this settings is enabled or disabled.
@@ -28,19 +28,19 @@ class AnomalySecurityMLAnalyticsSettingsArgs {
   /// Expected value is 'Anomaly'.
   final pulumi.Input<String> kind;
   /// The required data sources for this SecurityMLAnalyticsSettings
-  final pulumi.Input<List<SecurityMLAnalyticsSettingsDataSource>>? requiredDataConnectors;
+  final pulumi.Input<List<SecurityMLAnalyticsSettingsDataSource>?>? requiredDataConnectors;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The anomaly settings definition Id
-  final pulumi.Input<String>? settingsDefinitionId;
+  final pulumi.Input<String?>? settingsDefinitionId;
   /// Security ML Analytics Settings resource name
-  final pulumi.Input<String>? settingsResourceName;
+  final pulumi.Input<String?>? settingsResourceName;
   /// The anomaly SecurityMLAnalyticsSettings status
-  final pulumi.Input<String> settingsStatus;
+  final pulumi.Input<dynamic> settingsStatus;
   /// The tactics of the SecurityMLAnalyticsSettings
-  final pulumi.Input<List<String>>? tactics;
+  final pulumi.Input<List<dynamic>?>? tactics;
   /// The techniques of the SecurityMLAnalyticsSettings
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -106,7 +106,7 @@ class AnomalySecurityMLAnalyticsSettingsArgs {
 
   factory AnomalySecurityMLAnalyticsSettingsArgs.fromMap(Map<String, dynamic> map) {
     return AnomalySecurityMLAnalyticsSettingsArgs(
-      anomalySettingsVersion: (() { final guardedValue = map['anomalySettingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      anomalySettingsVersion: (() { final guardedValue = map['anomalySettingsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       anomalyVersion: pulumi.Input.fromValue(map['anomalyVersion'] as String),
       customizableObservations: (() { final guardedValue = map['customizableObservations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -119,8 +119,8 @@ class AnomalySecurityMLAnalyticsSettingsArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       settingsDefinitionId: (() { final guardedValue = map['settingsDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       settingsResourceName: (() { final guardedValue = map['settingsResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      settingsStatus: pulumi.Input.fromValue(map['settingsStatus'] as String),
-      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      settingsStatus: pulumi.Input.fromValue(map['settingsStatus']),
+      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

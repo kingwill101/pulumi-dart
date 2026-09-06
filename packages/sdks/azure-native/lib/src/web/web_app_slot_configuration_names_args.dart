@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_slot_configuration_names_args_doc}
 class WebAppSlotConfigurationNamesArgs {
   /// List of application settings names.
-  final pulumi.Input<List<String>>? appSettingNames;
+  final pulumi.Input<List<String>?>? appSettingNames;
   /// List of external Azure storage account identifiers.
-  final pulumi.Input<List<String>>? azureStorageConfigNames;
+  final pulumi.Input<List<String>?>? azureStorageConfigNames;
   /// List of connection string names.
-  final pulumi.Input<List<String>>? connectionStringNames;
+  final pulumi.Input<List<String>?>? connectionStringNames;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

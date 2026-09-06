@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies that the scope of the extension is Cluster
 class ScopeClusterResponse {
   /// Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created
-  final pulumi.Input<String>? releaseNamespace;
+  final pulumi.Input<String?>? releaseNamespace;
 
   /// Creates a new [ScopeClusterResponse].
   /// [releaseNamespace] Namespace where the extension Release must be placed, for a Cluster scoped extension.  If this namespace does not exist, it will be created

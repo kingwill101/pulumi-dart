@@ -6,13 +6,13 @@ import 'metadata_entity_response.dart';
 /// Details about environment name, metadata and environment id of an environment
 class EnvironmentRecordResponse {
   /// Display name of the user
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Id of the environment
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of environment
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
 
   /// Creates a new [EnvironmentRecordResponse].
   /// [displayName] Display name of the user

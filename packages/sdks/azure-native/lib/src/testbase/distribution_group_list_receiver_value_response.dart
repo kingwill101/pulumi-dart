@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The user object receiver value.
 class DistributionGroupListReceiverValueResponse {
   /// The list of distribution groups.
-  final pulumi.Input<List<String>>? distributionGroups;
+  final pulumi.Input<List<String>?>? distributionGroups;
 
   /// Creates a new [DistributionGroupListReceiverValueResponse].
   /// [distributionGroups] The list of distribution groups.

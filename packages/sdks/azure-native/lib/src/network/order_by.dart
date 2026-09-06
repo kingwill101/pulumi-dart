@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a column to sort
 class OrderBy {
   /// Describes the actual column name to sort by
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// Describes if results should be in ascending/descending order
-  final pulumi.Input<String>? order;
+  final pulumi.Input<dynamic>? order;
 
   /// Creates a new [OrderBy].
   /// [field] Describes the actual column name to sort by
@@ -27,7 +27,7 @@ class OrderBy {
   factory OrderBy.fromMap(Map<String, dynamic> map) {
     return OrderBy(
       field: (() { final guardedValue = map['field']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

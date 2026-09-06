@@ -12,15 +12,15 @@ class SpringBootAdminComponentResponse {
   /// Expected value is 'SpringBootAdmin'.
   final pulumi.Input<String> componentType;
   /// List of Java Components configuration properties
-  final pulumi.Input<List<JavaComponentConfigurationPropertyResponse>>? configurations;
+  final pulumi.Input<List<JavaComponentConfigurationPropertyResponse>?>? configurations;
   /// Java Component Ingress configurations.
-  final pulumi.Input<JavaComponentIngressResponse>? ingress;
+  final pulumi.Input<JavaComponentIngressResponse?>? ingress;
   /// Provisioning state of the Java Component.
   final pulumi.Input<String> provisioningState;
   /// Java component scaling configurations
-  final pulumi.Input<JavaComponentPropertiesResponseScale>? scale;
+  final pulumi.Input<JavaComponentPropertiesResponseScale?>? scale;
   /// List of Java Components that are bound to the Java component
-  final pulumi.Input<List<JavaComponentServiceBindResponse>>? serviceBinds;
+  final pulumi.Input<List<JavaComponentServiceBindResponse>?>? serviceBinds;
 
   /// Creates a new [SpringBootAdminComponentResponse].
   /// [componentType] Type of the Java Component.

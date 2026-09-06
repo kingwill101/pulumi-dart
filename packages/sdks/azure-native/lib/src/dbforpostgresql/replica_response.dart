@@ -9,7 +9,7 @@ class ReplicaResponse {
   /// Indicates the replication state of a read replica. This property is returned only when the target server is a read replica. Possible  values are Active, Broken, Catchup, Provisioning, Reconfiguring, and Updating
   final pulumi.Input<String> replicationState;
   /// Role of the server in a replication set.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
 
   /// Creates a new [ReplicaResponse].
   /// [capacity] Maximum number of read replicas allowed for a server.
@@ -31,7 +31,7 @@ class ReplicaResponse {
 
   factory ReplicaResponse.fromMap(Map<String, dynamic> map) {
     return ReplicaResponse(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       replicationState: pulumi.Input.fromValue(map['replicationState'] as String),
       role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

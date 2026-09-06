@@ -6,23 +6,23 @@ import 'api_reference.dart';
 import 'connection_status_definition.dart';
 
 class ApiConnectionDefinitionProperties {
-  final pulumi.Input<ApiReference>? api;
+  final pulumi.Input<ApiReference?>? api;
   /// Timestamp of last connection change
-  final pulumi.Input<String>? changedTime;
+  final pulumi.Input<String?>? changedTime;
   /// Timestamp of the connection creation
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Dictionary of custom parameter values
-  final pulumi.Input<Map<String, String>>? customParameterValues;
+  final pulumi.Input<Map<String, String>?>? customParameterValues;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Dictionary of nonsecret parameter values
-  final pulumi.Input<Map<String, String>>? nonSecretParameterValues;
+  final pulumi.Input<Map<String, String>?>? nonSecretParameterValues;
   /// Dictionary of parameter values
-  final pulumi.Input<Map<String, String>>? parameterValues;
+  final pulumi.Input<Map<String, String>?>? parameterValues;
   /// Status of the connection
-  final pulumi.Input<List<ConnectionStatusDefinition>>? statuses;
+  final pulumi.Input<List<ConnectionStatusDefinition>?>? statuses;
   /// Links to test the API connection
-  final pulumi.Input<List<ApiConnectionTestLink>>? testLinks;
+  final pulumi.Input<List<ApiConnectionTestLink>?>? testLinks;
 
   /// Creates a new [ApiConnectionDefinitionProperties].
   /// [api] Optional.

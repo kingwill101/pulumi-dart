@@ -7,11 +7,11 @@ import 'jwtauthenticator_extra_claim_mapping_expression.dart';
 /// The claim mappings for JWTAuthenticator.
 class JWTAuthenticatorClaimMappings {
   /// The expression to extract extra attribute from the token claims. When not provided, no extra attributes are extracted from the token claims.
-  final pulumi.Input<List<JWTAuthenticatorExtraClaimMappingExpression>>? extra;
+  final pulumi.Input<List<JWTAuthenticatorExtraClaimMappingExpression>?>? extra;
   /// The expression to extract groups attribute from the token claims. When not provided, no groups are extracted from the token claims.
-  final pulumi.Input<JWTAuthenticatorClaimMappingExpression>? groups;
+  final pulumi.Input<JWTAuthenticatorClaimMappingExpression?>? groups;
   /// The expression to extract uid attribute from the token claims. When not provided, no uid is extracted from the token claims.
-  final pulumi.Input<JWTAuthenticatorClaimMappingExpression>? uid;
+  final pulumi.Input<JWTAuthenticatorClaimMappingExpression?>? uid;
   /// The expression to extract username attribute from the token claims.
   final pulumi.Input<JWTAuthenticatorClaimMappingExpression> username;
 

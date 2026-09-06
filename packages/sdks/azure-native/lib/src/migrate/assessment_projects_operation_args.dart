@@ -8,31 +8,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_migrate_assessment_projects_operation_args_doc}
 class AssessmentProjectsOperationArgs {
   /// Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
-  final pulumi.Input<String>? assessmentSolutionId;
+  final pulumi.Input<String?>? assessmentSolutionId;
   /// The ARM id of the storage account used for interactions when public access is
   /// disabled.
-  final pulumi.Input<String>? customerStorageAccountArmId;
+  final pulumi.Input<String?>? customerStorageAccountArmId;
   /// The ARM id of service map workspace created by customer.
-  final pulumi.Input<String>? customerWorkspaceId;
+  final pulumi.Input<String?>? customerWorkspaceId;
   /// Location of service map workspace created by customer.
-  final pulumi.Input<String>? customerWorkspaceLocation;
+  final pulumi.Input<String?>? customerWorkspaceLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Assessment Project Name
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Assessment project status.
-  final pulumi.Input<String>? projectStatus;
+  final pulumi.Input<dynamic>? projectStatus;
   /// The status of the last operation.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// This value can be set to 'enabled' to avoid breaking changes on existing
   /// customer resources and templates. If set to 'disabled', traffic over public
   /// interface is not allowed, and private endpoint connections would be the
   /// exclusive access method.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AssessmentProjectsOperationArgs].
   /// [assessmentSolutionId] Assessment solution ARM id tracked by Microsoft.Migrate/migrateProjects.
@@ -84,8 +84,8 @@ class AssessmentProjectsOperationArgs {
       customerWorkspaceLocation: (() { final guardedValue = map['customerWorkspaceLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: (() { final guardedValue = map['projectName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      projectStatus: (() { final guardedValue = map['projectStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      projectStatus: (() { final guardedValue = map['projectStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

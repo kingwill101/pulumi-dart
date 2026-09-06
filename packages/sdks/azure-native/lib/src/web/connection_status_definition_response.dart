@@ -6,11 +6,11 @@ import 'connection_error_response.dart';
 /// Connection status
 class ConnectionStatusDefinitionResponse {
   /// Connection error
-  final pulumi.Input<ConnectionErrorResponse>? error;
+  final pulumi.Input<ConnectionErrorResponse?>? error;
   /// The gateway status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Target of the error
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ConnectionStatusDefinitionResponse].
   /// [error] Connection error

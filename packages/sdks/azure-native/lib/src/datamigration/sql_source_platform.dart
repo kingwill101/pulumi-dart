@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Server platform type for connection
-enum SqlSourcePlatform {
+enum SqlSourcePlatform implements pulumi.PulumiEnum<String> {
   valueSqlOnPrem("SqlOnPrem");
 
   const SqlSourcePlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlSourcePlatform fromValue(String value) {

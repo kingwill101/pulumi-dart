@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The OptionalServices of AzureStackHCI Cluster.
 class OptionalServicesResponse {
   /// The name of custom location.
-  final pulumi.Input<String>? customLocation;
+  final pulumi.Input<String?>? customLocation;
 
   /// Creates a new [OptionalServicesResponse].
   /// [customLocation] The name of custom location.

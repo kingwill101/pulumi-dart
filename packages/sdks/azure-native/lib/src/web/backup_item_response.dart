@@ -21,7 +21,7 @@ class BackupItemResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Timestamp of a last restore operation which used this backup.
   final pulumi.Input<String> lastRestoreTimeStamp;
   /// Details regarding this backup. Might contain an error message.
@@ -108,7 +108,7 @@ class BackupItemResponse {
 
   factory BackupItemResponse.fromMap(Map<String, dynamic> map) {
     return BackupItemResponse(
-      backupId: pulumi.Input.fromValue(map['backupId'] as int),
+      backupId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupId'])),
       blobName: pulumi.Input.fromValue(map['blobName'] as String),
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
       created: pulumi.Input.fromValue(map['created'] as String),
@@ -120,12 +120,12 @@ class BackupItemResponse {
       log: pulumi.Input.fromValue(map['log'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       scheduled: pulumi.Input.fromValue(map['scheduled'] as bool),
-      sizeInBytes: pulumi.Input.fromValue(map['sizeInBytes'] as double),
+      sizeInBytes: pulumi.Input.fromValue((map['sizeInBytes'] as num).toDouble()),
       status: pulumi.Input.fromValue(map['status'] as String),
       storageAccountUrl: pulumi.Input.fromValue(map['storageAccountUrl'] as String),
       systemData: pulumi.Input.fromValue(SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>())),
       type: pulumi.Input.fromValue(map['type'] as String),
-      websiteSizeInBytes: pulumi.Input.fromValue(map['websiteSizeInBytes'] as double),
+      websiteSizeInBytes: pulumi.Input.fromValue((map['websiteSizeInBytes'] as num).toDouble()),
     );
   }
 }

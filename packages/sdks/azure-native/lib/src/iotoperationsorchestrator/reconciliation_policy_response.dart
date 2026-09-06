@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reconciliation Policy.
 class ReconciliationPolicyResponse {
   /// Policy interval.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// Policy type
   final pulumi.Input<String> type;
 

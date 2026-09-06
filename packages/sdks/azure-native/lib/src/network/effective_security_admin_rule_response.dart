@@ -10,42 +10,42 @@ class EffectiveSecurityAdminRuleResponse {
   /// Indicates the access allowed for this particular rule
   final pulumi.Input<String> access;
   /// A description of the security admin configuration.
-  final pulumi.Input<String>? configurationDescription;
+  final pulumi.Input<String?>? configurationDescription;
   /// A display name of the security admin configuration.
-  final pulumi.Input<String>? configurationDisplayName;
+  final pulumi.Input<String?>? configurationDisplayName;
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? destinations;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final pulumi.Input<String> direction;
   /// A friendly name for the rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> kind;
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Network protocol this rule applies to.
   final pulumi.Input<String> protocol;
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Groups for rule collection
-  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>?>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDescription;
+  final pulumi.Input<String?>? ruleCollectionDescription;
   /// A display name of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDisplayName;
+  final pulumi.Input<String?>? ruleCollectionDisplayName;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? ruleGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? ruleGroups;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? sources;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? sources;
 
   /// Creates a new [EffectiveSecurityAdminRuleResponse].
   /// [access] Indicates the access allowed for this particular rule
@@ -125,7 +125,7 @@ class EffectiveSecurityAdminRuleResponse {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       ruleCollectionAppliesToGroups: (() { final guardedValue = map['ruleCollectionAppliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>(guardedValue, (value) => NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

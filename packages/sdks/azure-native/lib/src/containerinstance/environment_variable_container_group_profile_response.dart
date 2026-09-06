@@ -7,9 +7,9 @@ class EnvironmentVariableContainerGroupProfileResponse {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
   /// The value of the secure environment variable.
-  final pulumi.Input<String>? secureValue;
+  final pulumi.Input<String?>? secureValue;
   /// The value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentVariableContainerGroupProfileResponse].
   /// [name] The name of the environment variable.

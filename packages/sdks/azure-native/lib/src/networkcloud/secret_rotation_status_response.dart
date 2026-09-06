@@ -41,9 +41,9 @@ class SecretRotationStatusResponse {
 
   factory SecretRotationStatusResponse.fromMap(Map<String, dynamic> map) {
     return SecretRotationStatusResponse(
-      expirePeriodDays: pulumi.Input.fromValue(map['expirePeriodDays'] as double),
+      expirePeriodDays: pulumi.Input.fromValue((map['expirePeriodDays'] as num).toDouble()),
       lastRotationTime: pulumi.Input.fromValue(map['lastRotationTime'] as String),
-      rotationPeriodDays: pulumi.Input.fromValue(map['rotationPeriodDays'] as double),
+      rotationPeriodDays: pulumi.Input.fromValue((map['rotationPeriodDays'] as num).toDouble()),
       secretArchiveReference: pulumi.Input.fromValue(SecretArchiveReferenceResponse.fromMap((map['secretArchiveReference']! as Map).cast<String, dynamic>())),
       secretType: pulumi.Input.fromValue(map['secretType'] as String),
     );

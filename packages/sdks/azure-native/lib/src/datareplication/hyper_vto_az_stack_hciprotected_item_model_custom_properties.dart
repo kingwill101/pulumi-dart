@@ -12,7 +12,7 @@ class HyperVToAzStackHCIProtectedItemModelCustomProperties {
   /// Gets or sets the list of disks to replicate.
   final pulumi.Input<List<HyperVToAzStackHCIDiskInput>> disksToInclude;
   /// Protected item dynamic memory config.
-  final pulumi.Input<ProtectedItemDynamicMemoryConfig>? dynamicMemoryConfig;
+  final pulumi.Input<ProtectedItemDynamicMemoryConfig?>? dynamicMemoryConfig;
   /// Gets or sets the ARM Id of the discovered machine.
   final pulumi.Input<String> fabricDiscoveryMachineId;
   /// Gets or sets the hypervisor generation of the virtual machine.
@@ -21,7 +21,7 @@ class HyperVToAzStackHCIProtectedItemModelCustomProperties {
   /// Expected value is 'HyperVToAzStackHCI'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets a value indicating whether memory is dynamical.
-  final pulumi.Input<bool>? isDynamicRam;
+  final pulumi.Input<bool?>? isDynamicRam;
   /// Gets or sets the list of VM NIC to replicate.
   final pulumi.Input<List<HyperVToAzStackHCINicInput>> nicsToInclude;
   /// Gets or sets the Run As account Id.
@@ -33,21 +33,21 @@ class HyperVToAzStackHCIProtectedItemModelCustomProperties {
   /// Gets or sets the Target Arc Cluster Custom Location ARM Id.
   final pulumi.Input<String> targetArcClusterCustomLocationId;
   /// Gets or sets the target CPU cores.
-  final pulumi.Input<int>? targetCpuCores;
+  final pulumi.Input<int?>? targetCpuCores;
   /// Gets or sets the target DRA name.
   final pulumi.Input<String> targetDraName;
   /// Gets or sets the Target HCI Cluster ARM Id.
   final pulumi.Input<String> targetHciClusterId;
   /// Gets or sets the target memory in mega-bytes.
-  final pulumi.Input<int>? targetMemoryInMegaBytes;
+  final pulumi.Input<int?>? targetMemoryInMegaBytes;
   /// Gets or sets the target network Id within AzStackHCI Cluster.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// Gets or sets the target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
   /// Gets or sets the target VM display name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// Gets or sets the target test network Id within AzStackHCI Cluster.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
 
   /// Creates a new [HyperVToAzStackHCIProtectedItemModelCustomProperties].
   /// [customLocationRegion] Gets or sets the location of Azure Arc HCI custom location resource.
@@ -132,10 +132,10 @@ class HyperVToAzStackHCIProtectedItemModelCustomProperties {
       sourceDraName: pulumi.Input.fromValue(map['sourceDraName'] as String),
       storageContainerId: pulumi.Input.fromValue(map['storageContainerId'] as String),
       targetArcClusterCustomLocationId: pulumi.Input.fromValue(map['targetArcClusterCustomLocationId'] as String),
-      targetCpuCores: (() { final guardedValue = map['targetCpuCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetCpuCores: (() { final guardedValue = map['targetCpuCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetDraName: pulumi.Input.fromValue(map['targetDraName'] as String),
       targetHciClusterId: pulumi.Input.fromValue(map['targetHciClusterId'] as String),
-      targetMemoryInMegaBytes: (() { final guardedValue = map['targetMemoryInMegaBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetMemoryInMegaBytes: (() { final guardedValue = map['targetMemoryInMegaBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetNetworkId: (() { final guardedValue = map['targetNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetResourceGroupId: pulumi.Input.fromValue(map['targetResourceGroupId'] as String),
       targetVmName: (() { final guardedValue = map['targetVmName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

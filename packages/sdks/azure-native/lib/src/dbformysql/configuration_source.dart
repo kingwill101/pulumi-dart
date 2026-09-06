@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Source of the configuration.
-enum ConfigurationSource {
+enum ConfigurationSource implements pulumi.PulumiEnum<String> {
   valueSystemDefault("system-default"),
   valueUserOverride("user-override");
 
   const ConfigurationSource(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfigurationSource fromValue(String value) {

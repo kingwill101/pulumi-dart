@@ -4,19 +4,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FabricModelResponseSystemData {
   /// Gets or sets the timestamp of resource creation (UTC).
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// Gets or sets identity that created the resource.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// Gets or sets the type of identity that created the resource: user, application,
   /// managedIdentity.
-  final pulumi.Input<String>? createdByType;
+  final pulumi.Input<String?>? createdByType;
   /// Gets or sets the timestamp of resource last modification (UTC).
-  final pulumi.Input<String>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedAt;
   /// Gets or sets the identity that last modified the resource.
-  final pulumi.Input<String>? lastModifiedBy;
+  final pulumi.Input<String?>? lastModifiedBy;
   /// Gets or sets the type of identity that last modified the resource: user, application,
   /// managedIdentity.
-  final pulumi.Input<String>? lastModifiedByType;
+  final pulumi.Input<String?>? lastModifiedByType;
 
   /// Creates a new [FabricModelResponseSystemData].
   /// [createdAt] Gets or sets the timestamp of resource creation (UTC).

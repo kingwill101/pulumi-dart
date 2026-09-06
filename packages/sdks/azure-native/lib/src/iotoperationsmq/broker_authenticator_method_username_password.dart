@@ -6,9 +6,9 @@ import 'key_vault_secret_properties.dart';
 /// UsernamePassword for BrokerAuthentication
 class BrokerAuthenticatorMethodUsernamePassword {
   /// Keyvault username password secret properties.
-  final pulumi.Input<KeyVaultSecretProperties>? keyVault;
+  final pulumi.Input<KeyVaultSecretProperties?>? keyVault;
   /// Secret where username and password are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [BrokerAuthenticatorMethodUsernamePassword].
   /// [keyVault] Keyvault username password secret properties.

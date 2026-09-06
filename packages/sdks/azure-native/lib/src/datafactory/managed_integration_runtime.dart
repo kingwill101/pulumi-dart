@@ -9,15 +9,15 @@ import 'managed_virtual_network_reference.dart';
 /// Managed integration runtime, including managed elastic and managed dedicated integration runtimes.
 class ManagedIntegrationRuntime {
   /// The compute resource for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeComputeProperties>? computeProperties;
+  final pulumi.Input<IntegrationRuntimeComputeProperties?>? computeProperties;
   /// The name of virtual network to which Azure-SSIS integration runtime will join
-  final pulumi.Input<IntegrationRuntimeCustomerVirtualNetwork>? customerVirtualNetwork;
+  final pulumi.Input<IntegrationRuntimeCustomerVirtualNetwork?>? customerVirtualNetwork;
   /// Integration runtime description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Managed Virtual Network reference.
-  final pulumi.Input<ManagedVirtualNetworkReference>? managedVirtualNetwork;
+  final pulumi.Input<ManagedVirtualNetworkReference?>? managedVirtualNetwork;
   /// SSIS properties for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeSsisProperties>? ssisProperties;
+  final pulumi.Input<IntegrationRuntimeSsisProperties?>? ssisProperties;
   /// The type of integration runtime.
   /// Expected value is 'Managed'.
   final pulumi.Input<String> type;

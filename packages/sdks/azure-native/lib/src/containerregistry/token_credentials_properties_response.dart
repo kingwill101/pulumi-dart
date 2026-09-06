@@ -6,8 +6,8 @@ import 'token_password_response.dart';
 
 /// The properties of the credentials that can be used for authenticating the token.
 class TokenCredentialsPropertiesResponse {
-  final pulumi.Input<List<TokenCertificateResponse>>? certificates;
-  final pulumi.Input<List<TokenPasswordResponse>>? passwords;
+  final pulumi.Input<List<TokenCertificateResponse>?>? certificates;
+  final pulumi.Input<List<TokenPasswordResponse>?>? passwords;
 
   /// Creates a new [TokenCredentialsPropertiesResponse].
   /// [certificates] Optional.

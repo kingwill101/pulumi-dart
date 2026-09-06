@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of a private endpoint connection.
-enum PrivateLinkServiceConnectionStatus {
+enum PrivateLinkServiceConnectionStatus implements pulumi.PulumiEnum<String> {
   valuePending("Pending"),
   valueApproved("Approved"),
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
   const PrivateLinkServiceConnectionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateLinkServiceConnectionStatus fromValue(String value) {

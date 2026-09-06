@@ -7,31 +7,31 @@ import 'with_mobo_broker_resources_response.dart';
 /// Supercomputer properties
 class SupercomputerPropertiesResponse {
   /// Whether or not to use a customer managed key when encrypting data at rest
-  final pulumi.Input<String>? customerManagedKeys;
+  final pulumi.Input<String?>? customerManagedKeys;
   /// Disk Encryption Set ID to use for Customer Managed Keys encryption. Required if Customer Managed Keys is enabled.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// Dictionary of identity properties.
   final pulumi.Input<SupercomputerIdentitiesResponse> identities;
   /// The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled.
-  final pulumi.Input<String>? logAnalyticsClusterId;
+  final pulumi.Input<String?>? logAnalyticsClusterId;
   /// Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner.
   final pulumi.Input<WithMoboBrokerResourcesResponse> managedOnBehalfOfConfiguration;
   /// The resource group for resources managed on behalf of customer.
   final pulumi.Input<String> managedResourceGroup;
   /// System Subnet ID associated with AKS apiserver. Must be delegated to Microsoft.ContainerService/managedClusters.
   /// It should have connectivity to the system subnet and nodepool subnets.
-  final pulumi.Input<String>? managementSubnetId;
+  final pulumi.Input<String?>? managementSubnetId;
   /// Network egress type provisioned for the supercomputer workloads.
   /// Defaults to LoadBalancer if not specified.
   /// If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality.
-  final pulumi.Input<String>? outboundType;
+  final pulumi.Input<String?>? outboundType;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// System Subnet ID associated with managed NodePool for system resources.
   /// It should have connectivity to the child NodePool subnets.
   final pulumi.Input<String> subnetId;
   /// The SKU to use for the system node pool.
-  final pulumi.Input<String>? systemSku;
+  final pulumi.Input<String?>? systemSku;
 
   /// Creates a new [SupercomputerPropertiesResponse].
   /// [customerManagedKeys] Whether or not to use a customer managed key when encrypting data at rest
@@ -45,7 +45,7 @@ class SupercomputerPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [subnetId] System Subnet ID associated with managed NodePool for system resources.
   /// [systemSku] The SKU to use for the system node pool.
-  const SupercomputerPropertiesResponse({
+  SupercomputerPropertiesResponse({
     this.customerManagedKeys,
     this.diskEncryptionSetId,
     required this.identities,
@@ -53,11 +53,11 @@ class SupercomputerPropertiesResponse {
     required this.managedOnBehalfOfConfiguration,
     required this.managedResourceGroup,
     this.managementSubnetId,
-    this.outboundType,
+    pulumi.Input<String?>? outboundType,
     required this.provisioningState,
     required this.subnetId,
     this.systemSku,
-  });
+  }) : outboundType = outboundType ?? pulumi.Input.fromValue('LoadBalancer');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

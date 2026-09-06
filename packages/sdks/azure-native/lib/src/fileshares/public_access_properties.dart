@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The set of properties for control public access.
 class PublicAccessProperties {
   /// The allowed set of subnets when access is restricted.
-  final pulumi.Input<List<String>>? allowedSubnets;
+  final pulumi.Input<List<String>?>? allowedSubnets;
 
   /// Creates a new [PublicAccessProperties].
   /// [allowedSubnets] The allowed set of subnets when access is restricted.

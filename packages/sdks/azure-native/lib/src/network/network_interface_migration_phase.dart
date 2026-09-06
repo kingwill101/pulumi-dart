@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Migration phase of Network Interface resource.
-enum NetworkInterfaceMigrationPhase {
+enum NetworkInterfaceMigrationPhase implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valuePrepare("Prepare"),
   valueCommit("Commit"),
@@ -7,6 +9,7 @@ enum NetworkInterfaceMigrationPhase {
   valueCommitted("Committed");
 
   const NetworkInterfaceMigrationPhase(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkInterfaceMigrationPhase fromValue(String value) {

@@ -13,53 +13,53 @@ import 'metadata_support.dart';
 /// {@macro pulumi_securityinsights_content_package_args_doc}
 class ContentPackageArgs {
   /// The author of the package
-  final pulumi.Input<MetadataAuthor>? author;
+  final pulumi.Input<MetadataAuthor?>? author;
   /// The categories of the package
-  final pulumi.Input<MetadataCategories>? categories;
+  final pulumi.Input<MetadataCategories?>? categories;
   /// The content id of the package
   final pulumi.Input<String> contentId;
   /// The package kind
-  final pulumi.Input<String> contentKind;
+  final pulumi.Input<dynamic> contentKind;
   /// Unique ID for the content. It should be generated based on the contentId, contentKind and the contentVersion of the package
   final pulumi.Input<String> contentProductId;
   /// The version of the content schema.
-  final pulumi.Input<String>? contentSchemaVersion;
+  final pulumi.Input<String?>? contentSchemaVersion;
   /// The support tier of the package
-  final pulumi.Input<MetadataDependencies>? dependencies;
+  final pulumi.Input<MetadataDependencies?>? dependencies;
   /// The description of the package
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the package
   final pulumi.Input<String> displayName;
   /// first publish date package item
-  final pulumi.Input<String>? firstPublishDate;
+  final pulumi.Input<String?>? firstPublishDate;
   /// the icon identifier. this id can later be fetched from the content metadata
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// Flag indicates if this template is deprecated
-  final pulumi.Input<String>? isDeprecated;
+  final pulumi.Input<dynamic>? isDeprecated;
   /// Flag indicates if this package is among the featured list.
-  final pulumi.Input<String>? isFeatured;
+  final pulumi.Input<dynamic>? isFeatured;
   /// Flag indicates if this is a newly published package.
-  final pulumi.Input<String>? isNew;
+  final pulumi.Input<dynamic>? isNew;
   /// Flag indicates if this package is in preview.
-  final pulumi.Input<String>? isPreview;
+  final pulumi.Input<dynamic>? isPreview;
   /// last publish date for the package item
-  final pulumi.Input<String>? lastPublishDate;
+  final pulumi.Input<String?>? lastPublishDate;
   /// package Id
-  final pulumi.Input<String>? packageId;
+  final pulumi.Input<String?>? packageId;
   /// Providers for the package item
-  final pulumi.Input<List<String>>? providers;
+  final pulumi.Input<List<String>?>? providers;
   /// The publisher display name of the package
-  final pulumi.Input<String>? publisherDisplayName;
+  final pulumi.Input<String?>? publisherDisplayName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The source of the package
-  final pulumi.Input<MetadataSource>? source;
+  final pulumi.Input<MetadataSource?>? source;
   /// The support tier of the package
-  final pulumi.Input<MetadataSupport>? support;
+  final pulumi.Input<MetadataSupport?>? support;
   /// the tactics the resource covers
-  final pulumi.Input<List<String>>? threatAnalysisTactics;
+  final pulumi.Input<List<String>?>? threatAnalysisTactics;
   /// the techniques the resource covers, these have to be aligned with the tactics being used
-  final pulumi.Input<List<String>>? threatAnalysisTechniques;
+  final pulumi.Input<List<String>?>? threatAnalysisTechniques;
   /// the latest version number of the package
   final pulumi.Input<String> version;
   /// The name of the workspace.
@@ -157,7 +157,7 @@ class ContentPackageArgs {
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataAuthor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataCategories.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentId: pulumi.Input.fromValue(map['contentId'] as String),
-      contentKind: pulumi.Input.fromValue(map['contentKind'] as String),
+      contentKind: pulumi.Input.fromValue(map['contentKind']),
       contentProductId: pulumi.Input.fromValue(map['contentProductId'] as String),
       contentSchemaVersion: (() { final guardedValue = map['contentSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dependencies: (() { final guardedValue = map['dependencies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataDependencies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -165,10 +165,10 @@ class ContentPackageArgs {
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       firstPublishDate: (() { final guardedValue = map['firstPublishDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       icon: (() { final guardedValue = map['icon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isDeprecated: (() { final guardedValue = map['isDeprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isFeatured: (() { final guardedValue = map['isFeatured']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isNew: (() { final guardedValue = map['isNew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isPreview: (() { final guardedValue = map['isPreview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isDeprecated: (() { final guardedValue = map['isDeprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      isFeatured: (() { final guardedValue = map['isFeatured']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      isNew: (() { final guardedValue = map['isNew']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      isPreview: (() { final guardedValue = map['isPreview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       lastPublishDate: (() { final guardedValue = map['lastPublishDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       packageId: (() { final guardedValue = map['packageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       providers: (() { final guardedValue = map['providers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ingress visibility.
-enum Visibility {
+enum Visibility implements pulumi.PulumiEnum<String> {
   valuePrivate("Private"),
   valuePublic("Public");
 
   const Visibility(this.wireValue);
+  @override
   final String wireValue;
 
   static Visibility fromValue(String value) {

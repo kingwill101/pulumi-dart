@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an operation to be performed on the object
 class StorageTaskOperation {
   /// The operation to be performed on the object.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// Action to be taken when the operation fails for a object.
-  final pulumi.Input<String>? onFailure;
+  final pulumi.Input<dynamic>? onFailure;
   /// Action to be taken when the operation is successful for a object.
-  final pulumi.Input<String>? onSuccess;
+  final pulumi.Input<dynamic>? onSuccess;
   /// Key-value parameters for the operation.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [StorageTaskOperation].
   /// [name] The operation to be performed on the object.
@@ -36,9 +36,9 @@ class StorageTaskOperation {
 
   factory StorageTaskOperation.fromMap(Map<String, dynamic> map) {
     return StorageTaskOperation(
-      name: pulumi.Input.fromValue(map['name'] as String),
-      onFailure: (() { final guardedValue = map['onFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      onSuccess: (() { final guardedValue = map['onSuccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: pulumi.Input.fromValue(map['name']),
+      onFailure: (() { final guardedValue = map['onFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      onSuccess: (() { final guardedValue = map['onSuccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

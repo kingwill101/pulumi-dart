@@ -6,11 +6,11 @@ import 'system_data_response.dart';
 /// Virtual Network route contract used to pass routing information for a Virtual Network.
 class VnetRouteResponse {
   /// The ending address for this route. If the start address is specified in CIDR notation, this must be omitted.
-  final pulumi.Input<String>? endAddress;
+  final pulumi.Input<String?>? endAddress;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The type of route this is:
@@ -19,9 +19,9 @@ class VnetRouteResponse {
   /// STATIC - Static route set on the app only
   ///
   /// These values will be used for syncing an app's routes with those from a Virtual Network.
-  final pulumi.Input<String>? routeType;
+  final pulumi.Input<String?>? routeType;
   /// The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
-  final pulumi.Input<String>? startAddress;
+  final pulumi.Input<String?>? startAddress;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

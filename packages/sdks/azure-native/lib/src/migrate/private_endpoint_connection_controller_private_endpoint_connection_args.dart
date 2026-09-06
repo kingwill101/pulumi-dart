@@ -9,13 +9,13 @@ import 'connection_state_request_body_properties.dart';
 /// {@macro pulumi_migrate_private_endpoint_connection_controller_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
   /// Gets the tag for optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Migrate project name.
   final pulumi.Input<String> migrateProjectName;
   /// Private endpoint connection name.
-  final pulumi.Input<String>? peConnectionName;
+  final pulumi.Input<String?>? peConnectionName;
   /// Properties of Connection state request.
-  final pulumi.Input<ConnectionStateRequestBodyProperties>? properties;
+  final pulumi.Input<ConnectionStateRequestBodyProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 

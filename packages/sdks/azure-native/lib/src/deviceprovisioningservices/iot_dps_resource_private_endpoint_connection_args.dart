@@ -9,7 +9,7 @@ import 'private_endpoint_connection_properties.dart';
 /// {@macro pulumi_deviceprovisioningservices_iot_dps_resource_private_endpoint_connection_args_doc}
 class IotDpsResourcePrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The properties of a private endpoint connection
   final pulumi.Input<PrivateEndpointConnectionProperties> properties;
   /// The name of the resource group that contains the provisioning service.

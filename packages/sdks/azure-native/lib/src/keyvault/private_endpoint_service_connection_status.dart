@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether the connection has been approved, rejected or removed by the key vault owner.
-enum PrivateEndpointServiceConnectionStatus {
+enum PrivateEndpointServiceConnectionStatus implements pulumi.PulumiEnum<String> {
   valuePending("Pending"),
   valueApproved("Approved"),
   valueRejected("Rejected"),
   valueDisconnected("Disconnected");
 
   const PrivateEndpointServiceConnectionStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateEndpointServiceConnectionStatus fromValue(String value) {

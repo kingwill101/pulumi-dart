@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Format or origin of the knowledge source.
-enum KnowledgeSourceType {
+enum KnowledgeSourceType implements pulumi.PulumiEnum<String> {
   schemaOrgMarkup("SchemaOrgMarkup"),
   rssFeeds("RssFeeds"),
   sitemap("Sitemap");
 
   const KnowledgeSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static KnowledgeSourceType fromValue(String value) {

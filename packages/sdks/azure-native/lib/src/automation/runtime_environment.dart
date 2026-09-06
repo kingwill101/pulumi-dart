@@ -226,13 +226,34 @@ class RuntimeEnvironment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    defaultPackages = registerOutput<Map<String, String>?>('defaultPackages');
+    defaultPackages = registerOutput<Map<String, String>?>('defaultPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     language = registerOutput<String?>('language');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [RuntimeEnvironment] resource.
+  RuntimeEnvironment.reference(String urn)
+    : super(
+        'azure-native:automation:RuntimeEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultPackages = registerOutput<Map<String, String>?>('defaultPackages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    language = registerOutput<String?>('language');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

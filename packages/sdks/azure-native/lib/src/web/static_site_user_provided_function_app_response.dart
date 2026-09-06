@@ -7,13 +7,13 @@ class StaticSiteUserProvidedFunctionAppResponse {
   /// The date and time on which the function app was registered with the static site.
   final pulumi.Input<String> createdOn;
   /// The region of the function app registered with the static site
-  final pulumi.Input<String>? functionAppRegion;
+  final pulumi.Input<String?>? functionAppRegion;
   /// The resource id of the function app registered with the static site
-  final pulumi.Input<String>? functionAppResourceId;
+  final pulumi.Input<String?>? functionAppResourceId;
   /// Resource Id.
   final pulumi.Input<String> id;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Name.
   final pulumi.Input<String> name;
   /// Resource type.

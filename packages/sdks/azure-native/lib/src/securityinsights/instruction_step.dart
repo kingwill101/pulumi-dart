@@ -6,14 +6,14 @@ import 'instruction_step_details.dart';
 /// Instruction steps to enable the connector.
 class InstructionStep {
   /// Gets or sets the instruction step description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the inner instruction steps details.
   /// For Example: instruction step 1 might contain inner instruction steps: [instruction step 1.1, instruction step 1.2].
-  final pulumi.Input<List<InstructionStep>>? innerSteps;
+  final pulumi.Input<List<InstructionStep>?>? innerSteps;
   /// Gets or sets the instruction step details.
-  final pulumi.Input<List<InstructionStepDetails>>? instructions;
+  final pulumi.Input<List<InstructionStepDetails>?>? instructions;
   /// Gets or sets the instruction step title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [InstructionStep].
   /// [description] Gets or sets the instruction step description.

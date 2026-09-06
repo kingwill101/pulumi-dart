@@ -60,10 +60,10 @@ class DatabaseBackupInfoResponse {
       backupFinishDate: pulumi.Input.fromValue(map['backupFinishDate'] as String),
       backupType: pulumi.Input.fromValue(map['backupType'] as String),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      familyCount: pulumi.Input.fromValue(map['familyCount'] as int),
+      familyCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['familyCount'])),
       isCompressed: pulumi.Input.fromValue(map['isCompressed'] as bool),
       isDamaged: pulumi.Input.fromValue(map['isDamaged'] as bool),
-      position: pulumi.Input.fromValue(map['position'] as int),
+      position: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['position'])),
     );
   }
 }

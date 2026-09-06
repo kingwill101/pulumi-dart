@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trigger based on status code.
 class StatusCodesBasedTrigger {
   /// Request Count.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Request Path
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// HTTP status code.
-  final pulumi.Input<int>? status;
+  final pulumi.Input<int?>? status;
   /// Request Sub Status.
-  final pulumi.Input<int>? subStatus;
+  final pulumi.Input<int?>? subStatus;
   /// Time interval.
-  final pulumi.Input<String>? timeInterval;
+  final pulumi.Input<String?>? timeInterval;
   /// Win32 error code.
-  final pulumi.Input<int>? win32Status;
+  final pulumi.Input<int?>? win32Status;
 
   /// Creates a new [StatusCodesBasedTrigger].
   /// [count] Request Count.
@@ -46,12 +46,12 @@ class StatusCodesBasedTrigger {
 
   factory StatusCodesBasedTrigger.fromMap(Map<String, dynamic> map) {
     return StatusCodesBasedTrigger(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      subStatus: (() { final guardedValue = map['subStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      subStatus: (() { final guardedValue = map['subStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timeInterval: (() { final guardedValue = map['timeInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      win32Status: (() { final guardedValue = map['win32Status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      win32Status: (() { final guardedValue = map['win32Status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

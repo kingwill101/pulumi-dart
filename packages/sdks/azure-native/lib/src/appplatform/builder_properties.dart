@@ -7,9 +7,9 @@ import 'stack_properties.dart';
 /// KPack Builder properties payload
 class BuilderProperties {
   /// Builder buildpack groups.
-  final pulumi.Input<List<BuildpacksGroupProperties>>? buildpackGroups;
+  final pulumi.Input<List<BuildpacksGroupProperties>?>? buildpackGroups;
   /// Builder cluster stack property.
-  final pulumi.Input<StackProperties>? stack;
+  final pulumi.Input<StackProperties?>? stack;
 
   /// Creates a new [BuilderProperties].
   /// [buildpackGroups] Builder buildpack groups.

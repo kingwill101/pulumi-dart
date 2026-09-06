@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'permission_sql_resource_sql_role_definition_response.dart';
 import 'sql_resource_sql_role_definition_args.dart';
 
 /// An Azure Cosmos DB SQL Role Definition.
@@ -245,7 +246,7 @@ class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
   /// The name of the database account.
   late final pulumi.Output<String> name;
   /// The set of operations allowed through this Role Definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<PermissionSqlResourceSqlRoleDefinitionResponse>?> permissions;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
   /// The type of Azure resource.
@@ -265,10 +266,27 @@ class SqlResourceSqlRoleDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignableScopes = registerOutput<List<String>?>('assignableScopes');
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<PermissionSqlResourceSqlRoleDefinitionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionSqlResourceSqlRoleDefinitionResponse>(guardedValue, (value) => PermissionSqlResourceSqlRoleDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    roleName = registerOutput<String?>('roleName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SqlResourceSqlRoleDefinition] resource.
+  SqlResourceSqlRoleDefinition.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:SqlResourceSqlRoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<PermissionSqlResourceSqlRoleDefinitionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionSqlResourceSqlRoleDefinitionResponse>(guardedValue, (value) => PermissionSqlResourceSqlRoleDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String?>('roleName');
     type = registerOutput<String>('type');
   }

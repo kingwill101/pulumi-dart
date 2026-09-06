@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Support contact information and instructions.
 class SupportInfo {
   /// Support contact email address.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Support instructions.
-  final pulumi.Input<String>? instructions;
+  final pulumi.Input<String?>? instructions;
   /// Support contact phone number.
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// Support web address.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [SupportInfo].
   /// [email] Support contact email address.

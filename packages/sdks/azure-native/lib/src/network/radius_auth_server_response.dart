@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gateway or VpnServerConfiguration Radius server with radius secret details
 class RadiusAuthServerResponse {
   /// Radius server IPAddress
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// Radius server secret
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
 
   /// Creates a new [RadiusAuthServerResponse].
   /// [radiusServerAddress] Radius server IPAddress

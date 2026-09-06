@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_virtual_network_gateway_routes_information_args_doc}
 class GetVirtualNetworkGatewayRoutesInformationArgs {
   /// Attempt to recalculate the Route Sets Information for the gateway
-  final pulumi.Input<bool>? attemptRefresh;
+  final pulumi.Input<bool?>? attemptRefresh;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the virtual network gateway.

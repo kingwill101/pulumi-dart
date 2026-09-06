@@ -16,21 +16,21 @@ class GetOpenShiftClusterResult {
   /// The cluster API server profile.
   final APIServerProfileResponse? apiserverProfile;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The cluster profile.
   final ClusterProfileResponse? clusterProfile;
   /// The console profile.
   final ConsoleProfileResponse? consoleProfile;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The cluster ingress profiles.
   final List<IngressProfileResponse>? ingressProfiles;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The cluster master profile.
   final MasterProfileResponse? masterProfile;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The cluster network profile.
   final NetworkProfileResponse? networkProfile;
   /// The cluster provisioning state.
@@ -38,15 +38,15 @@ class GetOpenShiftClusterResult {
   /// The cluster service principal profile.
   final ServicePrincipalProfileResponse? servicePrincipalProfile;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The cluster worker profiles.
   final List<WorkerProfileResponse>? workerProfiles;
   /// The cluster worker profiles status.
-  final List<WorkerProfileResponse> workerProfilesStatus;
+  final List<WorkerProfileResponse>? workerProfilesStatus;
 
   /// Creates a new [GetOpenShiftClusterResult].
   /// [apiserverProfile] The cluster API server profile.
@@ -68,65 +68,65 @@ class GetOpenShiftClusterResult {
   /// [workerProfilesStatus] The cluster worker profiles status.
   const GetOpenShiftClusterResult({
     this.apiserverProfile,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.clusterProfile,
     this.consoleProfile,
-    required this.id,
+    this.id,
     this.ingressProfiles,
-    required this.location,
+    this.location,
     this.masterProfile,
-    required this.name,
+    this.name,
     this.networkProfile,
     this.provisioningState,
     this.servicePrincipalProfile,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.workerProfiles,
-    required this.workerProfilesStatus,
+    this.workerProfilesStatus,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiserverProfile': ?apiserverProfile?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clusterProfile': ?clusterProfile?.toMap(),
       'consoleProfile': ?consoleProfile?.toMap(),
-      'id': id,
+      'id': ?id,
       'ingressProfiles': ?(() { final guardedValue = ingressProfiles; if (guardedValue == null) return null; return pulumi.Input.encodeList<IngressProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'location': location,
+      'location': ?location,
       'masterProfile': ?masterProfile?.toMap(),
-      'name': name,
+      'name': ?name,
       'networkProfile': ?networkProfile?.toMap(),
       'provisioningState': ?provisioningState,
       'servicePrincipalProfile': ?servicePrincipalProfile?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'workerProfiles': ?(() { final guardedValue = workerProfiles; if (guardedValue == null) return null; return pulumi.Input.encodeList<WorkerProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'workerProfilesStatus': pulumi.Input.encodeList<WorkerProfileResponse, Map<String, dynamic>>(workerProfilesStatus, (value) => value.toMap()),
+      'workerProfilesStatus': ?(() { final guardedValue = workerProfilesStatus; if (guardedValue == null) return null; return pulumi.Input.encodeList<WorkerProfileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetOpenShiftClusterResult.fromMap(Map<String, dynamic> map) {
     return GetOpenShiftClusterResult(
       apiserverProfile: (() { final guardedValue = map['apiserverProfile']; if (guardedValue == null) return null; return APIServerProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clusterProfile: (() { final guardedValue = map['clusterProfile']; if (guardedValue == null) return null; return ClusterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       consoleProfile: (() { final guardedValue = map['consoleProfile']; if (guardedValue == null) return null; return ConsoleProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ingressProfiles: (() { final guardedValue = map['ingressProfiles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IngressProfileResponse>(guardedValue, (value) => IngressProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       masterProfile: (() { final guardedValue = map['masterProfile']; if (guardedValue == null) return null; return MasterProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       servicePrincipalProfile: (() { final guardedValue = map['servicePrincipalProfile']; if (guardedValue == null) return null; return ServicePrincipalProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       workerProfiles: (() { final guardedValue = map['workerProfiles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      workerProfilesStatus: pulumi.Input.decodeList<WorkerProfileResponse>(map['workerProfilesStatus']!, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())),
+      workerProfilesStatus: (() { final guardedValue = map['workerProfilesStatus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkerProfileResponse>(guardedValue, (value) => WorkerProfileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

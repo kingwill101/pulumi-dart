@@ -13,15 +13,15 @@ class FileServicePropertiesArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
   /// Specifies CORS rules for the File service. You can include up to five CorsRule elements in the request. If no CorsRule elements are included in the request body, all CORS rules will be deleted, and CORS will be disabled for the File service.
-  final pulumi.Input<CorsRules>? cors;
+  final pulumi.Input<CorsRules?>? cors;
   /// The name of the file Service within the specified storage account. File Service Name must be "default"
-  final pulumi.Input<String>? fileServicesName;
+  final pulumi.Input<String?>? fileServicesName;
   /// Protocol settings for file service
-  final pulumi.Input<ProtocolSettings>? protocolSettings;
+  final pulumi.Input<ProtocolSettings?>? protocolSettings;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The file service properties for share soft delete.
-  final pulumi.Input<DeleteRetentionPolicy>? shareDeleteRetentionPolicy;
+  final pulumi.Input<DeleteRetentionPolicy?>? shareDeleteRetentionPolicy;
 
   /// Creates a new [FileServicePropertiesArgs].
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.

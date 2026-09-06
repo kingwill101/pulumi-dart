@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The background job details.
 class BackgroundJobResponse {
   /// The end time of the background job.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The execution state of the background job.
-  final pulumi.Input<String>? executionState;
+  final pulumi.Input<String?>? executionState;
   /// The last execution status of the background job.
-  final pulumi.Input<String>? lastExecutionStatus;
+  final pulumi.Input<String?>? lastExecutionStatus;
   /// The last execution time of the background job.
-  final pulumi.Input<String>? lastExecutionTime;
+  final pulumi.Input<String?>? lastExecutionTime;
   /// The start time of the background job.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The state of the background job.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [BackgroundJobResponse].
   /// [endTime] The end time of the background job.

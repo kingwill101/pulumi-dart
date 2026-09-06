@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_route_filter_args_doc}
 class GetRouteFilterArgs {
   /// Expands referenced express route bgp peering resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the route filter.

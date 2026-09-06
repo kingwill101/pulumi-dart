@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Windows gMSA Profile in the managed cluster.
 class WindowsGmsaProfileResponse {
   /// Specifies the DNS server for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
-  final pulumi.Input<String>? dnsServer;
+  final pulumi.Input<String?>? dnsServer;
   /// Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the root domain name for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.
-  final pulumi.Input<String>? rootDomainName;
+  final pulumi.Input<String?>? rootDomainName;
 
   /// Creates a new [WindowsGmsaProfileResponse].
   /// [dnsServer] Specifies the DNS server for Windows gMSA. &lt;br&gt;&lt;br&gt; Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster.

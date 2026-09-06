@@ -2,9 +2,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'enclave_address_spaces_model_response.dart';
 import 'enclave_default_settings_model_response.dart';
 import 'enclave_virtual_network_model_response.dart';
+import 'governed_service_item_response.dart';
 import 'maintenance_mode_configuration_model_response.dart';
 import 'managed_on_behalf_of_configuration_response.dart';
 import 'managed_service_identity_response.dart';
+import 'role_assignment_item_response.dart';
 import 'system_data_response.dart';
 import 'virtual_enclave_args.dart';
 
@@ -32,11 +34,11 @@ class VirtualEnclave extends pulumi.CustomResource {
   /// Enclave default settings.
   late final pulumi.Output<EnclaveDefaultSettingsModelResponse?> enclaveDefaultSettings;
   /// Enclave role assignments
-  late final pulumi.Output<List<Map<String, dynamic>>?> enclaveRoleAssignments;
+  late final pulumi.Output<List<RoleAssignmentItemResponse>?> enclaveRoleAssignments;
   /// Virtual Network.
   late final pulumi.Output<EnclaveVirtualNetworkModelResponse> enclaveVirtualNetwork;
   /// Enclave specific policies
-  late final pulumi.Output<List<Map<String, dynamic>>?> governedServiceList;
+  late final pulumi.Output<List<GovernedServiceItemResponse>?> governedServiceList;
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// The geo-location where the resource lives
@@ -60,7 +62,7 @@ class VirtualEnclave extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// Workload role assignments
-  late final pulumi.Output<List<Map<String, dynamic>>?> workloadRoleAssignments;
+  late final pulumi.Output<List<RoleAssignmentItemResponse>?> workloadRoleAssignments;
 
   /// Creates a new [VirtualEnclave].
   /// [name] The Pulumi resource name.
@@ -81,9 +83,9 @@ class VirtualEnclave extends pulumi.CustomResource {
     communityResourceId = registerOutput<String>('communityResourceId');
     enclaveAddressSpaces = registerOutput<EnclaveAddressSpacesModelResponse>('enclaveAddressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveAddressSpacesModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enclaveDefaultSettings = registerOutput<EnclaveDefaultSettingsModelResponse?>('enclaveDefaultSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveDefaultSettingsModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    enclaveRoleAssignments = registerOutput<List<Map<String, dynamic>>?>('enclaveRoleAssignments');
+    enclaveRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('enclaveRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     enclaveVirtualNetwork = registerOutput<EnclaveVirtualNetworkModelResponse>('enclaveVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveVirtualNetworkModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    governedServiceList = registerOutput<List<Map<String, dynamic>>?>('governedServiceList');
+    governedServiceList = registerOutput<List<GovernedServiceItemResponse>?>('governedServiceList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GovernedServiceItemResponse>(guardedValue, (value) => GovernedServiceItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     maintenanceModeConfiguration = registerOutput<MaintenanceModeConfigurationModelResponse?>('maintenanceModeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceModeConfigurationModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -91,10 +93,41 @@ class VirtualEnclave extends pulumi.CustomResource {
     managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourceCollection = registerOutput<List<String>>('resourceCollection');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    workloadRoleAssignments = registerOutput<List<Map<String, dynamic>>?>('workloadRoleAssignments');
+    workloadRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('workloadRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualEnclave] resource.
+  VirtualEnclave.reference(String urn)
+    : super(
+        'azure-native:mission:VirtualEnclave',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bastionEnabled = registerOutput<bool?>('bastionEnabled');
+    communityResourceId = registerOutput<String>('communityResourceId');
+    enclaveAddressSpaces = registerOutput<EnclaveAddressSpacesModelResponse>('enclaveAddressSpaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveAddressSpacesModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enclaveDefaultSettings = registerOutput<EnclaveDefaultSettingsModelResponse?>('enclaveDefaultSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveDefaultSettingsModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enclaveRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('enclaveRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enclaveVirtualNetwork = registerOutput<EnclaveVirtualNetworkModelResponse>('enclaveVirtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnclaveVirtualNetworkModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    governedServiceList = registerOutput<List<GovernedServiceItemResponse>?>('governedServiceList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GovernedServiceItemResponse>(guardedValue, (value) => GovernedServiceItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceModeConfiguration = registerOutput<MaintenanceModeConfigurationModelResponse?>('maintenanceModeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceModeConfigurationModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedOnBehalfOfConfiguration = registerOutput<ManagedOnBehalfOfConfigurationResponse>('managedOnBehalfOfConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedOnBehalfOfConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    managedResourceGroupName = registerOutput<String>('managedResourceGroupName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCollection = registerOutput<List<String>>('resourceCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    workloadRoleAssignments = registerOutput<List<RoleAssignmentItemResponse>?>('workloadRoleAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleAssignmentItemResponse>(guardedValue, (value) => RoleAssignmentItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

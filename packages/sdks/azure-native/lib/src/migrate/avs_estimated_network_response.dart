@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details on the Estimated Network Costs for AVS Assessment.
 class AvsEstimatedNetworkResponse {
   /// Monthly cost for network type.
-  final pulumi.Input<double>? monthlyPrice;
+  final pulumi.Input<double?>? monthlyPrice;
   /// Recommended Network Sku.
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<String?>? networkType;
 
   /// Creates a new [AvsEstimatedNetworkResponse].
   /// [monthlyPrice] Monthly cost for network type.
@@ -26,7 +26,7 @@ class AvsEstimatedNetworkResponse {
 
   factory AvsEstimatedNetworkResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedNetworkResponse(
-      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

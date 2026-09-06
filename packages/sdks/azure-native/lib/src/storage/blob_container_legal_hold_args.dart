@@ -10,7 +10,7 @@ class BlobContainerLegalHoldArgs {
   /// Name of the Storage Account.
   final pulumi.Input<String> accountName;
   /// When enabled, new blocks can be written to both 'Append and Bock Blobs' while maintaining legal hold protection and compliance. Only new blocks can be added and any existing blocks cannot be modified or deleted.
-  final pulumi.Input<bool>? allowProtectedAppendWritesAll;
+  final pulumi.Input<bool?>? allowProtectedAppendWritesAll;
   /// Name of the Blob Container.
   final pulumi.Input<String> containerName;
   /// Name of the resource group that contains the storage account.

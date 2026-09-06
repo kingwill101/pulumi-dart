@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol permitted for a request made with the account SAS.
-enum HttpProtocol {
+enum HttpProtocol implements pulumi.PulumiEnum<String> {
   valueHttpsHttp("https,http"),
   valueHttps("https");
 
   const HttpProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpProtocol fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP Filter Action
-enum IPAction {
+enum IPAction implements pulumi.PulumiEnum<String> {
   valueAccept("Accept"),
   valueReject("Reject");
 
   const IPAction(this.wireValue);
+  @override
   final String wireValue;
 
   static IPAction fromValue(String value) {

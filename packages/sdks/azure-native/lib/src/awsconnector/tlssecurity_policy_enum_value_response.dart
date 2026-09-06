@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TLSSecurityPolicyEnumValue
 class TLSSecurityPolicyEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TLSSecurityPolicyEnumValueResponse].
   /// [value] Property value

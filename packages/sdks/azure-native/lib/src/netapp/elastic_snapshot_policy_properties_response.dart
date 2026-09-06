@@ -9,17 +9,17 @@ import 'elastic_snapshot_policy_weekly_schedule_response.dart';
 /// Elastic Snapshot policy properties
 class ElasticSnapshotPolicyPropertiesResponse {
   /// Schedule for daily snapshots
-  final pulumi.Input<ElasticSnapshotPolicyDailyScheduleResponse>? dailySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyDailyScheduleResponse?>? dailySchedule;
   /// Schedule for hourly snapshots
-  final pulumi.Input<ElasticSnapshotPolicyHourlyScheduleResponse>? hourlySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyHourlyScheduleResponse?>? hourlySchedule;
   /// Schedule for monthly snapshots
-  final pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleResponse>? monthlySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyMonthlyScheduleResponse?>? monthlySchedule;
   /// Configures if the snapshot policy is enabled on the volumes connected to the policy.
-  final pulumi.Input<String>? policyStatus;
+  final pulumi.Input<String?>? policyStatus;
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
   /// Schedule for weekly snapshots
-  final pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleResponse>? weeklySchedule;
+  final pulumi.Input<ElasticSnapshotPolicyWeeklyScheduleResponse?>? weeklySchedule;
 
   /// Creates a new [ElasticSnapshotPolicyPropertiesResponse].
   /// [dailySchedule] Schedule for daily snapshots

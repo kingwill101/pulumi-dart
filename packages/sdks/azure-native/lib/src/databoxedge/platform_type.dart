@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Host OS supported by the Kubernetes role.
-enum PlatformType {
+enum PlatformType implements pulumi.PulumiEnum<String> {
   valueWindows("Windows"),
   valueLinux("Linux");
 
   const PlatformType(this.wireValue);
+  @override
   final String wireValue;
 
   static PlatformType fromValue(String value) {

@@ -1,4 +1,6 @@
-enum DeliveryRuleConditionParametersType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DeliveryRuleConditionParametersType implements pulumi.PulumiEnum<String> {
   deliveryRuleRemoteAddressConditionParameters("DeliveryRuleRemoteAddressConditionParameters"),
   deliveryRuleRequestMethodConditionParameters("DeliveryRuleRequestMethodConditionParameters"),
   deliveryRuleQueryStringConditionParameters("DeliveryRuleQueryStringConditionParameters"),
@@ -20,6 +22,7 @@ enum DeliveryRuleConditionParametersType {
   deliveryRuleSslProtocolConditionParameters("DeliveryRuleSslProtocolConditionParameters");
 
   const DeliveryRuleConditionParametersType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeliveryRuleConditionParametersType fromValue(String value) {

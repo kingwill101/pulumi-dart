@@ -11,15 +11,15 @@ class ElasticBackupPolicyArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
   /// The name of the ElasticBackupPolicy
-  final pulumi.Input<String>? backupPolicyName;
+  final pulumi.Input<String?>? backupPolicyName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticBackupPolicyProperties>? properties;
+  final pulumi.Input<ElasticBackupPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticBackupPolicyArgs].
   /// [accountName] The name of the ElasticAccount

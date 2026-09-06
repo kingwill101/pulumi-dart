@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The represent of missing permissions
 class PermissionsMissingDryrunPrerequisiteResultResponse {
   /// The permission list
-  final pulumi.Input<List<String>>? permissions;
+  final pulumi.Input<List<String>?>? permissions;
   /// The recommended role to resolve permissions missing
-  final pulumi.Input<String>? recommendedRole;
+  final pulumi.Input<String?>? recommendedRole;
   /// The permission scope
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The type of dryrun result.
   /// Expected value is 'permissionsMissing'.
   final pulumi.Input<String> type;

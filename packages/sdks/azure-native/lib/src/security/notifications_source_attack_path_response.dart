@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Attack path notification source
 class NotificationsSourceAttackPathResponse {
   /// Defines the minimal attach path risk level which will be sent as email notifications
-  final pulumi.Input<String>? minimalRiskLevel;
+  final pulumi.Input<String?>? minimalRiskLevel;
   /// The source type that will trigger the notification
   /// Expected value is 'AttackPath'.
   final pulumi.Input<String> sourceType;

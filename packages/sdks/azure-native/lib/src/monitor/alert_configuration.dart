@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Alert configuration details
 class AlertConfiguration {
   /// Optional list of action group resource IDs to be notified when the alert is triggered.
-  final pulumi.Input<List<String>>? actionGroupIds;
+  final pulumi.Input<List<String>?>? actionGroupIds;
   /// The alert rule description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The severity of triggered alert.
-  final pulumi.Input<String> severity;
+  final pulumi.Input<dynamic> severity;
 
   /// Creates a new [AlertConfiguration].
   /// [actionGroupIds] Optional list of action group resource IDs to be notified when the alert is triggered.
@@ -33,7 +33,7 @@ class AlertConfiguration {
     return AlertConfiguration(
       actionGroupIds: (() { final guardedValue = map['actionGroupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: pulumi.Input.fromValue(map['severity'] as String),
+      severity: pulumi.Input.fromValue(map['severity']),
     );
   }
 }

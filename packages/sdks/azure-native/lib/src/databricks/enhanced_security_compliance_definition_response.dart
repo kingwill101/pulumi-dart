@@ -8,11 +8,11 @@ import 'enhanced_security_monitoring_definition_response.dart';
 /// Status of settings related to the Enhanced Security and Compliance Add-On.
 class EnhancedSecurityComplianceDefinitionResponse {
   /// Status of automated cluster updates feature.
-  final pulumi.Input<AutomaticClusterUpdateDefinitionResponse>? automaticClusterUpdate;
+  final pulumi.Input<AutomaticClusterUpdateDefinitionResponse?>? automaticClusterUpdate;
   /// Status of Compliance Security Profile feature.
-  final pulumi.Input<ComplianceSecurityProfileDefinitionResponse>? complianceSecurityProfile;
+  final pulumi.Input<ComplianceSecurityProfileDefinitionResponse?>? complianceSecurityProfile;
   /// Status of Enhanced Security Monitoring feature.
-  final pulumi.Input<EnhancedSecurityMonitoringDefinitionResponse>? enhancedSecurityMonitoring;
+  final pulumi.Input<EnhancedSecurityMonitoringDefinitionResponse?>? enhancedSecurityMonitoring;
 
   /// Creates a new [EnhancedSecurityComplianceDefinitionResponse].
   /// [automaticClusterUpdate] Status of automated cluster updates feature.

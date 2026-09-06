@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The RosettaNet ProcessConfiguration business document settings.
 class RosettaNetPipBusinessDocument {
   /// The business document description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The business document name.
   final pulumi.Input<String> name;
   /// The business document version.

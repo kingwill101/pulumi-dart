@@ -6,11 +6,11 @@ import 'content_hash_response.dart';
 /// Definition of the content link.
 class ContentLinkResponse {
   /// Gets or sets the hash.
-  final pulumi.Input<ContentHashResponse>? contentHash;
+  final pulumi.Input<ContentHashResponse?>? contentHash;
   /// Gets or sets the uri of content.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
   /// Gets or sets the version of the content.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ContentLinkResponse].
   /// [contentHash] Gets or sets the hash.

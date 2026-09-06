@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
-enum ManagedClusterSKUTier {
+enum ManagedClusterSKUTier implements pulumi.PulumiEnum<String> {
   valuePremium("Premium"),
   valueStandard("Standard"),
   valueFree("Free");
 
   const ManagedClusterSKUTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedClusterSKUTier fromValue(String value) {

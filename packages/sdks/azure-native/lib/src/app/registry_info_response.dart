@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container App registry information.
 class RegistryInfoResponse {
   /// registry server Url.
-  final pulumi.Input<String>? registryUrl;
+  final pulumi.Input<String?>? registryUrl;
   /// registry username.
-  final pulumi.Input<String>? registryUserName;
+  final pulumi.Input<String?>? registryUserName;
 
   /// Creates a new [RegistryInfoResponse].
   /// [registryUrl] registry server Url.

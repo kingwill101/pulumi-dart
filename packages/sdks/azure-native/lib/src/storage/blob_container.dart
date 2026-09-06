@@ -526,7 +526,41 @@ class BlobContainer extends pulumi.CustomResource {
     leaseState = registerOutput<String>('leaseState');
     leaseStatus = registerOutput<String>('leaseStatus');
     legalHold = registerOutput<LegalHoldPropertiesResponse>('legalHold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LegalHoldPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    publicAccess = registerOutput<String?>('publicAccess');
+    remainingRetentionDays = registerOutput<int>('remainingRetentionDays');
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [BlobContainer] resource.
+  BlobContainer.reference(String urn)
+    : super(
+        'azure-native:storage:BlobContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultEncryptionScope = registerOutput<String?>('defaultEncryptionScope');
+    deleted = registerOutput<bool>('deleted');
+    deletedTime = registerOutput<String>('deletedTime');
+    denyEncryptionScopeOverride = registerOutput<bool?>('denyEncryptionScopeOverride');
+    enableNfsV3AllSquash = registerOutput<bool?>('enableNfsV3AllSquash');
+    enableNfsV3RootSquash = registerOutput<bool?>('enableNfsV3RootSquash');
+    etag = registerOutput<String>('etag');
+    hasImmutabilityPolicy = registerOutput<bool>('hasImmutabilityPolicy');
+    hasLegalHold = registerOutput<bool>('hasLegalHold');
+    immutabilityPolicy = registerOutput<ImmutabilityPolicyPropertiesResponse>('immutabilityPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImmutabilityPolicyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutableStorageWithVersioning = registerOutput<ImmutableStorageWithVersioningResponse?>('immutableStorageWithVersioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImmutableStorageWithVersioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    leaseDuration = registerOutput<String>('leaseDuration');
+    leaseState = registerOutput<String>('leaseState');
+    leaseStatus = registerOutput<String>('leaseStatus');
+    legalHold = registerOutput<LegalHoldPropertiesResponse>('legalHold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LegalHoldPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     publicAccess = registerOutput<String?>('publicAccess');
     remainingRetentionDays = registerOutput<int>('remainingRetentionDays');

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'capacity_reservation_group_args.dart';
 import 'capacity_reservation_group_instance_view_response.dart';
 import 'resource_sharing_profile_response.dart';
+import 'sub_resource_read_only_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the capacity reservation group that the capacity reservations should be assigned to. Currently, a capacity reservation can only be added to a capacity reservation group at creation time. An existing capacity reservation cannot be added or moved to another capacity reservation group.
@@ -263,7 +264,7 @@ class CapacityReservationGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of all capacity reservation resource ids that belong to capacity reservation group.
-  late final pulumi.Output<List<Map<String, dynamic>>> capacityReservations;
+  late final pulumi.Output<List<SubResourceReadOnlyResponse>> capacityReservations;
   /// The capacity reservation group instance view which has the list of instance views for all the capacity reservations that belong to the capacity reservation group.
   late final pulumi.Output<CapacityReservationGroupInstanceViewResponse> instanceView;
   /// The geo-location where the resource lives
@@ -279,7 +280,7 @@ class CapacityReservationGroup extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// A list of references to all virtual machines associated to the capacity reservation group.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachinesAssociated;
+  late final pulumi.Output<List<SubResourceReadOnlyResponse>> virtualMachinesAssociated;
   /// The availability zones.
   late final pulumi.Output<List<String>?> zones;
 
@@ -298,15 +299,37 @@ class CapacityReservationGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    capacityReservations = registerOutput<List<Map<String, dynamic>>>('capacityReservations');
+    capacityReservations = registerOutput<List<SubResourceReadOnlyResponse>>('capacityReservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instanceView = registerOutput<CapacityReservationGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     sharingProfile = registerOutput<ResourceSharingProfileResponse?>('sharingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSharingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualMachinesAssociated = registerOutput<List<Map<String, dynamic>>>('virtualMachinesAssociated');
-    zones = registerOutput<List<String>?>('zones');
+    virtualMachinesAssociated = registerOutput<List<SubResourceReadOnlyResponse>>('virtualMachinesAssociated', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CapacityReservationGroup] resource.
+  CapacityReservationGroup.reference(String urn)
+    : super(
+        'azure-native:compute:CapacityReservationGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capacityReservations = registerOutput<List<SubResourceReadOnlyResponse>>('capacityReservations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceView = registerOutput<CapacityReservationGroupInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityReservationGroupInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    sharingProfile = registerOutput<ResourceSharingProfileResponse?>('sharingProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSharingProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualMachinesAssociated = registerOutput<List<SubResourceReadOnlyResponse>>('virtualMachinesAssociated', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

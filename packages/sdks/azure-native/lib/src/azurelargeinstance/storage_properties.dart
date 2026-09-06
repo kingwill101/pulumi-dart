@@ -6,17 +6,17 @@ import 'storage_billing_properties.dart';
 /// described the storage properties of the azure large storage instance
 class StorageProperties {
   /// the kind of storage instance
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// the hardware type of the storage instance
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<dynamic>? hardwareType;
   /// the offering type for which the resource is getting provisioned
-  final pulumi.Input<String>? offeringType;
+  final pulumi.Input<String?>? offeringType;
   /// the billing related information for the resource
-  final pulumi.Input<StorageBillingProperties>? storageBillingProperties;
+  final pulumi.Input<StorageBillingProperties?>? storageBillingProperties;
   /// the storage protocol for which the resource is getting provisioned
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
   /// the workload for which the resource is getting provisioned
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [StorageProperties].
   /// [generation] the kind of storage instance
@@ -48,7 +48,7 @@ class StorageProperties {
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
       generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hardwareType: (() { final guardedValue = map['hardwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       offeringType: (() { final guardedValue = map['offeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageBillingProperties: (() { final guardedValue = map['storageBillingProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageBillingProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

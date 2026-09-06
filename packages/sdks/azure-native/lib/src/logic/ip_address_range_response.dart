@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The ip address range.
 class IpAddressRangeResponse {
   /// The IP address range.
-  final pulumi.Input<String>? addressRange;
+  final pulumi.Input<String?>? addressRange;
 
   /// Creates a new [IpAddressRangeResponse].
   /// [addressRange] The IP address range.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration to raw CDM data to be used as Modeling resource input.
 class ModelingInputData {
   /// Connection string to raw input data.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
 
   /// Creates a new [ModelingInputData].
   /// [connectionString] Connection string to raw input data.

@@ -7,19 +7,19 @@ import 'tag_response.dart';
 /// Definition of awsSageMakerApp
 class AwsSageMakerAppPropertiesResponse {
   /// The Amazon Resource Name (ARN) of the app.
-  final pulumi.Input<String>? appArn;
+  final pulumi.Input<String?>? appArn;
   /// The name of the app.
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// The type of app.
-  final pulumi.Input<String>? appType;
+  final pulumi.Input<String?>? appType;
   /// The domain ID.
-  final pulumi.Input<String>? domainId;
+  final pulumi.Input<String?>? domainId;
   /// The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
-  final pulumi.Input<ResourceSpecResponse>? resourceSpec;
+  final pulumi.Input<ResourceSpecResponse?>? resourceSpec;
   /// A list of tags to apply to the app.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// The user profile name.
-  final pulumi.Input<String>? userProfileName;
+  final pulumi.Input<String?>? userProfileName;
 
   /// Creates a new [AwsSageMakerAppPropertiesResponse].
   /// [appArn] The Amazon Resource Name (ARN) of the app.

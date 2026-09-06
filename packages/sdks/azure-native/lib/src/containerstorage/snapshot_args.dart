@@ -12,7 +12,7 @@ class SnapshotArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Volume Snapshot Resource
-  final pulumi.Input<String>? snapshotName;
+  final pulumi.Input<String?>? snapshotName;
   /// Reference to the source volume
   final pulumi.Input<String> source;
 

@@ -6,13 +6,13 @@ import 'broker_authenticator_custom_auth_response.dart';
 /// Custom method for BrokerAuthentication
 class BrokerAuthenticatorMethodCustomResponse {
   /// Custom Broker Authentication Method.
-  final pulumi.Input<BrokerAuthenticatorCustomAuthResponse>? auth;
+  final pulumi.Input<BrokerAuthenticatorCustomAuthResponse?>? auth;
   /// CA cert config map to use.
-  final pulumi.Input<String>? caCertConfigMap;
+  final pulumi.Input<String?>? caCertConfigMap;
   /// Endpoint to connect to.
   final pulumi.Input<String> endpoint;
   /// Configuration Headers to use.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
 
   /// Creates a new [BrokerAuthenticatorMethodCustomResponse].
   /// [auth] Custom Broker Authentication Method.

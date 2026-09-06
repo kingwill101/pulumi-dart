@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// condition to trigger an action rule
 class ConditionResponse {
   /// operator for a given condition
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// list of values to match for a given condition.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ConditionResponse].
   /// [operator] operator for a given condition

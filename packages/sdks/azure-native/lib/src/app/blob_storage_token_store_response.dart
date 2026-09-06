@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the storage of the tokens if blob storage is used.
 class BlobStorageTokenStoreResponse {
   /// The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.
-  final pulumi.Input<String>? blobContainerUri;
+  final pulumi.Input<String?>? blobContainerUri;
   /// The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
-  final pulumi.Input<String>? managedIdentityResourceId;
+  final pulumi.Input<String?>? managedIdentityResourceId;
   /// The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
-  final pulumi.Input<String>? sasUrlSettingName;
+  final pulumi.Input<String?>? sasUrlSettingName;
 
   /// Creates a new [BlobStorageTokenStoreResponse].
   /// [blobContainerUri] The URI of the blob storage containing the tokens. Should not be used along with sasUrlSettingName.

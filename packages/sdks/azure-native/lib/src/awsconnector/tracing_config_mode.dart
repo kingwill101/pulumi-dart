@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tracing mode.
-enum TracingConfigMode {
+enum TracingConfigMode implements pulumi.PulumiEnum<String> {
   active("Active"),
   passThrough("PassThrough");
 
   const TracingConfigMode(this.wireValue);
+  @override
   final String wireValue;
 
   static TracingConfigMode fromValue(String value) {

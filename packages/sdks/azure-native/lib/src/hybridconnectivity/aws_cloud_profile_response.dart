@@ -7,19 +7,19 @@ class AwsCloudProfileResponse {
   /// Account id for the AWS account.
   final pulumi.Input<String> accountId;
   /// List of AWS accounts which need to be excluded.
-  final pulumi.Input<List<String>>? excludedAccounts;
+  final pulumi.Input<List<String>?>? excludedAccounts;
   /// Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
-  final pulumi.Input<bool>? isOrganizationalAccount;
+  final pulumi.Input<bool?>? isOrganizationalAccount;
 
   /// Creates a new [AwsCloudProfileResponse].
   /// [accountId] Account id for the AWS account.
   /// [excludedAccounts] List of AWS accounts which need to be excluded.
   /// [isOrganizationalAccount] Boolean value that indicates whether the account is organizational or not. True represents organization account, whereas false represents a single account.
-  const AwsCloudProfileResponse({
+  AwsCloudProfileResponse({
     required this.accountId,
     this.excludedAccounts,
-    this.isOrganizationalAccount,
-  });
+    pulumi.Input<bool?>? isOrganizationalAccount,
+  }) : isOrganizationalAccount = isOrganizationalAccount ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -7,9 +7,9 @@ import 'port.dart';
 /// Definition of Networking
 class Networking {
   /// Monthly Transfer of the Instance.
-  final pulumi.Input<MonthlyTransfer>? monthlyTransfer;
+  final pulumi.Input<MonthlyTransfer?>? monthlyTransfer;
   /// Ports to the Instance.
-  final pulumi.Input<List<Port>>? ports;
+  final pulumi.Input<List<Port>?>? ports;
 
   /// Creates a new [Networking].
   /// [monthlyTransfer] Monthly Transfer of the Instance.

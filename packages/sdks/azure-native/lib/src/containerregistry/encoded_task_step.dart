@@ -6,18 +6,18 @@ import 'set_value.dart';
 /// The properties of a encoded task step.
 class EncodedTaskStep {
   /// The token (git PAT or SAS token of storage account blob) associated with the context for a step.
-  final pulumi.Input<String>? contextAccessToken;
+  final pulumi.Input<String?>? contextAccessToken;
   /// The URL(absolute or relative) of the source context for the task step.
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// Base64 encoded value of the template/definition file content.
   final pulumi.Input<String> encodedTaskContent;
   /// Base64 encoded value of the parameters/values file content.
-  final pulumi.Input<String>? encodedValuesContent;
+  final pulumi.Input<String?>? encodedValuesContent;
   /// The type of the step.
   /// Expected value is 'EncodedTask'.
   final pulumi.Input<String> type;
   /// The collection of overridable values that can be passed when running a task.
-  final pulumi.Input<List<SetValue>>? values;
+  final pulumi.Input<List<SetValue>?>? values;
 
   /// Creates a new [EncodedTaskStep].
   /// [contextAccessToken] The token (git PAT or SAS token of storage account blob) associated with the context for a step.

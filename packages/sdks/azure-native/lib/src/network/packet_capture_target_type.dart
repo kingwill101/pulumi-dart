@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target type of the resource provided.
-enum PacketCaptureTargetType {
+enum PacketCaptureTargetType implements pulumi.PulumiEnum<String> {
   valueAzureVM("AzureVM"),
   valueAzureVMSS("AzureVMSS");
 
   const PacketCaptureTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static PacketCaptureTargetType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details about a user assigned identity.
 class UserAssignedIdentity {
   /// The client ID of the user assigned identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The object ID of the user assigned identity.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The resource ID of the user assigned identity.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [UserAssignedIdentity].
   /// [clientId] The client ID of the user assigned identity.

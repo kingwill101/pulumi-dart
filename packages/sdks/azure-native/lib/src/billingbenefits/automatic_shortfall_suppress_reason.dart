@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Optional field to record suppression reason for automatic shortfall.
 class AutomaticShortfallSuppressReason {
   /// Code for the suppression reason.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Message for suppression reason.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AutomaticShortfallSuppressReason].
   /// [code] Code for the suppression reason.

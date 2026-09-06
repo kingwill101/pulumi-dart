@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource provider service.
 class ResourceProviderServiceResponse {
   /// The service name.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// The status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ResourceProviderServiceResponse].
   /// [serviceName] The service name.

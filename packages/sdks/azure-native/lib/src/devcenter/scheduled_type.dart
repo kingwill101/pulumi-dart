@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Supported type this scheduled task represents.
-enum ScheduledType {
+enum ScheduledType implements pulumi.PulumiEnum<String> {
   valueStopDevBox("StopDevBox");
 
   const ScheduledType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduledType fromValue(String value) {

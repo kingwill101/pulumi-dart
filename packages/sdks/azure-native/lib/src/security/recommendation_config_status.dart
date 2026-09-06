@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Recommendation status. When the recommendation status is disabled recommendations are not generated.
-enum RecommendationConfigStatus {
+enum RecommendationConfigStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const RecommendationConfigStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static RecommendationConfigStatus fromValue(String value) {

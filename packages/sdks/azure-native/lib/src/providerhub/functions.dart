@@ -40,6 +40,17 @@ Future<GetAuthorizedApplicationResult> getAuthorizedApplication(
   return GetAuthorizedApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthorizedApplicationResult> getAuthorizedApplicationOutput(
+  GetAuthorizedApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getAuthorizedApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthorizedApplicationResult.fromMap);
+}
+
 /// Gets the custom rollout details.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -56,6 +67,17 @@ Future<GetCustomRolloutResult> getCustomRollout(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomRolloutResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomRolloutResult> getCustomRolloutOutput(
+  GetCustomRolloutArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getCustomRollout',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomRolloutResult.fromMap);
 }
 
 /// Gets the default rollout details.
@@ -78,6 +100,17 @@ Future<GetDefaultRolloutResult> getDefaultRollout(
   return GetDefaultRolloutResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultRolloutResult> getDefaultRolloutOutput(
+  GetDefaultRolloutArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getDefaultRollout',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultRolloutResult.fromMap);
+}
+
 /// Gets the notification registration details.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -98,6 +131,17 @@ Future<GetNotificationRegistrationResult> getNotificationRegistration(
   return GetNotificationRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationRegistrationResult> getNotificationRegistrationOutput(
+  GetNotificationRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getNotificationRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationRegistrationResult.fromMap);
+}
+
 /// Gets the provider monitor setting details.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -114,6 +158,17 @@ Future<GetProviderMonitorSettingResult> getProviderMonitorSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProviderMonitorSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetProviderMonitorSettingResult> getProviderMonitorSettingOutput(
+  GetProviderMonitorSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getProviderMonitorSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderMonitorSettingResult.fromMap);
 }
 
 /// Gets the provider registration details.
@@ -136,6 +191,17 @@ Future<GetProviderRegistrationResult> getProviderRegistration(
   return GetProviderRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetProviderRegistrationResult> getProviderRegistrationOutput(
+  GetProviderRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getProviderRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderRegistrationResult.fromMap);
+}
+
 /// Gets a resource type details in the given subscription and provider.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -154,6 +220,17 @@ Future<GetResourceTypeRegistrationResult> getResourceTypeRegistration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceTypeRegistrationResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceTypeRegistrationResult> getResourceTypeRegistrationOutput(
+  GetResourceTypeRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getResourceTypeRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceTypeRegistrationResult.fromMap);
 }
 
 /// Gets the sku details for the given resource type and sku name.
@@ -176,6 +253,17 @@ Future<GetSkusResult> getSkus(
   return GetSkusResult.fromMap(result);
 }
 
+pulumi.Output<GetSkusResult> getSkusOutput(
+  GetSkusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getSkus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSkusResult.fromMap);
+}
+
 /// Gets the sku details for the given resource type and sku name.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -194,6 +282,17 @@ Future<GetSkusNestedResourceTypeFirstResult> getSkusNestedResourceTypeFirst(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSkusNestedResourceTypeFirstResult.fromMap(result);
+}
+
+pulumi.Output<GetSkusNestedResourceTypeFirstResult> getSkusNestedResourceTypeFirstOutput(
+  GetSkusNestedResourceTypeFirstArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getSkusNestedResourceTypeFirst',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSkusNestedResourceTypeFirstResult.fromMap);
 }
 
 /// Gets the sku details for the given resource type and sku name.
@@ -216,6 +315,17 @@ Future<GetSkusNestedResourceTypeSecondResult> getSkusNestedResourceTypeSecond(
   return GetSkusNestedResourceTypeSecondResult.fromMap(result);
 }
 
+pulumi.Output<GetSkusNestedResourceTypeSecondResult> getSkusNestedResourceTypeSecondOutput(
+  GetSkusNestedResourceTypeSecondArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getSkusNestedResourceTypeSecond',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSkusNestedResourceTypeSecondResult.fromMap);
+}
+
 /// Gets the sku details for the given resource type and sku name.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -234,4 +344,15 @@ Future<GetSkusNestedResourceTypeThirdResult> getSkusNestedResourceTypeThird(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSkusNestedResourceTypeThirdResult.fromMap(result);
+}
+
+pulumi.Output<GetSkusNestedResourceTypeThirdResult> getSkusNestedResourceTypeThirdOutput(
+  GetSkusNestedResourceTypeThirdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:providerhub:getSkusNestedResourceTypeThird',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSkusNestedResourceTypeThirdResult.fromMap);
 }

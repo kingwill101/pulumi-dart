@@ -9,11 +9,11 @@ import 'management_configuration_properties.dart';
 /// {@macro pulumi_operationsmanagement_management_configuration_args_doc}
 class ManagementConfigurationArgs {
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// User Management Configuration Name.
-  final pulumi.Input<String>? managementConfigurationName;
+  final pulumi.Input<String?>? managementConfigurationName;
   /// Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
-  final pulumi.Input<ManagementConfigurationProperties>? properties;
+  final pulumi.Input<ManagementConfigurationProperties?>? properties;
   /// The name of the resource group to get. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

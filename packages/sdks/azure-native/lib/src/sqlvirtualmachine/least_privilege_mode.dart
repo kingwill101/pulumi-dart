@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL IaaS Agent least privilege mode.
-enum LeastPrivilegeMode {
+enum LeastPrivilegeMode implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   notSet("NotSet");
 
   const LeastPrivilegeMode(this.wireValue);
+  @override
   final String wireValue;
 
   static LeastPrivilegeMode fromValue(String value) {

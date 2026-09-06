@@ -7,9 +7,9 @@ import 'secret_password_key_vault_properties_response.dart';
 /// Access password from Azure KeyVault Secrets to connect Active Directory
 class SecretPasswordResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<SecretPasswordIdentityResponse>? identity;
+  final pulumi.Input<SecretPasswordIdentityResponse?>? identity;
   /// Properties provided by KeyVault.
-  final pulumi.Input<SecretPasswordKeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<SecretPasswordKeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [SecretPasswordResponse].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.

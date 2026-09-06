@@ -12,9 +12,9 @@ class GetKpiResult {
   /// The aliases.
   final List<KpiAliasResponse>? aliases;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The calculation window.
-  final String calculationWindow;
+  final String? calculationWindow;
   /// Name of calculation window field.
   final String? calculationWindowFieldName;
   /// Localized description for the KPI.
@@ -22,37 +22,37 @@ class GetKpiResult {
   /// Localized display name for the KPI.
   final Map<String, String>? displayName;
   /// The mapping entity type.
-  final String entityType;
+  final String? entityType;
   /// The mapping entity name.
-  final String entityTypeName;
+  final String? entityTypeName;
   /// The computation expression for the KPI.
-  final String expression;
+  final String? expression;
   /// The KPI extracts.
   final List<KpiExtractResponse>? extracts;
   /// The filter expression for the KPI.
   final String? filter;
   /// The computation function for the KPI.
-  final String function;
+  final String? function;
   /// the group by properties for the KPI.
   final List<String>? groupBy;
   /// The KPI GroupByMetadata.
-  final List<KpiGroupByMetadataResponse> groupByMetadata;
+  final List<KpiGroupByMetadataResponse>? groupByMetadata;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The KPI name.
-  final String kpiName;
+  final String? kpiName;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The participant profiles.
-  final List<KpiParticipantProfilesMetadataResponse> participantProfilesMetadata;
+  final List<KpiParticipantProfilesMetadataResponse>? participantProfilesMetadata;
   /// Provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The hub name.
-  final String tenantId;
+  final String? tenantId;
   /// The KPI thresholds.
   final KpiThresholdsResponse? thresHolds;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The unit of measurement for the KPI.
   final String? unit;
 
@@ -82,54 +82,54 @@ class GetKpiResult {
   /// [unit] The unit of measurement for the KPI.
   const GetKpiResult({
     this.aliases,
-    required this.azureApiVersion,
-    required this.calculationWindow,
+    this.azureApiVersion,
+    this.calculationWindow,
     this.calculationWindowFieldName,
     this.description,
     this.displayName,
-    required this.entityType,
-    required this.entityTypeName,
-    required this.expression,
+    this.entityType,
+    this.entityTypeName,
+    this.expression,
     this.extracts,
     this.filter,
-    required this.function,
+    this.function,
     this.groupBy,
-    required this.groupByMetadata,
-    required this.id,
-    required this.kpiName,
-    required this.name,
-    required this.participantProfilesMetadata,
-    required this.provisioningState,
-    required this.tenantId,
+    this.groupByMetadata,
+    this.id,
+    this.kpiName,
+    this.name,
+    this.participantProfilesMetadata,
+    this.provisioningState,
+    this.tenantId,
     this.thresHolds,
-    required this.type,
+    this.type,
     this.unit,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aliases': ?(() { final guardedValue = aliases; if (guardedValue == null) return null; return pulumi.Input.encodeList<KpiAliasResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
-      'calculationWindow': calculationWindow,
+      'azureApiVersion': ?azureApiVersion,
+      'calculationWindow': ?calculationWindow,
       'calculationWindowFieldName': ?calculationWindowFieldName,
       'description': ?description,
       'displayName': ?displayName,
-      'entityType': entityType,
-      'entityTypeName': entityTypeName,
-      'expression': expression,
+      'entityType': ?entityType,
+      'entityTypeName': ?entityTypeName,
+      'expression': ?expression,
       'extracts': ?(() { final guardedValue = extracts; if (guardedValue == null) return null; return pulumi.Input.encodeList<KpiExtractResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'filter': ?filter,
-      'function': function,
+      'function': ?function,
       'groupBy': ?groupBy,
-      'groupByMetadata': pulumi.Input.encodeList<KpiGroupByMetadataResponse, Map<String, dynamic>>(groupByMetadata, (value) => value.toMap()),
-      'id': id,
-      'kpiName': kpiName,
-      'name': name,
-      'participantProfilesMetadata': pulumi.Input.encodeList<KpiParticipantProfilesMetadataResponse, Map<String, dynamic>>(participantProfilesMetadata, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'tenantId': tenantId,
+      'groupByMetadata': ?(() { final guardedValue = groupByMetadata; if (guardedValue == null) return null; return pulumi.Input.encodeList<KpiGroupByMetadataResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'kpiName': ?kpiName,
+      'name': ?name,
+      'participantProfilesMetadata': ?(() { final guardedValue = participantProfilesMetadata; if (guardedValue == null) return null; return pulumi.Input.encodeList<KpiParticipantProfilesMetadataResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
+      'tenantId': ?tenantId,
       'thresHolds': ?thresHolds?.toMap(),
-      'type': type,
+      'type': ?type,
       'unit': ?unit,
     };
   }
@@ -137,27 +137,27 @@ class GetKpiResult {
   factory GetKpiResult.fromMap(Map<String, dynamic> map) {
     return GetKpiResult(
       aliases: (() { final guardedValue = map['aliases']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiAliasResponse>(guardedValue, (value) => KpiAliasResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      calculationWindow: map['calculationWindow'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      calculationWindow: (() { final guardedValue = map['calculationWindow']; if (guardedValue == null) return null; return guardedValue as String; })(),
       calculationWindowFieldName: (() { final guardedValue = map['calculationWindowFieldName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      entityType: map['entityType'] as String,
-      entityTypeName: map['entityTypeName'] as String,
-      expression: map['expression'] as String,
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      entityTypeName: (() { final guardedValue = map['entityTypeName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expression: (() { final guardedValue = map['expression']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extracts: (() { final guardedValue = map['extracts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiExtractResponse>(guardedValue, (value) => KpiExtractResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      function: map['function'] as String,
+      function: (() { final guardedValue = map['function']; if (guardedValue == null) return null; return guardedValue as String; })(),
       groupBy: (() { final guardedValue = map['groupBy']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      groupByMetadata: pulumi.Input.decodeList<KpiGroupByMetadataResponse>(map['groupByMetadata']!, (value) => KpiGroupByMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      kpiName: map['kpiName'] as String,
-      name: map['name'] as String,
-      participantProfilesMetadata: pulumi.Input.decodeList<KpiParticipantProfilesMetadataResponse>(map['participantProfilesMetadata']!, (value) => KpiParticipantProfilesMetadataResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      tenantId: map['tenantId'] as String,
+      groupByMetadata: (() { final guardedValue = map['groupByMetadata']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiGroupByMetadataResponse>(guardedValue, (value) => KpiGroupByMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kpiName: (() { final guardedValue = map['kpiName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      participantProfilesMetadata: (() { final guardedValue = map['participantProfilesMetadata']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiParticipantProfilesMetadataResponse>(guardedValue, (value) => KpiParticipantProfilesMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       thresHolds: (() { final guardedValue = map['thresHolds']; if (guardedValue == null) return null; return KpiThresholdsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       unit: (() { final guardedValue = map['unit']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

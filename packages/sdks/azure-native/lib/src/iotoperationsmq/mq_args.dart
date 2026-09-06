@@ -11,13 +11,13 @@ class MqArgs {
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of MQ resource
-  final pulumi.Input<String>? mqName;
+  final pulumi.Input<String?>? mqName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MqArgs].
   /// [extendedLocation] Extended Location

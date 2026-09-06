@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Disk Details.
 class OSDetailsResponse {
   /// The OS Major Version.
-  final pulumi.Input<String>? oSMajorVersion;
+  final pulumi.Input<String?>? oSMajorVersion;
   /// The OS Minor Version.
-  final pulumi.Input<String>? oSMinorVersion;
+  final pulumi.Input<String?>? oSMinorVersion;
   /// The OS Version.
-  final pulumi.Input<String>? oSVersion;
+  final pulumi.Input<String?>? oSVersion;
   /// The OSEdition.
-  final pulumi.Input<String>? osEdition;
+  final pulumi.Input<String?>? osEdition;
   /// VM Disk details.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Product type.
-  final pulumi.Input<String>? productType;
+  final pulumi.Input<String?>? productType;
   /// The OS name selected by user.
-  final pulumi.Input<String>? userSelectedOSName;
+  final pulumi.Input<String?>? userSelectedOSName;
 
   /// Creates a new [OSDetailsResponse].
   /// [oSMajorVersion] The OS Major Version.

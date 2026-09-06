@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the size of the virtual machine. The enum data type is currently deprecated and will be removed by December 23rd 2023. The recommended way to get the list of available sizes is using these APIs: [List all available virtual machine sizes in an availability set](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes), [List all available virtual machine sizes in a region]( https://docs.microsoft.com/rest/api/compute/resourceskus/list), [List all available virtual machine sizes for resizing](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes). For more information about virtual machine sizes, see [Sizes for virtual machines](https://docs.microsoft.com/azure/virtual-machines/sizes). The available VM sizes depend on region and availability set.
-enum VirtualMachineSizeTypes {
+enum VirtualMachineSizeTypes implements pulumi.PulumiEnum<String> {
   basicA0("Basic_A0"),
   basicA1("Basic_A1"),
   basicA2("Basic_A2"),
@@ -168,6 +170,7 @@ enum VirtualMachineSizeTypes {
   standardNV24("Standard_NV24");
 
   const VirtualMachineSizeTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachineSizeTypes fromValue(String value) {

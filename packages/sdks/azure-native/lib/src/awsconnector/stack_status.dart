@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property stackStatus
-enum StackStatus {
+enum StackStatus implements pulumi.PulumiEnum<String> {
   cREATECOMPLETE("CREATE_COMPLETE"),
   cREATEFAILED("CREATE_FAILED"),
   cREATEINPROGRESS("CREATE_IN_PROGRESS"),
@@ -25,6 +27,7 @@ enum StackStatus {
   uPDATEROLLBACKINPROGRESS("UPDATE_ROLLBACK_IN_PROGRESS");
 
   const StackStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static StackStatus fromValue(String value) {

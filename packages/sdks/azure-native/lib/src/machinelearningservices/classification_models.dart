@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum for all classification models supported by AutoML.
-enum ClassificationModels {
+enum ClassificationModels implements pulumi.PulumiEnum<String> {
   logisticRegression("LogisticRegression"),
   sGD("SGD"),
   multinomialNaiveBayes("MultinomialNaiveBayes"),
@@ -15,6 +17,7 @@ enum ClassificationModels {
   xGBoostClassifier("XGBoostClassifier");
 
   const ClassificationModels(this.wireValue);
+  @override
   final String wireValue;
 
   static ClassificationModels fromValue(String value) {

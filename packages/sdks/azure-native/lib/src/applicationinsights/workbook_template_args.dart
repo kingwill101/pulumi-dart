@@ -10,21 +10,21 @@ import 'workbook_template_localized_gallery.dart';
 /// {@macro pulumi_applicationinsights_workbook_template_args_doc}
 class WorkbookTemplateArgs {
   /// Information about the author of the workbook template.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// Workbook galleries supported by the template.
   final pulumi.Input<List<WorkbookTemplateGallery>> galleries;
   /// Key value pair of localized gallery. Each key is the locale code of languages supported by the Azure portal.
-  final pulumi.Input<Map<String, List<WorkbookTemplateLocalizedGallery>>>? localized;
+  final pulumi.Input<Map<String, List<WorkbookTemplateLocalizedGallery>>?>? localized;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Priority of the template. Determines which template to open when a workbook gallery is opened in viewer mode.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Valid JSON object containing workbook template payload.
   final pulumi.Input<dynamic> templateData;
 
@@ -70,7 +70,7 @@ class WorkbookTemplateArgs {
       galleries: pulumi.Input.fromValue(pulumi.Input.decodeList<WorkbookTemplateGallery>(map['galleries']!, (value) => WorkbookTemplateGallery.fromMap((value as Map).cast<String, dynamic>()))),
       localized: (() { final guardedValue = map['localized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<WorkbookTemplateLocalizedGallery>>(guardedValue, (value) => pulumi.Input.decodeList<WorkbookTemplateLocalizedGallery>(value, (value) => WorkbookTemplateLocalizedGallery.fromMap((value as Map).cast<String, dynamic>())))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

@@ -6,7 +6,7 @@ import 'assigned_user_response.dart';
 /// Settings for a personal compute instance.
 class PersonalComputeInstanceSettingsResponse {
   /// A user explicitly assigned to a personal compute instance.
-  final pulumi.Input<AssignedUserResponse>? assignedUser;
+  final pulumi.Input<AssignedUserResponse?>? assignedUser;
 
   /// Creates a new [PersonalComputeInstanceSettingsResponse].
   /// [assignedUser] A user explicitly assigned to a personal compute instance.

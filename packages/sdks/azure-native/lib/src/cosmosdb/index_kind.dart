@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of index.
-enum IndexKind {
+enum IndexKind implements pulumi.PulumiEnum<String> {
   valueHash("Hash"),
   valueRange("Range"),
   valueSpatial("Spatial");
 
   const IndexKind(this.wireValue);
+  @override
   final String wireValue;
 
   static IndexKind fromValue(String value) {

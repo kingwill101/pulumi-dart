@@ -7,7 +7,7 @@ class PrivateLinkServiceConnectionStateResponse {
   /// Action required on the private connection state
   final pulumi.Input<String> actionsRequired;
   /// Description of the private Connection state
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The status of the Batch private endpoint connection
   final pulumi.Input<String> status;
 

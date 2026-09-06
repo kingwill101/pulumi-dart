@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Resource Origin.
-enum ResourceOrigin {
+enum ResourceOrigin implements pulumi.PulumiEnum<String> {
   azure("Azure"),
   aWS("AWS"),
   gCP("GCP");
 
   const ResourceOrigin(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceOrigin fromValue(String value) {

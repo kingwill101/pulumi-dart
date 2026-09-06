@@ -1,5 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'kpi_alias_response.dart';
 import 'kpi_args.dart';
+import 'kpi_extract_response.dart';
+import 'kpi_group_by_metadata_response.dart';
+import 'kpi_participant_profiles_metadata_response.dart';
 import 'kpi_thresholds_response.dart';
 
 /// The KPI resource format.
@@ -312,7 +316,7 @@ import 'kpi_thresholds_response.dart';
 /// ```
 class Kpi extends pulumi.CustomResource {
   /// The aliases.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aliases;
+  late final pulumi.Output<List<KpiAliasResponse>?> aliases;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The calculation window.
@@ -330,7 +334,7 @@ class Kpi extends pulumi.CustomResource {
   /// The computation expression for the KPI.
   late final pulumi.Output<String> expression;
   /// The KPI extracts.
-  late final pulumi.Output<List<Map<String, dynamic>>?> extracts;
+  late final pulumi.Output<List<KpiExtractResponse>?> extracts;
   /// The filter expression for the KPI.
   late final pulumi.Output<String?> filter;
   /// The computation function for the KPI.
@@ -338,13 +342,13 @@ class Kpi extends pulumi.CustomResource {
   /// the group by properties for the KPI.
   late final pulumi.Output<List<String>?> groupBy;
   /// The KPI GroupByMetadata.
-  late final pulumi.Output<List<Map<String, dynamic>>> groupByMetadata;
+  late final pulumi.Output<List<KpiGroupByMetadataResponse>> groupByMetadata;
   /// The KPI name.
   late final pulumi.Output<String> kpiName;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// The participant profiles.
-  late final pulumi.Output<List<Map<String, dynamic>>> participantProfilesMetadata;
+  late final pulumi.Output<List<KpiParticipantProfilesMetadataResponse>> participantProfilesMetadata;
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// The hub name.
@@ -370,23 +374,56 @@ class Kpi extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aliases = registerOutput<List<Map<String, dynamic>>?>('aliases');
+    aliases = registerOutput<List<KpiAliasResponse>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiAliasResponse>(guardedValue, (value) => KpiAliasResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     calculationWindow = registerOutput<String>('calculationWindow');
     calculationWindowFieldName = registerOutput<String?>('calculationWindowFieldName');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     entityType = registerOutput<String>('entityType');
     entityTypeName = registerOutput<String>('entityTypeName');
     expression = registerOutput<String>('expression');
-    extracts = registerOutput<List<Map<String, dynamic>>?>('extracts');
+    extracts = registerOutput<List<KpiExtractResponse>?>('extracts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiExtractResponse>(guardedValue, (value) => KpiExtractResponse.fromMap((value as Map).cast<String, dynamic>())); });
     filter = registerOutput<String?>('filter');
     function = registerOutput<String>('function');
-    groupBy = registerOutput<List<String>?>('groupBy');
-    groupByMetadata = registerOutput<List<Map<String, dynamic>>>('groupByMetadata');
+    groupBy = registerOutput<List<String>?>('groupBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    groupByMetadata = registerOutput<List<KpiGroupByMetadataResponse>>('groupByMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiGroupByMetadataResponse>(guardedValue, (value) => KpiGroupByMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kpiName = registerOutput<String>('kpiName');
     this.name = registerOutput<String>('name');
-    participantProfilesMetadata = registerOutput<List<Map<String, dynamic>>>('participantProfilesMetadata');
+    participantProfilesMetadata = registerOutput<List<KpiParticipantProfilesMetadataResponse>>('participantProfilesMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiParticipantProfilesMetadataResponse>(guardedValue, (value) => KpiParticipantProfilesMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    tenantId = registerOutput<String>('tenantId');
+    thresHolds = registerOutput<KpiThresholdsResponse?>('thresHolds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KpiThresholdsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    unit = registerOutput<String?>('unit');
+  }
+
+  /// Creates a typed reference to an existing [Kpi] resource.
+  Kpi.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Kpi',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliases = registerOutput<List<KpiAliasResponse>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiAliasResponse>(guardedValue, (value) => KpiAliasResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    calculationWindow = registerOutput<String>('calculationWindow');
+    calculationWindowFieldName = registerOutput<String?>('calculationWindowFieldName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    entityType = registerOutput<String>('entityType');
+    entityTypeName = registerOutput<String>('entityTypeName');
+    expression = registerOutput<String>('expression');
+    extracts = registerOutput<List<KpiExtractResponse>?>('extracts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiExtractResponse>(guardedValue, (value) => KpiExtractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    filter = registerOutput<String?>('filter');
+    function = registerOutput<String>('function');
+    groupBy = registerOutput<List<String>?>('groupBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    groupByMetadata = registerOutput<List<KpiGroupByMetadataResponse>>('groupByMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiGroupByMetadataResponse>(guardedValue, (value) => KpiGroupByMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kpiName = registerOutput<String>('kpiName');
+    this.name = registerOutput<String>('name');
+    participantProfilesMetadata = registerOutput<List<KpiParticipantProfilesMetadataResponse>>('participantProfilesMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KpiParticipantProfilesMetadataResponse>(guardedValue, (value) => KpiParticipantProfilesMetadataResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     tenantId = registerOutput<String>('tenantId');
     thresHolds = registerOutput<KpiThresholdsResponse?>('thresHolds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KpiThresholdsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

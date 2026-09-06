@@ -7,17 +7,17 @@ import 'ssl_state.dart';
 /// SSL-enabled hostname.
 class HostNameSslState {
   /// Indicates whether the hostname is a standard or repository hostname.
-  final pulumi.Input<HostType>? hostType;
+  final pulumi.Input<HostType?>? hostType;
   /// Hostname.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// SSL type.
-  final pulumi.Input<SslState>? sslState;
+  final pulumi.Input<SslState?>? sslState;
   /// SSL certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// Set to &lt;code&gt;true&lt;/code&gt; to update existing hostname.
-  final pulumi.Input<bool>? toUpdate;
+  final pulumi.Input<bool?>? toUpdate;
   /// Virtual IP address assigned to the hostname if IP based SSL is enabled.
-  final pulumi.Input<String>? virtualIP;
+  final pulumi.Input<String?>? virtualIP;
 
   /// Creates a new [HostNameSslState].
   /// [hostType] Indicates whether the hostname is a standard or repository hostname.

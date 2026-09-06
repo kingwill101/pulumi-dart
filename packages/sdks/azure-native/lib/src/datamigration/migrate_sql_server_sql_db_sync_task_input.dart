@@ -14,7 +14,7 @@ class MigrateSqlServerSqlDbSyncTaskInput {
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
   /// Validation options
-  final pulumi.Input<MigrationValidationOptions>? validationOptions;
+  final pulumi.Input<MigrationValidationOptions?>? validationOptions;
 
   /// Creates a new [MigrateSqlServerSqlDbSyncTaskInput].
   /// [selectedDatabases] Databases to migrate

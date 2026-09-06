@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the latest status of running an image template
 class ImageTemplateLastRunStatusResponse {
   /// End time of the last run (UTC)
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Verbose information about the last run state
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// State of the last run
-  final pulumi.Input<String>? runState;
+  final pulumi.Input<String?>? runState;
   /// Sub-state of the last run
-  final pulumi.Input<String>? runSubState;
+  final pulumi.Input<String?>? runSubState;
   /// Start time of the last run (UTC)
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ImageTemplateLastRunStatusResponse].
   /// [endTime] End time of the last run (UTC)

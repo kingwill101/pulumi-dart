@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PriceResponse {
-  final pulumi.Input<double>? amount;
+  final pulumi.Input<double?>? amount;
   /// The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  final pulumi.Input<String>? currencyCode;
+  final pulumi.Input<String?>? currencyCode;
 
   /// Creates a new [PriceResponse].
   /// [amount] Optional.
@@ -24,7 +24,7 @@ class PriceResponse {
 
   factory PriceResponse.fromMap(Map<String, dynamic> map) {
     return PriceResponse(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       currencyCode: (() { final guardedValue = map['currencyCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

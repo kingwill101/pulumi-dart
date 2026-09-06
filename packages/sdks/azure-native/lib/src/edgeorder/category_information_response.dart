@@ -6,13 +6,13 @@ import 'link_response.dart';
 /// Category related properties of a child configuration.
 class CategoryInformationResponse {
   /// Category display name of the child configuration.
-  final pulumi.Input<String>? categoryDisplayName;
+  final pulumi.Input<String?>? categoryDisplayName;
   /// Category name of the child configuration.
-  final pulumi.Input<String>? categoryName;
+  final pulumi.Input<String?>? categoryName;
   /// Description text for the category.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Links for the category.
-  final pulumi.Input<List<LinkResponse>>? links;
+  final pulumi.Input<List<LinkResponse>?>? links;
 
   /// Creates a new [CategoryInformationResponse].
   /// [categoryDisplayName] Category display name of the child configuration.

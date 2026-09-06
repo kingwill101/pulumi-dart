@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_healthcareapis_workspace_args_doc}
 class WorkspaceArgs {
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of workspace resource.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [location] The resource location.

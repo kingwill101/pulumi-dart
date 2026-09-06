@@ -6,13 +6,13 @@ import 'tag_filter.dart';
 /// Definition of MetricsConfiguration
 class MetricsConfiguration {
   /// The access point that was used while performing operations on the object. The metrics configuration only includes objects that meet the filter's criteria.
-  final pulumi.Input<String>? accessPointArn;
+  final pulumi.Input<String?>? accessPointArn;
   /// The ID used to identify the metrics configuration. This can be any value you choose that helps you identify your metrics configuration.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The prefix that an object must have to be included in the metrics results.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// Specifies a list of tag filters to use as a metrics configuration filter. The metrics configuration includes only objects that meet the filter's criteria.
-  final pulumi.Input<List<TagFilter>>? tagFilters;
+  final pulumi.Input<List<TagFilter>?>? tagFilters;
 
   /// Creates a new [MetricsConfiguration].
   /// [accessPointArn] The access point that was used while performing operations on the object. The metrics configuration only includes objects that meet the filter's criteria.

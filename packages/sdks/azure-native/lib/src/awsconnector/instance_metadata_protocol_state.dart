@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceMetadataProtocolState {
+enum InstanceMetadataProtocolState implements pulumi.PulumiEnum<String> {
   disabled("disabled"),
   enabled("enabled");
 
   const InstanceMetadataProtocolState(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceMetadataProtocolState fromValue(String value) {

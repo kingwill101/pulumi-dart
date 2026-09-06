@@ -6,9 +6,9 @@ import 'ipv4_firewall_rule_response.dart';
 /// An array of firewall rules.
 class IPv4FirewallSettingsResponse {
   /// The indicator of enabling PBI service.
-  final pulumi.Input<bool>? enablePowerBIService;
+  final pulumi.Input<bool?>? enablePowerBIService;
   /// An array of firewall rules.
-  final pulumi.Input<List<IPv4FirewallRuleResponse>>? firewallRules;
+  final pulumi.Input<List<IPv4FirewallRuleResponse>?>? firewallRules;
 
   /// Creates a new [IPv4FirewallSettingsResponse].
   /// [enablePowerBIService] The indicator of enabling PBI service.

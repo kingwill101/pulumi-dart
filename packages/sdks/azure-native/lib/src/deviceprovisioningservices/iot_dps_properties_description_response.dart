@@ -9,32 +9,32 @@ import 'shared_access_signature_authorization_rule_access_rights_description_res
 /// the service specific properties of a provisioning service, including keys, linked iot hubs, current state, and system generated properties such as hostname and idScope
 class IotDpsPropertiesDescriptionResponse {
   /// Allocation policy to be used by this provisioning service.
-  final pulumi.Input<String>? allocationPolicy;
+  final pulumi.Input<String?>? allocationPolicy;
   /// List of authorization keys for a provisioning service.
-  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>>? authorizationPolicies;
+  final pulumi.Input<List<SharedAccessSignatureAuthorizationRuleAccessRightsDescriptionResponse>?>? authorizationPolicies;
   /// Device endpoint for this provisioning service.
   final pulumi.Input<String> deviceProvisioningHostName;
   /// Optional.
   /// Indicates if the DPS instance has Data Residency enabled, removing the cross geo-pair disaster recovery.
-  final pulumi.Input<bool>? enableDataResidency;
+  final pulumi.Input<bool?>? enableDataResidency;
   /// Unique identifier of this provisioning service.
   final pulumi.Input<String> idScope;
   /// List of IoT hubs associated with this provisioning service.
-  final pulumi.Input<List<IotHubDefinitionDescriptionResponse>>? iotHubs;
+  final pulumi.Input<List<IotHubDefinitionDescriptionResponse>?>? iotHubs;
   /// The IP filter rules.
-  final pulumi.Input<List<IpFilterRuleResponse>>? ipFilterRules;
+  final pulumi.Input<List<IpFilterRuleResponse>?>? ipFilterRules;
   /// Portal endpoint to enable CORS for this provisioning service.
-  final pulumi.Input<String>? portalOperationsHostName;
+  final pulumi.Input<String?>? portalOperationsHostName;
   /// Private endpoint connections created on this IotHub
-  final pulumi.Input<List<PrivateEndpointConnectionResponse>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnectionResponse>?>? privateEndpointConnections;
   /// The ARM provisioning state of the provisioning service.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Whether requests from Public Network are allowed
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Service endpoint for provisioning service.
   final pulumi.Input<String> serviceOperationsHostName;
   /// Current state of the provisioning service.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [IotDpsPropertiesDescriptionResponse].
   /// [allocationPolicy] Allocation policy to be used by this provisioning service.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The AutoRenew setting of the Enterprise subscription
-enum MarketplaceAutoRenew {
+enum MarketplaceAutoRenew implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const MarketplaceAutoRenew(this.wireValue);
+  @override
   final String wireValue;
 
   static MarketplaceAutoRenew fromValue(String value) {

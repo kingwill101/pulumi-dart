@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'metric_alert_action_response.dart';
 import 'metric_alert_args.dart';
-import 'metric_alert_multiple_resource_multiple_metric_criteria_response.dart';
 
 /// The metric alert resource.
 ///
@@ -2924,13 +2924,13 @@ import 'metric_alert_multiple_resource_multiple_metric_criteria_response.dart';
 /// ```
 class MetricAlert extends pulumi.CustomResource {
   /// the array of actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<MetricAlertActionResponse>?> actions;
   /// the flag that indicates whether the alert should be auto resolved or not. The default is true.
   late final pulumi.Output<bool?> autoMitigate;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// defines the specific alert criteria information.
-  late final pulumi.Output<MetricAlertMultipleResourceMultipleMetricCriteriaResponse> criteria;
+  late final pulumi.Output<dynamic> criteria;
   /// the description of the metric alert that will be included in the alert email.
   late final pulumi.Output<String?> description;
   /// the flag that indicates whether the metric alert is enabled.
@@ -2974,10 +2974,10 @@ class MetricAlert extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<MetricAlertActionResponse>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlertActionResponse>(guardedValue, (value) => MetricAlertActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     autoMitigate = registerOutput<bool?>('autoMitigate');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    criteria = registerOutput<MetricAlertMultipleResourceMultipleMetricCriteriaResponse>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertMultipleResourceMultipleMetricCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    criteria = registerOutput<dynamic>('criteria');
     description = registerOutput<String?>('description');
     enabled = registerOutput<bool>('enabled');
     evaluationFrequency = registerOutput<String>('evaluationFrequency');
@@ -2985,9 +2985,38 @@ class MetricAlert extends pulumi.CustomResource {
     lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    scopes = registerOutput<List<String>>('scopes');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<int>('severity');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceRegion = registerOutput<String?>('targetResourceRegion');
+    targetResourceType = registerOutput<String?>('targetResourceType');
+    type = registerOutput<String>('type');
+    windowSize = registerOutput<String>('windowSize');
+  }
+
+  /// Creates a typed reference to an existing [MetricAlert] resource.
+  MetricAlert.reference(String urn)
+    : super(
+        'azure-native:monitor:MetricAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<MetricAlertActionResponse>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlertActionResponse>(guardedValue, (value) => MetricAlertActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    autoMitigate = registerOutput<bool?>('autoMitigate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    criteria = registerOutput<dynamic>('criteria');
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool>('enabled');
+    evaluationFrequency = registerOutput<String>('evaluationFrequency');
+    isMigrated = registerOutput<bool>('isMigrated');
+    lastUpdatedTime = registerOutput<String>('lastUpdatedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    severity = registerOutput<int>('severity');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceRegion = registerOutput<String?>('targetResourceRegion');
     targetResourceType = registerOutput<String?>('targetResourceType');
     type = registerOutput<String>('type');

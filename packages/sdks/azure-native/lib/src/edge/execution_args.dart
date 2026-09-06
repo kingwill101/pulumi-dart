@@ -12,11 +12,11 @@ class ExecutionArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
   /// The name of the Execution.
-  final pulumi.Input<String>? executionName;
+  final pulumi.Input<String?>? executionName;
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ExecutionProperties>? properties;
+  final pulumi.Input<ExecutionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workflowVersion.

@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImportCollectorProperties {
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
 
   /// Creates a new [ImportCollectorProperties].
   /// [discoverySiteId] Optional.

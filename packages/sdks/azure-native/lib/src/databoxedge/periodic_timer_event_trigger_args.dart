@@ -10,14 +10,14 @@ import 'role_sink_info.dart';
 /// {@macro pulumi_databoxedge_periodic_timer_event_trigger_args_doc}
 class PeriodicTimerEventTriggerArgs {
   /// A custom context tag typically used to correlate the trigger against its usage. For example, if a periodic timer trigger is intended for certain specific IoT modules in the device, the tag can be the name or the image URL of the module.
-  final pulumi.Input<String>? customContextTag;
+  final pulumi.Input<String?>? customContextTag;
   /// Creates or updates a trigger
   final pulumi.Input<String> deviceName;
   /// Trigger Kind.
   /// Expected value is 'PeriodicTimerEvent'.
   final pulumi.Input<String> kind;
   /// The trigger name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Role Sink information.

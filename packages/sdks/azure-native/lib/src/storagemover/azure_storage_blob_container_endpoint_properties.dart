@@ -7,7 +7,7 @@ class AzureStorageBlobContainerEndpointProperties {
   /// The name of the Storage blob container that is the target destination.
   final pulumi.Input<String> blobContainerName;
   /// A description for the Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Endpoint resource type.
   /// Expected value is 'AzureStorageBlobContainer'.
   final pulumi.Input<String> endpointType;

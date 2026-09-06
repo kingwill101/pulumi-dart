@@ -9,21 +9,21 @@ import 'network_manager_properties_network_manager_scopes.dart';
 /// {@macro pulumi_network_network_manager_args_doc}
 class NetworkManagerArgs {
   /// A description of the network manager.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network manager.
-  final pulumi.Input<String>? networkManagerName;
+  final pulumi.Input<String?>? networkManagerName;
   /// Scope Access.
-  final pulumi.Input<List<String>>? networkManagerScopeAccesses;
+  final pulumi.Input<List<dynamic>?>? networkManagerScopeAccesses;
   /// Scope of Network Manager.
   final pulumi.Input<NetworkManagerPropertiesNetworkManagerScopes> networkManagerScopes;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkManagerArgs].
   /// [description] A description of the network manager.
@@ -64,7 +64,7 @@ class NetworkManagerArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkManagerName: (() { final guardedValue = map['networkManagerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkManagerScopeAccesses: (() { final guardedValue = map['networkManagerScopeAccesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      networkManagerScopeAccesses: (() { final guardedValue = map['networkManagerScopeAccesses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       networkManagerScopes: pulumi.Input.fromValue(NetworkManagerPropertiesNetworkManagerScopes.fromMap((map['networkManagerScopes']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

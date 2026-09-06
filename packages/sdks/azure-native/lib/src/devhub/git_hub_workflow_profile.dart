@@ -9,25 +9,25 @@ import 'workflow_run.dart';
 /// GitHub Workflow Profile
 class GitHubWorkflowProfile {
   /// Information on the azure container registry
-  final pulumi.Input<ACR>? acr;
+  final pulumi.Input<ACR?>? acr;
   /// The Azure Kubernetes Cluster Resource the application will be deployed to.
-  final pulumi.Input<String>? aksResourceId;
+  final pulumi.Input<String?>? aksResourceId;
   /// Repository Branch Name
-  final pulumi.Input<String>? branchName;
-  final pulumi.Input<DeploymentProperties>? deploymentProperties;
+  final pulumi.Input<String?>? branchName;
+  final pulumi.Input<DeploymentProperties?>? deploymentProperties;
   /// Path to Dockerfile Build Context within the repository.
-  final pulumi.Input<String>? dockerBuildContext;
+  final pulumi.Input<String?>? dockerBuildContext;
   /// Path to the Dockerfile within the repository.
-  final pulumi.Input<String>? dockerfile;
-  final pulumi.Input<WorkflowRun>? lastWorkflowRun;
+  final pulumi.Input<String?>? dockerfile;
+  final pulumi.Input<WorkflowRun?>? lastWorkflowRun;
   /// Kubernetes namespace the application is deployed to.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The fields needed for OIDC with GitHub.
-  final pulumi.Input<GitHubWorkflowProfileOidcCredentials>? oidcCredentials;
+  final pulumi.Input<GitHubWorkflowProfileOidcCredentials?>? oidcCredentials;
   /// Repository Name
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// Repository Owner
-  final pulumi.Input<String>? repositoryOwner;
+  final pulumi.Input<String?>? repositoryOwner;
 
   /// Creates a new [GitHubWorkflowProfile].
   /// [acr] Information on the azure container registry

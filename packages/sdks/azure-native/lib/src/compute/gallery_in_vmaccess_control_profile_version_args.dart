@@ -10,27 +10,27 @@ import 'target_region.dart';
 /// {@macro pulumi_compute_gallery_in_vmaccess_control_profile_version_args_doc}
 class GalleryInVMAccessControlProfileVersionArgs {
   /// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
-  final pulumi.Input<String> defaultAccess;
+  final pulumi.Input<dynamic> defaultAccess;
   /// If set to true, Virtual Machines deployed from the latest version of the Resource Profile won't use this Profile version.
-  final pulumi.Input<bool>? excludeFromLatest;
+  final pulumi.Input<bool?>? excludeFromLatest;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The name of the gallery inVMAccessControlProfile to be retrieved.
   final pulumi.Input<String> inVMAccessControlProfileName;
   /// The name of the gallery inVMAccessControlProfile version to be retrieved.
-  final pulumi.Input<String>? inVMAccessControlProfileVersionName;
+  final pulumi.Input<String?>? inVMAccessControlProfileVersionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// This property allows you to specify whether the access control rules are in Audit mode, in Enforce mode or Disabled. Possible values are: 'Audit', 'Enforce' or 'Disabled'.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// This is the Access Control Rules specification for an inVMAccessControlProfile version.
-  final pulumi.Input<AccessControlRules>? rules;
+  final pulumi.Input<AccessControlRules?>? rules;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The target regions where the Resource Profile version is going to be replicated to. This property is updatable.
-  final pulumi.Input<List<TargetRegion>>? targetLocations;
+  final pulumi.Input<List<TargetRegion>?>? targetLocations;
 
   /// Creates a new [GalleryInVMAccessControlProfileVersionArgs].
   /// [defaultAccess] This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
@@ -76,13 +76,13 @@ class GalleryInVMAccessControlProfileVersionArgs {
 
   factory GalleryInVMAccessControlProfileVersionArgs.fromMap(Map<String, dynamic> map) {
     return GalleryInVMAccessControlProfileVersionArgs(
-      defaultAccess: pulumi.Input.fromValue(map['defaultAccess'] as String),
+      defaultAccess: pulumi.Input.fromValue(map['defaultAccess']),
       excludeFromLatest: (() { final guardedValue = map['excludeFromLatest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
       inVMAccessControlProfileName: pulumi.Input.fromValue(map['inVMAccessControlProfileName'] as String),
       inVMAccessControlProfileVersionName: (() { final guardedValue = map['inVMAccessControlProfileVersionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessControlRules.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

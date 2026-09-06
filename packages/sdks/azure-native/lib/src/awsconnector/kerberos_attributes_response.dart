@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of KerberosAttributes
 class KerberosAttributesResponse {
   /// &lt;p&gt;The Active Directory password for &lt;code&gt;ADDomainJoinUser&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? adDomainJoinPassword;
+  final pulumi.Input<String?>? adDomainJoinPassword;
   /// &lt;p&gt;Required only when establishing a cross-realm trust with an Active Directory domain. A user with sufficient privileges to join resources to the domain.&lt;/p&gt;
-  final pulumi.Input<String>? adDomainJoinUser;
+  final pulumi.Input<String?>? adDomainJoinUser;
   /// &lt;p&gt;Required only when establishing a cross-realm trust with a KDC in a different realm. The cross-realm principal password, which must be identical across realms.&lt;/p&gt;
-  final pulumi.Input<String>? crossRealmTrustPrincipalPassword;
+  final pulumi.Input<String?>? crossRealmTrustPrincipalPassword;
   /// &lt;p&gt;The password used within the cluster for the kadmin service on the cluster-dedicated KDC, which maintains Kerberos principals, password policies, and keytabs for the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? kdcAdminPassword;
+  final pulumi.Input<String?>? kdcAdminPassword;
   /// &lt;p&gt;The name of the Kerberos realm to which all nodes in a cluster belong. For example, &lt;code&gt;EC2.INTERNAL&lt;/code&gt;. &lt;/p&gt;
-  final pulumi.Input<String>? realm;
+  final pulumi.Input<String?>? realm;
 
   /// Creates a new [KerberosAttributesResponse].
   /// [adDomainJoinPassword] &lt;p&gt;The Active Directory password for &lt;code&gt;ADDomainJoinUser&lt;/code&gt;.&lt;/p&gt;

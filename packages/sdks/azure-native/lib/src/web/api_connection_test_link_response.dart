@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API connection properties
 class ApiConnectionTestLinkResponse {
   /// HTTP Method
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// Test link request URI
-  final pulumi.Input<String>? requestUri;
+  final pulumi.Input<String?>? requestUri;
 
   /// Creates a new [ApiConnectionTestLinkResponse].
   /// [method] HTTP Method

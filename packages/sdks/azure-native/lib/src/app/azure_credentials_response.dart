@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container App credentials.
 class AzureCredentialsResponse {
   /// Subscription Id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [AzureCredentialsResponse].
   /// [subscriptionId] Subscription Id.

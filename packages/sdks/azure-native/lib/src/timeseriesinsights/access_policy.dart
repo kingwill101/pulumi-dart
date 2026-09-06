@@ -207,7 +207,24 @@ class AccessPolicy extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
     principalObjectId = registerOutput<String?>('principalObjectId');
-    roles = registerOutput<List<String>?>('roles');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AccessPolicy] resource.
+  AccessPolicy.reference(String urn)
+    : super(
+        'azure-native:timeseriesinsights:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    principalObjectId = registerOutput<String?>('principalObjectId');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

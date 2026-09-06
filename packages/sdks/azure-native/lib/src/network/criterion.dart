@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A matching criteria which matches routes based on route prefix, community, and AS path.
 class Criterion {
   /// List of AS paths which this criteria matches.
-  final pulumi.Input<List<String>>? asPath;
+  final pulumi.Input<List<String>?>? asPath;
   /// List of BGP communities which this criteria matches.
-  final pulumi.Input<List<String>>? community;
+  final pulumi.Input<List<String>?>? community;
   /// Match condition to apply RouteMap rules.
-  final pulumi.Input<String>? matchCondition;
+  final pulumi.Input<dynamic>? matchCondition;
   /// List of route prefixes which this criteria matches.
-  final pulumi.Input<List<String>>? routePrefix;
+  final pulumi.Input<List<String>?>? routePrefix;
 
   /// Creates a new [Criterion].
   /// [asPath] List of AS paths which this criteria matches.
@@ -38,7 +38,7 @@ class Criterion {
     return Criterion(
       asPath: (() { final guardedValue = map['asPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       community: (() { final guardedValue = map['community']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      matchCondition: (() { final guardedValue = map['matchCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      matchCondition: (() { final guardedValue = map['matchCondition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       routePrefix: (() { final guardedValue = map['routePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

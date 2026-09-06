@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of compute
-enum ComputeType {
+enum ComputeType implements pulumi.PulumiEnum<String> {
   aKS("AKS"),
   kubernetes("Kubernetes"),
   amlCompute("AmlCompute"),
@@ -12,6 +14,7 @@ enum ComputeType {
   synapseSpark("SynapseSpark");
 
   const ComputeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeType fromValue(String value) {

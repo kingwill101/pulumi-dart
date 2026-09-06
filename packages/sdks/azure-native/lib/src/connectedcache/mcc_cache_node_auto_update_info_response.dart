@@ -101,21 +101,21 @@ class MccCacheNodeAutoUpdateInfoResponse {
 
   factory MccCacheNodeAutoUpdateInfoResponse.fromMap(Map<String, dynamic> map) {
     return MccCacheNodeAutoUpdateInfoResponse(
-      autoUpdateLastAppliedStatus: pulumi.Input.fromValue(map['autoUpdateLastAppliedStatus'] as int),
+      autoUpdateLastAppliedStatus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoUpdateLastAppliedStatus'])),
       autoUpdateLastAppliedStatusDetailedText: pulumi.Input.fromValue(map['autoUpdateLastAppliedStatusDetailedText'] as String),
       autoUpdateLastAppliedStatusText: pulumi.Input.fromValue(map['autoUpdateLastAppliedStatusText'] as String),
-      autoUpdateRingType: pulumi.Input.fromValue(map['autoUpdateRingType'] as int),
+      autoUpdateRingType: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoUpdateRingType'])),
       createdDateTimeUtc: pulumi.Input.fromValue(map['createdDateTimeUtc'] as String),
       imageUriBeforeUpdate: pulumi.Input.fromValue(map['imageUriBeforeUpdate'] as String),
       imageUriTargeted: pulumi.Input.fromValue(map['imageUriTargeted'] as String),
       imageUriTerminal: pulumi.Input.fromValue(map['imageUriTerminal'] as String),
       movedToTerminalStateDateTime: pulumi.Input.fromValue(map['movedToTerminalStateDateTime'] as String),
       planChangeLogText: pulumi.Input.fromValue(map['planChangeLogText'] as String),
-      planId: pulumi.Input.fromValue(map['planId'] as double),
-      ruleRequestedDay: pulumi.Input.fromValue(map['ruleRequestedDay'] as int),
+      planId: pulumi.Input.fromValue((map['planId'] as num).toDouble()),
+      ruleRequestedDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleRequestedDay'])),
       ruleRequestedHour: pulumi.Input.fromValue(map['ruleRequestedHour'] as String),
       ruleRequestedMinute: pulumi.Input.fromValue(map['ruleRequestedMinute'] as String),
-      ruleRequestedWeek: pulumi.Input.fromValue(map['ruleRequestedWeek'] as int),
+      ruleRequestedWeek: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleRequestedWeek'])),
       timeToGoLiveDateTime: pulumi.Input.fromValue(map['timeToGoLiveDateTime'] as String),
       updatedRegistryDateTimeUtc: pulumi.Input.fromValue(map['updatedRegistryDateTimeUtc'] as String),
     );

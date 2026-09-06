@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestDataPath {
   /// The datastore name.
-  final pulumi.Input<String>? datastoreName;
+  final pulumi.Input<String?>? datastoreName;
   /// Path within the datastore.
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
 
   /// Creates a new [DatasetCreateRequestDataPath].
   /// [datastoreName] The datastore name.

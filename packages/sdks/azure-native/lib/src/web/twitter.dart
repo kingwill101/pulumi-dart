@@ -6,9 +6,9 @@ import 'twitter_registration.dart';
 /// The configuration settings of the Twitter provider.
 class Twitter {
   /// &lt;code&gt;false&lt;/code&gt; if the Twitter provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the app registration for the Twitter provider.
-  final pulumi.Input<TwitterRegistration>? registration;
+  final pulumi.Input<TwitterRegistration?>? registration;
 
   /// Creates a new [Twitter].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Twitter provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NGroups load balancer backend address pool
 class LoadBalancerBackendAddressPoolResponse {
   /// The Load Balancer backend address pool ARM resource Id.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [LoadBalancerBackendAddressPoolResponse].
   /// [resource] The Load Balancer backend address pool ARM resource Id.

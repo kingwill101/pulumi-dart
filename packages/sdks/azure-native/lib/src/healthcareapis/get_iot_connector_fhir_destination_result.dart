@@ -6,25 +6,25 @@ import 'system_data_response.dart';
 /// Result data returned by getIotConnectorFhirDestination.
 class GetIotConnectorFhirDestinationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
   /// FHIR Mappings
-  final IotMappingPropertiesResponse fhirMapping;
+  final IotMappingPropertiesResponse? fhirMapping;
   /// Fully qualified resource id of the FHIR service to connect to.
-  final String fhirServiceResourceId;
+  final String? fhirServiceResourceId;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// The resource location.
   final String? location;
   /// The resource name.
-  final String name;
+  final String? name;
   /// Determines how resource identity is resolved on the destination.
-  final String resourceIdentityResolutionType;
+  final String? resourceIdentityResolutionType;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIotConnectorFhirDestinationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,45 +38,45 @@ class GetIotConnectorFhirDestinationResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
   const GetIotConnectorFhirDestinationResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.etag,
-    required this.fhirMapping,
-    required this.fhirServiceResourceId,
-    required this.id,
+    this.fhirMapping,
+    this.fhirServiceResourceId,
+    this.id,
     this.location,
-    required this.name,
-    required this.resourceIdentityResolutionType,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.resourceIdentityResolutionType,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'etag': ?etag,
-      'fhirMapping': fhirMapping.toMap(),
-      'fhirServiceResourceId': fhirServiceResourceId,
-      'id': id,
+      'fhirMapping': ?fhirMapping?.toMap(),
+      'fhirServiceResourceId': ?fhirServiceResourceId,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'resourceIdentityResolutionType': resourceIdentityResolutionType,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'resourceIdentityResolutionType': ?resourceIdentityResolutionType,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetIotConnectorFhirDestinationResult.fromMap(Map<String, dynamic> map) {
     return GetIotConnectorFhirDestinationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      fhirMapping: IotMappingPropertiesResponse.fromMap((map['fhirMapping']! as Map).cast<String, dynamic>()),
-      fhirServiceResourceId: map['fhirServiceResourceId'] as String,
-      id: map['id'] as String,
+      fhirMapping: (() { final guardedValue = map['fhirMapping']; if (guardedValue == null) return null; return IotMappingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fhirServiceResourceId: (() { final guardedValue = map['fhirServiceResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      resourceIdentityResolutionType: map['resourceIdentityResolutionType'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceIdentityResolutionType: (() { final guardedValue = map['resourceIdentityResolutionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of parameter.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   string_("String"),
   stringList("StringList");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

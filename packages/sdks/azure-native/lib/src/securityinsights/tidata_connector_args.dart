@@ -9,7 +9,7 @@ import 'tidata_connector_data_types.dart';
 /// {@macro pulumi_securityinsights_tidata_connector_args_doc}
 class TIDataConnectorArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
   final pulumi.Input<TIDataConnectorDataTypes> dataTypes;
   /// The kind of the data connector
@@ -20,7 +20,7 @@ class TIDataConnectorArgs {
   /// The tenant id to connect to, and get the data from.
   final pulumi.Input<String> tenantId;
   /// The lookback period for the feed to be imported.
-  final pulumi.Input<String>? tipLookbackPeriod;
+  final pulumi.Input<String?>? tipLookbackPeriod;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

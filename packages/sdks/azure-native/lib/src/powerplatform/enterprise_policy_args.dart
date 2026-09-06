@@ -12,25 +12,25 @@ import 'properties_network_injection.dart';
 /// {@macro pulumi_powerplatform_enterprise_policy_args_doc}
 class EnterprisePolicyArgs {
   /// The encryption settings for a configuration store.
-  final pulumi.Input<PropertiesEncryption>? encryption;
+  final pulumi.Input<PropertiesEncryption?>? encryption;
   /// The EnterprisePolicy name.
-  final pulumi.Input<String>? enterprisePolicyName;
+  final pulumi.Input<String?>? enterprisePolicyName;
   /// The health status of the resource.
-  final pulumi.Input<String>? healthStatus;
+  final pulumi.Input<dynamic>? healthStatus;
   /// The identity of the EnterprisePolicy.
-  final pulumi.Input<EnterprisePolicyIdentity>? identity;
+  final pulumi.Input<EnterprisePolicyIdentity?>? identity;
   /// The kind (type) of Enterprise Policy.
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Settings concerning lockbox.
-  final pulumi.Input<PropertiesLockbox>? lockbox;
+  final pulumi.Input<PropertiesLockbox?>? lockbox;
   /// Settings concerning network injection.
-  final pulumi.Input<PropertiesNetworkInjection>? networkInjection;
+  final pulumi.Input<PropertiesNetworkInjection?>? networkInjection;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnterprisePolicyArgs].
   /// [encryption] The encryption settings for a configuration store.
@@ -75,9 +75,9 @@ class EnterprisePolicyArgs {
     return EnterprisePolicyArgs(
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PropertiesEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enterprisePolicyName: (() { final guardedValue = map['enterprisePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      healthStatus: (() { final guardedValue = map['healthStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EnterprisePolicyIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lockbox: (() { final guardedValue = map['lockbox']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PropertiesLockbox.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkInjection: (() { final guardedValue = map['networkInjection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PropertiesNetworkInjection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

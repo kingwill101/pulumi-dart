@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the state of the license.
-enum LicenseState {
+enum LicenseState implements pulumi.PulumiEnum<String> {
   valueActivated("Activated"),
   valueDeactivated("Deactivated");
 
   const LicenseState(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseState fromValue(String value) {

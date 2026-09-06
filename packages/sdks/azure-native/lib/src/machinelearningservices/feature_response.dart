@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dto object representing feature
 class FeatureResponse {
   /// Specifies type
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// Specifies description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies name
-  final pulumi.Input<String>? featureName;
+  final pulumi.Input<String?>? featureName;
   /// Specifies tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FeatureResponse].
   /// [dataType] Specifies type
   /// [description] Specifies description
   /// [featureName] Specifies name
   /// [tags] Specifies tags
-  const FeatureResponse({
-    this.dataType,
+  FeatureResponse({
+    pulumi.Input<String?>? dataType,
     this.description,
     this.featureName,
     this.tags,
-  });
+  }) : dataType = dataType ?? pulumi.Input.fromValue('String');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

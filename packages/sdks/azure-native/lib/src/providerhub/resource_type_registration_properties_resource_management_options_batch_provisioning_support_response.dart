@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Batch provisioning support.
 class ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse {
   /// Supported operations.
-  final pulumi.Input<String>? supportedOperations;
+  final pulumi.Input<String?>? supportedOperations;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceManagementOptionsBatchProvisioningSupportResponse].
   /// [supportedOperations] Supported operations.

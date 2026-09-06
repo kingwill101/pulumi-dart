@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the data type of the metric threshold.
-enum MonitoringFeatureDataType {
+enum MonitoringFeatureDataType implements pulumi.PulumiEnum<String> {
   numerical("Numerical"),
   categorical("Categorical");
 
   const MonitoringFeatureDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringFeatureDataType fromValue(String value) {

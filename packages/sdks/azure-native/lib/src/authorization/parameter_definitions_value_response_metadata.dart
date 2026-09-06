@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// General metadata for the parameter.
 class ParameterDefinitionsValueResponseMetadata {
   /// Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.
-  final pulumi.Input<bool>? assignPermissions;
+  final pulumi.Input<bool?>? assignPermissions;
   /// The description of the parameter.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name for the parameter.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Used when assigning the policy definition through the portal. Provides a context aware list of values for the user to choose from.
-  final pulumi.Input<String>? strongType;
+  final pulumi.Input<String?>? strongType;
 
   /// Creates a new [ParameterDefinitionsValueResponseMetadata].
   /// [assignPermissions] Set to true to have Azure portal create role assignments on the resource ID or resource scope value of this parameter during policy assignment. This property is useful in case you wish to assign permissions outside the assignment scope.

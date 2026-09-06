@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// Represents a single Azure resource and its referencing DNS records.
 class DnsResourceReferenceResponse {
   /// A list of dns Records
-  final pulumi.Input<List<SubResourceResponse>>? dnsResources;
+  final pulumi.Input<List<SubResourceResponse>?>? dnsResources;
   /// A reference to an azure resource from where the dns resource value is taken.
-  final pulumi.Input<SubResourceResponse>? targetResource;
+  final pulumi.Input<SubResourceResponse?>? targetResource;
 
   /// Creates a new [DnsResourceReferenceResponse].
   /// [dnsResources] A list of dns Records

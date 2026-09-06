@@ -7,7 +7,7 @@ import 'postgre_sql_connection_info.dart';
 /// Input for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput {
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Databases to migrate
   final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput>> selectedDatabases;
   /// Connection information for source PostgreSQL

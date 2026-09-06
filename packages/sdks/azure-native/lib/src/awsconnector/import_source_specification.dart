@@ -7,13 +7,13 @@ import 's3_bucket_source.dart';
 /// Definition of ImportSourceSpecification
 class ImportSourceSpecification {
   /// Type of compression to be used on the input coming from the imported table.
-  final pulumi.Input<String>? inputCompressionType;
+  final pulumi.Input<String?>? inputCompressionType;
   /// The format of the source data. Valid values for ``ImportFormat`` are ``CSV``, ``DYNAMODB_JSON`` or ``ION``.
-  final pulumi.Input<String>? inputFormat;
+  final pulumi.Input<String?>? inputFormat;
   /// Additional properties that specify how the input is formatted, The format options for the data that was imported into the target table. There is one value, CsvOption.
-  final pulumi.Input<InputFormatOptions>? inputFormatOptions;
+  final pulumi.Input<InputFormatOptions?>? inputFormatOptions;
   /// The S3 bucket that provides the source for the import. The S3 bucket that is being imported from.
-  final pulumi.Input<S3BucketSource>? s3BucketSource;
+  final pulumi.Input<S3BucketSource?>? s3BucketSource;
 
   /// Creates a new [ImportSourceSpecification].
   /// [inputCompressionType] Type of compression to be used on the input coming from the imported table.

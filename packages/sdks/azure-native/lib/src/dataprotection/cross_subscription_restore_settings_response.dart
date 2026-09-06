@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CrossSubscriptionRestore Settings
 class CrossSubscriptionRestoreSettingsResponse {
   /// CrossSubscriptionRestore state
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CrossSubscriptionRestoreSettingsResponse].
   /// [state] CrossSubscriptionRestore state

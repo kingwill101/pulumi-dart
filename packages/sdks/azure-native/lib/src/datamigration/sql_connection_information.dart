@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Source SQL Connection
 class SqlConnectionInformation {
   /// Authentication type.
-  final pulumi.Input<String>? authentication;
+  final pulumi.Input<String?>? authentication;
   /// Data source.
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Whether to encrypt connection or not.
-  final pulumi.Input<bool>? encryptConnection;
+  final pulumi.Input<bool?>? encryptConnection;
   /// Password to connect to source SQL.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Whether to trust server certificate or not.
-  final pulumi.Input<bool>? trustServerCertificate;
+  final pulumi.Input<bool?>? trustServerCertificate;
   /// User name to connect to source SQL.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SqlConnectionInformation].
   /// [authentication] Authentication type.

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PlanResponse {
   /// Plan accessibility
-  final pulumi.Input<String>? accessibility;
+  final pulumi.Input<String?>? accessibility;
   /// Alternative stack type
   final pulumi.Input<String> altStackReference;
   /// Friendly name for the plan for display in the marketplace

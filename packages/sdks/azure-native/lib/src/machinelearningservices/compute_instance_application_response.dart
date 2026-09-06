@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines an Aml Instance application and its connectivity endpoint URI.
 class ComputeInstanceApplicationResponse {
   /// Name of the ComputeInstance application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Application' endpoint URI.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
 
   /// Creates a new [ComputeInstanceApplicationResponse].
   /// [displayName] Name of the ComputeInstance application.

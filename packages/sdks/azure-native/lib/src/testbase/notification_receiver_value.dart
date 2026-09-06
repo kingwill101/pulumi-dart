@@ -8,11 +8,11 @@ import 'user_object_receiver_value.dart';
 /// A notification event receiver value.
 class NotificationReceiverValue {
   /// The user object receiver value.
-  final pulumi.Input<DistributionGroupListReceiverValue>? distributionGroupListReceiverValue;
+  final pulumi.Input<DistributionGroupListReceiverValue?>? distributionGroupListReceiverValue;
   /// The user object receiver value.
-  final pulumi.Input<SubscriptionReceiverValue>? subscriptionReceiverValue;
+  final pulumi.Input<SubscriptionReceiverValue?>? subscriptionReceiverValue;
   /// The user object receiver value.
-  final pulumi.Input<UserObjectReceiverValue>? userObjectReceiverValue;
+  final pulumi.Input<UserObjectReceiverValue?>? userObjectReceiverValue;
 
   /// Creates a new [NotificationReceiverValue].
   /// [distributionGroupListReceiverValue] The user object receiver value.

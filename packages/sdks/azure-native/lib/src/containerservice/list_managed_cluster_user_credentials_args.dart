@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerservice_list_managed_cluster_user_credentials_args_doc}
 class ListManagedClusterUserCredentialsArgs {
   /// Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
   /// server fqdn type for credentials to be returned
-  final pulumi.Input<String>? serverFqdn;
+  final pulumi.Input<String?>? serverFqdn;
 
   /// Creates a new [ListManagedClusterUserCredentialsArgs].
   /// [format] Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path.

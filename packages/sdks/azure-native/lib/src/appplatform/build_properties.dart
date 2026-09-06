@@ -8,19 +8,19 @@ import 'certificate_reference.dart';
 /// Build resource properties payload
 class BuildProperties {
   /// The resource id of agent pool
-  final pulumi.Input<String>? agentPool;
+  final pulumi.Input<String?>? agentPool;
   /// The APMs for this build
-  final pulumi.Input<List<ApmReference>>? apms;
+  final pulumi.Input<List<ApmReference>?>? apms;
   /// The resource id of builder to build the source code
-  final pulumi.Input<String>? builder;
+  final pulumi.Input<String?>? builder;
   /// The CA Certificates for this build
-  final pulumi.Input<List<CertificateReference>>? certificates;
+  final pulumi.Input<List<CertificateReference>?>? certificates;
   /// The environment variables for this build
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// The relative path of source code
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// The customized build resource for this build
-  final pulumi.Input<BuildResourceRequests>? resourceRequests;
+  final pulumi.Input<BuildResourceRequests?>? resourceRequests;
 
   /// Creates a new [BuildProperties].
   /// [agentPool] The resource id of agent pool

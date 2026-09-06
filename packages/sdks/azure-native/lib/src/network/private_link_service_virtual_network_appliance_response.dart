@@ -12,29 +12,29 @@ import 'private_link_service_properties_visibility_response.dart';
 /// Private link service resource.
 class PrivateLinkServiceVirtualNetworkApplianceResponse {
   /// The access mode of the private link service.
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// The alias of the private link service.
   final pulumi.Input<String> alias;
   /// The auto-approval list of the private link service.
-  final pulumi.Input<PrivateLinkServicePropertiesAutoApprovalResponse>? autoApproval;
+  final pulumi.Input<PrivateLinkServicePropertiesAutoApprovalResponse?>? autoApproval;
   /// The destination IP address of the private link service.
-  final pulumi.Input<String>? destinationIPAddress;
+  final pulumi.Input<String?>? destinationIPAddress;
   /// Whether the private link service is enabled for proxy protocol or not.
-  final pulumi.Input<bool>? enableProxyProtocol;
+  final pulumi.Input<bool?>? enableProxyProtocol;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The extended location of the load balancer.
-  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? extendedLocation;
   /// The list of Fqdn.
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of private link service IP configurations.
-  final pulumi.Input<List<PrivateLinkServiceIpConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<PrivateLinkServiceIpConfigurationResponse>?>? ipConfigurations;
   /// An array of references to the load balancer IP configurations.
-  final pulumi.Input<List<FrontendIPConfigurationVirtualNetworkApplianceResponse>>? loadBalancerFrontendIpConfigurations;
+  final pulumi.Input<List<FrontendIPConfigurationVirtualNetworkApplianceResponse>?>? loadBalancerFrontendIpConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// An array of references to the network interfaces created for this private link service.
@@ -44,11 +44,11 @@ class PrivateLinkServiceVirtualNetworkApplianceResponse {
   /// The provisioning state of the private link service resource.
   final pulumi.Input<String> provisioningState;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The visibility list of the private link service.
-  final pulumi.Input<PrivateLinkServicePropertiesVisibilityResponse>? visibility;
+  final pulumi.Input<PrivateLinkServicePropertiesVisibilityResponse?>? visibility;
 
   /// Creates a new [PrivateLinkServiceVirtualNetworkApplianceResponse].
   /// [accessMode] The access mode of the private link service.

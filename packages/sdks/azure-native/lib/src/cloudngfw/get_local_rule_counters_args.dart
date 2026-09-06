@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudngfw_get_local_rule_counters_args_doc}
 class GetLocalRuleCountersArgs {
-  final pulumi.Input<String>? firewallName;
+  final pulumi.Input<String?>? firewallName;
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
   /// Local Rule priority

@@ -9,7 +9,7 @@ import 'capability_host_properties.dart';
 /// {@macro pulumi_machinelearningservices_capability_host_args_doc}
 class CapabilityHostArgs {
   /// CapabilityHost name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<CapabilityHostProperties> properties;
   /// The name of the resource group. The name is case insensitive.

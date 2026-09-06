@@ -350,7 +350,25 @@ class CassandraResourceCassandraTable extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     this.options = registerOutput<CassandraTableGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resource = registerOutput<CassandraTableGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CassandraResourceCassandraTable] resource.
+  CassandraResourceCassandraTable.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:CassandraResourceCassandraTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<CassandraTableGetPropertiesResponseOptions?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableGetPropertiesResponseOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resource = registerOutput<CassandraTableGetPropertiesResponseResource?>('resource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableGetPropertiesResponseResource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

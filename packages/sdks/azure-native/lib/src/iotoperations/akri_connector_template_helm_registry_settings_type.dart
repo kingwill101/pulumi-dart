@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// AkriConnectorTemplateHelmRegistrySettingsType values.
-enum AkriConnectorTemplateHelmRegistrySettingsType {
+enum AkriConnectorTemplateHelmRegistrySettingsType implements pulumi.PulumiEnum<String> {
   registryEndpointRef("RegistryEndpointRef"),
   containerRegistry("ContainerRegistry");
 
   const AkriConnectorTemplateHelmRegistrySettingsType(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorTemplateHelmRegistrySettingsType fromValue(String value) {

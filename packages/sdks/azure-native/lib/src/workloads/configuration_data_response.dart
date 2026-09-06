@@ -71,17 +71,17 @@ class ConfigurationDataResponse {
 
   factory ConfigurationDataResponse.fromMap(Map<String, dynamic> map) {
     return ConfigurationDataResponse(
-      cpu: pulumi.Input.fromValue(map['cpu'] as int),
-      cpuInMhz: pulumi.Input.fromValue(map['cpuInMhz'] as int),
+      cpu: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpu'])),
+      cpuInMhz: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuInMhz'])),
       cpuType: pulumi.Input.fromValue(map['cpuType'] as String),
       databaseType: pulumi.Input.fromValue(map['databaseType'] as String),
       hardwareManufacturer: pulumi.Input.fromValue(map['hardwareManufacturer'] as String),
       model: pulumi.Input.fromValue(map['model'] as String),
-      ram: pulumi.Input.fromValue(map['ram'] as int),
-      saps: pulumi.Input.fromValue(map['saps'] as int),
-      targetHanaRamSizeGB: pulumi.Input.fromValue(map['targetHanaRamSizeGB'] as int),
-      totalDiskIops: pulumi.Input.fromValue(map['totalDiskIops'] as int),
-      totalDiskSizeGB: pulumi.Input.fromValue(map['totalDiskSizeGB'] as int),
+      ram: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ram'])),
+      saps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saps'])),
+      targetHanaRamSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetHanaRamSizeGB'])),
+      totalDiskIops: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalDiskIops'])),
+      totalDiskSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalDiskSizeGB'])),
     );
   }
 }

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azurestack_registration_args_doc}
 class RegistrationArgs {
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<dynamic>? location;
   /// Name of the Azure Stack registration.
-  final pulumi.Input<String>? registrationName;
+  final pulumi.Input<String?>? registrationName;
   /// The token identifying registered Azure Stack
   final pulumi.Input<String> registrationToken;
   /// Name of the resource group.
@@ -39,7 +39,7 @@ class RegistrationArgs {
 
   factory RegistrationArgs.fromMap(Map<String, dynamic> map) {
     return RegistrationArgs(
-      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       registrationName: (() { final guardedValue = map['registrationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       registrationToken: pulumi.Input.fromValue(map['registrationToken'] as String),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),

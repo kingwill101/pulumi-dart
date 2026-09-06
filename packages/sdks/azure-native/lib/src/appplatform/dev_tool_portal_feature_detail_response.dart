@@ -7,15 +7,15 @@ class DevToolPortalFeatureDetailResponse {
   /// Route path to visit the plugin
   final pulumi.Input<String> route;
   /// State of the plugin
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DevToolPortalFeatureDetailResponse].
   /// [route] Route path to visit the plugin
   /// [state] State of the plugin
-  const DevToolPortalFeatureDetailResponse({
+  DevToolPortalFeatureDetailResponse({
     required this.route,
-    this.state,
-  });
+    pulumi.Input<String?>? state,
+  }) : state = state ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

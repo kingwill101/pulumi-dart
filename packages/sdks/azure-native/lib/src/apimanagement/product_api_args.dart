@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_product_api_args_doc}
 class ProductApiArgs {
   /// API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
   /// The name of the resource group. The name is case insensitive.

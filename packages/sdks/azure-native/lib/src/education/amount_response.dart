@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The amount.
 class AmountResponse {
   /// The type of currency being used for the value.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// Amount value.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [AmountResponse].
   /// [currency] The type of currency being used for the value.
@@ -27,7 +27,7 @@ class AmountResponse {
   factory AmountResponse.fromMap(Map<String, dynamic> map) {
     return AmountResponse(
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the Connection resource.
 class ConnectionProperties {
   /// A description for the Connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of job definitions associated with this connection.
-  final pulumi.Input<List<String>>? jobList;
+  final pulumi.Input<List<String>?>? jobList;
   /// The PrivateLinkServiceId for the connection.
   final pulumi.Input<String> privateLinkServiceId;
 

@@ -8,15 +8,15 @@ class VMwareCbtContainerMappingInput {
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
   /// The target key vault ARM Id.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// The target key vault URL.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// The secret name of the service bus connection string.
-  final pulumi.Input<String>? serviceBusConnectionStringSecretName;
+  final pulumi.Input<String?>? serviceBusConnectionStringSecretName;
   /// The storage account ARM Id.
   final pulumi.Input<String> storageAccountId;
   /// The secret name of the storage account.
-  final pulumi.Input<String>? storageAccountSasSecretName;
+  final pulumi.Input<String?>? storageAccountSasSecretName;
   /// The target location.
   final pulumi.Input<String> targetLocation;
 

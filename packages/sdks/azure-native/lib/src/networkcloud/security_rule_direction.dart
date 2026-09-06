@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The direction of allowed network traffic based on the rule.
-enum SecurityRuleDirection {
+enum SecurityRuleDirection implements pulumi.PulumiEnum<String> {
   inbound("Inbound"),
   outbound("Outbound");
 
   const SecurityRuleDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityRuleDirection fromValue(String value) {

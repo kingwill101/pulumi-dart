@@ -10,7 +10,7 @@ class FieldToMatchResponse {
   /// Inspect the query string. This is the part of a URL that appears after a ? character, if any.
   final pulumi.Input<dynamic>? queryString;
   /// Inspect a single header. Provide the name of the header to inspect, for example, User-Agent or Referer. This setting isn't case sensitive.
-  final pulumi.Input<SingleHeaderModelPropertiesResponse>? singleHeader;
+  final pulumi.Input<SingleHeaderModelPropertiesResponse?>? singleHeader;
   /// Inspect the request URI path. This is the part of a web request that identifies a resource, for example, /images/daily-ad.jpg.
   final pulumi.Input<dynamic>? uriPath;
 

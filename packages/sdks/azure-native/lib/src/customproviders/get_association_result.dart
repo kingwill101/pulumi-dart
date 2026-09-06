@@ -4,17 +4,17 @@
 /// Result data returned by getAssociation.
 class GetAssociationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The association id.
-  final String id;
+  final String? id;
   /// The association name.
-  final String name;
+  final String? name;
   /// The provisioning state of the association.
-  final String provisioningState;
+  final String? provisioningState;
   /// The REST resource instance of the target resource for this association.
   final String? targetResourceId;
   /// The association type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAssociationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetAssociationResult {
   /// [targetResourceId] The REST resource instance of the target resource for this association.
   /// [type] The association type.
   const GetAssociationResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.targetResourceId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'targetResourceId': ?targetResourceId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAssociationResult.fromMap(Map<String, dynamic> map) {
     return GetAssociationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

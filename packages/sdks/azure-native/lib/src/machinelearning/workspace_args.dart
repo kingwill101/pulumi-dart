@@ -9,21 +9,21 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearning_workspace_args_doc}
 class WorkspaceArgs {
   /// The key vault identifier used for encrypted workspaces.
-  final pulumi.Input<String>? keyVaultIdentifierId;
+  final pulumi.Input<String?>? keyVaultIdentifierId;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The email id of the owner for this workspace.
   final pulumi.Input<String> ownerEmail;
   /// The name of the resource group to which the machine learning workspace belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The sku of the workspace.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The fully qualified arm id of the storage account associated with this workspace.
   final pulumi.Input<String> userStorageAccountId;
   /// The name of the machine learning workspace.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [keyVaultIdentifierId] The key vault identifier used for encrypted workspaces.

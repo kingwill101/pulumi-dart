@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The entity reference.
 class EntityReference {
   /// The name of this referenced entity.
-  final pulumi.Input<String>? referenceName;
+  final pulumi.Input<String?>? referenceName;
   /// The type of this referenced entity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [EntityReference].
   /// [referenceName] The name of this referenced entity.
@@ -27,7 +27,7 @@ class EntityReference {
   factory EntityReference.fromMap(Map<String, dynamic> map) {
     return EntityReference(
       referenceName: (() { final guardedValue = map['referenceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

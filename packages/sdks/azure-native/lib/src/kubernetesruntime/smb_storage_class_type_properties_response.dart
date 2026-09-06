@@ -5,18 +5,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of SMB StorageClass
 class SmbStorageClassTypePropertiesResponse {
   /// Server domain
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Server password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// SMB Source
   final pulumi.Input<String> source;
   /// Sub directory under share. If the sub directory doesn't exist, driver will create it
-  final pulumi.Input<String>? subDir;
+  final pulumi.Input<String?>? subDir;
   /// Type of a storage class
   /// Expected value is 'SMB'.
   final pulumi.Input<String> type;
   /// Server username
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [SmbStorageClassTypePropertiesResponse].
   /// [domain] Server domain

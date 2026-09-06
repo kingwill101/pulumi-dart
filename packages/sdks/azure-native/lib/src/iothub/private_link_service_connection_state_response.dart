@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The current state of a private endpoint connection
 class PrivateLinkServiceConnectionStateResponse {
   /// Actions required for a private endpoint connection
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// The description for the current state of a private endpoint connection
   final pulumi.Input<String> description;
   /// The status of a private endpoint connection

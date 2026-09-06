@@ -232,4 +232,30 @@ class Backup extends pulumi.CustomResource {
     useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
     volumeResourceId = registerOutput<String>('volumeResourceId');
   }
+
+  /// Creates a typed reference to an existing [Backup] resource.
+  Backup.reference(String urn)
+    : super(
+        'azure-native:netapp:Backup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupId = registerOutput<String>('backupId');
+    backupPolicyResourceId = registerOutput<String>('backupPolicyResourceId');
+    backupType = registerOutput<String>('backupType');
+    creationDate = registerOutput<String>('creationDate');
+    failureReason = registerOutput<String>('failureReason');
+    label = registerOutput<String?>('label');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    size = registerOutput<double>('size');
+    snapshotName = registerOutput<String?>('snapshotName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
+    volumeResourceId = registerOutput<String>('volumeResourceId');
+  }
 }

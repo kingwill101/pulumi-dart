@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'labeling_job_machinelearningservices.dart';
+import 'labeling_job.dart';
 
 /// {@template pulumi_machinelearningservices_labeling_job_args_doc}
 /// The set of arguments for LabelingJob.
@@ -9,9 +9,9 @@ import 'labeling_job_machinelearningservices.dart';
 /// {@macro pulumi_machinelearningservices_labeling_job_args_doc}
 class LabelingJobArgs {
   /// The name and identifier for the LabelingJob.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<LabelingJobMachinelearningservices> labelingJobProperties;
+  final pulumi.Input<LabelingJob> labelingJobProperties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of Azure Machine Learning workspace.
@@ -32,7 +32,7 @@ class LabelingJobArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': ?id,
-      'labelingJobProperties': labelingJobProperties,
+      'labelingJobProperties': pulumi.Input.mapInputValue<LabelingJob, Map<String, dynamic>>(labelingJobProperties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -41,7 +41,7 @@ class LabelingJobArgs {
   factory LabelingJobArgs.fromMap(Map<String, dynamic> map) {
     return LabelingJobArgs(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      labelingJobProperties: pulumi.Input.fromValue(map['labelingJobProperties'] as LabelingJobMachinelearningservices),
+      labelingJobProperties: pulumi.Input.fromValue(LabelingJob.fromMap((map['labelingJobProperties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

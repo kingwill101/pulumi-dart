@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AccessRules
 class AccessRulesResponse {
   /// A Boolean value that indicates whether the access control list (ACL) permissions that are applied to individual objects override the getObject option that is currently specified.
-  final pulumi.Input<bool>? allowPublicOverrides;
+  final pulumi.Input<bool?>? allowPublicOverrides;
   /// Specifies the anonymous access to all objects in a bucket.
-  final pulumi.Input<String>? getObject;
+  final pulumi.Input<String?>? getObject;
 
   /// Creates a new [AccessRulesResponse].
   /// [allowPublicOverrides] A Boolean value that indicates whether the access control list (ACL) permissions that are applied to individual objects override the getObject option that is currently specified.

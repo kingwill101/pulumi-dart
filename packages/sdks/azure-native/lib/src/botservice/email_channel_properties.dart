@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the Email channel.
 class EmailChannelProperties {
   /// Email channel auth method. 0 Password (Default); 1 Graph.
-  final pulumi.Input<double>? authMethod;
+  final pulumi.Input<double?>? authMethod;
   /// The email address
   final pulumi.Input<String> emailAddress;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
   /// The magic code for setting up the modern authentication.
-  final pulumi.Input<String>? magicCode;
+  final pulumi.Input<String?>? magicCode;
   /// The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
 
   /// Creates a new [EmailChannelProperties].
   /// [authMethod] Email channel auth method. 0 Password (Default); 1 Graph.
@@ -41,7 +41,7 @@ class EmailChannelProperties {
 
   factory EmailChannelProperties.fromMap(Map<String, dynamic> map) {
     return EmailChannelProperties(
-      authMethod: (() { final guardedValue = map['authMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      authMethod: (() { final guardedValue = map['authMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       emailAddress: pulumi.Input.fromValue(map['emailAddress'] as String),
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
       magicCode: (() { final guardedValue = map['magicCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

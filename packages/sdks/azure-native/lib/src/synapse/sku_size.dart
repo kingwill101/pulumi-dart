@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU size.
-enum SkuSize {
+enum SkuSize implements pulumi.PulumiEnum<String> {
   valueExtraSmall("Extra small"),
   valueSmall("Small"),
   valueMedium("Medium"),
   valueLarge("Large");
 
   const SkuSize(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuSize fromValue(String value) {

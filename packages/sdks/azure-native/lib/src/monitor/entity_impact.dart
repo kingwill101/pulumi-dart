@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Impact of the entity in health state propagation
-enum EntityImpact {
+enum EntityImpact implements pulumi.PulumiEnum<String> {
   standard("Standard"),
   limited("Limited"),
   suppressed("Suppressed");
 
   const EntityImpact(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityImpact fromValue(String value) {

@@ -27,7 +27,7 @@ class CapacityReservationPropertiesResponse {
   factory CapacityReservationPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return CapacityReservationPropertiesResponse(
       lastSkuUpdate: pulumi.Input.fromValue(map['lastSkuUpdate'] as String),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as double),
+      minCapacity: pulumi.Input.fromValue((map['minCapacity'] as num).toDouble()),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A dashboard part metadata.
 class DashboardPartMetadataResponse {
   /// Inputs to dashboard part.
-  final pulumi.Input<List<dynamic>>? inputs;
+  final pulumi.Input<List<dynamic>?>? inputs;
   /// Settings of dashboard part.
-  final pulumi.Input<Map<String, dynamic>>? settings;
+  final pulumi.Input<Map<String, dynamic>?>? settings;
   /// The type of dashboard part.
   final pulumi.Input<String> type;
 

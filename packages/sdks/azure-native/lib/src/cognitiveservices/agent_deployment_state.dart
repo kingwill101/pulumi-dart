@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
-enum AgentDeploymentState {
+enum AgentDeploymentState implements pulumi.PulumiEnum<String> {
   starting("Starting"),
   running("Running"),
   stopping("Stopping"),
@@ -10,6 +12,7 @@ enum AgentDeploymentState {
   updating("Updating");
 
   const AgentDeploymentState(this.wireValue);
+  @override
   final String wireValue;
 
   static AgentDeploymentState fromValue(String value) {

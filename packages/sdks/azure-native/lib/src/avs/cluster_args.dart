@@ -9,11 +9,11 @@ import 'sku.dart';
 /// {@macro pulumi_avs_cluster_args_doc}
 class ClusterArgs {
   /// Name of the cluster
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The cluster size
-  final pulumi.Input<int>? clusterSize;
+  final pulumi.Input<int?>? clusterSize;
   /// The hosts
-  final pulumi.Input<List<String>>? hosts;
+  final pulumi.Input<List<String>?>? hosts;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.
@@ -21,7 +21,7 @@ class ClusterArgs {
   /// The SKU (Stock Keeping Unit) assigned to this resource.
   final pulumi.Input<Sku> sku;
   /// Name of the vsan datastore associated with the cluster
-  final pulumi.Input<String>? vsanDatastoreName;
+  final pulumi.Input<String?>? vsanDatastoreName;
 
   /// Creates a new [ClusterArgs].
   /// [clusterName] Name of the cluster
@@ -56,7 +56,7 @@ class ClusterArgs {
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      clusterSize: (() { final guardedValue = map['clusterSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       privateCloudName: pulumi.Input.fromValue(map['privateCloudName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

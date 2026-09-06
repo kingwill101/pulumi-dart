@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Job Type to support polymorphic resource.
-enum HciEdgeDeviceJobType {
+enum HciEdgeDeviceJobType implements pulumi.PulumiEnum<String> {
   collectLog("CollectLog"),
   remoteSupport("RemoteSupport");
 
   const HciEdgeDeviceJobType(this.wireValue);
+  @override
   final String wireValue;
 
   static HciEdgeDeviceJobType fromValue(String value) {

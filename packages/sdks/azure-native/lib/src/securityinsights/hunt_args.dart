@@ -9,25 +9,25 @@ import 'hunt_owner.dart';
 /// {@macro pulumi_securityinsights_hunt_args_doc}
 class HuntArgs {
   /// A list of mitre attack tactics the hunt is associated with
-  final pulumi.Input<List<String>>? attackTactics;
+  final pulumi.Input<List<dynamic>?>? attackTactics;
   /// A list of a mitre attack techniques the hunt is associated with
-  final pulumi.Input<List<String>>? attackTechniques;
+  final pulumi.Input<List<String>?>? attackTechniques;
   /// The description of the hunt
   final pulumi.Input<String> description;
   /// The display name of the hunt
   final pulumi.Input<String> displayName;
   /// The hunt id (GUID)
-  final pulumi.Input<String>? huntId;
+  final pulumi.Input<String?>? huntId;
   /// The hypothesis status of the hunt.
-  final pulumi.Input<String>? hypothesisStatus;
+  final pulumi.Input<dynamic>? hypothesisStatus;
   /// List of labels relevant to this hunt
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// Describes a user that the hunt is assigned to
-  final pulumi.Input<HuntOwner>? owner;
+  final pulumi.Input<HuntOwner?>? owner;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The status of the hunt.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -43,19 +43,19 @@ class HuntArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [status] The status of the hunt.
   /// [workspaceName] The name of the workspace.
-  const HuntArgs({
+  HuntArgs({
     this.attackTactics,
     this.attackTechniques,
     required this.description,
     required this.displayName,
     this.huntId,
-    this.hypothesisStatus,
+    pulumi.Input<dynamic>? hypothesisStatus,
     this.labels,
     this.owner,
     required this.resourceGroupName,
-    this.status,
+    pulumi.Input<dynamic>? status,
     required this.workspaceName,
-  });
+  }) : hypothesisStatus = hypothesisStatus ?? pulumi.Input.fromValue('Unknown'), status = status ?? pulumi.Input.fromValue('New');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,16 +75,16 @@ class HuntArgs {
 
   factory HuntArgs.fromMap(Map<String, dynamic> map) {
     return HuntArgs(
-      attackTactics: (() { final guardedValue = map['attackTactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      attackTactics: (() { final guardedValue = map['attackTactics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       attackTechniques: (() { final guardedValue = map['attackTechniques']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       huntId: (() { final guardedValue = map['huntId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hypothesisStatus: (() { final guardedValue = map['hypothesisStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hypothesisStatus: (() { final guardedValue = map['hypothesisStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HuntOwner.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }

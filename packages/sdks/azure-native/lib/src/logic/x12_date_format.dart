@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The group header date format.
-enum X12DateFormat {
+enum X12DateFormat implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueCCYYMMDD("CCYYMMDD"),
   valueYYMMDD("YYMMDD");
 
   const X12DateFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static X12DateFormat fromValue(String value) {

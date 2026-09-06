@@ -11,13 +11,13 @@ class DataflowEndpointMqttAuthenticationResponse {
   /// Mode of Authentication.
   final pulumi.Input<String> method;
   /// Kubernetes service account token authentication. Default audience if not set is aio-internal
-  final pulumi.Input<DataflowEndpointAuthenticationServiceAccountTokenResponse>? serviceAccountTokenSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationServiceAccountTokenResponse?>? serviceAccountTokenSettings;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentityResponse?>? userAssignedManagedIdentitySettings;
   /// X.509 certificate authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationX509Response>? x509CertificateSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationX509Response?>? x509CertificateSettings;
 
   /// Creates a new [DataflowEndpointMqttAuthenticationResponse].
   /// [method] Mode of Authentication.

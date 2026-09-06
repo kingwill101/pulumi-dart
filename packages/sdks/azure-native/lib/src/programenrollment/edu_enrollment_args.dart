@@ -9,15 +9,15 @@ import 'edu_enrollment_properties.dart';
 /// {@macro pulumi_programenrollment_edu_enrollment_args_doc}
 class EduEnrollmentArgs {
   /// The name of the edu enrollment
-  final pulumi.Input<String>? enrollmentName;
+  final pulumi.Input<String?>? enrollmentName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<EduEnrollmentProperties>? properties;
+  final pulumi.Input<EduEnrollmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EduEnrollmentArgs].
   /// [enrollmentName] The name of the edu enrollment

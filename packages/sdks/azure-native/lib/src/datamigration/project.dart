@@ -1,6 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_active_directory_app_response.dart';
-import 'mi_sql_connection_info_response.dart';
+import 'database_info_response.dart';
 import 'project_args.dart';
 import 'system_data_response.dart';
 
@@ -180,7 +180,7 @@ class Project extends pulumi.CustomResource {
   /// UTC Date and time when project was created
   late final pulumi.Output<String> creationTime;
   /// List of DatabaseInfo
-  late final pulumi.Output<List<Map<String, dynamic>>?> databasesInfo;
+  late final pulumi.Output<List<DatabaseInfoResponse>?> databasesInfo;
   /// HTTP strong entity tag value. This is ignored if submitted.
   late final pulumi.Output<String?> etag;
   late final pulumi.Output<String?> location;
@@ -188,13 +188,13 @@ class Project extends pulumi.CustomResource {
   /// The project's provisioning state
   late final pulumi.Output<String> provisioningState;
   /// Information for connecting to source
-  late final pulumi.Output<MiSqlConnectionInfoResponse?> sourceConnectionInfo;
+  late final pulumi.Output<dynamic> sourceConnectionInfo;
   /// Source platform for the project
   late final pulumi.Output<String> sourcePlatform;
   late final pulumi.Output<SystemDataResponse> systemData;
   late final pulumi.Output<Map<String, String>?> tags;
   /// Information for connecting to target
-  late final pulumi.Output<MiSqlConnectionInfoResponse?> targetConnectionInfo;
+  late final pulumi.Output<dynamic> targetConnectionInfo;
   /// Target platform for the project
   late final pulumi.Output<String> targetPlatform;
   late final pulumi.Output<String> type;
@@ -216,16 +216,42 @@ class Project extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureAuthenticationInfo = registerOutput<AzureActiveDirectoryAppResponse?>('azureAuthenticationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureActiveDirectoryAppResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTime = registerOutput<String>('creationTime');
-    databasesInfo = registerOutput<List<Map<String, dynamic>>?>('databasesInfo');
+    databasesInfo = registerOutput<List<DatabaseInfoResponse>?>('databasesInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInfoResponse>(guardedValue, (value) => DatabaseInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    sourceConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>('sourceConnectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceConnectionInfo = registerOutput<dynamic>('sourceConnectionInfo');
     sourcePlatform = registerOutput<String>('sourcePlatform');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetConnectionInfo = registerOutput<MiSqlConnectionInfoResponse?>('targetConnectionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MiSqlConnectionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetConnectionInfo = registerOutput<dynamic>('targetConnectionInfo');
+    targetPlatform = registerOutput<String>('targetPlatform');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Project] resource.
+  Project.reference(String urn)
+    : super(
+        'azure-native:datamigration:Project',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureAuthenticationInfo = registerOutput<AzureActiveDirectoryAppResponse?>('azureAuthenticationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureActiveDirectoryAppResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<String>('creationTime');
+    databasesInfo = registerOutput<List<DatabaseInfoResponse>?>('databasesInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInfoResponse>(guardedValue, (value) => DatabaseInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceConnectionInfo = registerOutput<dynamic>('sourceConnectionInfo');
+    sourcePlatform = registerOutput<String>('sourcePlatform');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetConnectionInfo = registerOutput<dynamic>('targetConnectionInfo');
     targetPlatform = registerOutput<String>('targetPlatform');
     type = registerOutput<String>('type');
   }

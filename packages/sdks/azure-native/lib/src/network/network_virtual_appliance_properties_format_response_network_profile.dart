@@ -5,7 +5,7 @@ import 'virtual_appliance_network_interface_configuration_response.dart';
 
 /// Network Profile containing configurations for Public and Private NIC.
 class NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile {
-  final pulumi.Input<List<VirtualApplianceNetworkInterfaceConfigurationResponse>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualApplianceNetworkInterfaceConfigurationResponse>?>? networkInterfaceConfigurations;
 
   /// Creates a new [NetworkVirtualAppliancePropertiesFormatResponseNetworkProfile].
   /// [networkInterfaceConfigurations] Optional.

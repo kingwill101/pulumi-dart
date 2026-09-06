@@ -6,12 +6,12 @@ import 'artifact_store_properties_format_managed_resource_group_configuration.da
 /// Artifact store properties.
 class ArtifactStorePropertiesFormat {
   /// The artifact store backing resource network access type
-  final pulumi.Input<String>? backingResourcePublicNetworkAccess;
-  final pulumi.Input<ArtifactStorePropertiesFormatManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<dynamic>? backingResourcePublicNetworkAccess;
+  final pulumi.Input<ArtifactStorePropertiesFormatManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// The replication strategy.
-  final pulumi.Input<String>? replicationStrategy;
+  final pulumi.Input<dynamic>? replicationStrategy;
   /// The artifact store type.
-  final pulumi.Input<String>? storeType;
+  final pulumi.Input<dynamic>? storeType;
 
   /// Creates a new [ArtifactStorePropertiesFormat].
   /// [backingResourcePublicNetworkAccess] The artifact store backing resource network access type
@@ -36,10 +36,10 @@ class ArtifactStorePropertiesFormat {
 
   factory ArtifactStorePropertiesFormat.fromMap(Map<String, dynamic> map) {
     return ArtifactStorePropertiesFormat(
-      backingResourcePublicNetworkAccess: (() { final guardedValue = map['backingResourcePublicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      backingResourcePublicNetworkAccess: (() { final guardedValue = map['backingResourcePublicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       managedResourceGroupConfiguration: (() { final guardedValue = map['managedResourceGroupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ArtifactStorePropertiesFormatManagedResourceGroupConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      replicationStrategy: (() { final guardedValue = map['replicationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storeType: (() { final guardedValue = map['storeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replicationStrategy: (() { final guardedValue = map['replicationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storeType: (() { final guardedValue = map['storeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

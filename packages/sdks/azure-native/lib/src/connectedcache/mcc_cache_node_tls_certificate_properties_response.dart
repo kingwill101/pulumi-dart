@@ -10,7 +10,7 @@ class MccCacheNodeTlsCertificatePropertiesResponse {
   /// Mcc customer resource Id.
   final pulumi.Input<String> customerId;
   /// Cache node resource tls certificate history details.
-  final pulumi.Input<List<MccCacheNodeTlsCertificateResponse>>? tlsCertificateHistory;
+  final pulumi.Input<List<MccCacheNodeTlsCertificateResponse>?>? tlsCertificateHistory;
 
   /// Creates a new [MccCacheNodeTlsCertificatePropertiesResponse].
   /// [cacheNodeId] Mcc cache node resource Id.

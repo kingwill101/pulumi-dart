@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server edition.
-enum EditionType {
+enum EditionType implements pulumi.PulumiEnum<String> {
   valueEvaluation("Evaluation"),
   valueEnterprise("Enterprise"),
   valueStandard("Standard"),
@@ -9,6 +11,7 @@ enum EditionType {
   valueBusinessIntelligence("Business Intelligence");
 
   const EditionType(this.wireValue);
+  @override
   final String wireValue;
 
   static EditionType fromValue(String value) {

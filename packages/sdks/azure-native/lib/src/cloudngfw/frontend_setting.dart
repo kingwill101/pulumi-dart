@@ -12,7 +12,7 @@ class FrontendSetting {
   /// Settings name
   final pulumi.Input<String> name;
   /// Protocol Type
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
 
   /// Creates a new [FrontendSetting].
   /// [backendConfiguration] Backend configurations
@@ -40,7 +40,7 @@ class FrontendSetting {
       backendConfiguration: pulumi.Input.fromValue(EndpointConfiguration.fromMap((map['backendConfiguration']! as Map).cast<String, dynamic>())),
       frontendConfiguration: pulumi.Input.fromValue(EndpointConfiguration.fromMap((map['frontendConfiguration']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
     );
   }
 }

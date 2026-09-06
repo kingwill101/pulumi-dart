@@ -9,23 +9,23 @@ import 'volume_mount_response.dart';
 /// Container App container definition
 class ContainerResponse {
   /// Container start command arguments.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Container start command.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Container environment variables.
-  final pulumi.Input<List<EnvironmentVarResponse>>? env;
+  final pulumi.Input<List<EnvironmentVarResponse>?>? env;
   /// Container image tag.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<String?>? imageType;
   /// Custom container name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of probes for the container.
-  final pulumi.Input<List<ContainerAppProbeResponse>>? probes;
+  final pulumi.Input<List<ContainerAppProbeResponse>?>? probes;
   /// Container resource requirements.
-  final pulumi.Input<ContainerResourcesResponse>? resources;
+  final pulumi.Input<ContainerResourcesResponse?>? resources;
   /// Container volume mounts.
-  final pulumi.Input<List<VolumeMountResponse>>? volumeMounts;
+  final pulumi.Input<List<VolumeMountResponse>?>? volumeMounts;
 
   /// Creates a new [ContainerResponse].
   /// [args] Container start command arguments.

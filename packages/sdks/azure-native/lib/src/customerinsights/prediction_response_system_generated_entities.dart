@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// System generated entities.
 class PredictionResponseSystemGeneratedEntities {
   /// Generated interaction types.
-  final pulumi.Input<List<String>>? generatedInteractionTypes;
+  final pulumi.Input<List<String>?>? generatedInteractionTypes;
   /// Generated KPIs.
-  final pulumi.Input<Map<String, String>>? generatedKpis;
+  final pulumi.Input<Map<String, String>?>? generatedKpis;
   /// Generated links.
-  final pulumi.Input<List<String>>? generatedLinks;
+  final pulumi.Input<List<String>?>? generatedLinks;
 
   /// Creates a new [PredictionResponseSystemGeneratedEntities].
   /// [generatedInteractionTypes] Generated interaction types.

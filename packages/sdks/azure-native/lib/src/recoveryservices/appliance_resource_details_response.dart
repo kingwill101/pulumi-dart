@@ -36,10 +36,10 @@ class ApplianceResourceDetailsResponse {
 
   factory ApplianceResourceDetailsResponse.fromMap(Map<String, dynamic> map) {
     return ApplianceResourceDetailsResponse(
-      capacity: pulumi.Input.fromValue(map['capacity'] as double),
-      processUtilization: pulumi.Input.fromValue(map['processUtilization'] as double),
+      capacity: pulumi.Input.fromValue((map['capacity'] as num).toDouble()),
+      processUtilization: pulumi.Input.fromValue((map['processUtilization'] as num).toDouble()),
       status: pulumi.Input.fromValue(map['status'] as String),
-      totalUtilization: pulumi.Input.fromValue(map['totalUtilization'] as double),
+      totalUtilization: pulumi.Input.fromValue((map['totalUtilization'] as num).toDouble()),
     );
   }
 }

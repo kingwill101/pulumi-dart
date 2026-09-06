@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Event Hub ingestion endpoint configuration
 class IotEventHubIngestionEndpointConfigurationResponse {
   /// Consumer group of the event hub to connected to.
-  final pulumi.Input<String>? consumerGroup;
+  final pulumi.Input<String?>? consumerGroup;
   /// Event Hub name to connect to.
-  final pulumi.Input<String>? eventHubName;
+  final pulumi.Input<String?>? eventHubName;
   /// Fully qualified namespace of the Event Hub to connect to.
-  final pulumi.Input<String>? fullyQualifiedEventHubNamespace;
+  final pulumi.Input<String?>? fullyQualifiedEventHubNamespace;
 
   /// Creates a new [IotEventHubIngestionEndpointConfigurationResponse].
   /// [consumerGroup] Consumer group of the event hub to connected to.

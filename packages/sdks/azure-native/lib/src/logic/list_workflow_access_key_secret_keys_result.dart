@@ -4,29 +4,29 @@
 /// Result data returned by listWorkflowAccessKeySecretKeys.
 class ListWorkflowAccessKeySecretKeysResult {
   /// Gets the primary secret key.
-  final String primarySecretKey;
+  final String? primarySecretKey;
   /// Gets the secondary secret key.
-  final String secondarySecretKey;
+  final String? secondarySecretKey;
 
   /// Creates a new [ListWorkflowAccessKeySecretKeysResult].
   /// [primarySecretKey] Gets the primary secret key.
   /// [secondarySecretKey] Gets the secondary secret key.
   const ListWorkflowAccessKeySecretKeysResult({
-    required this.primarySecretKey,
-    required this.secondarySecretKey,
+    this.primarySecretKey,
+    this.secondarySecretKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primarySecretKey': primarySecretKey,
-      'secondarySecretKey': secondarySecretKey,
+      'primarySecretKey': ?primarySecretKey,
+      'secondarySecretKey': ?secondarySecretKey,
     };
   }
 
   factory ListWorkflowAccessKeySecretKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkflowAccessKeySecretKeysResult(
-      primarySecretKey: map['primarySecretKey'] as String,
-      secondarySecretKey: map['secondarySecretKey'] as String,
+      primarySecretKey: (() { final guardedValue = map['primarySecretKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondarySecretKey: (() { final guardedValue = map['secondarySecretKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

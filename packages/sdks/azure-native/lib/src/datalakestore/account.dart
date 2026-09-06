@@ -2,6 +2,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'encryption_config_response.dart';
 import 'encryption_identity_response.dart';
+import 'firewall_rule_response.dart';
+import 'trusted_id_provider_response.dart';
+import 'virtual_network_rule_response.dart';
 
 /// Data Lake Store account information.
 ///
@@ -386,7 +389,7 @@ class Account extends pulumi.CustomResource {
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
   late final pulumi.Output<String> firewallAllowAzureIps;
   /// The list of firewall rules associated with this Data Lake Store account.
-  late final pulumi.Output<List<Map<String, dynamic>>> firewallRules;
+  late final pulumi.Output<List<FirewallRuleResponse>> firewallRules;
   /// The current state of the IP address firewall for this Data Lake Store account.
   late final pulumi.Output<String> firewallState;
   /// The Key Vault encryption identity, if any.
@@ -408,11 +411,11 @@ class Account extends pulumi.CustomResource {
   /// The current state of the trusted identity provider feature for this Data Lake Store account.
   late final pulumi.Output<String> trustedIdProviderState;
   /// The list of trusted identity providers associated with this Data Lake Store account.
-  late final pulumi.Output<List<Map<String, dynamic>>> trustedIdProviders;
+  late final pulumi.Output<List<TrustedIdProviderResponse>> trustedIdProviders;
   /// The resource type.
   late final pulumi.Output<String> type;
   /// The list of virtual network rules associated with this Data Lake Store account.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworkRules;
+  late final pulumi.Output<List<VirtualNetworkRuleResponse>> virtualNetworkRules;
 
   /// Creates a new [Account].
   /// [name] The Pulumi resource name.
@@ -438,7 +441,7 @@ class Account extends pulumi.CustomResource {
     encryptionState = registerOutput<String>('encryptionState');
     endpoint = registerOutput<String>('endpoint');
     firewallAllowAzureIps = registerOutput<String>('firewallAllowAzureIps');
-    firewallRules = registerOutput<List<Map<String, dynamic>>>('firewallRules');
+    firewallRules = registerOutput<List<FirewallRuleResponse>>('firewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRuleResponse>(guardedValue, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     firewallState = registerOutput<String>('firewallState');
     identity = registerOutput<EncryptionIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
@@ -447,10 +450,45 @@ class Account extends pulumi.CustomResource {
     newTier = registerOutput<String>('newTier');
     provisioningState = registerOutput<String>('provisioningState');
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     trustedIdProviderState = registerOutput<String>('trustedIdProviderState');
-    trustedIdProviders = registerOutput<List<Map<String, dynamic>>>('trustedIdProviders');
+    trustedIdProviders = registerOutput<List<TrustedIdProviderResponse>>('trustedIdProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustedIdProviderResponse>(guardedValue, (value) => TrustedIdProviderResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>('virtualNetworkRules');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure-native:datalakestore:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    currentTier = registerOutput<String>('currentTier');
+    defaultGroup = registerOutput<String>('defaultGroup');
+    encryptionConfig = registerOutput<EncryptionConfigResponse>('encryptionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionProvisioningState = registerOutput<String>('encryptionProvisioningState');
+    encryptionState = registerOutput<String>('encryptionState');
+    endpoint = registerOutput<String>('endpoint');
+    firewallAllowAzureIps = registerOutput<String>('firewallAllowAzureIps');
+    firewallRules = registerOutput<List<FirewallRuleResponse>>('firewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRuleResponse>(guardedValue, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    firewallState = registerOutput<String>('firewallState');
+    identity = registerOutput<EncryptionIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    newTier = registerOutput<String>('newTier');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trustedIdProviderState = registerOutput<String>('trustedIdProviderState');
+    trustedIdProviders = registerOutput<List<TrustedIdProviderResponse>>('trustedIdProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrustedIdProviderResponse>(guardedValue, (value) => TrustedIdProviderResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

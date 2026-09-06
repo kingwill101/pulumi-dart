@@ -11,7 +11,7 @@ class PrivateEndpointConnectionArgs {
   /// The name of the Redis Enterprise cluster. Name must be 1-60 characters long. Allowed characters(A-Z, a-z, 0-9) and hyphen(-). There can be no leading nor trailing nor consecutive hyphens
   final pulumi.Input<String> clusterName;
   /// The name of the private endpoint connection associated with the Azure resource
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

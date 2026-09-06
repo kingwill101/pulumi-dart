@@ -8,31 +8,31 @@ import 'system_data_response.dart';
 /// Result data returned by getTrafficControllerInterface.
 class GetTrafficControllerInterfaceResult {
   /// Associations References List
-  final List<ResourceIdResponse> associations;
+  final List<ResourceIdResponse>? associations;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Configuration Endpoints.
-  final List<String> configurationEndpoints;
+  final List<String>? configurationEndpoints;
   /// Frontends References List
-  final List<ResourceIdResponse> frontends;
+  final List<ResourceIdResponse>? frontends;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Security Policies References List
-  final List<ResourceIdResponse> securityPolicies;
+  final List<ResourceIdResponse>? securityPolicies;
   /// Security Policy Configuration
   final SecurityPolicyConfigurationsResponse? securityPolicyConfigurations;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTrafficControllerInterfaceResult].
   /// [associations] Associations References List
@@ -49,54 +49,54 @@ class GetTrafficControllerInterfaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetTrafficControllerInterfaceResult({
-    required this.associations,
-    required this.azureApiVersion,
-    required this.configurationEndpoints,
-    required this.frontends,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.securityPolicies,
+    this.associations,
+    this.azureApiVersion,
+    this.configurationEndpoints,
+    this.frontends,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.securityPolicies,
     this.securityPolicyConfigurations,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'associations': pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(associations, (value) => value.toMap()),
-      'azureApiVersion': azureApiVersion,
-      'configurationEndpoints': configurationEndpoints,
-      'frontends': pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(frontends, (value) => value.toMap()),
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'securityPolicies': pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(securityPolicies, (value) => value.toMap()),
+      'associations': ?(() { final guardedValue = associations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'azureApiVersion': ?azureApiVersion,
+      'configurationEndpoints': ?configurationEndpoints,
+      'frontends': ?(() { final guardedValue = frontends; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'securityPolicies': ?(() { final guardedValue = securityPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceIdResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'securityPolicyConfigurations': ?securityPolicyConfigurations?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetTrafficControllerInterfaceResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficControllerInterfaceResult(
-      associations: pulumi.Input.decodeList<ResourceIdResponse>(map['associations']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureApiVersion: map['azureApiVersion'] as String,
-      configurationEndpoints: (map['configurationEndpoints'] as List).cast<String>(),
-      frontends: pulumi.Input.decodeList<ResourceIdResponse>(map['frontends']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      securityPolicies: pulumi.Input.decodeList<ResourceIdResponse>(map['securityPolicies']!, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())),
+      associations: (() { final guardedValue = map['associations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationEndpoints: (() { final guardedValue = map['configurationEndpoints']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      frontends: (() { final guardedValue = map['frontends']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicies: (() { final guardedValue = map['securityPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       securityPolicyConfigurations: (() { final guardedValue = map['securityPolicyConfigurations']; if (guardedValue == null) return null; return SecurityPolicyConfigurationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AAD Profile specifies attributes for Azure Active Directory integration.
 class AadProfileResponse {
   /// The list of AAD group object IDs that will have admin role of the cluster.
-  final pulumi.Input<List<String>>? adminGroupObjectIDs;
+  final pulumi.Input<List<String>?>? adminGroupObjectIDs;
   /// Whether to enable Azure RBAC for Kubernetes authorization.
-  final pulumi.Input<bool>? enableAzureRBAC;
+  final pulumi.Input<bool?>? enableAzureRBAC;
   /// The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  final pulumi.Input<String>? tenantID;
+  final pulumi.Input<String?>? tenantID;
 
   /// Creates a new [AadProfileResponse].
   /// [adminGroupObjectIDs] The list of AAD group object IDs that will have admin role of the cluster.

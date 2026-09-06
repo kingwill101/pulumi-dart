@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ClusterState {
+enum ClusterState implements pulumi.PulumiEnum<String> {
   bOOTSTRAPPING("BOOTSTRAPPING"),
   rUNNING("RUNNING"),
   sTARTING("STARTING"),
@@ -9,6 +11,7 @@ enum ClusterState {
   wAITING("WAITING");
 
   const ClusterState(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterState fromValue(String value) {

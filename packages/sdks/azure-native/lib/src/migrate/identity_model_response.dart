@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity model.
 class IdentityModelResponse {
   /// Gets or sets the authority of the SPN with which MigrateAgent communicates to service.
-  final pulumi.Input<String>? aadAuthority;
+  final pulumi.Input<String?>? aadAuthority;
   /// Gets or sets the client/application Id of the SPN with which MigrateAgent communicates to
   /// service.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Gets or sets the audience of the SPN with which MigrateAgent communicates to service.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Gets or sets the object Id of the SPN with which MigrateAgent communicates to service.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Gets or sets the tenant Id of the SPN with which MigrateAgent communicates to service.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [IdentityModelResponse].
   /// [aadAuthority] Gets or sets the authority of the SPN with which MigrateAgent communicates to service.

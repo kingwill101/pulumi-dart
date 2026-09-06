@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'guest_oscustomization_response.dart';
 import 'resource_pool_response.dart';
+import 'virtual_disk_controller_response.dart';
+import 'virtual_disk_response.dart';
 import 'virtual_machine_args.dart';
+import 'virtual_nic_response.dart';
 
 /// Virtual machine model
 ///
@@ -315,11 +318,11 @@ class VirtualMachine extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of Virtual Disks' Controllers
-  late final pulumi.Output<List<Map<String, dynamic>>> controllers;
+  late final pulumi.Output<List<VirtualDiskControllerResponse>> controllers;
   /// Virtual machine properties
   late final pulumi.Output<GuestOSCustomizationResponse?> customization;
   /// The list of Virtual Disks
-  late final pulumi.Output<List<Map<String, dynamic>>?> disks;
+  late final pulumi.Output<List<VirtualDiskResponse>?> disks;
   /// The DNS name of Virtual Machine in VCenter
   late final pulumi.Output<String> dnsname;
   /// Expose Guest OS or not
@@ -335,7 +338,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// {virtualMachineName}
   late final pulumi.Output<String> name;
   /// The list of Virtual NICs
-  late final pulumi.Output<List<Map<String, dynamic>>?> nics;
+  late final pulumi.Output<List<VirtualNicResponse>?> nics;
   /// The number of CPU cores
   late final pulumi.Output<int> numberOfCores;
   /// Password for login. Deprecated - use customization property
@@ -381,9 +384,9 @@ class VirtualMachine extends pulumi.CustomResource {
         ) {
     amountOfRam = registerOutput<int>('amountOfRam');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    controllers = registerOutput<List<Map<String, dynamic>>>('controllers');
+    controllers = registerOutput<List<VirtualDiskControllerResponse>>('controllers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskControllerResponse>(guardedValue, (value) => VirtualDiskControllerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     customization = registerOutput<GuestOSCustomizationResponse?>('customization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestOSCustomizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    disks = registerOutput<List<Map<String, dynamic>>?>('disks');
+    disks = registerOutput<List<VirtualDiskResponse>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dnsname = registerOutput<String>('dnsname');
     exposeToGuestVM = registerOutput<bool?>('exposeToGuestVM');
     folder = registerOutput<String>('folder');
@@ -391,7 +394,7 @@ class VirtualMachine extends pulumi.CustomResource {
     guestOSType = registerOutput<String>('guestOSType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nics = registerOutput<List<Map<String, dynamic>>?>('nics');
+    nics = registerOutput<List<VirtualNicResponse>?>('nics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNicResponse>(guardedValue, (value) => VirtualNicResponse.fromMap((value as Map).cast<String, dynamic>())); });
     numberOfCores = registerOutput<int>('numberOfCores');
     password = registerOutput<String?>('password');
     privateCloudId = registerOutput<String>('privateCloudId');
@@ -399,11 +402,49 @@ class VirtualMachine extends pulumi.CustomResource {
     publicIP = registerOutput<String>('publicIP');
     resourcePool = registerOutput<ResourcePoolResponse?>('resourcePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateId = registerOutput<String?>('templateId');
     type = registerOutput<String>('type');
     username = registerOutput<String?>('username');
-    vSphereNetworks = registerOutput<List<String>?>('vSphereNetworks');
+    vSphereNetworks = registerOutput<List<String>?>('vSphereNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    vmId = registerOutput<String>('vmId');
+    vmwaretools = registerOutput<String>('vmwaretools');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure-native:vmwarecloudsimple:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    amountOfRam = registerOutput<int>('amountOfRam');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    controllers = registerOutput<List<VirtualDiskControllerResponse>>('controllers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskControllerResponse>(guardedValue, (value) => VirtualDiskControllerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    customization = registerOutput<GuestOSCustomizationResponse?>('customization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestOSCustomizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disks = registerOutput<List<VirtualDiskResponse>?>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dnsname = registerOutput<String>('dnsname');
+    exposeToGuestVM = registerOutput<bool?>('exposeToGuestVM');
+    folder = registerOutput<String>('folder');
+    guestOS = registerOutput<String>('guestOS');
+    guestOSType = registerOutput<String>('guestOSType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nics = registerOutput<List<VirtualNicResponse>?>('nics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNicResponse>(guardedValue, (value) => VirtualNicResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    numberOfCores = registerOutput<int>('numberOfCores');
+    password = registerOutput<String?>('password');
+    privateCloudId = registerOutput<String>('privateCloudId');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIP = registerOutput<String>('publicIP');
+    resourcePool = registerOutput<ResourcePoolResponse?>('resourcePool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourcePoolResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateId = registerOutput<String?>('templateId');
+    type = registerOutput<String>('type');
+    username = registerOutput<String?>('username');
+    vSphereNetworks = registerOutput<List<String>?>('vSphereNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     vmId = registerOutput<String>('vmId');
     vmwaretools = registerOutput<String>('vmwaretools');
   }

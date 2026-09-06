@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tracking courier information.
 class TrackingInfoResponse {
   /// Name of the carrier used in the delivery.
-  final pulumi.Input<String>? carrierName;
+  final pulumi.Input<String?>? carrierName;
   /// Serial number of the device being tracked.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Tracking ID of the shipment.
-  final pulumi.Input<String>? trackingId;
+  final pulumi.Input<String?>? trackingId;
   /// Tracking URL of the shipment.
-  final pulumi.Input<String>? trackingUrl;
+  final pulumi.Input<String?>? trackingUrl;
 
   /// Creates a new [TrackingInfoResponse].
   /// [carrierName] Name of the carrier used in the delivery.

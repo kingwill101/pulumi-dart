@@ -9,27 +9,27 @@ class GetAlertResult {
   /// Describes the properties of an alert.
   final AlertRulePropertiesResponse? alertRuleProperties;
   /// ID of the alert rule resource created.
-  final String alertRuleResourceId;
+  final String? alertRuleResourceId;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Defines the alert instance errors.
-  final ErrorDetailResponse errors;
+  final ErrorDetailResponse? errors;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Name of provider instances associated with the alert.
   final List<String>? providerNames;
   /// The provider type for alert. For example, the value can be SapHana.
   final String? providerType;
   /// State of provisioning of the alert instance
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Name of the alert template from which it was created.
   final String? templateName;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAlertResult].
   /// [alertRuleProperties] Describes the properties of an alert.
@@ -46,50 +46,50 @@ class GetAlertResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAlertResult({
     this.alertRuleProperties,
-    required this.alertRuleResourceId,
-    required this.azureApiVersion,
-    required this.errors,
-    required this.id,
-    required this.name,
+    this.alertRuleResourceId,
+    this.azureApiVersion,
+    this.errors,
+    this.id,
+    this.name,
     this.providerNames,
     this.providerType,
-    required this.provisioningState,
-    required this.systemData,
+    this.provisioningState,
+    this.systemData,
     this.templateName,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alertRuleProperties': ?alertRuleProperties?.toMap(),
-      'alertRuleResourceId': alertRuleResourceId,
-      'azureApiVersion': azureApiVersion,
-      'errors': errors.toMap(),
-      'id': id,
-      'name': name,
+      'alertRuleResourceId': ?alertRuleResourceId,
+      'azureApiVersion': ?azureApiVersion,
+      'errors': ?errors?.toMap(),
+      'id': ?id,
+      'name': ?name,
       'providerNames': ?providerNames,
       'providerType': ?providerType,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'templateName': ?templateName,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAlertResult.fromMap(Map<String, dynamic> map) {
     return GetAlertResult(
       alertRuleProperties: (() { final guardedValue = map['alertRuleProperties']; if (guardedValue == null) return null; return AlertRulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      alertRuleResourceId: map['alertRuleResourceId'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      errors: ErrorDetailResponse.fromMap((map['errors']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      alertRuleResourceId: (() { final guardedValue = map['alertRuleResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       providerNames: (() { final guardedValue = map['providerNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       providerType: (() { final guardedValue = map['providerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

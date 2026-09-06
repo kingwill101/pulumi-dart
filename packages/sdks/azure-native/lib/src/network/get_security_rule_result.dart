@@ -6,9 +6,9 @@ import 'application_security_group_response.dart';
 /// Result data returned by getSecurityRule.
 class GetSecurityRuleResult {
   /// The network traffic is allowed or denied.
-  final String access;
+  final String? access;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A description for this rule. Restricted to 140 chars.
   final String? description;
   /// The destination address prefix. CIDR or destination IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used.
@@ -22,19 +22,19 @@ class GetSecurityRuleResult {
   /// The destination port ranges.
   final List<String>? destinationPortRanges;
   /// The direction of the rule. The direction specifies if rule will be evaluated on incoming or outgoing traffic.
-  final String direction;
+  final String? direction;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
   /// The priority of the rule. The value can be between 100 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
-  final int priority;
+  final int? priority;
   /// Network protocol this rule applies to.
-  final String protocol;
+  final String? protocol;
   /// The provisioning state of the security rule resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The CIDR or source IP range. Asterisk '*' can also be used to match all source IPs. Default tags such as 'VirtualNetwork', 'AzureLoadBalancer' and 'Internet' can also be used. If this is an ingress rule, specifies where network traffic originates from.
   final String? sourceAddressPrefix;
   /// The CIDR or source IP ranges.
@@ -71,21 +71,21 @@ class GetSecurityRuleResult {
   /// [sourcePortRanges] The source port ranges.
   /// [type] The type of the resource.
   const GetSecurityRuleResult({
-    required this.access,
-    required this.azureApiVersion,
+    this.access,
+    this.azureApiVersion,
     this.description,
     this.destinationAddressPrefix,
     this.destinationAddressPrefixes,
     this.destinationApplicationSecurityGroups,
     this.destinationPortRange,
     this.destinationPortRanges,
-    required this.direction,
-    required this.etag,
+    this.direction,
+    this.etag,
     this.id,
     this.name,
-    required this.priority,
-    required this.protocol,
-    required this.provisioningState,
+    this.priority,
+    this.protocol,
+    this.provisioningState,
     this.sourceAddressPrefix,
     this.sourceAddressPrefixes,
     this.sourceApplicationSecurityGroups,
@@ -96,21 +96,21 @@ class GetSecurityRuleResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'access': access,
-      'azureApiVersion': azureApiVersion,
+      'access': ?access,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'destinationAddressPrefix': ?destinationAddressPrefix,
       'destinationAddressPrefixes': ?destinationAddressPrefixes,
       'destinationApplicationSecurityGroups': ?(() { final guardedValue = destinationApplicationSecurityGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'destinationPortRange': ?destinationPortRange,
       'destinationPortRanges': ?destinationPortRanges,
-      'direction': direction,
-      'etag': etag,
+      'direction': ?direction,
+      'etag': ?etag,
       'id': ?id,
       'name': ?name,
-      'priority': priority,
-      'protocol': protocol,
-      'provisioningState': provisioningState,
+      'priority': ?priority,
+      'protocol': ?protocol,
+      'provisioningState': ?provisioningState,
       'sourceAddressPrefix': ?sourceAddressPrefix,
       'sourceAddressPrefixes': ?sourceAddressPrefixes,
       'sourceApplicationSecurityGroups': ?(() { final guardedValue = sourceApplicationSecurityGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationSecurityGroupResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -122,21 +122,21 @@ class GetSecurityRuleResult {
 
   factory GetSecurityRuleResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityRuleResult(
-      access: map['access'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      access: (() { final guardedValue = map['access']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destinationAddressPrefix: (() { final guardedValue = map['destinationAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destinationAddressPrefixes: (() { final guardedValue = map['destinationAddressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       destinationApplicationSecurityGroups: (() { final guardedValue = map['destinationApplicationSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       destinationPortRange: (() { final guardedValue = map['destinationPortRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      direction: map['direction'] as String,
-      etag: map['etag'] as String,
+      direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: map['priority'] as int,
-      protocol: map['protocol'] as String,
-      provisioningState: map['provisioningState'] as String,
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceAddressPrefix: (() { final guardedValue = map['sourceAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceAddressPrefixes: (() { final guardedValue = map['sourceAddressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       sourceApplicationSecurityGroups: (() { final guardedValue = map['sourceApplicationSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationSecurityGroupResponse>(guardedValue, (value) => ApplicationSecurityGroupResponse.fromMap((value as Map).cast<String, dynamic>())); })(),

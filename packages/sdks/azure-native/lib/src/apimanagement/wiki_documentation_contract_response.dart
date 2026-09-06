@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Wiki documentation details.
 class WikiDocumentationContractResponse {
   /// Documentation Identifier
-  final pulumi.Input<String>? documentationId;
+  final pulumi.Input<String?>? documentationId;
 
   /// Creates a new [WikiDocumentationContractResponse].
   /// [documentationId] Documentation Identifier

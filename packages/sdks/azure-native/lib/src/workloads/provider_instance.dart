@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'db2_provider_instance_properties_response.dart';
 import 'error_detail_response.dart';
 import 'health_response.dart';
 import 'provider_instance_args.dart';
@@ -2921,7 +2920,7 @@ class ProviderInstance extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Defines the provider specific properties.
-  late final pulumi.Output<Db2ProviderInstancePropertiesResponse?> providerSettings;
+  late final pulumi.Output<dynamic> providerSettings;
   /// State of provisioning of the provider instance
   late final pulumi.Output<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2947,7 +2946,26 @@ class ProviderInstance extends pulumi.CustomResource {
     errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     health = registerOutput<HealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    providerSettings = registerOutput<Db2ProviderInstancePropertiesResponse?>('providerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Db2ProviderInstancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    providerSettings = registerOutput<dynamic>('providerSettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProviderInstance] resource.
+  ProviderInstance.reference(String urn)
+    : super(
+        'azure-native:workloads:ProviderInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    health = registerOutput<HealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    providerSettings = registerOutput<dynamic>('providerSettings');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

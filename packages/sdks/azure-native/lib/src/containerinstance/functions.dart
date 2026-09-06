@@ -28,6 +28,17 @@ Future<GetCGProfileResult> getCGProfile(
   return GetCGProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetCGProfileResult> getCGProfileOutput(
+  GetCGProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerinstance:getCGProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCGProfileResult.fromMap);
+}
+
 /// Gets the properties of the specified container group in the specified subscription and resource group. The operation returns the properties of each container group including containers, image registry credentials, restart policy, IP address type, OS type, state, and volumes.
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -48,6 +59,17 @@ Future<GetContainerGroupResult> getContainerGroup(
   return GetContainerGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerGroupResult> getContainerGroupOutput(
+  GetContainerGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerinstance:getContainerGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerGroupResult.fromMap);
+}
+
 /// Gets the properties of the specified container group profile in the specified subscription and resource group. The operation returns the properties of container group profile including containers, image registry credentials, restart policy, IP address type, OS type, volumes, current revision number, etc.
 ///
 /// Uses Azure REST API version 2024-05-01-preview.
@@ -64,6 +86,17 @@ Future<GetContainerGroupProfileResult> getContainerGroupProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerGroupProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerGroupProfileResult> getContainerGroupProfileOutput(
+  GetContainerGroupProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerinstance:getContainerGroupProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerGroupProfileResult.fromMap);
 }
 
 /// Get the properties of the specified NGroups resource.
@@ -84,4 +117,15 @@ Future<GetNGroupResult> getNGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNGroupResult> getNGroupOutput(
+  GetNGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerinstance:getNGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNGroupResult.fromMap);
 }

@@ -211,4 +211,21 @@ class GraphQLApiResolver extends pulumi.CustomResource {
     path = registerOutput<String?>('path');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [GraphQLApiResolver] resource.
+  GraphQLApiResolver.reference(String urn)
+    : super(
+        'azure-native:apimanagement:GraphQLApiResolver',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String?>('path');
+    type = registerOutput<String>('type');
+  }
 }

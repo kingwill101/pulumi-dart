@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asymmetric_encrypted_secret_response.dart';
+import 'share_access_right_response.dart';
 import 'system_data_response.dart';
 import 'user_args.dart';
 
@@ -201,7 +202,7 @@ class User extends pulumi.CustomResource {
   /// The object name.
   late final pulumi.Output<String> name;
   /// List of shares that the user has rights on. This field should not be specified during user creation.
-  late final pulumi.Output<List<Map<String, dynamic>>> shareAccessRights;
+  late final pulumi.Output<List<ShareAccessRightResponse>> shareAccessRights;
   /// Metadata pertaining to creation and last modification of User
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The hierarchical type of the object.
@@ -226,7 +227,25 @@ class User extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>('encryptedPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    shareAccessRights = registerOutput<List<Map<String, dynamic>>>('shareAccessRights');
+    shareAccessRights = registerOutput<List<ShareAccessRightResponse>>('shareAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareAccessRightResponse>(guardedValue, (value) => ShareAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userType = registerOutput<String>('userType');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'azure-native:databoxedge:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    encryptedPassword = registerOutput<AsymmetricEncryptedSecretResponse?>('encryptedPassword', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    shareAccessRights = registerOutput<List<ShareAccessRightResponse>>('shareAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareAccessRightResponse>(guardedValue, (value) => ShareAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     userType = registerOutput<String>('userType');

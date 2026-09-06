@@ -12,7 +12,7 @@ class ServerGroupFirewallRuleArgs {
   /// The end IP address of the cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> endIpAddress;
   /// The name of the cluster firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The start IP address of the cluster firewall rule. Must be IPv4 format.

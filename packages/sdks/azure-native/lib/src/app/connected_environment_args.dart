@@ -10,21 +10,21 @@ import 'extended_location.dart';
 /// {@macro pulumi_app_connected_environment_args_doc}
 class ConnectedEnvironmentArgs {
   /// Name of the connectedEnvironment.
-  final pulumi.Input<String>? connectedEnvironmentName;
+  final pulumi.Input<String?>? connectedEnvironmentName;
   /// Custom domain configuration for the environment
-  final pulumi.Input<CustomDomainConfiguration>? customDomainConfiguration;
+  final pulumi.Input<CustomDomainConfiguration?>? customDomainConfiguration;
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry
-  final pulumi.Input<String>? daprAIConnectionString;
+  final pulumi.Input<String?>? daprAIConnectionString;
   /// The complex type of the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Static IP of the connectedEnvironment
-  final pulumi.Input<String>? staticIp;
+  final pulumi.Input<String?>? staticIp;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectedEnvironmentArgs].
   /// [connectedEnvironmentName] Name of the connectedEnvironment.

@@ -7,11 +7,11 @@ import 'key_vault_properties_response.dart';
 /// The encryption settings for automation account
 class EncryptionPropertiesResponse {
   /// User identity used for CMK.
-  final pulumi.Input<EncryptionPropertiesIdentityResponse>? identity;
+  final pulumi.Input<EncryptionPropertiesIdentityResponse?>? identity;
   /// Encryption Key Source
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Key vault properties.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [EncryptionPropertiesResponse].
   /// [identity] User identity used for CMK.

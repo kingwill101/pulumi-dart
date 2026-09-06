@@ -12,19 +12,19 @@ class InstanceArgs {
   /// Account name.
   final pulumi.Input<String> accountName;
   /// Customer-initiated diagnostic log collection storage properties
-  final pulumi.Input<DiagnosticStorageProperties>? diagnosticStorageProperties;
+  final pulumi.Input<DiagnosticStorageProperties?>? diagnosticStorageProperties;
   /// Enables or Disables the diagnostic logs collection
-  final pulumi.Input<bool>? enableDiagnostics;
+  final pulumi.Input<bool?>? enableDiagnostics;
   /// Instance name.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// List of IoT Hubs associated with the account.
-  final pulumi.Input<List<IotHubSettings>>? iotHubs;
+  final pulumi.Input<List<IotHubSettings>?>? iotHubs;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceArgs].
   /// [accountName] Account name.

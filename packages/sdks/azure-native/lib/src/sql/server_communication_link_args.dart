@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_server_communication_link_args_doc}
 class ServerCommunicationLinkArgs {
   /// The name of the server communication link.
-  final pulumi.Input<String>? communicationLinkName;
+  final pulumi.Input<String?>? communicationLinkName;
   /// The name of the partner server.
   final pulumi.Input<String> partnerServer;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

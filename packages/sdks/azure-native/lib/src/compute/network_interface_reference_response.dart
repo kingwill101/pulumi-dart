@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a network interface reference.
 class NetworkInterfaceReferenceResponse {
   /// Specify what happens to the network interface when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<String?>? deleteOption;
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [NetworkInterfaceReferenceResponse].
   /// [deleteOption] Specify what happens to the network interface when the VM is deleted

@@ -48,11 +48,11 @@ class SigningKeyResponse {
   factory SigningKeyResponse.fromMap(Map<String, dynamic> map) {
     return SigningKeyResponse(
       delegationSignerInfo: pulumi.Input.fromValue(pulumi.Input.decodeList<DelegationSignerInfoResponse>(map['delegationSignerInfo']!, (value) => DelegationSignerInfoResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      flags: pulumi.Input.fromValue(map['flags'] as int),
-      keyTag: pulumi.Input.fromValue(map['keyTag'] as int),
-      protocol: pulumi.Input.fromValue(map['protocol'] as int),
+      flags: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['flags'])),
+      keyTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['keyTag'])),
+      protocol: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['protocol'])),
       publicKey: pulumi.Input.fromValue(map['publicKey'] as String),
-      securityAlgorithmType: pulumi.Input.fromValue(map['securityAlgorithmType'] as int),
+      securityAlgorithmType: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['securityAlgorithmType'])),
     );
   }
 }

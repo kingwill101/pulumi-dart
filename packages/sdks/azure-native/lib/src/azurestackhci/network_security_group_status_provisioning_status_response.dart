@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// network security group provisioning status
 class NetworkSecurityGroupStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the network security group
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the network security group [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

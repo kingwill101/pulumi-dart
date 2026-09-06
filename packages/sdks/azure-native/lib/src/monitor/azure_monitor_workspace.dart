@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_monitor_workspace_args.dart';
 import 'azure_monitor_workspace_response_default_ingestion_settings.dart';
 import 'azure_monitor_workspace_response_metrics.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// An Azure Monitor Workspace definition
@@ -167,7 +168,7 @@ class AzureMonitorWorkspace extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of private endpoint connections
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The provisioning state of the Azure Monitor Workspace. Set to Succeeded if everything is healthy.
   late final pulumi.Output<String> provisioningState;
   /// Gets or sets allow or disallow public network access to Azure Monitor Workspace
@@ -200,11 +201,35 @@ class AzureMonitorWorkspace extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorWorkspaceResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AzureMonitorWorkspace] resource.
+  AzureMonitorWorkspace.reference(String urn)
+    : super(
+        'azure-native:monitor:AzureMonitorWorkspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultIngestionSettings = registerOutput<AzureMonitorWorkspaceResponseDefaultIngestionSettings>('defaultIngestionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorWorkspaceResponseDefaultIngestionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    metrics = registerOutput<AzureMonitorWorkspaceResponseMetrics>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorWorkspaceResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

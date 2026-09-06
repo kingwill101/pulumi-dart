@@ -9,17 +9,17 @@ import 'waf_policy.dart';
 /// {@macro pulumi_servicenetworking_security_policies_interface_args_doc}
 class SecurityPoliciesInterfaceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SecurityPolicy
-  final pulumi.Input<String>? securityPolicyName;
+  final pulumi.Input<String?>? securityPolicyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
   /// Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
-  final pulumi.Input<WafPolicy>? wafPolicy;
+  final pulumi.Input<WafPolicy?>? wafPolicy;
 
   /// Creates a new [SecurityPoliciesInterfaceArgs].
   /// [location] The geo-location where the resource lives

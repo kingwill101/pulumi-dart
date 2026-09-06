@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// network controller config for SDN Integration to deploy AzureStackHCI Cluster.
 class NetworkControllerResponse {
   /// macAddressPoolStart of network controller used for SDN Integration.
-  final pulumi.Input<String>? macAddressPoolStart;
+  final pulumi.Input<String?>? macAddressPoolStart;
   /// macAddressPoolStop of network controller used for SDN Integration.
-  final pulumi.Input<String>? macAddressPoolStop;
+  final pulumi.Input<String?>? macAddressPoolStop;
   /// NetworkVirtualizationEnabled of network controller used for SDN Integration.
-  final pulumi.Input<bool>? networkVirtualizationEnabled;
+  final pulumi.Input<bool?>? networkVirtualizationEnabled;
 
   /// Creates a new [NetworkControllerResponse].
   /// [macAddressPoolStart] macAddressPoolStart of network controller used for SDN Integration.

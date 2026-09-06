@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class RetentionDuration {
   /// Count of duration types. Retention duration is obtained by the counting the duration type Count times.
   /// For example, when Count = 3 and DurationType = Weeks, retention duration will be three weeks.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Retention duration type of retention policy.
-  final pulumi.Input<String>? durationType;
+  final pulumi.Input<dynamic>? durationType;
 
   /// Creates a new [RetentionDuration].
   /// [count] Count of duration types. Retention duration is obtained by the counting the duration type Count times.
@@ -27,8 +27,8 @@ class RetentionDuration {
 
   factory RetentionDuration.fromMap(Map<String, dynamic> map) {
     return RetentionDuration(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      durationType: (() { final guardedValue = map['durationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

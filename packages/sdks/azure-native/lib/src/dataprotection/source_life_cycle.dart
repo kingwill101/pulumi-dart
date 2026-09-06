@@ -11,7 +11,7 @@ class SourceLifeCycle {
   final pulumi.Input<AbsoluteDeleteOption> deleteAfter;
   /// DataStoreInfo base
   final pulumi.Input<DataStoreInfoBase> sourceDataStore;
-  final pulumi.Input<List<TargetCopySetting>>? targetDataStoreCopySettings;
+  final pulumi.Input<List<TargetCopySetting>?>? targetDataStoreCopySettings;
 
   /// Creates a new [SourceLifeCycle].
   /// [deleteAfter] Delete Option

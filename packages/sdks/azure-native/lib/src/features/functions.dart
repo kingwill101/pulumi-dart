@@ -19,3 +19,14 @@ Future<GetSubscriptionFeatureRegistrationResult> getSubscriptionFeatureRegistrat
   );
   return GetSubscriptionFeatureRegistrationResult.fromMap(result);
 }
+
+pulumi.Output<GetSubscriptionFeatureRegistrationResult> getSubscriptionFeatureRegistrationOutput(
+  GetSubscriptionFeatureRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:features:getSubscriptionFeatureRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionFeatureRegistrationResult.fromMap);
+}

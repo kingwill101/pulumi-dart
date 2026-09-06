@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The endpoint type.
-enum EndpointType {
+enum EndpointType implements pulumi.PulumiEnum<String> {
   valueAzureVM("AzureVM"),
   valueAzureVNet("AzureVNet"),
   valueAzureSubnet("AzureSubnet"),
@@ -11,6 +13,7 @@ enum EndpointType {
   valueAzureArcNetwork("AzureArcNetwork");
 
   const EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointType fromValue(String value) {

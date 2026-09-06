@@ -12,15 +12,15 @@ class DeploymentArgs {
   /// The name of the App resource.
   final pulumi.Input<String> appName;
   /// The name of the Deployment resource.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// Properties of the Deployment resource
-  final pulumi.Input<DeploymentResourceProperties>? properties;
+  final pulumi.Input<DeploymentResourceProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// Sku of the Deployment resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
 
   /// Creates a new [DeploymentArgs].
   /// [appName] The name of the App resource.

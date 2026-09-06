@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CFNKubernetesAuditLogsConfiguration
 class CFNKubernetesAuditLogsConfigurationResponse {
   /// Property enable
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
 
   /// Creates a new [CFNKubernetesAuditLogsConfigurationResponse].
   /// [enable] Property enable

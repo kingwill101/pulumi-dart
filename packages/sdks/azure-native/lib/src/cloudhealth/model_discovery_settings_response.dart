@@ -7,7 +7,7 @@ class ModelDiscoverySettingsResponse {
   /// Whether to add all recommended signals to the discovered entities.
   final pulumi.Input<String> addRecommendedSignals;
   /// Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
   final pulumi.Input<String> scope;
 

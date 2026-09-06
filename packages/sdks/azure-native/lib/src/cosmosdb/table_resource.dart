@@ -6,11 +6,11 @@ import 'resource_restore_parameters.dart';
 /// Cosmos DB table resource object
 class TableResource {
   /// Enum to indicate the mode of resource creation.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// Name of the Cosmos DB table
   final pulumi.Input<String> id;
   /// Parameters to indicate the information about the restore
-  final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
+  final pulumi.Input<ResourceRestoreParameters?>? restoreParameters;
 
   /// Creates a new [TableResource].
   /// [createMode] Enum to indicate the mode of resource creation.
@@ -32,7 +32,7 @@ class TableResource {
 
   factory TableResource.fromMap(Map<String, dynamic> map) {
     return TableResource(
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceRestoreParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

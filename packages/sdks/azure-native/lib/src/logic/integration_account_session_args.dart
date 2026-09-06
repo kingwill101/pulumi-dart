@@ -12,13 +12,13 @@ class IntegrationAccountSessionArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The integration account session name.
-  final pulumi.Input<String>? sessionName;
+  final pulumi.Input<String?>? sessionName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationAccountSessionArgs].
   /// [content] The session content.

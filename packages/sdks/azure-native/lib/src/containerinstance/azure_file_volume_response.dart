@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the Azure File volume. Azure File shares are mounted as volumes.
 class AzureFileVolumeResponse {
   /// The flag indicating whether the Azure File shared mounted as a volume is read-only.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// The name of the Azure File share to be mounted as a volume.
   final pulumi.Input<String> shareName;
   /// The storage account access key used to access the Azure File share.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The reference to the storage account access key used to access the Azure File share.
-  final pulumi.Input<String>? storageAccountKeyReference;
+  final pulumi.Input<String?>? storageAccountKeyReference;
   /// The name of the storage account that contains the Azure File share.
   final pulumi.Input<String> storageAccountName;
 

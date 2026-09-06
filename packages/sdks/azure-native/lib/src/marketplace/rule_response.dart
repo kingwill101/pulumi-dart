@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class RuleResponse {
   /// Rule type
-  final pulumi.Input<String>? type;
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [RuleResponse].
   /// [type] Rule type

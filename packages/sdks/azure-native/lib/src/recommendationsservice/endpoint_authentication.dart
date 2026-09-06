@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service endpoints authentication details.
 class EndpointAuthentication {
   /// AAD tenant ID.
-  final pulumi.Input<String>? aadTenantID;
+  final pulumi.Input<String?>? aadTenantID;
   /// AAD principal ID.
-  final pulumi.Input<String>? principalID;
+  final pulumi.Input<String?>? principalID;
   /// AAD principal type.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<dynamic>? principalType;
 
   /// Creates a new [EndpointAuthentication].
   /// [aadTenantID] AAD tenant ID.
@@ -33,7 +33,7 @@ class EndpointAuthentication {
     return EndpointAuthentication(
       aadTenantID: (() { final guardedValue = map['aadTenantID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalID: (() { final guardedValue = map['principalID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

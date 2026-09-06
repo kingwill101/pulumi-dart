@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PointInTimeRecoveryStatusEnumValue
 class PointInTimeRecoveryStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [PointInTimeRecoveryStatusEnumValueResponse].
   /// [value] Property value

@@ -6,13 +6,13 @@ import 'user_assigned_identity_response.dart';
 /// Managed identity generic object.
 class ManagedServiceIdentityResponse {
   /// Azure Active Directory principal ID associated with this Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// ID of the Azure Active Directory.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of the managed identity.
   final pulumi.Input<String> type;
   /// The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedServiceIdentityResponse].
   /// [principalId] Azure Active Directory principal ID associated with this Identity.

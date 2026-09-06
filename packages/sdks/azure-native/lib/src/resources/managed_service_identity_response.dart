@@ -8,9 +8,9 @@ class ManagedServiceIdentityResponse {
   /// The tenant id of the managed identity.
   final pulumi.Input<String> tenantId;
   /// Type of the managed identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user-assigned managed identities associated with the resource. Key is the Azure resource Id of the managed identity.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedServiceIdentityResponse].
   /// [tenantId] The tenant id of the managed identity.

@@ -6,9 +6,9 @@ import 'ip_address_response.dart';
 /// The flow endpoints configuration.
 class FlowEndpointsResponse {
   /// The access endpoint ip address.
-  final pulumi.Input<List<IpAddressResponse>>? accessEndpointIpAddresses;
+  final pulumi.Input<List<IpAddressResponse>?>? accessEndpointIpAddresses;
   /// The outgoing ip address.
-  final pulumi.Input<List<IpAddressResponse>>? outgoingIpAddresses;
+  final pulumi.Input<List<IpAddressResponse>?>? outgoingIpAddresses;
 
   /// Creates a new [FlowEndpointsResponse].
   /// [accessEndpointIpAddresses] The access endpoint ip address.

@@ -9,8 +9,8 @@ import 'authorized_application_properties.dart';
 /// {@macro pulumi_providerhub_authorized_application_args_doc}
 class AuthorizedApplicationArgs {
   /// The application ID.
-  final pulumi.Input<String>? applicationId;
-  final pulumi.Input<AuthorizedApplicationProperties>? properties;
+  final pulumi.Input<String?>? applicationId;
+  final pulumi.Input<AuthorizedApplicationProperties?>? properties;
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
 

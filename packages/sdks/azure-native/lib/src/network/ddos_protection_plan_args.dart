@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_ddos_protection_plan_args_doc}
 class DdosProtectionPlanArgs {
   /// The name of the DDoS protection plan.
-  final pulumi.Input<String>? ddosProtectionPlanName;
+  final pulumi.Input<String?>? ddosProtectionPlanName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DdosProtectionPlanArgs].
   /// [ddosProtectionPlanName] The name of the DDoS protection plan.

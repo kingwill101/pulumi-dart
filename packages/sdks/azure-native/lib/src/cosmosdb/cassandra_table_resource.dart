@@ -6,13 +6,13 @@ import 'cassandra_schema.dart';
 /// Cosmos DB Cassandra table id object
 class CassandraTableResource {
   /// Analytical TTL.
-  final pulumi.Input<int>? analyticalStorageTtl;
+  final pulumi.Input<int?>? analyticalStorageTtl;
   /// Time to live of the Cosmos DB Cassandra table
-  final pulumi.Input<int>? defaultTtl;
+  final pulumi.Input<int?>? defaultTtl;
   /// Name of the Cosmos DB Cassandra table
   final pulumi.Input<String> id;
   /// Schema of the Cosmos DB Cassandra table
-  final pulumi.Input<CassandraSchema>? schema;
+  final pulumi.Input<CassandraSchema?>? schema;
 
   /// Creates a new [CassandraTableResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -37,8 +37,8 @@ class CassandraTableResource {
 
   factory CassandraTableResource.fromMap(Map<String, dynamic> map) {
     return CassandraTableResource(
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CassandraSchema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

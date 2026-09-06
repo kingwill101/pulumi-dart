@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the schedule. Whether active or not. If inactive, the report's scheduled execution is paused.
-enum StatusType {
+enum StatusType implements pulumi.PulumiEnum<String> {
   valueActive("Active"),
   valueInactive("Inactive");
 
   const StatusType(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusType fromValue(String value) {

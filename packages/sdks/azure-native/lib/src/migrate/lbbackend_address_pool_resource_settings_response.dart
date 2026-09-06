@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines load balancer backend address pool properties.
 class LBBackendAddressPoolResourceSettingsResponse {
   /// Gets or sets the backend address pool name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [LBBackendAddressPoolResourceSettingsResponse].
   /// [name] Gets or sets the backend address pool name.

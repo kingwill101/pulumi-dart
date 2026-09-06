@@ -5,13 +5,13 @@ import 'accelerator_git_repository_response.dart';
 
 /// Customized accelerator properties payload
 class CustomizedAcceleratorPropertiesResponse {
-  final pulumi.Input<List<String>>? acceleratorTags;
+  final pulumi.Input<List<String>?>? acceleratorTags;
   /// Type of the customized accelerator.
-  final pulumi.Input<String>? acceleratorType;
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? acceleratorType;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? displayName;
   final pulumi.Input<AcceleratorGitRepositoryResponse> gitRepository;
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// Imports references all imports that this accelerator/fragment depends upon.
   final pulumi.Input<List<String>> imports;
   /// State of the customized accelerator.

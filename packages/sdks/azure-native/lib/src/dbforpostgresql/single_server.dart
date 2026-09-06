@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_identity_response.dart';
+import 'server_private_endpoint_connection_response.dart';
 import 'single_server_args.dart';
 import 'single_server_sku_response.dart';
 import 'storage_profile_response.dart';
@@ -967,7 +968,7 @@ class SingleServer extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of private endpoint connections on a server
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<ServerPrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   late final pulumi.Output<String?> publicNetworkAccess;
   /// The maximum number of replicas that a master server can have.
@@ -1014,14 +1015,47 @@ class SingleServer extends pulumi.CustomResource {
     masterServerId = registerOutput<String?>('masterServerId');
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     replicaCapacity = registerOutput<int?>('replicaCapacity');
     replicationRole = registerOutput<String?>('replicationRole');
     sku = registerOutput<SingleServerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sslEnforcement = registerOutput<String?>('sslEnforcement');
     storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    userVisibleState = registerOutput<String?>('userVisibleState');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [SingleServer] resource.
+  SingleServer.reference(String urn)
+    : super(
+        'azure-native:dbforpostgresql:SingleServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    byokEnforcement = registerOutput<String>('byokEnforcement');
+    earliestRestoreDate = registerOutput<String?>('earliestRestoreDate');
+    fullyQualifiedDomainName = registerOutput<String?>('fullyQualifiedDomainName');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureEncryption = registerOutput<String?>('infrastructureEncryption');
+    location = registerOutput<String>('location');
+    masterServerId = registerOutput<String?>('masterServerId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<ServerPrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    replicaCapacity = registerOutput<int?>('replicaCapacity');
+    replicationRole = registerOutput<String?>('replicationRole');
+    sku = registerOutput<SingleServerSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslEnforcement = registerOutput<String?>('sslEnforcement');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     userVisibleState = registerOutput<String?>('userVisibleState');
     version = registerOutput<String?>('version');

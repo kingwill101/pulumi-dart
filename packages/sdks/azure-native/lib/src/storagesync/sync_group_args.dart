@@ -12,7 +12,7 @@ class SyncGroupArgs {
   /// Name of Storage Sync Service resource.
   final pulumi.Input<String> storageSyncServiceName;
   /// Name of Sync Group resource.
-  final pulumi.Input<String>? syncGroupName;
+  final pulumi.Input<String?>? syncGroupName;
 
   /// Creates a new [SyncGroupArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol type.
-enum FirewallPolicyRuleConditionApplicationProtocolType {
+enum FirewallPolicyRuleConditionApplicationProtocolType implements pulumi.PulumiEnum<String> {
   valueHttp("Http"),
   valueHttps("Https");
 
   const FirewallPolicyRuleConditionApplicationProtocolType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyRuleConditionApplicationProtocolType fromValue(String value) {

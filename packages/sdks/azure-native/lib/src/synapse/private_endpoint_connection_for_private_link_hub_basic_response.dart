@@ -9,9 +9,9 @@ class PrivateEndpointConnectionForPrivateLinkHubBasicResponse {
   /// identifier
   final pulumi.Input<String> id;
   /// The private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// Connection state of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Provisioning state of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
 

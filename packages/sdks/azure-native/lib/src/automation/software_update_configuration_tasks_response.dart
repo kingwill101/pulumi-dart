@@ -6,9 +6,9 @@ import 'task_properties_response.dart';
 /// Task properties of the software update configuration.
 class SoftwareUpdateConfigurationTasksResponse {
   /// Post task properties.
-  final pulumi.Input<TaskPropertiesResponse>? postTask;
+  final pulumi.Input<TaskPropertiesResponse?>? postTask;
   /// Pre task properties.
-  final pulumi.Input<TaskPropertiesResponse>? preTask;
+  final pulumi.Input<TaskPropertiesResponse?>? preTask;
 
   /// Creates a new [SoftwareUpdateConfigurationTasksResponse].
   /// [postTask] Post task properties.

@@ -32,6 +32,17 @@ Future<GetApplicationResult> getApplication(
   return GetApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
+}
+
 /// Gets the information about the gateway resource with the given name. The information include the description and other properties of the gateway.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -48,6 +59,17 @@ Future<GetGatewayResult> getGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
 }
 
 /// Gets the information about the network resource with the given name. The information include the description and other properties of the network.
@@ -68,6 +90,17 @@ Future<GetNetworkResult> getNetwork(
   return GetNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
+}
+
 /// Gets the information about the secret resource with the given name. The information include the description and other properties of the secret.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -84,6 +117,17 @@ Future<GetSecretResult> getSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
 }
 
 /// Get the information about the specified named secret value resources. The information does not include the actual value of the secret.
@@ -104,6 +148,17 @@ Future<GetSecretValueResult> getSecretValue(
   return GetSecretValueResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretValueResult> getSecretValueOutput(
+  GetSecretValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getSecretValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretValueResult.fromMap);
+}
+
 /// Gets the information about the volume resource with the given name. The information include the description and other properties of the volume.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -122,6 +177,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Lists the decrypted value of the specified named value of the secret resource. This is a privileged operation.
 ///
 /// Uses Azure REST API version 2018-09-01-preview.
@@ -138,4 +204,15 @@ Future<ListSecretValueResult> listSecretValue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSecretValueResult.fromMap(result);
+}
+
+pulumi.Output<ListSecretValueResult> listSecretValueOutput(
+  ListSecretValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabricmesh:listSecretValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSecretValueResult.fromMap);
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// CrossRegionRestore state
-enum CrossRegionRestoreState {
+enum CrossRegionRestoreState implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const CrossRegionRestoreState(this.wireValue);
+  @override
   final String wireValue;
 
   static CrossRegionRestoreState fromValue(String value) {

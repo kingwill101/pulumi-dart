@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_get_policy_args_doc}
 class GetPolicyArgs {
   /// Policy Export Format.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// The identifier of the Policy.
   final pulumi.Input<String> policyId;
   /// The name of the resource group. The name is case insensitive.

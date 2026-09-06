@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ReadEndpoint
 class ReadEndpointResponse {
   /// The reader endpoint for the DB cluster.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
 
   /// Creates a new [ReadEndpointResponse].
   /// [address] The reader endpoint for the DB cluster.

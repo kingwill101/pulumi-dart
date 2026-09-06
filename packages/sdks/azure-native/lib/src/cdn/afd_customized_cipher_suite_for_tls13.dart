@@ -1,8 +1,11 @@
-enum AfdCustomizedCipherSuiteForTls13 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AfdCustomizedCipherSuiteForTls13 implements pulumi.PulumiEnum<String> {
   tLSAES128GCMSHA256("TLS_AES_128_GCM_SHA256"),
   tLSAES256GCMSHA384("TLS_AES_256_GCM_SHA384");
 
   const AfdCustomizedCipherSuiteForTls13(this.wireValue);
+  @override
   final String wireValue;
 
   static AfdCustomizedCipherSuiteForTls13 fromValue(String value) {

@@ -9,9 +9,9 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_dashboard_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The private endpoint connection group ids.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The private endpoint connection name of Azure Managed Grafana.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

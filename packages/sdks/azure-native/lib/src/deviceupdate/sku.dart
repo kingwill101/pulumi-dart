@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Device Update Sku
-enum SKU {
+enum SKU implements pulumi.PulumiEnum<String> {
   valueFree("Free"),
   valueStandard("Standard");
 
   const SKU(this.wireValue);
+  @override
   final String wireValue;
 
   static SKU fromValue(String value) {

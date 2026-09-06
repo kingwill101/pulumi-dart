@@ -11,15 +11,15 @@ class InboundEndpointArgs {
   /// The name of the DNS resolver.
   final pulumi.Input<String> dnsResolverName;
   /// The name of the inbound endpoint for the DNS resolver.
-  final pulumi.Input<String>? inboundEndpointName;
+  final pulumi.Input<String?>? inboundEndpointName;
   /// IP configurations for the inbound endpoint.
   final pulumi.Input<List<IpConfiguration>> ipConfigurations;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InboundEndpointArgs].
   /// [dnsResolverName] The name of the DNS resolver.

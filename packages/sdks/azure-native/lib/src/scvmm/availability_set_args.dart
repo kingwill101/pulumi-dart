@@ -9,17 +9,17 @@ import 'extended_location.dart';
 /// {@macro pulumi_scvmm_availability_set_args_doc}
 class AvailabilitySetArgs {
   /// Name of the availability set.
-  final pulumi.Input<String>? availabilitySetName;
+  final pulumi.Input<String?>? availabilitySetName;
   /// The extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// ARM Id of the vmmServer resource in which this resource resides.
-  final pulumi.Input<String>? vmmServerId;
+  final pulumi.Input<String?>? vmmServerId;
 
   /// Creates a new [AvailabilitySetArgs].
   /// [availabilitySetName] Name of the availability set.

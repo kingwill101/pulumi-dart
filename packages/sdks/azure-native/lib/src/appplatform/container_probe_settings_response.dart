@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container liveness and readiness probe settings
 class ContainerProbeSettingsResponse {
   /// Indicates whether disable the liveness and readiness probe
-  final pulumi.Input<bool>? disableProbe;
+  final pulumi.Input<bool?>? disableProbe;
 
   /// Creates a new [ContainerProbeSettingsResponse].
   /// [disableProbe] Indicates whether disable the liveness and readiness probe

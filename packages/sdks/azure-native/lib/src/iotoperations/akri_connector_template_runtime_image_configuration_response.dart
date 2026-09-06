@@ -10,9 +10,9 @@ import 'akri_connectors_secret_response.dart';
 /// AkriConnectorTemplateRuntimeImageConfiguration properties.
 class AkriConnectorTemplateRuntimeImageConfigurationResponse {
   /// Additional configuration for the image of the managed configuration.
-  final pulumi.Input<Map<String, String>>? additionalConfiguration;
+  final pulumi.Input<Map<String, String>?>? additionalConfiguration;
   /// Allocation settings for the managed configuration.
-  final pulumi.Input<AkriConnectorTemplateBucketizedAllocationResponse>? allocation;
+  final pulumi.Input<AkriConnectorTemplateBucketizedAllocationResponse?>? allocation;
   /// The image configuration settings.
   final pulumi.Input<AkriConnectorTemplateRuntimeImageConfigurationSettingsResponse> imageConfigurationSettings;
   /// Managed configuration types.
@@ -20,13 +20,13 @@ class AkriConnectorTemplateRuntimeImageConfigurationResponse {
   final pulumi.Input<String> managedConfigurationType;
   /// The persistent volume claim templates for the managed configuration.
   /// See https://raw.githubusercontent.com/kubernetes/kubernetes/refs/heads/master/api/openapi-spec/v3/apis__apps__v1_openapi.json.
-  final pulumi.Input<List<dynamic>>? persistentVolumeClaimTemplates;
+  final pulumi.Input<List<dynamic>?>? persistentVolumeClaimTemplates;
   /// The persistent volume claims for the managed configuration.
-  final pulumi.Input<List<AkriConnectorTemplatePersistentVolumeClaimResponse>>? persistentVolumeClaims;
+  final pulumi.Input<List<AkriConnectorTemplatePersistentVolumeClaimResponse>?>? persistentVolumeClaims;
   /// Connector secrets that will be mounted onto all connector instances.
-  final pulumi.Input<List<AkriConnectorsSecretResponse>>? secrets;
+  final pulumi.Input<List<AkriConnectorsSecretResponse>?>? secrets;
   /// Trust list for the connector. This is used to specify the certificates that all connector instances should trust.
-  final pulumi.Input<AkriConnectorTemplateTrustListResponse>? trustSettings;
+  final pulumi.Input<AkriConnectorTemplateTrustListResponse?>? trustSettings;
 
   /// Creates a new [AkriConnectorTemplateRuntimeImageConfigurationResponse].
   /// [additionalConfiguration] Additional configuration for the image of the managed configuration.

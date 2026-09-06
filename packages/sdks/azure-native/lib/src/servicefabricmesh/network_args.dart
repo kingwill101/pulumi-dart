@@ -9,15 +9,15 @@ import 'network_resource_properties.dart';
 /// {@macro pulumi_servicefabricmesh_network_args_doc}
 class NetworkArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The identity of the network.
-  final pulumi.Input<String>? networkResourceName;
+  final pulumi.Input<String?>? networkResourceName;
   /// Describes properties of a network resource.
   final pulumi.Input<NetworkResourceProperties> properties;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkArgs].
   /// [location] The geo-location where the resource lives

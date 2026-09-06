@@ -11,7 +11,7 @@ class TemporaryResourceLimitsConfig {
   /// Maximum number of patch a client can have in flight.
   final pulumi.Input<int> maxInflightPatchesPerClient;
   /// Maximum message expiry interval, in seconds.
-  final pulumi.Input<double>? maxMessageExpirySecs;
+  final pulumi.Input<double?>? maxMessageExpirySecs;
   /// Maximum receive for external clients.
   final pulumi.Input<double> maxQueuedMessages;
   /// Maximum receive QoS0 for external clients.
@@ -51,13 +51,13 @@ class TemporaryResourceLimitsConfig {
 
   factory TemporaryResourceLimitsConfig.fromMap(Map<String, dynamic> map) {
     return TemporaryResourceLimitsConfig(
-      maxInflightMessages: pulumi.Input.fromValue(map['maxInflightMessages'] as int),
-      maxInflightPatches: pulumi.Input.fromValue(map['maxInflightPatches'] as int),
-      maxInflightPatchesPerClient: pulumi.Input.fromValue(map['maxInflightPatchesPerClient'] as int),
-      maxMessageExpirySecs: (() { final guardedValue = map['maxMessageExpirySecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxQueuedMessages: pulumi.Input.fromValue(map['maxQueuedMessages'] as double),
-      maxQueuedQos0Messages: pulumi.Input.fromValue(map['maxQueuedQos0Messages'] as double),
-      maxSessionExpirySecs: pulumi.Input.fromValue(map['maxSessionExpirySecs'] as double),
+      maxInflightMessages: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInflightMessages'])),
+      maxInflightPatches: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInflightPatches'])),
+      maxInflightPatchesPerClient: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInflightPatchesPerClient'])),
+      maxMessageExpirySecs: (() { final guardedValue = map['maxMessageExpirySecs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxQueuedMessages: pulumi.Input.fromValue((map['maxQueuedMessages'] as num).toDouble()),
+      maxQueuedQos0Messages: pulumi.Input.fromValue((map['maxQueuedQos0Messages'] as num).toDouble()),
+      maxSessionExpirySecs: pulumi.Input.fromValue((map['maxSessionExpirySecs'] as num).toDouble()),
     );
   }
 }

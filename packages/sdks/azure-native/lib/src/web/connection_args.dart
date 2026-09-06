@@ -9,16 +9,16 @@ import 'api_connection_definition_properties.dart';
 /// {@macro pulumi_web_connection_args_doc}
 class ConnectionArgs {
   /// Connection name
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Resource location
-  final pulumi.Input<String>? location;
-  final pulumi.Input<ApiConnectionDefinitionProperties>? properties;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<ApiConnectionDefinitionProperties?>? properties;
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConnectionArgs].
   /// [connectionName] Connection name

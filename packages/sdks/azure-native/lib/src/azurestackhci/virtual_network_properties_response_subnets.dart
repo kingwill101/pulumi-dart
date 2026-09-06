@@ -7,19 +7,19 @@ import 'virtual_network_properties_response_route_table.dart';
 /// Subnet subnet in a virtual network resource.
 class VirtualNetworkPropertiesResponseSubnets {
   /// Cidr for this subnet - IPv4, IPv6
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// AddressPrefixes - List of address prefixes for the subnet.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// IPAllocationMethod - The IP address allocation method. Possible values include: 'Static', 'Dynamic'
-  final pulumi.Input<String>? ipAllocationMethod;
+  final pulumi.Input<String?>? ipAllocationMethod;
   /// IPConfigurationReferences - list of IPConfigurationReferences
-  final pulumi.Input<List<VirtualNetworkPropertiesResponseIpConfigurationReferences>>? ipConfigurationReferences;
+  final pulumi.Input<List<VirtualNetworkPropertiesResponseIpConfigurationReferences>?>? ipConfigurationReferences;
   /// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// RouteTable for the subnet
-  final pulumi.Input<VirtualNetworkPropertiesResponseRouteTable>? routeTable;
+  final pulumi.Input<VirtualNetworkPropertiesResponseRouteTable?>? routeTable;
   /// Vlan to use for the subnet
-  final pulumi.Input<int>? vlan;
+  final pulumi.Input<int?>? vlan;
 
   /// Creates a new [VirtualNetworkPropertiesResponseSubnets].
   /// [addressPrefix] Cidr for this subnet - IPv4, IPv6
@@ -59,7 +59,7 @@ class VirtualNetworkPropertiesResponseSubnets {
       ipConfigurationReferences: (() { final guardedValue = map['ipConfigurationReferences']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkPropertiesResponseIpConfigurationReferences>(guardedValue, (value) => VirtualNetworkPropertiesResponseIpConfigurationReferences.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       routeTable: (() { final guardedValue = map['routeTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkPropertiesResponseRouteTable.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

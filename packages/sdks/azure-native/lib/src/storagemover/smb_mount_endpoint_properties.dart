@@ -6,9 +6,9 @@ import 'azure_key_vault_smb_credentials.dart';
 /// The properties of SMB share endpoint.
 class SmbMountEndpointProperties {
   /// The Azure Key Vault secret URIs which store the required credentials to access the SMB share.
-  final pulumi.Input<AzureKeyVaultSmbCredentials>? credentials;
+  final pulumi.Input<AzureKeyVaultSmbCredentials?>? credentials;
   /// A description for the Endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Endpoint resource type.
   /// Expected value is 'SmbMount'.
   final pulumi.Input<String> endpointType;

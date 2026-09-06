@@ -7,11 +7,11 @@ import 'rolling_upgrade_policy_response.dart';
 /// Describes an upgrade policy - automatic, manual, or rolling.
 class UpgradePolicyResponse {
   /// Configuration parameters used for performing automatic OS Upgrade.
-  final pulumi.Input<AutomaticOSUpgradePolicyResponse>? automaticOSUpgradePolicy;
+  final pulumi.Input<AutomaticOSUpgradePolicyResponse?>? automaticOSUpgradePolicy;
   /// Specifies the mode of an upgrade to virtual machines in the scale set.&lt;br /&gt;&lt;br /&gt; Possible values are:&lt;br /&gt;&lt;br /&gt; **Manual** - You  control the application of updates to virtual machines in the scale set. You do this by using the manualUpgrade action.&lt;br /&gt;&lt;br /&gt; **Automatic** - All virtual machines in the scale set are  automatically updated at the same time.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The configuration parameters used while performing a rolling upgrade.
-  final pulumi.Input<RollingUpgradePolicyResponse>? rollingUpgradePolicy;
+  final pulumi.Input<RollingUpgradePolicyResponse?>? rollingUpgradePolicy;
 
   /// Creates a new [UpgradePolicyResponse].
   /// [automaticOSUpgradePolicy] Configuration parameters used for performing automatic OS Upgrade.

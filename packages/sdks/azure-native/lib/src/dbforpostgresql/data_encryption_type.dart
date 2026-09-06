@@ -1,8 +1,11 @@
-enum DataEncryptionType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DataEncryptionType implements pulumi.PulumiEnum<String> {
   azureKeyVault("AzureKeyVault"),
   systemAssigned("SystemAssigned");
 
   const DataEncryptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataEncryptionType fromValue(String value) {

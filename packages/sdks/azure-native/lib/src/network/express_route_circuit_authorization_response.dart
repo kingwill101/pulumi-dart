@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authorization in an ExpressRouteCircuit resource.
 class ExpressRouteCircuitAuthorizationResponse {
   /// The authorization key.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The authorization use status.
-  final pulumi.Input<String>? authorizationUseStatus;
+  final pulumi.Input<String?>? authorizationUseStatus;
   /// The reference to the ExpressRoute connection resource using the authorization.
   final pulumi.Input<String> connectionResourceUri;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the authorization resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

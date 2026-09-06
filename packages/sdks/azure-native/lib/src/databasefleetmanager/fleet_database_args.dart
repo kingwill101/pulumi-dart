@@ -9,13 +9,13 @@ import 'fleet_database_properties.dart';
 /// {@macro pulumi_databasefleetmanager_fleet_database_args_doc}
 class FleetDatabaseArgs {
   /// Name of the database.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
   /// Name of the fleetspace.
   final pulumi.Input<String> fleetspaceName;
   /// Fleet database properties.
-  final pulumi.Input<FleetDatabaseProperties>? properties;
+  final pulumi.Input<FleetDatabaseProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

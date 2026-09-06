@@ -6,11 +6,11 @@ import 'entity_reference.dart';
 /// Data proxy properties for a managed dedicated integration runtime.
 class IntegrationRuntimeDataProxyProperties {
   /// The self-hosted integration runtime reference.
-  final pulumi.Input<EntityReference>? connectVia;
+  final pulumi.Input<EntityReference?>? connectVia;
   /// The path to contain the staged data in the Blob storage.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The staging linked service reference.
-  final pulumi.Input<EntityReference>? stagingLinkedService;
+  final pulumi.Input<EntityReference?>? stagingLinkedService;
 
   /// Creates a new [IntegrationRuntimeDataProxyProperties].
   /// [connectVia] The self-hosted integration runtime reference.

@@ -9,25 +9,25 @@ import 'sql_connection_info_response.dart';
 /// Input for task that migrates SQL Server databases to Azure SQL Database Managed Instance.
 class MigrateSqlServerSqlMITaskInputResponse {
   /// Azure Active Directory domain name in the format of 'contoso.com' for federated Azure AD or 'contoso.onmicrosoft.com' for managed domain, required if and only if Windows logins are selected
-  final pulumi.Input<String>? aadDomainName;
+  final pulumi.Input<String?>? aadDomainName;
   /// SAS URI of Azure Storage Account Container to be used for storing backup files.
   final pulumi.Input<BlobShareResponse> backupBlobShare;
   /// Backup file share information for all selected databases.
-  final pulumi.Input<FileShareResponse>? backupFileShare;
+  final pulumi.Input<FileShareResponse?>? backupFileShare;
   /// Backup Mode to specify whether to use existing backup or create new backup. If using existing backups, backup file paths are required to be provided in selectedDatabases.
-  final pulumi.Input<String>? backupMode;
+  final pulumi.Input<String?>? backupMode;
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Agent Jobs to migrate.
-  final pulumi.Input<List<String>>? selectedAgentJobs;
+  final pulumi.Input<List<String>?>? selectedAgentJobs;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
   /// Logins to migrate.
-  final pulumi.Input<List<String>>? selectedLogins;
+  final pulumi.Input<List<String>?>? selectedLogins;
   /// Information for connecting to source
   final pulumi.Input<SqlConnectionInfoResponse> sourceConnectionInfo;
   /// Date and time relative to UTC when the migration was started on
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? startedOn;
   /// Information for connecting to target
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
 

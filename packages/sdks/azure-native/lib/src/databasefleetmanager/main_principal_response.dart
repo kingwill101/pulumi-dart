@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A main principal.
 class MainPrincipalResponse {
   /// Application Id of the main principal.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Login name of the main principal.
-  final pulumi.Input<String>? login;
+  final pulumi.Input<String?>? login;
   /// Object Id of the main principal.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Principal type of the main principal.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<String?>? principalType;
   /// Tenant Id of the main principal.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [MainPrincipalResponse].
   /// [applicationId] Application Id of the main principal.

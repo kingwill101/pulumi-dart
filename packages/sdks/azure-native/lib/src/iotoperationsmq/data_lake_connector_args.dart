@@ -13,31 +13,31 @@ import 'node_tolerations.dart';
 /// {@macro pulumi_iotoperationsmq_data_lake_connector_args_doc}
 class DataLakeConnectorArgs {
   /// Name of MQ dataLakeConnector resource
-  final pulumi.Input<String>? dataLakeConnectorName;
+  final pulumi.Input<String?>? dataLakeConnectorName;
   /// DataLake database format to use.
-  final pulumi.Input<String> databaseFormat;
+  final pulumi.Input<dynamic> databaseFormat;
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// The details of DataLakeConnector Docker Image.
   final pulumi.Input<ContainerImage> image;
   /// The number of DataLakeConnector pods to spin up.
-  final pulumi.Input<int>? instances;
+  final pulumi.Input<int?>? instances;
   /// The details for connecting with Local Broker.
-  final pulumi.Input<LocalBrokerConnectionSpec>? localBrokerConnection;
+  final pulumi.Input<LocalBrokerConnectionSpec?>? localBrokerConnection;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The log level of the DataLake Connector instances.
-  final pulumi.Input<String>? logLevel;
+  final pulumi.Input<String?>? logLevel;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// The Node Tolerations for the DataLake Connector pods.
-  final pulumi.Input<NodeTolerations>? nodeTolerations;
+  final pulumi.Input<NodeTolerations?>? nodeTolerations;
   /// The protocol to use for connecting with Brokers.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
   final pulumi.Input<DataLakeTargetStorage> target;
 
@@ -95,16 +95,16 @@ class DataLakeConnectorArgs {
   factory DataLakeConnectorArgs.fromMap(Map<String, dynamic> map) {
     return DataLakeConnectorArgs(
       dataLakeConnectorName: (() { final guardedValue = map['dataLakeConnectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      databaseFormat: pulumi.Input.fromValue(map['databaseFormat'] as String),
+      databaseFormat: pulumi.Input.fromValue(map['databaseFormat']),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocationProperty.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       image: pulumi.Input.fromValue(ContainerImage.fromMap((map['image']! as Map).cast<String, dynamic>())),
-      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       localBrokerConnection: (() { final guardedValue = map['localBrokerConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocalBrokerConnectionSpec.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
       nodeTolerations: (() { final guardedValue = map['nodeTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeTolerations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       target: pulumi.Input.fromValue(DataLakeTargetStorage.fromMap((map['target']! as Map).cast<String, dynamic>())),

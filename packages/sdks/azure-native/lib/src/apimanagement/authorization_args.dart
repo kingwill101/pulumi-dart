@@ -9,23 +9,23 @@ import 'authorization_error.dart';
 /// {@macro pulumi_apimanagement_authorization_args_doc}
 class AuthorizationArgs {
   /// Identifier of the authorization.
-  final pulumi.Input<String>? authorizationId;
+  final pulumi.Input<String?>? authorizationId;
   /// Identifier of the authorization provider.
   final pulumi.Input<String> authorizationProviderId;
   /// Authorization type options
-  final pulumi.Input<String>? authorizationType;
+  final pulumi.Input<dynamic>? authorizationType;
   /// Authorization error details.
-  final pulumi.Input<AuthorizationError>? error;
+  final pulumi.Input<AuthorizationError?>? error;
   /// OAuth2 grant type options
-  final pulumi.Input<String>? oAuth2GrantType;
+  final pulumi.Input<dynamic>? oAuth2GrantType;
   /// Authorization parameters
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Status of the Authorization
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AuthorizationArgs].
   /// [authorizationId] Identifier of the authorization.
@@ -67,9 +67,9 @@ class AuthorizationArgs {
     return AuthorizationArgs(
       authorizationId: (() { final guardedValue = map['authorizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       authorizationProviderId: pulumi.Input.fromValue(map['authorizationProviderId'] as String),
-      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authorizationType: (() { final guardedValue = map['authorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AuthorizationError.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      oAuth2GrantType: (() { final guardedValue = map['oAuth2GrantType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      oAuth2GrantType: (() { final guardedValue = map['oAuth2GrantType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),

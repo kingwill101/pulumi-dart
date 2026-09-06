@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DTO object representing specification
 class FeaturesetSpecification {
   /// Specifies the spec path
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [FeaturesetSpecification].
   /// [path] Specifies the spec path

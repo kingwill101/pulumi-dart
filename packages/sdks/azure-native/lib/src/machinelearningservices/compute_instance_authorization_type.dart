@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Compute Instance Authorization type. Available values are personal (default).
-enum ComputeInstanceAuthorizationType {
+enum ComputeInstanceAuthorizationType implements pulumi.PulumiEnum<String> {
   personal("personal");
 
   const ComputeInstanceAuthorizationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeInstanceAuthorizationType fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes what transforms applied before matching.
-enum TransformType {
+enum TransformType implements pulumi.PulumiEnum<String> {
   lowercase("Lowercase"),
   uppercase("Uppercase"),
   trim("Trim"),
@@ -8,6 +10,7 @@ enum TransformType {
   removeNulls("RemoveNulls");
 
   const TransformType(this.wireValue);
+  @override
   final String wireValue;
 
   static TransformType fromValue(String value) {

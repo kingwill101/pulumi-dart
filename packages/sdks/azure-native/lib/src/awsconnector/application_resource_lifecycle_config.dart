@@ -6,9 +6,9 @@ import 'application_version_lifecycle_config.dart';
 /// Definition of ApplicationResourceLifecycleConfig
 class ApplicationResourceLifecycleConfig {
   /// The ARN of an IAM service role that Elastic Beanstalk has permission to assume. The ServiceRole property is required the first time that you provide a ResourceLifecycleConfig for the application. After you provide it once, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again. You can, however, specify it in subsequent updates to change the Service Role to another value.
-  final pulumi.Input<String>? serviceRole;
+  final pulumi.Input<String?>? serviceRole;
   /// Defines lifecycle settings for application versions.
-  final pulumi.Input<ApplicationVersionLifecycleConfig>? versionLifecycleConfig;
+  final pulumi.Input<ApplicationVersionLifecycleConfig?>? versionLifecycleConfig;
 
   /// Creates a new [ApplicationResourceLifecycleConfig].
   /// [serviceRole] The ARN of an IAM service role that Elastic Beanstalk has permission to assume. The ServiceRole property is required the first time that you provide a ResourceLifecycleConfig for the application. After you provide it once, Elastic Beanstalk persists the Service Role with the application, and you don't need to specify it again. You can, however, specify it in subsequent updates to change the Service Role to another value.

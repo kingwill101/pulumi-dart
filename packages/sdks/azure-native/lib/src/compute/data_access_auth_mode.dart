@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Additional authentication requirements when exporting or uploading to a disk or snapshot.
-enum DataAccessAuthMode {
+enum DataAccessAuthMode implements pulumi.PulumiEnum<String> {
   azureActiveDirectory("AzureActiveDirectory"),
   none("None");
 
   const DataAccessAuthMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DataAccessAuthMode fromValue(String value) {

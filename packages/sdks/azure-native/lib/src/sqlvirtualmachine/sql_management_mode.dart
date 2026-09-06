@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server Management type. NOTE: This parameter is not used anymore. API will automatically detect the Sql Management, refrain from using it.
-enum SqlManagementMode {
+enum SqlManagementMode implements pulumi.PulumiEnum<String> {
   full("Full"),
   lightWeight("LightWeight"),
   noAgent("NoAgent");
 
   const SqlManagementMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlManagementMode fromValue(String value) {

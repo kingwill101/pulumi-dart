@@ -12,11 +12,11 @@ import 'system_data_response.dart';
 /// Result data returned by getRegistry.
 class GetRegistryResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Discovery URL for the Registry
   final String? discoveryUrl;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Managed service identity (system assigned and/or user assigned identities)
   final ManagedServiceIdentityResponse? identity;
   /// IntellectualPropertyPublisher for the registry
@@ -24,7 +24,7 @@ class GetRegistryResult {
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
   final String? kind;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// ResourceId of the managed RG if the registry has system created resources
   final ArmResourceIdResponse? managedResourceGroup;
   /// Managed resource group specific settings
@@ -32,7 +32,7 @@ class GetRegistryResult {
   /// MLFlow Registry URI for the Registry
   final String? mlFlowRegistryUri;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Is the Registry accessible from the internet?
   /// Possible values: "Enabled" or "Disabled"
   final String? publicNetworkAccess;
@@ -43,11 +43,11 @@ class GetRegistryResult {
   /// Sku details required for ARM contract for Autoscaling.
   final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRegistryResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -69,69 +69,69 @@ class GetRegistryResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetRegistryResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.discoveryUrl,
-    required this.id,
+    this.id,
     this.identity,
     this.intellectualPropertyPublisher,
     this.kind,
-    required this.location,
+    this.location,
     this.managedResourceGroup,
     this.managedResourceGroupSettings,
     this.mlFlowRegistryUri,
-    required this.name,
+    this.name,
     this.publicNetworkAccess,
     this.regionDetails,
     this.registryPrivateEndpointConnections,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'discoveryUrl': ?discoveryUrl,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'intellectualPropertyPublisher': ?intellectualPropertyPublisher,
       'kind': ?kind,
-      'location': location,
+      'location': ?location,
       'managedResourceGroup': ?managedResourceGroup?.toMap(),
       'managedResourceGroupSettings': ?managedResourceGroupSettings?.toMap(),
       'mlFlowRegistryUri': ?mlFlowRegistryUri,
-      'name': name,
+      'name': ?name,
       'publicNetworkAccess': ?publicNetworkAccess,
       'regionDetails': ?(() { final guardedValue = regionDetails; if (guardedValue == null) return null; return pulumi.Input.encodeList<RegistryRegionArmDetailsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'registryPrivateEndpointConnections': ?(() { final guardedValue = registryPrivateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<RegistryPrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRegistryResult.fromMap(Map<String, dynamic> map) {
     return GetRegistryResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       discoveryUrl: (() { final guardedValue = map['discoveryUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       intellectualPropertyPublisher: (() { final guardedValue = map['intellectualPropertyPublisher']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedResourceGroup: (() { final guardedValue = map['managedResourceGroup']; if (guardedValue == null) return null; return ArmResourceIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       managedResourceGroupSettings: (() { final guardedValue = map['managedResourceGroupSettings']; if (guardedValue == null) return null; return ManagedResourceGroupSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       mlFlowRegistryUri: (() { final guardedValue = map['mlFlowRegistryUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       regionDetails: (() { final guardedValue = map['regionDetails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryRegionArmDetailsResponse>(guardedValue, (value) => RegistryRegionArmDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       registryPrivateEndpointConnections: (() { final guardedValue = map['registryPrivateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RegistryPrivateEndpointConnectionResponse>(guardedValue, (value) => RegistryPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

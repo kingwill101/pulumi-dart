@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the CDC attribute mapping. Note: 'Advanced' mapping type is also saved as 'Derived'.
-enum MappingType {
+enum MappingType implements pulumi.PulumiEnum<String> {
   direct("Direct"),
   derived("Derived"),
   aggregate("Aggregate");
 
   const MappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static MappingType fromValue(String value) {

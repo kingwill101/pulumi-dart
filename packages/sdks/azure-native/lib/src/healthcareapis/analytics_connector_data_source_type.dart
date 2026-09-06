@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of data source.
-enum AnalyticsConnectorDataSourceType {
+enum AnalyticsConnectorDataSourceType implements pulumi.PulumiEnum<String> {
   valueFhirservice("fhirservice");
 
   const AnalyticsConnectorDataSourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static AnalyticsConnectorDataSourceType fromValue(String value) {

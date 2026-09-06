@@ -190,7 +190,26 @@ class ApiGatewayConfigConnection extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     defaultHostname = registerOutput<String>('defaultHostname');
     etag = registerOutput<String>('etag');
-    hostnames = registerOutput<List<String>?>('hostnames');
+    hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceId = registerOutput<String?>('sourceId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ApiGatewayConfigConnection] resource.
+  ApiGatewayConfigConnection.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiGatewayConfigConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultHostname = registerOutput<String>('defaultHostname');
+    etag = registerOutput<String>('etag');
+    hostnames = registerOutput<List<String>?>('hostnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sourceId = registerOutput<String?>('sourceId');

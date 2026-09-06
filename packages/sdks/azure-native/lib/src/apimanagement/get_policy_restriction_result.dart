@@ -4,17 +4,17 @@
 /// Result data returned by getPolicyRestriction.
 class GetPolicyRestrictionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Indicates if base policy should be enforced for the policy document.
   final String? requireBase;
   /// Path to the policy document.
   final String? scope;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPolicyRestrictionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -23,34 +23,34 @@ class GetPolicyRestrictionResult {
   /// [requireBase] Indicates if base policy should be enforced for the policy document.
   /// [scope] Path to the policy document.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetPolicyRestrictionResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    this.requireBase,
+  GetPolicyRestrictionResult({
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    String? requireBase,
     this.scope,
-    required this.type,
-  });
+    this.type,
+  }) : requireBase = requireBase ?? 'false';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
       'requireBase': ?requireBase,
       'scope': ?scope,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPolicyRestrictionResult.fromMap(Map<String, dynamic> map) {
     return GetPolicyRestrictionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requireBase: (() { final guardedValue = map['requireBase']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

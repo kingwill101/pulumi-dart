@@ -11,8 +11,10 @@ import 'managed_environment_response_peer_authentication.dart';
 import 'managed_environment_response_peer_traffic_configuration.dart';
 import 'managed_service_identity_response.dart';
 import 'open_telemetry_configuration_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 import 'vnet_configuration_response.dart';
+import 'workload_profile_response.dart';
 
 /// An environment for hosting container apps
 ///
@@ -529,7 +531,7 @@ class ManagedEnvironment extends pulumi.CustomResource {
   /// Peer traffic settings for the Managed Environment
   late final pulumi.Output<ManagedEnvironmentResponsePeerTrafficConfiguration?> peerTrafficConfiguration;
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Private Link Default Domain Name for the environment
   late final pulumi.Output<String> privateLinkDefaultDomain;
   /// Provisioning state of the Environment.
@@ -547,7 +549,7 @@ class ManagedEnvironment extends pulumi.CustomResource {
   /// Vnet configuration for the environment
   late final pulumi.Output<VnetConfigurationResponse?> vnetConfiguration;
   /// Workload profiles configured for the Managed Environment.
-  late final pulumi.Output<List<Map<String, dynamic>>?> workloadProfiles;
+  late final pulumi.Output<List<WorkloadProfileResponse>?> workloadProfiles;
   /// Whether or not this Managed Environment is zone-redundant.
   late final pulumi.Output<bool?> zoneRedundant;
 
@@ -567,7 +569,7 @@ class ManagedEnvironment extends pulumi.CustomResource {
         ) {
     appInsightsConfiguration = registerOutput<AppInsightsConfigurationResponse?>('appInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppInsightsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>('appLogsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLogsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     customDomainConfiguration = registerOutput<CustomDomainConfigurationResponse?>('customDomainConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDomainConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     daprAIConnectionString = registerOutput<String?>('daprAIConnectionString');
@@ -587,16 +589,60 @@ class ManagedEnvironment extends pulumi.CustomResource {
     openTelemetryConfiguration = registerOutput<OpenTelemetryConfigurationResponse?>('openTelemetryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenTelemetryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerAuthentication = registerOutput<ManagedEnvironmentResponsePeerAuthentication?>('peerAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedEnvironmentResponsePeerAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     peerTrafficConfiguration = registerOutput<ManagedEnvironmentResponsePeerTrafficConfiguration?>('peerTrafficConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedEnvironmentResponsePeerTrafficConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     privateLinkDefaultDomain = registerOutput<String>('privateLinkDefaultDomain');
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     staticIp = registerOutput<String>('staticIp');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vnetConfiguration = registerOutput<VnetConfigurationResponse?>('vnetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VnetConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    workloadProfiles = registerOutput<List<Map<String, dynamic>>?>('workloadProfiles');
+    workloadProfiles = registerOutput<List<WorkloadProfileResponse>?>('workloadProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadProfileResponse>(guardedValue, (value) => WorkloadProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [ManagedEnvironment] resource.
+  ManagedEnvironment.reference(String urn)
+    : super(
+        'azure-native:app:ManagedEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appInsightsConfiguration = registerOutput<AppInsightsConfigurationResponse?>('appInsightsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppInsightsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>('appLogsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLogsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDomainConfiguration = registerOutput<CustomDomainConfigurationResponse?>('customDomainConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDomainConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    daprAIConnectionString = registerOutput<String?>('daprAIConnectionString');
+    daprAIInstrumentationKey = registerOutput<String?>('daprAIInstrumentationKey');
+    daprConfiguration = registerOutput<DaprConfigurationResponse?>('daprConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DaprConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultDomain = registerOutput<String>('defaultDomain');
+    deploymentErrors = registerOutput<String>('deploymentErrors');
+    diskEncryptionConfiguration = registerOutput<DiskEncryptionConfigurationResponse?>('diskEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eventStreamEndpoint = registerOutput<String>('eventStreamEndpoint');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructureResourceGroup = registerOutput<String?>('infrastructureResourceGroup');
+    ingressConfiguration = registerOutput<IngressConfigurationResponse?>('ingressConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IngressConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kedaConfiguration = registerOutput<KedaConfigurationResponse?>('kedaConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KedaConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    openTelemetryConfiguration = registerOutput<OpenTelemetryConfigurationResponse?>('openTelemetryConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OpenTelemetryConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerAuthentication = registerOutput<ManagedEnvironmentResponsePeerAuthentication?>('peerAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedEnvironmentResponsePeerAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peerTrafficConfiguration = registerOutput<ManagedEnvironmentResponsePeerTrafficConfiguration?>('peerTrafficConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedEnvironmentResponsePeerTrafficConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateLinkDefaultDomain = registerOutput<String>('privateLinkDefaultDomain');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    staticIp = registerOutput<String>('staticIp');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vnetConfiguration = registerOutput<VnetConfigurationResponse?>('vnetConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VnetConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workloadProfiles = registerOutput<List<WorkloadProfileResponse>?>('workloadProfiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadProfileResponse>(guardedValue, (value) => WorkloadProfileResponse.fromMap((value as Map).cast<String, dynamic>())); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }
 }

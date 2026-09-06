@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Sku description for a namespace
 class Sku {
   /// Gets or sets the capacity of the resource
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Gets or sets the Sku Family
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Namespace SKU name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// Gets or sets the Sku size
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// Gets or sets the tier of particular sku
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] Gets or sets the capacity of the resource
@@ -41,9 +41,9 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

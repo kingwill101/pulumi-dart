@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Linked service reference type.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   linkedServiceReference("LinkedServiceReference");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

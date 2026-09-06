@@ -11,21 +11,21 @@ import 'log_configuration_response.dart';
 /// Properties of the Agent
 class AgentPropertiesResponse {
   /// Configuration for action
-  final pulumi.Input<ActionConfigurationResponse>? actionConfiguration;
+  final pulumi.Input<ActionConfigurationResponse?>? actionConfiguration;
   /// The endpoint of the Agent
   final pulumi.Input<String> agentEndpoint;
   /// Agent identity configuration for accessing resources
-  final pulumi.Input<AgentIdentityResponse>? agentIdentity;
+  final pulumi.Input<AgentIdentityResponse?>? agentIdentity;
   /// The agent space ID referenced by the agent
-  final pulumi.Input<String>? agentSpaceId;
+  final pulumi.Input<String?>? agentSpaceId;
   /// Default AI model configuration for the agent
-  final pulumi.Input<DefaultModelResponse>? defaultModel;
+  final pulumi.Input<DefaultModelResponse?>? defaultModel;
   /// Incident management configurations
-  final pulumi.Input<IncidentManagementConfigurationResponse>? incidentManagementConfiguration;
+  final pulumi.Input<IncidentManagementConfigurationResponse?>? incidentManagementConfiguration;
   /// Knowledge graph configuration for agent
-  final pulumi.Input<KnowledgeGraphConfigurationResponse>? knowledgeGraphConfiguration;
+  final pulumi.Input<KnowledgeGraphConfigurationResponse?>? knowledgeGraphConfiguration;
   /// Log configurations
-  final pulumi.Input<LogConfigurationResponse>? logConfiguration;
+  final pulumi.Input<LogConfigurationResponse?>? logConfiguration;
   /// The power state of the Agent
   final pulumi.Input<String> powerState;
   /// Provisioning state of the Agent
@@ -33,7 +33,7 @@ class AgentPropertiesResponse {
   /// The running state of the Agent
   final pulumi.Input<String> runningState;
   /// The upgrade channel of the agent
-  final pulumi.Input<String>? upgradeChannel;
+  final pulumi.Input<String?>? upgradeChannel;
 
   /// Creates a new [AgentPropertiesResponse].
   /// [actionConfiguration] Configuration for action

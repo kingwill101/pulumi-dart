@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Region spec details
 class RegionSpecEntityResponse {
   /// Cloud provider name
-  final pulumi.Input<String>? cloud;
+  final pulumi.Input<String?>? cloud;
   /// Display Name of the region
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<String>>? packages;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<String>?>? packages;
   /// Region name
-  final pulumi.Input<String>? regionName;
+  final pulumi.Input<String?>? regionName;
 
   /// Creates a new [RegionSpecEntityResponse].
   /// [cloud] Cloud provider name

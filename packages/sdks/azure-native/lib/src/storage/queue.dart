@@ -332,7 +332,23 @@ class Queue extends pulumi.CustomResource {
         ) {
     approximateMessageCount = registerOutput<int>('approximateMessageCount');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Queue] resource.
+  Queue.reference(String urn)
+    : super(
+        'azure-native:storage:Queue',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approximateMessageCount = registerOutput<int>('approximateMessageCount');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

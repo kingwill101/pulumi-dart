@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource group lock option during move.
 class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse {
   /// The action verb that will be blocked when the resource group is locked during move.
-  final pulumi.Input<String>? blockActionVerb;
+  final pulumi.Input<String?>? blockActionVerb;
 
   /// Creates a new [ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMoveResponse].
   /// [blockActionVerb] The action verb that will be blocked when the resource group is locked during move.

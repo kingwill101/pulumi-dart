@@ -478,7 +478,33 @@ class IotHubDataConnection extends pulumi.CustomResource {
     consumerGroup = registerOutput<String>('consumerGroup');
     dataFormat = registerOutput<String?>('dataFormat');
     databaseRouting = registerOutput<String?>('databaseRouting');
-    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iotHubResourceId = registerOutput<String>('iotHubResourceId');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    retrievalStartDate = registerOutput<String?>('retrievalStartDate');
+    sharedAccessPolicyName = registerOutput<String>('sharedAccessPolicyName');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IotHubDataConnection] resource.
+  IotHubDataConnection.reference(String urn)
+    : super(
+        'azure-native:kusto:IotHubDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    databaseRouting = registerOutput<String?>('databaseRouting');
+    eventSystemProperties = registerOutput<List<String>?>('eventSystemProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iotHubResourceId = registerOutput<String>('iotHubResourceId');
     kind = registerOutput<String>('kind');
     location = registerOutput<String?>('location');

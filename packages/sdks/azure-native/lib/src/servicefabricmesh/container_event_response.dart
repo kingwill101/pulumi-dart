@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A container event.
 class ContainerEventResponse {
   /// The count of the event.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Date/time of the first event.
-  final pulumi.Input<String>? firstTimestamp;
+  final pulumi.Input<String?>? firstTimestamp;
   /// Date/time of the last event.
-  final pulumi.Input<String>? lastTimestamp;
+  final pulumi.Input<String?>? lastTimestamp;
   /// The event message
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The name of the container event.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The event type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ContainerEventResponse].
   /// [count] The count of the event.
@@ -46,7 +46,7 @@ class ContainerEventResponse {
 
   factory ContainerEventResponse.fromMap(Map<String, dynamic> map) {
     return ContainerEventResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       firstTimestamp: (() { final guardedValue = map['firstTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastTimestamp: (() { final guardedValue = map['lastTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

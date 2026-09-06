@@ -6,16 +6,16 @@ import 'role_management_policy_rule_target_response.dart';
 /// The role management policy authentication context rule.
 class RoleManagementPolicyAuthenticationContextRuleResponse {
   /// The claim value.
-  final pulumi.Input<String>? claimValue;
+  final pulumi.Input<String?>? claimValue;
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The value indicating if rule is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyAuthenticationContextRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse?>? target;
 
   /// Creates a new [RoleManagementPolicyAuthenticationContextRuleResponse].
   /// [claimValue] The claim value.

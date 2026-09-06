@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State indicating the status of the enterprise grade CDN serving traffic to the static web app.
-enum EnterpriseGradeCdnStatus {
+enum EnterpriseGradeCdnStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   enabling("Enabling"),
   disabled("Disabled"),
   disabling("Disabling");
 
   const EnterpriseGradeCdnStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseGradeCdnStatus fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The response from the List namespace operation.
 class NWRuleSetIpRulesResponse {
   /// The IP Filter Action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// IP Mask
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
 
   /// Creates a new [NWRuleSetIpRulesResponse].
   /// [action] The IP Filter Action

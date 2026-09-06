@@ -5,9 +5,9 @@ import 'gateway_hostname_binding_key_vault_last_status_response.dart';
 
 class GatewayHostnameBindingKeyVaultResponse {
   /// The default hostname of the data-plane gateway.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The last status of the Key Vault certificate fetch process.
-  final pulumi.Input<GatewayHostnameBindingKeyVaultLastStatusResponse>? lastStatus;
+  final pulumi.Input<GatewayHostnameBindingKeyVaultLastStatusResponse?>? lastStatus;
   /// The current provisioning state of the API Management gateway hostname binding.
   final pulumi.Input<String> secretId;
 

@@ -10,21 +10,21 @@ import 'vmmserver_properties_credentials.dart';
 /// {@macro pulumi_scvmm_vmm_server_args_doc}
 class VmmServerArgs {
   /// Credentials to connect to VMMServer.
-  final pulumi.Input<VMMServerPropertiesCredentials>? credentials;
+  final pulumi.Input<VMMServerPropertiesCredentials?>? credentials;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Fqdn is the hostname/ip of the vmmServer.
   final pulumi.Input<String> fqdn;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Port is the port on which the vmmServer is listening.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the VMMServer.
-  final pulumi.Input<String>? vmmServerName;
+  final pulumi.Input<String?>? vmmServerName;
 
   /// Creates a new [VmmServerArgs].
   /// [credentials] Credentials to connect to VMMServer.
@@ -65,7 +65,7 @@ class VmmServerArgs {
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vmmServerName: (() { final guardedValue = map['vmmServerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

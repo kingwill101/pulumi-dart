@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assessment_projects_operation_args.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// An Assessment project site resource.
@@ -222,7 +223,7 @@ class AssessmentProjectsOperation extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of private endpoint connections to the project.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Assessment project status.
   late final pulumi.Output<String?> projectStatus;
   /// The status of the last operation.
@@ -266,13 +267,41 @@ class AssessmentProjectsOperation extends pulumi.CustomResource {
     customerWorkspaceLocation = registerOutput<String?>('customerWorkspaceLocation');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     projectStatus = registerOutput<String?>('projectStatus');
     provisioningState = registerOutput<String?>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+  }
+
+  /// Creates a typed reference to an existing [AssessmentProjectsOperation] resource.
+  AssessmentProjectsOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:AssessmentProjectsOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentSolutionId = registerOutput<String?>('assessmentSolutionId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    customerStorageAccountArmId = registerOutput<String?>('customerStorageAccountArmId');
+    customerWorkspaceId = registerOutput<String?>('customerWorkspaceId');
+    customerWorkspaceLocation = registerOutput<String?>('customerWorkspaceLocation');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    projectStatus = registerOutput<String?>('projectStatus');
+    provisioningState = registerOutput<String?>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data format of the message. Optionally the data format can be added to each message.
-enum IotHubDataFormat {
+enum IotHubDataFormat implements pulumi.PulumiEnum<String> {
   valueMULTIJSON("MULTIJSON"),
   valueJSON("JSON"),
   valueCSV("CSV"),
@@ -18,6 +20,7 @@ enum IotHubDataFormat {
   valueW3CLOGFILE("W3CLOGFILE");
 
   const IotHubDataFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static IotHubDataFormat fromValue(String value) {

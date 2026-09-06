@@ -11,19 +11,19 @@ import 'resource_sku.dart';
 /// {@macro pulumi_elastic_monitor_args_doc}
 class MonitorArgs {
   /// Identity properties of the monitor resource.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The location of the monitor resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Monitor resource name
-  final pulumi.Input<String>? monitorName;
+  final pulumi.Input<String?>? monitorName;
   /// Properties of the monitor resource.
-  final pulumi.Input<MonitorProperties>? properties;
+  final pulumi.Input<MonitorProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SKU of the monitor resource.
-  final pulumi.Input<ResourceSku>? sku;
+  final pulumi.Input<ResourceSku?>? sku;
   /// The tags of the monitor resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MonitorArgs].
   /// [identity] Identity properties of the monitor resource.

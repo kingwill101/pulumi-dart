@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning status field
-enum ProviderStatus {
+enum ProviderStatus implements pulumi.PulumiEnum<String> {
   succeeded("Succeeded"),
   launching("Launching"),
   updating("Updating"),
@@ -8,6 +10,7 @@ enum ProviderStatus {
   failed("Failed");
 
   const ProviderStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ProviderStatus fromValue(String value) {

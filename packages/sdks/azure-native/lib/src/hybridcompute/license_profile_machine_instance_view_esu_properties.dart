@@ -6,9 +6,9 @@ import 'license.dart';
 /// Properties for the Machine ESU profile.
 class LicenseProfileMachineInstanceViewEsuProperties {
   /// The assigned license resource.
-  final pulumi.Input<License>? assignedLicense;
+  final pulumi.Input<License?>? assignedLicense;
   /// Describes the license assignment state (Assigned or NotAssigned).
-  final pulumi.Input<String>? licenseAssignmentState;
+  final pulumi.Input<dynamic>? licenseAssignmentState;
 
   /// Creates a new [LicenseProfileMachineInstanceViewEsuProperties].
   /// [assignedLicense] The assigned license resource.
@@ -28,7 +28,7 @@ class LicenseProfileMachineInstanceViewEsuProperties {
   factory LicenseProfileMachineInstanceViewEsuProperties.fromMap(Map<String, dynamic> map) {
     return LicenseProfileMachineInstanceViewEsuProperties(
       assignedLicense: (() { final guardedValue = map['assignedLicense']; if (guardedValue == null) return null; return pulumi.Input.fromValue(License.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      licenseAssignmentState: (() { final guardedValue = map['licenseAssignmentState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseAssignmentState: (() { final guardedValue = map['licenseAssignmentState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

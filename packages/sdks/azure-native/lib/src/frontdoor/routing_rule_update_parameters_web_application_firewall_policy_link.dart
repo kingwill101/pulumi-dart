@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Web Application Firewall policy for each routing rule (if applicable)
 class RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [RoutingRuleUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.

@@ -7,13 +7,13 @@ import 'application_gateway_rewrite_rule_condition_response.dart';
 /// Rewrite rule of an application gateway.
 class ApplicationGatewayRewriteRuleResponse {
   /// Set of actions to be done as part of the rewrite Rule.
-  final pulumi.Input<ApplicationGatewayRewriteRuleActionSetResponse>? actionSet;
+  final pulumi.Input<ApplicationGatewayRewriteRuleActionSetResponse?>? actionSet;
   /// Conditions based on which the action set execution will be evaluated.
-  final pulumi.Input<List<ApplicationGatewayRewriteRuleConditionResponse>>? conditions;
+  final pulumi.Input<List<ApplicationGatewayRewriteRuleConditionResponse>?>? conditions;
   /// Name of the rewrite rule that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Rule Sequence of the rewrite rule that determines the order of execution of a particular rule in a RewriteRuleSet.
-  final pulumi.Input<int>? ruleSequence;
+  final pulumi.Input<int?>? ruleSequence;
 
   /// Creates a new [ApplicationGatewayRewriteRuleResponse].
   /// [actionSet] Set of actions to be done as part of the rewrite Rule.
@@ -41,7 +41,7 @@ class ApplicationGatewayRewriteRuleResponse {
       actionSet: (() { final guardedValue = map['actionSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationGatewayRewriteRuleActionSetResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationGatewayRewriteRuleConditionResponse>(guardedValue, (value) => ApplicationGatewayRewriteRuleConditionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ruleSequence: (() { final guardedValue = map['ruleSequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ruleSequence: (() { final guardedValue = map['ruleSequence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

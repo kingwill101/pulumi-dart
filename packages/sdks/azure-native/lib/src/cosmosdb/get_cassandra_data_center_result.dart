@@ -5,15 +5,15 @@ import 'data_center_resource_response_properties.dart';
 /// Result data returned by getCassandraDataCenter.
 class GetCassandraDataCenterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The unique resource identifier of the database account.
-  final String id;
+  final String? id;
   /// The name of the database account.
-  final String name;
+  final String? name;
   /// Properties of a managed Cassandra data center.
-  final DataCenterResourceResponseProperties properties;
+  final DataCenterResourceResponseProperties? properties;
   /// The type of Azure resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCassandraDataCenterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -22,30 +22,30 @@ class GetCassandraDataCenterResult {
   /// [properties] Properties of a managed Cassandra data center.
   /// [type] The type of Azure resource.
   const GetCassandraDataCenterResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetCassandraDataCenterResult.fromMap(Map<String, dynamic> map) {
     return GetCassandraDataCenterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: DataCenterResourceResponseProperties.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return DataCenterResourceResponseProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

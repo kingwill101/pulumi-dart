@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The minimum strength TLS cipher suite allowed for an application
-enum TlsCipherSuites {
+enum TlsCipherSuites implements pulumi.PulumiEnum<String> {
   tLSAES256GCMSHA384("TLS_AES_256_GCM_SHA384"),
   tLSAES128GCMSHA256("TLS_AES_128_GCM_SHA256"),
   tLSECDHEECDSAWITHAES256GCMSHA384("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
@@ -19,6 +21,7 @@ enum TlsCipherSuites {
   tLSRSAWITHAES128CBCSHA("TLS_RSA_WITH_AES_128_CBC_SHA");
 
   const TlsCipherSuites(this.wireValue);
+  @override
   final String wireValue;
 
   static TlsCipherSuites fromValue(String value) {

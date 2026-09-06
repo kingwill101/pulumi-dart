@@ -6,24 +6,24 @@ import 'stack_ensemble_settings_response.dart';
 /// Regression Training related configuration.
 class RegressionTrainingSettingsResponse {
   /// Allowed models for regression task.
-  final pulumi.Input<List<String>>? allowedTrainingAlgorithms;
+  final pulumi.Input<List<String>?>? allowedTrainingAlgorithms;
   /// Blocked models for regression task.
-  final pulumi.Input<List<String>>? blockedTrainingAlgorithms;
+  final pulumi.Input<List<String>?>? blockedTrainingAlgorithms;
   /// Enable recommendation of DNN models.
-  final pulumi.Input<bool>? enableDnnTraining;
+  final pulumi.Input<bool?>? enableDnnTraining;
   /// Flag to turn on explainability on best model.
-  final pulumi.Input<bool>? enableModelExplainability;
+  final pulumi.Input<bool?>? enableModelExplainability;
   /// Flag for enabling onnx compatible models.
-  final pulumi.Input<bool>? enableOnnxCompatibleModels;
+  final pulumi.Input<bool?>? enableOnnxCompatibleModels;
   /// Enable stack ensemble run.
-  final pulumi.Input<bool>? enableStackEnsemble;
+  final pulumi.Input<bool?>? enableStackEnsemble;
   /// Enable voting ensemble run.
-  final pulumi.Input<bool>? enableVoteEnsemble;
+  final pulumi.Input<bool?>? enableVoteEnsemble;
   /// During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
   /// Configure this parameter with a higher value than 300 secs, if more time is needed.
-  final pulumi.Input<String>? ensembleModelDownloadTimeout;
+  final pulumi.Input<String?>? ensembleModelDownloadTimeout;
   /// Stack ensemble settings for stack ensemble run.
-  final pulumi.Input<StackEnsembleSettingsResponse>? stackEnsembleSettings;
+  final pulumi.Input<StackEnsembleSettingsResponse?>? stackEnsembleSettings;
 
   /// Creates a new [RegressionTrainingSettingsResponse].
   /// [allowedTrainingAlgorithms] Allowed models for regression task.
@@ -35,17 +35,17 @@ class RegressionTrainingSettingsResponse {
   /// [enableVoteEnsemble] Enable voting ensemble run.
   /// [ensembleModelDownloadTimeout] During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
   /// [stackEnsembleSettings] Stack ensemble settings for stack ensemble run.
-  const RegressionTrainingSettingsResponse({
+  RegressionTrainingSettingsResponse({
     this.allowedTrainingAlgorithms,
     this.blockedTrainingAlgorithms,
-    this.enableDnnTraining,
-    this.enableModelExplainability,
-    this.enableOnnxCompatibleModels,
-    this.enableStackEnsemble,
-    this.enableVoteEnsemble,
-    this.ensembleModelDownloadTimeout,
+    pulumi.Input<bool?>? enableDnnTraining,
+    pulumi.Input<bool?>? enableModelExplainability,
+    pulumi.Input<bool?>? enableOnnxCompatibleModels,
+    pulumi.Input<bool?>? enableStackEnsemble,
+    pulumi.Input<bool?>? enableVoteEnsemble,
+    pulumi.Input<String?>? ensembleModelDownloadTimeout,
     this.stackEnsembleSettings,
-  });
+  }) : enableDnnTraining = enableDnnTraining ?? pulumi.Input.fromValue(false), enableModelExplainability = enableModelExplainability ?? pulumi.Input.fromValue(true), enableOnnxCompatibleModels = enableOnnxCompatibleModels ?? pulumi.Input.fromValue(false), enableStackEnsemble = enableStackEnsemble ?? pulumi.Input.fromValue(true), enableVoteEnsemble = enableVoteEnsemble ?? pulumi.Input.fromValue(true), ensembleModelDownloadTimeout = ensembleModelDownloadTimeout ?? pulumi.Input.fromValue('PT5M');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

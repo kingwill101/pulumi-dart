@@ -9,13 +9,13 @@ import 'error_detail.dart';
 /// Definition of ClusterStatus
 class EmrClusterStatus {
   /// &lt;p&gt;A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different &lt;code&gt;ErrorDetail&lt;/code&gt; tuples.&lt;/p&gt;
-  final pulumi.Input<List<ErrorDetail>>? errorDetails;
+  final pulumi.Input<List<ErrorDetail>?>? errorDetails;
   /// &lt;p&gt;The current state of the cluster.&lt;/p&gt;
-  final pulumi.Input<ClusterStateEnumValue>? state;
+  final pulumi.Input<ClusterStateEnumValue?>? state;
   /// &lt;p&gt;The reason for the cluster status change.&lt;/p&gt;
-  final pulumi.Input<ClusterStateChangeReason>? stateChangeReason;
+  final pulumi.Input<ClusterStateChangeReason?>? stateChangeReason;
   /// &lt;p&gt;A timeline that represents the status of a cluster over the lifetime of the cluster.&lt;/p&gt;
-  final pulumi.Input<ClusterTimeline>? timeline;
+  final pulumi.Input<ClusterTimeline?>? timeline;
 
   /// Creates a new [EmrClusterStatus].
   /// [errorDetails] &lt;p&gt;A list of tuples that provides information about the errors that caused a cluster to terminate. This structure can contain up to 10 different &lt;code&gt;ErrorDetail&lt;/code&gt; tuples.&lt;/p&gt;

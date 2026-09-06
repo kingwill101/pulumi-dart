@@ -6,17 +6,17 @@ import 'geneva_action_config_response.dart';
 /// Geneva Actions policy configuration for Agent Space
 class GenevaActionsPolicyResponse {
   /// ACIS (Azure Container Instance Service) endpoint URL
-  final pulumi.Input<String>? acisEndpoint;
+  final pulumi.Input<String?>? acisEndpoint;
   /// Collection of allowed Geneva actions
-  final pulumi.Input<List<GenevaActionConfigResponse>>? allowedActions;
+  final pulumi.Input<List<GenevaActionConfigResponse>?>? allowedActions;
   /// Authentication mode for Geneva Actions
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// Subject alternative name of the certificate used for authentication
   final pulumi.Input<String> certificateSubjectAlternativeName;
   /// Subject name of the certificate used for authentication
-  final pulumi.Input<String>? certificateSubjectName;
+  final pulumi.Input<String?>? certificateSubjectName;
   /// Client ID for authentication
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Name of the Geneva extension
   final pulumi.Input<String> extensionName;
 

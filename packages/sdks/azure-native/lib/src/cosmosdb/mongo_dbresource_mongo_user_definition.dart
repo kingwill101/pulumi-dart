@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_dbresource_mongo_user_definition_args.dart';
+import 'role_response.dart';
 
 /// An Azure Cosmos DB User Definition
 ///
@@ -231,7 +232,7 @@ class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
   /// The password for User Definition. Response does not contain user password.
   late final pulumi.Output<String?> password;
   /// The set of roles inherited by the User Definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> roles;
+  late final pulumi.Output<List<RoleResponse>?> roles;
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
   /// The user name for User Definition.
@@ -257,7 +258,27 @@ class MongoDBResourceMongoUserDefinition extends pulumi.CustomResource {
     mechanisms = registerOutput<String?>('mechanisms');
     this.name = registerOutput<String>('name');
     password = registerOutput<String?>('password');
-    roles = registerOutput<List<Map<String, dynamic>>?>('roles');
+    roles = registerOutput<List<RoleResponse>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleResponse>(guardedValue, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    userName = registerOutput<String?>('userName');
+  }
+
+  /// Creates a typed reference to an existing [MongoDBResourceMongoUserDefinition] resource.
+  MongoDBResourceMongoUserDefinition.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:MongoDBResourceMongoUserDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customData = registerOutput<String?>('customData');
+    databaseName = registerOutput<String?>('databaseName');
+    mechanisms = registerOutput<String?>('mechanisms');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password');
+    roles = registerOutput<List<RoleResponse>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleResponse>(guardedValue, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     userName = registerOutput<String?>('userName');
   }

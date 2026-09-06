@@ -1,32 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' as pulumi;
-import 'notifications_source_alert_response.dart';
 import 'security_contact_properties_notifications_by_role_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getSecurityContact.
 class GetSecurityContactResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// List of email addresses which will get notifications from Microsoft Defender for Cloud by the configurations defined in this security contact.
   final String? emails;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Indicates whether the security contact is enabled.
   final bool? isEnabled;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
   final SecurityContactPropertiesNotificationsByRoleResponse? notificationsByRole;
   /// A collection of sources types which evaluate the email notification.
-  final List<NotificationsSourceAlertResponse>? notificationsSources;
+  final List<dynamic>? notificationsSources;
   /// The security contact's phone number
   final String? phone;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSecurityContactResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,45 +38,45 @@ class GetSecurityContactResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSecurityContactResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.emails,
-    required this.id,
+    this.id,
     this.isEnabled,
-    required this.name,
+    this.name,
     this.notificationsByRole,
     this.notificationsSources,
     this.phone,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'emails': ?emails,
-      'id': id,
+      'id': ?id,
       'isEnabled': ?isEnabled,
-      'name': name,
+      'name': ?name,
       'notificationsByRole': ?notificationsByRole?.toMap(),
-      'notificationsSources': ?(() { final guardedValue = notificationsSources; if (guardedValue == null) return null; return pulumi.Input.encodeList<NotificationsSourceAlertResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'notificationsSources': ?notificationsSources,
       'phone': ?phone,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSecurityContactResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityContactResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       emails: (() { final guardedValue = map['emails']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notificationsByRole: (() { final guardedValue = map['notificationsByRole']; if (guardedValue == null) return null; return SecurityContactPropertiesNotificationsByRoleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      notificationsSources: (() { final guardedValue = map['notificationsSources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationsSourceAlertResponse>(guardedValue, (value) => NotificationsSourceAlertResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      notificationsSources: (() { final guardedValue = map['notificationsSources']; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); })(),
       phone: (() { final guardedValue = map['phone']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

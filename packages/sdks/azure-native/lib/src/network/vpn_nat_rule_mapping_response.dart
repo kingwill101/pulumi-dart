@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Vpn NatRule mapping.
 class VpnNatRuleMappingResponse {
   /// Address space for Vpn NatRule mapping.
-  final pulumi.Input<String>? addressSpace;
+  final pulumi.Input<String?>? addressSpace;
   /// Port range for Vpn NatRule mapping.
-  final pulumi.Input<String>? portRange;
+  final pulumi.Input<String?>? portRange;
 
   /// Creates a new [VpnNatRuleMappingResponse].
   /// [addressSpace] Address space for Vpn NatRule mapping.

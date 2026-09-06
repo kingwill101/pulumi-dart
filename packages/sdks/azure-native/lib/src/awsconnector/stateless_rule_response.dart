@@ -6,9 +6,9 @@ import 'rule_definition_response.dart';
 /// Definition of StatelessRule
 class StatelessRuleResponse {
   /// Property priority
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// Property ruleDefinition
-  final pulumi.Input<RuleDefinitionResponse>? ruleDefinition;
+  final pulumi.Input<RuleDefinitionResponse?>? ruleDefinition;
 
   /// Creates a new [StatelessRuleResponse].
   /// [priority] Property priority
@@ -27,7 +27,7 @@ class StatelessRuleResponse {
 
   factory StatelessRuleResponse.fromMap(Map<String, dynamic> map) {
     return StatelessRuleResponse(
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ruleDefinition: (() { final guardedValue = map['ruleDefinition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

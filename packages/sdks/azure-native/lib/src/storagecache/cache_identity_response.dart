@@ -10,9 +10,9 @@ class CacheIdentityResponse {
   /// The tenant ID associated with the cache.
   final pulumi.Input<String> tenantId;
   /// The type of identity used for the cache
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  final pulumi.Input<Map<String, CacheIdentityResponseUserAssignedIdentities>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, CacheIdentityResponseUserAssignedIdentities>?>? userAssignedIdentities;
 
   /// Creates a new [CacheIdentityResponse].
   /// [principalId] The principal ID for the system-assigned identity of the cache.

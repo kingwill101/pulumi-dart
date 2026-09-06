@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication type to use.
-enum ImpalaAuthenticationType {
+enum ImpalaAuthenticationType implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   sASLUsername("SASLUsername"),
   usernameAndPassword("UsernameAndPassword");
 
   const ImpalaAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ImpalaAuthenticationType fromValue(String value) {

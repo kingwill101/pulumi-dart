@@ -7,12 +7,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_datamigration_sql_migration_service_args_doc}
 class SqlMigrationServiceArgs {
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL Migration Service.
-  final pulumi.Input<String>? sqlMigrationServiceName;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? sqlMigrationServiceName;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlMigrationServiceArgs].
   /// [location] Optional.

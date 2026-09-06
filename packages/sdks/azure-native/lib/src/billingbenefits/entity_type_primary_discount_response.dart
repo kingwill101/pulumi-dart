@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'discount_custom_price_response.dart';
 
 /// Entity type for primary discounts
 class EntityTypePrimaryDiscountResponse {
   /// List of applied scopes supported for discounts.
-  final pulumi.Input<String>? appliedScopeType;
+  final pulumi.Input<String?>? appliedScopeType;
   /// Fully-qualified identifier of the benefit under applicable benefit list.
   final pulumi.Input<String> benefitResourceId;
   /// Billing account resource id where the discount metadata is present.
@@ -16,9 +15,9 @@ class EntityTypePrimaryDiscountResponse {
   /// Customer resource id where the discount is scoped to.
   final pulumi.Input<String> customerResourceId;
   /// This defines the conditions for a given discount type.
-  final pulumi.Input<DiscountCustomPriceResponse>? discountTypeProperties;
+  final pulumi.Input<dynamic>? discountTypeProperties;
   /// This defines a user friendly display name for the discount.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the discount. No duration will be supported. Allowed value is any date greater than or equal to startDate.
   final pulumi.Input<String> endAt;
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
@@ -33,7 +32,7 @@ class EntityTypePrimaryDiscountResponse {
   /// Represents the current status of the discount.
   final pulumi.Input<String> status;
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [EntityTypePrimaryDiscountResponse].
   /// [appliedScopeType] List of applied scopes supported for discounts.
@@ -74,7 +73,7 @@ class EntityTypePrimaryDiscountResponse {
       'billingAccountResourceId': billingAccountResourceId,
       'billingProfileResourceId': billingProfileResourceId,
       'customerResourceId': customerResourceId,
-      'discountTypeProperties': ?pulumi.Input.mapOptionalInputValue<DiscountCustomPriceResponse, Map<String, dynamic>>(discountTypeProperties, (value) => value.toMap()),
+      'discountTypeProperties': ?discountTypeProperties,
       'displayName': ?displayName,
       'endAt': endAt,
       'entityType': entityType,
@@ -93,7 +92,7 @@ class EntityTypePrimaryDiscountResponse {
       billingAccountResourceId: pulumi.Input.fromValue(map['billingAccountResourceId'] as String),
       billingProfileResourceId: pulumi.Input.fromValue(map['billingProfileResourceId'] as String),
       customerResourceId: pulumi.Input.fromValue(map['customerResourceId'] as String),
-      discountTypeProperties: (() { final guardedValue = map['discountTypeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiscountCustomPriceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      discountTypeProperties: (() { final guardedValue = map['discountTypeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endAt: pulumi.Input.fromValue(map['endAt'] as String),
       entityType: pulumi.Input.fromValue(map['entityType'] as String),

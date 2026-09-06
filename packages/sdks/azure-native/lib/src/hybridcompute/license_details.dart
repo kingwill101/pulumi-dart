@@ -6,17 +6,17 @@ import 'volume_license_details.dart';
 /// Describes the properties of a License.
 class LicenseDetails {
   /// Describes the edition of the license. The values are either Standard or Datacenter.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<dynamic>? edition;
   /// Describes the number of processors.
-  final pulumi.Input<int>? processors;
+  final pulumi.Input<int?>? processors;
   /// Describes the state of the license.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Describes the license target server.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<dynamic>? target;
   /// Describes the license core type (pCore or vCore).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// A list of volume license details.
-  final pulumi.Input<List<VolumeLicenseDetails>>? volumeLicenseDetails;
+  final pulumi.Input<List<VolumeLicenseDetails>?>? volumeLicenseDetails;
 
   /// Creates a new [LicenseDetails].
   /// [edition] Describes the edition of the license. The values are either Standard or Datacenter.
@@ -47,11 +47,11 @@ class LicenseDetails {
 
   factory LicenseDetails.fromMap(Map<String, dynamic> map) {
     return LicenseDetails(
-      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       volumeLicenseDetails: (() { final guardedValue = map['volumeLicenseDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeLicenseDetails>(guardedValue, (value) => VolumeLicenseDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

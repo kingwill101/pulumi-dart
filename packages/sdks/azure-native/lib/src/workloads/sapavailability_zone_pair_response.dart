@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SAP Availability Zone Pair.
 class SAPAvailabilityZonePairResponse {
   /// The zone A.
-  final pulumi.Input<double>? zoneA;
+  final pulumi.Input<double?>? zoneA;
   /// The zone B.
-  final pulumi.Input<double>? zoneB;
+  final pulumi.Input<double?>? zoneB;
 
   /// Creates a new [SAPAvailabilityZonePairResponse].
   /// [zoneA] The zone A.
@@ -26,8 +26,8 @@ class SAPAvailabilityZonePairResponse {
 
   factory SAPAvailabilityZonePairResponse.fromMap(Map<String, dynamic> map) {
     return SAPAvailabilityZonePairResponse(
-      zoneA: (() { final guardedValue = map['zoneA']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      zoneB: (() { final guardedValue = map['zoneB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      zoneA: (() { final guardedValue = map['zoneA']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      zoneB: (() { final guardedValue = map['zoneB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

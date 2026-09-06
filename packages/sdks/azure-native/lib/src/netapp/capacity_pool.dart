@@ -237,7 +237,34 @@ class CapacityPool extends pulumi.CustomResource {
     serviceLevel = registerOutput<String>('serviceLevel');
     size = registerOutput<double>('size');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalThroughputMibps = registerOutput<double>('totalThroughputMibps');
+    type = registerOutput<String>('type');
+    utilizedThroughputMibps = registerOutput<double>('utilizedThroughputMibps');
+  }
+
+  /// Creates a typed reference to an existing [CapacityPool] resource.
+  CapacityPool.reference(String urn)
+    : super(
+        'azure-native:netapp:CapacityPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    coolAccess = registerOutput<bool?>('coolAccess');
+    encryptionType = registerOutput<String?>('encryptionType');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    poolId = registerOutput<String>('poolId');
+    provisioningState = registerOutput<String>('provisioningState');
+    qosType = registerOutput<String?>('qosType');
+    serviceLevel = registerOutput<String>('serviceLevel');
+    size = registerOutput<double>('size');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalThroughputMibps = registerOutput<double>('totalThroughputMibps');
     type = registerOutput<String>('type');
     utilizedThroughputMibps = registerOutput<double>('utilizedThroughputMibps');

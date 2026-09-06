@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authentication Mode.
-enum AuthenticationMode {
+enum AuthenticationMode implements pulumi.PulumiEnum<String> {
   valueMsi("Msi"),
   valueUserToken("UserToken"),
   valueConnectionString("ConnectionString");
 
   const AuthenticationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationMode fromValue(String value) {

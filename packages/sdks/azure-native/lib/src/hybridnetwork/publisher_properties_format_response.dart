@@ -7,7 +7,7 @@ class PublisherPropertiesFormatResponse {
   /// The provisioning state of the publisher resource.
   final pulumi.Input<String> provisioningState;
   /// The publisher scope.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [PublisherPropertiesFormatResponse].
   /// [provisioningState] The provisioning state of the publisher resource.

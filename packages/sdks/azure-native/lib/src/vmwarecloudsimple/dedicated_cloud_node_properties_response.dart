@@ -97,7 +97,7 @@ class DedicatedCloudNodePropertiesResponse {
       created: pulumi.Input.fromValue(map['created'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodesCount: pulumi.Input.fromValue(map['nodesCount'] as int),
+      nodesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodesCount'])),
       placementGroupId: pulumi.Input.fromValue(map['placementGroupId'] as String),
       placementGroupName: pulumi.Input.fromValue(map['placementGroupName'] as String),
       privateCloudId: pulumi.Input.fromValue(map['privateCloudId'] as String),

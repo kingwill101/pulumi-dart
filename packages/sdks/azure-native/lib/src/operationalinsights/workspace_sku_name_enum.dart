@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the SKU.
-enum WorkspaceSkuNameEnum {
+enum WorkspaceSkuNameEnum implements pulumi.PulumiEnum<String> {
   valueFree("Free"),
   valueStandard("Standard"),
   valuePremium("Premium"),
@@ -10,6 +12,7 @@ enum WorkspaceSkuNameEnum {
   valueLACluster("LACluster");
 
   const WorkspaceSkuNameEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkspaceSkuNameEnum fromValue(String value) {

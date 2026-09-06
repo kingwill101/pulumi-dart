@@ -293,4 +293,25 @@ class Client extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Client] resource.
+  Client.reference(String urn)
+    : super(
+        'azure-native:eventgrid:Client',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<dynamic>('attributes');
+    authenticationName = registerOutput<String?>('authenticationName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientCertificateAuthentication = registerOutput<ClientCertificateAuthenticationResponse?>('clientCertificateAuthentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientCertificateAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -6,7 +6,7 @@ import 'managed_cluster_azure_monitor_profile_metrics_response.dart';
 /// Azure Monitor addon profiles for monitoring the managed cluster.
 class ManagedClusterAzureMonitorProfileResponse {
   /// Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview.
-  final pulumi.Input<ManagedClusterAzureMonitorProfileMetricsResponse>? metrics;
+  final pulumi.Input<ManagedClusterAzureMonitorProfileMetricsResponse?>? metrics;
 
   /// Creates a new [ManagedClusterAzureMonitorProfileResponse].
   /// [metrics] Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview.

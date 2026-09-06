@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network ACL
 class NetworkACLResponse {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? allow;
+  final pulumi.Input<List<String>?>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? deny;
+  final pulumi.Input<List<String>?>? deny;
 
   /// Creates a new [NetworkACLResponse].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.

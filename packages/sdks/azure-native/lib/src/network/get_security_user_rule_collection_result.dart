@@ -7,25 +7,25 @@ import 'system_data_response.dart';
 /// Result data returned by getSecurityUserRuleCollection.
 class GetSecurityUserRuleCollectionResult {
   /// Groups for configuration
-  final List<SecurityUserGroupItemResponse> appliesToGroups;
+  final List<SecurityUserGroupItemResponse>? appliesToGroups;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A description of the security user rule collection.
   final String? description;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Unique identifier for this resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The system metadata related to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSecurityUserRuleCollectionResult].
   /// [appliesToGroups] Groups for configuration
@@ -39,45 +39,45 @@ class GetSecurityUserRuleCollectionResult {
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
   const GetSecurityUserRuleCollectionResult({
-    required this.appliesToGroups,
-    required this.azureApiVersion,
+    this.appliesToGroups,
+    this.azureApiVersion,
     this.description,
-    required this.etag,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceGuid,
-    required this.systemData,
-    required this.type,
+    this.etag,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.resourceGuid,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesToGroups': pulumi.Input.encodeList<SecurityUserGroupItemResponse, Map<String, dynamic>>(appliesToGroups, (value) => value.toMap()),
-      'azureApiVersion': azureApiVersion,
+      'appliesToGroups': ?(() { final guardedValue = appliesToGroups; if (guardedValue == null) return null; return pulumi.Input.encodeList<SecurityUserGroupItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'etag': etag,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSecurityUserRuleCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityUserRuleCollectionResult(
-      appliesToGroups: pulumi.Input.decodeList<SecurityUserGroupItemResponse>(map['appliesToGroups']!, (value) => SecurityUserGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureApiVersion: map['azureApiVersion'] as String,
+      appliesToGroups: (() { final guardedValue = map['appliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityUserGroupItemResponse>(guardedValue, (value) => SecurityUserGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

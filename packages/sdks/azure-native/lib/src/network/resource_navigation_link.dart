@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ResourceNavigationLink resource.
 class ResourceNavigationLink {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Link to the external resource
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Resource type of the linked resource.
-  final pulumi.Input<String>? linkedResourceType;
+  final pulumi.Input<String?>? linkedResourceType;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ResourceNavigationLink].
   /// [id] Resource ID.

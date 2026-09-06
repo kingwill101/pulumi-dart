@@ -9,16 +9,16 @@ import 'shared_storage_resource_names_response.dart';
 /// The resource name object where the specified values will be full resource names of the corresponding resources in a three tier SAP system.
 class ThreeTierFullResourceNamesResponse {
   /// The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.
-  final pulumi.Input<ApplicationServerFullResourceNamesResponse>? applicationServer;
+  final pulumi.Input<ApplicationServerFullResourceNamesResponse?>? applicationServer;
   /// The full resource names object for central server layer resources.
-  final pulumi.Input<CentralServerFullResourceNamesResponse>? centralServer;
+  final pulumi.Input<CentralServerFullResourceNamesResponse?>? centralServer;
   /// The full resource names object for database layer resources. The number of entries in this list should be equal to the number VMs to be created for database layer.
-  final pulumi.Input<DatabaseServerFullResourceNamesResponse>? databaseServer;
+  final pulumi.Input<DatabaseServerFullResourceNamesResponse?>? databaseServer;
   /// The pattern type to be used for resource naming.
   /// Expected value is 'FullResourceName'.
   final pulumi.Input<String> namingPatternType;
   /// The resource names object for shared storage.
-  final pulumi.Input<SharedStorageResourceNamesResponse>? sharedStorage;
+  final pulumi.Input<SharedStorageResourceNamesResponse?>? sharedStorage;
 
   /// Creates a new [ThreeTierFullResourceNamesResponse].
   /// [applicationServer] The full resource names object for application layer resources. The number of entries in this list should be equal to the number VMs to be created for application layer.

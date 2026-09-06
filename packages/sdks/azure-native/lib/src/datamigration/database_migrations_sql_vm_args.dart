@@ -9,12 +9,12 @@ import 'database_migration_properties_sql_vm.dart';
 /// {@macro pulumi_datamigration_database_migrations_sql_vm_args_doc}
 class DatabaseMigrationsSqlVmArgs {
   /// Database Migration Resource properties for SQL Virtual Machine.
-  final pulumi.Input<DatabaseMigrationPropertiesSqlVm>? properties;
+  final pulumi.Input<DatabaseMigrationPropertiesSqlVm?>? properties;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> sqlVirtualMachineName;
   /// The name of the target database.
-  final pulumi.Input<String>? targetDbName;
+  final pulumi.Input<String?>? targetDbName;
 
   /// Creates a new [DatabaseMigrationsSqlVmArgs].
   /// [properties] Database Migration Resource properties for SQL Virtual Machine.

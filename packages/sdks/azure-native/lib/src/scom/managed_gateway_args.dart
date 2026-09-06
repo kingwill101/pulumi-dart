@@ -10,7 +10,7 @@ class ManagedGatewayArgs {
   /// Name of the SCOM managed instance.
   final pulumi.Input<String> instanceName;
   /// The gateway resource name.
-  final pulumi.Input<String>? managedGatewayName;
+  final pulumi.Input<String?>? managedGatewayName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

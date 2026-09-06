@@ -9,7 +9,7 @@ import 'component_container_properties.dart';
 /// {@macro pulumi_machinelearningservices_component_container_args_doc}
 class ComponentContainerArgs {
   /// Container name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<ComponentContainerProperties> properties;
   /// The name of the resource group. The name is case insensitive.

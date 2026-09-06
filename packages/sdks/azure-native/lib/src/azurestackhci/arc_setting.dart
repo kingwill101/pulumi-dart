@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'arc_connectivity_properties_response.dart';
 import 'arc_setting_args.dart';
+import 'default_extension_details_response.dart';
+import 'per_node_state_response.dart';
 import 'system_data_response.dart';
 
 /// ArcSetting details.
@@ -165,13 +168,13 @@ class ArcSetting extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// contains connectivity related configuration for ARC resources
-  late final pulumi.Output<List<Map<String, dynamic>>?> connectivityProperties;
+  late final pulumi.Output<List<ArcConnectivityPropertiesResponse>?> connectivityProperties;
   /// Properties for each of the default extensions category
-  late final pulumi.Output<List<Map<String, dynamic>>> defaultExtensions;
+  late final pulumi.Output<List<DefaultExtensionDetailsResponse>> defaultExtensions;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// State of Arc agent in each of the nodes.
-  late final pulumi.Output<List<Map<String, dynamic>>> perNodeDetails;
+  late final pulumi.Output<List<PerNodeStateResponse>> perNodeDetails;
   /// Provisioning state of the ArcSetting proxy resource.
   late final pulumi.Output<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -200,10 +203,35 @@ class ArcSetting extends pulumi.CustomResource {
     arcInstanceResourceGroup = registerOutput<String?>('arcInstanceResourceGroup');
     arcServicePrincipalObjectId = registerOutput<String?>('arcServicePrincipalObjectId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    connectivityProperties = registerOutput<List<Map<String, dynamic>>?>('connectivityProperties');
-    defaultExtensions = registerOutput<List<Map<String, dynamic>>>('defaultExtensions');
+    connectivityProperties = registerOutput<List<ArcConnectivityPropertiesResponse>?>('connectivityProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArcConnectivityPropertiesResponse>(guardedValue, (value) => ArcConnectivityPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultExtensions = registerOutput<List<DefaultExtensionDetailsResponse>>('defaultExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultExtensionDetailsResponse>(guardedValue, (value) => DefaultExtensionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    perNodeDetails = registerOutput<List<Map<String, dynamic>>>('perNodeDetails');
+    perNodeDetails = registerOutput<List<PerNodeStateResponse>>('perNodeDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerNodeStateResponse>(guardedValue, (value) => PerNodeStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ArcSetting] resource.
+  ArcSetting.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:ArcSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregateState = registerOutput<String>('aggregateState');
+    arcApplicationClientId = registerOutput<String?>('arcApplicationClientId');
+    arcApplicationObjectId = registerOutput<String?>('arcApplicationObjectId');
+    arcApplicationTenantId = registerOutput<String?>('arcApplicationTenantId');
+    arcInstanceResourceGroup = registerOutput<String?>('arcInstanceResourceGroup');
+    arcServicePrincipalObjectId = registerOutput<String?>('arcServicePrincipalObjectId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectivityProperties = registerOutput<List<ArcConnectivityPropertiesResponse>?>('connectivityProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArcConnectivityPropertiesResponse>(guardedValue, (value) => ArcConnectivityPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultExtensions = registerOutput<List<DefaultExtensionDetailsResponse>>('defaultExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefaultExtensionDetailsResponse>(guardedValue, (value) => DefaultExtensionDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    perNodeDetails = registerOutput<List<PerNodeStateResponse>>('perNodeDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerNodeStateResponse>(guardedValue, (value) => PerNodeStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

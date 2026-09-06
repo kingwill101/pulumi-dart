@@ -6,23 +6,23 @@ import 'configuration_parameter.dart';
 /// Guest configuration is an artifact that encapsulates DSC configuration and its dependencies. The artifact is a zip file containing DSC configuration (as MOF) and dependent resources and other dependencies like modules.
 class GuestConfigurationNavigation {
   /// Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
-  final pulumi.Input<String>? assignmentType;
+  final pulumi.Input<dynamic>? assignmentType;
   /// The configuration parameters for the guest configuration.
-  final pulumi.Input<List<ConfigurationParameter>>? configurationParameter;
+  final pulumi.Input<List<ConfigurationParameter>?>? configurationParameter;
   /// The protected configuration parameters for the guest configuration.
-  final pulumi.Input<List<ConfigurationParameter>>? configurationProtectedParameter;
+  final pulumi.Input<List<ConfigurationParameter>?>? configurationProtectedParameter;
   /// Combined hash of the guest configuration package and configuration parameters.
-  final pulumi.Input<String>? contentHash;
+  final pulumi.Input<String?>? contentHash;
   /// Managed identity with storage access of the guest configuration package and configuration parameters.
-  final pulumi.Input<String>? contentManagedIdentity;
+  final pulumi.Input<String?>? contentManagedIdentity;
   /// Uri of the storage where guest configuration package is uploaded.
-  final pulumi.Input<String>? contentUri;
+  final pulumi.Input<String?>? contentUri;
   /// Kind of the guest configuration. For example:DSC
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// Name of the guest configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Version of the guest configuration.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GuestConfigurationNavigation].
   /// [assignmentType] Specifies the assignment type and execution of the configuration. Possible values are Audit, DeployAndAutoCorrect, ApplyAndAutoCorrect and ApplyAndMonitor.
@@ -62,13 +62,13 @@ class GuestConfigurationNavigation {
 
   factory GuestConfigurationNavigation.fromMap(Map<String, dynamic> map) {
     return GuestConfigurationNavigation(
-      assignmentType: (() { final guardedValue = map['assignmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      assignmentType: (() { final guardedValue = map['assignmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       configurationParameter: (() { final guardedValue = map['configurationParameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationParameter>(guardedValue, (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       configurationProtectedParameter: (() { final guardedValue = map['configurationProtectedParameter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationParameter>(guardedValue, (value) => ConfigurationParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       contentHash: (() { final guardedValue = map['contentHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentManagedIdentity: (() { final guardedValue = map['contentManagedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentUri: (() { final guardedValue = map['contentUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

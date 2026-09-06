@@ -8,13 +8,13 @@ class ApplicationGatewayLoadDistributionPolicyResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load Distribution Targets resource of an application gateway.
-  final pulumi.Input<String>? loadDistributionAlgorithm;
+  final pulumi.Input<String?>? loadDistributionAlgorithm;
   /// Load Distribution Targets resource of an application gateway.
-  final pulumi.Input<List<ApplicationGatewayLoadDistributionTargetResponse>>? loadDistributionTargets;
+  final pulumi.Input<List<ApplicationGatewayLoadDistributionTargetResponse>?>? loadDistributionTargets;
   /// Name of the load distribution policy that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the Load Distribution Policy resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

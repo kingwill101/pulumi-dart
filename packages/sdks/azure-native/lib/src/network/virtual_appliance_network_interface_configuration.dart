@@ -6,9 +6,9 @@ import 'virtual_appliance_network_interface_configuration_properties.dart';
 /// Represents a single NIC configuration.
 class VirtualApplianceNetworkInterfaceConfiguration {
   /// NIC type. This should be either PublicNic or PrivateNic.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<dynamic>? nicType;
   /// Represents a single NIC configuration properties.
-  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationProperties>? properties;
+  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationProperties?>? properties;
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfiguration].
   /// [nicType] NIC type. This should be either PublicNic or PrivateNic.
@@ -27,7 +27,7 @@ class VirtualApplianceNetworkInterfaceConfiguration {
 
   factory VirtualApplianceNetworkInterfaceConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualApplianceNetworkInterfaceConfiguration(
-      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualApplianceNetworkInterfaceConfigurationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

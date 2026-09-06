@@ -10,23 +10,23 @@ class ManagedNetworkGroupResponse {
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// Responsibility role under which this Managed Network Group will be created
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The collection of management groups covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? managementGroups;
+  final pulumi.Input<List<ResourceIdResponse>?>? managementGroups;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Provisioning state of the ManagedNetwork resource.
   final pulumi.Input<String> provisioningState;
   /// The collection of  subnets covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? subnets;
+  final pulumi.Input<List<ResourceIdResponse>?>? subnets;
   /// The collection of subscriptions covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? subscriptions;
+  final pulumi.Input<List<ResourceIdResponse>?>? subscriptions;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   final pulumi.Input<String> type;
   /// The collection of virtual nets covered by the Managed Network
-  final pulumi.Input<List<ResourceIdResponse>>? virtualNetworks;
+  final pulumi.Input<List<ResourceIdResponse>?>? virtualNetworks;
 
   /// Creates a new [ManagedNetworkGroupResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

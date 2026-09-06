@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource names object for shared storage.
 class SharedStorageResourceNamesResponse {
   /// The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
-  final pulumi.Input<String>? sharedStorageAccountName;
+  final pulumi.Input<String?>? sharedStorageAccountName;
   /// The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
-  final pulumi.Input<String>? sharedStorageAccountPrivateEndPointName;
+  final pulumi.Input<String?>? sharedStorageAccountPrivateEndPointName;
 
   /// Creates a new [SharedStorageResourceNamesResponse].
   /// [sharedStorageAccountName] The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.

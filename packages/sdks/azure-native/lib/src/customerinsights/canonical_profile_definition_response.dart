@@ -6,9 +6,9 @@ import 'canonical_profile_definition_response_properties.dart';
 /// Definition of canonical profile.
 class CanonicalProfileDefinitionResponse {
   /// Canonical profile ID.
-  final pulumi.Input<int>? canonicalProfileId;
+  final pulumi.Input<int?>? canonicalProfileId;
   /// Properties of the canonical profile.
-  final pulumi.Input<List<CanonicalProfileDefinitionResponseProperties>>? properties;
+  final pulumi.Input<List<CanonicalProfileDefinitionResponseProperties>?>? properties;
 
   /// Creates a new [CanonicalProfileDefinitionResponse].
   /// [canonicalProfileId] Canonical profile ID.
@@ -27,7 +27,7 @@ class CanonicalProfileDefinitionResponse {
 
   factory CanonicalProfileDefinitionResponse.fromMap(Map<String, dynamic> map) {
     return CanonicalProfileDefinitionResponse(
-      canonicalProfileId: (() { final guardedValue = map['canonicalProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      canonicalProfileId: (() { final guardedValue = map['canonicalProfileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CanonicalProfileDefinitionResponseProperties>(guardedValue, (value) => CanonicalProfileDefinitionResponseProperties.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

@@ -8,25 +8,25 @@ import 'filter_file_details.dart';
 /// Details of the filtering the transfer of data.
 class TransferFilterDetails {
   /// Filter details to transfer Azure files.
-  final pulumi.Input<AzureFileFilterDetails>? azureFileFilterDetails;
+  final pulumi.Input<AzureFileFilterDetails?>? azureFileFilterDetails;
   /// Filter details to transfer blobs.
-  final pulumi.Input<BlobFilterDetails>? blobFilterDetails;
+  final pulumi.Input<BlobFilterDetails?>? blobFilterDetails;
   /// Type of the account of data.
-  final pulumi.Input<String> dataAccountType;
+  final pulumi.Input<dynamic> dataAccountType;
   /// Details of the filter files to be used for data transfer.
-  final pulumi.Input<List<FilterFileDetails>>? filterFileDetails;
+  final pulumi.Input<List<FilterFileDetails>?>? filterFileDetails;
 
   /// Creates a new [TransferFilterDetails].
   /// [azureFileFilterDetails] Filter details to transfer Azure files.
   /// [blobFilterDetails] Filter details to transfer blobs.
   /// [dataAccountType] Type of the account of data.
   /// [filterFileDetails] Details of the filter files to be used for data transfer.
-  const TransferFilterDetails({
+  TransferFilterDetails({
     this.azureFileFilterDetails,
     this.blobFilterDetails,
-    required this.dataAccountType,
+    pulumi.Input<dynamic>? dataAccountType,
     this.filterFileDetails,
-  });
+  }) : dataAccountType = dataAccountType ?? pulumi.Input.fromValue('StorageAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,7 +41,7 @@ class TransferFilterDetails {
     return TransferFilterDetails(
       azureFileFilterDetails: (() { final guardedValue = map['azureFileFilterDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFileFilterDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       blobFilterDetails: (() { final guardedValue = map['blobFilterDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BlobFilterDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      dataAccountType: pulumi.Input.fromValue(map['dataAccountType'] as String),
+      dataAccountType: pulumi.Input.fromValue(map['dataAccountType']),
       filterFileDetails: (() { final guardedValue = map['filterFileDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FilterFileDetails>(guardedValue, (value) => FilterFileDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

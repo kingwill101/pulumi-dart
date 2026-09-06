@@ -7,11 +7,11 @@ import 'origin_group_members_response.dart';
 /// Definition of OriginGroup
 class OriginGroupResponse {
   /// A complex type that contains information about the failover criteria for an origin group. A complex data type that includes information about the failover criteria for an origin group, including the status codes for which CloudFront will failover from the primary origin to the second origin.
-  final pulumi.Input<OriginGroupFailoverCriteriaResponse>? failoverCriteria;
+  final pulumi.Input<OriginGroupFailoverCriteriaResponse?>? failoverCriteria;
   /// The origin group's ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A complex type that contains information about the origins in an origin group. A complex data type for the origins included in an origin group.
-  final pulumi.Input<OriginGroupMembersResponse>? members;
+  final pulumi.Input<OriginGroupMembersResponse?>? members;
 
   /// Creates a new [OriginGroupResponse].
   /// [failoverCriteria] A complex type that contains information about the failover criteria for an origin group. A complex data type that includes information about the failover criteria for an origin group, including the status codes for which CloudFront will failover from the primary origin to the second origin.

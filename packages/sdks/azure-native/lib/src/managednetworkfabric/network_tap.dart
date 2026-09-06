@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'network_tap_args.dart';
+import 'network_tap_properties_response_destinations.dart';
 import 'system_data_response.dart';
 
 /// The Network Tap resource definition.
@@ -282,7 +283,7 @@ class NetworkTap extends pulumi.CustomResource {
   /// Gets the configurations state of the resource.
   late final pulumi.Output<String> configurationState;
   /// List of destinations to send the filter traffic.
-  late final pulumi.Output<List<Map<String, dynamic>>> destinations;
+  late final pulumi.Output<List<NetworkTapPropertiesResponseDestinations>> destinations;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -320,7 +321,7 @@ class NetworkTap extends pulumi.CustomResource {
     annotation = registerOutput<String?>('annotation');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     configurationState = registerOutput<String>('configurationState');
-    destinations = registerOutput<List<Map<String, dynamic>>>('destinations');
+    destinations = registerOutput<List<NetworkTapPropertiesResponseDestinations>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkTapPropertiesResponseDestinations>(guardedValue, (value) => NetworkTapPropertiesResponseDestinations.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkPacketBrokerId = registerOutput<String>('networkPacketBrokerId');
@@ -328,7 +329,32 @@ class NetworkTap extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     sourceTapRuleId = registerOutput<String>('sourceTapRuleId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkTap] resource.
+  NetworkTap.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:NetworkTap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    destinations = registerOutput<List<NetworkTapPropertiesResponseDestinations>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkTapPropertiesResponseDestinations>(guardedValue, (value) => NetworkTapPropertiesResponseDestinations.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkPacketBrokerId = registerOutput<String>('networkPacketBrokerId');
+    pollingType = registerOutput<String?>('pollingType');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceTapRuleId = registerOutput<String>('sourceTapRuleId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -9,7 +9,7 @@ class IdentityResponse {
   /// The tenant ID of resource. The value must be an UUID.
   final pulumi.Input<String> tenantId;
   /// The identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of resource identity. The value must be an UUID.

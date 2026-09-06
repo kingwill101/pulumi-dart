@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information for SQL to Azure SQL DB migration task inputs
 class MigrateSqlServerSqlDbDatabaseInput {
   /// id of the database
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether to set database read only before migration
-  final pulumi.Input<bool>? makeSourceDbReadOnly;
+  final pulumi.Input<bool?>? makeSourceDbReadOnly;
   /// Name of the database
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Settings selected for DB schema migration.
   final pulumi.Input<dynamic>? schemaSetting;
   /// Mapping of source to target tables
-  final pulumi.Input<Map<String, String>>? tableMap;
+  final pulumi.Input<Map<String, String>?>? tableMap;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
 
   /// Creates a new [MigrateSqlServerSqlDbDatabaseInput].
   /// [id] id of the database

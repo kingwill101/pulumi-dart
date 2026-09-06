@@ -8,9 +8,9 @@ class DefaultRolloutPropertiesResponse {
   /// The provisioned state of the resource.
   final pulumi.Input<String> provisioningState;
   /// The default rollout specification.
-  final pulumi.Input<DefaultRolloutPropertiesSpecificationResponse>? specification;
+  final pulumi.Input<DefaultRolloutPropertiesSpecificationResponse?>? specification;
   /// The default rollout status.
-  final pulumi.Input<DefaultRolloutPropertiesStatusResponse>? status;
+  final pulumi.Input<DefaultRolloutPropertiesStatusResponse?>? status;
 
   /// Creates a new [DefaultRolloutPropertiesResponse].
   /// [provisioningState] The provisioned state of the resource.

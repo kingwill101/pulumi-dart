@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The connection mode for this connection.
-enum VirtualNetworkGatewayConnectionMode {
+enum VirtualNetworkGatewayConnectionMode implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueResponderOnly("ResponderOnly"),
   valueInitiatorOnly("InitiatorOnly");
 
   const VirtualNetworkGatewayConnectionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkGatewayConnectionMode fromValue(String value) {

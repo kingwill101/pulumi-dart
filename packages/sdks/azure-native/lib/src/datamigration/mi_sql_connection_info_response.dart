@@ -7,12 +7,12 @@ class MiSqlConnectionInfoResponse {
   /// Resource id for Azure SQL database Managed instance
   final pulumi.Input<String> managedInstanceResourceId;
   /// Password credential.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Type of connection info
   /// Expected value is 'MiSqlConnectionInfo'.
   final pulumi.Input<String> type;
   /// User name
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [MiSqlConnectionInfoResponse].
   /// [managedInstanceResourceId] Resource id for Azure SQL database Managed instance

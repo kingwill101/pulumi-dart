@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Transition
 class Transition {
   /// The storage class to which you want the object to transition.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<dynamic>? storageClass;
   /// Indicates when objects are transitioned to the specified storage class. The date value must be in ISO 8601 format. The time is always midnight UTC. The date value in ISO 8601 format. The timezone is always UTC. (YYYY-MM-DDThh:mm:ssZ)
-  final pulumi.Input<String>? transitionDate;
+  final pulumi.Input<String?>? transitionDate;
   /// Indicates the number of days after creation when objects are transitioned to the specified storage class. The value must be a positive integer.
-  final pulumi.Input<int>? transitionInDays;
+  final pulumi.Input<int?>? transitionInDays;
 
   /// Creates a new [Transition].
   /// [storageClass] The storage class to which you want the object to transition.
@@ -31,9 +31,9 @@ class Transition {
 
   factory Transition.fromMap(Map<String, dynamic> map) {
     return Transition(
-      storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       transitionDate: (() { final guardedValue = map['transitionDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transitionInDays: (() { final guardedValue = map['transitionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      transitionInDays: (() { final guardedValue = map['transitionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

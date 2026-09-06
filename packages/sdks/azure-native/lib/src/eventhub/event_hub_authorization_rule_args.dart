@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_event_hub_authorization_rule_args_doc}
 class EventHubAuthorizationRuleArgs {
   /// The authorization rule name.
-  final pulumi.Input<String>? authorizationRuleName;
+  final pulumi.Input<String?>? authorizationRuleName;
   /// The Event Hub name
   final pulumi.Input<String> eventHubName;
   /// The Namespace name
@@ -16,7 +16,7 @@ class EventHubAuthorizationRuleArgs {
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   /// The rights associated with the rule.
-  final pulumi.Input<List<String>> rights;
+  final pulumi.Input<List<dynamic>> rights;
 
   /// Creates a new [EventHubAuthorizationRuleArgs].
   /// [authorizationRuleName] The authorization rule name.
@@ -48,7 +48,7 @@ class EventHubAuthorizationRuleArgs {
       eventHubName: pulumi.Input.fromValue(map['eventHubName'] as String),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<dynamic>()),
     );
   }
 }

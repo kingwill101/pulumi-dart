@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings concerning lockbox.
 class PropertiesLockbox {
   /// lockbox configuration
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [PropertiesLockbox].
   /// [state] lockbox configuration
@@ -21,7 +21,7 @@ class PropertiesLockbox {
 
   factory PropertiesLockbox.fromMap(Map<String, dynamic> map) {
     return PropertiesLockbox(
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

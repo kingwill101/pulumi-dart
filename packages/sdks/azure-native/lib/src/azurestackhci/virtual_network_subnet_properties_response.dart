@@ -14,13 +14,13 @@ class VirtualNetworkSubnetPropertiesResponse {
   /// List of ip configurations for the subnet
   final pulumi.Input<List<VirtualNetworkSubnetIpConfigurationReferenceResponse>> ipConfigurations;
   /// Nat Gateway attached to the subnet for non-vnet traffic.
-  final pulumi.Input<NatGatewayArmReferenceResponse>? natGateway;
+  final pulumi.Input<NatGatewayArmReferenceResponse?>? natGateway;
   /// Network Security Group attached to the subnet.
-  final pulumi.Input<NetworkSecurityGroupArmReferenceResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupArmReferenceResponse?>? networkSecurityGroup;
   /// The provisioning state of the virtual network subnet resource.
   final pulumi.Input<String> provisioningState;
   /// RouteTable defining custom routes for the subnet.
-  final pulumi.Input<RouteTableResponse>? routeTable;
+  final pulumi.Input<RouteTableResponse?>? routeTable;
   /// The observed status of the virtual network subnet resource.
   final pulumi.Input<VirtualNetworkSubnetStatusResponse> status;
 

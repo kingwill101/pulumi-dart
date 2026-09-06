@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Define user session group by clause variables.
 class GroupByVariable {
   /// User Session clause variable.
-  final pulumi.Input<String> variableName;
+  final pulumi.Input<dynamic> variableName;
 
   /// Creates a new [GroupByVariable].
   /// [variableName] User Session clause variable.
@@ -21,7 +21,7 @@ class GroupByVariable {
 
   factory GroupByVariable.fromMap(Map<String, dynamic> map) {
     return GroupByVariable(
-      variableName: pulumi.Input.fromValue(map['variableName'] as String),
+      variableName: pulumi.Input.fromValue(map['variableName']),
     );
   }
 }

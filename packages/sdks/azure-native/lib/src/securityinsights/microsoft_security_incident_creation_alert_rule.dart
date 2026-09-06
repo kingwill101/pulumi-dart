@@ -486,15 +486,41 @@ class MicrosoftSecurityIncidentCreationAlertRule extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
-    displayNamesExcludeFilter = registerOutput<List<String>?>('displayNamesExcludeFilter');
-    displayNamesFilter = registerOutput<List<String>?>('displayNamesFilter');
+    displayNamesExcludeFilter = registerOutput<List<String>?>('displayNamesExcludeFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayNamesFilter = registerOutput<List<String>?>('displayNamesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enabled = registerOutput<bool>('enabled');
     etag = registerOutput<String?>('etag');
     kind = registerOutput<String>('kind');
     lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
     productFilter = registerOutput<String>('productFilter');
-    severitiesFilter = registerOutput<List<String>?>('severitiesFilter');
+    severitiesFilter = registerOutput<List<String>?>('severitiesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MicrosoftSecurityIncidentCreationAlertRule] resource.
+  MicrosoftSecurityIncidentCreationAlertRule.reference(String urn)
+    : super(
+        'azure-native:securityinsights:MicrosoftSecurityIncidentCreationAlertRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    displayNamesExcludeFilter = registerOutput<List<String>?>('displayNamesExcludeFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayNamesFilter = registerOutput<List<String>?>('displayNamesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+    this.name = registerOutput<String>('name');
+    productFilter = registerOutput<String>('productFilter');
+    severitiesFilter = registerOutput<List<String>?>('severitiesFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

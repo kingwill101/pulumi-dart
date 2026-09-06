@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the full text path specification.
 class FullTextPathResponse {
   /// The language of the full text field in the document.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The path to the full text field in the document.
   final pulumi.Input<String> path;
 

@@ -38,9 +38,9 @@ class PartitionInstanceCountScaleMechanismResponse {
   factory PartitionInstanceCountScaleMechanismResponse.fromMap(Map<String, dynamic> map) {
     return PartitionInstanceCountScaleMechanismResponse(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      maxInstanceCount: pulumi.Input.fromValue(map['maxInstanceCount'] as int),
-      minInstanceCount: pulumi.Input.fromValue(map['minInstanceCount'] as int),
-      scaleIncrement: pulumi.Input.fromValue(map['scaleIncrement'] as int),
+      maxInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInstanceCount'])),
+      minInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minInstanceCount'])),
+      scaleIncrement: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleIncrement'])),
     );
   }
 }

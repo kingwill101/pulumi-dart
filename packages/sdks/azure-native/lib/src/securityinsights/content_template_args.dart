@@ -13,57 +13,57 @@ import 'metadata_support.dart';
 /// {@macro pulumi_securityinsights_content_template_args_doc}
 class ContentTemplateArgs {
   /// The creator of the content item.
-  final pulumi.Input<MetadataAuthor>? author;
+  final pulumi.Input<MetadataAuthor?>? author;
   /// Categories for the item
-  final pulumi.Input<MetadataCategories>? categories;
+  final pulumi.Input<MetadataCategories?>? categories;
   /// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
   final pulumi.Input<String> contentId;
   /// The kind of content the template is for.
-  final pulumi.Input<String> contentKind;
+  final pulumi.Input<dynamic> contentKind;
   /// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
   final pulumi.Input<String> contentProductId;
   /// Schema version of the content. Can be used to distinguish between different flow based on the schema version
-  final pulumi.Input<String>? contentSchemaVersion;
+  final pulumi.Input<String?>? contentSchemaVersion;
   /// The custom version of the content. A optional free text
-  final pulumi.Input<String>? customVersion;
+  final pulumi.Input<String?>? customVersion;
   /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
-  final pulumi.Input<MetadataDependencies>? dependencies;
+  final pulumi.Input<MetadataDependencies?>? dependencies;
   /// The display name of the template
   final pulumi.Input<String> displayName;
   /// first publish date content item
-  final pulumi.Input<String>? firstPublishDate;
+  final pulumi.Input<String?>? firstPublishDate;
   /// the icon identifier. this id can later be fetched from the content metadata
-  final pulumi.Input<String>? icon;
+  final pulumi.Input<String?>? icon;
   /// last publish date for the content item
-  final pulumi.Input<String>? lastPublishDate;
+  final pulumi.Input<String?>? lastPublishDate;
   /// The JSON of the ARM template to deploy active content. Expandable.
   final pulumi.Input<dynamic>? mainTemplate;
   /// the package Id contains this template
   final pulumi.Input<String> packageId;
   /// the packageKind of the package contains this template
-  final pulumi.Input<String>? packageKind;
+  final pulumi.Input<dynamic>? packageKind;
   /// the name of the package contains this template
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
   final pulumi.Input<String> packageVersion;
   /// preview image file names. These will be taken from the solution artifacts
-  final pulumi.Input<List<String>>? previewImages;
+  final pulumi.Input<List<String>?>? previewImages;
   /// preview image file names. These will be taken from the solution artifacts. used for dark theme support
-  final pulumi.Input<List<String>>? previewImagesDark;
+  final pulumi.Input<List<String>?>? previewImagesDark;
   /// Providers for the content item
-  final pulumi.Input<List<String>>? providers;
+  final pulumi.Input<List<String>?>? providers;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Source of the content.  This is where/how it was created.
   final pulumi.Input<MetadataSource> source;
   /// Support information for the template - type, name, contact information
-  final pulumi.Input<MetadataSupport>? support;
+  final pulumi.Input<MetadataSupport?>? support;
   /// template Id
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// the tactics the resource covers
-  final pulumi.Input<List<String>>? threatAnalysisTactics;
+  final pulumi.Input<List<String>?>? threatAnalysisTactics;
   /// the techniques the resource covers, these have to be aligned with the tactics being used
-  final pulumi.Input<List<String>>? threatAnalysisTechniques;
+  final pulumi.Input<List<String>?>? threatAnalysisTechniques;
   /// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
   final pulumi.Input<String> version;
   /// The name of the workspace.
@@ -167,7 +167,7 @@ class ContentTemplateArgs {
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataAuthor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MetadataCategories.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       contentId: pulumi.Input.fromValue(map['contentId'] as String),
-      contentKind: pulumi.Input.fromValue(map['contentKind'] as String),
+      contentKind: pulumi.Input.fromValue(map['contentKind']),
       contentProductId: pulumi.Input.fromValue(map['contentProductId'] as String),
       contentSchemaVersion: (() { final guardedValue = map['contentSchemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       customVersion: (() { final guardedValue = map['customVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -178,7 +178,7 @@ class ContentTemplateArgs {
       lastPublishDate: (() { final guardedValue = map['lastPublishDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mainTemplate: (() { final guardedValue = map['mainTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       packageId: pulumi.Input.fromValue(map['packageId'] as String),
-      packageKind: (() { final guardedValue = map['packageKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      packageKind: (() { final guardedValue = map['packageKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       packageVersion: pulumi.Input.fromValue(map['packageVersion'] as String),
       previewImages: (() { final guardedValue = map['previewImages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class KeyVaultProperties {
   /// Currently, we support only SystemAssigned MSI.
   /// We need this when we support UserAssignedIdentities
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// KeyVault key identifier to encrypt the data
   final pulumi.Input<String> keyIdentifier;
   /// KeyVault Arm Id that contains the data encryption key

@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_notificationhubs_notification_hub_authorization_rule_args_doc}
 class NotificationHubAuthorizationRuleArgs {
   /// Authorization Rule Name
-  final pulumi.Input<String>? authorizationRuleName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? authorizationRuleName;
+  final pulumi.Input<String?>? location;
   /// Namespace name
   final pulumi.Input<String> namespaceName;
   /// Notification Hub name
   final pulumi.Input<String> notificationHubName;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the rights associated with the rule.
-  final pulumi.Input<List<String>> rights;
+  final pulumi.Input<List<dynamic>> rights;
   /// Gets a base64-encoded 256-bit primary key for signing and
   /// validating the SAS token.
-  final pulumi.Input<String>? secondaryKey;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<String?>? secondaryKey;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NotificationHubAuthorizationRuleArgs].
   /// [authorizationRuleName] Authorization Rule Name
@@ -70,7 +70,7 @@ class NotificationHubAuthorizationRuleArgs {
       notificationHubName: pulumi.Input.fromValue(map['notificationHubName'] as String),
       primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<dynamic>()),
       secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

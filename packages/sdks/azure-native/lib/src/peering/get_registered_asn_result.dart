@@ -6,17 +6,17 @@ class GetRegisteredAsnResult {
   /// The customer's ASN from which traffic originates.
   final int? asn;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The ID of the resource.
-  final String id;
+  final String? id;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The peering service prefix key that is to be shared with the customer.
-  final String peeringServicePrefixKey;
+  final String? peeringServicePrefixKey;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRegisteredAsnResult].
   /// [asn] The customer's ASN from which traffic originates.
@@ -28,35 +28,35 @@ class GetRegisteredAsnResult {
   /// [type] The type of the resource.
   const GetRegisteredAsnResult({
     this.asn,
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.peeringServicePrefixKey,
-    required this.provisioningState,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.peeringServicePrefixKey,
+    this.provisioningState,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'asn': ?asn,
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'peeringServicePrefixKey': peeringServicePrefixKey,
-      'provisioningState': provisioningState,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'peeringServicePrefixKey': ?peeringServicePrefixKey,
+      'provisioningState': ?provisioningState,
+      'type': ?type,
     };
   }
 
   factory GetRegisteredAsnResult.fromMap(Map<String, dynamic> map) {
     return GetRegisteredAsnResult(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      peeringServicePrefixKey: map['peeringServicePrefixKey'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peeringServicePrefixKey: (() { final guardedValue = map['peeringServicePrefixKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

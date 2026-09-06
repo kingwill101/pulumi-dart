@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a RegistrationInfo definition.
 class RegistrationInfoResponse {
   /// Expiration time of registration token.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
   /// The type of resetting the token.
-  final pulumi.Input<String>? registrationTokenOperation;
+  final pulumi.Input<String?>? registrationTokenOperation;
   /// The registration token base64 encoded string.
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [RegistrationInfoResponse].
   /// [expirationTime] Expiration time of registration token.

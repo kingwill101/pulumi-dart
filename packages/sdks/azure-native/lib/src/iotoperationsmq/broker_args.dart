@@ -19,37 +19,37 @@ class BrokerArgs {
   /// The details of Broker Docker Image.
   final pulumi.Input<ContainerImage> brokerImage;
   /// Name of MQ broker resource
-  final pulumi.Input<String>? brokerName;
+  final pulumi.Input<String?>? brokerName;
   /// The details of Node Tolerations for Broker Pods.
-  final pulumi.Input<NodeTolerations>? brokerNodeTolerations;
+  final pulumi.Input<NodeTolerations?>? brokerNodeTolerations;
   /// The cardinality details of the broker.
-  final pulumi.Input<Cardinality>? cardinality;
+  final pulumi.Input<Cardinality?>? cardinality;
   /// The diagnostic details of the broker deployment.
-  final pulumi.Input<BrokerDiagnostics>? diagnostics;
+  final pulumi.Input<BrokerDiagnostics?>? diagnostics;
   /// The settings of the disk-backed message buffer.
-  final pulumi.Input<DiskBackedMessageBufferSettings>? diskBackedMessageBufferSettings;
+  final pulumi.Input<DiskBackedMessageBufferSettings?>? diskBackedMessageBufferSettings;
   /// The setting to enable or disable encryption of internal Traffic.
-  final pulumi.Input<bool>? encryptInternalTraffic;
+  final pulumi.Input<bool?>? encryptInternalTraffic;
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// The details of Health Manager Docker Image.
   final pulumi.Input<ContainerImage> healthManagerImage;
   /// The details of Node Tolerations for Health Manager Pods.
-  final pulumi.Input<NodeTolerations>? healthManagerNodeTolerations;
+  final pulumi.Input<NodeTolerations?>? healthManagerNodeTolerations;
   /// Details of the internal CA cert that will be used to secure communication between pods.
-  final pulumi.Input<CertManagerCertOptions>? internalCerts;
+  final pulumi.Input<CertManagerCertOptions?>? internalCerts;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Memory profile of broker.
-  final pulumi.Input<String>? memoryProfile;
+  final pulumi.Input<dynamic>? memoryProfile;
   /// The Running Mode of the Broker Deployment.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BrokerArgs].
   /// [authImage] The details of Authentication Docker Image.
@@ -70,7 +70,7 @@ class BrokerArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const BrokerArgs({
+  BrokerArgs({
     required this.authImage,
     required this.brokerImage,
     this.brokerName,
@@ -78,18 +78,18 @@ class BrokerArgs {
     this.cardinality,
     this.diagnostics,
     this.diskBackedMessageBufferSettings,
-    this.encryptInternalTraffic,
+    pulumi.Input<bool?>? encryptInternalTraffic,
     required this.extendedLocation,
     required this.healthManagerImage,
     this.healthManagerNodeTolerations,
     this.internalCerts,
     this.location,
-    this.memoryProfile,
+    pulumi.Input<dynamic>? memoryProfile,
     required this.mode,
     required this.mqName,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : encryptInternalTraffic = encryptInternalTraffic ?? pulumi.Input.fromValue(true), memoryProfile = memoryProfile ?? pulumi.Input.fromValue('medium');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -129,8 +129,8 @@ class BrokerArgs {
       healthManagerNodeTolerations: (() { final guardedValue = map['healthManagerNodeTolerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeTolerations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       internalCerts: (() { final guardedValue = map['internalCerts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertManagerCertOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      memoryProfile: (() { final guardedValue = map['memoryProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      memoryProfile: (() { final guardedValue = map['memoryProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      mode: pulumi.Input.fromValue(map['mode']),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

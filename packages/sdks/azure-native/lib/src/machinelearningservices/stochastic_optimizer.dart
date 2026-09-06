@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Stochastic optimizer for image models.
-enum StochasticOptimizer {
+enum StochasticOptimizer implements pulumi.PulumiEnum<String> {
   none("None"),
   sgd("Sgd"),
   adam("Adam"),
   adamw("Adamw");
 
   const StochasticOptimizer(this.wireValue);
+  @override
   final String wireValue;
 
   static StochasticOptimizer fromValue(String value) {

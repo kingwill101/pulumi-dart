@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a managed identity
 class IdentityPropertiesResponse {
   /// The client secret URL of the identity.
-  final pulumi.Input<String>? clientSecretUrl;
+  final pulumi.Input<String?>? clientSecretUrl;
   /// The principal id of resource identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The tenant identifier of resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Managed identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [clientSecretUrl] The client secret URL of the identity.

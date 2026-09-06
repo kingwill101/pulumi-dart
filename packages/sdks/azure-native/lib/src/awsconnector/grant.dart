@@ -7,9 +7,9 @@ import 'permission_enum_value.dart';
 /// Definition of Grant
 class Grant {
   /// &lt;p&gt;The person being granted permissions.&lt;/p&gt;
-  final pulumi.Input<Grantee>? grantee;
+  final pulumi.Input<Grantee?>? grantee;
   /// &lt;p&gt;Specifies the permission given to the grantee.&lt;/p&gt;
-  final pulumi.Input<PermissionEnumValue>? permission;
+  final pulumi.Input<PermissionEnumValue?>? permission;
 
   /// Creates a new [Grant].
   /// [grantee] &lt;p&gt;The person being granted permissions.&lt;/p&gt;

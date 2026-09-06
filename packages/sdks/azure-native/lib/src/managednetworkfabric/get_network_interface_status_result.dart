@@ -4,7 +4,7 @@
 /// Result data returned by getNetworkInterfaceStatus.
 class GetNetworkInterfaceStatusResult {
   /// The interface administrative state.
-  final String administrativeState;
+  final String? administrativeState;
   /// Connected to ARM resource or external interface
   final String? connectedTo;
   /// The interface operational status.
@@ -21,7 +21,7 @@ class GetNetworkInterfaceStatusResult {
   /// [phyStatus] The physical status.
   /// [transceiverStatus] The interface transceiver type. Example: up or down
   const GetNetworkInterfaceStatusResult({
-    required this.administrativeState,
+    this.administrativeState,
     this.connectedTo,
     this.operationalStatus,
     this.phyStatus,
@@ -30,7 +30,7 @@ class GetNetworkInterfaceStatusResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrativeState': administrativeState,
+      'administrativeState': ?administrativeState,
       'connectedTo': ?connectedTo,
       'operationalStatus': ?operationalStatus,
       'phyStatus': ?phyStatus,
@@ -40,7 +40,7 @@ class GetNetworkInterfaceStatusResult {
 
   factory GetNetworkInterfaceStatusResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkInterfaceStatusResult(
-      administrativeState: map['administrativeState'] as String,
+      administrativeState: (() { final guardedValue = map['administrativeState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectedTo: (() { final guardedValue = map['connectedTo']; if (guardedValue == null) return null; return guardedValue as String; })(),
       operationalStatus: (() { final guardedValue = map['operationalStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       phyStatus: (() { final guardedValue = map['phyStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),

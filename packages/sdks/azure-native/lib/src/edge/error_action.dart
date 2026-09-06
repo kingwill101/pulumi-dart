@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error Action Properties
 class ErrorAction {
   /// Max tolerated failures
-  final pulumi.Input<int>? maxToleratedFailures;
+  final pulumi.Input<int?>? maxToleratedFailures;
   /// Error action mode
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [ErrorAction].
   /// [maxToleratedFailures] Max tolerated failures
   /// [mode] Error action mode
-  const ErrorAction({
+  ErrorAction({
     this.maxToleratedFailures,
-    this.mode,
-  });
+    pulumi.Input<dynamic>? mode,
+  }) : mode = mode ?? pulumi.Input.fromValue('stopOnAnyFailure');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,8 +26,8 @@ class ErrorAction {
 
   factory ErrorAction.fromMap(Map<String, dynamic> map) {
     return ErrorAction(
-      maxToleratedFailures: (() { final guardedValue = map['maxToleratedFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxToleratedFailures: (() { final guardedValue = map['maxToleratedFailures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

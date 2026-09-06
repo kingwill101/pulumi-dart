@@ -7,7 +7,7 @@ class FilterableProperty {
   /// Values to be filtered.
   final pulumi.Input<List<String>> supportedValues;
   /// Type of product filter.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [FilterableProperty].
   /// [supportedValues] Values to be filtered.
@@ -27,7 +27,7 @@ class FilterableProperty {
   factory FilterableProperty.fromMap(Map<String, dynamic> map) {
     return FilterableProperty(
       supportedValues: pulumi.Input.fromValue((map['supportedValues'] as List).cast<String>()),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

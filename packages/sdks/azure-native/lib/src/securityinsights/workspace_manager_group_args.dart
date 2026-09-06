@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_workspace_manager_group_args_doc}
 class WorkspaceManagerGroupArgs {
   /// The description of the workspace manager group
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the workspace manager group
   final pulumi.Input<String> displayName;
   /// The names of the workspace manager members participating in this group.
@@ -16,7 +16,7 @@ class WorkspaceManagerGroupArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workspace manager group
-  final pulumi.Input<String>? workspaceManagerGroupName;
+  final pulumi.Input<String?>? workspaceManagerGroupName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

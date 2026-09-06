@@ -1,4 +1,6 @@
-enum AutomationRulePropertyConditionSupportedOperator {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AutomationRulePropertyConditionSupportedOperator implements pulumi.PulumiEnum<String> {
   valueEquals("Equals"),
   valueNotEquals("NotEquals"),
   valueContains("Contains"),
@@ -9,6 +11,7 @@ enum AutomationRulePropertyConditionSupportedOperator {
   valueNotEndsWith("NotEndsWith");
 
   const AutomationRulePropertyConditionSupportedOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRulePropertyConditionSupportedOperator fromValue(String value) {

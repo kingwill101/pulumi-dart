@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Daily schedule.
 class DailySchedule {
   /// List of times of day this schedule has to be run.
-  final pulumi.Input<List<String>>? scheduleRunTimes;
+  final pulumi.Input<List<String>?>? scheduleRunTimes;
 
   /// Creates a new [DailySchedule].
   /// [scheduleRunTimes] List of times of day this schedule has to be run.

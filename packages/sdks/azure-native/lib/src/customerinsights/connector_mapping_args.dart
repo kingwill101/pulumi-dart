@@ -12,11 +12,11 @@ class ConnectorMappingArgs {
   /// The name of the connector.
   final pulumi.Input<String> connectorName;
   /// Type of connector.
-  final pulumi.Input<String>? connectorType;
+  final pulumi.Input<dynamic>? connectorType;
   /// The description of the connector mapping.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name for the connector mapping.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Defines which entity type the file should map to.
   final pulumi.Input<EntityTypes> entityType;
   /// The mapping entity name.
@@ -24,7 +24,7 @@ class ConnectorMappingArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The name of the connector mapping.
-  final pulumi.Input<String>? mappingName;
+  final pulumi.Input<String?>? mappingName;
   /// The properties of the mapping.
   final pulumi.Input<ConnectorMappingProperties> mappingProperties;
   /// The name of the resource group.
@@ -72,7 +72,7 @@ class ConnectorMappingArgs {
   factory ConnectorMappingArgs.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingArgs(
       connectorName: pulumi.Input.fromValue(map['connectorName'] as String),
-      connectorType: (() { final guardedValue = map['connectorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectorType: (() { final guardedValue = map['connectorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entityType: pulumi.Input.fromValue(EntityTypes.fromValue(map['entityType']! as String)),

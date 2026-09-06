@@ -6,9 +6,9 @@ import 'filter.dart';
 /// Definition of ArchiveRule
 class ArchiveRule {
   /// Property filter
-  final pulumi.Input<List<Filter>>? filter;
+  final pulumi.Input<List<Filter>?>? filter;
   /// The archive rule name
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [ArchiveRule].
   /// [filter] Property filter

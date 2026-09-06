@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cognitive Services account commitment period.
 class CommitmentPeriod {
   /// Commitment period commitment count.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Commitment period commitment tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [CommitmentPeriod].
   /// [count] Commitment period commitment count.
@@ -26,7 +26,7 @@ class CommitmentPeriod {
 
   factory CommitmentPeriod.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriod(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

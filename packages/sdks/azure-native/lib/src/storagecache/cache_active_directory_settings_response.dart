@@ -8,7 +8,7 @@ class CacheActiveDirectorySettingsResponse {
   /// The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
   final pulumi.Input<String> cacheNetBiosName;
   /// Active Directory admin credentials used to join the HPC Cache to a domain.
-  final pulumi.Input<CacheActiveDirectorySettingsResponseCredentials>? credentials;
+  final pulumi.Input<CacheActiveDirectorySettingsResponseCredentials?>? credentials;
   /// True if the HPC Cache is joined to the Active Directory domain.
   final pulumi.Input<String> domainJoined;
   /// The fully qualified domain name of the Active Directory domain controller.
@@ -18,7 +18,7 @@ class CacheActiveDirectorySettingsResponse {
   /// Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
   final pulumi.Input<String> primaryDnsIpAddress;
   /// Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  final pulumi.Input<String>? secondaryDnsIpAddress;
+  final pulumi.Input<String?>? secondaryDnsIpAddress;
 
   /// Creates a new [CacheActiveDirectorySettingsResponse].
   /// [cacheNetBiosName] The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].

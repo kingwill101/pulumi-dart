@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Expiration of the role eligibility schedule
 class RoleEligibilityScheduleRequestPropertiesExpiration {
   /// Duration of the role eligibility schedule in TimeSpan.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// End DateTime of the role eligibility schedule.
-  final pulumi.Input<String>? endDateTime;
+  final pulumi.Input<String?>? endDateTime;
   /// Type of the role eligibility schedule expiration
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesExpiration].
   /// [duration] Duration of the role eligibility schedule in TimeSpan.
@@ -33,7 +33,7 @@ class RoleEligibilityScheduleRequestPropertiesExpiration {
     return RoleEligibilityScheduleRequestPropertiesExpiration(
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endDateTime: (() { final guardedValue = map['endDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

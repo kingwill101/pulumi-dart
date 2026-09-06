@@ -6,7 +6,7 @@ import 'virtual_hub_route.dart';
 /// VirtualHub route table.
 class VirtualHubRouteTable {
   /// List of all routes.
-  final pulumi.Input<List<VirtualHubRoute>>? routes;
+  final pulumi.Input<List<VirtualHubRoute>?>? routes;
 
   /// Creates a new [VirtualHubRouteTable].
   /// [routes] List of all routes.

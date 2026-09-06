@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the application rule protocol.
 class AzureFirewallApplicationRuleProtocol {
   /// Port number for the protocol, cannot be greater than 64000. This field is optional.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol type.
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<dynamic>? protocolType;
 
   /// Creates a new [AzureFirewallApplicationRuleProtocol].
   /// [port] Port number for the protocol, cannot be greater than 64000. This field is optional.
@@ -26,8 +26,8 @@ class AzureFirewallApplicationRuleProtocol {
 
   factory AzureFirewallApplicationRuleProtocol.fromMap(Map<String, dynamic> map) {
     return AzureFirewallApplicationRuleProtocol(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

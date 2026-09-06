@@ -6,7 +6,7 @@ import 'key_vault_meta_info_response.dart';
 /// The encryption configuration for the account.
 class EncryptionConfigResponse {
   /// The Key Vault information for connecting to user managed encryption keys.
-  final pulumi.Input<KeyVaultMetaInfoResponse>? keyVaultMetaInfo;
+  final pulumi.Input<KeyVaultMetaInfoResponse?>? keyVaultMetaInfo;
   /// The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
   final pulumi.Input<String> type;
 

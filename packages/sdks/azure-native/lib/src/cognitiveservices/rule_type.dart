@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of a managed network Outbound Rule of a cognitive services account.
-enum RuleType {
+enum RuleType implements pulumi.PulumiEnum<String> {
   fQDN("FQDN"),
   privateEndpoint("PrivateEndpoint"),
   serviceTag("ServiceTag");
 
   const RuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleType fromValue(String value) {

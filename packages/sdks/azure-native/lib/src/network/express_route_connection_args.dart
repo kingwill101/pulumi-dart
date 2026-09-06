@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'express_route_circuit_peering_id.dart';
-import 'routing_configuration_network.dart';
+import 'routing_configuration.dart';
 
 /// {@template pulumi_network_express_route_connection_args_doc}
 /// The set of arguments for ExpressRouteConnection.
@@ -10,29 +10,29 @@ import 'routing_configuration_network.dart';
 /// {@macro pulumi_network_express_route_connection_args_doc}
 class ExpressRouteConnectionArgs {
   /// Authorization key to establish the connection.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The name of the connection subresource.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Enable internet security.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
-  final pulumi.Input<bool>? enablePrivateLinkFastPath;
+  final pulumi.Input<bool?>? enablePrivateLinkFastPath;
   /// The ExpressRoute circuit peering.
   final pulumi.Input<ExpressRouteCircuitPeeringId> expressRouteCircuitPeering;
   /// Enable FastPath to vWan Firewall hub.
-  final pulumi.Input<bool>? expressRouteGatewayBypass;
+  final pulumi.Input<bool?>? expressRouteGatewayBypass;
   /// The name of the ExpressRoute gateway.
   final pulumi.Input<String> expressRouteGatewayName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource.
   final pulumi.Input<String> name;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationNetwork>? routingConfiguration;
+  final pulumi.Input<RoutingConfiguration?>? routingConfiguration;
   /// The routing weight associated to the connection.
-  final pulumi.Input<int>? routingWeight;
+  final pulumi.Input<int?>? routingWeight;
 
   /// Creates a new [ExpressRouteConnectionArgs].
   /// [authorizationKey] Authorization key to establish the connection.
@@ -74,7 +74,7 @@ class ExpressRouteConnectionArgs {
       'id': ?id,
       'name': name,
       'resourceGroupName': resourceGroupName,
-      'routingConfiguration': ?routingConfiguration,
+      'routingConfiguration': ?pulumi.Input.mapOptionalInputValue<RoutingConfiguration, Map<String, dynamic>>(routingConfiguration, (value) => value.toMap()),
       'routingWeight': ?routingWeight,
     };
   }
@@ -91,8 +91,8 @@ class ExpressRouteConnectionArgs {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as RoutingConfigurationNetwork); })(),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

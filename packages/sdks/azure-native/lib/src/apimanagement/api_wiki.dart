@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_wiki_args.dart';
+import 'wiki_documentation_contract_response.dart';
 
 /// Wiki properties
 ///
@@ -204,7 +205,7 @@ class ApiWiki extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Collection wiki documents included into this wiki.
-  late final pulumi.Output<List<Map<String, dynamic>>?> documents;
+  late final pulumi.Output<List<WikiDocumentationContractResponse>?> documents;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -225,7 +226,22 @@ class ApiWiki extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    documents = registerOutput<List<Map<String, dynamic>>?>('documents');
+    documents = registerOutput<List<WikiDocumentationContractResponse>?>('documents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WikiDocumentationContractResponse>(guardedValue, (value) => WikiDocumentationContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ApiWiki] resource.
+  ApiWiki.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiWiki',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    documents = registerOutput<List<WikiDocumentationContractResponse>?>('documents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WikiDocumentationContractResponse>(guardedValue, (value) => WikiDocumentationContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

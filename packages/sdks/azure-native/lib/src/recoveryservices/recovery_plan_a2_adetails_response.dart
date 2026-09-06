@@ -9,13 +9,13 @@ class RecoveryPlanA2ADetailsResponse {
   /// Expected value is 'A2A'.
   final pulumi.Input<String> instanceType;
   /// The primary extended location.
-  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? primaryExtendedLocation;
   /// The primary zone.
-  final pulumi.Input<String>? primaryZone;
+  final pulumi.Input<String?>? primaryZone;
   /// The recovery extended location.
-  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? recoveryExtendedLocation;
   /// The recovery zone.
-  final pulumi.Input<String>? recoveryZone;
+  final pulumi.Input<String?>? recoveryZone;
 
   /// Creates a new [RecoveryPlanA2ADetailsResponse].
   /// [instanceType] Gets the Instance type.

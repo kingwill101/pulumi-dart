@@ -13,32 +13,32 @@ class HDInsightPigActivity {
   /// Allows user to specify defines for Pig job request.
   final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Debug info option.
-  final pulumi.Input<String>? getDebugInfo;
+  final pulumi.Input<dynamic>? getDebugInfo;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// Script linked service reference.
-  final pulumi.Input<LinkedServiceReference>? scriptLinkedService;
+  final pulumi.Input<LinkedServiceReference?>? scriptLinkedService;
   /// Script path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? scriptPath;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Storage linked service references.
-  final pulumi.Input<List<LinkedServiceReference>>? storageLinkedServices;
+  final pulumi.Input<List<LinkedServiceReference>?>? storageLinkedServices;
   /// Type of activity.
   /// Expected value is 'HDInsightPig'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [HDInsightPigActivity].
   /// [arguments] User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).
@@ -100,14 +100,14 @@ class HDInsightPigActivity {
       defines: (() { final guardedValue = map['defines']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      getDebugInfo: (() { final guardedValue = map['getDebugInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      getDebugInfo: (() { final guardedValue = map['getDebugInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scriptLinkedService: (() { final guardedValue = map['scriptLinkedService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scriptPath: (() { final guardedValue = map['scriptPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       storageLinkedServices: (() { final guardedValue = map['storageLinkedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LinkedServiceReference>(guardedValue, (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),

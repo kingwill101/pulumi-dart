@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of identity used for the Batch Pool.
-enum PoolIdentityType {
+enum PoolIdentityType implements pulumi.PulumiEnum<String> {
   userAssigned("UserAssigned"),
   none("None");
 
   const PoolIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static PoolIdentityType fromValue(String value) {

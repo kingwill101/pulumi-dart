@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Dimension
 class DimensionNetworkFirewallFirewallPolicyResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DimensionNetworkFirewallFirewallPolicyResponse].
   /// [value] Property value

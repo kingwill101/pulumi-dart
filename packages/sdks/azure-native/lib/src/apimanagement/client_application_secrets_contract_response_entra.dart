@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Microsoft EntraID client application secrets
 class ClientApplicationSecretsContractResponseEntra {
   /// EntraID client application secret
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// EntraID client application secret expiration date.
   final pulumi.Input<String> expiresAt;
 

@@ -10,9 +10,9 @@ import 'tls_cert_method.dart';
 /// {@macro pulumi_iotoperationsmq_broker_listener_args_doc}
 class BrokerListenerArgs {
   /// The flag for enabling Authentication rules on Listener Port.
-  final pulumi.Input<bool>? authenticationEnabled;
+  final pulumi.Input<bool?>? authenticationEnabled;
   /// The flag for enabling Authorization policies on Listener Port. false - AllowAll, true - Use Authorization resource rules if present.
-  final pulumi.Input<bool>? authorizationEnabled;
+  final pulumi.Input<bool?>? authorizationEnabled;
   /// Name of MQ broker resource
   final pulumi.Input<String> brokerName;
   /// The k8s cr/resource reference of mq/broker.
@@ -20,25 +20,25 @@ class BrokerListenerArgs {
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// Name of MQ broker/listener resource
-  final pulumi.Input<String>? listenerName;
+  final pulumi.Input<String?>? listenerName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// The node port to use on the Host node.
-  final pulumi.Input<int>? nodePort;
+  final pulumi.Input<int?>? nodePort;
   /// The port to start Listening for connections on.
   final pulumi.Input<int> port;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The service name to expose Listener port on.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// The Kubernetes Service type to deploy for Listener.
-  final pulumi.Input<String>? serviceType;
+  final pulumi.Input<dynamic>? serviceType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
-  final pulumi.Input<TlsCertMethod>? tls;
+  final pulumi.Input<TlsCertMethod?>? tls;
 
   /// Creates a new [BrokerListenerArgs].
   /// [authenticationEnabled] The flag for enabling Authentication rules on Listener Port.
@@ -56,9 +56,9 @@ class BrokerListenerArgs {
   /// [serviceType] The Kubernetes Service type to deploy for Listener.
   /// [tags] Resource tags.
   /// [tls] Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
-  const BrokerListenerArgs({
-    this.authenticationEnabled,
-    this.authorizationEnabled,
+  BrokerListenerArgs({
+    pulumi.Input<bool?>? authenticationEnabled,
+    pulumi.Input<bool?>? authorizationEnabled,
     required this.brokerName,
     required this.brokerRef,
     required this.extendedLocation,
@@ -68,11 +68,11 @@ class BrokerListenerArgs {
     this.nodePort,
     required this.port,
     required this.resourceGroupName,
-    this.serviceName,
-    this.serviceType,
+    pulumi.Input<String?>? serviceName,
+    pulumi.Input<dynamic>? serviceType,
     this.tags,
     this.tls,
-  });
+  }) : authenticationEnabled = authenticationEnabled ?? pulumi.Input.fromValue(false), authorizationEnabled = authorizationEnabled ?? pulumi.Input.fromValue(false), serviceName = serviceName ?? pulumi.Input.fromValue('aio-mq-dmqtt-frontend'), serviceType = serviceType ?? pulumi.Input.fromValue('clusterIp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,11 +104,11 @@ class BrokerListenerArgs {
       listenerName: (() { final guardedValue = map['listenerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mqName: pulumi.Input.fromValue(map['mqName'] as String),
-      nodePort: (() { final guardedValue = map['nodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      nodePort: (() { final guardedValue = map['nodePort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: (() { final guardedValue = map['serviceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceType: (() { final guardedValue = map['serviceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TlsCertMethod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

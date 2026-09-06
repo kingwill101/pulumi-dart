@@ -31,9 +31,9 @@ class DiscoveredEntityLightSummaryResponse {
 
   factory DiscoveredEntityLightSummaryResponse.fromMap(Map<String, dynamic> map) {
     return DiscoveredEntityLightSummaryResponse(
-      numberOfMachines: pulumi.Input.fromValue(map['numberOfMachines'] as int),
-      numberOfServers: pulumi.Input.fromValue(map['numberOfServers'] as int),
-      numberOfWebApps: pulumi.Input.fromValue(map['numberOfWebApps'] as int),
+      numberOfMachines: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfMachines'])),
+      numberOfServers: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfServers'])),
+      numberOfWebApps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfWebApps'])),
     );
   }
 }

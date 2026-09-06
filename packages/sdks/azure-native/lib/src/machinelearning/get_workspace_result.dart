@@ -5,35 +5,35 @@ import 'sku_response.dart';
 /// Result data returned by getWorkspace.
 class GetWorkspaceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The creation time for this workspace resource.
-  final String creationTime;
+  final String? creationTime;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The key vault identifier used for encrypted workspaces.
   final String? keyVaultIdentifierId;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final String location;
+  final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The email id of the owner for this workspace.
-  final String ownerEmail;
+  final String? ownerEmail;
   /// The sku of the workspace.
   final SkuResponse? sku;
   /// The regional endpoint for the machine learning studio service which hosts this workspace.
-  final String studioEndpoint;
+  final String? studioEndpoint;
   /// The tags of the resource.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
   /// The fully qualified arm id of the storage account associated with this workspace.
-  final String userStorageAccountId;
+  final String? userStorageAccountId;
   /// The immutable id associated with this workspace.
-  final String workspaceId;
+  final String? workspaceId;
   /// The current state of workspace resource.
-  final String workspaceState;
+  final String? workspaceState;
   /// The type of this workspace.
-  final String workspaceType;
+  final String? workspaceType;
 
   /// Creates a new [GetWorkspaceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -52,60 +52,60 @@ class GetWorkspaceResult {
   /// [workspaceState] The current state of workspace resource.
   /// [workspaceType] The type of this workspace.
   const GetWorkspaceResult({
-    required this.azureApiVersion,
-    required this.creationTime,
-    required this.id,
+    this.azureApiVersion,
+    this.creationTime,
+    this.id,
     this.keyVaultIdentifierId,
-    required this.location,
-    required this.name,
-    required this.ownerEmail,
+    this.location,
+    this.name,
+    this.ownerEmail,
     this.sku,
-    required this.studioEndpoint,
+    this.studioEndpoint,
     this.tags,
-    required this.type,
-    required this.userStorageAccountId,
-    required this.workspaceId,
-    required this.workspaceState,
-    required this.workspaceType,
+    this.type,
+    this.userStorageAccountId,
+    this.workspaceId,
+    this.workspaceState,
+    this.workspaceType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'creationTime': creationTime,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'creationTime': ?creationTime,
+      'id': ?id,
       'keyVaultIdentifierId': ?keyVaultIdentifierId,
-      'location': location,
-      'name': name,
-      'ownerEmail': ownerEmail,
+      'location': ?location,
+      'name': ?name,
+      'ownerEmail': ?ownerEmail,
       'sku': ?sku?.toMap(),
-      'studioEndpoint': studioEndpoint,
+      'studioEndpoint': ?studioEndpoint,
       'tags': ?tags,
-      'type': type,
-      'userStorageAccountId': userStorageAccountId,
-      'workspaceId': workspaceId,
-      'workspaceState': workspaceState,
-      'workspaceType': workspaceType,
+      'type': ?type,
+      'userStorageAccountId': ?userStorageAccountId,
+      'workspaceId': ?workspaceId,
+      'workspaceState': ?workspaceState,
+      'workspaceType': ?workspaceType,
     };
   }
 
   factory GetWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationTime: map['creationTime'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyVaultIdentifierId: (() { final guardedValue = map['keyVaultIdentifierId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      ownerEmail: map['ownerEmail'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ownerEmail: (() { final guardedValue = map['ownerEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      studioEndpoint: map['studioEndpoint'] as String,
+      studioEndpoint: (() { final guardedValue = map['studioEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      userStorageAccountId: map['userStorageAccountId'] as String,
-      workspaceId: map['workspaceId'] as String,
-      workspaceState: map['workspaceState'] as String,
-      workspaceType: map['workspaceType'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userStorageAccountId: (() { final guardedValue = map['userStorageAccountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceState: (() { final guardedValue = map['workspaceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceType: (() { final guardedValue = map['workspaceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

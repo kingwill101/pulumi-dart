@@ -6,11 +6,11 @@ import 'vm_scanners_base_configuration_response.dart';
 /// The Microsoft Defender for Container K8s VM host scanning configuration
 class DefenderForContainersAwsOfferingVmScannersResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Configuration for VM scanning
-  final pulumi.Input<VmScannersBaseConfigurationResponse>? configuration;
+  final pulumi.Input<VmScannersBaseConfigurationResponse?>? configuration;
   /// Is VM scanning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForContainersAwsOfferingVmScannersResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

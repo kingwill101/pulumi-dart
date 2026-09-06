@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Current scenario details of the protected entity.
 class CurrentScenarioDetailsResponse {
   /// ARM Id of the job being executed.
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// Scenario name.
-  final pulumi.Input<String>? scenarioName;
+  final pulumi.Input<String?>? scenarioName;
   /// Start time of the workflow.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [CurrentScenarioDetailsResponse].
   /// [jobId] ARM Id of the job being executed.

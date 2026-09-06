@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of HostEntry
 class HostEntry {
   /// The hostname to use in the ``/etc/hosts`` entry.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The IP address to use in the ``/etc/hosts`` entry.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [HostEntry].
   /// [hostname] The hostname to use in the ``/etc/hosts`` entry.

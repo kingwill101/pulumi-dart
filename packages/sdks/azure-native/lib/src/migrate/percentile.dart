@@ -1,6 +1,8 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Percentile of the utilization data values to be considered while assessing
 /// machines.
-enum Percentile {
+enum Percentile implements pulumi.PulumiEnum<String> {
   percentile50("Percentile50"),
   percentile90("Percentile90"),
   percentile95("Percentile95"),
@@ -8,6 +10,7 @@ enum Percentile {
   percentileUnknown("PercentileUnknown");
 
   const Percentile(this.wireValue);
+  @override
   final String wireValue;
 
   static Percentile fromValue(String value) {

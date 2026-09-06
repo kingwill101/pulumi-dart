@@ -7,7 +7,7 @@ class ScriptActionResponse {
   /// The user provided name of the script action.
   final pulumi.Input<String> name;
   /// The parameters for the script action.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
   /// The node types on which the script action should be executed.
   final pulumi.Input<dynamic> roles;
   /// The URI for the script action.

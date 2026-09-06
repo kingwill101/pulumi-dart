@@ -7,11 +7,11 @@ import 'depends_on_profile_response.dart';
 /// The arm resource definition resource element template details.
 class ArmResourceDefinitionResourceElementTemplateDetailsResponse {
   /// The resource element template type.
-  final pulumi.Input<ArmResourceDefinitionResourceElementTemplateResponse>? configuration;
+  final pulumi.Input<ArmResourceDefinitionResourceElementTemplateResponse?>? configuration;
   /// The depends on profile.
-  final pulumi.Input<DependsOnProfileResponse>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfileResponse?>? dependsOnProfile;
   /// Name of the resource element template.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource element template type.
   /// Expected value is 'ArmResourceDefinition'.
   final pulumi.Input<String> resourceElementType;

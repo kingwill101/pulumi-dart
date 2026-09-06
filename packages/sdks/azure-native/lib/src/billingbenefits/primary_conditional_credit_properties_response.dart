@@ -6,32 +6,32 @@ import 'conditional_credit_milestone_response.dart';
 /// Properties for primary conditional credit.
 class PrimaryConditionalCreditPropertiesResponse {
   /// Whether this conditional credit allows contributor billing accounts
-  final pulumi.Input<String>? allowContributors;
+  final pulumi.Input<String?>? allowContributors;
   /// Fully-qualified identifier of the benefit under applicable benefit list.
   final pulumi.Input<String> benefitResourceId;
   /// The billing account resource ID
-  final pulumi.Input<String>? billingAccountResourceId;
+  final pulumi.Input<String?>? billingAccountResourceId;
   /// Display name for the conditional credit
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// End date of the conditional credit (derived from last milestone)
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Type of conditional credit entity
   /// Expected value is 'Primary'.
   final pulumi.Input<String> entityType;
   /// List of milestones for this conditional credit (must include awards)
-  final pulumi.Input<List<ConditionalCreditMilestoneResponse>>? milestones;
+  final pulumi.Input<List<ConditionalCreditMilestoneResponse>?>? milestones;
   /// Product code for the conditional credit
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The provisioning state of the resource
   final pulumi.Input<String> provisioningState;
   /// Fully-qualified resource identifier of the resource. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/{benefitType}/{benefitName}.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Start date of the conditional credit
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// The status of the conditional credit
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// System identifier shared between primary and contributor conditional credits representing the same conditional credit program
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [PrimaryConditionalCreditPropertiesResponse].
   /// [allowContributors] Whether this conditional credit allows contributor billing accounts

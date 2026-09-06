@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target Platform for the migration
-enum MySqlTargetPlatformType {
+enum MySqlTargetPlatformType implements pulumi.PulumiEnum<String> {
   valueSqlServer("SqlServer"),
   valueAzureDbForMySQL("AzureDbForMySQL");
 
   const MySqlTargetPlatformType(this.wireValue);
+  @override
   final String wireValue;
 
   static MySqlTargetPlatformType fromValue(String value) {

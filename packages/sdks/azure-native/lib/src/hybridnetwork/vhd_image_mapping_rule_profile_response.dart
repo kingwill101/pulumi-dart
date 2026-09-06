@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Vhd mapping rule profile
 class VhdImageMappingRuleProfileResponse {
   /// List of values.
-  final pulumi.Input<String>? userConfiguration;
+  final pulumi.Input<String?>? userConfiguration;
 
   /// Creates a new [VhdImageMappingRuleProfileResponse].
   /// [userConfiguration] List of values.

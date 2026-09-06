@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Table Access Policy Properties Object.
 class TableAccessPolicyResponse {
   /// Expiry time of the access policy
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d'
   final pulumi.Input<String> permission;
   /// Start time of the access policy
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [TableAccessPolicyResponse].
   /// [expiryTime] Expiry time of the access policy

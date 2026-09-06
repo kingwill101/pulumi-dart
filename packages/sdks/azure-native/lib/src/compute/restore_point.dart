@@ -337,7 +337,7 @@ class RestorePoint extends pulumi.CustomResource {
   /// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
   late final pulumi.Output<String?> consistencyMode;
   /// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
-  late final pulumi.Output<List<Map<String, dynamic>>?> excludeDisks;
+  late final pulumi.Output<List<ApiEntityReferenceResponse>?> excludeDisks;
   /// The restore point instance view.
   late final pulumi.Output<RestorePointInstanceViewResponse> instanceView;
   /// The name of the resource
@@ -371,7 +371,29 @@ class RestorePoint extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     consistencyMode = registerOutput<String?>('consistencyMode');
-    excludeDisks = registerOutput<List<Map<String, dynamic>>?>('excludeDisks');
+    excludeDisks = registerOutput<List<ApiEntityReferenceResponse>?>('excludeDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiEntityReferenceResponse>(guardedValue, (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instanceView = registerOutput<RestorePointInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceMetadata = registerOutput<RestorePointSourceMetadataResponse?>('sourceMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointSourceMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceRestorePoint = registerOutput<ApiEntityReferenceResponse?>('sourceRestorePoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiEntityReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeCreated = registerOutput<String?>('timeCreated');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RestorePoint] resource.
+  RestorePoint.reference(String urn)
+    : super(
+        'azure-native:compute:RestorePoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consistencyMode = registerOutput<String?>('consistencyMode');
+    excludeDisks = registerOutput<List<ApiEntityReferenceResponse>?>('excludeDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiEntityReferenceResponse>(guardedValue, (value) => ApiEntityReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instanceView = registerOutput<RestorePointInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestorePointInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

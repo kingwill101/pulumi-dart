@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Extension. Example: NoExtension | NPB.
-enum Extension {
+enum Extension implements pulumi.PulumiEnum<String> {
   valueNoExtension("NoExtension"),
   valueNPB("NPB");
 
   const Extension(this.wireValue);
+  @override
   final String wireValue;
 
   static Extension fromValue(String value) {

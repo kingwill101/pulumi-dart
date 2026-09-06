@@ -10,10 +10,10 @@ class IdentityResponse {
   /// The tenant ID of resource. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
   /// The identity type. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the Azure Health Bot
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of resource identity. This property will only be provided for a system assigned identity.

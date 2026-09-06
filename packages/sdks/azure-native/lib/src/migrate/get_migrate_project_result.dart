@@ -6,21 +6,21 @@ import 'migrate_project_response_tags.dart';
 /// Result data returned by getMigrateProject.
 class GetMigrateProjectResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the eTag for concurrency control.
   final String? eTag;
   /// Gets the relative URL to get this migrate project.
-  final String id;
+  final String? id;
   /// Gets or sets the Azure location in which migrate project is created.
   final String? location;
   /// Gets the name of the migrate project.
-  final String name;
+  final String? name;
   /// Gets or sets the nested properties.
-  final MigrateProjectPropertiesResponse properties;
+  final MigrateProjectPropertiesResponse? properties;
   /// Gets or sets the tags.
   final MigrateProjectResponseTags? tags;
   /// Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMigrateProjectResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetMigrateProjectResult {
   /// [tags] Gets or sets the tags.
   /// [type] Handled by resource provider. Type = Microsoft.Migrate/MigrateProject.
   const GetMigrateProjectResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.eTag,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.properties,
+    this.name,
+    this.properties,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'eTag': ?eTag,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'tags': ?tags?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetMigrateProjectResult.fromMap(Map<String, dynamic> map) {
     return GetMigrateProjectResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: MigrateProjectPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return MigrateProjectPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return MigrateProjectResponseTags.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

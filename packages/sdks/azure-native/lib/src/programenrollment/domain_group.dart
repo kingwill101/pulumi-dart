@@ -7,7 +7,7 @@ class DomainGroup {
   /// The edu domain names in this group.
   final pulumi.Input<List<String>> domainNames;
   /// The Entra tenant ID that owns these domains. Defaults to the caller's tenant if omitted.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [DomainGroup].
   /// [domainNames] The edu domain names in this group.

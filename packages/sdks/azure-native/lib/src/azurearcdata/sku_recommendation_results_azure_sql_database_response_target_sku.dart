@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_recommendation_results_azure_sql_database_response_category.dart';
 
 class SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
-  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponseCategory>? category;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponseCategory?>? category;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku].
   /// [category] Optional.

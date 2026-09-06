@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operation the trigger is associated with
-enum TriggerOperation {
+enum TriggerOperation implements pulumi.PulumiEnum<String> {
   valueAll("All"),
   valueCreate("Create"),
   valueUpdate("Update"),
@@ -7,6 +9,7 @@ enum TriggerOperation {
   valueReplace("Replace");
 
   const TriggerOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerOperation fromValue(String value) {

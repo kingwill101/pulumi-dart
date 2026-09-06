@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'route_network.dart';
+import 'route.dart';
 
 /// {@template pulumi_network_route_table_args_doc}
 /// The set of arguments for RouteTable.
@@ -9,20 +9,20 @@ import 'route_network.dart';
 /// {@macro pulumi_network_route_table_args_doc}
 class RouteTableArgs {
   /// Whether to disable the routes learned by BGP on that route table. True means disable.
-  final pulumi.Input<bool>? disableBgpRoutePropagation;
+  final pulumi.Input<bool?>? disableBgpRoutePropagation;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the route table.
-  final pulumi.Input<String>? routeTableName;
+  final pulumi.Input<String?>? routeTableName;
   /// Collection of routes contained within a route table.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<RouteNetwork>>? routes;
+  final pulumi.Input<List<Route>?>? routes;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RouteTableArgs].
   /// [disableBgpRoutePropagation] Whether to disable the routes learned by BGP on that route table. True means disable.
@@ -49,7 +49,7 @@ class RouteTableArgs {
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'routeTableName': ?routeTableName,
-      'routes': ?routes,
+      'routes': ?pulumi.Input.mapOptionalInputValue<List<Route>, List<Map<String, dynamic>>>(routes, (value) => pulumi.Input.encodeList<Route, Map<String, dynamic>>(value, (value) => value.toMap())),
       'tags': ?tags,
     };
   }
@@ -61,7 +61,7 @@ class RouteTableArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       routeTableName: (() { final guardedValue = map['routeTableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<RouteNetwork>()); })(),
+      routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Route>(guardedValue, (value) => Route.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

@@ -9,11 +9,11 @@ import 'subscription_list.dart';
 /// {@macro pulumi_elastic_monitored_subscription_args_doc}
 class MonitoredSubscriptionArgs {
   /// The configuration name. Only 'default' value is supported.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
   /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
-  final pulumi.Input<SubscriptionList>? properties;
+  final pulumi.Input<SubscriptionList?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -6,13 +6,13 @@ import 'override_task_step_properties.dart';
 /// The parameters for a task run request.
 class TaskRunRequest {
   /// The dedicated agent pool for the run.
-  final pulumi.Input<String>? agentPoolName;
+  final pulumi.Input<String?>? agentPoolName;
   /// The value that indicates whether archiving is enabled for the run or not.
-  final pulumi.Input<bool>? isArchiveEnabled;
+  final pulumi.Input<bool?>? isArchiveEnabled;
   /// The template that describes the repository and tag information for run log artifact.
-  final pulumi.Input<String>? logTemplate;
+  final pulumi.Input<String?>? logTemplate;
   /// Set of overridable parameters that can be passed when running a Task.
-  final pulumi.Input<OverrideTaskStepProperties>? overrideTaskStepProperties;
+  final pulumi.Input<OverrideTaskStepProperties?>? overrideTaskStepProperties;
   /// The resource ID of task against which run has to be queued.
   final pulumi.Input<String> taskId;
   /// The type of the run request.
@@ -26,14 +26,14 @@ class TaskRunRequest {
   /// [overrideTaskStepProperties] Set of overridable parameters that can be passed when running a Task.
   /// [taskId] The resource ID of task against which run has to be queued.
   /// [type] The type of the run request.
-  const TaskRunRequest({
+  TaskRunRequest({
     this.agentPoolName,
-    this.isArchiveEnabled,
+    pulumi.Input<bool?>? isArchiveEnabled,
     this.logTemplate,
     this.overrideTaskStepProperties,
     required this.taskId,
     required this.type,
-  });
+  }) : isArchiveEnabled = isArchiveEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

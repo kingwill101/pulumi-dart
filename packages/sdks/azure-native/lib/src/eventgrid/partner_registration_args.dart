@@ -8,16 +8,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventgrid_partner_registration_args_doc}
 class PartnerRegistrationArgs {
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The immutableId of the corresponding partner registration.
   /// Note: This property is marked for deprecation and is not supported in any future GA API version
-  final pulumi.Input<String>? partnerRegistrationImmutableId;
+  final pulumi.Input<String?>? partnerRegistrationImmutableId;
   /// Name of the partner registration.
-  final pulumi.Input<String>? partnerRegistrationName;
+  final pulumi.Input<String?>? partnerRegistrationName;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PartnerRegistrationArgs].
   /// [location] Location of the resource.

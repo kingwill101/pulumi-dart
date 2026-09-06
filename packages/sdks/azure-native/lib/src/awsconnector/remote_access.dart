@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RemoteAccess
 class RemoteAccess {
   /// Property ec2SshKey
-  final pulumi.Input<String>? ec2SshKey;
+  final pulumi.Input<String?>? ec2SshKey;
   /// Property sourceSecurityGroups
-  final pulumi.Input<List<String>>? sourceSecurityGroups;
+  final pulumi.Input<List<String>?>? sourceSecurityGroups;
 
   /// Creates a new [RemoteAccess].
   /// [ec2SshKey] Property ec2SshKey

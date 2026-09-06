@@ -6,7 +6,7 @@ import 'cfnkubernetes_audit_logs_configuration_response.dart';
 /// Definition of CFNKubernetesConfiguration
 class CFNKubernetesConfigurationResponse {
   /// Property auditLogs
-  final pulumi.Input<CFNKubernetesAuditLogsConfigurationResponse>? auditLogs;
+  final pulumi.Input<CFNKubernetesAuditLogsConfigurationResponse?>? auditLogs;
 
   /// Creates a new [CFNKubernetesConfigurationResponse].
   /// [auditLogs] Property auditLogs

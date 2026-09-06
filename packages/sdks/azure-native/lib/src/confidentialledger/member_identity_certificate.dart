@@ -6,10 +6,10 @@ import 'certificate_tags.dart';
 /// Object representing MemberIdentityCertificate for Managed CCF.
 class MemberIdentityCertificate {
   /// Member Identity Certificate
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// Member Identity Certificate Encryption Key
-  final pulumi.Input<String>? encryptionkey;
-  final pulumi.Input<List<CertificateTags>>? tags;
+  final pulumi.Input<String?>? encryptionkey;
+  final pulumi.Input<List<CertificateTags>?>? tags;
 
   /// Creates a new [MemberIdentityCertificate].
   /// [certificate] Member Identity Certificate

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Elastic Backup Policy properties
 class ElasticBackupPolicyProperties {
   /// Daily backups count to keep
-  final pulumi.Input<int>? dailyBackupsToKeep;
+  final pulumi.Input<int?>? dailyBackupsToKeep;
   /// Monthly backups count to keep
-  final pulumi.Input<int>? monthlyBackupsToKeep;
+  final pulumi.Input<int?>? monthlyBackupsToKeep;
   /// The property to identify whether Backup Policy is enabled or not
-  final pulumi.Input<String>? policyState;
+  final pulumi.Input<dynamic>? policyState;
   /// Weekly backups count to keep
-  final pulumi.Input<int>? weeklyBackupsToKeep;
+  final pulumi.Input<int?>? weeklyBackupsToKeep;
 
   /// Creates a new [ElasticBackupPolicyProperties].
   /// [dailyBackupsToKeep] Daily backups count to keep
@@ -36,10 +36,10 @@ class ElasticBackupPolicyProperties {
 
   factory ElasticBackupPolicyProperties.fromMap(Map<String, dynamic> map) {
     return ElasticBackupPolicyProperties(
-      dailyBackupsToKeep: (() { final guardedValue = map['dailyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      monthlyBackupsToKeep: (() { final guardedValue = map['monthlyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      policyState: (() { final guardedValue = map['policyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      weeklyBackupsToKeep: (() { final guardedValue = map['weeklyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      dailyBackupsToKeep: (() { final guardedValue = map['dailyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      monthlyBackupsToKeep: (() { final guardedValue = map['monthlyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      policyState: (() { final guardedValue = map['policyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      weeklyBackupsToKeep: (() { final guardedValue = map['weeklyBackupsToKeep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

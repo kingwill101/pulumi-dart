@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The log type to be used.
-enum LogAnalyticsLogType {
+enum LogAnalyticsLogType implements pulumi.PulumiEnum<String> {
   valueContainerInsights("ContainerInsights"),
   valueContainerInstanceLogs("ContainerInstanceLogs");
 
   const LogAnalyticsLogType(this.wireValue);
+  @override
   final String wireValue;
 
   static LogAnalyticsLogType fromValue(String value) {

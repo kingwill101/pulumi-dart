@@ -6,11 +6,11 @@ import 'key_vault_reference_with_status.dart';
 /// Server farm registry adapter configuration.
 class RegistryAdapter {
   /// Key vault reference to the value that will be placed in the registry location
-  final pulumi.Input<KeyVaultReferenceWithStatus>? keyVaultSecretReference;
+  final pulumi.Input<KeyVaultReferenceWithStatus?>? keyVaultSecretReference;
   /// Registry key for the adapter.
-  final pulumi.Input<String>? registryKey;
+  final pulumi.Input<String?>? registryKey;
   /// Type of the registry adapter.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [RegistryAdapter].
   /// [keyVaultSecretReference] Key vault reference to the value that will be placed in the registry location
@@ -34,7 +34,7 @@ class RegistryAdapter {
     return RegistryAdapter(
       keyVaultSecretReference: (() { final guardedValue = map['keyVaultSecretReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultReferenceWithStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       registryKey: (() { final guardedValue = map['registryKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

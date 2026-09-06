@@ -6,7 +6,7 @@ import 'dimension.dart';
 /// Definition of PublishMetricAction
 class PublishMetricAction {
   /// Property dimensions
-  final pulumi.Input<List<Dimension>>? dimensions;
+  final pulumi.Input<List<Dimension>?>? dimensions;
 
   /// Creates a new [PublishMetricAction].
   /// [dimensions] Property dimensions

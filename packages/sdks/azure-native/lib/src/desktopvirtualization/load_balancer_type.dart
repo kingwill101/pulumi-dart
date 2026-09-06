@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the load balancer.
-enum LoadBalancerType {
+enum LoadBalancerType implements pulumi.PulumiEnum<String> {
   valueBreadthFirst("BreadthFirst"),
   valueDepthFirst("DepthFirst"),
   valuePersistent("Persistent");
 
   const LoadBalancerType(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerType fromValue(String value) {

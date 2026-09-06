@@ -12,13 +12,13 @@ class SqlDWSinkResponse {
   /// Indicates to use PolyBase to copy data into SQL Data Warehouse when applicable. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? allowPolyBase;
   /// Specifies Copy Command related settings when allowCopyCommand is true.
-  final pulumi.Input<DWCopyCommandSettingsResponse>? copyCommandSettings;
+  final pulumi.Input<DWCopyCommandSettingsResponse?>? copyCommandSettings;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// The maximum concurrent connection count for the sink data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specifies PolyBase-related settings when allowPolyBase is true.
-  final pulumi.Input<PolybaseSettingsResponse>? polyBaseSettings;
+  final pulumi.Input<PolybaseSettingsResponse?>? polyBaseSettings;
   /// SQL pre-copy script. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? preCopyScript;
   /// Sink retry count. Type: integer (or Expression with resultType integer).
@@ -33,7 +33,7 @@ class SqlDWSinkResponse {
   /// Expected value is 'SqlDWSink'.
   final pulumi.Input<String> type;
   /// SQL DW upsert settings.
-  final pulumi.Input<SqlDWUpsertSettingsResponse>? upsertSettings;
+  final pulumi.Input<SqlDWUpsertSettingsResponse?>? upsertSettings;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

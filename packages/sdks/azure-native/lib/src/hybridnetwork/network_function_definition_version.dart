@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'containerized_network_function_definition_version_response.dart';
 import 'network_function_definition_version_args.dart';
 import 'system_data_response.dart';
 
@@ -1553,7 +1552,7 @@ class NetworkFunctionDefinitionVersion extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Network function definition version properties.
-  late final pulumi.Output<ContainerizedNetworkFunctionDefinitionVersionResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -1578,9 +1577,27 @@ class NetworkFunctionDefinitionVersion extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ContainerizedNetworkFunctionDefinitionVersionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerizedNetworkFunctionDefinitionVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFunctionDefinitionVersion] resource.
+  NetworkFunctionDefinitionVersion.reference(String urn)
+    : super(
+        'azure-native:hybridnetwork:NetworkFunctionDefinitionVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

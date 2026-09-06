@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details on the Estimated nodes for AVS Assessment.
 class AvsEstimatedNodeResponse {
   /// Predicted CPU utilization.
-  final pulumi.Input<double>? cpuUtilization;
+  final pulumi.Input<double?>? cpuUtilization;
   /// FttRaidLevel recommended for Node.
-  final pulumi.Input<String>? fttRaidLevel;
+  final pulumi.Input<String?>? fttRaidLevel;
   /// Total monthly cost for type and number of nodes.
-  final pulumi.Input<double>? monthlyPrice;
+  final pulumi.Input<double?>? monthlyPrice;
   /// Number of nodes that will be needed.
-  final pulumi.Input<int>? nodeNumber;
+  final pulumi.Input<int?>? nodeNumber;
   /// Recommended SKU.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// Pricing model indicates what hour multiplier to use while estimating the Nodes cost.
-  final pulumi.Input<String>? pricingModel;
+  final pulumi.Input<String?>? pricingModel;
   /// Predicted RAM utilization.
-  final pulumi.Input<double>? ramUtilization;
+  final pulumi.Input<double?>? ramUtilization;
   /// Predicted storage utilization.
-  final pulumi.Input<double>? storageUtilization;
+  final pulumi.Input<double?>? storageUtilization;
   /// Predicted total CPU cores across the set of nodes.
-  final pulumi.Input<double>? totalCpu;
+  final pulumi.Input<double?>? totalCpu;
   /// Predicted total RAM used in GB.
-  final pulumi.Input<double>? totalRam;
+  final pulumi.Input<double?>? totalRam;
   /// Predicted total Storage used in GB.
-  final pulumi.Input<double>? totalStorage;
+  final pulumi.Input<double?>? totalStorage;
 
   /// Creates a new [AvsEstimatedNodeResponse].
   /// [cpuUtilization] Predicted CPU utilization.
@@ -71,17 +71,17 @@ class AvsEstimatedNodeResponse {
 
   factory AvsEstimatedNodeResponse.fromMap(Map<String, dynamic> map) {
     return AvsEstimatedNodeResponse(
-      cpuUtilization: (() { final guardedValue = map['cpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpuUtilization: (() { final guardedValue = map['cpuUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       fttRaidLevel: (() { final guardedValue = map['fttRaidLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      nodeNumber: (() { final guardedValue = map['nodeNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      monthlyPrice: (() { final guardedValue = map['monthlyPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      nodeNumber: (() { final guardedValue = map['nodeNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pricingModel: (() { final guardedValue = map['pricingModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ramUtilization: (() { final guardedValue = map['ramUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      storageUtilization: (() { final guardedValue = map['storageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalCpu: (() { final guardedValue = map['totalCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalRam: (() { final guardedValue = map['totalRam']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalStorage: (() { final guardedValue = map['totalStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ramUtilization: (() { final guardedValue = map['ramUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      storageUtilization: (() { final guardedValue = map['storageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalCpu: (() { final guardedValue = map['totalCpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalRam: (() { final guardedValue = map['totalRam']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalStorage: (() { final guardedValue = map['totalStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

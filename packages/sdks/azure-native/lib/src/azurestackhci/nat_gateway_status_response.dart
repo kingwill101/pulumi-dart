@@ -6,11 +6,11 @@ import 'nat_gateway_status_provisioning_status_response.dart';
 /// Nat Gateway resource status
 class NatGatewayStatusResponse {
   /// NatGateway provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// NatGateway provisioning status
-  final pulumi.Input<NatGatewayStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<NatGatewayStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [NatGatewayStatusResponse].
   /// [errorCode] NatGateway provisioning error code

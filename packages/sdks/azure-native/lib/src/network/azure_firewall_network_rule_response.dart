@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the network rule.
 class AzureFirewallNetworkRuleResponse {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of destination FQDNs.
-  final pulumi.Input<List<String>>? destinationFqdns;
+  final pulumi.Input<List<String>?>? destinationFqdns;
   /// List of destination IpGroups for this rule.
-  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>?>? destinationIpGroups;
   /// List of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Name of the network rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Array of AzureFirewallNetworkRuleProtocols.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [AzureFirewallNetworkRuleResponse].
   /// [description] Description of the rule.

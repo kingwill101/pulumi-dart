@@ -11,19 +11,19 @@ import 'services_resource_identity.dart';
 /// {@macro pulumi_m365securityandcompliance_private_link_services_for_o365_management_activity_apiargs_doc}
 class PrivateLinkServicesForO365ManagementActivityAPIArgs {
   /// Setting indicating whether the service has a managed identity associated with it.
-  final pulumi.Input<ServicesResourceIdentity>? identity;
+  final pulumi.Input<ServicesResourceIdentity?>? identity;
   /// The kind of the service.
   final pulumi.Input<Kind> kind;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The common properties of a service.
-  final pulumi.Input<ServicesProperties>? properties;
+  final pulumi.Input<ServicesProperties?>? properties;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the service instance.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateLinkServicesForO365ManagementActivityAPIArgs].
   /// [identity] Setting indicating whether the service has a managed identity associated with it.

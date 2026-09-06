@@ -191,4 +191,19 @@ class TransparentDataEncryption extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [TransparentDataEncryption] resource.
+  TransparentDataEncryption.reference(String urn)
+    : super(
+        'azure-native:sql:TransparentDataEncryption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
 }

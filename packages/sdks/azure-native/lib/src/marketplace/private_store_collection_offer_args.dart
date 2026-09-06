@@ -11,19 +11,19 @@ class PrivateStoreCollectionOfferArgs {
   /// The collection ID
   final pulumi.Input<String> collectionId;
   /// Identifier for purposes of race condition
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Icon File Uris
-  final pulumi.Input<Map<String, String>>? iconFileUris;
+  final pulumi.Input<Map<String, String>?>? iconFileUris;
   /// The offer ID to update or delete
-  final pulumi.Input<String>? offerId;
+  final pulumi.Input<String?>? offerId;
   /// Offer plans
-  final pulumi.Input<List<Plan>>? plans;
+  final pulumi.Input<List<Plan>?>? plans;
   /// The store ID - must use the tenant ID
   final pulumi.Input<String> privateStoreId;
   /// Plan ids limitation for this offer
-  final pulumi.Input<List<String>>? specificPlanIdsLimitation;
+  final pulumi.Input<List<String>?>? specificPlanIdsLimitation;
   /// Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
-  final pulumi.Input<bool>? updateSuppressedDueIdempotence;
+  final pulumi.Input<bool?>? updateSuppressedDueIdempotence;
 
   /// Creates a new [PrivateStoreCollectionOfferArgs].
   /// [collectionId] The collection ID

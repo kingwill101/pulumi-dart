@@ -9,17 +9,17 @@ import 'ipam_pool_properties.dart';
 /// {@macro pulumi_network_ipam_pool_args_doc}
 class IpamPoolArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// IP Address Manager Pool resource name.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// Properties of IpamPool resource properties which are specific to the Pool resource.
   final pulumi.Input<IpamPoolProperties> properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IpamPoolArgs].
   /// [location] The geo-location where the resource lives

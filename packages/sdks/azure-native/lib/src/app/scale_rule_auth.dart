@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Auth Secrets for Scale Rule
 class ScaleRuleAuth {
   /// Name of the secret from which to pull the auth params.
-  final pulumi.Input<String>? secretRef;
+  final pulumi.Input<String?>? secretRef;
   /// Trigger Parameter that uses the secret
-  final pulumi.Input<String>? triggerParameter;
+  final pulumi.Input<String?>? triggerParameter;
 
   /// Creates a new [ScaleRuleAuth].
   /// [secretRef] Name of the secret from which to pull the auth params.

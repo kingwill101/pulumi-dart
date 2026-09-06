@@ -9,15 +9,15 @@ import 'ecs_service_properties.dart';
 /// {@macro pulumi_awsconnector_ecs_service_args_doc}
 class EcsServiceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of EcsService
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<EcsServiceProperties>? properties;
+  final pulumi.Input<EcsServiceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EcsServiceArgs].
   /// [location] The geo-location where the resource lives

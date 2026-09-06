@@ -21,7 +21,7 @@ class FileShareProvisioningRecommendationInput {
 
   factory FileShareProvisioningRecommendationInput.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningRecommendationInput(
-      provisionedStorageGiB: pulumi.Input.fromValue(map['provisionedStorageGiB'] as int),
+      provisionedStorageGiB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['provisionedStorageGiB'])),
     );
   }
 }

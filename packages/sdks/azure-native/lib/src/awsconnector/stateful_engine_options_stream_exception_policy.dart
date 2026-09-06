@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property streamExceptionPolicy
-enum StatefulEngineOptionsStreamExceptionPolicy {
+enum StatefulEngineOptionsStreamExceptionPolicy implements pulumi.PulumiEnum<String> {
   cONTINUE("CONTINUE"),
   dROP("DROP"),
   rEJECT("REJECT");
 
   const StatefulEngineOptionsStreamExceptionPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static StatefulEngineOptionsStreamExceptionPolicy fromValue(String value) {

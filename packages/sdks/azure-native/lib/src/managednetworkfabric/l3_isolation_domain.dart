@@ -375,7 +375,33 @@ class L3IsolationDomain extends pulumi.CustomResource {
     redistributeConnectedSubnets = registerOutput<String?>('redistributeConnectedSubnets');
     redistributeStaticRoutes = registerOutput<String?>('redistributeStaticRoutes');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [L3IsolationDomain] resource.
+  L3IsolationDomain.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:L3IsolationDomain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    aggregateRouteConfiguration = registerOutput<AggregateRouteConfigurationResponse?>('aggregateRouteConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AggregateRouteConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    connectedSubnetRoutePolicy = registerOutput<ConnectedSubnetRoutePolicyResponse?>('connectedSubnetRoutePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectedSubnetRoutePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkFabricId = registerOutput<String>('networkFabricId');
+    provisioningState = registerOutput<String>('provisioningState');
+    redistributeConnectedSubnets = registerOutput<String?>('redistributeConnectedSubnets');
+    redistributeStaticRoutes = registerOutput<String?>('redistributeStaticRoutes');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

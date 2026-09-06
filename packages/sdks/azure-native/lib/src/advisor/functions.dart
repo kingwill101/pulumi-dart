@@ -24,6 +24,17 @@ Future<GetAssessmentResult> getAssessment(
   return GetAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentResult> getAssessmentOutput(
+  GetAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:advisor:getAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentResult.fromMap);
+}
+
 /// Obtains the details of a suppression.
 ///
 /// Uses Azure REST API version 2023-09-01-preview.
@@ -42,4 +53,15 @@ Future<GetSuppressionResult> getSuppression(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSuppressionResult.fromMap(result);
+}
+
+pulumi.Output<GetSuppressionResult> getSuppressionOutput(
+  GetSuppressionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:advisor:getSuppression',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSuppressionResult.fromMap);
 }

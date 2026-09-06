@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DTO object representing index column
 class IndexColumnResponse {
   /// Specifies the column name
-  final pulumi.Input<String>? columnName;
+  final pulumi.Input<String?>? columnName;
   /// Specifies the data type
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
 
   /// Creates a new [IndexColumnResponse].
   /// [columnName] Specifies the column name
   /// [dataType] Specifies the data type
-  const IndexColumnResponse({
+  IndexColumnResponse({
     this.columnName,
-    this.dataType,
-  });
+    pulumi.Input<String?>? dataType,
+  }) : dataType = dataType ?? pulumi.Input.fromValue('String');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

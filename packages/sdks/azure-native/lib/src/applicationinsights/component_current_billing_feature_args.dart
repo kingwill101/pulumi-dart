@@ -9,9 +9,9 @@ import 'application_insights_component_data_volume_cap.dart';
 /// {@macro pulumi_applicationinsights_component_current_billing_feature_args_doc}
 class ComponentCurrentBillingFeatureArgs {
   /// Current enabled pricing plan. When the component is in the Enterprise plan, this will list both 'Basic' and 'Application Insights Enterprise'.
-  final pulumi.Input<List<String>>? currentBillingFeatures;
+  final pulumi.Input<List<String>?>? currentBillingFeatures;
   /// An Application Insights component daily data volume cap
-  final pulumi.Input<ApplicationInsightsComponentDataVolumeCap>? dataVolumeCap;
+  final pulumi.Input<ApplicationInsightsComponentDataVolumeCap?>? dataVolumeCap;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.

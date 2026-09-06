@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'credential_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
@@ -11,7 +10,7 @@ class RestServiceLinkedServiceResponse {
   /// The resource you are requesting authorization to use. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? aadResourceId;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The additional HTTP headers in the request to RESTful API used for authorization. Type: object (or Expression with resultType object).
   final pulumi.Input<dynamic>? authHeaders;
   /// Type of authentication used to connect to the REST service.
@@ -21,21 +20,21 @@ class RestServiceLinkedServiceResponse {
   /// The client ID associated with your application. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? clientId;
   /// The client secret associated with your application.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? clientSecret;
+  final pulumi.Input<dynamic>? clientSecret;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReferenceResponse>? credential;
+  final pulumi.Input<CredentialReferenceResponse?>? credential;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to validate server side SSL certificate when connecting to the endpoint.The default value is true. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableServerCertificateValidation;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The password used in Basic authentication type.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<dynamic>? password;
   /// The target service or resource to which the access will be requested. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? resource;
   /// The scope of the access required. It describes what kind of access will be requested. Type: string (or Expression with resultType string).
@@ -43,13 +42,13 @@ class RestServiceLinkedServiceResponse {
   /// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalCredentialType;
   /// Specify the base64 encoded certificate of your application registered in Azure Active Directory. Type: string (or Expression with resultType string).
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalEmbeddedCert;
+  final pulumi.Input<dynamic>? servicePrincipalEmbeddedCert;
   /// Specify the password of your certificate if your certificate has a password and you are using AadServicePrincipal authentication. Type: string (or Expression with resultType string).
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalEmbeddedCertPassword;
+  final pulumi.Input<dynamic>? servicePrincipalEmbeddedCertPassword;
   /// The application's client ID used in AadServicePrincipal authentication type. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalId;
   /// The application's key used in AadServicePrincipal authentication type.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
+  final pulumi.Input<dynamic>? servicePrincipalKey;
   /// The tenant information (domain name or tenant ID) used in AadServicePrincipal authentication type under which your application resides. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? tenant;
   /// The token endpoint of the authorization server to acquire access token. Type: string (or Expression with resultType string).
@@ -62,7 +61,7 @@ class RestServiceLinkedServiceResponse {
   /// The user name used in Basic authentication type. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? userName;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [RestServiceLinkedServiceResponse].
   /// [aadResourceId] The resource you are requesting authorization to use. Type: string (or Expression with resultType string).
@@ -130,21 +129,21 @@ class RestServiceLinkedServiceResponse {
       'authenticationType': authenticationType,
       'azureCloudType': ?azureCloudType,
       'clientId': ?clientId,
-      'clientSecret': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(clientSecret, (value) => value.toMap()),
+      'clientSecret': ?clientSecret,
       'connectVia': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeReferenceResponse, Map<String, dynamic>>(connectVia, (value) => value.toMap()),
       'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReferenceResponse, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'description': ?description,
       'enableServerCertificateValidation': ?enableServerCertificateValidation,
       'encryptedCredential': ?encryptedCredential,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'resource': ?resource,
       'scope': ?scope,
       'servicePrincipalCredentialType': ?servicePrincipalCredentialType,
-      'servicePrincipalEmbeddedCert': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalEmbeddedCert, (value) => value.toMap()),
-      'servicePrincipalEmbeddedCertPassword': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalEmbeddedCertPassword, (value) => value.toMap()),
+      'servicePrincipalEmbeddedCert': ?servicePrincipalEmbeddedCert,
+      'servicePrincipalEmbeddedCertPassword': ?servicePrincipalEmbeddedCertPassword,
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': ?servicePrincipalKey,
       'tenant': ?tenant,
       'tokenEndpoint': ?tokenEndpoint,
       'type': type,
@@ -162,21 +161,21 @@ class RestServiceLinkedServiceResponse {
       authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
       azureCloudType: (() { final guardedValue = map['azureCloudType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clientSecret: (() { final guardedValue = map['clientSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CredentialReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableServerCertificateValidation: (() { final guardedValue = map['enableServerCertificateValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resource: (() { final guardedValue = map['resource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       servicePrincipalCredentialType: (() { final guardedValue = map['servicePrincipalCredentialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalEmbeddedCert: (() { final guardedValue = map['servicePrincipalEmbeddedCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      servicePrincipalEmbeddedCertPassword: (() { final guardedValue = map['servicePrincipalEmbeddedCertPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalEmbeddedCert: (() { final guardedValue = map['servicePrincipalEmbeddedCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      servicePrincipalEmbeddedCertPassword: (() { final guardedValue = map['servicePrincipalEmbeddedCertPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tenant: (() { final guardedValue = map['tenant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tokenEndpoint: (() { final guardedValue = map['tokenEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

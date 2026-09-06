@@ -9,21 +9,21 @@ import 'network_ref.dart';
 /// This type describes a service resource.
 class ServiceResourceDescription {
   /// Auto scaling policies
-  final pulumi.Input<List<AutoScalingPolicy>>? autoScalingPolicies;
+  final pulumi.Input<List<AutoScalingPolicy>?>? autoScalingPolicies;
   /// Describes the set of code packages that forms the service. A code package describes the container and the properties for running it. All the code packages are started together on the same host and share the same context (network, process etc.).
   final pulumi.Input<List<ContainerCodePackageProperties>> codePackages;
   /// User readable description of the service.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Reference to sinks in DiagnosticsDescription.
-  final pulumi.Input<DiagnosticsRef>? diagnostics;
+  final pulumi.Input<DiagnosticsRef?>? diagnostics;
   /// The name of the resource
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The names of the private networks that this service needs to be part of.
-  final pulumi.Input<List<NetworkRef>>? networkRefs;
+  final pulumi.Input<List<NetworkRef>?>? networkRefs;
   /// The operation system required by the code in service.
-  final pulumi.Input<String> osType;
+  final pulumi.Input<dynamic> osType;
   /// The number of replicas of the service to create. Defaults to 1 if not specified.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
 
   /// Creates a new [ServiceResourceDescription].
   /// [autoScalingPolicies] Auto scaling policies
@@ -66,8 +66,8 @@ class ServiceResourceDescription {
       diagnostics: (() { final guardedValue = map['diagnostics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiagnosticsRef.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkRefs: (() { final guardedValue = map['networkRefs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkRef>(guardedValue, (value) => NetworkRef.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      osType: pulumi.Input.fromValue(map['osType'] as String),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      osType: pulumi.Input.fromValue(map['osType']),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

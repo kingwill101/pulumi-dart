@@ -24,6 +24,17 @@ Future<GetAliasResult> getAlias(
   return GetAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetAliasResult> getAliasOutput(
+  GetAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:subscription:getAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAliasResult.fromMap);
+}
+
 /// The operation to view Initiator Subscription Changed Request
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -42,4 +53,15 @@ Future<GetSubscriptionTarDirectoryResult> getSubscriptionTarDirectory(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubscriptionTarDirectoryResult.fromMap(result);
+}
+
+pulumi.Output<GetSubscriptionTarDirectoryResult> getSubscriptionTarDirectoryOutput(
+  GetSubscriptionTarDirectoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:subscription:getSubscriptionTarDirectory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubscriptionTarDirectoryResult.fromMap);
 }

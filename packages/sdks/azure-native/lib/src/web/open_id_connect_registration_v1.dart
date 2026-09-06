@@ -7,11 +7,11 @@ import 'open_id_connect_config.dart';
 /// The configuration settings of the app registration for the custom Open ID Connect provider.
 class OpenIdConnectRegistrationV1 {
   /// The authentication credentials of the custom Open ID Connect provider.
-  final pulumi.Input<OpenIdConnectClientCredentialV1>? clientCredential;
+  final pulumi.Input<OpenIdConnectClientCredentialV1?>? clientCredential;
   /// The client id of the custom Open ID Connect provider.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The configuration settings of the endpoints used for the custom Open ID Connect provider.
-  final pulumi.Input<OpenIdConnectConfig>? openIdConnectConfiguration;
+  final pulumi.Input<OpenIdConnectConfig?>? openIdConnectConfiguration;
 
   /// Creates a new [OpenIdConnectRegistrationV1].
   /// [clientCredential] The authentication credentials of the custom Open ID Connect provider.

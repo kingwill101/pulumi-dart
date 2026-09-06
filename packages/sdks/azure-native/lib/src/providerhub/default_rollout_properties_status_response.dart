@@ -7,17 +7,17 @@ import 'extended_error_info_response.dart';
 /// The default rollout status.
 class DefaultRolloutPropertiesStatusResponse {
   /// The completed regions.
-  final pulumi.Input<List<String>>? completedRegions;
+  final pulumi.Input<List<String>?>? completedRegions;
   /// The failed or skipped regions.
-  final pulumi.Input<Map<String, ExtendedErrorInfoResponse>>? failedOrSkippedRegions;
+  final pulumi.Input<Map<String, ExtendedErrorInfoResponse>?>? failedOrSkippedRegions;
   /// The manifest checkin status.
-  final pulumi.Input<DefaultRolloutStatusManifestCheckinStatusResponse>? manifestCheckinStatus;
+  final pulumi.Input<DefaultRolloutStatusManifestCheckinStatusResponse?>? manifestCheckinStatus;
   /// The next traffic region.
-  final pulumi.Input<String>? nextTrafficRegion;
+  final pulumi.Input<String?>? nextTrafficRegion;
   /// The next traffic region scheduled time.
-  final pulumi.Input<String>? nextTrafficRegionScheduledTime;
+  final pulumi.Input<String?>? nextTrafficRegionScheduledTime;
   /// The subscription reregistration result.
-  final pulumi.Input<String>? subscriptionReregistrationResult;
+  final pulumi.Input<String?>? subscriptionReregistrationResult;
 
   /// Creates a new [DefaultRolloutPropertiesStatusResponse].
   /// [completedRegions] The completed regions.

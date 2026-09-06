@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MonitorAlertEventSubscriptionDestination {
   /// The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
   /// Each resource ARM Id should follow this pattern: /subscriptions/{AzureSubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Insights/actionGroups/{ActionGroupName}.
-  final pulumi.Input<List<String>>? actionGroups;
+  final pulumi.Input<List<String>?>? actionGroups;
   /// The description that will be attached to every Alert fired through this event subscription.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Type of the endpoint for the event subscription destination.
   /// Expected value is 'MonitorAlert'.
   final pulumi.Input<String> endpointType;
   /// The severity that will be attached to every Alert fired through this event subscription.
   /// This field must be provided.
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<dynamic>? severity;
 
   /// Creates a new [MonitorAlertEventSubscriptionDestination].
   /// [actionGroups] The list of ARM Ids of Action Groups that will be triggered on every Alert fired through this event subscription.
@@ -42,7 +42,7 @@ class MonitorAlertEventSubscriptionDestination {
       actionGroups: (() { final guardedValue = map['actionGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointType: pulumi.Input.fromValue(map['endpointType'] as String),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

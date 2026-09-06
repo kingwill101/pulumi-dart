@@ -306,7 +306,34 @@ class ServerDetails extends pulumi.CustomResource {
     serverMonitorMode = registerOutput<int?>('serverMonitorMode');
     sku = registerOutput<ResourceSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerDetails] resource.
+  ServerDetails.reference(String urn)
+    : super(
+        'azure-native:analysisservices:ServerDetails',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asAdministrators = registerOutput<ServerAdministratorsResponse?>('asAdministrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupBlobContainerUri = registerOutput<String?>('backupBlobContainerUri');
+    gatewayDetails = registerOutput<GatewayDetailsResponse?>('gatewayDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipV4FirewallSettings = registerOutput<IPv4FirewallSettingsResponse?>('ipV4FirewallSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IPv4FirewallSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedMode = registerOutput<int?>('managedMode');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    querypoolConnectionMode = registerOutput<String?>('querypoolConnectionMode');
+    serverFullName = registerOutput<String>('serverFullName');
+    serverMonitorMode = registerOutput<int?>('serverMonitorMode');
+    sku = registerOutput<ResourceSkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

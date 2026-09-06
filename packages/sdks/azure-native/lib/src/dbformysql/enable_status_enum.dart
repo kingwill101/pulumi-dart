@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable Log On Disk or not.
-enum EnableStatusEnum {
+enum EnableStatusEnum implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const EnableStatusEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static EnableStatusEnum fromValue(String value) {

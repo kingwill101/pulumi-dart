@@ -5,9 +5,9 @@ import 'topic_args.dart';
 
 /// Description of topic resource.
 ///
-/// Uses Azure REST API version 2024-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
+/// Uses Azure REST API version 2026-01-01. In version 2.x of the Azure Native provider, it used API version 2022-01-01-preview.
 ///
-/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2025-05-01-preview, 2026-01-01, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2018-01-01-preview, 2021-01-01-preview, 2021-06-01-preview, 2021-11-01, 2022-01-01-preview, 2022-10-01-preview, 2023-01-01-preview, 2024-01-01, 2025-05-01-preview, 2026-07-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native servicebus [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -196,12 +196,14 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<int> subscriptionCount;
   /// Value that indicates whether the topic supports ordering.
   late final pulumi.Output<bool?> supportOrdering;
-  /// The system meta data relating to this resource.
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
-  /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The exact time the message was updated.
   late final pulumi.Output<String> updatedAt;
+  /// Gets and Sets Metadata of User.
+  late final pulumi.Output<String?> userMetadata;
 
   /// Creates a new [Topic].
   /// [name] The Pulumi resource name.
@@ -239,5 +241,40 @@ class Topic extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
+    userMetadata = registerOutput<String?>('userMetadata');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'azure-native:servicebus:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessedAt = registerOutput<String>('accessedAt');
+    autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    countDetails = registerOutput<MessageCountDetailsResponse>('countDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessageCountDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdAt = registerOutput<String>('createdAt');
+    defaultMessageTimeToLive = registerOutput<String?>('defaultMessageTimeToLive');
+    duplicateDetectionHistoryTimeWindow = registerOutput<String?>('duplicateDetectionHistoryTimeWindow');
+    enableBatchedOperations = registerOutput<bool?>('enableBatchedOperations');
+    enableExpress = registerOutput<bool?>('enableExpress');
+    enablePartitioning = registerOutput<bool?>('enablePartitioning');
+    location = registerOutput<String>('location');
+    maxMessageSizeInKilobytes = registerOutput<double?>('maxMessageSizeInKilobytes');
+    maxSizeInMegabytes = registerOutput<int?>('maxSizeInMegabytes');
+    this.name = registerOutput<String>('name');
+    requiresDuplicateDetection = registerOutput<bool?>('requiresDuplicateDetection');
+    sizeInBytes = registerOutput<double>('sizeInBytes');
+    status = registerOutput<String?>('status');
+    subscriptionCount = registerOutput<int>('subscriptionCount');
+    supportOrdering = registerOutput<bool?>('supportOrdering');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    userMetadata = registerOutput<String?>('userMetadata');
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for details.
 class ManagedClusterAzureMonitorProfileKubeStateMetricsResponse {
   /// Comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric (Example: 'namespaces=[kubernetes.io/team,...],pods=[kubernetes.io/team],...'). By default the metric contains only resource name and namespace labels.
-  final pulumi.Input<String>? metricAnnotationsAllowList;
+  final pulumi.Input<String?>? metricAnnotationsAllowList;
   /// Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric (Example: 'namespaces=[k8s-label-1,k8s-label-n,...],pods=[app],...'). By default the metric contains only resource name and namespace labels.
-  final pulumi.Input<String>? metricLabelsAllowlist;
+  final pulumi.Input<String?>? metricLabelsAllowlist;
 
   /// Creates a new [ManagedClusterAzureMonitorProfileKubeStateMetricsResponse].
   /// [metricAnnotationsAllowList] Comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric (Example: 'namespaces=[kubernetes.io/team,...],pods=[kubernetes.io/team],...'). By default the metric contains only resource name and namespace labels.

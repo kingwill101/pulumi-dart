@@ -7,21 +7,21 @@ import 'subnet_response.dart';
 /// IP configuration
 class IPConfigurationInterfaceEndpointResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// Gets the provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The reference of the public IP resource.
-  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressInterfaceEndpointResponse?>? publicIPAddress;
   /// The reference of the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
 
   /// Creates a new [IPConfigurationInterfaceEndpointResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

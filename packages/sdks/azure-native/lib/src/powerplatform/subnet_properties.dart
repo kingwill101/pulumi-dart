@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a subnet.
 class SubnetProperties {
   /// Subnet name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SubnetProperties].
   /// [name] Subnet name.

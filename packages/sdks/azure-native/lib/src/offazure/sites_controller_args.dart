@@ -10,23 +10,23 @@ import 'site_spn_properties.dart';
 /// {@macro pulumi_offazure_sites_controller_args_doc}
 class SitesControllerArgs {
   /// Gets or sets the on-premises agent details.
-  final pulumi.Input<SiteAgentProperties>? agentDetails;
+  final pulumi.Input<SiteAgentProperties?>? agentDetails;
   /// Gets or sets the Appliance Name.
-  final pulumi.Input<String>? applianceName;
+  final pulumi.Input<String?>? applianceName;
   /// Gets or sets the ARM ID of migration hub solution for SDS.
-  final pulumi.Input<String>? discoverySolutionId;
+  final pulumi.Input<String?>? discoverySolutionId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the service principal identity details used by agent for
   /// communication
   /// to the service.
-  final pulumi.Input<SiteSpnProperties>? servicePrincipalIdentityDetails;
+  final pulumi.Input<SiteSpnProperties?>? servicePrincipalIdentityDetails;
   /// Site name
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SitesControllerArgs].
   /// [agentDetails] Gets or sets the on-premises agent details.

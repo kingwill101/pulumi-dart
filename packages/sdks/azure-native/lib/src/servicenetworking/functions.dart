@@ -28,6 +28,17 @@ Future<GetAssociationsInterfaceResult> getAssociationsInterface(
   return GetAssociationsInterfaceResult.fromMap(result);
 }
 
+pulumi.Output<GetAssociationsInterfaceResult> getAssociationsInterfaceOutput(
+  GetAssociationsInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicenetworking:getAssociationsInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssociationsInterfaceResult.fromMap);
+}
+
 /// Get a Frontend
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -46,6 +57,17 @@ Future<GetFrontendsInterfaceResult> getFrontendsInterface(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontendsInterfaceResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontendsInterfaceResult> getFrontendsInterfaceOutput(
+  GetFrontendsInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicenetworking:getFrontendsInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontendsInterfaceResult.fromMap);
 }
 
 /// Get a SecurityPolicy
@@ -68,6 +90,17 @@ Future<GetSecurityPoliciesInterfaceResult> getSecurityPoliciesInterface(
   return GetSecurityPoliciesInterfaceResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityPoliciesInterfaceResult> getSecurityPoliciesInterfaceOutput(
+  GetSecurityPoliciesInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicenetworking:getSecurityPoliciesInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPoliciesInterfaceResult.fromMap);
+}
+
 /// Get a TrafficController
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -86,4 +119,15 @@ Future<GetTrafficControllerInterfaceResult> getTrafficControllerInterface(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrafficControllerInterfaceResult.fromMap(result);
+}
+
+pulumi.Output<GetTrafficControllerInterfaceResult> getTrafficControllerInterfaceOutput(
+  GetTrafficControllerInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicenetworking:getTrafficControllerInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrafficControllerInterfaceResult.fromMap);
 }

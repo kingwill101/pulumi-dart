@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VpcConfig
 class VpcConfigLambdaFunctionResponse {
   /// Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.
-  final pulumi.Input<bool>? ipv6AllowedForDualStack;
+  final pulumi.Input<bool?>? ipv6AllowedForDualStack;
   /// A list of VPC security group IDs.
-  final pulumi.Input<List<String>>? securityGroupIds;
+  final pulumi.Input<List<String>?>? securityGroupIds;
   /// A list of VPC subnet IDs.
-  final pulumi.Input<List<String>>? subnetIds;
+  final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [VpcConfigLambdaFunctionResponse].
   /// [ipv6AllowedForDualStack] Allows outbound IPv6 traffic on VPC functions that are connected to dual-stack subnets.

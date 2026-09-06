@@ -8,28 +8,28 @@ import 'parameter_specification_response.dart';
 /// The storage account linked service.
 class AzureStorageLinkedServiceResponse {
   /// The Azure key vault secret reference of accountKey in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? accountKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? accountKey;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The connection string. It is mutually exclusive with sasUri property. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The Azure key vault secret reference of sasToken in sas uri.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? sasToken;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? sasToken;
   /// SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? sasUri;
   /// Type of linked service.
   /// Expected value is 'AzureStorage'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AzureStorageLinkedServiceResponse].
   /// [accountKey] The Azure key vault secret reference of accountKey in connection string.

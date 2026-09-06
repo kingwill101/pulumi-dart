@@ -7,17 +7,17 @@ import 'my_sql_connection_info_response.dart';
 /// Input for the task that migrates MySQL databases to Azure Database for MySQL for offline migrations
 class MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse {
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// Setting to set the source server read only
-  final pulumi.Input<bool>? makeSourceServerReadOnly;
+  final pulumi.Input<bool?>? makeSourceServerReadOnly;
   /// Optional parameters for fine tuning the data transfer rate during migration
-  final pulumi.Input<Map<String, String>>? optionalAgentSettings;
+  final pulumi.Input<Map<String, String>?>? optionalAgentSettings;
   /// Databases to migrate
   final pulumi.Input<List<MigrateMySqlAzureDbForMySqlOfflineDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source MySQL
   final pulumi.Input<MySqlConnectionInfoResponse> sourceConnectionInfo;
   /// Parameter to specify when the migration started
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? startedOn;
   /// Connection information for target Azure Database for MySQL
   final pulumi.Input<MySqlConnectionInfoResponse> targetConnectionInfo;
 
@@ -29,15 +29,15 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse {
   /// [sourceConnectionInfo] Connection information for source MySQL
   /// [startedOn] Parameter to specify when the migration started
   /// [targetConnectionInfo] Connection information for target Azure Database for MySQL
-  const MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse({
+  MigrateMySqlAzureDbForMySqlOfflineTaskInputResponse({
     this.encryptedKeyForSecureFields,
-    this.makeSourceServerReadOnly,
+    pulumi.Input<bool?>? makeSourceServerReadOnly,
     this.optionalAgentSettings,
     required this.selectedDatabases,
     required this.sourceConnectionInfo,
     this.startedOn,
     required this.targetConnectionInfo,
-  });
+  }) : makeSourceServerReadOnly = makeSourceServerReadOnly ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

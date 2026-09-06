@@ -9,7 +9,7 @@ class IdentityPropertiesResponse {
   /// The tenant ID of resource.
   final pulumi.Input<String> tenantId;
   /// Managed identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [principalId] The identity ID.

@@ -204,7 +204,31 @@ class IdentityProvider extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedTenants = registerOutput<List<String>?>('allowedTenants');
+    allowedTenants = registerOutput<List<String>?>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    authority = registerOutput<String?>('authority');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String>('clientId');
+    clientLibrary = registerOutput<String?>('clientLibrary');
+    clientSecret = registerOutput<String?>('clientSecret');
+    this.name = registerOutput<String>('name');
+    passwordResetPolicyName = registerOutput<String?>('passwordResetPolicyName');
+    profileEditingPolicyName = registerOutput<String?>('profileEditingPolicyName');
+    signinPolicyName = registerOutput<String?>('signinPolicyName');
+    signinTenant = registerOutput<String?>('signinTenant');
+    signupPolicyName = registerOutput<String?>('signupPolicyName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IdentityProvider] resource.
+  IdentityProvider.reference(String urn)
+    : super(
+        'azure-native:apimanagement:IdentityProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedTenants = registerOutput<List<String>?>('allowedTenants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authority = registerOutput<String?>('authority');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientId = registerOutput<String>('clientId');

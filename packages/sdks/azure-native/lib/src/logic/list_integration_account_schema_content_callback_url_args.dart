@@ -10,9 +10,9 @@ class ListIntegrationAccountSchemaContentCallbackUrlArgs {
   /// The integration account name.
   final pulumi.Input<String> integrationAccountName;
   /// The key type.
-  final pulumi.Input<String>? keyType;
+  final pulumi.Input<dynamic>? keyType;
   /// The expiry time.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The integration account schema name.
@@ -45,7 +45,7 @@ class ListIntegrationAccountSchemaContentCallbackUrlArgs {
   factory ListIntegrationAccountSchemaContentCallbackUrlArgs.fromMap(Map<String, dynamic> map) {
     return ListIntegrationAccountSchemaContentCallbackUrlArgs(
       integrationAccountName: pulumi.Input.fromValue(map['integrationAccountName'] as String),
-      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       notAfter: (() { final guardedValue = map['notAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaName: pulumi.Input.fromValue(map['schemaName'] as String),

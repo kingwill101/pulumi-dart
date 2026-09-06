@@ -7,11 +7,11 @@ import 'restore_point_source_vmosdisk_response.dart';
 /// Describes the storage profile.
 class RestorePointSourceVMStorageProfileResponse {
   /// Gets the data disks of the VM captured at the time of the restore point creation.
-  final pulumi.Input<List<RestorePointSourceVMDataDiskResponse>>? dataDisks;
+  final pulumi.Input<List<RestorePointSourceVMDataDiskResponse>?>? dataDisks;
   /// Gets the disk controller type of the VM captured at the time of the restore point creation.
   final pulumi.Input<String> diskControllerType;
   /// Gets the OS disk of the VM captured at the time of the restore point creation.
-  final pulumi.Input<RestorePointSourceVMOSDiskResponse>? osDisk;
+  final pulumi.Input<RestorePointSourceVMOSDiskResponse?>? osDisk;
 
   /// Creates a new [RestorePointSourceVMStorageProfileResponse].
   /// [dataDisks] Gets the data disks of the VM captured at the time of the restore point creation.

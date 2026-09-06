@@ -207,4 +207,24 @@ class IncidentRelation extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [IncidentRelation] resource.
+  IncidentRelation.reference(String urn)
+    : super(
+        'azure-native:securityinsights:IncidentRelation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    relatedResourceId = registerOutput<String>('relatedResourceId');
+    relatedResourceKind = registerOutput<String>('relatedResourceKind');
+    relatedResourceName = registerOutput<String>('relatedResourceName');
+    relatedResourceType = registerOutput<String>('relatedResourceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

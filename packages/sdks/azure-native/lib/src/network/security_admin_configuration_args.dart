@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_security_admin_configuration_args_doc}
 class SecurityAdminConfigurationArgs {
   /// Enum list of network intent policy based services.
-  final pulumi.Input<List<String>>? applyOnNetworkIntentPolicyBasedServices;
+  final pulumi.Input<List<dynamic>?>? applyOnNetworkIntentPolicyBasedServices;
   /// The name of the network manager Security Configuration.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// A description of the security configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determine update behavior for changes to network groups referenced within the rules in this configuration.
-  final pulumi.Input<String>? networkGroupAddressSpaceAggregationOption;
+  final pulumi.Input<dynamic>? networkGroupAddressSpaceAggregationOption;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
@@ -49,10 +49,10 @@ class SecurityAdminConfigurationArgs {
 
   factory SecurityAdminConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return SecurityAdminConfigurationArgs(
-      applyOnNetworkIntentPolicyBasedServices: (() { final guardedValue = map['applyOnNetworkIntentPolicyBasedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      applyOnNetworkIntentPolicyBasedServices: (() { final guardedValue = map['applyOnNetworkIntentPolicyBasedServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       configurationName: (() { final guardedValue = map['configurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkGroupAddressSpaceAggregationOption: (() { final guardedValue = map['networkGroupAddressSpaceAggregationOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkGroupAddressSpaceAggregationOption: (() { final guardedValue = map['networkGroupAddressSpaceAggregationOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );

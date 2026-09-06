@@ -11,9 +11,9 @@ class PrivateEndpointConnectionArgs {
   /// Namespace name
   final pulumi.Input<String> namespaceName;
   /// Private Endpoint Connection Name
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Private Endpoint Connection properties.
-  final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -5,9 +5,9 @@ import 'access_policy.dart';
 
 class SignedIdentifier {
   /// Access policy
-  final pulumi.Input<AccessPolicy>? accessPolicy;
+  final pulumi.Input<AccessPolicy?>? accessPolicy;
   /// An unique identifier of the stored access policy.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SignedIdentifier].
   /// [accessPolicy] Access policy

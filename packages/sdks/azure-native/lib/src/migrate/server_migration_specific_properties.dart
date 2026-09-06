@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a Server Migration Specific properties base model.
 class ServerMigrationSpecificProperties {
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final pulumi.Input<String>? currentJobId;
+  final pulumi.Input<String?>? currentJobId;
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final pulumi.Input<String>? drApplianceInventoryId;
+  final pulumi.Input<String?>? drApplianceInventoryId;
   /// Migration Specific Properties Instance Types.
   /// Expected value is 'ServerMigration'.
   final pulumi.Input<String> instanceType;

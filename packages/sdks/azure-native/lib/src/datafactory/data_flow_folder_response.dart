@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The folder that this data flow is in. If not specified, Data flow will appear at the root level.
 class DataFlowFolderResponse {
   /// The name of the folder that this data flow is in.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DataFlowFolderResponse].
   /// [name] The name of the folder that this data flow is in.

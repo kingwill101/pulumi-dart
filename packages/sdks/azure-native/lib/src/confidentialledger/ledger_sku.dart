@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU associated with the ledger
-enum LedgerSku {
+enum LedgerSku implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueBasic("Basic"),
   valueUnknown("Unknown");
 
   const LedgerSku(this.wireValue);
+  @override
   final String wireValue;
 
   static LedgerSku fromValue(String value) {

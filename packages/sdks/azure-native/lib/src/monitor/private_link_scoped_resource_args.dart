@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitor_private_link_scoped_resource_args_doc}
 class PrivateLinkScopedResourceArgs {
   /// The kind of scoped Azure monitor resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The resource id of the scoped Azure monitor resource.
-  final pulumi.Input<String>? linkedResourceId;
+  final pulumi.Input<String?>? linkedResourceId;
   /// The name of the scoped resource object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Azure Monitor PrivateLinkScope resource.
   final pulumi.Input<String> scopeName;
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
-  final pulumi.Input<String>? subscriptionLocation;
+  final pulumi.Input<String?>? subscriptionLocation;
 
   /// Creates a new [PrivateLinkScopedResourceArgs].
   /// [kind] The kind of scoped Azure monitor resource.
@@ -49,7 +49,7 @@ class PrivateLinkScopedResourceArgs {
 
   factory PrivateLinkScopedResourceArgs.fromMap(Map<String, dynamic> map) {
     return PrivateLinkScopedResourceArgs(
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedResourceId: (() { final guardedValue = map['linkedResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

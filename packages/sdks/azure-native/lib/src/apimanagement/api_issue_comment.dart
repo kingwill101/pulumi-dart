@@ -218,4 +218,21 @@ class ApiIssueComment extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     userId = registerOutput<String>('userId');
   }
+
+  /// Creates a typed reference to an existing [ApiIssueComment] resource.
+  ApiIssueComment.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ApiIssueComment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String?>('createdDate');
+    this.name = registerOutput<String>('name');
+    text = registerOutput<String>('text');
+    type = registerOutput<String>('type');
+    userId = registerOutput<String>('userId');
+  }
 }

@@ -6,9 +6,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// when an auto heal rule is triggered.
 class AutoHealCustomActionResponse {
   /// Executable to be run.
-  final pulumi.Input<String>? exe;
+  final pulumi.Input<String?>? exe;
   /// Parameters for the executable.
-  final pulumi.Input<String>? parameters;
+  final pulumi.Input<String?>? parameters;
 
   /// Creates a new [AutoHealCustomActionResponse].
   /// [exe] Executable to be run.

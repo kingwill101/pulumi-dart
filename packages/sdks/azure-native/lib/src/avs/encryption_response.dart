@@ -6,9 +6,9 @@ import 'encryption_key_vault_properties_response.dart';
 /// The properties of customer managed encryption key
 class EncryptionResponse {
   /// The key vault where the encryption key is stored
-  final pulumi.Input<EncryptionKeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<EncryptionKeyVaultPropertiesResponse?>? keyVaultProperties;
   /// Status of customer managed encryption key
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [EncryptionResponse].
   /// [keyVaultProperties] The key vault where the encryption key is stored

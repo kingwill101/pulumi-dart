@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'scoping_answer_response.dart';
 import 'scoping_configuration_args.dart';
 import 'system_data_response.dart';
 
@@ -241,7 +242,7 @@ import 'system_data_response.dart';
 /// ```
 class ScopingConfiguration extends pulumi.CustomResource {
   /// List of scoping question answers.
-  late final pulumi.Output<List<Map<String, dynamic>>?> answers;
+  late final pulumi.Output<List<ScopingAnswerResponse>?> answers;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The name of the resource
@@ -267,7 +268,24 @@ class ScopingConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    answers = registerOutput<List<Map<String, dynamic>>?>('answers');
+    answers = registerOutput<List<ScopingAnswerResponse>?>('answers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopingAnswerResponse>(guardedValue, (value) => ScopingAnswerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ScopingConfiguration] resource.
+  ScopingConfiguration.reference(String urn)
+    : super(
+        'azure-native:appcomplianceautomation:ScopingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    answers = registerOutput<List<ScopingAnswerResponse>?>('answers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScopingAnswerResponse>(guardedValue, (value) => ScopingAnswerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

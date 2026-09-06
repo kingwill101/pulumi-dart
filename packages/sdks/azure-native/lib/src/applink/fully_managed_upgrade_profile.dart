@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AppLinkMember fully managed upgrade profile
 class FullyManagedUpgradeProfile {
   /// Release channel
-  final pulumi.Input<String> releaseChannel;
+  final pulumi.Input<dynamic> releaseChannel;
 
   /// Creates a new [FullyManagedUpgradeProfile].
   /// [releaseChannel] Release channel
@@ -21,7 +21,7 @@ class FullyManagedUpgradeProfile {
 
   factory FullyManagedUpgradeProfile.fromMap(Map<String, dynamic> map) {
     return FullyManagedUpgradeProfile(
-      releaseChannel: pulumi.Input.fromValue(map['releaseChannel'] as String),
+      releaseChannel: pulumi.Input.fromValue(map['releaseChannel']),
     );
   }
 }

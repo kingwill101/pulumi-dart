@@ -6,19 +6,19 @@ import 'system_data_response.dart';
 /// Result data returned by getBackupInstance.
 class GetBackupInstanceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Proxy Resource Id represents the complete path to the resource.
-  final String id;
+  final String? id;
   /// Proxy Resource name associated with the resource.
-  final String name;
+  final String? name;
   /// BackupInstanceResource properties
-  final BackupInstanceResponse properties;
+  final BackupInstanceResponse? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Proxy Resource tags.
   final Map<String, String>? tags;
   /// Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBackupInstanceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -29,36 +29,36 @@ class GetBackupInstanceResult {
   /// [tags] Proxy Resource tags.
   /// [type] Proxy Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
   const GetBackupInstanceResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.systemData,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetBackupInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetBackupInstanceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: BackupInstanceResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return BackupInstanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

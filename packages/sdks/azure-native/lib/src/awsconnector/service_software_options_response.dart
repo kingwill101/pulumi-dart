@@ -6,21 +6,21 @@ import 'deployment_status_enum_value_response.dart';
 /// Definition of ServiceSoftwareOptions
 class ServiceSoftwareOptionsResponse {
   /// &lt;p&gt;The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.&lt;/p&gt;
-  final pulumi.Input<String>? automatedUpdateDate;
+  final pulumi.Input<String?>? automatedUpdateDate;
   /// &lt;p&gt; True if you're able to cancel your service software version update. False if you can't cancel your service software update.&lt;/p&gt;
-  final pulumi.Input<bool>? cancellable;
+  final pulumi.Input<bool?>? cancellable;
   /// &lt;p&gt;The current service software version present on the domain.&lt;/p&gt;
-  final pulumi.Input<String>? currentVersion;
+  final pulumi.Input<String?>? currentVersion;
   /// &lt;p&gt;A description of the service software update status.&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The new service software version, if one is available.&lt;/p&gt;
-  final pulumi.Input<String>? newVersion;
+  final pulumi.Input<String?>? newVersion;
   /// &lt;p&gt;True if a service software is never automatically updated. False if a service software is automatically updated after the automated update date.&lt;/p&gt;
-  final pulumi.Input<bool>? optionalDeployment;
+  final pulumi.Input<bool?>? optionalDeployment;
   /// &lt;p&gt;True if you're able to update your service software version. False if you can't update your service software version.&lt;/p&gt;
-  final pulumi.Input<bool>? updateAvailable;
+  final pulumi.Input<bool?>? updateAvailable;
   /// &lt;p&gt;The status of your service software update.&lt;/p&gt;
-  final pulumi.Input<DeploymentStatusEnumValueResponse>? updateStatus;
+  final pulumi.Input<DeploymentStatusEnumValueResponse?>? updateStatus;
 
   /// Creates a new [ServiceSoftwareOptionsResponse].
   /// [automatedUpdateDate] &lt;p&gt;The timestamp, in Epoch time, until which you can manually request a service software update. After this date, we automatically update your service software.&lt;/p&gt;

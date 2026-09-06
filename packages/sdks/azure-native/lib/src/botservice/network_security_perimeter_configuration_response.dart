@@ -11,7 +11,7 @@ class NetworkSecurityPerimeterConfigurationResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Properties of the Network Security Perimeter configuration
-  final pulumi.Input<NetworkSecurityPerimeterConfigurationPropertiesResponse>? properties;
+  final pulumi.Input<NetworkSecurityPerimeterConfigurationPropertiesResponse?>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

@@ -8,7 +8,7 @@ class WorkflowRunResponse {
   /// Describes if the workflow run succeeded.
   final pulumi.Input<bool> succeeded;
   /// Describes the status of the workflow run
-  final pulumi.Input<String>? workflowRunStatus;
+  final pulumi.Input<String?>? workflowRunStatus;
   /// URL to the run of the workflow.
   final pulumi.Input<String> workflowRunURL;
 

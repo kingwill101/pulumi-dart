@@ -38,6 +38,17 @@ Future<GetBillingInfoResult> getBillingInfo(
   return GetBillingInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingInfoResult> getBillingInfoOutput(
+  GetBillingInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:getBillingInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingInfoResult.fromMap);
+}
+
 /// Uses Azure REST API version 2023-10-20.
 ///
 /// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -54,6 +65,17 @@ Future<GetMonitorResult> getMonitor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMonitorResult.fromMap(result);
+}
+
+pulumi.Output<GetMonitorResult> getMonitorOutput(
+  GetMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:getMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorResult.fromMap);
 }
 
 /// Get the default application key.
@@ -76,6 +98,17 @@ Future<GetMonitorDefaultApplicationKeyResult> getMonitorDefaultApplicationKey(
   return GetMonitorDefaultApplicationKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitorDefaultApplicationKeyResult> getMonitorDefaultApplicationKeyOutput(
+  GetMonitorDefaultApplicationKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:getMonitorDefaultApplicationKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorDefaultApplicationKeyResult.fromMap);
+}
+
 /// Uses Azure REST API version 2023-10-20.
 ///
 /// Other available API versions: 2022-06-01, 2022-08-01, 2023-01-01, 2023-07-07, 2024-03-01, 2025-01-07, 2025-06-11, 2025-11-03-preview, 2025-12-26-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native datadog [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -92,6 +125,17 @@ Future<GetMonitorDefaultKeyResult> getMonitorDefaultKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMonitorDefaultKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetMonitorDefaultKeyResult> getMonitorDefaultKeyOutput(
+  GetMonitorDefaultKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:getMonitorDefaultKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorDefaultKeyResult.fromMap);
 }
 
 /// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
@@ -114,6 +158,17 @@ Future<GetMonitoredSubscriptionResult> getMonitoredSubscription(
   return GetMonitoredSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitoredSubscriptionResult> getMonitoredSubscriptionOutput(
+  GetMonitoredSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:getMonitoredSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitoredSubscriptionResult.fromMap);
+}
+
 /// Response of a list operation.
 ///
 /// Uses Azure REST API version 2023-10-20.
@@ -132,6 +187,17 @@ Future<ListMonitorApiKeysResult> listMonitorApiKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListMonitorApiKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListMonitorApiKeysResult> listMonitorApiKeysOutput(
+  ListMonitorApiKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:listMonitorApiKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMonitorApiKeysResult.fromMap);
 }
 
 /// Response of a list operation.
@@ -154,6 +220,17 @@ Future<ListMonitorHostsResult> listMonitorHosts(
   return ListMonitorHostsResult.fromMap(result);
 }
 
+pulumi.Output<ListMonitorHostsResult> listMonitorHostsOutput(
+  ListMonitorHostsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:listMonitorHosts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMonitorHostsResult.fromMap);
+}
+
 /// Response of a list operation.
 ///
 /// Uses Azure REST API version 2023-10-20.
@@ -174,6 +251,17 @@ Future<ListMonitorLinkedResourcesResult> listMonitorLinkedResources(
   return ListMonitorLinkedResourcesResult.fromMap(result);
 }
 
+pulumi.Output<ListMonitorLinkedResourcesResult> listMonitorLinkedResourcesOutput(
+  ListMonitorLinkedResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:listMonitorLinkedResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMonitorLinkedResourcesResult.fromMap);
+}
+
 /// Response of a list operation.
 ///
 /// Uses Azure REST API version 2023-10-20.
@@ -192,4 +280,15 @@ Future<ListMonitorMonitoredResourcesResult> listMonitorMonitoredResources(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListMonitorMonitoredResourcesResult.fromMap(result);
+}
+
+pulumi.Output<ListMonitorMonitoredResourcesResult> listMonitorMonitoredResourcesOutput(
+  ListMonitorMonitoredResourcesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:datadog:listMonitorMonitoredResources',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMonitorMonitoredResourcesResult.fromMap);
 }

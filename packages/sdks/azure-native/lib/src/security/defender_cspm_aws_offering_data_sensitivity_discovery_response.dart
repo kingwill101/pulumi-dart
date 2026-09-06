@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Microsoft Defender Data Sensitivity discovery configuration
 class DefenderCspmAwsOfferingDataSensitivityDiscoveryResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Is Microsoft Defender Data Sensitivity discovery enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderCspmAwsOfferingDataSensitivityDiscoveryResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

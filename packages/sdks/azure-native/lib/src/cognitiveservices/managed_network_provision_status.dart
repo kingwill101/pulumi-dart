@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the Provisioning for the managed network of a cognitive services account.
 class ManagedNetworkProvisionStatus {
   /// Status for the managed network of a cognitive services account.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ManagedNetworkProvisionStatus].
   /// [status] Status for the managed network of a cognitive services account.
@@ -21,7 +21,7 @@ class ManagedNetworkProvisionStatus {
 
   factory ManagedNetworkProvisionStatus.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkProvisionStatus(
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

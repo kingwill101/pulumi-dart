@@ -12,7 +12,7 @@ class DomainGroupResponse {
   /// The assessment state of this domain group.
   final pulumi.Input<String> state;
   /// The Entra tenant ID that owns these domains. Defaults to the caller's tenant if omitted.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [DomainGroupResponse].
   /// [domainNames] The edu domain names in this group.

@@ -43,7 +43,7 @@ class CassandraViewGetPropertiesResponseResource {
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       rid: pulumi.Input.fromValue(map['rid'] as String),
-      ts: pulumi.Input.fromValue(map['ts'] as double),
+      ts: pulumi.Input.fromValue((map['ts'] as num).toDouble()),
       viewDefinition: pulumi.Input.fromValue(map['viewDefinition'] as String),
     );
   }

@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dns_record_response.dart';
 
 /// List of DnsRecord
-class DomainPropertiesResponseVerificationRecords {
+class DomainPropertiesVerificationRecordsResponse {
   /// A class that represents a VerificationStatus record.
-  final pulumi.Input<DnsRecordResponse>? dKIM;
+  final pulumi.Input<DnsRecordResponse?>? dKIM;
   /// A class that represents a VerificationStatus record.
-  final pulumi.Input<DnsRecordResponse>? dKIM2;
+  final pulumi.Input<DnsRecordResponse?>? dKIM2;
   /// A class that represents a VerificationStatus record.
-  final pulumi.Input<DnsRecordResponse>? dMARC;
+  final pulumi.Input<DnsRecordResponse?>? dMARC;
   /// A class that represents a VerificationStatus record.
-  final pulumi.Input<DnsRecordResponse>? domain;
+  final pulumi.Input<DnsRecordResponse?>? domain;
   /// A class that represents a VerificationStatus record.
-  final pulumi.Input<DnsRecordResponse>? sPF;
+  final pulumi.Input<DnsRecordResponse?>? sPF;
 
-  /// Creates a new [DomainPropertiesResponseVerificationRecords].
+  /// Creates a new [DomainPropertiesVerificationRecordsResponse].
   /// [dKIM] A class that represents a VerificationStatus record.
   /// [dKIM2] A class that represents a VerificationStatus record.
   /// [dMARC] A class that represents a VerificationStatus record.
   /// [domain] A class that represents a VerificationStatus record.
   /// [sPF] A class that represents a VerificationStatus record.
-  const DomainPropertiesResponseVerificationRecords({
+  const DomainPropertiesVerificationRecordsResponse({
     this.dKIM,
     this.dKIM2,
     this.dMARC,
@@ -40,8 +40,8 @@ class DomainPropertiesResponseVerificationRecords {
     };
   }
 
-  factory DomainPropertiesResponseVerificationRecords.fromMap(Map<String, dynamic> map) {
-    return DomainPropertiesResponseVerificationRecords(
+  factory DomainPropertiesVerificationRecordsResponse.fromMap(Map<String, dynamic> map) {
+    return DomainPropertiesVerificationRecordsResponse(
       dKIM: (() { final guardedValue = map['dKIM']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DnsRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dKIM2: (() { final guardedValue = map['dKIM2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DnsRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dMARC: (() { final guardedValue = map['dMARC']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DnsRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The auto provisioning configuration.
 class CustomRolloutSpecificationAutoProvisionConfig {
-  final pulumi.Input<bool>? resourceGraph;
-  final pulumi.Input<bool>? storage;
+  final pulumi.Input<bool?>? resourceGraph;
+  final pulumi.Input<bool?>? storage;
 
   /// Creates a new [CustomRolloutSpecificationAutoProvisionConfig].
   /// [resourceGraph] Optional.

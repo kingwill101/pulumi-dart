@@ -18,11 +18,11 @@ class ApiSchemaArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Schema id identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApiSchemaArgs].
   /// [apiId] API revision identifier. Must be unique in the current API Management service instance. Non-current revision has ;rev=n as a suffix where n is the revision number.

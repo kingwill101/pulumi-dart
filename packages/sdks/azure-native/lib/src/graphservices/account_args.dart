@@ -9,15 +9,15 @@ import 'account_resource_properties.dart';
 /// {@macro pulumi_graphservices_account_args_doc}
 class AccountArgs {
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Property bag from billing account
   final pulumi.Input<AccountResourceProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [location] Location of the resource.

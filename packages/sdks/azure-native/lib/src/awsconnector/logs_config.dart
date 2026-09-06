@@ -7,9 +7,9 @@ import 's3_logs_config.dart';
 /// Definition of LogsConfig
 class LogsConfig {
   /// &lt;p&gt; Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. &lt;/p&gt;
-  final pulumi.Input<CloudWatchLogsConfig>? cloudWatchLogs;
+  final pulumi.Input<CloudWatchLogsConfig?>? cloudWatchLogs;
   /// &lt;p&gt; Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. &lt;/p&gt;
-  final pulumi.Input<S3LogsConfig>? s3Logs;
+  final pulumi.Input<S3LogsConfig?>? s3Logs;
 
   /// Creates a new [LogsConfig].
   /// [cloudWatchLogs] &lt;p&gt; Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. &lt;/p&gt;

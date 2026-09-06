@@ -6,7 +6,7 @@ import 'delivery_rule_response.dart';
 /// A policy that specifies the delivery rules to be used for an endpoint.
 class EndpointPropertiesUpdateParametersDeliveryPolicyResponse {
   /// User-friendly description of the policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of the delivery rules.
   final pulumi.Input<List<DeliveryRuleResponse>> rules;
 

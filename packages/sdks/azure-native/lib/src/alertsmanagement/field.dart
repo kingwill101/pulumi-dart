@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Field for a given condition.
-enum Field {
+enum Field implements pulumi.PulumiEnum<String> {
   severity("Severity"),
   monitorService("MonitorService"),
   monitorCondition("MonitorCondition"),
@@ -13,6 +15,7 @@ enum Field {
   alertContext("AlertContext");
 
   const Field(this.wireValue);
+  @override
   final String wireValue;
 
   static Field fromValue(String value) {

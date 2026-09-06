@@ -6,11 +6,11 @@ import 'private_link_connection_state_response.dart';
 /// A grouping of information about the connection to the remote resource.
 class PrivateLinkServiceConnectionResponse {
   /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// A collection of read-only information about the state of the connection to the private remote resource.
-  final pulumi.Input<PrivateLinkConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
-  final pulumi.Input<String>? privateLinkServiceId;
+  final pulumi.Input<String?>? privateLinkServiceId;
   /// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
   final pulumi.Input<String> requestMessage;
 

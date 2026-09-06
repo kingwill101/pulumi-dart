@@ -6,9 +6,9 @@ import 'filter_response.dart';
 /// Definition of ArchiveRule
 class ArchiveRuleResponse {
   /// Property filter
-  final pulumi.Input<List<FilterResponse>>? filter;
+  final pulumi.Input<List<FilterResponse>?>? filter;
   /// The archive rule name
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [ArchiveRuleResponse].
   /// [filter] Property filter

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the user intent of the proximity placement group.
 class ProximityPlacementGroupPropertiesIntentResponse {
   /// Specifies possible sizes of virtual machines that can be created in the proximity placement group.
-  final pulumi.Input<List<String>>? vmSizes;
+  final pulumi.Input<List<String>?>? vmSizes;
 
   /// Creates a new [ProximityPlacementGroupPropertiesIntentResponse].
   /// [vmSizes] Specifies possible sizes of virtual machines that can be created in the proximity placement group.

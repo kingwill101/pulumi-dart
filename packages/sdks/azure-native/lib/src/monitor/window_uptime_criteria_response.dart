@@ -27,7 +27,7 @@ class WindowUptimeCriteriaResponse {
   factory WindowUptimeCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return WindowUptimeCriteriaResponse(
       comparator: pulumi.Input.fromValue(map['comparator'] as String),
-      target: pulumi.Input.fromValue(map['target'] as double),
+      target: pulumi.Input.fromValue((map['target'] as num).toDouble()),
     );
   }
 }

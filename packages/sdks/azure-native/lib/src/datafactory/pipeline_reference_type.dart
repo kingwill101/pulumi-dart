@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Pipeline reference type.
-enum PipelineReferenceType {
+enum PipelineReferenceType implements pulumi.PulumiEnum<String> {
   pipelineReference("PipelineReference");
 
   const PipelineReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static PipelineReferenceType fromValue(String value) {

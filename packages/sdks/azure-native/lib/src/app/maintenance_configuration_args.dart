@@ -9,7 +9,7 @@ import 'scheduled_entry.dart';
 /// {@macro pulumi_app_maintenance_configuration_args_doc}
 class MaintenanceConfigurationArgs {
   /// The name of the maintenance configuration.
-  final pulumi.Input<String>? configName;
+  final pulumi.Input<String?>? configName;
   /// The name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// The name of the resource group. The name is case insensitive.

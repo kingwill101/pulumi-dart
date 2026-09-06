@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HDInsight cluster authentication type.
-enum HDInsightClusterAuthenticationType {
+enum HDInsightClusterAuthenticationType implements pulumi.PulumiEnum<String> {
   basicAuth("BasicAuth"),
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const HDInsightClusterAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static HDInsightClusterAuthenticationType fromValue(String value) {

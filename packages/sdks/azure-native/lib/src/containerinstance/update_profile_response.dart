@@ -6,8 +6,8 @@ import 'update_profile_rolling_update_profile_response.dart';
 /// Used by the customer to specify the way to update the Container Groups in NGroup.
 class UpdateProfileResponse {
   /// This profile allows the customers to customize the rolling update.
-  final pulumi.Input<UpdateProfileRollingUpdateProfileResponse>? rollingUpdateProfile;
-  final pulumi.Input<String>? updateMode;
+  final pulumi.Input<UpdateProfileRollingUpdateProfileResponse?>? rollingUpdateProfile;
+  final pulumi.Input<String?>? updateMode;
 
   /// Creates a new [UpdateProfileResponse].
   /// [rollingUpdateProfile] This profile allows the customers to customize the rolling update.

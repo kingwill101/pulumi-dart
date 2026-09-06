@@ -9,19 +9,19 @@ import 'replication_time_response.dart';
 /// Definition of ReplicationDestination
 class ReplicationDestinationS3BucketResponse {
   /// Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.
-  final pulumi.Input<AccessControlTranslationResponse>? accessControlTranslation;
+  final pulumi.Input<AccessControlTranslationResponse?>? accessControlTranslation;
   /// Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS-account that owns the destination bucket by specifying the ``AccessControlTranslation`` property, this is the account ID of the destination bucket owner. For more information, see [Cross-Region Replication Additional Configuration: Change Replica Owner](https://docs.aws.amazon.com/AmazonS3/latest/dev/crr-change-owner.html) in the *Amazon S3 User Guide*. If you specify the ``AccessControlTranslation`` property, the ``Account`` property is required.
-  final pulumi.Input<String>? account;
+  final pulumi.Input<String?>? account;
   /// The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// Specifies encryption-related information. Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
-  final pulumi.Input<EncryptionConfigurationS3BucketResponse>? encryptionConfiguration;
+  final pulumi.Input<EncryptionConfigurationS3BucketResponse?>? encryptionConfiguration;
   /// A container specifying replication metrics-related settings enabling replication metrics and events. A container specifying replication metrics-related settings enabling replication metrics and events.
-  final pulumi.Input<MetricsResponse>? metrics;
+  final pulumi.Input<MetricsResponse?>? metrics;
   /// A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block. A container specifying S3 Replication Time Control (S3 RTC) related information, including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a ``Metrics`` block.
-  final pulumi.Input<ReplicationTimeResponse>? replicationTime;
+  final pulumi.Input<ReplicationTimeResponse?>? replicationTime;
   /// The storage class to use when replicating objects, such as S3 Standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the ``StorageClass`` element of the [PUT Bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html) action in the *Amazon S3 API Reference*.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
 
   /// Creates a new [ReplicationDestinationS3BucketResponse].
   /// [accessControlTranslation] Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object. Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS-account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS-account that owns the source object.

@@ -3,21 +3,21 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IPConfigDetailsResponse {
-  final pulumi.Input<String>? ipAddressType;
-  final pulumi.Input<bool>? isPrimary;
-  final pulumi.Input<bool>? isSeletedForFailover;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? recoveryIPAddressType;
-  final pulumi.Input<List<String>>? recoveryLBBackendAddressPoolIds;
-  final pulumi.Input<String>? recoveryPublicIPAddressId;
-  final pulumi.Input<String>? recoveryStaticIPAddress;
-  final pulumi.Input<String>? recoverySubnetName;
-  final pulumi.Input<String>? staticIPAddress;
-  final pulumi.Input<String>? subnetName;
-  final pulumi.Input<List<String>>? tfoLBBackendAddressPoolIds;
-  final pulumi.Input<String>? tfoPublicIPAddressId;
-  final pulumi.Input<String>? tfoStaticIPAddress;
-  final pulumi.Input<String>? tfoSubnetName;
+  final pulumi.Input<String?>? ipAddressType;
+  final pulumi.Input<bool?>? isPrimary;
+  final pulumi.Input<bool?>? isSeletedForFailover;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? recoveryIPAddressType;
+  final pulumi.Input<List<String>?>? recoveryLBBackendAddressPoolIds;
+  final pulumi.Input<String?>? recoveryPublicIPAddressId;
+  final pulumi.Input<String?>? recoveryStaticIPAddress;
+  final pulumi.Input<String?>? recoverySubnetName;
+  final pulumi.Input<String?>? staticIPAddress;
+  final pulumi.Input<String?>? subnetName;
+  final pulumi.Input<List<String>?>? tfoLBBackendAddressPoolIds;
+  final pulumi.Input<String?>? tfoPublicIPAddressId;
+  final pulumi.Input<String?>? tfoStaticIPAddress;
+  final pulumi.Input<String?>? tfoSubnetName;
 
   /// Creates a new [IPConfigDetailsResponse].
   /// [ipAddressType] Optional.

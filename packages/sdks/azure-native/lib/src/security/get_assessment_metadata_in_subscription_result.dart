@@ -6,37 +6,37 @@ import 'security_assessment_metadata_properties_response_response_publish_dates.
 /// Result data returned by getAssessmentMetadataInSubscription.
 class GetAssessmentMetadataInSubscriptionResult {
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-  final String assessmentType;
+  final String? assessmentType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   final List<String>? categories;
   /// Human readable description of the assessment
   final String? description;
   /// User friendly display name of the assessment
-  final String displayName;
+  final String? displayName;
   /// Resource Id
-  final String id;
+  final String? id;
   /// The implementation effort required to remediate this assessment
   final String? implementationEffort;
   /// Resource name
-  final String name;
+  final String? name;
   /// Describes the partner that created the assessment
   final SecurityAssessmentMetadataPartnerDataResponse? partnerData;
   final String? plannedDeprecationDate;
   /// Azure resource ID of the policy definition that turns this assessment calculation on
-  final String policyDefinitionId;
+  final String? policyDefinitionId;
   /// True if this assessment is in preview release status
   final bool? preview;
   final SecurityAssessmentMetadataPropertiesResponseResponsePublishDates? publishDates;
   /// Human readable description of what you should do to mitigate this security issue
   final String? remediationDescription;
   /// The severity level of the assessment
-  final String severity;
+  final String? severity;
   final List<String>? tactics;
   final List<String>? techniques;
   final List<String>? threats;
   /// Resource type
-  final String type;
+  final String? type;
   /// The user impact of the assessment
   final String? userImpact;
 
@@ -62,74 +62,74 @@ class GetAssessmentMetadataInSubscriptionResult {
   /// [type] Resource type
   /// [userImpact] The user impact of the assessment
   const GetAssessmentMetadataInSubscriptionResult({
-    required this.assessmentType,
-    required this.azureApiVersion,
+    this.assessmentType,
+    this.azureApiVersion,
     this.categories,
     this.description,
-    required this.displayName,
-    required this.id,
+    this.displayName,
+    this.id,
     this.implementationEffort,
-    required this.name,
+    this.name,
     this.partnerData,
     this.plannedDeprecationDate,
-    required this.policyDefinitionId,
+    this.policyDefinitionId,
     this.preview,
     this.publishDates,
     this.remediationDescription,
-    required this.severity,
+    this.severity,
     this.tactics,
     this.techniques,
     this.threats,
-    required this.type,
+    this.type,
     this.userImpact,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessmentType': assessmentType,
-      'azureApiVersion': azureApiVersion,
+      'assessmentType': ?assessmentType,
+      'azureApiVersion': ?azureApiVersion,
       'categories': ?categories,
       'description': ?description,
-      'displayName': displayName,
-      'id': id,
+      'displayName': ?displayName,
+      'id': ?id,
       'implementationEffort': ?implementationEffort,
-      'name': name,
+      'name': ?name,
       'partnerData': ?partnerData?.toMap(),
       'plannedDeprecationDate': ?plannedDeprecationDate,
-      'policyDefinitionId': policyDefinitionId,
+      'policyDefinitionId': ?policyDefinitionId,
       'preview': ?preview,
       'publishDates': ?publishDates?.toMap(),
       'remediationDescription': ?remediationDescription,
-      'severity': severity,
+      'severity': ?severity,
       'tactics': ?tactics,
       'techniques': ?techniques,
       'threats': ?threats,
-      'type': type,
+      'type': ?type,
       'userImpact': ?userImpact,
     };
   }
 
   factory GetAssessmentMetadataInSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetAssessmentMetadataInSubscriptionResult(
-      assessmentType: map['assessmentType'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       implementationEffort: (() { final guardedValue = map['implementationEffort']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       partnerData: (() { final guardedValue = map['partnerData']; if (guardedValue == null) return null; return SecurityAssessmentMetadataPartnerDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       plannedDeprecationDate: (() { final guardedValue = map['plannedDeprecationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      policyDefinitionId: map['policyDefinitionId'] as String,
+      policyDefinitionId: (() { final guardedValue = map['policyDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       publishDates: (() { final guardedValue = map['publishDates']; if (guardedValue == null) return null; return SecurityAssessmentMetadataPropertiesResponseResponsePublishDates.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       remediationDescription: (() { final guardedValue = map['remediationDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      severity: map['severity'] as String,
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       threats: (() { final guardedValue = map['threats']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userImpact: (() { final guardedValue = map['userImpact']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

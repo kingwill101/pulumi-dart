@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The predicted changes to the deployment stack management status of the resource.
 class DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange {
   /// The predicted value after the deployment is executed.
-  final pulumi.Input<String>? after;
+  final pulumi.Input<String?>? after;
   /// The predicted value before the deployment is executed.
-  final pulumi.Input<String>? before;
+  final pulumi.Input<String?>? before;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponseManagementStatusChange].
   /// [after] The predicted value after the deployment is executed.

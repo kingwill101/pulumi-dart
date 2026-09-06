@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// One of the supported timestamp formats
-enum KnownLogFileTextSettingsRecordStartTimestampFormat {
+enum KnownLogFileTextSettingsRecordStartTimestampFormat implements pulumi.PulumiEnum<String> {
   valueISO8601("ISO 8601"),
   valueYYYYMMDDHHMMSS("YYYY-MM-DD HH:MM:SS"),
   valueMDYYYYHHMMSSAMPM("M/D/YYYY HH:MM:SS AM/PM"),
@@ -11,6 +13,7 @@ enum KnownLogFileTextSettingsRecordStartTimestampFormat {
   valueYyyyMMDdTHHMmSsK("yyyy-MM-ddTHH:mm:ssK");
 
   const KnownLogFileTextSettingsRecordStartTimestampFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownLogFileTextSettingsRecordStartTimestampFormat fromValue(String value) {

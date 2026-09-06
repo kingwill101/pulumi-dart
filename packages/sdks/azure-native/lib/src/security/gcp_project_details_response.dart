@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The details about the project represented by the security connector
 class GcpProjectDetailsResponse {
   /// The GCP Project id
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// GCP project name
   final pulumi.Input<String> projectName;
   /// The unique GCP Project number
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
   /// The GCP workload identity federation pool id
   final pulumi.Input<String> workloadIdentityPoolId;
 

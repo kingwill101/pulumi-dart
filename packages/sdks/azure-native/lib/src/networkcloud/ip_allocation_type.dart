@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the IP address allocation, defaulted to "DualStack".
-enum IpAllocationType {
+enum IpAllocationType implements pulumi.PulumiEnum<String> {
   valueIPV4("IPV4"),
   valueIPV6("IPV6"),
   valueDualStack("DualStack");
 
   const IpAllocationType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpAllocationType fromValue(String value) {

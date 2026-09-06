@@ -70,6 +70,17 @@ Future<GetAgentPoolResult> getAgentPool(
   return GetAgentPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentPoolResult> getAgentPoolOutput(
+  GetAgentPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getAgentPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPoolResult.fromMap);
+}
+
 /// Gets the properties of the archive.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -88,6 +99,17 @@ Future<GetArchifeResult> getArchife(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetArchifeResult.fromMap(result);
+}
+
+pulumi.Output<GetArchifeResult> getArchifeOutput(
+  GetArchifeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getArchife',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArchifeResult.fromMap);
 }
 
 /// Gets the properties of the archive version.
@@ -110,6 +132,17 @@ Future<GetArchiveVersionResult> getArchiveVersion(
   return GetArchiveVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetArchiveVersionResult> getArchiveVersionOutput(
+  GetArchiveVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getArchiveVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArchiveVersionResult.fromMap);
+}
+
 /// Gets the properties of the specified cache rule resource.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -128,6 +161,17 @@ Future<GetCacheRuleResult> getCacheRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCacheRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetCacheRuleResult> getCacheRuleOutput(
+  GetCacheRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getCacheRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCacheRuleResult.fromMap);
 }
 
 /// Gets the properties of the connected registry.
@@ -150,6 +194,17 @@ Future<GetConnectedRegistryResult> getConnectedRegistry(
   return GetConnectedRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectedRegistryResult> getConnectedRegistryOutput(
+  GetConnectedRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getConnectedRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedRegistryResult.fromMap);
+}
+
 /// Gets the properties of the specified credential set resource.
 ///
 /// Uses Azure REST API version 2023-01-01-preview.
@@ -168,6 +223,17 @@ Future<GetCredentialSetResult> getCredentialSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCredentialSetResult.fromMap(result);
+}
+
+pulumi.Output<GetCredentialSetResult> getCredentialSetOutput(
+  GetCredentialSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getCredentialSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCredentialSetResult.fromMap);
 }
 
 /// Gets the properties of the export pipeline.
@@ -190,6 +256,17 @@ Future<GetExportPipelineResult> getExportPipeline(
   return GetExportPipelineResult.fromMap(result);
 }
 
+pulumi.Output<GetExportPipelineResult> getExportPipelineOutput(
+  GetExportPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getExportPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportPipelineResult.fromMap);
+}
+
 /// Gets the properties of the import pipeline.
 ///
 /// Uses Azure REST API version 2023-01-01-preview.
@@ -208,6 +285,17 @@ Future<GetImportPipelineResult> getImportPipeline(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImportPipelineResult.fromMap(result);
+}
+
+pulumi.Output<GetImportPipelineResult> getImportPipelineOutput(
+  GetImportPipelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getImportPipeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImportPipelineResult.fromMap);
 }
 
 /// Gets the detailed information for a given pipeline run.
@@ -230,6 +318,17 @@ Future<GetPipelineRunResult> getPipelineRun(
   return GetPipelineRunResult.fromMap(result);
 }
 
+pulumi.Output<GetPipelineRunResult> getPipelineRunOutput(
+  GetPipelineRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getPipelineRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPipelineRunResult.fromMap);
+}
+
 /// Get the specified private endpoint connection associated with the container registry.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -248,6 +347,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the properties of the specified container registry.
@@ -270,6 +380,17 @@ Future<GetRegistryResult> getRegistry(
   return GetRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryResult> getRegistryOutput(
+  GetRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryResult.fromMap);
+}
+
 /// Gets the properties of the specified replication.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -288,6 +409,17 @@ Future<GetReplicationResult> getReplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationResult> getReplicationOutput(
+  GetReplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getReplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationResult.fromMap);
 }
 
 /// Gets the properties of the specified scope map.
@@ -310,6 +442,17 @@ Future<GetScopeMapResult> getScopeMap(
   return GetScopeMapResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeMapResult> getScopeMapOutput(
+  GetScopeMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getScopeMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeMapResult.fromMap);
+}
+
 /// Get the properties of a specified task.
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -328,6 +471,17 @@ Future<GetTaskResult> getTask(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaskResult.fromMap(result);
+}
+
+pulumi.Output<GetTaskResult> getTaskOutput(
+  GetTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskResult.fromMap);
 }
 
 /// Gets the detailed information for a given task run.
@@ -350,6 +504,17 @@ Future<GetTaskRunResult> getTaskRun(
   return GetTaskRunResult.fromMap(result);
 }
 
+pulumi.Output<GetTaskRunResult> getTaskRunOutput(
+  GetTaskRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getTaskRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskRunResult.fromMap);
+}
+
 /// Gets the properties of the specified token.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -368,6 +533,17 @@ Future<GetTokenResult> getToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetTokenResult> getTokenOutput(
+  GetTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTokenResult.fromMap);
 }
 
 /// Gets the properties of the specified webhook.
@@ -390,6 +566,17 @@ Future<GetWebhookResult> getWebhook(
   return GetWebhookResult.fromMap(result);
 }
 
+pulumi.Output<GetWebhookResult> getWebhookOutput(
+  GetWebhookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getWebhook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebhookResult.fromMap);
+}
+
 /// Gets the configuration of service URI and custom headers for the webhook.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -408,6 +595,17 @@ Future<GetWebhookCallbackConfigResult> getWebhookCallbackConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebhookCallbackConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetWebhookCallbackConfigResult> getWebhookCallbackConfigOutput(
+  GetWebhookCallbackConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:getWebhookCallbackConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebhookCallbackConfigResult.fromMap);
 }
 
 /// Gets the count of queued runs for a given agent pool.
@@ -430,6 +628,17 @@ Future<ListAgentPoolQueueStatusResult> listAgentPoolQueueStatus(
   return ListAgentPoolQueueStatusResult.fromMap(result);
 }
 
+pulumi.Output<ListAgentPoolQueueStatusResult> listAgentPoolQueueStatusOutput(
+  ListAgentPoolQueueStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listAgentPoolQueueStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentPoolQueueStatusResult.fromMap);
+}
+
 /// Get the upload location for the user to be able to upload the source.
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -448,6 +657,17 @@ Future<ListRegistryBuildSourceUploadUrlResult> listRegistryBuildSourceUploadUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListRegistryBuildSourceUploadUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListRegistryBuildSourceUploadUrlResult> listRegistryBuildSourceUploadUrlOutput(
+  ListRegistryBuildSourceUploadUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listRegistryBuildSourceUploadUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListRegistryBuildSourceUploadUrlResult.fromMap);
 }
 
 /// Lists the login credentials for the specified container registry.
@@ -470,6 +690,17 @@ Future<ListRegistryCredentialsResult> listRegistryCredentials(
   return ListRegistryCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListRegistryCredentialsResult> listRegistryCredentialsOutput(
+  ListRegistryCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listRegistryCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListRegistryCredentialsResult.fromMap);
+}
+
 /// Gets a link to download the run logs.
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -488,6 +719,17 @@ Future<ListRunLogSasUrlResult> listRunLogSasUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListRunLogSasUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListRunLogSasUrlResult> listRunLogSasUrlOutput(
+  ListRunLogSasUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listRunLogSasUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListRunLogSasUrlResult.fromMap);
 }
 
 /// Returns a task with extended information that includes all secrets.
@@ -510,6 +752,17 @@ Future<ListTaskDetailsResult> listTaskDetails(
   return ListTaskDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListTaskDetailsResult> listTaskDetailsOutput(
+  ListTaskDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listTaskDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListTaskDetailsResult.fromMap);
+}
+
 /// Gets the detailed information for a given task run that includes all secrets.
 ///
 /// Uses Azure REST API version 2019-06-01-preview.
@@ -530,6 +783,17 @@ Future<ListTaskRunDetailsResult> listTaskRunDetails(
   return ListTaskRunDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListTaskRunDetailsResult> listTaskRunDetailsOutput(
+  ListTaskRunDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listTaskRunDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListTaskRunDetailsResult.fromMap);
+}
+
 /// Lists recent events for the specified webhook.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -548,4 +812,15 @@ Future<ListWebhookEventsResult> listWebhookEvents(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebhookEventsResult.fromMap(result);
+}
+
+pulumi.Output<ListWebhookEventsResult> listWebhookEventsOutput(
+  ListWebhookEventsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerregistry:listWebhookEvents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebhookEventsResult.fromMap);
 }

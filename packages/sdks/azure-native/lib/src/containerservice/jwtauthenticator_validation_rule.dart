@@ -7,7 +7,7 @@ class JWTAuthenticatorValidationRule {
   /// The CEL expression used to validate the claim or attribute.
   final pulumi.Input<String> expression;
   /// The validation error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [JWTAuthenticatorValidationRule].
   /// [expression] The CEL expression used to validate the claim or attribute.

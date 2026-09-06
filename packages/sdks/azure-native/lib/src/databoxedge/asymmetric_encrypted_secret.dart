@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represent the secrets intended for encryption with asymmetric key pair.
 class AsymmetricEncryptedSecret {
   /// The algorithm used to encrypt "Value".
-  final pulumi.Input<String> encryptionAlgorithm;
+  final pulumi.Input<dynamic> encryptionAlgorithm;
   /// Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null.
-  final pulumi.Input<String>? encryptionCertThumbprint;
+  final pulumi.Input<String?>? encryptionCertThumbprint;
   /// The value of the secret.
   final pulumi.Input<String> value;
 
@@ -31,7 +31,7 @@ class AsymmetricEncryptedSecret {
 
   factory AsymmetricEncryptedSecret.fromMap(Map<String, dynamic> map) {
     return AsymmetricEncryptedSecret(
-      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm'] as String),
+      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm']),
       encryptionCertThumbprint: (() { final guardedValue = map['encryptionCertThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       value: pulumi.Input.fromValue(map['value'] as String),
     );

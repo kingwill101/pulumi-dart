@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'schedule_item_response.dart';
 import 'start_stop_managed_instance_schedule_args.dart';
 import 'system_data_response.dart';
 
@@ -493,7 +494,7 @@ class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
   /// Next action to be executed (Start or Stop)
   late final pulumi.Output<String> nextRunAction;
   /// Schedule list.
-  late final pulumi.Output<List<Map<String, dynamic>>> scheduleList;
+  late final pulumi.Output<List<ScheduleItemResponse>> scheduleList;
   /// System data of the scheduled resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The time zone of the schedule.
@@ -520,7 +521,27 @@ class StartStopManagedInstanceSchedule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     nextExecutionTime = registerOutput<String>('nextExecutionTime');
     nextRunAction = registerOutput<String>('nextRunAction');
-    scheduleList = registerOutput<List<Map<String, dynamic>>>('scheduleList');
+    scheduleList = registerOutput<List<ScheduleItemResponse>>('scheduleList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleItemResponse>(guardedValue, (value) => ScheduleItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZoneId = registerOutput<String?>('timeZoneId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [StartStopManagedInstanceSchedule] resource.
+  StartStopManagedInstanceSchedule.reference(String urn)
+    : super(
+        'azure-native:sql:StartStopManagedInstanceSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    nextExecutionTime = registerOutput<String>('nextExecutionTime');
+    nextRunAction = registerOutput<String>('nextRunAction');
+    scheduleList = registerOutput<List<ScheduleItemResponse>>('scheduleList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleItemResponse>(guardedValue, (value) => ScheduleItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     timeZoneId = registerOutput<String?>('timeZoneId');
     type = registerOutput<String>('type');

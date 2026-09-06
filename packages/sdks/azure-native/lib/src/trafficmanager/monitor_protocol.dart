@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol (HTTP, HTTPS or TCP) used to probe for endpoint health.
-enum MonitorProtocol {
+enum MonitorProtocol implements pulumi.PulumiEnum<String> {
   hTTP("HTTP"),
   hTTPS("HTTPS"),
   tCP("TCP");
 
   const MonitorProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitorProtocol fromValue(String value) {

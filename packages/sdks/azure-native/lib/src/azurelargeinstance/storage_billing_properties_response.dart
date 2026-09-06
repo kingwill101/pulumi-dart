@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the billing related details of the AzureLargeStorageInstance.
 class StorageBillingPropertiesResponse {
   /// the billing mode for the storage instance
-  final pulumi.Input<String>? billingMode;
+  final pulumi.Input<String?>? billingMode;
   /// the SKU type that is provisioned
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
 
   /// Creates a new [StorageBillingPropertiesResponse].
   /// [billingMode] the billing mode for the storage instance

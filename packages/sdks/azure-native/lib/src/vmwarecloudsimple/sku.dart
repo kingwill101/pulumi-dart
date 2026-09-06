@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The purchase SKU for CloudSimple paid resources
 class Sku {
   /// The capacity of the SKU
-  final pulumi.Input<String>? capacity;
+  final pulumi.Input<String?>? capacity;
   /// dedicatedCloudNode example: 8 x Ten-Core Intel® Xeon® Processor E5-2640 v4 2.40GHz 25MB Cache (90W); 12 x 64GB PC4-19200 2400MHz DDR4 ECC Registered DIMM, ...
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the SKU for VMWare CloudSimple Node
   final pulumi.Input<String> name;
   /// The tier of the SKU
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] The capacity of the SKU

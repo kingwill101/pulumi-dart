@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aksresponse.dart';
 import 'compute_args.dart';
 import 'managed_service_identity_response.dart';
 import 'sku_response.dart';
@@ -2100,7 +2099,7 @@ class Compute extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The resource-specific properties for this resource.
-  late final pulumi.Output<AKSResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// The sku of the workspace.
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -2128,10 +2127,30 @@ class Compute extends pulumi.CustomResource {
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AKSResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AKSResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Compute] resource.
+  Compute.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:Compute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

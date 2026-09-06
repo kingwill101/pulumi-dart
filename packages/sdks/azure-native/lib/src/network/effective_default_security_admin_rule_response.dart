@@ -10,9 +10,9 @@ class EffectiveDefaultSecurityAdminRuleResponse {
   /// Indicates the access allowed for this particular rule
   final pulumi.Input<String> access;
   /// A description of the security admin configuration.
-  final pulumi.Input<String>? configurationDescription;
+  final pulumi.Input<String?>? configurationDescription;
   /// A display name of the security admin configuration.
-  final pulumi.Input<String>? configurationDisplayName;
+  final pulumi.Input<String?>? configurationDisplayName;
   /// A description for this rule. Restricted to 140 chars.
   final pulumi.Input<String> description;
   /// The destination port ranges.
@@ -24,9 +24,9 @@ class EffectiveDefaultSecurityAdminRuleResponse {
   /// A friendly name for the rule.
   final pulumi.Input<String> displayName;
   /// Default rule flag.
-  final pulumi.Input<String>? flag;
+  final pulumi.Input<String?>? flag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Default'.
   final pulumi.Input<String> kind;
@@ -37,13 +37,13 @@ class EffectiveDefaultSecurityAdminRuleResponse {
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Groups for rule collection
-  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>?>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDescription;
+  final pulumi.Input<String?>? ruleCollectionDescription;
   /// A display name of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDisplayName;
+  final pulumi.Input<String?>? ruleCollectionDisplayName;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? ruleGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? ruleGroups;
   /// The source port ranges.
   final pulumi.Input<List<String>> sourcePortRanges;
   /// The CIDR or source IP ranges.
@@ -131,7 +131,7 @@ class EffectiveDefaultSecurityAdminRuleResponse {
       flag: (() { final guardedValue = map['flag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       ruleCollectionAppliesToGroups: (() { final guardedValue = map['ruleCollectionAppliesToGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse>(guardedValue, (value) => NetworkManagerSecurityGroupItemlistNetworkManagerEffectiveSecurityAdminRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

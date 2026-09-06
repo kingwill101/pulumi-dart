@@ -13,15 +13,15 @@ class RoutingRuleCollectionArgs {
   /// The name of the network manager Routing Configuration.
   final pulumi.Input<String> configurationName;
   /// A description of the routing rule collection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determines whether BGP route propagation is enabled. Defaults to true.
-  final pulumi.Input<String>? disableBgpRoutePropagation;
+  final pulumi.Input<dynamic>? disableBgpRoutePropagation;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the network manager routing Configuration rule collection.
-  final pulumi.Input<String>? ruleCollectionName;
+  final pulumi.Input<String?>? ruleCollectionName;
 
   /// Creates a new [RoutingRuleCollectionArgs].
   /// [appliesTo] Groups for configuration
@@ -58,7 +58,7 @@ class RoutingRuleCollectionArgs {
       appliesTo: pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerRoutingGroupItem>(map['appliesTo']!, (value) => NetworkManagerRoutingGroupItem.fromMap((value as Map).cast<String, dynamic>()))),
       configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      disableBgpRoutePropagation: (() { final guardedValue = map['disableBgpRoutePropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      disableBgpRoutePropagation: (() { final guardedValue = map['disableBgpRoutePropagation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleCollectionName: (() { final guardedValue = map['ruleCollectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,30 +9,30 @@ import 'activity_entity_queries_properties_query_definitions.dart';
 /// {@macro pulumi_securityinsights_activity_custom_entity_query_args_doc}
 class ActivityCustomEntityQueryArgs {
   /// The entity query content to display in timeline
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The entity query description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determines whether this activity is enabled or disabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The query applied only to entities matching to all filters
-  final pulumi.Input<Map<String, List<String>>>? entitiesFilter;
+  final pulumi.Input<Map<String, List<String>>?>? entitiesFilter;
   /// entity query ID
-  final pulumi.Input<String>? entityQueryId;
+  final pulumi.Input<String?>? entityQueryId;
   /// The type of the query's source entity
-  final pulumi.Input<String>? inputEntityType;
+  final pulumi.Input<dynamic>? inputEntityType;
   /// The kind of the entity query that supports put request.
   /// Expected value is 'Activity'.
   final pulumi.Input<String> kind;
   /// The Activity query definitions
-  final pulumi.Input<ActivityEntityQueriesPropertiesQueryDefinitions>? queryDefinitions;
+  final pulumi.Input<ActivityEntityQueriesPropertiesQueryDefinitions?>? queryDefinitions;
   /// List of the fields of the source entity that are required to run the query
-  final pulumi.Input<List<List<String>>>? requiredInputFieldsSets;
+  final pulumi.Input<List<List<String>>?>? requiredInputFieldsSets;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The template id this activity was created from
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// The entity query title
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -89,12 +89,12 @@ class ActivityCustomEntityQueryArgs {
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      entitiesFilter: (() { final guardedValue = map['entitiesFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      entitiesFilter: (() { final guardedValue = map['entitiesFilter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       entityQueryId: (() { final guardedValue = map['entityQueryId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inputEntityType: (() { final guardedValue = map['inputEntityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      inputEntityType: (() { final guardedValue = map['inputEntityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       queryDefinitions: (() { final guardedValue = map['queryDefinitions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityEntityQueriesPropertiesQueryDefinitions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      requiredInputFieldsSets: (() { final guardedValue = map['requiredInputFieldsSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<List<String>>()); })(),
+      requiredInputFieldsSets: (() { final guardedValue = map['requiredInputFieldsSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       templateName: (() { final guardedValue = map['templateName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

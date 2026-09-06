@@ -6,11 +6,11 @@ import 'resource_reference.dart';
 /// The JSON object that contains the properties of the origin authentication settings.
 class OriginAuthenticationProperties {
   /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The type of the authentication for the origin.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-  final pulumi.Input<ResourceReference>? userAssignedIdentity;
+  final pulumi.Input<ResourceReference?>? userAssignedIdentity;
 
   /// Creates a new [OriginAuthenticationProperties].
   /// [scope] The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
@@ -33,7 +33,7 @@ class OriginAuthenticationProperties {
   factory OriginAuthenticationProperties.fromMap(Map<String, dynamic> map) {
     return OriginAuthenticationProperties(
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

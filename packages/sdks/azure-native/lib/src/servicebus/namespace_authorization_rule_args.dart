@@ -9,7 +9,7 @@ import 'access_rights.dart';
 /// {@macro pulumi_servicebus_namespace_authorization_rule_args_doc}
 class NamespaceAuthorizationRuleArgs {
   /// The authorization rule name.
-  final pulumi.Input<String>? authorizationRuleName;
+  final pulumi.Input<String?>? authorizationRuleName;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group. The name is case insensitive.

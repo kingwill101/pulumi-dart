@@ -6,13 +6,13 @@ import 'linked_service_link_type.dart';
 /// LinkedService specific properties.
 class LinkedServiceProps {
   /// The creation time of the linked service.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Type of the link target.
-  final pulumi.Input<LinkedServiceLinkType>? linkType;
+  final pulumi.Input<LinkedServiceLinkType?>? linkType;
   /// ResourceId of the link target of the linked service.
   final pulumi.Input<String> linkedServiceResourceId;
   /// The last modified time of the linked service.
-  final pulumi.Input<String>? modifiedTime;
+  final pulumi.Input<String?>? modifiedTime;
 
   /// Creates a new [LinkedServiceProps].
   /// [createdTime] The creation time of the linked service.

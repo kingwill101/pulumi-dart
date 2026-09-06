@@ -6,9 +6,9 @@ import 'autoscale_settings.dart';
 /// CreateUpdateOptions are a list of key-value pairs that describe the resource. Supported keys are "If-Match", "If-None-Match", "Session-Token" and "Throughput"
 class CreateUpdateOptions {
   /// Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
-  final pulumi.Input<AutoscaleSettings>? autoscaleSettings;
+  final pulumi.Input<AutoscaleSettings?>? autoscaleSettings;
   /// Request Units per second. For example, "throughput": 10000.
-  final pulumi.Input<int>? throughput;
+  final pulumi.Input<int?>? throughput;
 
   /// Creates a new [CreateUpdateOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings. Note: Either throughput or autoscaleSettings is required, but not both.
@@ -28,7 +28,7 @@ class CreateUpdateOptions {
   factory CreateUpdateOptions.fromMap(Map<String, dynamic> map) {
     return CreateUpdateOptions(
       autoscaleSettings: (() { final guardedValue = map['autoscaleSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      throughput: (() { final guardedValue = map['throughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

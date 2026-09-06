@@ -6,9 +6,9 @@ import 'key_vault_certificate_properties.dart';
 /// X509 Custom Authentication properties. NOTE - Enum only authenticator type supported at a time.
 class BrokerAuthenticatorCustomAuthX509 {
   /// Keyvault X509 secret properties.
-  final pulumi.Input<KeyVaultCertificateProperties>? keyVault;
+  final pulumi.Input<KeyVaultCertificateProperties?>? keyVault;
   /// Secret where cert details are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [BrokerAuthenticatorCustomAuthX509].
   /// [keyVault] Keyvault X509 secret properties.

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Storage account keys creation time.
 class KeyCreationTimeResponse {
-  final pulumi.Input<String>? key1;
-  final pulumi.Input<String>? key2;
+  final pulumi.Input<String?>? key1;
+  final pulumi.Input<String?>? key2;
 
   /// Creates a new [KeyCreationTimeResponse].
   /// [key1] Optional.

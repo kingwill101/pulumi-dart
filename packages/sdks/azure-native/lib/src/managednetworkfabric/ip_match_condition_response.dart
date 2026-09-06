@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the condition that can be filtered using the selected IPs.
 class IpMatchConditionResponse {
   /// The List of IP Group Names that need to be matched.
-  final pulumi.Input<List<String>>? ipGroupNames;
+  final pulumi.Input<List<String>?>? ipGroupNames;
   /// The list of IP Prefixes that need to be matched.
-  final pulumi.Input<List<String>>? ipPrefixValues;
+  final pulumi.Input<List<String>?>? ipPrefixValues;
   /// IP Prefix Type that needs to be matched.
-  final pulumi.Input<String>? prefixType;
+  final pulumi.Input<String?>? prefixType;
   /// IP Address type that needs to be matched.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IpMatchConditionResponse].
   /// [ipGroupNames] The List of IP Group Names that need to be matched.

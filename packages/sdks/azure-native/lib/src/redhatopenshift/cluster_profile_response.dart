@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ClusterProfile represents a cluster profile.
 class ClusterProfileResponse {
   /// The domain for the cluster.
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// If FIPS validated crypto modules are used
-  final pulumi.Input<String>? fipsValidatedModules;
+  final pulumi.Input<String?>? fipsValidatedModules;
   /// The pull secret for the cluster.
-  final pulumi.Input<String>? pullSecret;
+  final pulumi.Input<String?>? pullSecret;
   /// The ID of the cluster resource group.
-  final pulumi.Input<String>? resourceGroupId;
+  final pulumi.Input<String?>? resourceGroupId;
   /// The version of the cluster.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ClusterProfileResponse].
   /// [domain] The domain for the cluster.

@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class L3NetworkAttachmentConfigurationResponse {
   /// The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-  final pulumi.Input<String>? ipamEnabled;
+  final pulumi.Input<String?>? ipamEnabled;
   /// The resource ID of the network that is being configured for attachment.
   final pulumi.Input<String> networkId;
   /// The indicator of how this network will be utilized by the Kubernetes cluster.
-  final pulumi.Input<String>? pluginType;
+  final pulumi.Input<String?>? pluginType;
 
   /// Creates a new [L3NetworkAttachmentConfigurationResponse].
   /// [ipamEnabled] The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
   /// [networkId] The resource ID of the network that is being configured for attachment.
   /// [pluginType] The indicator of how this network will be utilized by the Kubernetes cluster.
-  const L3NetworkAttachmentConfigurationResponse({
-    this.ipamEnabled,
+  L3NetworkAttachmentConfigurationResponse({
+    pulumi.Input<String?>? ipamEnabled,
     required this.networkId,
-    this.pluginType,
-  });
+    pulumi.Input<String?>? pluginType,
+  }) : ipamEnabled = ipamEnabled ?? pulumi.Input.fromValue('False'), pluginType = pluginType ?? pulumi.Input.fromValue('SRIOV');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

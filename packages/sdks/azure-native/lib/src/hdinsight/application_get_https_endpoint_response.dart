@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets the application HTTP endpoints.
 class ApplicationGetHttpsEndpointResponse {
   /// The list of access modes for the application.
-  final pulumi.Input<List<String>>? accessModes;
+  final pulumi.Input<List<String>?>? accessModes;
   /// The destination port to connect to.
-  final pulumi.Input<int>? destinationPort;
+  final pulumi.Input<int?>? destinationPort;
   /// The value indicates whether to disable GatewayAuth.
-  final pulumi.Input<bool>? disableGatewayAuth;
+  final pulumi.Input<bool?>? disableGatewayAuth;
   /// The location of the endpoint.
   final pulumi.Input<String> location;
   /// The private ip address of the endpoint.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The public port to connect to.
   final pulumi.Input<int> publicPort;
 
@@ -47,11 +47,11 @@ class ApplicationGetHttpsEndpointResponse {
   factory ApplicationGetHttpsEndpointResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationGetHttpsEndpointResponse(
       accessModes: (() { final guardedValue = map['accessModes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       disableGatewayAuth: (() { final guardedValue = map['disableGatewayAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicPort: pulumi.Input.fromValue(map['publicPort'] as int),
+      publicPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['publicPort'])),
     );
   }
 }

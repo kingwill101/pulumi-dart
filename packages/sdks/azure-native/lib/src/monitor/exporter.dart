@@ -7,13 +7,13 @@ import 'tcp_exporter.dart';
 /// Exporter Info.
 class Exporter {
   /// Azure Monitor Workspace Logs specific configurations.
-  final pulumi.Input<AzureMonitorWorkspaceLogsExporter>? azureMonitorWorkspaceLogs;
+  final pulumi.Input<AzureMonitorWorkspaceLogsExporter?>? azureMonitorWorkspaceLogs;
   /// The name of exporter.
   final pulumi.Input<String> name;
   /// TCP based exporter. Used for pipelineGroup exporter.
-  final pulumi.Input<TcpExporter>? tcp;
+  final pulumi.Input<TcpExporter?>? tcp;
   /// The type of exporter.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [Exporter].
   /// [azureMonitorWorkspaceLogs] Azure Monitor Workspace Logs specific configurations.
@@ -41,7 +41,7 @@ class Exporter {
       azureMonitorWorkspaceLogs: (() { final guardedValue = map['azureMonitorWorkspaceLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureMonitorWorkspaceLogsExporter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       tcp: (() { final guardedValue = map['tcp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TcpExporter.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

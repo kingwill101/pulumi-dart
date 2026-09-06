@@ -6,13 +6,13 @@ import 'data_resource.dart';
 /// Definition of EventSelector
 class EventSelector {
   /// Property dataResources
-  final pulumi.Input<List<DataResource>>? dataResources;
+  final pulumi.Input<List<DataResource>?>? dataResources;
   /// An optional list of service event sources from which you do not want management events to be logged on your trail. In this release, the list can be empty (disables the filter), or it can filter out AWS Key Management Service events by containing 'kms.amazonaws.com'. By default, ExcludeManagementEventSources is empty, and AWS KMS events are included in events that are logged to your trail.
-  final pulumi.Input<List<String>>? excludeManagementEventSources;
+  final pulumi.Input<List<String>?>? excludeManagementEventSources;
   /// Specify if you want your event selector to include management events for your trail.
-  final pulumi.Input<bool>? includeManagementEvents;
+  final pulumi.Input<bool?>? includeManagementEvents;
   /// Specify if you want your trail to log read-only events, write-only events, or all. For example, the EC2 GetConsoleOutput is a read-only API operation and RunInstances is a write-only API operation.
-  final pulumi.Input<String>? readWriteType;
+  final pulumi.Input<dynamic>? readWriteType;
 
   /// Creates a new [EventSelector].
   /// [dataResources] Property dataResources
@@ -40,7 +40,7 @@ class EventSelector {
       dataResources: (() { final guardedValue = map['dataResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataResource>(guardedValue, (value) => DataResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       excludeManagementEventSources: (() { final guardedValue = map['excludeManagementEventSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       includeManagementEvents: (() { final guardedValue = map['includeManagementEvents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      readWriteType: (() { final guardedValue = map['readWriteType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      readWriteType: (() { final guardedValue = map['readWriteType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

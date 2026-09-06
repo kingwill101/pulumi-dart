@@ -5,7 +5,7 @@ import 'subscriber_setting.dart';
 
 /// Notification settings.
 class ResourceProviderManifestPropertiesNotificationSettings {
-  final pulumi.Input<List<SubscriberSetting>>? subscriberSettings;
+  final pulumi.Input<List<SubscriberSetting>?>? subscriberSettings;
 
   /// Creates a new [ResourceProviderManifestPropertiesNotificationSettings].
   /// [subscriberSettings] Optional.

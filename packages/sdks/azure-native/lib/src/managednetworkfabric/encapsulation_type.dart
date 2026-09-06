@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Encapsulation Type that needs to be matched.
-enum EncapsulationType {
+enum EncapsulationType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueGTPv1("GTPv1");
 
   const EncapsulationType(this.wireValue);
+  @override
   final String wireValue;
 
   static EncapsulationType fromValue(String value) {

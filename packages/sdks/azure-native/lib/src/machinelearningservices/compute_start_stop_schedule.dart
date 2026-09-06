@@ -8,17 +8,17 @@ import 'schedule_base.dart';
 /// Compute start stop schedule properties
 class ComputeStartStopSchedule {
   /// [Required] The compute power action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Required if triggerType is Cron.
-  final pulumi.Input<Cron>? cron;
+  final pulumi.Input<Cron?>? cron;
   /// Required if triggerType is Recurrence.
-  final pulumi.Input<Recurrence>? recurrence;
+  final pulumi.Input<Recurrence?>? recurrence;
   /// [Deprecated] Not used any more.
-  final pulumi.Input<ScheduleBase>? schedule;
+  final pulumi.Input<ScheduleBase?>? schedule;
   /// Is the schedule enabled or disabled?
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// [Required] The schedule trigger type.
-  final pulumi.Input<String>? triggerType;
+  final pulumi.Input<dynamic>? triggerType;
 
   /// Creates a new [ComputeStartStopSchedule].
   /// [action] [Required] The compute power action.
@@ -49,12 +49,12 @@ class ComputeStartStopSchedule {
 
   factory ComputeStartStopSchedule.fromMap(Map<String, dynamic> map) {
     return ComputeStartStopSchedule(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cron: (() { final guardedValue = map['cron']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Cron.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Recurrence.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduleBase.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      triggerType: (() { final guardedValue = map['triggerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      triggerType: (() { final guardedValue = map['triggerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

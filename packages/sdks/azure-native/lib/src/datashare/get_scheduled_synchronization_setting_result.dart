@@ -5,28 +5,28 @@ import 'system_data_response.dart';
 /// Result data returned by getScheduledSynchronizationSetting.
 class GetScheduledSynchronizationSettingResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Time at which the synchronization setting was created.
-  final String createdAt;
+  final String? createdAt;
   /// The resource id of the azure resource
-  final String id;
+  final String? id;
   /// Kind of synchronization setting.
   /// Expected value is 'ScheduleBased'.
-  final String kind;
+  final String? kind;
   /// Name of the azure resource
-  final String name;
+  final String? name;
   /// Gets or sets the provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// Recurrence Interval
-  final String recurrenceInterval;
+  final String? recurrenceInterval;
   /// Synchronization time
-  final String synchronizationTime;
+  final String? synchronizationTime;
   /// System Data of the Azure resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the azure resource
-  final String type;
+  final String? type;
   /// Name of the user who created the synchronization setting.
-  final String userName;
+  final String? userName;
 
   /// Creates a new [GetScheduledSynchronizationSettingResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -41,48 +41,48 @@ class GetScheduledSynchronizationSettingResult {
   /// [type] Type of the azure resource
   /// [userName] Name of the user who created the synchronization setting.
   const GetScheduledSynchronizationSettingResult({
-    required this.azureApiVersion,
-    required this.createdAt,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.provisioningState,
-    required this.recurrenceInterval,
-    required this.synchronizationTime,
-    required this.systemData,
-    required this.type,
-    required this.userName,
+    this.azureApiVersion,
+    this.createdAt,
+    this.id,
+    this.kind,
+    this.name,
+    this.provisioningState,
+    this.recurrenceInterval,
+    this.synchronizationTime,
+    this.systemData,
+    this.type,
+    this.userName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'createdAt': createdAt,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'provisioningState': provisioningState,
-      'recurrenceInterval': recurrenceInterval,
-      'synchronizationTime': synchronizationTime,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'userName': userName,
+      'azureApiVersion': ?azureApiVersion,
+      'createdAt': ?createdAt,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'recurrenceInterval': ?recurrenceInterval,
+      'synchronizationTime': ?synchronizationTime,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'userName': ?userName,
     };
   }
 
   factory GetScheduledSynchronizationSettingResult.fromMap(Map<String, dynamic> map) {
     return GetScheduledSynchronizationSettingResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdAt: map['createdAt'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      recurrenceInterval: map['recurrenceInterval'] as String,
-      synchronizationTime: map['synchronizationTime'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      userName: map['userName'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      recurrenceInterval: (() { final guardedValue = map['recurrenceInterval']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      synchronizationTime: (() { final guardedValue = map['synchronizationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

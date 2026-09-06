@@ -12,14 +12,14 @@ import 'alert_rule_leaf_condition.dart';
 /// _Please note, 'field', 'equals' and 'containsAny' should __not__ be set in an AnyOf Condition._
 class AlertRuleAnyOfOrLeafCondition {
   /// An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.
-  final pulumi.Input<List<AlertRuleLeafCondition>>? anyOf;
+  final pulumi.Input<List<AlertRuleLeafCondition>?>? anyOf;
   /// The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
-  final pulumi.Input<List<String>>? containsAny;
+  final pulumi.Input<List<String>?>? containsAny;
   /// The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
-  final pulumi.Input<String>? equals;
+  final pulumi.Input<String?>? equals;
   /// The name of the Activity Log event's field that this condition will examine.
   /// The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [AlertRuleAnyOfOrLeafCondition].
   /// [anyOf] An Activity Log Alert rule condition that is met when at least one of its member leaf conditions are met.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum Operator {
+enum Operator implements pulumi.PulumiEnum<String> {
   any("Any"),
   iPMatch("IPMatch"),
   geoMatch("GeoMatch"),
@@ -14,6 +16,7 @@ enum Operator {
   regEx("RegEx");
 
   const Operator(this.wireValue);
+  @override
   final String wireValue;
 
   static Operator fromValue(String value) {

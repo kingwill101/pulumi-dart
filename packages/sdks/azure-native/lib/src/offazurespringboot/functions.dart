@@ -24,6 +24,17 @@ Future<GetSpringbootappResult> getSpringbootapp(
   return GetSpringbootappResult.fromMap(result);
 }
 
+pulumi.Output<GetSpringbootappResult> getSpringbootappOutput(
+  GetSpringbootappArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazurespringboot:getSpringbootapp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpringbootappResult.fromMap);
+}
+
 /// List springbootservers resource.
 ///
 /// Uses Azure REST API version 2024-04-01-preview.
@@ -44,6 +55,17 @@ Future<GetSpringbootserverResult> getSpringbootserver(
   return GetSpringbootserverResult.fromMap(result);
 }
 
+pulumi.Output<GetSpringbootserverResult> getSpringbootserverOutput(
+  GetSpringbootserverArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazurespringboot:getSpringbootserver',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpringbootserverResult.fromMap);
+}
+
 /// Get a springbootsites resource.
 ///
 /// Uses Azure REST API version 2024-04-01-preview.
@@ -62,4 +84,15 @@ Future<GetSpringbootsiteResult> getSpringbootsite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSpringbootsiteResult.fromMap(result);
+}
+
+pulumi.Output<GetSpringbootsiteResult> getSpringbootsiteOutput(
+  GetSpringbootsiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:offazurespringboot:getSpringbootsite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpringbootsiteResult.fromMap);
 }

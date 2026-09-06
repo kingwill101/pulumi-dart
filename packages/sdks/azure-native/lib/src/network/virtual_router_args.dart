@@ -9,23 +9,23 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_virtual_router_args_doc}
 class VirtualRouterArgs {
   /// The Gateway on which VirtualRouter is hosted.
-  final pulumi.Input<SubResource>? hostedGateway;
+  final pulumi.Input<SubResource?>? hostedGateway;
   /// The Subnet on which VirtualRouter is hosted.
-  final pulumi.Input<SubResource>? hostedSubnet;
+  final pulumi.Input<SubResource?>? hostedSubnet;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// VirtualRouter ASN.
-  final pulumi.Input<double>? virtualRouterAsn;
+  final pulumi.Input<double?>? virtualRouterAsn;
   /// VirtualRouter IPs.
-  final pulumi.Input<List<String>>? virtualRouterIps;
+  final pulumi.Input<List<String>?>? virtualRouterIps;
   /// The name of the Virtual Router.
-  final pulumi.Input<String>? virtualRouterName;
+  final pulumi.Input<String?>? virtualRouterName;
 
   /// Creates a new [VirtualRouterArgs].
   /// [hostedGateway] The Gateway on which VirtualRouter is hosted.
@@ -71,7 +71,7 @@ class VirtualRouterArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      virtualRouterAsn: (() { final guardedValue = map['virtualRouterAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      virtualRouterAsn: (() { final guardedValue = map['virtualRouterAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       virtualRouterIps: (() { final guardedValue = map['virtualRouterIps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       virtualRouterName: (() { final guardedValue = map['virtualRouterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

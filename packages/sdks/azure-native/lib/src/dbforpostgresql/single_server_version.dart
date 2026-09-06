@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Server version.
-enum SingleServerVersion {
+enum SingleServerVersion implements pulumi.PulumiEnum<String> {
   value95("9.5"),
   value96("9.6"),
   value10("10"),
@@ -8,6 +10,7 @@ enum SingleServerVersion {
   value11("11");
 
   const SingleServerVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static SingleServerVersion fromValue(String value) {

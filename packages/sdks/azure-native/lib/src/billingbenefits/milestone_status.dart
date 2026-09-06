@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current status of the milestone
-enum MilestoneStatus {
+enum MilestoneStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   scheduled("Scheduled"),
   active("Active"),
@@ -12,6 +14,7 @@ enum MilestoneStatus {
   missed("Missed");
 
   const MilestoneStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static MilestoneStatus fromValue(String value) {

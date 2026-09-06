@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Deployment on error behavior with additional details.
 class OnErrorDeploymentExtendedResponse {
   /// The deployment to be used on error case.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// The state of the provisioning for the on error deployment.
   final pulumi.Input<String> provisioningState;
   /// The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OnErrorDeploymentExtendedResponse].
   /// [deploymentName] The deployment to be used on error case.

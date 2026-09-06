@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains SKU in an ExpressRouteCircuit.
 class ExpressRouteCircuitSkuResponse {
   /// The family of the SKU.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The tier of the SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ExpressRouteCircuitSkuResponse].
   /// [family] The family of the SKU.

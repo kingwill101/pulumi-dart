@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ImageScanningConfiguration
 class ImageScanningConfigurationResponse {
   /// The setting that determines whether images are scanned after being pushed to a repository. If set to ``true``, images will be scanned after being pushed. If this parameter is not specified, it will default to ``false`` and images will not be scanned unless a scan is manually started. The setting that determines whether images are scanned after being pushed to a repository.
-  final pulumi.Input<bool>? scanOnPush;
+  final pulumi.Input<bool?>? scanOnPush;
 
   /// Creates a new [ImageScanningConfigurationResponse].
   /// [scanOnPush] The setting that determines whether images are scanned after being pushed to a repository. If set to ``true``, images will be scanned after being pushed. If this parameter is not specified, it will default to ``false`` and images will not be scanned unless a scan is manually started. The setting that determines whether images are scanned after being pushed to a repository.

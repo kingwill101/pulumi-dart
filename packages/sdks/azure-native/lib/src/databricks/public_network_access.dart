@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The network access type for accessing workspace. Set value to disabled to access workspace only via private link. Used to configure front-end only private link for Serverless ComputeMode workspace.
-enum PublicNetworkAccess {
+enum PublicNetworkAccess implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccess fromValue(String value) {

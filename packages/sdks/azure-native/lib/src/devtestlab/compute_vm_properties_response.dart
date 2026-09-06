@@ -7,19 +7,19 @@ import 'compute_vm_instance_view_status_response.dart';
 /// Properties of a virtual machine returned by the Microsoft.Compute API.
 class ComputeVmPropertiesResponse {
   /// Gets data disks blob uri for the virtual machine.
-  final pulumi.Input<List<String>>? dataDiskIds;
+  final pulumi.Input<List<String>?>? dataDiskIds;
   /// Gets all data disks attached to the virtual machine.
-  final pulumi.Input<List<ComputeDataDiskResponse>>? dataDisks;
+  final pulumi.Input<List<ComputeDataDiskResponse>?>? dataDisks;
   /// Gets the network interface ID of the virtual machine.
-  final pulumi.Input<String>? networkInterfaceId;
+  final pulumi.Input<String?>? networkInterfaceId;
   /// Gets OS disk blob uri for the virtual machine.
-  final pulumi.Input<String>? osDiskId;
+  final pulumi.Input<String?>? osDiskId;
   /// Gets the OS type of the virtual machine.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Gets the statuses of the virtual machine.
-  final pulumi.Input<List<ComputeVmInstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<ComputeVmInstanceViewStatusResponse>?>? statuses;
   /// Gets the size of the virtual machine.
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [ComputeVmPropertiesResponse].
   /// [dataDiskIds] Gets data disks blob uri for the virtual machine.

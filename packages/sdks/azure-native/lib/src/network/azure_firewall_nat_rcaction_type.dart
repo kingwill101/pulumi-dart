@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of action.
-enum AzureFirewallNatRCActionType {
+enum AzureFirewallNatRCActionType implements pulumi.PulumiEnum<String> {
   valueSnat("Snat"),
   valueDnat("Dnat");
 
   const AzureFirewallNatRCActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureFirewallNatRCActionType fromValue(String value) {

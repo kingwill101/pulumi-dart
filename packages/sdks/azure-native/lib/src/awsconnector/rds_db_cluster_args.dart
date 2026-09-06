@@ -9,15 +9,15 @@ import 'rds_dbcluster_properties.dart';
 /// {@macro pulumi_awsconnector_rds_db_cluster_args_doc}
 class RdsDbClusterArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of RdsDBCluster
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RdsDBClusterProperties>? properties;
+  final pulumi.Input<RdsDBClusterProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RdsDbClusterArgs].
   /// [location] The geo-location where the resource lives

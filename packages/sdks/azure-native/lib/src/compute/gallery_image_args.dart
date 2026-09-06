@@ -15,45 +15,45 @@ import 'recommended_machine_configuration.dart';
 /// {@macro pulumi_compute_gallery_image_args_doc}
 class GalleryImageArgs {
   /// Optional. Must be set to true if the gallery image features are being updated.
-  final pulumi.Input<bool>? allowUpdateImage;
+  final pulumi.Input<bool?>? allowUpdateImage;
   /// The architecture of the image. Applicable to OS disks only.
-  final pulumi.Input<String>? architecture;
+  final pulumi.Input<dynamic>? architecture;
   /// The description of this gallery image definition resource. This property is updatable.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Describes the disallowed disk types.
-  final pulumi.Input<Disallowed>? disallowed;
+  final pulumi.Input<Disallowed?>? disallowed;
   /// The end of life date of the gallery image definition. This property can be used for decommissioning purposes. This property is updatable.
-  final pulumi.Input<String>? endOfLifeDate;
+  final pulumi.Input<String?>? endOfLifeDate;
   /// The Eula agreement for the gallery image definition.
-  final pulumi.Input<String>? eula;
+  final pulumi.Input<String?>? eula;
   /// A list of gallery image features.
-  final pulumi.Input<List<GalleryImageFeature>>? features;
+  final pulumi.Input<List<GalleryImageFeature>?>? features;
   /// The name of the gallery image definition to be retrieved.
-  final pulumi.Input<String>? galleryImageName;
+  final pulumi.Input<String?>? galleryImageName;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The hypervisor generation of the Virtual Machine. Applicable to OS disks only.
-  final pulumi.Input<String>? hyperVGeneration;
+  final pulumi.Input<dynamic>? hyperVGeneration;
   /// This is the gallery image definition identifier.
   final pulumi.Input<GalleryImageIdentifier> identifier;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.
   final pulumi.Input<OperatingSystemStateTypes> osState;
   /// This property allows you to specify the type of the OS that is included in the disk when creating a VM from a managed image. Possible values are: **Windows,** **Linux.**
   final pulumi.Input<OperatingSystemTypes> osType;
   /// The privacy statement uri.
-  final pulumi.Input<String>? privacyStatementUri;
+  final pulumi.Input<String?>? privacyStatementUri;
   /// Describes the gallery image definition purchase plan. This is used by marketplace images.
-  final pulumi.Input<ImagePurchasePlan>? purchasePlan;
+  final pulumi.Input<ImagePurchasePlan?>? purchasePlan;
   /// The properties describe the recommended machine configuration for this Image Definition. These properties are updatable.
-  final pulumi.Input<RecommendedMachineConfiguration>? recommended;
+  final pulumi.Input<RecommendedMachineConfiguration?>? recommended;
   /// The release note uri.
-  final pulumi.Input<String>? releaseNoteUri;
+  final pulumi.Input<String?>? releaseNoteUri;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryImageArgs].
   /// [allowUpdateImage] Optional. Must be set to true if the gallery image features are being updated.
@@ -127,7 +127,7 @@ class GalleryImageArgs {
   factory GalleryImageArgs.fromMap(Map<String, dynamic> map) {
     return GalleryImageArgs(
       allowUpdateImage: (() { final guardedValue = map['allowUpdateImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      architecture: (() { final guardedValue = map['architecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disallowed: (() { final guardedValue = map['disallowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Disallowed.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endOfLifeDate: (() { final guardedValue = map['endOfLifeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -135,7 +135,7 @@ class GalleryImageArgs {
       features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GalleryImageFeature>(guardedValue, (value) => GalleryImageFeature.fromMap((value as Map).cast<String, dynamic>()))); })(),
       galleryImageName: (() { final guardedValue = map['galleryImageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       galleryName: pulumi.Input.fromValue(map['galleryName'] as String),
-      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hyperVGeneration: (() { final guardedValue = map['hyperVGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identifier: pulumi.Input.fromValue(GalleryImageIdentifier.fromMap((map['identifier']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osState: pulumi.Input.fromValue(OperatingSystemStateTypes.fromValue(map['osState']! as String)),

@@ -18,9 +18,9 @@ class UpdateRunArgs {
   /// The strategy defines the order in which the clusters will be updated.
   /// If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
   /// The strategy of the UpdateRun can be modified until the run is started.
-  final pulumi.Input<UpdateRunStrategy>? strategy;
+  final pulumi.Input<UpdateRunStrategy?>? strategy;
   /// The name of the UpdateRun resource.
-  final pulumi.Input<String>? updateRunName;
+  final pulumi.Input<String?>? updateRunName;
   /// The resource id of the FleetUpdateStrategy resource to reference.
   ///
   /// When creating a new run, there are three ways to define a strategy for the run:
@@ -33,7 +33,7 @@ class UpdateRunArgs {
   /// UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
   /// Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
   /// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
-  final pulumi.Input<String>? updateStrategyId;
+  final pulumi.Input<String?>? updateStrategyId;
 
   /// Creates a new [UpdateRunArgs].
   /// [fleetName] The name of the Fleet resource.

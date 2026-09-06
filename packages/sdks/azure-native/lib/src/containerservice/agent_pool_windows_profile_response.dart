@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Windows agent pool's specific profile.
 class AgentPoolWindowsProfileResponse {
   /// Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.
-  final pulumi.Input<bool>? disableOutboundNat;
+  final pulumi.Input<bool?>? disableOutboundNat;
 
   /// Creates a new [AgentPoolWindowsProfileResponse].
   /// [disableOutboundNat] Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled.

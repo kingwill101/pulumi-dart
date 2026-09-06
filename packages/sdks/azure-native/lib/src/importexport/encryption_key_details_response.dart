@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the encryption key properties
 class EncryptionKeyDetailsResponse {
   /// The type of kek encryption key
-  final pulumi.Input<String>? kekType;
+  final pulumi.Input<String?>? kekType;
   /// Specifies the url for kek encryption key.
-  final pulumi.Input<String>? kekUrl;
+  final pulumi.Input<String?>? kekUrl;
   /// Specifies the keyvault resource id for kek encryption key.
-  final pulumi.Input<String>? kekVaultResourceID;
+  final pulumi.Input<String?>? kekVaultResourceID;
 
   /// Creates a new [EncryptionKeyDetailsResponse].
   /// [kekType] The type of kek encryption key
   /// [kekUrl] Specifies the url for kek encryption key.
   /// [kekVaultResourceID] Specifies the keyvault resource id for kek encryption key.
-  const EncryptionKeyDetailsResponse({
-    this.kekType,
+  EncryptionKeyDetailsResponse({
+    pulumi.Input<String?>? kekType,
     this.kekUrl,
     this.kekVaultResourceID,
-  });
+  }) : kekType = kekType ?? pulumi.Input.fromValue('MicrosoftManaged');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

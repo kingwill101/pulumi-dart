@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credentials to access the event streaming service attached to the purview account.
 class Credentials {
   /// Identity identifier for UserAssign type.
-  final pulumi.Input<String>? identityId;
+  final pulumi.Input<String?>? identityId;
   /// Identity Type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [Credentials].
   /// [identityId] Identity identifier for UserAssign type.
@@ -27,7 +27,7 @@ class Credentials {
   factory Credentials.fromMap(Map<String, dynamic> map) {
     return Credentials(
       identityId: (() { final guardedValue = map['identityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

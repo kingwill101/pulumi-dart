@@ -9,13 +9,13 @@ import 'sub_resource.dart';
 /// {@macro pulumi_dnsresolver_dns_resolver_args_doc}
 class DnsResolverArgs {
   /// The name of the DNS resolver.
-  final pulumi.Input<String>? dnsResolverName;
+  final pulumi.Input<String?>? dnsResolverName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The reference to the virtual network. This cannot be changed after creation.
   final pulumi.Input<SubResource> virtualNetwork;
 

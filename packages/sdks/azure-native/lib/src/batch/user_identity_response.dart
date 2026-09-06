@@ -6,9 +6,9 @@ import 'auto_user_specification_response.dart';
 /// Specify either the userName or autoUser property, but not both.
 class UserIdentityResponse {
   /// The userName and autoUser properties are mutually exclusive; you must specify one but not both.
-  final pulumi.Input<AutoUserSpecificationResponse>? autoUser;
+  final pulumi.Input<AutoUserSpecificationResponse?>? autoUser;
   /// The userName and autoUser properties are mutually exclusive; you must specify one but not both.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [UserIdentityResponse].
   /// [autoUser] The userName and autoUser properties are mutually exclusive; you must specify one but not both.

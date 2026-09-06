@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'acs_chat_channel_response.dart';
 import 'channel_args.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
@@ -1010,7 +1009,7 @@ class Channel extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The set of properties specific to bot channel resource
-  late final pulumi.Output<AcsChatChannelResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Gets or sets the SKU of the resource.
   late final pulumi.Output<SkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -1041,11 +1040,33 @@ class Channel extends pulumi.CustomResource {
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AcsChatChannelResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcsChatChannelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>>('zones');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'azure-native:botservice:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

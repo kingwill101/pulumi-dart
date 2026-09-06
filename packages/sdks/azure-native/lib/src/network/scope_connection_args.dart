@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_scope_connection_args_doc}
 class ScopeConnectionArgs {
   /// A description of the scope connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource ID.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Name for the cross-tenant connection.
-  final pulumi.Input<String>? scopeConnectionName;
+  final pulumi.Input<String?>? scopeConnectionName;
   /// Tenant ID.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ScopeConnectionArgs].
   /// [description] A description of the scope connection.

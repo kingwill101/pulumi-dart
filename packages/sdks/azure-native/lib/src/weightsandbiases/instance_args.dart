@@ -10,17 +10,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_weightsandbiases_instance_args_doc}
 class InstanceArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Name of the Instance resource
-  final pulumi.Input<String>? instancename;
+  final pulumi.Input<String?>? instancename;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<InstanceProperties>? properties;
+  final pulumi.Input<InstanceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceArgs].
   /// [identity] The managed service identities assigned to this resource.

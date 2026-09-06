@@ -7,14 +7,14 @@ import 'role_management_policy_rule_target.dart';
 /// The role management policy approval rule.
 class RoleManagementPolicyApprovalRule {
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyApprovalRule'.
   final pulumi.Input<String> ruleType;
   /// The approval setting
-  final pulumi.Input<ApprovalSettings>? setting;
+  final pulumi.Input<ApprovalSettings?>? setting;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTarget>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTarget?>? target;
 
   /// Creates a new [RoleManagementPolicyApprovalRule].
   /// [id] The id of the rule.

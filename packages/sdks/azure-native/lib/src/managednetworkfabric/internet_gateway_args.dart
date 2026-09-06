@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_internet_gateway_args_doc}
 class InternetGatewayArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the Internet Gateway.
-  final pulumi.Input<String>? internetGatewayName;
+  final pulumi.Input<String?>? internetGatewayName;
   /// ARM Resource ID of the Internet Gateway Rule.
-  final pulumi.Input<String>? internetGatewayRuleId;
+  final pulumi.Input<String?>? internetGatewayRuleId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ARM Resource ID of the Network Fabric Controller.
   final pulumi.Input<String> networkFabricControllerId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gateway Type of the resource.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [InternetGatewayArgs].
   /// [annotation] Switch configuration description.
@@ -66,7 +66,7 @@ class InternetGatewayArgs {
       networkFabricControllerId: pulumi.Input.fromValue(map['networkFabricControllerId'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

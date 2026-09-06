@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aggregate_function_properties_response.dart';
 import 'function_args.dart';
 
 /// A function object, containing all information associated with the named function. All functions are contained under a streaming job.
@@ -585,7 +584,7 @@ class FunctionStreamanalytics extends pulumi.CustomResource {
   /// Resource name
   late final pulumi.Output<String?> name;
   /// The properties that are associated with a function.
-  late final pulumi.Output<AggregateFunctionPropertiesResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -605,7 +604,22 @@ class FunctionStreamanalytics extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String?>('name');
-    properties = registerOutput<AggregateFunctionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AggregateFunctionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FunctionStreamanalytics] resource.
+  FunctionStreamanalytics.reference(String urn)
+    : super(
+        'azure-native:streamanalytics:Function',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String?>('name');
+    properties = registerOutput<dynamic>('properties');
     type = registerOutput<String>('type');
   }
 }

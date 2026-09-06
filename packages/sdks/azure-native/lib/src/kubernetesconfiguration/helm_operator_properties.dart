@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties for Helm operator.
 class HelmOperatorProperties {
   /// Values override for the operator Helm chart.
-  final pulumi.Input<String>? chartValues;
+  final pulumi.Input<String?>? chartValues;
   /// Version of the operator Helm chart.
-  final pulumi.Input<String>? chartVersion;
+  final pulumi.Input<String?>? chartVersion;
 
   /// Creates a new [HelmOperatorProperties].
   /// [chartValues] Values override for the operator Helm chart.

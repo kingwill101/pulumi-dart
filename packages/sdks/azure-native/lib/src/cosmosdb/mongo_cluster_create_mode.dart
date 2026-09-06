@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode to create a mongo cluster.
-enum MongoClusterCreateMode {
+enum MongoClusterCreateMode implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valuePointInTimeRestore("PointInTimeRestore");
 
   const MongoClusterCreateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static MongoClusterCreateMode fromValue(String value) {

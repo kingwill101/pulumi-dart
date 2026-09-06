@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the savings options.
-enum SavingsOptions {
+enum SavingsOptions implements pulumi.PulumiEnum<String> {
   none("None"),
   rI1Year("RI1Year"),
   rI3Year("RI3Year"),
@@ -8,6 +10,7 @@ enum SavingsOptions {
   customAzureOfferCode("CustomAzureOfferCode");
 
   const SavingsOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static SavingsOptions fromValue(String value) {

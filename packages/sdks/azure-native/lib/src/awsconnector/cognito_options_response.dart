@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CognitoOptions
 class CognitoOptionsResponse {
   /// &lt;p&gt;Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.&lt;/p&gt;
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// &lt;p&gt;The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
-  final pulumi.Input<String>? identityPoolId;
+  final pulumi.Input<String?>? identityPoolId;
   /// &lt;p&gt;The &lt;code&gt;AmazonOpenSearchServiceCognitoAccess&lt;/code&gt; role that allows OpenSearch Service to configure your user pool and identity pool.&lt;/p&gt;
-  final pulumi.Input<String>? roleArn;
+  final pulumi.Input<String?>? roleArn;
   /// &lt;p&gt;The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
-  final pulumi.Input<String>? userPoolId;
+  final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [CognitoOptionsResponse].
   /// [enabled] &lt;p&gt;Whether to enable or disable Amazon Cognito authentication for OpenSearch Dashboards.&lt;/p&gt;

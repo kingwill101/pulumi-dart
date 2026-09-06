@@ -7,23 +7,23 @@ import 'match_condition.dart';
 /// Defines contents of a web application rule.
 class WebApplicationFirewallCustomRule {
   /// Type of Actions.
-  final pulumi.Input<String> action;
+  final pulumi.Input<dynamic> action;
   /// List of user session identifier group by clauses.
-  final pulumi.Input<List<GroupByUserSession>>? groupByUserSession;
+  final pulumi.Input<List<GroupByUserSession>?>? groupByUserSession;
   /// List of match conditions.
   final pulumi.Input<List<MatchCondition>> matchConditions;
   /// The name of the resource that is unique within a policy. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
   /// Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.
-  final pulumi.Input<String>? rateLimitDuration;
+  final pulumi.Input<dynamic>? rateLimitDuration;
   /// Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1
-  final pulumi.Input<int>? rateLimitThreshold;
+  final pulumi.Input<int?>? rateLimitThreshold;
   /// The rule type.
-  final pulumi.Input<String> ruleType;
+  final pulumi.Input<dynamic> ruleType;
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [WebApplicationFirewallCustomRule].
   /// [action] Type of Actions.
@@ -63,15 +63,15 @@ class WebApplicationFirewallCustomRule {
 
   factory WebApplicationFirewallCustomRule.fromMap(Map<String, dynamic> map) {
     return WebApplicationFirewallCustomRule(
-      action: pulumi.Input.fromValue(map['action'] as String),
+      action: pulumi.Input.fromValue(map['action']),
       groupByUserSession: (() { final guardedValue = map['groupByUserSession']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GroupByUserSession>(guardedValue, (value) => GroupByUserSession.fromMap((value as Map).cast<String, dynamic>()))); })(),
       matchConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<MatchCondition>(map['matchConditions']!, (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
-      rateLimitDuration: (() { final guardedValue = map['rateLimitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      rateLimitDuration: (() { final guardedValue = map['rateLimitDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType']),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

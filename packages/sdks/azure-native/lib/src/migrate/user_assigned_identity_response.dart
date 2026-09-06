@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAssignedIdentityResponse {
-  final pulumi.Input<String>? clientId;
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? clientId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Optional.

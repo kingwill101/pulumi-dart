@@ -8,7 +8,7 @@ class DataflowGraphNodeGraphSettingsResponse {
   /// The artifact name and version to pull. This should be in the format `&lt;artifact-name&gt;:&lt;version&gt;`.
   final pulumi.Input<String> artifact;
   /// Configuration key-value pairs.
-  final pulumi.Input<List<DataflowGraphGraphNodeConfigurationResponse>>? configuration;
+  final pulumi.Input<List<DataflowGraphGraphNodeConfigurationResponse>?>? configuration;
   /// Reference to the registry endpoint for pulling the artifact.
   final pulumi.Input<String> registryEndpointRef;
 

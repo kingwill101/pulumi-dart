@@ -8,7 +8,7 @@ class AddonArcProperties {
   /// Expected value is 'Arc'.
   final pulumi.Input<String> addonType;
   /// The VMware vCenter resource ID
-  final pulumi.Input<String>? vCenter;
+  final pulumi.Input<String?>? vCenter;
 
   /// Creates a new [AddonArcProperties].
   /// [addonType] Addon type

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a file input data source that contains reference data.
 class FileReferenceInputDataSourceResponse {
   /// The path of the file.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'File'.
   final pulumi.Input<String> type;

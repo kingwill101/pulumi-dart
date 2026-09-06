@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Datastore account key secrets.
 class AccountKeyDatastoreSecrets {
   /// Storage account key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'AccountKey'.
   final pulumi.Input<String> secretsType;

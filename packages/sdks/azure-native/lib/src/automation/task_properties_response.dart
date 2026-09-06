@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Task properties of the software update configuration.
 class TaskPropertiesResponse {
   /// Gets or sets the parameters of the task.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Gets or sets the name of the runbook.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [TaskPropertiesResponse].
   /// [parameters] Gets or sets the parameters of the task.

@@ -9,9 +9,9 @@ import 'managed_ops_properties.dart';
 /// {@macro pulumi_managedops_managed_op_args_doc}
 class ManagedOpArgs {
   /// Name of the resource.
-  final pulumi.Input<String>? managedOpsName;
+  final pulumi.Input<String?>? managedOpsName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ManagedOpsProperties>? properties;
+  final pulumi.Input<ManagedOpsProperties?>? properties;
 
   /// Creates a new [ManagedOpArgs].
   /// [managedOpsName] Name of the resource.

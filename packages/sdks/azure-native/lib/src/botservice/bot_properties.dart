@@ -5,59 +5,59 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the Bot.
 class BotProperties {
   /// Contains resource all settings defined as key/value pairs.
-  final pulumi.Input<Map<String, String>>? allSettings;
+  final pulumi.Input<Map<String, String>?>? allSettings;
   /// The hint (e.g. keyVault secret resourceId) on how to fetch the app secret
-  final pulumi.Input<String>? appPasswordHint;
+  final pulumi.Input<String?>? appPasswordHint;
   /// The CMK Url
-  final pulumi.Input<String>? cmekKeyVaultUrl;
+  final pulumi.Input<String?>? cmekKeyVaultUrl;
   /// The description of the bot
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Application Insights key
-  final pulumi.Input<String>? developerAppInsightKey;
+  final pulumi.Input<String?>? developerAppInsightKey;
   /// The Application Insights Api Key
-  final pulumi.Input<String>? developerAppInsightsApiKey;
+  final pulumi.Input<String?>? developerAppInsightsApiKey;
   /// The Application Insights App Id
-  final pulumi.Input<String>? developerAppInsightsApplicationId;
+  final pulumi.Input<String?>? developerAppInsightsApplicationId;
   /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// The Name of the bot
   final pulumi.Input<String> displayName;
   /// The bot's endpoint
   final pulumi.Input<String> endpoint;
   /// The Icon Url of the bot
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// Whether Cmek is enabled
-  final pulumi.Input<bool>? isCmekEnabled;
+  final pulumi.Input<bool?>? isCmekEnabled;
   /// Whether the bot is streaming supported
-  final pulumi.Input<bool>? isStreamingSupported;
+  final pulumi.Input<bool?>? isStreamingSupported;
   /// Collection of LUIS App Ids
-  final pulumi.Input<List<String>>? luisAppIds;
+  final pulumi.Input<List<String>?>? luisAppIds;
   /// The LUIS Key
-  final pulumi.Input<String>? luisKey;
+  final pulumi.Input<String?>? luisKey;
   /// The bot's manifest url
-  final pulumi.Input<String>? manifestUrl;
+  final pulumi.Input<String?>? manifestUrl;
   /// Microsoft App Id for the bot
   final pulumi.Input<String> msaAppId;
   /// Microsoft App Managed Identity Resource Id for the bot
-  final pulumi.Input<String>? msaAppMSIResourceId;
+  final pulumi.Input<String?>? msaAppMSIResourceId;
   /// Microsoft App Tenant Id for the bot
-  final pulumi.Input<String>? msaAppTenantId;
+  final pulumi.Input<String?>? msaAppTenantId;
   /// Microsoft App Type for the bot
-  final pulumi.Input<String>? msaAppType;
+  final pulumi.Input<dynamic>? msaAppType;
   /// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
-  final pulumi.Input<String>? openWithHint;
+  final pulumi.Input<String?>? openWithHint;
   /// Contains resource parameters defined as key/value pairs.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Whether the bot is in an isolated network
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Publishing credentials of the resource
-  final pulumi.Input<String>? publishingCredentials;
+  final pulumi.Input<String?>? publishingCredentials;
   /// The channel schema transformation version for the bot
-  final pulumi.Input<String>? schemaTransformationVersion;
+  final pulumi.Input<String?>? schemaTransformationVersion;
   /// The storage resourceId for the bot
-  final pulumi.Input<String>? storageResourceId;
+  final pulumi.Input<String?>? storageResourceId;
   /// The Tenant Id for the bot
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [BotProperties].
   /// [allSettings] Contains resource all settings defined as key/value pairs.
@@ -87,7 +87,7 @@ class BotProperties {
   /// [schemaTransformationVersion] The channel schema transformation version for the bot
   /// [storageResourceId] The storage resourceId for the bot
   /// [tenantId] The Tenant Id for the bot
-  const BotProperties({
+  BotProperties({
     this.allSettings,
     this.appPasswordHint,
     this.cmekKeyVaultUrl,
@@ -98,9 +98,9 @@ class BotProperties {
     this.disableLocalAuth,
     required this.displayName,
     required this.endpoint,
-    this.iconUrl,
-    this.isCmekEnabled,
-    this.isStreamingSupported,
+    pulumi.Input<String?>? iconUrl,
+    pulumi.Input<bool?>? isCmekEnabled,
+    pulumi.Input<bool?>? isStreamingSupported,
     this.luisAppIds,
     this.luisKey,
     this.manifestUrl,
@@ -110,12 +110,12 @@ class BotProperties {
     this.msaAppType,
     this.openWithHint,
     this.parameters,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     this.publishingCredentials,
     this.schemaTransformationVersion,
     this.storageResourceId,
     this.tenantId,
-  });
+  }) : iconUrl = iconUrl ?? pulumi.Input.fromValue(''), isCmekEnabled = isCmekEnabled ?? pulumi.Input.fromValue(false), isStreamingSupported = isStreamingSupported ?? pulumi.Input.fromValue(false), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -170,10 +170,10 @@ class BotProperties {
       msaAppId: pulumi.Input.fromValue(map['msaAppId'] as String),
       msaAppMSIResourceId: (() { final guardedValue = map['msaAppMSIResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       msaAppTenantId: (() { final guardedValue = map['msaAppTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      msaAppType: (() { final guardedValue = map['msaAppType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      msaAppType: (() { final guardedValue = map['msaAppType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       openWithHint: (() { final guardedValue = map['openWithHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publishingCredentials: (() { final guardedValue = map['publishingCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schemaTransformationVersion: (() { final guardedValue = map['schemaTransformationVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageResourceId: (() { final guardedValue = map['storageResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

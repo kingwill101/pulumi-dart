@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Principal Type of the sever administrator.
-enum PrincipalType {
+enum PrincipalType implements pulumi.PulumiEnum<String> {
   valueUser("User"),
   valueGroup("Group"),
   valueApplication("Application");
 
   const PrincipalType(this.wireValue);
+  @override
   final String wireValue;
 
   static PrincipalType fromValue(String value) {

@@ -1271,7 +1271,28 @@ class DeploymentSetting extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds');
+    arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deploymentMode = registerOutput<String>('deploymentMode');
+    this.name = registerOutput<String>('name');
+    operationType = registerOutput<String?>('operationType');
+    provisioningState = registerOutput<String>('provisioningState');
+    reportedProperties = registerOutput<EceReportedPropertiesResponse>('reportedProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EceReportedPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DeploymentSetting] resource.
+  DeploymentSetting.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:DeploymentSetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arcNodeResourceIds = registerOutput<List<String>>('arcNodeResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     deploymentConfiguration = registerOutput<DeploymentConfigurationResponse>('deploymentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deploymentMode = registerOutput<String>('deploymentMode');

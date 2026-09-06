@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_get_firewall_support_info_args_doc}
 class GetFirewallSupportInfoArgs {
   /// email address on behalf of which this API called
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Firewall resource name
   final pulumi.Input<String> firewallName;
   /// The name of the resource group. The name is case insensitive.

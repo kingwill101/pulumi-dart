@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the flow of the ingestion.
-enum IngestionMode {
+enum IngestionMode implements pulumi.PulumiEnum<String> {
   applicationInsights("ApplicationInsights"),
   applicationInsightsWithDiagnosticSettings("ApplicationInsightsWithDiagnosticSettings"),
   logAnalytics("LogAnalytics");
 
   const IngestionMode(this.wireValue);
+  @override
   final String wireValue;
 
   static IngestionMode fromValue(String value) {

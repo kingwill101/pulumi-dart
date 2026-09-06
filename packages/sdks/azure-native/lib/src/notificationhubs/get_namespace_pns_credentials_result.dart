@@ -26,19 +26,19 @@ class GetNamespacePnsCredentialsResult {
   /// Description of a NotificationHub GcmCredential.
   final GcmCredentialResponse? gcmCredential;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Deprecated - only for compatibility.
   final String? location;
   /// Description of a NotificationHub MpnsCredential.
   final MpnsCredentialResponse? mpnsCredential;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Deprecated - only for compatibility.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Description of a NotificationHub WnsCredential.
   final WnsCredentialResponse? wnsCredential;
   /// Description of a NotificationHub XiaomiCredential.
@@ -67,13 +67,13 @@ class GetNamespacePnsCredentialsResult {
     this.browserCredential,
     this.fcmV1Credential,
     this.gcmCredential,
-    required this.id,
+    this.id,
     this.location,
     this.mpnsCredential,
-    required this.name,
-    required this.systemData,
+    this.name,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.wnsCredential,
     this.xiaomiCredential,
   });
@@ -86,13 +86,13 @@ class GetNamespacePnsCredentialsResult {
       'browserCredential': ?browserCredential?.toMap(),
       'fcmV1Credential': ?fcmV1Credential?.toMap(),
       'gcmCredential': ?gcmCredential?.toMap(),
-      'id': id,
+      'id': ?id,
       'location': ?location,
       'mpnsCredential': ?mpnsCredential?.toMap(),
-      'name': name,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'wnsCredential': ?wnsCredential?.toMap(),
       'xiaomiCredential': ?xiaomiCredential?.toMap(),
     };
@@ -106,13 +106,13 @@ class GetNamespacePnsCredentialsResult {
       browserCredential: (() { final guardedValue = map['browserCredential']; if (guardedValue == null) return null; return BrowserCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       fcmV1Credential: (() { final guardedValue = map['fcmV1Credential']; if (guardedValue == null) return null; return FcmV1CredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gcmCredential: (() { final guardedValue = map['gcmCredential']; if (guardedValue == null) return null; return GcmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mpnsCredential: (() { final guardedValue = map['mpnsCredential']; if (guardedValue == null) return null; return MpnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       wnsCredential: (() { final guardedValue = map['wnsCredential']; if (guardedValue == null) return null; return WnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       xiaomiCredential: (() { final guardedValue = map['xiaomiCredential']; if (guardedValue == null) return null; return XiaomiCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );

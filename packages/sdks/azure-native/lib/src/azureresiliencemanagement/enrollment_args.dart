@@ -9,9 +9,9 @@ import 'enrollment_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_enrollment_args_doc}
 class EnrollmentArgs {
   /// The name of the enrollment.
-  final pulumi.Input<String>? enrollmentName;
+  final pulumi.Input<String?>? enrollmentName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<EnrollmentProperties>? properties;
+  final pulumi.Input<EnrollmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the usage plan.

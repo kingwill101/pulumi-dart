@@ -8,23 +8,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dashboard_managed_private_endpoint_args_doc}
 class ManagedPrivateEndpointArgs {
   /// The group Ids of the managed private endpoint.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The managed private endpoint name of Azure Managed Grafana.
-  final pulumi.Input<String>? managedPrivateEndpointName;
+  final pulumi.Input<String?>? managedPrivateEndpointName;
   /// The ARM resource ID of the resource for which the managed private endpoint is pointing to.
-  final pulumi.Input<String>? privateLinkResourceId;
+  final pulumi.Input<String?>? privateLinkResourceId;
   /// The region of the resource to which the managed private endpoint is pointing to.
-  final pulumi.Input<String>? privateLinkResourceRegion;
+  final pulumi.Input<String?>? privateLinkResourceRegion;
   /// The URL of the data store behind the private link service. It would be the URL in the Grafana data source configuration page without the protocol and port.
-  final pulumi.Input<String>? privateLinkServiceUrl;
+  final pulumi.Input<String?>? privateLinkServiceUrl;
   /// User input request message of the managed private endpoint.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The workspace name of Azure Managed Grafana.
   final pulumi.Input<String> workspaceName;
 

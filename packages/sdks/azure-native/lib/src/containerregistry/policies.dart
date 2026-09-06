@@ -11,17 +11,17 @@ import 'trust_policy.dart';
 /// The policies for a container registry.
 class Policies {
   /// The policy for using ARM audience token for a container registry.
-  final pulumi.Input<AzureADAuthenticationAsArmPolicy>? azureADAuthenticationAsArmPolicy;
+  final pulumi.Input<AzureADAuthenticationAsArmPolicy?>? azureADAuthenticationAsArmPolicy;
   /// The export policy for a container registry.
-  final pulumi.Input<ExportPolicy>? exportPolicy;
+  final pulumi.Input<ExportPolicy?>? exportPolicy;
   /// The quarantine policy for a container registry.
-  final pulumi.Input<QuarantinePolicy>? quarantinePolicy;
+  final pulumi.Input<QuarantinePolicy?>? quarantinePolicy;
   /// The retention policy for a container registry.
-  final pulumi.Input<RetentionPolicy>? retentionPolicy;
+  final pulumi.Input<RetentionPolicy?>? retentionPolicy;
   /// The soft delete policy for a container registry.
-  final pulumi.Input<SoftDeletePolicy>? softDeletePolicy;
+  final pulumi.Input<SoftDeletePolicy?>? softDeletePolicy;
   /// The content trust policy for a container registry.
-  final pulumi.Input<TrustPolicy>? trustPolicy;
+  final pulumi.Input<TrustPolicy?>? trustPolicy;
 
   /// Creates a new [Policies].
   /// [azureADAuthenticationAsArmPolicy] The policy for using ARM audience token for a container registry.

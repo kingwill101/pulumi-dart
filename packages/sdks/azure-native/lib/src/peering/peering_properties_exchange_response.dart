@@ -7,9 +7,9 @@ import 'sub_resource_response.dart';
 /// The properties that define an exchange peering.
 class PeeringPropertiesExchangeResponse {
   /// The set of connections that constitute an exchange peering.
-  final pulumi.Input<List<ExchangeConnectionResponse>>? connections;
+  final pulumi.Input<List<ExchangeConnectionResponse>?>? connections;
   /// The reference of the peer ASN.
-  final pulumi.Input<SubResourceResponse>? peerAsn;
+  final pulumi.Input<SubResourceResponse?>? peerAsn;
 
   /// Creates a new [PeeringPropertiesExchangeResponse].
   /// [connections] The set of connections that constitute an exchange peering.

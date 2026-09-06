@@ -6,7 +6,7 @@ import 'export_policy_rule_response.dart';
 /// Set of export policy rules
 class CachePropertiesExportPolicyResponse {
   /// Export policy rule
-  final pulumi.Input<List<ExportPolicyRuleResponse>>? rules;
+  final pulumi.Input<List<ExportPolicyRuleResponse>?>? rules;
 
   /// Creates a new [CachePropertiesExportPolicyResponse].
   /// [rules] Export policy rule

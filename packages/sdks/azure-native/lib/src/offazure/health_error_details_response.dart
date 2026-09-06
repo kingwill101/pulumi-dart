@@ -84,7 +84,7 @@ class HealthErrorDetailsResponse {
       applianceName: pulumi.Input.fromValue(map['applianceName'] as String),
       code: pulumi.Input.fromValue(map['code'] as String),
       discoveryScope: pulumi.Input.fromValue(map['discoveryScope'] as String),
-      id: pulumi.Input.fromValue(map['id'] as double),
+      id: pulumi.Input.fromValue((map['id'] as num).toDouble()),
       message: pulumi.Input.fromValue(map['message'] as String),
       messageParameters: pulumi.Input.fromValue((map['messageParameters'] as Map).cast<String, String>()),
       possibleCauses: pulumi.Input.fromValue(map['possibleCauses'] as String),

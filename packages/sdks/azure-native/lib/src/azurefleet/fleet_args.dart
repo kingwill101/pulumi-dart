@@ -16,31 +16,31 @@ import 'vmattributes.dart';
 /// {@macro pulumi_azurefleet_fleet_args_doc}
 class FleetArgs {
   /// Represents the configuration for additional locations where Fleet resources may be deployed.
-  final pulumi.Input<AdditionalLocationsProfile>? additionalLocationsProfile;
+  final pulumi.Input<AdditionalLocationsProfile?>? additionalLocationsProfile;
   /// Compute Profile to use for running user's workloads.
   final pulumi.Input<ComputeProfile> computeProfile;
   /// The name of the Compute Fleet
-  final pulumi.Input<String>? fleetName;
+  final pulumi.Input<String?>? fleetName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Details of the resource plan.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// Configuration Options for Regular instances in Compute Fleet.
-  final pulumi.Input<RegularPriorityProfile>? regularPriorityProfile;
+  final pulumi.Input<RegularPriorityProfile?>? regularPriorityProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Configuration Options for Spot instances in Compute Fleet.
-  final pulumi.Input<SpotPriorityProfile>? spotPriorityProfile;
+  final pulumi.Input<SpotPriorityProfile?>? spotPriorityProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Attribute based Fleet.
-  final pulumi.Input<VMAttributes>? vmAttributes;
+  final pulumi.Input<VMAttributes?>? vmAttributes;
   /// List of VM sizes supported for Compute Fleet
   final pulumi.Input<List<VmSizeProfile>> vmSizesProfile;
   /// Zones in which the Compute Fleet is available
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [FleetArgs].
   /// [additionalLocationsProfile] Represents the configuration for additional locations where Fleet resources may be deployed.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API OAuth2 Authentication settings details.
 class OpenIdAuthenticationSettingsContractResponse {
   /// How to send token to the server.
-  final pulumi.Input<List<String>>? bearerTokenSendingMethods;
+  final pulumi.Input<List<String>?>? bearerTokenSendingMethods;
   /// OAuth authorization server identifier.
-  final pulumi.Input<String>? openidProviderId;
+  final pulumi.Input<String?>? openidProviderId;
 
   /// Creates a new [OpenIdAuthenticationSettingsContractResponse].
   /// [bearerTokenSendingMethods] How to send token to the server.

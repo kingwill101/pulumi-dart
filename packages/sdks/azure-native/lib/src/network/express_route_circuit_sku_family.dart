@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The family of the SKU.
-enum ExpressRouteCircuitSkuFamily {
+enum ExpressRouteCircuitSkuFamily implements pulumi.PulumiEnum<String> {
   valueUnlimitedData("UnlimitedData"),
   valueMeteredData("MeteredData");
 
   const ExpressRouteCircuitSkuFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static ExpressRouteCircuitSkuFamily fromValue(String value) {

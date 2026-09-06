@@ -7,24 +7,24 @@ import 'system_data_response.dart';
 /// Result data returned by getKeyGroup.
 class GetKeyGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
-  final String deploymentStatus;
+  final String? azureApiVersion;
+  final String? deploymentStatus;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Names of UrlSigningKey type secret objects
   final List<ResourceReferenceResponse>? keyReferences;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Provisioning status
-  final String provisioningState;
+  final String? provisioningState;
   /// Read only system data
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKeyGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [deploymentStatus] Required.
+  /// [deploymentStatus] Optional.
   /// [id] Resource ID.
   /// [keyReferences] Names of UrlSigningKey type secret objects
   /// [name] Resource name.
@@ -32,39 +32,39 @@ class GetKeyGroupResult {
   /// [systemData] Read only system data
   /// [type] Resource type.
   const GetKeyGroupResult({
-    required this.azureApiVersion,
-    required this.deploymentStatus,
-    required this.id,
+    this.azureApiVersion,
+    this.deploymentStatus,
+    this.id,
     this.keyReferences,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'deploymentStatus': deploymentStatus,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'deploymentStatus': ?deploymentStatus,
+      'id': ?id,
       'keyReferences': ?(() { final guardedValue = keyReferences; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceReferenceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetKeyGroupResult.fromMap(Map<String, dynamic> map) {
     return GetKeyGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      deploymentStatus: map['deploymentStatus'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyReferences: (() { final guardedValue = map['keyReferences']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceReferenceResponse>(guardedValue, (value) => ResourceReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

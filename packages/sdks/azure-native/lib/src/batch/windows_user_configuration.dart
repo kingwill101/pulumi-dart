@@ -6,7 +6,7 @@ import 'login_mode.dart';
 /// Properties used to create a user account on a Windows node.
 class WindowsUserConfiguration {
   /// Specifies login mode for the user. The default value is Interactive.
-  final pulumi.Input<LoginMode>? loginMode;
+  final pulumi.Input<LoginMode?>? loginMode;
 
   /// Creates a new [WindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.

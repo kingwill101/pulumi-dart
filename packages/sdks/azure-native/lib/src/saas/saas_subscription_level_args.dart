@@ -9,17 +9,17 @@ import 'saas_creation_properties.dart';
 /// {@macro pulumi_saas_saas_subscription_level_args_doc}
 class SaasSubscriptionLevelArgs {
   /// Resource location. Only value allowed for SaaS is 'global'
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of the SaaS resource that are relevant for creation.
-  final pulumi.Input<SaasCreationProperties>? properties;
+  final pulumi.Input<SaasCreationProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SaasSubscriptionLevelArgs].
   /// [location] Resource location. Only value allowed for SaaS is 'global'

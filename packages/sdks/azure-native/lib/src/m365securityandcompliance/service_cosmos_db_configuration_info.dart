@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The settings for the Cosmos DB database backing the service.
 class ServiceCosmosDbConfigurationInfo {
   /// The URI of the customer-managed key for the backing database.
-  final pulumi.Input<String>? keyVaultKeyUri;
+  final pulumi.Input<String?>? keyVaultKeyUri;
   /// The provisioned throughput for the backing database.
-  final pulumi.Input<double>? offerThroughput;
+  final pulumi.Input<double?>? offerThroughput;
 
   /// Creates a new [ServiceCosmosDbConfigurationInfo].
   /// [keyVaultKeyUri] The URI of the customer-managed key for the backing database.
@@ -27,7 +27,7 @@ class ServiceCosmosDbConfigurationInfo {
   factory ServiceCosmosDbConfigurationInfo.fromMap(Map<String, dynamic> map) {
     return ServiceCosmosDbConfigurationInfo(
       keyVaultKeyUri: (() { final guardedValue = map['keyVaultKeyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      offerThroughput: (() { final guardedValue = map['offerThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      offerThroughput: (() { final guardedValue = map['offerThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'key_vault_certificate_properties.dart';
 /// Kafka RemoteBrokerConnection X509 Authentication properties.
 class KafkaX509Authentication {
   /// Keyvault X509 secret properties.
-  final pulumi.Input<KeyVaultCertificateProperties>? keyVault;
+  final pulumi.Input<KeyVaultCertificateProperties?>? keyVault;
   /// Secret where cert details are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [KafkaX509Authentication].
   /// [keyVault] Keyvault X509 secret properties.

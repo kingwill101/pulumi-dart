@@ -10,7 +10,7 @@ class CustomRolloutPropertiesResponse {
   /// The specification.
   final pulumi.Input<CustomRolloutPropertiesSpecificationResponse> specification;
   /// The status.
-  final pulumi.Input<CustomRolloutPropertiesStatusResponse>? status;
+  final pulumi.Input<CustomRolloutPropertiesStatusResponse?>? status;
 
   /// Creates a new [CustomRolloutPropertiesResponse].
   /// [provisioningState] The provisioned state of the resource.

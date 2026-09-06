@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Emission policy destination properties.
 class EmissionPolicyDestinationResponse {
   /// Emission destination type.
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<String?>? destinationType;
 
   /// Creates a new [EmissionPolicyDestinationResponse].
   /// [destinationType] Emission destination type.

@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption_configuration.dart';
-import 'factory_git_hub_configuration.dart';
 import 'factory_identity.dart';
 import 'global_parameter_specification.dart';
 import 'purview_configuration.dart';
@@ -13,25 +12,25 @@ import 'purview_configuration.dart';
 /// {@macro pulumi_datafactory_factory_args_doc}
 class FactoryArgs {
   /// Properties to enable Customer Managed Key for the factory.
-  final pulumi.Input<EncryptionConfiguration>? encryption;
+  final pulumi.Input<EncryptionConfiguration?>? encryption;
   /// The factory name.
-  final pulumi.Input<String>? factoryName;
+  final pulumi.Input<String?>? factoryName;
   /// List of parameters for factory.
-  final pulumi.Input<Map<String, GlobalParameterSpecification>>? globalParameters;
+  final pulumi.Input<Map<String, GlobalParameterSpecification>?>? globalParameters;
   /// Managed service identity of the factory.
-  final pulumi.Input<FactoryIdentity>? identity;
+  final pulumi.Input<FactoryIdentity?>? identity;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Whether or not public network access is allowed for the data factory.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Purview information of the factory.
-  final pulumi.Input<PurviewConfiguration>? purviewConfiguration;
+  final pulumi.Input<PurviewConfiguration?>? purviewConfiguration;
   /// Git repo information of the factory.
-  final pulumi.Input<FactoryGitHubConfiguration>? repoConfiguration;
+  final pulumi.Input<dynamic>? repoConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FactoryArgs].
   /// [encryption] Properties to enable Customer Managed Key for the factory.
@@ -66,7 +65,7 @@ class FactoryArgs {
       'location': ?location,
       'publicNetworkAccess': ?publicNetworkAccess,
       'purviewConfiguration': ?pulumi.Input.mapOptionalInputValue<PurviewConfiguration, Map<String, dynamic>>(purviewConfiguration, (value) => value.toMap()),
-      'repoConfiguration': ?pulumi.Input.mapOptionalInputValue<FactoryGitHubConfiguration, Map<String, dynamic>>(repoConfiguration, (value) => value.toMap()),
+      'repoConfiguration': ?repoConfiguration,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
     };
@@ -79,9 +78,9 @@ class FactoryArgs {
       globalParameters: (() { final guardedValue = map['globalParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<GlobalParameterSpecification>(guardedValue, (value) => GlobalParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FactoryIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       purviewConfiguration: (() { final guardedValue = map['purviewConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PurviewConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      repoConfiguration: (() { final guardedValue = map['repoConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FactoryGitHubConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      repoConfiguration: (() { final guardedValue = map['repoConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

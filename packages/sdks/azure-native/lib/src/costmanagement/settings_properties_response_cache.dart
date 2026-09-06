@@ -10,9 +10,9 @@ class SettingsPropertiesResponseCache {
   /// Display name for the scope.
   final pulumi.Input<String> name;
   /// Resource ID of the parent scope. For instance, subscription's resource ID for a resource group or a management group resource ID for a subscription.
-  final pulumi.Input<String>? parent;
+  final pulumi.Input<String?>? parent;
   /// Indicates the status of the scope. Status only applies to subscriptions and billing accounts.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Indicates the type of modern account. Allowed values include: Individual, Enterprise, Partner, Indirect, NotApplicable
   final pulumi.Input<String> subchannel;
 

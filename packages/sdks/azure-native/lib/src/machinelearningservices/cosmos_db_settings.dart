@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CosmosDbSettings {
-  final pulumi.Input<int>? collectionsThroughput;
+  final pulumi.Input<int?>? collectionsThroughput;
 
   /// Creates a new [CosmosDbSettings].
   /// [collectionsThroughput] Optional.
@@ -19,7 +19,7 @@ class CosmosDbSettings {
 
   factory CosmosDbSettings.fromMap(Map<String, dynamic> map) {
     return CosmosDbSettings(
-      collectionsThroughput: (() { final guardedValue = map['collectionsThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      collectionsThroughput: (() { final guardedValue = map['collectionsThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

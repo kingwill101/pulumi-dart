@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage target operational state.
-enum OperationalStateType {
+enum OperationalStateType implements pulumi.PulumiEnum<String> {
   valueReady("Ready"),
   valueBusy("Busy"),
   valueSuspended("Suspended"),
   valueFlushing("Flushing");
 
   const OperationalStateType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationalStateType fromValue(String value) {

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata pertaining to creation and last modification of the key vault resource.
 class SystemDataResponse {
   /// The timestamp of the key vault resource creation (UTC).
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// The identity that created the key vault resource.
-  final pulumi.Input<String>? createdBy;
+  final pulumi.Input<String?>? createdBy;
   /// The type of identity that created the key vault resource.
-  final pulumi.Input<String>? createdByType;
+  final pulumi.Input<String?>? createdByType;
   /// The timestamp of the key vault resource last modification (UTC).
-  final pulumi.Input<String>? lastModifiedAt;
+  final pulumi.Input<String?>? lastModifiedAt;
   /// The identity that last modified the key vault resource.
-  final pulumi.Input<String>? lastModifiedBy;
+  final pulumi.Input<String?>? lastModifiedBy;
   /// The type of identity that last modified the key vault resource.
-  final pulumi.Input<String>? lastModifiedByType;
+  final pulumi.Input<String?>? lastModifiedByType;
 
   /// Creates a new [SystemDataResponse].
   /// [createdAt] The timestamp of the key vault resource creation (UTC).

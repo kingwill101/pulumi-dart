@@ -8,11 +8,11 @@ class OsPropertiesResponse {
   /// The name of the custom image resource.
   final pulumi.Input<String> customImageDisplayName;
   /// Specify the referenced Test Base Custom Image Id if available.
-  final pulumi.Input<String>? customImageId;
+  final pulumi.Input<String?>? customImageId;
   /// The name of the OS.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// The properties of the OS release.
-  final pulumi.Input<ReleasePropertiesResponse>? releaseProperties;
+  final pulumi.Input<ReleasePropertiesResponse?>? releaseProperties;
 
   /// Creates a new [OsPropertiesResponse].
   /// [customImageDisplayName] The name of the custom image resource.

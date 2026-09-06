@@ -9,7 +9,7 @@ class TimelineErrorResponse {
   /// the query kind
   final pulumi.Input<String> kind;
   /// the query id
-  final pulumi.Input<String>? queryId;
+  final pulumi.Input<String?>? queryId;
 
   /// Creates a new [TimelineErrorResponse].
   /// [errorMessage] the error message

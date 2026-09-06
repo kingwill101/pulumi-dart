@@ -9,9 +9,9 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_botservice_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// Group ids
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The name of the private endpoint connection associated with the Azure resource
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

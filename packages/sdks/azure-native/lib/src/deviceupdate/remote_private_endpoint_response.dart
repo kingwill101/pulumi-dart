@@ -8,23 +8,23 @@ import 'private_link_service_proxy_response.dart';
 /// Remote private endpoint details.
 class RemotePrivateEndpointResponse {
   /// List of connection details.
-  final pulumi.Input<List<ConnectionDetailsResponse>>? connectionDetails;
+  final pulumi.Input<List<ConnectionDetailsResponse>?>? connectionDetails;
   /// Remote endpoint resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Original resource ID needed by Microsoft.Network.
-  final pulumi.Input<String>? immutableResourceId;
+  final pulumi.Input<String?>? immutableResourceId;
   /// Original subscription ID needed by Microsoft.Network.
-  final pulumi.Input<String>? immutableSubscriptionId;
+  final pulumi.Input<String?>? immutableSubscriptionId;
   /// ARM location of the remote private endpoint.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of private link service connections that need manual approval.
-  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? manualPrivateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>?>? manualPrivateLinkServiceConnections;
   /// List of automatically approved private link service connections.
-  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>>? privateLinkServiceConnections;
+  final pulumi.Input<List<PrivateLinkServiceConnectionResponse>?>? privateLinkServiceConnections;
   /// List of private link service proxies.
-  final pulumi.Input<List<PrivateLinkServiceProxyResponse>>? privateLinkServiceProxies;
+  final pulumi.Input<List<PrivateLinkServiceProxyResponse>?>? privateLinkServiceProxies;
   /// Virtual network traffic tag.
-  final pulumi.Input<String>? vnetTrafficTag;
+  final pulumi.Input<String?>? vnetTrafficTag;
 
   /// Creates a new [RemotePrivateEndpointResponse].
   /// [connectionDetails] List of connection details.

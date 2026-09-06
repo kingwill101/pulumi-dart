@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_instance_args.dart';
 import 'managed_instance_external_administrator_response.dart';
+import 'managed_instance_pec_property_response.dart';
 import 'resource_identity_response.dart';
 import 'service_principal_response.dart';
 import 'sku_response.dart';
@@ -649,7 +650,7 @@ class ManagedInstance extends pulumi.CustomResource {
   /// The resource id of a user assigned identity to be used by default.
   late final pulumi.Output<String?> primaryUserAssignedIdentityId;
   /// List of private endpoint connections on a managed instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<ManagedInstancePecPropertyResponse>> privateEndpointConnections;
   /// Provisioning state of managed instance.
   late final pulumi.Output<String> provisioningState;
   /// Connection type used for connecting to the instance.
@@ -728,7 +729,7 @@ class ManagedInstance extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     pricingModel = registerOutput<String?>('pricingModel');
     primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<ManagedInstancePecPropertyResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePecPropertyResponse>(guardedValue, (value) => ManagedInstancePecPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     proxyOverride = registerOutput<String?>('proxyOverride');
     publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
@@ -740,7 +741,60 @@ class ManagedInstance extends pulumi.CustomResource {
     storageSizeInGB = registerOutput<int?>('storageSizeInGB');
     storageThroughputMBps = registerOutput<int?>('storageThroughputMBps');
     subnetId = registerOutput<String?>('subnetId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timezoneId = registerOutput<String?>('timezoneId');
+    type = registerOutput<String>('type');
+    vCores = registerOutput<int?>('vCores');
+    virtualClusterId = registerOutput<String>('virtualClusterId');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [ManagedInstance] resource.
+  ManagedInstance.reference(String urn)
+    : super(
+        'azure-native:sql:ManagedInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorLogin = registerOutput<String?>('administratorLogin');
+    administrators = registerOutput<ManagedInstanceExternalAdministratorResponse?>('administrators', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedInstanceExternalAdministratorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authenticationMetadata = registerOutput<String?>('authenticationMetadata');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collation = registerOutput<String?>('collation');
+    createTime = registerOutput<String>('createTime');
+    currentBackupStorageRedundancy = registerOutput<String>('currentBackupStorageRedundancy');
+    databaseFormat = registerOutput<String?>('databaseFormat');
+    dnsZone = registerOutput<String>('dnsZone');
+    externalGovernanceStatus = registerOutput<String>('externalGovernanceStatus');
+    fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');
+    hybridSecondaryUsage = registerOutput<String?>('hybridSecondaryUsage');
+    hybridSecondaryUsageDetected = registerOutput<String>('hybridSecondaryUsageDetected');
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instancePoolId = registerOutput<String?>('instancePoolId');
+    isGeneralPurposeV2 = registerOutput<bool?>('isGeneralPurposeV2');
+    keyId = registerOutput<String?>('keyId');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    this.name = registerOutput<String>('name');
+    pricingModel = registerOutput<String?>('pricingModel');
+    primaryUserAssignedIdentityId = registerOutput<String?>('primaryUserAssignedIdentityId');
+    privateEndpointConnections = registerOutput<List<ManagedInstancePecPropertyResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePecPropertyResponse>(guardedValue, (value) => ManagedInstancePecPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    proxyOverride = registerOutput<String?>('proxyOverride');
+    publicDataEndpointEnabled = registerOutput<bool?>('publicDataEndpointEnabled');
+    requestedBackupStorageRedundancy = registerOutput<String?>('requestedBackupStorageRedundancy');
+    servicePrincipal = registerOutput<ServicePrincipalResponse?>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    storageIOps = registerOutput<int?>('storageIOps');
+    storageSizeInGB = registerOutput<int?>('storageSizeInGB');
+    storageThroughputMBps = registerOutput<int?>('storageThroughputMBps');
+    subnetId = registerOutput<String?>('subnetId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timezoneId = registerOutput<String?>('timezoneId');
     type = registerOutput<String>('type');
     vCores = registerOutput<int?>('vCores');

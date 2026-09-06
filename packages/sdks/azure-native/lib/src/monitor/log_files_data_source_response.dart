@@ -11,9 +11,9 @@ class LogFilesDataSourceResponse {
   final pulumi.Input<String> format;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The log files specific settings.
-  final pulumi.Input<LogFilesDataSourceResponseSettings>? settings;
+  final pulumi.Input<LogFilesDataSourceResponseSettings?>? settings;
   /// List of streams that this data source will be sent to.
   /// A stream indicates what schema will be used for this data source
   final pulumi.Input<List<String>> streams;

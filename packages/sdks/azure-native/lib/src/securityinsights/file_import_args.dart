@@ -9,13 +9,13 @@ import 'file_metadata.dart';
 /// {@macro pulumi_securityinsights_file_import_args_doc}
 class FileImportArgs {
   /// The content type of this file.
-  final pulumi.Input<String> contentType;
+  final pulumi.Input<dynamic> contentType;
   /// File import ID
-  final pulumi.Input<String>? fileImportId;
+  final pulumi.Input<String?>? fileImportId;
   /// Represents the imported file.
   final pulumi.Input<FileMetadata> importFile;
   /// Describes how to ingest the records in the file.
-  final pulumi.Input<String> ingestionMode;
+  final pulumi.Input<dynamic> ingestionMode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The source for the data in the file.
@@ -55,10 +55,10 @@ class FileImportArgs {
 
   factory FileImportArgs.fromMap(Map<String, dynamic> map) {
     return FileImportArgs(
-      contentType: pulumi.Input.fromValue(map['contentType'] as String),
+      contentType: pulumi.Input.fromValue(map['contentType']),
       fileImportId: (() { final guardedValue = map['fileImportId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       importFile: pulumi.Input.fromValue(FileMetadata.fromMap((map['importFile']! as Map).cast<String, dynamic>())),
-      ingestionMode: pulumi.Input.fromValue(map['ingestionMode'] as String),
+      ingestionMode: pulumi.Input.fromValue(map['ingestionMode']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       source: pulumi.Input.fromValue(map['source'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_encryption_protector_args_doc}
 class EncryptionProtectorArgs {
   /// Key auto rotation opt-in flag. Either true or false.
-  final pulumi.Input<bool>? autoRotationEnabled;
+  final pulumi.Input<bool?>? autoRotationEnabled;
   /// The name of the encryption protector to be updated.
-  final pulumi.Input<String>? encryptionProtectorName;
+  final pulumi.Input<String?>? encryptionProtectorName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server key.
-  final pulumi.Input<String>? serverKeyName;
+  final pulumi.Input<String?>? serverKeyName;
   /// The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
-  final pulumi.Input<String> serverKeyType;
+  final pulumi.Input<dynamic> serverKeyType;
   /// The name of the server.
   final pulumi.Input<String> serverName;
 
@@ -53,7 +53,7 @@ class EncryptionProtectorArgs {
       encryptionProtectorName: (() { final guardedValue = map['encryptionProtectorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverKeyName: (() { final guardedValue = map['serverKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serverKeyType: pulumi.Input.fromValue(map['serverKeyType'] as String),
+      serverKeyType: pulumi.Input.fromValue(map['serverKeyType']),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
     );
   }

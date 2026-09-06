@@ -10,13 +10,13 @@ class Receiver {
   /// The name of receiver.
   final pulumi.Input<String> name;
   /// OTLP receiver configurations. This field is mandatory for OTLP and pipelineGroup receivers.
-  final pulumi.Input<OtlpReceiver>? otlp;
+  final pulumi.Input<OtlpReceiver?>? otlp;
   /// Syslog configurations. This field is mandatory for syslog type receivers.
-  final pulumi.Input<SyslogReceiver>? syslog;
+  final pulumi.Input<SyslogReceiver?>? syslog;
   /// The type of receiver.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// UDP receiver configurations. This field is mandatory for UDP receivers.
-  final pulumi.Input<UdpReceiver>? udp;
+  final pulumi.Input<UdpReceiver?>? udp;
 
   /// Creates a new [Receiver].
   /// [name] The name of receiver.
@@ -47,7 +47,7 @@ class Receiver {
       name: pulumi.Input.fromValue(map['name'] as String),
       otlp: (() { final guardedValue = map['otlp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OtlpReceiver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       syslog: (() { final guardedValue = map['syslog']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SyslogReceiver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       udp: (() { final guardedValue = map['udp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UdpReceiver.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

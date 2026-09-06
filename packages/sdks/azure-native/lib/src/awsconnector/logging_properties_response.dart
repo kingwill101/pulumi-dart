@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LoggingProperties
 class LoggingPropertiesResponse {
   /// Property bucketName
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// Property s3KeyPrefix
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [LoggingPropertiesResponse].
   /// [bucketName] Property bucketName

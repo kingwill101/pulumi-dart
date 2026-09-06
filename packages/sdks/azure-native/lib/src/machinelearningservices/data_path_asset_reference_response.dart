@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to an asset via its path in a datastore.
 class DataPathAssetReferenceResponse {
   /// ARM resource ID of the datastore where the asset is located.
-  final pulumi.Input<String>? datastoreId;
+  final pulumi.Input<String?>? datastoreId;
   /// The path of the file/directory in the datastore.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'DataPath'.
   final pulumi.Input<String> referenceType;

@@ -28,6 +28,17 @@ Future<GetRetentionPolicyResult> getRetentionPolicy(
   return GetRetentionPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRetentionPolicyResult> getRetentionPolicyOutput(
+  GetRetentionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:durabletask:getRetentionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRetentionPolicyResult.fromMap);
+}
+
 /// Get a Scheduler
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -46,6 +57,17 @@ Future<GetSchedulerResult> getScheduler(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchedulerResult.fromMap(result);
+}
+
+pulumi.Output<GetSchedulerResult> getSchedulerOutput(
+  GetSchedulerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:durabletask:getScheduler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchedulerResult.fromMap);
 }
 
 /// Get a private endpoint connection for the durable task scheduler
@@ -68,6 +90,17 @@ Future<GetSchedulerPrivateEndpointConnectionResult> getSchedulerPrivateEndpointC
   return GetSchedulerPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetSchedulerPrivateEndpointConnectionResult> getSchedulerPrivateEndpointConnectionOutput(
+  GetSchedulerPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:durabletask:getSchedulerPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchedulerPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get a Task Hub
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -86,4 +119,15 @@ Future<GetTaskHubResult> getTaskHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTaskHubResult.fromMap(result);
+}
+
+pulumi.Output<GetTaskHubResult> getTaskHubOutput(
+  GetTaskHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:durabletask:getTaskHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTaskHubResult.fromMap);
 }

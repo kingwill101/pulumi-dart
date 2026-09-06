@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum RRType {
+enum RRType implements pulumi.PulumiEnum<String> {
   a("A"),
   aAAA("AAAA"),
   cAA("CAA"),
@@ -15,6 +17,7 @@ enum RRType {
   tXT("TXT");
 
   const RRType(this.wireValue);
+  @override
   final String wireValue;
 
   static RRType fromValue(String value) {

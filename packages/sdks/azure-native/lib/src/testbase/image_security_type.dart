@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Custom image security type.
-enum ImageSecurityType {
+enum ImageSecurityType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueTrustedLaunch("TrustedLaunch");
 
   const ImageSecurityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageSecurityType fromValue(String value) {

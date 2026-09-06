@@ -6,11 +6,11 @@ import 'referenced_resource_response.dart';
 /// Artifact profile properties.
 class NSDArtifactProfileResponse {
   /// Artifact name.
-  final pulumi.Input<String>? artifactName;
+  final pulumi.Input<String?>? artifactName;
   /// The artifact store resource id
-  final pulumi.Input<ReferencedResourceResponse>? artifactStoreReference;
+  final pulumi.Input<ReferencedResourceResponse?>? artifactStoreReference;
   /// Artifact version.
-  final pulumi.Input<String>? artifactVersion;
+  final pulumi.Input<String?>? artifactVersion;
 
   /// Creates a new [NSDArtifactProfileResponse].
   /// [artifactName] Artifact name.

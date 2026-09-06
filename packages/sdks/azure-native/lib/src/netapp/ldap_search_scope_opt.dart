@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// LDAP search scope
 class LdapSearchScopeOpt {
   /// This specifies the group DN, which overrides the base DN for group lookups.
-  final pulumi.Input<String>? groupDN;
+  final pulumi.Input<String?>? groupDN;
   /// This specifies the custom LDAP search filter to be used when looking up group membership from LDAP server.
-  final pulumi.Input<String>? groupMembershipFilter;
+  final pulumi.Input<String?>? groupMembershipFilter;
   /// This specifies the user DN, which overrides the base DN for user lookups.
-  final pulumi.Input<String>? userDN;
+  final pulumi.Input<String?>? userDN;
 
   /// Creates a new [LdapSearchScopeOpt].
   /// [groupDN] This specifies the group DN, which overrides the base DN for group lookups.

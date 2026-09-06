@@ -21,59 +21,59 @@ class GetClusterResult {
   /// Tenant id of cluster AAD identity.
   final String? aadTenantId;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Type of billing applied to the resource.
-  final String billingModel;
+  final String? billingModel;
   /// Unique, immutable resource id.
-  final String cloudId;
+  final String? cloudId;
   /// Endpoint configured for management from the Azure portal.
   final String? cloudManagementEndpoint;
   /// Overall connectivity status for the cluster resource.
-  final String connectivityStatus;
+  final String? connectivityStatus;
   /// Desired properties of the cluster.
   final ClusterDesiredPropertiesResponse? desiredProperties;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Attestation configurations for isolated VM (e.g. TVM, CVM) of the cluster.
-  final IsolatedVmAttestationConfigurationResponse isolatedVmAttestationConfiguration;
+  final IsolatedVmAttestationConfigurationResponse? isolatedVmAttestationConfiguration;
   /// Most recent billing meter timestamp.
-  final String lastBillingTimestamp;
+  final String? lastBillingTimestamp;
   /// Most recent cluster sync timestamp.
-  final String lastSyncTimestamp;
+  final String? lastSyncTimestamp;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Log Collection properties of the cluster.
   final LogCollectionPropertiesResponse? logCollectionProperties;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
-  final String principalId;
+  final String? principalId;
   /// Provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// First cluster sync timestamp.
-  final String registrationTimestamp;
+  final String? registrationTimestamp;
   /// RemoteSupport properties of the cluster.
   final RemoteSupportPropertiesResponse? remoteSupportProperties;
   /// Properties reported by cluster agent.
-  final ClusterReportedPropertiesResponse reportedProperties;
+  final ClusterReportedPropertiesResponse? reportedProperties;
   /// Object id of RP Service Principal
-  final String resourceProviderObjectId;
+  final String? resourceProviderObjectId;
   /// Region specific DataPath Endpoint of the cluster.
-  final String serviceEndpoint;
+  final String? serviceEndpoint;
   /// Software Assurance properties of the cluster.
   final SoftwareAssurancePropertiesResponse? softwareAssuranceProperties;
   /// Status of the cluster agent.
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
-  final String tenantId;
+  final String? tenantId;
   /// Number of days remaining in the trial period.
-  final double trialDaysRemaining;
+  final double? trialDaysRemaining;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
   final Map<String, UserAssignedIdentityResponse>? userAssignedIdentities;
 
@@ -115,33 +115,33 @@ class GetClusterResult {
     this.aadClientId,
     this.aadServicePrincipalObjectId,
     this.aadTenantId,
-    required this.azureApiVersion,
-    required this.billingModel,
-    required this.cloudId,
+    this.azureApiVersion,
+    this.billingModel,
+    this.cloudId,
     this.cloudManagementEndpoint,
-    required this.connectivityStatus,
+    this.connectivityStatus,
     this.desiredProperties,
-    required this.id,
-    required this.isolatedVmAttestationConfiguration,
-    required this.lastBillingTimestamp,
-    required this.lastSyncTimestamp,
-    required this.location,
+    this.id,
+    this.isolatedVmAttestationConfiguration,
+    this.lastBillingTimestamp,
+    this.lastSyncTimestamp,
+    this.location,
     this.logCollectionProperties,
-    required this.name,
-    required this.principalId,
-    required this.provisioningState,
-    required this.registrationTimestamp,
+    this.name,
+    this.principalId,
+    this.provisioningState,
+    this.registrationTimestamp,
     this.remoteSupportProperties,
-    required this.reportedProperties,
-    required this.resourceProviderObjectId,
-    required this.serviceEndpoint,
+    this.reportedProperties,
+    this.resourceProviderObjectId,
+    this.serviceEndpoint,
     this.softwareAssuranceProperties,
-    required this.status,
-    required this.systemData,
+    this.status,
+    this.systemData,
     this.tags,
-    required this.tenantId,
-    required this.trialDaysRemaining,
-    required this.type,
+    this.tenantId,
+    this.trialDaysRemaining,
+    this.type,
     this.userAssignedIdentities,
   });
 
@@ -151,33 +151,33 @@ class GetClusterResult {
       'aadClientId': ?aadClientId,
       'aadServicePrincipalObjectId': ?aadServicePrincipalObjectId,
       'aadTenantId': ?aadTenantId,
-      'azureApiVersion': azureApiVersion,
-      'billingModel': billingModel,
-      'cloudId': cloudId,
+      'azureApiVersion': ?azureApiVersion,
+      'billingModel': ?billingModel,
+      'cloudId': ?cloudId,
       'cloudManagementEndpoint': ?cloudManagementEndpoint,
-      'connectivityStatus': connectivityStatus,
+      'connectivityStatus': ?connectivityStatus,
       'desiredProperties': ?desiredProperties?.toMap(),
-      'id': id,
-      'isolatedVmAttestationConfiguration': isolatedVmAttestationConfiguration.toMap(),
-      'lastBillingTimestamp': lastBillingTimestamp,
-      'lastSyncTimestamp': lastSyncTimestamp,
-      'location': location,
+      'id': ?id,
+      'isolatedVmAttestationConfiguration': ?isolatedVmAttestationConfiguration?.toMap(),
+      'lastBillingTimestamp': ?lastBillingTimestamp,
+      'lastSyncTimestamp': ?lastSyncTimestamp,
+      'location': ?location,
       'logCollectionProperties': ?logCollectionProperties?.toMap(),
-      'name': name,
-      'principalId': principalId,
-      'provisioningState': provisioningState,
-      'registrationTimestamp': registrationTimestamp,
+      'name': ?name,
+      'principalId': ?principalId,
+      'provisioningState': ?provisioningState,
+      'registrationTimestamp': ?registrationTimestamp,
       'remoteSupportProperties': ?remoteSupportProperties?.toMap(),
-      'reportedProperties': reportedProperties.toMap(),
-      'resourceProviderObjectId': resourceProviderObjectId,
-      'serviceEndpoint': serviceEndpoint,
+      'reportedProperties': ?reportedProperties?.toMap(),
+      'resourceProviderObjectId': ?resourceProviderObjectId,
+      'serviceEndpoint': ?serviceEndpoint,
       'softwareAssuranceProperties': ?softwareAssuranceProperties?.toMap(),
-      'status': status,
-      'systemData': systemData.toMap(),
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'tenantId': tenantId,
-      'trialDaysRemaining': trialDaysRemaining,
-      'type': type,
+      'tenantId': ?tenantId,
+      'trialDaysRemaining': ?trialDaysRemaining,
+      'type': ?type,
       'userAssignedIdentities': ?(() { final guardedValue = userAssignedIdentities; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<UserAssignedIdentityResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
@@ -188,33 +188,33 @@ class GetClusterResult {
       aadClientId: (() { final guardedValue = map['aadClientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       aadServicePrincipalObjectId: (() { final guardedValue = map['aadServicePrincipalObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       aadTenantId: (() { final guardedValue = map['aadTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      billingModel: map['billingModel'] as String,
-      cloudId: map['cloudId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      billingModel: (() { final guardedValue = map['billingModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cloudId: (() { final guardedValue = map['cloudId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cloudManagementEndpoint: (() { final guardedValue = map['cloudManagementEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      connectivityStatus: map['connectivityStatus'] as String,
+      connectivityStatus: (() { final guardedValue = map['connectivityStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       desiredProperties: (() { final guardedValue = map['desiredProperties']; if (guardedValue == null) return null; return ClusterDesiredPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      isolatedVmAttestationConfiguration: IsolatedVmAttestationConfigurationResponse.fromMap((map['isolatedVmAttestationConfiguration']! as Map).cast<String, dynamic>()),
-      lastBillingTimestamp: map['lastBillingTimestamp'] as String,
-      lastSyncTimestamp: map['lastSyncTimestamp'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isolatedVmAttestationConfiguration: (() { final guardedValue = map['isolatedVmAttestationConfiguration']; if (guardedValue == null) return null; return IsolatedVmAttestationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      lastBillingTimestamp: (() { final guardedValue = map['lastBillingTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastSyncTimestamp: (() { final guardedValue = map['lastSyncTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logCollectionProperties: (() { final guardedValue = map['logCollectionProperties']; if (guardedValue == null) return null; return LogCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      principalId: map['principalId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      registrationTimestamp: map['registrationTimestamp'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      registrationTimestamp: (() { final guardedValue = map['registrationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       remoteSupportProperties: (() { final guardedValue = map['remoteSupportProperties']; if (guardedValue == null) return null; return RemoteSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      reportedProperties: ClusterReportedPropertiesResponse.fromMap((map['reportedProperties']! as Map).cast<String, dynamic>()),
-      resourceProviderObjectId: map['resourceProviderObjectId'] as String,
-      serviceEndpoint: map['serviceEndpoint'] as String,
+      reportedProperties: (() { final guardedValue = map['reportedProperties']; if (guardedValue == null) return null; return ClusterReportedPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      resourceProviderObjectId: (() { final guardedValue = map['resourceProviderObjectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceEndpoint: (() { final guardedValue = map['serviceEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       softwareAssuranceProperties: (() { final guardedValue = map['softwareAssuranceProperties']; if (guardedValue == null) return null; return SoftwareAssurancePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tenantId: map['tenantId'] as String,
-      trialDaysRemaining: map['trialDaysRemaining'] as double,
-      type: map['type'] as String,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      trialDaysRemaining: (() { final guardedValue = map['trialDaysRemaining']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserAssignedIdentityResponse>(guardedValue, (value) => UserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

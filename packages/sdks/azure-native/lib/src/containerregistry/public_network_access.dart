@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether or not public network access is allowed for the container registry.
-enum PublicNetworkAccess {
+enum PublicNetworkAccess implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccess fromValue(String value) {

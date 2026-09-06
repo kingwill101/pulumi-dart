@@ -10,17 +10,17 @@ import 'workspace_resource_properties.dart';
 /// {@macro pulumi_quantum_workspace_args_doc}
 class WorkspaceArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the properties. Define quantum workspace's specific properties.
-  final pulumi.Input<WorkspaceResourceProperties>? properties;
+  final pulumi.Input<WorkspaceResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the quantum workspace resource.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [WorkspaceArgs].
   /// [identity] The managed service identities assigned to this resource.

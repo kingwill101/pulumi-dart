@@ -9,33 +9,33 @@ import 'mhsmprivate_endpoint_connection_item_response.dart';
 /// Properties of the managed HSM Pool
 class ManagedHsmPropertiesResponse {
   /// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
-  final pulumi.Input<bool>? enablePurgeProtection;
+  final pulumi.Input<bool?>? enablePurgeProtection;
   /// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
-  final pulumi.Input<bool>? enableSoftDelete;
+  final pulumi.Input<bool?>? enableSoftDelete;
   /// The URI of the managed hsm pool for performing operations on keys.
   final pulumi.Input<String> hsmUri;
   /// Array of initial administrators object ids for this managed hsm pool.
-  final pulumi.Input<List<String>>? initialAdminObjectIds;
+  final pulumi.Input<List<String>?>? initialAdminObjectIds;
   /// Rules governing the accessibility of the key vault from specific network locations.
-  final pulumi.Input<MHSMNetworkRuleSetResponse>? networkAcls;
+  final pulumi.Input<MHSMNetworkRuleSetResponse?>? networkAcls;
   /// List of private endpoint connections associated with the managed hsm pool.
   final pulumi.Input<List<MHSMPrivateEndpointConnectionItemResponse>> privateEndpointConnections;
   /// Provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Control permission to the managed HSM from public networks.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// List of all regions associated with the managed hsm pool.
-  final pulumi.Input<List<MHSMGeoReplicatedRegionResponse>>? regions;
+  final pulumi.Input<List<MHSMGeoReplicatedRegionResponse>?>? regions;
   /// The scheduled purge date in UTC.
   final pulumi.Input<String> scheduledPurgeDate;
   /// Managed HSM security domain properties.
   final pulumi.Input<ManagedHSMSecurityDomainPropertiesResponse> securityDomainProperties;
   /// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
-  final pulumi.Input<int>? softDeleteRetentionInDays;
+  final pulumi.Input<int?>? softDeleteRetentionInDays;
   /// Resource Status Message.
   final pulumi.Input<String> statusMessage;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedHsmPropertiesResponse].
   /// [enablePurgeProtection] Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
@@ -52,22 +52,22 @@ class ManagedHsmPropertiesResponse {
   /// [softDeleteRetentionInDays] Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
   /// [statusMessage] Resource Status Message.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  const ManagedHsmPropertiesResponse({
-    this.enablePurgeProtection,
-    this.enableSoftDelete,
+  ManagedHsmPropertiesResponse({
+    pulumi.Input<bool?>? enablePurgeProtection,
+    pulumi.Input<bool?>? enableSoftDelete,
     required this.hsmUri,
     this.initialAdminObjectIds,
     this.networkAcls,
     required this.privateEndpointConnections,
     required this.provisioningState,
-    this.publicNetworkAccess,
+    pulumi.Input<String?>? publicNetworkAccess,
     this.regions,
     required this.scheduledPurgeDate,
     required this.securityDomainProperties,
-    this.softDeleteRetentionInDays,
+    pulumi.Input<int?>? softDeleteRetentionInDays,
     required this.statusMessage,
     this.tenantId,
-  });
+  }) : enablePurgeProtection = enablePurgeProtection ?? pulumi.Input.fromValue(true), enableSoftDelete = enableSoftDelete ?? pulumi.Input.fromValue(true), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), softDeleteRetentionInDays = softDeleteRetentionInDays ?? pulumi.Input.fromValue(90);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,7 +101,7 @@ class ManagedHsmPropertiesResponse {
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MHSMGeoReplicatedRegionResponse>(guardedValue, (value) => MHSMGeoReplicatedRegionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scheduledPurgeDate: pulumi.Input.fromValue(map['scheduledPurgeDate'] as String),
       securityDomainProperties: pulumi.Input.fromValue(ManagedHSMSecurityDomainPropertiesResponse.fromMap((map['securityDomainProperties']! as Map).cast<String, dynamic>())),
-      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       statusMessage: pulumi.Input.fromValue(map['statusMessage'] as String),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

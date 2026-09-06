@@ -15,11 +15,11 @@ class CertManagerIssuerRefResponse {
   /// [group] group of issuer.
   /// [kind] kind of issuer (Issuer or ClusterIssuer).
   /// [name] name of issuer.
-  const CertManagerIssuerRefResponse({
-    required this.group,
+  CertManagerIssuerRefResponse({
+    pulumi.Input<String>? group,
     required this.kind,
     required this.name,
-  });
+  }) : group = group ?? pulumi.Input.fromValue('cert-manager.io');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

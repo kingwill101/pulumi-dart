@@ -17,9 +17,9 @@ class SerialPortArgs {
   /// The namespace of the resource provider.
   final pulumi.Input<String> resourceProviderNamespace;
   /// The name of the serial port to create.
-  final pulumi.Input<String>? serialPort;
+  final pulumi.Input<String?>? serialPort;
   /// Specifies whether the port is enabled for a serial console connection.
-  final pulumi.Input<SerialPortState>? state;
+  final pulumi.Input<SerialPortState?>? state;
 
   /// Creates a new [SerialPortArgs].
   /// [parentResource] The resource name, or subordinate path, for the parent of the serial port. For example: the name of the virtual machine.

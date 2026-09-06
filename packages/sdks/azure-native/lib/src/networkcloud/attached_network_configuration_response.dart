@@ -7,11 +7,11 @@ import 'trunked_network_attachment_configuration_response.dart';
 
 class AttachedNetworkConfigurationResponse {
   /// The list of Layer 2 Networks and related configuration for attachment.
-  final pulumi.Input<List<L2NetworkAttachmentConfigurationResponse>>? l2Networks;
+  final pulumi.Input<List<L2NetworkAttachmentConfigurationResponse>?>? l2Networks;
   /// The list of Layer 3 Networks and related configuration for attachment.
-  final pulumi.Input<List<L3NetworkAttachmentConfigurationResponse>>? l3Networks;
+  final pulumi.Input<List<L3NetworkAttachmentConfigurationResponse>?>? l3Networks;
   /// The list of Trunked Networks and related configuration for attachment.
-  final pulumi.Input<List<TrunkedNetworkAttachmentConfigurationResponse>>? trunkedNetworks;
+  final pulumi.Input<List<TrunkedNetworkAttachmentConfigurationResponse>?>? trunkedNetworks;
 
   /// Creates a new [AttachedNetworkConfigurationResponse].
   /// [l2Networks] The list of Layer 2 Networks and related configuration for attachment.

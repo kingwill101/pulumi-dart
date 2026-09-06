@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The V3 type of the mapped entity
-enum EntityMappingType {
+enum EntityMappingType implements pulumi.PulumiEnum<String> {
   valueAccount("Account"),
   valueHost("Host"),
   valueIP("IP"),
@@ -20,6 +22,7 @@ enum EntityMappingType {
   valueSubmissionMail("SubmissionMail");
 
   const EntityMappingType(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityMappingType fromValue(String value) {

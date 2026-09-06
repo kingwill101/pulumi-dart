@@ -5,27 +5,27 @@ import 'system_data_response.dart';
 /// Result data returned by getSolutionConfiguration.
 class GetSolutionConfigurationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The last time resources were inventoried
-  final String lastSyncTime;
+  final String? lastSyncTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Solution settings
   final Map<String, String>? solutionSettings;
   /// The type of the solution
-  final String solutionType;
+  final String? solutionType;
   /// The status of solution configurations
-  final String status;
+  final String? status;
   /// The detailed message of status details
-  final String statusDetails;
+  final String? statusDetails;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSolutionConfigurationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetSolutionConfigurationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSolutionConfigurationResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.lastSyncTime,
-    required this.name,
-    required this.provisioningState,
+    this.azureApiVersion,
+    this.id,
+    this.lastSyncTime,
+    this.name,
+    this.provisioningState,
     this.solutionSettings,
-    required this.solutionType,
-    required this.status,
-    required this.statusDetails,
-    required this.systemData,
-    required this.type,
+    this.solutionType,
+    this.status,
+    this.statusDetails,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'lastSyncTime': lastSyncTime,
-      'name': name,
-      'provisioningState': provisioningState,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'lastSyncTime': ?lastSyncTime,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'solutionSettings': ?solutionSettings,
-      'solutionType': solutionType,
-      'status': status,
-      'statusDetails': statusDetails,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'solutionType': ?solutionType,
+      'status': ?status,
+      'statusDetails': ?statusDetails,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSolutionConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetSolutionConfigurationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      lastSyncTime: map['lastSyncTime'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastSyncTime: (() { final guardedValue = map['lastSyncTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       solutionSettings: (() { final guardedValue = map['solutionSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      solutionType: map['solutionType'] as String,
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      solutionType: (() { final guardedValue = map['solutionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusDetails: (() { final guardedValue = map['statusDetails']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state.
-enum SubscriptionTransitioningState {
+enum SubscriptionTransitioningState implements pulumi.PulumiEnum<String> {
   registered("Registered"),
   unregistered("Unregistered"),
   warned("Warned"),
@@ -15,6 +17,7 @@ enum SubscriptionTransitioningState {
   suspendedToUnregistered("SuspendedToUnregistered");
 
   const SubscriptionTransitioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static SubscriptionTransitioningState fromValue(String value) {

@@ -410,7 +410,29 @@ class Alert extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    providerNames = registerOutput<List<String>?>('providerNames');
+    providerNames = registerOutput<List<String>?>('providerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providerType = registerOutput<String?>('providerType');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    templateName = registerOutput<String?>('templateName');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Alert] resource.
+  Alert.reference(String urn)
+    : super(
+        'azure-native:workloads:Alert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertRuleProperties = registerOutput<AlertRulePropertiesResponse?>('alertRuleProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    alertRuleResourceId = registerOutput<String>('alertRuleResourceId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errors = registerOutput<ErrorDetailResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    providerNames = registerOutput<List<String>?>('providerNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     providerType = registerOutput<String?>('providerType');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

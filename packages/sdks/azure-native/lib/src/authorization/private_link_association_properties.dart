@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PrivateLinkAssociationProperties {
   /// The rmpl Resource ID.
-  final pulumi.Input<String>? privateLink;
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? privateLink;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
 
   /// Creates a new [PrivateLinkAssociationProperties].
   /// [privateLink] The rmpl Resource ID.
@@ -25,7 +25,7 @@ class PrivateLinkAssociationProperties {
   factory PrivateLinkAssociationProperties.fromMap(Map<String, dynamic> map) {
     return PrivateLinkAssociationProperties(
       privateLink: (() { final guardedValue = map['privateLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

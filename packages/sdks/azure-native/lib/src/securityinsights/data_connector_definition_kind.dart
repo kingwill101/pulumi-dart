@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data connector kind
-enum DataConnectorDefinitionKind {
+enum DataConnectorDefinitionKind implements pulumi.PulumiEnum<String> {
   valueCustomizable("Customizable");
 
   const DataConnectorDefinitionKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DataConnectorDefinitionKind fromValue(String value) {

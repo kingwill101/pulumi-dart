@@ -9,25 +9,25 @@ import 'security_alerts_policy_state.dart';
 /// {@macro pulumi_sql_server_security_alert_policy_args_doc}
 class ServerSecurityAlertPolicyArgs {
   /// Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
-  final pulumi.Input<List<String>>? disabledAlerts;
+  final pulumi.Input<List<String>?>? disabledAlerts;
   /// Specifies that the alert is sent to the account administrators.
-  final pulumi.Input<bool>? emailAccountAdmins;
+  final pulumi.Input<bool?>? emailAccountAdmins;
   /// Specifies an array of e-mail addresses to which the alert is sent.
-  final pulumi.Input<List<String>>? emailAddresses;
+  final pulumi.Input<List<String>?>? emailAddresses;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the number of days to keep in the Threat Detection audit logs.
-  final pulumi.Input<int>? retentionDays;
+  final pulumi.Input<int?>? retentionDays;
   /// The name of the threat detection policy.
-  final pulumi.Input<String>? securityAlertPolicyName;
+  final pulumi.Input<String?>? securityAlertPolicyName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Specifies the state of the policy, whether it is enabled or disabled or a policy has not been applied yet on the specific database.
   final pulumi.Input<SecurityAlertsPolicyState> state;
   /// Specifies the identifier key of the Threat Detection audit storage account.
-  final pulumi.Input<String>? storageAccountAccessKey;
+  final pulumi.Input<String?>? storageAccountAccessKey;
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
-  final pulumi.Input<String>? storageEndpoint;
+  final pulumi.Input<String?>? storageEndpoint;
 
   /// Creates a new [ServerSecurityAlertPolicyArgs].
   /// [disabledAlerts] Specifies an array of alerts that are disabled. Allowed values are: Sql_Injection, Sql_Injection_Vulnerability, Access_Anomaly, Data_Exfiltration, Unsafe_Action, Brute_Force
@@ -74,7 +74,7 @@ class ServerSecurityAlertPolicyArgs {
       emailAccountAdmins: (() { final guardedValue = map['emailAccountAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       emailAddresses: (() { final guardedValue = map['emailAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       securityAlertPolicyName: (() { final guardedValue = map['securityAlertPolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       state: pulumi.Input.fromValue(SecurityAlertsPolicyState.fromValue(map['state']! as String)),

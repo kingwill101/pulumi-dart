@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z.
 class TimeSpanResponse {
   /// The end of a time span
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// The start of a time span
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [TimeSpanResponse].
   /// [end] The end of a time span

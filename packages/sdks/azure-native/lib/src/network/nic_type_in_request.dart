@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// NIC type. This should be either PublicNic or PrivateNic.
-enum NicTypeInRequest {
+enum NicTypeInRequest implements pulumi.PulumiEnum<String> {
   valuePublicNic("PublicNic"),
   valuePrivateNic("PrivateNic");
 
   const NicTypeInRequest(this.wireValue);
+  @override
   final String wireValue;
 
   static NicTypeInRequest fromValue(String value) {

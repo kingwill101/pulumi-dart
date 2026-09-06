@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedClusterIngressProfileNginxResponse {
   /// Ingress type for the default NginxIngressController custom resource
-  final pulumi.Input<String>? defaultIngressControllerType;
+  final pulumi.Input<String?>? defaultIngressControllerType;
 
   /// Creates a new [ManagedClusterIngressProfileNginxResponse].
   /// [defaultIngressControllerType] Ingress type for the default NginxIngressController custom resource

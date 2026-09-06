@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The collection of content validation properties
 class WebTestPropertiesValidationRulesContentValidation {
   /// Content to look for in the return of the WebTest.  Must not be null or empty.
-  final pulumi.Input<String>? contentMatch;
+  final pulumi.Input<String?>? contentMatch;
   /// When set, this value makes the ContentMatch validation case insensitive.
-  final pulumi.Input<bool>? ignoreCase;
+  final pulumi.Input<bool?>? ignoreCase;
   /// When true, validation will pass if there is a match for the ContentMatch string.  If false, validation will fail if there is a match
-  final pulumi.Input<bool>? passIfTextFound;
+  final pulumi.Input<bool?>? passIfTextFound;
 
   /// Creates a new [WebTestPropertiesValidationRulesContentValidation].
   /// [contentMatch] Content to look for in the return of the WebTest.  Must not be null or empty.

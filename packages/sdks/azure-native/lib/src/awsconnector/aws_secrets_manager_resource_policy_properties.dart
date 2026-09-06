@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsSecretsManagerResourcePolicy
 class AwsSecretsManagerResourcePolicyProperties {
   /// Property blockPublicPolicy
-  final pulumi.Input<bool>? blockPublicPolicy;
+  final pulumi.Input<bool?>? blockPublicPolicy;
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Property resourcePolicy
   final pulumi.Input<dynamic>? resourcePolicy;
   /// Property secretId
-  final pulumi.Input<String>? secretId;
+  final pulumi.Input<String?>? secretId;
 
   /// Creates a new [AwsSecretsManagerResourcePolicyProperties].
   /// [blockPublicPolicy] Property blockPublicPolicy

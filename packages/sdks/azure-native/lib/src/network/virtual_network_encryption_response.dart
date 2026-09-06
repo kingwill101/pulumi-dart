@@ -7,7 +7,7 @@ class VirtualNetworkEncryptionResponse {
   /// Indicates if encryption is enabled on the virtual network.
   final pulumi.Input<bool> enabled;
   /// If the encrypted VNet allows VM that does not support encryption. This field is for future support, AllowUnencrypted is the only supported value at general availability.
-  final pulumi.Input<String>? enforcement;
+  final pulumi.Input<String?>? enforcement;
 
   /// Creates a new [VirtualNetworkEncryptionResponse].
   /// [enabled] Indicates if encryption is enabled on the virtual network.

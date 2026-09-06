@@ -6,27 +6,27 @@ class ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult {
   /// product Serial associated with given resource
   final String? serialNumber;
   /// allocation status of the product serial number
-  final String status;
+  final String? status;
 
   /// Creates a new [ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult].
   /// [serialNumber] product Serial associated with given resource
   /// [status] allocation status of the product serial number
   const ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult({
     this.serialNumber,
-    required this.status,
+    this.status,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'serialNumber': ?serialNumber,
-      'status': status,
+      'status': ?status,
     };
   }
 
   factory ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult.fromMap(Map<String, dynamic> map) {
     return ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult(
       serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

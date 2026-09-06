@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration of the Kafka cluster
 class ClusterConfigEntityResponse {
   /// The lifecycle phase of the cluster
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ClusterConfigEntityResponse].
   /// [kind] The lifecycle phase of the cluster

@@ -58,6 +58,17 @@ Future<GetAttachedDatabaseConfigurationResult> getAttachedDatabaseConfiguration(
   return GetAttachedDatabaseConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetAttachedDatabaseConfigurationResult> getAttachedDatabaseConfigurationOutput(
+  GetAttachedDatabaseConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getAttachedDatabaseConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachedDatabaseConfigurationResult.fromMap);
+}
+
 /// Gets a Kusto cluster.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -76,6 +87,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Gets a Kusto cluster principalAssignment.
@@ -98,6 +120,17 @@ Future<GetClusterPrincipalAssignmentResult> getClusterPrincipalAssignment(
   return GetClusterPrincipalAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterPrincipalAssignmentResult> getClusterPrincipalAssignmentOutput(
+  GetClusterPrincipalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getClusterPrincipalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterPrincipalAssignmentResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -114,6 +147,17 @@ Future<GetCosmosDbDataConnectionResult> getCosmosDbDataConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCosmosDbDataConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetCosmosDbDataConnectionResult> getCosmosDbDataConnectionOutput(
+  GetCosmosDbDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getCosmosDbDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCosmosDbDataConnectionResult.fromMap);
 }
 
 /// Gets a Kusto cluster database principalAssignment.
@@ -136,6 +180,17 @@ Future<GetDatabasePrincipalAssignmentResult> getDatabasePrincipalAssignment(
   return GetDatabasePrincipalAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabasePrincipalAssignmentResult> getDatabasePrincipalAssignmentOutput(
+  GetDatabasePrincipalAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getDatabasePrincipalAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabasePrincipalAssignmentResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -152,6 +207,17 @@ Future<GetEventGridDataConnectionResult> getEventGridDataConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventGridDataConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetEventGridDataConnectionResult> getEventGridDataConnectionOutput(
+  GetEventGridDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getEventGridDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventGridDataConnectionResult.fromMap);
 }
 
 /// Returns an Event Hub connection.
@@ -172,6 +238,17 @@ Future<GetEventHubConnectionResult> getEventHubConnection(
   return GetEventHubConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetEventHubConnectionResult> getEventHubConnectionOutput(
+  GetEventHubConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getEventHubConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubConnectionResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -190,6 +267,17 @@ Future<GetEventHubDataConnectionResult> getEventHubDataConnection(
   return GetEventHubDataConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetEventHubDataConnectionResult> getEventHubDataConnectionOutput(
+  GetEventHubDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getEventHubDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubDataConnectionResult.fromMap);
+}
+
 /// Returns a data connection.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -206,6 +294,17 @@ Future<GetIotHubDataConnectionResult> getIotHubDataConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIotHubDataConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetIotHubDataConnectionResult> getIotHubDataConnectionOutput(
+  GetIotHubDataConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getIotHubDataConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotHubDataConnectionResult.fromMap);
 }
 
 /// Gets a managed private endpoint.
@@ -228,6 +327,17 @@ Future<GetManagedPrivateEndpointResult> getManagedPrivateEndpoint(
   return GetManagedPrivateEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedPrivateEndpointResult> getManagedPrivateEndpointOutput(
+  GetManagedPrivateEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getManagedPrivateEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedPrivateEndpointResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -248,6 +358,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Returns a database.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -266,6 +387,17 @@ Future<GetReadOnlyFollowingDatabaseResult> getReadOnlyFollowingDatabase(
   return GetReadOnlyFollowingDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetReadOnlyFollowingDatabaseResult> getReadOnlyFollowingDatabaseOutput(
+  GetReadOnlyFollowingDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getReadOnlyFollowingDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReadOnlyFollowingDatabaseResult.fromMap);
+}
+
 /// Returns a database.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -282,6 +414,17 @@ Future<GetReadWriteDatabaseResult> getReadWriteDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReadWriteDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetReadWriteDatabaseResult> getReadWriteDatabaseOutput(
+  GetReadWriteDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getReadWriteDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReadWriteDatabaseResult.fromMap);
 }
 
 /// Returns a sandbox custom image
@@ -304,6 +447,17 @@ Future<GetSandboxCustomImageResult> getSandboxCustomImage(
   return GetSandboxCustomImageResult.fromMap(result);
 }
 
+pulumi.Output<GetSandboxCustomImageResult> getSandboxCustomImageOutput(
+  GetSandboxCustomImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getSandboxCustomImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSandboxCustomImageResult.fromMap);
+}
+
 /// Gets a Kusto cluster database script.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -322,6 +476,17 @@ Future<GetScriptResult> getScript(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScriptResult.fromMap(result);
+}
+
+pulumi.Output<GetScriptResult> getScriptOutput(
+  GetScriptArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:getScript',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScriptResult.fromMap);
 }
 
 /// Returns the allowed callout policies for the specified service.
@@ -344,6 +509,17 @@ Future<ListClusterCalloutPoliciesResult> listClusterCalloutPolicies(
   return ListClusterCalloutPoliciesResult.fromMap(result);
 }
 
+pulumi.Output<ListClusterCalloutPoliciesResult> listClusterCalloutPoliciesOutput(
+  ListClusterCalloutPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:listClusterCalloutPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListClusterCalloutPoliciesResult.fromMap);
+}
+
 /// Returns a list of databases that are owned by this cluster and were followed by another cluster.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -362,6 +538,17 @@ Future<ListClusterFollowerDatabasesResult> listClusterFollowerDatabases(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListClusterFollowerDatabasesResult.fromMap(result);
+}
+
+pulumi.Output<ListClusterFollowerDatabasesResult> listClusterFollowerDatabasesOutput(
+  ListClusterFollowerDatabasesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:listClusterFollowerDatabases',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListClusterFollowerDatabasesResult.fromMap);
 }
 
 /// Returns a list of language extensions that can run within KQL queries.
@@ -384,6 +571,17 @@ Future<ListClusterLanguageExtensionsResult> listClusterLanguageExtensions(
   return ListClusterLanguageExtensionsResult.fromMap(result);
 }
 
+pulumi.Output<ListClusterLanguageExtensionsResult> listClusterLanguageExtensionsOutput(
+  ListClusterLanguageExtensionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:listClusterLanguageExtensions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListClusterLanguageExtensionsResult.fromMap);
+}
+
 /// Returns a list of database principals of the given Kusto cluster and database.
 ///
 /// Uses Azure REST API version 2024-04-13.
@@ -402,4 +600,15 @@ Future<ListDatabasePrincipalsResult> listDatabasePrincipals(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListDatabasePrincipalsResult.fromMap(result);
+}
+
+pulumi.Output<ListDatabasePrincipalsResult> listDatabasePrincipalsOutput(
+  ListDatabasePrincipalsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kusto:listDatabasePrincipals',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDatabasePrincipalsResult.fromMap);
 }

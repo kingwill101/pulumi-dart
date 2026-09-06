@@ -9,7 +9,7 @@ class SecurityAlertTimelineItemResponse {
   /// The alert azure resource id.
   final pulumi.Input<String> azureResourceId;
   /// The alert description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The alert name.
   final pulumi.Input<String> displayName;
   /// The alert end time.
@@ -20,13 +20,13 @@ class SecurityAlertTimelineItemResponse {
   /// Expected value is 'SecurityAlert'.
   final pulumi.Input<String> kind;
   /// The alert product name.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
   /// The alert severity.
   final pulumi.Input<String> severity;
   /// The alert start time.
   final pulumi.Input<String> startTimeUtc;
   /// The techniques of the alert.
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// The alert generated time.
   final pulumi.Input<String> timeGenerated;
 

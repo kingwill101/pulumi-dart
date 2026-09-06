@@ -6,7 +6,7 @@ import 'k8s_network_settings_response.dart';
 /// The kubernetes settings information.
 class K8sSettingsResponse {
   /// The kubernetes network settings information.
-  final pulumi.Input<K8sNetworkSettingsResponse>? network;
+  final pulumi.Input<K8sNetworkSettingsResponse?>? network;
 
   /// Creates a new [K8sSettingsResponse].
   /// [network] The kubernetes network settings information.

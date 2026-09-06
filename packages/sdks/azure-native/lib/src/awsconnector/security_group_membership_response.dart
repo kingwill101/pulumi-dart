@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SecurityGroupMembership
 class SecurityGroupMembershipResponse {
   /// &lt;p&gt;The unique ID for this security group.&lt;/p&gt;
-  final pulumi.Input<String>? securityGroupIdentifier;
+  final pulumi.Input<String?>? securityGroupIdentifier;
   /// &lt;p&gt;The status of this security group.&lt;/p&gt;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SecurityGroupMembershipResponse].
   /// [securityGroupIdentifier] &lt;p&gt;The unique ID for this security group.&lt;/p&gt;

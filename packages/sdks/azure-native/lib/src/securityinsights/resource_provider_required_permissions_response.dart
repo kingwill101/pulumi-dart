@@ -6,13 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// For more information about the permissions see &lt;see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format"&gt;here&lt;/see&gt;.
 class ResourceProviderRequiredPermissionsResponse {
   /// Gets or sets a value indicating whether the permission is custom actions (POST).
-  final pulumi.Input<bool>? action;
+  final pulumi.Input<bool?>? action;
   /// Gets or sets a value indicating whether the permission is delete action (DELETE).
-  final pulumi.Input<bool>? delete;
+  final pulumi.Input<bool?>? delete;
   /// Gets or sets a value indicating whether the permission is read action (GET).
-  final pulumi.Input<bool>? read;
+  final pulumi.Input<bool?>? read;
   /// Gets or sets a value indicating whether the permission is write action (PUT or PATCH).
-  final pulumi.Input<bool>? write;
+  final pulumi.Input<bool?>? write;
 
   /// Creates a new [ResourceProviderRequiredPermissionsResponse].
   /// [action] Gets or sets a value indicating whether the permission is custom actions (POST).

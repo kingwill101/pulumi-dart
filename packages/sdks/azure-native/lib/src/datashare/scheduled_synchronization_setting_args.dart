@@ -13,13 +13,13 @@ class ScheduledSynchronizationSettingArgs {
   /// Expected value is 'ScheduleBased'.
   final pulumi.Input<String> kind;
   /// Recurrence Interval
-  final pulumi.Input<String> recurrenceInterval;
+  final pulumi.Input<dynamic> recurrenceInterval;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the share to add the synchronization setting to.
   final pulumi.Input<String> shareName;
   /// The name of the synchronizationSetting.
-  final pulumi.Input<String>? synchronizationSettingName;
+  final pulumi.Input<String?>? synchronizationSettingName;
   /// Synchronization time
   final pulumi.Input<String> synchronizationTime;
 
@@ -57,7 +57,7 @@ class ScheduledSynchronizationSettingArgs {
     return ScheduledSynchronizationSettingArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      recurrenceInterval: pulumi.Input.fromValue(map['recurrenceInterval'] as String),
+      recurrenceInterval: pulumi.Input.fromValue(map['recurrenceInterval']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareName: pulumi.Input.fromValue(map['shareName'] as String),
       synchronizationSettingName: (() { final guardedValue = map['synchronizationSettingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

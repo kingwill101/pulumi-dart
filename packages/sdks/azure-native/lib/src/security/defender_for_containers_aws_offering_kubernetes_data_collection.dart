@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The kubernetes data collection connection configuration
 class DefenderForContainersAwsOfferingKubernetesDataCollection {
   /// The cloud role ARN in AWS for this feature used for reading data
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingKubernetesDataCollection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for reading data

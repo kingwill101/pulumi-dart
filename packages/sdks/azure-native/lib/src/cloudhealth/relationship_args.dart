@@ -11,9 +11,9 @@ class RelationshipArgs {
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RelationshipProperties>? properties;
+  final pulumi.Input<RelationshipProperties?>? properties;
   /// Name of the relationship. Must be unique within a health model. For example, a concatenation of parentEntityName and childEntityName can be used as the name.
-  final pulumi.Input<String>? relationshipName;
+  final pulumi.Input<String?>? relationshipName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

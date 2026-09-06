@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret definition.
 class SessionPoolSecretResponse {
   /// Secret Name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SessionPoolSecretResponse].
   /// [name] Secret Name.

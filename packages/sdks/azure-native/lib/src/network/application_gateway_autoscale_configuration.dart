@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application Gateway autoscale configuration.
 class ApplicationGatewayAutoscaleConfiguration {
   /// Upper bound on number of Application Gateway capacity.
-  final pulumi.Input<int>? maxCapacity;
+  final pulumi.Input<int?>? maxCapacity;
   /// Lower bound on number of Application Gateway capacity.
   final pulumi.Input<int> minCapacity;
 
@@ -26,8 +26,8 @@ class ApplicationGatewayAutoscaleConfiguration {
 
   factory ApplicationGatewayAutoscaleConfiguration.fromMap(Map<String, dynamic> map) {
     return ApplicationGatewayAutoscaleConfiguration(
-      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minCapacity: pulumi.Input.fromValue(map['minCapacity'] as int),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minCapacity'])),
     );
   }
 }

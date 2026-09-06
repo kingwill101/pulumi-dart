@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_disaster_recovery_configuration_args_doc}
 class DisasterRecoveryConfigurationArgs {
   /// The name of the disaster recovery configuration to be created/updated.
-  final pulumi.Input<String>? disasterRecoveryConfigurationName;
+  final pulumi.Input<String?>? disasterRecoveryConfigurationName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

@@ -9,23 +9,23 @@ import 'volume_mount.dart';
 /// Container App container definition
 class Container {
   /// Container start command arguments.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Container start command.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Container environment variables.
-  final pulumi.Input<List<EnvironmentVar>>? env;
+  final pulumi.Input<List<EnvironmentVar>?>? env;
   /// Container image tag.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The type of the image. Set to CloudBuild to let the system manages the image, where user will not be able to update image through image field. Set to ContainerImage for user provided image.
-  final pulumi.Input<String>? imageType;
+  final pulumi.Input<dynamic>? imageType;
   /// Custom container name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of probes for the container.
-  final pulumi.Input<List<ContainerAppProbe>>? probes;
+  final pulumi.Input<List<ContainerAppProbe>?>? probes;
   /// Container resource requirements.
-  final pulumi.Input<ContainerResources>? resources;
+  final pulumi.Input<ContainerResources?>? resources;
   /// Container volume mounts.
-  final pulumi.Input<List<VolumeMount>>? volumeMounts;
+  final pulumi.Input<List<VolumeMount>?>? volumeMounts;
 
   /// Creates a new [Container].
   /// [args] Container start command arguments.
@@ -69,7 +69,7 @@ class Container {
       command: (() { final guardedValue = map['command']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       env: (() { final guardedValue = map['env']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EnvironmentVar>(guardedValue, (value) => EnvironmentVar.fromMap((value as Map).cast<String, dynamic>()))); })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      imageType: (() { final guardedValue = map['imageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      imageType: (() { final guardedValue = map['imageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       probes: (() { final guardedValue = map['probes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerAppProbe>(guardedValue, (value) => ContainerAppProbe.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContainerResources.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

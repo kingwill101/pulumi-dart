@@ -10,9 +10,9 @@ class IPConfigurationPropertiesResponse {
   /// prefixLength for network interface
   final pulumi.Input<String> prefixLength;
   /// PrivateIPAddress - Private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Subnet - Name of Subnet bound to the IP configuration.
-  final pulumi.Input<LogicalNetworkArmReferenceResponse>? subnet;
+  final pulumi.Input<LogicalNetworkArmReferenceResponse?>? subnet;
 
   /// Creates a new [IPConfigurationPropertiesResponse].
   /// [gateway] Gateway for network interface

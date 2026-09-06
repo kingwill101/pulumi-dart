@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trusted client certificates of an application gateway.
 class ApplicationGatewayTrustedClientCertificate {
   /// Certificate public data.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the trusted client certificate that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ApplicationGatewayTrustedClientCertificate].
   /// [data] Certificate public data.

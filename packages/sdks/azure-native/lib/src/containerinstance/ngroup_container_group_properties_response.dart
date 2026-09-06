@@ -8,11 +8,11 @@ import 'ngroup_cgproperty_volume_response.dart';
 /// Container Group properties which can be set while creating or updating the NGroups.
 class NGroupContainerGroupPropertiesResponse {
   /// Contains information about Container which can be set while creating or updating the NGroups.
-  final pulumi.Input<List<NGroupCGPropertyContainerResponse>>? containers;
+  final pulumi.Input<List<NGroupCGPropertyContainerResponse>?>? containers;
   /// Contains information about Virtual Network Subnet ARM Resource
-  final pulumi.Input<List<ContainerGroupSubnetIdResponse>>? subnetIds;
+  final pulumi.Input<List<ContainerGroupSubnetIdResponse>?>? subnetIds;
   /// Contains information about the volumes that can be mounted by Containers in the Container Groups.
-  final pulumi.Input<List<NGroupCGPropertyVolumeResponse>>? volumes;
+  final pulumi.Input<List<NGroupCGPropertyVolumeResponse>?>? volumes;
 
   /// Creates a new [NGroupContainerGroupPropertiesResponse].
   /// [containers] Contains information about Container which can be set while creating or updating the NGroups.

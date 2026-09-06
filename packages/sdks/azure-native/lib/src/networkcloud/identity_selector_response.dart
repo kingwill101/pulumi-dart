@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IdentitySelectorResponse {
   /// The type of managed identity that is being selected.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [IdentitySelectorResponse].
   /// [identityType] The type of managed identity that is being selected.

@@ -8,11 +8,11 @@ class ConnectionPolicyPropertiesResponse {
   /// List of connection names (e.g. VpnConnection, HubVirtualNetworkConnection) associated with this ConnectionPolicy. These are resource names, not Azure resource IDs, consistent with the established VirtualWAN pattern used by HubRouteTable.associatedConnections.
   final pulumi.Input<List<String>> associatedConnections;
   /// Enable internet security.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// The provisioning state of the ConnectionPolicy resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationResponse?>? routingConfiguration;
 
   /// Creates a new [ConnectionPolicyPropertiesResponse].
   /// [associatedConnections] List of connection names (e.g. VpnConnection, HubVirtualNetworkConnection) associated with this ConnectionPolicy. These are resource names, not Azure resource IDs, consistent with the established VirtualWAN pattern used by HubRouteTable.associatedConnections.

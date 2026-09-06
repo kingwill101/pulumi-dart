@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The vault's create mode to indicate whether the vault need to be recovered or not.
-enum CreateMode {
+enum CreateMode implements pulumi.PulumiEnum<String> {
   valueRecover("recover"),
   valueDefault("default");
 
   const CreateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CreateMode fromValue(String value) {

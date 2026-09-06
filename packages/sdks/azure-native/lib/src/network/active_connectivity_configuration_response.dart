@@ -8,29 +8,29 @@ import 'hub_response.dart';
 /// Active connectivity configuration.
 class ActiveConnectivityConfigurationResponse {
   /// Groups for configuration
-  final pulumi.Input<List<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse>>? appliesToGroups;
+  final pulumi.Input<List<ConnectivityGroupItemlistActiveConnectivityConfigurationResponse>?>? appliesToGroups;
   /// Deployment time string.
-  final pulumi.Input<String>? commitTime;
+  final pulumi.Input<String?>? commitTime;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? configurationGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? configurationGroups;
   /// Connectivity topology type.
   final pulumi.Input<String> connectivityTopology;
   /// Flag if need to remove current existing peerings.
-  final pulumi.Input<String>? deleteExistingPeering;
+  final pulumi.Input<String?>? deleteExistingPeering;
   /// A description of the connectivity configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A friendly name for the resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// List of hubItems
-  final pulumi.Input<List<HubResponse>>? hubs;
+  final pulumi.Input<List<HubResponse>?>? hubs;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Flag if global mesh is supported.
-  final pulumi.Input<String>? isGlobal;
+  final pulumi.Input<String?>? isGlobal;
   /// The provisioning state of the connectivity configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Deployment region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ActiveConnectivityConfigurationResponse].
   /// [appliesToGroups] Groups for configuration

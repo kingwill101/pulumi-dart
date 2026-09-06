@@ -6,15 +6,15 @@ import 'approval_stage.dart';
 /// The approval settings.
 class ApprovalSettings {
   /// The type of rule
-  final pulumi.Input<String>? approvalMode;
+  final pulumi.Input<dynamic>? approvalMode;
   /// The approval stages of the request.
-  final pulumi.Input<List<ApprovalStage>>? approvalStages;
+  final pulumi.Input<List<ApprovalStage>?>? approvalStages;
   /// Determines whether approval is required or not.
-  final pulumi.Input<bool>? isApprovalRequired;
+  final pulumi.Input<bool?>? isApprovalRequired;
   /// Determines whether approval is required for assignment extension.
-  final pulumi.Input<bool>? isApprovalRequiredForExtension;
+  final pulumi.Input<bool?>? isApprovalRequiredForExtension;
   /// Determine whether requestor justification is required.
-  final pulumi.Input<bool>? isRequestorJustificationRequired;
+  final pulumi.Input<bool?>? isRequestorJustificationRequired;
 
   /// Creates a new [ApprovalSettings].
   /// [approvalMode] The type of rule
@@ -42,7 +42,7 @@ class ApprovalSettings {
 
   factory ApprovalSettings.fromMap(Map<String, dynamic> map) {
     return ApprovalSettings(
-      approvalMode: (() { final guardedValue = map['approvalMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      approvalMode: (() { final guardedValue = map['approvalMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       approvalStages: (() { final guardedValue = map['approvalStages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApprovalStage>(guardedValue, (value) => ApprovalStage.fromMap((value as Map).cast<String, dynamic>()))); })(),
       isApprovalRequired: (() { final guardedValue = map['isApprovalRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isApprovalRequiredForExtension: (() { final guardedValue = map['isApprovalRequiredForExtension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

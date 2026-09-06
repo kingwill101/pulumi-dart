@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Security profile input.
 class SecurityProfilePropertiesResponse {
   /// A value indicating whether confidential compute encryption to be enabled.
-  final pulumi.Input<String>? targetVmConfidentialEncryption;
+  final pulumi.Input<String?>? targetVmConfidentialEncryption;
   /// A value indicating whether integrity monitoring to be enabled.
-  final pulumi.Input<String>? targetVmMonitoring;
+  final pulumi.Input<String?>? targetVmMonitoring;
   /// A value indicating whether secure boot to be enabled.
-  final pulumi.Input<String>? targetVmSecureBoot;
+  final pulumi.Input<String?>? targetVmSecureBoot;
   /// The target VM security type.
-  final pulumi.Input<String>? targetVmSecurityType;
+  final pulumi.Input<String?>? targetVmSecurityType;
   /// A value indicating whether trusted platform module to be enabled.
-  final pulumi.Input<String>? targetVmTpm;
+  final pulumi.Input<String?>? targetVmTpm;
 
   /// Creates a new [SecurityProfilePropertiesResponse].
   /// [targetVmConfidentialEncryption] A value indicating whether confidential compute encryption to be enabled.

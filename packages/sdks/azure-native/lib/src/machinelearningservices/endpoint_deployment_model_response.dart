@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointDeploymentModelResponse {
   /// Model format
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// Model name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. Deployment model source ARM resource ID.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Model version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [EndpointDeploymentModelResponse].
   /// [format] Model format

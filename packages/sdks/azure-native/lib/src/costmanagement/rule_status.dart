@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the rule
-enum RuleStatus {
+enum RuleStatus implements pulumi.PulumiEnum<String> {
   notActive("NotActive"),
   active("Active"),
   processing("Processing");
 
   const RuleStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleStatus fromValue(String value) {

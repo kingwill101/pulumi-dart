@@ -13,55 +13,55 @@ import 'sub_resource_response.dart';
 /// A network interface in a resource group.
 class NetworkInterfaceResponse {
   /// Auxiliary mode of Network Interface resource.
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<String?>? auxiliaryMode;
   /// Auxiliary sku of Network Interface resource.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<String?>? auxiliarySku;
   /// Whether default outbound connectivity for nic was configured or not.
   final pulumi.Input<bool> defaultOutboundConnectivityEnabled;
   /// Indicates whether to disable tcp state tracking.
-  final pulumi.Input<bool>? disableTcpStateTracking;
+  final pulumi.Input<bool?>? disableTcpStateTracking;
   /// The DNS settings in network interface.
-  final pulumi.Input<NetworkInterfaceDnsSettingsResponse>? dnsSettings;
+  final pulumi.Input<NetworkInterfaceDnsSettingsResponse?>? dnsSettings;
   /// A reference to the dscp configuration to which the network interface is linked.
   final pulumi.Input<SubResourceResponse> dscpConfiguration;
   /// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Indicates whether IP forwarding is enabled on this network interface.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The extended location of the network interface.
-  final pulumi.Input<ExtendedLocationResponse>? extendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? extendedLocation;
   /// A list of references to linked BareMetal resources.
   final pulumi.Input<List<String>> hostedWorkloads;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A list of IPConfigurations of the network interface.
-  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponse>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The MAC address of the network interface.
   final pulumi.Input<String> macAddress;
   /// Migration phase of Network Interface resource.
-  final pulumi.Input<String>? migrationPhase;
+  final pulumi.Input<String?>? migrationPhase;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The reference to the NetworkSecurityGroup resource.
-  final pulumi.Input<NetworkSecurityGroupResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupResponse?>? networkSecurityGroup;
   /// Type of Network Interface resource.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Whether this is a primary network interface on a virtual machine.
   final pulumi.Input<bool> primary;
   /// A reference to the private endpoint to which the network interface is linked.
   final pulumi.Input<PrivateEndpointResponse> privateEndpoint;
   /// Privatelinkservice of the network interface resource.
-  final pulumi.Input<PrivateLinkServiceResponse>? privateLinkService;
+  final pulumi.Input<PrivateLinkServiceResponse?>? privateLinkService;
   /// The provisioning state of the network interface resource.
   final pulumi.Input<String> provisioningState;
   /// The resource GUID property of the network interface resource.
   final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of TapConfigurations of the network interface.
   final pulumi.Input<List<NetworkInterfaceTapConfigurationResponse>> tapConfigurations;
   /// Resource type.
@@ -71,7 +71,7 @@ class NetworkInterfaceResponse {
   /// Whether the virtual machine this nic is attached to supports encryption.
   final pulumi.Input<bool> vnetEncryptionSupported;
   /// WorkloadType of the NetworkInterface for BareMetal resources
-  final pulumi.Input<String>? workloadType;
+  final pulumi.Input<String?>? workloadType;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [auxiliaryMode] Auxiliary mode of Network Interface resource.

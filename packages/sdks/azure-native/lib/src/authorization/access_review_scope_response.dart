@@ -7,17 +7,17 @@ class AccessReviewScopeResponse {
   /// The role assignment state eligible/active to review
   final pulumi.Input<String> assignmentState;
   /// This is used to indicate the resource id(s) to exclude
-  final pulumi.Input<String>? excludeResourceId;
+  final pulumi.Input<String?>? excludeResourceId;
   /// This is used to indicate the role definition id(s) to exclude
-  final pulumi.Input<String>? excludeRoleDefinitionId;
+  final pulumi.Input<String?>? excludeRoleDefinitionId;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? expandNestedMemberships;
+  final pulumi.Input<bool?>? expandNestedMemberships;
   /// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
-  final pulumi.Input<String>? inactiveDuration;
+  final pulumi.Input<String?>? inactiveDuration;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? includeAccessBelowResource;
+  final pulumi.Input<bool?>? includeAccessBelowResource;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? includeInheritedAccess;
+  final pulumi.Input<bool?>? includeInheritedAccess;
   /// The identity type user/servicePrincipal to review
   final pulumi.Input<String> principalType;
   /// ResourceId in which this review is getting created

@@ -8,17 +8,17 @@ import 'parameter_specification_response.dart';
 /// The dataset points to a HTML table in the web page.
 class WebTableDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolderResponse>? folder;
+  final pulumi.Input<DatasetFolderResponse?>? folder;
   /// The zero-based index of the table in the web page. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic> index;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The relative URL to the web page from the linked service URL. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? path;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.

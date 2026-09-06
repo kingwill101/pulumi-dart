@@ -8,11 +8,11 @@ import 'on_premise_settings.dart';
 /// Business case settings.
 class Settings {
   /// Azure arc settings.
-  final pulumi.Input<AzureArcSettings>? azureArcSettings;
+  final pulumi.Input<AzureArcSettings?>? azureArcSettings;
   /// Azure settings for a business case.
   final pulumi.Input<AzureSettings> azureSettings;
   /// On-premise settings.
-  final pulumi.Input<OnPremiseSettings>? onPremiseSettings;
+  final pulumi.Input<OnPremiseSettings?>? onPremiseSettings;
 
   /// Creates a new [Settings].
   /// [azureArcSettings] Azure arc settings.

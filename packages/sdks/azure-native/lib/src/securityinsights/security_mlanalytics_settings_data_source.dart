@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// security ml analytics settings data sources
 class SecurityMLAnalyticsSettingsDataSource {
   /// The connector id that provides the following data types
-  final pulumi.Input<String>? connectorId;
+  final pulumi.Input<String?>? connectorId;
   /// The data types used by the security ml analytics settings
-  final pulumi.Input<List<String>>? dataTypes;
+  final pulumi.Input<List<String>?>? dataTypes;
 
   /// Creates a new [SecurityMLAnalyticsSettingsDataSource].
   /// [connectorId] The connector id that provides the following data types

@@ -7,11 +7,11 @@ class StorageTaskOperationResponse {
   /// The operation to be performed on the object.
   final pulumi.Input<String> name;
   /// Action to be taken when the operation fails for a object.
-  final pulumi.Input<String>? onFailure;
+  final pulumi.Input<String?>? onFailure;
   /// Action to be taken when the operation is successful for a object.
-  final pulumi.Input<String>? onSuccess;
+  final pulumi.Input<String?>? onSuccess;
   /// Key-value parameters for the operation.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
 
   /// Creates a new [StorageTaskOperationResponse].
   /// [name] The operation to be performed on the object.

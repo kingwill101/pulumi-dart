@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Datastore Service Principal secrets.
 class ServicePrincipalDatastoreSecrets {
   /// Service principal secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'ServicePrincipal'.
   final pulumi.Input<String> secretsType;

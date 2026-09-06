@@ -6,29 +6,29 @@ import 'sub_resource.dart';
 /// Inbound NAT rule of the load balancer.
 class InboundNatRule {
   /// A reference to backendAddressPool resource.
-  final pulumi.Input<SubResource>? backendAddressPool;
+  final pulumi.Input<SubResource?>? backendAddressPool;
   /// The port used for the internal endpoint. Acceptable values range from 1 to 65535.
-  final pulumi.Input<int>? backendPort;
+  final pulumi.Input<int?>? backendPort;
   /// Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
-  final pulumi.Input<bool>? enableFloatingIP;
+  final pulumi.Input<bool?>? enableFloatingIP;
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  final pulumi.Input<bool>? enableTcpReset;
+  final pulumi.Input<bool?>? enableTcpReset;
   /// A reference to frontend IP addresses.
-  final pulumi.Input<SubResource>? frontendIPConfiguration;
+  final pulumi.Input<SubResource?>? frontendIPConfiguration;
   /// The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
-  final pulumi.Input<int>? frontendPort;
+  final pulumi.Input<int?>? frontendPort;
   /// The port range end for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeStart. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
-  final pulumi.Input<int>? frontendPortRangeEnd;
+  final pulumi.Input<int?>? frontendPortRangeEnd;
   /// The port range start for the external endpoint. This property is used together with BackendAddressPool and FrontendPortRangeEnd. Individual inbound NAT rule port mappings will be created for each backend address from BackendAddressPool. Acceptable values range from 1 to 65534.
-  final pulumi.Input<int>? frontendPortRangeStart;
+  final pulumi.Input<int?>? frontendPortRangeStart;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// The name of the resource that is unique within the set of inbound NAT rules used by the load balancer. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The reference to the transport protocol used by the load balancing rule.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
 
   /// Creates a new [InboundNatRule].
   /// [backendAddressPool] A reference to backendAddressPool resource.
@@ -78,17 +78,17 @@ class InboundNatRule {
   factory InboundNatRule.fromMap(Map<String, dynamic> map) {
     return InboundNatRule(
       backendAddressPool: (() { final guardedValue = map['backendAddressPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableFloatingIP: (() { final guardedValue = map['enableFloatingIP']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableTcpReset: (() { final guardedValue = map['enableTcpReset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frontendIPConfiguration: (() { final guardedValue = map['frontendIPConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

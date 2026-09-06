@@ -6,49 +6,49 @@ import 'system_data_response.dart';
 /// Result data returned by getNetworkBootstrapDevice.
 class GetNetworkBootstrapDeviceResult {
   /// Administrative state of the resource.
-  final String administrativeState;
+  final String? administrativeState;
   /// Switch configuration description.
   final String? annotation;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Configuration state of the resource.
-  final String configurationState;
+  final String? configurationState;
   /// Dhcp server IPv4 Address.
-  final String dhcpV4ServerIpAddress;
+  final String? dhcpV4ServerIpAddress;
   /// The host name of the device.
   final String? hostName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Network Bootstrap Device SKU name.
   final String? networkDeviceSku;
   /// Associated Network Fabric Resource ID
-  final String networkFabricId;
+  final String? networkFabricId;
   /// Primary Management IPv4 Address.
-  final String primaryManagementIpv4Address;
+  final String? primaryManagementIpv4Address;
   /// Primary Management IPv6 Address.
-  final String primaryManagementIpv6Address;
+  final String? primaryManagementIpv6Address;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Secondary Management IPv4 Address.
-  final String secondaryManagementIpv4Address;
+  final String? secondaryManagementIpv4Address;
   /// Secondary Management IPv6 Address.
-  final String secondaryManagementIpv6Address;
+  final String? secondaryManagementIpv6Address;
   /// Serial number of the device. Format of serial Number - Make;Model;HardwareRevisionId;SerialNumber.
   final String? serialNumber;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Current version of the device as defined in SKU.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetNetworkBootstrapDeviceResult].
   /// [administrativeState] Administrative state of the resource.
@@ -74,81 +74,81 @@ class GetNetworkBootstrapDeviceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Current version of the device as defined in SKU.
   const GetNetworkBootstrapDeviceResult({
-    required this.administrativeState,
+    this.administrativeState,
     this.annotation,
-    required this.azureApiVersion,
-    required this.configurationState,
-    required this.dhcpV4ServerIpAddress,
+    this.azureApiVersion,
+    this.configurationState,
+    this.dhcpV4ServerIpAddress,
     this.hostName,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.networkDeviceSku,
-    required this.networkFabricId,
-    required this.primaryManagementIpv4Address,
-    required this.primaryManagementIpv6Address,
-    required this.provisioningState,
-    required this.secondaryManagementIpv4Address,
-    required this.secondaryManagementIpv6Address,
+    this.networkFabricId,
+    this.primaryManagementIpv4Address,
+    this.primaryManagementIpv6Address,
+    this.provisioningState,
+    this.secondaryManagementIpv4Address,
+    this.secondaryManagementIpv6Address,
     this.serialNumber,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.version,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administrativeState': administrativeState,
+      'administrativeState': ?administrativeState,
       'annotation': ?annotation,
-      'azureApiVersion': azureApiVersion,
-      'configurationState': configurationState,
-      'dhcpV4ServerIpAddress': dhcpV4ServerIpAddress,
+      'azureApiVersion': ?azureApiVersion,
+      'configurationState': ?configurationState,
+      'dhcpV4ServerIpAddress': ?dhcpV4ServerIpAddress,
       'hostName': ?hostName,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'networkDeviceSku': ?networkDeviceSku,
-      'networkFabricId': networkFabricId,
-      'primaryManagementIpv4Address': primaryManagementIpv4Address,
-      'primaryManagementIpv6Address': primaryManagementIpv6Address,
-      'provisioningState': provisioningState,
-      'secondaryManagementIpv4Address': secondaryManagementIpv4Address,
-      'secondaryManagementIpv6Address': secondaryManagementIpv6Address,
+      'networkFabricId': ?networkFabricId,
+      'primaryManagementIpv4Address': ?primaryManagementIpv4Address,
+      'primaryManagementIpv6Address': ?primaryManagementIpv6Address,
+      'provisioningState': ?provisioningState,
+      'secondaryManagementIpv4Address': ?secondaryManagementIpv4Address,
+      'secondaryManagementIpv6Address': ?secondaryManagementIpv6Address,
       'serialNumber': ?serialNumber,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'version': version,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetNetworkBootstrapDeviceResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkBootstrapDeviceResult(
-      administrativeState: map['administrativeState'] as String,
+      administrativeState: (() { final guardedValue = map['administrativeState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      configurationState: map['configurationState'] as String,
-      dhcpV4ServerIpAddress: map['dhcpV4ServerIpAddress'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      configurationState: (() { final guardedValue = map['configurationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dhcpV4ServerIpAddress: (() { final guardedValue = map['dhcpV4ServerIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkDeviceSku: (() { final guardedValue = map['networkDeviceSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      networkFabricId: map['networkFabricId'] as String,
-      primaryManagementIpv4Address: map['primaryManagementIpv4Address'] as String,
-      primaryManagementIpv6Address: map['primaryManagementIpv6Address'] as String,
-      provisioningState: map['provisioningState'] as String,
-      secondaryManagementIpv4Address: map['secondaryManagementIpv4Address'] as String,
-      secondaryManagementIpv6Address: map['secondaryManagementIpv6Address'] as String,
+      networkFabricId: (() { final guardedValue = map['networkFabricId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryManagementIpv4Address: (() { final guardedValue = map['primaryManagementIpv4Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryManagementIpv6Address: (() { final guardedValue = map['primaryManagementIpv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryManagementIpv4Address: (() { final guardedValue = map['secondaryManagementIpv4Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryManagementIpv6Address: (() { final guardedValue = map['secondaryManagementIpv6Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

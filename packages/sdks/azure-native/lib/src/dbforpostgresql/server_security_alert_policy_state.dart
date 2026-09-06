@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the state of the policy, whether it is enabled or disabled.
-enum ServerSecurityAlertPolicyState {
+enum ServerSecurityAlertPolicyState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const ServerSecurityAlertPolicyState(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerSecurityAlertPolicyState fromValue(String value) {

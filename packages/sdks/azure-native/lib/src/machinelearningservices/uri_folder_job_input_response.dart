@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UriFolderJobInputResponse {
   /// Description for the input.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enum to determine the Job Input Type.
   /// Expected value is 'uri_folder'.
   final pulumi.Input<String> jobInputType;
   /// Enum to determine the input data delivery mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
 
@@ -18,12 +18,12 @@ class UriFolderJobInputResponse {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Enum to determine the input data delivery mode.
   /// [uri] [Required] Input Asset URI.
-  const UriFolderJobInputResponse({
+  UriFolderJobInputResponse({
     this.description,
     required this.jobInputType,
-    this.mode,
+    pulumi.Input<String?>? mode,
     required this.uri,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('ReadOnlyMount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

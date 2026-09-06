@@ -10,7 +10,7 @@ class TagProductLinkArgs {
   /// Full resource Id of a product.
   final pulumi.Input<String> productId;
   /// Tag-product link identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? productLinkId;
+  final pulumi.Input<String?>? productLinkId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

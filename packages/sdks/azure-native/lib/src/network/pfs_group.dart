@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Pfs Group used in IKE Phase 2 for new child SA.
-enum PfsGroup {
+enum PfsGroup implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valuePFS1("PFS1"),
   valuePFS2("PFS2"),
@@ -11,6 +13,7 @@ enum PfsGroup {
   valuePFSMM("PFSMM");
 
   const PfsGroup(this.wireValue);
+  @override
   final String wireValue;
 
   static PfsGroup fromValue(String value) {

@@ -12,31 +12,31 @@ import 'user_info_response.dart';
 
 /// Machine Learning datastore object.
 class DatastoreResponse {
-  final pulumi.Input<AzureDataLakeSectionResponse>? azureDataLakeSection;
-  final pulumi.Input<AzureMySqlSectionResponse>? azureMySqlSection;
-  final pulumi.Input<AzurePostgreSqlSectionResponse>? azurePostgreSqlSection;
-  final pulumi.Input<AzureSqlDatabaseSectionResponse>? azureSqlDatabaseSection;
-  final pulumi.Input<AzureStorageSectionResponse>? azureStorageSection;
+  final pulumi.Input<AzureDataLakeSectionResponse?>? azureDataLakeSection;
+  final pulumi.Input<AzureMySqlSectionResponse?>? azureMySqlSection;
+  final pulumi.Input<AzurePostgreSqlSectionResponse?>? azurePostgreSqlSection;
+  final pulumi.Input<AzureSqlDatabaseSectionResponse?>? azureSqlDatabaseSection;
+  final pulumi.Input<AzureStorageSectionResponse?>? azureStorageSection;
   /// The User who created the datastore.
   final pulumi.Input<UserInfoResponse> createdBy;
   /// The date and time when the datastore was created.
   final pulumi.Input<String> createdTime;
   /// The datastore type.
-  final pulumi.Input<String>? dataStoreType;
+  final pulumi.Input<String?>? dataStoreType;
   /// Description of the datastore.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Data specific to GlusterFS.
-  final pulumi.Input<GlusterFsSectionResponse>? glusterFsSection;
+  final pulumi.Input<GlusterFsSectionResponse?>? glusterFsSection;
   /// A read only property that denotes whether the service datastore has been validated with credentials.
-  final pulumi.Input<bool>? hasBeenValidated;
+  final pulumi.Input<bool?>? hasBeenValidated;
   /// Info about origin if it is linked.
-  final pulumi.Input<LinkedInfoResponse>? linkedInfo;
+  final pulumi.Input<LinkedInfoResponse?>? linkedInfo;
   /// The User who modified the datastore.
   final pulumi.Input<UserInfoResponse> modifiedBy;
   /// The date and time when the datastore was last modified.
   final pulumi.Input<String> modifiedTime;
   /// Name of the datastore.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tags for this datastore.
   final pulumi.Input<Map<String, String>> tags;
 
@@ -57,7 +57,7 @@ class DatastoreResponse {
   /// [modifiedTime] The date and time when the datastore was last modified.
   /// [name] Name of the datastore.
   /// [tags] Tags for this datastore.
-  const DatastoreResponse({
+  DatastoreResponse({
     this.azureDataLakeSection,
     this.azureMySqlSection,
     this.azurePostgreSqlSection,
@@ -68,13 +68,13 @@ class DatastoreResponse {
     this.dataStoreType,
     this.description,
     this.glusterFsSection,
-    this.hasBeenValidated,
+    pulumi.Input<bool?>? hasBeenValidated,
     this.linkedInfo,
     required this.modifiedBy,
     required this.modifiedTime,
     this.name,
     required this.tags,
-  });
+  }) : hasBeenValidated = hasBeenValidated ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

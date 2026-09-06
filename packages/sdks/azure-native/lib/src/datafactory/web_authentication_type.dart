@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of authentication used to connect to the web table source.
-enum WebAuthenticationType {
+enum WebAuthenticationType implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   anonymous("Anonymous"),
   clientCertificate("ClientCertificate");
 
   const WebAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static WebAuthenticationType fromValue(String value) {

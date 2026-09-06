@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_upgrade_policy_response.dart';
+import 'application_user_assigned_identity_response.dart';
 import 'managed_cluster_application_args.dart';
 import 'managed_identity_response.dart';
 import 'system_data_response.dart';
@@ -574,7 +575,7 @@ class ManagedClusterApplication extends pulumi.CustomResource {
   /// Resource location depends on the parent resource.
   late final pulumi.Output<String?> location;
   /// List of user assigned identities for the application, each mapped to a friendly name.
-  late final pulumi.Output<List<Map<String, dynamic>>?> managedIdentities;
+  late final pulumi.Output<List<ApplicationUserAssignedIdentityResponse>?> managedIdentities;
   /// Azure resource name.
   late final pulumi.Output<String> name;
   /// List of application parameters with overridden values from their default values specified in the application manifest.
@@ -610,12 +611,35 @@ class ManagedClusterApplication extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
-    managedIdentities = registerOutput<List<Map<String, dynamic>>?>('managedIdentities');
+    managedIdentities = registerOutput<List<ApplicationUserAssignedIdentityResponse>?>('managedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(guardedValue, (value) => ApplicationUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    upgradePolicy = registerOutput<ApplicationUpgradePolicyResponse?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [ManagedClusterApplication] resource.
+  ManagedClusterApplication.reference(String urn)
+    : super(
+        'azure-native:servicefabric:ManagedClusterApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    managedIdentities = registerOutput<List<ApplicationUserAssignedIdentityResponse>?>('managedIdentities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationUserAssignedIdentityResponse>(guardedValue, (value) => ApplicationUserAssignedIdentityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     upgradePolicy = registerOutput<ApplicationUpgradePolicyResponse?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     version = registerOutput<String?>('version');

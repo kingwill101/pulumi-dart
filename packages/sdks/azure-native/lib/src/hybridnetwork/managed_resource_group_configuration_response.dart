@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed resource group configuration.
 class ManagedResourceGroupConfigurationResponse {
   /// Managed resource group location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Managed resource group name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] Managed resource group location.

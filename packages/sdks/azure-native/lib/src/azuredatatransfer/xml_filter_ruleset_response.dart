@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rules for filtering XML content using XSD schemas.
 class XmlFilterRulesetResponse {
   /// The default XML namespace used for schema validation.
-  final pulumi.Input<String>? defaultNamespace;
+  final pulumi.Input<String?>? defaultNamespace;
   /// Defines the method for referencing the xml schema.
-  final pulumi.Input<String>? reference;
+  final pulumi.Input<String?>? reference;
   /// The inline XSD schema to be used for validation.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
 
   /// Creates a new [XmlFilterRulesetResponse].
   /// [defaultNamespace] The default XML namespace used for schema validation.

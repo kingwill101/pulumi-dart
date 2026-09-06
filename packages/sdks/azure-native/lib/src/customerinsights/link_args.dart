@@ -12,21 +12,21 @@ import 'type_properties_mapping.dart';
 /// {@macro pulumi_customerinsights_link_args_doc}
 class LinkArgs {
   /// Localized descriptions for the Link.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display name for the Link.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// The name of the link.
-  final pulumi.Input<String>? linkName;
+  final pulumi.Input<String?>? linkName;
   /// The set of properties mappings between the source and target Types.
-  final pulumi.Input<List<TypePropertiesMapping>>? mappings;
+  final pulumi.Input<List<TypePropertiesMapping>?>? mappings;
   /// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
-  final pulumi.Input<InstanceOperationType>? operationType;
+  final pulumi.Input<InstanceOperationType?>? operationType;
   /// The properties that represent the participating profile.
   final pulumi.Input<List<ParticipantPropertyReference>> participantPropertyReferences;
   /// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
-  final pulumi.Input<bool>? referenceOnly;
+  final pulumi.Input<bool?>? referenceOnly;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Type of source entity.

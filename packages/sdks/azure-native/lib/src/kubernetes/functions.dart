@@ -26,6 +26,17 @@ Future<GetConnectedClusterResult> getConnectedCluster(
   return GetConnectedClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectedClusterResult> getConnectedClusterOutput(
+  GetConnectedClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetes:getConnectedCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedClusterResult.fromMap);
+}
+
 /// Gets cluster user credentials of the connected cluster with a specified resource group and name.
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -46,6 +57,17 @@ Future<ListConnectedClusterUserCredentialResult> listConnectedClusterUserCredent
   return ListConnectedClusterUserCredentialResult.fromMap(result);
 }
 
+pulumi.Output<ListConnectedClusterUserCredentialResult> listConnectedClusterUserCredentialOutput(
+  ListConnectedClusterUserCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetes:listConnectedClusterUserCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectedClusterUserCredentialResult.fromMap);
+}
+
 /// Gets cluster user credentials of the connected cluster with a specified resource group and name.
 ///
 /// Uses Azure REST API version 2021-04-01-preview.
@@ -62,4 +84,15 @@ Future<ListConnectedClusterUserCredentialsResult> listConnectedClusterUserCreden
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListConnectedClusterUserCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<ListConnectedClusterUserCredentialsResult> listConnectedClusterUserCredentialsOutput(
+  ListConnectedClusterUserCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:kubernetes:listConnectedClusterUserCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectedClusterUserCredentialsResult.fromMap);
 }

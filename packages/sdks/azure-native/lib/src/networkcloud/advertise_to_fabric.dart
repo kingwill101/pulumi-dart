@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The indicator of if this advertisement is also made to the network fabric associated with the Network Cloud Cluster. This field is ignored if fabricPeeringEnabled is set to False.
-enum AdvertiseToFabric {
+enum AdvertiseToFabric implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const AdvertiseToFabric(this.wireValue);
+  @override
   final String wireValue;
 
   static AdvertiseToFabric fromValue(String value) {

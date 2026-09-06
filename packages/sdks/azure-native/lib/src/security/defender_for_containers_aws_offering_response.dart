@@ -12,34 +12,34 @@ import 'defender_for_containers_aws_offering_vm_scanners_response.dart';
 /// The Defender for Containers AWS offering
 class DefenderForContainersAwsOfferingResponse {
   /// The cloudwatch to kinesis connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesisResponse>? cloudWatchToKinesis;
+  final pulumi.Input<DefenderForContainersAwsOfferingCloudWatchToKinesisResponse?>? cloudWatchToKinesis;
   /// The externalId used by the data reader to prevent the confused deputy attack
-  final pulumi.Input<String>? dataCollectionExternalId;
+  final pulumi.Input<String?>? dataCollectionExternalId;
   /// The offering description.
   final pulumi.Input<String> description;
   /// Is audit logs data collection enabled
-  final pulumi.Input<bool>? enableAuditLogsAutoProvisioning;
+  final pulumi.Input<bool?>? enableAuditLogsAutoProvisioning;
   /// Is Microsoft Defender for Cloud Kubernetes agent auto provisioning enabled
-  final pulumi.Input<bool>? enableDefenderAgentAutoProvisioning;
+  final pulumi.Input<bool?>? enableDefenderAgentAutoProvisioning;
   /// Is Policy Kubernetes agent auto provisioning enabled
-  final pulumi.Input<bool>? enablePolicyAgentAutoProvisioning;
+  final pulumi.Input<bool?>? enablePolicyAgentAutoProvisioning;
   /// The kinesis to s3 connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingKinesisToS3Response>? kinesisToS3;
+  final pulumi.Input<DefenderForContainersAwsOfferingKinesisToS3Response?>? kinesisToS3;
   /// The retention time in days of kube audit logs set on the CloudWatch log group
-  final pulumi.Input<double>? kubeAuditRetentionTime;
+  final pulumi.Input<double?>? kubeAuditRetentionTime;
   /// The kubernetes data collection connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollectionResponse>? kubernetesDataCollection;
+  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesDataCollectionResponse?>? kubernetesDataCollection;
   /// The kubernetes service connection configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesServiceResponse>? kubernetesService;
+  final pulumi.Input<DefenderForContainersAwsOfferingKubernetesServiceResponse?>? kubernetesService;
   /// The Microsoft Defender container agentless discovery K8s configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse>? mdcContainersAgentlessDiscoveryK8S;
+  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse?>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender container image assessment configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersImageAssessmentResponse>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderForContainersAwsOfferingMdcContainersImageAssessmentResponse?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderForContainersAws'.
   final pulumi.Input<String> offeringType;
   /// The Microsoft Defender for Container K8s VM host scanning configuration
-  final pulumi.Input<DefenderForContainersAwsOfferingVmScannersResponse>? vmScanners;
+  final pulumi.Input<DefenderForContainersAwsOfferingVmScannersResponse?>? vmScanners;
 
   /// Creates a new [DefenderForContainersAwsOfferingResponse].
   /// [cloudWatchToKinesis] The cloudwatch to kinesis connection configuration
@@ -101,7 +101,7 @@ class DefenderForContainersAwsOfferingResponse {
       enableDefenderAgentAutoProvisioning: (() { final guardedValue = map['enableDefenderAgentAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePolicyAgentAutoProvisioning: (() { final guardedValue = map['enablePolicyAgentAutoProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kinesisToS3: (() { final guardedValue = map['kinesisToS3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForContainersAwsOfferingKinesisToS3Response.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kubeAuditRetentionTime: (() { final guardedValue = map['kubeAuditRetentionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      kubeAuditRetentionTime: (() { final guardedValue = map['kubeAuditRetentionTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       kubernetesDataCollection: (() { final guardedValue = map['kubernetesDataCollection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForContainersAwsOfferingKubernetesDataCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kubernetesService: (() { final guardedValue = map['kubernetesService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForContainersAwsOfferingKubernetesServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mdcContainersAgentlessDiscoveryK8S: (() { final guardedValue = map['mdcContainersAgentlessDiscoveryK8S']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DefenderForContainersAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

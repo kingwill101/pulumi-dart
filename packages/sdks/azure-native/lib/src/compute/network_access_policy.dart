@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Policy for accessing the disk via network.
-enum NetworkAccessPolicy {
+enum NetworkAccessPolicy implements pulumi.PulumiEnum<String> {
   allowAll("AllowAll"),
   allowPrivate("AllowPrivate"),
   denyAll("DenyAll");
 
   const NetworkAccessPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkAccessPolicy fromValue(String value) {

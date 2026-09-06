@@ -12,17 +12,17 @@ class ProjectArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of Cognitive Services account's project.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Properties of Cognitive Services project.
-  final pulumi.Input<ProjectProperties>? properties;
+  final pulumi.Input<ProjectProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ProjectArgs].
   /// [accountName] The name of Cognitive Services account.

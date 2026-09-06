@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Edifact schema reference.
 class EdifactSchemaReferenceResponse {
   /// The association assigned code.
-  final pulumi.Input<String>? associationAssignedCode;
+  final pulumi.Input<String?>? associationAssignedCode;
   /// The message id.
   final pulumi.Input<String> messageId;
   /// The message release version.
@@ -15,9 +15,9 @@ class EdifactSchemaReferenceResponse {
   /// The schema name.
   final pulumi.Input<String> schemaName;
   /// The sender application id.
-  final pulumi.Input<String>? senderApplicationId;
+  final pulumi.Input<String?>? senderApplicationId;
   /// The sender application qualifier.
-  final pulumi.Input<String>? senderApplicationQualifier;
+  final pulumi.Input<String?>? senderApplicationQualifier;
 
   /// Creates a new [EdifactSchemaReferenceResponse].
   /// [associationAssignedCode] The association assigned code.

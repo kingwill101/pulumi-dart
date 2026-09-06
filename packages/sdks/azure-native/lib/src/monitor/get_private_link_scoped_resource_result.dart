@@ -5,23 +5,23 @@ import 'system_data_response.dart';
 /// Result data returned by getPrivateLinkScopedResource.
 class GetPrivateLinkScopedResourceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The kind of scoped Azure monitor resource.
   final String? kind;
   /// The resource id of the scoped Azure monitor resource.
   final String? linkedResourceId;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// State of the Azure monitor resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   final String? subscriptionLocation;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPrivateLinkScopedResourceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -34,42 +34,42 @@ class GetPrivateLinkScopedResourceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateLinkScopedResourceResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.kind,
     this.linkedResourceId,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.subscriptionLocation,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'kind': ?kind,
       'linkedResourceId': ?linkedResourceId,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'subscriptionLocation': ?subscriptionLocation,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetPrivateLinkScopedResourceResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateLinkScopedResourceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       linkedResourceId: (() { final guardedValue = map['linkedResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subscriptionLocation: (() { final guardedValue = map['subscriptionLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

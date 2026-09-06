@@ -13,15 +13,15 @@ class GetLogAnalyticExportRequestRateByIntervalArgs {
   /// From time of the query
   final pulumi.Input<String> fromTime;
   /// Group query result by Client Application ID.
-  final pulumi.Input<bool>? groupByClientApplicationId;
+  final pulumi.Input<bool?>? groupByClientApplicationId;
   /// Group query result by Operation Name.
-  final pulumi.Input<bool>? groupByOperationName;
+  final pulumi.Input<bool?>? groupByOperationName;
   /// Group query result by Resource Name.
-  final pulumi.Input<bool>? groupByResourceName;
+  final pulumi.Input<bool?>? groupByResourceName;
   /// Group query result by Throttle Policy applied.
-  final pulumi.Input<bool>? groupByThrottlePolicy;
+  final pulumi.Input<bool?>? groupByThrottlePolicy;
   /// Group query result by User Agent.
-  final pulumi.Input<bool>? groupByUserAgent;
+  final pulumi.Input<bool?>? groupByUserAgent;
   /// Interval value in minutes used to create LogAnalytics call rate logs.
   final pulumi.Input<IntervalInMins> intervalLength;
   /// The name of Azure region.

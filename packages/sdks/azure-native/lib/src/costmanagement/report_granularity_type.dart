@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The granularity of rows in the report.
-enum ReportGranularityType {
+enum ReportGranularityType implements pulumi.PulumiEnum<String> {
   valueDaily("Daily"),
   valueMonthly("Monthly");
 
   const ReportGranularityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ReportGranularityType fromValue(String value) {

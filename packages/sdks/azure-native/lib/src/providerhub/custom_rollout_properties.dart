@@ -8,7 +8,7 @@ class CustomRolloutProperties {
   /// The specification.
   final pulumi.Input<CustomRolloutPropertiesSpecification> specification;
   /// The status.
-  final pulumi.Input<CustomRolloutPropertiesStatus>? status;
+  final pulumi.Input<CustomRolloutPropertiesStatus?>? status;
 
   /// Creates a new [CustomRolloutProperties].
   /// [specification] The specification.

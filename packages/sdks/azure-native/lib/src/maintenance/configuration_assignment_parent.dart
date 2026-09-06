@@ -226,4 +226,23 @@ class ConfigurationAssignmentParent extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ConfigurationAssignmentParent] resource.
+  ConfigurationAssignmentParent.reference(String urn)
+    : super(
+        'azure-native:maintenance:ConfigurationAssignmentParent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    filter = registerOutput<ConfigurationAssignmentFilterPropertiesResponse?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAssignmentFilterPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+    this.name = registerOutput<String>('name');
+    resourceId = registerOutput<String?>('resourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

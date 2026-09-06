@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointInformation {
   /// The endpoint.
-  final pulumi.Input<String>? endpoint;
+  final pulumi.Input<String?>? endpoint;
   /// The endpoint type.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<dynamic>? endpointType;
   /// The schema version.
-  final pulumi.Input<String>? schemaVersion;
+  final pulumi.Input<String?>? schemaVersion;
 
   /// Creates a new [EndpointInformation].
   /// [endpoint] The endpoint.
@@ -31,7 +31,7 @@ class EndpointInformation {
   factory EndpointInformation.fromMap(Map<String, dynamic> map) {
     return EndpointInformation(
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       schemaVersion: (() { final guardedValue = map['schemaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

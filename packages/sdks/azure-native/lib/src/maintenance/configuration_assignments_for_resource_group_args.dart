@@ -9,17 +9,17 @@ import 'configuration_assignment_filter_properties.dart';
 /// {@macro pulumi_maintenance_configuration_assignments_for_resource_group_args_doc}
 class ConfigurationAssignmentsForResourceGroupArgs {
   /// The name of the ConfigurationAssignment
-  final pulumi.Input<String>? configurationAssignmentName;
+  final pulumi.Input<String?>? configurationAssignmentName;
   /// Properties of the configuration assignment
-  final pulumi.Input<ConfigurationAssignmentFilterProperties>? filter;
+  final pulumi.Input<ConfigurationAssignmentFilterProperties?>? filter;
   /// Location of the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maintenance configuration Id
-  final pulumi.Input<String>? maintenanceConfigurationId;
+  final pulumi.Input<String?>? maintenanceConfigurationId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The unique resourceId
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ConfigurationAssignmentsForResourceGroupArgs].
   /// [configurationAssignmentName] The name of the ConfigurationAssignment

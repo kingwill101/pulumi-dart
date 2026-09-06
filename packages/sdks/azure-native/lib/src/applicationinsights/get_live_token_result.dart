@@ -4,23 +4,23 @@
 /// Result data returned by getLiveToken.
 class GetLiveTokenResult {
   /// JWT token for accessing live metrics stream data.
-  final String liveToken;
+  final String? liveToken;
 
   /// Creates a new [GetLiveTokenResult].
   /// [liveToken] JWT token for accessing live metrics stream data.
   const GetLiveTokenResult({
-    required this.liveToken,
+    this.liveToken,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'liveToken': liveToken,
+      'liveToken': ?liveToken,
     };
   }
 
   factory GetLiveTokenResult.fromMap(Map<String, dynamic> map) {
     return GetLiveTokenResult(
-      liveToken: map['liveToken'] as String,
+      liveToken: (() { final guardedValue = map['liveToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

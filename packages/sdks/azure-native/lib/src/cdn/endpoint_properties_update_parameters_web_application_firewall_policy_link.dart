@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Web Application Firewall policy for the endpoint (if applicable)
 class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.

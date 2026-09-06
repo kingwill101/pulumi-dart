@@ -10,23 +10,23 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_express_route_circuit_connection_args_doc}
 class ExpressRouteCircuitConnectionArgs {
   /// /29 IP address space to carve out Customer addresses for tunnels.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// The authorization key.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// The name of the express route circuit.
   final pulumi.Input<String> circuitName;
   /// The name of the express route circuit connection.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Reference to Express Route Circuit Private Peering Resource of the circuit initiating connection.
-  final pulumi.Input<SubResource>? expressRouteCircuitPeering;
+  final pulumi.Input<SubResource?>? expressRouteCircuitPeering;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// IPv6 Address PrefixProperties of the express route circuit connection.
-  final pulumi.Input<Ipv6CircuitConnectionConfig>? ipv6CircuitConnectionConfig;
+  final pulumi.Input<Ipv6CircuitConnectionConfig?>? ipv6CircuitConnectionConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference to Express Route Circuit Private Peering Resource of the peered circuit.
-  final pulumi.Input<SubResource>? peerExpressRouteCircuitPeering;
+  final pulumi.Input<SubResource?>? peerExpressRouteCircuitPeering;
   /// The name of the peering.
   final pulumi.Input<String> peeringName;
   /// The name of the resource group.

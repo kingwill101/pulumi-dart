@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SAMLIdp
 class SAMLIdp {
   /// &lt;p&gt;The unique entity ID of the application in the SAML identity provider.&lt;/p&gt;
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// &lt;p&gt;The metadata of the SAML application, in XML format.&lt;/p&gt;
-  final pulumi.Input<String>? metadataContent;
+  final pulumi.Input<String?>? metadataContent;
 
   /// Creates a new [SAMLIdp].
   /// [entityId] &lt;p&gt;The unique entity ID of the application in the SAML identity provider.&lt;/p&gt;

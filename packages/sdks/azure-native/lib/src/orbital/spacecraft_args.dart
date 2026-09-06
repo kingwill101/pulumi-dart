@@ -11,15 +11,15 @@ class SpacecraftArgs {
   /// Immutable list of Spacecraft links.
   final pulumi.Input<List<SpacecraftLink>> links;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// NORAD ID of the spacecraft.
-  final pulumi.Input<String>? noradId;
+  final pulumi.Input<String?>? noradId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Spacecraft ID.
-  final pulumi.Input<String>? spacecraftName;
+  final pulumi.Input<String?>? spacecraftName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Title line of the two-line element set (TLE).
   final pulumi.Input<String> titleLine;
   /// Line 1 of the two-line element set (TLE).

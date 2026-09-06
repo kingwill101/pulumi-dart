@@ -11,11 +11,11 @@ class FleetspaceAccountArgs {
   /// Cosmos DB fleet name. Needs to be unique under a subscription.
   final pulumi.Input<String> fleetName;
   /// Cosmos DB fleetspace account name.
-  final pulumi.Input<String>? fleetspaceAccountName;
+  final pulumi.Input<String?>? fleetspaceAccountName;
   /// Cosmos DB fleetspace name. Needs to be unique under a fleet.
   final pulumi.Input<String> fleetspaceName;
   /// Configuration for fleetspace Account in the fleetspace.
-  final pulumi.Input<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties>? globalDatabaseAccountProperties;
+  final pulumi.Input<FleetspaceAccountPropertiesGlobalDatabaseAccountProperties?>? globalDatabaseAccountProperties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

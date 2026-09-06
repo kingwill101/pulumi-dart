@@ -7,19 +7,19 @@ import 'tls_properties_response.dart';
 /// AkriConnectorsMqttConnectionConfiguration properties.
 class AkriConnectorsMqttConnectionConfigurationResponse {
   /// Authentication properties.
-  final pulumi.Input<AkriConnectorsServiceAccountAuthenticationResponse>? authentication;
+  final pulumi.Input<AkriConnectorsServiceAccountAuthenticationResponse?>? authentication;
   /// Host of the Broker in the form of &lt;hostname&gt;:&lt;port&gt;.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// KeepAlive for connection in seconds.
-  final pulumi.Input<int>? keepAliveSeconds;
+  final pulumi.Input<int?>? keepAliveSeconds;
   /// The max number of messages to keep in flight. For subscribe, this is the receive maximum. For publish, this is the maximum number of messages to send before waiting for an ack.
-  final pulumi.Input<int>? maxInflightMessages;
+  final pulumi.Input<int?>? maxInflightMessages;
   /// The protocol to use for the connection. Currently only `mqtt` is supported.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Session expiry in seconds.
-  final pulumi.Input<int>? sessionExpirySeconds;
+  final pulumi.Input<int?>? sessionExpirySeconds;
   /// TLS configuration.
-  final pulumi.Input<TlsPropertiesResponse>? tls;
+  final pulumi.Input<TlsPropertiesResponse?>? tls;
 
   /// Creates a new [AkriConnectorsMqttConnectionConfigurationResponse].
   /// [authentication] Authentication properties.
@@ -55,10 +55,10 @@ class AkriConnectorsMqttConnectionConfigurationResponse {
     return AkriConnectorsMqttConnectionConfigurationResponse(
       authentication: (() { final guardedValue = map['authentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AkriConnectorsServiceAccountAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       host: (() { final guardedValue = map['host']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keepAliveSeconds: (() { final guardedValue = map['keepAliveSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxInflightMessages: (() { final guardedValue = map['maxInflightMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      keepAliveSeconds: (() { final guardedValue = map['keepAliveSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxInflightMessages: (() { final guardedValue = map['maxInflightMessages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionExpirySeconds: (() { final guardedValue = map['sessionExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionExpirySeconds: (() { final guardedValue = map['sessionExpirySeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TlsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

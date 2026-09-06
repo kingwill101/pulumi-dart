@@ -28,6 +28,17 @@ Future<GetAccessConnectorResult> getAccessConnector(
   return GetAccessConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessConnectorResult> getAccessConnectorOutput(
+  GetAccessConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databricks:getAccessConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessConnectorResult.fromMap);
+}
+
 /// Get a private endpoint connection properties for a workspace
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -46,6 +57,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databricks:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the workspace vNet Peering.
@@ -68,6 +90,17 @@ Future<GetVNetPeeringResult> getVNetPeering(
   return GetVNetPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetVNetPeeringResult> getVNetPeeringOutput(
+  GetVNetPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databricks:getVNetPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVNetPeeringResult.fromMap);
+}
+
 /// Gets the workspace.
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -86,4 +119,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databricks:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

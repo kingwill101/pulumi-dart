@@ -9,7 +9,7 @@ class OrderStatusResponse {
   /// by the already existing properties
   final pulumi.Input<Map<String, String>> additionalOrderDetails;
   /// Comments related to this status change.
-  final pulumi.Input<String>? comments;
+  final pulumi.Input<String?>? comments;
   /// Status of the order as per the allowed status types.
   final pulumi.Input<String> status;
   /// Tracking information related to the state in the ordering flow

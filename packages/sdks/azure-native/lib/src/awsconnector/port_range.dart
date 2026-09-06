@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PortRange
 class PortRange {
   /// Property fromPort
-  final pulumi.Input<int>? fromPort;
+  final pulumi.Input<int?>? fromPort;
   /// Property toPort
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
 
   /// Creates a new [PortRange].
   /// [fromPort] Property fromPort
@@ -26,8 +26,8 @@ class PortRange {
 
   factory PortRange.fromMap(Map<String, dynamic> map) {
     return PortRange(
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

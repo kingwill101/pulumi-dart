@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of repository access credentials
-enum RepositoryAccessKind {
+enum RepositoryAccessKind implements pulumi.PulumiEnum<String> {
   oAuth("OAuth"),
   pAT("PAT"),
   app("App");
 
   const RepositoryAccessKind(this.wireValue);
+  @override
   final String wireValue;
 
   static RepositoryAccessKind fromValue(String value) {

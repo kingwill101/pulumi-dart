@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of NetworkInterfaceStatusEnumValue
 class NetworkInterfaceStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [NetworkInterfaceStatusEnumValueResponse].
   /// [value] Property value

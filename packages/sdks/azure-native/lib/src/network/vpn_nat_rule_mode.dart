@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Source NAT direction of a VPN NAT.
-enum VpnNatRuleMode {
+enum VpnNatRuleMode implements pulumi.PulumiEnum<String> {
   valueEgressSnat("EgressSnat"),
   valueIngressSnat("IngressSnat");
 
   const VpnNatRuleMode(this.wireValue);
+  @override
   final String wireValue;
 
   static VpnNatRuleMode fromValue(String value) {

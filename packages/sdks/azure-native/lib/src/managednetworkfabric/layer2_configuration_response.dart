@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Common properties for Layer2 Configuration.
 class Layer2ConfigurationResponse {
   /// List of network device interfaces resource IDs.
-  final pulumi.Input<List<String>>? interfaces;
+  final pulumi.Input<List<String>?>? interfaces;
   /// MTU of the packets between PE & CE.
-  final pulumi.Input<int>? mtu;
+  final pulumi.Input<int?>? mtu;
 
   /// Creates a new [Layer2ConfigurationResponse].
   /// [interfaces] List of network device interfaces resource IDs.
   /// [mtu] MTU of the packets between PE & CE.
-  const Layer2ConfigurationResponse({
+  Layer2ConfigurationResponse({
     this.interfaces,
-    this.mtu,
-  });
+    pulumi.Input<int?>? mtu,
+  }) : mtu = mtu ?? pulumi.Input.fromValue(1500);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class Layer2ConfigurationResponse {
   factory Layer2ConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return Layer2ConfigurationResponse(
       interfaces: (() { final guardedValue = map['interfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

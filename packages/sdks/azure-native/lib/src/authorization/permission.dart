@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Role definition permissions.
 class Permission {
   /// Allowed actions.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// Allowed Data actions.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// Denied actions.
-  final pulumi.Input<List<String>>? notActions;
+  final pulumi.Input<List<String>?>? notActions;
   /// Denied Data actions.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [Permission].
   /// [actions] Allowed actions.

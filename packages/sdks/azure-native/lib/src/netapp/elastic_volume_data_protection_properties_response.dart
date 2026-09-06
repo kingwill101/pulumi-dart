@@ -7,9 +7,9 @@ import 'elastic_volume_snapshot_properties_response.dart';
 /// Data protection configuration option for the volume, including snapshot policies and backup.
 class ElasticVolumeDataProtectionPropertiesResponse {
   /// Used to configure backups on an elastic volume.
-  final pulumi.Input<ElasticVolumeBackupPropertiesResponse>? backup;
+  final pulumi.Input<ElasticVolumeBackupPropertiesResponse?>? backup;
   /// Used to apply a snapshot policy to a volume.
-  final pulumi.Input<ElasticVolumeSnapshotPropertiesResponse>? snapshot;
+  final pulumi.Input<ElasticVolumeSnapshotPropertiesResponse?>? snapshot;
 
   /// Creates a new [ElasticVolumeDataProtectionPropertiesResponse].
   /// [backup] Used to configure backups on an elastic volume.

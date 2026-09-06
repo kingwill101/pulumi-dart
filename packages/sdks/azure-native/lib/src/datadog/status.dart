@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of monitoring.
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   valueInProgress("InProgress"),
   valueActive("Active"),
   valueFailed("Failed"),
   valueDeleting("Deleting");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

@@ -10,22 +10,22 @@ class FilterActivityResponse {
   /// Condition to be used for filtering the input.
   final pulumi.Input<ExpressionResponse> condition;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Input array on which filter should be applied.
   final pulumi.Input<ExpressionResponse> items;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'Filter'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [FilterActivityResponse].
   /// [condition] Condition to be used for filtering the input.

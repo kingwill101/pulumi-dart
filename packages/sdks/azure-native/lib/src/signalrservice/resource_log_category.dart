@@ -7,11 +7,11 @@ class ResourceLogCategory {
   /// Indicates whether or the resource log category is enabled.
   /// Available values: true, false.
   /// Case insensitive.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Gets or sets the resource log category's name.
   /// Available values: ConnectivityLogs, MessagingLogs.
   /// Case insensitive.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ResourceLogCategory].
   /// [enabled] Indicates whether or the resource log category is enabled.

@@ -8,23 +8,23 @@ import 'connection_monitor_endpoint_scope_response.dart';
 /// Describes the connection monitor endpoint.
 class ConnectionMonitorEndpointResponse {
   /// Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Test coverage for the endpoint.
-  final pulumi.Input<String>? coverageLevel;
+  final pulumi.Input<String?>? coverageLevel;
   /// Filter field is getting deprecated and should not be used. Instead use Include/Exclude scope fields for it.
-  final pulumi.Input<ConnectionMonitorEndpointFilterResponse>? filter;
+  final pulumi.Input<ConnectionMonitorEndpointFilterResponse?>? filter;
   /// Location details is optional and only being used for 'AzureArcNetwork' type endpoints, which contains region details.
-  final pulumi.Input<ConnectionMonitorEndpointLocationDetailsResponse>? locationDetails;
+  final pulumi.Input<ConnectionMonitorEndpointLocationDetailsResponse?>? locationDetails;
   /// The name of the connection monitor endpoint.
   final pulumi.Input<String> name;
   /// Resource ID of the connection monitor endpoint are supported for AzureVM, AzureVMSS, AzureVNet, AzureSubnet, MMAWorkspaceMachine, MMAWorkspaceNetwork, AzureArcVM endpoint type.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Endpoint scope defines which target resource to monitor in case of compound resource endpoints like VMSS, AzureSubnet, AzureVNet, MMAWorkspaceNetwork, AzureArcNetwork.
-  final pulumi.Input<ConnectionMonitorEndpointScopeResponse>? scope;
+  final pulumi.Input<ConnectionMonitorEndpointScopeResponse?>? scope;
   /// Subscription ID for connection monitor endpoint. It's an optional parameter which is being used for 'AzureArcNetwork' type endpoint.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The endpoint type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConnectionMonitorEndpointResponse].
   /// [address] Address of the connection monitor endpoint. Supported for AzureVM, ExternalAddress, ArcMachine, MMAWorkspaceMachine endpoint type.

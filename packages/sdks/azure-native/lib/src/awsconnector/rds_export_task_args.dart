@@ -9,15 +9,15 @@ import 'rds_export_task_properties.dart';
 /// {@macro pulumi_awsconnector_rds_export_task_args_doc}
 class RdsExportTaskArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of RdsExportTask
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RdsExportTaskProperties>? properties;
+  final pulumi.Input<RdsExportTaskProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RdsExportTaskArgs].
   /// [location] The geo-location where the resource lives

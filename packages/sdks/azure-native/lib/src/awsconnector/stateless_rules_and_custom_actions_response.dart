@@ -7,9 +7,9 @@ import 'stateless_rule_response.dart';
 /// Definition of StatelessRulesAndCustomActions
 class StatelessRulesAndCustomActionsResponse {
   /// Property customActions
-  final pulumi.Input<List<CustomActionNetworkFirewallRuleGroupResponse>>? customActions;
+  final pulumi.Input<List<CustomActionNetworkFirewallRuleGroupResponse>?>? customActions;
   /// Property statelessRules
-  final pulumi.Input<List<StatelessRuleResponse>>? statelessRules;
+  final pulumi.Input<List<StatelessRuleResponse>?>? statelessRules;
 
   /// Creates a new [StatelessRulesAndCustomActionsResponse].
   /// [customActions] Property customActions

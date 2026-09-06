@@ -6,9 +6,9 @@ import 'subnet_properties.dart';
 /// Settings concerning the virtual network.
 class VirtualNetworkProperties {
   /// Uri of the virtual network.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Properties of a subnet.
-  final pulumi.Input<SubnetProperties>? subnet;
+  final pulumi.Input<SubnetProperties?>? subnet;
 
   /// Creates a new [VirtualNetworkProperties].
   /// [id] Uri of the virtual network.

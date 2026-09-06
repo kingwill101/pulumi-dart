@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration {
   /// The managed resource group location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The managed resource group name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ArtifactStorePropertiesFormatResponseManagedResourceGroupConfiguration].
   /// [location] The managed resource group location.

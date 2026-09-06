@@ -69,7 +69,7 @@ class CertificateDetailsResponse {
       signatureAlgorithm: pulumi.Input.fromValue(map['signatureAlgorithm'] as String),
       subject: pulumi.Input.fromValue(map['subject'] as String),
       thumbprint: pulumi.Input.fromValue(map['thumbprint'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

@@ -12,17 +12,17 @@ import 'user_property_response.dart';
 /// Execute spark job activity.
 class SynapseSparkJobDefinitionActivityResponse {
   /// User specified arguments to SynapseSparkJobDefinitionActivity.
-  final pulumi.Input<List<dynamic>>? arguments;
+  final pulumi.Input<List<dynamic>?>? arguments;
   /// The fully-qualified identifier or the main class that is in the main definition file, which will override the 'className' of the spark job definition you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? className;
   /// Spark configuration properties, which will override the 'conf' of the spark job definition you provide.
   final pulumi.Input<dynamic>? conf;
   /// The type of the spark config.
-  final pulumi.Input<String>? configurationType;
+  final pulumi.Input<String?>? configurationType;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Number of core and memory to be used for driver allocated in the specified Spark pool for the job, which will be used for overriding 'driverCores' and 'driverMemory' of the spark job definition you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? driverSize;
   /// Number of core and memory to be used for executors allocated in the specified Spark pool for the job, which will be used for overriding 'executorCores' and 'executorMemory' of the spark job definition you provide. Type: string (or Expression with resultType string).
@@ -30,21 +30,21 @@ class SynapseSparkJobDefinitionActivityResponse {
   /// The main file used for the job, which will override the 'file' of the spark job definition you provide. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? file;
   /// (Deprecated. Please use pythonCodeReference and filesV2) Additional files used for reference in the main definition file, which will override the 'files' of the spark job definition you provide.
-  final pulumi.Input<List<dynamic>>? files;
+  final pulumi.Input<List<dynamic>?>? files;
   /// Additional files used for reference in the main definition file, which will override the 'jars' and 'files' of the spark job definition you provide.
-  final pulumi.Input<List<dynamic>>? filesV2;
+  final pulumi.Input<List<dynamic>?>? filesV2;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Number of executors to launch for this job, which will override the 'numExecutors' of the spark job definition you provide. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? numExecutors;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Additional python code files used for reference in the main definition file, which will override the 'pyFiles' of the spark job definition you provide.
-  final pulumi.Input<List<dynamic>>? pythonCodeReference;
+  final pulumi.Input<List<dynamic>?>? pythonCodeReference;
   /// Scanning subfolders from the root folder of the main definition file, these files will be added as reference files. The folders named 'jars', 'pyFiles', 'files' or 'archives' will be scanned, and the folders name are case sensitive. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? scanFolder;
   /// Spark configuration property.
@@ -52,16 +52,16 @@ class SynapseSparkJobDefinitionActivityResponse {
   /// Synapse spark job reference.
   final pulumi.Input<SynapseSparkJobReferenceResponse> sparkJob;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The name of the big data pool which will be used to execute the spark batch job, which will override the 'targetBigDataPool' of the spark job definition you provide.
-  final pulumi.Input<BigDataPoolParametrizationReferenceResponse>? targetBigDataPool;
+  final pulumi.Input<BigDataPoolParametrizationReferenceResponse?>? targetBigDataPool;
   /// The spark configuration of the spark job.
-  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse>? targetSparkConfiguration;
+  final pulumi.Input<SparkConfigurationParametrizationReferenceResponse?>? targetSparkConfiguration;
   /// Type of activity.
   /// Expected value is 'SparkJob'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [SynapseSparkJobDefinitionActivityResponse].
   /// [arguments] User specified arguments to SynapseSparkJobDefinitionActivity.

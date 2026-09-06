@@ -7,21 +7,21 @@ import 'transparent_data_encryption.dart';
 /// Fleet database properties.
 class FleetDatabaseProperties {
   /// Database collation.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Create mode. Available options: Default - Create a database. Copy - Copy the source database (source database name must be specified) PointInTimeRestore - Create a database by restoring source database from a point in time (source database name and restore from time must be specified)
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// Identity property.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Additional database properties to be applied as the underlying database resource tags.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Restore from time when CreateMode is PointInTimeRestore.
-  final pulumi.Input<String>? restoreFromTime;
+  final pulumi.Input<String?>? restoreFromTime;
   /// Source database name used when CreateMode is Copy or PointInTimeRestore.
-  final pulumi.Input<String>? sourceDatabaseName;
+  final pulumi.Input<String?>? sourceDatabaseName;
   /// Name of the tier this database belongs to.
-  final pulumi.Input<String>? tierName;
+  final pulumi.Input<String?>? tierName;
   /// Transparent Data Encryption properties
-  final pulumi.Input<TransparentDataEncryption>? transparentDataEncryption;
+  final pulumi.Input<TransparentDataEncryption?>? transparentDataEncryption;
 
   /// Creates a new [FleetDatabaseProperties].
   /// [collation] Database collation.
@@ -59,7 +59,7 @@ class FleetDatabaseProperties {
   factory FleetDatabaseProperties.fromMap(Map<String, dynamic> map) {
     return FleetDatabaseProperties(
       collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceTags: (() { final guardedValue = map['resourceTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       restoreFromTime: (() { final guardedValue = map['restoreFromTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

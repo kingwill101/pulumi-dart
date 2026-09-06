@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of an Azure Firewall.
-enum AzureFirewallSkuTier {
+enum AzureFirewallSkuTier implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valuePremium("Premium"),
   valueBasic("Basic");
 
   const AzureFirewallSkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureFirewallSkuTier fromValue(String value) {

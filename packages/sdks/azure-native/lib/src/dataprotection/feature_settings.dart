@@ -6,9 +6,9 @@ import 'cross_subscription_restore_settings.dart';
 
 /// Class containing feature settings of vault
 class FeatureSettings {
-  final pulumi.Input<CrossRegionRestoreSettings>? crossRegionRestoreSettings;
+  final pulumi.Input<CrossRegionRestoreSettings?>? crossRegionRestoreSettings;
   /// CrossSubscriptionRestore Settings
-  final pulumi.Input<CrossSubscriptionRestoreSettings>? crossSubscriptionRestoreSettings;
+  final pulumi.Input<CrossSubscriptionRestoreSettings?>? crossSubscriptionRestoreSettings;
 
   /// Creates a new [FeatureSettings].
   /// [crossRegionRestoreSettings] Optional.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The rest of the world group one region configuration.
 class DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse {
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The wait duration.
-  final pulumi.Input<String>? waitDuration;
+  final pulumi.Input<String?>? waitDuration;
 
   /// Creates a new [DefaultRolloutSpecificationRestOfTheWorldGroupOneResponse].
   /// [regions] Optional.

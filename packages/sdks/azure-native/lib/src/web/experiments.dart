@@ -6,7 +6,7 @@ import 'ramp_up_rule.dart';
 /// Routing rules in production experiments.
 class Experiments {
   /// List of ramp-up rules.
-  final pulumi.Input<List<RampUpRule>>? rampUpRules;
+  final pulumi.Input<List<RampUpRule>?>? rampUpRules;
 
   /// Creates a new [Experiments].
   /// [rampUpRules] List of ramp-up rules.

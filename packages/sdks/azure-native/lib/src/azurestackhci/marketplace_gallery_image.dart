@@ -326,7 +326,33 @@ class MarketplaceGalleryImage extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<MarketplaceGalleryImageStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MarketplaceGalleryImageStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<GalleryImageVersionResponse?>('version', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MarketplaceGalleryImage] resource.
+  MarketplaceGalleryImage.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:MarketplaceGalleryImage',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudInitDataSource = registerOutput<String?>('cloudInitDataSource');
+    containerId = registerOutput<String?>('containerId');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    identifier = registerOutput<GalleryImageIdentifierResponse?>('identifier', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageIdentifierResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<MarketplaceGalleryImageStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MarketplaceGalleryImageStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<GalleryImageVersionResponse?>('version', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

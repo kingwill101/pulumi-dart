@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'encryption.dart';
 import 'identity.dart';
-import 'private_endpoint_connection_eventhub.dart';
+import 'private_endpoint_connection.dart';
 import 'sku.dart';
 
 /// {@template pulumi_eventhub_namespace_args_doc}
@@ -12,40 +12,40 @@ import 'sku.dart';
 /// {@macro pulumi_eventhub_namespace_args_doc}
 class NamespaceArgs {
   /// Alternate name specified when alias and namespace names are same.
-  final pulumi.Input<String>? alternateName;
+  final pulumi.Input<String?>? alternateName;
   /// Cluster ARM ID of the Namespace.
-  final pulumi.Input<String>? clusterArmId;
+  final pulumi.Input<String?>? clusterArmId;
   /// This property disables SAS authentication for the Event Hubs namespace.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Properties of BYOK Encryption description
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Properties of BYOK Identity description
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Value that indicates whether AutoInflate is enabled for eventhub namespace.
-  final pulumi.Input<bool>? isAutoInflateEnabled;
+  final pulumi.Input<bool?>? isAutoInflateEnabled;
   /// Value that indicates whether Kafka is enabled for eventhub namespace.
-  final pulumi.Input<bool>? kafkaEnabled;
+  final pulumi.Input<bool?>? kafkaEnabled;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units. ( '0' if AutoInflateEnabled = true)
-  final pulumi.Input<int>? maximumThroughputUnits;
+  final pulumi.Input<int?>? maximumThroughputUnits;
   /// The minimum TLS version for the cluster to support, e.g. '1.2'
-  final pulumi.Input<String>? minimumTlsVersion;
+  final pulumi.Input<dynamic>? minimumTlsVersion;
   /// The Namespace name
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// List of private endpoint connections.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<PrivateEndpointConnectionEventhub>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>?>? privateEndpointConnections;
   /// This determines if traffic is allowed over public network. By default it is enabled.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Properties of sku resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [NamespaceArgs].
   /// [alternateName] Alternate name specified when alias and namespace names are same.
@@ -65,7 +65,7 @@ class NamespaceArgs {
   /// [sku] Properties of sku resource
   /// [tags] Resource tags.
   /// [zoneRedundant] Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
-  const NamespaceArgs({
+  NamespaceArgs({
     this.alternateName,
     this.clusterArmId,
     this.disableLocalAuth,
@@ -78,12 +78,12 @@ class NamespaceArgs {
     this.minimumTlsVersion,
     this.namespaceName,
     this.privateEndpointConnections,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     required this.resourceGroupName,
     this.sku,
     this.tags,
     this.zoneRedundant,
-  });
+  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -98,7 +98,7 @@ class NamespaceArgs {
       'maximumThroughputUnits': ?maximumThroughputUnits,
       'minimumTlsVersion': ?minimumTlsVersion,
       'namespaceName': ?namespaceName,
-      'privateEndpointConnections': ?privateEndpointConnections,
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
       'sku': ?pulumi.Input.mapOptionalInputValue<Sku, Map<String, dynamic>>(sku, (value) => value.toMap()),
@@ -117,11 +117,11 @@ class NamespaceArgs {
       isAutoInflateEnabled: (() { final guardedValue = map['isAutoInflateEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kafkaEnabled: (() { final guardedValue = map['kafkaEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maximumThroughputUnits: (() { final guardedValue = map['maximumThroughputUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maximumThroughputUnits: (() { final guardedValue = map['maximumThroughputUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumTlsVersion: (() { final guardedValue = map['minimumTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<PrivateEndpointConnectionEventhub>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnection>(guardedValue, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

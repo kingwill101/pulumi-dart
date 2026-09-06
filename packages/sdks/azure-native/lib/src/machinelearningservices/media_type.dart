@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Media type of the job.
-enum MediaType {
+enum MediaType implements pulumi.PulumiEnum<String> {
   valueImage("Image"),
   valueText("Text");
 
   const MediaType(this.wireValue);
+  @override
   final String wireValue;
 
   static MediaType fromValue(String value) {

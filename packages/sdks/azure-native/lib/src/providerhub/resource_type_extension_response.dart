@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceTypeExtensionResponse {
   /// The endpoint uri.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// The extension categories.
-  final pulumi.Input<List<String>>? extensionCategories;
+  final pulumi.Input<List<String>?>? extensionCategories;
   /// The timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [ResourceTypeExtensionResponse].
   /// [endpointUri] The endpoint uri.

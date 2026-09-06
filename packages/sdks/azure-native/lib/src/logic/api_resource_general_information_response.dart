@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The API general information.
 class ApiResourceGeneralInformationResponse {
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The icon url.
-  final pulumi.Input<String>? iconUrl;
+  final pulumi.Input<String?>? iconUrl;
   /// The release tag.
-  final pulumi.Input<String>? releaseTag;
+  final pulumi.Input<String?>? releaseTag;
   /// The terms of use url.
-  final pulumi.Input<String>? termsOfUseUrl;
+  final pulumi.Input<String?>? termsOfUseUrl;
   /// The tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ApiResourceGeneralInformationResponse].
   /// [description] The description.

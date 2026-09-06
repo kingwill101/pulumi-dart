@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The endpoint type.
-enum EndpointType {
+enum EndpointType implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   canary("Canary"),
   production("Production"),
   testInProduction("TestInProduction");
 
   const EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointType fromValue(String value) {

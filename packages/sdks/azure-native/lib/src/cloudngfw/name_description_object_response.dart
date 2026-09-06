@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// object type info
 class NameDescriptionObjectResponse {
   /// description value
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// name value
   final pulumi.Input<String> name;
 

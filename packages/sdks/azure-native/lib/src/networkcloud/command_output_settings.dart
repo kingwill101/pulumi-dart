@@ -5,9 +5,9 @@ import 'identity_selector.dart';
 
 class CommandOutputSettings {
   /// The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.
-  final pulumi.Input<IdentitySelector>? associatedIdentity;
+  final pulumi.Input<IdentitySelector?>? associatedIdentity;
   /// The URL of the storage account container that is to be used by the specified identities.
-  final pulumi.Input<String>? containerUrl;
+  final pulumi.Input<String?>? containerUrl;
 
   /// Creates a new [CommandOutputSettings].
   /// [associatedIdentity] The selection of the managed identity to use with this storage account container. The identity type must be either system assigned or user assigned.

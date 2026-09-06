@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The reference information for an Azure Marketplace image.
 class GalleryImageReference {
   /// The offer of the gallery image.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// The OS type of the gallery image.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The publisher of the gallery image.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// The SKU of the gallery image.
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The version of the gallery image.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [GalleryImageReference].
   /// [offer] The offer of the gallery image.

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Plugin certificates information for Service Mesh.
 class IstioPluginCertificateAuthority {
   /// Certificate chain object name in Azure Key Vault.
-  final pulumi.Input<String>? certChainObjectName;
+  final pulumi.Input<String?>? certChainObjectName;
   /// Intermediate certificate object name in Azure Key Vault.
-  final pulumi.Input<String>? certObjectName;
+  final pulumi.Input<String?>? certObjectName;
   /// Intermediate certificate private key object name in Azure Key Vault.
-  final pulumi.Input<String>? keyObjectName;
+  final pulumi.Input<String?>? keyObjectName;
   /// The resource ID of the Key Vault.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Root certificate object name in Azure Key Vault.
-  final pulumi.Input<String>? rootCertObjectName;
+  final pulumi.Input<String?>? rootCertObjectName;
 
   /// Creates a new [IstioPluginCertificateAuthority].
   /// [certChainObjectName] Certificate chain object name in Azure Key Vault.

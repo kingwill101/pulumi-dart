@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The table configuration for the Log Analytics integration.
 class AzureMonitorTableConfiguration {
   /// The name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureMonitorTableConfiguration].
   /// [name] The name.

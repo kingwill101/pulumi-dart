@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of Arc Sql availability group database replica resource
 class SqlAvailabilityGroupDatabaseReplicaResourcePropertiesResponse {
   /// the database name.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Description of the database state of the availability replica.
   final pulumi.Input<String> databaseStateDescription;
   /// Whether this replica is transaction committer.

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_avs_cloud_link_args_doc}
 class CloudLinkArgs {
   /// Name of the cloud link.
-  final pulumi.Input<String>? cloudLinkName;
+  final pulumi.Input<String?>? cloudLinkName;
   /// Identifier of the other private cloud participating in the link.
-  final pulumi.Input<String>? linkedCloud;
+  final pulumi.Input<String?>? linkedCloud;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.

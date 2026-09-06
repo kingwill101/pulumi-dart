@@ -6,11 +6,11 @@ import 'azure_internal_monitoring_pipeline_sink_description.dart';
 /// Describes the diagnostics options available
 class DiagnosticsDescription {
   /// The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service and code package level.
-  final pulumi.Input<List<String>>? defaultSinkRefs;
+  final pulumi.Input<List<String>?>? defaultSinkRefs;
   /// Status of whether or not sinks are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// List of supported sinks that can be referenced.
-  final pulumi.Input<List<AzureInternalMonitoringPipelineSinkDescription>>? sinks;
+  final pulumi.Input<List<AzureInternalMonitoringPipelineSinkDescription>?>? sinks;
 
   /// Creates a new [DiagnosticsDescription].
   /// [defaultSinkRefs] The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service and code package level.

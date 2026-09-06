@@ -501,7 +501,35 @@ class Assignment extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     scope = registerOutput<String?>('scope');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Assignment] resource.
+  Assignment.reference(String urn)
+    : super(
+        'azure-native:security:Assignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalData = registerOutput<AssignmentPropertiesAdditionalDataResponse?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentPropertiesAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assignedComponent = registerOutput<AssignedComponentItemResponse?>('assignedComponent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedComponentItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assignedStandard = registerOutput<AssignedStandardItemResponse?>('assignedStandard', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignedStandardItemResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    effect = registerOutput<String?>('effect');
+    etag = registerOutput<String?>('etag');
+    expiresOn = registerOutput<String?>('expiresOn');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    scope = registerOutput<String?>('scope');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

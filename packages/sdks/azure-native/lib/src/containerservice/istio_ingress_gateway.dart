@@ -7,7 +7,7 @@ class IstioIngressGateway {
   /// Whether to enable the ingress gateway.
   final pulumi.Input<bool> enabled;
   /// Mode of an ingress gateway.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
 
   /// Creates a new [IstioIngressGateway].
   /// [enabled] Whether to enable the ingress gateway.
@@ -27,7 +27,7 @@ class IstioIngressGateway {
   factory IstioIngressGateway.fromMap(Map<String, dynamic> map) {
     return IstioIngressGateway(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
     );
   }
 }

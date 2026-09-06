@@ -11,13 +11,13 @@ class RaiToolLabelArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// Properties of the RAI Tool Label.
-  final pulumi.Input<RaiToolLabelProperties>? properties;
+  final pulumi.Input<RaiToolLabelProperties?>? properties;
   /// The name of the Rai Tool Label
-  final pulumi.Input<String>? raiToolConnectionName;
+  final pulumi.Input<String?>? raiToolConnectionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RaiToolLabelArgs].
   /// [accountName] The name of Cognitive Services account.

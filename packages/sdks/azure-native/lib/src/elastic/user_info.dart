@@ -6,15 +6,15 @@ import 'company_info.dart';
 /// User Information to be passed to partners.
 class UserInfo {
   /// Company information of the user to be passed to partners.
-  final pulumi.Input<CompanyInfo>? companyInfo;
+  final pulumi.Input<CompanyInfo?>? companyInfo;
   /// Company name of the user
-  final pulumi.Input<String>? companyName;
+  final pulumi.Input<String?>? companyName;
   /// Email of the user used by Elastic for contacting them if needed
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// First name of the user
-  final pulumi.Input<String>? firstName;
+  final pulumi.Input<String?>? firstName;
   /// Last name of the user
-  final pulumi.Input<String>? lastName;
+  final pulumi.Input<String?>? lastName;
 
   /// Creates a new [UserInfo].
   /// [companyInfo] Company information of the user to be passed to partners.

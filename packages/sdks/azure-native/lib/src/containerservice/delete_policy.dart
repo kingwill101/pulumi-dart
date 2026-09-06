@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Delete options of a namespace.
-enum DeletePolicy {
+enum DeletePolicy implements pulumi.PulumiEnum<String> {
   valueKeep("Keep"),
   valueDelete("Delete");
 
   const DeletePolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static DeletePolicy fromValue(String value) {

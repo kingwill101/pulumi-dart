@@ -8,11 +8,11 @@ import 'basic_login_information.dart';
 /// The properties of an Active Directory connector resource
 class ActiveDirectoryConnectorProperties {
   /// Username and password for domain service account authentication.
-  final pulumi.Input<BasicLoginInformation>? domainServiceAccountLoginInformation;
+  final pulumi.Input<BasicLoginInformation?>? domainServiceAccountLoginInformation;
   /// null
   final pulumi.Input<ActiveDirectoryConnectorSpec> spec;
   /// null
-  final pulumi.Input<ActiveDirectoryConnectorStatus>? status;
+  final pulumi.Input<ActiveDirectoryConnectorStatus?>? status;
 
   /// Creates a new [ActiveDirectoryConnectorProperties].
   /// [domainServiceAccountLoginInformation] Username and password for domain service account authentication.

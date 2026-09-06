@@ -9,33 +9,35 @@ import 'entity_status.dart';
 /// {@macro pulumi_servicebus_topic_args_doc}
 class TopicArgs {
   /// ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
-  final pulumi.Input<String>? autoDeleteOnIdle;
+  final pulumi.Input<String?>? autoDeleteOnIdle;
   /// ISO 8601 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
-  final pulumi.Input<String>? defaultMessageTimeToLive;
+  final pulumi.Input<String?>? defaultMessageTimeToLive;
   /// ISO8601 timespan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
-  final pulumi.Input<String>? duplicateDetectionHistoryTimeWindow;
+  final pulumi.Input<String?>? duplicateDetectionHistoryTimeWindow;
   /// Value that indicates whether server-side batched operations are enabled.
-  final pulumi.Input<bool>? enableBatchedOperations;
+  final pulumi.Input<bool?>? enableBatchedOperations;
   /// Value that indicates whether Express Entities are enabled. An express topic holds a message in memory temporarily before writing it to persistent storage.
-  final pulumi.Input<bool>? enableExpress;
+  final pulumi.Input<bool?>? enableExpress;
   /// Value that indicates whether the topic to be partitioned across multiple message brokers is enabled.
-  final pulumi.Input<bool>? enablePartitioning;
+  final pulumi.Input<bool?>? enablePartitioning;
   /// Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
-  final pulumi.Input<double>? maxMessageSizeInKilobytes;
+  final pulumi.Input<double?>? maxMessageSizeInKilobytes;
   /// Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic. Default is 1024.
-  final pulumi.Input<int>? maxSizeInMegabytes;
+  final pulumi.Input<int?>? maxSizeInMegabytes;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// Value indicating if this topic requires duplicate detection.
-  final pulumi.Input<bool>? requiresDuplicateDetection;
+  final pulumi.Input<bool?>? requiresDuplicateDetection;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Enumerates the possible values for the status of a messaging entity.
-  final pulumi.Input<EntityStatus>? status;
+  final pulumi.Input<EntityStatus?>? status;
   /// Value that indicates whether the topic supports ordering.
-  final pulumi.Input<bool>? supportOrdering;
+  final pulumi.Input<bool?>? supportOrdering;
   /// The topic name.
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
+  /// Gets and Sets Metadata of User.
+  final pulumi.Input<String?>? userMetadata;
 
   /// Creates a new [TopicArgs].
   /// [autoDeleteOnIdle] ISO 8601 timespan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
@@ -52,6 +54,7 @@ class TopicArgs {
   /// [status] Enumerates the possible values for the status of a messaging entity.
   /// [supportOrdering] Value that indicates whether the topic supports ordering.
   /// [topicName] The topic name.
+  /// [userMetadata] Gets and Sets Metadata of User.
   const TopicArgs({
     this.autoDeleteOnIdle,
     this.defaultMessageTimeToLive,
@@ -67,6 +70,7 @@ class TopicArgs {
     this.status,
     this.supportOrdering,
     this.topicName,
+    this.userMetadata,
   });
 
   Map<String, dynamic> toMap() {
@@ -85,6 +89,7 @@ class TopicArgs {
       'status': ?pulumi.Input.mapOptionalInputValue<EntityStatus, String>(status, (value) => value.wireValue),
       'supportOrdering': ?supportOrdering,
       'topicName': ?topicName,
+      'userMetadata': ?userMetadata,
     };
   }
 
@@ -96,14 +101,15 @@ class TopicArgs {
       enableBatchedOperations: (() { final guardedValue = map['enableBatchedOperations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableExpress: (() { final guardedValue = map['enableExpress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enablePartitioning: (() { final guardedValue = map['enablePartitioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxMessageSizeInKilobytes: (() { final guardedValue = map['maxMessageSizeInKilobytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxSizeInMegabytes: (() { final guardedValue = map['maxSizeInMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxMessageSizeInKilobytes: (() { final guardedValue = map['maxMessageSizeInKilobytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxSizeInMegabytes: (() { final guardedValue = map['maxSizeInMegabytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       requiresDuplicateDetection: (() { final guardedValue = map['requiresDuplicateDetection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EntityStatus.fromValue(guardedValue as String)); })(),
       supportOrdering: (() { final guardedValue = map['supportOrdering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       topicName: (() { final guardedValue = map['topicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      userMetadata: (() { final guardedValue = map['userMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

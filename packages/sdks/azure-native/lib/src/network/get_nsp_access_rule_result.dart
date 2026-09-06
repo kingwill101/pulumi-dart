@@ -9,7 +9,7 @@ class GetNspAccessRuleResult {
   /// Inbound address prefixes (IPv4/IPv6)
   final List<String>? addressPrefixes;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Direction that specifies whether the access rules is inbound/outbound.
   final String? direction;
   /// Outbound rules email address format.
@@ -17,17 +17,17 @@ class GetNspAccessRuleResult {
   /// Outbound rules fully qualified domain name format.
   final List<String>? fullyQualifiedDomainNames;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Rule specified by the perimeter id.
-  final List<PerimeterBasedAccessRuleResponse> networkSecurityPerimeters;
+  final List<PerimeterBasedAccessRuleResponse>? networkSecurityPerimeters;
   /// Outbound rules phone number format.
   final List<String>? phoneNumbers;
   /// The provisioning state of the scope assignment resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Inbound rules service tag names.
   final List<String>? serviceTags;
   /// List of subscription ids
@@ -35,7 +35,7 @@ class GetNspAccessRuleResult {
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNspAccessRuleResult].
   /// [addressPrefixes] Inbound address prefixes (IPv4/IPv6)
@@ -55,59 +55,59 @@ class GetNspAccessRuleResult {
   /// [type] Resource type.
   const GetNspAccessRuleResult({
     this.addressPrefixes,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.direction,
     this.emailAddresses,
     this.fullyQualifiedDomainNames,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.networkSecurityPerimeters,
+    this.name,
+    this.networkSecurityPerimeters,
     this.phoneNumbers,
-    required this.provisioningState,
+    this.provisioningState,
     this.serviceTags,
     this.subscriptions,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPrefixes': ?addressPrefixes,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'direction': ?direction,
       'emailAddresses': ?emailAddresses,
       'fullyQualifiedDomainNames': ?fullyQualifiedDomainNames,
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'networkSecurityPerimeters': pulumi.Input.encodeList<PerimeterBasedAccessRuleResponse, Map<String, dynamic>>(networkSecurityPerimeters, (value) => value.toMap()),
+      'name': ?name,
+      'networkSecurityPerimeters': ?(() { final guardedValue = networkSecurityPerimeters; if (guardedValue == null) return null; return pulumi.Input.encodeList<PerimeterBasedAccessRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'phoneNumbers': ?phoneNumbers,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'serviceTags': ?serviceTags,
       'subscriptions': ?(() { final guardedValue = subscriptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubscriptionIdResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNspAccessRuleResult.fromMap(Map<String, dynamic> map) {
     return GetNspAccessRuleResult(
       addressPrefixes: (() { final guardedValue = map['addressPrefixes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       emailAddresses: (() { final guardedValue = map['emailAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       fullyQualifiedDomainNames: (() { final guardedValue = map['fullyQualifiedDomainNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      networkSecurityPerimeters: pulumi.Input.decodeList<PerimeterBasedAccessRuleResponse>(map['networkSecurityPerimeters']!, (value) => PerimeterBasedAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkSecurityPerimeters: (() { final guardedValue = map['networkSecurityPerimeters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PerimeterBasedAccessRuleResponse>(guardedValue, (value) => PerimeterBasedAccessRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       phoneNumbers: (() { final guardedValue = map['phoneNumbers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceTags: (() { final guardedValue = map['serviceTags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       subscriptions: (() { final guardedValue = map['subscriptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubscriptionIdResponse>(guardedValue, (value) => SubscriptionIdResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

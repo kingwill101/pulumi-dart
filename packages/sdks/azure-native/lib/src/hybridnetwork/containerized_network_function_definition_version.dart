@@ -6,11 +6,11 @@ import 'azure_arc_kubernetes_network_function_template.dart';
 /// Containerized network function network function definition version properties.
 class ContainerizedNetworkFunctionDefinitionVersion {
   /// The deployment parameters of the network function definition version.
-  final pulumi.Input<String>? deployParameters;
+  final pulumi.Input<String?>? deployParameters;
   /// The network function definition version description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Containerized network function template.
-  final pulumi.Input<AzureArcKubernetesNetworkFunctionTemplate>? networkFunctionTemplate;
+  final pulumi.Input<AzureArcKubernetesNetworkFunctionTemplate?>? networkFunctionTemplate;
   /// The network function type.
   /// Expected value is 'ContainerizedNetworkFunction'.
   final pulumi.Input<String> networkFunctionType;

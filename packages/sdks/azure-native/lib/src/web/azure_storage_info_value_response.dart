@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Files or Blob Storage access information value for dictionary storage.
 class AzureStorageInfoValueResponse {
   /// Access key for the storage account.
-  final pulumi.Input<String>? accessKey;
+  final pulumi.Input<String?>? accessKey;
   /// Name of the storage account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Path to mount the storage within the site's runtime environment.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// Mounting protocol to use for the storage account.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Name of the file share (container name, for Blob storage).
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// State of the storage account.
   final pulumi.Input<String> state;
   /// Type of storage.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AzureStorageInfoValueResponse].
   /// [accessKey] Access key for the storage account.

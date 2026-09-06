@@ -7,25 +7,25 @@ class NetworkInterfacesResponse {
   /// Gets the display name of the network interface as shown in the vmmServer. This is the fallback label for a NIC when the name is not set.
   final pulumi.Input<String> displayName;
   /// Gets or sets the ipv4 address type.
-  final pulumi.Input<String>? ipv4AddressType;
+  final pulumi.Input<String?>? ipv4AddressType;
   /// Gets or sets the nic ipv4 addresses.
   final pulumi.Input<List<String>> ipv4Addresses;
   /// Gets or sets the ipv6 address type.
-  final pulumi.Input<String>? ipv6AddressType;
+  final pulumi.Input<String?>? ipv6AddressType;
   /// Gets or sets the nic ipv6 addresses.
   final pulumi.Input<List<String>> ipv6Addresses;
   /// Gets or sets the nic MAC address.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Gets or sets the mac address type.
-  final pulumi.Input<String>? macAddressType;
+  final pulumi.Input<String?>? macAddressType;
   /// Gets or sets the name of the network interface.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the name of the virtual network in vmmServer that the nic is connected to.
   final pulumi.Input<String> networkName;
   /// Gets or sets the nic id.
-  final pulumi.Input<String>? nicId;
+  final pulumi.Input<String?>? nicId;
   /// Gets or sets the ARM Id of the Microsoft.ScVmm/virtualNetwork resource to connect the nic.
-  final pulumi.Input<String>? virtualNetworkId;
+  final pulumi.Input<String?>? virtualNetworkId;
 
   /// Creates a new [NetworkInterfacesResponse].
   /// [displayName] Gets the display name of the network interface as shown in the vmmServer. This is the fallback label for a NIC when the name is not set.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NFS Azure File Properties.
 class NfsAzureFilePropertiesResponse {
   /// Access mode for storage
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// Server for NFS azure file.
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
   /// NFS Azure file share name.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
 
   /// Creates a new [NfsAzureFilePropertiesResponse].
   /// [accessMode] Access mode for storage

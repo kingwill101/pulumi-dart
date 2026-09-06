@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// IP address version.
-enum IPVersion {
+enum IPVersion implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueIPv4("IPv4");
 
   const IPVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static IPVersion fromValue(String value) {

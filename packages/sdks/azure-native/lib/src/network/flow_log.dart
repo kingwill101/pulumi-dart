@@ -77,7 +77,34 @@ class FlowLog extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     retentionPolicy = registerOutput<RetentionPolicyParametersResponse?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetentionPolicyParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageId = registerOutput<String>('storageId');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceGuid = registerOutput<String>('targetResourceGuid');
+    targetResourceId = registerOutput<String>('targetResourceId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FlowLog] resource.
+  FlowLog.reference(String urn)
+    : super(
+        'azure-native:network:FlowLog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enabled = registerOutput<bool?>('enabled');
+    enabledFilteringCriteria = registerOutput<String?>('enabledFilteringCriteria');
+    etag = registerOutput<String>('etag');
+    flowAnalyticsConfiguration = registerOutput<TrafficAnalyticsPropertiesResponse?>('flowAnalyticsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficAnalyticsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    format = registerOutput<FlowLogFormatParametersResponse?>('format', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlowLogFormatParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    retentionPolicy = registerOutput<RetentionPolicyParametersResponse?>('retentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetentionPolicyParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageId = registerOutput<String>('storageId');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetResourceGuid = registerOutput<String>('targetResourceGuid');
     targetResourceId = registerOutput<String>('targetResourceId');
     type = registerOutput<String>('type');

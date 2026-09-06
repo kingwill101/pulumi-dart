@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enable AAD authentication for SQL VM.
 class AADAuthenticationSettingsResponse {
   /// The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
 
   /// Creates a new [AADAuthenticationSettingsResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity

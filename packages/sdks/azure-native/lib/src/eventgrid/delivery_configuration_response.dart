@@ -7,11 +7,11 @@ import 'queue_info_response.dart';
 /// Properties of the delivery configuration information of the event subscription.
 class DeliveryConfigurationResponse {
   /// Delivery mode of the event subscription.
-  final pulumi.Input<String>? deliveryMode;
+  final pulumi.Input<String?>? deliveryMode;
   /// This property should be populated when deliveryMode is push and represents information about the push subscription.
-  final pulumi.Input<PushInfoResponse>? push;
+  final pulumi.Input<PushInfoResponse?>? push;
   /// This property should be populated when deliveryMode is queue and represents information about the queue subscription.
-  final pulumi.Input<QueueInfoResponse>? queue;
+  final pulumi.Input<QueueInfoResponse?>? queue;
 
   /// Creates a new [DeliveryConfigurationResponse].
   /// [deliveryMode] Delivery mode of the event subscription.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of the current flow
-enum FlowStatus {
+enum FlowStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const FlowStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static FlowStatus fromValue(String value) {

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Match Variable.
-enum WebApplicationFirewallMatchVariable {
+enum WebApplicationFirewallMatchVariable implements pulumi.PulumiEnum<String> {
   valueRemoteAddr("RemoteAddr"),
   valueRequestMethod("RequestMethod"),
   valueQueryString("QueryString"),
@@ -10,6 +12,7 @@ enum WebApplicationFirewallMatchVariable {
   valueRequestCookies("RequestCookies");
 
   const WebApplicationFirewallMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static WebApplicationFirewallMatchVariable fromValue(String value) {

@@ -11,9 +11,9 @@ class DesiredConfiguration {
   /// Configuration for the Change Tracking and Inventory service.
   final pulumi.Input<ChangeTrackingConfiguration> changeTrackingAndInventory;
   /// Desired enablement state of the Defender Cloud Security Posture Management (CSPM) service.
-  final pulumi.Input<String>? defenderCspm;
+  final pulumi.Input<dynamic>? defenderCspm;
   /// Desired enablement state of the Defender For Servers service.
-  final pulumi.Input<String>? defenderForServers;
+  final pulumi.Input<dynamic>? defenderForServers;
   /// User assigned Managed Identity used to perform operations on machines managed by Ops360.
   final pulumi.Input<String> userAssignedManagedIdentityId;
 
@@ -45,8 +45,8 @@ class DesiredConfiguration {
     return DesiredConfiguration(
       azureMonitorInsights: pulumi.Input.fromValue(AzureMonitorConfiguration.fromMap((map['azureMonitorInsights']! as Map).cast<String, dynamic>())),
       changeTrackingAndInventory: pulumi.Input.fromValue(ChangeTrackingConfiguration.fromMap((map['changeTrackingAndInventory']! as Map).cast<String, dynamic>())),
-      defenderCspm: (() { final guardedValue = map['defenderCspm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defenderForServers: (() { final guardedValue = map['defenderForServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defenderCspm: (() { final guardedValue = map['defenderCspm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      defenderForServers: (() { final guardedValue = map['defenderForServers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedManagedIdentityId: pulumi.Input.fromValue(map['userAssignedManagedIdentityId'] as String),
     );
   }

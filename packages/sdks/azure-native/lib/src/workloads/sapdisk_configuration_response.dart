@@ -7,9 +7,9 @@ import 'disk_volume_configuration_response.dart';
 /// The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type.
 class SAPDiskConfigurationResponse {
   /// The recommended disk details for a given VM Sku.
-  final pulumi.Input<DiskVolumeConfigurationResponse>? recommendedConfiguration;
+  final pulumi.Input<DiskVolumeConfigurationResponse?>? recommendedConfiguration;
   /// The list of supported disks for a given VM Sku.
-  final pulumi.Input<List<DiskDetailsResponse>>? supportedConfigurations;
+  final pulumi.Input<List<DiskDetailsResponse>?>? supportedConfigurations;
 
   /// Creates a new [SAPDiskConfigurationResponse].
   /// [recommendedConfiguration] The recommended disk details for a given VM Sku.

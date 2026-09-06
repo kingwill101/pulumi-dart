@@ -10,13 +10,13 @@ import 'inbound_rule_properties.dart';
 /// {@macro pulumi_azurestackhci_inbound_rule_args_doc}
 class InboundRuleArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of the inbound rule
-  final pulumi.Input<String>? inboundRuleName;
+  final pulumi.Input<String?>? inboundRuleName;
   /// Name of the nat gateway
   final pulumi.Input<String> natGatewayName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<InboundRuleProperties>? properties;
+  final pulumi.Input<InboundRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

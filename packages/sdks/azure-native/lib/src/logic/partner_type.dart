@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The partner type.
-enum PartnerType {
+enum PartnerType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueB2B("B2B");
 
   const PartnerType(this.wireValue);
+  @override
   final String wireValue;
 
   static PartnerType fromValue(String value) {

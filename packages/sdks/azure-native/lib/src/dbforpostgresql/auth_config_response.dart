@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication configuration properties of a server.
 class AuthConfigResponse {
   /// Indicates if the server supports Microsoft Entra authentication.
-  final pulumi.Input<String>? activeDirectoryAuth;
+  final pulumi.Input<String?>? activeDirectoryAuth;
   /// Indicates if the server supports password based authentication.
-  final pulumi.Input<String>? passwordAuth;
+  final pulumi.Input<String?>? passwordAuth;
   /// Identifier of the tenant of the delegated resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AuthConfigResponse].
   /// [activeDirectoryAuth] Indicates if the server supports Microsoft Entra authentication.
   /// [passwordAuth] Indicates if the server supports password based authentication.
   /// [tenantId] Identifier of the tenant of the delegated resource.
-  const AuthConfigResponse({
+  AuthConfigResponse({
     this.activeDirectoryAuth,
-    this.passwordAuth,
-    this.tenantId,
-  });
+    pulumi.Input<String?>? passwordAuth,
+    pulumi.Input<String?>? tenantId,
+  }) : passwordAuth = passwordAuth ?? pulumi.Input.fromValue('Enabled'), tenantId = tenantId ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

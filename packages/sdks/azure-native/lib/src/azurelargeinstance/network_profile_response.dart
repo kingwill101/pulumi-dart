@@ -6,9 +6,9 @@ import 'ip_address_response.dart';
 /// Specifies the network settings for the Azure Large Instance disks.
 class NetworkProfileResponse {
   /// Specifies the circuit id for connecting to express route.
-  final pulumi.Input<String>? circuitId;
+  final pulumi.Input<String?>? circuitId;
   /// Specifies the network interfaces for the Azure Large Instance.
-  final pulumi.Input<List<IpAddressResponse>>? networkInterfaces;
+  final pulumi.Input<List<IpAddressResponse>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfileResponse].
   /// [circuitId] Specifies the circuit id for connecting to express route.

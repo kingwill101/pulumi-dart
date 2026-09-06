@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tells whether the cluster is Running or Stopped
-enum Code {
+enum Code implements pulumi.PulumiEnum<String> {
   valueRunning("Running"),
   valueStopped("Stopped");
 
   const Code(this.wireValue);
+  @override
   final String wireValue;
 
   static Code fromValue(String value) {

@@ -7,9 +7,9 @@ import 'workspace_key_details_response.dart';
 /// Details of the customer managed key associated with the workspace
 class CustomerManagedKeyDetailsResponse {
   /// Key encryption key
-  final pulumi.Input<KekIdentityPropertiesResponse>? kekIdentity;
+  final pulumi.Input<KekIdentityPropertiesResponse?>? kekIdentity;
   /// The key object of the workspace
-  final pulumi.Input<WorkspaceKeyDetailsResponse>? key;
+  final pulumi.Input<WorkspaceKeyDetailsResponse?>? key;
   /// The customer managed key status on the workspace
   final pulumi.Input<String> status;
 

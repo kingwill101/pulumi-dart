@@ -9,15 +9,15 @@ import 'identity.dart';
 /// {@macro pulumi_datashare_account_args_doc}
 class AccountArgs {
   /// The name of the share account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Identity Info on the Account
   final pulumi.Input<Identity> identity;
   /// Location of the azure resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Tags on the azure resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of the share account.

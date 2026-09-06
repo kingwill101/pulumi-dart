@@ -9,15 +9,15 @@ import 'dataflow_endpoint_authentication_x509.dart';
 /// Kafka endpoint Authentication properties. NOTE - only authentication property is allowed per entry
 class DataflowEndpointKafkaAuthentication {
   /// Mode of Authentication.
-  final pulumi.Input<String> method;
+  final pulumi.Input<dynamic> method;
   /// SASL authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSasl>? saslSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSasl?>? saslSettings;
   /// System-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity>? systemAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationSystemAssignedManagedIdentity?>? systemAssignedManagedIdentitySettings;
   /// User-assigned managed identity authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity>? userAssignedManagedIdentitySettings;
+  final pulumi.Input<DataflowEndpointAuthenticationUserAssignedManagedIdentity?>? userAssignedManagedIdentitySettings;
   /// X.509 certificate authentication.
-  final pulumi.Input<DataflowEndpointAuthenticationX509>? x509CertificateSettings;
+  final pulumi.Input<DataflowEndpointAuthenticationX509?>? x509CertificateSettings;
 
   /// Creates a new [DataflowEndpointKafkaAuthentication].
   /// [method] Mode of Authentication.
@@ -45,7 +45,7 @@ class DataflowEndpointKafkaAuthentication {
 
   factory DataflowEndpointKafkaAuthentication.fromMap(Map<String, dynamic> map) {
     return DataflowEndpointKafkaAuthentication(
-      method: pulumi.Input.fromValue(map['method'] as String),
+      method: pulumi.Input.fromValue(map['method']),
       saslSettings: (() { final guardedValue = map['saslSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationSasl.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       systemAssignedManagedIdentitySettings: (() { final guardedValue = map['systemAssignedManagedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationSystemAssignedManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       userAssignedManagedIdentitySettings: (() { final guardedValue = map['userAssignedManagedIdentitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataflowEndpointAuthenticationUserAssignedManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

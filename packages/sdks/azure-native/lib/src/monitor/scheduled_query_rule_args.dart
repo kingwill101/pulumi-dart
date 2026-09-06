@@ -12,49 +12,49 @@ import 'scheduled_query_rule_criteria.dart';
 /// {@macro pulumi_monitor_scheduled_query_rule_args_doc}
 class ScheduledQueryRuleArgs {
   /// Actions to invoke when the alert fires.
-  final pulumi.Input<Actions>? actions;
+  final pulumi.Input<Actions?>? actions;
   /// The flag that indicates whether the alert should be automatically resolved or not. The default is true. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
-  final pulumi.Input<bool>? autoMitigate;
+  final pulumi.Input<bool?>? autoMitigate;
   /// The flag which indicates whether this scheduled query rule should be stored in the customer's storage. The default is false. Relevant only for rules of the kind LogAlert.
-  final pulumi.Input<bool>? checkWorkspaceAlertsStorageConfigured;
+  final pulumi.Input<bool?>? checkWorkspaceAlertsStorageConfigured;
   /// The rule criteria that defines the conditions of the scheduled query rule.
-  final pulumi.Input<ScheduledQueryRuleCriteria>? criteria;
+  final pulumi.Input<ScheduledQueryRuleCriteria?>? criteria;
   /// The description of the scheduled query rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the alert rule
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The flag which indicates whether this scheduled query rule is enabled. Value should be true or false
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// How often the scheduled query rule is evaluated represented in ISO 8601 duration format. Relevant and required only for rules of the kind LogAlert.
-  final pulumi.Input<String>? evaluationFrequency;
+  final pulumi.Input<String?>? evaluationFrequency;
   /// The identity of the resource.
-  final pulumi.Input<MicrosoftCommonIdentity>? identity;
+  final pulumi.Input<MicrosoftCommonIdentity?>? identity;
   /// Indicates the type of scheduled query rule. The default is LogAlert.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Mute actions for the chosen period of time (in ISO 8601 duration format) after the alert is fired. Relevant only for rules of the kind LogAlert.
-  final pulumi.Input<String>? muteActionsDuration;
+  final pulumi.Input<String?>? muteActionsDuration;
   /// If specified then overrides the query time range (default is WindowSize*NumberOfEvaluationPeriods). Relevant only for rules of the kind LogAlert.
-  final pulumi.Input<String>? overrideQueryTimeRange;
+  final pulumi.Input<String?>? overrideQueryTimeRange;
   /// Defines the configuration for resolving fired alerts. Relevant only for rules of kinds LogAlert and SimpleLogAlert.
-  final pulumi.Input<RuleResolveConfiguration>? resolveConfiguration;
+  final pulumi.Input<RuleResolveConfiguration?>? resolveConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// The list of resource id's that this scheduled query rule is scoped to.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest. Relevant and required only for rules of the kind LogAlert.
-  final pulumi.Input<double>? severity;
+  final pulumi.Input<double?>? severity;
   /// The flag which indicates whether the provided query should be validated or not. The default is false. Relevant only for rules of the kind LogAlert.
-  final pulumi.Input<bool>? skipQueryValidation;
+  final pulumi.Input<bool?>? skipQueryValidation;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of resource type of the target resource(s) on which the alert is created/updated. For example if the scope is a resource group and targetResourceTypes is Microsoft.Compute/virtualMachines, then a different alert will be fired for each virtual machine in the resource group which meet the alert criteria. Relevant only for rules of the kind LogAlert
-  final pulumi.Input<List<String>>? targetResourceTypes;
+  final pulumi.Input<List<String>?>? targetResourceTypes;
   /// The period of time (in ISO 8601 duration format) on which the Alert query will be executed (bin size). Relevant and required only for rules of the kind LogAlert.
-  final pulumi.Input<String>? windowSize;
+  final pulumi.Input<String?>? windowSize;
 
   /// Creates a new [ScheduledQueryRuleArgs].
   /// [actions] Actions to invoke when the alert fires.
@@ -142,7 +142,7 @@ class ScheduledQueryRuleArgs {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MicrosoftCommonIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       muteActionsDuration: (() { final guardedValue = map['muteActionsDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       overrideQueryTimeRange: (() { final guardedValue = map['overrideQueryTimeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -150,7 +150,7 @@ class ScheduledQueryRuleArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scopes: (() { final guardedValue = map['scopes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       skipQueryValidation: (() { final guardedValue = map['skipQueryValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceTypes: (() { final guardedValue = map['targetResourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

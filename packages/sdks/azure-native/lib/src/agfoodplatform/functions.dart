@@ -28,6 +28,17 @@ Future<GetDataConnectorResult> getDataConnector(
   return GetDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetDataConnectorResult> getDataConnectorOutput(
+  GetDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agfoodplatform:getDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataConnectorResult.fromMap);
+}
+
 /// Get DataManagerForAgriculture resource.
 ///
 /// Uses Azure REST API version 2023-06-01-preview.
@@ -44,6 +55,17 @@ Future<GetDataManagerForAgricultureResourceResult> getDataManagerForAgricultureR
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataManagerForAgricultureResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetDataManagerForAgricultureResourceResult> getDataManagerForAgricultureResourceOutput(
+  GetDataManagerForAgricultureResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agfoodplatform:getDataManagerForAgricultureResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataManagerForAgricultureResourceResult.fromMap);
 }
 
 /// Get installed extension details by extension id.
@@ -64,6 +86,17 @@ Future<GetExtensionResult> getExtension(
   return GetExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetExtensionResult> getExtensionOutput(
+  GetExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agfoodplatform:getExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExtensionResult.fromMap);
+}
+
 /// Get Private endpoint connection object.
 ///
 /// Uses Azure REST API version 2023-06-01-preview.
@@ -82,6 +115,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agfoodplatform:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get installed Solution details by Solution id.
 ///
 /// Uses Azure REST API version 2023-06-01-preview.
@@ -98,4 +142,15 @@ Future<GetSolutionResult> getSolution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionResult> getSolutionOutput(
+  GetSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agfoodplatform:getSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionResult.fromMap);
 }

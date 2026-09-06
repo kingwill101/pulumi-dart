@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'object_replication_policy_args.dart';
 import 'object_replication_policy_properties_response_metrics.dart';
+import 'object_replication_policy_rule_response.dart';
 
 /// The replication policy between two storage accounts. Multiple rules can be defined in one policy.
 ///
@@ -1088,7 +1089,7 @@ class ObjectReplicationPolicy extends pulumi.CustomResource {
   /// A unique id for object replication policy.
   late final pulumi.Output<String> policyId;
   /// The storage account object replication rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<ObjectReplicationPolicyRuleResponse>?> rules;
   /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   late final pulumi.Output<String> sourceAccount;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -1114,7 +1115,27 @@ class ObjectReplicationPolicy extends pulumi.CustomResource {
     metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<ObjectReplicationPolicyRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectReplicationPolicyRuleResponse>(guardedValue, (value) => ObjectReplicationPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceAccount = registerOutput<String>('sourceAccount');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ObjectReplicationPolicy] resource.
+  ObjectReplicationPolicy.reference(String urn)
+    : super(
+        'azure-native:storage:ObjectReplicationPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destinationAccount = registerOutput<String>('destinationAccount');
+    enabledTime = registerOutput<String>('enabledTime');
+    metrics = registerOutput<ObjectReplicationPolicyPropertiesResponseMetrics?>('metrics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ObjectReplicationPolicyPropertiesResponseMetrics.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    policyId = registerOutput<String>('policyId');
+    rules = registerOutput<List<ObjectReplicationPolicyRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectReplicationPolicyRuleResponse>(guardedValue, (value) => ObjectReplicationPolicyRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sourceAccount = registerOutput<String>('sourceAccount');
     type = registerOutput<String>('type');
   }

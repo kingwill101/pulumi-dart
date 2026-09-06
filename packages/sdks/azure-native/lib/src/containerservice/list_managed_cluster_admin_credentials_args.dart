@@ -12,7 +12,7 @@ class ListManagedClusterAdminCredentialsArgs {
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
   /// server fqdn type for credentials to be returned
-  final pulumi.Input<String>? serverFqdn;
+  final pulumi.Input<String?>? serverFqdn;
 
   /// Creates a new [ListManagedClusterAdminCredentialsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

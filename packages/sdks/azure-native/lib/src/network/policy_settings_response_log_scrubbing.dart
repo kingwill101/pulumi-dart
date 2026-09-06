@@ -6,9 +6,9 @@ import 'web_application_firewall_scrubbing_rules_response.dart';
 /// To scrub sensitive log fields
 class PolicySettingsResponseLogScrubbing {
   /// The rules that are applied to the logs for scrubbing.
-  final pulumi.Input<List<WebApplicationFirewallScrubbingRulesResponse>>? scrubbingRules;
+  final pulumi.Input<List<WebApplicationFirewallScrubbingRulesResponse>?>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [PolicySettingsResponseLogScrubbing].
   /// [scrubbingRules] The rules that are applied to the logs for scrubbing.

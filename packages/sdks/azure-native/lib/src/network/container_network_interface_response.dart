@@ -8,17 +8,17 @@ import 'container_response.dart';
 /// Container network interface child resource.
 class ContainerNetworkInterfaceResponse {
   /// Reference to the container to which this container network interface is attached.
-  final pulumi.Input<ContainerResponse>? container;
+  final pulumi.Input<ContainerResponse?>? container;
   /// Container network interface configuration from which this container network interface is created.
   final pulumi.Input<ContainerNetworkInterfaceConfigurationResponse> containerNetworkInterfaceConfiguration;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Reference to the ip configuration on this container nic.
   final pulumi.Input<List<ContainerNetworkInterfaceIpConfigurationResponse>> ipConfigurations;
   /// The name of the resource. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the container network interface resource.
   final pulumi.Input<String> provisioningState;
   /// Sub Resource type.

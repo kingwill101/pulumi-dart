@@ -33,7 +33,7 @@ class ElasticSanVolumePropertiesResponse {
     return ElasticSanVolumePropertiesResponse(
       targetIqn: pulumi.Input.fromValue(map['targetIqn'] as String),
       targetPortalHostname: pulumi.Input.fromValue(map['targetPortalHostname'] as String),
-      targetPortalPort: pulumi.Input.fromValue(map['targetPortalPort'] as int),
+      targetPortalPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetPortalPort'])),
     );
   }
 }

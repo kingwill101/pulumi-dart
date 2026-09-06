@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of database.
-enum ConnectionStringType {
+enum ConnectionStringType implements pulumi.PulumiEnum<String> {
   valueMySql("MySql"),
   valueSQLServer("SQLServer"),
   valueSQLAzure("SQLAzure"),
@@ -13,6 +15,7 @@ enum ConnectionStringType {
   valuePostgreSQL("PostgreSQL");
 
   const ConnectionStringType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionStringType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a user's secret store.
 class UserSecretStore {
   /// The ID of the user's Key vault.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// The URI of the user's Key vault.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
 
   /// Creates a new [UserSecretStore].
   /// [keyVaultId] The ID of the user's Key vault.

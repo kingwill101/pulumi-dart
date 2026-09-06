@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of quota
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   valueDefaultUserQuota("DefaultUserQuota"),
   valueDefaultGroupQuota("DefaultGroupQuota"),
   valueIndividualUserQuota("IndividualUserQuota"),
   valueIndividualGroupQuota("IndividualGroupQuota");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

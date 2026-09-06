@@ -7,19 +7,19 @@ import 'telephony_phone_numbers.dart';
 /// The parameters to provide for the Direct Line channel.
 class TelephonyChannelProperties {
   /// The list of Telephony api configuration
-  final pulumi.Input<List<TelephonyChannelResourceApiConfiguration>>? apiConfigurations;
+  final pulumi.Input<List<TelephonyChannelResourceApiConfiguration>?>? apiConfigurations;
   /// The extensionKey2
-  final pulumi.Input<String>? cognitiveServiceRegion;
+  final pulumi.Input<String?>? cognitiveServiceRegion;
   /// The extensionKey1
-  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String?>? cognitiveServiceSubscriptionKey;
   /// The default locale of the channel
-  final pulumi.Input<String>? defaultLocale;
+  final pulumi.Input<String?>? defaultLocale;
   /// Whether the channel is enabled
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// The list of Telephony phone numbers
-  final pulumi.Input<List<TelephonyPhoneNumbers>>? phoneNumbers;
+  final pulumi.Input<List<TelephonyPhoneNumbers>?>? phoneNumbers;
   /// The premium SKU applied to the channel
-  final pulumi.Input<String>? premiumSKU;
+  final pulumi.Input<String?>? premiumSKU;
 
   /// Creates a new [TelephonyChannelProperties].
   /// [apiConfigurations] The list of Telephony api configuration

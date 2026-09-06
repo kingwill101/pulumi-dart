@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Container Account Description
 class ContainerAccountResponse {
   /// The account name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The account password
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The account spn
-  final pulumi.Input<String>? spn;
+  final pulumi.Input<String?>? spn;
 
   /// Creates a new [ContainerAccountResponse].
   /// [accountName] The account name

@@ -12,7 +12,7 @@ class MqttBridgeTopicMapArgs {
   /// Extended Location
   final pulumi.Input<ExtendedLocationProperty> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// Name of MQ mqttBridgeConnector resource
@@ -22,11 +22,11 @@ class MqttBridgeTopicMapArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The route details for MqttBridge connector.
-  final pulumi.Input<List<MqttBridgeRoutes>>? routes;
+  final pulumi.Input<List<MqttBridgeRoutes>?>? routes;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of MQ mqttBridgeTopicMap resource
-  final pulumi.Input<String>? topicMapName;
+  final pulumi.Input<String?>? topicMapName;
 
   /// Creates a new [MqttBridgeTopicMapArgs].
   /// [extendedLocation] Extended Location

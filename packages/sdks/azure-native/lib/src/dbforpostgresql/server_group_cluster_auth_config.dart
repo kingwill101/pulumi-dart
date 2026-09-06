@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication configuration of a cluster.
 class ServerGroupClusterAuthConfig {
-  final pulumi.Input<String>? activeDirectoryAuth;
-  final pulumi.Input<String>? passwordAuth;
+  final pulumi.Input<dynamic>? activeDirectoryAuth;
+  final pulumi.Input<dynamic>? passwordAuth;
 
   /// Creates a new [ServerGroupClusterAuthConfig].
   /// [activeDirectoryAuth] Optional.
@@ -24,8 +24,8 @@ class ServerGroupClusterAuthConfig {
 
   factory ServerGroupClusterAuthConfig.fromMap(Map<String, dynamic> map) {
     return ServerGroupClusterAuthConfig(
-      activeDirectoryAuth: (() { final guardedValue = map['activeDirectoryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      passwordAuth: (() { final guardedValue = map['passwordAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      activeDirectoryAuth: (() { final guardedValue = map['activeDirectoryAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      passwordAuth: (() { final guardedValue = map['passwordAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.
-enum SshPublicAccess {
+enum SshPublicAccess implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const SshPublicAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static SshPublicAccess fromValue(String value) {

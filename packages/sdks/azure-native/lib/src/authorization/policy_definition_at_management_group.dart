@@ -422,6 +422,30 @@ class PolicyDefinitionAtManagementGroup extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
-    versions = registerOutput<List<String>?>('versions');
+    versions = registerOutput<List<String>?>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PolicyDefinitionAtManagementGroup] resource.
+  PolicyDefinitionAtManagementGroup.reference(String urn)
+    : super(
+        'azure-native:authorization:PolicyDefinitionAtManagementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    metadata = registerOutput<dynamic>('metadata');
+    mode = registerOutput<String?>('mode');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, ParameterDefinitionsValueResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterDefinitionsValueResponse>(guardedValue, (value) => ParameterDefinitionsValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyRule = registerOutput<dynamic>('policyRule');
+    policyType = registerOutput<String?>('policyType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+    versions = registerOutput<List<String>?>('versions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

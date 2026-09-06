@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of job.
-enum JobInputType {
+enum JobInputType implements pulumi.PulumiEnum<String> {
   literal("literal"),
   uriFile("uri_file"),
   uriFolder("uri_folder"),
@@ -9,6 +11,7 @@ enum JobInputType {
   tritonModel("triton_model");
 
   const JobInputType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobInputType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResourceSpec
 class ResourceSpecResponse {
   /// The instance type that the image version runs on.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// The ARN of the SageMaker image that the image version belongs to.
-  final pulumi.Input<String>? sageMakerImageArn;
+  final pulumi.Input<String?>? sageMakerImageArn;
   /// The ARN of the image version created on the instance.
-  final pulumi.Input<String>? sageMakerImageVersionArn;
+  final pulumi.Input<String?>? sageMakerImageVersionArn;
 
   /// Creates a new [ResourceSpecResponse].
   /// [instanceType] The instance type that the image version runs on.

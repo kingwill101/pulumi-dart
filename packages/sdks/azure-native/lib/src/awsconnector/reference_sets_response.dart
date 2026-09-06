@@ -6,7 +6,7 @@ import 'ipset_reference_response.dart';
 /// Definition of ReferenceSets
 class ReferenceSetsResponse {
   /// Property ipSetReferences
-  final pulumi.Input<Map<String, IPSetReferenceResponse>>? ipSetReferences;
+  final pulumi.Input<Map<String, IPSetReferenceResponse>?>? ipSetReferences;
 
   /// Creates a new [ReferenceSetsResponse].
   /// [ipSetReferences] Property ipSetReferences

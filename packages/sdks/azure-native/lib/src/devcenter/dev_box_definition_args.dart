@@ -10,23 +10,23 @@ import 'sku.dart';
 /// {@macro pulumi_devcenter_dev_box_definition_args_doc}
 class DevBoxDefinitionArgs {
   /// The name of the Dev Box definition.
-  final pulumi.Input<String>? devBoxDefinitionName;
+  final pulumi.Input<String?>? devBoxDefinitionName;
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
-  final pulumi.Input<String>? hibernateSupport;
+  final pulumi.Input<dynamic>? hibernateSupport;
   /// Image reference information.
   final pulumi.Input<ImageReference> imageReference;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The storage type used for the Operating System disk of Dev Boxes created using this definition.
-  final pulumi.Input<String>? osStorageType;
+  final pulumi.Input<String?>? osStorageType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU for Dev Boxes created using this definition.
   final pulumi.Input<Sku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DevBoxDefinitionArgs].
   /// [devBoxDefinitionName] The name of the Dev Box definition.
@@ -68,7 +68,7 @@ class DevBoxDefinitionArgs {
     return DevBoxDefinitionArgs(
       devBoxDefinitionName: (() { final guardedValue = map['devBoxDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      hibernateSupport: (() { final guardedValue = map['hibernateSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hibernateSupport: (() { final guardedValue = map['hibernateSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       imageReference: pulumi.Input.fromValue(ImageReference.fromMap((map['imageReference']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osStorageType: (() { final guardedValue = map['osStorageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

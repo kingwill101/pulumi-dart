@@ -9,15 +9,15 @@ import 'network_virtual_appliance_connection_properties.dart';
 /// {@macro pulumi_network_network_virtual_appliance_connection_args_doc}
 class NetworkVirtualApplianceConnectionArgs {
   /// The name of the NVA connection.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
   /// Properties of the express route connection.
-  final pulumi.Input<NetworkVirtualApplianceConnectionProperties>? properties;
+  final pulumi.Input<NetworkVirtualApplianceConnectionProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

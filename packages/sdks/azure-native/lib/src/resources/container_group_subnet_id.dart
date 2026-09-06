@@ -7,7 +7,7 @@ class ContainerGroupSubnetId {
   /// Resource ID of subnet.
   final pulumi.Input<String> id;
   /// Friendly name for the subnet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ContainerGroupSubnetId].
   /// [id] Resource ID of subnet.

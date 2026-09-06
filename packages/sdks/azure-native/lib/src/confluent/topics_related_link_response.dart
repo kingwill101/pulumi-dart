@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Partition Config spec of the topic record
 class TopicsRelatedLinkResponse {
   /// Relationship of the topic
-  final pulumi.Input<String>? related;
+  final pulumi.Input<String?>? related;
 
   /// Creates a new [TopicsRelatedLinkResponse].
   /// [related] Relationship of the topic

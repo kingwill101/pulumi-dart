@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ResolverLevelMetricsBehaviorEnumValue
 class ResolverLevelMetricsBehaviorEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ResolverLevelMetricsBehaviorEnumValueResponse].
   /// [value] Property value

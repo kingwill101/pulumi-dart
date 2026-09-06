@@ -60,6 +60,17 @@ Future<GetAccessBridgeResult> getAccessBridge(
   return GetAccessBridgeResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessBridgeResult> getAccessBridgeOutput(
+  GetAccessBridgeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getAccessBridge',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessBridgeResult.fromMap);
+}
+
 /// Get properties of the provided Kubernetes cluster agent pool.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -78,6 +89,17 @@ Future<GetAgentPoolResult> getAgentPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAgentPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentPoolResult> getAgentPoolOutput(
+  GetAgentPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getAgentPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPoolResult.fromMap);
 }
 
 /// Get properties of the provided bare metal machine.
@@ -100,6 +122,17 @@ Future<GetBareMetalMachineResult> getBareMetalMachine(
   return GetBareMetalMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetBareMetalMachineResult> getBareMetalMachineOutput(
+  GetBareMetalMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getBareMetalMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBareMetalMachineResult.fromMap);
+}
+
 /// Get bare metal machine key set of the provided cluster.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -118,6 +151,17 @@ Future<GetBareMetalMachineKeySetResult> getBareMetalMachineKeySet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBareMetalMachineKeySetResult.fromMap(result);
+}
+
+pulumi.Output<GetBareMetalMachineKeySetResult> getBareMetalMachineKeySetOutput(
+  GetBareMetalMachineKeySetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getBareMetalMachineKeySet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBareMetalMachineKeySetResult.fromMap);
 }
 
 /// Get baseboard management controller key set of the provided cluster.
@@ -140,6 +184,17 @@ Future<GetBmcKeySetResult> getBmcKeySet(
   return GetBmcKeySetResult.fromMap(result);
 }
 
+pulumi.Output<GetBmcKeySetResult> getBmcKeySetOutput(
+  GetBmcKeySetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getBmcKeySet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBmcKeySetResult.fromMap);
+}
+
 /// Get properties of the provided cloud services network.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -158,6 +213,17 @@ Future<GetCloudServicesNetworkResult> getCloudServicesNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudServicesNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudServicesNetworkResult> getCloudServicesNetworkOutput(
+  GetCloudServicesNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getCloudServicesNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudServicesNetworkResult.fromMap);
 }
 
 /// Get properties of the provided cluster.
@@ -180,6 +246,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Get the properties of the provided cluster manager.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -198,6 +275,17 @@ Future<GetClusterManagerResult> getClusterManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterManagerResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterManagerResult> getClusterManagerOutput(
+  GetClusterManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getClusterManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterManagerResult.fromMap);
 }
 
 /// Get properties of the provided virtual machine console.
@@ -220,6 +308,17 @@ Future<GetConsoleResult> getConsole(
   return GetConsoleResult.fromMap(result);
 }
 
+pulumi.Output<GetConsoleResult> getConsoleOutput(
+  GetConsoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getConsole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsoleResult.fromMap);
+}
+
 /// Get properties of the provided the Kubernetes cluster.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -238,6 +337,17 @@ Future<GetKubernetesClusterResult> getKubernetesCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKubernetesClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetKubernetesClusterResult> getKubernetesClusterOutput(
+  GetKubernetesClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getKubernetesCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesClusterResult.fromMap);
 }
 
 /// Get properties of the provided the Kubernetes cluster feature.
@@ -260,6 +370,17 @@ Future<GetKubernetesClusterFeatureResult> getKubernetesClusterFeature(
   return GetKubernetesClusterFeatureResult.fromMap(result);
 }
 
+pulumi.Output<GetKubernetesClusterFeatureResult> getKubernetesClusterFeatureOutput(
+  GetKubernetesClusterFeatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getKubernetesClusterFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesClusterFeatureResult.fromMap);
+}
+
 /// Retrieve the Kubernetes version resource that describes the available Kubernetes versions for deployment.
 ///
 /// Uses Azure REST API version 2026-01-01-preview.
@@ -278,6 +399,17 @@ Future<GetKubernetesVersionResult> getKubernetesVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKubernetesVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetKubernetesVersionResult> getKubernetesVersionOutput(
+  GetKubernetesVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getKubernetesVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubernetesVersionResult.fromMap);
 }
 
 /// Get properties of the provided layer 2 (L2) network.
@@ -300,6 +432,17 @@ Future<GetL2NetworkResult> getL2Network(
   return GetL2NetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetL2NetworkResult> getL2NetworkOutput(
+  GetL2NetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getL2Network',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetL2NetworkResult.fromMap);
+}
+
 /// Get properties of the provided layer 3 (L3) network.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -318,6 +461,17 @@ Future<GetL3NetworkResult> getL3Network(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetL3NetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetL3NetworkResult> getL3NetworkOutput(
+  GetL3NetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getL3Network',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetL3NetworkResult.fromMap);
 }
 
 /// Get metrics configuration of the provided cluster.
@@ -340,6 +494,17 @@ Future<GetMetricsConfigurationResult> getMetricsConfiguration(
   return GetMetricsConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetMetricsConfigurationResult> getMetricsConfigurationOutput(
+  GetMetricsConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getMetricsConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetricsConfigurationResult.fromMap);
+}
+
 /// Get properties of the provided rack.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -358,6 +523,17 @@ Future<GetRackResult> getRack(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRackResult.fromMap(result);
+}
+
+pulumi.Output<GetRackResult> getRackOutput(
+  GetRackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getRack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRackResult.fromMap);
 }
 
 /// Get properties of the provided storage appliance.
@@ -380,6 +556,17 @@ Future<GetStorageApplianceResult> getStorageAppliance(
   return GetStorageApplianceResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageApplianceResult> getStorageApplianceOutput(
+  GetStorageApplianceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getStorageAppliance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageApplianceResult.fromMap);
+}
+
 /// Get properties of the provided trunked network.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -398,6 +585,17 @@ Future<GetTrunkedNetworkResult> getTrunkedNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrunkedNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetTrunkedNetworkResult> getTrunkedNetworkOutput(
+  GetTrunkedNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getTrunkedNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrunkedNetworkResult.fromMap);
 }
 
 /// Get properties of the provided virtual machine.
@@ -420,6 +618,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
   return GetVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
+}
+
 /// Get properties of the provided volume.
 ///
 /// Uses Azure REST API version 2025-02-01.
@@ -438,4 +647,15 @@ Future<GetVolumeResult> getVolume(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:networkcloud:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
 }

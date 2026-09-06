@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IPConfigurationReference - Describes a IPConfiguration under the virtual network
 class VirtualNetworkPropertiesIpConfigurationReferences {
   /// IPConfigurationID
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualNetworkPropertiesIpConfigurationReferences].
   /// [id] IPConfigurationID

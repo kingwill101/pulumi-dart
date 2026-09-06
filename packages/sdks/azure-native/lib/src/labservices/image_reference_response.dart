@@ -7,15 +7,15 @@ class ImageReferenceResponse {
   /// The actual version of the image after use.
   final pulumi.Input<String> exactVersion;
   /// Image resource ID
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The image offer if applicable.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// The image publisher
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// The image SKU
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The image version specified on creation.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImageReferenceResponse].
   /// [exactVersion] The actual version of the image after use.

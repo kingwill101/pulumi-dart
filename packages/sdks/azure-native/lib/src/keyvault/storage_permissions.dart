@@ -1,4 +1,6 @@
-enum StoragePermissions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum StoragePermissions implements pulumi.PulumiEnum<String> {
   valueAll("all"),
   valueGet("get"),
   valueList("list"),
@@ -16,6 +18,7 @@ enum StoragePermissions {
   valueDeletesas("deletesas");
 
   const StoragePermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static StoragePermissions fromValue(String value) {

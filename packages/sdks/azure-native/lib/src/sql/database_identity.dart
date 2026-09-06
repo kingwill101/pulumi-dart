@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Active Directory identity configuration for a resource.
 class DatabaseIdentity {
   /// The identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The resource ids of the user assigned identities to use
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [DatabaseIdentity].
   /// [type] The identity type
@@ -26,7 +26,7 @@ class DatabaseIdentity {
 
   factory DatabaseIdentity.fromMap(Map<String, dynamic> map) {
     return DatabaseIdentity(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

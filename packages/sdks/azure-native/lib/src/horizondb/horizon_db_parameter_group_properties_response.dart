@@ -6,13 +6,13 @@ import 'parameter_properties_response.dart';
 /// Properties of a HorizonDB parameter group.
 class HorizonDbParameterGroupPropertiesResponse {
   /// Indicates whether the parameters should be applied immediately.
-  final pulumi.Input<bool>? applyImmediately;
+  final pulumi.Input<bool?>? applyImmediately;
   /// Description of the parameter group.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Parameters in the parameter group.
-  final pulumi.Input<List<ParameterPropertiesResponse>>? parameters;
+  final pulumi.Input<List<ParameterPropertiesResponse>?>? parameters;
   /// PostgreSQL version for the parameter group.
-  final pulumi.Input<int>? pgVersion;
+  final pulumi.Input<int?>? pgVersion;
   /// The provisioning state of the parameter group.
   final pulumi.Input<String> provisioningState;
   /// Current version of the parameter group.
@@ -50,9 +50,9 @@ class HorizonDbParameterGroupPropertiesResponse {
       applyImmediately: (() { final guardedValue = map['applyImmediately']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ParameterPropertiesResponse>(guardedValue, (value) => ParameterPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      pgVersion: (() { final guardedValue = map['pgVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pgVersion: (() { final guardedValue = map['pgVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

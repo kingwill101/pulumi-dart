@@ -1502,7 +1502,37 @@ class ElasticPool extends pulumi.CustomResource {
     preferredEnclaveType = registerOutput<String?>('preferredEnclaveType');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [ElasticPool] resource.
+  ElasticPool.reference(String urn)
+    : super(
+        'azure-native:sql:ElasticPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoPauseDelay = registerOutput<int?>('autoPauseDelay');
+    availabilityZone = registerOutput<String?>('availabilityZone');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    highAvailabilityReplicaCount = registerOutput<int?>('highAvailabilityReplicaCount');
+    kind = registerOutput<String>('kind');
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    maintenanceConfigurationId = registerOutput<String?>('maintenanceConfigurationId');
+    maxSizeBytes = registerOutput<double?>('maxSizeBytes');
+    minCapacity = registerOutput<double?>('minCapacity');
+    this.name = registerOutput<String>('name');
+    perDatabaseSettings = registerOutput<ElasticPoolPerDatabaseSettingsResponse?>('perDatabaseSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ElasticPoolPerDatabaseSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    preferredEnclaveType = registerOutput<String?>('preferredEnclaveType');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

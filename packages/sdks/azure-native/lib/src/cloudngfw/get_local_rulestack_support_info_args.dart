@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_get_local_rulestack_support_info_args_doc}
 class GetLocalRulestackSupportInfoArgs {
   /// email address on behalf of which this API called
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
   /// The name of the resource group. The name is case insensitive.

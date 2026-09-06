@@ -11,11 +11,11 @@ class ReplicationProtectedItemArgs {
   /// Name of the fabric.
   final pulumi.Input<String> fabricName;
   /// Enable protection input properties.
-  final pulumi.Input<EnableProtectionInputProperties>? properties;
+  final pulumi.Input<EnableProtectionInputProperties?>? properties;
   /// Protection container name.
   final pulumi.Input<String> protectionContainerName;
   /// A name for the replication protected item.
-  final pulumi.Input<String>? replicatedProtectedItemName;
+  final pulumi.Input<String?>? replicatedProtectedItemName;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

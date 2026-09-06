@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum OpenSearchWarmPartitionInstanceType {
+enum OpenSearchWarmPartitionInstanceType implements pulumi.PulumiEnum<String> {
   ultrawarm1LargeSearch("ultrawarm1.large.search"),
   ultrawarm1MediumSearch("ultrawarm1.medium.search"),
   ultrawarm1XlargeSearch("ultrawarm1.xlarge.search");
 
   const OpenSearchWarmPartitionInstanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static OpenSearchWarmPartitionInstanceType fromValue(String value) {

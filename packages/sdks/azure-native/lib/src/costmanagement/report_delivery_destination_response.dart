@@ -9,7 +9,7 @@ class ReportDeliveryDestinationResponse {
   /// The resource id of the storage account where reports will be delivered.
   final pulumi.Input<String> resourceId;
   /// The name of the directory where reports will be uploaded.
-  final pulumi.Input<String>? rootFolderPath;
+  final pulumi.Input<String?>? rootFolderPath;
 
   /// Creates a new [ReportDeliveryDestinationResponse].
   /// [container] The name of the container where reports will be uploaded.

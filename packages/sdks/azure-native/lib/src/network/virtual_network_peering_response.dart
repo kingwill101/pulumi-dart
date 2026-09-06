@@ -9,45 +9,45 @@ import 'virtual_network_encryption_response.dart';
 /// Peerings in a virtual network resource.
 class VirtualNetworkPeeringResponse {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
-  final pulumi.Input<bool>? allowForwardedTraffic;
+  final pulumi.Input<bool?>? allowForwardedTraffic;
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
-  final pulumi.Input<bool>? allowGatewayTransit;
+  final pulumi.Input<bool?>? allowGatewayTransit;
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
-  final pulumi.Input<bool>? allowVirtualNetworkAccess;
+  final pulumi.Input<bool?>? allowVirtualNetworkAccess;
   /// If we need to verify the provisioning state of the remote gateway.
-  final pulumi.Input<bool>? doNotVerifyRemoteGateways;
+  final pulumi.Input<bool?>? doNotVerifyRemoteGateways;
   /// Whether only Ipv6 address space is peered for subnet peering.
-  final pulumi.Input<bool>? enableOnlyIPv6Peering;
+  final pulumi.Input<bool?>? enableOnlyIPv6Peering;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The local address space of the local virtual network that is peered.
-  final pulumi.Input<AddressSpaceResponse>? localAddressSpace;
+  final pulumi.Input<AddressSpaceResponse?>? localAddressSpace;
   /// List of local subnet names that are subnet peered with remote virtual network.
-  final pulumi.Input<List<String>>? localSubnetNames;
+  final pulumi.Input<List<String>?>? localSubnetNames;
   /// The current local address space of the local virtual network that is peered.
-  final pulumi.Input<AddressSpaceResponse>? localVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpaceResponse?>? localVirtualNetworkAddressSpace;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether complete virtual network address space is peered.
-  final pulumi.Input<bool>? peerCompleteVnets;
+  final pulumi.Input<bool?>? peerCompleteVnets;
   /// The status of the virtual network peering.
-  final pulumi.Input<String>? peeringState;
+  final pulumi.Input<String?>? peeringState;
   /// The peering sync status of the virtual network peering.
-  final pulumi.Input<String>? peeringSyncLevel;
+  final pulumi.Input<String?>? peeringSyncLevel;
   /// The provisioning state of the virtual network peering resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the address space peered with the remote virtual network.
-  final pulumi.Input<AddressSpaceResponse>? remoteAddressSpace;
+  final pulumi.Input<AddressSpaceResponse?>? remoteAddressSpace;
   /// The reference to the remote virtual network's Bgp Communities.
-  final pulumi.Input<VirtualNetworkBgpCommunitiesResponse>? remoteBgpCommunities;
+  final pulumi.Input<VirtualNetworkBgpCommunitiesResponse?>? remoteBgpCommunities;
   /// List of remote subnet names from remote virtual network that are subnet peered.
-  final pulumi.Input<List<String>>? remoteSubnetNames;
+  final pulumi.Input<List<String>?>? remoteSubnetNames;
   /// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
-  final pulumi.Input<SubResourceResponse>? remoteVirtualNetwork;
+  final pulumi.Input<SubResourceResponse?>? remoteVirtualNetwork;
   /// The reference to the current address space of the remote virtual network.
-  final pulumi.Input<AddressSpaceResponse>? remoteVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpaceResponse?>? remoteVirtualNetworkAddressSpace;
   /// The reference to the remote virtual network's encryption
   final pulumi.Input<VirtualNetworkEncryptionResponse> remoteVirtualNetworkEncryption;
   /// The resourceGuid property of the Virtual Network peering resource.
@@ -55,7 +55,7 @@ class VirtualNetworkPeeringResponse {
   /// Resource type.
   final pulumi.Input<String> type;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
-  final pulumi.Input<bool>? useRemoteGateways;
+  final pulumi.Input<bool?>? useRemoteGateways;
 
   /// Creates a new [VirtualNetworkPeeringResponse].
   /// [allowForwardedTraffic] Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.

@@ -6,51 +6,51 @@ import 'ldap_search_scope_opt_response.dart';
 /// Active Directory
 class ActiveDirectoryResponse {
   /// Id of the Active Directory
-  final pulumi.Input<String>? activeDirectoryId;
+  final pulumi.Input<String?>? activeDirectoryId;
   /// Name of the active directory machine. This optional parameter is used only while creating kerberos volume
-  final pulumi.Input<String>? adName;
+  final pulumi.Input<String?>? adName;
   /// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? administrators;
+  final pulumi.Input<List<String>?>? administrators;
   /// If enabled, AES encryption will be enabled for SMB communication.
-  final pulumi.Input<bool>? aesEncryption;
+  final pulumi.Input<bool?>? aesEncryption;
   /// If enabled, NFS client local users can also (in addition to LDAP users) access the NFS volumes.
-  final pulumi.Input<bool>? allowLocalNfsUsersWithLdap;
+  final pulumi.Input<bool?>? allowLocalNfsUsersWithLdap;
   /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? backupOperators;
+  final pulumi.Input<List<String>?>? backupOperators;
   /// Comma separated list of DNS server IP addresses (IPv4 only) for the Active Directory domain
-  final pulumi.Input<String>? dns;
+  final pulumi.Input<String?>? dns;
   /// Name of the Active Directory domain
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.
-  final pulumi.Input<bool>? encryptDCConnections;
+  final pulumi.Input<bool?>? encryptDCConnections;
   /// kdc server IP address for the active directory machine. This optional parameter is used only while creating kerberos volume.
-  final pulumi.Input<String>? kdcIP;
+  final pulumi.Input<String?>? kdcIP;
   /// Specifies whether or not the LDAP traffic needs to be secured via TLS.
-  final pulumi.Input<bool>? ldapOverTLS;
+  final pulumi.Input<bool?>? ldapOverTLS;
   /// LDAP Search scope options
-  final pulumi.Input<LdapSearchScopeOptResponse>? ldapSearchScope;
+  final pulumi.Input<LdapSearchScopeOptResponse?>? ldapSearchScope;
   /// Specifies whether or not the LDAP traffic needs to be signed.
-  final pulumi.Input<bool>? ldapSigning;
+  final pulumi.Input<bool?>? ldapSigning;
   /// The Organizational Unit (OU) within the Windows Active Directory
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// Plain text password of Active Directory domain administrator, value is masked in the response
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.
-  final pulumi.Input<String>? preferredServersForLdapClient;
+  final pulumi.Input<String?>? preferredServersForLdapClient;
   /// Domain Users in the Active directory to be given SeSecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? securityOperators;
+  final pulumi.Input<List<String>?>? securityOperators;
   /// When LDAP over SSL/TLS is enabled, the LDAP client is required to have base64 encoded Active Directory Certificate Service's self-signed root CA certificate, this optional parameter is used only for dual protocol with LDAP user-mapping volumes.
-  final pulumi.Input<String>? serverRootCACertificate;
+  final pulumi.Input<String?>? serverRootCACertificate;
   /// The Active Directory site the service will limit Domain Controller discovery to
-  final pulumi.Input<String>? site;
+  final pulumi.Input<String?>? site;
   /// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-  final pulumi.Input<String>? smbServerName;
+  final pulumi.Input<String?>? smbServerName;
   /// Status of the Active Directory
   final pulumi.Input<String> status;
   /// Any details in regards to the Status of the Active Directory
   final pulumi.Input<String> statusDetails;
   /// A domain user account with permission to create machine accounts
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ActiveDirectoryResponse].
   /// [activeDirectoryId] Id of the Active Directory
@@ -76,7 +76,7 @@ class ActiveDirectoryResponse {
   /// [status] Status of the Active Directory
   /// [statusDetails] Any details in regards to the Status of the Active Directory
   /// [username] A domain user account with permission to create machine accounts
-  const ActiveDirectoryResponse({
+  ActiveDirectoryResponse({
     this.activeDirectoryId,
     this.adName,
     this.administrators,
@@ -90,7 +90,7 @@ class ActiveDirectoryResponse {
     this.ldapOverTLS,
     this.ldapSearchScope,
     this.ldapSigning,
-    this.organizationalUnit,
+    pulumi.Input<String?>? organizationalUnit,
     this.password,
     this.preferredServersForLdapClient,
     this.securityOperators,
@@ -100,7 +100,7 @@ class ActiveDirectoryResponse {
     required this.status,
     required this.statusDetails,
     this.username,
-  });
+  }) : organizationalUnit = organizationalUnit ?? pulumi.Input.fromValue('CN=Computers');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

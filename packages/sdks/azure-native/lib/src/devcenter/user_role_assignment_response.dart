@@ -6,7 +6,7 @@ import 'environment_role_response.dart';
 /// Mapping of user object ID to role assignments.
 class UserRoleAssignmentResponse {
   /// A map of roles to assign to the parent user.
-  final pulumi.Input<Map<String, EnvironmentRoleResponse>>? roles;
+  final pulumi.Input<Map<String, EnvironmentRoleResponse>?>? roles;
 
   /// Creates a new [UserRoleAssignmentResponse].
   /// [roles] A map of roles to assign to the parent user.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'broker_authentication_args.dart';
+import 'broker_authenticator_methods_response.dart';
 import 'extended_location_property_response.dart';
 import 'system_data_response.dart';
 
@@ -744,7 +745,7 @@ import 'system_data_response.dart';
 /// ```
 class BrokerAuthentication extends pulumi.CustomResource {
   /// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
-  late final pulumi.Output<List<Map<String, dynamic>>> authenticationMethods;
+  late final pulumi.Output<List<BrokerAuthenticatorMethodsResponse>> authenticationMethods;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Extended Location
@@ -778,15 +779,36 @@ class BrokerAuthentication extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authenticationMethods = registerOutput<List<Map<String, dynamic>>>('authenticationMethods');
+    authenticationMethods = registerOutput<List<BrokerAuthenticatorMethodsResponse>>('authenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(guardedValue, (value) => BrokerAuthenticatorMethodsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    listenerRef = registerOutput<List<String>>('listenerRef');
+    listenerRef = registerOutput<List<String>>('listenerRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [BrokerAuthentication] resource.
+  BrokerAuthentication.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:BrokerAuthentication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authenticationMethods = registerOutput<List<BrokerAuthenticatorMethodsResponse>>('authenticationMethods', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BrokerAuthenticatorMethodsResponse>(guardedValue, (value) => BrokerAuthenticatorMethodsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    listenerRef = registerOutput<List<String>>('listenerRef', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -6,19 +6,19 @@ import 'artifact_parameter_properties.dart';
 /// Properties of an artifact.
 class ArtifactInstallProperties {
   /// The artifact's identifier.
-  final pulumi.Input<String>? artifactId;
+  final pulumi.Input<String?>? artifactId;
   /// The artifact's title.
-  final pulumi.Input<String>? artifactTitle;
+  final pulumi.Input<String?>? artifactTitle;
   /// The status message from the deployment.
-  final pulumi.Input<String>? deploymentStatusMessage;
+  final pulumi.Input<String?>? deploymentStatusMessage;
   /// The time that the artifact starts to install on the virtual machine.
-  final pulumi.Input<String>? installTime;
+  final pulumi.Input<String?>? installTime;
   /// The parameters of the artifact.
-  final pulumi.Input<List<ArtifactParameterProperties>>? parameters;
+  final pulumi.Input<List<ArtifactParameterProperties>?>? parameters;
   /// The status of the artifact.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The status message from the virtual machine extension.
-  final pulumi.Input<String>? vmExtensionStatusMessage;
+  final pulumi.Input<String?>? vmExtensionStatusMessage;
 
   /// Creates a new [ArtifactInstallProperties].
   /// [artifactId] The artifact's identifier.

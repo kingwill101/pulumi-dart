@@ -7,13 +7,13 @@ class PrivateEndpointIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The ID of a group obtained from the remote resource that this private endpoint should connect to.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The member name of a group obtained from the remote resource that this private endpoint should connect to.
-  final pulumi.Input<String>? memberName;
+  final pulumi.Input<String?>? memberName;
   /// The name of the resource that is unique within a resource group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A private ip address obtained from the private endpoint's subnet.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The resource type.
   final pulumi.Input<String> type;
 

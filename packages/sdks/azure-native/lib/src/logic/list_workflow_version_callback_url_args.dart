@@ -9,9 +9,9 @@ import 'key_type.dart';
 /// {@macro pulumi_logic_list_workflow_version_callback_url_args_doc}
 class ListWorkflowVersionCallbackUrlArgs {
   /// The key type.
-  final pulumi.Input<KeyType>? keyType;
+  final pulumi.Input<KeyType?>? keyType;
   /// The expiry time.
-  final pulumi.Input<String>? notAfter;
+  final pulumi.Input<String?>? notAfter;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The workflow trigger name.

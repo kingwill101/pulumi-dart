@@ -5,7 +5,7 @@ import 'sku_definition.dart';
 
 class Sku {
   /// Gets or set the SKU.
-  final pulumi.Input<SkuDefinition>? name;
+  final pulumi.Input<SkuDefinition?>? name;
 
   /// Creates a new [Sku].
   /// [name] Gets or set the SKU.

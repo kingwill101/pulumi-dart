@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Assignment metadata
 class MetadataAssignment {
   /// Deprecated assignment
-  final pulumi.Input<bool>? deprecated;
+  final pulumi.Input<bool?>? deprecated;
   /// The entities this metadata schema component gets applied to.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<dynamic>? entity;
   /// Required assignment
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [MetadataAssignment].
   /// [deprecated] Deprecated assignment
@@ -32,7 +32,7 @@ class MetadataAssignment {
   factory MetadataAssignment.fromMap(Map<String, dynamic> map) {
     return MetadataAssignment(
       deprecated: (() { final guardedValue = map['deprecated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      entity: (() { final guardedValue = map['entity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entity: (() { final guardedValue = map['entity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       required: (() { final guardedValue = map['required']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

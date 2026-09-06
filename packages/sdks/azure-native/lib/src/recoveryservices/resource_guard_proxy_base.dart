@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'resource_guard_operation_detail.dart';
 
 class ResourceGuardProxyBase {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? lastUpdatedTime;
-  final pulumi.Input<List<ResourceGuardOperationDetail>>? resourceGuardOperationDetails;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? lastUpdatedTime;
+  final pulumi.Input<List<ResourceGuardOperationDetail>?>? resourceGuardOperationDetails;
   final pulumi.Input<String> resourceGuardResourceId;
 
   /// Creates a new [ResourceGuardProxyBase].

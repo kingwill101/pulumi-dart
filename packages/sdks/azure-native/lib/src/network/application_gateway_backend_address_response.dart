@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Backend address of an application gateway.
 class ApplicationGatewayBackendAddressResponse {
   /// Fully qualified domain name (FQDN).
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [ApplicationGatewayBackendAddressResponse].
   /// [fqdn] Fully qualified domain name (FQDN).

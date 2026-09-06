@@ -9,19 +9,19 @@ import 'tracking_data_store.dart';
 /// {@macro pulumi_integrationspaces_application_args_doc}
 class ApplicationArgs {
   /// The name of the Application
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// The description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the space
   final pulumi.Input<String> spaceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The tracking data stores.
-  final pulumi.Input<Map<String, TrackingDataStore>>? trackingDataStores;
+  final pulumi.Input<Map<String, TrackingDataStore>?>? trackingDataStores;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationName] The name of the Application

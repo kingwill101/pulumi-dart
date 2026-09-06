@@ -307,11 +307,11 @@ import 'system_data_response.dart';
 /// ```
 class Rule extends pulumi.CustomResource {
   /// A list of actions that are executed when all the conditions of a rule are satisfied.
-  late final pulumi.Output<List<Map<String, dynamic>>?> actions;
+  late final pulumi.Output<List<dynamic>?> actions;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// A list of conditions that must be matched for the actions to be executed
-  late final pulumi.Output<List<Map<String, dynamic>>?> conditions;
+  late final pulumi.Output<List<dynamic>?> conditions;
   late final pulumi.Output<String> deploymentStatus;
   /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
   late final pulumi.Output<String?> matchProcessingBehavior;
@@ -342,9 +342,31 @@ class Rule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>?>('actions');
+    actions = registerOutput<List<dynamic>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>?>('conditions');
+    conditions = registerOutput<List<dynamic>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    deploymentStatus = registerOutput<String>('deploymentStatus');
+    matchProcessingBehavior = registerOutput<String?>('matchProcessingBehavior');
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int?>('order');
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleSetName = registerOutput<String>('ruleSetName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Rule] resource.
+  Rule.reference(String urn)
+    : super(
+        'azure-native:cdn:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<dynamic>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conditions = registerOutput<List<dynamic>?>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     deploymentStatus = registerOutput<String>('deploymentStatus');
     matchProcessingBehavior = registerOutput<String?>('matchProcessingBehavior');
     this.name = registerOutput<String>('name');

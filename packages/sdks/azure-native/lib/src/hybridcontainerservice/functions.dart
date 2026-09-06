@@ -28,6 +28,17 @@ Future<GetClusterInstanceHybridIdentityMetadatumResult> getClusterInstanceHybrid
   return GetClusterInstanceHybridIdentityMetadatumResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterInstanceHybridIdentityMetadatumResult> getClusterInstanceHybridIdentityMetadatumOutput(
+  GetClusterInstanceHybridIdentityMetadatumArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcontainerservice:getClusterInstanceHybridIdentityMetadatum',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterInstanceHybridIdentityMetadatumResult.fromMap);
+}
+
 /// Gets the specified virtual network resource
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -46,6 +57,17 @@ Future<GetVirtualNetworkRetrieveResult> getVirtualNetworkRetrieve(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkRetrieveResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkRetrieveResult> getVirtualNetworkRetrieveOutput(
+  GetVirtualNetworkRetrieveArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcontainerservice:getVirtualNetworkRetrieve',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkRetrieveResult.fromMap);
 }
 
 /// Lists the admin credentials of the provisioned cluster (can only be used within private network)
@@ -68,6 +90,17 @@ Future<ListProvisionedClusterInstanceAdminKubeconfigResult> listProvisionedClust
   return ListProvisionedClusterInstanceAdminKubeconfigResult.fromMap(result);
 }
 
+pulumi.Output<ListProvisionedClusterInstanceAdminKubeconfigResult> listProvisionedClusterInstanceAdminKubeconfigOutput(
+  ListProvisionedClusterInstanceAdminKubeconfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcontainerservice:listProvisionedClusterInstanceAdminKubeconfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProvisionedClusterInstanceAdminKubeconfigResult.fromMap);
+}
+
 /// Lists the user credentials of the provisioned cluster (can only be used within private network)
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -86,4 +119,15 @@ Future<ListProvisionedClusterInstanceUserKubeconfigResult> listProvisionedCluste
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListProvisionedClusterInstanceUserKubeconfigResult.fromMap(result);
+}
+
+pulumi.Output<ListProvisionedClusterInstanceUserKubeconfigResult> listProvisionedClusterInstanceUserKubeconfigOutput(
+  ListProvisionedClusterInstanceUserKubeconfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridcontainerservice:listProvisionedClusterInstanceUserKubeconfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProvisionedClusterInstanceUserKubeconfigResult.fromMap);
 }

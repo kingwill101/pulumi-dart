@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'site_appliance_properties_response.dart';
 import 'sql_sites_controller_args.dart';
 import 'system_data_response.dart';
 
@@ -283,7 +284,7 @@ class SqlSitesController extends pulumi.CustomResource {
   /// Gets or sets the appliance details used by service to communicate
   ///
   /// to the appliance.
-  late final pulumi.Output<List<Map<String, dynamic>>?> siteAppliancePropertiesCollection;
+  late final pulumi.Output<List<SiteAppliancePropertiesResponse>?> siteAppliancePropertiesCollection;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -308,7 +309,26 @@ class SqlSitesController extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
-    siteAppliancePropertiesCollection = registerOutput<List<Map<String, dynamic>>?>('siteAppliancePropertiesCollection');
+    siteAppliancePropertiesCollection = registerOutput<List<SiteAppliancePropertiesResponse>?>('siteAppliancePropertiesCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SiteAppliancePropertiesResponse>(guardedValue, (value) => SiteAppliancePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SqlSitesController] resource.
+  SqlSitesController.reference(String urn)
+    : super(
+        'azure-native:offazure:SqlSitesController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoveryScenario = registerOutput<String?>('discoveryScenario');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    siteAppliancePropertiesCollection = registerOutput<List<SiteAppliancePropertiesResponse>?>('siteAppliancePropertiesCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SiteAppliancePropertiesResponse>(guardedValue, (value) => SiteAppliancePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

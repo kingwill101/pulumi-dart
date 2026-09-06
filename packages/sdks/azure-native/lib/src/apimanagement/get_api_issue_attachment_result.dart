@@ -4,19 +4,19 @@
 /// Result data returned by getApiIssueAttachment.
 class GetApiIssueAttachmentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// An HTTP link or Base64-encoded binary data.
-  final String content;
+  final String? content;
   /// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.
-  final String contentFormat;
+  final String? contentFormat;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Filename by which the binary data will be saved.
-  final String title;
+  final String? title;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetApiIssueAttachmentResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,36 +27,36 @@ class GetApiIssueAttachmentResult {
   /// [title] Filename by which the binary data will be saved.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetApiIssueAttachmentResult({
-    required this.azureApiVersion,
-    required this.content,
-    required this.contentFormat,
-    required this.id,
-    required this.name,
-    required this.title,
-    required this.type,
+    this.azureApiVersion,
+    this.content,
+    this.contentFormat,
+    this.id,
+    this.name,
+    this.title,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'content': content,
-      'contentFormat': contentFormat,
-      'id': id,
-      'name': name,
-      'title': title,
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'content': ?content,
+      'contentFormat': ?contentFormat,
+      'id': ?id,
+      'name': ?name,
+      'title': ?title,
+      'type': ?type,
     };
   }
 
   factory GetApiIssueAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetApiIssueAttachmentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      content: map['content'] as String,
-      contentFormat: map['contentFormat'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      title: map['title'] as String,
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentFormat: (() { final guardedValue = map['contentFormat']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

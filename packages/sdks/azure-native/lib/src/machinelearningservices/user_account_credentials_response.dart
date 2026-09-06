@@ -7,9 +7,9 @@ class UserAccountCredentialsResponse {
   /// Name of the administrator user account which can be used to SSH to nodes.
   final pulumi.Input<String> adminUserName;
   /// Password of the administrator user account.
-  final pulumi.Input<String>? adminUserPassword;
+  final pulumi.Input<String?>? adminUserPassword;
   /// SSH public key of the administrator user account.
-  final pulumi.Input<String>? adminUserSshPublicKey;
+  final pulumi.Input<String?>? adminUserSshPublicKey;
 
   /// Creates a new [UserAccountCredentialsResponse].
   /// [adminUserName] Name of the administrator user account which can be used to SSH to nodes.

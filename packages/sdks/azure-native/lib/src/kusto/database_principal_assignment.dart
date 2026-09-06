@@ -233,4 +233,26 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
     tenantName = registerOutput<String>('tenantName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DatabasePrincipalAssignment] resource.
+  DatabasePrincipalAssignment.reference(String urn)
+    : super(
+        'azure-native:kusto:DatabasePrincipalAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aadObjectId = registerOutput<String>('aadObjectId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    provisioningState = registerOutput<String>('provisioningState');
+    role = registerOutput<String>('role');
+    tenantId = registerOutput<String?>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
+    type = registerOutput<String>('type');
+  }
 }

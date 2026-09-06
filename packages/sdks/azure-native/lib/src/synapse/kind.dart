@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the database
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueReadWrite("ReadWrite"),
   valueReadOnlyFollowing("ReadOnlyFollowing");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

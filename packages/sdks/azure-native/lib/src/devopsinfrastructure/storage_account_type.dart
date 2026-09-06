@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-enum StorageAccountType {
+enum StorageAccountType implements pulumi.PulumiEnum<String> {
   standardLRS("Standard_LRS"),
   premiumLRS("Premium_LRS"),
   standardSSDLRS("StandardSSD_LRS"),
@@ -7,6 +9,7 @@ enum StorageAccountType {
   standardSSDZRS("StandardSSD_ZRS");
 
   const StorageAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAccountType fromValue(String value) {

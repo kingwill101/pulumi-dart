@@ -20,7 +20,7 @@ class ListAgentPoolQueueStatusResult {
 
   factory ListAgentPoolQueueStatusResult.fromMap(Map<String, dynamic> map) {
     return ListAgentPoolQueueStatusResult(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

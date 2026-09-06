@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the Key Vault which hosts CMK
 class CmkKeyVaultPropertiesResponse {
   /// The key uri of the Customer Managed Key
-  final pulumi.Input<String>? keyUri;
+  final pulumi.Input<String?>? keyUri;
 
   /// Creates a new [CmkKeyVaultPropertiesResponse].
   /// [keyUri] The key uri of the Customer Managed Key

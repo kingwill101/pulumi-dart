@@ -6,7 +6,7 @@ import 'backend_service_fabric_cluster_properties_response.dart';
 /// Properties specific to the Backend Type.
 class BackendPropertiesResponse {
   /// Backend Service Fabric Cluster Properties
-  final pulumi.Input<BackendServiceFabricClusterPropertiesResponse>? serviceFabricCluster;
+  final pulumi.Input<BackendServiceFabricClusterPropertiesResponse?>? serviceFabricCluster;
 
   /// Creates a new [BackendPropertiesResponse].
   /// [serviceFabricCluster] Backend Service Fabric Cluster Properties

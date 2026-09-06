@@ -9,11 +9,11 @@ import 'managed_on_behalf_of_configuration_response.dart';
 /// Details of the Agriculture AgriDataManager.
 class AgriServiceResourcePropertiesResponse {
   /// Config of the AgriService instance.
-  final pulumi.Input<AgriServiceConfigResponse>? config;
+  final pulumi.Input<AgriServiceConfigResponse?>? config;
   /// Data connector credentials of AgriService instance.
-  final pulumi.Input<List<DataConnectorCredentialMapResponse>>? dataConnectorCredentials;
+  final pulumi.Input<List<DataConnectorCredentialMapResponse>?>? dataConnectorCredentials;
   /// AgriService installed solutions.
-  final pulumi.Input<List<InstalledSolutionMapResponse>>? installedSolutions;
+  final pulumi.Input<List<InstalledSolutionMapResponse>?>? installedSolutions;
   /// Managed On Behalf Of Configuration.
   final pulumi.Input<ManagedOnBehalfOfConfigurationResponse> managedOnBehalfOfConfiguration;
   /// The status of the last operation.

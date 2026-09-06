@@ -6,9 +6,9 @@ import 'maintenance_day_of_week_type.dart';
 /// Start time of a 30-minute weekly maintenance window.
 class AmlFilesystemMaintenanceWindow {
   /// Day of the week on which the maintenance window will occur.
-  final pulumi.Input<MaintenanceDayOfWeekType>? dayOfWeek;
+  final pulumi.Input<MaintenanceDayOfWeekType?>? dayOfWeek;
   /// The time of day (in UTC) to start the maintenance window.
-  final pulumi.Input<String>? timeOfDayUTC;
+  final pulumi.Input<String?>? timeOfDayUTC;
 
   /// Creates a new [AmlFilesystemMaintenanceWindow].
   /// [dayOfWeek] Day of the week on which the maintenance window will occur.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Topics input config
 class TopicsInputConfig {
   /// Name of the topic input config
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the topic input config
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TopicsInputConfig].
   /// [name] Name of the topic input config

@@ -37,9 +37,9 @@ class OptimizedAutoscaleResponse {
   factory OptimizedAutoscaleResponse.fromMap(Map<String, dynamic> map) {
     return OptimizedAutoscaleResponse(
       isEnabled: pulumi.Input.fromValue(map['isEnabled'] as bool),
-      maximum: pulumi.Input.fromValue(map['maximum'] as int),
-      minimum: pulumi.Input.fromValue(map['minimum'] as int),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      maximum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximum'])),
+      minimum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimum'])),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

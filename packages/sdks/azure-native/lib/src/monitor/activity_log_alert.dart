@@ -1042,8 +1042,29 @@ class ActivityLogAlert extends pulumi.CustomResource {
     enabled = registerOutput<bool?>('enabled');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    scopes = registerOutput<List<String>>('scopes');
-    tags = registerOutput<Map<String, String>?>('tags');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ActivityLogAlert] resource.
+  ActivityLogAlert.reference(String urn)
+    : super(
+        'azure-native:monitor:ActivityLogAlert',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<ActionListResponse>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    condition = registerOutput<AlertRuleAllOfConditionResponse>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertRuleAllOfConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    enabled = registerOutput<bool?>('enabled');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

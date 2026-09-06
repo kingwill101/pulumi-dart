@@ -7,11 +7,11 @@ class StorageDiscoveryScope {
   /// Display name of the collection
   final pulumi.Input<String> displayName;
   /// Resource types for the collection
-  final pulumi.Input<List<String>> resourceTypes;
+  final pulumi.Input<List<dynamic>> resourceTypes;
   /// The storage account tags keys to filter
-  final pulumi.Input<List<String>>? tagKeysOnly;
+  final pulumi.Input<List<String>?>? tagKeysOnly;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageDiscoveryScope].
   /// [displayName] Display name of the collection
@@ -37,7 +37,7 @@ class StorageDiscoveryScope {
   factory StorageDiscoveryScope.fromMap(Map<String, dynamic> map) {
     return StorageDiscoveryScope(
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      resourceTypes: pulumi.Input.fromValue((map['resourceTypes'] as List).cast<String>()),
+      resourceTypes: pulumi.Input.fromValue((map['resourceTypes'] as List).cast<dynamic>()),
       tagKeysOnly: (() { final guardedValue = map['tagKeysOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

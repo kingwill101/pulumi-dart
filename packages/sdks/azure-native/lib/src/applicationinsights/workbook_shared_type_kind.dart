@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of workbook. Only valid value is shared.
-enum WorkbookSharedTypeKind {
+enum WorkbookSharedTypeKind implements pulumi.PulumiEnum<String> {
   shared("shared");
 
   const WorkbookSharedTypeKind(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkbookSharedTypeKind fromValue(String value) {

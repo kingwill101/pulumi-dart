@@ -8,21 +8,21 @@ import 'vwan_configuration_response.dart';
 /// Network settings for Firewall
 class NetworkProfileResponse {
   /// Egress nat IP to use
-  final pulumi.Input<List<IPAddressResponse>>? egressNatIp;
+  final pulumi.Input<List<IPAddressResponse>?>? egressNatIp;
   /// Enable egress NAT, enabled by default
   final pulumi.Input<String> enableEgressNat;
   /// vnet or vwan, cannot be updated
   final pulumi.Input<String> networkType;
   /// Array of ipv4 destination address for which source NAT is to be performed
-  final pulumi.Input<List<String>>? privateSourceNatRulesDestination;
+  final pulumi.Input<List<String>?>? privateSourceNatRulesDestination;
   /// List of IPs associated with the Firewall
   final pulumi.Input<List<IPAddressResponse>> publicIps;
   /// Non-RFC 1918 address
-  final pulumi.Input<List<String>>? trustedRanges;
+  final pulumi.Input<List<String>?>? trustedRanges;
   /// Vnet configurations
-  final pulumi.Input<VnetConfigurationResponse>? vnetConfiguration;
+  final pulumi.Input<VnetConfigurationResponse?>? vnetConfiguration;
   /// Vwan configurations
-  final pulumi.Input<VwanConfigurationResponse>? vwanConfiguration;
+  final pulumi.Input<VwanConfigurationResponse?>? vwanConfiguration;
 
   /// Creates a new [NetworkProfileResponse].
   /// [egressNatIp] Egress nat IP to use

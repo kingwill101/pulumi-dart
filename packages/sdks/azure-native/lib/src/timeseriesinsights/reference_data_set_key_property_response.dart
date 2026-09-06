@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A key property for the reference data set. A reference data set can have multiple key properties.
 class ReferenceDataSetKeyPropertyResponse {
   /// The name of the key property.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the key property.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ReferenceDataSetKeyPropertyResponse].
   /// [name] The name of the key property.

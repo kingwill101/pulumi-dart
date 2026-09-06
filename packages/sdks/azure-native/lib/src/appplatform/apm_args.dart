@@ -9,9 +9,9 @@ import 'apm_properties.dart';
 /// {@macro pulumi_appplatform_apm_args_doc}
 class ApmArgs {
   /// The name of the APM
-  final pulumi.Input<String>? apmName;
+  final pulumi.Input<String?>? apmName;
   /// Properties of an APM
-  final pulumi.Input<ApmProperties>? properties;
+  final pulumi.Input<ApmProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

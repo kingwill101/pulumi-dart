@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object reference to a Kubernetes object on a cluster
 class ObjectReferenceDefinitionResponse {
   /// Name of the object
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Namespace of the object
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
 
   /// Creates a new [ObjectReferenceDefinitionResponse].
   /// [name] Name of the object

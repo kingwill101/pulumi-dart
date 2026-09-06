@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_prefix_list_local_rulestack_args_doc}
 class PrefixListLocalRulestackArgs {
   /// comment for this object
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// prefix description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// LocalRulestack resource name
   final pulumi.Input<String> localRulestackName;
   /// Local Rule priority
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// prefix list
   final pulumi.Input<List<String>> prefixList;
   /// The name of the resource group. The name is case insensitive.

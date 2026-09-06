@@ -22,51 +22,51 @@ class ClusterGetPropertiesResponse {
   /// The cluster definition.
   final pulumi.Input<ClusterDefinitionResponse> clusterDefinition;
   /// The hdp version of the cluster.
-  final pulumi.Input<String>? clusterHdpVersion;
+  final pulumi.Input<String?>? clusterHdpVersion;
   /// The cluster id.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// The state of the cluster.
-  final pulumi.Input<String>? clusterState;
+  final pulumi.Input<String?>? clusterState;
   /// The version of the cluster.
-  final pulumi.Input<String>? clusterVersion;
+  final pulumi.Input<String?>? clusterVersion;
   /// The compute isolation properties.
-  final pulumi.Input<ComputeIsolationPropertiesResponse>? computeIsolationProperties;
+  final pulumi.Input<ComputeIsolationPropertiesResponse?>? computeIsolationProperties;
   /// The compute profile.
-  final pulumi.Input<ComputeProfileResponse>? computeProfile;
+  final pulumi.Input<ComputeProfileResponse?>? computeProfile;
   /// The list of connectivity endpoints.
-  final pulumi.Input<List<ConnectivityEndpointResponse>>? connectivityEndpoints;
+  final pulumi.Input<List<ConnectivityEndpointResponse>?>? connectivityEndpoints;
   /// The date on which the cluster was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// The disk encryption properties.
-  final pulumi.Input<DiskEncryptionPropertiesResponse>? diskEncryptionProperties;
+  final pulumi.Input<DiskEncryptionPropertiesResponse?>? diskEncryptionProperties;
   /// The encryption-in-transit properties.
-  final pulumi.Input<EncryptionInTransitPropertiesResponse>? encryptionInTransitProperties;
+  final pulumi.Input<EncryptionInTransitPropertiesResponse?>? encryptionInTransitProperties;
   /// The list of errors.
-  final pulumi.Input<List<ErrorsResponse>>? errors;
+  final pulumi.Input<List<ErrorsResponse>?>? errors;
   /// The excluded services config.
-  final pulumi.Input<ExcludedServicesConfigResponse>? excludedServicesConfig;
+  final pulumi.Input<ExcludedServicesConfigResponse?>? excludedServicesConfig;
   /// The cluster kafka rest proxy configuration.
-  final pulumi.Input<KafkaRestPropertiesResponse>? kafkaRestProperties;
+  final pulumi.Input<KafkaRestPropertiesResponse?>? kafkaRestProperties;
   /// The minimal supported tls version.
-  final pulumi.Input<String>? minSupportedTlsVersion;
+  final pulumi.Input<String?>? minSupportedTlsVersion;
   /// The network properties.
-  final pulumi.Input<NetworkPropertiesResponse>? networkProperties;
+  final pulumi.Input<NetworkPropertiesResponse?>? networkProperties;
   /// The type of operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The list of private endpoint connections.
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The private link configurations.
-  final pulumi.Input<List<PrivateLinkConfigurationResponse>>? privateLinkConfigurations;
+  final pulumi.Input<List<PrivateLinkConfigurationResponse>?>? privateLinkConfigurations;
   /// The provisioning state, which only appears in the response.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The quota information.
-  final pulumi.Input<QuotaInfoResponse>? quotaInfo;
+  final pulumi.Input<QuotaInfoResponse?>? quotaInfo;
   /// The security profile.
-  final pulumi.Input<SecurityProfileResponse>? securityProfile;
+  final pulumi.Input<SecurityProfileResponse?>? securityProfile;
   /// The storage profile.
-  final pulumi.Input<StorageProfileResponse>? storageProfile;
+  final pulumi.Input<StorageProfileResponse?>? storageProfile;
   /// The cluster tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [ClusterGetPropertiesResponse].
   /// [clusterDefinition] The cluster definition.

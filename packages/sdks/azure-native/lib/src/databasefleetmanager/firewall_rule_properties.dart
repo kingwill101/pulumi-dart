@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Firewall rule properties.
 class FirewallRuleProperties {
   /// End IP address.
-  final pulumi.Input<String>? endIpAddress;
+  final pulumi.Input<String?>? endIpAddress;
   /// Start IP address.
-  final pulumi.Input<String>? startIpAddress;
+  final pulumi.Input<String?>? startIpAddress;
 
   /// Creates a new [FirewallRuleProperties].
   /// [endIpAddress] End IP address.

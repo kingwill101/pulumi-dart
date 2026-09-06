@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CDC policy recurrence details.
 class MapperPolicyRecurrence {
   /// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<dynamic>? frequency;
   /// Actual interval value as per chosen frequency.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
 
   /// Creates a new [MapperPolicyRecurrence].
   /// [frequency] Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
@@ -26,8 +26,8 @@ class MapperPolicyRecurrence {
 
   factory MapperPolicyRecurrence.fromMap(Map<String, dynamic> map) {
     return MapperPolicyRecurrence(
-      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

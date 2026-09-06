@@ -45,7 +45,7 @@ class RecommendedActionMetricInfoResponse {
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
       unit: pulumi.Input.fromValue(map['unit'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

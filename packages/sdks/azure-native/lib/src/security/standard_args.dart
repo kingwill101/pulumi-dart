@@ -10,25 +10,25 @@ import 'standard_supported_clouds.dart';
 /// {@macro pulumi_security_standard_args_doc}
 class StandardArgs {
   /// category of the standard provided
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// List of component objects containing component unique keys (such as assessment keys) to apply to standard scope.  Currently only supports assessment keys.
-  final pulumi.Input<List<StandardComponentProperties>>? components;
+  final pulumi.Input<List<StandardComponentProperties>?>? components;
   /// description of the standard
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// display name of the standard, equivalent to the standardId
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Kind of the resource
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Security Standard key - unique key for the standard type
-  final pulumi.Input<String>? standardId;
+  final pulumi.Input<String?>? standardId;
   /// List of all standard supported clouds.
-  final pulumi.Input<List<StandardSupportedClouds>>? supportedClouds;
+  final pulumi.Input<List<StandardSupportedClouds>?>? supportedClouds;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StandardArgs].
   /// [category] category of the standard provided

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The override kind.
-enum OverrideKind {
+enum OverrideKind implements pulumi.PulumiEnum<String> {
   valuePolicyEffect("policyEffect"),
   valueDefinitionVersion("definitionVersion");
 
   const OverrideKind(this.wireValue);
+  @override
   final String wireValue;
 
   static OverrideKind fromValue(String value) {

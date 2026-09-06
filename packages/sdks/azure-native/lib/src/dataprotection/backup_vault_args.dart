@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'backup_vault_dataprotection.dart';
+import 'backup_vault.dart';
 import 'dpp_identity_details.dart';
 
 /// {@template pulumi_dataprotection_backup_vault_args_doc}
@@ -10,19 +10,19 @@ import 'dpp_identity_details.dart';
 /// {@macro pulumi_dataprotection_backup_vault_args_doc}
 class BackupVaultArgs {
   /// Optional ETag.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Input Managed Identity Details
-  final pulumi.Input<DppIdentityDetails>? identity;
+  final pulumi.Input<DppIdentityDetails?>? identity;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// BackupVaultResource properties
-  final pulumi.Input<BackupVaultDataprotection> properties;
+  final pulumi.Input<BackupVault> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the backup vault.
-  final pulumi.Input<String>? vaultName;
+  final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [BackupVaultArgs].
   /// [eTag] Optional ETag.
@@ -47,7 +47,7 @@ class BackupVaultArgs {
       'eTag': ?eTag,
       'identity': ?pulumi.Input.mapOptionalInputValue<DppIdentityDetails, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'location': ?location,
-      'properties': properties,
+      'properties': pulumi.Input.mapInputValue<BackupVault, Map<String, dynamic>>(properties, (value) => value.toMap()),
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vaultName': ?vaultName,
@@ -59,7 +59,7 @@ class BackupVaultArgs {
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DppIdentityDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: pulumi.Input.fromValue(map['properties'] as BackupVaultDataprotection),
+      properties: pulumi.Input.fromValue(BackupVault.fromMap((map['properties']! as Map).cast<String, dynamic>())),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vaultName: (() { final guardedValue = map['vaultName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

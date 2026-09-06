@@ -189,4 +189,23 @@ class ExpressRoutePortAuthorization extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ExpressRoutePortAuthorization] resource.
+  ExpressRoutePortAuthorization.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRoutePortAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String>('authorizationKey');
+    authorizationUseStatus = registerOutput<String>('authorizationUseStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    circuitResourceUri = registerOutput<String>('circuitResourceUri');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

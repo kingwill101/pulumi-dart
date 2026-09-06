@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NlpVerticalFeaturizationSettings {
   /// Dataset language, useful for the text data.
-  final pulumi.Input<String>? datasetLanguage;
+  final pulumi.Input<String?>? datasetLanguage;
 
   /// Creates a new [NlpVerticalFeaturizationSettings].
   /// [datasetLanguage] Dataset language, useful for the text data.

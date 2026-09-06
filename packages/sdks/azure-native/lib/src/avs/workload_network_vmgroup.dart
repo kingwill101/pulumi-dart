@@ -212,7 +212,27 @@ class WorkloadNetworkVMGroup extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     displayName = registerOutput<String?>('displayName');
-    members = registerOutput<List<String>?>('members');
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    revision = registerOutput<double?>('revision');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkVMGroup] resource.
+  WorkloadNetworkVMGroup.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkVMGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    members = registerOutput<List<String>?>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     revision = registerOutput<double?>('revision');

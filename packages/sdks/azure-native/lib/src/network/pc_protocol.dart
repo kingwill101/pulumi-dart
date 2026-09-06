@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol to be filtered on.
-enum PcProtocol {
+enum PcProtocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP"),
   valueAny("Any");
 
   const PcProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static PcProtocol fromValue(String value) {

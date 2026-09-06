@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes threat kill chain phase entity
 class ThreatIntelligenceParsedPatternTypeValue {
   /// Value of parsed pattern
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Type of the value
-  final pulumi.Input<String>? valueType;
+  final pulumi.Input<String?>? valueType;
 
   /// Creates a new [ThreatIntelligenceParsedPatternTypeValue].
   /// [value] Value of parsed pattern

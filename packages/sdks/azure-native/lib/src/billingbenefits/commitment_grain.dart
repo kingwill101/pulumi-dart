@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The grain of the commitment.
-enum CommitmentGrain {
+enum CommitmentGrain implements pulumi.PulumiEnum<String> {
   hourly("Hourly"),
   fullTerm("FullTerm"),
   unknown("Unknown");
 
   const CommitmentGrain(this.wireValue);
+  @override
   final String wireValue;
 
   static CommitmentGrain fromValue(String value) {

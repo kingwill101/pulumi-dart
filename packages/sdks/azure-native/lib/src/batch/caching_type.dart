@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of caching to enable for the disk.
-enum CachingType {
+enum CachingType implements pulumi.PulumiEnum<String> {
   none("None"),
   readOnly("ReadOnly"),
   readWrite("ReadWrite");
 
   const CachingType(this.wireValue);
+  @override
   final String wireValue;
 
   static CachingType fromValue(String value) {

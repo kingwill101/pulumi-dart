@@ -6,11 +6,11 @@ import 'mapper_connection_reference_response.dart';
 /// Attribute reference details for the referred column.
 class MapperAttributeReferenceResponse {
   /// Name of the table.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   /// The connection reference for the connection.
-  final pulumi.Input<MapperConnectionReferenceResponse>? entityConnectionReference;
+  final pulumi.Input<MapperConnectionReferenceResponse?>? entityConnectionReference;
   /// Name of the column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [MapperAttributeReferenceResponse].
   /// [entity] Name of the table.

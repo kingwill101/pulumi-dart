@@ -12,7 +12,7 @@ class ApplicationScopedVolume {
   /// Name of the volume being referenced.
   final pulumi.Input<String> name;
   /// The flag indicating whether the volume is read only. Default is 'false'.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
 
   /// Creates a new [ApplicationScopedVolume].
   /// [creationParameters] Describes parameters for creating application-scoped volumes.

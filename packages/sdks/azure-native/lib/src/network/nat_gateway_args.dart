@@ -10,25 +10,25 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_nat_gateway_args_doc}
 class NatGatewayArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The idle timeout of the nat gateway.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the nat gateway.
-  final pulumi.Input<String>? natGatewayName;
+  final pulumi.Input<String?>? natGatewayName;
   /// An array of public ip addresses associated with the nat gateway resource.
-  final pulumi.Input<List<SubResource>>? publicIpAddresses;
+  final pulumi.Input<List<SubResource>?>? publicIpAddresses;
   /// An array of public ip prefixes associated with the nat gateway resource.
-  final pulumi.Input<List<SubResource>>? publicIpPrefixes;
+  final pulumi.Input<List<SubResource>?>? publicIpPrefixes;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The nat gateway SKU.
-  final pulumi.Input<NatGatewaySku>? sku;
+  final pulumi.Input<NatGatewaySku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [NatGatewayArgs].
   /// [id] Resource ID.
@@ -72,7 +72,7 @@ class NatGatewayArgs {
   factory NatGatewayArgs.fromMap(Map<String, dynamic> map) {
     return NatGatewayArgs(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       natGatewayName: (() { final guardedValue = map['natGatewayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publicIpAddresses: (() { final guardedValue = map['publicIpAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -5,23 +5,23 @@ import 'system_data_response.dart';
 /// Result data returned by getCapacityPoolSubvolume.
 class GetCapacityPoolSubvolumeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// parent path to the subvolume
   final String? parentPath;
   /// Path to the subvolume
   final String? path;
   /// Azure lifecycle management
-  final String provisioningState;
+  final String? provisioningState;
   /// Truncate subvolume to the provided size in bytes
   final double? size;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCapacityPoolSubvolumeResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -34,42 +34,42 @@ class GetCapacityPoolSubvolumeResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetCapacityPoolSubvolumeResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
+    this.azureApiVersion,
+    this.id,
+    this.name,
     this.parentPath,
     this.path,
-    required this.provisioningState,
+    this.provisioningState,
     this.size,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
       'parentPath': ?parentPath,
       'path': ?path,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'size': ?size,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetCapacityPoolSubvolumeResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolSubvolumeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parentPath: (() { final guardedValue = map['parentPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

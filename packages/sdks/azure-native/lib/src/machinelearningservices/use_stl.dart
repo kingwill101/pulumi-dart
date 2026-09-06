@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Configure STL Decomposition of the time-series target column.
-enum UseStl {
+enum UseStl implements pulumi.PulumiEnum<String> {
   none("None"),
   season("Season"),
   seasonTrend("SeasonTrend");
 
   const UseStl(this.wireValue);
+  @override
   final String wireValue;
 
   static UseStl fromValue(String value) {

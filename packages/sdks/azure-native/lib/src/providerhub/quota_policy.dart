@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The quota policy.
-enum QuotaPolicy {
+enum QuotaPolicy implements pulumi.PulumiEnum<String> {
   default_("Default"),
   none("None"),
   restricted("Restricted");
 
   const QuotaPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static QuotaPolicy fromValue(String value) {

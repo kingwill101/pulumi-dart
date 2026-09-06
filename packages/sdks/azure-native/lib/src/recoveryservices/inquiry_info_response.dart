@@ -7,13 +7,13 @@ import 'workload_inquiry_details_response.dart';
 /// Details about inquired protectable items under a given container.
 class InquiryInfoResponse {
   /// Error Details if the Status is non-success.
-  final pulumi.Input<ErrorDetailResponse>? errorDetail;
+  final pulumi.Input<ErrorDetailResponse?>? errorDetail;
   /// Inquiry Details which will have workload specific details.
   /// For e.g. - For SQL and oracle this will contain different details.
-  final pulumi.Input<List<WorkloadInquiryDetailsResponse>>? inquiryDetails;
+  final pulumi.Input<List<WorkloadInquiryDetailsResponse>?>? inquiryDetails;
   /// Inquiry Status for this container such as
   /// InProgress | Failed | Succeeded
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InquiryInfoResponse].
   /// [errorDetail] Error Details if the Status is non-success.

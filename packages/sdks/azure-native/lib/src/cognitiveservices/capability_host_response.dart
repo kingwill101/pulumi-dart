@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityHostResponse {
   /// List of AI services connections.
-  final pulumi.Input<List<String>>? aiServicesConnections;
+  final pulumi.Input<List<String>?>? aiServicesConnections;
   /// Kind of this capability host.
-  final pulumi.Input<String>? capabilityHostKind;
+  final pulumi.Input<String?>? capabilityHostKind;
   /// Customer subnet info to help set up this capability host.
-  final pulumi.Input<String>? customerSubnet;
+  final pulumi.Input<String?>? customerSubnet;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Provisioning state for the CapabilityHost.
   final pulumi.Input<String> provisioningState;
   /// List of connection names from those available in the account or project to be used as a storage resource.
-  final pulumi.Input<List<String>>? storageConnections;
+  final pulumi.Input<List<String>?>? storageConnections;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of connection names from those available in the account or project to be used for Thread storage.
-  final pulumi.Input<List<String>>? threadStorageConnections;
+  final pulumi.Input<List<String>?>? threadStorageConnections;
   /// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
-  final pulumi.Input<List<String>>? vectorStoreConnections;
+  final pulumi.Input<List<String>?>? vectorStoreConnections;
 
   /// Creates a new [CapabilityHostResponse].
   /// [aiServicesConnections] List of AI services connections.

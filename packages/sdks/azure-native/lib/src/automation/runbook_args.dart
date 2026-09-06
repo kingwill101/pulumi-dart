@@ -12,31 +12,31 @@ class RunbookArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// Gets or sets the description of the runbook.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the draft runbook properties.
-  final pulumi.Input<RunbookDraft>? draft;
+  final pulumi.Input<RunbookDraft?>? draft;
   /// Gets or sets the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the activity-level tracing options of the runbook.
-  final pulumi.Input<int>? logActivityTrace;
+  final pulumi.Input<int?>? logActivityTrace;
   /// Gets or sets progress log option.
-  final pulumi.Input<bool>? logProgress;
+  final pulumi.Input<bool?>? logProgress;
   /// Gets or sets verbose log option.
-  final pulumi.Input<bool>? logVerbose;
+  final pulumi.Input<bool?>? logVerbose;
   /// Gets or sets the name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the published runbook content link.
-  final pulumi.Input<ContentLink>? publishContentLink;
+  final pulumi.Input<ContentLink?>? publishContentLink;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The runbook name.
-  final pulumi.Input<String>? runbookName;
+  final pulumi.Input<String?>? runbookName;
   /// Gets or sets the type of the runbook.
-  final pulumi.Input<String> runbookType;
+  final pulumi.Input<dynamic> runbookType;
   /// Environment of the runbook.
-  final pulumi.Input<String>? runtimeEnvironment;
+  final pulumi.Input<String?>? runtimeEnvironment;
   /// Gets or sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RunbookArgs].
   /// [automationAccountName] The name of the automation account.
@@ -95,14 +95,14 @@ class RunbookArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       draft: (() { final guardedValue = map['draft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RunbookDraft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      logActivityTrace: (() { final guardedValue = map['logActivityTrace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logActivityTrace: (() { final guardedValue = map['logActivityTrace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       logProgress: (() { final guardedValue = map['logProgress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       logVerbose: (() { final guardedValue = map['logVerbose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publishContentLink: (() { final guardedValue = map['publishContentLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContentLink.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       runbookName: (() { final guardedValue = map['runbookName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runbookType: pulumi.Input.fromValue(map['runbookType'] as String),
+      runbookType: pulumi.Input.fromValue(map['runbookType']),
       runtimeEnvironment: (() { final guardedValue = map['runtimeEnvironment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

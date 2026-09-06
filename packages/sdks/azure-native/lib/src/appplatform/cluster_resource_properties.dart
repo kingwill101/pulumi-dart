@@ -9,18 +9,18 @@ import 'weekly_maintenance_schedule_configuration.dart';
 /// Service properties payload
 class ClusterResourceProperties {
   /// The name of the resource group that contains the infrastructure resources
-  final pulumi.Input<String>? infraResourceGroup;
+  final pulumi.Input<String?>? infraResourceGroup;
   /// Additional Service settings for planned maintenance
-  final pulumi.Input<WeeklyMaintenanceScheduleConfiguration>? maintenanceScheduleConfiguration;
+  final pulumi.Input<WeeklyMaintenanceScheduleConfiguration?>? maintenanceScheduleConfiguration;
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on
-  final pulumi.Input<String>? managedEnvironmentId;
+  final pulumi.Input<String?>? managedEnvironmentId;
   /// Purchasing 3rd party product of the Service resource.
-  final pulumi.Input<MarketplaceResource>? marketplaceResource;
+  final pulumi.Input<MarketplaceResource?>? marketplaceResource;
   /// Network profile of the Service
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// Additional Service settings in vnet injection instance
-  final pulumi.Input<ServiceVNetAddons>? vnetAddons;
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<ServiceVNetAddons?>? vnetAddons;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [ClusterResourceProperties].
   /// [infraResourceGroup] The name of the resource group that contains the infrastructure resources
@@ -30,15 +30,15 @@ class ClusterResourceProperties {
   /// [networkProfile] Network profile of the Service
   /// [vnetAddons] Additional Service settings in vnet injection instance
   /// [zoneRedundant] Optional.
-  const ClusterResourceProperties({
+  ClusterResourceProperties({
     this.infraResourceGroup,
     this.maintenanceScheduleConfiguration,
     this.managedEnvironmentId,
     this.marketplaceResource,
     this.networkProfile,
     this.vnetAddons,
-    this.zoneRedundant,
-  });
+    pulumi.Input<bool?>? zoneRedundant,
+  }) : zoneRedundant = zoneRedundant ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

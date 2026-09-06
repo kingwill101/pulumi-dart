@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Put subscription additional properties.
 class PutAliasRequestAdditionalProperties {
   /// Management group Id for the subscription.
-  final pulumi.Input<String>? managementGroupId;
+  final pulumi.Input<String?>? managementGroupId;
   /// Owner Id of the subscription
-  final pulumi.Input<String>? subscriptionOwnerId;
+  final pulumi.Input<String?>? subscriptionOwnerId;
   /// Tenant Id of the subscription
-  final pulumi.Input<String>? subscriptionTenantId;
+  final pulumi.Input<String?>? subscriptionTenantId;
   /// Tags for the subscription
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PutAliasRequestAdditionalProperties].
   /// [managementGroupId] Management group Id for the subscription.

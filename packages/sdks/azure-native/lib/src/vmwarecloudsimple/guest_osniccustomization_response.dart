@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Guest OS nic customization
 class GuestOSNICCustomizationResponse {
   /// IP address allocation method
-  final pulumi.Input<String>? allocation;
+  final pulumi.Input<String?>? allocation;
   /// List of dns servers to use
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Gateway addresses assigned to nic
-  final pulumi.Input<List<String>>? gateway;
+  final pulumi.Input<List<String>?>? gateway;
   /// Static ip address for nic
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Network mask for nic
-  final pulumi.Input<String>? mask;
+  final pulumi.Input<String?>? mask;
   /// primary WINS server for Windows
-  final pulumi.Input<String>? primaryWinsServer;
+  final pulumi.Input<String?>? primaryWinsServer;
   /// secondary WINS server for Windows
-  final pulumi.Input<String>? secondaryWinsServer;
+  final pulumi.Input<String?>? secondaryWinsServer;
 
   /// Creates a new [GuestOSNICCustomizationResponse].
   /// [allocation] IP address allocation method

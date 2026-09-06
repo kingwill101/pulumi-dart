@@ -17,7 +17,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// StandardPlus_AvgBandWidth_ChinaCdn = The SKU name for a China CDN live-streaming profile using monthly average peak bandwidth billing model.
 class SkuResponse {
   /// Name of the pricing tier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuResponse].
   /// [name] Name of the pricing tier.

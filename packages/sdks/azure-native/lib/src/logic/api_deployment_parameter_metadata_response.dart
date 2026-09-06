@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The API deployment parameter metadata.
 class ApiDeploymentParameterMetadataResponse {
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicates whether its required.
-  final pulumi.Input<bool>? isRequired;
+  final pulumi.Input<bool?>? isRequired;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The visibility.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [ApiDeploymentParameterMetadataResponse].
   /// [description] The description.

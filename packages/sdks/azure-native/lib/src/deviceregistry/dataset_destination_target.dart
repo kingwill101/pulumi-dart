@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target destination.
-enum DatasetDestinationTarget {
+enum DatasetDestinationTarget implements pulumi.PulumiEnum<String> {
   mqtt("Mqtt"),
   brokerStateStore("BrokerStateStore"),
   storage("Storage");
 
   const DatasetDestinationTarget(this.wireValue);
+  @override
   final String wireValue;
 
   static DatasetDestinationTarget fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the state of public network access.
-enum MasterSitePropertiesPublicNetworkAccess {
+enum MasterSitePropertiesPublicNetworkAccess implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   enabled("Enabled"),
   disabled("Disabled");
 
   const MasterSitePropertiesPublicNetworkAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static MasterSitePropertiesPublicNetworkAccess fromValue(String value) {

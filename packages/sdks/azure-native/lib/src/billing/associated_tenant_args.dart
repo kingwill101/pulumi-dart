@@ -9,13 +9,13 @@ import 'associated_tenant_properties.dart';
 /// {@macro pulumi_billing_associated_tenant_args_doc}
 class AssociatedTenantArgs {
   /// The ID that uniquely identifies a tenant.
-  final pulumi.Input<String>? associatedTenantName;
+  final pulumi.Input<String?>? associatedTenantName;
   /// The ID that uniquely identifies a billing account.
   final pulumi.Input<String> billingAccountName;
   /// An associated tenant.
-  final pulumi.Input<AssociatedTenantProperties>? properties;
+  final pulumi.Input<AssociatedTenantProperties?>? properties;
   /// Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AssociatedTenantArgs].
   /// [associatedTenantName] The ID that uniquely identifies a tenant.

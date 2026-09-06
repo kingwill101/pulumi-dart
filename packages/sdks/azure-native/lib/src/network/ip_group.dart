@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'ip_group_args.dart';
+import 'sub_resource_response.dart';
 
 /// The IpGroups resource information.
 ///
@@ -203,9 +204,9 @@ class IpGroup extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// List of references to Firewall Policies resources that this IpGroups is associated with.
-  late final pulumi.Output<List<Map<String, dynamic>>> firewallPolicies;
+  late final pulumi.Output<List<SubResourceResponse>> firewallPolicies;
   /// List of references to Firewall resources that this IpGroups is associated with.
-  late final pulumi.Output<List<Map<String, dynamic>>> firewalls;
+  late final pulumi.Output<List<SubResourceResponse>> firewalls;
   /// IpAddresses/IpAddressPrefixes in the IpGroups resource.
   late final pulumi.Output<List<String>?> ipAddresses;
   /// Resource location.
@@ -235,13 +236,34 @@ class IpGroup extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    firewallPolicies = registerOutput<List<Map<String, dynamic>>>('firewallPolicies');
-    firewalls = registerOutput<List<Map<String, dynamic>>>('firewalls');
-    ipAddresses = registerOutput<List<String>?>('ipAddresses');
+    firewallPolicies = registerOutput<List<SubResourceResponse>>('firewallPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    firewalls = registerOutput<List<SubResourceResponse>>('firewalls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IpGroup] resource.
+  IpGroup.reference(String urn)
+    : super(
+        'azure-native:network:IpGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    firewallPolicies = registerOutput<List<SubResourceResponse>>('firewallPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    firewalls = registerOutput<List<SubResourceResponse>>('firewalls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddresses = registerOutput<List<String>?>('ipAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

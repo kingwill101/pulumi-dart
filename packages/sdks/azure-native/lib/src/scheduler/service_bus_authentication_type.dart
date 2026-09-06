@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the authentication type.
-enum ServiceBusAuthenticationType {
+enum ServiceBusAuthenticationType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueSharedAccessKey("SharedAccessKey");
 
   const ServiceBusAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceBusAuthenticationType fromValue(String value) {

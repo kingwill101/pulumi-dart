@@ -7,11 +7,11 @@ import 'replication_rule.dart';
 /// Definition of ReplicationConfiguration
 class ReplicationConfiguration {
   /// An array of destination objects. Only one destination object is supported.
-  final pulumi.Input<List<ReplicationDestination>>? destinations;
+  final pulumi.Input<List<ReplicationDestination>?>? destinations;
   /// The Amazon Resource Name (ARN) of the IAMlong (IAM) role that Amazon S3 assumes when replicating objects. For more information, see [How to Set Up Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html) in the *Amazon S3 User Guide*.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<String?>? role;
   /// A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules.
-  final pulumi.Input<List<ReplicationRule>>? rules;
+  final pulumi.Input<List<ReplicationRule>?>? rules;
 
   /// Creates a new [ReplicationConfiguration].
   /// [destinations] An array of destination objects. Only one destination object is supported.

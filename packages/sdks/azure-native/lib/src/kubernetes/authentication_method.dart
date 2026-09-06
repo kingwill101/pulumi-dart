@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The mode of client authentication.
-enum AuthenticationMethod {
+enum AuthenticationMethod implements pulumi.PulumiEnum<String> {
   valueToken("Token"),
   valueAAD("AAD");
 
   const AuthenticationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationMethod fromValue(String value) {

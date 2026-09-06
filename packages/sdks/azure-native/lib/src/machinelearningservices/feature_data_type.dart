@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the data type
-enum FeatureDataType {
+enum FeatureDataType implements pulumi.PulumiEnum<String> {
   string_("String"),
   integer("Integer"),
   long("Long"),
@@ -10,6 +12,7 @@ enum FeatureDataType {
   boolean("Boolean");
 
   const FeatureDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureDataType fromValue(String value) {

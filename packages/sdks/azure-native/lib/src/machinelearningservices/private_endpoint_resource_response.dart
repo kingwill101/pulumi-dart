@@ -7,7 +7,7 @@ class PrivateEndpointResourceResponse {
   /// The ARM identifier for Private Endpoint
   final pulumi.Input<String> id;
   /// The subnetId that the private endpoint is connected to.
-  final pulumi.Input<String>? subnetArmId;
+  final pulumi.Input<String?>? subnetArmId;
 
   /// Creates a new [PrivateEndpointResourceResponse].
   /// [id] The ARM identifier for Private Endpoint

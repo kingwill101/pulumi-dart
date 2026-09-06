@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
-enum RuntimeName {
+enum RuntimeName implements pulumi.PulumiEnum<String> {
   dotnetIsolated("dotnet-isolated"),
   node("node"),
   java("java"),
@@ -8,6 +10,7 @@ enum RuntimeName {
   custom("custom");
 
   const RuntimeName(this.wireValue);
+  @override
   final String wireValue;
 
   static RuntimeName fromValue(String value) {

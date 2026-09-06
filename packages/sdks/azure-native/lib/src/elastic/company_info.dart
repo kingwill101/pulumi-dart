@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Company information of the user to be passed to partners.
 class CompanyInfo {
   /// Business of the company
-  final pulumi.Input<String>? business;
+  final pulumi.Input<String?>? business;
   /// Country of the company location.
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// Domain of the company
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Number of employees in the company
-  final pulumi.Input<String>? employeesNumber;
+  final pulumi.Input<String?>? employeesNumber;
   /// State of the company location.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [CompanyInfo].
   /// [business] Business of the company

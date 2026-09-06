@@ -9,9 +9,9 @@ import 'sku_name.dart';
 /// {@macro pulumi_storagecache_get_required_aml_fssubnets_size_args_doc}
 class GetRequiredAmlFSSubnetsSizeArgs {
   /// SKU for the resource.
-  final pulumi.Input<SkuName>? sku;
+  final pulumi.Input<SkuName?>? sku;
   /// The size of the AML file system, in TiB.
-  final pulumi.Input<double>? storageCapacityTiB;
+  final pulumi.Input<double?>? storageCapacityTiB;
 
   /// Creates a new [GetRequiredAmlFSSubnetsSizeArgs].
   /// [sku] SKU for the resource.
@@ -31,7 +31,7 @@ class GetRequiredAmlFSSubnetsSizeArgs {
   factory GetRequiredAmlFSSubnetsSizeArgs.fromMap(Map<String, dynamic> map) {
     return GetRequiredAmlFSSubnetsSizeArgs(
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuName.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageCapacityTiB: (() { final guardedValue = map['storageCapacityTiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storageCapacityTiB: (() { final guardedValue = map['storageCapacityTiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

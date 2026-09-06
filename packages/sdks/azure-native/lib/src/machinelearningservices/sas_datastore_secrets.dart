@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Datastore SAS secrets.
 class SasDatastoreSecrets {
   /// Storage container SAS token.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Enum to determine the datastore secrets type.
   /// Expected value is 'Sas'.
   final pulumi.Input<String> secretsType;

@@ -9,17 +9,17 @@ import 'ip_community_rule.dart';
 /// {@macro pulumi_managednetworkfabric_ip_community_args_doc}
 class IpCommunityArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the IP Community.
-  final pulumi.Input<String>? ipCommunityName;
+  final pulumi.Input<String?>? ipCommunityName;
   /// List of IP Community Rules.
   final pulumi.Input<List<IpCommunityRule>> ipCommunityRules;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IpCommunityArgs].
   /// [annotation] Switch configuration description.

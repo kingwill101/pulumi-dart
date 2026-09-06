@@ -7,9 +7,9 @@ class ApplicationSecurityGroupResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the application security group resource.
@@ -17,7 +17,7 @@ class ApplicationSecurityGroupResponse {
   /// The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

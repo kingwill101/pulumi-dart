@@ -6,7 +6,7 @@ import 'replication_destination_response.dart';
 /// Definition of ReplicationConfiguration
 class ReplicationConfigurationResponse {
   /// An array of destination objects. Only one destination object is supported.
-  final pulumi.Input<List<ReplicationDestinationResponse>>? destinations;
+  final pulumi.Input<List<ReplicationDestinationResponse>?>? destinations;
 
   /// Creates a new [ReplicationConfigurationResponse].
   /// [destinations] An array of destination objects. Only one destination object is supported.

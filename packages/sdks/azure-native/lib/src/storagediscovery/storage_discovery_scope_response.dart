@@ -9,9 +9,9 @@ class StorageDiscoveryScopeResponse {
   /// Resource types for the collection
   final pulumi.Input<List<String>> resourceTypes;
   /// The storage account tags keys to filter
-  final pulumi.Input<List<String>>? tagKeysOnly;
+  final pulumi.Input<List<String>?>? tagKeysOnly;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageDiscoveryScopeResponse].
   /// [displayName] Display name of the collection

@@ -6,23 +6,23 @@ import 'connection_setting_parameter_response.dart';
 /// Properties for a Connection Setting Item
 class ConnectionSettingPropertiesResponse {
   /// Client Id associated with the Connection Setting.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client Secret associated with the Connection Setting
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Id of the Connection Setting.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the Connection Setting.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Service Provider Parameters associated with the Connection Setting
-  final pulumi.Input<List<ConnectionSettingParameterResponse>>? parameters;
+  final pulumi.Input<List<ConnectionSettingParameterResponse>?>? parameters;
   /// Provisioning state of the resource
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Scopes associated with the Connection Setting
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// Service Provider Display Name associated with the Connection Setting
-  final pulumi.Input<String>? serviceProviderDisplayName;
+  final pulumi.Input<String?>? serviceProviderDisplayName;
   /// Service Provider Id associated with the Connection Setting
-  final pulumi.Input<String>? serviceProviderId;
+  final pulumi.Input<String?>? serviceProviderId;
   /// Setting Id set by the service for the Connection Setting.
   final pulumi.Input<String> settingId;
 
@@ -37,18 +37,18 @@ class ConnectionSettingPropertiesResponse {
   /// [serviceProviderDisplayName] Service Provider Display Name associated with the Connection Setting
   /// [serviceProviderId] Service Provider Id associated with the Connection Setting
   /// [settingId] Setting Id set by the service for the Connection Setting.
-  const ConnectionSettingPropertiesResponse({
+  ConnectionSettingPropertiesResponse({
     this.clientId,
     this.clientSecret,
     this.id,
     this.name,
     this.parameters,
     this.provisioningState,
-    this.scopes,
+    pulumi.Input<String?>? scopes,
     this.serviceProviderDisplayName,
     this.serviceProviderId,
     required this.settingId,
-  });
+  }) : scopes = scopes ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

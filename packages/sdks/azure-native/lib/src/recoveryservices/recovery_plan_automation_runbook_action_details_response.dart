@@ -10,9 +10,9 @@ class RecoveryPlanAutomationRunbookActionDetailsResponse {
   /// Expected value is 'AutomationRunbookActionDetails'.
   final pulumi.Input<String> instanceType;
   /// The runbook ARM Id.
-  final pulumi.Input<String>? runbookId;
+  final pulumi.Input<String?>? runbookId;
   /// The runbook timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [RecoveryPlanAutomationRunbookActionDetailsResponse].
   /// [fabricLocation] The fabric location.

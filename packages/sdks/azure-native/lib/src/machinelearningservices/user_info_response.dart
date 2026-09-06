@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User who created.
 class UserInfoResponse {
   /// A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid
-  final pulumi.Input<String>? userAltSecId;
+  final pulumi.Input<String?>? userAltSecId;
   /// A user identity provider. Eg live.com
-  final pulumi.Input<String>? userIdp;
+  final pulumi.Input<String?>? userIdp;
   /// The issuer which issued the token for this user.
-  final pulumi.Input<String>? userIss;
+  final pulumi.Input<String?>? userIss;
   /// A user's full name or a service principal's app ID.
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
   /// A user or service principal's object ID..
-  final pulumi.Input<String>? userObjectId;
+  final pulumi.Input<String?>? userObjectId;
   /// A user or service principal's PuID.
-  final pulumi.Input<String>? userPuId;
+  final pulumi.Input<String?>? userPuId;
   /// A user or service principal's tenant ID.
-  final pulumi.Input<String>? userTenantId;
+  final pulumi.Input<String?>? userTenantId;
 
   /// Creates a new [UserInfoResponse].
   /// [userAltSecId] A user alternate sec id. This represents the user in a different identity provider system Eg.1:live.com:puid

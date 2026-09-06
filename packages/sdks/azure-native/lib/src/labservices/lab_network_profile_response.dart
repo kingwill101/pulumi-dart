@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Profile for how to handle networking for Labs.
 class LabNetworkProfileResponse {
   /// The external load balancer resource id
-  final pulumi.Input<String>? loadBalancerId;
+  final pulumi.Input<String?>? loadBalancerId;
   /// The external public IP resource id
-  final pulumi.Input<String>? publicIpId;
+  final pulumi.Input<String?>? publicIpId;
   /// The external subnet resource id
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [LabNetworkProfileResponse].
   /// [loadBalancerId] The external load balancer resource id

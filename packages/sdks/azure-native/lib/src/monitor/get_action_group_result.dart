@@ -23,7 +23,7 @@ class GetActionGroupResult {
   /// The list of AutomationRunbook receivers that are part of this action group.
   final List<AutomationRunbookReceiverResponse>? automationRunbookReceivers;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The list of AzureAppPush receivers that are part of this action group.
   final List<AzureAppPushReceiverResponse>? azureAppPushReceivers;
   /// The list of azure function receivers that are part of this action group.
@@ -31,13 +31,13 @@ class GetActionGroupResult {
   /// The list of email receivers that are part of this action group.
   final List<EmailReceiverResponse>? emailReceivers;
   /// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
-  final bool enabled;
+  final bool? enabled;
   /// The list of event hub receivers that are part of this action group.
   final List<EventHubReceiverResponse>? eventHubReceivers;
   /// The short name of the action group. This will be used in SMS messages.
-  final String groupShortName;
+  final String? groupShortName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The list of incident receivers that are part of this action group.
@@ -45,19 +45,19 @@ class GetActionGroupResult {
   /// The list of ITSM receivers that are part of this action group.
   final List<ItsmReceiverResponse>? itsmReceivers;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The list of logic app receivers that are part of this action group.
   final List<LogicAppReceiverResponse>? logicAppReceivers;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The list of SMS receivers that are part of this action group.
   final List<SmsReceiverResponse>? smsReceivers;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The list of voice receivers that are part of this action group.
   final List<VoiceReceiverResponse>? voiceReceivers;
   /// The list of webhook receivers that are part of this action group.
@@ -86,53 +86,53 @@ class GetActionGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [voiceReceivers] The list of voice receivers that are part of this action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this action group.
-  const GetActionGroupResult({
+  GetActionGroupResult({
     this.armRoleReceivers,
     this.automationRunbookReceivers,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.azureAppPushReceivers,
     this.azureFunctionReceivers,
     this.emailReceivers,
-    required this.enabled,
+    bool? enabled,
     this.eventHubReceivers,
-    required this.groupShortName,
-    required this.id,
+    this.groupShortName,
+    this.id,
     this.identity,
     this.incidentReceivers,
     this.itsmReceivers,
-    required this.location,
+    this.location,
     this.logicAppReceivers,
-    required this.name,
+    this.name,
     this.smsReceivers,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.voiceReceivers,
     this.webhookReceivers,
-  });
+  }) : enabled = enabled ?? true;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'armRoleReceivers': ?(() { final guardedValue = armRoleReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<ArmRoleReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'automationRunbookReceivers': ?(() { final guardedValue = automationRunbookReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<AutomationRunbookReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'azureAppPushReceivers': ?(() { final guardedValue = azureAppPushReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureAppPushReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'azureFunctionReceivers': ?(() { final guardedValue = azureFunctionReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<AzureFunctionReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'emailReceivers': ?(() { final guardedValue = emailReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<EmailReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'enabled': enabled,
+      'enabled': ?enabled,
       'eventHubReceivers': ?(() { final guardedValue = eventHubReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<EventHubReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'groupShortName': groupShortName,
-      'id': id,
+      'groupShortName': ?groupShortName,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'incidentReceivers': ?(() { final guardedValue = incidentReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<IncidentReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'itsmReceivers': ?(() { final guardedValue = itsmReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<ItsmReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'location': location,
+      'location': ?location,
       'logicAppReceivers': ?(() { final guardedValue = logicAppReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<LogicAppReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'name': name,
+      'name': ?name,
       'smsReceivers': ?(() { final guardedValue = smsReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<SmsReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'voiceReceivers': ?(() { final guardedValue = voiceReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<VoiceReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'webhookReceivers': ?(() { final guardedValue = webhookReceivers; if (guardedValue == null) return null; return pulumi.Input.encodeList<WebhookReceiverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
@@ -142,24 +142,24 @@ class GetActionGroupResult {
     return GetActionGroupResult(
       armRoleReceivers: (() { final guardedValue = map['armRoleReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArmRoleReceiverResponse>(guardedValue, (value) => ArmRoleReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       automationRunbookReceivers: (() { final guardedValue = map['automationRunbookReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRunbookReceiverResponse>(guardedValue, (value) => AutomationRunbookReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureAppPushReceivers: (() { final guardedValue = map['azureAppPushReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureAppPushReceiverResponse>(guardedValue, (value) => AzureAppPushReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       azureFunctionReceivers: (() { final guardedValue = map['azureFunctionReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AzureFunctionReceiverResponse>(guardedValue, (value) => AzureFunctionReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       emailReceivers: (() { final guardedValue = map['emailReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailReceiverResponse>(guardedValue, (value) => EmailReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      enabled: map['enabled'] as bool,
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       eventHubReceivers: (() { final guardedValue = map['eventHubReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventHubReceiverResponse>(guardedValue, (value) => EventHubReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      groupShortName: map['groupShortName'] as String,
-      id: map['id'] as String,
+      groupShortName: (() { final guardedValue = map['groupShortName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       incidentReceivers: (() { final guardedValue = map['incidentReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IncidentReceiverResponse>(guardedValue, (value) => IncidentReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       itsmReceivers: (() { final guardedValue = map['itsmReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ItsmReceiverResponse>(guardedValue, (value) => ItsmReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logicAppReceivers: (() { final guardedValue = map['logicAppReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LogicAppReceiverResponse>(guardedValue, (value) => LogicAppReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       smsReceivers: (() { final guardedValue = map['smsReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SmsReceiverResponse>(guardedValue, (value) => SmsReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       voiceReceivers: (() { final guardedValue = map['voiceReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VoiceReceiverResponse>(guardedValue, (value) => VoiceReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       webhookReceivers: (() { final guardedValue = map['webhookReceivers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<WebhookReceiverResponse>(guardedValue, (value) => WebhookReceiverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );

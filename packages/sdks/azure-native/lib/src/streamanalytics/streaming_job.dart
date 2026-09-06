@@ -1,7 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_info_response.dart';
+import 'function_response.dart';
 import 'identity_response.dart';
+import 'input_response.dart';
 import 'job_storage_account_response.dart';
+import 'output_response.dart';
 import 'sku_response.dart';
 import 'streaming_job_args.dart';
 import 'transformation_response.dart';
@@ -790,11 +793,11 @@ class StreamingJob extends pulumi.CustomResource {
   /// Indicates the policy to apply to events that arrive out of order in the input event stream.
   late final pulumi.Output<String?> eventsOutOfOrderPolicy;
   /// A list of one or more functions for the streaming job. The name property for each function is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual transformation.
-  late final pulumi.Output<List<Map<String, dynamic>>?> functions;
+  late final pulumi.Output<List<FunctionResponse>?> functions;
   /// Describes the system-assigned managed identity assigned to this job that can be used to authenticate with inputs and outputs.
   late final pulumi.Output<IdentityResponse?> identity;
   /// A list of one or more inputs to the streaming job. The name property for each input is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual input.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inputs;
+  late final pulumi.Output<List<InputResponse>?> inputs;
   /// A GUID uniquely identifying the streaming job. This GUID is generated upon creation of the streaming job.
   late final pulumi.Output<String> jobId;
   /// Describes the state of the streaming job.
@@ -816,7 +819,7 @@ class StreamingJob extends pulumi.CustomResource {
   /// Value is either an ISO-8601 formatted time stamp that indicates the starting point of the output event stream, or null to indicate that the output event stream will start whenever the streaming job is started. This property must have a value if outputStartMode is set to CustomTime.
   late final pulumi.Output<String?> outputStartTime;
   /// A list of one or more outputs for the streaming job. The name property for each output is required when specifying this property in a PUT request. This property cannot be modify via a PATCH operation. You must use the PATCH API available for the individual output.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outputs;
+  late final pulumi.Output<List<OutputResponse>?> outputs;
   /// Describes the provisioning status of the streaming job.
   late final pulumi.Output<String> provisioningState;
   /// Describes the SKU of the streaming job. Required on PUT (CreateOrReplace) requests.
@@ -852,9 +855,9 @@ class StreamingJob extends pulumi.CustomResource {
     eventsLateArrivalMaxDelayInSeconds = registerOutput<int?>('eventsLateArrivalMaxDelayInSeconds');
     eventsOutOfOrderMaxDelayInSeconds = registerOutput<int?>('eventsOutOfOrderMaxDelayInSeconds');
     eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
-    functions = registerOutput<List<Map<String, dynamic>>?>('functions');
+    functions = registerOutput<List<FunctionResponse>?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionResponse>(guardedValue, (value) => FunctionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    inputs = registerOutput<List<Map<String, dynamic>>?>('inputs');
+    inputs = registerOutput<List<InputResponse>?>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputResponse>(guardedValue, (value) => InputResponse.fromMap((value as Map).cast<String, dynamic>())); });
     jobId = registerOutput<String>('jobId');
     jobState = registerOutput<String>('jobState');
     jobStorageAccount = registerOutput<JobStorageAccountResponse?>('jobStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -865,10 +868,50 @@ class StreamingJob extends pulumi.CustomResource {
     outputErrorPolicy = registerOutput<String?>('outputErrorPolicy');
     outputStartMode = registerOutput<String?>('outputStartMode');
     outputStartTime = registerOutput<String?>('outputStartTime');
-    outputs = registerOutput<List<Map<String, dynamic>>?>('outputs');
+    outputs = registerOutput<List<OutputResponse>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OutputResponse>(guardedValue, (value) => OutputResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transformation = registerOutput<TransformationResponse?>('transformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [StreamingJob] resource.
+  StreamingJob.reference(String urn)
+    : super(
+        'azure-native:streamanalytics:StreamingJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cluster = registerOutput<ClusterInfoResponse?>('cluster', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    compatibilityLevel = registerOutput<String?>('compatibilityLevel');
+    contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');
+    createdDate = registerOutput<String>('createdDate');
+    dataLocale = registerOutput<String?>('dataLocale');
+    etag = registerOutput<String>('etag');
+    eventsLateArrivalMaxDelayInSeconds = registerOutput<int?>('eventsLateArrivalMaxDelayInSeconds');
+    eventsOutOfOrderMaxDelayInSeconds = registerOutput<int?>('eventsOutOfOrderMaxDelayInSeconds');
+    eventsOutOfOrderPolicy = registerOutput<String?>('eventsOutOfOrderPolicy');
+    functions = registerOutput<List<FunctionResponse>?>('functions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionResponse>(guardedValue, (value) => FunctionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inputs = registerOutput<List<InputResponse>?>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InputResponse>(guardedValue, (value) => InputResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    jobId = registerOutput<String>('jobId');
+    jobState = registerOutput<String>('jobState');
+    jobStorageAccount = registerOutput<JobStorageAccountResponse?>('jobStorageAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStorageAccountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobType = registerOutput<String?>('jobType');
+    lastOutputEventTime = registerOutput<String>('lastOutputEventTime');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    outputErrorPolicy = registerOutput<String?>('outputErrorPolicy');
+    outputStartMode = registerOutput<String?>('outputStartMode');
+    outputStartTime = registerOutput<String?>('outputStartTime');
+    outputs = registerOutput<List<OutputResponse>?>('outputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OutputResponse>(guardedValue, (value) => OutputResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transformation = registerOutput<TransformationResponse?>('transformation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

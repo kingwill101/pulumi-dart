@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Conflict resolution policy of the sync group.
-enum SyncConflictResolutionPolicy {
+enum SyncConflictResolutionPolicy implements pulumi.PulumiEnum<String> {
   valueHubWin("HubWin"),
   valueMemberWin("MemberWin");
 
   const SyncConflictResolutionPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static SyncConflictResolutionPolicy fromValue(String value) {

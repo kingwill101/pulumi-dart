@@ -347,4 +347,25 @@ class CertificateObjectGlobalRulestack extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CertificateObjectGlobalRulestack] resource.
+  CertificateObjectGlobalRulestack.reference(String urn)
+    : super(
+        'azure-native:cloudngfw:CertificateObjectGlobalRulestack',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    certificateSelfSigned = registerOutput<String>('certificateSelfSigned');
+    certificateSignerResourceId = registerOutput<String?>('certificateSignerResourceId');
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String?>('etag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

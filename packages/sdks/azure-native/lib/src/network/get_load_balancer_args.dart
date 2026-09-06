@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_load_balancer_args_doc}
 class GetLoadBalancerArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the load balancer.
   final pulumi.Input<String> loadBalancerName;
   /// The name of the resource group.

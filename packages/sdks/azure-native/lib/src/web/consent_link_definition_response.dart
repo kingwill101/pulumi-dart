@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A consent link
 class ConsentLinkDefinitionResponse {
   /// Display name of the parameter in the connection provider's OAuth settings
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// URI for first party login
-  final pulumi.Input<String>? firstPartyLoginUri;
+  final pulumi.Input<String?>? firstPartyLoginUri;
   /// URI for the consent link
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Status of the link
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ConsentLinkDefinitionResponse].
   /// [displayName] Display name of the parameter in the connection provider's OAuth settings

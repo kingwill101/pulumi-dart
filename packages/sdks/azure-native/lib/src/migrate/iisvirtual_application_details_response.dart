@@ -6,13 +6,13 @@ import 'directory_path_response.dart';
 /// IIS virtual application details.
 class IISVirtualApplicationDetailsResponse {
   /// Gets or sets the list of directories.
-  final pulumi.Input<List<DirectoryPathResponse>>? directories;
+  final pulumi.Input<List<DirectoryPathResponse>?>? directories;
   /// Gets the ID.
   final pulumi.Input<String> id;
   /// Gets a value indicating whether the application corresponds to a directory.
   final pulumi.Input<bool> isVirtualDirectory;
   /// Second level entity for virtual directories.
-  final pulumi.Input<DirectoryPathResponse>? path;
+  final pulumi.Input<DirectoryPathResponse?>? path;
 
   /// Creates a new [IISVirtualApplicationDetailsResponse].
   /// [directories] Gets or sets the list of directories.

@@ -7,7 +7,7 @@ class SkuResponse {
   /// The name of the SKU for Azure Dev Spaces Controller.
   final pulumi.Input<String> name;
   /// The tier of the SKU for Azure Dev Spaces Controller.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuResponse].
   /// [name] The name of the SKU for Azure Dev Spaces Controller.

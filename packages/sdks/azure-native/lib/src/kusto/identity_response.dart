@@ -12,7 +12,7 @@ class IdentityResponse {
   /// The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove all identities.
   final pulumi.Input<String> type;
   /// The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, IdentityResponseUserAssignedIdentities>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, IdentityResponseUserAssignedIdentities>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The principal ID of resource identity.

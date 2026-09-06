@@ -8,13 +8,13 @@ import 'upgrade_profile.dart';
 /// AppLink Member properties
 class AppLinkMemberProperties {
   /// Cluster type
-  final pulumi.Input<String>? clusterType;
+  final pulumi.Input<dynamic>? clusterType;
   /// Connectivity profile.
-  final pulumi.Input<ConnectivityProfile>? connectivityProfile;
+  final pulumi.Input<ConnectivityProfile?>? connectivityProfile;
   /// AppLink Member Metadata
   final pulumi.Input<Metadata> metadata;
   /// Upgrade profile.
-  final pulumi.Input<UpgradeProfile>? upgradeProfile;
+  final pulumi.Input<UpgradeProfile?>? upgradeProfile;
 
   /// Creates a new [AppLinkMemberProperties].
   /// [clusterType] Cluster type
@@ -39,7 +39,7 @@ class AppLinkMemberProperties {
 
   factory AppLinkMemberProperties.fromMap(Map<String, dynamic> map) {
     return AppLinkMemberProperties(
-      clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectivityProfile: (() { final guardedValue = map['connectivityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectivityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       metadata: pulumi.Input.fromValue(Metadata.fromMap((map['metadata']! as Map).cast<String, dynamic>())),
       upgradeProfile: (() { final guardedValue = map['upgradeProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpgradeProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

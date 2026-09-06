@@ -10,29 +10,29 @@ import 'sku.dart';
 class VaultProperties {
   /// An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required.
   /// These are also available as standalone resources. Do not mix inline and standalone resource as they will conflict with each other, leading to resources deletion.
-  final pulumi.Input<List<AccessPolicyEntry>>? accessPolicies;
+  final pulumi.Input<List<AccessPolicyEntry>?>? accessPolicies;
   /// The vault's create mode to indicate whether the vault need to be recovered or not.
-  final pulumi.Input<CreateMode>? createMode;
+  final pulumi.Input<CreateMode?>? createMode;
   /// Property specifying whether protection against purge is enabled for this vault. Setting this property to true activates protection against purge for this vault and its content - only the Key Vault service may initiate a hard, irrecoverable deletion. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible - that is, the property does not accept false as its value.
-  final pulumi.Input<bool>? enablePurgeProtection;
+  final pulumi.Input<bool?>? enablePurgeProtection;
   /// Property that controls how data actions are authorized. When true, the key vault will use Role Based Access Control (RBAC) for authorization of data actions, and the access policies specified in vault properties will be  ignored. When false, the key vault will use the access policies specified in vault properties, and any policy stored on Azure Resource Manager will be ignored. If null or not specified, the vault is created with the default value of false. Note that management actions are always authorized with RBAC.
-  final pulumi.Input<bool>? enableRbacAuthorization;
+  final pulumi.Input<bool?>? enableRbacAuthorization;
   /// Property to specify whether the 'soft delete' functionality is enabled for this key vault. If it's not set to any value(true or false) when creating new key vault, it will be set to true by default. Once set to true, it cannot be reverted to false.
-  final pulumi.Input<bool>? enableSoftDelete;
+  final pulumi.Input<bool?>? enableSoftDelete;
   /// Property to specify whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault.
-  final pulumi.Input<bool>? enabledForDeployment;
+  final pulumi.Input<bool?>? enabledForDeployment;
   /// Property to specify whether Azure Disk Encryption is permitted to retrieve secrets from the vault and unwrap keys.
-  final pulumi.Input<bool>? enabledForDiskEncryption;
+  final pulumi.Input<bool?>? enabledForDiskEncryption;
   /// Property to specify whether Azure Resource Manager is permitted to retrieve secrets from the key vault.
-  final pulumi.Input<bool>? enabledForTemplateDeployment;
+  final pulumi.Input<bool?>? enabledForTemplateDeployment;
   /// Rules governing the accessibility of the key vault from specific network locations.
-  final pulumi.Input<NetworkRuleSet>? networkAcls;
+  final pulumi.Input<NetworkRuleSet?>? networkAcls;
   /// Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// SKU details
   final pulumi.Input<Sku> sku;
   /// softDelete data retention days. It accepts &gt;=7 and &lt;=90.
-  final pulumi.Input<int>? softDeleteRetentionInDays;
+  final pulumi.Input<int?>? softDeleteRetentionInDays;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
   final pulumi.Input<String> tenantId;
 
@@ -50,21 +50,21 @@ class VaultProperties {
   /// [sku] SKU details
   /// [softDeleteRetentionInDays] softDelete data retention days. It accepts &gt;=7 and &lt;=90.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-  const VaultProperties({
+  VaultProperties({
     this.accessPolicies,
     this.createMode,
     this.enablePurgeProtection,
-    this.enableRbacAuthorization,
-    this.enableSoftDelete,
-    this.enabledForDeployment,
-    this.enabledForDiskEncryption,
-    this.enabledForTemplateDeployment,
+    pulumi.Input<bool?>? enableRbacAuthorization,
+    pulumi.Input<bool?>? enableSoftDelete,
+    pulumi.Input<bool?>? enabledForDeployment,
+    pulumi.Input<bool?>? enabledForDiskEncryption,
+    pulumi.Input<bool?>? enabledForTemplateDeployment,
     this.networkAcls,
-    this.publicNetworkAccess,
+    pulumi.Input<String?>? publicNetworkAccess,
     required this.sku,
-    this.softDeleteRetentionInDays,
+    pulumi.Input<int?>? softDeleteRetentionInDays,
     required this.tenantId,
-  });
+  }) : enableRbacAuthorization = enableRbacAuthorization ?? pulumi.Input.fromValue(false), enableSoftDelete = enableSoftDelete ?? pulumi.Input.fromValue(true), enabledForDeployment = enabledForDeployment ?? pulumi.Input.fromValue(false), enabledForDiskEncryption = enabledForDiskEncryption ?? pulumi.Input.fromValue(false), enabledForTemplateDeployment = enabledForTemplateDeployment ?? pulumi.Input.fromValue(false), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('enabled'), softDeleteRetentionInDays = softDeleteRetentionInDays ?? pulumi.Input.fromValue(90);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,7 +97,7 @@ class VaultProperties {
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
-      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tenantId: pulumi.Input.fromValue(map['tenantId'] as String),
     );
   }

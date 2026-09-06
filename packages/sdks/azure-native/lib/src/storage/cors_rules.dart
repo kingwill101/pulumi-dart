@@ -6,7 +6,7 @@ import 'cors_rule.dart';
 /// Sets the CORS rules. You can include up to five CorsRule elements in the request.
 class CorsRules {
   /// The List of CORS rules. You can include up to five CorsRule elements in the request.
-  final pulumi.Input<List<CorsRule>>? corsRules;
+  final pulumi.Input<List<CorsRule>?>? corsRules;
 
   /// Creates a new [CorsRules].
   /// [corsRules] The List of CORS rules. You can include up to five CorsRule elements in the request.

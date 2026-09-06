@@ -185,4 +185,19 @@ class ExtensionAzureMonitorStatus extends pulumi.CustomResource {
     selectedConfigurations = registerOutput<AzureMonitorSelectedConfigurationsResponse?>('selectedConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorSelectedConfigurationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     workspaceId = registerOutput<String?>('workspaceId');
   }
+
+  /// Creates a typed reference to an existing [ExtensionAzureMonitorStatus] resource.
+  ExtensionAzureMonitorStatus.reference(String urn)
+    : super(
+        'azure-native:hdinsight:ExtensionAzureMonitorStatus',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
+    selectedConfigurations = registerOutput<AzureMonitorSelectedConfigurationsResponse?>('selectedConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureMonitorSelectedConfigurationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String?>('workspaceId');
+  }
 }

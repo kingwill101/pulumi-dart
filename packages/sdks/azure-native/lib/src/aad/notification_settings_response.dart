@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings for notification
 class NotificationSettingsResponse {
   /// The list of additional recipients
-  final pulumi.Input<List<String>>? additionalRecipients;
+  final pulumi.Input<List<String>?>? additionalRecipients;
   /// Should domain controller admins be notified
-  final pulumi.Input<String>? notifyDcAdmins;
+  final pulumi.Input<String?>? notifyDcAdmins;
   /// Should global admins be notified
-  final pulumi.Input<String>? notifyGlobalAdmins;
+  final pulumi.Input<String?>? notifyGlobalAdmins;
 
   /// Creates a new [NotificationSettingsResponse].
   /// [additionalRecipients] The list of additional recipients

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration of Open Telemetry traces
 class TracesConfiguration {
   /// Open telemetry traces destinations
-  final pulumi.Input<List<String>>? destinations;
+  final pulumi.Input<List<String>?>? destinations;
   /// Boolean indicating if including dapr traces
-  final pulumi.Input<bool>? includeDapr;
+  final pulumi.Input<bool?>? includeDapr;
 
   /// Creates a new [TracesConfiguration].
   /// [destinations] Open telemetry traces destinations

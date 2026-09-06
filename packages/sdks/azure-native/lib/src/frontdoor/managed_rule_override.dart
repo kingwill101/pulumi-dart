@@ -6,15 +6,15 @@ import 'managed_rule_exclusion.dart';
 /// Defines a managed rule group override setting.
 class ManagedRuleOverride {
   /// Describes the override action to be applied when rule matches.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Describes if the managed rule is in enabled or disabled state. Defaults to Disabled if not specified.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// Describes the exclusions that are applied to this specific rule.
-  final pulumi.Input<List<ManagedRuleExclusion>>? exclusions;
+  final pulumi.Input<List<ManagedRuleExclusion>?>? exclusions;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
   /// Describes the override sensitivity to be applied when rule matches.
-  final pulumi.Input<String>? sensitivity;
+  final pulumi.Input<dynamic>? sensitivity;
 
   /// Creates a new [ManagedRuleOverride].
   /// [action] Describes the override action to be applied when rule matches.
@@ -42,11 +42,11 @@ class ManagedRuleOverride {
 
   factory ManagedRuleOverride.fromMap(Map<String, dynamic> map) {
     return ManagedRuleOverride(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       exclusions: (() { final guardedValue = map['exclusions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleExclusion>(guardedValue, (value) => ManagedRuleExclusion.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
-      sensitivity: (() { final guardedValue = map['sensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sensitivity: (() { final guardedValue = map['sensitivity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

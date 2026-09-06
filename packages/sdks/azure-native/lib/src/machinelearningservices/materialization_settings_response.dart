@@ -7,15 +7,15 @@ import 'recurrence_trigger_response.dart';
 
 class MaterializationSettingsResponse {
   /// Specifies the notification details
-  final pulumi.Input<NotificationSettingResponse>? notification;
+  final pulumi.Input<NotificationSettingResponse?>? notification;
   /// Specifies the compute resource settings
-  final pulumi.Input<MaterializationComputeResourceResponse>? resource;
+  final pulumi.Input<MaterializationComputeResourceResponse?>? resource;
   /// Specifies the schedule details
-  final pulumi.Input<RecurrenceTriggerResponse>? schedule;
+  final pulumi.Input<RecurrenceTriggerResponse?>? schedule;
   /// Specifies the spark compute settings
-  final pulumi.Input<Map<String, String>>? sparkConfiguration;
+  final pulumi.Input<Map<String, String>?>? sparkConfiguration;
   /// Specifies the stores to which materialization should happen
-  final pulumi.Input<String>? storeType;
+  final pulumi.Input<String?>? storeType;
 
   /// Creates a new [MaterializationSettingsResponse].
   /// [notification] Specifies the notification details
@@ -23,13 +23,13 @@ class MaterializationSettingsResponse {
   /// [schedule] Specifies the schedule details
   /// [sparkConfiguration] Specifies the spark compute settings
   /// [storeType] Specifies the stores to which materialization should happen
-  const MaterializationSettingsResponse({
+  MaterializationSettingsResponse({
     this.notification,
     this.resource,
     this.schedule,
     this.sparkConfiguration,
-    this.storeType,
-  });
+    pulumi.Input<String?>? storeType,
+  }) : storeType = storeType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

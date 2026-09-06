@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'profile_args.dart';
+import 'property_definition_response.dart';
+import 'strong_id_response.dart';
 
 /// The profile resource format.
 ///
@@ -512,7 +514,7 @@ class Profile extends pulumi.CustomResource {
   /// Type of entity.
   late final pulumi.Output<String?> entityType;
   /// The properties of the Profile.
-  late final pulumi.Output<List<Map<String, dynamic>>?> fields;
+  late final pulumi.Output<List<PropertyDefinitionResponse>?> fields;
   /// The instance count.
   late final pulumi.Output<int?> instancesCount;
   /// Large Image associated with the Property or EntityType.
@@ -532,7 +534,7 @@ class Profile extends pulumi.CustomResource {
   /// Small Image associated with the Property or EntityType.
   late final pulumi.Output<String?> smallImage;
   /// The strong IDs.
-  late final pulumi.Output<List<Map<String, dynamic>>?> strongIds;
+  late final pulumi.Output<List<StrongIdResponse>?> strongIds;
   /// The hub name.
   late final pulumi.Output<String> tenantId;
   /// The timestamp property name. Represents the time when the interaction or profile update happened.
@@ -557,22 +559,54 @@ class Profile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     apiEntitySetName = registerOutput<String?>('apiEntitySetName');
-    attributes = registerOutput<Map<String, List<String>>?>('attributes');
+    attributes = registerOutput<Map<String, List<String>>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     entityType = registerOutput<String?>('entityType');
-    fields = registerOutput<List<Map<String, dynamic>>?>('fields');
+    fields = registerOutput<List<PropertyDefinitionResponse>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PropertyDefinitionResponse>(guardedValue, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     instancesCount = registerOutput<int?>('instancesCount');
     largeImage = registerOutput<String?>('largeImage');
     lastChangedUtc = registerOutput<String>('lastChangedUtc');
-    localizedAttributes = registerOutput<Map<String, Map<String, String>>?>('localizedAttributes');
+    localizedAttributes = registerOutput<Map<String, Map<String, String>>?>('localizedAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
     mediumImage = registerOutput<String?>('mediumImage');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     schemaItemTypeLink = registerOutput<String?>('schemaItemTypeLink');
     smallImage = registerOutput<String?>('smallImage');
-    strongIds = registerOutput<List<Map<String, dynamic>>?>('strongIds');
+    strongIds = registerOutput<List<StrongIdResponse>?>('strongIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StrongIdResponse>(guardedValue, (value) => StrongIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tenantId = registerOutput<String>('tenantId');
+    timestampFieldName = registerOutput<String?>('timestampFieldName');
+    type = registerOutput<String>('type');
+    typeName = registerOutput<String?>('typeName');
+  }
+
+  /// Creates a typed reference to an existing [Profile] resource.
+  Profile.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Profile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiEntitySetName = registerOutput<String?>('apiEntitySetName');
+    attributes = registerOutput<Map<String, List<String>>?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    entityType = registerOutput<String?>('entityType');
+    fields = registerOutput<List<PropertyDefinitionResponse>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PropertyDefinitionResponse>(guardedValue, (value) => PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    instancesCount = registerOutput<int?>('instancesCount');
+    largeImage = registerOutput<String?>('largeImage');
+    lastChangedUtc = registerOutput<String>('lastChangedUtc');
+    localizedAttributes = registerOutput<Map<String, Map<String, String>>?>('localizedAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>()); });
+    mediumImage = registerOutput<String?>('mediumImage');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    schemaItemTypeLink = registerOutput<String?>('schemaItemTypeLink');
+    smallImage = registerOutput<String?>('smallImage');
+    strongIds = registerOutput<List<StrongIdResponse>?>('strongIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StrongIdResponse>(guardedValue, (value) => StrongIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     tenantId = registerOutput<String>('tenantId');
     timestampFieldName = registerOutput<String?>('timestampFieldName');
     type = registerOutput<String>('type');

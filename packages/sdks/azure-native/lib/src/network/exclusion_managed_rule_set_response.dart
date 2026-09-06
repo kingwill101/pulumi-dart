@@ -6,7 +6,7 @@ import 'exclusion_managed_rule_group_response.dart';
 /// Defines a managed rule set for Exclusions.
 class ExclusionManagedRuleSetResponse {
   /// Defines the rule groups to apply to the rule set.
-  final pulumi.Input<List<ExclusionManagedRuleGroupResponse>>? ruleGroups;
+  final pulumi.Input<List<ExclusionManagedRuleGroupResponse>?>? ruleGroups;
   /// Defines the rule set type to use.
   final pulumi.Input<String> ruleSetType;
   /// Defines the version of the rule set to use.

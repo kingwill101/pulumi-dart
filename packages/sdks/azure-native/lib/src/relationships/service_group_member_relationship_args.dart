@@ -9,9 +9,9 @@ import 'service_group_member_relationship_properties.dart';
 /// {@macro pulumi_relationships_service_group_member_relationship_args_doc}
 class ServiceGroupMemberRelationshipArgs {
   /// Name of ServiceGroupMember relationship.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ServiceGroupMemberRelationshipProperties>? properties;
+  final pulumi.Input<ServiceGroupMemberRelationshipProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

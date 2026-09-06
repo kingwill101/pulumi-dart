@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'availability_set_args.dart';
+import 'instance_view_status_response.dart';
 import 'scheduled_events_policy_response.dart';
 import 'sku_response.dart';
 import 'sub_resource_response.dart';
@@ -329,7 +330,7 @@ class AvailabilitySet extends pulumi.CustomResource {
   /// Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
   late final pulumi.Output<SkuResponse?> sku;
   /// The resource status information.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<InstanceViewStatusResponse>> statuses;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -339,7 +340,7 @@ class AvailabilitySet extends pulumi.CustomResource {
   /// Describes the migration properties on the Availability Set.
   late final pulumi.Output<VirtualMachineScaleSetMigrationInfoResponse> virtualMachineScaleSetMigrationInfo;
   /// A list of references to all virtual machines in the availability set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualMachines;
+  late final pulumi.Output<List<SubResourceResponse>?> virtualMachines;
 
   /// Creates a new [AvailabilitySet].
   /// [name] The Pulumi resource name.
@@ -363,11 +364,36 @@ class AvailabilitySet extends pulumi.CustomResource {
     proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<InstanceViewStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceViewStatusResponse>(guardedValue, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualMachineScaleSetMigrationInfo = registerOutput<VirtualMachineScaleSetMigrationInfoResponse>('virtualMachineScaleSetMigrationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetMigrationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    virtualMachines = registerOutput<List<Map<String, dynamic>>?>('virtualMachines');
+    virtualMachines = registerOutput<List<SubResourceResponse>?>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [AvailabilitySet] resource.
+  AvailabilitySet.reference(String urn)
+    : super(
+        'azure-native:compute:AvailabilitySet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
+    platformUpdateDomainCount = registerOutput<int?>('platformUpdateDomainCount');
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statuses = registerOutput<List<InstanceViewStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceViewStatusResponse>(guardedValue, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualMachineScaleSetMigrationInfo = registerOutput<VirtualMachineScaleSetMigrationInfoResponse>('virtualMachineScaleSetMigrationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetMigrationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachines = registerOutput<List<SubResourceResponse>?>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

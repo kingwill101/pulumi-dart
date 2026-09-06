@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings to use an existing storage account. Valid storage account kinds are: Storage, StorageV2 and FileStorage
 class StorageAccountConfigurationResponse {
   /// The storage account access key.
-  final pulumi.Input<String>? storageAccountKey;
+  final pulumi.Input<String?>? storageAccountKey;
   /// The storage account name.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [StorageAccountConfigurationResponse].
   /// [storageAccountKey] The storage account access key.

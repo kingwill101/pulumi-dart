@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_args.dart';
+import 'application_artifact_response.dart';
+import 'application_authorization_response.dart';
 import 'application_billing_details_definition_response.dart';
 import 'application_client_details_response.dart';
 import 'application_jit_access_policy_response.dart';
@@ -175,9 +177,9 @@ class Application extends pulumi.CustomResource {
   /// The fully qualified path of managed application definition Id.
   late final pulumi.Output<String?> applicationDefinitionId;
   /// The collection of managed application artifacts.
-  late final pulumi.Output<List<Map<String, dynamic>>> artifacts;
+  late final pulumi.Output<List<ApplicationArtifactResponse>> artifacts;
   /// The  read-only authorizations property that is retrieved from the application package.
-  late final pulumi.Output<List<Map<String, dynamic>>> authorizations;
+  late final pulumi.Output<List<ApplicationAuthorizationResponse>> authorizations;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The managed application billing details.
@@ -240,8 +242,8 @@ class Application extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
-    artifacts = registerOutput<List<Map<String, dynamic>>>('artifacts');
-    authorizations = registerOutput<List<Map<String, dynamic>>>('authorizations');
+    artifacts = registerOutput<List<ApplicationArtifactResponse>>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationArtifactResponse>(guardedValue, (value) => ApplicationArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    authorizations = registerOutput<List<ApplicationAuthorizationResponse>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAuthorizationResponse>(guardedValue, (value) => ApplicationAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     billingDetails = registerOutput<ApplicationBillingDetailsDefinitionResponse>('billingDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationBillingDetailsDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -262,7 +264,44 @@ class Application extends pulumi.CustomResource {
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>('supportUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageSupportUrlsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure-native:solutions:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationDefinitionId = registerOutput<String?>('applicationDefinitionId');
+    artifacts = registerOutput<List<ApplicationArtifactResponse>>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationArtifactResponse>(guardedValue, (value) => ApplicationArtifactResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    authorizations = registerOutput<List<ApplicationAuthorizationResponse>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationAuthorizationResponse>(guardedValue, (value) => ApplicationAuthorizationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    billingDetails = registerOutput<ApplicationBillingDetailsDefinitionResponse>('billingDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationBillingDetailsDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdBy = registerOutput<ApplicationClientDetailsResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customerSupport = registerOutput<ApplicationPackageContactResponse>('customerSupport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageContactResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jitAccessPolicy = registerOutput<ApplicationJitAccessPolicyResponse?>('jitAccessPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationJitAccessPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    managedBy = registerOutput<String?>('managedBy');
+    managedResourceGroupId = registerOutput<String?>('managedResourceGroupId');
+    managementMode = registerOutput<String>('managementMode');
+    this.name = registerOutput<String>('name');
+    outputs = registerOutput<dynamic>('outputs');
+    parameters = registerOutput<dynamic>('parameters');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publisherTenantId = registerOutput<String>('publisherTenantId');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportUrls = registerOutput<ApplicationPackageSupportUrlsResponse>('supportUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationPackageSupportUrlsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatedBy = registerOutput<ApplicationClientDetailsResponse>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationClientDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

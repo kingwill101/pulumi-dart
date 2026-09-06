@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the target availability zone.
-enum TargetAvailabilityZone {
+enum TargetAvailabilityZone implements pulumi.PulumiEnum<String> {
   value1("1"),
   value2("2"),
   value3("3"),
   valueNA("NA");
 
   const TargetAvailabilityZone(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetAvailabilityZone fromValue(String value) {

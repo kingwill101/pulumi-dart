@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The failover policy for a given region of a database account.
 class FailoverPolicyResponse {
   /// The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
-  final pulumi.Input<int>? failoverPriority;
+  final pulumi.Input<int?>? failoverPriority;
   /// The unique identifier of the region in which the database account replicates to. Example: &lt;accountName&gt;-&lt;locationName&gt;.
   final pulumi.Input<String> id;
   /// The name of the region in which the database account exists.
-  final pulumi.Input<String>? locationName;
+  final pulumi.Input<String?>? locationName;
 
   /// Creates a new [FailoverPolicyResponse].
   /// [failoverPriority] The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
@@ -31,7 +31,7 @@ class FailoverPolicyResponse {
 
   factory FailoverPolicyResponse.fromMap(Map<String, dynamic> map) {
     return FailoverPolicyResponse(
-      failoverPriority: (() { final guardedValue = map['failoverPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failoverPriority: (() { final guardedValue = map['failoverPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       locationName: (() { final guardedValue = map['locationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

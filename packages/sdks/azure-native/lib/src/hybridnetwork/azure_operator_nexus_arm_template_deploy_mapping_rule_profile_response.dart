@@ -6,9 +6,9 @@ import 'arm_template_mapping_rule_profile_response.dart';
 /// Azure Operator Distributed Services template deploy mapping rule profile.
 class AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<String?>? applicationEnablement;
   /// The template mapping rule profile.
-  final pulumi.Input<ArmTemplateMappingRuleProfileResponse>? templateMappingRuleProfile;
+  final pulumi.Input<ArmTemplateMappingRuleProfileResponse?>? templateMappingRuleProfile;
 
   /// Creates a new [AzureOperatorNexusArmTemplateDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.

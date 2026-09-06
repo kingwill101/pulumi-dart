@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The source image from which the Image Version is going to be created.
 class UserArtifactSource {
   /// Optional. The defaultConfigurationLink of the artifact, must be a readable storage page blob.
-  final pulumi.Input<String>? defaultConfigurationLink;
+  final pulumi.Input<String?>? defaultConfigurationLink;
   /// Required. The mediaLink of the artifact, must be a readable storage page blob.
   final pulumi.Input<String> mediaLink;
 

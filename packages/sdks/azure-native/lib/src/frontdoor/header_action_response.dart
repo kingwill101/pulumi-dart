@@ -9,7 +9,7 @@ class HeaderActionResponse {
   /// The name of the header this action will apply to.
   final pulumi.Input<String> headerName;
   /// The value to update the given header name with. This value is not used if the actionType is Delete.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HeaderActionResponse].
   /// [headerActionType] Which type of manipulation to apply to the header.

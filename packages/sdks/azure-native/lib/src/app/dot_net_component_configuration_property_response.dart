@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration properties for a .NET Component
 class DotNetComponentConfigurationPropertyResponse {
   /// The name of the property
-  final pulumi.Input<String>? propertyName;
+  final pulumi.Input<String?>? propertyName;
   /// The value of the property
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DotNetComponentConfigurationPropertyResponse].
   /// [propertyName] The name of the property

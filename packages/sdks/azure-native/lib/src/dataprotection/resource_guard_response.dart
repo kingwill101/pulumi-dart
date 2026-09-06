@@ -13,7 +13,7 @@ class ResourceGuardResponse {
   /// {readonly} List of operation details those are protected by the ResourceGuard resource
   final pulumi.Input<List<ResourceGuardOperationResponse>> resourceGuardOperations;
   /// List of critical operations which are not protected by this resourceGuard
-  final pulumi.Input<List<String>>? vaultCriticalOperationExclusionList;
+  final pulumi.Input<List<String>?>? vaultCriticalOperationExclusionList;
 
   /// Creates a new [ResourceGuardResponse].
   /// [allowAutoApprovals] This flag indicates whether auto approval is allowed or not.

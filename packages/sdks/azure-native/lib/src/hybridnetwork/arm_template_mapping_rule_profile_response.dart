@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Template mapping rule profile
 class ArmTemplateMappingRuleProfileResponse {
   /// List of template parameters.
-  final pulumi.Input<String>? templateParameters;
+  final pulumi.Input<String?>? templateParameters;
 
   /// Creates a new [ArmTemplateMappingRuleProfileResponse].
   /// [templateParameters] List of template parameters.

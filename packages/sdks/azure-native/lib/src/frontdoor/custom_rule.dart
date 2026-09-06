@@ -7,23 +7,23 @@ import 'match_condition.dart';
 /// Defines contents of a web application rule
 class CustomRule {
   /// Describes what action to be applied when rule matches.
-  final pulumi.Input<String> action;
+  final pulumi.Input<dynamic> action;
   /// Describes if the custom rule is in enabled or disabled state. Defaults to Enabled if not specified.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// Describes the list of variables to group the rate limit requests
-  final pulumi.Input<List<GroupByVariable>>? groupBy;
+  final pulumi.Input<List<GroupByVariable>?>? groupBy;
   /// List of match conditions.
   final pulumi.Input<List<MatchCondition>> matchConditions;
   /// Describes the name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Describes priority of the rule. Rules with a lower value will be evaluated before rules with a higher value.
   final pulumi.Input<int> priority;
   /// Time window for resetting the rate limit count. Default is 1 minute.
-  final pulumi.Input<int>? rateLimitDurationInMinutes;
+  final pulumi.Input<int?>? rateLimitDurationInMinutes;
   /// Number of allowed requests per client within the time window.
-  final pulumi.Input<int>? rateLimitThreshold;
+  final pulumi.Input<int?>? rateLimitThreshold;
   /// Describes type of rule.
-  final pulumi.Input<String> ruleType;
+  final pulumi.Input<dynamic> ruleType;
 
   /// Creates a new [CustomRule].
   /// [action] Describes what action to be applied when rule matches.
@@ -63,15 +63,15 @@ class CustomRule {
 
   factory CustomRule.fromMap(Map<String, dynamic> map) {
     return CustomRule(
-      action: pulumi.Input.fromValue(map['action'] as String),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: pulumi.Input.fromValue(map['action']),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       groupBy: (() { final guardedValue = map['groupBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GroupByVariable>(guardedValue, (value) => GroupByVariable.fromMap((value as Map).cast<String, dynamic>()))); })(),
       matchConditions: pulumi.Input.fromValue(pulumi.Input.decodeList<MatchCondition>(map['matchConditions']!, (value) => MatchCondition.fromMap((value as Map).cast<String, dynamic>()))),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
-      rateLimitDurationInMinutes: (() { final guardedValue = map['rateLimitDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      rateLimitDurationInMinutes: (() { final guardedValue = map['rateLimitDurationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rateLimitThreshold: (() { final guardedValue = map['rateLimitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ruleType: pulumi.Input.fromValue(map['ruleType']),
     );
   }
 }

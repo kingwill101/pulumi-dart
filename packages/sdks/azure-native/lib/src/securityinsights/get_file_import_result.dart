@@ -8,41 +8,41 @@ import 'validation_error_response.dart';
 /// Result data returned by getFileImport.
 class GetFileImportResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The content type of this file.
-  final String contentType;
+  final String? contentType;
   /// The time the file was imported.
-  final String createdTimeUTC;
+  final String? createdTimeUTC;
   /// Represents the error file (if the import was ingested with errors or failed the validation).
-  final FileMetadataResponse errorFile;
+  final FileMetadataResponse? errorFile;
   /// An ordered list of some of the errors that were encountered during validation.
-  final List<ValidationErrorResponse> errorsPreview;
+  final List<ValidationErrorResponse>? errorsPreview;
   /// The time the files associated with this import are deleted from the storage account.
-  final String filesValidUntilTimeUTC;
+  final String? filesValidUntilTimeUTC;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Represents the imported file.
-  final FileMetadataResponse importFile;
+  final FileMetadataResponse? importFile;
   /// The time the file import record is soft deleted from the database and history.
-  final String importValidUntilTimeUTC;
+  final String? importValidUntilTimeUTC;
   /// The number of records that have been successfully ingested.
-  final int ingestedRecordCount;
+  final int? ingestedRecordCount;
   /// Describes how to ingest the records in the file.
-  final String ingestionMode;
+  final String? ingestionMode;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The source for the data in the file.
-  final String source;
+  final String? source;
   /// The state of the file import.
-  final String state;
+  final String? state;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The number of records in the file.
-  final int totalRecordCount;
+  final int? totalRecordCount;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The number of records that have passed validation.
-  final int validRecordCount;
+  final int? validRecordCount;
 
   /// Creates a new [GetFileImportResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -64,69 +64,69 @@ class GetFileImportResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validRecordCount] The number of records that have passed validation.
   const GetFileImportResult({
-    required this.azureApiVersion,
-    required this.contentType,
-    required this.createdTimeUTC,
-    required this.errorFile,
-    required this.errorsPreview,
-    required this.filesValidUntilTimeUTC,
-    required this.id,
-    required this.importFile,
-    required this.importValidUntilTimeUTC,
-    required this.ingestedRecordCount,
-    required this.ingestionMode,
-    required this.name,
-    required this.source,
-    required this.state,
-    required this.systemData,
-    required this.totalRecordCount,
-    required this.type,
-    required this.validRecordCount,
+    this.azureApiVersion,
+    this.contentType,
+    this.createdTimeUTC,
+    this.errorFile,
+    this.errorsPreview,
+    this.filesValidUntilTimeUTC,
+    this.id,
+    this.importFile,
+    this.importValidUntilTimeUTC,
+    this.ingestedRecordCount,
+    this.ingestionMode,
+    this.name,
+    this.source,
+    this.state,
+    this.systemData,
+    this.totalRecordCount,
+    this.type,
+    this.validRecordCount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'contentType': contentType,
-      'createdTimeUTC': createdTimeUTC,
-      'errorFile': errorFile.toMap(),
-      'errorsPreview': pulumi.Input.encodeList<ValidationErrorResponse, Map<String, dynamic>>(errorsPreview, (value) => value.toMap()),
-      'filesValidUntilTimeUTC': filesValidUntilTimeUTC,
-      'id': id,
-      'importFile': importFile.toMap(),
-      'importValidUntilTimeUTC': importValidUntilTimeUTC,
-      'ingestedRecordCount': ingestedRecordCount,
-      'ingestionMode': ingestionMode,
-      'name': name,
-      'source': source,
-      'state': state,
-      'systemData': systemData.toMap(),
-      'totalRecordCount': totalRecordCount,
-      'type': type,
-      'validRecordCount': validRecordCount,
+      'azureApiVersion': ?azureApiVersion,
+      'contentType': ?contentType,
+      'createdTimeUTC': ?createdTimeUTC,
+      'errorFile': ?errorFile?.toMap(),
+      'errorsPreview': ?(() { final guardedValue = errorsPreview; if (guardedValue == null) return null; return pulumi.Input.encodeList<ValidationErrorResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'filesValidUntilTimeUTC': ?filesValidUntilTimeUTC,
+      'id': ?id,
+      'importFile': ?importFile?.toMap(),
+      'importValidUntilTimeUTC': ?importValidUntilTimeUTC,
+      'ingestedRecordCount': ?ingestedRecordCount,
+      'ingestionMode': ?ingestionMode,
+      'name': ?name,
+      'source': ?source,
+      'state': ?state,
+      'systemData': ?systemData?.toMap(),
+      'totalRecordCount': ?totalRecordCount,
+      'type': ?type,
+      'validRecordCount': ?validRecordCount,
     };
   }
 
   factory GetFileImportResult.fromMap(Map<String, dynamic> map) {
     return GetFileImportResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      contentType: map['contentType'] as String,
-      createdTimeUTC: map['createdTimeUTC'] as String,
-      errorFile: FileMetadataResponse.fromMap((map['errorFile']! as Map).cast<String, dynamic>()),
-      errorsPreview: pulumi.Input.decodeList<ValidationErrorResponse>(map['errorsPreview']!, (value) => ValidationErrorResponse.fromMap((value as Map).cast<String, dynamic>())),
-      filesValidUntilTimeUTC: map['filesValidUntilTimeUTC'] as String,
-      id: map['id'] as String,
-      importFile: FileMetadataResponse.fromMap((map['importFile']! as Map).cast<String, dynamic>()),
-      importValidUntilTimeUTC: map['importValidUntilTimeUTC'] as String,
-      ingestedRecordCount: map['ingestedRecordCount'] as int,
-      ingestionMode: map['ingestionMode'] as String,
-      name: map['name'] as String,
-      source: map['source'] as String,
-      state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      totalRecordCount: map['totalRecordCount'] as int,
-      type: map['type'] as String,
-      validRecordCount: map['validRecordCount'] as int,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTimeUTC: (() { final guardedValue = map['createdTimeUTC']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errorFile: (() { final guardedValue = map['errorFile']; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      errorsPreview: (() { final guardedValue = map['errorsPreview']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ValidationErrorResponse>(guardedValue, (value) => ValidationErrorResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      filesValidUntilTimeUTC: (() { final guardedValue = map['filesValidUntilTimeUTC']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      importFile: (() { final guardedValue = map['importFile']; if (guardedValue == null) return null; return FileMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      importValidUntilTimeUTC: (() { final guardedValue = map['importValidUntilTimeUTC']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ingestedRecordCount: (() { final guardedValue = map['ingestedRecordCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      ingestionMode: (() { final guardedValue = map['ingestionMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      totalRecordCount: (() { final guardedValue = map['totalRecordCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validRecordCount: (() { final guardedValue = map['validRecordCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

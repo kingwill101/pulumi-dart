@@ -6,9 +6,9 @@ import 'managed_rule_group_override.dart';
 /// Defines a managed rule set.
 class ManagedRuleSet {
   /// Verizon only : If the rule set supports anomaly detection mode, this describes the threshold for blocking requests.
-  final pulumi.Input<int>? anomalyScore;
+  final pulumi.Input<int?>? anomalyScore;
   /// Defines the rule overrides to apply to the rule set.
-  final pulumi.Input<List<ManagedRuleGroupOverride>>? ruleGroupOverrides;
+  final pulumi.Input<List<ManagedRuleGroupOverride>?>? ruleGroupOverrides;
   /// Defines the rule set type to use.
   final pulumi.Input<String> ruleSetType;
   /// Defines the version of the rule set to use.
@@ -37,7 +37,7 @@ class ManagedRuleSet {
 
   factory ManagedRuleSet.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSet(
-      anomalyScore: (() { final guardedValue = map['anomalyScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      anomalyScore: (() { final guardedValue = map['anomalyScore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ruleGroupOverrides: (() { final guardedValue = map['ruleGroupOverrides']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleGroupOverride>(guardedValue, (value) => ManagedRuleGroupOverride.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ruleSetType: pulumi.Input.fromValue(map['ruleSetType'] as String),
       ruleSetVersion: pulumi.Input.fromValue(map['ruleSetVersion'] as String),

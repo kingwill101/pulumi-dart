@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Redemption policy of the Credit
-enum CreditRedemptionPolicy {
+enum CreditRedemptionPolicy implements pulumi.PulumiEnum<String> {
   notApplicable("NotApplicable"),
   autoRedeem("AutoRedeem"),
   manualRedeem("ManualRedeem");
 
   const CreditRedemptionPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static CreditRedemptionPolicy fromValue(String value) {

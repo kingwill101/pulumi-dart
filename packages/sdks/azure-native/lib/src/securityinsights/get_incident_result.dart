@@ -9,9 +9,9 @@ import 'system_data_response.dart';
 /// Result data returned by getIncident.
 class GetIncidentResult {
   /// Additional data on the incident
-  final IncidentAdditionalDataResponse additionalData;
+  final IncidentAdditionalDataResponse? additionalData;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The reason the incident was closed
   final String? classification;
   /// Describes the reason the incident was closed
@@ -19,7 +19,7 @@ class GetIncidentResult {
   /// The classification reason the incident was closed with
   final String? classificationReason;
   /// The time the incident was created
-  final String createdTimeUtc;
+  final String? createdTimeUtc;
   /// The description of the incident
   final String? description;
   /// Etag of the azure resource
@@ -27,37 +27,37 @@ class GetIncidentResult {
   /// The time of the first activity in the incident
   final String? firstActivityTimeUtc;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// A sequential number
-  final int incidentNumber;
+  final int? incidentNumber;
   /// The deep-link url to the incident in Azure portal
-  final String incidentUrl;
+  final String? incidentUrl;
   /// List of labels relevant to this incident
   final List<IncidentLabelResponse>? labels;
   /// The time of the last activity in the incident
   final String? lastActivityTimeUtc;
   /// The last time the incident was updated
-  final String lastModifiedTimeUtc;
+  final String? lastModifiedTimeUtc;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Describes a user that the incident is assigned to
   final IncidentOwnerInfoResponse? owner;
   /// The incident ID assigned by the incident provider
-  final String providerIncidentId;
+  final String? providerIncidentId;
   /// The name of the source provider that generated the incident
-  final String providerName;
+  final String? providerName;
   /// List of resource ids of Analytic rules related to the incident
-  final List<String> relatedAnalyticRuleIds;
+  final List<String>? relatedAnalyticRuleIds;
   /// The severity of the incident
-  final String severity;
+  final String? severity;
   /// The status of the incident
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The title of the incident
-  final String title;
+  final String? title;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIncidentResult].
   /// [additionalData] Additional data on the incident
@@ -86,90 +86,90 @@ class GetIncidentResult {
   /// [title] The title of the incident
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetIncidentResult({
-    required this.additionalData,
-    required this.azureApiVersion,
+    this.additionalData,
+    this.azureApiVersion,
     this.classification,
     this.classificationComment,
     this.classificationReason,
-    required this.createdTimeUtc,
+    this.createdTimeUtc,
     this.description,
     this.etag,
     this.firstActivityTimeUtc,
-    required this.id,
-    required this.incidentNumber,
-    required this.incidentUrl,
+    this.id,
+    this.incidentNumber,
+    this.incidentUrl,
     this.labels,
     this.lastActivityTimeUtc,
-    required this.lastModifiedTimeUtc,
-    required this.name,
+    this.lastModifiedTimeUtc,
+    this.name,
     this.owner,
-    required this.providerIncidentId,
-    required this.providerName,
-    required this.relatedAnalyticRuleIds,
-    required this.severity,
-    required this.status,
-    required this.systemData,
-    required this.title,
-    required this.type,
+    this.providerIncidentId,
+    this.providerName,
+    this.relatedAnalyticRuleIds,
+    this.severity,
+    this.status,
+    this.systemData,
+    this.title,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'additionalData': additionalData.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'additionalData': ?additionalData?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
       'classification': ?classification,
       'classificationComment': ?classificationComment,
       'classificationReason': ?classificationReason,
-      'createdTimeUtc': createdTimeUtc,
+      'createdTimeUtc': ?createdTimeUtc,
       'description': ?description,
       'etag': ?etag,
       'firstActivityTimeUtc': ?firstActivityTimeUtc,
-      'id': id,
-      'incidentNumber': incidentNumber,
-      'incidentUrl': incidentUrl,
+      'id': ?id,
+      'incidentNumber': ?incidentNumber,
+      'incidentUrl': ?incidentUrl,
       'labels': ?(() { final guardedValue = labels; if (guardedValue == null) return null; return pulumi.Input.encodeList<IncidentLabelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'lastActivityTimeUtc': ?lastActivityTimeUtc,
-      'lastModifiedTimeUtc': lastModifiedTimeUtc,
-      'name': name,
+      'lastModifiedTimeUtc': ?lastModifiedTimeUtc,
+      'name': ?name,
       'owner': ?owner?.toMap(),
-      'providerIncidentId': providerIncidentId,
-      'providerName': providerName,
-      'relatedAnalyticRuleIds': relatedAnalyticRuleIds,
-      'severity': severity,
-      'status': status,
-      'systemData': systemData.toMap(),
-      'title': title,
-      'type': type,
+      'providerIncidentId': ?providerIncidentId,
+      'providerName': ?providerName,
+      'relatedAnalyticRuleIds': ?relatedAnalyticRuleIds,
+      'severity': ?severity,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
+      'title': ?title,
+      'type': ?type,
     };
   }
 
   factory GetIncidentResult.fromMap(Map<String, dynamic> map) {
     return GetIncidentResult(
-      additionalData: IncidentAdditionalDataResponse.fromMap((map['additionalData']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
+      additionalData: (() { final guardedValue = map['additionalData']; if (guardedValue == null) return null; return IncidentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return guardedValue as String; })(),
       classificationComment: (() { final guardedValue = map['classificationComment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      createdTimeUtc: map['createdTimeUtc'] as String,
+      createdTimeUtc: (() { final guardedValue = map['createdTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firstActivityTimeUtc: (() { final guardedValue = map['firstActivityTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      incidentNumber: map['incidentNumber'] as int,
-      incidentUrl: map['incidentUrl'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      incidentNumber: (() { final guardedValue = map['incidentNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      incidentUrl: (() { final guardedValue = map['incidentUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IncidentLabelResponse>(guardedValue, (value) => IncidentLabelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       lastActivityTimeUtc: (() { final guardedValue = map['lastActivityTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastModifiedTimeUtc: map['lastModifiedTimeUtc'] as String,
-      name: map['name'] as String,
+      lastModifiedTimeUtc: (() { final guardedValue = map['lastModifiedTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return IncidentOwnerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      providerIncidentId: map['providerIncidentId'] as String,
-      providerName: map['providerName'] as String,
-      relatedAnalyticRuleIds: (map['relatedAnalyticRuleIds'] as List).cast<String>(),
-      severity: map['severity'] as String,
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      title: map['title'] as String,
-      type: map['type'] as String,
+      providerIncidentId: (() { final guardedValue = map['providerIncidentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      relatedAnalyticRuleIds: (() { final guardedValue = map['relatedAnalyticRuleIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      title: (() { final guardedValue = map['title']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

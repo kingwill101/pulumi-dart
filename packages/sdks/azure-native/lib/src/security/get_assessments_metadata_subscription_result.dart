@@ -4,31 +4,31 @@
 /// Result data returned by getAssessmentsMetadataSubscription.
 class GetAssessmentsMetadataSubscriptionResult {
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-  final String assessmentType;
+  final String? assessmentType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   final List<String>? categories;
   /// Human readable description of the assessment
   final String? description;
   /// User friendly display name of the assessment
-  final String displayName;
+  final String? displayName;
   /// Resource Id
-  final String id;
+  final String? id;
   /// The implementation effort required to remediate this assessment
   final String? implementationEffort;
   /// Resource name
-  final String name;
+  final String? name;
   /// Azure resource ID of the policy definition that turns this assessment calculation on
-  final String policyDefinitionId;
+  final String? policyDefinitionId;
   /// True if this assessment is in preview release status
   final bool? preview;
   /// Human readable description of what you should do to mitigate this security issue
   final String? remediationDescription;
   /// The severity level of the assessment
-  final String severity;
+  final String? severity;
   final List<String>? threats;
   /// Resource type
-  final String type;
+  final String? type;
   /// The user impact of the assessment
   final String? userImpact;
 
@@ -49,59 +49,59 @@ class GetAssessmentsMetadataSubscriptionResult {
   /// [type] Resource type
   /// [userImpact] The user impact of the assessment
   const GetAssessmentsMetadataSubscriptionResult({
-    required this.assessmentType,
-    required this.azureApiVersion,
+    this.assessmentType,
+    this.azureApiVersion,
     this.categories,
     this.description,
-    required this.displayName,
-    required this.id,
+    this.displayName,
+    this.id,
     this.implementationEffort,
-    required this.name,
-    required this.policyDefinitionId,
+    this.name,
+    this.policyDefinitionId,
     this.preview,
     this.remediationDescription,
-    required this.severity,
+    this.severity,
     this.threats,
-    required this.type,
+    this.type,
     this.userImpact,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assessmentType': assessmentType,
-      'azureApiVersion': azureApiVersion,
+      'assessmentType': ?assessmentType,
+      'azureApiVersion': ?azureApiVersion,
       'categories': ?categories,
       'description': ?description,
-      'displayName': displayName,
-      'id': id,
+      'displayName': ?displayName,
+      'id': ?id,
       'implementationEffort': ?implementationEffort,
-      'name': name,
-      'policyDefinitionId': policyDefinitionId,
+      'name': ?name,
+      'policyDefinitionId': ?policyDefinitionId,
       'preview': ?preview,
       'remediationDescription': ?remediationDescription,
-      'severity': severity,
+      'severity': ?severity,
       'threats': ?threats,
-      'type': type,
+      'type': ?type,
       'userImpact': ?userImpact,
     };
   }
 
   factory GetAssessmentsMetadataSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetAssessmentsMetadataSubscriptionResult(
-      assessmentType: map['assessmentType'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      displayName: map['displayName'] as String,
-      id: map['id'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       implementationEffort: (() { final guardedValue = map['implementationEffort']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      policyDefinitionId: map['policyDefinitionId'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      policyDefinitionId: (() { final guardedValue = map['policyDefinitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       remediationDescription: (() { final guardedValue = map['remediationDescription']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      severity: map['severity'] as String,
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       threats: (() { final guardedValue = map['threats']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userImpact: (() { final guardedValue = map['userImpact']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

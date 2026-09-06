@@ -9,13 +9,13 @@ class VMDiskSecurityProfileResponse {
   /// Specifies the customer managed disk encryption set resource id for the managed
   /// disk that is used for Customer Managed Key encrypted ConfidentialVM OS Disk and
   /// VMGuest blob.
-  final pulumi.Input<DiskEncryptionSetParametersResponse>? diskEncryptionSet;
+  final pulumi.Input<DiskEncryptionSetParametersResponse?>? diskEncryptionSet;
   /// Specifies the EncryptionType of the managed disk. It is set to
   /// DiskWithVMGuestState for encryption of the managed disk along with VMGuestState
   /// blob, VMGuestStateOnly for encryption of just the VMGuestState blob, and
   /// NonPersistedTPM for not persisting firmware state in the VMGuestState blob..
   /// **Note:** It can be set for only Confidential VMs.
-  final pulumi.Input<String>? securityEncryptionType;
+  final pulumi.Input<String?>? securityEncryptionType;
 
   /// Creates a new [VMDiskSecurityProfileResponse].
   /// [diskEncryptionSet] Specifies the customer managed disk encryption set resource id for the managed

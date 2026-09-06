@@ -20,43 +20,43 @@ class GetAgentPoolResult {
   /// The list of availability zones of the Network Cloud cluster used for the provisioning of nodes in this agent pool. If not specified, all availability zones will be used.
   final List<String>? availabilityZones;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The number of virtual machines that use this configuration.
-  final double count;
+  final double? count;
   /// The current status of the agent pool.
-  final String detailedStatus;
+  final String? detailedStatus;
   /// The descriptive message about the current detailed status.
-  final String detailedStatusMessage;
+  final String? detailedStatusMessage;
   /// Resource ETag.
-  final String etag;
+  final String? etag;
   /// The extended location of the cluster associated with the resource.
   final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The Kubernetes version running in this agent pool.
-  final String kubernetesVersion;
+  final String? kubernetesVersion;
   /// The labels applied to the nodes in this agent pool.
   final List<KubernetesLabelResponse>? labels;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
-  final String mode;
+  final String? mode;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the agent pool.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The taints applied to the nodes in this agent pool.
   final List<KubernetesLabelResponse>? taints;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The configuration of the agent pool.
   final AgentPoolUpgradeSettingsResponse? upgradeSettings;
   /// The name of the VM SKU that determines the size of resources allocated for node VMs.
-  final String vmSkuName;
+  final String? vmSkuName;
 
   /// Creates a new [GetAgentPoolResult].
   /// [administratorConfiguration] The administrator credentials to be used for the nodes in this agent pool.
@@ -87,25 +87,25 @@ class GetAgentPoolResult {
     this.agentOptions,
     this.attachedNetworkConfiguration,
     this.availabilityZones,
-    required this.azureApiVersion,
-    required this.count,
-    required this.detailedStatus,
-    required this.detailedStatusMessage,
-    required this.etag,
+    this.azureApiVersion,
+    this.count,
+    this.detailedStatus,
+    this.detailedStatusMessage,
+    this.etag,
     this.extendedLocation,
-    required this.id,
-    required this.kubernetesVersion,
+    this.id,
+    this.kubernetesVersion,
     this.labels,
-    required this.location,
-    required this.mode,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.location,
+    this.mode,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
     this.taints,
-    required this.type,
+    this.type,
     this.upgradeSettings,
-    required this.vmSkuName,
+    this.vmSkuName,
   });
 
   Map<String, dynamic> toMap() {
@@ -114,25 +114,25 @@ class GetAgentPoolResult {
       'agentOptions': ?agentOptions?.toMap(),
       'attachedNetworkConfiguration': ?attachedNetworkConfiguration?.toMap(),
       'availabilityZones': ?availabilityZones,
-      'azureApiVersion': azureApiVersion,
-      'count': count,
-      'detailedStatus': detailedStatus,
-      'detailedStatusMessage': detailedStatusMessage,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'count': ?count,
+      'detailedStatus': ?detailedStatus,
+      'detailedStatusMessage': ?detailedStatusMessage,
+      'etag': ?etag,
       'extendedLocation': ?extendedLocation?.toMap(),
-      'id': id,
-      'kubernetesVersion': kubernetesVersion,
+      'id': ?id,
+      'kubernetesVersion': ?kubernetesVersion,
       'labels': ?(() { final guardedValue = labels; if (guardedValue == null) return null; return pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'location': location,
-      'mode': mode,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'location': ?location,
+      'mode': ?mode,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'taints': ?(() { final guardedValue = taints; if (guardedValue == null) return null; return pulumi.Input.encodeList<KubernetesLabelResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
       'upgradeSettings': ?upgradeSettings?.toMap(),
-      'vmSkuName': vmSkuName,
+      'vmSkuName': ?vmSkuName,
     };
   }
 
@@ -142,25 +142,25 @@ class GetAgentPoolResult {
       agentOptions: (() { final guardedValue = map['agentOptions']; if (guardedValue == null) return null; return AgentOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       attachedNetworkConfiguration: (() { final guardedValue = map['attachedNetworkConfiguration']; if (guardedValue == null) return null; return AttachedNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      count: map['count'] as double,
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatusMessage: (() { final guardedValue = map['detailedStatusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      kubernetesVersion: map['kubernetesVersion'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kubernetesVersion: (() { final guardedValue = map['kubernetesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      location: map['location'] as String,
-      mode: map['mode'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       taints: (() { final guardedValue = map['taints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradeSettings: (() { final guardedValue = map['upgradeSettings']; if (guardedValue == null) return null; return AgentPoolUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      vmSkuName: map['vmSkuName'] as String,
+      vmSkuName: (() { final guardedValue = map['vmSkuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

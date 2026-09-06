@@ -6,15 +6,15 @@ import 'ip_pools.dart';
 /// The InfrastructureNetwork of a AzureStackHCI Cluster.
 class InfrastructureNetwork {
   /// IPv4 address of the DNS servers in your environment.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Default gateway that should be used for the provided IP address space.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// Range of IP addresses from which addresses are allocated for nodes within a subnet.
-  final pulumi.Input<List<IpPools>>? ipPools;
+  final pulumi.Input<List<IpPools>?>? ipPools;
   /// Subnet mask that matches the provided IP address space.
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
   /// Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
-  final pulumi.Input<bool>? useDhcp;
+  final pulumi.Input<bool?>? useDhcp;
 
   /// Creates a new [InfrastructureNetwork].
   /// [dnsServers] IPv4 address of the DNS servers in your environment.

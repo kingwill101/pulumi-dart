@@ -8,7 +8,7 @@ class CspmMonitorAwsOfferingResponse {
   /// The offering description.
   final pulumi.Input<String> description;
   /// The native cloud connection configuration
-  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnectionResponse>? nativeCloudConnection;
+  final pulumi.Input<CspmMonitorAwsOfferingNativeCloudConnectionResponse?>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorAws'.
   final pulumi.Input<String> offeringType;

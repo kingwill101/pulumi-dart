@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Knowledge graph configuration for agent
 class KnowledgeGraphConfigurationResponse {
   /// The identity used to access the knowledge graph
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The list of resources managed by agent
-  final pulumi.Input<List<String>>? managedResources;
+  final pulumi.Input<List<String>?>? managedResources;
 
   /// Creates a new [KnowledgeGraphConfigurationResponse].
   /// [identity] The identity used to access the knowledge graph

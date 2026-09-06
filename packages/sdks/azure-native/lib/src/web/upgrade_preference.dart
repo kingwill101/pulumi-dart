@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Upgrade Preference
-enum UpgradePreference {
+enum UpgradePreference implements pulumi.PulumiEnum<String> {
   none("None"),
   early("Early"),
   late("Late"),
   manual("Manual");
 
   const UpgradePreference(this.wireValue);
+  @override
   final String wireValue;
 
   static UpgradePreference fromValue(String value) {

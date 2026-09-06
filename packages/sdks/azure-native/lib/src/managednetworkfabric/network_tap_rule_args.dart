@@ -10,25 +10,25 @@ import 'network_tap_rule_match_configuration.dart';
 /// {@macro pulumi_managednetworkfabric_network_tap_rule_args_doc}
 class NetworkTapRuleArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Input method to configure Network Tap Rule.
-  final pulumi.Input<String> configurationType;
+  final pulumi.Input<dynamic> configurationType;
   /// List of dynamic match configurations.
-  final pulumi.Input<List<CommonDynamicMatchConfiguration>>? dynamicMatchConfigurations;
+  final pulumi.Input<List<CommonDynamicMatchConfiguration>?>? dynamicMatchConfigurations;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of match configurations.
-  final pulumi.Input<List<NetworkTapRuleMatchConfiguration>>? matchConfigurations;
+  final pulumi.Input<List<NetworkTapRuleMatchConfiguration>?>? matchConfigurations;
   /// Name of the Network Tap Rule.
-  final pulumi.Input<String>? networkTapRuleName;
+  final pulumi.Input<String?>? networkTapRuleName;
   /// Polling interval in seconds.
-  final pulumi.Input<int>? pollingIntervalInSeconds;
+  final pulumi.Input<int?>? pollingIntervalInSeconds;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Network Tap Rules file URL.
-  final pulumi.Input<String>? tapRulesUrl;
+  final pulumi.Input<String?>? tapRulesUrl;
 
   /// Creates a new [NetworkTapRuleArgs].
   /// [annotation] Switch configuration description.
@@ -41,18 +41,18 @@ class NetworkTapRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [tapRulesUrl] Network Tap Rules file URL.
-  const NetworkTapRuleArgs({
+  NetworkTapRuleArgs({
     this.annotation,
     required this.configurationType,
     this.dynamicMatchConfigurations,
     this.location,
     this.matchConfigurations,
     this.networkTapRuleName,
-    this.pollingIntervalInSeconds,
+    pulumi.Input<int?>? pollingIntervalInSeconds,
     required this.resourceGroupName,
     this.tags,
     this.tapRulesUrl,
-  });
+  }) : pollingIntervalInSeconds = pollingIntervalInSeconds ?? pulumi.Input.fromValue(30);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -72,12 +72,12 @@ class NetworkTapRuleArgs {
   factory NetworkTapRuleArgs.fromMap(Map<String, dynamic> map) {
     return NetworkTapRuleArgs(
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
+      configurationType: pulumi.Input.fromValue(map['configurationType']),
       dynamicMatchConfigurations: (() { final guardedValue = map['dynamicMatchConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CommonDynamicMatchConfiguration>(guardedValue, (value) => CommonDynamicMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchConfigurations: (() { final guardedValue = map['matchConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkTapRuleMatchConfiguration>(guardedValue, (value) => NetworkTapRuleMatchConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       networkTapRuleName: (() { final guardedValue = map['networkTapRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      pollingIntervalInSeconds: (() { final guardedValue = map['pollingIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tapRulesUrl: (() { final guardedValue = map['tapRulesUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The language extension object.
 class LanguageExtensionResponse {
   /// The language extension name.
-  final pulumi.Input<String>? languageExtensionName;
+  final pulumi.Input<String?>? languageExtensionName;
 
   /// Creates a new [LanguageExtensionResponse].
   /// [languageExtensionName] The language extension name.

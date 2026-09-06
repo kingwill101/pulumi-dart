@@ -7,11 +7,11 @@ import 'key_vault_secret_reference.dart';
 /// Describes a Encryption Settings for a Disk
 class DiskEncryptionSettings {
   /// Specifies the location of the disk encryption key, which is a Key Vault Secret.
-  final pulumi.Input<KeyVaultSecretReference>? diskEncryptionKey;
+  final pulumi.Input<KeyVaultSecretReference?>? diskEncryptionKey;
   /// Specifies whether disk encryption should be enabled on the virtual machine.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Specifies the location of the key encryption key in Key Vault.
-  final pulumi.Input<KeyVaultKeyReference>? keyEncryptionKey;
+  final pulumi.Input<KeyVaultKeyReference?>? keyEncryptionKey;
 
   /// Creates a new [DiskEncryptionSettings].
   /// [diskEncryptionKey] Specifies the location of the disk encryption key, which is a Key Vault Secret.

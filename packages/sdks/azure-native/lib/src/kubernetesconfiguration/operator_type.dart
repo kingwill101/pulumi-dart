@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the operator
-enum OperatorType {
+enum OperatorType implements pulumi.PulumiEnum<String> {
   valueFlux("Flux");
 
   const OperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperatorType fromValue(String value) {

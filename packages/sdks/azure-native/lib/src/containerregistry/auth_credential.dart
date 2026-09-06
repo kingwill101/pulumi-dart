@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authentication credential stored for an upstream.
 class AuthCredential {
   /// The name of the credential.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// KeyVault Secret URI for accessing the password.
-  final pulumi.Input<String>? passwordSecretIdentifier;
+  final pulumi.Input<String?>? passwordSecretIdentifier;
   /// KeyVault Secret URI for accessing the username.
-  final pulumi.Input<String>? usernameSecretIdentifier;
+  final pulumi.Input<String?>? usernameSecretIdentifier;
 
   /// Creates a new [AuthCredential].
   /// [name] The name of the credential.
@@ -31,7 +31,7 @@ class AuthCredential {
 
   factory AuthCredential.fromMap(Map<String, dynamic> map) {
     return AuthCredential(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       passwordSecretIdentifier: (() { final guardedValue = map['passwordSecretIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       usernameSecretIdentifier: (() { final guardedValue = map['usernameSecretIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_args.dart';
+import 'contact_response.dart';
+import 'external_documentation_response.dart';
 import 'license_response.dart';
 import 'system_data_response.dart';
 import 'terms_of_service_response.dart';
@@ -280,13 +282,13 @@ class Api extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The set of contacts
-  late final pulumi.Output<List<Map<String, dynamic>>?> contacts;
+  late final pulumi.Output<List<ContactResponse>?> contacts;
   /// The custom metadata defined for API catalog entities.
   late final pulumi.Output<dynamic> customProperties;
   /// Description of the API.
   late final pulumi.Output<String?> description;
   /// The set of external documentation
-  late final pulumi.Output<List<Map<String, dynamic>>?> externalDocumentation;
+  late final pulumi.Output<List<ExternalDocumentationResponse>?> externalDocumentation;
   /// Kind of API. For example, REST or GraphQL.
   late final pulumi.Output<String> kind;
   /// The license information for the API.
@@ -321,10 +323,35 @@ class Api extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contacts = registerOutput<List<Map<String, dynamic>>?>('contacts');
+    contacts = registerOutput<List<ContactResponse>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactResponse>(guardedValue, (value) => ContactResponse.fromMap((value as Map).cast<String, dynamic>())); });
     customProperties = registerOutput<dynamic>('customProperties');
     description = registerOutput<String?>('description');
-    externalDocumentation = registerOutput<List<Map<String, dynamic>>?>('externalDocumentation');
+    externalDocumentation = registerOutput<List<ExternalDocumentationResponse>?>('externalDocumentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalDocumentationResponse>(guardedValue, (value) => ExternalDocumentationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    license = registerOutput<LicenseResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lifecycleStage = registerOutput<String>('lifecycleStage');
+    this.name = registerOutput<String>('name');
+    summary = registerOutput<String?>('summary');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    termsOfService = registerOutput<TermsOfServiceResponse?>('termsOfService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TermsOfServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'azure-native:apicenter:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contacts = registerOutput<List<ContactResponse>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactResponse>(guardedValue, (value) => ContactResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    customProperties = registerOutput<dynamic>('customProperties');
+    description = registerOutput<String?>('description');
+    externalDocumentation = registerOutput<List<ExternalDocumentationResponse>?>('externalDocumentation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExternalDocumentationResponse>(guardedValue, (value) => ExternalDocumentationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     license = registerOutput<LicenseResponse?>('license', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lifecycleStage = registerOutput<String>('lifecycleStage');

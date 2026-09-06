@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a service gateway.
 class ServiceGatewaySku {
   /// Name of a service gateway SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// Tier of a service gateway SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [ServiceGatewaySku].
   /// [name] Name of a service gateway SKU.
@@ -26,8 +26,8 @@ class ServiceGatewaySku {
 
   factory ServiceGatewaySku.fromMap(Map<String, dynamic> map) {
     return ServiceGatewaySku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

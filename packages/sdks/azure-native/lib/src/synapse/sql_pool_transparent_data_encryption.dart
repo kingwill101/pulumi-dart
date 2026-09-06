@@ -194,4 +194,20 @@ class SqlPoolTransparentDataEncryption extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SqlPoolTransparentDataEncryption] resource.
+  SqlPoolTransparentDataEncryption.reference(String urn)
+    : super(
+        'azure-native:synapse:SqlPoolTransparentDataEncryption',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    status = registerOutput<String?>('status');
+    type = registerOutput<String>('type');
+  }
 }

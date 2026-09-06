@@ -11,21 +11,21 @@ import 'web_application_firewall_custom_rule.dart';
 /// {@macro pulumi_network_web_application_firewall_policy_args_doc}
 class WebApplicationFirewallPolicyArgs {
   /// The custom rules inside the policy.
-  final pulumi.Input<List<WebApplicationFirewallCustomRule>>? customRules;
+  final pulumi.Input<List<WebApplicationFirewallCustomRule>?>? customRules;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Describes the managedRules structure.
   final pulumi.Input<ManagedRulesDefinition> managedRules;
   /// The name of the policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// The PolicySettings for policy.
-  final pulumi.Input<PolicySettings>? policySettings;
+  final pulumi.Input<PolicySettings?>? policySettings;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [WebApplicationFirewallPolicyArgs].
   /// [customRules] The custom rules inside the policy.

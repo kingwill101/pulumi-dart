@@ -7,11 +7,11 @@ import 'application_gateway_url_configuration.dart';
 /// Set of actions in the Rewrite Rule in Application Gateway.
 class ApplicationGatewayRewriteRuleActionSet {
   /// Request Header Actions in the Action Set.
-  final pulumi.Input<List<ApplicationGatewayHeaderConfiguration>>? requestHeaderConfigurations;
+  final pulumi.Input<List<ApplicationGatewayHeaderConfiguration>?>? requestHeaderConfigurations;
   /// Response Header Actions in the Action Set.
-  final pulumi.Input<List<ApplicationGatewayHeaderConfiguration>>? responseHeaderConfigurations;
+  final pulumi.Input<List<ApplicationGatewayHeaderConfiguration>?>? responseHeaderConfigurations;
   /// Url Configuration Action in the Action Set.
-  final pulumi.Input<ApplicationGatewayUrlConfiguration>? urlConfiguration;
+  final pulumi.Input<ApplicationGatewayUrlConfiguration?>? urlConfiguration;
 
   /// Creates a new [ApplicationGatewayRewriteRuleActionSet].
   /// [requestHeaderConfigurations] Request Header Actions in the Action Set.

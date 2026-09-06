@@ -6,7 +6,7 @@ import 'secret_value_reference_response.dart';
 /// Value for the specified parameter. Can be either 'value' or 'reference' but not both.
 class ParameterValueResponse {
   /// Parameter value as reference type.
-  final pulumi.Input<SecretValueReferenceResponse>? reference;
+  final pulumi.Input<SecretValueReferenceResponse?>? reference;
   /// Parameter value. Any valid JSON value is allowed including objects, arrays, strings, numbers and booleans.
   final pulumi.Input<dynamic>? value;
 

@@ -1,4 +1,6 @@
-enum KnownSyslogDataSourceLogLevels {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KnownSyslogDataSourceLogLevels implements pulumi.PulumiEnum<String> {
   valueDebug("Debug"),
   valueInfo("Info"),
   valueNotice("Notice"),
@@ -10,6 +12,7 @@ enum KnownSyslogDataSourceLogLevels {
   value("*");
 
   const KnownSyslogDataSourceLogLevels(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownSyslogDataSourceLogLevels fromValue(String value) {

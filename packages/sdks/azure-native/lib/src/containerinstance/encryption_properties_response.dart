@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The container group encryption properties.
 class EncryptionPropertiesResponse {
   /// The keyvault managed identity.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The encryption key name.
   final pulumi.Input<String> keyName;
   /// The encryption key version.

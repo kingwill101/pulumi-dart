@@ -10,18 +10,18 @@ import 'customizable_connector_ui_config.dart';
 /// {@macro pulumi_securityinsights_customizable_connector_definition_args_doc}
 class CustomizableConnectorDefinitionArgs {
   /// The UiConfig for 'Customizable' connector definition kind.
-  final pulumi.Input<CustomizableConnectionsConfig>? connectionsConfig;
+  final pulumi.Input<CustomizableConnectionsConfig?>? connectionsConfig;
   /// The UiConfig for 'Customizable' connector definition kind.
   final pulumi.Input<CustomizableConnectorUiConfig> connectorUiConfig;
   /// Gets or sets the connector definition created date in UTC format.
-  final pulumi.Input<String>? createdTimeUtc;
+  final pulumi.Input<String?>? createdTimeUtc;
   /// The data connector definition name.
-  final pulumi.Input<String>? dataConnectorDefinitionName;
+  final pulumi.Input<String?>? dataConnectorDefinitionName;
   /// The kind of the data connector definitions
   /// Expected value is 'Customizable'.
   final pulumi.Input<String> kind;
   /// Gets or sets the connector definition last modified date in UTC format.
-  final pulumi.Input<String>? lastModifiedUtc;
+  final pulumi.Input<String?>? lastModifiedUtc;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workspace.

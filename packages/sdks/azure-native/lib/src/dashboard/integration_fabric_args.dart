@@ -9,14 +9,14 @@ import 'integration_fabric_properties.dart';
 /// {@macro pulumi_dashboard_integration_fabric_args_doc}
 class IntegrationFabricArgs {
   /// The integration fabric name of Azure Managed Grafana.
-  final pulumi.Input<String>? integrationFabricName;
+  final pulumi.Input<String?>? integrationFabricName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
-  final pulumi.Input<IntegrationFabricProperties>? properties;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<IntegrationFabricProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The workspace name of Azure Managed Grafana.
   final pulumi.Input<String> workspaceName;
 

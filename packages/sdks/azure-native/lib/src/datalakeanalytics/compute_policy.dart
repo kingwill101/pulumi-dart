@@ -212,4 +212,22 @@ class ComputePolicy extends pulumi.CustomResource {
     objectType = registerOutput<String>('objectType');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ComputePolicy] resource.
+  ComputePolicy.reference(String urn)
+    : super(
+        'azure-native:datalakeanalytics:ComputePolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    maxDegreeOfParallelismPerJob = registerOutput<int>('maxDegreeOfParallelismPerJob');
+    minPriorityPerJob = registerOutput<int>('minPriorityPerJob');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    objectType = registerOutput<String>('objectType');
+    type = registerOutput<String>('type');
+  }
 }

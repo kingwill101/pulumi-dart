@@ -9,24 +9,24 @@ import 'user_property_response.dart';
 /// Base class for all execution activities.
 class ExecutionActivityResponse {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'Execution'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [ExecutionActivityResponse].
   /// [dependsOn] Activity depends on condition.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_machinelearningservices_get_inference_group_delta_models_status_async_args_doc}
 class GetInferenceGroupDeltaModelsStatusAsyncArgs {
   /// Gets or sets collection of delta models to retrieve status for.
-  final pulumi.Input<List<String>>? deltaModels;
+  final pulumi.Input<List<String>?>? deltaModels;
   /// InferenceGroup name.
   final pulumi.Input<String> groupName;
   /// InferencePool name.
@@ -16,7 +16,7 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets target base model.
-  final pulumi.Input<String>? targetBaseModel;
+  final pulumi.Input<String?>? targetBaseModel;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 

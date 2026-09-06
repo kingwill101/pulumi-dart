@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The storage properties of the cluster. This includes the data storage size and scaling applied to servers in the cluster.
 class StorageProperties {
   /// The size of the data disk assigned to each server.
-  final pulumi.Input<double>? sizeGb;
+  final pulumi.Input<double?>? sizeGb;
 
   /// Creates a new [StorageProperties].
   /// [sizeGb] The size of the data disk assigned to each server.
@@ -21,7 +21,7 @@ class StorageProperties {
 
   factory StorageProperties.fromMap(Map<String, dynamic> map) {
     return StorageProperties(
-      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sizeGb: (() { final guardedValue = map['sizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

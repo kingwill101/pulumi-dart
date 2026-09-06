@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The frequency to trigger schedule.
-enum ComputeRecurrenceFrequency {
+enum ComputeRecurrenceFrequency implements pulumi.PulumiEnum<String> {
   minute("Minute"),
   hour("Hour"),
   day("Day"),
@@ -7,6 +9,7 @@ enum ComputeRecurrenceFrequency {
   month("Month");
 
   const ComputeRecurrenceFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeRecurrenceFrequency fromValue(String value) {

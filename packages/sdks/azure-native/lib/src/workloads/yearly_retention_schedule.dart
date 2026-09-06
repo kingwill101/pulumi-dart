@@ -9,17 +9,17 @@ import 'weekly_retention_format.dart';
 /// Yearly retention schedule.
 class YearlyRetentionSchedule {
   /// List of months of year of yearly retention policy.
-  final pulumi.Input<List<MonthOfYear>>? monthsOfYear;
+  final pulumi.Input<List<MonthOfYear>?>? monthsOfYear;
   /// Retention duration of retention Policy.
-  final pulumi.Input<RetentionDuration>? retentionDuration;
+  final pulumi.Input<RetentionDuration?>? retentionDuration;
   /// Daily retention format for yearly retention policy.
-  final pulumi.Input<DailyRetentionFormat>? retentionScheduleDaily;
+  final pulumi.Input<DailyRetentionFormat?>? retentionScheduleDaily;
   /// Retention schedule format for yearly retention policy.
-  final pulumi.Input<String>? retentionScheduleFormatType;
+  final pulumi.Input<dynamic>? retentionScheduleFormatType;
   /// Weekly retention format for yearly retention policy.
-  final pulumi.Input<WeeklyRetentionFormat>? retentionScheduleWeekly;
+  final pulumi.Input<WeeklyRetentionFormat?>? retentionScheduleWeekly;
   /// Retention times of retention policy.
-  final pulumi.Input<List<String>>? retentionTimes;
+  final pulumi.Input<List<String>?>? retentionTimes;
 
   /// Creates a new [YearlyRetentionSchedule].
   /// [monthsOfYear] List of months of year of yearly retention policy.
@@ -53,7 +53,7 @@ class YearlyRetentionSchedule {
       monthsOfYear: (() { final guardedValue = map['monthsOfYear']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MonthOfYear>(guardedValue, (value) => MonthOfYear.fromValue(value as String))); })(),
       retentionDuration: (() { final guardedValue = map['retentionDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RetentionDuration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionScheduleDaily: (() { final guardedValue = map['retentionScheduleDaily']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DailyRetentionFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retentionScheduleFormatType: (() { final guardedValue = map['retentionScheduleFormatType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      retentionScheduleFormatType: (() { final guardedValue = map['retentionScheduleFormatType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       retentionScheduleWeekly: (() { final guardedValue = map['retentionScheduleWeekly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WeeklyRetentionFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionTimes: (() { final guardedValue = map['retentionTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

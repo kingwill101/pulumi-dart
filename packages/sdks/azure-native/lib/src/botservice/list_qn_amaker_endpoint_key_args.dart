@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_botservice_list_qn_amaker_endpoint_key_args_doc}
 class ListQnAMakerEndpointKeyArgs {
   /// Subscription key which provides access to this API.
-  final pulumi.Input<String>? authkey;
+  final pulumi.Input<String?>? authkey;
   /// the host name of the QnA Maker endpoint
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
 
   /// Creates a new [ListQnAMakerEndpointKeyArgs].
   /// [authkey] Subscription key which provides access to this API.

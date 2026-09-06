@@ -7,7 +7,7 @@ class TargetReference {
   /// String of the resource ID of a Target resource.
   final pulumi.Input<String> id;
   /// Enum of the Target reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [TargetReference].
   /// [id] String of the resource ID of a Target resource.
@@ -27,7 +27,7 @@ class TargetReference {
   factory TargetReference.fromMap(Map<String, dynamic> map) {
     return TargetReference(
       id: pulumi.Input.fromValue(map['id'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

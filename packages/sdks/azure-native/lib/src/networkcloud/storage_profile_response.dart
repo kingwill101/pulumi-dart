@@ -7,7 +7,7 @@ class StorageProfileResponse {
   /// The disk to use with this virtual machine.
   final pulumi.Input<OsDiskResponse> osDisk;
   /// The resource IDs of volumes that are requested to be attached to the virtual machine.
-  final pulumi.Input<List<String>>? volumeAttachments;
+  final pulumi.Input<List<String>?>? volumeAttachments;
 
   /// Creates a new [StorageProfileResponse].
   /// [osDisk] The disk to use with this virtual machine.

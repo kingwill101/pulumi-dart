@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of a service gateway SKU.
-enum ServiceGatewaySkuTier {
+enum ServiceGatewaySkuTier implements pulumi.PulumiEnum<String> {
   regional("Regional");
 
   const ServiceGatewaySkuTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceGatewaySkuTier fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the status of the configuration.
-enum IntelligentTieringConfigurationStatus {
+enum IntelligentTieringConfigurationStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const IntelligentTieringConfigurationStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static IntelligentTieringConfigurationStatus fromValue(String value) {

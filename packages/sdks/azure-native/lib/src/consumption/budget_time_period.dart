@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The start and end date for a budget.
 class BudgetTimePeriod {
   /// The end date for the budget. If not provided, we default this to 10 years from the start date.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The start date for the budget.
   final pulumi.Input<String> startDate;
 

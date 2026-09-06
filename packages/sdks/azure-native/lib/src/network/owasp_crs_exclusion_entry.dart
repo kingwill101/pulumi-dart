@@ -6,13 +6,13 @@ import 'exclusion_managed_rule_set.dart';
 /// Allow to exclude some variable satisfy the condition for the WAF check.
 class OwaspCrsExclusionEntry {
   /// The managed rule sets that are associated with the exclusion.
-  final pulumi.Input<List<ExclusionManagedRuleSet>>? exclusionManagedRuleSets;
+  final pulumi.Input<List<ExclusionManagedRuleSet>?>? exclusionManagedRuleSets;
   /// The variable to be excluded.
-  final pulumi.Input<String> matchVariable;
+  final pulumi.Input<dynamic> matchVariable;
   /// When matchVariable is a collection, operator used to specify which elements in the collection this exclusion applies to.
   final pulumi.Input<String> selector;
   /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this exclusion applies to.
-  final pulumi.Input<String> selectorMatchOperator;
+  final pulumi.Input<dynamic> selectorMatchOperator;
 
   /// Creates a new [OwaspCrsExclusionEntry].
   /// [exclusionManagedRuleSets] The managed rule sets that are associated with the exclusion.
@@ -38,9 +38,9 @@ class OwaspCrsExclusionEntry {
   factory OwaspCrsExclusionEntry.fromMap(Map<String, dynamic> map) {
     return OwaspCrsExclusionEntry(
       exclusionManagedRuleSets: (() { final guardedValue = map['exclusionManagedRuleSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExclusionManagedRuleSet>(guardedValue, (value) => ExclusionManagedRuleSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
+      matchVariable: pulumi.Input.fromValue(map['matchVariable']),
       selector: pulumi.Input.fromValue(map['selector'] as String),
-      selectorMatchOperator: pulumi.Input.fromValue(map['selectorMatchOperator'] as String),
+      selectorMatchOperator: pulumi.Input.fromValue(map['selectorMatchOperator']),
     );
   }
 }

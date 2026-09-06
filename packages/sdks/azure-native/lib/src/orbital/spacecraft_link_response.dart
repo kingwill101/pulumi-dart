@@ -48,8 +48,8 @@ class SpacecraftLinkResponse {
   factory SpacecraftLinkResponse.fromMap(Map<String, dynamic> map) {
     return SpacecraftLinkResponse(
       authorizations: pulumi.Input.fromValue(pulumi.Input.decodeList<AuthorizedGroundstationResponse>(map['authorizations']!, (value) => AuthorizedGroundstationResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      bandwidthMHz: pulumi.Input.fromValue(map['bandwidthMHz'] as double),
-      centerFrequencyMHz: pulumi.Input.fromValue(map['centerFrequencyMHz'] as double),
+      bandwidthMHz: pulumi.Input.fromValue((map['bandwidthMHz'] as num).toDouble()),
+      centerFrequencyMHz: pulumi.Input.fromValue((map['centerFrequencyMHz'] as num).toDouble()),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       polarization: pulumi.Input.fromValue(map['polarization'] as String),

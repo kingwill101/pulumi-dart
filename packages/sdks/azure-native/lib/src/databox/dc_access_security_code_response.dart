@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dc access security code
 class DcAccessSecurityCodeResponse {
   /// Forward Dc access security code.
-  final pulumi.Input<String>? forwardDCAccessCode;
+  final pulumi.Input<String?>? forwardDCAccessCode;
   /// Reverse Dc access security code.
-  final pulumi.Input<String>? reverseDCAccessCode;
+  final pulumi.Input<String?>? reverseDCAccessCode;
 
   /// Creates a new [DcAccessSecurityCodeResponse].
   /// [forwardDCAccessCode] Forward Dc access security code.

@@ -11,9 +11,9 @@ class CostAllocationRuleArgs {
   /// BillingAccount ID
   final pulumi.Input<String> billingAccountId;
   /// Cost allocation rule properties
-  final pulumi.Input<CostAllocationRuleProperties>? properties;
+  final pulumi.Input<CostAllocationRuleProperties?>? properties;
   /// Cost allocation rule name. The name cannot include spaces or any non alphanumeric characters other than '_' and '-'. The max length is 260 characters.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [CostAllocationRuleArgs].
   /// [billingAccountId] BillingAccount ID

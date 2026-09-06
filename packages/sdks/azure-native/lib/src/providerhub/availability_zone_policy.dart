@@ -1,9 +1,12 @@
-enum AvailabilityZonePolicy {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AvailabilityZonePolicy implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   singleZoned("SingleZoned"),
   multiZoned("MultiZoned");
 
   const AvailabilityZonePolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static AvailabilityZonePolicy fromValue(String value) {

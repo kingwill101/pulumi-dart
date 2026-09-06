@@ -9,7 +9,7 @@ import 'policy_model_properties.dart';
 /// {@macro pulumi_datareplication_policy_args_doc}
 class PolicyArgs {
   /// The policy name.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Policy model properties.
   final pulumi.Input<PolicyModelProperties> properties;
   /// The name of the resource group. The name is case insensitive.

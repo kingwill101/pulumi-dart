@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// network profile for managed cluster snapshot, these properties are read only.
 class NetworkProfileForSnapshotResponse {
   /// loadBalancerSku for managed cluster snapshot.
-  final pulumi.Input<String>? loadBalancerSku;
+  final pulumi.Input<String?>? loadBalancerSku;
   /// networkMode for managed cluster snapshot.
-  final pulumi.Input<String>? networkMode;
+  final pulumi.Input<String?>? networkMode;
   /// networkPlugin for managed cluster snapshot.
-  final pulumi.Input<String>? networkPlugin;
+  final pulumi.Input<String?>? networkPlugin;
   /// NetworkPluginMode for managed cluster snapshot.
-  final pulumi.Input<String>? networkPluginMode;
+  final pulumi.Input<String?>? networkPluginMode;
   /// networkPolicy for managed cluster snapshot.
-  final pulumi.Input<String>? networkPolicy;
+  final pulumi.Input<String?>? networkPolicy;
 
   /// Creates a new [NetworkProfileForSnapshotResponse].
   /// [loadBalancerSku] loadBalancerSku for managed cluster snapshot.

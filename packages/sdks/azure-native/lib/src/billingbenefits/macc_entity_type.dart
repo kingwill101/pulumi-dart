@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Represents type of the object being operated on. Possible values are primary or contributor.
-enum MaccEntityType {
+enum MaccEntityType implements pulumi.PulumiEnum<String> {
   primary("Primary"),
   contributor("Contributor");
 
   const MaccEntityType(this.wireValue);
+  @override
   final String wireValue;
 
   static MaccEntityType fromValue(String value) {

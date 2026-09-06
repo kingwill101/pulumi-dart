@@ -9,17 +9,17 @@ class VpnServerConfigurationPolicyGroupResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of references to P2SConnectionConfigurations.
   final pulumi.Input<List<SubResourceResponse>> p2SConnectionConfigurations;
   /// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
-  final pulumi.Input<List<VpnServerConfigurationPolicyGroupMemberResponse>>? policyMembers;
+  final pulumi.Input<List<VpnServerConfigurationPolicyGroupMemberResponse>?>? policyMembers;
   /// Priority for VpnServerConfigurationPolicyGroup.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
   final pulumi.Input<String> provisioningState;
   /// Resource type.
@@ -69,7 +69,7 @@ class VpnServerConfigurationPolicyGroupResponse {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       p2SConnectionConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(map['p2SConnectionConfigurations']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(guardedValue, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

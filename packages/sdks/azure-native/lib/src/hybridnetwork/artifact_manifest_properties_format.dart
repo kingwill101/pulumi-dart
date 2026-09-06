@@ -6,7 +6,7 @@ import 'manifest_artifact_format.dart';
 /// Artifact manifest properties.
 class ArtifactManifestPropertiesFormat {
   /// The artifacts list.
-  final pulumi.Input<List<ManifestArtifactFormat>>? artifacts;
+  final pulumi.Input<List<ManifestArtifactFormat>?>? artifacts;
 
   /// Creates a new [ArtifactManifestPropertiesFormat].
   /// [artifacts] The artifacts list.

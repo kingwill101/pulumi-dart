@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_user_args_doc}
 class GetUserArgs {
   /// Specify the $expand query. Example: 'properties($select=identity)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The name of the user profile.

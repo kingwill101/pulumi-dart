@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ServiceType for the service.
-enum ServiceType {
+enum ServiceType implements pulumi.PulumiEnum<String> {
   valueSqlDedicatedGateway("SqlDedicatedGateway"),
   valueDataTransfer("DataTransfer"),
   valueGraphAPICompute("GraphAPICompute"),
   valueMaterializedViewsBuilder("MaterializedViewsBuilder");
 
   const ServiceType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceType fromValue(String value) {

@@ -9,15 +9,15 @@ import 'usage_plan_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_usage_plan_args_doc}
 class UsagePlanArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<UsagePlanProperties>? properties;
+  final pulumi.Input<UsagePlanProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the usage plan.
-  final pulumi.Input<String>? usagePlanName;
+  final pulumi.Input<String?>? usagePlanName;
 
   /// Creates a new [UsagePlanArgs].
   /// [location] The geo-location where the resource lives

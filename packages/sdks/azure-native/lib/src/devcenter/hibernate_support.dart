@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether Dev Boxes created with this definition are capable of hibernation. Not all images are capable of supporting hibernation. To find out more see https://aka.ms/devbox/hibernate
-enum HibernateSupport {
+enum HibernateSupport implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const HibernateSupport(this.wireValue);
+  @override
   final String wireValue;
 
   static HibernateSupport fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The key vault reference.
 class KeyVaultKeyReferenceKeyVault {
   /// The resource id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [KeyVaultKeyReferenceKeyVault].
   /// [id] The resource id.

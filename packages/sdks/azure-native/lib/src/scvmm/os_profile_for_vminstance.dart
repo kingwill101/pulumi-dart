@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the resource properties.
 class OsProfileForVMInstance {
   /// Admin password of the virtual machine.
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// Gets or sets computer name.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
 
   /// Creates a new [OsProfileForVMInstance].
   /// [adminPassword] Admin password of the virtual machine.

@@ -40,9 +40,9 @@ class GetBillingHubServiceUsageResult {
     return GetBillingHubServiceUsageResult(
       nextRequest: (() { final guardedValue = map['nextRequest']; if (guardedValue == null) return null; return BillingHubGetUsageRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       packageUsageEntries: (() { final guardedValue = map['packageUsageEntries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BillingHubPackageUsageResponse>(guardedValue, (value) => BillingHubPackageUsageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      totalCharges: (() { final guardedValue = map['totalCharges']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      totalUsedBillableHours: (() { final guardedValue = map['totalUsedBillableHours']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      totalUsedFreeHours: (() { final guardedValue = map['totalUsedFreeHours']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      totalCharges: (() { final guardedValue = map['totalCharges']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      totalUsedBillableHours: (() { final guardedValue = map['totalUsedBillableHours']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      totalUsedFreeHours: (() { final guardedValue = map['totalUsedFreeHours']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

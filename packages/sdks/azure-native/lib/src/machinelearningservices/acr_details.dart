@@ -6,7 +6,7 @@ import 'system_created_acr_account.dart';
 /// Details of ACR account to be used for the Registry
 class AcrDetails {
   /// Details of system created ACR account to be used for the Registry
-  final pulumi.Input<SystemCreatedAcrAccount>? systemCreatedAcrAccount;
+  final pulumi.Input<SystemCreatedAcrAccount?>? systemCreatedAcrAccount;
 
   /// Creates a new [AcrDetails].
   /// [systemCreatedAcrAccount] Details of system created ACR account to be used for the Registry

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the error.
 class Error {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error ID.
-  final pulumi.Input<double>? id;
+  final pulumi.Input<double?>? id;
   /// The detailed error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The error possible causes.
-  final pulumi.Input<String>? possibleCauses;
+  final pulumi.Input<String?>? possibleCauses;
   /// The error recommended action
-  final pulumi.Input<String>? recommendedAction;
+  final pulumi.Input<String?>? recommendedAction;
   /// The account ID used to login.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// The error severity
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
   /// The summarized error message.
-  final pulumi.Input<String>? summaryMessage;
+  final pulumi.Input<String?>? summaryMessage;
   /// Time when this error was last updated.
-  final pulumi.Input<String>? updatedTimeStamp;
+  final pulumi.Input<String?>? updatedTimeStamp;
 
   /// Creates a new [Error].
   /// [code] The error code.
@@ -62,7 +62,7 @@ class Error {
   factory Error.fromMap(Map<String, dynamic> map) {
     return Error(
       code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       message: (() { final guardedValue = map['message']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       possibleCauses: (() { final guardedValue = map['possibleCauses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recommendedAction: (() { final guardedValue = map['recommendedAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

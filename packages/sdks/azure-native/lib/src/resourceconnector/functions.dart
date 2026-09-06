@@ -28,6 +28,17 @@ Future<GetApplianceResult> getAppliance(
   return GetApplianceResult.fromMap(result);
 }
 
+pulumi.Output<GetApplianceResult> getApplianceOutput(
+  GetApplianceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourceconnector:getAppliance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplianceResult.fromMap);
+}
+
 /// Returns the cluster customer user credentials for the dedicated appliance.
 ///
 /// Uses Azure REST API version 2022-04-15-preview.
@@ -44,6 +55,17 @@ Future<ListApplianceClusterCustomerUserCredentialResult> listApplianceClusterCus
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListApplianceClusterCustomerUserCredentialResult.fromMap(result);
+}
+
+pulumi.Output<ListApplianceClusterCustomerUserCredentialResult> listApplianceClusterCustomerUserCredentialOutput(
+  ListApplianceClusterCustomerUserCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourceconnector:listApplianceClusterCustomerUserCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplianceClusterCustomerUserCredentialResult.fromMap);
 }
 
 /// Returns the cluster user credentials for the dedicated appliance.
@@ -66,6 +88,17 @@ Future<ListApplianceClusterUserCredentialResult> listApplianceClusterUserCredent
   return ListApplianceClusterUserCredentialResult.fromMap(result);
 }
 
+pulumi.Output<ListApplianceClusterUserCredentialResult> listApplianceClusterUserCredentialOutput(
+  ListApplianceClusterUserCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourceconnector:listApplianceClusterUserCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplianceClusterUserCredentialResult.fromMap);
+}
+
 /// Returns the cluster customer credentials for the dedicated appliance.
 ///
 /// Uses Azure REST API version 2022-10-27.
@@ -84,4 +117,15 @@ Future<ListApplianceKeysResult> listApplianceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListApplianceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListApplianceKeysResult> listApplianceKeysOutput(
+  ListApplianceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourceconnector:listApplianceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListApplianceKeysResult.fromMap);
 }

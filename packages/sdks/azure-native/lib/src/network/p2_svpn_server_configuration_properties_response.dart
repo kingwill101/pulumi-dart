@@ -11,29 +11,29 @@ import 'sub_resource_response.dart';
 /// Parameters for P2SVpnServerConfiguration.
 class P2SVpnServerConfigurationPropertiesResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The name of the P2SVpnServerConfiguration that is unique within a VirtualWan in a resource group. This name can be used to access the resource along with Paren VirtualWan resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of references to P2SVpnGateways.
   final pulumi.Input<List<SubResourceResponse>> p2SVpnGateways;
   /// Radius client root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigRadiusClientRootCertificateResponse>>? p2SVpnServerConfigRadiusClientRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigRadiusClientRootCertificateResponse>?>? p2SVpnServerConfigRadiusClientRootCertificates;
   /// Radius Server root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigRadiusServerRootCertificateResponse>>? p2SVpnServerConfigRadiusServerRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigRadiusServerRootCertificateResponse>?>? p2SVpnServerConfigRadiusServerRootCertificates;
   /// VPN client revoked certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigVpnClientRevokedCertificateResponse>>? p2SVpnServerConfigVpnClientRevokedCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigVpnClientRevokedCertificateResponse>?>? p2SVpnServerConfigVpnClientRevokedCertificates;
   /// VPN client root certificate of P2SVpnServerConfiguration.
-  final pulumi.Input<List<P2SVpnServerConfigVpnClientRootCertificateResponse>>? p2SVpnServerConfigVpnClientRootCertificates;
+  final pulumi.Input<List<P2SVpnServerConfigVpnClientRootCertificateResponse>?>? p2SVpnServerConfigVpnClientRootCertificates;
   /// The provisioning state of the P2S VPN server configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The radius server address property of the P2SVpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
   /// VpnClientIpsecPolicies for P2SVpnServerConfiguration.
-  final pulumi.Input<List<IpsecPolicyResponse>>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicyResponse>?>? vpnClientIpsecPolicies;
   /// VPN protocols for the P2SVpnServerConfiguration.
-  final pulumi.Input<List<String>>? vpnProtocols;
+  final pulumi.Input<List<String>?>? vpnProtocols;
 
   /// Creates a new [P2SVpnServerConfigurationPropertiesResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

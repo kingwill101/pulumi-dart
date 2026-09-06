@@ -8,119 +8,119 @@ import 'mlflow_model_job_input.dart';
 /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
 class ImageModelSettingsObjectDetection {
   /// Settings for advanced scenarios.
-  final pulumi.Input<String>? advancedSettings;
+  final pulumi.Input<String?>? advancedSettings;
   /// Enable AMSGrad when optimizer is 'adam' or 'adamw'.
-  final pulumi.Input<bool>? amsGradient;
+  final pulumi.Input<bool?>? amsGradient;
   /// Settings for using Augmentations.
-  final pulumi.Input<String>? augmentations;
+  final pulumi.Input<String?>? augmentations;
   /// Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? beta1;
+  final pulumi.Input<double?>? beta1;
   /// Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? beta2;
+  final pulumi.Input<double?>? beta2;
   /// Maximum number of detections per image, for all classes. Must be a positive integer.
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<int>? boxDetectionsPerImage;
+  final pulumi.Input<int?>? boxDetectionsPerImage;
   /// During inference, only return proposals with a classification score greater than
   /// BoxScoreThreshold. Must be a float in the range[0, 1].
-  final pulumi.Input<double>? boxScoreThreshold;
+  final pulumi.Input<double?>? boxScoreThreshold;
   /// Frequency to store model checkpoints. Must be a positive integer.
-  final pulumi.Input<int>? checkpointFrequency;
+  final pulumi.Input<int?>? checkpointFrequency;
   /// The pretrained checkpoint model for incremental training.
-  final pulumi.Input<MLFlowModelJobInput>? checkpointModel;
+  final pulumi.Input<MLFlowModelJobInput?>? checkpointModel;
   /// The id of a previous run that has a pretrained checkpoint for incremental training.
-  final pulumi.Input<String>? checkpointRunId;
+  final pulumi.Input<String?>? checkpointRunId;
   /// Whether to use distributed training.
-  final pulumi.Input<bool>? distributed;
+  final pulumi.Input<bool?>? distributed;
   /// Enable early stopping logic during training.
-  final pulumi.Input<bool>? earlyStopping;
+  final pulumi.Input<bool?>? earlyStopping;
   /// Minimum number of epochs or validation evaluations to wait before primary metric improvement
   /// is tracked for early stopping. Must be a positive integer.
-  final pulumi.Input<int>? earlyStoppingDelay;
+  final pulumi.Input<int?>? earlyStoppingDelay;
   /// Minimum number of epochs or validation evaluations with no primary metric improvement before
   /// the run is stopped. Must be a positive integer.
-  final pulumi.Input<int>? earlyStoppingPatience;
+  final pulumi.Input<int?>? earlyStoppingPatience;
   /// Enable normalization when exporting ONNX model.
-  final pulumi.Input<bool>? enableOnnxNormalization;
+  final pulumi.Input<bool?>? enableOnnxNormalization;
   /// Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
-  final pulumi.Input<int>? evaluationFrequency;
+  final pulumi.Input<int?>? evaluationFrequency;
   /// Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
   /// updating the model weights while accumulating the gradients of those steps, and then using
   /// the accumulated gradients to compute the weight updates. Must be a positive integer.
-  final pulumi.Input<int>? gradientAccumulationStep;
+  final pulumi.Input<int?>? gradientAccumulationStep;
   /// Image size for train and validation. Must be a positive integer.
   /// Note: The training run may get into CUDA OOM if the size is too big.
   /// Note: This settings is only supported for the 'yolov5' algorithm.
-  final pulumi.Input<int>? imageSize;
+  final pulumi.Input<int?>? imageSize;
   /// Number of layers to freeze for the model. Must be a positive integer.
   /// For instance, passing 2 as value for 'seresnext' means
   /// freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
   /// see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<int>? layersToFreeze;
+  final pulumi.Input<int?>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? learningRate;
+  final pulumi.Input<double?>? learningRate;
   /// Learning rate scheduler enum.
-  final pulumi.Input<String>? learningRateScheduler;
+  final pulumi.Input<dynamic>? learningRateScheduler;
   /// Maximum size of the image to be rescaled before feeding it to the backbone.
   /// Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<int>? maxSize;
+  final pulumi.Input<int?>? maxSize;
   /// Minimum size of the image to be rescaled before feeding it to the backbone.
   /// Must be a positive integer. Note: training run may get into CUDA OOM if the size is too big.
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<int>? minSize;
+  final pulumi.Input<int?>? minSize;
   /// Name of the model to use for training.
   /// For more information on the available models please visit the official documentation:
   /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// Image model size.
-  final pulumi.Input<String>? modelSize;
+  final pulumi.Input<dynamic>? modelSize;
   /// Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? momentum;
+  final pulumi.Input<double?>? momentum;
   /// Enable multi-scale image by varying image size by +/- 50%.
   /// Note: training run may get into CUDA OOM if no sufficient GPU memory.
   /// Note: This settings is only supported for the 'yolov5' algorithm.
-  final pulumi.Input<bool>? multiScale;
+  final pulumi.Input<bool?>? multiScale;
   /// Enable nesterov when optimizer is 'sgd'.
-  final pulumi.Input<bool>? nesterov;
+  final pulumi.Input<bool?>? nesterov;
   /// IOU threshold used during inference in NMS post processing. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? nmsIouThreshold;
+  final pulumi.Input<double?>? nmsIouThreshold;
   /// Number of training epochs. Must be a positive integer.
-  final pulumi.Input<int>? numberOfEpochs;
+  final pulumi.Input<int?>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
-  final pulumi.Input<int>? numberOfWorkers;
+  final pulumi.Input<int?>? numberOfWorkers;
   /// Stochastic optimizer for image models.
-  final pulumi.Input<String>? optimizer;
+  final pulumi.Input<dynamic>? optimizer;
   /// Random seed to be used when using deterministic training.
-  final pulumi.Input<int>? randomSeed;
+  final pulumi.Input<int?>? randomSeed;
   /// Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? stepLRGamma;
+  final pulumi.Input<double?>? stepLRGamma;
   /// Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
-  final pulumi.Input<int>? stepLRStepSize;
+  final pulumi.Input<int?>? stepLRStepSize;
   /// The grid size to use for tiling each image. Note: TileGridSize must not be
   /// None to enable small object detection logic. A string containing two integers in mxn format.
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<String>? tileGridSize;
+  final pulumi.Input<String?>? tileGridSize;
   /// Overlap ratio between adjacent tiles in each dimension. Must be float in the range [0, 1).
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<double>? tileOverlapRatio;
+  final pulumi.Input<double?>? tileOverlapRatio;
   /// The IOU threshold to use to perform NMS while merging predictions from tiles and image.
   /// Used in validation/ inference. Must be float in the range [0, 1].
   /// Note: This settings is not supported for the 'yolov5' algorithm.
-  final pulumi.Input<double>? tilePredictionsNmsThreshold;
+  final pulumi.Input<double?>? tilePredictionsNmsThreshold;
   /// Training batch size. Must be a positive integer.
-  final pulumi.Input<int>? trainingBatchSize;
+  final pulumi.Input<int?>? trainingBatchSize;
   /// Validation batch size. Must be a positive integer.
-  final pulumi.Input<int>? validationBatchSize;
+  final pulumi.Input<int?>? validationBatchSize;
   /// IOU threshold to use when computing validation metric. Must be float in the range [0, 1].
-  final pulumi.Input<double>? validationIouThreshold;
+  final pulumi.Input<double?>? validationIouThreshold;
   /// Metric computation method to use for validation metrics in image tasks.
-  final pulumi.Input<String>? validationMetricType;
+  final pulumi.Input<dynamic>? validationMetricType;
   /// Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
-  final pulumi.Input<double>? warmupCosineLRCycles;
+  final pulumi.Input<double?>? warmupCosineLRCycles;
   /// Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
-  final pulumi.Input<int>? warmupCosineLRWarmupEpochs;
+  final pulumi.Input<int?>? warmupCosineLRWarmupEpochs;
   /// Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  final pulumi.Input<double>? weightDecay;
+  final pulumi.Input<double?>? weightDecay;
 
   /// Creates a new [ImageModelSettingsObjectDetection].
   /// [advancedSettings] Settings for advanced scenarios.
@@ -168,7 +168,7 @@ class ImageModelSettingsObjectDetection {
   /// [warmupCosineLRCycles] Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
   /// [warmupCosineLRWarmupEpochs] Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
   /// [weightDecay] Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  const ImageModelSettingsObjectDetection({
+  ImageModelSettingsObjectDetection({
     this.advancedSettings,
     this.amsGradient,
     this.augmentations,
@@ -189,18 +189,18 @@ class ImageModelSettingsObjectDetection {
     this.imageSize,
     this.layersToFreeze,
     this.learningRate,
-    this.learningRateScheduler,
+    pulumi.Input<dynamic>? learningRateScheduler,
     this.maxSize,
     this.minSize,
     this.modelName,
-    this.modelSize,
+    pulumi.Input<dynamic>? modelSize,
     this.momentum,
     this.multiScale,
     this.nesterov,
     this.nmsIouThreshold,
     this.numberOfEpochs,
     this.numberOfWorkers,
-    this.optimizer,
+    pulumi.Input<dynamic>? optimizer,
     this.randomSeed,
     this.stepLRGamma,
     this.stepLRStepSize,
@@ -210,11 +210,11 @@ class ImageModelSettingsObjectDetection {
     this.trainingBatchSize,
     this.validationBatchSize,
     this.validationIouThreshold,
-    this.validationMetricType,
+    pulumi.Input<dynamic>? validationMetricType,
     this.warmupCosineLRCycles,
     this.warmupCosineLRWarmupEpochs,
     this.weightDecay,
-  });
+  }) : learningRateScheduler = learningRateScheduler ?? pulumi.Input.fromValue('None'), modelSize = modelSize ?? pulumi.Input.fromValue('None'), optimizer = optimizer ?? pulumi.Input.fromValue('None'), validationMetricType = validationMetricType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -271,48 +271,48 @@ class ImageModelSettingsObjectDetection {
       advancedSettings: (() { final guardedValue = map['advancedSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       amsGradient: (() { final guardedValue = map['amsGradient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       augmentations: (() { final guardedValue = map['augmentations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      beta1: (() { final guardedValue = map['beta1']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      beta2: (() { final guardedValue = map['beta2']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      boxDetectionsPerImage: (() { final guardedValue = map['boxDetectionsPerImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      boxScoreThreshold: (() { final guardedValue = map['boxScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      checkpointFrequency: (() { final guardedValue = map['checkpointFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      beta1: (() { final guardedValue = map['beta1']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      beta2: (() { final guardedValue = map['beta2']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      boxDetectionsPerImage: (() { final guardedValue = map['boxDetectionsPerImage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      boxScoreThreshold: (() { final guardedValue = map['boxScoreThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      checkpointFrequency: (() { final guardedValue = map['checkpointFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       checkpointModel: (() { final guardedValue = map['checkpointModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MLFlowModelJobInput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       checkpointRunId: (() { final guardedValue = map['checkpointRunId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       distributed: (() { final guardedValue = map['distributed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       earlyStopping: (() { final guardedValue = map['earlyStopping']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      earlyStoppingDelay: (() { final guardedValue = map['earlyStoppingDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      earlyStoppingPatience: (() { final guardedValue = map['earlyStoppingPatience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      earlyStoppingDelay: (() { final guardedValue = map['earlyStoppingDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      earlyStoppingPatience: (() { final guardedValue = map['earlyStoppingPatience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enableOnnxNormalization: (() { final guardedValue = map['enableOnnxNormalization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      gradientAccumulationStep: (() { final guardedValue = map['gradientAccumulationStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      imageSize: (() { final guardedValue = map['imageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      layersToFreeze: (() { final guardedValue = map['layersToFreeze']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      learningRate: (() { final guardedValue = map['learningRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      learningRateScheduler: (() { final guardedValue = map['learningRateScheduler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      gradientAccumulationStep: (() { final guardedValue = map['gradientAccumulationStep']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      imageSize: (() { final guardedValue = map['imageSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      layersToFreeze: (() { final guardedValue = map['layersToFreeze']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      learningRate: (() { final guardedValue = map['learningRate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      learningRateScheduler: (() { final guardedValue = map['learningRateScheduler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      maxSize: (() { final guardedValue = map['maxSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minSize: (() { final guardedValue = map['minSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       modelName: (() { final guardedValue = map['modelName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      modelSize: (() { final guardedValue = map['modelSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      momentum: (() { final guardedValue = map['momentum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      modelSize: (() { final guardedValue = map['modelSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      momentum: (() { final guardedValue = map['momentum']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       multiScale: (() { final guardedValue = map['multiScale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       nesterov: (() { final guardedValue = map['nesterov']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      nmsIouThreshold: (() { final guardedValue = map['nmsIouThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      numberOfEpochs: (() { final guardedValue = map['numberOfEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      optimizer: (() { final guardedValue = map['optimizer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      stepLRGamma: (() { final guardedValue = map['stepLRGamma']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      stepLRStepSize: (() { final guardedValue = map['stepLRStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nmsIouThreshold: (() { final guardedValue = map['nmsIouThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      numberOfEpochs: (() { final guardedValue = map['numberOfEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      optimizer: (() { final guardedValue = map['optimizer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      randomSeed: (() { final guardedValue = map['randomSeed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      stepLRGamma: (() { final guardedValue = map['stepLRGamma']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      stepLRStepSize: (() { final guardedValue = map['stepLRStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tileGridSize: (() { final guardedValue = map['tileGridSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tileOverlapRatio: (() { final guardedValue = map['tileOverlapRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      tilePredictionsNmsThreshold: (() { final guardedValue = map['tilePredictionsNmsThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      trainingBatchSize: (() { final guardedValue = map['trainingBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      validationBatchSize: (() { final guardedValue = map['validationBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      validationIouThreshold: (() { final guardedValue = map['validationIouThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      validationMetricType: (() { final guardedValue = map['validationMetricType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      warmupCosineLRCycles: (() { final guardedValue = map['warmupCosineLRCycles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      warmupCosineLRWarmupEpochs: (() { final guardedValue = map['warmupCosineLRWarmupEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      weightDecay: (() { final guardedValue = map['weightDecay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      tileOverlapRatio: (() { final guardedValue = map['tileOverlapRatio']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      tilePredictionsNmsThreshold: (() { final guardedValue = map['tilePredictionsNmsThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      trainingBatchSize: (() { final guardedValue = map['trainingBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      validationBatchSize: (() { final guardedValue = map['validationBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      validationIouThreshold: (() { final guardedValue = map['validationIouThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      validationMetricType: (() { final guardedValue = map['validationMetricType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      warmupCosineLRCycles: (() { final guardedValue = map['warmupCosineLRCycles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      warmupCosineLRWarmupEpochs: (() { final guardedValue = map['warmupCosineLRWarmupEpochs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      weightDecay: (() { final guardedValue = map['weightDecay']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

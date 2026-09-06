@@ -6,15 +6,15 @@ import 'secret_key_vault_properties_response.dart';
 /// Azure File Properties.
 class AzureFilePropertiesResponse {
   /// Access mode for storage
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// Storage account key for azure file.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// Storage account key stored as an Azure Key Vault secret.
-  final pulumi.Input<SecretKeyVaultPropertiesResponse>? accountKeyVaultProperties;
+  final pulumi.Input<SecretKeyVaultPropertiesResponse?>? accountKeyVaultProperties;
   /// Storage account name for azure file.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Azure file share name.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
 
   /// Creates a new [AzureFilePropertiesResponse].
   /// [accessMode] Access mode for storage

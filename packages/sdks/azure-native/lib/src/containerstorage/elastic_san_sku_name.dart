@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sku name
-enum ElasticSanSkuName {
+enum ElasticSanSkuName implements pulumi.PulumiEnum<String> {
   premiumLRS("Premium_LRS"),
   premiumZRS("Premium_ZRS");
 
   const ElasticSanSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticSanSkuName fromValue(String value) {

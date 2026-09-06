@@ -9,9 +9,9 @@ import 'extended_location.dart';
 /// {@macro pulumi_iotoperations_akri_service_args_doc}
 class AkriServiceArgs {
   /// Name of AkriService resource.
-  final pulumi.Input<String>? akriServiceName;
+  final pulumi.Input<String?>? akriServiceName;
   /// Edge location of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The name of the resource group. The name is case insensitive.

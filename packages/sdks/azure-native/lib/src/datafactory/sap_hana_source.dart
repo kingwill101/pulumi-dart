@@ -16,7 +16,7 @@ class SapHanaSource {
   /// The partition mechanism that will be used for SAP HANA read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "SapHanaDynamicRange".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for SAP HANA source partitioning.
-  final pulumi.Input<SapHanaPartitionSettings>? partitionSettings;
+  final pulumi.Input<SapHanaPartitionSettings?>? partitionSettings;
   /// SAP HANA Sql query. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? query;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

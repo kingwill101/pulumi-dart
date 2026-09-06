@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Facebook page for Facebook channel registration
 class FacebookPage {
   /// Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// Page id
   final pulumi.Input<String> id;
 

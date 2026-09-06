@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OpenApiValidation {
   /// Indicates whether a non compliance response is allowed for a LIST call
-  final pulumi.Input<bool>? allowNoncompliantCollectionResponse;
+  final pulumi.Input<bool?>? allowNoncompliantCollectionResponse;
 
   /// Creates a new [OpenApiValidation].
   /// [allowNoncompliantCollectionResponse] Indicates whether a non compliance response is allowed for a LIST call

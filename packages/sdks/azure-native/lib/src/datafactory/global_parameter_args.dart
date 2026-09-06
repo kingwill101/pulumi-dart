@@ -11,7 +11,7 @@ class GlobalParameterArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The global parameter name.
-  final pulumi.Input<String>? globalParameterName;
+  final pulumi.Input<String?>? globalParameterName;
   /// Properties of the global parameter.
   final pulumi.Input<Map<String, GlobalParameterSpecification>> properties;
   /// The name of the resource group. The name is case insensitive.

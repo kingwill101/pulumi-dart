@@ -229,4 +229,24 @@ class VirtualHubBgpConnection extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [VirtualHubBgpConnection] resource.
+  VirtualHubBgpConnection.reference(String urn)
+    : super(
+        'azure-native:network:VirtualHubBgpConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionState = registerOutput<String>('connectionState');
+    etag = registerOutput<String>('etag');
+    hubVirtualNetworkConnection = registerOutput<SubResourceResponse?>('hubVirtualNetworkConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String?>('name');
+    peerAsn = registerOutput<double?>('peerAsn');
+    peerIp = registerOutput<String?>('peerIp');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

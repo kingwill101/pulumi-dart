@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the customized accelerator.
-enum CustomizedAcceleratorType {
+enum CustomizedAcceleratorType implements pulumi.PulumiEnum<String> {
   valueAccelerator("Accelerator"),
   valueFragment("Fragment");
 
   const CustomizedAcceleratorType(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomizedAcceleratorType fromValue(String value) {

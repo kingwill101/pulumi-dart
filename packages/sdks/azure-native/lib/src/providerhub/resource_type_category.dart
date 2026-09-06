@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The category.
-enum ResourceTypeCategory {
+enum ResourceTypeCategory implements pulumi.PulumiEnum<String> {
   none("None"),
   freeForm("FreeForm"),
   internal("Internal"),
   pureProxy("PureProxy");
 
   const ResourceTypeCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceTypeCategory fromValue(String value) {

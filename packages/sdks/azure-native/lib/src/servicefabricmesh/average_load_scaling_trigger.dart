@@ -44,10 +44,10 @@ class AverageLoadScalingTrigger {
   factory AverageLoadScalingTrigger.fromMap(Map<String, dynamic> map) {
     return AverageLoadScalingTrigger(
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      lowerLoadThreshold: pulumi.Input.fromValue(map['lowerLoadThreshold'] as double),
+      lowerLoadThreshold: pulumi.Input.fromValue((map['lowerLoadThreshold'] as num).toDouble()),
       metric: pulumi.Input.fromValue(AutoScalingResourceMetric.fromMap((map['metric']! as Map).cast<String, dynamic>())),
-      scaleIntervalInSeconds: pulumi.Input.fromValue(map['scaleIntervalInSeconds'] as int),
-      upperLoadThreshold: pulumi.Input.fromValue(map['upperLoadThreshold'] as double),
+      scaleIntervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleIntervalInSeconds'])),
+      upperLoadThreshold: pulumi.Input.fromValue((map['upperLoadThreshold'] as num).toDouble()),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IaaS VM workload-specific container.
 class IaaSVMContainerResponse {
   /// Type of backup management for the container.
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<String?>? backupManagementType;
   /// Type of the container. The value of this property for: 1. Compute Azure VM is Microsoft.Compute/virtualMachines 2.
   /// Classic Compute Azure VM is Microsoft.ClassicCompute/virtualMachines 3. Windows machines (like MAB, DPM etc) is
   /// Windows 4. Azure SQL instance is AzureSqlContainer. 5. Storage containers is StorageContainer. 6. Azure workload
@@ -13,19 +13,19 @@ class IaaSVMContainerResponse {
   /// Expected value is 'IaasVMContainer'.
   final pulumi.Input<String> containerType;
   /// Friendly name of the container.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// Status of health of the container.
-  final pulumi.Input<String>? healthStatus;
+  final pulumi.Input<String?>? healthStatus;
   /// Type of the protectable object associated with this container
-  final pulumi.Input<String>? protectableObjectType;
+  final pulumi.Input<String?>? protectableObjectType;
   /// Status of registration of the container with the Recovery Services Vault.
-  final pulumi.Input<String>? registrationStatus;
+  final pulumi.Input<String?>? registrationStatus;
   /// Resource group name of Recovery Services Vault.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Fully qualified ARM url of the virtual machine represented by this Azure IaaS VM container.
-  final pulumi.Input<String>? virtualMachineId;
+  final pulumi.Input<String?>? virtualMachineId;
   /// Specifies whether the container represents a Classic or an Azure Resource Manager VM.
-  final pulumi.Input<String>? virtualMachineVersion;
+  final pulumi.Input<String?>? virtualMachineVersion;
 
   /// Creates a new [IaaSVMContainerResponse].
   /// [backupManagementType] Type of backup management for the container.

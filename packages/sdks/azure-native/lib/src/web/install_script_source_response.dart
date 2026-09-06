@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object to hold install script reference.
 class InstallScriptSourceResponse {
   /// Install script source URI where the install script file will be fetched from.
-  final pulumi.Input<String>? sourceUri;
+  final pulumi.Input<String?>? sourceUri;
   /// Type of the install script.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InstallScriptSourceResponse].
   /// [sourceUri] Install script source URI where the install script file will be fetched from.

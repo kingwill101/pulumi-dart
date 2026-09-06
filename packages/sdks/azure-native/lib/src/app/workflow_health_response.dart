@@ -6,7 +6,7 @@ import 'error_entity_response.dart';
 /// Represents the workflow health.
 class WorkflowHealthResponse {
   /// Gets or sets the workflow error.
-  final pulumi.Input<ErrorEntityResponse>? error;
+  final pulumi.Input<ErrorEntityResponse?>? error;
   /// Gets or sets the workflow health state.
   final pulumi.Input<String> state;
 

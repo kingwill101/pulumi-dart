@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Info about origin if it is linked.
 class LinkedInfoResponse {
   /// LinkedId id.
-  final pulumi.Input<String>? linkedId;
+  final pulumi.Input<String?>? linkedId;
   /// Linked resource name.
-  final pulumi.Input<String>? linkedResourceName;
+  final pulumi.Input<String?>? linkedResourceName;
   /// Datastore origin
-  final pulumi.Input<String>? origin;
+  final pulumi.Input<String?>? origin;
 
   /// Creates a new [LinkedInfoResponse].
   /// [linkedId] LinkedId id.

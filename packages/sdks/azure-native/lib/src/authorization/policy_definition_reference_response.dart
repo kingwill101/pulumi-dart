@@ -6,19 +6,19 @@ import 'parameter_values_value_response.dart';
 /// The policy definition reference.
 class PolicyDefinitionReferenceResponse {
   /// The version of the policy definition to use.
-  final pulumi.Input<String>? definitionVersion;
+  final pulumi.Input<String?>? definitionVersion;
   /// The effective version of the policy definition in use. This is only present if requested via the $expand query parameter.
   final pulumi.Input<String> effectiveDefinitionVersion;
   /// The name of the groups that this policy definition reference belongs to.
-  final pulumi.Input<List<String>>? groupNames;
+  final pulumi.Input<List<String>?>? groupNames;
   /// The latest version of the policy definition available. This is only present if requested via the $expand query parameter.
   final pulumi.Input<String> latestDefinitionVersion;
   /// The parameter values for the referenced policy rule. The keys are the parameter names.
-  final pulumi.Input<Map<String, ParameterValuesValueResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterValuesValueResponse>?>? parameters;
   /// The ID of the policy definition or policy set definition.
   final pulumi.Input<String> policyDefinitionId;
   /// A unique id (within the policy set definition) for this policy definition reference.
-  final pulumi.Input<String>? policyDefinitionReferenceId;
+  final pulumi.Input<String?>? policyDefinitionReferenceId;
 
   /// Creates a new [PolicyDefinitionReferenceResponse].
   /// [definitionVersion] The version of the policy definition to use.

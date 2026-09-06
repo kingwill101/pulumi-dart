@@ -8,40 +8,40 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kusto_event_grid_data_connection_args_doc}
 class EventGridDataConnectionArgs {
   /// The name of blob storage event type to process.
-  final pulumi.Input<String>? blobStorageEventType;
+  final pulumi.Input<dynamic>? blobStorageEventType;
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The event hub consumer group.
   final pulumi.Input<String> consumerGroup;
   /// The name of the data connection.
-  final pulumi.Input<String>? dataConnectionName;
+  final pulumi.Input<String?>? dataConnectionName;
   /// The data format of the message. Optionally the data format can be added to each message.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<dynamic>? dataFormat;
   /// The name of the database in the Kusto cluster.
   final pulumi.Input<String> databaseName;
   /// Indication for database routing information from the data connection, by default only database routing information is allowed
-  final pulumi.Input<String>? databaseRouting;
+  final pulumi.Input<dynamic>? databaseRouting;
   /// The resource ID of the event grid that is subscribed to the storage account events.
-  final pulumi.Input<String>? eventGridResourceId;
+  final pulumi.Input<String?>? eventGridResourceId;
   /// The resource ID where the event grid is configured to send events.
   final pulumi.Input<String> eventHubResourceId;
   /// A Boolean value that, if set to true, indicates that ingestion should ignore the first record of every file
-  final pulumi.Input<bool>? ignoreFirstRecord;
+  final pulumi.Input<bool?>? ignoreFirstRecord;
   /// Kind of the endpoint for the data connection
   /// Expected value is 'EventGrid'.
   final pulumi.Input<String> kind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource ID of a managed identity (system or user assigned) to be used to authenticate with event hub and storage account.
-  final pulumi.Input<String>? managedIdentityResourceId;
+  final pulumi.Input<String?>? managedIdentityResourceId;
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
-  final pulumi.Input<String>? mappingRuleName;
+  final pulumi.Input<String?>? mappingRuleName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource ID of the storage account where the data resides.
   final pulumi.Input<String> storageAccountResourceId;
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
 
   /// Creates a new [EventGridDataConnectionArgs].
   /// [blobStorageEventType] The name of blob storage event type to process.
@@ -61,14 +61,14 @@ class EventGridDataConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageAccountResourceId] The resource ID of the storage account where the data resides.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
-  const EventGridDataConnectionArgs({
+  EventGridDataConnectionArgs({
     this.blobStorageEventType,
     required this.clusterName,
     required this.consumerGroup,
     this.dataConnectionName,
     this.dataFormat,
     required this.databaseName,
-    this.databaseRouting,
+    pulumi.Input<dynamic>? databaseRouting,
     this.eventGridResourceId,
     required this.eventHubResourceId,
     this.ignoreFirstRecord,
@@ -79,7 +79,7 @@ class EventGridDataConnectionArgs {
     required this.resourceGroupName,
     required this.storageAccountResourceId,
     this.tableName,
-  });
+  }) : databaseRouting = databaseRouting ?? pulumi.Input.fromValue('Single');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,13 +105,13 @@ class EventGridDataConnectionArgs {
 
   factory EventGridDataConnectionArgs.fromMap(Map<String, dynamic> map) {
     return EventGridDataConnectionArgs(
-      blobStorageEventType: (() { final guardedValue = map['blobStorageEventType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      blobStorageEventType: (() { final guardedValue = map['blobStorageEventType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       consumerGroup: pulumi.Input.fromValue(map['consumerGroup'] as String),
       dataConnectionName: (() { final guardedValue = map['dataConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      databaseRouting: (() { final guardedValue = map['databaseRouting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseRouting: (() { final guardedValue = map['databaseRouting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       eventGridResourceId: (() { final guardedValue = map['eventGridResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventHubResourceId: pulumi.Input.fromValue(map['eventHubResourceId'] as String),
       ignoreFirstRecord: (() { final guardedValue = map['ignoreFirstRecord']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

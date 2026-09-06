@@ -6,19 +6,19 @@ import 'compute_node_identity_reference.dart';
 /// Information used to connect to an Azure Storage Container using Blobfuse.
 class AzureBlobFileSystemConfiguration {
   /// This property is mutually exclusive with both sasKey and identity; exactly one must be specified.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The Azure Storage Account name.
   final pulumi.Input<String> accountName;
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final pulumi.Input<String>? blobfuseOptions;
+  final pulumi.Input<String?>? blobfuseOptions;
   /// The Azure Blob Storage Container name.
   final pulumi.Input<String> containerName;
   /// This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
-  final pulumi.Input<ComputeNodeIdentityReference>? identityReference;
+  final pulumi.Input<ComputeNodeIdentityReference?>? identityReference;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   final pulumi.Input<String> relativeMountPath;
   /// This property is mutually exclusive with both accountKey and identity; exactly one must be specified.
-  final pulumi.Input<String>? sasKey;
+  final pulumi.Input<String?>? sasKey;
 
   /// Creates a new [AzureBlobFileSystemConfiguration].
   /// [accountKey] This property is mutually exclusive with both sasKey and identity; exactly one must be specified.

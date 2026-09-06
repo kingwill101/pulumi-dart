@@ -206,7 +206,7 @@ class GroupsOperation extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     areAssessmentsRunning = registerOutput<bool>('areAssessmentsRunning');
-    assessments = registerOutput<List<String>>('assessments');
+    assessments = registerOutput<List<String>>('assessments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimestamp = registerOutput<String>('createdTimestamp');
     groupStatus = registerOutput<String>('groupStatus');
@@ -214,7 +214,31 @@ class GroupsOperation extends pulumi.CustomResource {
     machineCount = registerOutput<int>('machineCount');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String?>('provisioningState');
-    supportedAssessmentTypes = registerOutput<List<String>?>('supportedAssessmentTypes');
+    supportedAssessmentTypes = registerOutput<List<String>?>('supportedAssessmentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+  }
+
+  /// Creates a typed reference to an existing [GroupsOperation] resource.
+  GroupsOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:GroupsOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    areAssessmentsRunning = registerOutput<bool>('areAssessmentsRunning');
+    assessments = registerOutput<List<String>>('assessments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    groupStatus = registerOutput<String>('groupStatus');
+    groupType = registerOutput<String?>('groupType');
+    machineCount = registerOutput<int>('machineCount');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    supportedAssessmentTypes = registerOutput<List<String>?>('supportedAssessmentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');

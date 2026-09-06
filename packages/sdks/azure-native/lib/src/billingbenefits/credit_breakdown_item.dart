@@ -7,13 +7,13 @@ import 'credit_dimension.dart';
 /// Credit breakdown item representing a milestone, line-item, or no-charge service
 class CreditBreakdownItem {
   /// Allocation details including currency and amount for this breakdown item
-  final pulumi.Input<Commitment>? allocation;
+  final pulumi.Input<Commitment?>? allocation;
   /// Key-value pairs for additional parameters and metadata
-  final pulumi.Input<List<CreditDimension>>? dimensions;
+  final pulumi.Input<List<CreditDimension>?>? dimensions;
   /// End DateTime in UTC.
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Start DateTime.
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
 
   /// Creates a new [CreditBreakdownItem].
   /// [allocation] Allocation details including currency and amount for this breakdown item

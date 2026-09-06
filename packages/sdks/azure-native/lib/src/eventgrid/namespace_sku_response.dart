@@ -7,9 +7,9 @@ class NamespaceSkuResponse {
   /// Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
   /// 1 which signifies 1 Throughput Unit = 1MB/s ingress and 2MB/s egress per namespace. Min capacity is 1 and
   /// max allowed capacity is 20.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// The name of the SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NamespaceSkuResponse].
   /// [capacity] Specifies the number of Throughput Units that defines the capacity for the namespace. The property default value is
@@ -28,7 +28,7 @@ class NamespaceSkuResponse {
 
   factory NamespaceSkuResponse.fromMap(Map<String, dynamic> map) {
     return NamespaceSkuResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

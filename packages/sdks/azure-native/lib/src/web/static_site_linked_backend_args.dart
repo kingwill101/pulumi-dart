@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_static_site_linked_backend_args_doc}
 class StaticSiteLinkedBackendArgs {
   /// The resource id of the backend linked to the static site
-  final pulumi.Input<String>? backendResourceId;
+  final pulumi.Input<String?>? backendResourceId;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the linked backend that should be retrieved
-  final pulumi.Input<String>? linkedBackendName;
+  final pulumi.Input<String?>? linkedBackendName;
   /// Name of the static site
   final pulumi.Input<String> name;
   /// The region of the backend linked to the static site

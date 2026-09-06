@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum SocketAddrOperator {
+enum SocketAddrOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   iPMatch("IPMatch");
 
   const SocketAddrOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static SocketAddrOperator fromValue(String value) {

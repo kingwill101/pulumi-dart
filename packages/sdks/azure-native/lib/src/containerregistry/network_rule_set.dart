@@ -6,17 +6,17 @@ import 'iprule.dart';
 /// The network rule set for a container registry.
 class NetworkRuleSet {
   /// The default action of allow or deny when no other rules match.
-  final pulumi.Input<String> defaultAction;
+  final pulumi.Input<dynamic> defaultAction;
   /// The IP ACL rules.
-  final pulumi.Input<List<IPRule>>? ipRules;
+  final pulumi.Input<List<IPRule>?>? ipRules;
 
   /// Creates a new [NetworkRuleSet].
   /// [defaultAction] The default action of allow or deny when no other rules match.
   /// [ipRules] The IP ACL rules.
-  const NetworkRuleSet({
-    required this.defaultAction,
+  NetworkRuleSet({
+    pulumi.Input<dynamic>? defaultAction,
     this.ipRules,
-  });
+  }) : defaultAction = defaultAction ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class NetworkRuleSet {
 
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
-      defaultAction: pulumi.Input.fromValue(map['defaultAction'] as String),
+      defaultAction: pulumi.Input.fromValue(map['defaultAction']),
       ipRules: (() { final guardedValue = map['ipRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPRule>(guardedValue, (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

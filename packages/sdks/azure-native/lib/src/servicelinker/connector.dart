@@ -1,6 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'access_key_info_base_response.dart';
-import 'azure_resource_response.dart';
 import 'configuration_info_response.dart';
 import 'connector_args.dart';
 import 'public_network_solution_response.dart';
@@ -228,7 +226,7 @@ import 'vnet_solution_response.dart';
 /// ```
 class Connector extends pulumi.CustomResource {
   /// The authentication type.
-  late final pulumi.Output<AccessKeyInfoBaseResponse?> authInfo;
+  late final pulumi.Output<dynamic> authInfo;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The application client type
@@ -248,7 +246,7 @@ class Connector extends pulumi.CustomResource {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The target service properties
-  late final pulumi.Output<AzureResourceResponse?> targetService;
+  late final pulumi.Output<dynamic> targetService;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The VNet solution.
@@ -268,7 +266,7 @@ class Connector extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authInfo = registerOutput<AccessKeyInfoBaseResponse?>('authInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessKeyInfoBaseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    authInfo = registerOutput<dynamic>('authInfo');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientType = registerOutput<String?>('clientType');
     configurationInfo = registerOutput<ConfigurationInfoResponse?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -278,7 +276,31 @@ class Connector extends pulumi.CustomResource {
     scope = registerOutput<String?>('scope');
     secretStore = registerOutput<SecretStoreResponse?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    targetService = registerOutput<AzureResourceResponse?>('targetService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetService = registerOutput<dynamic>('targetService');
+    type = registerOutput<String>('type');
+    vNetSolution = registerOutput<VNetSolutionResponse?>('vNetSolution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VNetSolutionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'azure-native:servicelinker:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authInfo = registerOutput<dynamic>('authInfo');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientType = registerOutput<String?>('clientType');
+    configurationInfo = registerOutput<ConfigurationInfoResponse?>('configurationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkSolution = registerOutput<PublicNetworkSolutionResponse?>('publicNetworkSolution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicNetworkSolutionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String?>('scope');
+    secretStore = registerOutput<SecretStoreResponse?>('secretStore', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretStoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetService = registerOutput<dynamic>('targetService');
     type = registerOutput<String>('type');
     vNetSolution = registerOutput<VNetSolutionResponse?>('vNetSolution', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VNetSolutionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

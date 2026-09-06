@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'content_safety_endpoint_deployment_resource_properties.dart';
 
 /// {@template pulumi_machinelearningservices_endpoint_deployment_args_doc}
 /// The set of arguments for EndpointDeployment.
@@ -9,10 +8,10 @@ import 'content_safety_endpoint_deployment_resource_properties.dart';
 /// {@macro pulumi_machinelearningservices_endpoint_deployment_args_doc}
 class EndpointDeploymentArgs {
   /// Name of the deployment resource
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// Name of the endpoint resource.
   final pulumi.Input<String> endpointName;
-  final pulumi.Input<ContentSafetyEndpointDeploymentResourceProperties> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Machine Learning Workspace Name
@@ -36,7 +35,7 @@ class EndpointDeploymentArgs {
     return <String, dynamic>{
       'deploymentName': ?deploymentName,
       'endpointName': endpointName,
-      'properties': pulumi.Input.mapInputValue<ContentSafetyEndpointDeploymentResourceProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -46,7 +45,7 @@ class EndpointDeploymentArgs {
     return EndpointDeploymentArgs(
       deploymentName: (() { final guardedValue = map['deploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpointName: pulumi.Input.fromValue(map['endpointName'] as String),
-      properties: pulumi.Input.fromValue(ContentSafetyEndpointDeploymentResourceProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

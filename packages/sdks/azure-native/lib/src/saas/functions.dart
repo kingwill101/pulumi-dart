@@ -24,6 +24,17 @@ Future<GetSaasSubscriptionLevelResult> getSaasSubscriptionLevel(
   return GetSaasSubscriptionLevelResult.fromMap(result);
 }
 
+pulumi.Output<GetSaasSubscriptionLevelResult> getSaasSubscriptionLevelOutput(
+  GetSaasSubscriptionLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:saas:getSaasSubscriptionLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSaasSubscriptionLevelResult.fromMap);
+}
+
 /// Gets the ISV access token for a SaaS resource.
 ///
 /// Uses Azure REST API version 2018-03-01-beta.
@@ -42,6 +53,17 @@ Future<ListSaasResourceAccessTokenResult> listSaasResourceAccessToken(
   return ListSaasResourceAccessTokenResult.fromMap(result);
 }
 
+pulumi.Output<ListSaasResourceAccessTokenResult> listSaasResourceAccessTokenOutput(
+  ListSaasResourceAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:saas:listSaasResourceAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSaasResourceAccessTokenResult.fromMap);
+}
+
 /// Gets the ISV access token for a specified Subscription Level SaaS.
 ///
 /// Uses Azure REST API version 2018-03-01-beta.
@@ -58,4 +80,15 @@ Future<ListSaasSubscriptionLevelAccessTokenResult> listSaasSubscriptionLevelAcce
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSaasSubscriptionLevelAccessTokenResult.fromMap(result);
+}
+
+pulumi.Output<ListSaasSubscriptionLevelAccessTokenResult> listSaasSubscriptionLevelAccessTokenOutput(
+  ListSaasSubscriptionLevelAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:saas:listSaasSubscriptionLevelAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSaasSubscriptionLevelAccessTokenResult.fromMap);
 }

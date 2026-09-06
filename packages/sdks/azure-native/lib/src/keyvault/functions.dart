@@ -32,6 +32,17 @@ Future<GetKeyResult> getKey(
   return GetKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetKeyResult> getKeyOutput(
+  GetKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the managed HSM Pool.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -50,6 +61,17 @@ Future<GetMHSMPrivateEndpointConnectionResult> getMHSMPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMHSMPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetMHSMPrivateEndpointConnectionResult> getMHSMPrivateEndpointConnectionOutput(
+  GetMHSMPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getMHSMPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMHSMPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the specified managed HSM Pool.
@@ -72,6 +94,17 @@ Future<GetManagedHsmResult> getManagedHsm(
   return GetManagedHsmResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedHsmResult> getManagedHsmOutput(
+  GetManagedHsmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getManagedHsm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedHsmResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the key vault.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -90,6 +123,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets the specified secret.  NOTE: This API is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
@@ -112,6 +156,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Gets the specified Azure key vault.
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -130,4 +185,15 @@ Future<GetVaultResult> getVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetVaultResult> getVaultOutput(
+  GetVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:keyvault:getVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVaultResult.fromMap);
 }

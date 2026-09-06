@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OwnershipControlsRule
 class OwnershipControlsRuleResponse {
   /// Specifies an object ownership rule.
-  final pulumi.Input<String>? objectOwnership;
+  final pulumi.Input<String?>? objectOwnership;
 
   /// Creates a new [OwnershipControlsRuleResponse].
   /// [objectOwnership] Specifies an object ownership rule.

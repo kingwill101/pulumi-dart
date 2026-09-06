@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_elastic_get_organization_api_key_args_doc}
 class GetOrganizationApiKeyArgs {
   /// The User email Id
-  final pulumi.Input<String>? emailId;
+  final pulumi.Input<String?>? emailId;
 
   /// Creates a new [GetOrganizationApiKeyArgs].
   /// [emailId] The User email Id

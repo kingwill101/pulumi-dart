@@ -7,11 +7,11 @@ import 'data_masking_response.dart';
 /// Http message diagnostic settings.
 class HttpMessageDiagnosticResponse {
   /// Body logging settings.
-  final pulumi.Input<BodyDiagnosticSettingsResponse>? body;
+  final pulumi.Input<BodyDiagnosticSettingsResponse?>? body;
   /// Data masking settings.
-  final pulumi.Input<DataMaskingResponse>? dataMasking;
+  final pulumi.Input<DataMaskingResponse?>? dataMasking;
   /// Array of HTTP Headers to log.
-  final pulumi.Input<List<String>>? headers;
+  final pulumi.Input<List<String>?>? headers;
 
   /// Creates a new [HttpMessageDiagnosticResponse].
   /// [body] Body logging settings.

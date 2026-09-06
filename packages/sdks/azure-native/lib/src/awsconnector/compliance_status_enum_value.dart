@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ComplianceStatusEnumValue
 class ComplianceStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ComplianceStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ComplianceStatusEnumValue {
 
   factory ComplianceStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return ComplianceStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

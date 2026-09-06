@@ -6,7 +6,7 @@ import 'csv.dart';
 /// Definition of InputFormatOptions
 class InputFormatOptions {
   /// The options for imported source files in CSV format. The values are Delimiter and HeaderList. The options for imported source files in CSV format. The values are Delimiter and HeaderList.
-  final pulumi.Input<Csv>? csv;
+  final pulumi.Input<Csv?>? csv;
 
   /// Creates a new [InputFormatOptions].
   /// [csv] The options for imported source files in CSV format. The values are Delimiter and HeaderList. The options for imported source files in CSV format. The values are Delimiter and HeaderList.

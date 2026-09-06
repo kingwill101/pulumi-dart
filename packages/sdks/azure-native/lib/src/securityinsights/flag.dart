@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag indicates if this package is in preview.
-enum Flag {
+enum Flag implements pulumi.PulumiEnum<String> {
   valueTrue("true"),
   valueFalse("false");
 
   const Flag(this.wireValue);
+  @override
   final String wireValue;
 
   static Flag fromValue(String value) {

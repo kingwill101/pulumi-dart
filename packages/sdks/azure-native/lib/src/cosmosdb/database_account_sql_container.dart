@@ -498,7 +498,31 @@ class DatabaseAccountSqlContainer extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     partitionKey = registerOutput<ContainerPartitionKeyResponse?>('partitionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerPartitionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rid = registerOutput<String?>('rid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ts = registerOutput<dynamic>('ts');
+    type = registerOutput<String>('type');
+    uniqueKeyPolicy = registerOutput<UniqueKeyPolicyResponse?>('uniqueKeyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UniqueKeyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseAccountSqlContainer] resource.
+  DatabaseAccountSqlContainer.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:DatabaseAccountSqlContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conflictResolutionPolicy = registerOutput<ConflictResolutionPolicyResponse?>('conflictResolutionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConflictResolutionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultTtl = registerOutput<int?>('defaultTtl');
+    etag = registerOutput<String?>('etag');
+    indexingPolicy = registerOutput<IndexingPolicyResponse?>('indexingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IndexingPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    partitionKey = registerOutput<ContainerPartitionKeyResponse?>('partitionKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerPartitionKeyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rid = registerOutput<String?>('rid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ts = registerOutput<dynamic>('ts');
     type = registerOutput<String>('type');
     uniqueKeyPolicy = registerOutput<UniqueKeyPolicyResponse?>('uniqueKeyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UniqueKeyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

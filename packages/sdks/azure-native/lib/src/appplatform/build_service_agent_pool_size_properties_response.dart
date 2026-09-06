@@ -9,7 +9,7 @@ class BuildServiceAgentPoolSizePropertiesResponse {
   /// The memory property of build service agent pool size
   final pulumi.Input<String> memory;
   /// The name of build service agent pool size
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [BuildServiceAgentPoolSizePropertiesResponse].
   /// [cpu] The cpu property of build service agent pool size

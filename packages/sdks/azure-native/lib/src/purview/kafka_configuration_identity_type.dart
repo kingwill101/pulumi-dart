@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identity Type.
-enum KafkaConfigurationIdentityType {
+enum KafkaConfigurationIdentityType implements pulumi.PulumiEnum<String> {
   none("None"),
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned");
 
   const KafkaConfigurationIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static KafkaConfigurationIdentityType fromValue(String value) {

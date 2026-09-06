@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is optional input that contains the authentication that should be used to generate the namespace.
 class CustomLocationPropertiesAuthenticationResponse {
   /// The type of the Custom Locations authentication
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [CustomLocationPropertiesAuthenticationResponse].
   /// [type] The type of the Custom Locations authentication

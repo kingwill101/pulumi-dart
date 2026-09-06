@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A class representing database principal entity.
 class DatabasePrincipalResponse {
   /// Application id - relevant only for application principal type.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Database principal email if exists.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Database principal fully qualified name.
-  final pulumi.Input<String>? fqn;
+  final pulumi.Input<String?>? fqn;
   /// Database principal name.
   final pulumi.Input<String> name;
   /// Database principal role.

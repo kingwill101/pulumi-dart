@@ -8,9 +8,9 @@ class Test {
   /// The commands used in the test.
   final pulumi.Input<List<Command>> commands;
   /// Indicates if this test is active.It doesn't schedule test for not active Test.
-  final pulumi.Input<bool>? isActive;
+  final pulumi.Input<bool?>? isActive;
   /// The type of the test.
-  final pulumi.Input<String> testType;
+  final pulumi.Input<dynamic> testType;
 
   /// Creates a new [Test].
   /// [commands] The commands used in the test.
@@ -34,7 +34,7 @@ class Test {
     return Test(
       commands: pulumi.Input.fromValue(pulumi.Input.decodeList<Command>(map['commands']!, (value) => Command.fromMap((value as Map).cast<String, dynamic>()))),
       isActive: (() { final guardedValue = map['isActive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      testType: pulumi.Input.fromValue(map['testType'] as String),
+      testType: pulumi.Input.fromValue(map['testType']),
     );
   }
 }

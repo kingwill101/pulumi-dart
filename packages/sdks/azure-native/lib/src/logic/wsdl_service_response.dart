@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The WSDL service.
 class WsdlServiceResponse {
   /// The list of endpoints' qualified names.
-  final pulumi.Input<List<String>>? endpointQualifiedNames;
+  final pulumi.Input<List<String>?>? endpointQualifiedNames;
   /// The qualified name.
-  final pulumi.Input<String>? qualifiedName;
+  final pulumi.Input<String?>? qualifiedName;
 
   /// Creates a new [WsdlServiceResponse].
   /// [endpointQualifiedNames] The list of endpoints' qualified names.

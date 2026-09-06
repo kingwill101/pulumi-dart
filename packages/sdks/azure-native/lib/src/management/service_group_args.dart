@@ -9,13 +9,13 @@ import 'service_group_properties.dart';
 /// {@macro pulumi_management_service_group_args_doc}
 class ServiceGroupArgs {
   /// The kind of the serviceGroup.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// ServiceGroup creation request body parameters.
-  final pulumi.Input<ServiceGroupProperties>? properties;
+  final pulumi.Input<ServiceGroupProperties?>? properties;
   /// ServiceGroup Name.
-  final pulumi.Input<String>? serviceGroupName;
+  final pulumi.Input<String?>? serviceGroupName;
   /// The serviceGroup tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceGroupArgs].
   /// [kind] The kind of the serviceGroup.

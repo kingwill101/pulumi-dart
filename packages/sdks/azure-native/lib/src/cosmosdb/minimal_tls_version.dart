@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
-enum MinimalTlsVersion {
+enum MinimalTlsVersion implements pulumi.PulumiEnum<String> {
   valueTls("Tls"),
   valueTls11("Tls11"),
   valueTls12("Tls12");
 
   const MinimalTlsVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static MinimalTlsVersion fromValue(String value) {

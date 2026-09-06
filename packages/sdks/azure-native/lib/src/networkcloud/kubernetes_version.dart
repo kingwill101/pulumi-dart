@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'kubernetes_version_args.dart';
+import 'kubernetes_version_value_response.dart';
 import 'system_data_response.dart';
 
 /// KubernetesVersion represents the available Kubernetes versions for a cluster.
@@ -227,7 +228,7 @@ class KubernetesVersion extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The list of available Kubernetes versions.
-  late final pulumi.Output<List<Map<String, dynamic>>> values;
+  late final pulumi.Output<List<KubernetesVersionValueResponse>> values;
 
   /// Creates a new [KubernetesVersion].
   /// [name] The Pulumi resource name.
@@ -250,8 +251,29 @@ class KubernetesVersion extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    values = registerOutput<List<Map<String, dynamic>>>('values');
+    values = registerOutput<List<KubernetesVersionValueResponse>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesVersionValueResponse>(guardedValue, (value) => KubernetesVersionValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [KubernetesVersion] resource.
+  KubernetesVersion.reference(String urn)
+    : super(
+        'azure-native:networkcloud:KubernetesVersion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    values = registerOutput<List<KubernetesVersionValueResponse>>('values', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesVersionValueResponse>(guardedValue, (value) => KubernetesVersionValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

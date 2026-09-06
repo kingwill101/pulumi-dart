@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU name
-enum AzureSkuName {
+enum AzureSkuName implements pulumi.PulumiEnum<String> {
   valueS1("S1");
 
   const AzureSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSkuName fromValue(String value) {

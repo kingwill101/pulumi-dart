@@ -8,13 +8,13 @@ import 'private_endpoint_acl.dart';
 /// Network ACLs for the resource
 class WebPubSubNetworkACLs {
   /// Azure Networking ACL Action.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<dynamic>? defaultAction;
   /// IP rules for filtering public traffic
-  final pulumi.Input<List<IPRule>>? ipRules;
+  final pulumi.Input<List<IPRule>?>? ipRules;
   /// ACLs for requests from private endpoints
-  final pulumi.Input<List<PrivateEndpointACL>>? privateEndpoints;
+  final pulumi.Input<List<PrivateEndpointACL>?>? privateEndpoints;
   /// Network ACL
-  final pulumi.Input<NetworkACL>? publicNetwork;
+  final pulumi.Input<NetworkACL?>? publicNetwork;
 
   /// Creates a new [WebPubSubNetworkACLs].
   /// [defaultAction] Azure Networking ACL Action.
@@ -39,7 +39,7 @@ class WebPubSubNetworkACLs {
 
   factory WebPubSubNetworkACLs.fromMap(Map<String, dynamic> map) {
     return WebPubSubNetworkACLs(
-      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipRules: (() { final guardedValue = map['ipRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPRule>(guardedValue, (value) => IPRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       privateEndpoints: (() { final guardedValue = map['privateEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointACL>(guardedValue, (value) => PrivateEndpointACL.fromMap((value as Map).cast<String, dynamic>()))); })(),
       publicNetwork: (() { final guardedValue = map['publicNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkACL.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

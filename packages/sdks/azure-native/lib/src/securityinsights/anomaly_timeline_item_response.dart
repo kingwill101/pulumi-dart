@@ -7,28 +7,28 @@ class AnomalyTimelineItemResponse {
   /// The anomaly azure resource id.
   final pulumi.Input<String> azureResourceId;
   /// The anomaly description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The anomaly name.
   final pulumi.Input<String> displayName;
   /// The anomaly end time.
   final pulumi.Input<String> endTimeUtc;
   /// The intent of the anomaly.
-  final pulumi.Input<String>? intent;
+  final pulumi.Input<String?>? intent;
   /// The entity query kind
   /// Expected value is 'Anomaly'.
   final pulumi.Input<String> kind;
   /// The anomaly product name.
-  final pulumi.Input<String>? productName;
+  final pulumi.Input<String?>? productName;
   /// The reasons that cause the anomaly.
-  final pulumi.Input<List<String>>? reasons;
+  final pulumi.Input<List<String>?>? reasons;
   /// The anomaly start time.
   final pulumi.Input<String> startTimeUtc;
   /// The techniques of the anomaly.
-  final pulumi.Input<List<String>>? techniques;
+  final pulumi.Input<List<String>?>? techniques;
   /// The anomaly generated time.
   final pulumi.Input<String> timeGenerated;
   /// The name of the anomaly vendor.
-  final pulumi.Input<String>? vendor;
+  final pulumi.Input<String?>? vendor;
 
   /// Creates a new [AnomalyTimelineItemResponse].
   /// [azureResourceId] The anomaly azure resource id.

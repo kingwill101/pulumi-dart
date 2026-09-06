@@ -6,9 +6,9 @@ import 'sku_profile_vmsize_response.dart';
 /// Specifies the sku profile for the virtual machine scale set. With this property the customer is able to specify a list of VM sizes and an allocation strategy.
 class SkuProfileResponse {
   /// Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.
-  final pulumi.Input<String>? allocationStrategy;
+  final pulumi.Input<String?>? allocationStrategy;
   /// Specifies the VM sizes for the virtual machine scale set.
-  final pulumi.Input<List<SkuProfileVMSizeResponse>>? vmSizes;
+  final pulumi.Input<List<SkuProfileVMSizeResponse>?>? vmSizes;
 
   /// Creates a new [SkuProfileResponse].
   /// [allocationStrategy] Specifies the allocation strategy for the virtual machine scale set based on which the VMs will be allocated.

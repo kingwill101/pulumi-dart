@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The list of Energy services resource's Data Partition Names.
 class DataPartitionNames {
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DataPartitionNames].
   /// [name] Optional.

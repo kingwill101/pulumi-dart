@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.
 class ScopeResponse {
   /// type of target scope
-  final pulumi.Input<String>? scopeType;
+  final pulumi.Input<String?>? scopeType;
   /// list of ARM IDs of the given scope type which will be the target of the given action rule.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [ScopeResponse].
   /// [scopeType] type of target scope

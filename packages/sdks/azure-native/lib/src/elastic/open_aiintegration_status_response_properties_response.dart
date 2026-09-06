@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the OpenAI Integration
 class OpenAIIntegrationStatusResponsePropertiesResponse {
   /// Status of the OpenAI Integration
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [OpenAIIntegrationStatusResponsePropertiesResponse].
   /// [status] Status of the OpenAI Integration

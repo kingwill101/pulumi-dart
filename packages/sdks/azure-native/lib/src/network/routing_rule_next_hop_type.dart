@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Next hop type.
-enum RoutingRuleNextHopType {
+enum RoutingRuleNextHopType implements pulumi.PulumiEnum<String> {
   valueInternet("Internet"),
   valueNoNextHop("NoNextHop"),
   valueVirtualAppliance("VirtualAppliance"),
@@ -7,6 +9,7 @@ enum RoutingRuleNextHopType {
   valueVnetLocal("VnetLocal");
 
   const RoutingRuleNextHopType(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingRuleNextHopType fromValue(String value) {

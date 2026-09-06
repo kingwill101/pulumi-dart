@@ -9,27 +9,27 @@ import 'parameter_definitions_value.dart';
 /// {@macro pulumi_authorization_policy_definition_at_management_group_args_doc}
 class PolicyDefinitionAtManagementGroupArgs {
   /// The policy definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the management group.
   final pulumi.Input<String> managementGroupId;
   /// The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
-  final pulumi.Input<Map<String, ParameterDefinitionsValue>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValue>?>? parameters;
   /// The name of the policy definition to create.
-  final pulumi.Input<String>? policyDefinitionName;
+  final pulumi.Input<String?>? policyDefinitionName;
   /// The policy rule.
   final pulumi.Input<dynamic>? policyRule;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<dynamic>? policyType;
   /// The policy definition version in #.#.# format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// A list of available versions for this policy definition.
-  final pulumi.Input<List<String>>? versions;
+  final pulumi.Input<List<String>?>? versions;
 
   /// Creates a new [PolicyDefinitionAtManagementGroupArgs].
   /// [description] The policy definition description.
@@ -43,19 +43,19 @@ class PolicyDefinitionAtManagementGroupArgs {
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy definition version in #.#.# format.
   /// [versions] A list of available versions for this policy definition.
-  const PolicyDefinitionAtManagementGroupArgs({
+  PolicyDefinitionAtManagementGroupArgs({
     this.description,
     this.displayName,
     required this.managementGroupId,
     this.metadata,
-    this.mode,
+    pulumi.Input<String?>? mode,
     this.parameters,
     this.policyDefinitionName,
     this.policyRule,
     this.policyType,
     this.version,
     this.versions,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Indexed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,7 +83,7 @@ class PolicyDefinitionAtManagementGroupArgs {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterDefinitionsValue>(guardedValue, (value) => ParameterDefinitionsValue.fromMap((value as Map).cast<String, dynamic>()))); })(),
       policyDefinitionName: (() { final guardedValue = map['policyDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyRule: (() { final guardedValue = map['policyRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

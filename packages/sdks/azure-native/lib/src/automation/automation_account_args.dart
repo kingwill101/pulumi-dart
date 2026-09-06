@@ -11,25 +11,25 @@ import 'sku.dart';
 /// {@macro pulumi_automation_automation_account_args_doc}
 class AutomationAccountArgs {
   /// The name of the automation account.
-  final pulumi.Input<String>? automationAccountName;
+  final pulumi.Input<String?>? automationAccountName;
   /// Indicates whether requests using non-AAD authentication are blocked
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Set the encryption properties for the automation account
-  final pulumi.Input<EncryptionProperties>? encryption;
+  final pulumi.Input<EncryptionProperties?>? encryption;
   /// Sets the identity property for automation account
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Gets or sets the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates whether traffic on the non-ARM endpoint (Webhook/Agent) is allowed from the public internet
-  final pulumi.Input<bool>? publicNetworkAccess;
+  final pulumi.Input<bool?>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets account SKU.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Gets or sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AutomationAccountArgs].
   /// [automationAccountName] The name of the automation account.

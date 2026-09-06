@@ -13,29 +13,29 @@ import 'volume_mount_response.dart';
 /// A container instance.
 class ContainerContainerGroupResponse {
   /// The commands to execute within the container instance in exec form.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// The config map.
-  final pulumi.Input<ConfigMapResponse>? configMap;
+  final pulumi.Input<ConfigMapResponse?>? configMap;
   /// The environment variables to set in the container instance.
-  final pulumi.Input<List<EnvironmentVariableContainerGroupResponse>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariableContainerGroupResponse>?>? environmentVariables;
   /// The name of the image used to create the container instance.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The instance view of the container instance. Only valid in response.
   final pulumi.Input<ContainerPropertiesResponseInstanceView> instanceView;
   /// The liveness probe.
-  final pulumi.Input<ContainerProbeResponse>? livenessProbe;
+  final pulumi.Input<ContainerProbeResponse?>? livenessProbe;
   /// The user-provided name of the container instance.
   final pulumi.Input<String> name;
   /// The exposed ports on the container instance.
-  final pulumi.Input<List<ContainerPortResponse>>? ports;
+  final pulumi.Input<List<ContainerPortResponse>?>? ports;
   /// The readiness probe.
-  final pulumi.Input<ContainerProbeResponse>? readinessProbe;
+  final pulumi.Input<ContainerProbeResponse?>? readinessProbe;
   /// The resource requirements of the container instance.
-  final pulumi.Input<ResourceRequirementsResponse>? resources;
+  final pulumi.Input<ResourceRequirementsResponse?>? resources;
   /// The container security properties.
-  final pulumi.Input<SecurityContextDefinitionResponse>? securityContext;
+  final pulumi.Input<SecurityContextDefinitionResponse?>? securityContext;
   /// The volume mounts available to the container instance.
-  final pulumi.Input<List<VolumeMountResponse>>? volumeMounts;
+  final pulumi.Input<List<VolumeMountResponse>?>? volumeMounts;
 
   /// Creates a new [ContainerContainerGroupResponse].
   /// [command] The commands to execute within the container instance in exec form.

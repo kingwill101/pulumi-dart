@@ -9,15 +9,15 @@ import 'configuration_assignment_filter_properties.dart';
 /// {@macro pulumi_maintenance_configuration_assignments_for_subscription_args_doc}
 class ConfigurationAssignmentsForSubscriptionArgs {
   /// The name of the ConfigurationAssignment
-  final pulumi.Input<String>? configurationAssignmentName;
+  final pulumi.Input<String?>? configurationAssignmentName;
   /// Properties of the configuration assignment
-  final pulumi.Input<ConfigurationAssignmentFilterProperties>? filter;
+  final pulumi.Input<ConfigurationAssignmentFilterProperties?>? filter;
   /// Location of the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The maintenance configuration Id
-  final pulumi.Input<String>? maintenanceConfigurationId;
+  final pulumi.Input<String?>? maintenanceConfigurationId;
   /// The unique resourceId
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ConfigurationAssignmentsForSubscriptionArgs].
   /// [configurationAssignmentName] The name of the ConfigurationAssignment

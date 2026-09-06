@@ -5,34 +5,34 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information for connecting to SQL database server
 class SqlConnectionInfoResponse {
   /// Additional connection settings
-  final pulumi.Input<String>? additionalSettings;
+  final pulumi.Input<String?>? additionalSettings;
   /// Authentication type to use for connection
-  final pulumi.Input<String>? authentication;
+  final pulumi.Input<String?>? authentication;
   /// Data source in the format Protocol:MachineName\SQLServerInstanceName,PortNumber
   final pulumi.Input<String> dataSource;
   /// Whether to encrypt the connection
-  final pulumi.Input<bool>? encryptConnection;
+  final pulumi.Input<bool?>? encryptConnection;
   /// Password credential.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Server platform type for connection
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Port for Server
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Represents the ID of an HTTP resource represented by an Azure resource provider.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// server brand version
-  final pulumi.Input<String>? serverBrandVersion;
+  final pulumi.Input<String?>? serverBrandVersion;
   /// name of the server
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// server version
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// Whether to trust the server certificate
-  final pulumi.Input<bool>? trustServerCertificate;
+  final pulumi.Input<bool?>? trustServerCertificate;
   /// Type of connection info
   /// Expected value is 'SqlConnectionInfo'.
   final pulumi.Input<String> type;
   /// User name
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [SqlConnectionInfoResponse].
   /// [additionalSettings] Additional connection settings
@@ -49,11 +49,11 @@ class SqlConnectionInfoResponse {
   /// [trustServerCertificate] Whether to trust the server certificate
   /// [type] Type of connection info
   /// [userName] User name
-  const SqlConnectionInfoResponse({
+  SqlConnectionInfoResponse({
     this.additionalSettings,
     this.authentication,
     required this.dataSource,
-    this.encryptConnection,
+    pulumi.Input<bool?>? encryptConnection,
     this.password,
     this.platform,
     this.port,
@@ -61,10 +61,10 @@ class SqlConnectionInfoResponse {
     this.serverBrandVersion,
     this.serverName,
     this.serverVersion,
-    this.trustServerCertificate,
+    pulumi.Input<bool?>? trustServerCertificate,
     required this.type,
     this.userName,
-  });
+  }) : encryptConnection = encryptConnection ?? pulumi.Input.fromValue(true), trustServerCertificate = trustServerCertificate ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -93,7 +93,7 @@ class SqlConnectionInfoResponse {
       encryptConnection: (() { final guardedValue = map['encryptConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverBrandVersion: (() { final guardedValue = map['serverBrandVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

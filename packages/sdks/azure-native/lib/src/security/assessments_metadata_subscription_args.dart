@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_assessments_metadata_subscription_args_doc}
 class AssessmentsMetadataSubscriptionArgs {
   /// The Assessment Key - Unique key for the assessment type
-  final pulumi.Input<String>? assessmentMetadataName;
+  final pulumi.Input<String?>? assessmentMetadataName;
   /// BuiltIn if the assessment based on built-in Azure Policy definition, Custom if the assessment based on custom Azure Policy definition
-  final pulumi.Input<String> assessmentType;
-  final pulumi.Input<List<String>>? categories;
+  final pulumi.Input<dynamic> assessmentType;
+  final pulumi.Input<List<dynamic>?>? categories;
   /// Human readable description of the assessment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User friendly display name of the assessment
   final pulumi.Input<String> displayName;
   /// The implementation effort required to remediate this assessment
-  final pulumi.Input<String>? implementationEffort;
+  final pulumi.Input<dynamic>? implementationEffort;
   /// True if this assessment is in preview release status
-  final pulumi.Input<bool>? preview;
+  final pulumi.Input<bool?>? preview;
   /// Human readable description of what you should do to mitigate this security issue
-  final pulumi.Input<String>? remediationDescription;
+  final pulumi.Input<String?>? remediationDescription;
   /// The severity level of the assessment
-  final pulumi.Input<String> severity;
-  final pulumi.Input<List<String>>? threats;
+  final pulumi.Input<dynamic> severity;
+  final pulumi.Input<List<dynamic>?>? threats;
   /// The user impact of the assessment
-  final pulumi.Input<String>? userImpact;
+  final pulumi.Input<dynamic>? userImpact;
 
   /// Creates a new [AssessmentsMetadataSubscriptionArgs].
   /// [assessmentMetadataName] The Assessment Key - Unique key for the assessment type
@@ -73,16 +73,16 @@ class AssessmentsMetadataSubscriptionArgs {
   factory AssessmentsMetadataSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return AssessmentsMetadataSubscriptionArgs(
       assessmentMetadataName: (() { final guardedValue = map['assessmentMetadataName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      assessmentType: pulumi.Input.fromValue(map['assessmentType'] as String),
-      categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      assessmentType: pulumi.Input.fromValue(map['assessmentType']),
+      categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      implementationEffort: (() { final guardedValue = map['implementationEffort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      implementationEffort: (() { final guardedValue = map['implementationEffort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       preview: (() { final guardedValue = map['preview']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       remediationDescription: (() { final guardedValue = map['remediationDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severity: pulumi.Input.fromValue(map['severity'] as String),
-      threats: (() { final guardedValue = map['threats']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      userImpact: (() { final guardedValue = map['userImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: pulumi.Input.fromValue(map['severity']),
+      threats: (() { final guardedValue = map['threats']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      userImpact: (() { final guardedValue = map['userImpact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

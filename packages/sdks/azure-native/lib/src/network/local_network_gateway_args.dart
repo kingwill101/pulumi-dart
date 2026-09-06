@@ -10,23 +10,23 @@ import 'bgp_settings.dart';
 /// {@macro pulumi_network_local_network_gateway_args_doc}
 class LocalNetworkGatewayArgs {
   /// Local network gateway's BGP speaker settings.
-  final pulumi.Input<BgpSettings>? bgpSettings;
+  final pulumi.Input<BgpSettings?>? bgpSettings;
   /// FQDN of local network gateway.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// IP address of local network gateway.
-  final pulumi.Input<String>? gatewayIpAddress;
+  final pulumi.Input<String?>? gatewayIpAddress;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Local network site address space.
-  final pulumi.Input<AddressSpace>? localNetworkAddressSpace;
+  final pulumi.Input<AddressSpace?>? localNetworkAddressSpace;
   /// The name of the local network gateway.
-  final pulumi.Input<String>? localNetworkGatewayName;
+  final pulumi.Input<String?>? localNetworkGatewayName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LocalNetworkGatewayArgs].
   /// [bgpSettings] Local network gateway's BGP speaker settings.

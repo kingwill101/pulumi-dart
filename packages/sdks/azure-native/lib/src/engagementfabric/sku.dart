@@ -7,7 +7,7 @@ class SKU {
   /// The name of the SKU
   final pulumi.Input<String> name;
   /// The price tier of the SKU
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SKU].
   /// [name] The name of the SKU

@@ -9,14 +9,14 @@ class VMSizePropertiesResponse {
   /// vCPUs available for that VM size exposed in api response of [List all available
   /// virtual machine sizes in a
   /// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
-  final pulumi.Input<int>? vCPUsAvailable;
+  final pulumi.Input<int?>? vCPUsAvailable;
   /// Specifies the vCPU to physical core ratio. When this property is not specified
   /// in the request body the default behavior is set to the value of vCPUsPerCore
   /// for the VM Size exposed in api response of [List all available virtual machine
   /// sizes in a
   /// region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
   /// **Setting this property to 1 also means that hyper-threading is disabled.**
-  final pulumi.Input<int>? vCPUsPerCore;
+  final pulumi.Input<int?>? vCPUsPerCore;
 
   /// Creates a new [VMSizePropertiesResponse].
   /// [vCPUsAvailable] Specifies the number of vCPUs available for the VM. When this property is not
@@ -35,8 +35,8 @@ class VMSizePropertiesResponse {
 
   factory VMSizePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VMSizePropertiesResponse(
-      vCPUsAvailable: (() { final guardedValue = map['vCPUsAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      vCPUsPerCore: (() { final guardedValue = map['vCPUsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vCPUsAvailable: (() { final guardedValue = map['vCPUsAvailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      vCPUsPerCore: (() { final guardedValue = map['vCPUsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

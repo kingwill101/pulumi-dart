@@ -8,7 +8,7 @@ class MongoDbShardKeySetting {
   /// The fields within the shard key
   final pulumi.Input<List<MongoDbShardKeyField>> fields;
   /// Whether the shard key is unique
-  final pulumi.Input<bool>? isUnique;
+  final pulumi.Input<bool?>? isUnique;
 
   /// Creates a new [MongoDbShardKeySetting].
   /// [fields] The fields within the shard key

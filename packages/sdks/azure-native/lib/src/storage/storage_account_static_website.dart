@@ -35,4 +35,18 @@ class StorageAccountStaticWebsite extends pulumi.CustomResource {
     error404Document = registerOutput<String?>('error404Document');
     indexDocument = registerOutput<String?>('indexDocument');
   }
+
+  /// Creates a typed reference to an existing [StorageAccountStaticWebsite] resource.
+  StorageAccountStaticWebsite.reference(String urn)
+    : super(
+        'azure-native:storage:StorageAccountStaticWebsite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    containerName = registerOutput<String>('containerName');
+    error404Document = registerOutput<String?>('error404Document');
+    indexDocument = registerOutput<String?>('indexDocument');
+  }
 }

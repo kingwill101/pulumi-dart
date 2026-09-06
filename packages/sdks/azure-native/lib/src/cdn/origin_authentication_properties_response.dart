@@ -6,11 +6,11 @@ import 'resource_reference_response.dart';
 /// The JSON object that contains the properties of the origin authentication settings.
 class OriginAuthenticationPropertiesResponse {
   /// The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The type of the authentication for the origin.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-  final pulumi.Input<ResourceReferenceResponse>? userAssignedIdentity;
+  final pulumi.Input<ResourceReferenceResponse?>? userAssignedIdentity;
 
   /// Creates a new [OriginAuthenticationPropertiesResponse].
   /// [scope] The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".

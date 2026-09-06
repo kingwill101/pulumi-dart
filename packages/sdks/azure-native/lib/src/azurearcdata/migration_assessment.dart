@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The migration assessment related configuration.
 class MigrationAssessment {
   /// Indicates if migration assessment is enabled for this SQL Server instance.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [MigrationAssessment].
   /// [enabled] Indicates if migration assessment is enabled for this SQL Server instance.

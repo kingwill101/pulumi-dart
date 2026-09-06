@@ -9,15 +9,15 @@ import 'code_build_project_properties.dart';
 /// {@macro pulumi_awsconnector_code_build_project_args_doc}
 class CodeBuildProjectArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of CodeBuildProject
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<CodeBuildProjectProperties>? properties;
+  final pulumi.Input<CodeBuildProjectProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CodeBuildProjectArgs].
   /// [location] The geo-location where the resource lives

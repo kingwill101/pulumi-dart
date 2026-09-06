@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The rule type.
-enum WebApplicationFirewallRuleType {
+enum WebApplicationFirewallRuleType implements pulumi.PulumiEnum<String> {
   valueMatchRule("MatchRule"),
   valueRateLimitRule("RateLimitRule"),
   valueInvalid("Invalid");
 
   const WebApplicationFirewallRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static WebApplicationFirewallRuleType fromValue(String value) {

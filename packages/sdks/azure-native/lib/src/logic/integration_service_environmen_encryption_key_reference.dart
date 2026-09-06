@@ -6,11 +6,11 @@ import 'resource_reference.dart';
 /// The encryption key details for the integration service environment.
 class IntegrationServiceEnvironmenEncryptionKeyReference {
   /// Gets the key name in the Key Vault.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The key vault reference.
-  final pulumi.Input<ResourceReference>? keyVault;
+  final pulumi.Input<ResourceReference?>? keyVault;
   /// Gets the version of the key specified in the keyName property.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [IntegrationServiceEnvironmenEncryptionKeyReference].
   /// [keyName] Gets the key name in the Key Vault.

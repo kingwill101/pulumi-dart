@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the default action of allow or deny when no other rules match.
-enum DefaultAction {
+enum DefaultAction implements pulumi.PulumiEnum<String> {
   valueAllow("Allow"),
   valueDeny("Deny");
 
   const DefaultAction(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultAction fromValue(String value) {

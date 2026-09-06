@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Visual icon definition of an entity
 class IconDefinition {
   /// Custom data. Base64-encoded SVG data. If set, this overrides the built-in icon.
-  final pulumi.Input<String>? customData;
+  final pulumi.Input<String?>? customData;
   /// Name of the built-in icon, or 'Custom' to use customData
   final pulumi.Input<String> iconName;
 

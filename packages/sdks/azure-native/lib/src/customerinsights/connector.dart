@@ -254,7 +254,32 @@ class Connector extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     connectorId = registerOutput<int>('connectorId');
     connectorName = registerOutput<String?>('connectorName');
-    connectorProperties = registerOutput<Map<String, dynamic>>('connectorProperties');
+    connectorProperties = registerOutput<Map<String, dynamic>>('connectorProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
+    connectorType = registerOutput<String>('connectorType');
+    created = registerOutput<String>('created');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    isInternal = registerOutput<bool?>('isInternal');
+    lastModified = registerOutput<String>('lastModified');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectorId = registerOutput<int>('connectorId');
+    connectorName = registerOutput<String?>('connectorName');
+    connectorProperties = registerOutput<Map<String, dynamic>>('connectorProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); });
     connectorType = registerOutput<String>('connectorType');
     created = registerOutput<String>('created');
     description = registerOutput<String?>('description');

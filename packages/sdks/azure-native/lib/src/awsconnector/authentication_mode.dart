@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AuthenticationMode {
+enum AuthenticationMode implements pulumi.PulumiEnum<String> {
   aPI("API"),
   aPIANDCONFIGMAP("API_AND_CONFIG_MAP"),
   cONFIGMAP("CONFIG_MAP");
 
   const AuthenticationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthenticationMode fromValue(String value) {

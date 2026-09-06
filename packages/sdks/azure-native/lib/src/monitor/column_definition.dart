@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of custom data column.
 class ColumnDefinition {
   /// The name of the column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the column data.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [ColumnDefinition].
   /// [name] The name of the column.
@@ -27,7 +27,7 @@ class ColumnDefinition {
   factory ColumnDefinition.fromMap(Map<String, dynamic> map) {
     return ColumnDefinition(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

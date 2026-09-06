@@ -9,7 +9,7 @@ import 'ec2_instance_properties.dart';
 /// {@macro pulumi_awsconnector_ec2_instance_args_doc}
 class Ec2InstanceArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<Ec2InstanceProperties>? properties;
+  final pulumi.Input<Ec2InstanceProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

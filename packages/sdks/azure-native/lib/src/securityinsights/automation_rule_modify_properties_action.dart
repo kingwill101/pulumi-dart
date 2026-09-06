@@ -5,7 +5,7 @@ import 'incident_properties_action.dart';
 
 /// Describes an automation rule action to modify an object's properties
 class AutomationRuleModifyPropertiesAction {
-  final pulumi.Input<IncidentPropertiesAction>? actionConfiguration;
+  final pulumi.Input<IncidentPropertiesAction?>? actionConfiguration;
   /// The type of the automation rule action.
   /// Expected value is 'ModifyProperties'.
   final pulumi.Input<String> actionType;
@@ -33,7 +33,7 @@ class AutomationRuleModifyPropertiesAction {
     return AutomationRuleModifyPropertiesAction(
       actionConfiguration: (() { final guardedValue = map['actionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IncidentPropertiesAction.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

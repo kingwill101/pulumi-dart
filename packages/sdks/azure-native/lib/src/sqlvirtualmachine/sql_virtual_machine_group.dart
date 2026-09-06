@@ -313,7 +313,31 @@ class SqlVirtualMachineGroup extends pulumi.CustomResource {
     sqlImageOffer = registerOutput<String?>('sqlImageOffer');
     sqlImageSku = registerOutput<String?>('sqlImageSku');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    wsfcDomainProfile = registerOutput<WsfcDomainProfileResponse?>('wsfcDomainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WsfcDomainProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SqlVirtualMachineGroup] resource.
+  SqlVirtualMachineGroup.reference(String urn)
+    : super(
+        'azure-native:sqlvirtualmachine:SqlVirtualMachineGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterConfiguration = registerOutput<String>('clusterConfiguration');
+    clusterManagerType = registerOutput<String>('clusterManagerType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    scaleType = registerOutput<String>('scaleType');
+    sqlImageOffer = registerOutput<String?>('sqlImageOffer');
+    sqlImageSku = registerOutput<String?>('sqlImageSku');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     wsfcDomainProfile = registerOutput<WsfcDomainProfileResponse?>('wsfcDomainProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WsfcDomainProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

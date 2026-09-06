@@ -8,21 +8,21 @@ import 'suppression_config_response.dart';
 /// Action rule with suppression configuration
 class SuppressionResponse {
   /// conditions on which alerts will be filtered
-  final pulumi.Input<ConditionsResponse>? conditions;
+  final pulumi.Input<ConditionsResponse?>? conditions;
   /// Creation time of action rule. Date-Time in ISO-8601 format.
   final pulumi.Input<String> createdAt;
   /// Created by user name.
   final pulumi.Input<String> createdBy;
   /// Description of action rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Last updated time of action rule. Date-Time in ISO-8601 format.
   final pulumi.Input<String> lastModifiedAt;
   /// Last modified by user name.
   final pulumi.Input<String> lastModifiedBy;
   /// scope on which action rule will apply
-  final pulumi.Input<ScopeResponse>? scope;
+  final pulumi.Input<ScopeResponse?>? scope;
   /// Indicates if the given action rule is enabled or disabled
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// suppression configuration for the action rule
   final pulumi.Input<SuppressionConfigResponse> suppressionConfig;
   /// Indicates type of action rule

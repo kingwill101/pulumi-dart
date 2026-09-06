@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of completion operation.
-enum CompletionOperationTypes {
+enum CompletionOperationTypes implements pulumi.PulumiEnum<String> {
   valueDoNothing("DoNothing"),
   valueDeleteFile("DeleteFile"),
   valueMoveFile("MoveFile");
 
   const CompletionOperationTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static CompletionOperationTypes fromValue(String value) {

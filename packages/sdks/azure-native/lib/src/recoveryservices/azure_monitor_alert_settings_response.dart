@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for Azure Monitor based alerts
 class AzureMonitorAlertSettingsResponse {
-  final pulumi.Input<String>? alertsForAllFailoverIssues;
-  final pulumi.Input<String>? alertsForAllJobFailures;
-  final pulumi.Input<String>? alertsForAllReplicationIssues;
+  final pulumi.Input<String?>? alertsForAllFailoverIssues;
+  final pulumi.Input<String?>? alertsForAllJobFailures;
+  final pulumi.Input<String?>? alertsForAllReplicationIssues;
 
   /// Creates a new [AzureMonitorAlertSettingsResponse].
   /// [alertsForAllFailoverIssues] Optional.

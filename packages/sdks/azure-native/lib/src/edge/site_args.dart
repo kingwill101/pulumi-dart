@@ -9,11 +9,11 @@ import 'site_properties.dart';
 /// {@macro pulumi_edge_site_args_doc}
 class SiteArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SiteProperties>? properties;
+  final pulumi.Input<SiteProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Site
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
 
   /// Creates a new [SiteArgs].
   /// [properties] The resource-specific properties for this resource.

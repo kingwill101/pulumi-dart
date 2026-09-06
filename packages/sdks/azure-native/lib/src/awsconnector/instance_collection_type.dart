@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceCollectionType {
+enum InstanceCollectionType implements pulumi.PulumiEnum<String> {
   iNSTANCEFLEET("INSTANCE_FLEET"),
   iNSTANCEGROUP("INSTANCE_GROUP");
 
   const InstanceCollectionType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceCollectionType fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The cluster definition.
 class ClusterDefinition {
   /// The link to the blueprint.
-  final pulumi.Input<String>? blueprint;
+  final pulumi.Input<String?>? blueprint;
   /// The versions of different services in the cluster.
-  final pulumi.Input<Map<String, String>>? componentVersion;
+  final pulumi.Input<Map<String, String>?>? componentVersion;
   /// The cluster configurations.
   final pulumi.Input<dynamic>? configurations;
   /// The type of cluster.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [ClusterDefinition].
   /// [blueprint] The link to the blueprint.

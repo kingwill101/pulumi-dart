@@ -6,9 +6,9 @@ import 'emission_policy_destination_response.dart';
 /// Emission policy properties.
 class EmissionPoliciesPropertiesFormatResponse {
   /// Emission policy destinations.
-  final pulumi.Input<List<EmissionPolicyDestinationResponse>>? emissionDestinations;
+  final pulumi.Input<List<EmissionPolicyDestinationResponse>?>? emissionDestinations;
   /// Emission format type.
-  final pulumi.Input<String>? emissionType;
+  final pulumi.Input<String?>? emissionType;
 
   /// Creates a new [EmissionPoliciesPropertiesFormatResponse].
   /// [emissionDestinations] Emission policy destinations.

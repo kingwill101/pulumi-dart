@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Caching behavior for the requests
-enum QueryStringBehavior {
+enum QueryStringBehavior implements pulumi.PulumiEnum<String> {
   include("Include"),
   includeAll("IncludeAll"),
   exclude("Exclude"),
   excludeAll("ExcludeAll");
 
   const QueryStringBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static QueryStringBehavior fromValue(String value) {

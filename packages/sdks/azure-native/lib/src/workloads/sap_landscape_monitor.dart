@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sap_landscape_monitor_args.dart';
+import 'sap_landscape_monitor_metric_thresholds_response.dart';
 import 'sap_landscape_monitor_properties_grouping_response.dart';
 import 'system_data_response.dart';
 
@@ -318,7 +319,7 @@ class SapLandscapeMonitor extends pulumi.CustomResource {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-  late final pulumi.Output<List<Map<String, dynamic>>?> topMetricsThresholds;
+  late final pulumi.Output<List<SapLandscapeMonitorMetricThresholdsResponse>?> topMetricsThresholds;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -341,7 +342,25 @@ class SapLandscapeMonitor extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    topMetricsThresholds = registerOutput<List<Map<String, dynamic>>?>('topMetricsThresholds');
+    topMetricsThresholds = registerOutput<List<SapLandscapeMonitorMetricThresholdsResponse>?>('topMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholdsResponse>(guardedValue, (value) => SapLandscapeMonitorMetricThresholdsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SapLandscapeMonitor] resource.
+  SapLandscapeMonitor.reference(String urn)
+    : super(
+        'azure-native:workloads:SapLandscapeMonitor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    grouping = registerOutput<SapLandscapeMonitorPropertiesGroupingResponse?>('grouping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SapLandscapeMonitorPropertiesGroupingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topMetricsThresholds = registerOutput<List<SapLandscapeMonitorMetricThresholdsResponse>?>('topMetricsThresholds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SapLandscapeMonitorMetricThresholdsResponse>(guardedValue, (value) => SapLandscapeMonitorMetricThresholdsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

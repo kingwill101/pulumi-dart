@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutoscaleSettingsResponse {
   /// Represents maximum throughput, the resource can scale up to.
-  final pulumi.Input<int>? maxThroughput;
+  final pulumi.Input<int?>? maxThroughput;
 
   /// Creates a new [AutoscaleSettingsResponse].
   /// [maxThroughput] Represents maximum throughput, the resource can scale up to.
@@ -20,7 +20,7 @@ class AutoscaleSettingsResponse {
 
   factory AutoscaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AutoscaleSettingsResponse(
-      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

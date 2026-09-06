@@ -752,4 +752,28 @@ class SoftwareUpdateConfigurationByName extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updateConfiguration = registerOutput<UpdateConfigurationResponse>('updateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [SoftwareUpdateConfigurationByName] resource.
+  SoftwareUpdateConfigurationByName.reference(String urn)
+    : super(
+        'azure-native:automation:SoftwareUpdateConfigurationByName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<String>('createdBy');
+    creationTime = registerOutput<String>('creationTime');
+    error = registerOutput<AutomationErrorResponseResponse?>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationErrorResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedBy = registerOutput<String>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    scheduleInfo = registerOutput<SUCSchedulePropertiesResponse>('scheduleInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SUCSchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tasks = registerOutput<SoftwareUpdateConfigurationTasksResponse?>('tasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoftwareUpdateConfigurationTasksResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateConfiguration = registerOutput<UpdateConfigurationResponse>('updateConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

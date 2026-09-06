@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Tmpfs
 class TmpfsResponse {
   /// The absolute file path where the tmpfs volume is to be mounted.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// The list of tmpfs volume mount options.
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// The maximum size (in MiB) of the tmpfs volume.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
 
   /// Creates a new [TmpfsResponse].
   /// [containerPath] The absolute file path where the tmpfs volume is to be mounted.
@@ -33,7 +33,7 @@ class TmpfsResponse {
     return TmpfsResponse(
       containerPath: (() { final guardedValue = map['containerPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mountOptions: (() { final guardedValue = map['mountOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

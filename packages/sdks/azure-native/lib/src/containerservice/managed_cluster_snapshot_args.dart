@@ -9,17 +9,17 @@ import 'creation_data.dart';
 /// {@macro pulumi_containerservice_managed_cluster_snapshot_args_doc}
 class ManagedClusterSnapshotArgs {
   /// CreationData to be used to specify the source resource ID to create this snapshot.
-  final pulumi.Input<CreationData>? creationData;
+  final pulumi.Input<CreationData?>? creationData;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The type of a snapshot. The default is NodePool.
-  final pulumi.Input<String>? snapshotType;
+  final pulumi.Input<dynamic>? snapshotType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ManagedClusterSnapshotArgs].
   /// [creationData] CreationData to be used to specify the source resource ID to create this snapshot.
@@ -54,7 +54,7 @@ class ManagedClusterSnapshotArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotType: (() { final guardedValue = map['snapshotType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

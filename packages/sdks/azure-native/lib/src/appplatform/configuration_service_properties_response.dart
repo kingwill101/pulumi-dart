@@ -8,7 +8,7 @@ import 'configuration_service_settings_response.dart';
 /// Application Configuration Service properties payload
 class ConfigurationServicePropertiesResponse {
   /// The generation of the Application Configuration Service.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<String?>? generation;
   /// Collection of instances belong to Application Configuration Service.
   final pulumi.Input<List<ConfigurationServiceInstanceResponse>> instances;
   /// State of the Application Configuration Service.
@@ -16,7 +16,7 @@ class ConfigurationServicePropertiesResponse {
   /// The requested resource quantity for required CPU and Memory.
   final pulumi.Input<ConfigurationServiceResourceRequestsResponse> resourceRequests;
   /// The settings of Application Configuration Service.
-  final pulumi.Input<ConfigurationServiceSettingsResponse>? settings;
+  final pulumi.Input<ConfigurationServiceSettingsResponse?>? settings;
 
   /// Creates a new [ConfigurationServicePropertiesResponse].
   /// [generation] The generation of the Application Configuration Service.
@@ -24,13 +24,13 @@ class ConfigurationServicePropertiesResponse {
   /// [provisioningState] State of the Application Configuration Service.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
   /// [settings] The settings of Application Configuration Service.
-  const ConfigurationServicePropertiesResponse({
-    this.generation,
+  ConfigurationServicePropertiesResponse({
+    pulumi.Input<String?>? generation,
     required this.instances,
     required this.provisioningState,
     required this.resourceRequests,
     this.settings,
-  });
+  }) : generation = generation ?? pulumi.Input.fromValue('Gen1');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

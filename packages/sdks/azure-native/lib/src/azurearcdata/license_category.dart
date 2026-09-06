@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This property represents the choice between SQL Server Core and ESU licenses.
-enum LicenseCategory {
+enum LicenseCategory implements pulumi.PulumiEnum<String> {
   valueCore("Core");
 
   const LicenseCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseCategory fromValue(String value) {

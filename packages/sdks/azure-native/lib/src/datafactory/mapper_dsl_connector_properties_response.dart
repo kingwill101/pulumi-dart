@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connector properties of a CDC table in terms of name / value pairs.
 class MapperDslConnectorPropertiesResponse {
   /// Name of the property.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the property.
   final pulumi.Input<dynamic>? value;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current mode of Maintenance Mode Configuration
-enum Mode {
+enum Mode implements pulumi.PulumiEnum<String> {
   valueOn("On"),
   valueCanNotDelete("CanNotDelete"),
   valueOff("Off"),
@@ -7,6 +9,7 @@ enum Mode {
   valueAdvanced("Advanced");
 
   const Mode(this.wireValue);
+  @override
   final String wireValue;
 
   static Mode fromValue(String value) {

@@ -62,6 +62,17 @@ Future<GetArtifactManifestResult> getArtifactManifest(
   return GetArtifactManifestResult.fromMap(result);
 }
 
+pulumi.Output<GetArtifactManifestResult> getArtifactManifestOutput(
+  GetArtifactManifestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getArtifactManifest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArtifactManifestResult.fromMap);
+}
+
 /// Gets information about the specified artifact store.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -80,6 +91,17 @@ Future<GetArtifactStoreResult> getArtifactStore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetArtifactStoreResult.fromMap(result);
+}
+
+pulumi.Output<GetArtifactStoreResult> getArtifactStoreOutput(
+  GetArtifactStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getArtifactStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArtifactStoreResult.fromMap);
 }
 
 /// Gets information about the specified configuration group schema.
@@ -102,6 +124,17 @@ Future<GetConfigurationGroupSchemaResult> getConfigurationGroupSchema(
   return GetConfigurationGroupSchemaResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationGroupSchemaResult> getConfigurationGroupSchemaOutput(
+  GetConfigurationGroupSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getConfigurationGroupSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationGroupSchemaResult.fromMap);
+}
+
 /// Gets information about the specified hybrid configuration group values.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -122,6 +155,17 @@ Future<GetConfigurationGroupValueResult> getConfigurationGroupValue(
   return GetConfigurationGroupValueResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationGroupValueResult> getConfigurationGroupValueOutput(
+  GetConfigurationGroupValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getConfigurationGroupValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationGroupValueResult.fromMap);
+}
+
 /// Gets information about the specified device.
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -138,6 +182,17 @@ Future<GetDeviceResult> getDevice(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeviceResult.fromMap(result);
+}
+
+pulumi.Output<GetDeviceResult> getDeviceOutput(
+  GetDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceResult.fromMap);
 }
 
 /// Gets information about the specified network function resource.
@@ -160,6 +215,17 @@ Future<GetNetworkFunctionResult> getNetworkFunction(
   return GetNetworkFunctionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFunctionResult> getNetworkFunctionOutput(
+  GetNetworkFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getNetworkFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFunctionResult.fromMap);
+}
+
 /// Gets information about the specified networkFunctionDefinition group.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -178,6 +244,17 @@ Future<GetNetworkFunctionDefinitionGroupResult> getNetworkFunctionDefinitionGrou
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFunctionDefinitionGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFunctionDefinitionGroupResult> getNetworkFunctionDefinitionGroupOutput(
+  GetNetworkFunctionDefinitionGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getNetworkFunctionDefinitionGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFunctionDefinitionGroupResult.fromMap);
 }
 
 /// Gets information about a network function definition version.
@@ -200,6 +277,17 @@ Future<GetNetworkFunctionDefinitionVersionResult> getNetworkFunctionDefinitionVe
   return GetNetworkFunctionDefinitionVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFunctionDefinitionVersionResult> getNetworkFunctionDefinitionVersionOutput(
+  GetNetworkFunctionDefinitionVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getNetworkFunctionDefinitionVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFunctionDefinitionVersionResult.fromMap);
+}
+
 /// Gets information about the specified networkServiceDesign group.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -218,6 +306,17 @@ Future<GetNetworkServiceDesignGroupResult> getNetworkServiceDesignGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkServiceDesignGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkServiceDesignGroupResult> getNetworkServiceDesignGroupOutput(
+  GetNetworkServiceDesignGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getNetworkServiceDesignGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkServiceDesignGroupResult.fromMap);
 }
 
 /// Gets information about a network service design version.
@@ -240,6 +339,17 @@ Future<GetNetworkServiceDesignVersionResult> getNetworkServiceDesignVersion(
   return GetNetworkServiceDesignVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkServiceDesignVersionResult> getNetworkServiceDesignVersionOutput(
+  GetNetworkServiceDesignVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getNetworkServiceDesignVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkServiceDesignVersionResult.fromMap);
+}
+
 /// Gets information about the specified publisher.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -258,6 +368,17 @@ Future<GetPublisherResult> getPublisher(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublisherResult.fromMap(result);
+}
+
+pulumi.Output<GetPublisherResult> getPublisherOutput(
+  GetPublisherArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getPublisher',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublisherResult.fromMap);
 }
 
 /// Gets information about the specified network site.
@@ -280,6 +401,17 @@ Future<GetSiteResult> getSite(
   return GetSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetSiteResult> getSiteOutput(
+  GetSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteResult.fromMap);
+}
+
 /// Gets information about the specified site network service.
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -300,6 +432,17 @@ Future<GetSiteNetworkServiceResult> getSiteNetworkService(
   return GetSiteNetworkServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetSiteNetworkServiceResult> getSiteNetworkServiceOutput(
+  GetSiteNetworkServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getSiteNetworkService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteNetworkServiceResult.fromMap);
+}
+
 /// Gets information about the specified vendor.
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -316,6 +459,17 @@ Future<GetVendorResult> getVendor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVendorResult.fromMap(result);
+}
+
+pulumi.Output<GetVendorResult> getVendorOutput(
+  GetVendorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getVendor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVendorResult.fromMap);
 }
 
 /// Gets the preview information of a vendor sku.
@@ -336,6 +490,17 @@ Future<GetVendorSkuPreviewResult> getVendorSkuPreview(
   return GetVendorSkuPreviewResult.fromMap(result);
 }
 
+pulumi.Output<GetVendorSkuPreviewResult> getVendorSkuPreviewOutput(
+  GetVendorSkuPreviewArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getVendorSkuPreview',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVendorSkuPreviewResult.fromMap);
+}
+
 /// Gets information about the specified sku.
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -352,6 +517,17 @@ Future<GetVendorSkusResult> getVendorSkus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVendorSkusResult.fromMap(result);
+}
+
+pulumi.Output<GetVendorSkusResult> getVendorSkusOutput(
+  GetVendorSkusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:getVendorSkus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVendorSkusResult.fromMap);
 }
 
 /// List credential for publishing artifacts defined in artifact manifest.
@@ -374,6 +550,17 @@ Future<ListArtifactManifestCredentialResult> listArtifactManifestCredential(
   return ListArtifactManifestCredentialResult.fromMap(result);
 }
 
+pulumi.Output<ListArtifactManifestCredentialResult> listArtifactManifestCredentialOutput(
+  ListArtifactManifestCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:listArtifactManifestCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListArtifactManifestCredentialResult.fromMap);
+}
+
 /// List network fabric controllers to artifact stores
 ///
 /// Uses Azure REST API version 2024-04-15.
@@ -390,6 +577,17 @@ Future<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult> listArtif
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap(result);
+}
+
+pulumi.Output<ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult> listArtifactStoreNetworkFabricControllerPrivateEndPointsOutput(
+  ListArtifactStoreNetworkFabricControllerPrivateEndPointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:listArtifactStoreNetworkFabricControllerPrivateEndPoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult.fromMap);
 }
 
 /// List manual private endpoints on artifact stores
@@ -410,6 +608,17 @@ Future<ListArtifactStorePrivateEndPointsResult> listArtifactStorePrivateEndPoint
   return ListArtifactStorePrivateEndPointsResult.fromMap(result);
 }
 
+pulumi.Output<ListArtifactStorePrivateEndPointsResult> listArtifactStorePrivateEndPointsOutput(
+  ListArtifactStorePrivateEndPointsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:listArtifactStorePrivateEndPoints',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListArtifactStorePrivateEndPointsResult.fromMap);
+}
+
 /// List the registration key for the device.
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -428,6 +637,17 @@ Future<ListDeviceRegistrationKeyResult> listDeviceRegistrationKey(
   return ListDeviceRegistrationKeyResult.fromMap(result);
 }
 
+pulumi.Output<ListDeviceRegistrationKeyResult> listDeviceRegistrationKeyOutput(
+  ListDeviceRegistrationKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:listDeviceRegistrationKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDeviceRegistrationKeyResult.fromMap);
+}
+
 /// Generate credentials for publishing SKU images.
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -444,4 +664,15 @@ Future<ListVendorSkusCredentialResult> listVendorSkusCredential(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListVendorSkusCredentialResult.fromMap(result);
+}
+
+pulumi.Output<ListVendorSkusCredentialResult> listVendorSkusCredentialOutput(
+  ListVendorSkusCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hybridnetwork:listVendorSkusCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVendorSkusCredentialResult.fromMap);
 }

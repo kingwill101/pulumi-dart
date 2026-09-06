@@ -6,7 +6,7 @@ import 'transfer_all_details.dart';
 /// Map of filter type and the details to transfer all data. This field is required only if the TransferConfigurationType is given as TransferAll
 class TransferConfigurationTransferAllDetails {
   /// Details to transfer all data.
-  final pulumi.Input<TransferAllDetails>? include;
+  final pulumi.Input<TransferAllDetails?>? include;
 
   /// Creates a new [TransferConfigurationTransferAllDetails].
   /// [include] Details to transfer all data.

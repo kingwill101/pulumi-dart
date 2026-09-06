@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Synapse notebook reference type.
-enum NotebookReferenceType {
+enum NotebookReferenceType implements pulumi.PulumiEnum<String> {
   notebookReference("NotebookReference");
 
   const NotebookReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static NotebookReferenceType fromValue(String value) {

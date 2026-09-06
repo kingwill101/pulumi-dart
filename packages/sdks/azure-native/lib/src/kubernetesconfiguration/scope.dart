@@ -7,9 +7,9 @@ import 'scope_namespace.dart';
 /// Scope of the extension. It can be either Cluster or Namespace; but not both.
 class Scope {
   /// Specifies that the scope of the extension is Cluster
-  final pulumi.Input<ScopeCluster>? cluster;
+  final pulumi.Input<ScopeCluster?>? cluster;
   /// Specifies that the scope of the extension is Namespace
-  final pulumi.Input<ScopeNamespace>? namespace;
+  final pulumi.Input<ScopeNamespace?>? namespace;
 
   /// Creates a new [Scope].
   /// [cluster] Specifies that the scope of the extension is Cluster

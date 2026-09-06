@@ -4,29 +4,29 @@
 /// Result data returned by listDatabaseKeys.
 class ListDatabaseKeysResult {
   /// The current primary key that clients can use to authenticate
-  final String primaryKey;
+  final String? primaryKey;
   /// The current secondary key that clients can use to authenticate
-  final String secondaryKey;
+  final String? secondaryKey;
 
   /// Creates a new [ListDatabaseKeysResult].
   /// [primaryKey] The current primary key that clients can use to authenticate
   /// [secondaryKey] The current secondary key that clients can use to authenticate
   const ListDatabaseKeysResult({
-    required this.primaryKey,
-    required this.secondaryKey,
+    this.primaryKey,
+    this.secondaryKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryKey': primaryKey,
-      'secondaryKey': secondaryKey,
+      'primaryKey': ?primaryKey,
+      'secondaryKey': ?secondaryKey,
     };
   }
 
   factory ListDatabaseKeysResult.fromMap(Map<String, dynamic> map) {
     return ListDatabaseKeysResult(
-      primaryKey: map['primaryKey'] as String,
-      secondaryKey: map['secondaryKey'] as String,
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

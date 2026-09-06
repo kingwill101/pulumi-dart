@@ -24,25 +24,25 @@ class GetVirtualMachineScaleSetResult {
   /// Policy for automatic repairs.
   final AutomaticRepairsPolicyResponse? automaticRepairsPolicy;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Optional property which must either be set to True or omitted.
   final bool? constrainedMaximumCapacity;
   /// When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
   final bool? doNotRunExtensionsOnOverprovisionedVMs;
   /// Etag is property returned in Create/Update/Get response of the VMSS, so that customer can supply it in the header to ensure optimistic updates
-  final String etag;
+  final String? etag;
   /// The extended location of the Virtual Machine Scale Set.
   final ExtendedLocationResponse? extendedLocation;
   /// Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
   final SubResourceResponse? hostGroup;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The identity of the virtual machine scale set, if configured.
   final VirtualMachineScaleSetIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Specifies the orchestration mode for the virtual machine scale set.
   final String? orchestrationMode;
   /// Specifies whether the Virtual Machine Scale Set should be overprovisioned.
@@ -54,7 +54,7 @@ class GetVirtualMachineScaleSetResult {
   /// Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
   final PriorityMixPolicyResponse? priorityMixPolicy;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
   final SubResourceResponse? proximityPlacementGroup;
   /// Policy for Resiliency
@@ -72,15 +72,15 @@ class GetVirtualMachineScaleSetResult {
   /// Specifies the Spot Restore properties for the virtual machine scale set.
   final SpotRestorePolicyResponse? spotRestorePolicy;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Specifies the time at which the Virtual Machine Scale Set resource was created. Minimum api-version: 2021-11-01.
-  final String timeCreated;
+  final String? timeCreated;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Specifies the ID which uniquely identifies a Virtual Machine Scale Set.
-  final String uniqueId;
+  final String? uniqueId;
   /// The upgrade policy.
   final UpgradePolicyResponse? upgradePolicy;
   /// The virtual machine profile.
@@ -132,22 +132,22 @@ class GetVirtualMachineScaleSetResult {
   const GetVirtualMachineScaleSetResult({
     this.additionalCapabilities,
     this.automaticRepairsPolicy,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.constrainedMaximumCapacity,
     this.doNotRunExtensionsOnOverprovisionedVMs,
-    required this.etag,
+    this.etag,
     this.extendedLocation,
     this.hostGroup,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.orchestrationMode,
     this.overprovision,
     this.plan,
     this.platformFaultDomainCount,
     this.priorityMixPolicy,
-    required this.provisioningState,
+    this.provisioningState,
     this.proximityPlacementGroup,
     this.resiliencyPolicy,
     this.scaleInPolicy,
@@ -156,11 +156,11 @@ class GetVirtualMachineScaleSetResult {
     this.sku,
     this.skuProfile,
     this.spotRestorePolicy,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.timeCreated,
-    required this.type,
-    required this.uniqueId,
+    this.timeCreated,
+    this.type,
+    this.uniqueId,
     this.upgradePolicy,
     this.virtualMachineProfile,
     this.zonalPlatformFaultDomainAlignMode,
@@ -172,22 +172,22 @@ class GetVirtualMachineScaleSetResult {
     return <String, dynamic>{
       'additionalCapabilities': ?additionalCapabilities?.toMap(),
       'automaticRepairsPolicy': ?automaticRepairsPolicy?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'constrainedMaximumCapacity': ?constrainedMaximumCapacity,
       'doNotRunExtensionsOnOverprovisionedVMs': ?doNotRunExtensionsOnOverprovisionedVMs,
-      'etag': etag,
+      'etag': ?etag,
       'extendedLocation': ?extendedLocation?.toMap(),
       'hostGroup': ?hostGroup?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'orchestrationMode': ?orchestrationMode,
       'overprovision': ?overprovision,
       'plan': ?plan?.toMap(),
       'platformFaultDomainCount': ?platformFaultDomainCount,
       'priorityMixPolicy': ?priorityMixPolicy?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'proximityPlacementGroup': ?proximityPlacementGroup?.toMap(),
       'resiliencyPolicy': ?resiliencyPolicy?.toMap(),
       'scaleInPolicy': ?scaleInPolicy?.toMap(),
@@ -196,11 +196,11 @@ class GetVirtualMachineScaleSetResult {
       'sku': ?sku?.toMap(),
       'skuProfile': ?skuProfile?.toMap(),
       'spotRestorePolicy': ?spotRestorePolicy?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'timeCreated': timeCreated,
-      'type': type,
-      'uniqueId': uniqueId,
+      'timeCreated': ?timeCreated,
+      'type': ?type,
+      'uniqueId': ?uniqueId,
       'upgradePolicy': ?upgradePolicy?.toMap(),
       'virtualMachineProfile': ?virtualMachineProfile?.toMap(),
       'zonalPlatformFaultDomainAlignMode': ?zonalPlatformFaultDomainAlignMode,
@@ -213,22 +213,22 @@ class GetVirtualMachineScaleSetResult {
     return GetVirtualMachineScaleSetResult(
       additionalCapabilities: (() { final guardedValue = map['additionalCapabilities']; if (guardedValue == null) return null; return AdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       automaticRepairsPolicy: (() { final guardedValue = map['automaticRepairsPolicy']; if (guardedValue == null) return null; return AutomaticRepairsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       constrainedMaximumCapacity: (() { final guardedValue = map['constrainedMaximumCapacity']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       doNotRunExtensionsOnOverprovisionedVMs: (() { final guardedValue = map['doNotRunExtensionsOnOverprovisionedVMs']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hostGroup: (() { final guardedValue = map['hostGroup']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return VirtualMachineScaleSetIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orchestrationMode: (() { final guardedValue = map['orchestrationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       overprovision: (() { final guardedValue = map['overprovision']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       priorityMixPolicy: (() { final guardedValue = map['priorityMixPolicy']; if (guardedValue == null) return null; return PriorityMixPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       resiliencyPolicy: (() { final guardedValue = map['resiliencyPolicy']; if (guardedValue == null) return null; return ResiliencyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       scaleInPolicy: (() { final guardedValue = map['scaleInPolicy']; if (guardedValue == null) return null; return ScaleInPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
@@ -237,11 +237,11 @@ class GetVirtualMachineScaleSetResult {
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       skuProfile: (() { final guardedValue = map['skuProfile']; if (guardedValue == null) return null; return SkuProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       spotRestorePolicy: (() { final guardedValue = map['spotRestorePolicy']; if (guardedValue == null) return null; return SpotRestorePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      timeCreated: map['timeCreated'] as String,
-      type: map['type'] as String,
-      uniqueId: map['uniqueId'] as String,
+      timeCreated: (() { final guardedValue = map['timeCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueId: (() { final guardedValue = map['uniqueId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return UpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       virtualMachineProfile: (() { final guardedValue = map['virtualMachineProfile']; if (guardedValue == null) return null; return VirtualMachineScaleSetVMProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zonalPlatformFaultDomainAlignMode: (() { final guardedValue = map['zonalPlatformFaultDomainAlignMode']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage setting
 class StorageSettingResponse {
   /// Gets or sets the type of the datastore.
-  final pulumi.Input<String>? datastoreType;
+  final pulumi.Input<String?>? datastoreType;
   /// Gets or sets the type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [StorageSettingResponse].
   /// [datastoreType] Gets or sets the type of the datastore.

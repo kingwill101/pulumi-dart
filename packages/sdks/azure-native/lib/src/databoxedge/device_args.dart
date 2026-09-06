@@ -11,19 +11,19 @@ import 'sku.dart';
 /// {@macro pulumi_databoxedge_device_args_doc}
 class DeviceArgs {
   /// The details of data-residency related properties for this resource
-  final pulumi.Input<DataResidency>? dataResidency;
+  final pulumi.Input<DataResidency?>? dataResidency;
   /// The device name.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Msi identity of the resource
-  final pulumi.Input<ResourceIdentity>? identity;
+  final pulumi.Input<ResourceIdentity?>? identity;
   /// The location of the device. This is a supported and registered Azure geographical region (for example, West US, East US, or Southeast Asia). The geographical region of a device cannot be changed once it is created, but if an identical geographical region is specified on update, the request will succeed.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU type.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// The list of tags that describe the device. These tags can be used to view and group this device (across resource groups).
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DeviceArgs].
   /// [dataResidency] The details of data-residency related properties for this resource

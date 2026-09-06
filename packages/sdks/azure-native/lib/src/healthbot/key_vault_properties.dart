@@ -9,9 +9,9 @@ class KeyVaultProperties {
   /// The Uri of the key vault.
   final pulumi.Input<String> keyVaultUri;
   /// The version of the key vault key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// The user assigned identity (ARM resource id) that has access to the key.
-  final pulumi.Input<String>? userIdentity;
+  final pulumi.Input<String?>? userIdentity;
 
   /// Creates a new [KeyVaultProperties].
   /// [keyName] The name of the key vault key.

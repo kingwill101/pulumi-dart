@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of data destination.
-enum AnalyticsConnectorDataDestinationType {
+enum AnalyticsConnectorDataDestinationType implements pulumi.PulumiEnum<String> {
   valueDatalake("datalake");
 
   const AnalyticsConnectorDataDestinationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AnalyticsConnectorDataDestinationType fromValue(String value) {

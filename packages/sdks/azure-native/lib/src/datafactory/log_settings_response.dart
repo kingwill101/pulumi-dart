@@ -7,7 +7,7 @@ import 'log_location_settings_response.dart';
 /// Log settings.
 class LogSettingsResponse {
   /// Specifies settings for copy activity log.
-  final pulumi.Input<CopyActivityLogSettingsResponse>? copyActivityLogSettings;
+  final pulumi.Input<CopyActivityLogSettingsResponse?>? copyActivityLogSettings;
   /// Specifies whether to enable copy activity log. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableCopyActivityLog;
   /// Log location settings customer needs to provide when enabling log.

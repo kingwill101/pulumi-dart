@@ -6,7 +6,7 @@ import 'maximum_execution_frequency_enum_value.dart';
 /// Definition of ConfigSnapshotDeliveryProperties
 class ConfigSnapshotDeliveryProperties {
   /// &lt;p&gt;The frequency with which Config delivers configuration snapshots.&lt;/p&gt;
-  final pulumi.Input<MaximumExecutionFrequencyEnumValue>? deliveryFrequency;
+  final pulumi.Input<MaximumExecutionFrequencyEnumValue?>? deliveryFrequency;
 
   /// Creates a new [ConfigSnapshotDeliveryProperties].
   /// [deliveryFrequency] &lt;p&gt;The frequency with which Config delivers configuration snapshots.&lt;/p&gt;

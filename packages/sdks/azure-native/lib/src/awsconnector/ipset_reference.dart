@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of IPSetReference
 class IPSetReference {
   /// A resource ARN.
-  final pulumi.Input<String>? referenceArn;
+  final pulumi.Input<String?>? referenceArn;
 
   /// Creates a new [IPSetReference].
   /// [referenceArn] A resource ARN.

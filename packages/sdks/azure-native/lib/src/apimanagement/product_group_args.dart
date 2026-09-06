@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_product_group_args_doc}
 class ProductGroupArgs {
   /// Group identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Product identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> productId;
   /// The name of the resource group. The name is case insensitive.

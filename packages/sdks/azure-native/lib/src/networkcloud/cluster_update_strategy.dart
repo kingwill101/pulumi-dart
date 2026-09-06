@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterUpdateStrategy {
   /// The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
   /// Limited by the maximum number of machines in the increment. Defaults to the whole increment size.
-  final pulumi.Input<double>? maxUnavailable;
+  final pulumi.Input<double?>? maxUnavailable;
   /// The mode of operation for runtime protection.
-  final pulumi.Input<String> strategyType;
+  final pulumi.Input<dynamic> strategyType;
   /// Selection of how the threshold should be evaluated.
-  final pulumi.Input<String> thresholdType;
+  final pulumi.Input<dynamic> thresholdType;
   /// The numeric threshold value.
   final pulumi.Input<double> thresholdValue;
   /// The time to wait between the increments of update defined by the strategy.
-  final pulumi.Input<double>? waitTimeMinutes;
+  final pulumi.Input<double?>? waitTimeMinutes;
 
   /// Creates a new [ClusterUpdateStrategy].
   /// [maxUnavailable] The maximum number of worker nodes that can be offline within the increment of update, e.g., rack-by-rack.
@@ -21,13 +21,13 @@ class ClusterUpdateStrategy {
   /// [thresholdType] Selection of how the threshold should be evaluated.
   /// [thresholdValue] The numeric threshold value.
   /// [waitTimeMinutes] The time to wait between the increments of update defined by the strategy.
-  const ClusterUpdateStrategy({
+  ClusterUpdateStrategy({
     this.maxUnavailable,
     required this.strategyType,
     required this.thresholdType,
     required this.thresholdValue,
-    this.waitTimeMinutes,
-  });
+    pulumi.Input<double?>? waitTimeMinutes,
+  }) : waitTimeMinutes = waitTimeMinutes ?? pulumi.Input.fromValue(15);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -41,11 +41,11 @@ class ClusterUpdateStrategy {
 
   factory ClusterUpdateStrategy.fromMap(Map<String, dynamic> map) {
     return ClusterUpdateStrategy(
-      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      strategyType: pulumi.Input.fromValue(map['strategyType'] as String),
-      thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),
-      thresholdValue: pulumi.Input.fromValue(map['thresholdValue'] as double),
-      waitTimeMinutes: (() { final guardedValue = map['waitTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxUnavailable: (() { final guardedValue = map['maxUnavailable']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      strategyType: pulumi.Input.fromValue(map['strategyType']),
+      thresholdType: pulumi.Input.fromValue(map['thresholdType']),
+      thresholdValue: pulumi.Input.fromValue((map['thresholdValue'] as num).toDouble()),
+      waitTimeMinutes: (() { final guardedValue = map['waitTimeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

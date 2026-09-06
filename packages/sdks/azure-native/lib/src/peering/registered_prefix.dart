@@ -196,4 +196,23 @@ class RegisteredPrefix extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RegisteredPrefix] resource.
+  RegisteredPrefix.reference(String urn)
+    : super(
+        'azure-native:peering:RegisteredPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    errorMessage = registerOutput<String>('errorMessage');
+    this.name = registerOutput<String>('name');
+    peeringServicePrefixKey = registerOutput<String>('peeringServicePrefixKey');
+    prefix = registerOutput<String?>('prefix');
+    prefixValidationState = registerOutput<String>('prefixValidationState');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

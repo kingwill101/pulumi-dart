@@ -7,9 +7,9 @@ import 'vpn_server_configuration_policy_group_member_response.dart';
 /// Result data returned by getConfigurationPolicyGroup.
 class GetConfigurationPolicyGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
@@ -17,15 +17,15 @@ class GetConfigurationPolicyGroupResult {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   final String? name;
   /// List of references to P2SConnectionConfigurations.
-  final List<SubResourceResponse> p2SConnectionConfigurations;
+  final List<SubResourceResponse>? p2SConnectionConfigurations;
   /// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
   final List<VpnServerConfigurationPolicyGroupMemberResponse>? policyMembers;
   /// Priority for VpnServerConfigurationPolicyGroup.
   final int? priority;
   /// The provisioning state of the VpnServerConfigurationPolicyGroup resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetConfigurationPolicyGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,45 +39,45 @@ class GetConfigurationPolicyGroupResult {
   /// [provisioningState] The provisioning state of the VpnServerConfigurationPolicyGroup resource.
   /// [type] Resource type.
   const GetConfigurationPolicyGroupResult({
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.id,
     this.isDefault,
     this.name,
-    required this.p2SConnectionConfigurations,
+    this.p2SConnectionConfigurations,
     this.policyMembers,
     this.priority,
-    required this.provisioningState,
-    required this.type,
+    this.provisioningState,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'id': ?id,
       'isDefault': ?isDefault,
       'name': ?name,
-      'p2SConnectionConfigurations': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(p2SConnectionConfigurations, (value) => value.toMap()),
+      'p2SConnectionConfigurations': ?(() { final guardedValue = p2SConnectionConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'policyMembers': ?(() { final guardedValue = policyMembers; if (guardedValue == null) return null; return pulumi.Input.encodeList<VpnServerConfigurationPolicyGroupMemberResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'priority': ?priority,
-      'provisioningState': provisioningState,
-      'type': type,
+      'provisioningState': ?provisioningState,
+      'type': ?type,
     };
   }
 
   factory GetConfigurationPolicyGroupResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationPolicyGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      p2SConnectionConfigurations: pulumi.Input.decodeList<SubResourceResponse>(map['p2SConnectionConfigurations']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      p2SConnectionConfigurations: (() { final guardedValue = map['p2SConnectionConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMemberResponse>(guardedValue, (value) => VpnServerConfigurationPolicyGroupMemberResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

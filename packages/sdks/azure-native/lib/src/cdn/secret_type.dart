@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the secret resource.
-enum SecretType {
+enum SecretType implements pulumi.PulumiEnum<String> {
   urlSigningKey("UrlSigningKey"),
   customerCertificate("CustomerCertificate"),
   managedCertificate("ManagedCertificate"),
   azureFirstPartyManagedCertificate("AzureFirstPartyManagedCertificate");
 
   const SecretType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretType fromValue(String value) {

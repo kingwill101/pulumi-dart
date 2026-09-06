@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of StatefulEngineOptions
 class StatefulEngineOptionsResponse {
   /// Property ruleOrder
-  final pulumi.Input<String>? ruleOrder;
+  final pulumi.Input<String?>? ruleOrder;
   /// Property streamExceptionPolicy
-  final pulumi.Input<String>? streamExceptionPolicy;
+  final pulumi.Input<String?>? streamExceptionPolicy;
 
   /// Creates a new [StatefulEngineOptionsResponse].
   /// [ruleOrder] Property ruleOrder

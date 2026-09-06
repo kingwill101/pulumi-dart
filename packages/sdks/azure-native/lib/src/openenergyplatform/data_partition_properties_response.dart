@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the properties of an individual data partition.
 class DataPartitionPropertiesResponse {
   /// Name of the data partition
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of the data partition
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [DataPartitionPropertiesResponse].
   /// [name] Name of the data partition

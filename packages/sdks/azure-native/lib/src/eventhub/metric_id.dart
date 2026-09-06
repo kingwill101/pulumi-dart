@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
-enum MetricId {
+enum MetricId implements pulumi.PulumiEnum<String> {
   valueIncomingBytes("IncomingBytes"),
   valueOutgoingBytes("OutgoingBytes"),
   valueIncomingMessages("IncomingMessages"),
   valueOutgoingMessages("OutgoingMessages");
 
   const MetricId(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricId fromValue(String value) {

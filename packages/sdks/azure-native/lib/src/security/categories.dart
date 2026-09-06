@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The categories of resource that is at risk when the assessment is unhealthy
-enum Categories {
+enum Categories implements pulumi.PulumiEnum<String> {
   valueCompute("Compute"),
   valueNetworking("Networking"),
   valueData("Data"),
@@ -7,6 +9,7 @@ enum Categories {
   valueIoT("IoT");
 
   const Categories(this.wireValue);
+  @override
   final String wireValue;
 
   static Categories fromValue(String value) {

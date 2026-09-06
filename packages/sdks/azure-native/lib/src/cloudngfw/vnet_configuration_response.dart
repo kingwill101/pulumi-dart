@@ -7,7 +7,7 @@ import 'ipaddress_space_response.dart';
 /// VnetInfo for Firewall Networking
 class VnetConfigurationResponse {
   /// IP of trust subnet for UDR
-  final pulumi.Input<IPAddressResponse>? ipOfTrustSubnetForUdr;
+  final pulumi.Input<IPAddressResponse?>? ipOfTrustSubnetForUdr;
   /// Trust Subnet
   final pulumi.Input<IPAddressSpaceResponse> trustSubnet;
   /// Untrust Subnet

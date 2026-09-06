@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'extension_response.dart';
 import 'pricing_args.dart';
 import 'system_data_response.dart';
 
@@ -1062,7 +1063,7 @@ class Pricing extends pulumi.CustomResource {
   /// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
   late final pulumi.Output<String?> enforce;
   /// Optional. List of extensions offered under a plan.
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<ExtensionResponse>?> extensions;
   /// The duration left for the subscriptions free trial period - in ISO 8601 format (e.g. P3Y6M4DT12H30M5S).
   late final pulumi.Output<String> freeTrialRemainingTime;
   /// "inherited" = "True" indicates that the current scope inherits its pricing configuration from its parent. The ID of the parent scope that provides the inherited configuration is displayed in the "inheritedFrom" field. On the other hand, "inherited" = "False" indicates that the current scope has its own pricing configuration explicitly set, and does not inherit from its parent. This field is read only and available only for resource-level pricing.
@@ -1102,13 +1103,39 @@ class Pricing extends pulumi.CustomResource {
     deprecated = registerOutput<bool>('deprecated');
     enablementTime = registerOutput<String>('enablementTime');
     enforce = registerOutput<String?>('enforce');
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
+    extensions = registerOutput<List<ExtensionResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionResponse>(guardedValue, (value) => ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     freeTrialRemainingTime = registerOutput<String>('freeTrialRemainingTime');
     inherited = registerOutput<String>('inherited');
     inheritedFrom = registerOutput<String>('inheritedFrom');
     this.name = registerOutput<String>('name');
     pricingTier = registerOutput<String>('pricingTier');
-    replacedBy = registerOutput<List<String>>('replacedBy');
+    replacedBy = registerOutput<List<String>>('replacedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    resourcesCoverageStatus = registerOutput<String>('resourcesCoverageStatus');
+    subPlan = registerOutput<String?>('subPlan');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Pricing] resource.
+  Pricing.reference(String urn)
+    : super(
+        'azure-native:security:Pricing',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deprecated = registerOutput<bool>('deprecated');
+    enablementTime = registerOutput<String>('enablementTime');
+    enforce = registerOutput<String?>('enforce');
+    extensions = registerOutput<List<ExtensionResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionResponse>(guardedValue, (value) => ExtensionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    freeTrialRemainingTime = registerOutput<String>('freeTrialRemainingTime');
+    inherited = registerOutput<String>('inherited');
+    inheritedFrom = registerOutput<String>('inheritedFrom');
+    this.name = registerOutput<String>('name');
+    pricingTier = registerOutput<String>('pricingTier');
+    replacedBy = registerOutput<List<String>>('replacedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     resourcesCoverageStatus = registerOutput<String>('resourcesCoverageStatus');
     subPlan = registerOutput<String?>('subPlan');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

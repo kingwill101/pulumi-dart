@@ -6,13 +6,13 @@ import 'monitoring_tag_rules_properties_response.dart';
 /// The list of subscriptions and it's monitoring status by current Datadog monitor.
 class MonitoredSubscriptionResponse {
   /// The reason of not monitoring the subscription.
-  final pulumi.Input<String>? error;
+  final pulumi.Input<String?>? error;
   /// The state of monitoring.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The subscriptionId to be monitored.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Definition of the properties for a TagRules resource.
-  final pulumi.Input<MonitoringTagRulesPropertiesResponse>? tagRules;
+  final pulumi.Input<MonitoringTagRulesPropertiesResponse?>? tagRules;
 
   /// Creates a new [MonitoredSubscriptionResponse].
   /// [error] The reason of not monitoring the subscription.

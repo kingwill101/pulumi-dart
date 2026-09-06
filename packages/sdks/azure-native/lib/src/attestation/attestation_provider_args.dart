@@ -9,15 +9,15 @@ import 'attestation_service_creation_specific_params.dart';
 /// {@macro pulumi_attestation_attestation_provider_args_doc}
 class AttestationProviderArgs {
   /// The supported Azure location where the attestation provider should be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the attestation provider
   final pulumi.Input<AttestationServiceCreationSpecificParams> properties;
   /// Name of the attestation provider.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The tags that will be assigned to the attestation provider.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AttestationProviderArgs].
   /// [location] The supported Azure location where the attestation provider should be created.

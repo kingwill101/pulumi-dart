@@ -6,35 +6,35 @@ import 'professional_service_properties_response_term.dart';
 /// professionalService properties
 class ProfessionalServiceResourceResponseProperties {
   /// Whether the ProfessionalService subscription will auto renew upon term end.
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// The billing period eg P1M,P1Y for monthly,yearly respectively
-  final pulumi.Input<String>? billingPeriod;
+  final pulumi.Input<String?>? billingPeriod;
   /// The created date of this resource.
   final pulumi.Input<String> created;
   /// Whether the current term is a Free Trial term
-  final pulumi.Input<bool>? isFreeTrial;
+  final pulumi.Input<bool?>? isFreeTrial;
   /// The last modifier date if this resource.
-  final pulumi.Input<String>? lastModified;
+  final pulumi.Input<String?>? lastModified;
   /// The offer id.
-  final pulumi.Input<String>? offerId;
+  final pulumi.Input<String?>? offerId;
   /// The metadata about the ProfessionalService subscription such as the AzureSubscriptionId and ResourceUri.
-  final pulumi.Input<Map<String, String>>? paymentChannelMetadata;
+  final pulumi.Input<Map<String, String>?>? paymentChannelMetadata;
   /// The Payment channel for the ProfessionalServiceSubscription.
-  final pulumi.Input<String>? paymentChannelType;
+  final pulumi.Input<String?>? paymentChannelType;
   /// The publisher id.
-  final pulumi.Input<String>? publisherId;
+  final pulumi.Input<String?>? publisherId;
   /// The quote id which the ProfessionalService will be purchase with.
-  final pulumi.Input<String>? quoteId;
+  final pulumi.Input<String?>? quoteId;
   /// The plan id.
-  final pulumi.Input<String>? skuId;
+  final pulumi.Input<String?>? skuId;
   /// The ProfessionalService Subscription Status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The store front which initiates the purchase.
-  final pulumi.Input<String>? storeFront;
+  final pulumi.Input<String?>? storeFront;
   /// The current Term object.
-  final pulumi.Input<ProfessionalServicePropertiesResponseTerm>? term;
+  final pulumi.Input<ProfessionalServicePropertiesResponseTerm?>? term;
   /// The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  final pulumi.Input<String>? termUnit;
+  final pulumi.Input<String?>? termUnit;
 
   /// Creates a new [ProfessionalServiceResourceResponseProperties].
   /// [autoRenew] Whether the ProfessionalService subscription will auto renew upon term end.

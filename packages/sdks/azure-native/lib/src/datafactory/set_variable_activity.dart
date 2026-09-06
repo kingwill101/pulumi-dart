@@ -8,28 +8,28 @@ import 'user_property.dart';
 /// Set value for a Variable.
 class SetVariableActivity {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<SecureInputOutputPolicy>? policy;
+  final pulumi.Input<SecureInputOutputPolicy?>? policy;
   /// If set to true, it sets the pipeline run return value.
-  final pulumi.Input<bool>? setSystemVariable;
+  final pulumi.Input<bool?>? setSystemVariable;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'SetVariable'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
   /// Value to be set. Could be a static value or Expression.
   final pulumi.Input<dynamic>? value;
   /// Name of the variable whose value needs to be set.
-  final pulumi.Input<String>? variableName;
+  final pulumi.Input<String?>? variableName;
 
   /// Creates a new [SetVariableActivity].
   /// [dependsOn] Activity depends on condition.
@@ -78,10 +78,10 @@ class SetVariableActivity {
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependency>(guardedValue, (value) => ActivityDependency.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecureInputOutputPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       setSystemVariable: (() { final guardedValue = map['setSystemVariable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

@@ -14,33 +14,33 @@ class VirtualMachineScaleSetVMInstanceViewResponse {
   /// Resource id of the dedicated host, on which the virtual machine is allocated through automatic placement, when the virtual machine is associated with a dedicated host group that has automatic placement enabled. Minimum api-version: 2020-06-01.
   final pulumi.Input<String> assignedHost;
   /// Boot Diagnostics is a debugging feature which allows you to view Console Output and Screenshot to diagnose VM status. You can easily view the output of your console log. Azure also enables you to see a screenshot of the VM from the hypervisor.
-  final pulumi.Input<BootDiagnosticsInstanceViewResponse>? bootDiagnostics;
+  final pulumi.Input<BootDiagnosticsInstanceViewResponse?>? bootDiagnostics;
   /// Specifies the host OS name of the virtual machine. &lt;br&gt;&lt;br&gt; This name cannot be updated after the VM is created. &lt;br&gt;&lt;br&gt; **Max-length (Windows):** 15 characters &lt;br&gt;&lt;br&gt; **Max-length (Linux):** 64 characters. &lt;br&gt;&lt;br&gt; For naming conventions and restrictions see [Azure infrastructure services implementation guidelines](https://learn.microsoft.com/previous-versions/azure/virtual-machines/linux/infrastructure-example?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json#1-naming-conventions).
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// The disks information.
-  final pulumi.Input<List<DiskInstanceViewResponse>>? disks;
+  final pulumi.Input<List<DiskInstanceViewResponse>?>? disks;
   /// The extensions information.
-  final pulumi.Input<List<VirtualMachineExtensionInstanceViewResponse>>? extensions;
+  final pulumi.Input<List<VirtualMachineExtensionInstanceViewResponse>?>? extensions;
   /// The hypervisor generation of the Virtual Machine [V1, V2]
-  final pulumi.Input<String>? hyperVGeneration;
+  final pulumi.Input<String?>? hyperVGeneration;
   /// The Maintenance Operation status on the virtual machine.
-  final pulumi.Input<MaintenanceRedeployStatusResponse>? maintenanceRedeployStatus;
+  final pulumi.Input<MaintenanceRedeployStatusResponse?>? maintenanceRedeployStatus;
   /// The Operating System running on the hybrid machine.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// The version of Operating System running on the hybrid machine.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// The placement group in which the VM is running. If the VM is deallocated it will not have a placementGroupId.
-  final pulumi.Input<String>? placementGroupId;
+  final pulumi.Input<String?>? placementGroupId;
   /// The Fault Domain count.
-  final pulumi.Input<int>? platformFaultDomain;
+  final pulumi.Input<int?>? platformFaultDomain;
   /// The Update Domain count.
-  final pulumi.Input<int>? platformUpdateDomain;
+  final pulumi.Input<int?>? platformUpdateDomain;
   /// The Remote desktop certificate thumbprint.
-  final pulumi.Input<String>? rdpThumbPrint;
+  final pulumi.Input<String?>? rdpThumbPrint;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
   /// The VM Agent running on the virtual machine.
-  final pulumi.Input<VirtualMachineAgentInstanceViewResponse>? vmAgent;
+  final pulumi.Input<VirtualMachineAgentInstanceViewResponse?>? vmAgent;
   /// The health status for the VM.
   final pulumi.Input<VirtualMachineHealthStatusResponse> vmHealth;
 
@@ -113,8 +113,8 @@ class VirtualMachineScaleSetVMInstanceViewResponse {
       osName: (() { final guardedValue = map['osName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osVersion: (() { final guardedValue = map['osVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      platformFaultDomain: (() { final guardedValue = map['platformFaultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      platformUpdateDomain: (() { final guardedValue = map['platformUpdateDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      platformFaultDomain: (() { final guardedValue = map['platformFaultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      platformUpdateDomain: (() { final guardedValue = map['platformUpdateDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rdpThumbPrint: (() { final guardedValue = map['rdpThumbPrint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceViewStatusResponse>(guardedValue, (value) => InstanceViewStatusResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vmAgent: (() { final guardedValue = map['vmAgent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineAgentInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

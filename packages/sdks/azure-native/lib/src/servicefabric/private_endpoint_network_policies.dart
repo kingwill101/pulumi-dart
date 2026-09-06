@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable or Disable apply network policies on private end point in the subnet.
-enum PrivateEndpointNetworkPolicies {
+enum PrivateEndpointNetworkPolicies implements pulumi.PulumiEnum<String> {
   valueEnabled("enabled"),
   valueDisabled("disabled");
 
   const PrivateEndpointNetworkPolicies(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateEndpointNetworkPolicies fromValue(String value) {

@@ -39,9 +39,9 @@ class UniformInt64RangePartitionScheme {
 
   factory UniformInt64RangePartitionScheme.fromMap(Map<String, dynamic> map) {
     return UniformInt64RangePartitionScheme(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      highKey: pulumi.Input.fromValue(map['highKey'] as double),
-      lowKey: pulumi.Input.fromValue(map['lowKey'] as double),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
+      highKey: pulumi.Input.fromValue((map['highKey'] as num).toDouble()),
+      lowKey: pulumi.Input.fromValue((map['lowKey'] as num).toDouble()),
       partitionScheme: pulumi.Input.fromValue(map['partitionScheme'] as String),
     );
   }

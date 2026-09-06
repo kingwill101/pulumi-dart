@@ -32,6 +32,17 @@ Future<GetAgentResult> getAgent(
   return GetAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentResult> getAgentOutput(
+  GetAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentResult.fromMap);
+}
+
 /// Gets a Connection resource.
 ///
 /// Uses Azure REST API version 2025-08-01.
@@ -50,6 +61,17 @@ Future<GetConnectionResult> getConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
 }
 
 /// Gets an Endpoint resource.
@@ -72,6 +94,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Gets a Job Definition resource.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -90,6 +123,17 @@ Future<GetJobDefinitionResult> getJobDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetJobDefinitionResult> getJobDefinitionOutput(
+  GetJobDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getJobDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobDefinitionResult.fromMap);
 }
 
 /// Gets a Project resource.
@@ -112,6 +156,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Gets a Storage Mover resource.
 ///
 /// Uses Azure REST API version 2024-07-01.
@@ -130,4 +185,15 @@ Future<GetStorageMoverResult> getStorageMover(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageMoverResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageMoverResult> getStorageMoverOutput(
+  GetStorageMoverArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagemover:getStorageMover',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageMoverResult.fromMap);
 }

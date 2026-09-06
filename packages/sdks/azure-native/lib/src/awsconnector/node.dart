@@ -6,17 +6,17 @@ import 'dax_cluster_endpoint.dart';
 /// Definition of Node
 class Node {
   /// &lt;p&gt;The Availability Zone (AZ) in which the node has been deployed.&lt;/p&gt;
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// &lt;p&gt;The endpoint for the node, consisting of a DNS name and a port number. Client applications can connect directly to a node endpoint, if desired (as an alternative to allowing DAX client software to intelligently route requests and responses to nodes in the DAX cluster.&lt;/p&gt;
-  final pulumi.Input<DaxClusterEndpoint>? endpoint;
+  final pulumi.Input<DaxClusterEndpoint?>? endpoint;
   /// &lt;p&gt;The date and time (in UNIX epoch format) when the node was launched.&lt;/p&gt;
-  final pulumi.Input<String>? nodeCreateTime;
+  final pulumi.Input<String?>? nodeCreateTime;
   /// &lt;p&gt;A system-generated identifier for the node.&lt;/p&gt;
-  final pulumi.Input<String>? nodeId;
+  final pulumi.Input<String?>? nodeId;
   /// &lt;p&gt;The current status of the node. For example: &lt;code&gt;available&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? nodeStatus;
+  final pulumi.Input<String?>? nodeStatus;
   /// &lt;p&gt;The status of the parameter group associated with this node. For example, &lt;code&gt;in-sync&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? parameterGroupStatus;
+  final pulumi.Input<String?>? parameterGroupStatus;
 
   /// Creates a new [Node].
   /// [availabilityZone] &lt;p&gt;The Availability Zone (AZ) in which the node has been deployed.&lt;/p&gt;

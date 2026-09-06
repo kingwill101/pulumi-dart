@@ -8,7 +8,7 @@ class KeyVaultSecretUriSecretInfo {
   /// Expected value is 'keyVaultSecretUri'.
   final pulumi.Input<String> secretType;
   /// URI to the keyvault secret
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyVaultSecretUriSecretInfo].
   /// [secretType] The secret type.

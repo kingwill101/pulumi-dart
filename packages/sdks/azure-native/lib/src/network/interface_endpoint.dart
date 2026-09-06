@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_service_response.dart';
 import 'interface_endpoint_args.dart';
+import 'network_interface_interface_endpoint_response.dart';
 import 'subnet_interface_endpoint_response.dart';
 
 /// Interface endpoint resource.
@@ -208,7 +209,7 @@ class InterfaceEndpoint extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Gets an array of references to the network interfaces created for this interface endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfaceInterfaceEndpointResponse>> networkInterfaces;
   /// A read-only property that identifies who created this interface endpoint.
   late final pulumi.Output<String> owner;
   /// The provisioning state of the interface endpoint. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -240,11 +241,34 @@ class InterfaceEndpoint extends pulumi.CustomResource {
     fqdn = registerOutput<String?>('fqdn');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<NetworkInterfaceInterfaceEndpointResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceInterfaceEndpointResponse>(guardedValue, (value) => NetworkInterfaceInterfaceEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     owner = registerOutput<String>('owner');
     provisioningState = registerOutput<String>('provisioningState');
     subnet = registerOutput<SubnetInterfaceEndpointResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetInterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [InterfaceEndpoint] resource.
+  InterfaceEndpoint.reference(String urn)
+    : super(
+        'azure-native:network:InterfaceEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endpointService = registerOutput<EndpointServiceResponse?>('endpointService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    fqdn = registerOutput<String?>('fqdn');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfaceInterfaceEndpointResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceInterfaceEndpointResponse>(guardedValue, (value) => NetworkInterfaceInterfaceEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    owner = registerOutput<String>('owner');
+    provisioningState = registerOutput<String>('provisioningState');
+    subnet = registerOutput<SubnetInterfaceEndpointResponse?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetInterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage information about the data disks present in the custom image
 class DataDiskStorageTypeInfo {
   /// Disk Lun
-  final pulumi.Input<String>? lun;
+  final pulumi.Input<String?>? lun;
   /// Disk Storage Type
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<dynamic>? storageType;
 
   /// Creates a new [DataDiskStorageTypeInfo].
   /// [lun] Disk Lun
@@ -27,7 +27,7 @@ class DataDiskStorageTypeInfo {
   factory DataDiskStorageTypeInfo.fromMap(Map<String, dynamic> map) {
     return DataDiskStorageTypeInfo(
       lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InitiatedBy {
+enum InitiatedBy implements pulumi.PulumiEnum<String> {
   cUSTOMER("CUSTOMER"),
   sERVICE("SERVICE");
 
   const InitiatedBy(this.wireValue);
+  @override
   final String wireValue;
 
   static InitiatedBy fromValue(String value) {

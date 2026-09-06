@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_error_response.dart';
-import 'data_box_customer_disk_job_details_response.dart';
 import 'job_args.dart';
 import 'job_delivery_info_response.dart';
 import 'resource_identity_response.dart';
@@ -1537,7 +1536,7 @@ class Job extends pulumi.CustomResource {
   /// Delivery type of Job.
   late final pulumi.Output<String?> deliveryType;
   /// Details of a job run. This field will only be sent for expand details filter.
-  late final pulumi.Output<DataBoxCustomerDiskJobDetailsResponse?> details;
+  late final pulumi.Output<dynamic> details;
   /// Top level error for the job.
   late final pulumi.Output<CloudErrorResponse> error;
   /// Msi identity of the resource
@@ -1595,7 +1594,7 @@ class Job extends pulumi.CustomResource {
     delayedStage = registerOutput<String>('delayedStage');
     deliveryInfo = registerOutput<JobDeliveryInfoResponse?>('deliveryInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deliveryType = registerOutput<String?>('deliveryType');
-    details = registerOutput<DataBoxCustomerDiskJobDetailsResponse?>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataBoxCustomerDiskJobDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    details = registerOutput<dynamic>('details');
     error = registerOutput<CloudErrorResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     isCancellable = registerOutput<bool>('isCancellable');
@@ -1611,7 +1610,43 @@ class Job extends pulumi.CustomResource {
     startTime = registerOutput<String>('startTime');
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    transferType = registerOutput<String>('transferType');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'azure-native:databox:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allDevicesLost = registerOutput<bool>('allDevicesLost');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cancellationReason = registerOutput<String>('cancellationReason');
+    delayedStage = registerOutput<String>('delayedStage');
+    deliveryInfo = registerOutput<JobDeliveryInfoResponse?>('deliveryInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryType = registerOutput<String?>('deliveryType');
+    details = registerOutput<dynamic>('details');
+    error = registerOutput<CloudErrorResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ResourceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isCancellable = registerOutput<bool>('isCancellable');
+    isCancellableWithoutFee = registerOutput<bool>('isCancellableWithoutFee');
+    isDeletable = registerOutput<bool>('isDeletable');
+    isPrepareToShipEnabled = registerOutput<bool>('isPrepareToShipEnabled');
+    isShippingAddressEditable = registerOutput<bool>('isShippingAddressEditable');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    reverseShippingDetailsUpdate = registerOutput<String>('reverseShippingDetailsUpdate');
+    reverseTransportPreferenceUpdate = registerOutput<String>('reverseTransportPreferenceUpdate');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     transferType = registerOutput<String>('transferType');
     type = registerOutput<String>('type');
   }

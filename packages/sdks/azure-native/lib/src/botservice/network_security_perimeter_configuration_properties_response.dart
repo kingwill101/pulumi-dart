@@ -13,8 +13,8 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
   /// Information about profile
   final pulumi.Input<ProfileResponse> profile;
   /// List of Provisioning Issues if any
-  final pulumi.Input<List<ProvisioningIssueResponse>>? provisioningIssues;
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<List<ProvisioningIssueResponse>?>? provisioningIssues;
+  final pulumi.Input<String?>? provisioningState;
   /// Information about resource association
   final pulumi.Input<ResourceAssociationResponse> resourceAssociation;
 
@@ -24,13 +24,13 @@ class NetworkSecurityPerimeterConfigurationPropertiesResponse {
   /// [provisioningIssues] List of Provisioning Issues if any
   /// [provisioningState] Optional.
   /// [resourceAssociation] Information about resource association
-  const NetworkSecurityPerimeterConfigurationPropertiesResponse({
+  NetworkSecurityPerimeterConfigurationPropertiesResponse({
     required this.networkSecurityPerimeter,
     required this.profile,
     this.provisioningIssues,
-    this.provisioningState,
+    pulumi.Input<String?>? provisioningState,
     required this.resourceAssociation,
-  });
+  }) : provisioningState = provisioningState ?? pulumi.Input.fromValue('Succeeded');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -11,27 +11,27 @@ import 'user_role_assignment.dart';
 /// {@macro pulumi_devcenter_project_environment_type_args_doc}
 class ProjectEnvironmentTypeArgs {
   /// The role definition assigned to the environment creator on backing resources.
-  final pulumi.Input<ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment>? creatorRoleAssignment;
+  final pulumi.Input<ProjectEnvironmentTypeUpdatePropertiesCreatorRoleAssignment?>? creatorRoleAssignment;
   /// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
-  final pulumi.Input<String>? deploymentTargetId;
+  final pulumi.Input<String?>? deploymentTargetId;
   /// The display name of the project environment type.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the environment type.
-  final pulumi.Input<String>? environmentTypeName;
+  final pulumi.Input<String?>? environmentTypeName;
   /// Managed identity properties
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location for the environment type
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the project.
   final pulumi.Input<String> projectName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Defines whether this Environment Type can be used in this Project.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-  final pulumi.Input<Map<String, UserRoleAssignment>>? userRoleAssignments;
+  final pulumi.Input<Map<String, UserRoleAssignment>?>? userRoleAssignments;
 
   /// Creates a new [ProjectEnvironmentTypeArgs].
   /// [creatorRoleAssignment] The role definition assigned to the environment creator on backing resources.
@@ -85,7 +85,7 @@ class ProjectEnvironmentTypeArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userRoleAssignments: (() { final guardedValue = map['userRoleAssignments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<UserRoleAssignment>(guardedValue, (value) => UserRoleAssignment.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

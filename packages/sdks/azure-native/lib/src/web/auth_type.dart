@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Auth Type
-enum AuthType {
+enum AuthType implements pulumi.PulumiEnum<String> {
   valueAnonymous("Anonymous"),
   valueUserCredentials("UserCredentials"),
   valueSystemIdentity("SystemIdentity"),
   valueUserAssigned("UserAssigned");
 
   const AuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthType fromValue(String value) {

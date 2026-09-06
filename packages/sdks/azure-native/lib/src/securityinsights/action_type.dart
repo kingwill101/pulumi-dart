@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the automation rule action.
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   valueModifyProperties("ModifyProperties"),
   valueRunPlaybook("RunPlaybook"),
   valueAddIncidentTask("AddIncidentTask");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

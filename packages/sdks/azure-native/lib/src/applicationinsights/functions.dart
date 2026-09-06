@@ -45,6 +45,17 @@ Future<GetAnalyticsItemResult> getAnalyticsItem(
   return GetAnalyticsItemResult.fromMap(result);
 }
 
+pulumi.Output<GetAnalyticsItemResult> getAnalyticsItemOutput(
+  GetAnalyticsItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getAnalyticsItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnalyticsItemResult.fromMap);
+}
+
 /// Returns an Application Insights component.
 ///
 /// Uses Azure REST API version 2020-02-02.
@@ -65,6 +76,17 @@ Future<GetComponentResult> getComponent(
   return GetComponentResult.fromMap(result);
 }
 
+pulumi.Output<GetComponentResult> getComponentOutput(
+  GetComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentResult.fromMap);
+}
+
 /// Returns current billing features for an Application Insights component.
 ///
 /// Uses Azure REST API version 2015-05-01.
@@ -81,6 +103,17 @@ Future<GetComponentCurrentBillingFeatureResult> getComponentCurrentBillingFeatur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetComponentCurrentBillingFeatureResult.fromMap(result);
+}
+
+pulumi.Output<GetComponentCurrentBillingFeatureResult> getComponentCurrentBillingFeatureOutput(
+  GetComponentCurrentBillingFeatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getComponentCurrentBillingFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentCurrentBillingFeatureResult.fromMap);
 }
 
 /// Returns the current linked storage settings for an Application Insights component.
@@ -101,6 +134,17 @@ Future<GetComponentLinkedStorageAccountResult> getComponentLinkedStorageAccount(
   return GetComponentLinkedStorageAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetComponentLinkedStorageAccountResult> getComponentLinkedStorageAccountOutput(
+  GetComponentLinkedStorageAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getComponentLinkedStorageAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentLinkedStorageAccountResult.fromMap);
+}
+
 /// Get the Continuous Export configuration for this export id.
 ///
 /// Uses Azure REST API version 2015-05-01.
@@ -119,6 +163,17 @@ Future<GetExportConfigurationResult> getExportConfiguration(
   return GetExportConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetExportConfigurationResult> getExportConfigurationOutput(
+  GetExportConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getExportConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExportConfigurationResult.fromMap);
+}
+
 /// Get a single favorite by its FavoriteId, defined within an Application Insights component.
 ///
 /// Uses Azure REST API version 2015-05-01.
@@ -135,6 +190,17 @@ Future<GetFavoriteResult> getFavorite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFavoriteResult.fromMap(result);
+}
+
+pulumi.Output<GetFavoriteResult> getFavoriteOutput(
+  GetFavoriteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getFavorite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFavoriteResult.fromMap);
 }
 
 /// **Gets an access token for live metrics stream data.**
@@ -157,6 +223,17 @@ Future<GetLiveTokenResult> getLiveToken(
   return GetLiveTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetLiveTokenResult> getLiveTokenOutput(
+  GetLiveTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getLiveToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLiveTokenResult.fromMap);
+}
+
 /// Get a single private workbook by its resourceName.
 ///
 /// Uses Azure REST API version 2021-03-08.
@@ -175,6 +252,17 @@ Future<GetMyWorkbookResult> getMyWorkbook(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMyWorkbookResult.fromMap(result);
+}
+
+pulumi.Output<GetMyWorkbookResult> getMyWorkbookOutput(
+  GetMyWorkbookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getMyWorkbook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMyWorkbookResult.fromMap);
 }
 
 /// Get the ProactiveDetection configuration for this configuration id.
@@ -197,6 +285,17 @@ Future<GetProactiveDetectionConfigurationResult> getProactiveDetectionConfigurat
   return GetProactiveDetectionConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetProactiveDetectionConfigurationResult> getProactiveDetectionConfigurationOutput(
+  GetProactiveDetectionConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getProactiveDetectionConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProactiveDetectionConfigurationResult.fromMap);
+}
+
 /// Returns a file test result for the matching test
 ///
 /// Uses Azure REST API version 2020-02-10-preview.
@@ -213,6 +312,17 @@ Future<GetTestResultFileResult> getTestResultFile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTestResultFileResult.fromMap(result);
+}
+
+pulumi.Output<GetTestResultFileResult> getTestResultFileOutput(
+  GetTestResultFileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getTestResultFile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTestResultFileResult.fromMap);
 }
 
 /// Get a specific Application Insights web test definition.
@@ -235,6 +345,17 @@ Future<GetWebTestResult> getWebTest(
   return GetWebTestResult.fromMap(result);
 }
 
+pulumi.Output<GetWebTestResult> getWebTestOutput(
+  GetWebTestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getWebTest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebTestResult.fromMap);
+}
+
 /// Get a single workbook by its resourceName.
 ///
 /// Uses Azure REST API version 2023-06-01.
@@ -253,6 +374,17 @@ Future<GetWorkbookResult> getWorkbook(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkbookResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkbookResult> getWorkbookOutput(
+  GetWorkbookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getWorkbook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkbookResult.fromMap);
 }
 
 /// Get a single workbook template by its resourceName.
@@ -275,6 +407,17 @@ Future<GetWorkbookTemplateResult> getWorkbookTemplate(
   return GetWorkbookTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkbookTemplateResult> getWorkbookTemplateOutput(
+  GetWorkbookTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:getWorkbookTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkbookTemplateResult.fromMap);
+}
+
 /// list date to migrate to new pricing model.
 ///
 /// Uses Azure REST API version 2017-10-01.
@@ -290,4 +433,15 @@ Future<ListEASubscriptionListMigrationDatePostResult> listEASubscriptionListMigr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListEASubscriptionListMigrationDatePostResult.fromMap(result);
+}
+
+pulumi.Output<ListEASubscriptionListMigrationDatePostResult> listEASubscriptionListMigrationDatePostOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:applicationinsights:listEASubscriptionListMigrationDatePost',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListEASubscriptionListMigrationDatePostResult.fromMap);
 }

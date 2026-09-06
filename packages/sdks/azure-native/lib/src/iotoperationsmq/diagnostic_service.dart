@@ -347,7 +347,34 @@ class DiagnosticService extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     staleDataTimeoutSeconds = registerOutput<int?>('staleDataTimeoutSeconds');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DiagnosticService] resource.
+  DiagnosticService.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:DiagnosticService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataExportFrequencySeconds = registerOutput<int?>('dataExportFrequencySeconds');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    image = registerOutput<ContainerImageResponse>('image', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    logFormat = registerOutput<String?>('logFormat');
+    logLevel = registerOutput<String?>('logLevel');
+    maxDataStorageSize = registerOutput<double?>('maxDataStorageSize');
+    metricsPort = registerOutput<int?>('metricsPort');
+    this.name = registerOutput<String>('name');
+    openTelemetryTracesCollectorAddr = registerOutput<String?>('openTelemetryTracesCollectorAddr');
+    provisioningState = registerOutput<String>('provisioningState');
+    staleDataTimeoutSeconds = registerOutput<int?>('staleDataTimeoutSeconds');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

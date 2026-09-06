@@ -6,11 +6,11 @@ import 'workflow_trigger_recurrence_response.dart';
 /// The batch release criteria.
 class BatchReleaseCriteriaResponse {
   /// The batch size in bytes.
-  final pulumi.Input<int>? batchSize;
+  final pulumi.Input<int?>? batchSize;
   /// The message count.
-  final pulumi.Input<int>? messageCount;
+  final pulumi.Input<int?>? messageCount;
   /// The recurrence.
-  final pulumi.Input<WorkflowTriggerRecurrenceResponse>? recurrence;
+  final pulumi.Input<WorkflowTriggerRecurrenceResponse?>? recurrence;
 
   /// Creates a new [BatchReleaseCriteriaResponse].
   /// [batchSize] The batch size in bytes.
@@ -32,8 +32,8 @@ class BatchReleaseCriteriaResponse {
 
   factory BatchReleaseCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return BatchReleaseCriteriaResponse(
-      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      messageCount: (() { final guardedValue = map['messageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      batchSize: (() { final guardedValue = map['batchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      messageCount: (() { final guardedValue = map['messageCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkflowTriggerRecurrenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataLakeAnalyticsSchemaProperties {
   /// DataLake Store Account Name
-  final pulumi.Input<String>? dataLakeStoreAccountName;
+  final pulumi.Input<String?>? dataLakeStoreAccountName;
 
   /// Creates a new [DataLakeAnalyticsSchemaProperties].
   /// [dataLakeStoreAccountName] DataLake Store Account Name

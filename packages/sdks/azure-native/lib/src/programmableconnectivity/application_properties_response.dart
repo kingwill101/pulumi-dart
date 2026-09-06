@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details about the Application that would use the Operator's Network APIs.
 class ApplicationPropertiesResponse {
   /// Description of the application.
-  final pulumi.Input<String>? applicationDescription;
+  final pulumi.Input<String?>? applicationDescription;
   /// The category that describes the application.
-  final pulumi.Input<String>? applicationType;
+  final pulumi.Input<String?>? applicationType;
   /// Legal name of the organization owning the application.
-  final pulumi.Input<String>? legalName;
+  final pulumi.Input<String?>? legalName;
   /// Name of the application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A description of the organization owning the application.
-  final pulumi.Input<String>? organizationDescription;
+  final pulumi.Input<String?>? organizationDescription;
   /// Email address of the Privacy contact or Data Protection officer of the organization.
-  final pulumi.Input<String>? privacyContactEmailAddress;
+  final pulumi.Input<String?>? privacyContactEmailAddress;
   /// Unique Tax Number for the user's organization in the country/region the APC Gateway is being purchased.
-  final pulumi.Input<String>? taxNumber;
+  final pulumi.Input<String?>? taxNumber;
 
   /// Creates a new [ApplicationPropertiesResponse].
   /// [applicationDescription] Description of the application.

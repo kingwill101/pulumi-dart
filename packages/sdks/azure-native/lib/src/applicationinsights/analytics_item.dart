@@ -280,4 +280,24 @@ class AnalyticsItem extends pulumi.CustomResource {
     type = registerOutput<String?>('type');
     version = registerOutput<String>('version');
   }
+
+  /// Creates a typed reference to an existing [AnalyticsItem] resource.
+  AnalyticsItem.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:AnalyticsItem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String?>('content');
+    this.name = registerOutput<String?>('name');
+    properties = registerOutput<ApplicationInsightsComponentAnalyticsItemPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scope = registerOutput<String?>('scope');
+    timeCreated = registerOutput<String>('timeCreated');
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String?>('type');
+    version = registerOutput<String>('version');
+  }
 }

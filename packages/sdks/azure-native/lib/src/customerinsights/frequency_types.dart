@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The frequency to update.
-enum FrequencyTypes {
+enum FrequencyTypes implements pulumi.PulumiEnum<String> {
   valueMinute("Minute"),
   valueHour("Hour"),
   valueDay("Day"),
@@ -7,6 +9,7 @@ enum FrequencyTypes {
   valueMonth("Month");
 
   const FrequencyTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static FrequencyTypes fromValue(String value) {

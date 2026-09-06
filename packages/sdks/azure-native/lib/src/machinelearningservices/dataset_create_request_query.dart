@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestQuery {
   /// The SQL/PostgreSQL/MySQL datastore name.
-  final pulumi.Input<String>? datastoreName;
+  final pulumi.Input<String?>? datastoreName;
   /// SQL Quey.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
 
   /// Creates a new [DatasetCreateRequestQuery].
   /// [datastoreName] The SQL/PostgreSQL/MySQL datastore name.

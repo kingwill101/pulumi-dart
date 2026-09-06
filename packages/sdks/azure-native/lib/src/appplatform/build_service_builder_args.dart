@@ -11,9 +11,9 @@ class BuildServiceBuilderArgs {
   /// The name of the build service resource.
   final pulumi.Input<String> buildServiceName;
   /// The name of the builder resource.
-  final pulumi.Input<String>? builderName;
+  final pulumi.Input<String?>? builderName;
   /// Property of the Builder resource.
-  final pulumi.Input<BuilderProperties>? properties;
+  final pulumi.Input<BuilderProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

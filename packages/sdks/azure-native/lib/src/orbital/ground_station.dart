@@ -294,7 +294,7 @@ class GroundStation extends pulumi.CustomResource {
         ) {
     altitudeMeters = registerOutput<double?>('altitudeMeters');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    capabilities = registerOutput<List<String>>('capabilities');
+    capabilities = registerOutput<List<String>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     city = registerOutput<String?>('city');
     globalCommunicationsSite = registerOutput<GroundStationsPropertiesResponseGlobalCommunicationsSite>('globalCommunicationsSite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     latitudeDegrees = registerOutput<double?>('latitudeDegrees');
@@ -304,7 +304,32 @@ class GroundStation extends pulumi.CustomResource {
     providerName = registerOutput<String?>('providerName');
     releaseMode = registerOutput<String>('releaseMode');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GroundStation] resource.
+  GroundStation.reference(String urn)
+    : super(
+        'azure-native:orbital:GroundStation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    altitudeMeters = registerOutput<double?>('altitudeMeters');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    capabilities = registerOutput<List<String>>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    city = registerOutput<String?>('city');
+    globalCommunicationsSite = registerOutput<GroundStationsPropertiesResponseGlobalCommunicationsSite>('globalCommunicationsSite', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroundStationsPropertiesResponseGlobalCommunicationsSite.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    latitudeDegrees = registerOutput<double?>('latitudeDegrees');
+    location = registerOutput<String>('location');
+    longitudeDegrees = registerOutput<double?>('longitudeDegrees');
+    this.name = registerOutput<String>('name');
+    providerName = registerOutput<String?>('providerName');
+    releaseMode = registerOutput<String>('releaseMode');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

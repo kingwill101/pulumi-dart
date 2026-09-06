@@ -6,13 +6,13 @@ import 'azure_key_vault_secret_reference_response.dart';
 /// Service principal credential.
 class ServicePrincipalCredentialResponse {
   /// List of tags that can be used for describing the Credential.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Credential description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The app ID of the service principal used to authenticate
   final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? servicePrincipalKey;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? servicePrincipalKey;
   /// The ID of the tenant to which the service principal belongs
   final pulumi.Input<dynamic>? tenant;
   /// Type of credential.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image artifact profile.
 class ImageArtifactProfileResponse {
   /// Image name.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// Image version.
-  final pulumi.Input<String>? imageVersion;
+  final pulumi.Input<String?>? imageVersion;
 
   /// Creates a new [ImageArtifactProfileResponse].
   /// [imageName] Image name.

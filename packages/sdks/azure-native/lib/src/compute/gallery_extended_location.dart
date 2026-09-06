@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The name of the extended location.
 class GalleryExtendedLocation {
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// It is type of the extended location.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [GalleryExtendedLocation].
   /// [name] Optional.
@@ -26,7 +26,7 @@ class GalleryExtendedLocation {
   factory GalleryExtendedLocation.fromMap(Map<String, dynamic> map) {
     return GalleryExtendedLocation(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

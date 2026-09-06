@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MountPoint
 class MountPoint {
   /// The path on the container to mount the host volume at.
-  final pulumi.Input<String>? containerPath;
+  final pulumi.Input<String?>? containerPath;
   /// If this value is ``true``, the container has read-only access to the volume. If this value is ``false``, then the container can write to the volume. The default value is ``false``.
-  final pulumi.Input<bool>? readOnly;
+  final pulumi.Input<bool?>? readOnly;
   /// The name of the volume to mount. Must be a volume name referenced in the ``name`` parameter of task definition ``volume``.
-  final pulumi.Input<String>? sourceVolume;
+  final pulumi.Input<String?>? sourceVolume;
 
   /// Creates a new [MountPoint].
   /// [containerPath] The path on the container to mount the host volume at.

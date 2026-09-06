@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters to authenticate using a Managed Identity.
 class ManagedIdentityDefinition {
   /// The client Id for authenticating a Managed Identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
 
   /// Creates a new [ManagedIdentityDefinition].
   /// [clientId] The client Id for authenticating a Managed Identity.

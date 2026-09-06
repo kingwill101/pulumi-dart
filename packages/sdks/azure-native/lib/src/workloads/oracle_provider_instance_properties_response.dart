@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the Oracle provider properties.
 class OracleProviderInstancePropertiesResponse {
   /// Gets or sets the oracle database name.
-  final pulumi.Input<String>? dbName;
+  final pulumi.Input<String?>? dbName;
   /// Gets or sets the oracle database password.
-  final pulumi.Input<String>? dbPassword;
+  final pulumi.Input<String?>? dbPassword;
   /// Gets or sets the key vault URI to secret with the database password.
-  final pulumi.Input<String>? dbPasswordUri;
+  final pulumi.Input<String?>? dbPasswordUri;
   /// Gets or sets the oracle database sql port.
-  final pulumi.Input<String>? dbPort;
+  final pulumi.Input<String?>? dbPort;
   /// Gets or sets the oracle database user name.
-  final pulumi.Input<String>? dbUsername;
+  final pulumi.Input<String?>? dbUsername;
   /// Gets or sets the target virtual machine name.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'Oracle'.
   final pulumi.Input<String> providerType;
   /// Gets or sets the SAP System Identifier
-  final pulumi.Input<String>? sapSid;
+  final pulumi.Input<String?>? sapSid;
   /// Gets or sets the blob URI to SSL certificate for the Oracle Database.
-  final pulumi.Input<String>? sslCertificateUri;
+  final pulumi.Input<String?>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final pulumi.Input<String>? sslPreference;
+  final pulumi.Input<String?>? sslPreference;
 
   /// Creates a new [OracleProviderInstancePropertiesResponse].
   /// [dbName] Gets or sets the oracle database name.

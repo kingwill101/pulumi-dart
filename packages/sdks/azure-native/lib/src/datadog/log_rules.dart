@@ -6,13 +6,13 @@ import 'filtering_tag.dart';
 /// Set of rules for sending logs for the Monitor resource.
 class LogRules {
   /// List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  final pulumi.Input<List<FilteringTag>>? filteringTags;
+  final pulumi.Input<List<FilteringTag>?>? filteringTags;
   /// Flag specifying if AAD logs should be sent for the Monitor resource.
-  final pulumi.Input<bool>? sendAadLogs;
+  final pulumi.Input<bool?>? sendAadLogs;
   /// Flag specifying if Azure resource logs should be sent for the Monitor resource.
-  final pulumi.Input<bool>? sendResourceLogs;
+  final pulumi.Input<bool?>? sendResourceLogs;
   /// Flag specifying if Azure subscription logs should be sent for the Monitor resource.
-  final pulumi.Input<bool>? sendSubscriptionLogs;
+  final pulumi.Input<bool?>? sendSubscriptionLogs;
 
   /// Creates a new [LogRules].
   /// [filteringTags] List of filtering tags to be used for capturing logs. This only takes effect if SendResourceLogs flag is enabled. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.

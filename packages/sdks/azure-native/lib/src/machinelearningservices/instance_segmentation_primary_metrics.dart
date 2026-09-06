@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Primary metrics for InstanceSegmentation tasks.
-enum InstanceSegmentationPrimaryMetrics {
+enum InstanceSegmentationPrimaryMetrics implements pulumi.PulumiEnum<String> {
   meanAveragePrecision("MeanAveragePrecision");
 
   const InstanceSegmentationPrimaryMetrics(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceSegmentationPrimaryMetrics fromValue(String value) {

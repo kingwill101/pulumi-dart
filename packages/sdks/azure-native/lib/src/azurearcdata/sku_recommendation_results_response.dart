@@ -8,11 +8,11 @@ import 'sku_recommendation_results_azure_sql_virtual_machine_response.dart';
 /// SKU Recommendation results for Azure migration targets for SQL Server.
 class SkuRecommendationResultsResponse {
   /// SKU Recommendation results for Azure SQL Database.
-  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponse>? azureSqlDatabase;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlDatabaseResponse?>? azureSqlDatabase;
   /// SKU Recommendation results for Azure SQL Managed Instance.
-  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponse>? azureSqlManagedInstance;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponse?>? azureSqlManagedInstance;
   /// SKU Recommendation results for Azure SQL Virtual Machine.
-  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponse>? azureSqlVirtualMachine;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponse?>? azureSqlVirtualMachine;
 
   /// Creates a new [SkuRecommendationResultsResponse].
   /// [azureSqlDatabase] SKU Recommendation results for Azure SQL Database.

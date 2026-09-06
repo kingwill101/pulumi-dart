@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Routing Choice defines the kind of network routing opted by the user.
-enum RoutingChoice {
+enum RoutingChoice implements pulumi.PulumiEnum<String> {
   valueMicrosoftRouting("MicrosoftRouting"),
   valueInternetRouting("InternetRouting");
 
   const RoutingChoice(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutingChoice fromValue(String value) {

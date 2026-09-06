@@ -7,7 +7,7 @@ class SubnetConfiguration {
   /// Network prefix size.
   final pulumi.Input<int> networkPrefixSize;
   /// Subnet delegation.
-  final pulumi.Input<String>? subnetDelegation;
+  final pulumi.Input<String?>? subnetDelegation;
   /// Subnet name.
   final pulumi.Input<String> subnetName;
 
@@ -31,7 +31,7 @@ class SubnetConfiguration {
 
   factory SubnetConfiguration.fromMap(Map<String, dynamic> map) {
     return SubnetConfiguration(
-      networkPrefixSize: pulumi.Input.fromValue(map['networkPrefixSize'] as int),
+      networkPrefixSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkPrefixSize'])),
       subnetDelegation: (() { final guardedValue = map['subnetDelegation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetName: pulumi.Input.fromValue(map['subnetName'] as String),
     );

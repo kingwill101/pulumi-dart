@@ -12,7 +12,7 @@ class SqlDbElasticPoolTargetPropertiesResponse {
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Set to true to monitor a high availability replica of specified target, if any.
-  final pulumi.Input<bool>? readIntent;
+  final pulumi.Input<bool?>? readIntent;
   /// The Azure resource ID of an Azure SQL DB elastic pool target.
   final pulumi.Input<String> sqlEpResourceId;
   /// The type of authentication to use when connecting to a target.
@@ -21,7 +21,7 @@ class SqlDbElasticPoolTargetPropertiesResponse {
   /// Expected value is 'SqlEp'.
   final pulumi.Input<String> targetType;
   /// To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-  final pulumi.Input<VaultSecretResponse>? targetVault;
+  final pulumi.Input<VaultSecretResponse?>? targetVault;
 
   /// Creates a new [SqlDbElasticPoolTargetPropertiesResponse].
   /// [anchorDatabaseResourceId] The Azure resource ID of the anchor database used to connect to an elastic pool.
@@ -32,16 +32,16 @@ class SqlDbElasticPoolTargetPropertiesResponse {
   /// [targetAuthenticationType] The type of authentication to use when connecting to a target.
   /// [targetType] Discriminator property for TargetProperties.
   /// [targetVault] To use SQL authentication when connecting to targets, specify the vault where the login name and password secrets are stored.
-  const SqlDbElasticPoolTargetPropertiesResponse({
+  SqlDbElasticPoolTargetPropertiesResponse({
     required this.anchorDatabaseResourceId,
     required this.connectionServerName,
     required this.provisioningState,
-    this.readIntent,
+    pulumi.Input<bool?>? readIntent,
     required this.sqlEpResourceId,
     required this.targetAuthenticationType,
     required this.targetType,
     this.targetVault,
-  });
+  }) : readIntent = readIntent ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

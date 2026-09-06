@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Property/Properties which represent a unique ID.
 class StrongId {
   /// Localized descriptions.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Localized display name.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The properties which make up the unique ID.
   final pulumi.Input<List<String>> keyPropertyNames;
   /// The Name identifying the strong ID.

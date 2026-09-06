@@ -6,15 +6,15 @@ import 'date_after_creation_response.dart';
 /// Management policy action for blob version.
 class ManagementPolicyVersionResponse {
   /// The function to delete the blob version
-  final pulumi.Input<DateAfterCreationResponse>? delete;
+  final pulumi.Input<DateAfterCreationResponse?>? delete;
   /// The function to tier blob version to archive storage.
-  final pulumi.Input<DateAfterCreationResponse>? tierToArchive;
+  final pulumi.Input<DateAfterCreationResponse?>? tierToArchive;
   /// The function to tier blobs to cold storage.
-  final pulumi.Input<DateAfterCreationResponse>? tierToCold;
+  final pulumi.Input<DateAfterCreationResponse?>? tierToCold;
   /// The function to tier blob version to cool storage.
-  final pulumi.Input<DateAfterCreationResponse>? tierToCool;
+  final pulumi.Input<DateAfterCreationResponse?>? tierToCool;
   /// The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
-  final pulumi.Input<DateAfterCreationResponse>? tierToHot;
+  final pulumi.Input<DateAfterCreationResponse?>? tierToHot;
 
   /// Creates a new [ManagementPolicyVersionResponse].
   /// [delete] The function to delete the blob version

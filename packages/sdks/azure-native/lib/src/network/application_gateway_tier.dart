@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tier of an application gateway.
-enum ApplicationGatewayTier {
+enum ApplicationGatewayTier implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueWAF("WAF"),
   valueStandardV2("Standard_v2"),
@@ -7,6 +9,7 @@ enum ApplicationGatewayTier {
   valueBasic("Basic");
 
   const ApplicationGatewayTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayTier fromValue(String value) {

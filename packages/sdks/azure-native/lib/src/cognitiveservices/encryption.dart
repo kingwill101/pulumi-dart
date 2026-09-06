@@ -6,17 +6,17 @@ import 'key_vault_properties.dart';
 /// Properties to configure Encryption
 class Encryption {
   /// Enumerates the possible value of keySource for Encryption
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<dynamic>? keySource;
   /// Properties of KeyVault
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [Encryption].
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
-  const Encryption({
-    this.keySource,
+  Encryption({
+    pulumi.Input<dynamic>? keySource,
     this.keyVaultProperties,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Microsoft.KeyVault');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class Encryption {
 
   factory Encryption.fromMap(Map<String, dynamic> map) {
     return Encryption(
-      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keySource: (() { final guardedValue = map['keySource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

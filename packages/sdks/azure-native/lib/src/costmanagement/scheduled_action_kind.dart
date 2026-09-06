@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kind of the scheduled action.
-enum ScheduledActionKind {
+enum ScheduledActionKind implements pulumi.PulumiEnum<String> {
   email("Email"),
   insightAlert("InsightAlert");
 
   const ScheduledActionKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduledActionKind fromValue(String value) {

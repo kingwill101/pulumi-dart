@@ -93,19 +93,19 @@ class SynchronizationDetailsResponse {
     return SynchronizationDetailsResponse(
       dataSetId: pulumi.Input.fromValue(map['dataSetId'] as String),
       dataSetType: pulumi.Input.fromValue(map['dataSetType'] as String),
-      durationMs: pulumi.Input.fromValue(map['durationMs'] as int),
+      durationMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationMs'])),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      filesRead: pulumi.Input.fromValue(map['filesRead'] as double),
-      filesWritten: pulumi.Input.fromValue(map['filesWritten'] as double),
+      filesRead: pulumi.Input.fromValue((map['filesRead'] as num).toDouble()),
+      filesWritten: pulumi.Input.fromValue((map['filesWritten'] as num).toDouble()),
       message: pulumi.Input.fromValue(map['message'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      rowsCopied: pulumi.Input.fromValue(map['rowsCopied'] as double),
-      rowsRead: pulumi.Input.fromValue(map['rowsRead'] as double),
-      sizeRead: pulumi.Input.fromValue(map['sizeRead'] as double),
-      sizeWritten: pulumi.Input.fromValue(map['sizeWritten'] as double),
+      rowsCopied: pulumi.Input.fromValue((map['rowsCopied'] as num).toDouble()),
+      rowsRead: pulumi.Input.fromValue((map['rowsRead'] as num).toDouble()),
+      sizeRead: pulumi.Input.fromValue((map['sizeRead'] as num).toDouble()),
+      sizeWritten: pulumi.Input.fromValue((map['sizeWritten'] as num).toDouble()),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      vCore: pulumi.Input.fromValue(map['vCore'] as double),
+      vCore: pulumi.Input.fromValue((map['vCore'] as num).toDouble()),
     );
   }
 }

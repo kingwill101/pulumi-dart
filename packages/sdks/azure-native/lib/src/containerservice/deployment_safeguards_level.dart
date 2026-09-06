@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The deployment safeguards level. Possible values are Warn and Enforce
-enum DeploymentSafeguardsLevel {
+enum DeploymentSafeguardsLevel implements pulumi.PulumiEnum<String> {
   warn("Warn"),
   enforce("Enforce");
 
   const DeploymentSafeguardsLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static DeploymentSafeguardsLevel fromValue(String value) {

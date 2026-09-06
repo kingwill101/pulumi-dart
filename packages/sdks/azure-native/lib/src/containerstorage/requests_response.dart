@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Requests for capacity for the pool.
 class RequestsResponse {
   /// Requested capacity of the pool in GiB.
-  final pulumi.Input<double>? storage;
+  final pulumi.Input<double?>? storage;
 
   /// Creates a new [RequestsResponse].
   /// [storage] Requested capacity of the pool in GiB.
-  const RequestsResponse({
-    this.storage,
-  });
+  RequestsResponse({
+    pulumi.Input<double?>? storage,
+  }) : storage = storage ?? pulumi.Input.fromValue(1024);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -21,7 +21,7 @@ class RequestsResponse {
 
   factory RequestsResponse.fromMap(Map<String, dynamic> map) {
     return RequestsResponse(
-      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

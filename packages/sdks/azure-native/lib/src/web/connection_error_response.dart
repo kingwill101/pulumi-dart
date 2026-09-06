@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connection error
 class ConnectionErrorResponse {
   /// Code of the status
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Resource ETag
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource id
   final pulumi.Input<String> id;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Description of the status
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Resource name
   final pulumi.Input<String> name;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type
   final pulumi.Input<String> type;
 

@@ -6,14 +6,14 @@ import 'error_detail_response.dart';
 /// This is used to represent the various nodes of the distributed container.
 class DistributedNodesInfoResponse {
   /// Error Details if the Status is non-success.
-  final pulumi.Input<ErrorDetailResponse>? errorDetail;
+  final pulumi.Input<ErrorDetailResponse?>? errorDetail;
   /// Name of the node under a distributed container.
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
   /// ARM resource id of the node
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Status of this Node.
   /// Failed | Succeeded
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [DistributedNodesInfoResponse].
   /// [errorDetail] Error Details if the Status is non-success.

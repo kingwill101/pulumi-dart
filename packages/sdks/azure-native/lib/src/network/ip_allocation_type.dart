@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type for the IpAllocation.
-enum IpAllocationType {
+enum IpAllocationType implements pulumi.PulumiEnum<String> {
   valueUndefined("Undefined"),
   valueHypernet("Hypernet");
 
   const IpAllocationType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpAllocationType fromValue(String value) {

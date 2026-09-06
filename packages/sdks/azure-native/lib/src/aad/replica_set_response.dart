@@ -17,13 +17,13 @@ class ReplicaSetResponse {
   /// List of Domain Health Monitors
   final pulumi.Input<List<HealthMonitorResponse>> healthMonitors;
   /// Virtual network location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ReplicaSet Id
   final pulumi.Input<String> replicaSetId;
   /// Status of Domain Service instance
   final pulumi.Input<String> serviceStatus;
   /// The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Virtual network site id
   final pulumi.Input<String> vnetSiteId;
 

@@ -7,9 +7,9 @@ import 'nfs_azure_file_properties_response.dart';
 /// Storage properties
 class ManagedEnvironmentStorageResponseProperties {
   /// Azure file properties
-  final pulumi.Input<AzureFilePropertiesResponse>? azureFile;
+  final pulumi.Input<AzureFilePropertiesResponse?>? azureFile;
   /// NFS Azure file properties
-  final pulumi.Input<NfsAzureFilePropertiesResponse>? nfsAzureFile;
+  final pulumi.Input<NfsAzureFilePropertiesResponse?>? nfsAzureFile;
 
   /// Creates a new [ManagedEnvironmentStorageResponseProperties].
   /// [azureFile] Azure file properties

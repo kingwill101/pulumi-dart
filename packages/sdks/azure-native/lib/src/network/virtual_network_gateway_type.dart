@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of this virtual network gateway.
-enum VirtualNetworkGatewayType {
+enum VirtualNetworkGatewayType implements pulumi.PulumiEnum<String> {
   valueVpn("Vpn"),
   valueExpressRoute("ExpressRoute"),
   valueLocalGateway("LocalGateway");
 
   const VirtualNetworkGatewayType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkGatewayType fromValue(String value) {

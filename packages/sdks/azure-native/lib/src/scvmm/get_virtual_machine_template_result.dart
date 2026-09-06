@@ -9,53 +9,53 @@ import 'virtual_disk_response.dart';
 /// Result data returned by getVirtualMachineTemplate.
 class GetVirtualMachineTemplateResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets computer name.
-  final String computerName;
+  final String? computerName;
   /// Gets or sets the desired number of vCPUs for the vm.
-  final int cpuCount;
+  final int? cpuCount;
   /// Gets or sets the disks of the template.
-  final List<VirtualDiskResponse> disks;
+  final List<VirtualDiskResponse>? disks;
   /// Gets or sets a value indicating whether to enable dynamic memory or not.
-  final String dynamicMemoryEnabled;
+  final String? dynamicMemoryEnabled;
   /// Gets or sets the max dynamic memory for the vm.
-  final int dynamicMemoryMaxMB;
+  final int? dynamicMemoryMaxMB;
   /// Gets or sets the min dynamic memory for the vm.
-  final int dynamicMemoryMinMB;
+  final int? dynamicMemoryMinMB;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Gets or sets the generation for the vm.
-  final int generation;
+  final int? generation;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Gets or sets the inventory Item ID for the resource.
   final String? inventoryItemId;
   /// Gets or sets a value indicating whether the vm template is customizable or not.
-  final String isCustomizable;
+  final String? isCustomizable;
   /// Gets highly available property.
-  final String isHighlyAvailable;
+  final String? isHighlyAvailable;
   /// Gets or sets a value indicating whether to enable processor compatibility mode for live migration of VMs.
-  final String limitCpuForMigration;
+  final String? limitCpuForMigration;
   /// Gets or sets the location.
-  final String location;
+  final String? location;
   /// MemoryMB is the desired size of a virtual machine's memory, in MB.
-  final int memoryMB;
+  final int? memoryMB;
   /// Resource Name
-  final String name;
+  final String? name;
   /// Gets or sets the network interfaces of the template.
-  final List<NetworkInterfacesResponse> networkInterfaces;
+  final List<NetworkInterfacesResponse>? networkInterfaces;
   /// Gets or sets os name.
-  final String osName;
+  final String? osName;
   /// Gets or sets the type of the os.
-  final String osType;
+  final String? osType;
   /// Gets or sets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system data.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource Type
-  final String type;
+  final String? type;
   /// Unique ID of the virtual machine template.
   final String? uuid;
   /// ARM Id of the vmmServer resource in which this resource resides.
@@ -89,60 +89,60 @@ class GetVirtualMachineTemplateResult {
   /// [uuid] Unique ID of the virtual machine template.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
   const GetVirtualMachineTemplateResult({
-    required this.azureApiVersion,
-    required this.computerName,
-    required this.cpuCount,
-    required this.disks,
-    required this.dynamicMemoryEnabled,
-    required this.dynamicMemoryMaxMB,
-    required this.dynamicMemoryMinMB,
-    required this.extendedLocation,
-    required this.generation,
-    required this.id,
+    this.azureApiVersion,
+    this.computerName,
+    this.cpuCount,
+    this.disks,
+    this.dynamicMemoryEnabled,
+    this.dynamicMemoryMaxMB,
+    this.dynamicMemoryMinMB,
+    this.extendedLocation,
+    this.generation,
+    this.id,
     this.inventoryItemId,
-    required this.isCustomizable,
-    required this.isHighlyAvailable,
-    required this.limitCpuForMigration,
-    required this.location,
-    required this.memoryMB,
-    required this.name,
-    required this.networkInterfaces,
-    required this.osName,
-    required this.osType,
-    required this.provisioningState,
-    required this.systemData,
+    this.isCustomizable,
+    this.isHighlyAvailable,
+    this.limitCpuForMigration,
+    this.location,
+    this.memoryMB,
+    this.name,
+    this.networkInterfaces,
+    this.osName,
+    this.osType,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.uuid,
     this.vmmServerId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'computerName': computerName,
-      'cpuCount': cpuCount,
-      'disks': pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(disks, (value) => value.toMap()),
-      'dynamicMemoryEnabled': dynamicMemoryEnabled,
-      'dynamicMemoryMaxMB': dynamicMemoryMaxMB,
-      'dynamicMemoryMinMB': dynamicMemoryMinMB,
-      'extendedLocation': extendedLocation.toMap(),
-      'generation': generation,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'computerName': ?computerName,
+      'cpuCount': ?cpuCount,
+      'disks': ?(() { final guardedValue = disks; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualDiskResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'dynamicMemoryEnabled': ?dynamicMemoryEnabled,
+      'dynamicMemoryMaxMB': ?dynamicMemoryMaxMB,
+      'dynamicMemoryMinMB': ?dynamicMemoryMinMB,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'generation': ?generation,
+      'id': ?id,
       'inventoryItemId': ?inventoryItemId,
-      'isCustomizable': isCustomizable,
-      'isHighlyAvailable': isHighlyAvailable,
-      'limitCpuForMigration': limitCpuForMigration,
-      'location': location,
-      'memoryMB': memoryMB,
-      'name': name,
-      'networkInterfaces': pulumi.Input.encodeList<NetworkInterfacesResponse, Map<String, dynamic>>(networkInterfaces, (value) => value.toMap()),
-      'osName': osName,
-      'osType': osType,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'isCustomizable': ?isCustomizable,
+      'isHighlyAvailable': ?isHighlyAvailable,
+      'limitCpuForMigration': ?limitCpuForMigration,
+      'location': ?location,
+      'memoryMB': ?memoryMB,
+      'name': ?name,
+      'networkInterfaces': ?(() { final guardedValue = networkInterfaces; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkInterfacesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'osName': ?osName,
+      'osType': ?osType,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'uuid': ?uuid,
       'vmmServerId': ?vmmServerId,
     };
@@ -150,30 +150,30 @@ class GetVirtualMachineTemplateResult {
 
   factory GetVirtualMachineTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineTemplateResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      computerName: map['computerName'] as String,
-      cpuCount: map['cpuCount'] as int,
-      disks: pulumi.Input.decodeList<VirtualDiskResponse>(map['disks']!, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())),
-      dynamicMemoryEnabled: map['dynamicMemoryEnabled'] as String,
-      dynamicMemoryMaxMB: map['dynamicMemoryMaxMB'] as int,
-      dynamicMemoryMinMB: map['dynamicMemoryMinMB'] as int,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      generation: map['generation'] as int,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      computerName: (() { final guardedValue = map['computerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cpuCount: (() { final guardedValue = map['cpuCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      disks: (() { final guardedValue = map['disks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      dynamicMemoryEnabled: (() { final guardedValue = map['dynamicMemoryEnabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dynamicMemoryMaxMB: (() { final guardedValue = map['dynamicMemoryMaxMB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      dynamicMemoryMinMB: (() { final guardedValue = map['dynamicMemoryMinMB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      isCustomizable: map['isCustomizable'] as String,
-      isHighlyAvailable: map['isHighlyAvailable'] as String,
-      limitCpuForMigration: map['limitCpuForMigration'] as String,
-      location: map['location'] as String,
-      memoryMB: map['memoryMB'] as int,
-      name: map['name'] as String,
-      networkInterfaces: pulumi.Input.decodeList<NetworkInterfacesResponse>(map['networkInterfaces']!, (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      osName: map['osName'] as String,
-      osType: map['osType'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      isCustomizable: (() { final guardedValue = map['isCustomizable']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isHighlyAvailable: (() { final guardedValue = map['isHighlyAvailable']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      limitCpuForMigration: (() { final guardedValue = map['limitCpuForMigration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      memoryMB: (() { final guardedValue = map['memoryMB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfacesResponse>(guardedValue, (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      osName: (() { final guardedValue = map['osName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmmServerId: (() { final guardedValue = map['vmmServerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

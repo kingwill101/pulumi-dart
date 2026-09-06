@@ -11,7 +11,7 @@ class MqttBridgeRemoteBrokerConnectionSpecResponse {
   /// The endpoint of remote broker to connect to.
   final pulumi.Input<String> endpoint;
   /// Protocol for remote connection.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// TLS details for Remote broker Connection.
   final pulumi.Input<MqttBridgeRemoteBrokerConnectionTlsResponse> tls;
 
@@ -20,12 +20,12 @@ class MqttBridgeRemoteBrokerConnectionSpecResponse {
   /// [endpoint] The endpoint of remote broker to connect to.
   /// [protocol] Protocol for remote connection.
   /// [tls] TLS details for Remote broker Connection.
-  const MqttBridgeRemoteBrokerConnectionSpecResponse({
+  MqttBridgeRemoteBrokerConnectionSpecResponse({
     required this.authentication,
     required this.endpoint,
-    this.protocol,
+    pulumi.Input<String?>? protocol,
     required this.tls,
-  });
+  }) : protocol = protocol ?? pulumi.Input.fromValue('mqtt');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

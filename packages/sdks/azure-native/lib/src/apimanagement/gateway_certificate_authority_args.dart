@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_gateway_certificate_authority_args_doc}
 class GatewayCertificateAuthorityArgs {
   /// Identifier of the certificate entity. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
   /// Determines whether certificate authority is trusted.
-  final pulumi.Input<bool>? isTrusted;
+  final pulumi.Input<bool?>? isTrusted;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

@@ -6,7 +6,7 @@ import 'retention_tag.dart';
 /// Adhoc backup tagging criteria
 class AdhocBasedTaggingCriteria {
   /// Retention tag information
-  final pulumi.Input<RetentionTag>? tagInfo;
+  final pulumi.Input<RetentionTag?>? tagInfo;
 
   /// Creates a new [AdhocBasedTaggingCriteria].
   /// [tagInfo] Retention tag information

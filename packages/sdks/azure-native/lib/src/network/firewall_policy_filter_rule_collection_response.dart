@@ -1,22 +1,21 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'application_rule_response.dart';
 import 'firewall_policy_filter_rule_collection_action_response.dart';
 
 /// Firewall Policy Filter Rule Collection.
 class FirewallPolicyFilterRuleCollectionResponse {
   /// The action type of a Filter rule collection.
-  final pulumi.Input<FirewallPolicyFilterRuleCollectionActionResponse>? action;
+  final pulumi.Input<FirewallPolicyFilterRuleCollectionActionResponse?>? action;
   /// The name of the rule collection.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the Firewall Policy Rule Collection resource.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The type of the rule collection.
   /// Expected value is 'FirewallPolicyFilterRuleCollection'.
   final pulumi.Input<String> ruleCollectionType;
   /// List of rules included in a rule collection.
-  final pulumi.Input<List<ApplicationRuleResponse>>? rules;
+  final pulumi.Input<List<dynamic>?>? rules;
 
   /// Creates a new [FirewallPolicyFilterRuleCollectionResponse].
   /// [action] The action type of a Filter rule collection.
@@ -38,7 +37,7 @@ class FirewallPolicyFilterRuleCollectionResponse {
       'name': ?name,
       'priority': ?priority,
       'ruleCollectionType': ruleCollectionType,
-      'rules': ?pulumi.Input.mapOptionalInputValue<List<ApplicationRuleResponse>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<ApplicationRuleResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'rules': ?rules,
     };
   }
 
@@ -46,9 +45,9 @@ class FirewallPolicyFilterRuleCollectionResponse {
     return FirewallPolicyFilterRuleCollectionResponse(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirewallPolicyFilterRuleCollectionActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ruleCollectionType: pulumi.Input.fromValue(map['ruleCollectionType'] as String),
-      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApplicationRuleResponse>(guardedValue, (value) => ApplicationRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

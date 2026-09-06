@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Define match variables.
 class MatchVariableResponse {
   /// The selector of match variable.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Match Variable.
   final pulumi.Input<String> variableName;
 

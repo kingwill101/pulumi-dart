@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the Azure Health Bot SKU
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueF0("F0"),
   valueS1("S1"),
   valueC0("C0"),
@@ -7,6 +9,7 @@ enum SkuName {
   valueC1("C1");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

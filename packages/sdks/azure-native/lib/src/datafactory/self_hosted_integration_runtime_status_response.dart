@@ -21,11 +21,11 @@ class SelfHostedIntegrationRuntimeStatusResponse {
   /// The latest version on download center.
   final pulumi.Input<String> latestVersion;
   /// The list of linked integration runtimes that are created to share with this integration runtime.
-  final pulumi.Input<List<LinkedIntegrationRuntimeResponse>>? links;
+  final pulumi.Input<List<LinkedIntegrationRuntimeResponse>?>? links;
   /// The local time zone offset in hours.
   final pulumi.Input<String> localTimeZoneOffset;
   /// The list of nodes for this integration runtime.
-  final pulumi.Input<List<SelfHostedIntegrationRuntimeNodeResponse>>? nodes;
+  final pulumi.Input<List<SelfHostedIntegrationRuntimeNodeResponse>?>? nodes;
   /// The version that the integration runtime is going to update to.
   final pulumi.Input<String> pushedVersion;
   /// The date at which the integration runtime will be scheduled to update, in ISO8601 format.

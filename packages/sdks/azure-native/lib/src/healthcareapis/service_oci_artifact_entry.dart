@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An Open Container Initiative (OCI) artifact.
 class ServiceOciArtifactEntry {
   /// The artifact digest.
-  final pulumi.Input<String>? digest;
+  final pulumi.Input<String?>? digest;
   /// The artifact name.
-  final pulumi.Input<String>? imageName;
+  final pulumi.Input<String?>? imageName;
   /// The Azure Container Registry login server.
-  final pulumi.Input<String>? loginServer;
+  final pulumi.Input<String?>? loginServer;
 
   /// Creates a new [ServiceOciArtifactEntry].
   /// [digest] The artifact digest.

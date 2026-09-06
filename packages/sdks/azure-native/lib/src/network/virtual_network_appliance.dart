@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnet_response_v2.dart';
 import 'virtual_network_appliance_args.dart';
+import 'virtual_network_appliance_ip_configuration_response.dart';
 
 /// A virtual network appliance in a resource group.
 ///
@@ -186,7 +187,7 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// A list of IPConfigurations of the virtual network appliance.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipConfigurations;
+  late final pulumi.Output<List<VirtualNetworkApplianceIpConfigurationResponse>> ipConfigurations;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Resource name.
@@ -219,13 +220,35 @@ class VirtualNetworkAppliance extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bandwidthInGbps = registerOutput<String?>('bandwidthInGbps');
     etag = registerOutput<String>('etag');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>>('ipConfigurations');
+    ipConfigurations = registerOutput<List<VirtualNetworkApplianceIpConfigurationResponse>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkApplianceIpConfigurationResponse>(guardedValue, (value) => VirtualNetworkApplianceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
     subnet = registerOutput<SubnetResponseV2?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponseV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkAppliance] resource.
+  VirtualNetworkAppliance.reference(String urn)
+    : super(
+        'azure-native:network:VirtualNetworkAppliance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bandwidthInGbps = registerOutput<String?>('bandwidthInGbps');
+    etag = registerOutput<String>('etag');
+    ipConfigurations = registerOutput<List<VirtualNetworkApplianceIpConfigurationResponse>>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkApplianceIpConfigurationResponse>(guardedValue, (value) => VirtualNetworkApplianceIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnet = registerOutput<SubnetResponseV2?>('subnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetResponseV2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

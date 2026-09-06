@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credit breakdown item representing a milestone, line-item, or no-charge service
 class CreditPoliciesResponse {
   /// Expiration policy of the Credit
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// Redemption policy of the Credit
-  final pulumi.Input<String>? redemption;
+  final pulumi.Input<String?>? redemption;
 
   /// Creates a new [CreditPoliciesResponse].
   /// [expiration] Expiration policy of the Credit

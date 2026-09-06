@@ -10,27 +10,27 @@ import 'security_services.dart';
 /// {@macro pulumi_cloudngfw_global_rulestack_args_doc}
 class GlobalRulestackArgs {
   /// subscription scope of global rulestack
-  final pulumi.Input<List<String>>? associatedSubscriptions;
+  final pulumi.Input<List<String>?>? associatedSubscriptions;
   /// Mode for default rules creation
-  final pulumi.Input<String>? defaultMode;
+  final pulumi.Input<dynamic>? defaultMode;
   /// rulestack description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// GlobalRulestack resource name
-  final pulumi.Input<String>? globalRulestackName;
+  final pulumi.Input<String?>? globalRulestackName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<AzureResourceManagerManagedIdentityProperties>? identity;
+  final pulumi.Input<AzureResourceManagerManagedIdentityProperties?>? identity;
   /// Global Location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// minimum version
-  final pulumi.Input<String>? minAppIdVersion;
+  final pulumi.Input<String?>? minAppIdVersion;
   /// PanEtag info
-  final pulumi.Input<String>? panEtag;
+  final pulumi.Input<String?>? panEtag;
   /// Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
-  final pulumi.Input<String>? panLocation;
+  final pulumi.Input<String?>? panLocation;
   /// Rulestack Type
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<dynamic>? scope;
   /// Security Profile
-  final pulumi.Input<SecurityServices>? securityServices;
+  final pulumi.Input<SecurityServices?>? securityServices;
 
   /// Creates a new [GlobalRulestackArgs].
   /// [associatedSubscriptions] subscription scope of global rulestack
@@ -77,7 +77,7 @@ class GlobalRulestackArgs {
   factory GlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return GlobalRulestackArgs(
       associatedSubscriptions: (() { final guardedValue = map['associatedSubscriptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalRulestackName: (() { final guardedValue = map['globalRulestackName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureResourceManagerManagedIdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -85,7 +85,7 @@ class GlobalRulestackArgs {
       minAppIdVersion: (() { final guardedValue = map['minAppIdVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       panEtag: (() { final guardedValue = map['panEtag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       panLocation: (() { final guardedValue = map['panLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       securityServices: (() { final guardedValue = map['securityServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityServices.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the archive package source.
 class ArchivePackageSourcePropertiesResponse {
   /// The type of package source for a archive.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The external repository url.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ArchivePackageSourcePropertiesResponse].
   /// [type] The type of package source for a archive.

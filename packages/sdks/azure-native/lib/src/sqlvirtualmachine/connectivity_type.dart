@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server connectivity option.
-enum ConnectivityType {
+enum ConnectivityType implements pulumi.PulumiEnum<String> {
   lOCAL("LOCAL"),
   pRIVATE("PRIVATE"),
   pUBLIC("PUBLIC");
 
   const ConnectivityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectivityType fromValue(String value) {

@@ -12,17 +12,17 @@ class CertificateArgs {
   /// Gets or sets the base64 encoded value of the certificate.
   final pulumi.Input<String> base64Value;
   /// The name of certificate.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// Gets or sets the description of the certificate.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the is exportable flag of the certificate.
-  final pulumi.Input<bool>? isExportable;
+  final pulumi.Input<bool?>? isExportable;
   /// Gets or sets the name of the certificate.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the thumbprint of the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CertificateArgs].
   /// [automationAccountName] The name of the automation account.

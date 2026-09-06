@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The severity for alerts created by this alert rule.
-enum AttackTactic {
+enum AttackTactic implements pulumi.PulumiEnum<String> {
   valueReconnaissance("Reconnaissance"),
   valueResourceDevelopment("ResourceDevelopment"),
   valueInitialAccess("InitialAccess"),
@@ -19,6 +21,7 @@ enum AttackTactic {
   valueInhibitResponseFunction("InhibitResponseFunction");
 
   const AttackTactic(this.wireValue);
+  @override
   final String wireValue;
 
   static AttackTactic fromValue(String value) {

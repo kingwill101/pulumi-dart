@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
 class SubstituteFromDefinitionResponse {
   /// Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the ConfigMap/Secret that holds the variables to be used in substitution.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Set to True to proceed without ConfigMap/Secret, if it is not present.
-  final pulumi.Input<bool>? optional;
+  final pulumi.Input<bool?>? optional;
 
   /// Creates a new [SubstituteFromDefinitionResponse].
   /// [kind] Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   /// [name] Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   /// [optional] Set to True to proceed without ConfigMap/Secret, if it is not present.
-  const SubstituteFromDefinitionResponse({
+  SubstituteFromDefinitionResponse({
     this.kind,
     this.name,
-    this.optional,
-  });
+    pulumi.Input<bool?>? optional,
+  }) : optional = optional ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

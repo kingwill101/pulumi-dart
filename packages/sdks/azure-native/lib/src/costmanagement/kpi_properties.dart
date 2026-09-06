@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Each KPI must contain a 'type' and 'enabled' key.
 class KpiProperties {
   /// show the KPI in the UI?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// ID of resource related to metric (budget).
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// KPI type (Forecast, Budget).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [KpiProperties].
   /// [enabled] show the KPI in the UI?
@@ -33,7 +33,7 @@ class KpiProperties {
     return KpiProperties(
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'upgrade_override_settings_response.dart';
 /// Settings for upgrading a cluster.
 class ClusterUpgradeSettingsResponse {
   /// Settings for overrides.
-  final pulumi.Input<UpgradeOverrideSettingsResponse>? overrideSettings;
+  final pulumi.Input<UpgradeOverrideSettingsResponse?>? overrideSettings;
 
   /// Creates a new [ClusterUpgradeSettingsResponse].
   /// [overrideSettings] Settings for overrides.

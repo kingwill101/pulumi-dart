@@ -9,9 +9,9 @@ import 'target_directory_request_properties.dart';
 /// {@macro pulumi_subscription_subscription_tar_directory_args_doc}
 class SubscriptionTarDirectoryArgs {
   /// Target Directory request properties.
-  final pulumi.Input<TargetDirectoryRequestProperties>? properties;
+  final pulumi.Input<TargetDirectoryRequestProperties?>? properties;
   /// Subscription Id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [SubscriptionTarDirectoryArgs].
   /// [properties] Target Directory request properties.

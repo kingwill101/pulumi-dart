@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines what this IP filter will be used for. This is to support IP filtering on proxies.
-enum IpFilterTag {
+enum IpFilterTag implements pulumi.PulumiEnum<String> {
   default_("Default"),
   xffProxy("XffProxy"),
   serviceTag("ServiceTag");
 
   const IpFilterTag(this.wireValue);
+  @override
   final String wireValue;
 
   static IpFilterTag fromValue(String value) {

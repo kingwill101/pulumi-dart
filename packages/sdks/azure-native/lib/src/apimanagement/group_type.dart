@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Group type.
-enum GroupType {
+enum GroupType implements pulumi.PulumiEnum<String> {
   valueCustom("custom"),
   valueSystem("system"),
   valueExternal("external");
 
   const GroupType(this.wireValue);
+  @override
   final String wireValue;
 
   static GroupType fromValue(String value) {

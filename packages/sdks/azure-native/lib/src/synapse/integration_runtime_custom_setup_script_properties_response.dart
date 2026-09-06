@@ -6,9 +6,9 @@ import 'secure_string_response.dart';
 /// Custom setup script properties for a managed dedicated integration runtime.
 class IntegrationRuntimeCustomSetupScriptPropertiesResponse {
   /// The URI of the Azure blob container that contains the custom setup script.
-  final pulumi.Input<String>? blobContainerUri;
+  final pulumi.Input<String?>? blobContainerUri;
   /// The SAS token of the Azure blob container.
-  final pulumi.Input<SecureStringResponse>? sasToken;
+  final pulumi.Input<SecureStringResponse?>? sasToken;
 
   /// Creates a new [IntegrationRuntimeCustomSetupScriptPropertiesResponse].
   /// [blobContainerUri] The URI of the Azure blob container that contains the custom setup script.

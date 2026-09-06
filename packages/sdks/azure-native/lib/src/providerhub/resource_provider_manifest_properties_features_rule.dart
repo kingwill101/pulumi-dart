@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The features rule.
 class ResourceProviderManifestPropertiesFeaturesRule {
   /// The required feature policy.
-  final pulumi.Input<String> requiredFeaturesPolicy;
+  final pulumi.Input<dynamic> requiredFeaturesPolicy;
 
   /// Creates a new [ResourceProviderManifestPropertiesFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
@@ -21,7 +21,7 @@ class ResourceProviderManifestPropertiesFeaturesRule {
 
   factory ResourceProviderManifestPropertiesFeaturesRule.fromMap(Map<String, dynamic> map) {
     return ResourceProviderManifestPropertiesFeaturesRule(
-      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy'] as String),
+      requiredFeaturesPolicy: pulumi.Input.fromValue(map['requiredFeaturesPolicy']),
     );
   }
 }

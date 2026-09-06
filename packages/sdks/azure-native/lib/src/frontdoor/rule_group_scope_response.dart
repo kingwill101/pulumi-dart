@@ -8,7 +8,7 @@ class RuleGroupScopeResponse {
   /// Defines the rule group name.
   final pulumi.Input<String> ruleGroupName;
   /// List of rule scopes.
-  final pulumi.Input<List<RuleScopeResponse>>? ruleScopes;
+  final pulumi.Input<List<RuleScopeResponse>?>? ruleScopes;
 
   /// Creates a new [RuleGroupScopeResponse].
   /// [ruleGroupName] Defines the rule group name.

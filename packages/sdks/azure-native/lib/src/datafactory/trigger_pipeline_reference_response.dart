@@ -8,7 +8,7 @@ class TriggerPipelineReferenceResponse {
   /// Pipeline parameters.
   final pulumi.Input<dynamic>? parameters;
   /// Pipeline reference.
-  final pulumi.Input<PipelineReferenceResponse>? pipelineReference;
+  final pulumi.Input<PipelineReferenceResponse?>? pipelineReference;
 
   /// Creates a new [TriggerPipelineReferenceResponse].
   /// [parameters] Pipeline parameters.

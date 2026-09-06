@@ -21,3 +21,14 @@ Future<GetStorageDiscoveryWorkspaceResult> getStorageDiscoveryWorkspace(
   );
   return GetStorageDiscoveryWorkspaceResult.fromMap(result);
 }
+
+pulumi.Output<GetStorageDiscoveryWorkspaceResult> getStorageDiscoveryWorkspaceOutput(
+  GetStorageDiscoveryWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagediscovery:getStorageDiscoveryWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageDiscoveryWorkspaceResult.fromMap);
+}

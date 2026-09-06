@@ -7,9 +7,9 @@ import 'segment_terminator_suffix.dart';
 /// The Edifact agreement framing settings.
 class EdifactFramingSettings {
   /// The character encoding.
-  final pulumi.Input<String>? characterEncoding;
+  final pulumi.Input<String?>? characterEncoding;
   /// The EDIFACT frame setting characterSet.
-  final pulumi.Input<String> characterSet;
+  final pulumi.Input<dynamic> characterSet;
   /// The component separator.
   final pulumi.Input<int> componentSeparator;
   /// The data element separator.
@@ -27,7 +27,7 @@ class EdifactFramingSettings {
   /// The EDIFACT frame setting segment terminator suffix.
   final pulumi.Input<SegmentTerminatorSuffix> segmentTerminatorSuffix;
   /// The service code list directory version.
-  final pulumi.Input<String>? serviceCodeListDirectoryVersion;
+  final pulumi.Input<String?>? serviceCodeListDirectoryVersion;
 
   /// Creates a new [EdifactFramingSettings].
   /// [characterEncoding] The character encoding.
@@ -74,14 +74,14 @@ class EdifactFramingSettings {
   factory EdifactFramingSettings.fromMap(Map<String, dynamic> map) {
     return EdifactFramingSettings(
       characterEncoding: (() { final guardedValue = map['characterEncoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
-      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
-      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
+      characterSet: pulumi.Input.fromValue(map['characterSet']),
+      componentSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['componentSeparator'])),
+      dataElementSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataElementSeparator'])),
       decimalPointIndicator: pulumi.Input.fromValue(EdifactDecimalIndicator.fromValue(map['decimalPointIndicator']! as String)),
-      protocolVersion: pulumi.Input.fromValue(map['protocolVersion'] as int),
-      releaseIndicator: pulumi.Input.fromValue(map['releaseIndicator'] as int),
-      repetitionSeparator: pulumi.Input.fromValue(map['repetitionSeparator'] as int),
-      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      protocolVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['protocolVersion'])),
+      releaseIndicator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['releaseIndicator'])),
+      repetitionSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['repetitionSeparator'])),
+      segmentTerminator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['segmentTerminator'])),
       segmentTerminatorSuffix: pulumi.Input.fromValue(SegmentTerminatorSuffix.fromValue(map['segmentTerminatorSuffix']! as String)),
       serviceCodeListDirectoryVersion: (() { final guardedValue = map['serviceCodeListDirectoryVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

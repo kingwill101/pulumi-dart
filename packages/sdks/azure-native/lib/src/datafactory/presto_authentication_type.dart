@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication mechanism used to connect to the Presto server.
-enum PrestoAuthenticationType {
+enum PrestoAuthenticationType implements pulumi.PulumiEnum<String> {
   anonymous("Anonymous"),
   lDAP("LDAP");
 
   const PrestoAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static PrestoAuthenticationType fromValue(String value) {

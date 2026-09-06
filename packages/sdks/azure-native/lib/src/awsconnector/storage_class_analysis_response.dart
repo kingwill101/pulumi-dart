@@ -6,7 +6,7 @@ import 'data_export_response.dart';
 /// Definition of StorageClassAnalysis
 class StorageClassAnalysisResponse {
   /// Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported. Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported.
-  final pulumi.Input<DataExportResponse>? dataExport;
+  final pulumi.Input<DataExportResponse?>? dataExport;
 
   /// Creates a new [StorageClassAnalysisResponse].
   /// [dataExport] Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported. Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported.

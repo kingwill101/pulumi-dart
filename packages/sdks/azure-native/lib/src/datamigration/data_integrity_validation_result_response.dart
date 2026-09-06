@@ -6,9 +6,9 @@ import 'validation_error_response.dart';
 /// Results for checksum based Data Integrity validation results
 class DataIntegrityValidationResultResponse {
   /// List of failed table names of source and target pair
-  final pulumi.Input<Map<String, String>>? failedObjects;
+  final pulumi.Input<Map<String, String>?>? failedObjects;
   /// List of errors that happened while performing data integrity validation
-  final pulumi.Input<ValidationErrorResponse>? validationErrors;
+  final pulumi.Input<ValidationErrorResponse?>? validationErrors;
 
   /// Creates a new [DataIntegrityValidationResultResponse].
   /// [failedObjects] List of failed table names of source and target pair

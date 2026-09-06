@@ -15,29 +15,29 @@ import 'worker_profile.dart';
 /// {@macro pulumi_redhatopenshift_open_shift_cluster_args_doc}
 class OpenShiftClusterArgs {
   /// The cluster API server profile.
-  final pulumi.Input<APIServerProfile>? apiserverProfile;
+  final pulumi.Input<APIServerProfile?>? apiserverProfile;
   /// The cluster profile.
-  final pulumi.Input<ClusterProfile>? clusterProfile;
+  final pulumi.Input<ClusterProfile?>? clusterProfile;
   /// The cluster ingress profiles.
-  final pulumi.Input<List<IngressProfile>>? ingressProfiles;
+  final pulumi.Input<List<IngressProfile>?>? ingressProfiles;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The cluster master profile.
-  final pulumi.Input<MasterProfile>? masterProfile;
+  final pulumi.Input<MasterProfile?>? masterProfile;
   /// The cluster network profile.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// The cluster provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the OpenShift cluster resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The cluster service principal profile.
-  final pulumi.Input<ServicePrincipalProfile>? servicePrincipalProfile;
+  final pulumi.Input<ServicePrincipalProfile?>? servicePrincipalProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The cluster worker profiles.
-  final pulumi.Input<List<WorkerProfile>>? workerProfiles;
+  final pulumi.Input<List<WorkerProfile>?>? workerProfiles;
 
   /// Creates a new [OpenShiftClusterArgs].
   /// [apiserverProfile] The cluster API server profile.
@@ -92,7 +92,7 @@ class OpenShiftClusterArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterProfile: (() { final guardedValue = map['masterProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MasterProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       servicePrincipalProfile: (() { final guardedValue = map['servicePrincipalProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePrincipalProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure SKU definition.
 class AzureSkuResponse {
   /// The number of instances of the cluster.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// SKU name.
   final pulumi.Input<String> name;
   /// SKU tier.
@@ -31,7 +31,7 @@ class AzureSkuResponse {
 
   factory AzureSkuResponse.fromMap(Map<String, dynamic> map) {
     return AzureSkuResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),
     );

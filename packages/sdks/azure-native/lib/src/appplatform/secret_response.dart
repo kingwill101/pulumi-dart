@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret definition.
 class SecretResponse {
   /// Secret Name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SecretResponse].
   /// [name] Secret Name.

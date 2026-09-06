@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstantRPAdditionalDetailsResponse {
-  final pulumi.Input<String>? azureBackupRGNamePrefix;
-  final pulumi.Input<String>? azureBackupRGNameSuffix;
+  final pulumi.Input<String?>? azureBackupRGNamePrefix;
+  final pulumi.Input<String?>? azureBackupRGNameSuffix;
 
   /// Creates a new [InstantRPAdditionalDetailsResponse].
   /// [azureBackupRGNamePrefix] Optional.

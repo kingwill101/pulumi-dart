@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_response.dart';
+import 'private_link_scoped_resource_response.dart';
 import 'system_data_response.dart';
 import 'workspace_args.dart';
 import 'workspace_capping_response.dart';
@@ -225,7 +226,7 @@ class Workspace extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of linked private link scope resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateLinkScopedResources;
+  late final pulumi.Output<List<PrivateLinkScopedResourceResponse>> privateLinkScopedResources;
   /// The provisioning state of the workspace.
   late final pulumi.Output<String> provisioningState;
   /// The network access type for accessing Log Analytics ingestion.
@@ -270,14 +271,46 @@ class Workspace extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     modifiedDate = registerOutput<String>('modifiedDate');
     this.name = registerOutput<String>('name');
-    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>('privateLinkScopedResources');
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
     publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
     retentionInDays = registerOutput<int?>('retentionInDays');
     sku = registerOutput<WorkspaceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    workspaceCapping = registerOutput<WorkspaceCappingResponse?>('workspaceCapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    customerId = registerOutput<String>('customerId');
+    defaultDataCollectionRuleResourceId = registerOutput<String?>('defaultDataCollectionRuleResourceId');
+    etag = registerOutput<String?>('etag');
+    features = registerOutput<WorkspaceFeaturesResponse?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceFeaturesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    forceCmkForQuery = registerOutput<bool?>('forceCmkForQuery');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    modifiedDate = registerOutput<String>('modifiedDate');
+    this.name = registerOutput<String>('name');
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
+    publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    sku = registerOutput<WorkspaceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     workspaceCapping = registerOutput<WorkspaceCappingResponse?>('workspaceCapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceCappingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The access level allowed for the users in this key set.
-enum BareMetalMachineKeySetPrivilegeLevel {
+enum BareMetalMachineKeySetPrivilegeLevel implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueSuperuser("Superuser");
 
   const BareMetalMachineKeySetPrivilegeLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static BareMetalMachineKeySetPrivilegeLevel fromValue(String value) {

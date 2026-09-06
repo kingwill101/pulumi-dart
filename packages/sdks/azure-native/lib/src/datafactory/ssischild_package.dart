@@ -7,9 +7,9 @@ class SSISChildPackage {
   /// Content for embedded child package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> packageContent;
   /// Last modified date for embedded child package.
-  final pulumi.Input<String>? packageLastModifiedDate;
+  final pulumi.Input<String?>? packageLastModifiedDate;
   /// Name for embedded child package.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Path for embedded child package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> packagePath;
 

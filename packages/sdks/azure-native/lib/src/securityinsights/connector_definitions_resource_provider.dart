@@ -16,7 +16,7 @@ class ConnectorDefinitionsResourceProvider {
   /// For more information about the permissions see &lt;see href="https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#actions-format"&gt;here&lt;/see&gt;.
   final pulumi.Input<ResourceProviderRequiredPermissions> requiredPermissions;
   /// The scope on which the user should have permissions, in order to be able to create connections.
-  final pulumi.Input<String> scope;
+  final pulumi.Input<dynamic> scope;
 
   /// Creates a new [ConnectorDefinitionsResourceProvider].
   /// [permissionsDisplayText] Gets or sets the permissions description text.
@@ -48,7 +48,7 @@ class ConnectorDefinitionsResourceProvider {
       provider: pulumi.Input.fromValue(map['provider'] as String),
       providerDisplayName: pulumi.Input.fromValue(map['providerDisplayName'] as String),
       requiredPermissions: pulumi.Input.fromValue(ResourceProviderRequiredPermissions.fromMap((map['requiredPermissions']! as Map).cast<String, dynamic>())),
-      scope: pulumi.Input.fromValue(map['scope'] as String),
+      scope: pulumi.Input.fromValue(map['scope']),
     );
   }
 }

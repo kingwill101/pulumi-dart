@@ -9,6 +9,8 @@ import 'cache_response_sku.dart';
 import 'cache_security_settings_response.dart';
 import 'cache_upgrade_settings_response.dart';
 import 'cache_upgrade_status_response.dart';
+import 'priming_job_response.dart';
+import 'storage_target_space_allocation_response.dart';
 import 'system_data_response.dart';
 
 /// A cache instance. Follows Azure Resource Manager standards: https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md
@@ -505,7 +507,7 @@ class Cache extends pulumi.CustomResource {
   /// Specifies network settings of the cache.
   late final pulumi.Output<CacheNetworkSettingsResponse?> networkSettings;
   /// Specifies the priming jobs defined in the cache.
-  late final pulumi.Output<List<Map<String, dynamic>>> primingJobs;
+  late final pulumi.Output<List<PrimingJobResponse>> primingJobs;
   /// ARM provisioning state, see https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/Addendum.md#provisioningstate-property
   late final pulumi.Output<String> provisioningState;
   /// Specifies security settings of the cache.
@@ -513,7 +515,7 @@ class Cache extends pulumi.CustomResource {
   /// SKU for the cache.
   late final pulumi.Output<CacheResponseSku?> sku;
   /// Specifies the space allocation percentage for each storage target in the cache.
-  late final pulumi.Output<List<Map<String, dynamic>>> spaceAllocation;
+  late final pulumi.Output<List<StorageTargetSpaceAllocationResponse>> spaceAllocation;
   /// Subnet used for the cache.
   late final pulumi.Output<String?> subnet;
   /// The system meta data relating to this resource.
@@ -550,20 +552,53 @@ class Cache extends pulumi.CustomResource {
     health = registerOutput<CacheHealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<CacheIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
-    mountAddresses = registerOutput<List<String>>('mountAddresses');
+    mountAddresses = registerOutput<List<String>>('mountAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkSettings = registerOutput<CacheNetworkSettingsResponse?>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    primingJobs = registerOutput<List<Map<String, dynamic>>>('primingJobs');
+    primingJobs = registerOutput<List<PrimingJobResponse>>('primingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrimingJobResponse>(guardedValue, (value) => PrimingJobResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     securitySettings = registerOutput<CacheSecuritySettingsResponse?>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<CacheResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    spaceAllocation = registerOutput<List<Map<String, dynamic>>>('spaceAllocation');
+    spaceAllocation = registerOutput<List<StorageTargetSpaceAllocationResponse>>('spaceAllocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageTargetSpaceAllocationResponse>(guardedValue, (value) => StorageTargetSpaceAllocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     subnet = registerOutput<String?>('subnet');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Cache] resource.
+  Cache.reference(String urn)
+    : super(
+        'azure-native:storagecache:Cache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cacheSizeGB = registerOutput<int?>('cacheSizeGB');
+    directoryServicesSettings = registerOutput<CacheDirectorySettingsResponse?>('directoryServicesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheDirectorySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettings = registerOutput<CacheEncryptionSettingsResponse?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    health = registerOutput<CacheHealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<CacheIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    mountAddresses = registerOutput<List<String>>('mountAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    networkSettings = registerOutput<CacheNetworkSettingsResponse?>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primingJobs = registerOutput<List<PrimingJobResponse>>('primingJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrimingJobResponse>(guardedValue, (value) => PrimingJobResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    securitySettings = registerOutput<CacheSecuritySettingsResponse?>('securitySettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheSecuritySettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<CacheResponseSku?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spaceAllocation = registerOutput<List<StorageTargetSpaceAllocationResponse>>('spaceAllocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageTargetSpaceAllocationResponse>(guardedValue, (value) => StorageTargetSpaceAllocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subnet = registerOutput<String?>('subnet');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    upgradeSettings = registerOutput<CacheUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeStatus = registerOutput<CacheUpgradeStatusResponse>('upgradeStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CacheUpgradeStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

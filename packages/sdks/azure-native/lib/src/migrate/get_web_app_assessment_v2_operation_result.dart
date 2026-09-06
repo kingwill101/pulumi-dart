@@ -15,7 +15,7 @@ class GetWebAppAssessmentV2OperationResult {
   /// Assessment type of the assessment.
   final String? assessmentType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Azure Location or Azure region where to which the machines will be migrated.
   final String? azureLocation;
   /// Azure Offer Code.
@@ -25,7 +25,7 @@ class GetWebAppAssessmentV2OperationResult {
   /// Confidence Rating in Percentage.
   final double? confidenceRatingInPercentage;
   /// Date and Time when assessment was created.
-  final String createdTimestamp;
+  final String? createdTimestamp;
   /// Currency in which prices should be reported.
   final String? currency;
   /// Custom discount percentage.
@@ -42,9 +42,9 @@ class GetWebAppAssessmentV2OperationResult {
   /// Gets the group type for the assessment.
   final String? groupType;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
   final String? percentile;
@@ -53,31 +53,31 @@ class GetWebAppAssessmentV2OperationResult {
   /// Gets or sets the start time to consider performance data for assessment.
   final String? perfDataStartTime;
   /// Last time when rates were queried.
-  final String pricesTimestamp;
+  final String? pricesTimestamp;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Reserved instance.
   final String? reservedInstance;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
   final double? scalingFactor;
   /// Schema version.
-  final String schemaVersion;
+  final String? schemaVersion;
   /// Assessment sizing criterion.
   final String? sizingCriterion;
   /// User configurable setting to display the Stage of Assessment.
-  final String stage;
+  final String? stage;
   /// Whether assessment is in valid state and all machines have been assessed.
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
   final String? timeRange;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Date and Time when assessment was last updated.
-  final String updatedTimestamp;
+  final String? updatedTimestamp;
 
   /// Creates a new [GetWebAppAssessmentV2OperationResult].
   /// [appSvcContainerSettings] Gets or sets user configurable app service container database settings.
@@ -117,12 +117,12 @@ class GetWebAppAssessmentV2OperationResult {
     this.appSvcContainerSettings,
     this.appSvcNativeSettings,
     this.assessmentType,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.azureLocation,
     this.azureOfferCode,
     this.azureSecurityOfferingType,
     this.confidenceRatingInPercentage,
-    required this.createdTimestamp,
+    this.createdTimestamp,
     this.currency,
     this.discountPercentage,
     this.discoveredEntityLightSummary,
@@ -130,23 +130,23 @@ class GetWebAppAssessmentV2OperationResult {
     this.entityUptime,
     this.environmentType,
     this.groupType,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.percentile,
     this.perfDataEndTime,
     this.perfDataStartTime,
-    required this.pricesTimestamp,
-    required this.provisioningState,
+    this.pricesTimestamp,
+    this.provisioningState,
     this.reservedInstance,
     this.scalingFactor,
-    required this.schemaVersion,
+    this.schemaVersion,
     this.sizingCriterion,
-    required this.stage,
-    required this.status,
-    required this.systemData,
+    this.stage,
+    this.status,
+    this.systemData,
     this.timeRange,
-    required this.type,
-    required this.updatedTimestamp,
+    this.type,
+    this.updatedTimestamp,
   });
 
   Map<String, dynamic> toMap() {
@@ -154,12 +154,12 @@ class GetWebAppAssessmentV2OperationResult {
       'appSvcContainerSettings': ?appSvcContainerSettings?.toMap(),
       'appSvcNativeSettings': ?appSvcNativeSettings?.toMap(),
       'assessmentType': ?assessmentType,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'azureLocation': ?azureLocation,
       'azureOfferCode': ?azureOfferCode,
       'azureSecurityOfferingType': ?azureSecurityOfferingType,
       'confidenceRatingInPercentage': ?confidenceRatingInPercentage,
-      'createdTimestamp': createdTimestamp,
+      'createdTimestamp': ?createdTimestamp,
       'currency': ?currency,
       'discountPercentage': ?discountPercentage,
       'discoveredEntityLightSummary': ?discoveredEntityLightSummary?.toMap(),
@@ -167,23 +167,23 @@ class GetWebAppAssessmentV2OperationResult {
       'entityUptime': ?entityUptime?.toMap(),
       'environmentType': ?environmentType,
       'groupType': ?groupType,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'percentile': ?percentile,
       'perfDataEndTime': ?perfDataEndTime,
       'perfDataStartTime': ?perfDataStartTime,
-      'pricesTimestamp': pricesTimestamp,
-      'provisioningState': provisioningState,
+      'pricesTimestamp': ?pricesTimestamp,
+      'provisioningState': ?provisioningState,
       'reservedInstance': ?reservedInstance,
       'scalingFactor': ?scalingFactor,
-      'schemaVersion': schemaVersion,
+      'schemaVersion': ?schemaVersion,
       'sizingCriterion': ?sizingCriterion,
-      'stage': stage,
-      'status': status,
-      'systemData': systemData.toMap(),
+      'stage': ?stage,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
       'timeRange': ?timeRange,
-      'type': type,
-      'updatedTimestamp': updatedTimestamp,
+      'type': ?type,
+      'updatedTimestamp': ?updatedTimestamp,
     };
   }
 
@@ -192,36 +192,36 @@ class GetWebAppAssessmentV2OperationResult {
       appSvcContainerSettings: (() { final guardedValue = map['appSvcContainerSettings']; if (guardedValue == null) return null; return AppSvcContainerSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       appSvcNativeSettings: (() { final guardedValue = map['appSvcNativeSettings']; if (guardedValue == null) return null; return AppSvcNativeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       assessmentType: (() { final guardedValue = map['assessmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureSecurityOfferingType: (() { final guardedValue = map['azureSecurityOfferingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      createdTimestamp: map['createdTimestamp'] as String,
+      confidenceRatingInPercentage: (() { final guardedValue = map['confidenceRatingInPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      createdTimestamp: (() { final guardedValue = map['createdTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       discoveredEntityLightSummary: (() { final guardedValue = map['discoveredEntityLightSummary']; if (guardedValue == null) return null; return DiscoveredEntityLightSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       eaSubscriptionId: (() { final guardedValue = map['eaSubscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       entityUptime: (() { final guardedValue = map['entityUptime']; if (guardedValue == null) return null; return EntityUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       groupType: (() { final guardedValue = map['groupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      pricesTimestamp: map['pricesTimestamp'] as String,
-      provisioningState: map['provisioningState'] as String,
+      pricesTimestamp: (() { final guardedValue = map['pricesTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      schemaVersion: map['schemaVersion'] as String,
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      schemaVersion: (() { final guardedValue = map['schemaVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      stage: map['stage'] as String,
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      stage: (() { final guardedValue = map['stage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
-      updatedTimestamp: map['updatedTimestamp'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedTimestamp: (() { final guardedValue = map['updatedTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

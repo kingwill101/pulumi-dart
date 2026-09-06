@@ -7,11 +7,11 @@ class MonitoredResourcePropertiesResponse {
   /// The version of the monitored resource agent version.
   final pulumi.Input<String> agentVersion;
   /// ComputerName of the monitored resource.
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// The connection status of the monitored resource.
   final pulumi.Input<String> connectionStatus;
   /// The domain name associated with the monitored resource.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// The health status of the monitored resource.
   final pulumi.Input<String> healthStatus;
   /// Install type of monitored resource.
@@ -20,9 +20,9 @@ class MonitoredResourcePropertiesResponse {
   final pulumi.Input<String> managementServerEndpoint;
   final pulumi.Input<String> provisioningState;
   /// ArmId of the monitored resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Location of the monitored resource.
-  final pulumi.Input<String>? resourceLocation;
+  final pulumi.Input<String?>? resourceLocation;
 
   /// Creates a new [MonitoredResourcePropertiesResponse].
   /// [agentVersion] The version of the monitored resource agent version.

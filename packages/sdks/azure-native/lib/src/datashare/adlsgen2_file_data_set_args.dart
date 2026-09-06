@@ -10,7 +10,7 @@ class ADLSGen2FileDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// File path within the file system.
   final pulumi.Input<String> filePath;
   /// File system to which the file belongs.

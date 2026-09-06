@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for ScaleUnit pool.
 class ScaleUnitConfigurationResponse {
   /// Gets or sets a value indicating whether PublicEgress is disabled.
-  final pulumi.Input<bool>? disablePublicEgress;
+  final pulumi.Input<bool?>? disablePublicEgress;
   /// Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-  final pulumi.Input<List<String>>? registries;
+  final pulumi.Input<List<String>?>? registries;
 
   /// Creates a new [ScaleUnitConfigurationResponse].
   /// [disablePublicEgress] Gets or sets a value indicating whether PublicEgress is disabled.
   /// [registries] Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-  const ScaleUnitConfigurationResponse({
-    this.disablePublicEgress,
+  ScaleUnitConfigurationResponse({
+    pulumi.Input<bool?>? disablePublicEgress,
     this.registries,
-  });
+  }) : disablePublicEgress = disablePublicEgress ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

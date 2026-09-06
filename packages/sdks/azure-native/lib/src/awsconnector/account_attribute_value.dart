@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AccountAttributeValue
 class AccountAttributeValue {
   /// &lt;p&gt;The value of the attribute.&lt;/p&gt;
-  final pulumi.Input<String>? attributeValue;
+  final pulumi.Input<String?>? attributeValue;
 
   /// Creates a new [AccountAttributeValue].
   /// [attributeValue] &lt;p&gt;The value of the attribute.&lt;/p&gt;

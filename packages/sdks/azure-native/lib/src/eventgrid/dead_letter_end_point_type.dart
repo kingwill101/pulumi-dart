@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the endpoint for the dead letter destination
-enum DeadLetterEndPointType {
+enum DeadLetterEndPointType implements pulumi.PulumiEnum<String> {
   valueStorageBlob("StorageBlob");
 
   const DeadLetterEndPointType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeadLetterEndPointType fromValue(String value) {

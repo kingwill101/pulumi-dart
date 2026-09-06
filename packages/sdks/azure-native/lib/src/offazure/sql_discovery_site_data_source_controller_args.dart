@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_offazure_sql_discovery_site_data_source_controller_args_doc}
 class SqlDiscoverySiteDataSourceControllerArgs {
   /// SQL Discovery site data source name.
-  final pulumi.Input<String>? discoverySiteDataSourceName;
+  final pulumi.Input<String?>? discoverySiteDataSourceName;
   /// Gets or sets the discovery site Id.
-  final pulumi.Input<String>? discoverySiteId;
+  final pulumi.Input<String?>? discoverySiteId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site name

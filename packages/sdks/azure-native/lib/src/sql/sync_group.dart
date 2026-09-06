@@ -426,4 +426,30 @@ class SyncGroup extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
   }
+
+  /// Creates a typed reference to an existing [SyncGroup] resource.
+  SyncGroup.reference(String urn)
+    : super(
+        'azure-native:sql:SyncGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    conflictLoggingRetentionInDays = registerOutput<int?>('conflictLoggingRetentionInDays');
+    conflictResolutionPolicy = registerOutput<String?>('conflictResolutionPolicy');
+    enableConflictLogging = registerOutput<bool?>('enableConflictLogging');
+    hubDatabaseUserName = registerOutput<String?>('hubDatabaseUserName');
+    interval = registerOutput<int?>('interval');
+    lastSyncTime = registerOutput<String>('lastSyncTime');
+    this.name = registerOutput<String>('name');
+    privateEndpointName = registerOutput<String>('privateEndpointName');
+    schema = registerOutput<SyncGroupSchemaResponse?>('schema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SyncGroupSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    syncDatabaseId = registerOutput<String?>('syncDatabaseId');
+    syncState = registerOutput<String>('syncState');
+    type = registerOutput<String>('type');
+    usePrivateLinkConnection = registerOutput<bool?>('usePrivateLinkConnection');
+  }
 }

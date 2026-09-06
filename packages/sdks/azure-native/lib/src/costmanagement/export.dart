@@ -2335,4 +2335,28 @@ class Export extends pulumi.CustomResource {
     schedule = registerOutput<ExportScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Export] resource.
+  Export.reference(String urn)
+    : super(
+        'azure-native:costmanagement:Export',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    definition = registerOutput<ExportDefinitionResponse>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryInfo = registerOutput<ExportDeliveryInfoResponse>('deliveryInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportDeliveryInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eTag = registerOutput<String?>('eTag');
+    format = registerOutput<String?>('format');
+    identity = registerOutput<SystemAssignedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemAssignedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    nextRunTimeEstimate = registerOutput<String>('nextRunTimeEstimate');
+    partitionData = registerOutput<bool?>('partitionData');
+    runHistory = registerOutput<ExportExecutionListResultResponse?>('runHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportExecutionListResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<ExportScheduleResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

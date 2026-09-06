@@ -7,13 +7,13 @@ import 'virtual_network_rule.dart';
 /// A set of rules governing the network accessibility.
 class NetworkRuleSet {
   /// Setting for trusted services.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<dynamic>? bypass;
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<dynamic>? defaultAction;
   /// The list of IP address rules.
-  final pulumi.Input<List<IpRule>>? ipRules;
+  final pulumi.Input<List<IpRule>?>? ipRules;
   /// The list of virtual network rules.
-  final pulumi.Input<List<VirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<List<VirtualNetworkRule>?>? virtualNetworkRules;
 
   /// Creates a new [NetworkRuleSet].
   /// [bypass] Setting for trusted services.
@@ -38,8 +38,8 @@ class NetworkRuleSet {
 
   factory NetworkRuleSet.fromMap(Map<String, dynamic> map) {
     return NetworkRuleSet(
-      bypass: (() { final guardedValue = map['bypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bypass: (() { final guardedValue = map['bypass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      defaultAction: (() { final guardedValue = map['defaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipRules: (() { final guardedValue = map['ipRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpRule>(guardedValue, (value) => IpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       virtualNetworkRules: (() { final guardedValue = map['virtualNetworkRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkRule>(guardedValue, (value) => VirtualNetworkRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

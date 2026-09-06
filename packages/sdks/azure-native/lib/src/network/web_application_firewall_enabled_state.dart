@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the policy.
-enum WebApplicationFirewallEnabledState {
+enum WebApplicationFirewallEnabledState implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const WebApplicationFirewallEnabledState(this.wireValue);
+  @override
   final String wireValue;
 
   static WebApplicationFirewallEnabledState fromValue(String value) {

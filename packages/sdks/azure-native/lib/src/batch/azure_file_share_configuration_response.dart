@@ -11,7 +11,7 @@ class AzureFileShareConfigurationResponse {
   /// This is of the form 'https://{account}.file.core.windows.net/'.
   final pulumi.Input<String> azureFileUrl;
   /// These are 'net use' options in Windows and 'mount' options in Linux.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   final pulumi.Input<String> relativeMountPath;
 

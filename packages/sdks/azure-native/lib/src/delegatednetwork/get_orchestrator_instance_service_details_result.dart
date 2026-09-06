@@ -8,21 +8,21 @@ class GetOrchestratorInstanceServiceDetailsResult {
   /// K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final String? apiServerEndpoint;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// RootCA certificate of kubernetes cluster base64 encoded
   final String? clusterRootCA;
   /// Properties of the controller.
-  final ControllerDetailsResponse controllerDetails;
+  final ControllerDetailsResponse? controllerDetails;
   /// An identifier that represents the resource.
-  final String id;
+  final String? id;
   /// The identity of the orchestrator
   final OrchestratorIdentityResponse? identity;
   /// The kind of workbook. Choices are user and shared.
-  final String kind;
+  final String? kind;
   /// Location of the resource.
   final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// AAD ID used with apiserver
   final String? orchestratorAppId;
   /// TenantID of server App ID
@@ -30,13 +30,13 @@ class GetOrchestratorInstanceServiceDetailsResult {
   /// private link arm resource id. Either one of apiServerEndpoint or privateLinkResourceId can be specified
   final String? privateLinkResourceId;
   /// The current state of orchestratorInstance resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource guid.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The type of resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetOrchestratorInstanceServiceDetailsResult].
   /// [apiServerEndpoint] K8s APIServer url. Either one of apiServerEndpoint or privateLinkResourceId can be specified
@@ -57,62 +57,62 @@ class GetOrchestratorInstanceServiceDetailsResult {
   /// [type] The type of resource.
   const GetOrchestratorInstanceServiceDetailsResult({
     this.apiServerEndpoint,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.clusterRootCA,
-    required this.controllerDetails,
-    required this.id,
+    this.controllerDetails,
+    this.id,
     this.identity,
-    required this.kind,
+    this.kind,
     this.location,
-    required this.name,
+    this.name,
     this.orchestratorAppId,
     this.orchestratorTenantId,
     this.privateLinkResourceId,
-    required this.provisioningState,
-    required this.resourceGuid,
+    this.provisioningState,
+    this.resourceGuid,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'apiServerEndpoint': ?apiServerEndpoint,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clusterRootCA': ?clusterRootCA,
-      'controllerDetails': controllerDetails.toMap(),
-      'id': id,
+      'controllerDetails': ?controllerDetails?.toMap(),
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'kind': kind,
+      'kind': ?kind,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'orchestratorAppId': ?orchestratorAppId,
       'orchestratorTenantId': ?orchestratorTenantId,
       'privateLinkResourceId': ?privateLinkResourceId,
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetOrchestratorInstanceServiceDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetOrchestratorInstanceServiceDetailsResult(
       apiServerEndpoint: (() { final guardedValue = map['apiServerEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clusterRootCA: (() { final guardedValue = map['clusterRootCA']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      controllerDetails: ControllerDetailsResponse.fromMap((map['controllerDetails']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      controllerDetails: (() { final guardedValue = map['controllerDetails']; if (guardedValue == null) return null; return ControllerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return OrchestratorIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      kind: map['kind'] as String,
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orchestratorAppId: (() { final guardedValue = map['orchestratorAppId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       orchestratorTenantId: (() { final guardedValue = map['orchestratorTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateLinkResourceId: (() { final guardedValue = map['privateLinkResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

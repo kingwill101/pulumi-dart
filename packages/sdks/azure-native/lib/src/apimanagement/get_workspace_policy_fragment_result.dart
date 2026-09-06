@@ -4,21 +4,21 @@
 /// Result data returned by getWorkspacePolicyFragment.
 class GetWorkspacePolicyFragmentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Policy fragment description.
   final String? description;
   /// Format of the policy fragment content.
   final String? format;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Contents of the policy fragment.
-  final String value;
+  final String? value;
 
   /// Creates a new [GetWorkspacePolicyFragmentResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -29,40 +29,40 @@ class GetWorkspacePolicyFragmentResult {
   /// [provisioningState] The provisioning state
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Contents of the policy fragment.
-  const GetWorkspacePolicyFragmentResult({
-    required this.azureApiVersion,
+  GetWorkspacePolicyFragmentResult({
+    this.azureApiVersion,
     this.description,
-    this.format,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.type,
-    required this.value,
-  });
+    String? format,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.type,
+    this.value,
+  }) : format = format ?? 'xml';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'format': ?format,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'type': type,
-      'value': value,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'type': ?type,
+      'value': ?value,
     };
   }
 
   factory GetWorkspacePolicyFragmentResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspacePolicyFragmentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
-      value: map['value'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

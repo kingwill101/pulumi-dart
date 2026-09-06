@@ -6,9 +6,9 @@ import 'key_vault_key_reference.dart';
 /// Cache encryption settings.
 class CacheEncryptionSettings {
   /// Specifies the location of the key encryption key in key vault.
-  final pulumi.Input<KeyVaultKeyReference>? keyEncryptionKey;
+  final pulumi.Input<KeyVaultKeyReference?>? keyEncryptionKey;
   /// Specifies whether the service will automatically rotate to the newest version of the key in the key vault.
-  final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
+  final pulumi.Input<bool?>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [CacheEncryptionSettings].
   /// [keyEncryptionKey] Specifies the location of the key encryption key in key vault.

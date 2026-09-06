@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The application client details to track the entity creating/updating the managed app resource.
 class ApplicationClientDetailsResponse {
   /// The client application Id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// The client Oid.
-  final pulumi.Input<String>? oid;
+  final pulumi.Input<String?>? oid;
   /// The client Puid
-  final pulumi.Input<String>? puid;
+  final pulumi.Input<String?>? puid;
 
   /// Creates a new [ApplicationClientDetailsResponse].
   /// [applicationId] The client application Id.

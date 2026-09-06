@@ -11,55 +11,55 @@ import 'access_review_reviewer.dart';
 /// {@macro pulumi_authorization_access_review_schedule_definition_by_id_args_doc}
 class AccessReviewScheduleDefinitionByIdArgs {
   /// Flag to indicate whether auto-apply capability, to automatically change the target object access resource, is enabled. If not enabled, a user must, after the review completes, apply the access review.
-  final pulumi.Input<bool>? autoApplyDecisionsEnabled;
+  final pulumi.Input<bool?>? autoApplyDecisionsEnabled;
   /// This is the collection of backup reviewers.
-  final pulumi.Input<List<AccessReviewReviewer>>? backupReviewers;
+  final pulumi.Input<List<AccessReviewReviewer>?>? backupReviewers;
   /// This specifies the behavior for the autoReview feature when an access review completes.
-  final pulumi.Input<String>? defaultDecision;
+  final pulumi.Input<dynamic>? defaultDecision;
   /// Flag to indicate whether reviewers are required to provide a justification when reviewing access.
-  final pulumi.Input<bool>? defaultDecisionEnabled;
+  final pulumi.Input<bool?>? defaultDecisionEnabled;
   /// The description provided by the access review creator and visible to admins.
-  final pulumi.Input<String>? descriptionForAdmins;
+  final pulumi.Input<String?>? descriptionForAdmins;
   /// The description provided by the access review creator to be shown to reviewers.
-  final pulumi.Input<String>? descriptionForReviewers;
+  final pulumi.Input<String?>? descriptionForReviewers;
   /// The display name for the schedule definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// This is used to indicate the resource id(s) to exclude
-  final pulumi.Input<String>? excludeResourceId;
+  final pulumi.Input<String?>? excludeResourceId;
   /// This is used to indicate the role definition id(s) to exclude
-  final pulumi.Input<String>? excludeRoleDefinitionId;
+  final pulumi.Input<String?>? excludeRoleDefinitionId;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? expandNestedMemberships;
+  final pulumi.Input<bool?>? expandNestedMemberships;
   /// Duration users are inactive for. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
-  final pulumi.Input<String>? inactiveDuration;
+  final pulumi.Input<String?>? inactiveDuration;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? includeAccessBelowResource;
+  final pulumi.Input<bool?>? includeAccessBelowResource;
   /// Flag to indicate whether to expand nested memberships or not.
-  final pulumi.Input<bool>? includeInheritedAccess;
+  final pulumi.Input<bool?>? includeInheritedAccess;
   /// The duration in days for an instance.
-  final pulumi.Input<int>? instanceDurationInDays;
+  final pulumi.Input<int?>? instanceDurationInDays;
   /// This is the collection of instances returned when one does an expand on it.
-  final pulumi.Input<List<AccessReviewInstance>>? instances;
+  final pulumi.Input<List<AccessReviewInstance>?>? instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// Flag to indicate whether the reviewer is required to pass justification when recording a decision.
-  final pulumi.Input<bool>? justificationRequiredOnApproval;
+  final pulumi.Input<bool?>? justificationRequiredOnApproval;
   /// Flag to indicate whether sending mails to reviewers and the review creator is enabled.
-  final pulumi.Input<bool>? mailNotificationsEnabled;
+  final pulumi.Input<bool?>? mailNotificationsEnabled;
   /// Access Review schedule definition recurrence range.
-  final pulumi.Input<AccessReviewRecurrenceRange>? range;
+  final pulumi.Input<AccessReviewRecurrenceRange?>? range;
   /// Recommendations for access reviews are calculated by looking back at 30 days of data(w.r.t the start date of the review) by default. However, in some scenarios, customers want to change how far back to look at and want to configure 60 days, 90 days, etc. instead. This setting allows customers to configure this duration. The value should be in ISO  8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations).This code can be used to convert TimeSpan to a valid interval string: XmlConvert.ToString(new TimeSpan(hours, minutes, seconds))
-  final pulumi.Input<String>? recommendationLookBackDuration;
+  final pulumi.Input<String?>? recommendationLookBackDuration;
   /// Flag to indicate whether showing recommendations to reviewers is enabled.
-  final pulumi.Input<bool>? recommendationsEnabled;
+  final pulumi.Input<bool?>? recommendationsEnabled;
   /// Flag to indicate whether sending reminder emails to reviewers are enabled.
-  final pulumi.Input<bool>? reminderNotificationsEnabled;
+  final pulumi.Input<bool?>? reminderNotificationsEnabled;
   /// This is the collection of reviewers.
-  final pulumi.Input<List<AccessReviewReviewer>>? reviewers;
+  final pulumi.Input<List<AccessReviewReviewer>?>? reviewers;
   /// The id of the access review schedule definition.
-  final pulumi.Input<String>? scheduleDefinitionId;
+  final pulumi.Input<String?>? scheduleDefinitionId;
   /// The recurrence type : weekly, monthly, etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [AccessReviewScheduleDefinitionByIdArgs].
   /// [autoApplyDecisionsEnabled] Flag to indicate whether auto-apply capability, to automatically change the target object access resource, is enabled. If not enabled, a user must, after the review completes, apply the access review.
@@ -149,7 +149,7 @@ class AccessReviewScheduleDefinitionByIdArgs {
     return AccessReviewScheduleDefinitionByIdArgs(
       autoApplyDecisionsEnabled: (() { final guardedValue = map['autoApplyDecisionsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       backupReviewers: (() { final guardedValue = map['backupReviewers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessReviewReviewer>(guardedValue, (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      defaultDecision: (() { final guardedValue = map['defaultDecision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultDecision: (() { final guardedValue = map['defaultDecision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       defaultDecisionEnabled: (() { final guardedValue = map['defaultDecisionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       descriptionForAdmins: (() { final guardedValue = map['descriptionForAdmins']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       descriptionForReviewers: (() { final guardedValue = map['descriptionForReviewers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -160,9 +160,9 @@ class AccessReviewScheduleDefinitionByIdArgs {
       inactiveDuration: (() { final guardedValue = map['inactiveDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       includeAccessBelowResource: (() { final guardedValue = map['includeAccessBelowResource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeInheritedAccess: (() { final guardedValue = map['includeInheritedAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      instanceDurationInDays: (() { final guardedValue = map['instanceDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceDurationInDays: (() { final guardedValue = map['instanceDurationInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessReviewInstance>(guardedValue, (value) => AccessReviewInstance.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       justificationRequiredOnApproval: (() { final guardedValue = map['justificationRequiredOnApproval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mailNotificationsEnabled: (() { final guardedValue = map['mailNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       range: (() { final guardedValue = map['range']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccessReviewRecurrenceRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -171,7 +171,7 @@ class AccessReviewScheduleDefinitionByIdArgs {
       reminderNotificationsEnabled: (() { final guardedValue = map['reminderNotificationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       reviewers: (() { final guardedValue = map['reviewers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AccessReviewReviewer>(guardedValue, (value) => AccessReviewReviewer.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scheduleDefinitionId: (() { final guardedValue = map['scheduleDefinitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

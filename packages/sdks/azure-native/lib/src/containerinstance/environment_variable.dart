@@ -7,11 +7,11 @@ class EnvironmentVariable {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
   /// The value of the secure environment variable.
-  final pulumi.Input<String>? secureValue;
+  final pulumi.Input<String?>? secureValue;
   /// The reference of the secure environment variable.
-  final pulumi.Input<String>? secureValueReference;
+  final pulumi.Input<String?>? secureValueReference;
   /// The value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentVariable].
   /// [name] The name of the environment variable.

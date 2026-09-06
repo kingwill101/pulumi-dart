@@ -6,7 +6,7 @@ import 'monitored_subscription_response.dart';
 /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
 class SubscriptionListResponse {
   /// List of subscriptions and the state of the monitoring.
-  final pulumi.Input<List<MonitoredSubscriptionResponse>>? monitoredSubscriptionList;
+  final pulumi.Input<List<MonitoredSubscriptionResponse>?>? monitoredSubscriptionList;
   /// Provisioning State of the resource
   final pulumi.Input<String> provisioningState;
 

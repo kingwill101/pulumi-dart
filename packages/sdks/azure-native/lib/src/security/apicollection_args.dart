@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_apicollection_args_doc}
 class APICollectionArgs {
   /// A string representing the apiCollections resource within the Microsoft.Security provider namespace. This string matches the Azure API Management API name.
-  final pulumi.Input<String>? apiCollectionId;
+  final pulumi.Input<String?>? apiCollectionId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

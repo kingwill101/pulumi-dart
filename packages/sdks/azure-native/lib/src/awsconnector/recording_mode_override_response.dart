@@ -6,11 +6,11 @@ import 'recording_frequency_enum_value_response.dart';
 /// Definition of RecordingModeOverride
 class RecordingModeOverrideResponse {
   /// &lt;p&gt;A description that you provide for the override.&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The recording frequency that will be applied to all the resource types specified in the override.&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;Continuous recording allows you to record configuration changes continuously whenever a change occurs.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Daily recording allows you to receive a configuration item (CI) representing the most recent state of your resources over the last 24-hour period, only if it’s different from the previous CI recorded. &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;Firewall Manager depends on continuous recording to monitor your resources. If you are using Firewall Manager, it is recommended that you set the recording frequency to Continuous.&lt;/p&gt; &lt;/note&gt;
-  final pulumi.Input<RecordingFrequencyEnumValueResponse>? recordingFrequency;
+  final pulumi.Input<RecordingFrequencyEnumValueResponse?>? recordingFrequency;
   /// &lt;p&gt;A comma-separated list that specifies which resource types Config includes in the override.&lt;/p&gt; &lt;important&gt; &lt;p&gt;Daily recording is not supported for the following resource types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AWS::Config::ResourceCompliance&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AWS::Config::ConformancePackCompliance&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;AWS::Config::ConfigurationRecorder&lt;/code&gt; &lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/important&gt;
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
 
   /// Creates a new [RecordingModeOverrideResponse].
   /// [description] &lt;p&gt;A description that you provide for the override.&lt;/p&gt;

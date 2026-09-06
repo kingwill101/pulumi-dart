@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the app registration for providers that have client ids and client secrets
 class ClientRegistrationResponse {
   /// The Client ID of the app used for login.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The app setting name that contains the client secret.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
 
   /// Creates a new [ClientRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.

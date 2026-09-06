@@ -6,9 +6,9 @@ import 'execution_parameters_response.dart';
 /// Specify the schedule in which the scheduled action is supposed to follow
 class ScheduledActionsScheduleResponse {
   /// The type of deadline the scheduled action is supposed to follow for the schedule. If no value is passed, it will default to InitiateAt.
-  final pulumi.Input<String>? deadlineType;
+  final pulumi.Input<String?>? deadlineType;
   /// The execution parameters the scheduled action is supposed to follow
-  final pulumi.Input<ExecutionParametersResponse>? executionParameters;
+  final pulumi.Input<ExecutionParametersResponse?>? executionParameters;
   /// The days of the month the scheduled action is supposed to run on. If empty, it means it will run on every day of the month.
   final pulumi.Input<List<int>> requestedDaysOfTheMonth;
   /// The months the scheduled action is supposed to run on

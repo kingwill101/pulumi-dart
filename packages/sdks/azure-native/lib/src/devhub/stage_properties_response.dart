@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of a Stage.
 class StagePropertiesResponse {
-  final pulumi.Input<List<String>>? dependencies;
-  final pulumi.Input<String>? gitEnvironment;
+  final pulumi.Input<List<String>?>? dependencies;
+  final pulumi.Input<String?>? gitEnvironment;
   /// Stage Name
-  final pulumi.Input<String>? stageName;
+  final pulumi.Input<String?>? stageName;
 
   /// Creates a new [StagePropertiesResponse].
   /// [dependencies] Optional.

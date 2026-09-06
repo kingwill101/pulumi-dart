@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_power_shell_script_args.dart';
 import 'container_configuration_response.dart';
+import 'environment_variable_response.dart';
 import 'managed_service_identity_response.dart';
 import 'script_status_response.dart';
 import 'storage_account_configuration_response.dart';
@@ -236,7 +237,7 @@ class AzurePowerShellScript extends pulumi.CustomResource {
   /// Container settings.
   late final pulumi.Output<ContainerConfigurationResponse?> containerSettings;
   /// The environment variables to pass over to the script.
-  late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
+  late final pulumi.Output<List<EnvironmentVariableResponse>?> environmentVariables;
   /// Gets or sets how the deployment script should be forced to execute even if the script resource has not changed. Can be current time stamp or a GUID.
   late final pulumi.Output<String?> forceUpdateTag;
   /// Optional property. Managed identity to be used for this deployment script. Currently, only user-assigned MSI is supported.
@@ -292,7 +293,7 @@ class AzurePowerShellScript extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cleanupPreference = registerOutput<String?>('cleanupPreference');
     containerSettings = registerOutput<ContainerConfigurationResponse?>('containerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
+    environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentVariableResponse>(guardedValue, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
     forceUpdateTag = registerOutput<String?>('forceUpdateTag');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');
@@ -305,9 +306,43 @@ class AzurePowerShellScript extends pulumi.CustomResource {
     scriptContent = registerOutput<String?>('scriptContent');
     status = registerOutput<ScriptStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccountSettings = registerOutput<StorageAccountConfigurationResponse?>('storageAccountSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris');
+    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeout = registerOutput<String?>('timeout');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AzurePowerShellScript] resource.
+  AzurePowerShellScript.reference(String urn)
+    : super(
+        'azure-native:resources:AzurePowerShellScript',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    arguments = registerOutput<String?>('arguments');
+    azPowerShellVersion = registerOutput<String>('azPowerShellVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cleanupPreference = registerOutput<String?>('cleanupPreference');
+    containerSettings = registerOutput<ContainerConfigurationResponse?>('containerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentVariableResponse>(guardedValue, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    outputs = registerOutput<dynamic>('outputs');
+    primaryScriptUri = registerOutput<String?>('primaryScriptUri');
+    provisioningState = registerOutput<String>('provisioningState');
+    retentionInterval = registerOutput<String>('retentionInterval');
+    scriptContent = registerOutput<String?>('scriptContent');
+    status = registerOutput<ScriptStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScriptStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccountSettings = registerOutput<StorageAccountConfigurationResponse?>('storageAccountSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageAccountConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportingScriptUris = registerOutput<List<String>?>('supportingScriptUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeout = registerOutput<String?>('timeout');
     type = registerOutput<String>('type');
   }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DNS Proxy Settings in Firewall Policy.
 class DnsSettingsResponse {
   /// Enable DNS Proxy on Firewalls attached to the Firewall Policy.
-  final pulumi.Input<bool>? enableProxy;
+  final pulumi.Input<bool?>? enableProxy;
   /// FQDNs in Network Rules are supported when set to true.
-  final pulumi.Input<bool>? requireProxyForNetworkRules;
+  final pulumi.Input<bool?>? requireProxyForNetworkRules;
   /// List of Custom DNS Servers.
-  final pulumi.Input<List<String>>? servers;
+  final pulumi.Input<List<String>?>? servers;
 
   /// Creates a new [DnsSettingsResponse].
   /// [enableProxy] Enable DNS Proxy on Firewalls attached to the Firewall Policy.

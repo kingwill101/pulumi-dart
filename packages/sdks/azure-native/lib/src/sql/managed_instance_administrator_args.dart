@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sql_managed_instance_administrator_args_doc}
 class ManagedInstanceAdministratorArgs {
-  final pulumi.Input<String>? administratorName;
+  final pulumi.Input<String?>? administratorName;
   /// Type of the managed instance administrator.
-  final pulumi.Input<String> administratorType;
+  final pulumi.Input<dynamic> administratorType;
   /// Login name of the managed instance administrator.
   final pulumi.Input<String> login;
   /// The name of the managed instance.
@@ -19,7 +19,7 @@ class ManagedInstanceAdministratorArgs {
   /// SID (object ID) of the managed instance administrator.
   final pulumi.Input<String> sid;
   /// Tenant ID of the managed instance administrator.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedInstanceAdministratorArgs].
   /// [administratorName] Optional.
@@ -54,7 +54,7 @@ class ManagedInstanceAdministratorArgs {
   factory ManagedInstanceAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ManagedInstanceAdministratorArgs(
       administratorName: (() { final guardedValue = map['administratorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      administratorType: pulumi.Input.fromValue(map['administratorType'] as String),
+      administratorType: pulumi.Input.fromValue(map['administratorType']),
       login: pulumi.Input.fromValue(map['login'] as String),
       managedInstanceName: pulumi.Input.fromValue(map['managedInstanceName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

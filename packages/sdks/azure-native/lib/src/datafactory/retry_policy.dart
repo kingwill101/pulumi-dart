@@ -7,7 +7,7 @@ class RetryPolicy {
   /// Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? count;
   /// Interval between retries in seconds. Default is 30.
-  final pulumi.Input<int>? intervalInSeconds;
+  final pulumi.Input<int?>? intervalInSeconds;
 
   /// Creates a new [RetryPolicy].
   /// [count] Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
@@ -27,7 +27,7 @@ class RetryPolicy {
   factory RetryPolicy.fromMap(Map<String, dynamic> map) {
     return RetryPolicy(
       count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

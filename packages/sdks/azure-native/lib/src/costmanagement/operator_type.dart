@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operator to use for comparison.
-enum OperatorType {
+enum OperatorType implements pulumi.PulumiEnum<String> {
   valueIn("In"),
   valueContains("Contains");
 
   const OperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperatorType fromValue(String value) {

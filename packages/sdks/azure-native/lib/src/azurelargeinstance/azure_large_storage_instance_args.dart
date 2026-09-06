@@ -10,19 +10,19 @@ import 'storage_properties.dart';
 /// {@macro pulumi_azurelargeinstance_azure_large_storage_instance_args_doc}
 class AzureLargeStorageInstanceArgs {
   /// Name of the AzureLargeStorageInstance.
-  final pulumi.Input<String>? azureLargeStorageInstanceName;
+  final pulumi.Input<String?>? azureLargeStorageInstanceName;
   /// Specifies the AzureLargeStorageInstance unique ID.
-  final pulumi.Input<String>? azureLargeStorageInstanceUniqueIdentifier;
+  final pulumi.Input<String?>? azureLargeStorageInstanceUniqueIdentifier;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the storage properties for the AzureLargeStorage instance.
-  final pulumi.Input<StorageProperties>? storageProperties;
+  final pulumi.Input<StorageProperties?>? storageProperties;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureLargeStorageInstanceArgs].
   /// [azureLargeStorageInstanceName] Name of the AzureLargeStorageInstance.

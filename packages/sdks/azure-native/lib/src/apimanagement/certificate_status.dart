@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Certificate Status.
-enum CertificateStatus {
+enum CertificateStatus implements pulumi.PulumiEnum<String> {
   valueCompleted("Completed"),
   valueFailed("Failed"),
   valueInProgress("InProgress");
 
   const CertificateStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateStatus fromValue(String value) {

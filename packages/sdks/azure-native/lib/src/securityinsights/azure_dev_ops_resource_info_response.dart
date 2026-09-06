@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resources created in Azure DevOps repository.
 class AzureDevOpsResourceInfoResponse {
   /// Id of the pipeline created for the source-control.
-  final pulumi.Input<String>? pipelineId;
+  final pulumi.Input<String?>? pipelineId;
   /// Id of the service-connection created for the source-control.
-  final pulumi.Input<String>? serviceConnectionId;
+  final pulumi.Input<String?>? serviceConnectionId;
 
   /// Creates a new [AzureDevOpsResourceInfoResponse].
   /// [pipelineId] Id of the pipeline created for the source-control.

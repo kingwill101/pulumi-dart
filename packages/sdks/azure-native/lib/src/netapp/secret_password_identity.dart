@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity used to authenticate with key vault.
 class SecretPasswordIdentity {
   /// The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [SecretPasswordIdentity].
   /// [userAssignedIdentity] The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.

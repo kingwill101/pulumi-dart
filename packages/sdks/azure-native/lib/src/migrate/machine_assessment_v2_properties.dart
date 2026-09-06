@@ -7,9 +7,9 @@ import 'scope.dart';
 /// Assessment properties class.
 class MachineAssessmentV2Properties {
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<Scope>? scope;
+  final pulumi.Input<Scope?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<MachineAssessmentSettings>? settings;
+  final pulumi.Input<MachineAssessmentSettings?>? settings;
 
   /// Creates a new [MachineAssessmentV2Properties].
   /// [scope] Gets or sets the scope of assessment.

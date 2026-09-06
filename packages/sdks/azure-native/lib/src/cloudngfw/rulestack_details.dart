@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Associated rulestack details
 class RulestackDetails {
   /// Rulestack location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource Id
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Associated rulestack Id
-  final pulumi.Input<String>? rulestackId;
+  final pulumi.Input<String?>? rulestackId;
 
   /// Creates a new [RulestackDetails].
   /// [location] Rulestack location

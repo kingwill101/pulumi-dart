@@ -10,23 +10,23 @@ import 'extended_location.dart';
 /// {@macro pulumi_deviceregistry_asset_endpoint_profile_args_doc}
 class AssetEndpointProfileArgs {
   /// Stringified JSON that contains connectivity type specific further configuration (e.g. OPC UA, Modbus, ONVIF).
-  final pulumi.Input<String>? additionalConfiguration;
+  final pulumi.Input<String?>? additionalConfiguration;
   /// Asset Endpoint Profile name parameter.
-  final pulumi.Input<String>? assetEndpointProfileName;
+  final pulumi.Input<String?>? assetEndpointProfileName;
   /// Defines the client authentication mechanism to the server.
-  final pulumi.Input<Authentication>? authentication;
+  final pulumi.Input<Authentication?>? authentication;
   /// Reference to a discovered asset endpoint profile. Populated only if the asset endpoint profile has been created from discovery flow. Discovered asset endpoint profile name must be provided.
-  final pulumi.Input<String>? discoveredAssetEndpointProfileRef;
+  final pulumi.Input<String?>? discoveredAssetEndpointProfileRef;
   /// Defines the configuration for the connector type that is being used with the endpoint profile.
   final pulumi.Input<String> endpointProfileType;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The local valid URI specifying the network address/DNS name of a southbound device. The scheme part of the targetAddress URI specifies the type of the device. The additionalConfiguration field holds further connector type specific configuration.
   final pulumi.Input<String> targetAddress;
 

@@ -10,7 +10,7 @@ class DiagnosticsProfile {
   /// specified then ensure that the storage account is in the same region and
   /// subscription as the VM. You can easily view the output of your console log.
   /// Azure also enables you to see a screenshot of the VM from the hypervisor.
-  final pulumi.Input<BootDiagnostics>? bootDiagnostics;
+  final pulumi.Input<BootDiagnostics?>? bootDiagnostics;
 
   /// Creates a new [DiagnosticsProfile].
   /// [bootDiagnostics] Boot Diagnostics is a debugging feature which allows you to view Console Output

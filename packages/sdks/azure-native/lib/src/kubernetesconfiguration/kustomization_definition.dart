@@ -6,23 +6,23 @@ import 'post_build_definition.dart';
 /// The Kustomization defining how to reconcile the artifact pulled by the source type on the cluster.
 class KustomizationDefinition {
   /// Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
-  final pulumi.Input<List<String>>? dependsOn;
+  final pulumi.Input<List<String>?>? dependsOn;
   /// Enable/disable re-creating Kubernetes resources on the cluster when patching fails due to an immutable field change.
-  final pulumi.Input<bool>? force;
+  final pulumi.Input<bool?>? force;
   /// The path in the source reference to reconcile on the cluster.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Used for variable substitution for this Kustomization after kustomize build.
-  final pulumi.Input<PostBuildDefinition>? postBuild;
+  final pulumi.Input<PostBuildDefinition?>? postBuild;
   /// Enable/disable garbage collections of Kubernetes objects created by this Kustomization.
-  final pulumi.Input<bool>? prune;
+  final pulumi.Input<bool?>? prune;
   /// The interval at which to re-reconcile the Kustomization on the cluster in the event of failure on reconciliation.
-  final pulumi.Input<double>? retryIntervalInSeconds;
+  final pulumi.Input<double?>? retryIntervalInSeconds;
   /// The interval at which to re-reconcile the Kustomization on the cluster.
-  final pulumi.Input<double>? syncIntervalInSeconds;
+  final pulumi.Input<double?>? syncIntervalInSeconds;
   /// The maximum time to attempt to reconcile the Kustomization on the cluster.
-  final pulumi.Input<double>? timeoutInSeconds;
+  final pulumi.Input<double?>? timeoutInSeconds;
   /// Enable/disable health check for all Kubernetes objects created by this Kustomization.
-  final pulumi.Input<bool>? wait;
+  final pulumi.Input<bool?>? wait;
 
   /// Creates a new [KustomizationDefinition].
   /// [dependsOn] Specifies other Kustomizations that this Kustomization depends on. This Kustomization will not reconcile until all dependencies have completed their reconciliation.
@@ -34,17 +34,17 @@ class KustomizationDefinition {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the Kustomization on the cluster.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the Kustomization on the cluster.
   /// [wait] Enable/disable health check for all Kubernetes objects created by this Kustomization.
-  const KustomizationDefinition({
+  KustomizationDefinition({
     this.dependsOn,
-    this.force,
-    this.path,
+    pulumi.Input<bool?>? force,
+    pulumi.Input<String?>? path,
     this.postBuild,
-    this.prune,
+    pulumi.Input<bool?>? prune,
     this.retryIntervalInSeconds,
-    this.syncIntervalInSeconds,
-    this.timeoutInSeconds,
-    this.wait,
-  });
+    pulumi.Input<double?>? syncIntervalInSeconds,
+    pulumi.Input<double?>? timeoutInSeconds,
+    pulumi.Input<bool?>? wait,
+  }) : force = force ?? pulumi.Input.fromValue(false), path = path ?? pulumi.Input.fromValue(''), prune = prune ?? pulumi.Input.fromValue(false), syncIntervalInSeconds = syncIntervalInSeconds ?? pulumi.Input.fromValue(600), timeoutInSeconds = timeoutInSeconds ?? pulumi.Input.fromValue(600), wait = wait ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,9 +67,9 @@ class KustomizationDefinition {
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       postBuild: (() { final guardedValue = map['postBuild']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PostBuildDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       prune: (() { final guardedValue = map['prune']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      retryIntervalInSeconds: (() { final guardedValue = map['retryIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       wait: (() { final guardedValue = map['wait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

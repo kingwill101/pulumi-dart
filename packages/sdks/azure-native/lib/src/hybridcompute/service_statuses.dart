@@ -6,9 +6,9 @@ import 'service_status.dart';
 /// Reports the state and behavior of dependent services.
 class ServiceStatuses {
   /// The state of the extension service on the Arc-enabled machine.
-  final pulumi.Input<ServiceStatus>? extensionService;
+  final pulumi.Input<ServiceStatus?>? extensionService;
   /// The state of the guest configuration service on the Arc-enabled machine.
-  final pulumi.Input<ServiceStatus>? guestConfigurationService;
+  final pulumi.Input<ServiceStatus?>? guestConfigurationService;
 
   /// Creates a new [ServiceStatuses].
   /// [extensionService] The state of the extension service on the Arc-enabled machine.

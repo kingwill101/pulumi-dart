@@ -7,17 +7,17 @@ import 'system_data_response.dart';
 /// Result data returned by getVariableValueAtManagementGroup.
 class GetVariableValueAtManagementGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The ID of the variable.
-  final String id;
+  final String? id;
   /// The name of the variable.
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource (Microsoft.Authorization/variables/values).
-  final String type;
+  final String? type;
   /// Variable value column value array.
-  final List<PolicyVariableValueColumnValueResponse> values;
+  final List<PolicyVariableValueColumnValueResponse>? values;
 
   /// Creates a new [GetVariableValueAtManagementGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,33 +27,33 @@ class GetVariableValueAtManagementGroupResult {
   /// [type] The type of the resource (Microsoft.Authorization/variables/values).
   /// [values] Variable value column value array.
   const GetVariableValueAtManagementGroupResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.systemData,
-    required this.type,
-    required this.values,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.systemData,
+    this.type,
+    this.values,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'values': pulumi.Input.encodeList<PolicyVariableValueColumnValueResponse, Map<String, dynamic>>(values, (value) => value.toMap()),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'values': ?(() { final guardedValue = values; if (guardedValue == null) return null; return pulumi.Input.encodeList<PolicyVariableValueColumnValueResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetVariableValueAtManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetVariableValueAtManagementGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      values: pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(map['values']!, (value) => PolicyVariableValueColumnValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyVariableValueColumnValueResponse>(guardedValue, (value) => PolicyVariableValueColumnValueResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

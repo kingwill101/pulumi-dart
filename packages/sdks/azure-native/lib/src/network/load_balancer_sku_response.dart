@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of a load balancer.
 class LoadBalancerSkuResponse {
   /// Name of a load balancer SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of a load balancer SKU.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [LoadBalancerSkuResponse].
   /// [name] Name of a load balancer SKU.

@@ -9,17 +9,17 @@ import 'custom_api_properties_definition.dart';
 /// {@macro pulumi_web_custom_api_args_doc}
 class CustomApiArgs {
   /// API name
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Custom API properties
-  final pulumi.Input<CustomApiPropertiesDefinition>? properties;
+  final pulumi.Input<CustomApiPropertiesDefinition?>? properties;
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CustomApiArgs].
   /// [apiName] API name

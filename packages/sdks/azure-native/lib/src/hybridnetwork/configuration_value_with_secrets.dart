@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'open_deployment_resource_reference.dart';
 
 /// The ConfigurationValue with secrets.
 class ConfigurationValueWithSecrets {
   /// The configuration group schema resource reference.
-  final pulumi.Input<OpenDeploymentResourceReference>? configurationGroupSchemaResourceReference;
+  final pulumi.Input<dynamic>? configurationGroupSchemaResourceReference;
   /// The secret type which indicates if secret or not.
   /// Expected value is 'Secret'.
   final pulumi.Input<String> configurationType;
   /// Name and value pairs that define the configuration value secrets. It can be a well formed escaped JSON string.
-  final pulumi.Input<String>? secretConfigurationValue;
+  final pulumi.Input<String?>? secretConfigurationValue;
 
   /// Creates a new [ConfigurationValueWithSecrets].
   /// [configurationGroupSchemaResourceReference] The configuration group schema resource reference.
@@ -25,7 +24,7 @@ class ConfigurationValueWithSecrets {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'configurationGroupSchemaResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReference, Map<String, dynamic>>(configurationGroupSchemaResourceReference, (value) => value.toMap()),
+      'configurationGroupSchemaResourceReference': ?configurationGroupSchemaResourceReference,
       'configurationType': configurationType,
       'secretConfigurationValue': ?secretConfigurationValue,
     };
@@ -33,7 +32,7 @@ class ConfigurationValueWithSecrets {
 
   factory ConfigurationValueWithSecrets.fromMap(Map<String, dynamic> map) {
     return ConfigurationValueWithSecrets(
-      configurationGroupSchemaResourceReference: (() { final guardedValue = map['configurationGroupSchemaResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenDeploymentResourceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      configurationGroupSchemaResourceReference: (() { final guardedValue = map['configurationGroupSchemaResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       configurationType: pulumi.Input.fromValue(map['configurationType'] as String),
       secretConfigurationValue: (() { final guardedValue = map['secretConfigurationValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

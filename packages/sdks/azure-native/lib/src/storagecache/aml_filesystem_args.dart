@@ -14,31 +14,31 @@ import 'sku_name.dart';
 /// {@macro pulumi_storagecache_aml_filesystem_args_doc}
 class AmlFilesystemArgs {
   /// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  final pulumi.Input<String>? amlFilesystemName;
+  final pulumi.Input<String?>? amlFilesystemName;
   /// Specifies encryption settings of the AML file system.
-  final pulumi.Input<AmlFilesystemEncryptionSettings>? encryptionSettings;
+  final pulumi.Input<AmlFilesystemEncryptionSettings?>? encryptionSettings;
   /// Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
   final pulumi.Input<String> filesystemSubnet;
   /// Hydration and archive settings and status
-  final pulumi.Input<AmlFilesystemHsm>? hsm;
+  final pulumi.Input<AmlFilesystemHsm?>? hsm;
   /// The managed identity used by the AML file system, if configured.
-  final pulumi.Input<AmlFilesystemIdentity>? identity;
+  final pulumi.Input<AmlFilesystemIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Start time of a 30-minute weekly maintenance window.
   final pulumi.Input<AmlFilesystemMaintenanceWindow> maintenanceWindow;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies root squash settings of the AML file system.
-  final pulumi.Input<AmlFilesystemRootSquashSettings>? rootSquashSettings;
+  final pulumi.Input<AmlFilesystemRootSquashSettings?>? rootSquashSettings;
   /// SKU for the resource.
-  final pulumi.Input<SkuName>? sku;
+  final pulumi.Input<SkuName?>? sku;
   /// The size of the AML file system, in TiB. This might be rounded up.
   final pulumi.Input<double> storageCapacityTiB;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Availability zones for resources. This field should only contain a single element in the array.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [AmlFilesystemArgs].
   /// [amlFilesystemName] Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
@@ -100,7 +100,7 @@ class AmlFilesystemArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       rootSquashSettings: (() { final guardedValue = map['rootSquashSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AmlFilesystemRootSquashSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuName.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageCapacityTiB: pulumi.Input.fromValue(map['storageCapacityTiB'] as double),
+      storageCapacityTiB: pulumi.Input.fromValue((map['storageCapacityTiB'] as num).toDouble()),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

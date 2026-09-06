@@ -7,7 +7,7 @@ class IpSecurityRestrictionRuleResponse {
   /// Allow or Deny rules to determine for incoming IP. Note: Rules can only consist of ALL Allow or ALL Deny
   final pulumi.Input<String> action;
   /// Describe the IP restriction rule that is being sent to the container-app. This is an optional field.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// CIDR notation to match incoming IP address
   final pulumi.Input<String> ipAddressRange;
   /// Name for the IP restriction rule.

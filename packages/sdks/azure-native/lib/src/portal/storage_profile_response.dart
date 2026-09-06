@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The storage profile of the user settings.
 class StorageProfileResponse {
   /// Size of file share
-  final pulumi.Input<int>? diskSizeInGB;
+  final pulumi.Input<int?>? diskSizeInGB;
   /// Name of the mounted file share. 63 characters or less, lowercase alphabet, numbers, and -
-  final pulumi.Input<String>? fileShareName;
+  final pulumi.Input<String?>? fileShareName;
   /// Full resource ID of storage account.
-  final pulumi.Input<String>? storageAccountResourceId;
+  final pulumi.Input<String?>? storageAccountResourceId;
 
   /// Creates a new [StorageProfileResponse].
   /// [diskSizeInGB] Size of file share
@@ -31,7 +31,7 @@ class StorageProfileResponse {
 
   factory StorageProfileResponse.fromMap(Map<String, dynamic> map) {
     return StorageProfileResponse(
-      diskSizeInGB: (() { final guardedValue = map['diskSizeInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeInGB: (() { final guardedValue = map['diskSizeInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fileShareName: (() { final guardedValue = map['fileShareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountResourceId: (() { final guardedValue = map['storageAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

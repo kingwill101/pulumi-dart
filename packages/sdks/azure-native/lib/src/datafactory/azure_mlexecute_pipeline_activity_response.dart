@@ -13,13 +13,13 @@ class AzureMLExecutePipelineActivityResponse {
   /// Dictionary used for changing data path assignments without retraining. Values will be passed in the dataPathAssignments property of the published pipeline execution request. Type: object (or Expression with resultType object).
   final pulumi.Input<dynamic>? dataPathAssignments;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Run history experiment name of the pipeline run. This information will be passed in the ExperimentName property of the published pipeline execution request. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? experimentName;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// The parent Azure ML Service pipeline run id. This information will be passed in the ParentRunId property of the published pipeline execution request. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? mlParentRunId;
   /// ID of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
@@ -31,16 +31,16 @@ class AzureMLExecutePipelineActivityResponse {
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'AzureMLExecutePipeline'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
   /// Version of the published Azure ML pipeline endpoint. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? version;
 

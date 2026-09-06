@@ -9,13 +9,13 @@ import 'open_idconnect_config.dart';
 /// Definition of AdditionalAuthenticationProvider
 class AdditionalAuthenticationProvider {
   /// &lt;p&gt;The authentication type: API key, Identity and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools, or Lambda.&lt;/p&gt;
-  final pulumi.Input<AuthenticationTypeEnumValue>? authenticationType;
+  final pulumi.Input<AuthenticationTypeEnumValue?>? authenticationType;
   /// &lt;p&gt;Configuration for Lambda function authorization.&lt;/p&gt;
-  final pulumi.Input<LambdaAuthorizerConfig>? lambdaAuthorizerConfig;
+  final pulumi.Input<LambdaAuthorizerConfig?>? lambdaAuthorizerConfig;
   /// &lt;p&gt;The OIDC configuration.&lt;/p&gt;
-  final pulumi.Input<OpenIDConnectConfig>? openIDConnectConfig;
+  final pulumi.Input<OpenIDConnectConfig?>? openIDConnectConfig;
   /// &lt;p&gt;The Amazon Cognito user pool configuration.&lt;/p&gt;
-  final pulumi.Input<CognitoUserPoolConfig>? userPoolConfig;
+  final pulumi.Input<CognitoUserPoolConfig?>? userPoolConfig;
 
   /// Creates a new [AdditionalAuthenticationProvider].
   /// [authenticationType] &lt;p&gt;The authentication type: API key, Identity and Access Management (IAM), OpenID Connect (OIDC), Amazon Cognito user pools, or Lambda.&lt;/p&gt;

@@ -6,17 +6,17 @@ import 'subnet.dart';
 /// Definition of ReplicationSubnetGroup
 class ReplicationSubnetGroup {
   /// &lt;p&gt;A description for the replication subnet group.&lt;/p&gt;
-  final pulumi.Input<String>? replicationSubnetGroupDescription;
+  final pulumi.Input<String?>? replicationSubnetGroupDescription;
   /// &lt;p&gt;The identifier of the replication instance subnet group.&lt;/p&gt;
-  final pulumi.Input<String>? replicationSubnetGroupIdentifier;
+  final pulumi.Input<String?>? replicationSubnetGroupIdentifier;
   /// &lt;p&gt;The status of the subnet group.&lt;/p&gt;
-  final pulumi.Input<String>? subnetGroupStatus;
+  final pulumi.Input<String?>? subnetGroupStatus;
   /// &lt;p&gt;The subnets that are in the subnet group.&lt;/p&gt;
-  final pulumi.Input<List<Subnet>>? subnets;
+  final pulumi.Input<List<Subnet>?>? subnets;
   /// &lt;p&gt;The IP addressing protocol supported by the subnet group. This is used by a replication instance with values such as IPv4 only or Dual-stack that supports both IPv4 and IPv6 addressing. IPv6 only is not yet supported.&lt;/p&gt;
-  final pulumi.Input<List<String>>? supportedNetworkTypes;
+  final pulumi.Input<List<String>?>? supportedNetworkTypes;
   /// &lt;p&gt;The ID of the VPC.&lt;/p&gt;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ReplicationSubnetGroup].
   /// [replicationSubnetGroupDescription] &lt;p&gt;A description for the replication subnet group.&lt;/p&gt;

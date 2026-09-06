@@ -4,23 +4,23 @@
 /// Result data returned by listDatastoreSecrets.
 class ListDatastoreSecretsResult {
   /// [Required] Credential type used to authentication with storage.
-  final String secretsType;
+  final String? secretsType;
 
   /// Creates a new [ListDatastoreSecretsResult].
   /// [secretsType] [Required] Credential type used to authentication with storage.
   const ListDatastoreSecretsResult({
-    required this.secretsType,
+    this.secretsType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'secretsType': secretsType,
+      'secretsType': ?secretsType,
     };
   }
 
   factory ListDatastoreSecretsResult.fromMap(Map<String, dynamic> map) {
     return ListDatastoreSecretsResult(
-      secretsType: map['secretsType'] as String,
+      secretsType: (() { final guardedValue = map['secretsType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

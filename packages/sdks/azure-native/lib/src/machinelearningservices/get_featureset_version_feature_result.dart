@@ -17,12 +17,12 @@ class GetFeaturesetVersionFeatureResult {
   /// [description] Specifies description
   /// [featureName] Specifies name
   /// [tags] Specifies tags
-  const GetFeaturesetVersionFeatureResult({
-    this.dataType,
+  GetFeaturesetVersionFeatureResult({
+    String? dataType,
     this.description,
     this.featureName,
     this.tags,
-  });
+  }) : dataType = dataType ?? 'String';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

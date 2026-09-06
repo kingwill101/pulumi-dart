@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Backup schedule type.
-enum BackupScheduleType {
+enum BackupScheduleType implements pulumi.PulumiEnum<String> {
   manual("Manual"),
   automated("Automated");
 
   const BackupScheduleType(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupScheduleType fromValue(String value) {

@@ -7,17 +7,17 @@ import 'price.dart';
 /// Milestone definition within a conditional credit
 class ConditionalCreditMilestone {
   /// Award details for this milestone (only present for primary conditional credits)
-  final pulumi.Input<Award>? award;
+  final pulumi.Input<Award?>? award;
   /// End date for this milestone
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Unique identifier for the milestone
-  final pulumi.Input<String>? milestoneId;
+  final pulumi.Input<String?>? milestoneId;
   /// Display name for the milestone
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Spend target for this milestone
-  final pulumi.Input<Price>? spendTarget;
+  final pulumi.Input<Price?>? spendTarget;
   /// Current status of the milestone
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ConditionalCreditMilestone].
   /// [award] Award details for this milestone (only present for primary conditional credits)
@@ -53,7 +53,7 @@ class ConditionalCreditMilestone {
       milestoneId: (() { final guardedValue = map['milestoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spendTarget: (() { final guardedValue = map['spendTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Price.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'circuit_breaker_rule.dart';
 /// The configuration of the backend circuit breaker
 class BackendCircuitBreaker {
   /// The rules for tripping the backend.
-  final pulumi.Input<List<CircuitBreakerRule>>? rules;
+  final pulumi.Input<List<CircuitBreakerRule>?>? rules;
 
   /// Creates a new [BackendCircuitBreaker].
   /// [rules] The rules for tripping the backend.

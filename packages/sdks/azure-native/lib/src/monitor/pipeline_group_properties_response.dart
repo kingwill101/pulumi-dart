@@ -12,7 +12,7 @@ class PipelineGroupPropertiesResponse {
   /// The exporters specified for a pipeline group instance.
   final pulumi.Input<List<ExporterResponse>> exporters;
   /// Networking configurations for the pipeline group instance.
-  final pulumi.Input<List<NetworkingConfigurationResponse>>? networkingConfigurations;
+  final pulumi.Input<List<NetworkingConfigurationResponse>?>? networkingConfigurations;
   /// The processors specified for a pipeline group instance.
   final pulumi.Input<List<ProcessorResponse>> processors;
   /// The provisioning state of a pipeline group instance. Set to Succeeded if everything is healthy.
@@ -20,7 +20,7 @@ class PipelineGroupPropertiesResponse {
   /// The receivers specified for a pipeline group instance.
   final pulumi.Input<List<ReceiverResponse>> receivers;
   /// Defines the amount of replicas of the pipeline group instance.
-  final pulumi.Input<int>? replicas;
+  final pulumi.Input<int?>? replicas;
   /// The service section for a given pipeline group instance.
   final pulumi.Input<ServiceResponse> service;
 
@@ -61,7 +61,7 @@ class PipelineGroupPropertiesResponse {
       processors: pulumi.Input.fromValue(pulumi.Input.decodeList<ProcessorResponse>(map['processors']!, (value) => ProcessorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       receivers: pulumi.Input.fromValue(pulumi.Input.decodeList<ReceiverResponse>(map['receivers']!, (value) => ReceiverResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicas: (() { final guardedValue = map['replicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       service: pulumi.Input.fromValue(ServiceResponse.fromMap((map['service']! as Map).cast<String, dynamic>())),
     );
   }

@@ -7,9 +7,9 @@ import 'osprofile_windows_configuration.dart';
 /// Specifies the operating system settings for the hybrid machine.
 class OSProfile {
   /// Specifies the linux configuration for update management.
-  final pulumi.Input<OSProfileLinuxConfiguration>? linuxConfiguration;
+  final pulumi.Input<OSProfileLinuxConfiguration?>? linuxConfiguration;
   /// Specifies the windows configuration for update management.
-  final pulumi.Input<OSProfileWindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<OSProfileWindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [OSProfile].
   /// [linuxConfiguration] Specifies the linux configuration for update management.

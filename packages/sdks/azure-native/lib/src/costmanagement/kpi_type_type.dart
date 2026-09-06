@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// KPI type (Forecast, Budget).
-enum KpiTypeType {
+enum KpiTypeType implements pulumi.PulumiEnum<String> {
   valueForecast("Forecast"),
   valueBudget("Budget");
 
   const KpiTypeType(this.wireValue);
+  @override
   final String wireValue;
 
   static KpiTypeType fromValue(String value) {

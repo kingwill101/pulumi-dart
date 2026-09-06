@@ -7,25 +7,25 @@ import 'routing_configuration_express_route_gateway_response.dart';
 /// ExpressRouteConnection resource.
 class ExpressRouteConnectionResponse {
   /// Authorization key to establish the connection.
-  final pulumi.Input<String>? authorizationKey;
+  final pulumi.Input<String?>? authorizationKey;
   /// Enable internet security.
-  final pulumi.Input<bool>? enableInternetSecurity;
+  final pulumi.Input<bool?>? enableInternetSecurity;
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
-  final pulumi.Input<bool>? enablePrivateLinkFastPath;
+  final pulumi.Input<bool?>? enablePrivateLinkFastPath;
   /// The ExpressRoute circuit peering.
   final pulumi.Input<ExpressRouteCircuitPeeringIdResponse> expressRouteCircuitPeering;
   /// Enable FastPath to vWan Firewall hub.
-  final pulumi.Input<bool>? expressRouteGatewayBypass;
+  final pulumi.Input<bool?>? expressRouteGatewayBypass;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource.
   final pulumi.Input<String> name;
   /// The provisioning state of the express route connection resource.
   final pulumi.Input<String> provisioningState;
   /// The Routing Configuration indicating the associated and propagated route tables on this connection.
-  final pulumi.Input<RoutingConfigurationExpressRouteGatewayResponse>? routingConfiguration;
+  final pulumi.Input<RoutingConfigurationExpressRouteGatewayResponse?>? routingConfiguration;
   /// The routing weight associated to the connection.
-  final pulumi.Input<int>? routingWeight;
+  final pulumi.Input<int?>? routingWeight;
 
   /// Creates a new [ExpressRouteConnectionResponse].
   /// [authorizationKey] Authorization key to establish the connection.
@@ -77,7 +77,7 @@ class ExpressRouteConnectionResponse {
       name: pulumi.Input.fromValue(map['name'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       routingConfiguration: (() { final guardedValue = map['routingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoutingConfigurationExpressRouteGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

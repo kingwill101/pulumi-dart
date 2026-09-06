@@ -13,17 +13,17 @@ class InsightProperties {
   /// Contains title & description for the insight
   final pulumi.Input<Content> content;
   /// Identifier of the event that has been correlated with this insight. This can be used to aggregate insights for the same event.
-  final pulumi.Input<String>? eventId;
+  final pulumi.Input<String?>? eventId;
   /// Time of the event, which has been correlated the impact.
-  final pulumi.Input<String>? eventTime;
+  final pulumi.Input<String?>? eventTime;
   /// Identifier that can be used to group similar insights.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// details of of the impact for which insight has been generated.
   final pulumi.Input<ImpactDetails> impact;
   /// unique id of the insight.
   final pulumi.Input<String> insightUniqueId;
   /// status of the insight. example resolved, repaired, other.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InsightProperties].
   /// [additionalDetails] additional details of the insight.

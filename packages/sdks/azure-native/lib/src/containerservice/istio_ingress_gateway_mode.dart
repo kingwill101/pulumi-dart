@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of an ingress gateway.
-enum IstioIngressGatewayMode {
+enum IstioIngressGatewayMode implements pulumi.PulumiEnum<String> {
   valueExternal("External"),
   valueInternal("Internal");
 
   const IstioIngressGatewayMode(this.wireValue);
+  @override
   final String wireValue;
 
   static IstioIngressGatewayMode fromValue(String value) {

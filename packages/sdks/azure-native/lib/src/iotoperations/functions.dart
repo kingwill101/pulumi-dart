@@ -46,6 +46,17 @@ Future<GetAkriConnectorResult> getAkriConnector(
   return GetAkriConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAkriConnectorResult> getAkriConnectorOutput(
+  GetAkriConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getAkriConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAkriConnectorResult.fromMap);
+}
+
 /// Get a AkriConnectorTemplateResource
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -64,6 +75,17 @@ Future<GetAkriConnectorTemplateResult> getAkriConnectorTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAkriConnectorTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetAkriConnectorTemplateResult> getAkriConnectorTemplateOutput(
+  GetAkriConnectorTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getAkriConnectorTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAkriConnectorTemplateResult.fromMap);
 }
 
 /// Get a AkriServiceResource
@@ -86,6 +108,17 @@ Future<GetAkriServiceResult> getAkriService(
   return GetAkriServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetAkriServiceResult> getAkriServiceOutput(
+  GetAkriServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getAkriService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAkriServiceResult.fromMap);
+}
+
 /// Get a BrokerResource
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -104,6 +137,17 @@ Future<GetBrokerResult> getBroker(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerResult> getBrokerOutput(
+  GetBrokerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getBroker',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerResult.fromMap);
 }
 
 /// Get a BrokerAuthenticationResource
@@ -126,6 +170,17 @@ Future<GetBrokerAuthenticationResult> getBrokerAuthentication(
   return GetBrokerAuthenticationResult.fromMap(result);
 }
 
+pulumi.Output<GetBrokerAuthenticationResult> getBrokerAuthenticationOutput(
+  GetBrokerAuthenticationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getBrokerAuthentication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerAuthenticationResult.fromMap);
+}
+
 /// Get a BrokerAuthorizationResource
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -144,6 +199,17 @@ Future<GetBrokerAuthorizationResult> getBrokerAuthorization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBrokerAuthorizationResult.fromMap(result);
+}
+
+pulumi.Output<GetBrokerAuthorizationResult> getBrokerAuthorizationOutput(
+  GetBrokerAuthorizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getBrokerAuthorization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerAuthorizationResult.fromMap);
 }
 
 /// Get a BrokerListenerResource
@@ -166,6 +232,17 @@ Future<GetBrokerListenerResult> getBrokerListener(
   return GetBrokerListenerResult.fromMap(result);
 }
 
+pulumi.Output<GetBrokerListenerResult> getBrokerListenerOutput(
+  GetBrokerListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getBrokerListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBrokerListenerResult.fromMap);
+}
+
 /// Get a DataflowResource
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -184,6 +261,17 @@ Future<GetDataflowResult> getDataflow(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataflowResult.fromMap(result);
+}
+
+pulumi.Output<GetDataflowResult> getDataflowOutput(
+  GetDataflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getDataflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataflowResult.fromMap);
 }
 
 /// Get a DataflowEndpointResource
@@ -206,6 +294,17 @@ Future<GetDataflowEndpointResult> getDataflowEndpoint(
   return GetDataflowEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetDataflowEndpointResult> getDataflowEndpointOutput(
+  GetDataflowEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getDataflowEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataflowEndpointResult.fromMap);
+}
+
 /// Get a DataflowGraphResource
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -224,6 +323,17 @@ Future<GetDataflowGraphResult> getDataflowGraph(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataflowGraphResult.fromMap(result);
+}
+
+pulumi.Output<GetDataflowGraphResult> getDataflowGraphOutput(
+  GetDataflowGraphArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getDataflowGraph',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataflowGraphResult.fromMap);
 }
 
 /// Get a DataflowProfileResource
@@ -246,6 +356,17 @@ Future<GetDataflowProfileResult> getDataflowProfile(
   return GetDataflowProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetDataflowProfileResult> getDataflowProfileOutput(
+  GetDataflowProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getDataflowProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataflowProfileResult.fromMap);
+}
+
 /// Get a InstanceResource
 ///
 /// Uses Azure REST API version 2024-11-01.
@@ -266,6 +387,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Get a RegistryEndpointResource
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -284,4 +416,15 @@ Future<GetRegistryEndpointResult> getRegistryEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryEndpointResult> getRegistryEndpointOutput(
+  GetRegistryEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperations:getRegistryEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryEndpointResult.fromMap);
 }

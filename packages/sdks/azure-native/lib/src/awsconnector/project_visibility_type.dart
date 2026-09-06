@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ProjectVisibilityType {
+enum ProjectVisibilityType implements pulumi.PulumiEnum<String> {
   pRIVATE("PRIVATE"),
   pUBLICREAD("PUBLIC_READ");
 
   const ProjectVisibilityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ProjectVisibilityType fromValue(String value) {

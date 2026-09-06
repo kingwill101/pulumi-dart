@@ -6,7 +6,7 @@ import 'managed_environment_response_encryption.dart';
 /// Peer traffic settings for the Managed Environment
 class ManagedEnvironmentResponsePeerTrafficConfiguration {
   /// Peer traffic encryption settings for the Managed Environment
-  final pulumi.Input<ManagedEnvironmentResponseEncryption>? encryption;
+  final pulumi.Input<ManagedEnvironmentResponseEncryption?>? encryption;
 
   /// Creates a new [ManagedEnvironmentResponsePeerTrafficConfiguration].
   /// [encryption] Peer traffic encryption settings for the Managed Environment

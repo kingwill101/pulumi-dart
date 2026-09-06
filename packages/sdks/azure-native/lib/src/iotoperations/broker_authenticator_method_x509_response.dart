@@ -6,17 +6,17 @@ import 'broker_authenticator_method_x509_attributes_response.dart';
 /// X509 for BrokerAuthentication.
 class BrokerAuthenticatorMethodX509Response {
   /// X509 authorization attributes properties.
-  final pulumi.Input<Map<String, BrokerAuthenticatorMethodX509AttributesResponse>>? authorizationAttributes;
+  final pulumi.Input<Map<String, BrokerAuthenticatorMethodX509AttributesResponse>?>? authorizationAttributes;
   /// Name of the trusted client ca cert resource.
-  final pulumi.Input<String>? trustedClientCaCert;
+  final pulumi.Input<String?>? trustedClientCaCert;
 
   /// Creates a new [BrokerAuthenticatorMethodX509Response].
   /// [authorizationAttributes] X509 authorization attributes properties.
   /// [trustedClientCaCert] Name of the trusted client ca cert resource.
-  const BrokerAuthenticatorMethodX509Response({
+  BrokerAuthenticatorMethodX509Response({
     this.authorizationAttributes,
-    this.trustedClientCaCert,
-  });
+    pulumi.Input<String?>? trustedClientCaCert,
+  }) : trustedClientCaCert = trustedClientCaCert ?? pulumi.Input.fromValue('client-ca');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

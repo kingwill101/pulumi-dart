@@ -11,26 +11,26 @@ import 'managed_identity.dart';
 /// {@macro pulumi_servicefabric_managed_cluster_application_args_doc}
 class ManagedClusterApplicationArgs {
   /// The name of the application resource.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
   /// Describes the managed identities for an Azure resource.
-  final pulumi.Input<ManagedIdentity>? identity;
+  final pulumi.Input<ManagedIdentity?>? identity;
   /// Resource location depends on the parent resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of user assigned identities for the application, each mapped to a friendly name.
-  final pulumi.Input<List<ApplicationUserAssignedIdentity>>? managedIdentities;
+  final pulumi.Input<List<ApplicationUserAssignedIdentity>?>? managedIdentities;
   /// List of application parameters with overridden values from their default values specified in the application manifest.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Azure resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes the policy for a monitored application upgrade.
-  final pulumi.Input<ApplicationUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<ApplicationUpgradePolicy?>? upgradePolicy;
   /// The version of the application type as defined in the application manifest.
   /// This name must be the full Arm Resource ID for the referenced application type version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ManagedClusterApplicationArgs].
   /// [applicationName] The name of the application resource.

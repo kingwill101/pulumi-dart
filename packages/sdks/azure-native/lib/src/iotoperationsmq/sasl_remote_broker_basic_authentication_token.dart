@@ -6,9 +6,9 @@ import 'kafka_token_key_vault_properties.dart';
 /// Kafka RemoteBrokerConnection Sasl Authentication token properties. NOTE - Enum only one method is allowed to be passed.
 class SaslRemoteBrokerBasicAuthenticationToken {
   /// Keyvault token keyvault secret properties.
-  final pulumi.Input<KafkaTokenKeyVaultProperties>? keyVault;
+  final pulumi.Input<KafkaTokenKeyVaultProperties?>? keyVault;
   /// Secret where cert details are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [SaslRemoteBrokerBasicAuthenticationToken].
   /// [keyVault] Keyvault token keyvault secret properties.

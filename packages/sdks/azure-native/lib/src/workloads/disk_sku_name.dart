@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the disk sku name.
-enum DiskSkuName {
+enum DiskSkuName implements pulumi.PulumiEnum<String> {
   standardLRS("Standard_LRS"),
   premiumLRS("Premium_LRS"),
   standardSSDLRS("StandardSSD_LRS"),
@@ -9,6 +11,7 @@ enum DiskSkuName {
   premiumV2LRS("PremiumV2_LRS");
 
   const DiskSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskSkuName fromValue(String value) {

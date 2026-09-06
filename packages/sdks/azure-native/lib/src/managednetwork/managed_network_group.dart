@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_network_group_args.dart';
+import 'resource_id_response.dart';
 
 /// The Managed Network Group resource
 ///
@@ -246,19 +247,19 @@ class ManagedNetworkGroup extends pulumi.CustomResource {
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// The collection of management groups covered by the Managed Network
-  late final pulumi.Output<List<Map<String, dynamic>>?> managementGroups;
+  late final pulumi.Output<List<ResourceIdResponse>?> managementGroups;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state of the ManagedNetwork resource.
   late final pulumi.Output<String> provisioningState;
   /// The collection of  subnets covered by the Managed Network
-  late final pulumi.Output<List<Map<String, dynamic>>?> subnets;
+  late final pulumi.Output<List<ResourceIdResponse>?> subnets;
   /// The collection of subscriptions covered by the Managed Network
-  late final pulumi.Output<List<Map<String, dynamic>>?> subscriptions;
+  late final pulumi.Output<List<ResourceIdResponse>?> subscriptions;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   late final pulumi.Output<String> type;
   /// The collection of virtual nets covered by the Managed Network
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworks;
+  late final pulumi.Output<List<ResourceIdResponse>?> virtualNetworks;
 
   /// Creates a new [ManagedNetworkGroup].
   /// [name] The Pulumi resource name.
@@ -278,12 +279,34 @@ class ManagedNetworkGroup extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
-    managementGroups = registerOutput<List<Map<String, dynamic>>?>('managementGroups');
+    managementGroups = registerOutput<List<ResourceIdResponse>?>('managementGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    subnets = registerOutput<List<Map<String, dynamic>>?>('subnets');
-    subscriptions = registerOutput<List<Map<String, dynamic>>?>('subscriptions');
+    subnets = registerOutput<List<ResourceIdResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subscriptions = registerOutput<List<ResourceIdResponse>?>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
-    virtualNetworks = registerOutput<List<Map<String, dynamic>>?>('virtualNetworks');
+    virtualNetworks = registerOutput<List<ResourceIdResponse>?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ManagedNetworkGroup] resource.
+  ManagedNetworkGroup.reference(String urn)
+    : super(
+        'azure-native:managednetwork:ManagedNetworkGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    managementGroups = registerOutput<List<ResourceIdResponse>?>('managementGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    subnets = registerOutput<List<ResourceIdResponse>?>('subnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    subscriptions = registerOutput<List<ResourceIdResponse>?>('subscriptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    virtualNetworks = registerOutput<List<ResourceIdResponse>?>('virtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceIdResponse>(guardedValue, (value) => ResourceIdResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

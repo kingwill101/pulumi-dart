@@ -9,11 +9,11 @@ class FileMetadataResponse {
   /// A URI with a valid SAS token to allow uploading / downloading the file.
   final pulumi.Input<String> fileContentUri;
   /// The format of the file
-  final pulumi.Input<String>? fileFormat;
+  final pulumi.Input<String?>? fileFormat;
   /// The name of the file.
-  final pulumi.Input<String>? fileName;
+  final pulumi.Input<String?>? fileName;
   /// The size of the file.
-  final pulumi.Input<int>? fileSize;
+  final pulumi.Input<int?>? fileSize;
 
   /// Creates a new [FileMetadataResponse].
   /// [deleteStatus] Indicates whether the file was deleted from the storage account.
@@ -45,7 +45,7 @@ class FileMetadataResponse {
       fileContentUri: pulumi.Input.fromValue(map['fileContentUri'] as String),
       fileFormat: (() { final guardedValue = map['fileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fileSize: (() { final guardedValue = map['fileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

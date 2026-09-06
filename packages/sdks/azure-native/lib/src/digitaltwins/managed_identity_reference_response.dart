@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the Managed Identity.
 class ManagedIdentityReferenceResponse {
   /// The type of managed identity used.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user identity ARM resource id if the managed identity type is 'UserAssigned'.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [ManagedIdentityReferenceResponse].
   /// [type] The type of managed identity used.

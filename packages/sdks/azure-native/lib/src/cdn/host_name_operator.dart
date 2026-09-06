@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum HostNameOperator {
+enum HostNameOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum HostNameOperator {
   regEx("RegEx");
 
   const HostNameOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static HostNameOperator fromValue(String value) {

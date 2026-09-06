@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a Network Interface.
 class NetworkInterfaceArmReference {
   /// The Azure Resource ID for a Network Interface.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [NetworkInterfaceArmReference].
   /// [id] The Azure Resource ID for a Network Interface.

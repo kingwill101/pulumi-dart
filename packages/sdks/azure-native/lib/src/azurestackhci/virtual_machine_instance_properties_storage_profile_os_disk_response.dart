@@ -6,11 +6,11 @@ import 'virtual_machine_instance_managed_disk_parameters_response.dart';
 /// VHD to attach as OS disk
 class VirtualMachineInstancePropertiesStorageProfileOsDiskResponse {
   /// The Azure Resource ID for a Virtual Hard Disk.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The managed disk parameters.
-  final pulumi.Input<VirtualMachineInstanceManagedDiskParametersResponse>? managedDisk;
+  final pulumi.Input<VirtualMachineInstanceManagedDiskParametersResponse?>? managedDisk;
   /// This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: Windows, Linux.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
 
   /// Creates a new [VirtualMachineInstancePropertiesStorageProfileOsDiskResponse].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.

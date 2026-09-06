@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a Linux OS.
 class LinuxOsInfoResponse {
   /// The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).
-  final pulumi.Input<String>? linuxOsState;
+  final pulumi.Input<String?>? linuxOsState;
 
   /// Creates a new [LinuxOsInfoResponse].
   /// [linuxOsState] The state of the Linux OS (i.e. NonDeprovisioned, DeprovisionRequested, DeprovisionApplied).

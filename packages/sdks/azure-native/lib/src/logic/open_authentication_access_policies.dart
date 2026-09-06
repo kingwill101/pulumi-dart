@@ -6,7 +6,7 @@ import 'open_authentication_access_policy.dart';
 /// AuthenticationPolicy of type Open.
 class OpenAuthenticationAccessPolicies {
   /// Open authentication policies.
-  final pulumi.Input<Map<String, OpenAuthenticationAccessPolicy>>? policies;
+  final pulumi.Input<Map<String, OpenAuthenticationAccessPolicy>?>? policies;
 
   /// Creates a new [OpenAuthenticationAccessPolicies].
   /// [policies] Open authentication policies.

@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap {
-  final pulumi.Input<String>? database;
-  final pulumi.Input<List<String>>? schemas;
+  final pulumi.Input<String?>? database;
+  final pulumi.Input<List<String>?>? schemas;
 
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap].
   /// [database] Optional.

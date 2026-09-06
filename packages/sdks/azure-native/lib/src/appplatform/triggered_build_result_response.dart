@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The build result triggered by a build
 class TriggeredBuildResultResponse {
   /// The unique build id of this build result
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The container image of this build result
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// The last transition reason of this build result
-  final pulumi.Input<String>? lastTransitionReason;
+  final pulumi.Input<String?>? lastTransitionReason;
   /// The last transition status of this build result
-  final pulumi.Input<String>? lastTransitionStatus;
+  final pulumi.Input<String?>? lastTransitionStatus;
   /// The last transition time of this build result
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// The provisioning state of this build result
   final pulumi.Input<String> provisioningState;
 

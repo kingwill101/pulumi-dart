@@ -8,15 +8,15 @@ import 'scope_response.dart';
 /// Assessment properties class.
 class AvsAssessmentPropertiesV2Response {
   /// Gets or sets the details of the assessment.
-  final pulumi.Input<AssessmentDetailsResponse>? details;
+  final pulumi.Input<AssessmentDetailsResponse?>? details;
   /// Gets or sets the machine assessment ARM ID for VM fallback.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<ScopeResponse>? scope;
+  final pulumi.Input<ScopeResponse?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<AvsAssessmentSettingsResponse>? settings;
+  final pulumi.Input<AvsAssessmentSettingsResponse?>? settings;
 
   /// Creates a new [AvsAssessmentPropertiesV2Response].
   /// [details] Gets or sets the details of the assessment.

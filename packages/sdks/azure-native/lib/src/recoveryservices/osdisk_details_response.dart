@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the OS Disk.
 class OSDiskDetailsResponse {
   /// The type of the OS on the VM.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// The id of the disk containing the OS.
-  final pulumi.Input<String>? osVhdId;
+  final pulumi.Input<String?>? osVhdId;
   /// The OS disk VHD name.
-  final pulumi.Input<String>? vhdName;
+  final pulumi.Input<String?>? vhdName;
 
   /// Creates a new [OSDiskDetailsResponse].
   /// [osType] The type of the OS on the VM.

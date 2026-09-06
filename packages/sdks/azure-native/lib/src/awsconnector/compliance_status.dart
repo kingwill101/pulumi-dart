@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ComplianceStatus {
+enum ComplianceStatus implements pulumi.PulumiEnum<String> {
   cOMPLIANT("COMPLIANT"),
   nONCOMPLIANT("NON_COMPLIANT");
 
   const ComplianceStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ComplianceStatus fromValue(String value) {

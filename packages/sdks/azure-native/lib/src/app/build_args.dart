@@ -10,13 +10,13 @@ import 'container_registry_with_custom_image.dart';
 /// {@macro pulumi_app_build_args_doc}
 class BuildArgs {
   /// The name of a build.
-  final pulumi.Input<String>? buildName;
+  final pulumi.Input<String?>? buildName;
   /// The name of the builder.
   final pulumi.Input<String> builderName;
   /// Configuration of the build.
-  final pulumi.Input<BuildConfiguration>? configuration;
+  final pulumi.Input<BuildConfiguration?>? configuration;
   /// Container registry that the final image will be uploaded to.
-  final pulumi.Input<ContainerRegistryWithCustomImage>? destinationContainerRegistry;
+  final pulumi.Input<ContainerRegistryWithCustomImage?>? destinationContainerRegistry;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

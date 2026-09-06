@@ -10,7 +10,7 @@ class ListIssueResourcesArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
   /// The filter to apply on the operation. For example, to filter by relevance, use "$filter=relevance eq 'Relevant'". Note: this property is currently a placeholder and is not in use.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the IssueResource
   final pulumi.Input<String> issueName;
   /// The name of the resource group. The name is case insensitive.

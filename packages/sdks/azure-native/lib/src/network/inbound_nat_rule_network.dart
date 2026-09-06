@@ -279,4 +279,31 @@ class InboundNatRuleNetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [InboundNatRuleNetwork] resource.
+  InboundNatRuleNetwork.reference(String urn)
+    : super(
+        'azure-native:network:InboundNatRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backendAddressPool = registerOutput<SubResourceResponse?>('backendAddressPool', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendIPConfiguration = registerOutput<NetworkInterfaceIPConfigurationResponse>('backendIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backendPort = registerOutput<int?>('backendPort');
+    enableFloatingIP = registerOutput<bool?>('enableFloatingIP');
+    enableTcpReset = registerOutput<bool?>('enableTcpReset');
+    etag = registerOutput<String>('etag');
+    frontendIPConfiguration = registerOutput<SubResourceResponse?>('frontendIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    frontendPort = registerOutput<int?>('frontendPort');
+    frontendPortRangeEnd = registerOutput<int?>('frontendPortRangeEnd');
+    frontendPortRangeStart = registerOutput<int?>('frontendPortRangeStart');
+    idleTimeoutInMinutes = registerOutput<int?>('idleTimeoutInMinutes');
+    this.name = registerOutput<String?>('name');
+    protocol = registerOutput<String?>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

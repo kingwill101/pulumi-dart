@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ClusterStateChangeReasonCodeEnumValue
 class ClusterStateChangeReasonCodeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [ClusterStateChangeReasonCodeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class ClusterStateChangeReasonCodeEnumValue {
 
   factory ClusterStateChangeReasonCodeEnumValue.fromMap(Map<String, dynamic> map) {
     return ClusterStateChangeReasonCodeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

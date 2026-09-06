@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of nodes that the Big Data pool provides.
-enum NodeSizeFamily {
+enum NodeSizeFamily implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueMemoryOptimized("MemoryOptimized"),
   valueHardwareAcceleratedFPGA("HardwareAcceleratedFPGA"),
   valueHardwareAcceleratedGPU("HardwareAcceleratedGPU");
 
   const NodeSizeFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeSizeFamily fromValue(String value) {

@@ -10,24 +10,24 @@ import 'nlp_vertical_limit_settings_response.dart';
 /// NLP - Natural Language Processing.
 class TextNerResponse {
   /// Featurization inputs needed for AutoML job.
-  final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
+  final pulumi.Input<NlpVerticalFeaturizationSettingsResponse?>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
+  final pulumi.Input<NlpVerticalLimitSettingsResponse?>? limitSettings;
   /// Enum for setting log verbosity.
-  final pulumi.Input<String>? logVerbosity;
+  final pulumi.Input<String?>? logVerbosity;
   /// Primary metric for Text-NER task.
   /// Only 'Accuracy' is supported for Text-NER, so user need not set this explicitly.
   final pulumi.Input<String> primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final pulumi.Input<String>? targetColumnName;
+  final pulumi.Input<String?>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'TextNER'.
   final pulumi.Input<String> taskType;
   /// [Required] Training data input.
   final pulumi.Input<MLTableJobInputResponse> trainingData;
   /// Validation data inputs.
-  final pulumi.Input<MLTableJobInputResponse>? validationData;
+  final pulumi.Input<MLTableJobInputResponse?>? validationData;
 
   /// Creates a new [TextNerResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
@@ -38,16 +38,16 @@ class TextNerResponse {
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
-  const TextNerResponse({
+  TextNerResponse({
     this.featurizationSettings,
     this.limitSettings,
-    this.logVerbosity,
+    pulumi.Input<String?>? logVerbosity,
     required this.primaryMetric,
     this.targetColumnName,
     required this.taskType,
     required this.trainingData,
     this.validationData,
-  });
+  }) : logVerbosity = logVerbosity ?? pulumi.Input.fromValue('Info');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

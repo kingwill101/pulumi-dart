@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of security ML Analytics Settings
-enum SecurityMLAnalyticsSettingsKind {
+enum SecurityMLAnalyticsSettingsKind implements pulumi.PulumiEnum<String> {
   valueAnomaly("Anomaly");
 
   const SecurityMLAnalyticsSettingsKind(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityMLAnalyticsSettingsKind fromValue(String value) {

@@ -11,22 +11,22 @@ import 'defender_for_servers_gcp_offering_vm_scanners_response.dart';
 /// The Defender for Servers GCP offering configurations
 class DefenderForServersGcpOfferingResponse {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingArcAutoProvisioningResponse>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingArcAutoProvisioningResponse?>? arcAutoProvisioning;
   /// The Defender for servers connection configuration
-  final pulumi.Input<DefenderForServersGcpOfferingDefenderForServersResponse>? defenderForServers;
+  final pulumi.Input<DefenderForServersGcpOfferingDefenderForServersResponse?>? defenderForServers;
   /// The offering description.
   final pulumi.Input<String> description;
   /// The Microsoft Defender for Endpoint autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingMdeAutoProvisioningResponse>? mdeAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingMdeAutoProvisioningResponse?>? mdeAutoProvisioning;
   /// The type of the security offering.
   /// Expected value is 'DefenderForServersGcp'.
   final pulumi.Input<String> offeringType;
   /// configuration for the servers offering subPlan
-  final pulumi.Input<DefenderForServersGcpOfferingSubPlanResponse>? subPlan;
+  final pulumi.Input<DefenderForServersGcpOfferingSubPlanResponse?>? subPlan;
   /// The Vulnerability Assessment autoprovisioning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningResponse>? vaAutoProvisioning;
+  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningResponse?>? vaAutoProvisioning;
   /// The Microsoft Defender for Server VM scanning configuration
-  final pulumi.Input<DefenderForServersGcpOfferingVmScannersResponse>? vmScanners;
+  final pulumi.Input<DefenderForServersGcpOfferingVmScannersResponse?>? vmScanners;
 
   /// Creates a new [DefenderForServersGcpOfferingResponse].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration

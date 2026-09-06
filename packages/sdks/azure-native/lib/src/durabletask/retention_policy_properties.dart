@@ -6,7 +6,7 @@ import 'retention_policy_details.dart';
 /// The retention policy settings for the resource
 class RetentionPolicyProperties {
   /// The orchestration retention policies
-  final pulumi.Input<List<RetentionPolicyDetails>>? retentionPolicies;
+  final pulumi.Input<List<RetentionPolicyDetails>?>? retentionPolicies;
 
   /// Creates a new [RetentionPolicyProperties].
   /// [retentionPolicies] The orchestration retention policies

@@ -6,9 +6,9 @@ import 'entra_authentication_response.dart';
 /// Authentication related configuration for the SQL Server Instance.
 class AuthenticationResponse {
   /// Mode of authentication in SqlServer.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Entra Authentication configuration for the SQL Server Instance.
-  final pulumi.Input<List<EntraAuthenticationResponse>>? sqlServerEntraIdentity;
+  final pulumi.Input<List<EntraAuthenticationResponse>?>? sqlServerEntraIdentity;
 
   /// Creates a new [AuthenticationResponse].
   /// [mode] Mode of authentication in SqlServer.

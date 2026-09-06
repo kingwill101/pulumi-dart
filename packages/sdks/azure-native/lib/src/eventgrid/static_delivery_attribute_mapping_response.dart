@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Static delivery attribute mapping details.
 class StaticDeliveryAttributeMappingResponse {
   /// Boolean flag to tell if the attribute contains sensitive information .
-  final pulumi.Input<bool>? isSecret;
+  final pulumi.Input<bool?>? isSecret;
   /// Name of the delivery attribute or header.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the delivery attribute or header name.
   /// Expected value is 'Static'.
   final pulumi.Input<String> type;
   /// Value of the delivery attribute.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [StaticDeliveryAttributeMappingResponse].
   /// [isSecret] Boolean flag to tell if the attribute contains sensitive information .
   /// [name] Name of the delivery attribute or header.
   /// [type] Type of the delivery attribute or header name.
   /// [value] Value of the delivery attribute.
-  const StaticDeliveryAttributeMappingResponse({
-    this.isSecret,
+  StaticDeliveryAttributeMappingResponse({
+    pulumi.Input<bool?>? isSecret,
     this.name,
     required this.type,
     this.value,
-  });
+  }) : isSecret = isSecret ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

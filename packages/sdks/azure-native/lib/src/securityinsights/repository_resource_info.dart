@@ -6,7 +6,7 @@ import 'webhook.dart';
 /// Resources created in user's repository for the source-control.
 class RepositoryResourceInfo {
   /// The webhook object created for the source-control.
-  final pulumi.Input<Webhook>? webhook;
+  final pulumi.Input<Webhook?>? webhook;
 
   /// Creates a new [RepositoryResourceInfo].
   /// [webhook] The webhook object created for the source-control.

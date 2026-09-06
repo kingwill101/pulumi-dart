@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of LaunchTemplateSpecification
 class LaunchTemplateSpecificationEksNodegroupResponse {
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Property name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Property version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [LaunchTemplateSpecificationEksNodegroupResponse].
   /// [id] Property id

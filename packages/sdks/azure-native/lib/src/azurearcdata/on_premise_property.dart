@@ -9,7 +9,7 @@ class OnPremiseProperty {
   /// Certificate that contains the Kubernetes cluster public key used to verify signing
   final pulumi.Input<String> publicSigningKey;
   /// Unique thumbprint returned to customer to verify the certificate being uploaded
-  final pulumi.Input<String>? signingCertificateThumbprint;
+  final pulumi.Input<String?>? signingCertificateThumbprint;
 
   /// Creates a new [OnPremiseProperty].
   /// [id] A globally unique ID identifying the associated Kubernetes cluster

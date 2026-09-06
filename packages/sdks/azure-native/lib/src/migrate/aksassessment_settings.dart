@@ -8,27 +8,27 @@ class AKSAssessmentSettings {
   /// Gets or sets azure location.
   final pulumi.Input<String> azureLocation;
   /// Gets or sets azure VM category.
-  final pulumi.Input<String> category;
+  final pulumi.Input<dynamic> category;
   /// Gets or sets consolidation type.
-  final pulumi.Input<String> consolidation;
+  final pulumi.Input<dynamic> consolidation;
   /// Gets or sets currency.
-  final pulumi.Input<String> currency;
+  final pulumi.Input<dynamic> currency;
   /// Gets or sets discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets environment type.
-  final pulumi.Input<String> environmentType;
+  final pulumi.Input<dynamic> environmentType;
   /// Gets or sets licensing program.
-  final pulumi.Input<String> licensingProgram;
+  final pulumi.Input<dynamic> licensingProgram;
   /// Gets or sets performance data settings.
-  final pulumi.Input<PerfDataSettings>? performanceData;
+  final pulumi.Input<PerfDataSettings?>? performanceData;
   /// Gets or sets pricing tier.
-  final pulumi.Input<String> pricingTier;
+  final pulumi.Input<dynamic> pricingTier;
   /// Gets or sets savings options.
-  final pulumi.Input<String> savingsOptions;
+  final pulumi.Input<dynamic> savingsOptions;
   /// Gets or sets scaling factor.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Gets or sets sizing criteria.
-  final pulumi.Input<String> sizingCriteria;
+  final pulumi.Input<dynamic> sizingCriteria;
 
   /// Creates a new [AKSAssessmentSettings].
   /// [azureLocation] Gets or sets azure location.
@@ -78,17 +78,17 @@ class AKSAssessmentSettings {
   factory AKSAssessmentSettings.fromMap(Map<String, dynamic> map) {
     return AKSAssessmentSettings(
       azureLocation: pulumi.Input.fromValue(map['azureLocation'] as String),
-      category: pulumi.Input.fromValue(map['category'] as String),
-      consolidation: pulumi.Input.fromValue(map['consolidation'] as String),
-      currency: pulumi.Input.fromValue(map['currency'] as String),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
-      licensingProgram: pulumi.Input.fromValue(map['licensingProgram'] as String),
+      category: pulumi.Input.fromValue(map['category']),
+      consolidation: pulumi.Input.fromValue(map['consolidation']),
+      currency: pulumi.Input.fromValue(map['currency']),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      environmentType: pulumi.Input.fromValue(map['environmentType']),
+      licensingProgram: pulumi.Input.fromValue(map['licensingProgram']),
       performanceData: (() { final guardedValue = map['performanceData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PerfDataSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      pricingTier: pulumi.Input.fromValue(map['pricingTier'] as String),
-      savingsOptions: pulumi.Input.fromValue(map['savingsOptions'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sizingCriteria: pulumi.Input.fromValue(map['sizingCriteria'] as String),
+      pricingTier: pulumi.Input.fromValue(map['pricingTier']),
+      savingsOptions: pulumi.Input.fromValue(map['savingsOptions']),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sizingCriteria: pulumi.Input.fromValue(map['sizingCriteria']),
     );
   }
 }

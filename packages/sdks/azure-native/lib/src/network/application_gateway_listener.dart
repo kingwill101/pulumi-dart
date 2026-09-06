@@ -6,21 +6,21 @@ import 'sub_resource.dart';
 /// Listener of an application gateway.
 class ApplicationGatewayListener {
   /// Frontend IP configuration resource of an application gateway.
-  final pulumi.Input<SubResource>? frontendIPConfiguration;
+  final pulumi.Input<SubResource?>? frontendIPConfiguration;
   /// Frontend port resource of an application gateway.
-  final pulumi.Input<SubResource>? frontendPort;
+  final pulumi.Input<SubResource?>? frontendPort;
   /// List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the listener that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Protocol of the listener.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// SSL certificate resource of an application gateway.
-  final pulumi.Input<SubResource>? sslCertificate;
+  final pulumi.Input<SubResource?>? sslCertificate;
   /// SSL profile resource of the application gateway.
-  final pulumi.Input<SubResource>? sslProfile;
+  final pulumi.Input<SubResource?>? sslProfile;
 
   /// Creates a new [ApplicationGatewayListener].
   /// [frontendIPConfiguration] Frontend IP configuration resource of an application gateway.
@@ -62,7 +62,7 @@ class ApplicationGatewayListener {
       hostNames: (() { final guardedValue = map['hostNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sslCertificate: (() { final guardedValue = map['sslCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sslProfile: (() { final guardedValue = map['sslProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

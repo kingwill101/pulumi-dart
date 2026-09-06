@@ -7,11 +7,11 @@ class SmsChannelPropertiesResponse {
   /// The Sms account SID. Value only returned through POST to the action Channel List API, otherwise empty.
   final pulumi.Input<String> accountSID;
   /// The Sms auth token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? authToken;
+  final pulumi.Input<String?>? authToken;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
   /// Whether this channel is validated for the bot
-  final pulumi.Input<bool>? isValidated;
+  final pulumi.Input<bool?>? isValidated;
   /// The Sms phone
   final pulumi.Input<String> phone;
 

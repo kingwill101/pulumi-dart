@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the messaging endpoints used by this IoT hub.
 class MessagingEndpointPropertiesResponse {
   /// The lock duration. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
-  final pulumi.Input<String>? lockDurationAsIso8601;
+  final pulumi.Input<String?>? lockDurationAsIso8601;
   /// The number of times the IoT hub attempts to deliver a message. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
   /// The period of time for which a message is available to consume before it is expired by the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
-  final pulumi.Input<String>? ttlAsIso8601;
+  final pulumi.Input<String?>? ttlAsIso8601;
 
   /// Creates a new [MessagingEndpointPropertiesResponse].
   /// [lockDurationAsIso8601] The lock duration. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-file-upload.
@@ -32,7 +32,7 @@ class MessagingEndpointPropertiesResponse {
   factory MessagingEndpointPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MessagingEndpointPropertiesResponse(
       lockDurationAsIso8601: (() { final guardedValue = map['lockDurationAsIso8601']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ttlAsIso8601: (() { final guardedValue = map['ttlAsIso8601']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

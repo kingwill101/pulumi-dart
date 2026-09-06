@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a lab's announcement banner
 class LabAnnouncementProperties {
   /// Is the lab announcement active/enabled at this time?
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<dynamic>? enabled;
   /// The time at which the announcement expires (null for never)
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// Has this announcement expired?
-  final pulumi.Input<bool>? expired;
+  final pulumi.Input<bool?>? expired;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final pulumi.Input<String>? markdown;
+  final pulumi.Input<String?>? markdown;
   /// The plain text title for the lab announcement
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [LabAnnouncementProperties].
   /// [enabled] Is the lab announcement active/enabled at this time?
@@ -41,7 +41,7 @@ class LabAnnouncementProperties {
 
   factory LabAnnouncementProperties.fromMap(Map<String, dynamic> map) {
     return LabAnnouncementProperties(
-      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expired: (() { final guardedValue = map['expired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       markdown: (() { final guardedValue = map['markdown']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

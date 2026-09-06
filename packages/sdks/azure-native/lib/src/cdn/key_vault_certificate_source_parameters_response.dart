@@ -11,7 +11,7 @@ class KeyVaultCertificateSourceParametersResponse {
   /// The name of Key Vault Secret (representing the full certificate PFX) in Key Vault.
   final pulumi.Input<String> secretName;
   /// The version(GUID) of Key Vault Secret in Key Vault.
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
   /// Subscription Id of the user's Key Vault containing the SSL certificate
   final pulumi.Input<String> subscriptionId;
   /// Expected value is 'KeyVaultCertificateSourceParameters'.

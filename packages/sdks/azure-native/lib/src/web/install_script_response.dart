@@ -6,9 +6,9 @@ import 'install_script_source_response.dart';
 /// Server farm install script configuration.
 class InstallScriptResponse {
   /// Name of the install script.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Source of the install script.
-  final pulumi.Input<InstallScriptSourceResponse>? source;
+  final pulumi.Input<InstallScriptSourceResponse?>? source;
 
   /// Creates a new [InstallScriptResponse].
   /// [name] Name of the install script.

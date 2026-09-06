@@ -10,27 +10,27 @@ import 'saas_properties.dart';
 /// {@macro pulumi_programmableconnectivity_operator_api_connection_args_doc}
 class OperatorApiConnectionArgs {
   /// Type of the account the user has with the Operator's Network API infrastructure. AzureManaged | UserManaged.
-  final pulumi.Input<String> accountType;
+  final pulumi.Input<dynamic> accountType;
   /// Application ID of the App Developer that is registered with the Operator in a specific country/region.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Application secret linked to the 'appId'. This should be stored securely and is not returned back when the resource information is read.
-  final pulumi.Input<String>? appSecret;
+  final pulumi.Input<String?>? appSecret;
   /// Details about the Application that would use the Operator's Network APIs.
-  final pulumi.Input<ApplicationProperties>? configuredApplication;
+  final pulumi.Input<ApplicationProperties?>? configuredApplication;
   /// Reference to the APC Gateway resource ID.
   final pulumi.Input<String> gatewayId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure Programmable Connectivity (APC) Operator API Connection Name.
-  final pulumi.Input<String>? operatorApiConnectionName;
+  final pulumi.Input<String?>? operatorApiConnectionName;
   /// Reference to the Operator API Plan Resource ID.
   final pulumi.Input<String> operatorApiPlanId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Details about the SaaS offer purchased from the marketplace.
-  final pulumi.Input<SaasProperties>? saasProperties;
+  final pulumi.Input<SaasProperties?>? saasProperties;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OperatorApiConnectionArgs].
   /// [accountType] Type of the account the user has with the Operator's Network API infrastructure. AzureManaged | UserManaged.
@@ -76,7 +76,7 @@ class OperatorApiConnectionArgs {
 
   factory OperatorApiConnectionArgs.fromMap(Map<String, dynamic> map) {
     return OperatorApiConnectionArgs(
-      accountType: pulumi.Input.fromValue(map['accountType'] as String),
+      accountType: pulumi.Input.fromValue(map['accountType']),
       appId: (() { final guardedValue = map['appId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       appSecret: (() { final guardedValue = map['appSecret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configuredApplication: (() { final guardedValue = map['configuredApplication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

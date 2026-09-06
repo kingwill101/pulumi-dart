@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The service with name and endpoint names
 class WsdlServiceResponse {
   /// List of the endpoints' qualified names
-  final pulumi.Input<List<String>>? endpointQualifiedNames;
+  final pulumi.Input<List<String>?>? endpointQualifiedNames;
   /// The service's qualified name
   final pulumi.Input<String> qualifiedName;
 

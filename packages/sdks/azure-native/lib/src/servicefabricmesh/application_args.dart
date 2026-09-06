@@ -10,21 +10,21 @@ import 'service_resource_description.dart';
 /// {@macro pulumi_servicefabricmesh_application_args_doc}
 class ApplicationArgs {
   /// The identity of the application.
-  final pulumi.Input<String>? applicationResourceName;
+  final pulumi.Input<String?>? applicationResourceName;
   /// Internal - used by Visual Studio to setup the debugging session on the local development environment.
-  final pulumi.Input<String>? debugParams;
+  final pulumi.Input<String?>? debugParams;
   /// User readable description of the application.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Describes the diagnostics definition and usage for an application resource.
-  final pulumi.Input<DiagnosticsDescription>? diagnostics;
+  final pulumi.Input<DiagnosticsDescription?>? diagnostics;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// Describes the services in the application. This property is used to create or modify services of the application. On get only the name of the service is returned. The service description can be obtained by querying for the service resource.
-  final pulumi.Input<List<ServiceResourceDescription>>? services;
+  final pulumi.Input<List<ServiceResourceDescription>?>? services;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationResourceName] The identity of the application.

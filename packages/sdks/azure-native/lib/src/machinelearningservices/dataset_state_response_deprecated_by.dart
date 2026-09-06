@@ -7,7 +7,7 @@ class DatasetStateResponseDeprecatedBy {
   /// Unique Dataset identifier.
   final pulumi.Input<String> datasetId;
   /// Definition Version
-  final pulumi.Input<String>? definitionVersion;
+  final pulumi.Input<String?>? definitionVersion;
 
   /// Creates a new [DatasetStateResponseDeprecatedBy].
   /// [datasetId] Unique Dataset identifier.

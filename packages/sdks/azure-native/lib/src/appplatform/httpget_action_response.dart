@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// HTTPGetAction describes an action based on HTTP Get requests.
 class HTTPGetActionResponse {
   /// Path to access on the HTTP server.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Scheme to use for connecting to the host. Defaults to HTTP.
   ///
   /// Possible enum values:
   /// - `"HTTP"` means that the scheme used will be http://
   /// - `"HTTPS"` means that the scheme used will be https://
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
   /// The type of the action to take to perform the health check.
   /// Expected value is 'HTTPGetAction'.
   final pulumi.Input<String> type;

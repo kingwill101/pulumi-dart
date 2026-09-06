@@ -41,11 +41,11 @@ class DashboardPartsPosition {
 
   factory DashboardPartsPosition.fromMap(Map<String, dynamic> map) {
     return DashboardPartsPosition(
-      colSpan: pulumi.Input.fromValue(map['colSpan'] as int),
+      colSpan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['colSpan'])),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      rowSpan: pulumi.Input.fromValue(map['rowSpan'] as int),
-      x: pulumi.Input.fromValue(map['x'] as int),
-      y: pulumi.Input.fromValue(map['y'] as int),
+      rowSpan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowSpan'])),
+      x: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['x'])),
+      y: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['y'])),
     );
   }
 }

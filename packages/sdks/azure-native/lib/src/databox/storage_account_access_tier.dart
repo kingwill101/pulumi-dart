@@ -1,7 +1,10 @@
-enum StorageAccountAccessTier {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum StorageAccountAccessTier implements pulumi.PulumiEnum<String> {
   valueArchive("Archive");
 
   const StorageAccountAccessTier(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageAccountAccessTier fromValue(String value) {

@@ -9,9 +9,9 @@ class DedicatedHostInstanceViewResponse {
   /// Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
   final pulumi.Input<String> assetId;
   /// Unutilized capacity of the dedicated host.
-  final pulumi.Input<DedicatedHostAvailableCapacityResponse>? availableCapacity;
+  final pulumi.Input<DedicatedHostAvailableCapacityResponse?>? availableCapacity;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
 
   /// Creates a new [DedicatedHostInstanceViewResponse].
   /// [assetId] Specifies the unique id of the dedicated physical machine on which the dedicated host resides.

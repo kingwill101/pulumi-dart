@@ -10,7 +10,7 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   /// Application logs configuration.
   final ApplicationLogsConfigResponse? applicationLogs;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Detailed error messages configuration.
   final EnabledConfigResponse? detailedErrorMessages;
   /// Failed requests tracing configuration.
@@ -18,15 +18,15 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   /// HTTP logs configuration.
   final HttpLogsConfigResponse? httpLogs;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWebAppDiagnosticLogsConfigurationResult].
   /// [applicationLogs] Application logs configuration.
@@ -41,44 +41,44 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppDiagnosticLogsConfigurationResult({
     this.applicationLogs,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.detailedErrorMessages,
     this.failedRequestsTracing,
     this.httpLogs,
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.systemData,
-    required this.type,
+    this.name,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'applicationLogs': ?applicationLogs?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'detailedErrorMessages': ?detailedErrorMessages?.toMap(),
       'failedRequestsTracing': ?failedRequestsTracing?.toMap(),
       'httpLogs': ?httpLogs?.toMap(),
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetWebAppDiagnosticLogsConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppDiagnosticLogsConfigurationResult(
       applicationLogs: (() { final guardedValue = map['applicationLogs']; if (guardedValue == null) return null; return ApplicationLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       detailedErrorMessages: (() { final guardedValue = map['detailedErrorMessages']; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       failedRequestsTracing: (() { final guardedValue = map['failedRequestsTracing']; if (guardedValue == null) return null; return EnabledConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       httpLogs: (() { final guardedValue = map['httpLogs']; if (guardedValue == null) return null; return HttpLogsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

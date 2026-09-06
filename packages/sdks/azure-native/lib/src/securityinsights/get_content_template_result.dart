@@ -14,25 +14,25 @@ class GetContentTemplateResult {
   /// The creator of the content item.
   final MetadataAuthorResponse? author;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Categories for the item
   final MetadataCategoriesResponse? categories;
   /// Static ID for the content.  Used to identify dependencies and content from solutions or community.  Hard-coded/static for out of the box content and solutions. Dynamic for user-created.  This is the resource name
-  final String contentId;
+  final String? contentId;
   /// The kind of content the template is for.
-  final String contentKind;
+  final String? contentKind;
   /// Unique ID for the content. It should be generated based on the contentId of the package, contentId of the template, contentKind of the template and the contentVersion of the template
-  final String contentProductId;
+  final String? contentProductId;
   /// Schema version of the content. Can be used to distinguish between different flow based on the schema version
   final String? contentSchemaVersion;
   /// The custom version of the content. A optional free text
   final String? customVersion;
   /// Dependant templates. Expandable.
-  final List<TemplatePropertiesResponse> dependantTemplates;
+  final List<TemplatePropertiesResponse>? dependantTemplates;
   /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex formats.
   final MetadataDependenciesResponse? dependencies;
   /// The display name of the template
-  final String displayName;
+  final String? displayName;
   /// Etag of the azure resource
   final String? etag;
   /// first publish date content item
@@ -40,23 +40,23 @@ class GetContentTemplateResult {
   /// the icon identifier. this id can later be fetched from the content metadata
   final String? icon;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Flag indicates if this template is deprecated
-  final String isDeprecated;
+  final String? isDeprecated;
   /// last publish date for the content item
   final String? lastPublishDate;
   /// The JSON of the ARM template to deploy active content. Expandable.
   final dynamic mainTemplate;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// the package Id contains this template
-  final String packageId;
+  final String? packageId;
   /// the packageKind of the package contains this template
   final String? packageKind;
   /// the name of the package contains this template
   final String? packageName;
   /// Version of the package.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-  final String packageVersion;
+  final String? packageVersion;
   /// preview image file names. These will be taken from the solution artifacts
   final List<String>? previewImages;
   /// preview image file names. These will be taken from the solution artifacts. used for dark theme support
@@ -64,19 +64,19 @@ class GetContentTemplateResult {
   /// Providers for the content item
   final List<String>? providers;
   /// Source of the content.  This is where/how it was created.
-  final MetadataSourceResponse source;
+  final MetadataSourceResponse? source;
   /// Support information for the template - type, name, contact information
   final MetadataSupportResponse? support;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// the tactics the resource covers
   final List<String>? threatAnalysisTactics;
   /// the techniques the resource covers, these have to be aligned with the tactics being used
   final List<String>? threatAnalysisTechniques;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
-  final String version;
+  final String? version;
 
   /// Creates a new [GetContentTemplateResult].
   /// [author] The creator of the content item.
@@ -114,113 +114,113 @@ class GetContentTemplateResult {
   /// [version] Version of the content.  Default and recommended format is numeric (e.g. 1, 1.0, 1.0.0, 1.0.0.0), following ARM metadata best practices.  Can also be any string, but then we cannot guarantee any version checks
   const GetContentTemplateResult({
     this.author,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.categories,
-    required this.contentId,
-    required this.contentKind,
-    required this.contentProductId,
+    this.contentId,
+    this.contentKind,
+    this.contentProductId,
     this.contentSchemaVersion,
     this.customVersion,
-    required this.dependantTemplates,
+    this.dependantTemplates,
     this.dependencies,
-    required this.displayName,
+    this.displayName,
     this.etag,
     this.firstPublishDate,
     this.icon,
-    required this.id,
-    required this.isDeprecated,
+    this.id,
+    this.isDeprecated,
     this.lastPublishDate,
     this.mainTemplate,
-    required this.name,
-    required this.packageId,
+    this.name,
+    this.packageId,
     this.packageKind,
     this.packageName,
-    required this.packageVersion,
+    this.packageVersion,
     this.previewImages,
     this.previewImagesDark,
     this.providers,
-    required this.source,
+    this.source,
     this.support,
-    required this.systemData,
+    this.systemData,
     this.threatAnalysisTactics,
     this.threatAnalysisTechniques,
-    required this.type,
-    required this.version,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'author': ?author?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'categories': ?categories?.toMap(),
-      'contentId': contentId,
-      'contentKind': contentKind,
-      'contentProductId': contentProductId,
+      'contentId': ?contentId,
+      'contentKind': ?contentKind,
+      'contentProductId': ?contentProductId,
       'contentSchemaVersion': ?contentSchemaVersion,
       'customVersion': ?customVersion,
-      'dependantTemplates': pulumi.Input.encodeList<TemplatePropertiesResponse, Map<String, dynamic>>(dependantTemplates, (value) => value.toMap()),
+      'dependantTemplates': ?(() { final guardedValue = dependantTemplates; if (guardedValue == null) return null; return pulumi.Input.encodeList<TemplatePropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'dependencies': ?dependencies?.toMap(),
-      'displayName': displayName,
+      'displayName': ?displayName,
       'etag': ?etag,
       'firstPublishDate': ?firstPublishDate,
       'icon': ?icon,
-      'id': id,
-      'isDeprecated': isDeprecated,
+      'id': ?id,
+      'isDeprecated': ?isDeprecated,
       'lastPublishDate': ?lastPublishDate,
       'mainTemplate': ?mainTemplate,
-      'name': name,
-      'packageId': packageId,
+      'name': ?name,
+      'packageId': ?packageId,
       'packageKind': ?packageKind,
       'packageName': ?packageName,
-      'packageVersion': packageVersion,
+      'packageVersion': ?packageVersion,
       'previewImages': ?previewImages,
       'previewImagesDark': ?previewImagesDark,
       'providers': ?providers,
-      'source': source.toMap(),
+      'source': ?source?.toMap(),
       'support': ?support?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'threatAnalysisTactics': ?threatAnalysisTactics,
       'threatAnalysisTechniques': ?threatAnalysisTechniques,
-      'type': type,
-      'version': version,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetContentTemplateResult.fromMap(Map<String, dynamic> map) {
     return GetContentTemplateResult(
       author: (() { final guardedValue = map['author']; if (guardedValue == null) return null; return MetadataAuthorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       categories: (() { final guardedValue = map['categories']; if (guardedValue == null) return null; return MetadataCategoriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      contentId: map['contentId'] as String,
-      contentKind: map['contentKind'] as String,
-      contentProductId: map['contentProductId'] as String,
+      contentId: (() { final guardedValue = map['contentId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentKind: (() { final guardedValue = map['contentKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      contentProductId: (() { final guardedValue = map['contentProductId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contentSchemaVersion: (() { final guardedValue = map['contentSchemaVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customVersion: (() { final guardedValue = map['customVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      dependantTemplates: pulumi.Input.decodeList<TemplatePropertiesResponse>(map['dependantTemplates']!, (value) => TemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
+      dependantTemplates: (() { final guardedValue = map['dependantTemplates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TemplatePropertiesResponse>(guardedValue, (value) => TemplatePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       dependencies: (() { final guardedValue = map['dependencies']; if (guardedValue == null) return null; return MetadataDependenciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      displayName: map['displayName'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firstPublishDate: (() { final guardedValue = map['firstPublishDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       icon: (() { final guardedValue = map['icon']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      isDeprecated: map['isDeprecated'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isDeprecated: (() { final guardedValue = map['isDeprecated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastPublishDate: (() { final guardedValue = map['lastPublishDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mainTemplate: (() { final guardedValue = map['mainTemplate']; if (guardedValue == null) return null; return guardedValue; })(),
-      name: map['name'] as String,
-      packageId: map['packageId'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packageId: (() { final guardedValue = map['packageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageKind: (() { final guardedValue = map['packageKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageName: (() { final guardedValue = map['packageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      packageVersion: map['packageVersion'] as String,
+      packageVersion: (() { final guardedValue = map['packageVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       previewImages: (() { final guardedValue = map['previewImages']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       previewImagesDark: (() { final guardedValue = map['previewImagesDark']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       providers: (() { final guardedValue = map['providers']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      source: MetadataSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>()),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return MetadataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       support: (() { final guardedValue = map['support']; if (guardedValue == null) return null; return MetadataSupportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       threatAnalysisTactics: (() { final guardedValue = map['threatAnalysisTactics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       threatAnalysisTechniques: (() { final guardedValue = map['threatAnalysisTechniques']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

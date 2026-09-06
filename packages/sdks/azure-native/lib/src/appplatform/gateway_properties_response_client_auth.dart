@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client-Certification Authentication.
 class GatewayPropertiesResponseClientAuth {
   /// Whether to enable certificate verification or not
-  final pulumi.Input<String>? certificateVerification;
+  final pulumi.Input<String?>? certificateVerification;
   /// Collection of certificate resource Ids in Azure Spring Apps.
-  final pulumi.Input<List<String>>? certificates;
+  final pulumi.Input<List<String>?>? certificates;
 
   /// Creates a new [GatewayPropertiesResponseClientAuth].
   /// [certificateVerification] Whether to enable certificate verification or not
   /// [certificates] Collection of certificate resource Ids in Azure Spring Apps.
-  const GatewayPropertiesResponseClientAuth({
-    this.certificateVerification,
+  GatewayPropertiesResponseClientAuth({
+    pulumi.Input<String?>? certificateVerification,
     this.certificates,
-  });
+  }) : certificateVerification = certificateVerification ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_service_environment_args.dart';
 import 'ase_v3_networking_configuration_response.dart';
 import 'custom_dns_suffix_configuration_response.dart';
+import 'name_value_pair_response.dart';
 import 'system_data_response.dart';
 import 'virtual_network_profile_response.dart';
 
@@ -185,7 +186,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Custom settings for changing the behavior of the App Service Environment.
-  late final pulumi.Output<List<Map<String, dynamic>>?> clusterSettings;
+  late final pulumi.Output<List<NameValuePairResponse>?> clusterSettings;
   /// Full view of the custom domain suffix configuration for ASEv3.
   late final pulumi.Output<CustomDnsSuffixConfigurationResponse?> customDnsSuffixConfiguration;
   /// Dedicated Host Count
@@ -253,7 +254,7 @@ class AppServiceEnvironment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clusterSettings = registerOutput<List<Map<String, dynamic>>?>('clusterSettings');
+    clusterSettings = registerOutput<List<NameValuePairResponse>?>('clusterSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NameValuePairResponse>(guardedValue, (value) => NameValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
     customDnsSuffixConfiguration = registerOutput<CustomDnsSuffixConfigurationResponse?>('customDnsSuffixConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDnsSuffixConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
     dnsSuffix = registerOutput<String?>('dnsSuffix');
@@ -272,11 +273,49 @@ class AppServiceEnvironment extends pulumi.CustomResource {
     status = registerOutput<String>('status');
     suspended = registerOutput<bool>('suspended');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     upgradeAvailability = registerOutput<String>('upgradeAvailability');
     upgradePreference = registerOutput<String?>('upgradePreference');
-    userWhitelistedIpRanges = registerOutput<List<String>?>('userWhitelistedIpRanges');
+    userWhitelistedIpRanges = registerOutput<List<String>?>('userWhitelistedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    virtualNetwork = registerOutput<VirtualNetworkProfileResponse>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zoneRedundant = registerOutput<bool?>('zoneRedundant');
+  }
+
+  /// Creates a typed reference to an existing [AppServiceEnvironment] resource.
+  AppServiceEnvironment.reference(String urn)
+    : super(
+        'azure-native:web:AppServiceEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterSettings = registerOutput<List<NameValuePairResponse>?>('clusterSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NameValuePairResponse>(guardedValue, (value) => NameValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    customDnsSuffixConfiguration = registerOutput<CustomDnsSuffixConfigurationResponse?>('customDnsSuffixConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomDnsSuffixConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dedicatedHostCount = registerOutput<int?>('dedicatedHostCount');
+    dnsSuffix = registerOutput<String?>('dnsSuffix');
+    frontEndScaleFactor = registerOutput<int?>('frontEndScaleFactor');
+    hasLinuxWorkers = registerOutput<bool>('hasLinuxWorkers');
+    internalLoadBalancingMode = registerOutput<String?>('internalLoadBalancingMode');
+    ipsslAddressCount = registerOutput<int?>('ipsslAddressCount');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    maximumNumberOfMachines = registerOutput<int>('maximumNumberOfMachines');
+    multiRoleCount = registerOutput<int>('multiRoleCount');
+    multiSize = registerOutput<String?>('multiSize');
+    this.name = registerOutput<String>('name');
+    networkingConfiguration = registerOutput<AseV3NetworkingConfigurationResponse?>('networkingConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AseV3NetworkingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<String>('status');
+    suspended = registerOutput<bool>('suspended');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    upgradeAvailability = registerOutput<String>('upgradeAvailability');
+    upgradePreference = registerOutput<String?>('upgradePreference');
+    userWhitelistedIpRanges = registerOutput<List<String>?>('userWhitelistedIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     virtualNetwork = registerOutput<VirtualNetworkProfileResponse>('virtualNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zoneRedundant = registerOutput<bool?>('zoneRedundant');
   }

@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_workspace_sql_aad_admin_args_doc}
 class WorkspaceSqlAadAdminArgs {
   /// Workspace active directory administrator type
-  final pulumi.Input<String>? administratorType;
+  final pulumi.Input<String?>? administratorType;
   /// Login of the workspace active directory administrator
-  final pulumi.Input<String>? login;
+  final pulumi.Input<String?>? login;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Object ID of the workspace active directory administrator
-  final pulumi.Input<String>? sid;
+  final pulumi.Input<String?>? sid;
   /// Tenant ID of the workspace active directory administrator
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

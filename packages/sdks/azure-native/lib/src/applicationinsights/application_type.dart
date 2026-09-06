@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of application being monitored.
-enum ApplicationType {
+enum ApplicationType implements pulumi.PulumiEnum<String> {
   web("web"),
   other("other");
 
   const ApplicationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationType fromValue(String value) {

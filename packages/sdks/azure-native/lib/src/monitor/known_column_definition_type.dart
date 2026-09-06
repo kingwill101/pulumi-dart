@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the column data.
-enum KnownColumnDefinitionType {
+enum KnownColumnDefinitionType implements pulumi.PulumiEnum<String> {
   valueString("string"),
   valueInt("int"),
   valueLong("long"),
@@ -9,6 +11,7 @@ enum KnownColumnDefinitionType {
   valueDynamic("dynamic");
 
   const KnownColumnDefinitionType(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownColumnDefinitionType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Profile for the OS Image Scheduled event.
 class OSImageNotificationProfileResponse {
   /// Specifies whether the OS Image Scheduled event is enabled or disabled.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Length of time a Virtual Machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, and the value must be 15 minutes (PT15M)
-  final pulumi.Input<String>? notBeforeTimeout;
+  final pulumi.Input<String?>? notBeforeTimeout;
 
   /// Creates a new [OSImageNotificationProfileResponse].
   /// [enable] Specifies whether the OS Image Scheduled event is enabled or disabled.

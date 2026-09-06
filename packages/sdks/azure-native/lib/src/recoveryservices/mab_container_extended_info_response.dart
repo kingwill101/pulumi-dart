@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information of the container.
 class MabContainerExtendedInfoResponse {
   /// Type of backup items associated with this container.
-  final pulumi.Input<String>? backupItemType;
+  final pulumi.Input<String?>? backupItemType;
   /// List of backup items associated with this container.
-  final pulumi.Input<List<String>>? backupItems;
+  final pulumi.Input<List<String>?>? backupItems;
   /// Latest backup status of this container.
-  final pulumi.Input<String>? lastBackupStatus;
+  final pulumi.Input<String?>? lastBackupStatus;
   /// Time stamp when this container was refreshed.
-  final pulumi.Input<String>? lastRefreshedAt;
+  final pulumi.Input<String?>? lastRefreshedAt;
   /// Backup policy associated with this container.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
 
   /// Creates a new [MabContainerExtendedInfoResponse].
   /// [backupItemType] Type of backup items associated with this container.

@@ -24,7 +24,7 @@ class RestorePointSourceMetadataResponse {
   /// Gets the security profile.
   final pulumi.Input<SecurityProfileResponse> securityProfile;
   /// Gets the storage profile.
-  final pulumi.Input<RestorePointSourceVMStorageProfileResponse>? storageProfile;
+  final pulumi.Input<RestorePointSourceVMStorageProfileResponse?>? storageProfile;
   /// UserData associated with the source VM for which restore point is captured, which is a base-64 encoded value.
   final pulumi.Input<String> userData;
   /// Gets the virtual machine unique id.

@@ -6,7 +6,7 @@ import 'ip_address_response.dart';
 /// Describes a network interface.
 class NetworkInterfaceResponse {
   /// The list of IP addresses in this interface.
-  final pulumi.Input<List<IpAddressResponse>>? ipAddresses;
+  final pulumi.Input<List<IpAddressResponse>?>? ipAddresses;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [ipAddresses] The list of IP addresses in this interface.

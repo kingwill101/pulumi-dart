@@ -6,11 +6,11 @@ import 'fsx_authorization_config.dart';
 /// Definition of FSxWindowsFileServerVolumeConfiguration
 class FSxWindowsFileServerVolumeConfiguration {
   /// The authorization configuration details for the Amazon FSx for Windows File Server file system.
-  final pulumi.Input<FSxAuthorizationConfig>? authorizationConfig;
+  final pulumi.Input<FSxAuthorizationConfig?>? authorizationConfig;
   /// The Amazon FSx for Windows File Server file system ID to use.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
-  final pulumi.Input<String>? rootDirectory;
+  final pulumi.Input<String?>? rootDirectory;
 
   /// Creates a new [FSxWindowsFileServerVolumeConfiguration].
   /// [authorizationConfig] The authorization configuration details for the Amazon FSx for Windows File Server file system.

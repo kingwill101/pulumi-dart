@@ -6,11 +6,11 @@ import 'cfnfeature_additional_configuration_response.dart';
 /// Definition of CFNFeatureConfiguration
 class CFNFeatureConfigurationResponse {
   /// Property additionalConfiguration
-  final pulumi.Input<List<CFNFeatureAdditionalConfigurationResponse>>? additionalConfiguration;
+  final pulumi.Input<List<CFNFeatureAdditionalConfigurationResponse>?>? additionalConfiguration;
   /// Property name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Property status
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [CFNFeatureConfigurationResponse].
   /// [additionalConfiguration] Property additionalConfiguration

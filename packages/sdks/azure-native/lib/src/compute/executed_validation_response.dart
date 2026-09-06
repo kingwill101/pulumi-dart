@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is the executed Validation.
 class ExecutedValidationResponse {
   /// This property specifies the starting timestamp.
-  final pulumi.Input<String>? executionTime;
+  final pulumi.Input<String?>? executionTime;
   /// This property specifies the status of the validationProfile of the image version.
   final pulumi.Input<String> status;
   /// This property specifies the type of image version validation.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// This property specifies the valid version of the validation.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ExecutedValidationResponse].
   /// [executionTime] This property specifies the starting timestamp.

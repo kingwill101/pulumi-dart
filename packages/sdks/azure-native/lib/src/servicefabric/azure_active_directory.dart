@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The settings to enable AAD authentication on the cluster.
 class AzureActiveDirectory {
   /// Azure active directory client application id.
-  final pulumi.Input<String>? clientApplication;
+  final pulumi.Input<String?>? clientApplication;
   /// Azure active directory cluster application id.
-  final pulumi.Input<String>? clusterApplication;
+  final pulumi.Input<String?>? clusterApplication;
   /// Azure active directory tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AzureActiveDirectory].
   /// [clientApplication] Azure active directory client application id.

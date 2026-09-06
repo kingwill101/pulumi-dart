@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'controller_details_delegatednetwork.dart';
+import 'controller_details.dart';
 import 'subnet_details.dart';
 
 /// {@template pulumi_delegatednetwork_delegated_subnet_service_details_args_doc}
@@ -11,19 +11,19 @@ import 'subnet_details.dart';
 class DelegatedSubnetServiceDetailsArgs {
   /// Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
   /// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
-  final pulumi.Input<int>? allocationBlockPrefixSize;
+  final pulumi.Input<int?>? allocationBlockPrefixSize;
   /// Properties of the controller.
-  final pulumi.Input<ControllerDetailsDelegatednetwork>? controllerDetails;
+  final pulumi.Input<ControllerDetails?>? controllerDetails;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// subnet details
-  final pulumi.Input<SubnetDetails>? subnetDetails;
+  final pulumi.Input<SubnetDetails?>? subnetDetails;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DelegatedSubnetServiceDetailsArgs].
   /// [allocationBlockPrefixSize] Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
@@ -46,7 +46,7 @@ class DelegatedSubnetServiceDetailsArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationBlockPrefixSize': ?allocationBlockPrefixSize,
-      'controllerDetails': ?controllerDetails,
+      'controllerDetails': ?pulumi.Input.mapOptionalInputValue<ControllerDetails, Map<String, dynamic>>(controllerDetails, (value) => value.toMap()),
       'location': ?location,
       'resourceGroupName': resourceGroupName,
       'resourceName': ?resourceName,
@@ -57,8 +57,8 @@ class DelegatedSubnetServiceDetailsArgs {
 
   factory DelegatedSubnetServiceDetailsArgs.fromMap(Map<String, dynamic> map) {
     return DelegatedSubnetServiceDetailsArgs(
-      allocationBlockPrefixSize: (() { final guardedValue = map['allocationBlockPrefixSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      controllerDetails: (() { final guardedValue = map['controllerDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as ControllerDetailsDelegatednetwork); })(),
+      allocationBlockPrefixSize: (() { final guardedValue = map['allocationBlockPrefixSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      controllerDetails: (() { final guardedValue = map['controllerDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ControllerDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

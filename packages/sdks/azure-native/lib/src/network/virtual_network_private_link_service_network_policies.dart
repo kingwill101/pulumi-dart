@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable or Disable apply network policies on private link service in the subnet.
-enum VirtualNetworkPrivateLinkServiceNetworkPolicies {
+enum VirtualNetworkPrivateLinkServiceNetworkPolicies implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const VirtualNetworkPrivateLinkServiceNetworkPolicies(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkPrivateLinkServiceNetworkPolicies fromValue(String value) {

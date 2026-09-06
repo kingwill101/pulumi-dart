@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of an Azure Firewall.
 class AzureFirewallSku {
   /// Name of an Azure Firewall SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// Tier of an Azure Firewall.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [AzureFirewallSku].
   /// [name] Name of an Azure Firewall SKU.
@@ -26,8 +26,8 @@ class AzureFirewallSku {
 
   factory AzureFirewallSku.fromMap(Map<String, dynamic> map) {
     return AzureFirewallSku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

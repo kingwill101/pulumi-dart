@@ -6,11 +6,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SecretObjectResponse {
   /// The type of the secret object which determines how the value of the secret object has to be
   /// interpreted.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The value of the secret. The format of this value will be determined
   /// based on the type of the secret object. If the type is Opaque, the value will be
   /// used as is without any modification.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecretObjectResponse].
   /// [type] The type of the secret object which determines how the value of the secret object has to be

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode that describes whether the LUN has to be mounted as a datastore or
 /// attached as a LUN
-enum MountOptionEnum {
+enum MountOptionEnum implements pulumi.PulumiEnum<String> {
   mOUNT("MOUNT"),
   aTTACH("ATTACH");
 
   const MountOptionEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static MountOptionEnum fromValue(String value) {

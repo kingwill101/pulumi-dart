@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_web_app_domain_ownership_identifier_slot_args_doc}
 class WebAppDomainOwnershipIdentifierSlotArgs {
   /// Name of domain ownership identifier.
-  final pulumi.Input<String>? domainOwnershipIdentifierName;
+  final pulumi.Input<String?>? domainOwnershipIdentifierName;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
@@ -18,7 +18,7 @@ class WebAppDomainOwnershipIdentifierSlotArgs {
   /// Name of the deployment slot. If a slot is not specified, the API will delete the binding for the production slot.
   final pulumi.Input<String> slot;
   /// String representation of the identity.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [WebAppDomainOwnershipIdentifierSlotArgs].
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.

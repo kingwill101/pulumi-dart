@@ -6,7 +6,7 @@ import 'data_base_migration_assessment_response.dart';
 /// Migration related configuration.
 class DataBaseMigrationResponse {
   /// Migration assessments related configuration.
-  final pulumi.Input<DataBaseMigrationAssessmentResponse>? assessment;
+  final pulumi.Input<DataBaseMigrationAssessmentResponse?>? assessment;
 
   /// Creates a new [DataBaseMigrationResponse].
   /// [assessment] Migration assessments related configuration.

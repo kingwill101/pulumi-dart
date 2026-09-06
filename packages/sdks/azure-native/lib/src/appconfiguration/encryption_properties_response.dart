@@ -6,7 +6,7 @@ import 'key_vault_properties_response.dart';
 /// The encryption settings for a configuration store.
 class EncryptionPropertiesResponse {
   /// Key vault properties.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [EncryptionPropertiesResponse].
   /// [keyVaultProperties] Key vault properties.

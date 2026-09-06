@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action types to apply to the content filters
-enum RaiActionType {
+enum RaiActionType implements pulumi.PulumiEnum<String> {
   none("None"),
   bLOCKING("BLOCKING"),
   aNNOTATING("ANNOTATING"),
@@ -7,6 +9,7 @@ enum RaiActionType {
   rETRY("RETRY");
 
   const RaiActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static RaiActionType fromValue(String value) {

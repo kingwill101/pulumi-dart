@@ -10,21 +10,21 @@ class InvitationArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// The expiration date for the invitation and share subscription.
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// The name of the invitation.
-  final pulumi.Input<String>? invitationName;
+  final pulumi.Input<String?>? invitationName;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the share to send the invitation for.
   final pulumi.Input<String> shareName;
   /// The target Azure AD Id. Can't be combined with email.
-  final pulumi.Input<String>? targetActiveDirectoryId;
+  final pulumi.Input<String?>? targetActiveDirectoryId;
   /// The email the invitation is directed to.
-  final pulumi.Input<String>? targetEmail;
+  final pulumi.Input<String?>? targetEmail;
   /// The target user or application Id that invitation is being sent to.
   /// Must be specified along TargetActiveDirectoryId. This enables sending
   /// invitations to specific users or applications in an AD tenant.
-  final pulumi.Input<String>? targetObjectId;
+  final pulumi.Input<String?>? targetObjectId;
 
   /// Creates a new [InvitationArgs].
   /// [accountName] The name of the share account.

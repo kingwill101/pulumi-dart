@@ -6,7 +6,7 @@ import 'intent_content_response.dart';
 /// Represents the Reachability Analysis Run properties.
 class ReachabilityAnalysisRunPropertiesResponse {
   final pulumi.Input<String> analysisResult;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> errorMessage;
   /// Intent information.
   final pulumi.Input<IntentContentResponse> intentContent;

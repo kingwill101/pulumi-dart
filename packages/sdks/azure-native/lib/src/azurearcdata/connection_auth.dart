@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Permitted authentication modes for the mirroring endpoint.
-enum ConnectionAuth {
+enum ConnectionAuth implements pulumi.PulumiEnum<String> {
   valueWindowsNTLM("Windows_NTLM"),
   valueWindowsKerberos("Windows_Kerberos"),
   valueWindowsNegotiate("Windows_Negotiate"),
@@ -12,6 +14,7 @@ enum ConnectionAuth {
   valueCertificateWindowsNegotiate("Certificate_Windows_Negotiate");
 
   const ConnectionAuth(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectionAuth fromValue(String value) {

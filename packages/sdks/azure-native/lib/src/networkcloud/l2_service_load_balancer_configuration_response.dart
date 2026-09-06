@@ -5,7 +5,7 @@ import 'ip_address_pool_response.dart';
 
 class L2ServiceLoadBalancerConfigurationResponse {
   /// The list of pools of IP addresses that can be allocated to load balancer services.
-  final pulumi.Input<List<IpAddressPoolResponse>>? ipAddressPools;
+  final pulumi.Input<List<IpAddressPoolResponse>?>? ipAddressPools;
 
   /// Creates a new [L2ServiceLoadBalancerConfigurationResponse].
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.

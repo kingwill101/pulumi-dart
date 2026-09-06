@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'credential_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
@@ -9,30 +8,30 @@ import 'parameter_specification_response.dart';
 /// Azure Function linked service.
 class AzureFunctionLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Type of authentication (Required to specify MSI) used to connect to AzureFunction. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? authentication;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReferenceResponse>? credential;
+  final pulumi.Input<CredentialReferenceResponse?>? credential;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The endpoint of the Azure Function App. URL will be in the format https://&lt;accountName&gt;.azurewebsites.net. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> functionAppUrl;
   /// Function or Host key for Azure Function App.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? functionKey;
+  final pulumi.Input<dynamic>? functionKey;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Allowed token audiences for azure function. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? resourceId;
   /// Type of linked service.
   /// Expected value is 'AzureFunction'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AzureFunctionLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -71,7 +70,7 @@ class AzureFunctionLinkedServiceResponse {
       'description': ?description,
       'encryptedCredential': ?encryptedCredential,
       'functionAppUrl': functionAppUrl,
-      'functionKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(functionKey, (value) => value.toMap()),
+      'functionKey': ?functionKey,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'resourceId': ?resourceId,
       'type': type,
@@ -88,7 +87,7 @@ class AzureFunctionLinkedServiceResponse {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionAppUrl: pulumi.Input.fromValue(map['functionAppUrl']),
-      functionKey: (() { final guardedValue = map['functionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      functionKey: (() { final guardedValue = map['functionKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceId: (() { final guardedValue = map['resourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

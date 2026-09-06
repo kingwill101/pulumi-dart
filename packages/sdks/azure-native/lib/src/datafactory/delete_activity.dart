@@ -3,7 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency.dart';
 import 'activity_policy.dart';
-import 'amazon_s3_compatible_read_settings.dart';
 import 'dataset_reference.dart';
 import 'linked_service_reference.dart';
 import 'log_storage_settings.dart';
@@ -14,34 +13,34 @@ class DeleteActivity {
   /// Delete activity dataset reference.
   final pulumi.Input<DatasetReference> dataset;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to record detailed logs of delete-activity execution. Default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableLogging;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Log storage settings customer need to provide when enableLogging is true.
-  final pulumi.Input<LogStorageSettings>? logStorageSettings;
+  final pulumi.Input<LogStorageSettings?>? logStorageSettings;
   /// The max concurrent connections to connect data source at the same time.
-  final pulumi.Input<int>? maxConcurrentConnections;
+  final pulumi.Input<int?>? maxConcurrentConnections;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// If true, files or sub-folders under current folder path will be deleted recursively. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? recursive;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Delete activity store settings.
-  final pulumi.Input<AmazonS3CompatibleReadSettings>? storeSettings;
+  final pulumi.Input<dynamic>? storeSettings;
   /// Type of activity.
   /// Expected value is 'Delete'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [DeleteActivity].
   /// [dataset] Delete activity dataset reference.
@@ -91,7 +90,7 @@ class DeleteActivity {
       'policy': ?pulumi.Input.mapOptionalInputValue<ActivityPolicy, Map<String, dynamic>>(policy, (value) => value.toMap()),
       'recursive': ?recursive,
       'state': ?state,
-      'storeSettings': ?pulumi.Input.mapOptionalInputValue<AmazonS3CompatibleReadSettings, Map<String, dynamic>>(storeSettings, (value) => value.toMap()),
+      'storeSettings': ?storeSettings,
       'type': type,
       'userProperties': ?pulumi.Input.mapOptionalInputValue<List<UserProperty>, List<Map<String, dynamic>>>(userProperties, (value) => pulumi.Input.encodeList<UserProperty, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
@@ -105,13 +104,13 @@ class DeleteActivity {
       enableLogging: (() { final guardedValue = map['enableLogging']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       logStorageSettings: (() { final guardedValue = map['logStorageSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogStorageSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConcurrentConnections: (() { final guardedValue = map['maxConcurrentConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       recursive: (() { final guardedValue = map['recursive']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AmazonS3CompatibleReadSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storeSettings: (() { final guardedValue = map['storeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

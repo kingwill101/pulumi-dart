@@ -6,17 +6,17 @@ import 'user_set_response.dart';
 /// The approval stage.
 class ApprovalStageResponse {
   /// The time in days when approval request would be timed out
-  final pulumi.Input<int>? approvalStageTimeOutInDays;
+  final pulumi.Input<int?>? approvalStageTimeOutInDays;
   /// The escalation approver of the request.
-  final pulumi.Input<List<UserSetResponse>>? escalationApprovers;
+  final pulumi.Input<List<UserSetResponse>?>? escalationApprovers;
   /// The time in minutes when the approval request would be escalated if the primary approver does not approve
-  final pulumi.Input<int>? escalationTimeInMinutes;
+  final pulumi.Input<int?>? escalationTimeInMinutes;
   /// Determines whether approver need to provide justification for his decision.
-  final pulumi.Input<bool>? isApproverJustificationRequired;
+  final pulumi.Input<bool?>? isApproverJustificationRequired;
   /// The value determine whether escalation feature is enabled.
-  final pulumi.Input<bool>? isEscalationEnabled;
+  final pulumi.Input<bool?>? isEscalationEnabled;
   /// The primary approver of the request.
-  final pulumi.Input<List<UserSetResponse>>? primaryApprovers;
+  final pulumi.Input<List<UserSetResponse>?>? primaryApprovers;
 
   /// Creates a new [ApprovalStageResponse].
   /// [approvalStageTimeOutInDays] The time in days when approval request would be timed out
@@ -47,9 +47,9 @@ class ApprovalStageResponse {
 
   factory ApprovalStageResponse.fromMap(Map<String, dynamic> map) {
     return ApprovalStageResponse(
-      approvalStageTimeOutInDays: (() { final guardedValue = map['approvalStageTimeOutInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      approvalStageTimeOutInDays: (() { final guardedValue = map['approvalStageTimeOutInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       escalationApprovers: (() { final guardedValue = map['escalationApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserSetResponse>(guardedValue, (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      escalationTimeInMinutes: (() { final guardedValue = map['escalationTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      escalationTimeInMinutes: (() { final guardedValue = map['escalationTimeInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       isApproverJustificationRequired: (() { final guardedValue = map['isApproverJustificationRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isEscalationEnabled: (() { final guardedValue = map['isEscalationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       primaryApprovers: (() { final guardedValue = map['primaryApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserSetResponse>(guardedValue, (value) => UserSetResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

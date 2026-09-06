@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Workload item type of the item for which intent is to be set
-enum WorkloadItemType {
+enum WorkloadItemType implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueSQLInstance("SQLInstance"),
   valueSQLDataBase("SQLDataBase"),
@@ -10,6 +12,7 @@ enum WorkloadItemType {
   valueSAPHanaDBInstance("SAPHanaDBInstance");
 
   const WorkloadItemType(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkloadItemType fromValue(String value) {

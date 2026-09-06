@@ -11,22 +11,22 @@ import 'defender_for_servers_aws_offering_vm_scanners_response.dart';
 /// The Defender for Servers AWS offering
 class DefenderForServersAwsOfferingResponse {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingArcAutoProvisioningResponse>? arcAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingArcAutoProvisioningResponse?>? arcAutoProvisioning;
   /// The Defender for servers connection configuration
-  final pulumi.Input<DefenderForServersAwsOfferingDefenderForServersResponse>? defenderForServers;
+  final pulumi.Input<DefenderForServersAwsOfferingDefenderForServersResponse?>? defenderForServers;
   /// The offering description.
   final pulumi.Input<String> description;
   /// The Microsoft Defender for Endpoint autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingMdeAutoProvisioningResponse>? mdeAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingMdeAutoProvisioningResponse?>? mdeAutoProvisioning;
   /// The type of the security offering.
   /// Expected value is 'DefenderForServersAws'.
   final pulumi.Input<String> offeringType;
   /// configuration for the servers offering subPlan
-  final pulumi.Input<DefenderForServersAwsOfferingSubPlanResponse>? subPlan;
+  final pulumi.Input<DefenderForServersAwsOfferingSubPlanResponse?>? subPlan;
   /// The Vulnerability Assessment autoprovisioning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningResponse>? vaAutoProvisioning;
+  final pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningResponse?>? vaAutoProvisioning;
   /// The Microsoft Defender for Server VM scanning configuration
-  final pulumi.Input<DefenderForServersAwsOfferingVmScannersResponse>? vmScanners;
+  final pulumi.Input<DefenderForServersAwsOfferingVmScannersResponse?>? vmScanners;
 
   /// Creates a new [DefenderForServersAwsOfferingResponse].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration

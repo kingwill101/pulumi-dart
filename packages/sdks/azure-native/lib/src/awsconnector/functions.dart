@@ -242,6 +242,17 @@ Future<GetAccessAnalyzerAnalyzerResult> getAccessAnalyzerAnalyzer(
   return GetAccessAnalyzerAnalyzerResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessAnalyzerAnalyzerResult> getAccessAnalyzerAnalyzerOutput(
+  GetAccessAnalyzerAnalyzerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getAccessAnalyzerAnalyzer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessAnalyzerAnalyzerResult.fromMap);
+}
+
 /// Get a AcmCertificateSummary
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -258,6 +269,17 @@ Future<GetAcmCertificateSummaryResult> getAcmCertificateSummary(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAcmCertificateSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetAcmCertificateSummaryResult> getAcmCertificateSummaryOutput(
+  GetAcmCertificateSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getAcmCertificateSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAcmCertificateSummaryResult.fromMap);
 }
 
 /// Get a ApiGatewayRestApi
@@ -278,6 +300,17 @@ Future<GetApiGatewayRestApiResult> getApiGatewayRestApi(
   return GetApiGatewayRestApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiGatewayRestApiResult> getApiGatewayRestApiOutput(
+  GetApiGatewayRestApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getApiGatewayRestApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiGatewayRestApiResult.fromMap);
+}
+
 /// Get a ApiGatewayStage
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -294,6 +327,17 @@ Future<GetApiGatewayStageResult> getApiGatewayStage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiGatewayStageResult.fromMap(result);
+}
+
+pulumi.Output<GetApiGatewayStageResult> getApiGatewayStageOutput(
+  GetApiGatewayStageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getApiGatewayStage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiGatewayStageResult.fromMap);
 }
 
 /// Get a AppSyncGraphqlApi
@@ -314,6 +358,17 @@ Future<GetAppSyncGraphqlApiResult> getAppSyncGraphqlApi(
   return GetAppSyncGraphqlApiResult.fromMap(result);
 }
 
+pulumi.Output<GetAppSyncGraphqlApiResult> getAppSyncGraphqlApiOutput(
+  GetAppSyncGraphqlApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getAppSyncGraphqlApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppSyncGraphqlApiResult.fromMap);
+}
+
 /// Get a AutoScalingAutoScalingGroup
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -330,6 +385,17 @@ Future<GetAutoScalingAutoScalingGroupResult> getAutoScalingAutoScalingGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoScalingAutoScalingGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoScalingAutoScalingGroupResult> getAutoScalingAutoScalingGroupOutput(
+  GetAutoScalingAutoScalingGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getAutoScalingAutoScalingGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoScalingAutoScalingGroupResult.fromMap);
 }
 
 /// Get a CloudFormationStack
@@ -350,6 +416,17 @@ Future<GetCloudFormationStackResult> getCloudFormationStack(
   return GetCloudFormationStackResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudFormationStackResult> getCloudFormationStackOutput(
+  GetCloudFormationStackArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCloudFormationStack',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudFormationStackResult.fromMap);
+}
+
 /// Get a CloudFormationStackSet
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -366,6 +443,17 @@ Future<GetCloudFormationStackSetResult> getCloudFormationStackSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudFormationStackSetResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudFormationStackSetResult> getCloudFormationStackSetOutput(
+  GetCloudFormationStackSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCloudFormationStackSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudFormationStackSetResult.fromMap);
 }
 
 /// Get a CloudFrontDistribution
@@ -386,6 +474,17 @@ Future<GetCloudFrontDistributionResult> getCloudFrontDistribution(
   return GetCloudFrontDistributionResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudFrontDistributionResult> getCloudFrontDistributionOutput(
+  GetCloudFrontDistributionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCloudFrontDistribution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudFrontDistributionResult.fromMap);
+}
+
 /// Get a CloudTrailTrail
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -402,6 +501,17 @@ Future<GetCloudTrailTrailResult> getCloudTrailTrail(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudTrailTrailResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudTrailTrailResult> getCloudTrailTrailOutput(
+  GetCloudTrailTrailArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCloudTrailTrail',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudTrailTrailResult.fromMap);
 }
 
 /// Get a CloudWatchAlarm
@@ -422,6 +532,17 @@ Future<GetCloudWatchAlarmResult> getCloudWatchAlarm(
   return GetCloudWatchAlarmResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudWatchAlarmResult> getCloudWatchAlarmOutput(
+  GetCloudWatchAlarmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCloudWatchAlarm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudWatchAlarmResult.fromMap);
+}
+
 /// Get a CodeBuildProject
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -438,6 +559,17 @@ Future<GetCodeBuildProjectResult> getCodeBuildProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCodeBuildProjectResult.fromMap(result);
+}
+
+pulumi.Output<GetCodeBuildProjectResult> getCodeBuildProjectOutput(
+  GetCodeBuildProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCodeBuildProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeBuildProjectResult.fromMap);
 }
 
 /// Get a CodeBuildSourceCredentialsInfo
@@ -458,6 +590,17 @@ Future<GetCodeBuildSourceCredentialsInfoResult> getCodeBuildSourceCredentialsInf
   return GetCodeBuildSourceCredentialsInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetCodeBuildSourceCredentialsInfoResult> getCodeBuildSourceCredentialsInfoOutput(
+  GetCodeBuildSourceCredentialsInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getCodeBuildSourceCredentialsInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeBuildSourceCredentialsInfoResult.fromMap);
+}
+
 /// Get a ConfigServiceConfigurationRecorder
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -474,6 +617,17 @@ Future<GetConfigServiceConfigurationRecorderResult> getConfigServiceConfiguratio
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigServiceConfigurationRecorderResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigServiceConfigurationRecorderResult> getConfigServiceConfigurationRecorderOutput(
+  GetConfigServiceConfigurationRecorderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getConfigServiceConfigurationRecorder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigServiceConfigurationRecorderResult.fromMap);
 }
 
 /// Get a ConfigServiceConfigurationRecorderStatus
@@ -494,6 +648,17 @@ Future<GetConfigServiceConfigurationRecorderStatusResult> getConfigServiceConfig
   return GetConfigServiceConfigurationRecorderStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigServiceConfigurationRecorderStatusResult> getConfigServiceConfigurationRecorderStatusOutput(
+  GetConfigServiceConfigurationRecorderStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getConfigServiceConfigurationRecorderStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigServiceConfigurationRecorderStatusResult.fromMap);
+}
+
 /// Get a ConfigServiceDeliveryChannel
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -510,6 +675,17 @@ Future<GetConfigServiceDeliveryChannelResult> getConfigServiceDeliveryChannel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigServiceDeliveryChannelResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigServiceDeliveryChannelResult> getConfigServiceDeliveryChannelOutput(
+  GetConfigServiceDeliveryChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getConfigServiceDeliveryChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigServiceDeliveryChannelResult.fromMap);
 }
 
 /// Get a DatabaseMigrationServiceReplicationInstance
@@ -530,6 +706,17 @@ Future<GetDatabaseMigrationServiceReplicationInstanceResult> getDatabaseMigratio
   return GetDatabaseMigrationServiceReplicationInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetDatabaseMigrationServiceReplicationInstanceResult> getDatabaseMigrationServiceReplicationInstanceOutput(
+  GetDatabaseMigrationServiceReplicationInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getDatabaseMigrationServiceReplicationInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseMigrationServiceReplicationInstanceResult.fromMap);
+}
+
 /// Get a DaxCluster
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -546,6 +733,17 @@ Future<GetDaxClusterResult> getDaxCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDaxClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetDaxClusterResult> getDaxClusterOutput(
+  GetDaxClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getDaxCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDaxClusterResult.fromMap);
 }
 
 /// Get a DynamoDBContinuousBackupsDescription
@@ -566,6 +764,17 @@ Future<GetDynamoDbContinuousBackupsDescriptionResult> getDynamoDbContinuousBacku
   return GetDynamoDbContinuousBackupsDescriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetDynamoDbContinuousBackupsDescriptionResult> getDynamoDbContinuousBackupsDescriptionOutput(
+  GetDynamoDbContinuousBackupsDescriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getDynamoDbContinuousBackupsDescription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamoDbContinuousBackupsDescriptionResult.fromMap);
+}
+
 /// Get a DynamoDBTable
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -582,6 +791,17 @@ Future<GetDynamoDbTableResult> getDynamoDbTable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDynamoDbTableResult.fromMap(result);
+}
+
+pulumi.Output<GetDynamoDbTableResult> getDynamoDbTableOutput(
+  GetDynamoDbTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getDynamoDbTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamoDbTableResult.fromMap);
 }
 
 /// Get a Ec2AccountAttribute
@@ -602,6 +822,17 @@ Future<GetEc2AccountAttributeResult> getEc2AccountAttribute(
   return GetEc2AccountAttributeResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2AccountAttributeResult> getEc2AccountAttributeOutput(
+  GetEc2AccountAttributeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2AccountAttribute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2AccountAttributeResult.fromMap);
+}
+
 /// Get a Ec2Address
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -618,6 +849,17 @@ Future<GetEc2AddressResult> getEc2Address(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2AddressResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2AddressResult> getEc2AddressOutput(
+  GetEc2AddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Address',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2AddressResult.fromMap);
 }
 
 /// Get a Ec2FlowLog
@@ -638,6 +880,17 @@ Future<GetEc2FlowLogResult> getEc2FlowLog(
   return GetEc2FlowLogResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2FlowLogResult> getEc2FlowLogOutput(
+  GetEc2FlowLogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2FlowLog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2FlowLogResult.fromMap);
+}
+
 /// Get a Ec2Image
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -654,6 +907,17 @@ Future<GetEc2ImageResult> getEc2Image(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2ImageResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2ImageResult> getEc2ImageOutput(
+  GetEc2ImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Image',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2ImageResult.fromMap);
 }
 
 /// Get a Ec2Instance
@@ -674,6 +938,17 @@ Future<GetEc2InstanceResult> getEc2Instance(
   return GetEc2InstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2InstanceResult> getEc2InstanceOutput(
+  GetEc2InstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Instance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2InstanceResult.fromMap);
+}
+
 /// Get a Ec2InstanceStatus
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -690,6 +965,17 @@ Future<GetEc2InstanceStatusResult> getEc2InstanceStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2InstanceStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2InstanceStatusResult> getEc2InstanceStatusOutput(
+  GetEc2InstanceStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2InstanceStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2InstanceStatusResult.fromMap);
 }
 
 /// Get a Ec2Ipam
@@ -710,6 +996,17 @@ Future<GetEc2IpamResult> getEc2Ipam(
   return GetEc2IpamResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2IpamResult> getEc2IpamOutput(
+  GetEc2IpamArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Ipam',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2IpamResult.fromMap);
+}
+
 /// Get a Ec2KeyPair
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -726,6 +1023,17 @@ Future<GetEc2KeyPairResult> getEc2KeyPair(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2KeyPairResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2KeyPairResult> getEc2KeyPairOutput(
+  GetEc2KeyPairArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2KeyPair',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2KeyPairResult.fromMap);
 }
 
 /// Get a Ec2NetworkAcl
@@ -746,6 +1054,17 @@ Future<GetEc2NetworkAclResult> getEc2NetworkAcl(
   return GetEc2NetworkAclResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2NetworkAclResult> getEc2NetworkAclOutput(
+  GetEc2NetworkAclArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2NetworkAcl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2NetworkAclResult.fromMap);
+}
+
 /// Get a Ec2NetworkInterface
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -762,6 +1081,17 @@ Future<GetEc2NetworkInterfaceResult> getEc2NetworkInterface(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2NetworkInterfaceResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2NetworkInterfaceResult> getEc2NetworkInterfaceOutput(
+  GetEc2NetworkInterfaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2NetworkInterface',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2NetworkInterfaceResult.fromMap);
 }
 
 /// Get a Ec2RouteTable
@@ -782,6 +1112,17 @@ Future<GetEc2RouteTableResult> getEc2RouteTable(
   return GetEc2RouteTableResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2RouteTableResult> getEc2RouteTableOutput(
+  GetEc2RouteTableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2RouteTable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2RouteTableResult.fromMap);
+}
+
 /// Get a Ec2SecurityGroup
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -798,6 +1139,17 @@ Future<GetEc2SecurityGroupResult> getEc2SecurityGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2SecurityGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2SecurityGroupResult> getEc2SecurityGroupOutput(
+  GetEc2SecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2SecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2SecurityGroupResult.fromMap);
 }
 
 /// Get a Ec2Snapshot
@@ -818,6 +1170,17 @@ Future<GetEc2SnapshotResult> getEc2Snapshot(
   return GetEc2SnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2SnapshotResult> getEc2SnapshotOutput(
+  GetEc2SnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Snapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2SnapshotResult.fromMap);
+}
+
 /// Get a Ec2Subnet
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -834,6 +1197,17 @@ Future<GetEc2SubnetResult> getEc2Subnet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2SubnetResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2SubnetResult> getEc2SubnetOutput(
+  GetEc2SubnetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Subnet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2SubnetResult.fromMap);
 }
 
 /// Get a Ec2Volume
@@ -854,6 +1228,17 @@ Future<GetEc2VolumeResult> getEc2Volume(
   return GetEc2VolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2VolumeResult> getEc2VolumeOutput(
+  GetEc2VolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Volume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2VolumeResult.fromMap);
+}
+
 /// Get a Ec2Vpc
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -870,6 +1255,17 @@ Future<GetEc2VpcResult> getEc2Vpc(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2VpcResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2VpcResult> getEc2VpcOutput(
+  GetEc2VpcArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2Vpc',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2VpcResult.fromMap);
 }
 
 /// Get a Ec2VPCEndpoint
@@ -890,6 +1286,17 @@ Future<GetEc2VpcEndpointResult> getEc2VpcEndpoint(
   return GetEc2VpcEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEc2VpcEndpointResult> getEc2VpcEndpointOutput(
+  GetEc2VpcEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2VpcEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2VpcEndpointResult.fromMap);
+}
+
 /// Get a Ec2VPCPeeringConnection
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -906,6 +1313,17 @@ Future<GetEc2VpcPeeringConnectionResult> getEc2VpcPeeringConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEc2VpcPeeringConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetEc2VpcPeeringConnectionResult> getEc2VpcPeeringConnectionOutput(
+  GetEc2VpcPeeringConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEc2VpcPeeringConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEc2VpcPeeringConnectionResult.fromMap);
 }
 
 /// Get a EcrImageDetail
@@ -926,6 +1344,17 @@ Future<GetEcrImageDetailResult> getEcrImageDetail(
   return GetEcrImageDetailResult.fromMap(result);
 }
 
+pulumi.Output<GetEcrImageDetailResult> getEcrImageDetailOutput(
+  GetEcrImageDetailArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEcrImageDetail',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEcrImageDetailResult.fromMap);
+}
+
 /// Get a EcrRepository
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -942,6 +1371,17 @@ Future<GetEcrRepositoryResult> getEcrRepository(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEcrRepositoryResult.fromMap(result);
+}
+
+pulumi.Output<GetEcrRepositoryResult> getEcrRepositoryOutput(
+  GetEcrRepositoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEcrRepository',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEcrRepositoryResult.fromMap);
 }
 
 /// Get a EcsCluster
@@ -962,6 +1402,17 @@ Future<GetEcsClusterResult> getEcsCluster(
   return GetEcsClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetEcsClusterResult> getEcsClusterOutput(
+  GetEcsClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEcsCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEcsClusterResult.fromMap);
+}
+
 /// Get a EcsService
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -978,6 +1429,17 @@ Future<GetEcsServiceResult> getEcsService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEcsServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetEcsServiceResult> getEcsServiceOutput(
+  GetEcsServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEcsService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEcsServiceResult.fromMap);
 }
 
 /// Get a EcsTaskDefinition
@@ -998,6 +1460,17 @@ Future<GetEcsTaskDefinitionResult> getEcsTaskDefinition(
   return GetEcsTaskDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetEcsTaskDefinitionResult> getEcsTaskDefinitionOutput(
+  GetEcsTaskDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEcsTaskDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEcsTaskDefinitionResult.fromMap);
+}
+
 /// Get a EfsFileSystem
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1014,6 +1487,17 @@ Future<GetEfsFileSystemResult> getEfsFileSystem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEfsFileSystemResult.fromMap(result);
+}
+
+pulumi.Output<GetEfsFileSystemResult> getEfsFileSystemOutput(
+  GetEfsFileSystemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEfsFileSystem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEfsFileSystemResult.fromMap);
 }
 
 /// Get a EfsMountTarget
@@ -1034,6 +1518,17 @@ Future<GetEfsMountTargetResult> getEfsMountTarget(
   return GetEfsMountTargetResult.fromMap(result);
 }
 
+pulumi.Output<GetEfsMountTargetResult> getEfsMountTargetOutput(
+  GetEfsMountTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEfsMountTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEfsMountTargetResult.fromMap);
+}
+
 /// Get a EksCluster
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1050,6 +1545,17 @@ Future<GetEksClusterResult> getEksCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEksClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetEksClusterResult> getEksClusterOutput(
+  GetEksClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEksCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEksClusterResult.fromMap);
 }
 
 /// Get a EksNodegroup
@@ -1070,6 +1576,17 @@ Future<GetEksNodegroupResult> getEksNodegroup(
   return GetEksNodegroupResult.fromMap(result);
 }
 
+pulumi.Output<GetEksNodegroupResult> getEksNodegroupOutput(
+  GetEksNodegroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEksNodegroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEksNodegroupResult.fromMap);
+}
+
 /// Get a ElasticBeanstalkApplication
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1086,6 +1603,17 @@ Future<GetElasticBeanstalkApplicationResult> getElasticBeanstalkApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticBeanstalkApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetElasticBeanstalkApplicationResult> getElasticBeanstalkApplicationOutput(
+  GetElasticBeanstalkApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticBeanstalkApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticBeanstalkApplicationResult.fromMap);
 }
 
 /// Get a ElasticBeanstalkConfigurationTemplate
@@ -1106,6 +1634,17 @@ Future<GetElasticBeanstalkConfigurationTemplateResult> getElasticBeanstalkConfig
   return GetElasticBeanstalkConfigurationTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetElasticBeanstalkConfigurationTemplateResult> getElasticBeanstalkConfigurationTemplateOutput(
+  GetElasticBeanstalkConfigurationTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticBeanstalkConfigurationTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticBeanstalkConfigurationTemplateResult.fromMap);
+}
+
 /// Get a ElasticBeanstalkEnvironment
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1122,6 +1661,17 @@ Future<GetElasticBeanstalkEnvironmentResult> getElasticBeanstalkEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticBeanstalkEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetElasticBeanstalkEnvironmentResult> getElasticBeanstalkEnvironmentOutput(
+  GetElasticBeanstalkEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticBeanstalkEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticBeanstalkEnvironmentResult.fromMap);
 }
 
 /// Get a ElasticLoadBalancingV2Listener
@@ -1142,6 +1692,17 @@ Future<GetElasticLoadBalancingV2ListenerResult> getElasticLoadBalancingV2Listene
   return GetElasticLoadBalancingV2ListenerResult.fromMap(result);
 }
 
+pulumi.Output<GetElasticLoadBalancingV2ListenerResult> getElasticLoadBalancingV2ListenerOutput(
+  GetElasticLoadBalancingV2ListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticLoadBalancingV2Listener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticLoadBalancingV2ListenerResult.fromMap);
+}
+
 /// Get a ElasticLoadBalancingV2LoadBalancer
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1158,6 +1719,17 @@ Future<GetElasticLoadBalancingV2LoadBalancerResult> getElasticLoadBalancingV2Loa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticLoadBalancingV2LoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetElasticLoadBalancingV2LoadBalancerResult> getElasticLoadBalancingV2LoadBalancerOutput(
+  GetElasticLoadBalancingV2LoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticLoadBalancingV2LoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticLoadBalancingV2LoadBalancerResult.fromMap);
 }
 
 /// Get a ElasticLoadBalancingV2TargetGroup
@@ -1178,6 +1750,17 @@ Future<GetElasticLoadBalancingV2TargetGroupResult> getElasticLoadBalancingV2Targ
   return GetElasticLoadBalancingV2TargetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetElasticLoadBalancingV2TargetGroupResult> getElasticLoadBalancingV2TargetGroupOutput(
+  GetElasticLoadBalancingV2TargetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticLoadBalancingV2TargetGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticLoadBalancingV2TargetGroupResult.fromMap);
+}
+
 /// Get a ElasticLoadBalancingv2TargetHealthDescription
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1194,6 +1777,17 @@ Future<GetElasticLoadBalancingv2TargetHealthDescriptionResult> getElasticLoadBal
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetElasticLoadBalancingv2TargetHealthDescriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetElasticLoadBalancingv2TargetHealthDescriptionResult> getElasticLoadBalancingv2TargetHealthDescriptionOutput(
+  GetElasticLoadBalancingv2TargetHealthDescriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getElasticLoadBalancingv2TargetHealthDescription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetElasticLoadBalancingv2TargetHealthDescriptionResult.fromMap);
 }
 
 /// Get a EmrCluster
@@ -1214,6 +1808,17 @@ Future<GetEmrClusterResult> getEmrCluster(
   return GetEmrClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetEmrClusterResult> getEmrClusterOutput(
+  GetEmrClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getEmrCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmrClusterResult.fromMap);
+}
+
 /// Get a GuardDutyDetector
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1230,6 +1835,17 @@ Future<GetGuardDutyDetectorResult> getGuardDutyDetector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGuardDutyDetectorResult.fromMap(result);
+}
+
+pulumi.Output<GetGuardDutyDetectorResult> getGuardDutyDetectorOutput(
+  GetGuardDutyDetectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getGuardDutyDetector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuardDutyDetectorResult.fromMap);
 }
 
 /// Get a IamAccessKeyLastUsed
@@ -1250,6 +1866,17 @@ Future<GetIamAccessKeyLastUsedResult> getIamAccessKeyLastUsed(
   return GetIamAccessKeyLastUsedResult.fromMap(result);
 }
 
+pulumi.Output<GetIamAccessKeyLastUsedResult> getIamAccessKeyLastUsedOutput(
+  GetIamAccessKeyLastUsedArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamAccessKeyLastUsed',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamAccessKeyLastUsedResult.fromMap);
+}
+
 /// Get a IamAccessKeyMetadata
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1266,6 +1893,17 @@ Future<GetIamAccessKeyMetadataInfoResult> getIamAccessKeyMetadataInfo(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamAccessKeyMetadataInfoResult.fromMap(result);
+}
+
+pulumi.Output<GetIamAccessKeyMetadataInfoResult> getIamAccessKeyMetadataInfoOutput(
+  GetIamAccessKeyMetadataInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamAccessKeyMetadataInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamAccessKeyMetadataInfoResult.fromMap);
 }
 
 /// Get a IamGroup
@@ -1286,6 +1924,17 @@ Future<GetIamGroupResult> getIamGroup(
   return GetIamGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetIamGroupResult> getIamGroupOutput(
+  GetIamGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamGroupResult.fromMap);
+}
+
 /// Get a IamInstanceProfile
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1302,6 +1951,17 @@ Future<GetIamInstanceProfileResult> getIamInstanceProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamInstanceProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetIamInstanceProfileResult> getIamInstanceProfileOutput(
+  GetIamInstanceProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamInstanceProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamInstanceProfileResult.fromMap);
 }
 
 /// Get a IamMFADevice
@@ -1322,6 +1982,17 @@ Future<GetIamMfaDeviceResult> getIamMfaDevice(
   return GetIamMfaDeviceResult.fromMap(result);
 }
 
+pulumi.Output<GetIamMfaDeviceResult> getIamMfaDeviceOutput(
+  GetIamMfaDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamMfaDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamMfaDeviceResult.fromMap);
+}
+
 /// Get a IamPasswordPolicy
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1338,6 +2009,17 @@ Future<GetIamPasswordPolicyResult> getIamPasswordPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamPasswordPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetIamPasswordPolicyResult> getIamPasswordPolicyOutput(
+  GetIamPasswordPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamPasswordPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPasswordPolicyResult.fromMap);
 }
 
 /// Get a IamPolicyVersion
@@ -1358,6 +2040,17 @@ Future<GetIamPolicyVersionResult> getIamPolicyVersion(
   return GetIamPolicyVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetIamPolicyVersionResult> getIamPolicyVersionOutput(
+  GetIamPolicyVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamPolicyVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamPolicyVersionResult.fromMap);
+}
+
 /// Get a IamRole
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1374,6 +2067,17 @@ Future<GetIamRoleResult> getIamRole(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamRoleResult.fromMap(result);
+}
+
+pulumi.Output<GetIamRoleResult> getIamRoleOutput(
+  GetIamRoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamRole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamRoleResult.fromMap);
 }
 
 /// Get a IamServerCertificate
@@ -1394,6 +2098,17 @@ Future<GetIamServerCertificateResult> getIamServerCertificate(
   return GetIamServerCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetIamServerCertificateResult> getIamServerCertificateOutput(
+  GetIamServerCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamServerCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamServerCertificateResult.fromMap);
+}
+
 /// Get a IamVirtualMFADevice
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1410,6 +2125,17 @@ Future<GetIamVirtualMfaDeviceResult> getIamVirtualMfaDevice(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIamVirtualMfaDeviceResult.fromMap(result);
+}
+
+pulumi.Output<GetIamVirtualMfaDeviceResult> getIamVirtualMfaDeviceOutput(
+  GetIamVirtualMfaDeviceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getIamVirtualMfaDevice',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIamVirtualMfaDeviceResult.fromMap);
 }
 
 /// Get a KmsAlias
@@ -1430,6 +2156,17 @@ Future<GetKmsAliasResult> getKmsAlias(
   return GetKmsAliasResult.fromMap(result);
 }
 
+pulumi.Output<GetKmsAliasResult> getKmsAliasOutput(
+  GetKmsAliasArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getKmsAlias',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKmsAliasResult.fromMap);
+}
+
 /// Get a KmsKey
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1446,6 +2183,17 @@ Future<GetKmsKeyResult> getKmsKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKmsKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetKmsKeyResult> getKmsKeyOutput(
+  GetKmsKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getKmsKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKmsKeyResult.fromMap);
 }
 
 /// Get a LambdaFunction
@@ -1466,6 +2214,17 @@ Future<GetLambdaFunctionResult> getLambdaFunction(
   return GetLambdaFunctionResult.fromMap(result);
 }
 
+pulumi.Output<GetLambdaFunctionResult> getLambdaFunctionOutput(
+  GetLambdaFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLambdaFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLambdaFunctionResult.fromMap);
+}
+
 /// Get a LambdaFunctionCodeLocation
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1482,6 +2241,17 @@ Future<GetLambdaFunctionCodeLocationResult> getLambdaFunctionCodeLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLambdaFunctionCodeLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetLambdaFunctionCodeLocationResult> getLambdaFunctionCodeLocationOutput(
+  GetLambdaFunctionCodeLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLambdaFunctionCodeLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLambdaFunctionCodeLocationResult.fromMap);
 }
 
 /// Get a LightsailBucket
@@ -1502,6 +2272,17 @@ Future<GetLightsailBucketResult> getLightsailBucket(
   return GetLightsailBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetLightsailBucketResult> getLightsailBucketOutput(
+  GetLightsailBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLightsailBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLightsailBucketResult.fromMap);
+}
+
 /// Get a LightsailInstance
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1518,6 +2299,17 @@ Future<GetLightsailInstanceResult> getLightsailInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLightsailInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetLightsailInstanceResult> getLightsailInstanceOutput(
+  GetLightsailInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLightsailInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLightsailInstanceResult.fromMap);
 }
 
 /// Get a LogsLogGroup
@@ -1538,6 +2330,17 @@ Future<GetLogsLogGroupResult> getLogsLogGroup(
   return GetLogsLogGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetLogsLogGroupResult> getLogsLogGroupOutput(
+  GetLogsLogGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLogsLogGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogsLogGroupResult.fromMap);
+}
+
 /// Get a LogsLogStream
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1554,6 +2357,17 @@ Future<GetLogsLogStreamResult> getLogsLogStream(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogsLogStreamResult.fromMap(result);
+}
+
+pulumi.Output<GetLogsLogStreamResult> getLogsLogStreamOutput(
+  GetLogsLogStreamArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLogsLogStream',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogsLogStreamResult.fromMap);
 }
 
 /// Get a LogsMetricFilter
@@ -1574,6 +2388,17 @@ Future<GetLogsMetricFilterResult> getLogsMetricFilter(
   return GetLogsMetricFilterResult.fromMap(result);
 }
 
+pulumi.Output<GetLogsMetricFilterResult> getLogsMetricFilterOutput(
+  GetLogsMetricFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLogsMetricFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogsMetricFilterResult.fromMap);
+}
+
 /// Get a LogsSubscriptionFilter
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1590,6 +2415,17 @@ Future<GetLogsSubscriptionFilterResult> getLogsSubscriptionFilter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogsSubscriptionFilterResult.fromMap(result);
+}
+
+pulumi.Output<GetLogsSubscriptionFilterResult> getLogsSubscriptionFilterOutput(
+  GetLogsSubscriptionFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getLogsSubscriptionFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogsSubscriptionFilterResult.fromMap);
 }
 
 /// Get a Macie2JobSummary
@@ -1610,6 +2446,17 @@ Future<GetMacie2JobSummaryResult> getMacie2JobSummary(
   return GetMacie2JobSummaryResult.fromMap(result);
 }
 
+pulumi.Output<GetMacie2JobSummaryResult> getMacie2JobSummaryOutput(
+  GetMacie2JobSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getMacie2JobSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMacie2JobSummaryResult.fromMap);
+}
+
 /// Get a MacieAllowList
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1626,6 +2473,17 @@ Future<GetMacieAllowListResult> getMacieAllowList(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMacieAllowListResult.fromMap(result);
+}
+
+pulumi.Output<GetMacieAllowListResult> getMacieAllowListOutput(
+  GetMacieAllowListArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getMacieAllowList',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMacieAllowListResult.fromMap);
 }
 
 /// Get a NetworkFirewallFirewall
@@ -1646,6 +2504,17 @@ Future<GetNetworkFirewallFirewallResult> getNetworkFirewallFirewall(
   return GetNetworkFirewallFirewallResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFirewallFirewallResult> getNetworkFirewallFirewallOutput(
+  GetNetworkFirewallFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getNetworkFirewallFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallFirewallResult.fromMap);
+}
+
 /// Get a NetworkFirewallFirewallPolicy
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1662,6 +2531,17 @@ Future<GetNetworkFirewallFirewallPolicyResult> getNetworkFirewallFirewallPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFirewallFirewallPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFirewallFirewallPolicyResult> getNetworkFirewallFirewallPolicyOutput(
+  GetNetworkFirewallFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getNetworkFirewallFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallFirewallPolicyResult.fromMap);
 }
 
 /// Get a NetworkFirewallRuleGroup
@@ -1682,6 +2562,17 @@ Future<GetNetworkFirewallRuleGroupResult> getNetworkFirewallRuleGroup(
   return GetNetworkFirewallRuleGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFirewallRuleGroupResult> getNetworkFirewallRuleGroupOutput(
+  GetNetworkFirewallRuleGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getNetworkFirewallRuleGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallRuleGroupResult.fromMap);
+}
+
 /// Get a OpenSearchDomainStatus
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1698,6 +2589,17 @@ Future<GetOpenSearchDomainStatusResult> getOpenSearchDomainStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenSearchDomainStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetOpenSearchDomainStatusResult> getOpenSearchDomainStatusOutput(
+  GetOpenSearchDomainStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getOpenSearchDomainStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenSearchDomainStatusResult.fromMap);
 }
 
 /// Get a OrganizationsAccount
@@ -1718,6 +2620,17 @@ Future<GetOrganizationsAccountResult> getOrganizationsAccount(
   return GetOrganizationsAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationsAccountResult> getOrganizationsAccountOutput(
+  GetOrganizationsAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getOrganizationsAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationsAccountResult.fromMap);
+}
+
 /// Get a OrganizationsOrganization
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1734,6 +2647,17 @@ Future<GetOrganizationsOrganizationResult> getOrganizationsOrganization(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationsOrganizationResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationsOrganizationResult> getOrganizationsOrganizationOutput(
+  GetOrganizationsOrganizationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getOrganizationsOrganization',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationsOrganizationResult.fromMap);
 }
 
 /// Get a RdsDBCluster
@@ -1754,6 +2678,17 @@ Future<GetRdsDbClusterResult> getRdsDbCluster(
   return GetRdsDbClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetRdsDbClusterResult> getRdsDbClusterOutput(
+  GetRdsDbClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsDbCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsDbClusterResult.fromMap);
+}
+
 /// Get a RdsDBInstance
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1770,6 +2705,17 @@ Future<GetRdsDbInstanceResult> getRdsDbInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRdsDbInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetRdsDbInstanceResult> getRdsDbInstanceOutput(
+  GetRdsDbInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsDbInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsDbInstanceResult.fromMap);
 }
 
 /// Get a RdsDBSnapshot
@@ -1790,6 +2736,17 @@ Future<GetRdsDbSnapshotResult> getRdsDbSnapshot(
   return GetRdsDbSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetRdsDbSnapshotResult> getRdsDbSnapshotOutput(
+  GetRdsDbSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsDbSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsDbSnapshotResult.fromMap);
+}
+
 /// Get a RdsDBSnapshotAttributesResult
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1806,6 +2763,17 @@ Future<GetRdsDbSnapshotAttributesResultResult> getRdsDbSnapshotAttributesResult(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRdsDbSnapshotAttributesResultResult.fromMap(result);
+}
+
+pulumi.Output<GetRdsDbSnapshotAttributesResultResult> getRdsDbSnapshotAttributesResultOutput(
+  GetRdsDbSnapshotAttributesResultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsDbSnapshotAttributesResult',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsDbSnapshotAttributesResultResult.fromMap);
 }
 
 /// Get a RdsEventSubscription
@@ -1826,6 +2794,17 @@ Future<GetRdsEventSubscriptionResult> getRdsEventSubscription(
   return GetRdsEventSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetRdsEventSubscriptionResult> getRdsEventSubscriptionOutput(
+  GetRdsEventSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsEventSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsEventSubscriptionResult.fromMap);
+}
+
 /// Get a RdsExportTask
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1842,6 +2821,17 @@ Future<GetRdsExportTaskResult> getRdsExportTask(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRdsExportTaskResult.fromMap(result);
+}
+
+pulumi.Output<GetRdsExportTaskResult> getRdsExportTaskOutput(
+  GetRdsExportTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRdsExportTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRdsExportTaskResult.fromMap);
 }
 
 /// Get a RedshiftCluster
@@ -1862,6 +2852,17 @@ Future<GetRedshiftClusterResult> getRedshiftCluster(
   return GetRedshiftClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetRedshiftClusterResult> getRedshiftClusterOutput(
+  GetRedshiftClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRedshiftCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedshiftClusterResult.fromMap);
+}
+
 /// Get a RedshiftClusterParameterGroup
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1878,6 +2879,17 @@ Future<GetRedshiftClusterParameterGroupResult> getRedshiftClusterParameterGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRedshiftClusterParameterGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetRedshiftClusterParameterGroupResult> getRedshiftClusterParameterGroupOutput(
+  GetRedshiftClusterParameterGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRedshiftClusterParameterGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRedshiftClusterParameterGroupResult.fromMap);
 }
 
 /// Get a Route53DomainsDomainSummary
@@ -1898,6 +2910,17 @@ Future<GetRoute53DomainsDomainSummaryResult> getRoute53DomainsDomainSummary(
   return GetRoute53DomainsDomainSummaryResult.fromMap(result);
 }
 
+pulumi.Output<GetRoute53DomainsDomainSummaryResult> getRoute53DomainsDomainSummaryOutput(
+  GetRoute53DomainsDomainSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRoute53DomainsDomainSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoute53DomainsDomainSummaryResult.fromMap);
+}
+
 /// Get a Route53HostedZone
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1914,6 +2937,17 @@ Future<GetRoute53HostedZoneResult> getRoute53HostedZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoute53HostedZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetRoute53HostedZoneResult> getRoute53HostedZoneOutput(
+  GetRoute53HostedZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRoute53HostedZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoute53HostedZoneResult.fromMap);
 }
 
 /// Get a Route53ResourceRecordSet
@@ -1934,6 +2968,17 @@ Future<GetRoute53ResourceRecordSetResult> getRoute53ResourceRecordSet(
   return GetRoute53ResourceRecordSetResult.fromMap(result);
 }
 
+pulumi.Output<GetRoute53ResourceRecordSetResult> getRoute53ResourceRecordSetOutput(
+  GetRoute53ResourceRecordSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getRoute53ResourceRecordSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoute53ResourceRecordSetResult.fromMap);
+}
+
 /// Get a S3AccessControlPolicy
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1950,6 +2995,17 @@ Future<GetS3AccessControlPolicyResult> getS3AccessControlPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetS3AccessControlPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetS3AccessControlPolicyResult> getS3AccessControlPolicyOutput(
+  GetS3AccessControlPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getS3AccessControlPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3AccessControlPolicyResult.fromMap);
 }
 
 /// Get a S3AccessPoint
@@ -1970,6 +3026,17 @@ Future<GetS3AccessPointResult> getS3AccessPoint(
   return GetS3AccessPointResult.fromMap(result);
 }
 
+pulumi.Output<GetS3AccessPointResult> getS3AccessPointOutput(
+  GetS3AccessPointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getS3AccessPoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3AccessPointResult.fromMap);
+}
+
 /// Get a S3Bucket
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -1986,6 +3053,17 @@ Future<GetS3BucketResult> getS3Bucket(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetS3BucketResult.fromMap(result);
+}
+
+pulumi.Output<GetS3BucketResult> getS3BucketOutput(
+  GetS3BucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getS3Bucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3BucketResult.fromMap);
 }
 
 /// Get a S3BucketPolicy
@@ -2006,6 +3084,17 @@ Future<GetS3BucketPolicyResult> getS3BucketPolicy(
   return GetS3BucketPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetS3BucketPolicyResult> getS3BucketPolicyOutput(
+  GetS3BucketPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getS3BucketPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3BucketPolicyResult.fromMap);
+}
+
 /// Get a S3ControlMultiRegionAccessPointPolicyDocument
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2022,6 +3111,17 @@ Future<GetS3ControlMultiRegionAccessPointPolicyDocumentResult> getS3ControlMulti
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetS3ControlMultiRegionAccessPointPolicyDocumentResult.fromMap(result);
+}
+
+pulumi.Output<GetS3ControlMultiRegionAccessPointPolicyDocumentResult> getS3ControlMultiRegionAccessPointPolicyDocumentOutput(
+  GetS3ControlMultiRegionAccessPointPolicyDocumentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getS3ControlMultiRegionAccessPointPolicyDocument',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetS3ControlMultiRegionAccessPointPolicyDocumentResult.fromMap);
 }
 
 /// Get a SageMakerApp
@@ -2042,6 +3142,17 @@ Future<GetSageMakerAppResult> getSageMakerApp(
   return GetSageMakerAppResult.fromMap(result);
 }
 
+pulumi.Output<GetSageMakerAppResult> getSageMakerAppOutput(
+  GetSageMakerAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSageMakerApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSageMakerAppResult.fromMap);
+}
+
 /// Get a SageMakerNotebookInstanceSummary
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2058,6 +3169,17 @@ Future<GetSageMakerNotebookInstanceSummaryResult> getSageMakerNotebookInstanceSu
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSageMakerNotebookInstanceSummaryResult.fromMap(result);
+}
+
+pulumi.Output<GetSageMakerNotebookInstanceSummaryResult> getSageMakerNotebookInstanceSummaryOutput(
+  GetSageMakerNotebookInstanceSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSageMakerNotebookInstanceSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSageMakerNotebookInstanceSummaryResult.fromMap);
 }
 
 /// Get a SecretsManagerResourcePolicy
@@ -2078,6 +3200,17 @@ Future<GetSecretsManagerResourcePolicyResult> getSecretsManagerResourcePolicy(
   return GetSecretsManagerResourcePolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretsManagerResourcePolicyResult> getSecretsManagerResourcePolicyOutput(
+  GetSecretsManagerResourcePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSecretsManagerResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsManagerResourcePolicyResult.fromMap);
+}
+
 /// Get a SecretsManagerSecret
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2094,6 +3227,17 @@ Future<GetSecretsManagerSecretResult> getSecretsManagerSecret(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecretsManagerSecretResult.fromMap(result);
+}
+
+pulumi.Output<GetSecretsManagerSecretResult> getSecretsManagerSecretOutput(
+  GetSecretsManagerSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSecretsManagerSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretsManagerSecretResult.fromMap);
 }
 
 /// Get a SnsSubscription
@@ -2114,6 +3258,17 @@ Future<GetSnsSubscriptionResult> getSnsSubscription(
   return GetSnsSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetSnsSubscriptionResult> getSnsSubscriptionOutput(
+  GetSnsSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSnsSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnsSubscriptionResult.fromMap);
+}
+
 /// Get a SnsTopic
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2130,6 +3285,17 @@ Future<GetSnsTopicResult> getSnsTopic(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnsTopicResult.fromMap(result);
+}
+
+pulumi.Output<GetSnsTopicResult> getSnsTopicOutput(
+  GetSnsTopicArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSnsTopic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnsTopicResult.fromMap);
 }
 
 /// Get a SqsQueue
@@ -2150,6 +3316,17 @@ Future<GetSqsQueueResult> getSqsQueue(
   return GetSqsQueueResult.fromMap(result);
 }
 
+pulumi.Output<GetSqsQueueResult> getSqsQueueOutput(
+  GetSqsQueueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSqsQueue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqsQueueResult.fromMap);
+}
+
 /// Get a SsmInstanceInformation
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2166,6 +3343,17 @@ Future<GetSsmInstanceInformationResult> getSsmInstanceInformation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSsmInstanceInformationResult.fromMap(result);
+}
+
+pulumi.Output<GetSsmInstanceInformationResult> getSsmInstanceInformationOutput(
+  GetSsmInstanceInformationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSsmInstanceInformation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSsmInstanceInformationResult.fromMap);
 }
 
 /// Get a SsmParameter
@@ -2186,6 +3374,17 @@ Future<GetSsmParameterResult> getSsmParameter(
   return GetSsmParameterResult.fromMap(result);
 }
 
+pulumi.Output<GetSsmParameterResult> getSsmParameterOutput(
+  GetSsmParameterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSsmParameter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSsmParameterResult.fromMap);
+}
+
 /// Get a SsmResourceComplianceSummaryItem
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2202,6 +3401,17 @@ Future<GetSsmResourceComplianceSummaryItemResult> getSsmResourceComplianceSummar
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSsmResourceComplianceSummaryItemResult.fromMap(result);
+}
+
+pulumi.Output<GetSsmResourceComplianceSummaryItemResult> getSsmResourceComplianceSummaryItemOutput(
+  GetSsmResourceComplianceSummaryItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getSsmResourceComplianceSummaryItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSsmResourceComplianceSummaryItemResult.fromMap);
 }
 
 /// Get a WafWebACLSummary
@@ -2222,6 +3432,17 @@ Future<GetWafWebAclSummaryResult> getWafWebAclSummary(
   return GetWafWebAclSummaryResult.fromMap(result);
 }
 
+pulumi.Output<GetWafWebAclSummaryResult> getWafWebAclSummaryOutput(
+  GetWafWebAclSummaryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getWafWebAclSummary',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWafWebAclSummaryResult.fromMap);
+}
+
 /// Get a Wafv2LoggingConfiguration
 ///
 /// Uses Azure REST API version 2024-12-01.
@@ -2238,4 +3459,15 @@ Future<GetWafv2LoggingConfigurationResult> getWafv2LoggingConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWafv2LoggingConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetWafv2LoggingConfigurationResult> getWafv2LoggingConfigurationOutput(
+  GetWafv2LoggingConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:awsconnector:getWafv2LoggingConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWafv2LoggingConfigurationResult.fromMap);
 }

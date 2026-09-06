@@ -6,29 +6,29 @@ import 'extended_location_response.dart';
 /// ExtendedLocation details data.
 class A2AFabricSpecificLocationDetailsResponse {
   /// The initial primary ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? initialPrimaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? initialPrimaryExtendedLocation;
   /// Initial primary fabric location info.
-  final pulumi.Input<String>? initialPrimaryFabricLocation;
+  final pulumi.Input<String?>? initialPrimaryFabricLocation;
   /// The initial source zone info.
-  final pulumi.Input<String>? initialPrimaryZone;
+  final pulumi.Input<String?>? initialPrimaryZone;
   /// The initial recovery ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? initialRecoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? initialRecoveryExtendedLocation;
   /// The initial recovery fabric location info.
-  final pulumi.Input<String>? initialRecoveryFabricLocation;
+  final pulumi.Input<String?>? initialRecoveryFabricLocation;
   /// The initial target zone info.
-  final pulumi.Input<String>? initialRecoveryZone;
+  final pulumi.Input<String?>? initialRecoveryZone;
   /// The primary ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? primaryExtendedLocation;
   /// Primary fabric location info.
-  final pulumi.Input<String>? primaryFabricLocation;
+  final pulumi.Input<String?>? primaryFabricLocation;
   /// Source zone info.
-  final pulumi.Input<String>? primaryZone;
+  final pulumi.Input<String?>? primaryZone;
   /// The recovery ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? recoveryExtendedLocation;
   /// The recovery fabric location info.
-  final pulumi.Input<String>? recoveryFabricLocation;
+  final pulumi.Input<String?>? recoveryFabricLocation;
   /// The target zone info.
-  final pulumi.Input<String>? recoveryZone;
+  final pulumi.Input<String?>? recoveryZone;
 
   /// Creates a new [A2AFabricSpecificLocationDetailsResponse].
   /// [initialPrimaryExtendedLocation] The initial primary ExtendedLocation.

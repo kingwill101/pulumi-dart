@@ -5,7 +5,7 @@ import 'source_life_cycle.dart';
 
 /// Azure retention rule
 class AzureRetentionRule {
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   final pulumi.Input<List<SourceLifeCycle>> lifecycles;
   final pulumi.Input<String> name;
   /// Expected value is 'AzureRetentionRule'.

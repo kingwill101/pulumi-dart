@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataset reference object.
 class DatasetReference {
   /// The fully qualified ARM id of the dataset reference.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the dataset reference.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatasetReference].
   /// [id] The fully qualified ARM id of the dataset reference.

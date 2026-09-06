@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_web_static_site_user_provided_function_app_for_static_site_args_doc}
 class StaticSiteUserProvidedFunctionAppForStaticSiteArgs {
   /// Name of the function app registered with the static site.
-  final pulumi.Input<String>? functionAppName;
+  final pulumi.Input<String?>? functionAppName;
   /// The region of the function app registered with the static site
-  final pulumi.Input<String>? functionAppRegion;
+  final pulumi.Input<String?>? functionAppRegion;
   /// The resource id of the function app registered with the static site
-  final pulumi.Input<String>? functionAppResourceId;
+  final pulumi.Input<String?>? functionAppResourceId;
   /// Specify &lt;code&gt;true&lt;/code&gt; to force the update of the auth configuration on the function app even if an AzureStaticWebApps provider is already configured on the function app. The default is &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? isForced;
+  final pulumi.Input<bool?>? isForced;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the static site.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

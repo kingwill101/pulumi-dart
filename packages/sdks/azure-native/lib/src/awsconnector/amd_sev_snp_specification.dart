@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum AmdSevSnpSpecification {
+enum AmdSevSnpSpecification implements pulumi.PulumiEnum<String> {
   disabled("disabled"),
   enabled("enabled");
 
   const AmdSevSnpSpecification(this.wireValue);
+  @override
   final String wireValue;
 
   static AmdSevSnpSpecification fromValue(String value) {

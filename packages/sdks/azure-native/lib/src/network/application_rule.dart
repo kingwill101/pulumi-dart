@@ -7,32 +7,32 @@ import 'firewall_policy_rule_application_protocol.dart';
 /// Rule of type application.
 class ApplicationRule {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses or Service Tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of FQDN Tags for this rule.
-  final pulumi.Input<List<String>>? fqdnTags;
+  final pulumi.Input<List<String>?>? fqdnTags;
   /// List of HTTP/S headers to insert.
-  final pulumi.Input<List<FirewallPolicyHttpHeaderToInsert>>? httpHeadersToInsert;
+  final pulumi.Input<List<FirewallPolicyHttpHeaderToInsert>?>? httpHeadersToInsert;
   /// Name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Array of Application Protocols.
-  final pulumi.Input<List<FirewallPolicyRuleApplicationProtocol>>? protocols;
+  final pulumi.Input<List<FirewallPolicyRuleApplicationProtocol>?>? protocols;
   /// Rule Type.
   /// Expected value is 'ApplicationRule'.
   final pulumi.Input<String> ruleType;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// List of FQDNs for this rule.
-  final pulumi.Input<List<String>>? targetFqdns;
+  final pulumi.Input<List<String>?>? targetFqdns;
   /// List of Urls for this rule condition.
-  final pulumi.Input<List<String>>? targetUrls;
+  final pulumi.Input<List<String>?>? targetUrls;
   /// Terminate TLS connections for this rule.
-  final pulumi.Input<bool>? terminateTLS;
+  final pulumi.Input<bool?>? terminateTLS;
   /// List of destination azure web categories.
-  final pulumi.Input<List<String>>? webCategories;
+  final pulumi.Input<List<String>?>? webCategories;
 
   /// Creates a new [ApplicationRule].
   /// [description] Description of the rule.

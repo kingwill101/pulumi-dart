@@ -6,15 +6,15 @@ import 'dapr_metadata.dart';
 /// Indicates some additional properties for dapr client type
 class DaprProperties {
   /// The dapr component type
-  final pulumi.Input<String>? componentType;
+  final pulumi.Input<String?>? componentType;
   /// Additional dapr metadata
-  final pulumi.Input<List<DaprMetadata>>? metadata;
+  final pulumi.Input<List<DaprMetadata>?>? metadata;
   /// The dapr component scopes
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// The name of a secret store dapr to retrieve secret
-  final pulumi.Input<String>? secretStoreComponent;
+  final pulumi.Input<String?>? secretStoreComponent;
   /// The dapr component version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DaprProperties].
   /// [componentType] The dapr component type

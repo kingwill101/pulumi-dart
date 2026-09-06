@@ -8,7 +8,7 @@ class ConnectivityCriterion {
   /// Gets or sets the type of connectivity.
   final pulumi.Input<String> type;
   /// Gets or sets the queries for checking connectivity.
-  final pulumi.Input<List<String>>? value;
+  final pulumi.Input<List<String>?>? value;
 
   /// Creates a new [ConnectivityCriterion].
   /// [type] Gets or sets the type of connectivity.

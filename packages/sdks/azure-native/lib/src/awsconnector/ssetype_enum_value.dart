@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SSETypeEnumValue
 class SSETypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [SSETypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class SSETypeEnumValue {
 
   factory SSETypeEnumValue.fromMap(Map<String, dynamic> map) {
     return SSETypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

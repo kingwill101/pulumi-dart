@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Keys for endpoint authentication.
 class EndpointAuthKeys {
   /// The primary key.
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// The secondary key.
-  final pulumi.Input<String>? secondaryKey;
+  final pulumi.Input<String?>? secondaryKey;
 
   /// Creates a new [EndpointAuthKeys].
   /// [primaryKey] The primary key.

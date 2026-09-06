@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Zone details data.
 class A2AZoneDetailsResponse {
   /// Source zone info.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The target zone info.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [A2AZoneDetailsResponse].
   /// [source] Source zone info.

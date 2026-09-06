@@ -6,9 +6,9 @@ import 'defender_for_servers_aws_offering_va_auto_provisioning_configuration.dar
 /// The Vulnerability Assessment autoprovisioning configuration
 class DefenderForServersAwsOfferingVaAutoProvisioning {
   /// configuration for Vulnerability Assessment autoprovisioning
-  final pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningConfiguration>? configuration;
+  final pulumi.Input<DefenderForServersAwsOfferingVaAutoProvisioningConfiguration?>? configuration;
   /// Is Vulnerability Assessment auto provisioning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForServersAwsOfferingVaAutoProvisioning].
   /// [configuration] configuration for Vulnerability Assessment autoprovisioning

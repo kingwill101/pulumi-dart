@@ -8,19 +8,19 @@ class LicenseDetailsResponse {
   /// Describes the number of assigned licenses.
   final pulumi.Input<int> assignedLicenses;
   /// Describes the edition of the license. The values are either Standard or Datacenter.
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// Describes the immutable id.
   final pulumi.Input<String> immutableId;
   /// Describes the number of processors.
-  final pulumi.Input<int>? processors;
+  final pulumi.Input<int?>? processors;
   /// Describes the state of the license.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Describes the license target server.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// Describes the license core type (pCore or vCore).
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// A list of volume license details.
-  final pulumi.Input<List<VolumeLicenseDetailsResponse>>? volumeLicenseDetails;
+  final pulumi.Input<List<VolumeLicenseDetailsResponse>?>? volumeLicenseDetails;
 
   /// Creates a new [LicenseDetailsResponse].
   /// [assignedLicenses] Describes the number of assigned licenses.
@@ -57,10 +57,10 @@ class LicenseDetailsResponse {
 
   factory LicenseDetailsResponse.fromMap(Map<String, dynamic> map) {
     return LicenseDetailsResponse(
-      assignedLicenses: pulumi.Input.fromValue(map['assignedLicenses'] as int),
+      assignedLicenses: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['assignedLicenses'])),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       immutableId: pulumi.Input.fromValue(map['immutableId'] as String),
-      processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      processors: (() { final guardedValue = map['processors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

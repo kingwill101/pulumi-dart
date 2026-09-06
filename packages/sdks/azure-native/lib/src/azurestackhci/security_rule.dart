@@ -308,16 +308,42 @@ class SecurityRule extends pulumi.CustomResource {
     access = registerOutput<String>('access');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String?>('description');
-    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes');
-    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String>('protocol');
     provisioningState = registerOutput<String>('provisioningState');
-    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes');
-    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityRule] resource.
+  SecurityRule.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:SecurityRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<String>('access');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    destinationAddressPrefixes = registerOutput<List<String>?>('destinationAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    destinationPortRanges = registerOutput<List<String>?>('destinationPortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    direction = registerOutput<String>('direction');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    sourceAddressPrefixes = registerOutput<List<String>?>('sourceAddressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sourcePortRanges = registerOutput<List<String>?>('sourcePortRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

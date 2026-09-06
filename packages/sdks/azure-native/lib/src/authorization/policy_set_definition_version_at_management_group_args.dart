@@ -11,27 +11,27 @@ import 'policy_definition_reference.dart';
 /// {@macro pulumi_authorization_policy_set_definition_version_at_management_group_args_doc}
 class PolicySetDefinitionVersionAtManagementGroupArgs {
   /// The policy set definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy set definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the management group. The name is case insensitive.
   final pulumi.Input<String> managementGroupName;
   /// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The policy set definition parameters that can be used in policy definition references.
-  final pulumi.Input<Map<String, ParameterDefinitionsValue>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValue>?>? parameters;
   /// The metadata describing groups of policy definition references within the policy set definition.
-  final pulumi.Input<List<PolicyDefinitionGroup>>? policyDefinitionGroups;
+  final pulumi.Input<List<PolicyDefinitionGroup>?>? policyDefinitionGroups;
   /// The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  final pulumi.Input<String>? policyDefinitionVersion;
+  final pulumi.Input<String?>? policyDefinitionVersion;
   /// An array of policy definition references.
   final pulumi.Input<List<PolicyDefinitionReference>> policyDefinitions;
   /// The name of the policy set definition.
   final pulumi.Input<String> policySetDefinitionName;
   /// The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<dynamic>? policyType;
   /// The policy set definition version in #.#.# format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicySetDefinitionVersionAtManagementGroupArgs].
   /// [description] The policy set definition description.
@@ -86,7 +86,7 @@ class PolicySetDefinitionVersionAtManagementGroupArgs {
       policyDefinitionVersion: (() { final guardedValue = map['policyDefinitionVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyDefinitions: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyDefinitionReference>(map['policyDefinitions']!, (value) => PolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))),
       policySetDefinitionName: pulumi.Input.fromValue(map['policySetDefinitionName'] as String),
-      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a tenant ID that is trusted by the cluster.
 class TrustedExternalTenant {
   /// GUID representing an external tenant.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TrustedExternalTenant].
   /// [value] GUID representing an external tenant.

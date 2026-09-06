@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Non Azure query for the update configuration.
 class NonAzureQueryPropertiesResponse {
   /// Log Analytics Saved Search name.
-  final pulumi.Input<String>? functionAlias;
+  final pulumi.Input<String?>? functionAlias;
   /// Workspace Id for Log Analytics in which the saved Search is resided.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [NonAzureQueryPropertiesResponse].
   /// [functionAlias] Log Analytics Saved Search name.

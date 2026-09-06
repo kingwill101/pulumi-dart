@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dedicated_host_args.dart';
 import 'dedicated_host_instance_view_response.dart';
 import 'sku_response.dart';
+import 'sub_resource_read_only_response.dart';
 import 'system_data_response.dart';
 
 /// Specifies information about the Dedicated host.
@@ -238,7 +239,7 @@ class DedicatedHost extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// A list of references to all virtual machines in the Dedicated Host.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualMachines;
+  late final pulumi.Output<List<SubResourceReadOnlyResponse>> virtualMachines;
 
   /// Creates a new [DedicatedHost].
   /// [name] The Pulumi resource name.
@@ -266,9 +267,36 @@ class DedicatedHost extends pulumi.CustomResource {
     provisioningTime = registerOutput<String>('provisioningTime');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
-    virtualMachines = registerOutput<List<Map<String, dynamic>>>('virtualMachines');
+    virtualMachines = registerOutput<List<SubResourceReadOnlyResponse>>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DedicatedHost] resource.
+  DedicatedHost.reference(String urn)
+    : super(
+        'azure-native:compute:DedicatedHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoReplaceOnFailure = registerOutput<bool?>('autoReplaceOnFailure');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    hostId = registerOutput<String>('hostId');
+    instanceView = registerOutput<DedicatedHostInstanceViewResponse>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DedicatedHostInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    licenseType = registerOutput<String?>('licenseType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    platformFaultDomain = registerOutput<int?>('platformFaultDomain');
+    provisioningState = registerOutput<String>('provisioningState');
+    provisioningTime = registerOutput<String>('provisioningTime');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    virtualMachines = registerOutput<List<SubResourceReadOnlyResponse>>('virtualMachines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceReadOnlyResponse>(guardedValue, (value) => SubResourceReadOnlyResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

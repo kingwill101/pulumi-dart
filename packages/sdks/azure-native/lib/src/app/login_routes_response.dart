@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The routes that specify the endpoints used for login and logout requests.
 class LoginRoutesResponse {
   /// The endpoint at which a logout request should be made.
-  final pulumi.Input<String>? logoutEndpoint;
+  final pulumi.Input<String?>? logoutEndpoint;
 
   /// Creates a new [LoginRoutesResponse].
   /// [logoutEndpoint] The endpoint at which a logout request should be made.

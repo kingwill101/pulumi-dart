@@ -6,7 +6,7 @@ import 'network_function_role_configuration.dart';
 /// The network function template.
 class NetworkFunctionTemplate {
   /// An array of network function role definitions.
-  final pulumi.Input<List<NetworkFunctionRoleConfiguration>>? networkFunctionRoleConfigurations;
+  final pulumi.Input<List<NetworkFunctionRoleConfiguration>?>? networkFunctionRoleConfigurations;
 
   /// Creates a new [NetworkFunctionTemplate].
   /// [networkFunctionRoleConfigurations] An array of network function role definitions.

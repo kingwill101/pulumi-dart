@@ -58,10 +58,10 @@ class ServerEndpointProvisioningStepStatusResponse {
     return ServerEndpointProvisioningStepStatusResponse(
       additionalInformation: pulumi.Input.fromValue((map['additionalInformation'] as Map).cast<String, String>()),
       endTime: pulumi.Input.fromValue(map['endTime'] as String),
-      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
-      minutesLeft: pulumi.Input.fromValue(map['minutesLeft'] as int),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
+      minutesLeft: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minutesLeft'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      progressPercentage: pulumi.Input.fromValue(map['progressPercentage'] as int),
+      progressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercentage'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );

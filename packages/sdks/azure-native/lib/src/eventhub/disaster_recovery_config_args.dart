@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_disaster_recovery_config_args_doc}
 class DisasterRecoveryConfigArgs {
   /// The Disaster Recovery configuration name
-  final pulumi.Input<String>? alias;
+  final pulumi.Input<String?>? alias;
   /// Alternate name specified when alias and namespace names are same.
-  final pulumi.Input<String>? alternateName;
+  final pulumi.Input<String?>? alternateName;
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
   /// ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
-  final pulumi.Input<String>? partnerNamespace;
+  final pulumi.Input<String?>? partnerNamespace;
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 

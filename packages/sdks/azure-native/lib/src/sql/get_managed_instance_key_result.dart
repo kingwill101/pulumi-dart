@@ -4,21 +4,21 @@
 /// Result data returned by getManagedInstanceKey.
 class GetManagedInstanceKeyResult {
   /// Key auto rotation opt-in flag. Either true or false.
-  final bool autoRotationEnabled;
+  final bool? autoRotationEnabled;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The key creation date.
-  final String creationDate;
+  final String? creationDate;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Kind of encryption protector. This is metadata used for the Azure portal experience.
-  final String kind;
+  final String? kind;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Thumbprint of the key.
-  final String thumbprint;
+  final String? thumbprint;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetManagedInstanceKeyResult].
   /// [autoRotationEnabled] Key auto rotation opt-in flag. Either true or false.
@@ -30,39 +30,39 @@ class GetManagedInstanceKeyResult {
   /// [thumbprint] Thumbprint of the key.
   /// [type] Resource type.
   const GetManagedInstanceKeyResult({
-    required this.autoRotationEnabled,
-    required this.azureApiVersion,
-    required this.creationDate,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.thumbprint,
-    required this.type,
+    this.autoRotationEnabled,
+    this.azureApiVersion,
+    this.creationDate,
+    this.id,
+    this.kind,
+    this.name,
+    this.thumbprint,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'autoRotationEnabled': autoRotationEnabled,
-      'azureApiVersion': azureApiVersion,
-      'creationDate': creationDate,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'thumbprint': thumbprint,
-      'type': type,
+      'autoRotationEnabled': ?autoRotationEnabled,
+      'azureApiVersion': ?azureApiVersion,
+      'creationDate': ?creationDate,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'thumbprint': ?thumbprint,
+      'type': ?type,
     };
   }
 
   factory GetManagedInstanceKeyResult.fromMap(Map<String, dynamic> map) {
     return GetManagedInstanceKeyResult(
-      autoRotationEnabled: map['autoRotationEnabled'] as bool,
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationDate: map['creationDate'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
+      autoRotationEnabled: (() { final guardedValue = map['autoRotationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

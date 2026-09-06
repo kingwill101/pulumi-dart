@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol for this probe: Can be Tcp or Http - Diverges from Azure where Https is also an option
-enum LoadBalancerProbeProtocol {
+enum LoadBalancerProbeProtocol implements pulumi.PulumiEnum<String> {
   tCP("Tcp"),
   hTTP("Http");
 
   const LoadBalancerProbeProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static LoadBalancerProbeProtocol fromValue(String value) {

@@ -6,7 +6,7 @@ import 'cspm_monitor_gcp_offering_native_cloud_connection.dart';
 /// The CSPM monitoring for GCP offering
 class CspmMonitorGcpOffering {
   /// The native cloud connection configuration
-  final pulumi.Input<CspmMonitorGcpOfferingNativeCloudConnection>? nativeCloudConnection;
+  final pulumi.Input<CspmMonitorGcpOfferingNativeCloudConnection?>? nativeCloudConnection;
   /// The type of the security offering.
   /// Expected value is 'CspmMonitorGcp'.
   final pulumi.Input<String> offeringType;

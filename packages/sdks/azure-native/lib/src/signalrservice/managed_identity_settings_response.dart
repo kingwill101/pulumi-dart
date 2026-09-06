@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ManagedIdentitySettingsResponse {
   /// The Resource indicating the App ID URI of the target resource.
   /// It also appears in the aud (audience) claim of the issued token.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ManagedIdentitySettingsResponse].
   /// [resource] The Resource indicating the App ID URI of the target resource.

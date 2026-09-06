@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the resource properties.
 class GuestAgentProfile {
   /// Gets or sets the Public Key provided by the client for enabling guest management.
-  final pulumi.Input<String>? clientPublicKey;
+  final pulumi.Input<String?>? clientPublicKey;
 
   /// Creates a new [GuestAgentProfile].
   /// [clientPublicKey] Gets or sets the Public Key provided by the client for enabling guest management.

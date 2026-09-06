@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The user impact of the assessment
-enum UserImpact {
+enum UserImpact implements pulumi.PulumiEnum<String> {
   valueLow("Low"),
   valueModerate("Moderate"),
   valueHigh("High");
 
   const UserImpact(this.wireValue);
+  @override
   final String wireValue;
 
   static UserImpact fromValue(String value) {

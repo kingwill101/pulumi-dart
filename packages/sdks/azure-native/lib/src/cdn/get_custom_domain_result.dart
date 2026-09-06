@@ -1,32 +1,31 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'cdn_managed_https_parameters_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getCustomDomain.
 class GetCustomDomainResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Certificate parameters for securing custom HTTPS
-  final CdnManagedHttpsParametersResponse? customHttpsParameters;
+  final dynamic customHttpsParameters;
   /// Provisioning status of the custom domain.
-  final String customHttpsProvisioningState;
+  final String? customHttpsProvisioningState;
   /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step.
-  final String customHttpsProvisioningSubstate;
+  final String? customHttpsProvisioningSubstate;
   /// The host name of the custom domain. Must be a domain name.
-  final String hostName;
+  final String? hostName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning status of Custom Https of the custom domain.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource status of the custom domain.
-  final String resourceState;
+  final String? resourceState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
   final String? validationData;
 
@@ -44,50 +43,50 @@ class GetCustomDomainResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationData] Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
   const GetCustomDomainResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.customHttpsParameters,
-    required this.customHttpsProvisioningState,
-    required this.customHttpsProvisioningSubstate,
-    required this.hostName,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceState,
-    required this.systemData,
-    required this.type,
+    this.customHttpsProvisioningState,
+    this.customHttpsProvisioningSubstate,
+    this.hostName,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.resourceState,
+    this.systemData,
+    this.type,
     this.validationData,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'customHttpsParameters': ?customHttpsParameters?.toMap(),
-      'customHttpsProvisioningState': customHttpsProvisioningState,
-      'customHttpsProvisioningSubstate': customHttpsProvisioningSubstate,
-      'hostName': hostName,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceState': resourceState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'customHttpsParameters': ?customHttpsParameters,
+      'customHttpsProvisioningState': ?customHttpsProvisioningState,
+      'customHttpsProvisioningSubstate': ?customHttpsProvisioningSubstate,
+      'hostName': ?hostName,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceState': ?resourceState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'validationData': ?validationData,
     };
   }
 
   factory GetCustomDomainResult.fromMap(Map<String, dynamic> map) {
     return GetCustomDomainResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      customHttpsParameters: (() { final guardedValue = map['customHttpsParameters']; if (guardedValue == null) return null; return CdnManagedHttpsParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      customHttpsProvisioningState: map['customHttpsProvisioningState'] as String,
-      customHttpsProvisioningSubstate: map['customHttpsProvisioningSubstate'] as String,
-      hostName: map['hostName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceState: map['resourceState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customHttpsParameters: (() { final guardedValue = map['customHttpsParameters']; if (guardedValue == null) return null; return guardedValue; })(),
+      customHttpsProvisioningState: (() { final guardedValue = map['customHttpsProvisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customHttpsProvisioningSubstate: (() { final guardedValue = map['customHttpsProvisioningSubstate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validationData: (() { final guardedValue = map['validationData']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

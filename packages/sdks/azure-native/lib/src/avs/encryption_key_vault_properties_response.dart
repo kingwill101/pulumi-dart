@@ -7,13 +7,13 @@ class EncryptionKeyVaultPropertiesResponse {
   /// The auto-detected version of the key if versionType is auto-detected.
   final pulumi.Input<String> autoDetectedKeyVersion;
   /// The name of the key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The state of key provided
   final pulumi.Input<String> keyState;
   /// The URL of the vault.
-  final pulumi.Input<String>? keyVaultUrl;
+  final pulumi.Input<String?>? keyVaultUrl;
   /// The version of the key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// Property of the key if user provided or auto detected
   final pulumi.Input<String> versionType;
 

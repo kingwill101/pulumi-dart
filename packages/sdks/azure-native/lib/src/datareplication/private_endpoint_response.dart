@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represent private Endpoint network resource that is linked to the Private Endpoint connection.
 class PrivateEndpointResponse {
   /// Gets or sets the id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] Gets or sets the id.

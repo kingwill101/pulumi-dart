@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity attributes of a lab user.
 class UserIdentityResponse {
   /// Set to the app Id of the client JWT making the request.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Set to the object Id of the client JWT making the request. Not all users have object Id. For CSP (reseller) scenarios for example, object Id is not available.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Set to the principal Id of the client JWT making the request. Service principal will not have the principal Id.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Set to the principal name / UPN of the client JWT making the request.
-  final pulumi.Input<String>? principalName;
+  final pulumi.Input<String?>? principalName;
   /// Set to the tenant ID of the client JWT making the request.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [UserIdentityResponse].
   /// [appId] Set to the app Id of the client JWT making the request.

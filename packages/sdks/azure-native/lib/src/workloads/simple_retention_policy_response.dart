@@ -6,7 +6,7 @@ import 'retention_duration_response.dart';
 /// Simple policy retention.
 class SimpleRetentionPolicyResponse {
   /// Retention duration of the protection policy.
-  final pulumi.Input<RetentionDurationResponse>? retentionDuration;
+  final pulumi.Input<RetentionDurationResponse?>? retentionDuration;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleRetentionPolicy'.
   final pulumi.Input<String> retentionPolicyType;

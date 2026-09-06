@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Manifest artifact properties.
 class ManifestArtifactFormat {
   /// The artifact name
-  final pulumi.Input<String>? artifactName;
+  final pulumi.Input<String?>? artifactName;
   /// The artifact type.
-  final pulumi.Input<String>? artifactType;
+  final pulumi.Input<dynamic>? artifactType;
   /// The artifact version.
-  final pulumi.Input<String>? artifactVersion;
+  final pulumi.Input<String?>? artifactVersion;
 
   /// Creates a new [ManifestArtifactFormat].
   /// [artifactName] The artifact name
@@ -32,7 +32,7 @@ class ManifestArtifactFormat {
   factory ManifestArtifactFormat.fromMap(Map<String, dynamic> map) {
     return ManifestArtifactFormat(
       artifactName: (() { final guardedValue = map['artifactName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      artifactType: (() { final guardedValue = map['artifactType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      artifactType: (() { final guardedValue = map['artifactType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       artifactVersion: (() { final guardedValue = map['artifactVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

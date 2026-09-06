@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Policy to set request timeouts
 class TimeoutPolicy {
   /// Timeout, in seconds, for a request to initiate a connection
-  final pulumi.Input<int>? connectionTimeoutInSeconds;
+  final pulumi.Input<int?>? connectionTimeoutInSeconds;
   /// Timeout, in seconds, for a request to respond
-  final pulumi.Input<int>? responseTimeoutInSeconds;
+  final pulumi.Input<int?>? responseTimeoutInSeconds;
 
   /// Creates a new [TimeoutPolicy].
   /// [connectionTimeoutInSeconds] Timeout, in seconds, for a request to initiate a connection
@@ -26,8 +26,8 @@ class TimeoutPolicy {
 
   factory TimeoutPolicy.fromMap(Map<String, dynamic> map) {
     return TimeoutPolicy(
-      connectionTimeoutInSeconds: (() { final guardedValue = map['connectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      responseTimeoutInSeconds: (() { final guardedValue = map['responseTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionTimeoutInSeconds: (() { final guardedValue = map['connectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      responseTimeoutInSeconds: (() { final guardedValue = map['responseTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

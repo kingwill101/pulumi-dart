@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The comparison operator.
-enum OperatorType {
+enum OperatorType implements pulumi.PulumiEnum<String> {
   equalTo("EqualTo"),
   greaterThan("GreaterThan"),
   greaterThanOrEqualTo("GreaterThanOrEqualTo");
 
   const OperatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static OperatorType fromValue(String value) {

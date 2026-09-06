@@ -6,9 +6,9 @@ import 'connect_to_target_azure_db_for_my_sql_task_input.dart';
 /// Properties for the task that validates connection to Azure Database for MySQL and target server requirements
 class ConnectToTargetAzureDbForMySqlTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ConnectToTargetAzureDbForMySqlTaskInput>? input;
+  final pulumi.Input<ConnectToTargetAzureDbForMySqlTaskInput?>? input;
   /// Task type.
   /// Expected value is 'ConnectToTarget.AzureDbForMySql'.
   final pulumi.Input<String> taskType;

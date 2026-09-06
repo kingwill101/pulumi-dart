@@ -8,17 +8,17 @@ class AzureFirewallIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Firewall Internal Load Balancer IP to be used as the next hop in User Defined Routes.
   final pulumi.Input<String> privateIPAddress;
   /// The provisioning state of the Azure firewall IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Reference to the PublicIP resource. This field is a mandatory input if subnet is not null.
-  final pulumi.Input<SubResourceResponse>? publicIPAddress;
+  final pulumi.Input<SubResourceResponse?>? publicIPAddress;
   /// Reference to the subnet resource. This resource must be named 'AzureFirewallSubnet' or 'AzureFirewallManagementSubnet'.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

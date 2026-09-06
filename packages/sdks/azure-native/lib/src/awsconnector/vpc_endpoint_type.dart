@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of endpoint. Default: Gateway
-enum VpcEndpointType {
+enum VpcEndpointType implements pulumi.PulumiEnum<String> {
   gateway("Gateway"),
   gatewayLoadBalancer("GatewayLoadBalancer"),
   interface("Interface");
 
   const VpcEndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static VpcEndpointType fromValue(String value) {

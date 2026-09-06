@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MonitoringThreshold {
   /// The threshold value. If null, the set default is dependent on the metric type.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [MonitoringThreshold].
   /// [value] The threshold value. If null, the set default is dependent on the metric type.
@@ -20,7 +20,7 @@ class MonitoringThreshold {
 
   factory MonitoringThreshold.fromMap(Map<String, dynamic> map) {
     return MonitoringThreshold(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

@@ -14,23 +14,23 @@ class SnapshotPolicyArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// Schedule for daily snapshots
-  final pulumi.Input<DailySchedule>? dailySchedule;
+  final pulumi.Input<DailySchedule?>? dailySchedule;
   /// The property to decide policy is enabled or not
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Schedule for hourly snapshots
-  final pulumi.Input<HourlySchedule>? hourlySchedule;
+  final pulumi.Input<HourlySchedule?>? hourlySchedule;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Schedule for monthly snapshots
-  final pulumi.Input<MonthlySchedule>? monthlySchedule;
+  final pulumi.Input<MonthlySchedule?>? monthlySchedule;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the snapshot policy
-  final pulumi.Input<String>? snapshotPolicyName;
+  final pulumi.Input<String?>? snapshotPolicyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Schedule for weekly snapshots
-  final pulumi.Input<WeeklySchedule>? weeklySchedule;
+  final pulumi.Input<WeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [SnapshotPolicyArgs].
   /// [accountName] The name of the NetApp account

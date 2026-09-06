@@ -9,7 +9,7 @@ import 'premium_mdti_data_connector_data_types.dart';
 /// {@macro pulumi_securityinsights_premium_microsoft_defender_for_threat_intelligence_args_doc}
 class PremiumMicrosoftDefenderForThreatIntelligenceArgs {
   /// Connector ID
-  final pulumi.Input<String>? dataConnectorId;
+  final pulumi.Input<String?>? dataConnectorId;
   /// The available data types for the connector.
   final pulumi.Input<PremiumMdtiDataConnectorDataTypes> dataTypes;
   /// The kind of the data connector
@@ -18,7 +18,7 @@ class PremiumMicrosoftDefenderForThreatIntelligenceArgs {
   /// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
   final pulumi.Input<String> lookbackPeriod;
   /// The flag to indicate whether the tenant has the premium SKU required to access this connector.
-  final pulumi.Input<bool>? requiredSKUsPresent;
+  final pulumi.Input<bool?>? requiredSKUsPresent;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The tenant id to connect to, and get the data from.

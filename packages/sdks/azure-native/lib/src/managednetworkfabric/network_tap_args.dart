@@ -9,21 +9,21 @@ import 'network_tap_properties_destinations.dart';
 /// {@macro pulumi_managednetworkfabric_network_tap_args_doc}
 class NetworkTapArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// List of destinations to send the filter traffic.
   final pulumi.Input<List<NetworkTapPropertiesDestinations>> destinations;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ARM resource ID of the Network Packet Broker.
   final pulumi.Input<String> networkPacketBrokerId;
   /// Name of the Network Tap.
-  final pulumi.Input<String>? networkTapName;
+  final pulumi.Input<String?>? networkTapName;
   /// Polling type.
-  final pulumi.Input<String>? pollingType;
+  final pulumi.Input<dynamic>? pollingType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkTapArgs].
   /// [annotation] Switch configuration description.
@@ -34,16 +34,16 @@ class NetworkTapArgs {
   /// [pollingType] Polling type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const NetworkTapArgs({
+  NetworkTapArgs({
     this.annotation,
     required this.destinations,
     this.location,
     required this.networkPacketBrokerId,
     this.networkTapName,
-    this.pollingType,
+    pulumi.Input<dynamic>? pollingType,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : pollingType = pollingType ?? pulumi.Input.fromValue('Pull');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,7 +65,7 @@ class NetworkTapArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkPacketBrokerId: pulumi.Input.fromValue(map['networkPacketBrokerId'] as String),
       networkTapName: (() { final guardedValue = map['networkTapName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pollingType: (() { final guardedValue = map['pollingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pollingType: (() { final guardedValue = map['pollingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -32,6 +32,17 @@ Future<GetAccountResult> getAccount(
   return GetAccountResult.fromMap(result);
 }
 
+pulumi.Output<GetAccountResult> getAccountOutput(
+  GetAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:getAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccountResult.fromMap);
+}
+
 /// Gets the kafka configuration for the account
 ///
 /// Uses Azure REST API version 2024-04-01-preview.
@@ -50,6 +61,17 @@ Future<GetKafkaConfigurationResult> getKafkaConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKafkaConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetKafkaConfigurationResult> getKafkaConfigurationOutput(
+  GetKafkaConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:getKafkaConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKafkaConfigurationResult.fromMap);
 }
 
 /// Get a private endpoint connection
@@ -72,6 +94,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// List the authorization keys associated with this account.
 ///
 /// Uses Azure REST API version 2024-04-01-preview.
@@ -90,6 +123,17 @@ Future<ListAccountKeysResult> listAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListAccountKeysResult> listAccountKeysOutput(
+  ListAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:listAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAccountKeysResult.fromMap);
 }
 
 /// Gets details from a list of feature names.
@@ -112,6 +156,17 @@ Future<ListFeatureAccountResult> listFeatureAccount(
   return ListFeatureAccountResult.fromMap(result);
 }
 
+pulumi.Output<ListFeatureAccountResult> listFeatureAccountOutput(
+  ListFeatureAccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:listFeatureAccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFeatureAccountResult.fromMap);
+}
+
 /// Gets details from a list of feature names.
 ///
 /// Uses Azure REST API version 2024-04-01-preview.
@@ -130,4 +185,15 @@ Future<ListFeatureSubscriptionResult> listFeatureSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListFeatureSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<ListFeatureSubscriptionResult> listFeatureSubscriptionOutput(
+  ListFeatureSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:purview:listFeatureSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFeatureSubscriptionResult.fromMap);
 }

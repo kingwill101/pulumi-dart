@@ -48,7 +48,7 @@ class SecretSyncConditionResponse {
     return SecretSyncConditionResponse(
       lastTransitionTime: pulumi.Input.fromValue(map['lastTransitionTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
-      observedGeneration: pulumi.Input.fromValue(map['observedGeneration'] as double),
+      observedGeneration: pulumi.Input.fromValue((map['observedGeneration'] as num).toDouble()),
       reason: pulumi.Input.fromValue(map['reason'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

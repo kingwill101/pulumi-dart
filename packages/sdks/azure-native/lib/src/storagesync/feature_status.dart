@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Offline data transfer
-enum FeatureStatus {
+enum FeatureStatus implements pulumi.PulumiEnum<String> {
   on("on"),
   off("off");
 
   const FeatureStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureStatus fromValue(String value) {

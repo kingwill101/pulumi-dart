@@ -7,9 +7,9 @@ class SiteAgentPropertiesResponse {
   /// Gets the ID of the agent.
   final pulumi.Input<String> id;
   /// Gets or sets the key vault ARM Id.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Gets or sets the key vault URI.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Gets the last heartbeat time of the agent in UTC.
   final pulumi.Input<String> lastHeartBeatUtc;
   /// Gets the version of the agent.

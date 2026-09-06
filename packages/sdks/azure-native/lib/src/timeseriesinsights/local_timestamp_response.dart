@@ -6,9 +6,9 @@ import 'local_timestamp_response_time_zone_offset.dart';
 /// An object that represents the local timestamp property. It contains the format of local timestamp that needs to be used and the corresponding timezone offset information. If a value isn't specified for localTimestamp, or if null, then the local timestamp will not be ingressed with the events.
 class LocalTimestampResponse {
   /// An enum that represents the format of the local timestamp property that needs to be set.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<String?>? format;
   /// An object that represents the offset information for the local timestamp format specified. Should not be specified for LocalTimestampFormat - Embedded.
-  final pulumi.Input<LocalTimestampResponseTimeZoneOffset>? timeZoneOffset;
+  final pulumi.Input<LocalTimestampResponseTimeZoneOffset?>? timeZoneOffset;
 
   /// Creates a new [LocalTimestampResponse].
   /// [format] An enum that represents the format of the local timestamp property that needs to be set.

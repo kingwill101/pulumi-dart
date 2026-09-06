@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Optimization is applied on the image for a faster VM boot.
 class ImageTemplatePropertiesResponseVmBoot {
   /// Enabling this field will improve VM boot time by optimizing the final customized image output.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ImageTemplatePropertiesResponseVmBoot].
   /// [state] Enabling this field will improve VM boot time by optimizing the final customized image output.

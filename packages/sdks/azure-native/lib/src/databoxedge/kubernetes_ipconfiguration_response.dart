@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Kubernetes node IP configuration
 class KubernetesIPConfigurationResponse {
   /// IP address of the Kubernetes node.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Port of the Kubernetes node.
   final pulumi.Input<String> port;
 

@@ -11,7 +11,7 @@ class GetUpdateResult {
   /// Indicates the way the update content can be downloaded.
   final String? availabilityType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description of the update.
   final String? description;
   /// Display name of the Update
@@ -19,7 +19,7 @@ class GetUpdateResult {
   /// Last time the package-specific checks were run.
   final String? healthCheckDate;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Date that the update was installed.
   final String? installedDate;
   /// The geo-location where the resource lives
@@ -27,7 +27,7 @@ class GetUpdateResult {
   /// Minimum Sbe Version of the update.
   final String? minSbeVersionRequired;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Brief message with instructions for updates of AvailabilityType Notify.
   final String? notifyMessage;
   /// Path where the update package is available.
@@ -41,7 +41,7 @@ class GetUpdateResult {
   /// Progress percentage of ongoing operation. Currently this property is only valid when the update is in the Downloading state, where it maps to how much of the update content has been downloaded.
   final double? progressPercentage;
   /// Provisioning state of the Updates proxy resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Publisher of the update package.
   final String? publisher;
   /// Link to release notes for the update.
@@ -49,9 +49,9 @@ class GetUpdateResult {
   /// State of the update as it relates to this stamp.
   final String? state;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Version of the update.
   final String? version;
 
@@ -83,27 +83,27 @@ class GetUpdateResult {
   const GetUpdateResult({
     this.additionalProperties,
     this.availabilityType,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.displayName,
     this.healthCheckDate,
-    required this.id,
+    this.id,
     this.installedDate,
     this.location,
     this.minSbeVersionRequired,
-    required this.name,
+    this.name,
     this.notifyMessage,
     this.packagePath,
     this.packageSizeInMb,
     this.packageType,
     this.prerequisites,
     this.progressPercentage,
-    required this.provisioningState,
+    this.provisioningState,
     this.publisher,
     this.releaseLink,
     this.state,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.version,
   });
 
@@ -111,27 +111,27 @@ class GetUpdateResult {
     return <String, dynamic>{
       'additionalProperties': ?additionalProperties,
       'availabilityType': ?availabilityType,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'displayName': ?displayName,
       'healthCheckDate': ?healthCheckDate,
-      'id': id,
+      'id': ?id,
       'installedDate': ?installedDate,
       'location': ?location,
       'minSbeVersionRequired': ?minSbeVersionRequired,
-      'name': name,
+      'name': ?name,
       'notifyMessage': ?notifyMessage,
       'packagePath': ?packagePath,
       'packageSizeInMb': ?packageSizeInMb,
       'packageType': ?packageType,
       'prerequisites': ?(() { final guardedValue = prerequisites; if (guardedValue == null) return null; return pulumi.Input.encodeList<UpdatePrerequisiteResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'progressPercentage': ?progressPercentage,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'publisher': ?publisher,
       'releaseLink': ?releaseLink,
       'state': ?state,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'version': ?version,
     };
   }
@@ -140,27 +140,27 @@ class GetUpdateResult {
     return GetUpdateResult(
       additionalProperties: (() { final guardedValue = map['additionalProperties']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availabilityType: (() { final guardedValue = map['availabilityType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthCheckDate: (() { final guardedValue = map['healthCheckDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       installedDate: (() { final guardedValue = map['installedDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       minSbeVersionRequired: (() { final guardedValue = map['minSbeVersionRequired']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notifyMessage: (() { final guardedValue = map['notifyMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packagePath: (() { final guardedValue = map['packagePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      packageSizeInMb: (() { final guardedValue = map['packageSizeInMb']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      packageSizeInMb: (() { final guardedValue = map['packageSizeInMb']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       packageType: (() { final guardedValue = map['packageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       prerequisites: (() { final guardedValue = map['prerequisites']; if (guardedValue == null) return null; return pulumi.Input.decodeList<UpdatePrerequisiteResponse>(guardedValue, (value) => UpdatePrerequisiteResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      progressPercentage: (() { final guardedValue = map['progressPercentage']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      provisioningState: map['provisioningState'] as String,
+      progressPercentage: (() { final guardedValue = map['progressPercentage']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return guardedValue as String; })(),
       releaseLink: (() { final guardedValue = map['releaseLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

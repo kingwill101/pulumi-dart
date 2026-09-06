@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the scheduled action notification.
 class NotificationPropertiesResponse {
   /// Locale of the email.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// Optional message to be added in the email. Length is limited to 250 characters.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Regional format used for formatting date/time and currency values in the email.
-  final pulumi.Input<String>? regionalFormat;
+  final pulumi.Input<String?>? regionalFormat;
   /// Subject of the email. Length is limited to 70 characters.
   final pulumi.Input<String> subject;
   /// Array of email addresses.

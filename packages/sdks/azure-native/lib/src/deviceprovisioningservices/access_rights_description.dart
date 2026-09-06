@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Rights that this key has.
-enum AccessRightsDescription {
+enum AccessRightsDescription implements pulumi.PulumiEnum<String> {
   valueServiceConfig("ServiceConfig"),
   valueEnrollmentRead("EnrollmentRead"),
   valueEnrollmentWrite("EnrollmentWrite"),
@@ -8,6 +10,7 @@ enum AccessRightsDescription {
   valueRegistrationStatusWrite("RegistrationStatusWrite");
 
   const AccessRightsDescription(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessRightsDescription fromValue(String value) {

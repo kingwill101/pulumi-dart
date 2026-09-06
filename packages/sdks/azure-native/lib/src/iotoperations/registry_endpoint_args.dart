@@ -10,13 +10,13 @@ import 'registry_endpoint_properties.dart';
 /// {@macro pulumi_iotoperations_registry_endpoint_args_doc}
 class RegistryEndpointArgs {
   /// Edge location of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of instance.
   final pulumi.Input<String> instanceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RegistryEndpointProperties>? properties;
+  final pulumi.Input<RegistryEndpointProperties?>? properties;
   /// Name of RegistryEndpoint resource
-  final pulumi.Input<String>? registryEndpointName;
+  final pulumi.Input<String?>? registryEndpointName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

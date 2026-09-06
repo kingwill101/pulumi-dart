@@ -6,7 +6,7 @@ import 'parameter_value_response.dart';
 /// Result data returned by getTemplateArtifact.
 class GetTemplateArtifactResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Artifacts which need to be deployed before the specified artifact.
   final List<String>? dependsOn;
   /// Multi-line explain this resource.
@@ -14,20 +14,20 @@ class GetTemplateArtifactResult {
   /// One-liner string explain this resource.
   final String? displayName;
   /// String Id used to locate any resource on Azure.
-  final String id;
+  final String? id;
   /// Specifies the kind of blueprint artifact.
   /// Expected value is 'template'.
-  final String kind;
+  final String? kind;
   /// Name of this resource.
-  final String name;
+  final String? name;
   /// Resource Manager template blueprint artifact parameter values.
-  final Map<String, ParameterValueResponse> parameters;
+  final Map<String, ParameterValueResponse>? parameters;
   /// If applicable, the name of the resource group placeholder to which the Resource Manager template blueprint artifact will be deployed.
   final String? resourceGroup;
   /// The Resource Manager template blueprint artifact body.
   final dynamic template;
   /// Type of this resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTemplateArtifactResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -42,48 +42,48 @@ class GetTemplateArtifactResult {
   /// [template] The Resource Manager template blueprint artifact body.
   /// [type] Type of this resource.
   const GetTemplateArtifactResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.dependsOn,
     this.description,
     this.displayName,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.parameters,
+    this.id,
+    this.kind,
+    this.name,
+    this.parameters,
     this.resourceGroup,
-    required this.template,
-    required this.type,
+    this.template,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'dependsOn': ?dependsOn,
       'description': ?description,
       'displayName': ?displayName,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'parameters': pulumi.Input.encodeMapValues<ParameterValueResponse, Map<String, dynamic>>(parameters, (value) => value.toMap()),
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<ParameterValueResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'resourceGroup': ?resourceGroup,
-      'template': template,
-      'type': type,
+      'template': ?template,
+      'type': ?type,
     };
   }
 
   factory GetTemplateArtifactResult.fromMap(Map<String, dynamic> map) {
     return GetTemplateArtifactResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      parameters: pulumi.Input.decodeMapValues<ParameterValueResponse>(map['parameters']!, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValueResponse>(guardedValue, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       resourceGroup: (() { final guardedValue = map['resourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      template: map['template'],
-      type: map['type'] as String,
+      template: (() { final guardedValue = map['template']; if (guardedValue == null) return null; return guardedValue; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -317,7 +317,30 @@ class AttachedDatabaseConfiguration extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames');
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterResourceId = registerOutput<String>('clusterResourceId');
+    databaseName = registerOutput<String>('databaseName');
+    databaseNameOverride = registerOutput<String?>('databaseNameOverride');
+    databaseNamePrefix = registerOutput<String?>('databaseNamePrefix');
+    defaultPrincipalsModificationKind = registerOutput<String>('defaultPrincipalsModificationKind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    tableLevelSharingProperties = registerOutput<TableLevelSharingPropertiesResponse?>('tableLevelSharingProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableLevelSharingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AttachedDatabaseConfiguration] resource.
+  AttachedDatabaseConfiguration.reference(String urn)
+    : super(
+        'azure-native:kusto:AttachedDatabaseConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachedDatabaseNames = registerOutput<List<String>>('attachedDatabaseNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterResourceId = registerOutput<String>('clusterResourceId');
     databaseName = registerOutput<String>('databaseName');

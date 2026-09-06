@@ -26,7 +26,7 @@ class ServiceConfigurationResponse {
 
   factory ServiceConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return ServiceConfigurationResponse(
-      port: pulumi.Input.fromValue(map['port'] as double),
+      port: pulumi.Input.fromValue((map['port'] as num).toDouble()),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
     );
   }

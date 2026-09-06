@@ -8,7 +8,7 @@ class AzureDatabricksDeltaLakeSource {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Azure Databricks Delta Lake export settings.
-  final pulumi.Input<AzureDatabricksDeltaLakeExportCommand>? exportSettings;
+  final pulumi.Input<AzureDatabricksDeltaLakeExportCommand?>? exportSettings;
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Azure Databricks Delta Lake Sql query. Type: string (or Expression with resultType string).

@@ -14,7 +14,7 @@ class SmtpUsernameArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the SmtpUsernameResource.
-  final pulumi.Input<String>? smtpUsername;
+  final pulumi.Input<String?>? smtpUsername;
   /// The tenant of the linked Entra Application.
   final pulumi.Input<String> tenantId;
   /// The SMTP username. Could be free form or in the email address format.

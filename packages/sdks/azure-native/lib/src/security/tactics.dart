@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tactic of the assessment
-enum Tactics {
+enum Tactics implements pulumi.PulumiEnum<String> {
   valueReconnaissance("Reconnaissance"),
   valueResourceDevelopment("Resource Development"),
   valueInitialAccess("Initial Access"),
@@ -16,6 +18,7 @@ enum Tactics {
   valueImpact("Impact");
 
   const Tactics(this.wireValue);
+  @override
   final String wireValue;
 
   static Tactics fromValue(String value) {

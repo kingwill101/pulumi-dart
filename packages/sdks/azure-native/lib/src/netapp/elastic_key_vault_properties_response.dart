@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of key vault.
 class ElasticKeyVaultPropertiesResponse {
   /// The name of KeyVault key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The resource ID of KeyVault.
-  final pulumi.Input<String>? keyVaultResourceId;
+  final pulumi.Input<String?>? keyVaultResourceId;
   /// The Uri of KeyVault.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Status of the KeyVault connection.
   final pulumi.Input<String> status;
 

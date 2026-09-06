@@ -9,13 +9,13 @@ import 'traces_configuration_response.dart';
 /// Configuration of Open Telemetry
 class OpenTelemetryConfigurationResponse {
   /// Open telemetry destinations configuration
-  final pulumi.Input<DestinationsConfigurationResponse>? destinationsConfiguration;
+  final pulumi.Input<DestinationsConfigurationResponse?>? destinationsConfiguration;
   /// Open telemetry logs configuration
-  final pulumi.Input<LogsConfigurationResponse>? logsConfiguration;
+  final pulumi.Input<LogsConfigurationResponse?>? logsConfiguration;
   /// Open telemetry metrics configuration
-  final pulumi.Input<MetricsConfigurationResponse>? metricsConfiguration;
+  final pulumi.Input<MetricsConfigurationResponse?>? metricsConfiguration;
   /// Open telemetry trace configuration
-  final pulumi.Input<TracesConfigurationResponse>? tracesConfiguration;
+  final pulumi.Input<TracesConfigurationResponse?>? tracesConfiguration;
 
   /// Creates a new [OpenTelemetryConfigurationResponse].
   /// [destinationsConfiguration] Open telemetry destinations configuration

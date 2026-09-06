@@ -28,6 +28,17 @@ Future<GetLoadTestResult> getLoadTest(
   return GetLoadTestResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadTestResult> getLoadTestOutput(
+  GetLoadTestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:loadtestservice:getLoadTest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadTestResult.fromMap);
+}
+
 /// Get a LoadTestMappingResource
 ///
 /// Uses Azure REST API version 2023-12-01-preview.
@@ -46,6 +57,17 @@ Future<GetLoadTestMappingResult> getLoadTestMapping(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadTestMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadTestMappingResult> getLoadTestMappingOutput(
+  GetLoadTestMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:loadtestservice:getLoadTestMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadTestMappingResult.fromMap);
 }
 
 /// Get a LoadTestProfileMappingResource
@@ -68,6 +90,17 @@ Future<GetLoadTestProfileMappingResult> getLoadTestProfileMapping(
   return GetLoadTestProfileMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadTestProfileMappingResult> getLoadTestProfileMappingOutput(
+  GetLoadTestProfileMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:loadtestservice:getLoadTestProfileMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadTestProfileMappingResult.fromMap);
+}
+
 /// Get a PlaywrightWorkspace
 ///
 /// Uses Azure REST API version 2025-07-01-preview.
@@ -86,4 +119,15 @@ Future<GetPlaywrightWorkspaceResult> getPlaywrightWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPlaywrightWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetPlaywrightWorkspaceResult> getPlaywrightWorkspaceOutput(
+  GetPlaywrightWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:loadtestservice:getPlaywrightWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlaywrightWorkspaceResult.fromMap);
 }

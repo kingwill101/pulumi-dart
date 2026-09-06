@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies an action for a newly unmanaged resource.
-enum UnmanageActionResourceMode {
+enum UnmanageActionResourceMode implements pulumi.PulumiEnum<String> {
   delete("delete"),
   detach("detach");
 
   const UnmanageActionResourceMode(this.wireValue);
+  @override
   final String wireValue;
 
   static UnmanageActionResourceMode fromValue(String value) {

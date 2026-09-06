@@ -234,4 +234,29 @@ class CapacityPoolBackup extends pulumi.CustomResource {
     useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
     volumeName = registerOutput<String>('volumeName');
   }
+
+  /// Creates a typed reference to an existing [CapacityPoolBackup] resource.
+  CapacityPoolBackup.reference(String urn)
+    : super(
+        'azure-native:netapp:CapacityPoolBackup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupId = registerOutput<String>('backupId');
+    backupType = registerOutput<String>('backupType');
+    creationDate = registerOutput<String>('creationDate');
+    failureReason = registerOutput<String>('failureReason');
+    label = registerOutput<String?>('label');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    size = registerOutput<double>('size');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    useExistingSnapshot = registerOutput<bool?>('useExistingSnapshot');
+    volumeName = registerOutput<String>('volumeName');
+  }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies dataset type.
-enum DatasetType {
+enum DatasetType implements pulumi.PulumiEnum<String> {
   valueTabular("tabular"),
   valueFile("file");
 
   const DatasetType(this.wireValue);
+  @override
   final String wireValue;
 
   static DatasetType fromValue(String value) {

@@ -9,19 +9,19 @@ import 'log_settings.dart';
 /// {@macro pulumi_aadiam_diagnostic_setting_args_doc}
 class DiagnosticSettingArgs {
   /// The resource Id for the event hub authorization rule.
-  final pulumi.Input<String>? eventHubAuthorizationRuleId;
+  final pulumi.Input<String?>? eventHubAuthorizationRuleId;
   /// The name of the event hub. If none is specified, the default event hub will be selected.
-  final pulumi.Input<String>? eventHubName;
+  final pulumi.Input<String?>? eventHubName;
   /// The list of logs settings.
-  final pulumi.Input<List<LogSettings>>? logs;
+  final pulumi.Input<List<LogSettings>?>? logs;
   /// The name of the diagnostic setting.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The service bus rule Id of the diagnostic setting. This is here to maintain backwards compatibility.
-  final pulumi.Input<String>? serviceBusRuleId;
+  final pulumi.Input<String?>? serviceBusRuleId;
   /// The resource ID of the storage account to which you would like to send Diagnostic Logs.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The workspace ID (resource ID of a Log Analytics workspace) for a Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [DiagnosticSettingArgs].
   /// [eventHubAuthorizationRuleId] The resource Id for the event hub authorization rule.

@@ -6,13 +6,13 @@ import 'secure_string_response.dart';
 /// Catalog information for managed dedicated integration runtime.
 class IntegrationRuntimeSsisCatalogInfoResponse {
   /// The password of the administrator user account of the catalog database.
-  final pulumi.Input<SecureStringResponse>? catalogAdminPassword;
+  final pulumi.Input<SecureStringResponse?>? catalogAdminPassword;
   /// The administrator user name of catalog database.
-  final pulumi.Input<String>? catalogAdminUserName;
+  final pulumi.Input<String?>? catalogAdminUserName;
   /// The pricing tier for the catalog database. The valid values could be found in https://azure.microsoft.com/en-us/pricing/details/sql-database/
-  final pulumi.Input<String>? catalogPricingTier;
+  final pulumi.Input<String?>? catalogPricingTier;
   /// The catalog database server URL.
-  final pulumi.Input<String>? catalogServerEndpoint;
+  final pulumi.Input<String?>? catalogServerEndpoint;
 
   /// Creates a new [IntegrationRuntimeSsisCatalogInfoResponse].
   /// [catalogAdminPassword] The password of the administrator user account of the catalog database.

@@ -15,57 +15,57 @@ import 'sku.dart';
 /// {@macro pulumi_billingbenefits_macc_args_doc}
 class MaccArgs {
   /// Setting this to true means multi-entity.
-  final pulumi.Input<bool>? allowContributors;
+  final pulumi.Input<bool?>? allowContributors;
   /// Setting this to 'Enable' enables automatic shortfall charging when commitment is not met.
-  final pulumi.Input<String>? automaticShortfall;
+  final pulumi.Input<dynamic>? automaticShortfall;
   /// Optional field to record suppression reason for automatic shortfall.
-  final pulumi.Input<AutomaticShortfallSuppressReason>? automaticShortfallSuppressReason;
+  final pulumi.Input<AutomaticShortfallSuppressReason?>? automaticShortfallSuppressReason;
   /// Fully-qualified identifier of the billing account where the MACC is applied. Present only for Enterprise Agreement customers. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}
-  final pulumi.Input<String>? billingAccountResourceId;
+  final pulumi.Input<String?>? billingAccountResourceId;
   /// Commitment towards the benefit.
-  final pulumi.Input<Commitment>? commitment;
+  final pulumi.Input<Commitment?>? commitment;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Must be end of month. Timestamp must be in the ISO date format YYYY-MM-DDT23:59:59Z.
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Represents type of the object being operated on. Possible values are primary or contributor.
-  final pulumi.Input<String> entityType;
+  final pulumi.Input<dynamic> entityType;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of primary MACC.
-  final pulumi.Input<String>? maccName;
+  final pulumi.Input<String?>? maccName;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// List of milestones associated with this MACC.
-  final pulumi.Input<List<MaccMilestone>>? milestones;
+  final pulumi.Input<List<MaccMilestone>?>? milestones;
   /// Plan for the resource.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// Fully-qualified billing account resource identifier of the primary MACC. Format must be Azure Resource ID: /providers/Microsoft.Billing/billingAccounts/{acctId:orgId}.
-  final pulumi.Input<String>? primaryBillingAccountResourceId;
+  final pulumi.Input<String?>? primaryBillingAccountResourceId;
   /// Fully-qualified resource identifier of the primary MACC. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
-  final pulumi.Input<String>? primaryResourceId;
+  final pulumi.Input<String?>? primaryResourceId;
   /// Represents catalog UPN.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// This is the resource identifier of either the primary MACC or the contributor. Format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BillingBenefits/maccs/{maccName}.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// MACC shortfall
-  final pulumi.Input<Shortfall>? shortfall;
+  final pulumi.Input<Shortfall?>? shortfall;
   /// The resource model definition representing SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Must be start of month. Timestamp must be in the ISO date format YYYY-MM-DDT00:00:00Z.
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// Represents the current status of the MACC.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MaccArgs].
   /// [allowContributors] Setting this to true means multi-entity.
@@ -94,8 +94,8 @@ class MaccArgs {
   /// [status] Represents the current status of the MACC.
   /// [systemId] This is the globally unique identifier of the MACC which will not change for the lifetime of the MACC.
   /// [tags] Resource tags.
-  const MaccArgs({
-    this.allowContributors,
+  MaccArgs({
+    pulumi.Input<bool?>? allowContributors,
     this.automaticShortfall,
     this.automaticShortfallSuppressReason,
     this.billingAccountResourceId,
@@ -121,7 +121,7 @@ class MaccArgs {
     this.status,
     this.systemId,
     this.tags,
-  });
+  }) : allowContributors = allowContributors ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -157,13 +157,13 @@ class MaccArgs {
   factory MaccArgs.fromMap(Map<String, dynamic> map) {
     return MaccArgs(
       allowContributors: (() { final guardedValue = map['allowContributors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      automaticShortfall: (() { final guardedValue = map['automaticShortfall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      automaticShortfall: (() { final guardedValue = map['automaticShortfall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       automaticShortfallSuppressReason: (() { final guardedValue = map['automaticShortfallSuppressReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutomaticShortfallSuppressReason.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       billingAccountResourceId: (() { final guardedValue = map['billingAccountResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commitment: (() { final guardedValue = map['commitment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Commitment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endAt: (() { final guardedValue = map['endAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      entityType: pulumi.Input.fromValue(map['entityType'] as String),
+      entityType: pulumi.Input.fromValue(map['entityType']),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -179,7 +179,7 @@ class MaccArgs {
       shortfall: (() { final guardedValue = map['shortfall']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Shortfall.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

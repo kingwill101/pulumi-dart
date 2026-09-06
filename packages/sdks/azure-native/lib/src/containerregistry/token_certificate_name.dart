@@ -1,8 +1,11 @@
-enum TokenCertificateName {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TokenCertificateName implements pulumi.PulumiEnum<String> {
   valueCertificate1("certificate1"),
   valueCertificate2("certificate2");
 
   const TokenCertificateName(this.wireValue);
+  @override
   final String wireValue;
 
   static TokenCertificateName fromValue(String value) {

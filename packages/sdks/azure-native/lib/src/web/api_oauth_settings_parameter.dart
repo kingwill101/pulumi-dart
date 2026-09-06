@@ -9,7 +9,7 @@ class ApiOAuthSettingsParameter {
   /// UI definitions per culture as caller can specify the culture
   final pulumi.Input<dynamic>? uiDefinition;
   /// Value of the setting
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ApiOAuthSettingsParameter].
   /// [options] Options available to this parameter

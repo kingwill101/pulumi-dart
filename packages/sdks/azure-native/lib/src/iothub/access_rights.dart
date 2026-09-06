@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The permissions assigned to the shared access policy.
-enum AccessRights {
+enum AccessRights implements pulumi.PulumiEnum<String> {
   valueRegistryRead("RegistryRead"),
   valueRegistryWrite("RegistryWrite"),
   valueServiceConnect("ServiceConnect"),
@@ -17,6 +19,7 @@ enum AccessRights {
   valueRegistryReadRegistryWriteServiceConnectDeviceConnect("RegistryRead, RegistryWrite, ServiceConnect, DeviceConnect");
 
   const AccessRights(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessRights fromValue(String value) {

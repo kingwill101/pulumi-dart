@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the Azure Large Instance SKU.
-enum AzureLargeInstanceSizeNamesEnum {
+enum AzureLargeInstanceSizeNamesEnum implements pulumi.PulumiEnum<String> {
   s72m("S72m"),
   s144m("S144m"),
   s72("S72"),
@@ -47,6 +49,7 @@ enum AzureLargeInstanceSizeNamesEnum {
   s960m("S960m");
 
   const AzureLargeInstanceSizeNamesEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureLargeInstanceSizeNamesEnum fromValue(String value) {

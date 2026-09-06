@@ -8,11 +8,11 @@ import 'storage_account_response.dart';
 /// Log Destination
 class LogDestinationResponse {
   /// Event Hub configurations
-  final pulumi.Input<EventHubResponse>? eventHubConfigurations;
+  final pulumi.Input<EventHubResponse?>? eventHubConfigurations;
   /// Monitor Log configurations
-  final pulumi.Input<MonitorLogResponse>? monitorConfigurations;
+  final pulumi.Input<MonitorLogResponse?>? monitorConfigurations;
   /// Storage account configurations
-  final pulumi.Input<StorageAccountResponse>? storageConfigurations;
+  final pulumi.Input<StorageAccountResponse?>? storageConfigurations;
 
   /// Creates a new [LogDestinationResponse].
   /// [eventHubConfigurations] Event Hub configurations

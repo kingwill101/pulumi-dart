@@ -7,7 +7,7 @@ class FailoverGroupReadWriteEndpointResponse {
   /// Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
   final pulumi.Input<String> failoverPolicy;
   /// Grace period before failover with data loss is attempted for the read-write endpoint. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
-  final pulumi.Input<int>? failoverWithDataLossGracePeriodMinutes;
+  final pulumi.Input<int?>? failoverWithDataLossGracePeriodMinutes;
 
   /// Creates a new [FailoverGroupReadWriteEndpointResponse].
   /// [failoverPolicy] Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
@@ -27,7 +27,7 @@ class FailoverGroupReadWriteEndpointResponse {
   factory FailoverGroupReadWriteEndpointResponse.fromMap(Map<String, dynamic> map) {
     return FailoverGroupReadWriteEndpointResponse(
       failoverPolicy: pulumi.Input.fromValue(map['failoverPolicy'] as String),
-      failoverWithDataLossGracePeriodMinutes: (() { final guardedValue = map['failoverWithDataLossGracePeriodMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failoverWithDataLossGracePeriodMinutes: (() { final guardedValue = map['failoverWithDataLossGracePeriodMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

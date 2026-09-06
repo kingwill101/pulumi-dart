@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'cmdkey_setup_response.dart';
 import 'integration_runtime_custom_setup_script_properties_response.dart';
 import 'integration_runtime_data_proxy_properties_response.dart';
 import 'integration_runtime_ssis_catalog_info_response.dart';
@@ -9,17 +8,17 @@ import 'integration_runtime_ssis_catalog_info_response.dart';
 /// SSIS properties for managed integration runtime.
 class IntegrationRuntimeSsisPropertiesResponse {
   /// Catalog information for managed dedicated integration runtime.
-  final pulumi.Input<IntegrationRuntimeSsisCatalogInfoResponse>? catalogInfo;
+  final pulumi.Input<IntegrationRuntimeSsisCatalogInfoResponse?>? catalogInfo;
   /// Custom setup script properties for a managed dedicated integration runtime.
-  final pulumi.Input<IntegrationRuntimeCustomSetupScriptPropertiesResponse>? customSetupScriptProperties;
+  final pulumi.Input<IntegrationRuntimeCustomSetupScriptPropertiesResponse?>? customSetupScriptProperties;
   /// Data proxy properties for a managed dedicated integration runtime.
-  final pulumi.Input<IntegrationRuntimeDataProxyPropertiesResponse>? dataProxyProperties;
+  final pulumi.Input<IntegrationRuntimeDataProxyPropertiesResponse?>? dataProxyProperties;
   /// The edition for the SSIS Integration Runtime
-  final pulumi.Input<String>? edition;
+  final pulumi.Input<String?>? edition;
   /// Custom setup without script properties for a SSIS integration runtime.
-  final pulumi.Input<List<CmdkeySetupResponse>>? expressCustomSetupProperties;
+  final pulumi.Input<List<dynamic>?>? expressCustomSetupProperties;
   /// License type for bringing your own license scenario.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
 
   /// Creates a new [IntegrationRuntimeSsisPropertiesResponse].
   /// [catalogInfo] Catalog information for managed dedicated integration runtime.
@@ -43,7 +42,7 @@ class IntegrationRuntimeSsisPropertiesResponse {
       'customSetupScriptProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeCustomSetupScriptPropertiesResponse, Map<String, dynamic>>(customSetupScriptProperties, (value) => value.toMap()),
       'dataProxyProperties': ?pulumi.Input.mapOptionalInputValue<IntegrationRuntimeDataProxyPropertiesResponse, Map<String, dynamic>>(dataProxyProperties, (value) => value.toMap()),
       'edition': ?edition,
-      'expressCustomSetupProperties': ?pulumi.Input.mapOptionalInputValue<List<CmdkeySetupResponse>, List<Map<String, dynamic>>>(expressCustomSetupProperties, (value) => pulumi.Input.encodeList<CmdkeySetupResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'expressCustomSetupProperties': ?expressCustomSetupProperties,
       'licenseType': ?licenseType,
     };
   }
@@ -54,7 +53,7 @@ class IntegrationRuntimeSsisPropertiesResponse {
       customSetupScriptProperties: (() { final guardedValue = map['customSetupScriptProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeCustomSetupScriptPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataProxyProperties: (() { final guardedValue = map['dataProxyProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeDataProxyPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       edition: (() { final guardedValue = map['edition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expressCustomSetupProperties: (() { final guardedValue = map['expressCustomSetupProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CmdkeySetupResponse>(guardedValue, (value) => CmdkeySetupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      expressCustomSetupProperties: (() { final guardedValue = map['expressCustomSetupProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

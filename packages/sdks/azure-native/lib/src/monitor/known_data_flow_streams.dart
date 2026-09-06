@@ -1,4 +1,6 @@
-enum KnownDataFlowStreams {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KnownDataFlowStreams implements pulumi.PulumiEnum<String> {
   valueMicrosoftEvent("Microsoft-Event"),
   valueMicrosoftInsightsMetrics("Microsoft-InsightsMetrics"),
   valueMicrosoftPerf("Microsoft-Perf"),
@@ -6,6 +8,7 @@ enum KnownDataFlowStreams {
   valueMicrosoftWindowsEvent("Microsoft-WindowsEvent");
 
   const KnownDataFlowStreams(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownDataFlowStreams fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the resource
 class ResourceOperationalStatusResponse {
   /// Reason for state.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// state of the resource
   final pulumi.Input<String> state;
 

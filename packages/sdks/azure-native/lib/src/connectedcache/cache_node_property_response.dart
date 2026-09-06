@@ -8,21 +8,21 @@ import 'error_detail_response.dart';
 /// Model representing an Mcc cache node connectedCache resource
 class CacheNodePropertyResponse {
   /// Mcc cache node resource additional properties.
-  final pulumi.Input<AdditionalCacheNodePropertiesResponse>? additionalCacheNodeProperties;
+  final pulumi.Input<AdditionalCacheNodePropertiesResponse?>? additionalCacheNodeProperties;
   /// Mcc cache node resource (cache node entity).
-  final pulumi.Input<CacheNodeEntityResponse>? cacheNode;
+  final pulumi.Input<CacheNodeEntityResponse?>? cacheNode;
   /// Mcc response error details.
-  final pulumi.Input<ErrorDetailResponse>? error;
+  final pulumi.Input<ErrorDetailResponse?>? error;
   /// The provisioned state of the resource
   final pulumi.Input<String> provisioningState;
   /// HTTP error status code.
   final pulumi.Input<String> status;
   /// Mcc response status code.
-  final pulumi.Input<String>? statusCode;
+  final pulumi.Input<String?>? statusCode;
   /// Mcc response status details for retrieving response inner details.
-  final pulumi.Input<String>? statusDetails;
+  final pulumi.Input<String?>? statusDetails;
   /// Mcc response status text as string for retrieving status details.
-  final pulumi.Input<String>? statusText;
+  final pulumi.Input<String?>? statusText;
 
   /// Creates a new [CacheNodePropertyResponse].
   /// [additionalCacheNodeProperties] Mcc cache node resource additional properties.

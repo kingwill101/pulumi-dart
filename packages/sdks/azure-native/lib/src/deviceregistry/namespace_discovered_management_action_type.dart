@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the action.
-enum NamespaceDiscoveredManagementActionType {
+enum NamespaceDiscoveredManagementActionType implements pulumi.PulumiEnum<String> {
   call("Call"),
   read("Read"),
   write("Write");
 
   const NamespaceDiscoveredManagementActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static NamespaceDiscoveredManagementActionType fromValue(String value) {

@@ -10,9 +10,9 @@ class GetDatabaseArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The child resources to include in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// An OData filter expression that filters elements in the collection.
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

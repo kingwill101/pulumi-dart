@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkfunction_azure_traffic_collector_args_doc}
 class AzureTrafficCollectorArgs {
   /// Azure Traffic Collector name
-  final pulumi.Input<String>? azureTrafficCollectorName;
+  final pulumi.Input<String?>? azureTrafficCollectorName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureTrafficCollectorArgs].
   /// [azureTrafficCollectorName] Azure Traffic Collector name

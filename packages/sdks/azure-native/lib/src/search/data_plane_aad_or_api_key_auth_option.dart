@@ -6,7 +6,7 @@ import 'aad_auth_failure_mode.dart';
 /// Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
 class DataPlaneAadOrApiKeyAuthOption {
   /// Describes what response the data plane API of a search service would send for requests that failed authentication.
-  final pulumi.Input<AadAuthFailureMode>? aadAuthFailureMode;
+  final pulumi.Input<AadAuthFailureMode?>? aadAuthFailureMode;
 
   /// Creates a new [DataPlaneAadOrApiKeyAuthOption].
   /// [aadAuthFailureMode] Describes what response the data plane API of a search service would send for requests that failed authentication.

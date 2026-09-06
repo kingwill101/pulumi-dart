@@ -6,23 +6,23 @@ import 'role_response.dart';
 /// Result data returned by getMongoDBResourceMongoUserDefinition.
 class GetMongoDBResourceMongoUserDefinitionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A custom definition for the USer Definition.
   final String? customData;
   /// The database name for which access is being granted for this User Definition.
   final String? databaseName;
   /// The unique resource identifier of the database account.
-  final String id;
+  final String? id;
   /// The Mongo Auth mechanism. For now, we only support auth mechanism SCRAM-SHA-256.
   final String? mechanisms;
   /// The name of the database account.
-  final String name;
+  final String? name;
   /// The password for User Definition. Response does not contain user password.
   final String? password;
   /// The set of roles inherited by the User Definition.
   final List<RoleResponse>? roles;
   /// The type of Azure resource.
-  final String type;
+  final String? type;
   /// The user name for User Definition.
   final String? userName;
 
@@ -38,44 +38,44 @@ class GetMongoDBResourceMongoUserDefinitionResult {
   /// [type] The type of Azure resource.
   /// [userName] The user name for User Definition.
   const GetMongoDBResourceMongoUserDefinitionResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.customData,
     this.databaseName,
-    required this.id,
+    this.id,
     this.mechanisms,
-    required this.name,
+    this.name,
     this.password,
     this.roles,
-    required this.type,
+    this.type,
     this.userName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'customData': ?customData,
       'databaseName': ?databaseName,
-      'id': id,
+      'id': ?id,
       'mechanisms': ?mechanisms,
-      'name': name,
+      'name': ?name,
       'password': ?password,
       'roles': ?(() { final guardedValue = roles; if (guardedValue == null) return null; return pulumi.Input.encodeList<RoleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
       'userName': ?userName,
     };
   }
 
   factory GetMongoDBResourceMongoUserDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetMongoDBResourceMongoUserDefinitionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customData: (() { final guardedValue = map['customData']; if (guardedValue == null) return null; return guardedValue as String; })(),
       databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mechanisms: (() { final guardedValue = map['mechanisms']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoleResponse>(guardedValue, (value) => RoleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

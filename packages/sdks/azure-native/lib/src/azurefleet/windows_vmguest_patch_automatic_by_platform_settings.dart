@@ -6,10 +6,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// is selected in Windows patch settings.
 class WindowsVMGuestPatchAutomaticByPlatformSettings {
   /// Enables customer to schedule patching without accidental upgrades
-  final pulumi.Input<bool>? bypassPlatformSafetyChecksOnUserSchedule;
+  final pulumi.Input<bool?>? bypassPlatformSafetyChecksOnUserSchedule;
   /// Specifies the reboot setting for all AutomaticByPlatform patch installation
   /// operations.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<dynamic>? rebootSetting;
 
   /// Creates a new [WindowsVMGuestPatchAutomaticByPlatformSettings].
   /// [bypassPlatformSafetyChecksOnUserSchedule] Enables customer to schedule patching without accidental upgrades
@@ -29,7 +29,7 @@ class WindowsVMGuestPatchAutomaticByPlatformSettings {
   factory WindowsVMGuestPatchAutomaticByPlatformSettings.fromMap(Map<String, dynamic> map) {
     return WindowsVMGuestPatchAutomaticByPlatformSettings(
       bypassPlatformSafetyChecksOnUserSchedule: (() { final guardedValue = map['bypassPlatformSafetyChecksOnUserSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      rebootSetting: (() { final guardedValue = map['rebootSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rebootSetting: (() { final guardedValue = map['rebootSetting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

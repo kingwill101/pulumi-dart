@@ -7,13 +7,13 @@ import 'mhsmprivate_link_service_connection_state_response.dart';
 /// Private endpoint connection item.
 class MHSMPrivateEndpointConnectionItemResponse {
   /// Modified whenever there is a change in the state of private endpoint connection.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Id of private endpoint connection.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Properties of the private endpoint object.
-  final pulumi.Input<MHSMPrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<MHSMPrivateEndpointResponse?>? privateEndpoint;
   /// Approval state of the private link connection.
-  final pulumi.Input<MHSMPrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<MHSMPrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Provisioning state of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
 

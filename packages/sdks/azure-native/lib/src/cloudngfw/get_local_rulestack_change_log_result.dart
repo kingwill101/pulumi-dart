@@ -4,7 +4,7 @@
 /// Result data returned by getLocalRulestackChangeLog.
 class GetLocalRulestackChangeLogResult {
   /// list of changes
-  final List<String> changes;
+  final List<String>? changes;
   /// lastCommitted timestamp
   final String? lastCommitted;
   /// lastModified timestamp
@@ -15,14 +15,14 @@ class GetLocalRulestackChangeLogResult {
   /// [lastCommitted] lastCommitted timestamp
   /// [lastModified] lastModified timestamp
   const GetLocalRulestackChangeLogResult({
-    required this.changes,
+    this.changes,
     this.lastCommitted,
     this.lastModified,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'changes': changes,
+      'changes': ?changes,
       'lastCommitted': ?lastCommitted,
       'lastModified': ?lastModified,
     };
@@ -30,7 +30,7 @@ class GetLocalRulestackChangeLogResult {
 
   factory GetLocalRulestackChangeLogResult.fromMap(Map<String, dynamic> map) {
     return GetLocalRulestackChangeLogResult(
-      changes: (map['changes'] as List).cast<String>(),
+      changes: (() { final guardedValue = map['changes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       lastCommitted: (() { final guardedValue = map['lastCommitted']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastModified: (() { final guardedValue = map['lastModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

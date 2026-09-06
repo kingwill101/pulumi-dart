@@ -7,12 +7,12 @@ class WeeklyRecurrenceResponse {
   /// Specifies the values for weekly recurrence pattern.
   final pulumi.Input<List<String>> daysOfWeek;
   /// End time for recurrence.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies when the recurrence should be applied.
   /// Expected value is 'Weekly'.
   final pulumi.Input<String> recurrenceType;
   /// Start time for recurrence.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [WeeklyRecurrenceResponse].
   /// [daysOfWeek] Specifies the values for weekly recurrence pattern.

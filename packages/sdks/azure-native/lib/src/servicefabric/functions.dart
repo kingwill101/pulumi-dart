@@ -44,6 +44,17 @@ Future<GetManagedAzResiliencyStatusResult> getManagedAzResiliencyStatus(
   return GetManagedAzResiliencyStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedAzResiliencyStatusResult> getManagedAzResiliencyStatusOutput(
+  GetManagedAzResiliencyStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedAzResiliencyStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedAzResiliencyStatusResult.fromMap);
+}
+
 /// Get a Service Fabric managed cluster resource created or in the process of being created in the specified resource group.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -62,6 +73,17 @@ Future<GetManagedClusterResult> getManagedCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedClusterResult> getManagedClusterOutput(
+  GetManagedClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterResult.fromMap);
 }
 
 /// Get a Service Fabric managed application resource created or in the process of being created in the Service Fabric cluster resource.
@@ -84,6 +106,17 @@ Future<GetManagedClusterApplicationResult> getManagedClusterApplication(
   return GetManagedClusterApplicationResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedClusterApplicationResult> getManagedClusterApplicationOutput(
+  GetManagedClusterApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedClusterApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterApplicationResult.fromMap);
+}
+
 /// Get a Service Fabric application type name resource created or in the process of being created in the Service Fabric managed cluster resource.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -102,6 +135,17 @@ Future<GetManagedClusterApplicationTypeResult> getManagedClusterApplicationType(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedClusterApplicationTypeResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedClusterApplicationTypeResult> getManagedClusterApplicationTypeOutput(
+  GetManagedClusterApplicationTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedClusterApplicationType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterApplicationTypeResult.fromMap);
 }
 
 /// Get a Service Fabric managed application type version resource created or in the process of being created in the Service Fabric managed application type name resource.
@@ -124,6 +168,17 @@ Future<GetManagedClusterApplicationTypeVersionResult> getManagedClusterApplicati
   return GetManagedClusterApplicationTypeVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedClusterApplicationTypeVersionResult> getManagedClusterApplicationTypeVersionOutput(
+  GetManagedClusterApplicationTypeVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedClusterApplicationTypeVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterApplicationTypeVersionResult.fromMap);
+}
+
 /// Gets a fault simulation by the simulationId.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -142,6 +197,17 @@ Future<GetManagedClusterFaultSimulationResult> getManagedClusterFaultSimulation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedClusterFaultSimulationResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedClusterFaultSimulationResult> getManagedClusterFaultSimulationOutput(
+  GetManagedClusterFaultSimulationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedClusterFaultSimulation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterFaultSimulationResult.fromMap);
 }
 
 /// Get a Service Fabric service resource created or in the process of being created in the Service Fabric managed application resource.
@@ -164,6 +230,17 @@ Future<GetManagedClusterServiceResult> getManagedClusterService(
   return GetManagedClusterServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedClusterServiceResult> getManagedClusterServiceOutput(
+  GetManagedClusterServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedClusterService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterServiceResult.fromMap);
+}
+
 /// Action to get Maintenance Window Status of the Service Fabric Managed Clusters.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -182,6 +259,17 @@ Future<GetManagedMaintenanceWindowStatusResult> getManagedMaintenanceWindowStatu
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedMaintenanceWindowStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedMaintenanceWindowStatusResult> getManagedMaintenanceWindowStatusOutput(
+  GetManagedMaintenanceWindowStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getManagedMaintenanceWindowStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedMaintenanceWindowStatusResult.fromMap);
 }
 
 /// Get a Service Fabric node type of a given managed cluster.
@@ -204,6 +292,17 @@ Future<GetNodeTypeResult> getNodeType(
   return GetNodeTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeTypeResult> getNodeTypeOutput(
+  GetNodeTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getNodeType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTypeResult.fromMap);
+}
+
 /// Gets a fault simulation by the simulationId.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -222,6 +321,17 @@ Future<GetNodeTypeFaultSimulationResult> getNodeTypeFaultSimulation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeTypeFaultSimulationResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeTypeFaultSimulationResult> getNodeTypeFaultSimulationOutput(
+  GetNodeTypeFaultSimulationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:getNodeTypeFaultSimulation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTypeFaultSimulationResult.fromMap);
 }
 
 /// Gets the list of recent fault simulations for the cluster.
@@ -244,6 +354,17 @@ Future<ListManagedClusterFaultSimulationResult> listManagedClusterFaultSimulatio
   return ListManagedClusterFaultSimulationResult.fromMap(result);
 }
 
+pulumi.Output<ListManagedClusterFaultSimulationResult> listManagedClusterFaultSimulationOutput(
+  ListManagedClusterFaultSimulationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:listManagedClusterFaultSimulation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedClusterFaultSimulationResult.fromMap);
+}
+
 /// Gets the list of recent fault simulations for the node type.
 ///
 /// Uses Azure REST API version 2024-11-01-preview.
@@ -262,4 +383,15 @@ Future<ListNodeTypeFaultSimulationResult> listNodeTypeFaultSimulation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNodeTypeFaultSimulationResult.fromMap(result);
+}
+
+pulumi.Output<ListNodeTypeFaultSimulationResult> listNodeTypeFaultSimulationOutput(
+  ListNodeTypeFaultSimulationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:servicefabric:listNodeTypeFaultSimulation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNodeTypeFaultSimulationResult.fromMap);
 }

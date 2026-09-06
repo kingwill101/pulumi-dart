@@ -9,11 +9,11 @@ import 'resource_guard_proxy_base.dart';
 /// {@macro pulumi_dataprotection_dpp_resource_guard_proxy_args_doc}
 class DppResourceGuardProxyArgs {
   /// ResourceGuardProxyBaseResource properties
-  final pulumi.Input<ResourceGuardProxyBase>? properties;
+  final pulumi.Input<ResourceGuardProxyBase?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// name of the resource guard proxy
-  final pulumi.Input<String>? resourceGuardProxyName;
+  final pulumi.Input<String?>? resourceGuardProxyName;
   /// The name of the backup vault.
   final pulumi.Input<String> vaultName;
 

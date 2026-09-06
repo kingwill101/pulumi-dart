@@ -4,23 +4,23 @@
 /// Result data returned by listComputeKeys.
 class ListComputeKeysResult {
   /// The type of compute
-  final String computeType;
+  final String? computeType;
 
   /// Creates a new [ListComputeKeysResult].
   /// [computeType] The type of compute
   const ListComputeKeysResult({
-    required this.computeType,
+    this.computeType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeType': computeType,
+      'computeType': ?computeType,
     };
   }
 
   factory ListComputeKeysResult.fromMap(Map<String, dynamic> map) {
     return ListComputeKeysResult(
-      computeType: map['computeType'] as String,
+      computeType: (() { final guardedValue = map['computeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

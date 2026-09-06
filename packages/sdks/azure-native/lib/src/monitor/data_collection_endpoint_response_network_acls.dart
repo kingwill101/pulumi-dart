@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network access control rules for the endpoints.
 class DataCollectionEndpointResponseNetworkAcls {
   /// The configuration to set whether network access from public internet to the endpoints are allowed.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
 
   /// Creates a new [DataCollectionEndpointResponseNetworkAcls].
   /// [publicNetworkAccess] The configuration to set whether network access from public internet to the endpoints are allowed.

@@ -4,21 +4,21 @@
 /// Result data returned by getNetworkSecurityPerimeter.
 class GetNetworkSecurityPerimeterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// perimeter guid of the network security perimeter.
-  final String perimeterGuid;
+  final String? perimeterGuid;
   /// The provisioning state of the scope assignment resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNetworkSecurityPerimeterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -30,39 +30,39 @@ class GetNetworkSecurityPerimeterResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetNetworkSecurityPerimeterResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.location,
-    required this.name,
-    required this.perimeterGuid,
-    required this.provisioningState,
+    this.name,
+    this.perimeterGuid,
+    this.provisioningState,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'perimeterGuid': perimeterGuid,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'perimeterGuid': ?perimeterGuid,
+      'provisioningState': ?provisioningState,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNetworkSecurityPerimeterResult.fromMap(Map<String, dynamic> map) {
     return GetNetworkSecurityPerimeterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      perimeterGuid: map['perimeterGuid'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      perimeterGuid: (() { final guardedValue = map['perimeterGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

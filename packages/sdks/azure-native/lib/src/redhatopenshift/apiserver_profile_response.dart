@@ -9,7 +9,7 @@ class APIServerProfileResponse {
   /// The URL to access the cluster API server.
   final pulumi.Input<String> url;
   /// API server visibility.
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<String?>? visibility;
 
   /// Creates a new [APIServerProfileResponse].
   /// [ip] The IP of the cluster API server.

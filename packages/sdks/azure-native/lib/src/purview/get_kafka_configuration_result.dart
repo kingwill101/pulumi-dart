@@ -6,7 +6,7 @@ import 'system_data_response.dart';
 /// Result data returned by getKafkaConfiguration.
 class GetKafkaConfigurationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Consumer group for hook event hub.
   final String? consumerGroup;
   /// Credentials to access the event streaming service attached to the purview account.
@@ -22,13 +22,13 @@ class GetKafkaConfigurationResult {
   /// The event streaming service type
   final String? eventStreamingType;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKafkaConfigurationResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,24 +43,24 @@ class GetKafkaConfigurationResult {
   /// [name] The name of the resource
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetKafkaConfigurationResult({
-    required this.azureApiVersion,
+  GetKafkaConfigurationResult({
+    this.azureApiVersion,
     this.consumerGroup,
     this.credentials,
     this.eventHubPartitionId,
     this.eventHubResourceId,
     this.eventHubType,
-    this.eventStreamingState,
-    this.eventStreamingType,
-    required this.id,
-    required this.name,
-    required this.systemData,
-    required this.type,
-  });
+    String? eventStreamingState,
+    String? eventStreamingType,
+    this.id,
+    this.name,
+    this.systemData,
+    this.type,
+  }) : eventStreamingState = eventStreamingState ?? 'Enabled', eventStreamingType = eventStreamingType ?? 'None';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'consumerGroup': ?consumerGroup,
       'credentials': ?credentials?.toMap(),
       'eventHubPartitionId': ?eventHubPartitionId,
@@ -68,16 +68,16 @@ class GetKafkaConfigurationResult {
       'eventHubType': ?eventHubType,
       'eventStreamingState': ?eventStreamingState,
       'eventStreamingType': ?eventStreamingType,
-      'id': id,
-      'name': name,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetKafkaConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConfigurationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       consumerGroup: (() { final guardedValue = map['consumerGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return CredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       eventHubPartitionId: (() { final guardedValue = map['eventHubPartitionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -85,10 +85,10 @@ class GetKafkaConfigurationResult {
       eventHubType: (() { final guardedValue = map['eventHubType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eventStreamingState: (() { final guardedValue = map['eventStreamingState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eventStreamingType: (() { final guardedValue = map['eventStreamingType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

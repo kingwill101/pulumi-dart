@@ -42,8 +42,8 @@ class TunnelConnectionHealthResponse {
   factory TunnelConnectionHealthResponse.fromMap(Map<String, dynamic> map) {
     return TunnelConnectionHealthResponse(
       connectionStatus: pulumi.Input.fromValue(map['connectionStatus'] as String),
-      egressBytesTransferred: pulumi.Input.fromValue(map['egressBytesTransferred'] as double),
-      ingressBytesTransferred: pulumi.Input.fromValue(map['ingressBytesTransferred'] as double),
+      egressBytesTransferred: pulumi.Input.fromValue((map['egressBytesTransferred'] as num).toDouble()),
+      ingressBytesTransferred: pulumi.Input.fromValue((map['ingressBytesTransferred'] as num).toDouble()),
       lastConnectionEstablishedUtcTime: pulumi.Input.fromValue(map['lastConnectionEstablishedUtcTime'] as String),
       tunnel: pulumi.Input.fromValue(map['tunnel'] as String),
     );

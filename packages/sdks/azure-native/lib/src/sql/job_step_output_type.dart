@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The output destination type.
-enum JobStepOutputType {
+enum JobStepOutputType implements pulumi.PulumiEnum<String> {
   valueSqlDatabase("SqlDatabase");
 
   const JobStepOutputType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobStepOutputType fromValue(String value) {

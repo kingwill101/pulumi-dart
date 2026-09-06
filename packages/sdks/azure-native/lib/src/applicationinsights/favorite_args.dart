@@ -9,27 +9,27 @@ import 'favorite_type.dart';
 /// {@macro pulumi_applicationinsights_favorite_args_doc}
 class FavoriteArgs {
   /// Favorite category, as defined by the user at creation time.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Configuration of this particular favorite, which are driven by the Azure portal UX. Configuration data is a string containing valid JSON
-  final pulumi.Input<String>? config;
+  final pulumi.Input<String?>? config;
   /// The Id of a specific favorite defined in the Application Insights component
-  final pulumi.Input<String>? favoriteId;
+  final pulumi.Input<String?>? favoriteId;
   /// Enum indicating if this favorite definition is owned by a specific user or is shared between all users with access to the Application Insights component.
-  final pulumi.Input<FavoriteType>? favoriteType;
+  final pulumi.Input<FavoriteType?>? favoriteType;
   /// Flag denoting wether or not this favorite was generated from a template.
-  final pulumi.Input<bool>? isGeneratedFromTemplate;
+  final pulumi.Input<bool?>? isGeneratedFromTemplate;
   /// The user-defined name of the favorite.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
   /// The source of the favorite definition.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
   /// A list of 0 or more tags that are associated with this favorite definition
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [FavoriteArgs].
   /// [category] Favorite category, as defined by the user at creation time.

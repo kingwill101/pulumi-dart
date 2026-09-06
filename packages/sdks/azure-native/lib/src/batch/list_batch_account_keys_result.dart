@@ -4,35 +4,35 @@
 /// Result data returned by listBatchAccountKeys.
 class ListBatchAccountKeysResult {
   /// The Batch account name.
-  final String accountName;
+  final String? accountName;
   /// The primary key associated with the account.
-  final String primary;
+  final String? primary;
   /// The secondary key associated with the account.
-  final String secondary;
+  final String? secondary;
 
   /// Creates a new [ListBatchAccountKeysResult].
   /// [accountName] The Batch account name.
   /// [primary] The primary key associated with the account.
   /// [secondary] The secondary key associated with the account.
   const ListBatchAccountKeysResult({
-    required this.accountName,
-    required this.primary,
-    required this.secondary,
+    this.accountName,
+    this.primary,
+    this.secondary,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountName': accountName,
-      'primary': primary,
-      'secondary': secondary,
+      'accountName': ?accountName,
+      'primary': ?primary,
+      'secondary': ?secondary,
     };
   }
 
   factory ListBatchAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListBatchAccountKeysResult(
-      accountName: map['accountName'] as String,
-      primary: map['primary'] as String,
-      secondary: map['secondary'] as String,
+      accountName: (() { final guardedValue = map['accountName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondary: (() { final guardedValue = map['secondary']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

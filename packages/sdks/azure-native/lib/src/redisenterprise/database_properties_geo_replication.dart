@@ -6,9 +6,9 @@ import 'linked_database.dart';
 /// Optional set of properties to configure geo replication for this database.
 class DatabasePropertiesGeoReplication {
   /// Name for the group of linked database resources
-  final pulumi.Input<String>? groupNickname;
+  final pulumi.Input<String?>? groupNickname;
   /// List of database resources to link with this database
-  final pulumi.Input<List<LinkedDatabase>>? linkedDatabases;
+  final pulumi.Input<List<LinkedDatabase>?>? linkedDatabases;
 
   /// Creates a new [DatabasePropertiesGeoReplication].
   /// [groupNickname] Name for the group of linked database resources

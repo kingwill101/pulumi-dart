@@ -13,25 +13,25 @@ import 'sku.dart';
 /// {@macro pulumi_cdn_policy_args_doc}
 class PolicyArgs {
   /// Describes custom rules inside the policy.
-  final pulumi.Input<CustomRuleList>? customRules;
+  final pulumi.Input<CustomRuleList?>? customRules;
   /// Key-Value pair representing additional properties for Web Application Firewall policy.
-  final pulumi.Input<Map<String, String>>? extendedProperties;
+  final pulumi.Input<Map<String, String>?>? extendedProperties;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Describes managed rules inside the policy.
-  final pulumi.Input<ManagedRuleSetList>? managedRules;
+  final pulumi.Input<ManagedRuleSetList?>? managedRules;
   /// The name of the CdnWebApplicationFirewallPolicy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Describes  policySettings for policy
-  final pulumi.Input<PolicySettings>? policySettings;
+  final pulumi.Input<PolicySettings?>? policySettings;
   /// Describes rate limit rules inside the policy.
-  final pulumi.Input<RateLimitRuleList>? rateLimitRules;
+  final pulumi.Input<RateLimitRuleList?>? rateLimitRules;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy.
   final pulumi.Input<Sku> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PolicyArgs].
   /// [customRules] Describes custom rules inside the policy.

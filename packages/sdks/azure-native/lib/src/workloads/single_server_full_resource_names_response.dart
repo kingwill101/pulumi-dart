@@ -9,7 +9,7 @@ class SingleServerFullResourceNamesResponse {
   /// Expected value is 'FullResourceName'.
   final pulumi.Input<String> namingPatternType;
   /// The resource names object for virtual machine and related resources.
-  final pulumi.Input<VirtualMachineResourceNamesResponse>? virtualMachine;
+  final pulumi.Input<VirtualMachineResourceNamesResponse?>? virtualMachine;
 
   /// Creates a new [SingleServerFullResourceNamesResponse].
   /// [namingPatternType] The pattern type to be used for resource naming.

@@ -7,7 +7,7 @@ class StaticRoutesConfigP2sVpnGatewayResponse {
   /// Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.
   final pulumi.Input<bool> propagateStaticRoutes;
   /// Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
-  final pulumi.Input<String>? vnetLocalRouteOverrideCriteria;
+  final pulumi.Input<String?>? vnetLocalRouteOverrideCriteria;
 
   /// Creates a new [StaticRoutesConfigP2sVpnGatewayResponse].
   /// [propagateStaticRoutes] Boolean indicating whether static routes on this connection are automatically propagate to route tables which this connection propagates to.

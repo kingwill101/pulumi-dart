@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'failover_group_args.dart';
 import 'failover_group_read_only_endpoint_response.dart';
 import 'failover_group_read_write_endpoint_response.dart';
+import 'partner_info_response.dart';
 
 /// A failover group.
 ///
@@ -501,7 +502,7 @@ class FailoverGroup extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// List of partner server information for the failover group.
-  late final pulumi.Output<List<Map<String, dynamic>>> partnerServers;
+  late final pulumi.Output<List<PartnerInfoResponse>> partnerServers;
   /// Read-only endpoint of the failover group instance.
   late final pulumi.Output<FailoverGroupReadOnlyEndpointResponse?> readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
@@ -530,15 +531,37 @@ class FailoverGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    databases = registerOutput<List<String>?>('databases');
+    databases = registerOutput<List<String>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    partnerServers = registerOutput<List<Map<String, dynamic>>>('partnerServers');
+    partnerServers = registerOutput<List<PartnerInfoResponse>>('partnerServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerInfoResponse>(guardedValue, (value) => PartnerInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     readOnlyEndpoint = registerOutput<FailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readWriteEndpoint = registerOutput<FailoverGroupReadWriteEndpointResponse>('readWriteEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicationRole = registerOutput<String>('replicationRole');
     replicationState = registerOutput<String>('replicationState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FailoverGroup] resource.
+  FailoverGroup.reference(String urn)
+    : super(
+        'azure-native:sql:FailoverGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    databases = registerOutput<List<String>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partnerServers = registerOutput<List<PartnerInfoResponse>>('partnerServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerInfoResponse>(guardedValue, (value) => PartnerInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    readOnlyEndpoint = registerOutput<FailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readWriteEndpoint = registerOutput<FailoverGroupReadWriteEndpointResponse>('readWriteEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicationRole = registerOutput<String>('replicationRole');
+    replicationState = registerOutput<String>('replicationState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

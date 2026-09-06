@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'access_review_instance_response.dart';
 import 'access_review_recurrence_range_response.dart';
+import 'access_review_reviewer_response.dart';
 import 'access_review_scope_response.dart';
 import 'scope_access_review_schedule_definition_by_id_args.dart';
 import 'system_data_response.dart';
@@ -148,7 +150,7 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// This is the collection of backup reviewers.
-  late final pulumi.Output<List<Map<String, dynamic>>?> backupReviewers;
+  late final pulumi.Output<List<AccessReviewReviewerResponse>?> backupReviewers;
   /// This specifies the behavior for the autoReview feature when an access review completes.
   late final pulumi.Output<String?> defaultDecision;
   /// Flag to indicate whether reviewers are required to provide a justification when reviewing access.
@@ -162,7 +164,7 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
   /// The duration in days for an instance.
   late final pulumi.Output<int?> instanceDurationInDays;
   /// This is the collection of instances returned when one does an expand on it.
-  late final pulumi.Output<List<Map<String, dynamic>>?> instances;
+  late final pulumi.Output<List<AccessReviewInstanceResponse>?> instances;
   /// The interval for recurrence. For a quarterly review, the interval is 3 for type : absoluteMonthly.
   late final pulumi.Output<int?> interval;
   /// Flag to indicate whether the reviewer is required to pass justification when recording a decision.
@@ -186,7 +188,7 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
   /// Flag to indicate whether sending reminder emails to reviewers are enabled.
   late final pulumi.Output<bool?> reminderNotificationsEnabled;
   /// This is the collection of reviewers.
-  late final pulumi.Output<List<Map<String, dynamic>>?> reviewers;
+  late final pulumi.Output<List<AccessReviewReviewerResponse>?> reviewers;
   /// This field specifies the type of reviewers for a review. Usually for a review, reviewers are explicitly assigned. However, in some cases, the reviewers may not be assigned and instead be chosen dynamically. For example managers review or self review.
   late final pulumi.Output<String> reviewersType;
   /// This is used to define what to include in scope of the review. The scope definition includes the resourceId and roleDefinitionId.
@@ -216,14 +218,14 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
         ) {
     autoApplyDecisionsEnabled = registerOutput<bool?>('autoApplyDecisionsEnabled');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backupReviewers = registerOutput<List<Map<String, dynamic>>?>('backupReviewers');
+    backupReviewers = registerOutput<List<AccessReviewReviewerResponse>?>('backupReviewers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewReviewerResponse>(guardedValue, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultDecision = registerOutput<String?>('defaultDecision');
     defaultDecisionEnabled = registerOutput<bool?>('defaultDecisionEnabled');
     descriptionForAdmins = registerOutput<String?>('descriptionForAdmins');
     descriptionForReviewers = registerOutput<String?>('descriptionForReviewers');
     displayName = registerOutput<String?>('displayName');
     instanceDurationInDays = registerOutput<int?>('instanceDurationInDays');
-    instances = registerOutput<List<Map<String, dynamic>>?>('instances');
+    instances = registerOutput<List<AccessReviewInstanceResponse>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewInstanceResponse>(guardedValue, (value) => AccessReviewInstanceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     interval = registerOutput<int?>('interval');
     justificationRequiredOnApproval = registerOutput<bool?>('justificationRequiredOnApproval');
     mailNotificationsEnabled = registerOutput<bool?>('mailNotificationsEnabled');
@@ -235,7 +237,46 @@ class ScopeAccessReviewScheduleDefinitionById extends pulumi.CustomResource {
     recommendationLookBackDuration = registerOutput<String?>('recommendationLookBackDuration');
     recommendationsEnabled = registerOutput<bool?>('recommendationsEnabled');
     reminderNotificationsEnabled = registerOutput<bool?>('reminderNotificationsEnabled');
-    reviewers = registerOutput<List<Map<String, dynamic>>?>('reviewers');
+    reviewers = registerOutput<List<AccessReviewReviewerResponse>?>('reviewers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewReviewerResponse>(guardedValue, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    reviewersType = registerOutput<String>('reviewersType');
+    scope = registerOutput<AccessReviewScopeResponse>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userPrincipalName = registerOutput<String>('userPrincipalName');
+  }
+
+  /// Creates a typed reference to an existing [ScopeAccessReviewScheduleDefinitionById] resource.
+  ScopeAccessReviewScheduleDefinitionById.reference(String urn)
+    : super(
+        'azure-native:authorization:ScopeAccessReviewScheduleDefinitionById',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoApplyDecisionsEnabled = registerOutput<bool?>('autoApplyDecisionsEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupReviewers = registerOutput<List<AccessReviewReviewerResponse>?>('backupReviewers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewReviewerResponse>(guardedValue, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultDecision = registerOutput<String?>('defaultDecision');
+    defaultDecisionEnabled = registerOutput<bool?>('defaultDecisionEnabled');
+    descriptionForAdmins = registerOutput<String?>('descriptionForAdmins');
+    descriptionForReviewers = registerOutput<String?>('descriptionForReviewers');
+    displayName = registerOutput<String?>('displayName');
+    instanceDurationInDays = registerOutput<int?>('instanceDurationInDays');
+    instances = registerOutput<List<AccessReviewInstanceResponse>?>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewInstanceResponse>(guardedValue, (value) => AccessReviewInstanceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    interval = registerOutput<int?>('interval');
+    justificationRequiredOnApproval = registerOutput<bool?>('justificationRequiredOnApproval');
+    mailNotificationsEnabled = registerOutput<bool?>('mailNotificationsEnabled');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    range = registerOutput<AccessReviewRecurrenceRangeResponse?>('range', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewRecurrenceRangeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    recommendationLookBackDuration = registerOutput<String?>('recommendationLookBackDuration');
+    recommendationsEnabled = registerOutput<bool?>('recommendationsEnabled');
+    reminderNotificationsEnabled = registerOutput<bool?>('reminderNotificationsEnabled');
+    reviewers = registerOutput<List<AccessReviewReviewerResponse>?>('reviewers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessReviewReviewerResponse>(guardedValue, (value) => AccessReviewReviewerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     reviewersType = registerOutput<String>('reviewersType');
     scope = registerOutput<AccessReviewScopeResponse>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessReviewScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');

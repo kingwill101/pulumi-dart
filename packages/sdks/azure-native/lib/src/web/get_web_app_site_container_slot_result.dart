@@ -10,35 +10,35 @@ class GetWebAppSiteContainerSlotResult {
   /// Auth Type
   final String? authType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Created Time
-  final String createdTime;
+  final String? createdTime;
   /// List of environment variables
   final List<EnvironmentVariableResponse>? environmentVariables;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Image Name
-  final String image;
+  final String? image;
   /// &lt;code&gt;true&lt;/code&gt; if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; &lt;code&gt;false&lt;/code&gt; otherwise.
   final bool? inheritAppSettingsAndConnectionStrings;
   /// &lt;code&gt;true&lt;/code&gt; if the container is the main site container; &lt;code&gt;false&lt;/code&gt; otherwise.
-  final bool isMain;
+  final bool? isMain;
   /// Kind of resource.
   final String? kind;
   /// Last Modified Time
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Password Secret
   final String? passwordSecret;
   /// StartUp Command
   final String? startUpCommand;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Target Port
   final String? targetPort;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// UserManagedIdentity ClientId
   final String? userManagedIdentityClientId;
   /// User Name
@@ -68,21 +68,21 @@ class GetWebAppSiteContainerSlotResult {
   /// [volumeMounts] List of volume mounts
   const GetWebAppSiteContainerSlotResult({
     this.authType,
-    required this.azureApiVersion,
-    required this.createdTime,
+    this.azureApiVersion,
+    this.createdTime,
     this.environmentVariables,
-    required this.id,
-    required this.image,
+    this.id,
+    this.image,
     this.inheritAppSettingsAndConnectionStrings,
-    required this.isMain,
+    this.isMain,
     this.kind,
-    required this.lastModifiedTime,
-    required this.name,
+    this.lastModifiedTime,
+    this.name,
     this.passwordSecret,
     this.startUpCommand,
-    required this.systemData,
+    this.systemData,
     this.targetPort,
-    required this.type,
+    this.type,
     this.userManagedIdentityClientId,
     this.userName,
     this.volumeMounts,
@@ -91,21 +91,21 @@ class GetWebAppSiteContainerSlotResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authType': ?authType,
-      'azureApiVersion': azureApiVersion,
-      'createdTime': createdTime,
+      'azureApiVersion': ?azureApiVersion,
+      'createdTime': ?createdTime,
       'environmentVariables': ?(() { final guardedValue = environmentVariables; if (guardedValue == null) return null; return pulumi.Input.encodeList<EnvironmentVariableResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'image': image,
+      'id': ?id,
+      'image': ?image,
       'inheritAppSettingsAndConnectionStrings': ?inheritAppSettingsAndConnectionStrings,
-      'isMain': isMain,
+      'isMain': ?isMain,
       'kind': ?kind,
-      'lastModifiedTime': lastModifiedTime,
-      'name': name,
+      'lastModifiedTime': ?lastModifiedTime,
+      'name': ?name,
       'passwordSecret': ?passwordSecret,
       'startUpCommand': ?startUpCommand,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'targetPort': ?targetPort,
-      'type': type,
+      'type': ?type,
       'userManagedIdentityClientId': ?userManagedIdentityClientId,
       'userName': ?userName,
       'volumeMounts': ?(() { final guardedValue = volumeMounts; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeMountResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -115,21 +115,21 @@ class GetWebAppSiteContainerSlotResult {
   factory GetWebAppSiteContainerSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppSiteContainerSlotResult(
       authType: (() { final guardedValue = map['authType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdTime: map['createdTime'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdTime: (() { final guardedValue = map['createdTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       environmentVariables: (() { final guardedValue = map['environmentVariables']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentVariableResponse>(guardedValue, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      image: map['image'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return guardedValue as String; })(),
       inheritAppSettingsAndConnectionStrings: (() { final guardedValue = map['inheritAppSettingsAndConnectionStrings']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      isMain: map['isMain'] as bool,
+      isMain: (() { final guardedValue = map['isMain']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      name: map['name'] as String,
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       passwordSecret: (() { final guardedValue = map['passwordSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startUpCommand: (() { final guardedValue = map['startUpCommand']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       targetPort: (() { final guardedValue = map['targetPort']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userManagedIdentityClientId: (() { final guardedValue = map['userManagedIdentityClientId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userName: (() { final guardedValue = map['userName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       volumeMounts: (() { final guardedValue = map['volumeMounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeMountResponse>(guardedValue, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())); })(),

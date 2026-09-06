@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ExtendedLocation complex type.
 class ExtendedLocationResponse {
   /// The name of the extended location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of the extended location.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ExtendedLocationResponse].
   /// [name] The name of the extended location.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to enable certificate verification or not
-enum GatewayCertificateVerification {
+enum GatewayCertificateVerification implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const GatewayCertificateVerification(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayCertificateVerification fromValue(String value) {

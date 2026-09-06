@@ -8,23 +8,23 @@ import 'network_manager_security_group_itemlist_active_security_user_rule_respon
 /// Network security user rule.
 class ActiveSecurityUserRuleResponse {
   /// Deployment time string.
-  final pulumi.Input<String>? commitTime;
+  final pulumi.Input<String?>? commitTime;
   /// A description of the security user configuration.
-  final pulumi.Input<String>? configurationDescription;
+  final pulumi.Input<String?>? configurationDescription;
   /// A display name of the security user configuration.
-  final pulumi.Input<String>? configurationDisplayName;
+  final pulumi.Input<String?>? configurationDisplayName;
   /// A description for this rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? destinations;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
   final pulumi.Input<String> direction;
   /// A friendly name for the rule.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> kind;
@@ -33,19 +33,19 @@ class ActiveSecurityUserRuleResponse {
   /// The provisioning state of the security configuration user rule resource.
   final pulumi.Input<String> provisioningState;
   /// Deployment region.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Groups for rule collection
-  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistActiveSecurityUserRuleResponse>>? ruleCollectionAppliesToGroups;
+  final pulumi.Input<List<NetworkManagerSecurityGroupItemlistActiveSecurityUserRuleResponse>?>? ruleCollectionAppliesToGroups;
   /// A description of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDescription;
+  final pulumi.Input<String?>? ruleCollectionDescription;
   /// A display name of the rule collection.
-  final pulumi.Input<String>? ruleCollectionDisplayName;
+  final pulumi.Input<String?>? ruleCollectionDisplayName;
   /// Effective configuration groups.
-  final pulumi.Input<List<ConfigurationGroupResponse>>? ruleGroups;
+  final pulumi.Input<List<ConfigurationGroupResponse>?>? ruleGroups;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<AddressPrefixItemResponse>>? sources;
+  final pulumi.Input<List<AddressPrefixItemResponse>?>? sources;
 
   /// Creates a new [ActiveSecurityUserRuleResponse].
   /// [commitTime] Deployment time string.

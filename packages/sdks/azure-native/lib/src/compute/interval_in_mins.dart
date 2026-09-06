@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Interval value in minutes used to create LogAnalytics call rate logs.
-enum IntervalInMins {
+enum IntervalInMins implements pulumi.PulumiEnum<String> {
   valueThreeMins("ThreeMins"),
   valueFiveMins("FiveMins"),
   valueThirtyMins("ThirtyMins"),
   valueSixtyMins("SixtyMins");
 
   const IntervalInMins(this.wireValue);
+  @override
   final String wireValue;
 
   static IntervalInMins fromValue(String value) {

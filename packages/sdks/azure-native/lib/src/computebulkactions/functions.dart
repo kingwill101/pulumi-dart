@@ -19,3 +19,14 @@ Future<GetBulkActionResult> getBulkAction(
   );
   return GetBulkActionResult.fromMap(result);
 }
+
+pulumi.Output<GetBulkActionResult> getBulkActionOutput(
+  GetBulkActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:computebulkactions:getBulkAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBulkActionResult.fromMap);
+}

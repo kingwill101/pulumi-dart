@@ -9,13 +9,13 @@ import 'migrate_project_properties.dart';
 /// {@macro pulumi_migrate_migrate_projects_controller_migrate_project_args_doc}
 class MigrateProjectsControllerMigrateProjectArgs {
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Azure location in which project is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Migrate project name.
-  final pulumi.Input<String>? migrateProjectName;
+  final pulumi.Input<String?>? migrateProjectName;
   /// Properties of a migrate project.
-  final pulumi.Input<MigrateProjectProperties>? properties;
+  final pulumi.Input<MigrateProjectProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
 

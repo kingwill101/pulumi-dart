@@ -6,9 +6,9 @@ import 'sub_resource_response.dart';
 /// The list of RouteTables to advertise the routes to.
 class PropagatedRouteTableResponse {
   /// The list of resource ids of all the RouteTables.
-  final pulumi.Input<List<SubResourceResponse>>? ids;
+  final pulumi.Input<List<SubResourceResponse>?>? ids;
   /// The list of labels.
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
 
   /// Creates a new [PropagatedRouteTableResponse].
   /// [ids] The list of resource ids of all the RouteTables.

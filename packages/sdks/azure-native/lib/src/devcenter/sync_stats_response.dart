@@ -9,7 +9,7 @@ class SyncStatsResponse {
   /// Count of catalog items removed during synchronization.
   final pulumi.Input<int> removed;
   /// Indicates catalog item types that were synced.
-  final pulumi.Input<List<String>>? syncedCatalogItemTypes;
+  final pulumi.Input<List<String>?>? syncedCatalogItemTypes;
   /// Count of synchronization errors that occured during synchronization.
   final pulumi.Input<int> synchronizationErrors;
   /// Count of catalog items that were unchanged during synchronization.
@@ -51,13 +51,13 @@ class SyncStatsResponse {
 
   factory SyncStatsResponse.fromMap(Map<String, dynamic> map) {
     return SyncStatsResponse(
-      added: pulumi.Input.fromValue(map['added'] as int),
-      removed: pulumi.Input.fromValue(map['removed'] as int),
+      added: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['added'])),
+      removed: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['removed'])),
       syncedCatalogItemTypes: (() { final guardedValue = map['syncedCatalogItemTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      synchronizationErrors: pulumi.Input.fromValue(map['synchronizationErrors'] as int),
-      unchanged: pulumi.Input.fromValue(map['unchanged'] as int),
-      updated: pulumi.Input.fromValue(map['updated'] as int),
-      validationErrors: pulumi.Input.fromValue(map['validationErrors'] as int),
+      synchronizationErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['synchronizationErrors'])),
+      unchanged: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unchanged'])),
+      updated: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['updated'])),
+      validationErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validationErrors'])),
     );
   }
 }

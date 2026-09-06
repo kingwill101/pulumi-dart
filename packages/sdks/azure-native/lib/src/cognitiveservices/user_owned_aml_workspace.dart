@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The user owned AML account for Cognitive Services account.
 class UserOwnedAmlWorkspace {
   /// Identity Client id of a AML account resource.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Full resource id of a AML account resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [UserOwnedAmlWorkspace].
   /// [identityClientId] Identity Client id of a AML account resource.

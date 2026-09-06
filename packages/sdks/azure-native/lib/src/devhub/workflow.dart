@@ -849,7 +849,38 @@ class Workflow extends pulumi.CustomResource {
     namespace = registerOutput<String?>('namespace');
     port = registerOutput<String?>('port');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Workflow] resource.
+  Workflow.reference(String urn)
+    : super(
+        'azure-native:devhub:Workflow',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appName = registerOutput<String?>('appName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    builderVersion = registerOutput<String?>('builderVersion');
+    dockerfileGenerationMode = registerOutput<String?>('dockerfileGenerationMode');
+    dockerfileOutputDirectory = registerOutput<String?>('dockerfileOutputDirectory');
+    generationLanguage = registerOutput<String?>('generationLanguage');
+    githubWorkflowProfile = registerOutput<GitHubWorkflowProfileResponse?>('githubWorkflowProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitHubWorkflowProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageName = registerOutput<String?>('imageName');
+    imageTag = registerOutput<String?>('imageTag');
+    languageVersion = registerOutput<String?>('languageVersion');
+    location = registerOutput<String>('location');
+    manifestGenerationMode = registerOutput<String?>('manifestGenerationMode');
+    manifestOutputDirectory = registerOutput<String?>('manifestOutputDirectory');
+    manifestType = registerOutput<String?>('manifestType');
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    port = registerOutput<String?>('port');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

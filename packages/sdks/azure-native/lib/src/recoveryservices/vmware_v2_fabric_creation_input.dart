@@ -10,9 +10,9 @@ class VMwareV2FabricCreationInput {
   /// The ARM Id of the migration solution.
   final pulumi.Input<String> migrationSolutionId;
   /// The ARM Id of the physical site.
-  final pulumi.Input<String>? physicalSiteId;
+  final pulumi.Input<String?>? physicalSiteId;
   /// The ARM Id of the VMware site.
-  final pulumi.Input<String>? vmwareSiteId;
+  final pulumi.Input<String?>? vmwareSiteId;
 
   /// Creates a new [VMwareV2FabricCreationInput].
   /// [instanceType] Gets the class type.

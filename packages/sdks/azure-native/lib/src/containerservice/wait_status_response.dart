@@ -28,7 +28,7 @@ class WaitStatusResponse {
   factory WaitStatusResponse.fromMap(Map<String, dynamic> map) {
     return WaitStatusResponse(
       status: pulumi.Input.fromValue(UpdateStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>())),
-      waitDurationInSeconds: pulumi.Input.fromValue(map['waitDurationInSeconds'] as int),
+      waitDurationInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['waitDurationInSeconds'])),
     );
   }
 }

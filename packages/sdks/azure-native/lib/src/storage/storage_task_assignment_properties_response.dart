@@ -18,7 +18,7 @@ class StorageTaskAssignmentPropertiesResponse {
   /// The storage task assignment report
   final pulumi.Input<StorageTaskAssignmentReportResponse> report;
   /// Run status of storage task assignment
-  final pulumi.Input<StorageTaskReportPropertiesResponse>? runStatus;
+  final pulumi.Input<StorageTaskReportPropertiesResponse?>? runStatus;
   /// Id of the corresponding storage task
   final pulumi.Input<String> taskId;
 

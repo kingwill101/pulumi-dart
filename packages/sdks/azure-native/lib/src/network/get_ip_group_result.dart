@@ -6,13 +6,13 @@ import 'sub_resource_response.dart';
 /// Result data returned by getIpGroup.
 class GetIpGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// List of references to Firewall Policies resources that this IpGroups is associated with.
-  final List<SubResourceResponse> firewallPolicies;
+  final List<SubResourceResponse>? firewallPolicies;
   /// List of references to Firewall resources that this IpGroups is associated with.
-  final List<SubResourceResponse> firewalls;
+  final List<SubResourceResponse>? firewalls;
   /// Resource ID.
   final String? id;
   /// IpAddresses/IpAddressPrefixes in the IpGroups resource.
@@ -20,13 +20,13 @@ class GetIpGroupResult {
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The provisioning state of the IpGroups resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetIpGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -41,48 +41,48 @@ class GetIpGroupResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetIpGroupResult({
-    required this.azureApiVersion,
-    required this.etag,
-    required this.firewallPolicies,
-    required this.firewalls,
+    this.azureApiVersion,
+    this.etag,
+    this.firewallPolicies,
+    this.firewalls,
     this.id,
     this.ipAddresses,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'firewallPolicies': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(firewallPolicies, (value) => value.toMap()),
-      'firewalls': pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(firewalls, (value) => value.toMap()),
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'firewallPolicies': ?(() { final guardedValue = firewallPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'firewalls': ?(() { final guardedValue = firewalls; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
       'ipAddresses': ?ipAddresses,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetIpGroupResult.fromMap(Map<String, dynamic> map) {
     return GetIpGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      firewallPolicies: pulumi.Input.decodeList<SubResourceResponse>(map['firewallPolicies']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
-      firewalls: pulumi.Input.decodeList<SubResourceResponse>(map['firewalls']!, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallPolicies: (() { final guardedValue = map['firewallPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      firewalls: (() { final guardedValue = map['firewalls']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipAddresses: (() { final guardedValue = map['ipAddresses']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

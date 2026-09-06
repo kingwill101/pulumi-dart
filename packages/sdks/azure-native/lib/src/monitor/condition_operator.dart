@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator used in the filtering condition.
-enum ConditionOperator {
+enum ConditionOperator implements pulumi.PulumiEnum<String> {
   equal("eq"),
   notEqual("ne"),
   lessThan("lt"),
@@ -14,6 +16,7 @@ enum ConditionOperator {
   notContains("notcontains");
 
   const ConditionOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionOperator fromValue(String value) {

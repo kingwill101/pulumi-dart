@@ -10,15 +10,15 @@ class PipelineRunRequest {
   /// Specify an image by repository ('hello-world'). This will use the 'latest' tag.
   /// Specify an image by tag ('hello-world:latest').
   /// Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
-  final pulumi.Input<List<String>>? artifacts;
+  final pulumi.Input<List<String>?>? artifacts;
   /// The digest of the tar used to transfer the artifacts.
-  final pulumi.Input<String>? catalogDigest;
+  final pulumi.Input<String?>? catalogDigest;
   /// The resource ID of the pipeline to run.
-  final pulumi.Input<String>? pipelineResourceId;
+  final pulumi.Input<String?>? pipelineResourceId;
   /// The source properties of the pipeline run.
-  final pulumi.Input<PipelineRunSourceProperties>? source;
+  final pulumi.Input<PipelineRunSourceProperties?>? source;
   /// The target properties of the pipeline run.
-  final pulumi.Input<PipelineRunTargetProperties>? target;
+  final pulumi.Input<PipelineRunTargetProperties?>? target;
 
   /// Creates a new [PipelineRunRequest].
   /// [artifacts] List of source artifacts to be transferred by the pipeline.

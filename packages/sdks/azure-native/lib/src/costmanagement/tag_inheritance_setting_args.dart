@@ -12,11 +12,11 @@ class TagInheritanceSettingArgs {
   /// Expected value is 'taginheritance'.
   final pulumi.Input<String> kind;
   /// The properties of the tag inheritance setting.
-  final pulumi.Input<TagInheritanceProperties>? properties;
+  final pulumi.Input<TagInheritanceProperties?>? properties;
   /// The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   final pulumi.Input<String> scope;
   /// Setting type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [TagInheritanceSettingArgs].
   /// [kind] Specifies the kind of settings.

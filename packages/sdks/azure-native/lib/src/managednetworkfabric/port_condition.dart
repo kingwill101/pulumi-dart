@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Port condition that needs to be matched.
 class PortCondition {
   /// Layer4 protocol type that needs to be matched.
-  final pulumi.Input<String> layer4Protocol;
+  final pulumi.Input<dynamic> layer4Protocol;
   /// List of the port Group Names that need to be matched.
-  final pulumi.Input<List<String>>? portGroupNames;
+  final pulumi.Input<List<String>?>? portGroupNames;
   /// Port type that needs to be matched.
-  final pulumi.Input<String>? portType;
+  final pulumi.Input<dynamic>? portType;
   /// List of the Ports that need to be matched.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [PortCondition].
   /// [layer4Protocol] Layer4 protocol type that needs to be matched.
@@ -36,9 +36,9 @@ class PortCondition {
 
   factory PortCondition.fromMap(Map<String, dynamic> map) {
     return PortCondition(
-      layer4Protocol: pulumi.Input.fromValue(map['layer4Protocol'] as String),
+      layer4Protocol: pulumi.Input.fromValue(map['layer4Protocol']),
       portGroupNames: (() { final guardedValue = map['portGroupNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      portType: (() { final guardedValue = map['portType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      portType: (() { final guardedValue = map['portType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ports: (() { final guardedValue = map['ports']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

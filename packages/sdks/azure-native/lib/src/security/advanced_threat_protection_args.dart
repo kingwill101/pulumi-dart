@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_security_advanced_threat_protection_args_doc}
 class AdvancedThreatProtectionArgs {
   /// Indicates whether Advanced Threat Protection is enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// Advanced Threat Protection setting name.
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<String?>? settingName;
 
   /// Creates a new [AdvancedThreatProtectionArgs].
   /// [isEnabled] Indicates whether Advanced Threat Protection is enabled.

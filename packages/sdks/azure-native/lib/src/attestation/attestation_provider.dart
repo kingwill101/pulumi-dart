@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'attestation_provider_args.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// Attestation service response message.
@@ -221,7 +222,7 @@ class AttestationProvider extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of private endpoint connections associated with the attestation provider.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
   late final pulumi.Output<String?> publicNetworkAccess;
   /// Status of attestation service.
@@ -255,11 +256,34 @@ class AttestationProvider extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tpmAttestationAuthentication = registerOutput<String?>('tpmAttestationAuthentication');
+    trustModel = registerOutput<String?>('trustModel');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AttestationProvider] resource.
+  AttestationProvider.reference(String urn)
+    : super(
+        'azure-native:attestation:AttestationProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attestUri = registerOutput<String?>('attestUri');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tpmAttestationAuthentication = registerOutput<String?>('tpmAttestationAuthentication');
     trustModel = registerOutput<String?>('trustModel');
     type = registerOutput<String>('type');

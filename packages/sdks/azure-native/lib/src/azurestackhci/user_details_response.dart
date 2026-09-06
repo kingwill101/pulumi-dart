@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User configuration.
 class UserDetailsResponse {
   /// Location of the secret used for authentication.
-  final pulumi.Input<String>? secretLocation;
+  final pulumi.Input<String?>? secretLocation;
   /// Type of the secret used for authentication.
   final pulumi.Input<String> secretType;
   /// SSH Public Key for the user.
-  final pulumi.Input<List<String>>? sshPubKey;
+  final pulumi.Input<List<String>?>? sshPubKey;
   /// Name of the user.
   final pulumi.Input<String> userName;
 

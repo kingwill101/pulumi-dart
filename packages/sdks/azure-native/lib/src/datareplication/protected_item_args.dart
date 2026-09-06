@@ -11,7 +11,7 @@ class ProtectedItemArgs {
   /// Protected item model properties.
   final pulumi.Input<ProtectedItemModelProperties> properties;
   /// The protected item name.
-  final pulumi.Input<String>? protectedItemName;
+  final pulumi.Input<String?>? protectedItemName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The vault name.

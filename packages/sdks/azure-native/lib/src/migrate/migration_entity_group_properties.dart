@@ -9,11 +9,11 @@ class MigrationEntityGroupProperties {
   /// Application id
   final pulumi.Input<String> applicationId;
   /// Associated Assessment Id
-  final pulumi.Input<String>? associatedAssessmentId;
+  final pulumi.Input<String?>? associatedAssessmentId;
   /// associated Wave Id
-  final pulumi.Input<List<String>>? associatedWaveIds;
+  final pulumi.Input<List<String>?>? associatedWaveIds;
   /// Migration path
-  final pulumi.Input<String>? migrationPath;
+  final pulumi.Input<String?>? migrationPath;
 
   /// Creates a new [MigrationEntityGroupProperties].
   /// [applicationDisplayName] Display Name of the Workload.

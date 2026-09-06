@@ -6,7 +6,7 @@ import 'configuration_service_git_repository.dart';
 /// Property of git environment.
 class ConfigurationServiceGitProperty {
   /// Repositories of Application Configuration Service git property.
-  final pulumi.Input<List<ConfigurationServiceGitRepository>>? repositories;
+  final pulumi.Input<List<ConfigurationServiceGitRepository>?>? repositories;
 
   /// Creates a new [ConfigurationServiceGitProperty].
   /// [repositories] Repositories of Application Configuration Service git property.

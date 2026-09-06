@@ -11,7 +11,7 @@ class DatabaseAccountCassandraKeyspaceArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// Cosmos DB keyspace name.
-  final pulumi.Input<String>? keyspaceName;
+  final pulumi.Input<String?>? keyspaceName;
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   final pulumi.Input<Map<String, String>> options;
   /// The standard JSON format of a Cassandra keyspace

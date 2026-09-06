@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The storage location for a packet capture session.
 class PacketCaptureStorageLocation {
   /// This path is invalid if 'Continuous Capture' is provided with 'true' or 'false'. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// This path is valid if 'Continuous Capture' is provided with 'true' or 'false' and required if no storage ID is provided, otherwise optional. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures.
-  final pulumi.Input<String>? localPath;
+  final pulumi.Input<String?>? localPath;
   /// The ID of the storage account to save the packet capture session. Required if no localPath or filePath is provided.
-  final pulumi.Input<String>? storageId;
+  final pulumi.Input<String?>? storageId;
   /// The URI of the storage path to save the packet capture. Must be a well-formed URI describing the location to save the packet capture.
-  final pulumi.Input<String>? storagePath;
+  final pulumi.Input<String?>? storagePath;
 
   /// Creates a new [PacketCaptureStorageLocation].
   /// [filePath] This path is invalid if 'Continuous Capture' is provided with 'true' or 'false'. A valid local path on the targeting VM. Must include the name of the capture file (*.cap). For linux virtual machine it must start with /var/captures. Required if no storage ID is provided, otherwise optional.

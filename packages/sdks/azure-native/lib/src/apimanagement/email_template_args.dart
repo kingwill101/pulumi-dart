@@ -9,21 +9,21 @@ import 'email_template_parameters_contract_properties.dart';
 /// {@macro pulumi_apimanagement_email_template_args_doc}
 class EmailTemplateArgs {
   /// Email Template Body. This should be a valid XDocument
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Description of the Email Template.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Email Template Parameter values.
-  final pulumi.Input<List<EmailTemplateParametersContractProperties>>? parameters;
+  final pulumi.Input<List<EmailTemplateParametersContractProperties>?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Subject of the Template.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
   /// Email Template Name Identifier.
-  final pulumi.Input<String>? templateName;
+  final pulumi.Input<String?>? templateName;
   /// Title of the Template.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [EmailTemplateArgs].
   /// [body] Email Template Body. This should be a valid XDocument

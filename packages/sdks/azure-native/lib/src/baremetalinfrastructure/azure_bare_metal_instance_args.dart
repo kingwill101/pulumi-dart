@@ -12,31 +12,31 @@ import 'storage_profile.dart';
 /// {@macro pulumi_baremetalinfrastructure_azure_bare_metal_instance_args_doc}
 class AzureBareMetalInstanceArgs {
   /// Specifies the Azure Bare Metal Instance unique ID.
-  final pulumi.Input<String>? azureBareMetalInstanceId;
+  final pulumi.Input<String?>? azureBareMetalInstanceId;
   /// Name of the Azure Bare Metal Instance, also known as the ResourceName.
-  final pulumi.Input<String>? azureBareMetalInstanceName;
+  final pulumi.Input<String?>? azureBareMetalInstanceName;
   /// Specifies the hardware settings for the Azure Bare Metal Instance.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// Hardware revision of an Azure Bare Metal Instance
-  final pulumi.Input<String>? hwRevision;
+  final pulumi.Input<String?>? hwRevision;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the network settings for the Azure Bare Metal Instance.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// Specifies the operating system settings for the Azure Bare Metal Instance.
-  final pulumi.Input<OSProfile>? osProfile;
+  final pulumi.Input<OSProfile?>? osProfile;
   /// ARM ID of another AzureBareMetalInstance that will share a network with this AzureBareMetalInstance
-  final pulumi.Input<String>? partnerNodeId;
+  final pulumi.Input<String?>? partnerNodeId;
   /// Resource power state
-  final pulumi.Input<String>? powerState;
+  final pulumi.Input<dynamic>? powerState;
   /// Resource proximity placement group
-  final pulumi.Input<String>? proximityPlacementGroup;
+  final pulumi.Input<String?>? proximityPlacementGroup;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the storage settings for the Azure Bare Metal Instance disks.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureBareMetalInstanceArgs].
   /// [azureBareMetalInstanceId] Specifies the Azure Bare Metal Instance unique ID.
@@ -96,7 +96,7 @@ class AzureBareMetalInstanceArgs {
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       partnerNodeId: (() { final guardedValue = map['partnerNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      powerState: (() { final guardedValue = map['powerState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      powerState: (() { final guardedValue = map['powerState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -10,13 +10,13 @@ class DataflowEndpointFabricOneLake {
   /// Authentication configuration. NOTE - only one authentication property is allowed per entry.
   final pulumi.Input<DataflowEndpointFabricOneLakeAuthentication> authentication;
   /// Batching configuration.
-  final pulumi.Input<BatchingConfiguration>? batching;
+  final pulumi.Input<BatchingConfiguration?>? batching;
   /// Host of the Microsoft Fabric in the form of https://&lt;host&gt;.fabric.microsoft.com.
   final pulumi.Input<String> host;
   /// Names of the workspace and lakehouse.
   final pulumi.Input<DataflowEndpointFabricOneLakeNames> names;
   /// Type of location of the data in the workspace. Can be either tables or files.
-  final pulumi.Input<String> oneLakePathType;
+  final pulumi.Input<dynamic> oneLakePathType;
 
   /// Creates a new [DataflowEndpointFabricOneLake].
   /// [authentication] Authentication configuration. NOTE - only one authentication property is allowed per entry.
@@ -48,7 +48,7 @@ class DataflowEndpointFabricOneLake {
       batching: (() { final guardedValue = map['batching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BatchingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       host: pulumi.Input.fromValue(map['host'] as String),
       names: pulumi.Input.fromValue(DataflowEndpointFabricOneLakeNames.fromMap((map['names']! as Map).cast<String, dynamic>())),
-      oneLakePathType: pulumi.Input.fromValue(map['oneLakePathType'] as String),
+      oneLakePathType: pulumi.Input.fromValue(map['oneLakePathType']),
     );
   }
 }

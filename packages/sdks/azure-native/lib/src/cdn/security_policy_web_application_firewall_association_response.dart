@@ -6,9 +6,9 @@ import 'activated_resource_reference_response.dart';
 /// settings for security policy patterns to match
 class SecurityPolicyWebApplicationFirewallAssociationResponse {
   /// List of domains.
-  final pulumi.Input<List<ActivatedResourceReferenceResponse>>? domains;
+  final pulumi.Input<List<ActivatedResourceReferenceResponse>?>? domains;
   /// List of paths
-  final pulumi.Input<List<String>>? patternsToMatch;
+  final pulumi.Input<List<String>?>? patternsToMatch;
 
   /// Creates a new [SecurityPolicyWebApplicationFirewallAssociationResponse].
   /// [domains] List of domains.

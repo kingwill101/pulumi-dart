@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ServiceAssociationLink resource.
 class ServiceAssociationLinkResponse {
   /// If true, the resource can be deleted.
-  final pulumi.Input<bool>? allowDelete;
+  final pulumi.Input<bool?>? allowDelete;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Link to the external resource.
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Resource type of the linked resource.
-  final pulumi.Input<String>? linkedResourceType;
+  final pulumi.Input<String?>? linkedResourceType;
   /// A list of locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the service association link resource.
   final pulumi.Input<String> provisioningState;
   /// Resource type.

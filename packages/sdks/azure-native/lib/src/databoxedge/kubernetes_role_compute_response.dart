@@ -31,8 +31,8 @@ class KubernetesRoleComputeResponse {
 
   factory KubernetesRoleComputeResponse.fromMap(Map<String, dynamic> map) {
     return KubernetesRoleComputeResponse(
-      memoryInBytes: pulumi.Input.fromValue(map['memoryInBytes'] as double),
-      processorCount: pulumi.Input.fromValue(map['processorCount'] as int),
+      memoryInBytes: pulumi.Input.fromValue((map['memoryInBytes'] as num).toDouble()),
+      processorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['processorCount'])),
       vmProfile: pulumi.Input.fromValue(map['vmProfile'] as String),
     );
   }

@@ -10,9 +10,9 @@ class SchemaMap {
   /// Record Map.
   final pulumi.Input<List<RecordMap>> recordMap;
   /// Resource Map captures information about the entity for which telemetry is recorded. For example, metrics exposed by a Kubernetes container can be linked to a resource that specifies the cluster, namespace, pod, and container name.Resource may capture an entire hierarchy of entity identification. It may describe the host in the cloud and specific container or an application running in the process.
-  final pulumi.Input<List<ResourceMap>>? resourceMap;
+  final pulumi.Input<List<ResourceMap>?>? resourceMap;
   /// A scope map is a logical unit of the application code with which the emitted telemetry can be associated.
-  final pulumi.Input<List<ScopeMap>>? scopeMap;
+  final pulumi.Input<List<ScopeMap>?>? scopeMap;
 
   /// Creates a new [SchemaMap].
   /// [recordMap] Record Map.

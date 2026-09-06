@@ -179,4 +179,26 @@ class Partner extends pulumi.CustomResource {
     updatedTime = registerOutput<String?>('updatedTime');
     version = registerOutput<int?>('version');
   }
+
+  /// Creates a typed reference to an existing [Partner] resource.
+  Partner.reference(String urn)
+    : super(
+        'azure-native:managementpartner:Partner',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String?>('createdTime');
+    etag = registerOutput<int?>('etag');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String?>('objectId');
+    partnerId = registerOutput<String?>('partnerId');
+    partnerName = registerOutput<String?>('partnerName');
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+    updatedTime = registerOutput<String?>('updatedTime');
+    version = registerOutput<int?>('version');
+  }
 }

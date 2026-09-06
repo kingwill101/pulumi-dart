@@ -10,7 +10,7 @@ class MongoDbV2SourceResponse {
   /// Specifies the number of documents to return in each batch of the response from MongoDB instance. In most cases, modifying the batch size will not affect the user or the application. This property's main purpose is to avoid hit the limitation of response size. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? batchSize;
   /// Cursor methods for Mongodb query
-  final pulumi.Input<MongoDbCursorMethodsPropertiesResponse>? cursorMethods;
+  final pulumi.Input<MongoDbCursorMethodsPropertiesResponse?>? cursorMethods;
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies selection filter using query operators. To return all documents in a collection, omit this parameter or pass an empty document ({}). Type: string (or Expression with resultType string).

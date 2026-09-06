@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devcenter_attached_network_by_dev_center_args_doc}
 class AttachedNetworkByDevCenterArgs {
   /// The name of the attached NetworkConnection.
-  final pulumi.Input<String>? attachedNetworkConnectionName;
+  final pulumi.Input<String?>? attachedNetworkConnectionName;
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// The resource ID of the NetworkConnection you want to attach.

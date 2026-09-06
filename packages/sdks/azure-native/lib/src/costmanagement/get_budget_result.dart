@@ -16,15 +16,15 @@ class GetBudgetResult {
   /// Required for CategoryType(s): Cost.
   final double? amount;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The category of the budget.
   /// - 'Cost' defines a Budget.
   /// - 'ReservationUtilization' defines a Reservation Utilization Alert Rule.
-  final String category;
+  final String? category;
   /// The current amount of cost which is being tracked for a budget.
   ///
   /// Supported for CategoryType(s): Cost.
-  final CurrentSpendResponse currentSpend;
+  final CurrentSpendResponse? currentSpend;
   /// eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not.
   final String? eTag;
   /// May be used to filter budgets by user-specified dimensions and/or tags.
@@ -34,11 +34,11 @@ class GetBudgetResult {
   /// The forecasted cost which is being tracked for a budget.
   ///
   /// Supported for CategoryType(s): Cost.
-  final ForecastSpendResponse forecastSpend;
+  final ForecastSpendResponse? forecastSpend;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Dictionary of notifications associated with the budget.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -66,15 +66,15 @@ class GetBudgetResult {
   /// - Last30Days
   ///
   /// Required for CategoryType(s): Cost, ReservationUtilization.
-  final String timeGrain;
+  final String? timeGrain;
   /// The time period that defines the active period of the budget. The budget will evaluate data on or after the startDate and will expire on the endDate.
   ///
   /// Supported for CategoryType(s): Cost, ReservationUtilization.
   ///
   /// Required for CategoryType(s): Cost, ReservationUtilization.
-  final BudgetTimePeriodResponse timePeriod;
+  final BudgetTimePeriodResponse? timePeriod;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBudgetResult].
   /// [amount] The total amount of cost to track with the budget.
@@ -92,53 +92,53 @@ class GetBudgetResult {
   /// [type] Resource type.
   const GetBudgetResult({
     this.amount,
-    required this.azureApiVersion,
-    required this.category,
-    required this.currentSpend,
+    this.azureApiVersion,
+    this.category,
+    this.currentSpend,
     this.eTag,
     this.filter,
-    required this.forecastSpend,
-    required this.id,
-    required this.name,
+    this.forecastSpend,
+    this.id,
+    this.name,
     this.notifications,
-    required this.timeGrain,
-    required this.timePeriod,
-    required this.type,
+    this.timeGrain,
+    this.timePeriod,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'amount': ?amount,
-      'azureApiVersion': azureApiVersion,
-      'category': category,
-      'currentSpend': currentSpend.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'category': ?category,
+      'currentSpend': ?currentSpend?.toMap(),
       'eTag': ?eTag,
       'filter': ?filter?.toMap(),
-      'forecastSpend': forecastSpend.toMap(),
-      'id': id,
-      'name': name,
+      'forecastSpend': ?forecastSpend?.toMap(),
+      'id': ?id,
+      'name': ?name,
       'notifications': ?(() { final guardedValue = notifications; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<NotificationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'timeGrain': timeGrain,
-      'timePeriod': timePeriod.toMap(),
-      'type': type,
+      'timeGrain': ?timeGrain,
+      'timePeriod': ?timePeriod?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetBudgetResult.fromMap(Map<String, dynamic> map) {
     return GetBudgetResult(
-      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      category: map['category'] as String,
-      currentSpend: CurrentSpendResponse.fromMap((map['currentSpend']! as Map).cast<String, dynamic>()),
+      amount: (() { final guardedValue = map['amount']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      currentSpend: (() { final guardedValue = map['currentSpend']; if (guardedValue == null) return null; return CurrentSpendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return BudgetFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      forecastSpend: ForecastSpendResponse.fromMap((map['forecastSpend']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      forecastSpend: (() { final guardedValue = map['forecastSpend']; if (guardedValue == null) return null; return ForecastSpendResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<NotificationResponse>(guardedValue, (value) => NotificationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      timeGrain: map['timeGrain'] as String,
-      timePeriod: BudgetTimePeriodResponse.fromMap((map['timePeriod']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      timeGrain: (() { final guardedValue = map['timeGrain']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timePeriod: (() { final guardedValue = map['timePeriod']; if (guardedValue == null) return null; return BudgetTimePeriodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

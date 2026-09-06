@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum InstanceMetadataOptionsState {
+enum InstanceMetadataOptionsState implements pulumi.PulumiEnum<String> {
   applied("applied"),
   pending("pending");
 
   const InstanceMetadataOptionsState(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceMetadataOptionsState fromValue(String value) {

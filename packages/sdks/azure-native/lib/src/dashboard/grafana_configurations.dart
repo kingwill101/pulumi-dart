@@ -9,14 +9,14 @@ import 'users.dart';
 /// Server configurations of a Grafana instance
 class GrafanaConfigurations {
   /// Grafana security settings
-  final pulumi.Input<Security>? security;
+  final pulumi.Input<Security?>? security;
   /// Email server settings.
   /// https://grafana.com/docs/grafana/v9.0/setup-grafana/configure-grafana/#smtp
-  final pulumi.Input<Smtp>? smtp;
+  final pulumi.Input<Smtp?>? smtp;
   /// Grafana Snapshots settings
-  final pulumi.Input<Snapshots>? snapshots;
+  final pulumi.Input<Snapshots?>? snapshots;
   /// Grafana users settings
-  final pulumi.Input<Users>? users;
+  final pulumi.Input<Users?>? users;
 
   /// Creates a new [GrafanaConfigurations].
   /// [security] Grafana security settings

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the Sku.
-enum ApiGatewaySkuType {
+enum ApiGatewaySkuType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueWorkspaceGatewayStandard("WorkspaceGatewayStandard"),
   valueWorkspaceGatewayPremium("WorkspaceGatewayPremium");
 
   const ApiGatewaySkuType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApiGatewaySkuType fromValue(String value) {

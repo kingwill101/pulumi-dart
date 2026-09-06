@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
-enum FirewallPolicyIntrusionDetectionProfileType {
+enum FirewallPolicyIntrusionDetectionProfileType implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueStandard("Standard"),
   valueAdvanced("Advanced"),
   valueExtended("Extended");
 
   const FirewallPolicyIntrusionDetectionProfileType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyIntrusionDetectionProfileType fromValue(String value) {

@@ -10,15 +10,15 @@ import 'database_backup_setting.dart';
 /// {@macro pulumi_web_web_app_backup_configuration_args_doc}
 class WebAppBackupConfigurationArgs {
   /// Name of the backup.
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
   /// Schedule for the backup if it is executed periodically.
-  final pulumi.Input<BackupSchedule>? backupSchedule;
+  final pulumi.Input<BackupSchedule?>? backupSchedule;
   /// Databases included in the backup.
-  final pulumi.Input<List<DatabaseBackupSetting>>? databases;
+  final pulumi.Input<List<DatabaseBackupSetting>?>? databases;
   /// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

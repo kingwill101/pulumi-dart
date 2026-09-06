@@ -7,9 +7,9 @@ import 'permission_enum_value_response.dart';
 /// Definition of Grant
 class GrantResponse {
   /// &lt;p&gt;The person being granted permissions.&lt;/p&gt;
-  final pulumi.Input<GranteeResponse>? grantee;
+  final pulumi.Input<GranteeResponse?>? grantee;
   /// &lt;p&gt;Specifies the permission given to the grantee.&lt;/p&gt;
-  final pulumi.Input<PermissionEnumValueResponse>? permission;
+  final pulumi.Input<PermissionEnumValueResponse?>? permission;
 
   /// Creates a new [GrantResponse].
   /// [grantee] &lt;p&gt;The person being granted permissions.&lt;/p&gt;

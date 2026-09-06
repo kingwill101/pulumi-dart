@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AddressSpace contains an array of IP address ranges that can be used by subnets of the virtual network.
 class AddressSpace {
   /// A list of address blocks reserved for this virtual network in CIDR notation.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
 
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.

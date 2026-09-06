@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AttachmentStatusEnumValue
 class AttachmentStatusEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AttachmentStatusEnumValueResponse].
   /// [value] Property value

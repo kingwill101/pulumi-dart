@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// secrets used for solution builder extension (SBE) partner extensibility.
 class SbeCredentials {
   /// secret name expected for Enterprise Cloud Engine (ECE).
-  final pulumi.Input<String>? eceSecretName;
+  final pulumi.Input<String?>? eceSecretName;
   /// secret URI stored in keyvault.
-  final pulumi.Input<String>? secretLocation;
+  final pulumi.Input<String?>? secretLocation;
   /// secret name stored in keyvault.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [SbeCredentials].
   /// [eceSecretName] secret name expected for Enterprise Cloud Engine (ECE).

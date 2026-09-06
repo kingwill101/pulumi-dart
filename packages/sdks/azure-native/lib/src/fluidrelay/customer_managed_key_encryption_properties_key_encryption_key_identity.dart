@@ -6,9 +6,9 @@ import 'cmk_identity_type.dart';
 /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
 class CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity {
   /// Values can be SystemAssigned or UserAssigned
-  final pulumi.Input<CmkIdentityType>? identityType;
+  final pulumi.Input<CmkIdentityType?>? identityType;
   /// user assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [CustomerManagedKeyEncryptionPropertiesKeyEncryptionKeyIdentity].
   /// [identityType] Values can be SystemAssigned or UserAssigned

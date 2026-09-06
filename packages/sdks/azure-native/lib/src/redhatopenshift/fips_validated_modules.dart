@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// If FIPS validated crypto modules are used
-enum FipsValidatedModules {
+enum FipsValidatedModules implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const FipsValidatedModules(this.wireValue);
+  @override
   final String wireValue;
 
   static FipsValidatedModules fromValue(String value) {

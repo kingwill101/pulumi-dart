@@ -6,9 +6,9 @@ import 'hub_public_ipaddresses_response.dart';
 /// IP addresses associated with azure firewall.
 class HubIPAddressesResponse {
   /// Private IP Address associated with azure firewall.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Public IP addresses associated with azure firewall.
-  final pulumi.Input<HubPublicIPAddressesResponse>? publicIPs;
+  final pulumi.Input<HubPublicIPAddressesResponse?>? publicIPs;
 
   /// Creates a new [HubIPAddressesResponse].
   /// [privateIPAddress] Private IP Address associated with azure firewall.

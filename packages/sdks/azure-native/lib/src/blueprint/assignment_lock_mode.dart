@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Lock mode.
-enum AssignmentLockMode {
+enum AssignmentLockMode implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueAllResourcesReadOnly("AllResourcesReadOnly"),
   valueAllResourcesDoNotDelete("AllResourcesDoNotDelete");
 
   const AssignmentLockMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AssignmentLockMode fromValue(String value) {

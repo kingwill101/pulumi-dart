@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Authentication configuration of a cluster.
 class ServerGroupClusterAuthConfigResponse {
-  final pulumi.Input<String>? activeDirectoryAuth;
-  final pulumi.Input<String>? passwordAuth;
+  final pulumi.Input<String?>? activeDirectoryAuth;
+  final pulumi.Input<String?>? passwordAuth;
 
   /// Creates a new [ServerGroupClusterAuthConfigResponse].
   /// [activeDirectoryAuth] Optional.

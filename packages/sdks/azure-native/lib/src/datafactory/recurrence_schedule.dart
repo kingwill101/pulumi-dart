@@ -7,15 +7,15 @@ import 'recurrence_schedule_occurrence.dart';
 /// The recurrence schedule.
 class RecurrenceSchedule {
   /// The hours.
-  final pulumi.Input<List<int>>? hours;
+  final pulumi.Input<List<int>?>? hours;
   /// The minutes.
-  final pulumi.Input<List<int>>? minutes;
+  final pulumi.Input<List<int>?>? minutes;
   /// The month days.
-  final pulumi.Input<List<int>>? monthDays;
+  final pulumi.Input<List<int>?>? monthDays;
   /// The monthly occurrences.
-  final pulumi.Input<List<RecurrenceScheduleOccurrence>>? monthlyOccurrences;
+  final pulumi.Input<List<RecurrenceScheduleOccurrence>?>? monthlyOccurrences;
   /// The days of the week.
-  final pulumi.Input<List<DaysOfWeek>>? weekDays;
+  final pulumi.Input<List<DaysOfWeek>?>? weekDays;
 
   /// Creates a new [RecurrenceSchedule].
   /// [hours] The hours.

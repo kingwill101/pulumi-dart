@@ -21,36 +21,36 @@ class GetNotificationHubResult {
   /// Description of a NotificationHub ApnsCredential.
   final ApnsCredentialResponse? apnsCredential;
   /// Gets or sets the AuthorizationRules of the created NotificationHub
-  final List<SharedAccessAuthorizationRulePropertiesResponse> authorizationRules;
+  final List<SharedAccessAuthorizationRulePropertiesResponse>? authorizationRules;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description of a NotificationHub BaiduCredential.
   final BaiduCredentialResponse? baiduCredential;
   /// Description of a NotificationHub BrowserCredential.
   final BrowserCredentialResponse? browserCredential;
-  final double dailyMaxActiveDevices;
+  final double? dailyMaxActiveDevices;
   /// Description of a NotificationHub FcmV1Credential.
   final FcmV1CredentialResponse? fcmV1Credential;
   /// Description of a NotificationHub GcmCredential.
   final GcmCredentialResponse? gcmCredential;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Description of a NotificationHub MpnsCredential.
   final MpnsCredentialResponse? mpnsCredential;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Gets or sets the RegistrationTtl of the created NotificationHub
   final String? registrationTtl;
   /// The Sku description for a namespace
   final SkuResponse? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Description of a NotificationHub WnsCredential.
   final WnsCredentialResponse? wnsCredential;
   /// Description of a NotificationHub XiaomiCredential.
@@ -63,7 +63,7 @@ class GetNotificationHubResult {
   /// [azureApiVersion] The Azure API version of the resource.
   /// [baiduCredential] Description of a NotificationHub BaiduCredential.
   /// [browserCredential] Description of a NotificationHub BrowserCredential.
-  /// [dailyMaxActiveDevices] Required.
+  /// [dailyMaxActiveDevices] Optional.
   /// [fcmV1Credential] Description of a NotificationHub FcmV1Credential.
   /// [gcmCredential] Description of a NotificationHub GcmCredential.
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
@@ -80,22 +80,22 @@ class GetNotificationHubResult {
   const GetNotificationHubResult({
     this.admCredential,
     this.apnsCredential,
-    required this.authorizationRules,
-    required this.azureApiVersion,
+    this.authorizationRules,
+    this.azureApiVersion,
     this.baiduCredential,
     this.browserCredential,
-    required this.dailyMaxActiveDevices,
+    this.dailyMaxActiveDevices,
     this.fcmV1Credential,
     this.gcmCredential,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.mpnsCredential,
-    required this.name,
+    this.name,
     this.registrationTtl,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.wnsCredential,
     this.xiaomiCredential,
   });
@@ -104,22 +104,22 @@ class GetNotificationHubResult {
     return <String, dynamic>{
       'admCredential': ?admCredential?.toMap(),
       'apnsCredential': ?apnsCredential?.toMap(),
-      'authorizationRules': pulumi.Input.encodeList<SharedAccessAuthorizationRulePropertiesResponse, Map<String, dynamic>>(authorizationRules, (value) => value.toMap()),
-      'azureApiVersion': azureApiVersion,
+      'authorizationRules': ?(() { final guardedValue = authorizationRules; if (guardedValue == null) return null; return pulumi.Input.encodeList<SharedAccessAuthorizationRulePropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'azureApiVersion': ?azureApiVersion,
       'baiduCredential': ?baiduCredential?.toMap(),
       'browserCredential': ?browserCredential?.toMap(),
-      'dailyMaxActiveDevices': dailyMaxActiveDevices,
+      'dailyMaxActiveDevices': ?dailyMaxActiveDevices,
       'fcmV1Credential': ?fcmV1Credential?.toMap(),
       'gcmCredential': ?gcmCredential?.toMap(),
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'mpnsCredential': ?mpnsCredential?.toMap(),
-      'name': name,
+      'name': ?name,
       'registrationTtl': ?registrationTtl,
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'wnsCredential': ?wnsCredential?.toMap(),
       'xiaomiCredential': ?xiaomiCredential?.toMap(),
     };
@@ -129,22 +129,22 @@ class GetNotificationHubResult {
     return GetNotificationHubResult(
       admCredential: (() { final guardedValue = map['admCredential']; if (guardedValue == null) return null; return AdmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       apnsCredential: (() { final guardedValue = map['apnsCredential']; if (guardedValue == null) return null; return ApnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      authorizationRules: pulumi.Input.decodeList<SharedAccessAuthorizationRulePropertiesResponse>(map['authorizationRules']!, (value) => SharedAccessAuthorizationRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureApiVersion: map['azureApiVersion'] as String,
+      authorizationRules: (() { final guardedValue = map['authorizationRules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedAccessAuthorizationRulePropertiesResponse>(guardedValue, (value) => SharedAccessAuthorizationRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       baiduCredential: (() { final guardedValue = map['baiduCredential']; if (guardedValue == null) return null; return BaiduCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       browserCredential: (() { final guardedValue = map['browserCredential']; if (guardedValue == null) return null; return BrowserCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      dailyMaxActiveDevices: map['dailyMaxActiveDevices'] as double,
+      dailyMaxActiveDevices: (() { final guardedValue = map['dailyMaxActiveDevices']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       fcmV1Credential: (() { final guardedValue = map['fcmV1Credential']; if (guardedValue == null) return null; return FcmV1CredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gcmCredential: (() { final guardedValue = map['gcmCredential']; if (guardedValue == null) return null; return GcmCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mpnsCredential: (() { final guardedValue = map['mpnsCredential']; if (guardedValue == null) return null; return MpnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       registrationTtl: (() { final guardedValue = map['registrationTtl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       wnsCredential: (() { final guardedValue = map['wnsCredential']; if (guardedValue == null) return null; return WnsCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       xiaomiCredential: (() { final guardedValue = map['xiaomiCredential']; if (guardedValue == null) return null; return XiaomiCredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );

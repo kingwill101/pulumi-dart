@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RecordingFrequencyEnumValue
 class RecordingFrequencyEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RecordingFrequencyEnumValueResponse].
   /// [value] Property value

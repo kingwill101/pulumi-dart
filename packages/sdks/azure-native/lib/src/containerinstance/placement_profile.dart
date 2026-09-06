@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Provides options w.r.t allocation and management w.r.t certain placement policies. These utilize capabilities provided by the underlying Azure infrastructure. They are typically used for high availability scenarios. E.g., distributing CGs across fault domains.
 class PlacementProfile {
   /// The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
-  final pulumi.Input<int>? faultDomainCount;
+  final pulumi.Input<int?>? faultDomainCount;
 
   /// Creates a new [PlacementProfile].
   /// [faultDomainCount] The number of fault domains to be used to spread CGs in the NGroups resource. This can only be specified during NGroup creation and is immutable after that.
@@ -21,7 +21,7 @@ class PlacementProfile {
 
   factory PlacementProfile.fromMap(Map<String, dynamic> map) {
     return PlacementProfile(
-      faultDomainCount: (() { final guardedValue = map['faultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      faultDomainCount: (() { final guardedValue = map['faultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

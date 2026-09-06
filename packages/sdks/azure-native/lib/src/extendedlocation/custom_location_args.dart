@@ -10,29 +10,29 @@ import 'identity.dart';
 /// {@macro pulumi_extendedlocation_custom_location_args_doc}
 class CustomLocationArgs {
   /// This is optional input that contains the authentication that should be used to generate the namespace.
-  final pulumi.Input<CustomLocationPropertiesAuthentication>? authentication;
+  final pulumi.Input<CustomLocationPropertiesAuthentication?>? authentication;
   /// Contains the reference to the add-on that contains charts to deploy CRDs and operators.
-  final pulumi.Input<List<String>>? clusterExtensionIds;
+  final pulumi.Input<List<String>?>? clusterExtensionIds;
   /// Display name for the Custom Locations location.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Connected Cluster or AKS Cluster. The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
-  final pulumi.Input<String>? hostResourceId;
+  final pulumi.Input<String?>? hostResourceId;
   /// Type of host the Custom Locations is referencing (Kubernetes, etc...).
-  final pulumi.Input<String>? hostType;
+  final pulumi.Input<dynamic>? hostType;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Kubernetes namespace that will be created on the specified cluster.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Provisioning State for the Custom Location.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Custom Locations name.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CustomLocationArgs].
   /// [authentication] This is optional input that contains the authentication that should be used to generate the namespace.
@@ -85,7 +85,7 @@ class CustomLocationArgs {
       clusterExtensionIds: (() { final guardedValue = map['clusterExtensionIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hostResourceId: (() { final guardedValue = map['hostResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

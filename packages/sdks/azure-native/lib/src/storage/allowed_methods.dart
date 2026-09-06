@@ -1,4 +1,6 @@
-enum AllowedMethods {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum AllowedMethods implements pulumi.PulumiEnum<String> {
   valueDELETE("DELETE"),
   valueGET("GET"),
   valueHEAD("HEAD"),
@@ -11,6 +13,7 @@ enum AllowedMethods {
   valueTRACE("TRACE");
 
   const AllowedMethods(this.wireValue);
+  @override
   final String wireValue;
 
   static AllowedMethods fromValue(String value) {

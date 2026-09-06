@@ -568,7 +568,7 @@ class FirewallPolicyRuleGroup extends pulumi.CustomResource {
   /// The provisioning state of the firewall policy rule group resource.
   late final pulumi.Output<String> provisioningState;
   /// Group of Firewall Policy rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<dynamic>?> rules;
   /// Rule Group type.
   late final pulumi.Output<String> type;
 
@@ -591,7 +591,25 @@ class FirewallPolicyRuleGroup extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     priority = registerOutput<int?>('priority');
     provisioningState = registerOutput<String>('provisioningState');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
+    rules = registerOutput<List<dynamic>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FirewallPolicyRuleGroup] resource.
+  FirewallPolicyRuleGroup.reference(String urn)
+    : super(
+        'azure-native:network:FirewallPolicyRuleGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    priority = registerOutput<int?>('priority');
+    provisioningState = registerOutput<String>('provisioningState');
+    rules = registerOutput<List<dynamic>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     type = registerOutput<String>('type');
   }
 }

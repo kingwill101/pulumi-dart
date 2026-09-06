@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Routing preference defines the type of network, either microsoft or internet routing to be used to deliver the user data, the default option is microsoft routing
 class RoutingPreferenceResponse {
   /// A boolean flag which indicates whether internet routing storage endpoints are to be published
-  final pulumi.Input<bool>? publishInternetEndpoints;
+  final pulumi.Input<bool?>? publishInternetEndpoints;
   /// A boolean flag which indicates whether microsoft routing storage endpoints are to be published
-  final pulumi.Input<bool>? publishMicrosoftEndpoints;
+  final pulumi.Input<bool?>? publishMicrosoftEndpoints;
   /// Routing Choice defines the kind of network routing opted by the user.
-  final pulumi.Input<String>? routingChoice;
+  final pulumi.Input<String?>? routingChoice;
 
   /// Creates a new [RoutingPreferenceResponse].
   /// [publishInternetEndpoints] A boolean flag which indicates whether internet routing storage endpoints are to be published

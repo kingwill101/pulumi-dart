@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The issue status
-enum Status {
+enum Status implements pulumi.PulumiEnum<String> {
   new_("New"),
   inProgress("InProgress"),
   mitigated("Mitigated"),
@@ -7,6 +9,7 @@ enum Status {
   canceled("Canceled");
 
   const Status(this.wireValue);
+  @override
   final String wireValue;
 
   static Status fromValue(String value) {

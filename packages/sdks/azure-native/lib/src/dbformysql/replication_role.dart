@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The replication role.
-enum ReplicationRole {
+enum ReplicationRole implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSource("Source"),
   valueReplica("Replica");
 
   const ReplicationRole(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationRole fromValue(String value) {

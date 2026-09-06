@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// List of applied scopes supported for discounts.
-enum DiscountAppliedScopeType {
+enum DiscountAppliedScopeType implements pulumi.PulumiEnum<String> {
   billingAccount("BillingAccount"),
   billingProfile("BillingProfile"),
   customer("Customer");
 
   const DiscountAppliedScopeType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscountAppliedScopeType fromValue(String value) {

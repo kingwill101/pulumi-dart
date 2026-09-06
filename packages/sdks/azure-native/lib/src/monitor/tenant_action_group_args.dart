@@ -13,27 +13,27 @@ import 'webhook_receiver.dart';
 /// {@macro pulumi_monitor_tenant_action_group_args_doc}
 class TenantActionGroupArgs {
   /// The list of AzureAppPush receivers that are part of this tenant action group.
-  final pulumi.Input<List<MicrosoftCommonAzureAppPushReceiver>>? azureAppPushReceivers;
+  final pulumi.Input<List<MicrosoftCommonAzureAppPushReceiver>?>? azureAppPushReceivers;
   /// The list of email receivers that are part of this tenant action group.
-  final pulumi.Input<List<MicrosoftCommonEmailReceiver>>? emailReceivers;
+  final pulumi.Input<List<MicrosoftCommonEmailReceiver>?>? emailReceivers;
   /// Indicates whether this tenant action group is enabled. If a tenant action group is not enabled, then none of its receivers will receive communications.
   final pulumi.Input<bool> enabled;
   /// The short name of the action group. This will be used in SMS messages.
   final pulumi.Input<String> groupShortName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The management group ID.
   final pulumi.Input<String> managementGroupId;
   /// The list of SMS receivers that are part of this tenant action group.
-  final pulumi.Input<List<MicrosoftCommonSmsReceiver>>? smsReceivers;
+  final pulumi.Input<List<MicrosoftCommonSmsReceiver>?>? smsReceivers;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the action group.
-  final pulumi.Input<String>? tenantActionGroupName;
+  final pulumi.Input<String?>? tenantActionGroupName;
   /// The list of voice receivers that are part of this tenant action group.
-  final pulumi.Input<List<MicrosoftCommonVoiceReceiver>>? voiceReceivers;
+  final pulumi.Input<List<MicrosoftCommonVoiceReceiver>?>? voiceReceivers;
   /// The list of webhook receivers that are part of this tenant action group.
-  final pulumi.Input<List<WebhookReceiver>>? webhookReceivers;
+  final pulumi.Input<List<WebhookReceiver>?>? webhookReceivers;
 
   /// Creates a new [TenantActionGroupArgs].
   /// [azureAppPushReceivers] The list of AzureAppPush receivers that are part of this tenant action group.
@@ -47,10 +47,10 @@ class TenantActionGroupArgs {
   /// [tenantActionGroupName] The name of the action group.
   /// [voiceReceivers] The list of voice receivers that are part of this tenant action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this tenant action group.
-  const TenantActionGroupArgs({
+  TenantActionGroupArgs({
     this.azureAppPushReceivers,
     this.emailReceivers,
-    required this.enabled,
+    pulumi.Input<bool>? enabled,
     required this.groupShortName,
     this.location,
     required this.managementGroupId,
@@ -59,7 +59,7 @@ class TenantActionGroupArgs {
     this.tenantActionGroupName,
     this.voiceReceivers,
     this.webhookReceivers,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

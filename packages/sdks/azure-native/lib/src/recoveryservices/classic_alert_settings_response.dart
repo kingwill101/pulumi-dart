@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Settings for classic alerts
 class ClassicAlertSettingsResponse {
-  final pulumi.Input<String>? alertsForCriticalOperations;
-  final pulumi.Input<String>? emailNotificationsForSiteRecovery;
+  final pulumi.Input<String?>? alertsForCriticalOperations;
+  final pulumi.Input<String?>? emailNotificationsForSiteRecovery;
 
   /// Creates a new [ClassicAlertSettingsResponse].
   /// [alertsForCriticalOperations] Optional.

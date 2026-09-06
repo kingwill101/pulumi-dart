@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data type of the compared operands (string, integer, floating point number or a boolean [true/false]]
-enum PropertyType {
+enum PropertyType implements pulumi.PulumiEnum<String> {
   string_("String"),
   integer("Integer"),
   number("Number"),
   boolean("Boolean");
 
   const PropertyType(this.wireValue);
+  @override
   final String wireValue;
 
   static PropertyType fromValue(String value) {

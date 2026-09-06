@@ -5,12 +5,12 @@ import 'datadog_host_metadata_response.dart';
 
 class DatadogHostResponse {
   /// The aliases for the host installed via the Datadog agent.
-  final pulumi.Input<List<String>>? aliases;
+  final pulumi.Input<List<String>?>? aliases;
   /// The Datadog integrations reporting metrics for the host.
-  final pulumi.Input<List<String>>? apps;
-  final pulumi.Input<DatadogHostMetadataResponse>? meta;
+  final pulumi.Input<List<String>?>? apps;
+  final pulumi.Input<DatadogHostMetadataResponse?>? meta;
   /// The name of the host.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatadogHostResponse].
   /// [aliases] The aliases for the host installed via the Datadog agent.

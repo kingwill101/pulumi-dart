@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Resource power state
-enum AzureBareMetalInstancePowerStateEnum {
+enum AzureBareMetalInstancePowerStateEnum implements pulumi.PulumiEnum<String> {
   valueStarting("starting"),
   valueStarted("started"),
   valueStopping("stopping"),
@@ -8,6 +10,7 @@ enum AzureBareMetalInstancePowerStateEnum {
   valueUnknown("unknown");
 
   const AzureBareMetalInstancePowerStateEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureBareMetalInstancePowerStateEnum fromValue(String value) {

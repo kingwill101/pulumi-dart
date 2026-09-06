@@ -8,27 +8,27 @@ class ActiveDirectoryConfigPropertiesResponse {
   /// Status of the Active Directory
   final pulumi.Input<String> activeDirectoryStatus;
   /// Users to be added to the Built-in Administrators active directory group. A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? administrators;
+  final pulumi.Input<List<String>?>? administrators;
   /// Users to be added to the Built-in Backup Operator active directory group. A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? backupOperators;
+  final pulumi.Input<List<String>?>? backupOperators;
   /// An array of DNS server IP addresses(IPv4 only) for the Active Directory
-  final pulumi.Input<List<String>>? dns;
+  final pulumi.Input<List<String>?>? dns;
   /// Name of the Active Directory domain
   final pulumi.Input<String> domain;
   /// The Organizational Unit (OU) within the Windows Active Directory
-  final pulumi.Input<String>? organizationalUnit;
+  final pulumi.Input<String?>? organizationalUnit;
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
   /// Access password from Azure KeyVault Secrets to connect Active Directory
   final pulumi.Input<SecretPasswordResponse> secretPassword;
   /// Domain Users in the Active directory to be given SecurityPrivilege privilege (Needed for SMB Continuously available shares for SQL). A list of unique usernames without domain specifier
-  final pulumi.Input<List<String>>? securityOperators;
+  final pulumi.Input<List<String>?>? securityOperators;
   /// The Active Directory site the service will limit Domain Controller discovery to
-  final pulumi.Input<String>? site;
+  final pulumi.Input<String?>? site;
   /// NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
-  final pulumi.Input<String>? smbServerName;
+  final pulumi.Input<String?>? smbServerName;
   /// A domain user account with permission to create machine accounts
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [ActiveDirectoryConfigPropertiesResponse].
   /// [activeDirectoryStatus] Status of the Active Directory

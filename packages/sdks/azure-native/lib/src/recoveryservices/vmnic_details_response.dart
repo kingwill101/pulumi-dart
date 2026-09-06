@@ -6,43 +6,43 @@ import 'ipconfig_details_response.dart';
 /// Hyper V VM network details.
 class VMNicDetailsResponse {
   /// A value indicating whether the NIC has accelerated networking enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworkingOnRecovery;
+  final pulumi.Input<bool?>? enableAcceleratedNetworkingOnRecovery;
   /// Whether the TFO NIC has accelerated networking enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworkingOnTfo;
+  final pulumi.Input<bool?>? enableAcceleratedNetworkingOnTfo;
   /// The IP configurations of the NIC.
-  final pulumi.Input<List<IPConfigDetailsResponse>>? ipConfigs;
+  final pulumi.Input<List<IPConfigDetailsResponse>?>? ipConfigs;
   /// The nic Id.
-  final pulumi.Input<String>? nicId;
+  final pulumi.Input<String?>? nicId;
   /// The id of the NSG associated with the NIC.
-  final pulumi.Input<String>? recoveryNetworkSecurityGroupId;
+  final pulumi.Input<String?>? recoveryNetworkSecurityGroupId;
   /// The name of the NIC to be used when creating target NICs.
-  final pulumi.Input<String>? recoveryNicName;
+  final pulumi.Input<String?>? recoveryNicName;
   /// The resource group of the NIC to be used when creating target NICs.
-  final pulumi.Input<String>? recoveryNicResourceGroupName;
+  final pulumi.Input<String?>? recoveryNicResourceGroupName;
   /// Recovery VM network Id.
-  final pulumi.Input<String>? recoveryVMNetworkId;
+  final pulumi.Input<String?>? recoveryVMNetworkId;
   /// The replica nic Id.
-  final pulumi.Input<String>? replicaNicId;
+  final pulumi.Input<String?>? replicaNicId;
   /// A value indicating whether an existing NIC is allowed to be reused during failover subject to availability.
-  final pulumi.Input<bool>? reuseExistingNic;
+  final pulumi.Input<bool?>? reuseExistingNic;
   /// Selection type for failover.
-  final pulumi.Input<String>? selectionType;
+  final pulumi.Input<String?>? selectionType;
   /// The source nic ARM Id.
-  final pulumi.Input<String>? sourceNicArmId;
+  final pulumi.Input<String?>? sourceNicArmId;
   /// Target NIC name.
-  final pulumi.Input<String>? targetNicName;
+  final pulumi.Input<String?>? targetNicName;
   /// The NSG to be used by NIC during test failover.
-  final pulumi.Input<String>? tfoNetworkSecurityGroupId;
+  final pulumi.Input<String?>? tfoNetworkSecurityGroupId;
   /// The name of the NIC to be used when creating target NICs in TFO.
-  final pulumi.Input<String>? tfoRecoveryNicName;
+  final pulumi.Input<String?>? tfoRecoveryNicName;
   /// The resource group of the NIC to be used when creating target NICs in TFO.
-  final pulumi.Input<String>? tfoRecoveryNicResourceGroupName;
+  final pulumi.Input<String?>? tfoRecoveryNicResourceGroupName;
   /// A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
-  final pulumi.Input<bool>? tfoReuseExistingNic;
+  final pulumi.Input<bool?>? tfoReuseExistingNic;
   /// The network to be used by NIC during test failover.
-  final pulumi.Input<String>? tfoVMNetworkId;
+  final pulumi.Input<String?>? tfoVMNetworkId;
   /// VM network name.
-  final pulumi.Input<String>? vMNetworkName;
+  final pulumi.Input<String?>? vMNetworkName;
 
   /// Creates a new [VMNicDetailsResponse].
   /// [enableAcceleratedNetworkingOnRecovery] A value indicating whether the NIC has accelerated networking enabled.
@@ -64,7 +64,7 @@ class VMNicDetailsResponse {
   /// [tfoReuseExistingNic] A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
   /// [tfoVMNetworkId] The network to be used by NIC during test failover.
   /// [vMNetworkName] VM network name.
-  const VMNicDetailsResponse({
+  VMNicDetailsResponse({
     this.enableAcceleratedNetworkingOnRecovery,
     this.enableAcceleratedNetworkingOnTfo,
     this.ipConfigs,
@@ -74,17 +74,17 @@ class VMNicDetailsResponse {
     this.recoveryNicResourceGroupName,
     this.recoveryVMNetworkId,
     this.replicaNicId,
-    this.reuseExistingNic,
+    pulumi.Input<bool?>? reuseExistingNic,
     this.selectionType,
     this.sourceNicArmId,
     this.targetNicName,
     this.tfoNetworkSecurityGroupId,
     this.tfoRecoveryNicName,
     this.tfoRecoveryNicResourceGroupName,
-    this.tfoReuseExistingNic,
+    pulumi.Input<bool?>? tfoReuseExistingNic,
     this.tfoVMNetworkId,
     this.vMNetworkName,
-  });
+  }) : reuseExistingNic = reuseExistingNic ?? pulumi.Input.fromValue(false), tfoReuseExistingNic = tfoReuseExistingNic ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

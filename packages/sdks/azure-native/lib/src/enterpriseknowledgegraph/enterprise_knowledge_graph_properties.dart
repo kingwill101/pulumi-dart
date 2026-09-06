@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the EnterpriseKnowledgeGraph.
 class EnterpriseKnowledgeGraphProperties {
   /// The description of the EnterpriseKnowledgeGraph
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the metadata  of the resource.
   final pulumi.Input<dynamic>? metadata;
   /// The state of EnterpriseKnowledgeGraph provisioning
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [EnterpriseKnowledgeGraphProperties].
   /// [description] The description of the EnterpriseKnowledgeGraph

@@ -18,9 +18,9 @@ import 'list_communication_service_keys_result.dart';
 
 /// Get the CommunicationService and its properties.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_communication_service_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetCommunicationServiceResult> getCommunicationService(
@@ -36,11 +36,22 @@ Future<GetCommunicationServiceResult> getCommunicationService(
   return GetCommunicationServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetCommunicationServiceResult> getCommunicationServiceOutput(
+  GetCommunicationServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getCommunicationService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCommunicationServiceResult.fromMap);
+}
+
 /// Get the Domains resource and its properties.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_domain_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetDomainResult> getDomain(
@@ -56,11 +67,22 @@ Future<GetDomainResult> getDomain(
   return GetDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}
+
 /// Get the EmailService and its properties.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_email_service_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetEmailServiceResult> getEmailService(
@@ -76,11 +98,22 @@ Future<GetEmailServiceResult> getEmailService(
   return GetEmailServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetEmailServiceResult> getEmailServiceOutput(
+  GetEmailServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getEmailService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailServiceResult.fromMap);
+}
+
 /// Get a valid sender username for a domains resource.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_sender_username_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSenderUsernameResult> getSenderUsername(
@@ -96,11 +129,22 @@ Future<GetSenderUsernameResult> getSenderUsername(
   return GetSenderUsernameResult.fromMap(result);
 }
 
+pulumi.Output<GetSenderUsernameResult> getSenderUsernameOutput(
+  GetSenderUsernameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getSenderUsername',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSenderUsernameResult.fromMap);
+}
+
 /// Get a SmtpUsernameResource.
 ///
-/// Uses Azure REST API version 2024-09-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_smtp_username_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSmtpUsernameResult> getSmtpUsername(
@@ -116,11 +160,22 @@ Future<GetSmtpUsernameResult> getSmtpUsername(
   return GetSmtpUsernameResult.fromMap(result);
 }
 
+pulumi.Output<GetSmtpUsernameResult> getSmtpUsernameOutput(
+  GetSmtpUsernameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getSmtpUsername',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSmtpUsernameResult.fromMap);
+}
+
 /// Get a SuppressionList resource.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_suppression_list_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSuppressionListResult> getSuppressionList(
@@ -136,11 +191,22 @@ Future<GetSuppressionListResult> getSuppressionList(
   return GetSuppressionListResult.fromMap(result);
 }
 
+pulumi.Output<GetSuppressionListResult> getSuppressionListOutput(
+  GetSuppressionListArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getSuppressionList',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSuppressionListResult.fromMap);
+}
+
 /// Get a SuppressionListAddress.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_get_suppression_list_address_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSuppressionListAddressResult> getSuppressionListAddress(
@@ -156,11 +222,22 @@ Future<GetSuppressionListAddressResult> getSuppressionListAddress(
   return GetSuppressionListAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetSuppressionListAddressResult> getSuppressionListAddressOutput(
+  GetSuppressionListAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:getSuppressionListAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSuppressionListAddressResult.fromMap);
+}
+
 /// Get the access keys of the CommunicationService resource.
 ///
-/// Uses Azure REST API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-03-31, 2023-04-01, 2023-04-01-preview, 2023-06-01-preview, 2024-09-01-preview, 2025-05-01, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_communication_list_communication_service_keys_args_doc}
 /// [options] Invoke options controlling this call.
 Future<ListCommunicationServiceKeysResult> listCommunicationServiceKeys(
@@ -174,4 +251,15 @@ Future<ListCommunicationServiceKeysResult> listCommunicationServiceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListCommunicationServiceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListCommunicationServiceKeysResult> listCommunicationServiceKeysOutput(
+  ListCommunicationServiceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:communication:listCommunicationServiceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCommunicationServiceKeysResult.fromMap);
 }

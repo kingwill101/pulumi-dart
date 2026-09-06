@@ -8,10 +8,10 @@ import 'product.dart';
 /// {@endtemplate}
 /// {@macro pulumi_marketplace_user_solution_args_doc}
 class UserSolutionArgs {
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<List<Product>>? products;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<List<Product>?>? products;
   /// The solution id
-  final pulumi.Input<String>? solutionId;
+  final pulumi.Input<String?>? solutionId;
 
   /// Creates a new [UserSolutionArgs].
   /// [displayName] Optional.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_role_management_policy_assignment_args_doc}
 class RoleManagementPolicyAssignmentArgs {
   /// The policy id role management policy assignment.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// The role definition of management policy assignment.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// The name of format {guid_guid} the role management policy assignment to get.
-  final pulumi.Input<String>? roleManagementPolicyAssignmentName;
+  final pulumi.Input<String?>? roleManagementPolicyAssignmentName;
   /// The role management policy scope.
   final pulumi.Input<String> scope;
 

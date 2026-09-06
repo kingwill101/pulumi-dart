@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationResponse {
   /// The notification type.
-  final pulumi.Input<String>? notificationType;
+  final pulumi.Input<String?>? notificationType;
   /// Whether notifications should be skipped.
-  final pulumi.Input<String>? skipNotifications;
+  final pulumi.Input<String?>? skipNotifications;
 
   /// Creates a new [NotificationResponse].
   /// [notificationType] The notification type.

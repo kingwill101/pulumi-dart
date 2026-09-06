@@ -6,31 +6,31 @@ import 'alert_query_parameter_response.dart';
 /// Describes the properties of an alert.
 class AlertRulePropertiesResponse {
   /// Action Group resource Ids to invoke when the alert fires
-  final pulumi.Input<List<String>>? actionGroups;
+  final pulumi.Input<List<String>?>? actionGroups;
   /// The alert query parameters.
-  final pulumi.Input<List<AlertQueryParameterResponse>>? alertQueryParameters;
+  final pulumi.Input<List<AlertQueryParameterResponse>?>? alertQueryParameters;
   /// The value that indicates whether the alert should be automatically resolved or not. The default is Disable.
-  final pulumi.Input<String>? autoMitigate;
+  final pulumi.Input<String?>? autoMitigate;
   /// Evaluation of metric on a particular column.
-  final pulumi.Input<String>? dimension;
+  final pulumi.Input<String?>? dimension;
   /// How often the scheduled query rule is evaluated.
-  final pulumi.Input<int>? evaluationFrequency;
+  final pulumi.Input<int?>? evaluationFrequency;
   /// The operator for failing periods.
-  final pulumi.Input<String>? failingPeriodsOperator;
+  final pulumi.Input<String?>? failingPeriodsOperator;
   /// The number of failing periods to trigger an alert.
-  final pulumi.Input<int>? failingPeriodsToAlert;
+  final pulumi.Input<int?>? failingPeriodsToAlert;
   /// Mute actions for the chosen period of time after the alert is fired.
-  final pulumi.Input<int>? muteActionsDuration;
+  final pulumi.Input<int?>? muteActionsDuration;
   /// Severity of the alert. Should be an integer between [0-4]. Value of 0 is severest.
-  final pulumi.Input<int>? severity;
+  final pulumi.Input<int?>? severity;
   /// Indicates whether the alert is in an enabled state.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The threshold of the alert.
-  final pulumi.Input<int>? threshold;
+  final pulumi.Input<int?>? threshold;
   /// The threshold operator of the alert.
-  final pulumi.Input<String>? thresholdOperator;
+  final pulumi.Input<String?>? thresholdOperator;
   /// The period of time on which the Alert query will be executed.
-  final pulumi.Input<int>? windowSize;
+  final pulumi.Input<int?>? windowSize;
 
   /// Creates a new [AlertRulePropertiesResponse].
   /// [actionGroups] Action Group resource Ids to invoke when the alert fires
@@ -86,15 +86,15 @@ class AlertRulePropertiesResponse {
       alertQueryParameters: (() { final guardedValue = map['alertQueryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AlertQueryParameterResponse>(guardedValue, (value) => AlertQueryParameterResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       autoMitigate: (() { final guardedValue = map['autoMitigate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dimension: (() { final guardedValue = map['dimension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      evaluationFrequency: (() { final guardedValue = map['evaluationFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       failingPeriodsOperator: (() { final guardedValue = map['failingPeriodsOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failingPeriodsToAlert: (() { final guardedValue = map['failingPeriodsToAlert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      muteActionsDuration: (() { final guardedValue = map['muteActionsDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      failingPeriodsToAlert: (() { final guardedValue = map['failingPeriodsToAlert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      muteActionsDuration: (() { final guardedValue = map['muteActionsDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       thresholdOperator: (() { final guardedValue = map['thresholdOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      windowSize: (() { final guardedValue = map['windowSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      windowSize: (() { final guardedValue = map['windowSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

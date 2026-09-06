@@ -10,17 +10,17 @@ import 'snapshot_properties.dart';
 /// {@macro pulumi_azurestackhci_snapshot_args_doc}
 class SnapshotArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SnapshotProperties>? properties;
+  final pulumi.Input<SnapshotProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the snapshot
-  final pulumi.Input<String>? snapshotName;
+  final pulumi.Input<String?>? snapshotName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SnapshotArgs].
   /// [extendedLocation] The extendedLocation of the resource.

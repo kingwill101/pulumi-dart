@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication info when authType is servicePrincipal certificate
 class ServicePrincipalCertificateAuthInfoResponse {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final pulumi.Input<String>? authMode;
+  final pulumi.Input<String?>? authMode;
   /// The authentication type.
   /// Expected value is 'servicePrincipalCertificate'.
   final pulumi.Input<String> authType;
@@ -14,11 +14,11 @@ class ServicePrincipalCertificateAuthInfoResponse {
   /// Application clientId for servicePrincipal auth.
   final pulumi.Input<String> clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<String?>? deleteOrUpdateBehavior;
   /// Principal Id for servicePrincipal auth.
   final pulumi.Input<String> principalId;
   /// Optional, this value specifies the Azure roles to be assigned. Automatically
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<String>?>? roles;
 
   /// Creates a new [ServicePrincipalCertificateAuthInfoResponse].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.

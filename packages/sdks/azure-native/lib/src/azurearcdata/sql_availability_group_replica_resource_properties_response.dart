@@ -7,15 +7,15 @@ import 'availability_group_state_response.dart';
 /// The properties of Arc Sql availability group replica resource
 class SqlAvailabilityGroupReplicaResourcePropertiesResponse {
   /// null
-  final pulumi.Input<AvailabilityGroupConfigureResponse>? configure;
+  final pulumi.Input<AvailabilityGroupConfigureResponse?>? configure;
   /// ID GUID of the availability group.
   final pulumi.Input<String> replicaId;
   /// The replica name.
-  final pulumi.Input<String>? replicaName;
+  final pulumi.Input<String?>? replicaName;
   /// Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
-  final pulumi.Input<String>? replicaResourceId;
+  final pulumi.Input<String?>? replicaResourceId;
   /// null
-  final pulumi.Input<AvailabilityGroupStateResponse>? state;
+  final pulumi.Input<AvailabilityGroupStateResponse?>? state;
 
   /// Creates a new [SqlAvailabilityGroupReplicaResourcePropertiesResponse].
   /// [configure] null

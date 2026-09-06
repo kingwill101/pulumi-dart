@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Collector agent SPN details class.
 class CollectorAgentSpnPropertiesBaseResponse {
   /// Gets the AAD application id.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Gets the AAD audience url.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Gets the AAD authority endpoint.
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// Gets the object id of the AAD application.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Gets the tenant id of the AAD application.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [CollectorAgentSpnPropertiesBaseResponse].
   /// [applicationId] Gets the AAD application id.

@@ -9,15 +9,15 @@ import 'routing_policy.dart';
 /// {@macro pulumi_network_routing_intent_args_doc}
 class RoutingIntentArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name of the RoutingIntent.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the per VirtualHub singleton Routing Intent resource.
-  final pulumi.Input<String>? routingIntentName;
+  final pulumi.Input<String?>? routingIntentName;
   /// List of routing policies.
-  final pulumi.Input<List<RoutingPolicy>>? routingPolicies;
+  final pulumi.Input<List<RoutingPolicy>?>? routingPolicies;
   /// The name of the VirtualHub.
   final pulumi.Input<String> virtualHubName;
 

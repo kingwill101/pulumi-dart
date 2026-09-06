@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The cluster sku definition.
 class ClusterSku {
   /// The capacity reservation level in Gigabytes for this cluster.
-  final pulumi.Input<double>? capacity;
+  final pulumi.Input<double?>? capacity;
   /// The SKU (tier) of a cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
 
   /// Creates a new [ClusterSku].
   /// [capacity] The capacity reservation level in Gigabytes for this cluster.
@@ -26,8 +26,8 @@ class ClusterSku {
 
   factory ClusterSku.fromMap(Map<String, dynamic> map) {
     return ClusterSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

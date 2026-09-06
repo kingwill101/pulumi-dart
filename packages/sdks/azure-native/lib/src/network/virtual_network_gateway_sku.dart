@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VirtualNetworkGatewaySku details.
 class VirtualNetworkGatewaySku {
   /// Gateway SKU name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
   /// Gateway SKU tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [VirtualNetworkGatewaySku].
   /// [name] Gateway SKU name.
@@ -26,8 +26,8 @@ class VirtualNetworkGatewaySku {
 
   factory VirtualNetworkGatewaySku.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkGatewaySku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

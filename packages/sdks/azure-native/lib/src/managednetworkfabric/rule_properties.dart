@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rules for the InternetGateways
 class RuleProperties {
   /// Specify action.
-  final pulumi.Input<String> action;
+  final pulumi.Input<dynamic> action;
   /// List of Addresses to be allowed or denied.
   final pulumi.Input<List<String>> addressList;
 
@@ -26,7 +26,7 @@ class RuleProperties {
 
   factory RuleProperties.fromMap(Map<String, dynamic> map) {
     return RuleProperties(
-      action: pulumi.Input.fromValue(map['action'] as String),
+      action: pulumi.Input.fromValue(map['action']),
       addressList: pulumi.Input.fromValue((map['addressList'] as List).cast<String>()),
     );
   }

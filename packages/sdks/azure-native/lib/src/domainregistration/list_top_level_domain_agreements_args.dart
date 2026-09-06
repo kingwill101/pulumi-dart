@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_domainregistration_list_top_level_domain_agreements_args_doc}
 class ListTopLevelDomainAgreementsArgs {
   /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain transfer as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? forTransfer;
+  final pulumi.Input<bool?>? forTransfer;
   /// If &lt;code&gt;true&lt;/code&gt;, then the list of agreements will include agreements for domain privacy as well; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? includePrivacy;
+  final pulumi.Input<bool?>? includePrivacy;
   /// Name of the top-level domain.
   final pulumi.Input<String> name;
 

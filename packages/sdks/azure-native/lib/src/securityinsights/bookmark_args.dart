@@ -10,35 +10,35 @@ import 'user_info.dart';
 /// {@macro pulumi_securityinsights_bookmark_args_doc}
 class BookmarkArgs {
   /// Bookmark ID
-  final pulumi.Input<String>? bookmarkId;
+  final pulumi.Input<String?>? bookmarkId;
   /// The time the bookmark was created
-  final pulumi.Input<String>? created;
+  final pulumi.Input<String?>? created;
   /// Describes a user that created the bookmark
-  final pulumi.Input<UserInfo>? createdBy;
+  final pulumi.Input<UserInfo?>? createdBy;
   /// The display name of the bookmark
   final pulumi.Input<String> displayName;
   /// The bookmark event time
-  final pulumi.Input<String>? eventTime;
+  final pulumi.Input<String?>? eventTime;
   /// Describes an incident that relates to bookmark
-  final pulumi.Input<IncidentInfo>? incidentInfo;
+  final pulumi.Input<IncidentInfo?>? incidentInfo;
   /// List of labels relevant to this bookmark
-  final pulumi.Input<List<String>>? labels;
+  final pulumi.Input<List<String>?>? labels;
   /// The notes of the bookmark
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The query of the bookmark.
   final pulumi.Input<String> query;
   /// The end time for the query
-  final pulumi.Input<String>? queryEndTime;
+  final pulumi.Input<String?>? queryEndTime;
   /// The query result of the bookmark.
-  final pulumi.Input<String>? queryResult;
+  final pulumi.Input<String?>? queryResult;
   /// The start time for the query
-  final pulumi.Input<String>? queryStartTime;
+  final pulumi.Input<String?>? queryStartTime;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The last time the bookmark was updated
-  final pulumi.Input<String>? updated;
+  final pulumi.Input<String?>? updated;
   /// Describes a user that updated the bookmark
-  final pulumi.Input<UserInfo>? updatedBy;
+  final pulumi.Input<UserInfo?>? updatedBy;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

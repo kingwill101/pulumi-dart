@@ -7,11 +7,11 @@ import 'virtual_machine_scale_set_network_configuration_response.dart';
 /// Describes a virtual machine scale set network profile.
 class VirtualMachineScaleSetNetworkProfileResponse {
   /// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
-  final pulumi.Input<ApiEntityReferenceResponse>? healthProbe;
+  final pulumi.Input<ApiEntityReferenceResponse?>? healthProbe;
   /// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
-  final pulumi.Input<String>? networkApiVersion;
+  final pulumi.Input<String?>? networkApiVersion;
   /// The list of network configurations.
-  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfigurationResponse>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfigurationResponse>?>? networkInterfaceConfigurations;
 
   /// Creates a new [VirtualMachineScaleSetNetworkProfileResponse].
   /// [healthProbe] A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.

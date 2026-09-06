@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_role_assignment_args_doc}
 class RoleAssignmentArgs {
   /// The conditions on the role assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Version of the condition. Currently the only accepted value is '2.0'
-  final pulumi.Input<String>? conditionVersion;
+  final pulumi.Input<String?>? conditionVersion;
   /// Id of the delegated managed identity resource
-  final pulumi.Input<String>? delegatedManagedIdentityResourceId;
+  final pulumi.Input<String?>? delegatedManagedIdentityResourceId;
   /// Description of role assignment
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The principal ID.
   final pulumi.Input<String> principalId;
   /// The principal type of the assigned principal ID.
-  final pulumi.Input<String>? principalType;
+  final pulumi.Input<dynamic>? principalType;
   /// The name of the role assignment. It can be any valid GUID.
-  final pulumi.Input<String>? roleAssignmentName;
+  final pulumi.Input<String?>? roleAssignmentName;
   /// The role definition ID.
   final pulumi.Input<String> roleDefinitionId;
   /// The fully qualified Azure Resource manager identifier of the resource.
@@ -36,17 +36,17 @@ class RoleAssignmentArgs {
   /// [roleAssignmentName] The name of the role assignment. It can be any valid GUID.
   /// [roleDefinitionId] The role definition ID.
   /// [scope] The fully qualified Azure Resource manager identifier of the resource.
-  const RoleAssignmentArgs({
+  RoleAssignmentArgs({
     this.condition,
     this.conditionVersion,
     this.delegatedManagedIdentityResourceId,
     this.description,
     required this.principalId,
-    this.principalType,
+    pulumi.Input<dynamic>? principalType,
     this.roleAssignmentName,
     required this.roleDefinitionId,
     required this.scope,
-  });
+  }) : principalType = principalType ?? pulumi.Input.fromValue('User');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,7 +69,7 @@ class RoleAssignmentArgs {
       delegatedManagedIdentityResourceId: (() { final guardedValue = map['delegatedManagedIdentityResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
-      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      principalType: (() { final guardedValue = map['principalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       roleAssignmentName: (() { final guardedValue = map['roleAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       roleDefinitionId: pulumi.Input.fromValue(map['roleDefinitionId'] as String),
       scope: pulumi.Input.fromValue(map['scope'] as String),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Share kind.
-enum ShareKind {
+enum ShareKind implements pulumi.PulumiEnum<String> {
   valueCopyBased("CopyBased"),
   valueInPlace("InPlace");
 
   const ShareKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ShareKind fromValue(String value) {

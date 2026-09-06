@@ -7,9 +7,9 @@ import 'compute_node_identity_reference.dart';
 /// The properties related to the auto-storage account.
 class AutoStorageBaseProperties {
   /// The authentication mode which the Batch service will use to manage the auto-storage account.
-  final pulumi.Input<AutoStorageAuthenticationMode>? authenticationMode;
+  final pulumi.Input<AutoStorageAuthenticationMode?>? authenticationMode;
   /// The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage.
-  final pulumi.Input<ComputeNodeIdentityReference>? nodeIdentityReference;
+  final pulumi.Input<ComputeNodeIdentityReference?>? nodeIdentityReference;
   /// The resource ID of the storage account to be used for auto-storage account.
   final pulumi.Input<String> storageAccountId;
 
@@ -17,11 +17,11 @@ class AutoStorageBaseProperties {
   /// [authenticationMode] The authentication mode which the Batch service will use to manage the auto-storage account.
   /// [nodeIdentityReference] The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage.
   /// [storageAccountId] The resource ID of the storage account to be used for auto-storage account.
-  const AutoStorageBaseProperties({
-    this.authenticationMode,
+  AutoStorageBaseProperties({
+    pulumi.Input<AutoStorageAuthenticationMode?>? authenticationMode,
     this.nodeIdentityReference,
     required this.storageAccountId,
-  });
+  }) : authenticationMode = authenticationMode ?? pulumi.Input.fromValue(AutoStorageAuthenticationMode.fromValue('StorageKeys'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

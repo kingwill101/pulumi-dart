@@ -8,7 +8,7 @@ class UserArtifactManage {
   /// Required. The path and arguments to remove the gallery application. This is limited to 4096 characters.
   final pulumi.Input<String> remove;
   /// Optional. The path and arguments to update the gallery application. If not present, then update operation will invoke remove command on the previous version and install command on the current version of the gallery application. This is limited to 4096 characters.
-  final pulumi.Input<String>? update;
+  final pulumi.Input<String?>? update;
 
   /// Creates a new [UserArtifactManage].
   /// [install] Required. The path and arguments to install the gallery application. This is limited to 4096 characters.

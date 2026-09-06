@@ -6,13 +6,13 @@ import 'smart_identity_provider_configuration.dart';
 /// Authentication configuration information
 class FhirServiceAuthenticationConfiguration {
   /// The audience url for the service
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// The authority url for the service
-  final pulumi.Input<String>? authority;
+  final pulumi.Input<String?>? authority;
   /// The array of identity provider configurations for SMART on FHIR authentication.
-  final pulumi.Input<List<SmartIdentityProviderConfiguration>>? smartIdentityProviders;
+  final pulumi.Input<List<SmartIdentityProviderConfiguration>?>? smartIdentityProviders;
   /// If the SMART on FHIR proxy is enabled
-  final pulumi.Input<bool>? smartProxyEnabled;
+  final pulumi.Input<bool?>? smartProxyEnabled;
 
   /// Creates a new [FhirServiceAuthenticationConfiguration].
   /// [audience] The audience url for the service

@@ -7,7 +7,7 @@ class Tags {
   /// A tag name.
   final pulumi.Input<String> name;
   /// A tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Tags].
   /// [name] A tag name.

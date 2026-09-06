@@ -15,39 +15,39 @@ import 'virtual_appliance_sku_properties.dart';
 /// {@macro pulumi_network_network_virtual_appliance_args_doc}
 class NetworkVirtualApplianceArgs {
   /// Details required for Additional Network Interface.
-  final pulumi.Input<List<VirtualApplianceAdditionalNicProperties>>? additionalNics;
+  final pulumi.Input<List<VirtualApplianceAdditionalNicProperties>?>? additionalNics;
   /// BootStrapConfigurationBlobs storage URLs.
-  final pulumi.Input<List<String>>? bootStrapConfigurationBlobs;
+  final pulumi.Input<List<String>?>? bootStrapConfigurationBlobs;
   /// CloudInitConfiguration string in plain text.
-  final pulumi.Input<String>? cloudInitConfiguration;
+  final pulumi.Input<String?>? cloudInitConfiguration;
   /// CloudInitConfigurationBlob storage URLs.
-  final pulumi.Input<List<String>>? cloudInitConfigurationBlobs;
+  final pulumi.Input<List<String>?>? cloudInitConfigurationBlobs;
   /// The delegation for the Virtual Appliance
-  final pulumi.Input<DelegationProperties>? delegation;
+  final pulumi.Input<DelegationProperties?>? delegation;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The service principal that has read access to cloud-init and config blob.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// List of Resource Uri of Public IPs for Internet Ingress Scenario.
-  final pulumi.Input<List<InternetIngressPublicIpsProperties>>? internetIngressPublicIps;
+  final pulumi.Input<List<InternetIngressPublicIpsProperties>?>? internetIngressPublicIps;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Network Profile containing configurations for Public and Private NIC.
-  final pulumi.Input<NetworkVirtualAppliancePropertiesFormatNetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkVirtualAppliancePropertiesFormatNetworkProfile?>? networkProfile;
   /// The name of Network Virtual Appliance.
-  final pulumi.Input<String>? networkVirtualApplianceName;
+  final pulumi.Input<String?>? networkVirtualApplianceName;
   /// Network Virtual Appliance SKU.
-  final pulumi.Input<VirtualApplianceSkuProperties>? nvaSku;
+  final pulumi.Input<VirtualApplianceSkuProperties?>? nvaSku;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Public key for SSH login.
-  final pulumi.Input<String>? sshPublicKey;
+  final pulumi.Input<String?>? sshPublicKey;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// VirtualAppliance ASN. Microsoft private, public and IANA reserved ASN are not supported.
-  final pulumi.Input<double>? virtualApplianceAsn;
+  final pulumi.Input<double?>? virtualApplianceAsn;
   /// The Virtual Hub where Network Virtual Appliance is being deployed.
-  final pulumi.Input<SubResource>? virtualHub;
+  final pulumi.Input<SubResource?>? virtualHub;
 
   /// Creates a new [NetworkVirtualApplianceArgs].
   /// [additionalNics] Details required for Additional Network Interface.
@@ -126,7 +126,7 @@ class NetworkVirtualApplianceArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sshPublicKey: (() { final guardedValue = map['sshPublicKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      virtualApplianceAsn: (() { final guardedValue = map['virtualApplianceAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      virtualApplianceAsn: (() { final guardedValue = map['virtualApplianceAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

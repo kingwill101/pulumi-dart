@@ -8,13 +8,13 @@ import 'login_scopes.dart';
 /// The configuration settings of the legacy Microsoft Account provider.
 class LegacyMicrosoftAccount {
   /// &lt;code&gt;false&lt;/code&gt; if the legacy Microsoft Account provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The configuration settings of the login flow.
-  final pulumi.Input<LoginScopes>? login;
+  final pulumi.Input<LoginScopes?>? login;
   /// The configuration settings of the app registration for the legacy Microsoft Account provider.
-  final pulumi.Input<ClientRegistration>? registration;
+  final pulumi.Input<ClientRegistration?>? registration;
   /// The configuration settings of the legacy Microsoft Account provider token validation flow.
-  final pulumi.Input<AllowedAudiencesValidation>? validation;
+  final pulumi.Input<AllowedAudiencesValidation?>? validation;
 
   /// Creates a new [LegacyMicrosoftAccount].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the legacy Microsoft Account provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.

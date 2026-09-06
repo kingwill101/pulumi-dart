@@ -6,9 +6,9 @@ import 'validate_migration_input_sql_server_sql_mitask_input.dart';
 /// Properties for task that validates migration input for SQL to Azure SQL Database Managed Instance
 class ValidateMigrationInputSqlServerSqlMITaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<ValidateMigrationInputSqlServerSqlMITaskInput>? input;
+  final pulumi.Input<ValidateMigrationInputSqlServerSqlMITaskInput?>? input;
   /// Task type.
   /// Expected value is 'ValidateMigrationInput.SqlServer.AzureSqlDbMI'.
   final pulumi.Input<String> taskType;

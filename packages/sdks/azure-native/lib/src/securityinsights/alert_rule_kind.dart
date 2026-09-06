@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The alert rule kind
-enum AlertRuleKind {
+enum AlertRuleKind implements pulumi.PulumiEnum<String> {
   valueScheduled("Scheduled"),
   valueMicrosoftSecurityIncidentCreation("MicrosoftSecurityIncidentCreation"),
   valueFusion("Fusion");
 
   const AlertRuleKind(this.wireValue);
+  @override
   final String wireValue;
 
   static AlertRuleKind fromValue(String value) {

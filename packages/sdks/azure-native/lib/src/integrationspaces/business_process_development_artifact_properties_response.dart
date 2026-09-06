@@ -9,15 +9,15 @@ import 'tracking_profile_definition_response.dart';
 /// The properties of business process development artifact.
 class BusinessProcessDevelopmentArtifactPropertiesResponse {
   /// The business process mapping.
-  final pulumi.Input<Map<String, BusinessProcessMappingItemResponse>>? businessProcessMapping;
+  final pulumi.Input<Map<String, BusinessProcessMappingItemResponse>?>? businessProcessMapping;
   /// The business process stages.
-  final pulumi.Input<Map<String, BusinessProcessStageResponse>>? businessProcessStages;
+  final pulumi.Input<Map<String, BusinessProcessStageResponse>?>? businessProcessStages;
   /// The description of the business process.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The business process identifier.
-  final pulumi.Input<BusinessProcessIdentifierResponse>? identifier;
+  final pulumi.Input<BusinessProcessIdentifierResponse?>? identifier;
   /// The tracking profile for the business process.
-  final pulumi.Input<Map<String, TrackingProfileDefinitionResponse>>? trackingProfiles;
+  final pulumi.Input<Map<String, TrackingProfileDefinitionResponse>?>? trackingProfiles;
 
   /// Creates a new [BusinessProcessDevelopmentArtifactPropertiesResponse].
   /// [businessProcessMapping] The business process mapping.

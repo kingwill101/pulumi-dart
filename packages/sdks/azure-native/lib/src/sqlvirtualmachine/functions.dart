@@ -26,6 +26,17 @@ Future<GetAvailabilityGroupListenerResult> getAvailabilityGroupListener(
   return GetAvailabilityGroupListenerResult.fromMap(result);
 }
 
+pulumi.Output<GetAvailabilityGroupListenerResult> getAvailabilityGroupListenerOutput(
+  GetAvailabilityGroupListenerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sqlvirtualmachine:getAvailabilityGroupListener',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilityGroupListenerResult.fromMap);
+}
+
 /// Gets a SQL virtual machine.
 ///
 /// Uses Azure REST API version 2023-10-01.
@@ -46,6 +57,17 @@ Future<GetSqlVirtualMachineResult> getSqlVirtualMachine(
   return GetSqlVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlVirtualMachineResult> getSqlVirtualMachineOutput(
+  GetSqlVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sqlvirtualmachine:getSqlVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlVirtualMachineResult.fromMap);
+}
+
 /// Gets a SQL virtual machine group.
 ///
 /// Uses Azure REST API version 2023-10-01.
@@ -64,4 +86,15 @@ Future<GetSqlVirtualMachineGroupResult> getSqlVirtualMachineGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlVirtualMachineGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlVirtualMachineGroupResult> getSqlVirtualMachineGroupOutput(
+  GetSqlVirtualMachineGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sqlvirtualmachine:getSqlVirtualMachineGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlVirtualMachineGroupResult.fromMap);
 }

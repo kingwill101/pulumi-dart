@@ -9,9 +9,9 @@ import 'certificate_properties.dart';
 /// {@macro pulumi_deviceprovisioningservices_dps_certificate_args_doc}
 class DpsCertificateArgs {
   /// The name of the certificate create or update.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// properties of a certificate
-  final pulumi.Input<CertificateProperties>? properties;
+  final pulumi.Input<CertificateProperties?>? properties;
   /// The name of the provisioning service.
   final pulumi.Input<String> provisioningServiceName;
   /// Resource group identifier.

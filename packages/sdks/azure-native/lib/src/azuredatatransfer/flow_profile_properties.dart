@@ -8,11 +8,11 @@ class FlowProfileProperties {
   /// A user-defined description of the FlowProfile.
   final pulumi.Input<String> description;
   /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
-  final pulumi.Input<String> replicationScenario;
+  final pulumi.Input<dynamic> replicationScenario;
   /// A set of configurable rulesets applied to this FlowProfile.
-  final pulumi.Input<FlowProfileRulesets>? rulesets;
+  final pulumi.Input<FlowProfileRulesets?>? rulesets;
   /// The operational status of the FlowProfile.
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
 
   /// Creates a new [FlowProfileProperties].
   /// [description] A user-defined description of the FlowProfile.
@@ -38,9 +38,9 @@ class FlowProfileProperties {
   factory FlowProfileProperties.fromMap(Map<String, dynamic> map) {
     return FlowProfileProperties(
       description: pulumi.Input.fromValue(map['description'] as String),
-      replicationScenario: pulumi.Input.fromValue(map['replicationScenario'] as String),
+      replicationScenario: pulumi.Input.fromValue(map['replicationScenario']),
       rulesets: (() { final guardedValue = map['rulesets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowProfileRulesets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
     );
   }
 }

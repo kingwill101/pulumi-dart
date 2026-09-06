@@ -5,19 +5,19 @@ import 'authorization_provider_oauth2_settings_response.dart';
 /// Result data returned by getAuthorizationProvider.
 class GetAuthorizationProviderResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Authorization Provider name. Must be 1 to 300 characters long.
   final String? displayName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Identity provider name. Must be 1 to 300 characters long.
   final String? identityProvider;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// OAuth2 settings
   final AuthorizationProviderOAuth2SettingsResponse? oauth2;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAuthorizationProviderResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -28,36 +28,36 @@ class GetAuthorizationProviderResult {
   /// [oauth2] OAuth2 settings
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAuthorizationProviderResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.displayName,
-    required this.id,
+    this.id,
     this.identityProvider,
-    required this.name,
+    this.name,
     this.oauth2,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'displayName': ?displayName,
-      'id': id,
+      'id': ?id,
       'identityProvider': ?identityProvider,
-      'name': name,
+      'name': ?name,
       'oauth2': ?oauth2?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetAuthorizationProviderResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationProviderResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identityProvider: (() { final guardedValue = map['identityProvider']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       oauth2: (() { final guardedValue = map['oauth2']; if (guardedValue == null) return null; return AuthorizationProviderOAuth2SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

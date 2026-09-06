@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The drive's current state.
-enum DriveState {
+enum DriveState implements pulumi.PulumiEnum<String> {
   valueSpecified("Specified"),
   valueReceived("Received"),
   valueNeverReceived("NeverReceived"),
@@ -9,6 +11,7 @@ enum DriveState {
   valueShippedBack("ShippedBack");
 
   const DriveState(this.wireValue);
+  @override
   final String wireValue;
 
   static DriveState fromValue(String value) {

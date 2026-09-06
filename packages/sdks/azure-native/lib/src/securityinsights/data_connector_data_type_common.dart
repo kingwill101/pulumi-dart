@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Common field for data type in data connectors.
 class DataConnectorDataTypeCommon {
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [DataConnectorDataTypeCommon].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -21,7 +21,7 @@ class DataConnectorDataTypeCommon {
 
   factory DataConnectorDataTypeCommon.fromMap(Map<String, dynamic> map) {
     return DataConnectorDataTypeCommon(
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

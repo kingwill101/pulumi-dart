@@ -31,9 +31,9 @@ class RemediationDeploymentSummaryResponse {
 
   factory RemediationDeploymentSummaryResponse.fromMap(Map<String, dynamic> map) {
     return RemediationDeploymentSummaryResponse(
-      failedDeployments: pulumi.Input.fromValue(map['failedDeployments'] as int),
-      successfulDeployments: pulumi.Input.fromValue(map['successfulDeployments'] as int),
-      totalDeployments: pulumi.Input.fromValue(map['totalDeployments'] as int),
+      failedDeployments: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failedDeployments'])),
+      successfulDeployments: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successfulDeployments'])),
+      totalDeployments: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalDeployments'])),
     );
   }
 }

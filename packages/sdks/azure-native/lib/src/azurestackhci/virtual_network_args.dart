@@ -11,23 +11,23 @@ import 'virtual_network_properties_subnets.dart';
 /// {@macro pulumi_azurestackhci_virtual_network_args_doc}
 class VirtualNetworkArgs {
   /// DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
-  final pulumi.Input<VirtualNetworkPropertiesDhcpOptions>? dhcpOptions;
+  final pulumi.Input<VirtualNetworkPropertiesDhcpOptions?>? dhcpOptions;
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Type of the network
-  final pulumi.Input<String>? networkType;
+  final pulumi.Input<dynamic>? networkType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Subnet - list of subnets under the virtual network
-  final pulumi.Input<List<VirtualNetworkPropertiesSubnets>>? subnets;
+  final pulumi.Input<List<VirtualNetworkPropertiesSubnets>?>? subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the virtual network
-  final pulumi.Input<String>? virtualNetworkName;
+  final pulumi.Input<String?>? virtualNetworkName;
   /// name of the network switch to be used for VMs
-  final pulumi.Input<String>? vmSwitchName;
+  final pulumi.Input<String?>? vmSwitchName;
 
   /// Creates a new [VirtualNetworkArgs].
   /// [dhcpOptions] DhcpOptions contains an array of DNS servers available to VMs deployed in the virtual network. Standard DHCP option for a subnet overrides VNET DHCP options.
@@ -70,7 +70,7 @@ class VirtualNetworkArgs {
       dhcpOptions: (() { final guardedValue = map['dhcpOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkPropertiesDhcpOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkPropertiesSubnets>(guardedValue, (value) => VirtualNetworkPropertiesSubnets.fromMap((value as Map).cast<String, dynamic>()))); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

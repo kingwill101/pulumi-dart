@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DefaultIdentityResponse {
   /// Type of managed service identity.
-  final pulumi.Input<String>? identityType;
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? identityType;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [DefaultIdentityResponse].
   /// [identityType] Type of managed service identity.

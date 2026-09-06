@@ -78,6 +78,17 @@ Future<GetAttachedNetworkByDevCenterResult> getAttachedNetworkByDevCenter(
   return GetAttachedNetworkByDevCenterResult.fromMap(result);
 }
 
+pulumi.Output<GetAttachedNetworkByDevCenterResult> getAttachedNetworkByDevCenterOutput(
+  GetAttachedNetworkByDevCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getAttachedNetworkByDevCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAttachedNetworkByDevCenterResult.fromMap);
+}
+
 /// Gets a catalog
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -96,6 +107,17 @@ Future<GetCatalogResult> getCatalog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCatalogResult.fromMap(result);
+}
+
+pulumi.Output<GetCatalogResult> getCatalogOutput(
+  GetCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogResult.fromMap);
 }
 
 /// Gets Catalog Devbox Definition error details
@@ -118,6 +140,17 @@ Future<GetCatalogDevBoxDefinitionErrorDetailsResult> getCatalogDevBoxDefinitionE
   return GetCatalogDevBoxDefinitionErrorDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetCatalogDevBoxDefinitionErrorDetailsResult> getCatalogDevBoxDefinitionErrorDetailsOutput(
+  GetCatalogDevBoxDefinitionErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getCatalogDevBoxDefinitionErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogDevBoxDefinitionErrorDetailsResult.fromMap);
+}
+
 /// Gets catalog synchronization error details
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -136,6 +169,17 @@ Future<GetCatalogSyncErrorDetailsResult> getCatalogSyncErrorDetails(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCatalogSyncErrorDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetCatalogSyncErrorDetailsResult> getCatalogSyncErrorDetailsOutput(
+  GetCatalogSyncErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getCatalogSyncErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogSyncErrorDetailsResult.fromMap);
 }
 
 /// Gets a specific curation profile.
@@ -158,6 +202,17 @@ Future<GetCurationProfileResult> getCurationProfile(
   return GetCurationProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetCurationProfileResult> getCurationProfileOutput(
+  GetCurationProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getCurationProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCurationProfileResult.fromMap);
+}
+
 /// Gets Customization Task error details
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -176,6 +231,17 @@ Future<GetCustomizationTaskErrorDetailsResult> getCustomizationTaskErrorDetails(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomizationTaskErrorDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomizationTaskErrorDetailsResult> getCustomizationTaskErrorDetailsOutput(
+  GetCustomizationTaskErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getCustomizationTaskErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomizationTaskErrorDetailsResult.fromMap);
 }
 
 /// Gets a Dev Box definition
@@ -198,6 +264,17 @@ Future<GetDevBoxDefinitionResult> getDevBoxDefinition(
   return GetDevBoxDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetDevBoxDefinitionResult> getDevBoxDefinitionOutput(
+  GetDevBoxDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getDevBoxDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevBoxDefinitionResult.fromMap);
+}
+
 /// Gets a devcenter.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -216,6 +293,17 @@ Future<GetDevCenterResult> getDevCenter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevCenterResult.fromMap(result);
+}
+
+pulumi.Output<GetDevCenterResult> getDevCenterOutput(
+  GetDevCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getDevCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevCenterResult.fromMap);
 }
 
 /// Gets Build details
@@ -238,6 +326,17 @@ Future<GetDevCenterCatalogImageDefinitionBuildDetailsResult> getDevCenterCatalog
   return GetDevCenterCatalogImageDefinitionBuildDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetDevCenterCatalogImageDefinitionBuildDetailsResult> getDevCenterCatalogImageDefinitionBuildDetailsOutput(
+  GetDevCenterCatalogImageDefinitionBuildDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getDevCenterCatalogImageDefinitionBuildDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevCenterCatalogImageDefinitionBuildDetailsResult.fromMap);
+}
+
 /// Gets Image Definition error details
 ///
 /// Uses Azure REST API version 2025-04-01-preview.
@@ -256,6 +355,17 @@ Future<GetDevCenterCatalogImageDefinitionErrorDetailsResult> getDevCenterCatalog
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevCenterCatalogImageDefinitionErrorDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetDevCenterCatalogImageDefinitionErrorDetailsResult> getDevCenterCatalogImageDefinitionErrorDetailsOutput(
+  GetDevCenterCatalogImageDefinitionErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getDevCenterCatalogImageDefinitionErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevCenterCatalogImageDefinitionErrorDetailsResult.fromMap);
 }
 
 /// Gets a devcenter encryption set.
@@ -278,6 +388,17 @@ Future<GetEncryptionSetResult> getEncryptionSet(
   return GetEncryptionSetResult.fromMap(result);
 }
 
+pulumi.Output<GetEncryptionSetResult> getEncryptionSetOutput(
+  GetEncryptionSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getEncryptionSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEncryptionSetResult.fromMap);
+}
+
 /// Gets Environment Definition error details
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -296,6 +417,17 @@ Future<GetEnvironmentDefinitionErrorDetailsResult> getEnvironmentDefinitionError
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentDefinitionErrorDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentDefinitionErrorDetailsResult> getEnvironmentDefinitionErrorDetailsOutput(
+  GetEnvironmentDefinitionErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getEnvironmentDefinitionErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentDefinitionErrorDetailsResult.fromMap);
 }
 
 /// Gets an environment type.
@@ -318,6 +450,17 @@ Future<GetEnvironmentTypeResult> getEnvironmentType(
   return GetEnvironmentTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentTypeResult> getEnvironmentTypeOutput(
+  GetEnvironmentTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getEnvironmentType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentTypeResult.fromMap);
+}
+
 /// Gets a gallery
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -336,6 +479,17 @@ Future<GetGalleryResult> getGallery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGalleryResult.fromMap(result);
+}
+
+pulumi.Output<GetGalleryResult> getGalleryOutput(
+  GetGalleryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getGallery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGalleryResult.fromMap);
 }
 
 /// Gets a network connection resource
@@ -358,6 +512,17 @@ Future<GetNetworkConnectionResult> getNetworkConnection(
   return GetNetworkConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkConnectionResult> getNetworkConnectionOutput(
+  GetNetworkConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getNetworkConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkConnectionResult.fromMap);
+}
+
 /// Gets a devcenter plan.
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -376,6 +541,17 @@ Future<GetPlanResult> getPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetPlanResult> getPlanOutput(
+  GetPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlanResult.fromMap);
 }
 
 /// Gets a devcenter plan member.
@@ -398,6 +574,17 @@ Future<GetPlanMemberResult> getPlanMember(
   return GetPlanMemberResult.fromMap(result);
 }
 
+pulumi.Output<GetPlanMemberResult> getPlanMemberOutput(
+  GetPlanMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getPlanMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlanMemberResult.fromMap);
+}
+
 /// Gets a machine pool
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -416,6 +603,17 @@ Future<GetPoolResult> getPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
 }
 
 /// Gets a specific project.
@@ -438,6 +636,17 @@ Future<GetProjectResult> getProject(
   return GetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectResult> getProjectOutput(
+  GetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectResult.fromMap);
+}
+
 /// Gets an associated project catalog.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -456,6 +665,17 @@ Future<GetProjectCatalogResult> getProjectCatalog(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectCatalogResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectCatalogResult> getProjectCatalogOutput(
+  GetProjectCatalogArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectCatalog',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCatalogResult.fromMap);
 }
 
 /// Gets Environment Definition error details
@@ -478,6 +698,17 @@ Future<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult> getProjectCatal
   return GetProjectCatalogEnvironmentDefinitionErrorDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectCatalogEnvironmentDefinitionErrorDetailsResult> getProjectCatalogEnvironmentDefinitionErrorDetailsOutput(
+  GetProjectCatalogEnvironmentDefinitionErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectCatalogEnvironmentDefinitionErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCatalogEnvironmentDefinitionErrorDetailsResult.fromMap);
+}
+
 /// Gets Build details
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -496,6 +727,17 @@ Future<GetProjectCatalogImageDefinitionBuildDetailsResult> getProjectCatalogImag
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectCatalogImageDefinitionBuildDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectCatalogImageDefinitionBuildDetailsResult> getProjectCatalogImageDefinitionBuildDetailsOutput(
+  GetProjectCatalogImageDefinitionBuildDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectCatalogImageDefinitionBuildDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCatalogImageDefinitionBuildDetailsResult.fromMap);
 }
 
 /// Gets Image Definition error details
@@ -518,6 +760,17 @@ Future<GetProjectCatalogImageDefinitionErrorDetailsResult> getProjectCatalogImag
   return GetProjectCatalogImageDefinitionErrorDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectCatalogImageDefinitionErrorDetailsResult> getProjectCatalogImageDefinitionErrorDetailsOutput(
+  GetProjectCatalogImageDefinitionErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectCatalogImageDefinitionErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCatalogImageDefinitionErrorDetailsResult.fromMap);
+}
+
 /// Gets project catalog synchronization error details
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -536,6 +789,17 @@ Future<GetProjectCatalogSyncErrorDetailsResult> getProjectCatalogSyncErrorDetail
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectCatalogSyncErrorDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectCatalogSyncErrorDetailsResult> getProjectCatalogSyncErrorDetailsOutput(
+  GetProjectCatalogSyncErrorDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectCatalogSyncErrorDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectCatalogSyncErrorDetailsResult.fromMap);
 }
 
 /// Gets a project environment type.
@@ -558,6 +822,17 @@ Future<GetProjectEnvironmentTypeResult> getProjectEnvironmentType(
   return GetProjectEnvironmentTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectEnvironmentTypeResult> getProjectEnvironmentTypeOutput(
+  GetProjectEnvironmentTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectEnvironmentType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectEnvironmentTypeResult.fromMap);
+}
+
 /// Gets applicable inherited settings for this project.
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -576,6 +851,17 @@ Future<GetProjectInheritedSettingsResult> getProjectInheritedSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProjectInheritedSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetProjectInheritedSettingsResult> getProjectInheritedSettingsOutput(
+  GetProjectInheritedSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectInheritedSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectInheritedSettingsResult.fromMap);
 }
 
 /// Gets a specific project policy.
@@ -598,6 +884,17 @@ Future<GetProjectPolicyResult> getProjectPolicy(
   return GetProjectPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetProjectPolicyResult> getProjectPolicyOutput(
+  GetProjectPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getProjectPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProjectPolicyResult.fromMap);
+}
+
 /// Gets a schedule resource.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -618,6 +915,17 @@ Future<GetScheduleResult> getSchedule(
   return GetScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
+}
+
 /// Lists SKUs available to the project
 ///
 /// Uses Azure REST API version 2024-10-01-preview.
@@ -636,4 +944,15 @@ Future<ListSkusByProjectResult> listSkusByProject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSkusByProjectResult.fromMap(result);
+}
+
+pulumi.Output<ListSkusByProjectResult> listSkusByProjectOutput(
+  ListSkusByProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devcenter:listSkusByProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSkusByProjectResult.fromMap);
 }

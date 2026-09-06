@@ -6,7 +6,7 @@ import 'log_level.dart';
 /// Application logs to Azure table storage configuration.
 class AzureTableStorageApplicationLogsConfig {
   /// Log level.
-  final pulumi.Input<LogLevel>? level;
+  final pulumi.Input<LogLevel?>? level;
   /// SAS URL to an Azure table with add/query/delete permissions.
   final pulumi.Input<String> sasUrl;
 

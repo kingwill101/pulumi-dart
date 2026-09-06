@@ -5,25 +5,25 @@ import 'system_data_response.dart';
 /// Result data returned by getCaCertificate.
 class GetCaCertificateResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description for the CA Certificate resource.
   final String? description;
   /// Base64 encoded PEM (Privacy Enhanced Mail) format certificate data.
   final String? encodedCertificate;
   /// Certificate expiry time in UTC. This is a read-only field.
-  final String expiryTimeInUtc;
+  final String? expiryTimeInUtc;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Certificate issue time in UTC. This is a read-only field.
-  final String issueTimeInUtc;
+  final String? issueTimeInUtc;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the CA Certificate resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCaCertificateResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetCaCertificateResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
   const GetCaCertificateResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.encodedCertificate,
-    required this.expiryTimeInUtc,
-    required this.id,
-    required this.issueTimeInUtc,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.expiryTimeInUtc,
+    this.id,
+    this.issueTimeInUtc,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'encodedCertificate': ?encodedCertificate,
-      'expiryTimeInUtc': expiryTimeInUtc,
-      'id': id,
-      'issueTimeInUtc': issueTimeInUtc,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'expiryTimeInUtc': ?expiryTimeInUtc,
+      'id': ?id,
+      'issueTimeInUtc': ?issueTimeInUtc,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetCaCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetCaCertificateResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       encodedCertificate: (() { final guardedValue = map['encodedCertificate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      expiryTimeInUtc: map['expiryTimeInUtc'] as String,
-      id: map['id'] as String,
-      issueTimeInUtc: map['issueTimeInUtc'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      expiryTimeInUtc: (() { final guardedValue = map['expiryTimeInUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      issueTimeInUtc: (() { final guardedValue = map['issueTimeInUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

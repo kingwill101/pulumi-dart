@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of custom domain for Spring Cloud Gateway
 class GatewayCustomDomainProperties {
   /// The thumbprint of bound certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [GatewayCustomDomainProperties].
   /// [thumbprint] The thumbprint of bound certificate.

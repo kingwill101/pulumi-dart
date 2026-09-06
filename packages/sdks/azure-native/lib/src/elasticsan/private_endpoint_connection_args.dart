@@ -11,9 +11,9 @@ class PrivateEndpointConnectionArgs {
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
   /// List of resources private endpoint is mapped
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The name of the Private Endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Private Link Service Connection State.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

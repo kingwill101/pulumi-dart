@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describe the owner source of governance rule
 class GovernanceRuleOwnerSourceResponse {
   /// The owner type for the governance rule owner source
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The source value e.g. tag key like owner name or email address
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GovernanceRuleOwnerSourceResponse].
   /// [type] The owner type for the governance rule owner source

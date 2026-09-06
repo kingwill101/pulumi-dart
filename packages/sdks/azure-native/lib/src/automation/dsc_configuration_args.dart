@@ -12,25 +12,25 @@ class DscConfigurationArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The configuration name.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// Gets or sets the description of the configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets progress log option.
-  final pulumi.Input<bool>? logProgress;
+  final pulumi.Input<bool?>? logProgress;
   /// Gets or sets verbose log option.
-  final pulumi.Input<bool>? logVerbose;
+  final pulumi.Input<bool?>? logVerbose;
   /// Gets or sets name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the configuration parameters.
-  final pulumi.Input<Map<String, DscConfigurationParameter>>? parameters;
+  final pulumi.Input<Map<String, DscConfigurationParameter>?>? parameters;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the source.
   final pulumi.Input<ContentSource> source;
   /// Gets or sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DscConfigurationArgs].
   /// [automationAccountName] The name of the automation account.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enclave Address Spaces
 class EnclaveAddressSpacesModelResponse {
   /// Enclave Address Space
-  final pulumi.Input<String>? enclaveAddressSpace;
+  final pulumi.Input<String?>? enclaveAddressSpace;
   /// Managed Address Space
-  final pulumi.Input<String>? managedAddressSpace;
+  final pulumi.Input<String?>? managedAddressSpace;
 
   /// Creates a new [EnclaveAddressSpacesModelResponse].
   /// [enclaveAddressSpace] Enclave Address Space

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the billing related details of the AzureBareMetalStorageInstance.
 class StorageBillingPropertiesResponse {
   /// the SKU type that is provisioned
-  final pulumi.Input<String>? azureBareMetalStorageInstanceSize;
+  final pulumi.Input<String?>? azureBareMetalStorageInstanceSize;
   /// the billing mode for the storage instance
-  final pulumi.Input<String>? billingMode;
+  final pulumi.Input<String?>? billingMode;
 
   /// Creates a new [StorageBillingPropertiesResponse].
   /// [azureBareMetalStorageInstanceSize] the SKU type that is provisioned

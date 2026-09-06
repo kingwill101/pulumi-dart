@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of authentication to use when connecting to a target.
-enum TargetAuthenticationType {
+enum TargetAuthenticationType implements pulumi.PulumiEnum<String> {
   aad("Aad"),
   sql("Sql");
 
   const TargetAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetAuthenticationType fromValue(String value) {

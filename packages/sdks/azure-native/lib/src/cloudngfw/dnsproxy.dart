@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enable DNS proxy, disabled by default
-enum DNSProxy {
+enum DNSProxy implements pulumi.PulumiEnum<String> {
   valueDISABLED("DISABLED"),
   valueENABLED("ENABLED");
 
   const DNSProxy(this.wireValue);
+  @override
   final String wireValue;
 
   static DNSProxy fromValue(String value) {

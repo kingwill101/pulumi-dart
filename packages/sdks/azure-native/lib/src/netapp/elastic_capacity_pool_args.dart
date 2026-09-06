@@ -11,17 +11,17 @@ class ElasticCapacityPoolArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the ElasticCapacityPool
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticCapacityPoolProperties>? properties;
+  final pulumi.Input<ElasticCapacityPoolProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The availability zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ElasticCapacityPoolArgs].
   /// [accountName] The name of the ElasticAccount

@@ -1,28 +1,27 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_to_azure_network_mapping_settings_response.dart';
 
 /// Network Mapping Properties.
 class NetworkMappingPropertiesResponse {
   /// The fabric specific settings.
-  final pulumi.Input<AzureToAzureNetworkMappingSettingsResponse>? fabricSpecificSettings;
+  final pulumi.Input<dynamic>? fabricSpecificSettings;
   /// The primary fabric friendly name.
-  final pulumi.Input<String>? primaryFabricFriendlyName;
+  final pulumi.Input<String?>? primaryFabricFriendlyName;
   /// The primary network friendly name.
-  final pulumi.Input<String>? primaryNetworkFriendlyName;
+  final pulumi.Input<String?>? primaryNetworkFriendlyName;
   /// The primary network id for network mapping.
-  final pulumi.Input<String>? primaryNetworkId;
+  final pulumi.Input<String?>? primaryNetworkId;
   /// The recovery fabric ARM id.
-  final pulumi.Input<String>? recoveryFabricArmId;
+  final pulumi.Input<String?>? recoveryFabricArmId;
   /// The recovery fabric friendly name.
-  final pulumi.Input<String>? recoveryFabricFriendlyName;
+  final pulumi.Input<String?>? recoveryFabricFriendlyName;
   /// The recovery network friendly name.
-  final pulumi.Input<String>? recoveryNetworkFriendlyName;
+  final pulumi.Input<String?>? recoveryNetworkFriendlyName;
   /// The recovery network id for network mapping.
-  final pulumi.Input<String>? recoveryNetworkId;
+  final pulumi.Input<String?>? recoveryNetworkId;
   /// The pairing state for network mapping.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [NetworkMappingPropertiesResponse].
   /// [fabricSpecificSettings] The fabric specific settings.
@@ -48,7 +47,7 @@ class NetworkMappingPropertiesResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'fabricSpecificSettings': ?pulumi.Input.mapOptionalInputValue<AzureToAzureNetworkMappingSettingsResponse, Map<String, dynamic>>(fabricSpecificSettings, (value) => value.toMap()),
+      'fabricSpecificSettings': ?fabricSpecificSettings,
       'primaryFabricFriendlyName': ?primaryFabricFriendlyName,
       'primaryNetworkFriendlyName': ?primaryNetworkFriendlyName,
       'primaryNetworkId': ?primaryNetworkId,
@@ -62,7 +61,7 @@ class NetworkMappingPropertiesResponse {
 
   factory NetworkMappingPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NetworkMappingPropertiesResponse(
-      fabricSpecificSettings: (() { final guardedValue = map['fabricSpecificSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureToAzureNetworkMappingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      fabricSpecificSettings: (() { final guardedValue = map['fabricSpecificSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       primaryFabricFriendlyName: (() { final guardedValue = map['primaryFabricFriendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryNetworkFriendlyName: (() { final guardedValue = map['primaryNetworkFriendlyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryNetworkId: (() { final guardedValue = map['primaryNetworkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of this referenced entity.
-enum IntegrationRuntimeEntityReferenceType {
+enum IntegrationRuntimeEntityReferenceType implements pulumi.PulumiEnum<String> {
   integrationRuntimeReference("IntegrationRuntimeReference"),
   linkedServiceReference("LinkedServiceReference");
 
   const IntegrationRuntimeEntityReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationRuntimeEntityReferenceType fromValue(String value) {

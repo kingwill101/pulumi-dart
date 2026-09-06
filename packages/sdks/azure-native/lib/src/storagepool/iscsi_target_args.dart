@@ -10,23 +10,23 @@ import 'iscsi_lun.dart';
 /// {@macro pulumi_storagepool_iscsi_target_args_doc}
 class IscsiTargetArgs {
   /// Mode for Target connectivity.
-  final pulumi.Input<String> aclMode;
+  final pulumi.Input<dynamic> aclMode;
   /// The name of the Disk Pool.
   final pulumi.Input<String> diskPoolName;
   /// The name of the iSCSI Target.
-  final pulumi.Input<String>? iscsiTargetName;
+  final pulumi.Input<String?>? iscsiTargetName;
   /// List of LUNs to be exposed through iSCSI Target.
-  final pulumi.Input<List<IscsiLun>>? luns;
+  final pulumi.Input<List<IscsiLun>?>? luns;
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// List of Azure resource ids that manage this resource.
-  final pulumi.Input<List<String>>? managedByExtended;
+  final pulumi.Input<List<String>?>? managedByExtended;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
-  final pulumi.Input<List<Acl>>? staticAcls;
+  final pulumi.Input<List<Acl>?>? staticAcls;
   /// iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
-  final pulumi.Input<String>? targetIqn;
+  final pulumi.Input<String?>? targetIqn;
 
   /// Creates a new [IscsiTargetArgs].
   /// [aclMode] Mode for Target connectivity.
@@ -66,7 +66,7 @@ class IscsiTargetArgs {
 
   factory IscsiTargetArgs.fromMap(Map<String, dynamic> map) {
     return IscsiTargetArgs(
-      aclMode: pulumi.Input.fromValue(map['aclMode'] as String),
+      aclMode: pulumi.Input.fromValue(map['aclMode']),
       diskPoolName: pulumi.Input.fromValue(map['diskPoolName'] as String),
       iscsiTargetName: (() { final guardedValue = map['iscsiTargetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       luns: (() { final guardedValue = map['luns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IscsiLun>(guardedValue, (value) => IscsiLun.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -27,7 +27,7 @@ class RosettaNetPipAcknowledgmentOfReceiptSettingsResponse {
   factory RosettaNetPipAcknowledgmentOfReceiptSettingsResponse.fromMap(Map<String, dynamic> map) {
     return RosettaNetPipAcknowledgmentOfReceiptSettingsResponse(
       isNonRepudiationRequired: pulumi.Input.fromValue(map['isNonRepudiationRequired'] as bool),
-      timeToAcknowledgeInSeconds: pulumi.Input.fromValue(map['timeToAcknowledgeInSeconds'] as int),
+      timeToAcknowledgeInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeToAcknowledgeInSeconds'])),
     );
   }
 }

@@ -13,23 +13,23 @@ class CustomKeysWorkspaceConnectionPropertiesResponse {
   /// Expected value is 'CustomKeys'.
   final pulumi.Input<String> authType;
   /// Category of the connection
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// A type definition that refers the id to an Azure Resource Manager resource.
   final pulumi.Input<String> createdByWorkspaceArmId;
   /// Custom Keys credential object
-  final pulumi.Input<CustomKeysResponse>? credentials;
-  final pulumi.Input<String>? error;
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<CustomKeysResponse?>? credentials;
+  final pulumi.Input<String?>? error;
+  final pulumi.Input<String?>? expiryTime;
   /// Group based on connection category
   final pulumi.Input<String> group;
-  final pulumi.Input<bool>? isSharedToAll;
+  final pulumi.Input<bool?>? isSharedToAll;
   /// Store user metadata for this connection
-  final pulumi.Input<Map<String, String>>? metadata;
-  final pulumi.Input<String>? peRequirement;
-  final pulumi.Input<String>? peStatus;
-  final pulumi.Input<List<String>>? sharedUserList;
-  final pulumi.Input<String>? target;
-  final pulumi.Input<bool>? useWorkspaceManagedIdentity;
+  final pulumi.Input<Map<String, String>?>? metadata;
+  final pulumi.Input<String?>? peRequirement;
+  final pulumi.Input<String?>? peStatus;
+  final pulumi.Input<List<String>?>? sharedUserList;
+  final pulumi.Input<String?>? target;
+  final pulumi.Input<bool?>? useWorkspaceManagedIdentity;
 
   /// Creates a new [CustomKeysWorkspaceConnectionPropertiesResponse].
   /// [authType] Authentication type of the connection target

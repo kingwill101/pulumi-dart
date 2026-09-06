@@ -14,7 +14,7 @@ class VirtualNetworkRuleArgs {
   /// The resource identifier for the subnet.
   final pulumi.Input<String> subnetId;
   /// The name of the virtual network rule to create or update.
-  final pulumi.Input<String>? virtualNetworkRuleName;
+  final pulumi.Input<String?>? virtualNetworkRuleName;
 
   /// Creates a new [VirtualNetworkRuleArgs].
   /// [accountName] The name of the Data Lake Store account.

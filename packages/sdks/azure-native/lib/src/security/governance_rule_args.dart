@@ -12,33 +12,33 @@ class GovernanceRuleArgs {
   /// The governance rule conditionSets - see examples
   final pulumi.Input<List<dynamic>> conditionSets;
   /// Description of the governance rule
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Display name of the governance rule
   final pulumi.Input<String> displayName;
   /// Excluded scopes, filter out the descendants of the scope (on management scopes)
-  final pulumi.Input<List<String>>? excludedScopes;
+  final pulumi.Input<List<String>?>? excludedScopes;
   /// The email notifications settings for the governance rule, states whether to disable notifications for mangers and owners
-  final pulumi.Input<GovernanceRuleEmailNotification>? governanceEmailNotification;
+  final pulumi.Input<GovernanceRuleEmailNotification?>? governanceEmailNotification;
   /// Defines whether the rule is management scope rule (master connector as a single scope or management scope)
-  final pulumi.Input<bool>? includeMemberScopes;
+  final pulumi.Input<bool?>? includeMemberScopes;
   /// Defines whether the rule is active/inactive
-  final pulumi.Input<bool>? isDisabled;
+  final pulumi.Input<bool?>? isDisabled;
   /// Defines whether there is a grace period on the governance rule
-  final pulumi.Input<bool>? isGracePeriod;
+  final pulumi.Input<bool?>? isGracePeriod;
   /// The owner source for the governance rule - e.g. Manually by user@contoso.com - see example
   final pulumi.Input<GovernanceRuleOwnerSource> ownerSource;
   /// Governance rule remediation timeframe - this is the time that will affect on the grace-period duration e.g. 7.00:00:00 - means 7 days
-  final pulumi.Input<String>? remediationTimeframe;
+  final pulumi.Input<String?>? remediationTimeframe;
   /// The governance rule key - unique key for the standard governance rule (GUID)
-  final pulumi.Input<String>? ruleId;
+  final pulumi.Input<String?>? ruleId;
   /// The governance rule priority, priority to the lower number. Rules with the same priority on the same scope will not be allowed
   final pulumi.Input<int> rulePriority;
   /// The rule type of the governance rule, defines the source of the rule e.g. Integrated
-  final pulumi.Input<String> ruleType;
+  final pulumi.Input<dynamic> ruleType;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
   /// The governance rule source, what the rule affects, e.g. Assessments
-  final pulumi.Input<String> sourceResourceType;
+  final pulumi.Input<dynamic> sourceResourceType;
 
   /// Creates a new [GovernanceRuleArgs].
   /// [conditionSets] The governance rule conditionSets - see examples
@@ -107,10 +107,10 @@ class GovernanceRuleArgs {
       ownerSource: pulumi.Input.fromValue(GovernanceRuleOwnerSource.fromMap((map['ownerSource']! as Map).cast<String, dynamic>())),
       remediationTimeframe: (() { final guardedValue = map['remediationTimeframe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleId: (() { final guardedValue = map['ruleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rulePriority: pulumi.Input.fromValue(map['rulePriority'] as int),
-      ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
+      rulePriority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rulePriority'])),
+      ruleType: pulumi.Input.fromValue(map['ruleType']),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType'] as String),
+      sourceResourceType: pulumi.Input.fromValue(map['sourceResourceType']),
     );
   }
 }

@@ -6,9 +6,9 @@ import 'mongo_db_migration_settings.dart';
 /// Properties for the task that migrates data between MongoDB data sources
 class MigrateMongoDbTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Describes how a MongoDB data migration should be performed
-  final pulumi.Input<MongoDbMigrationSettings>? input;
+  final pulumi.Input<MongoDbMigrationSettings?>? input;
   /// Task type.
   /// Expected value is 'Migrate.MongoDb'.
   final pulumi.Input<String> taskType;

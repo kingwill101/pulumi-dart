@@ -12,21 +12,21 @@ class DynamicMetricCriteriaResponse {
   /// Expected value is 'DynamicThresholdCriterion'.
   final pulumi.Input<String> criterionType;
   /// List of dimension conditions.
-  final pulumi.Input<List<MetricDimensionResponse>>? dimensions;
+  final pulumi.Input<List<MetricDimensionResponse>?>? dimensions;
   /// The minimum number of violations required within the selected lookback time window required to raise an alert.
   final pulumi.Input<DynamicThresholdFailingPeriodsResponse> failingPeriods;
   /// Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format)
-  final pulumi.Input<String>? ignoreDataBefore;
+  final pulumi.Input<String?>? ignoreDataBefore;
   /// Name of the metric.
   final pulumi.Input<String> metricName;
   /// Namespace of the metric.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// Name of the criteria.
   final pulumi.Input<String> name;
   /// The operator used to compare the metric value against the threshold.
   final pulumi.Input<String> operator;
   /// Allows creating an alert rule on a custom metric that isn't yet emitted, by causing the metric validation to be skipped.
-  final pulumi.Input<bool>? skipMetricValidation;
+  final pulumi.Input<bool?>? skipMetricValidation;
   /// the criteria time aggregation types.
   final pulumi.Input<String> timeAggregation;
 

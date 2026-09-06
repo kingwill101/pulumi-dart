@@ -92,6 +92,17 @@ Future<GetAPICollectionResult> getAPICollection(
   return GetAPICollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetAPICollectionResult> getAPICollectionOutput(
+  GetAPICollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAPICollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAPICollectionResult.fromMap);
+}
+
 /// Gets an Azure API Management API if it has been onboarded to Microsoft Defender for APIs. If an Azure API Management API is onboarded to Microsoft Defender for APIs, the system will monitor the operations within the Azure API Management API for intrusive behaviors and provide alerts for attacks that have been detected.
 ///
 /// Uses Azure REST API version 2023-11-15.
@@ -108,6 +119,17 @@ Future<GetAPICollectionByAzureApiManagementServiceResult> getAPICollectionByAzur
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAPICollectionByAzureApiManagementServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetAPICollectionByAzureApiManagementServiceResult> getAPICollectionByAzureApiManagementServiceOutput(
+  GetAPICollectionByAzureApiManagementServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAPICollectionByAzureApiManagementService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAPICollectionByAzureApiManagementServiceResult.fromMap);
 }
 
 /// Gets the Advanced Threat Protection settings for the specified resource.
@@ -130,6 +152,17 @@ Future<GetAdvancedThreatProtectionResult> getAdvancedThreatProtection(
   return GetAdvancedThreatProtectionResult.fromMap(result);
 }
 
+pulumi.Output<GetAdvancedThreatProtectionResult> getAdvancedThreatProtectionOutput(
+  GetAdvancedThreatProtectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAdvancedThreatProtection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAdvancedThreatProtectionResult.fromMap);
+}
+
 /// Get dismiss rule, with name: {alertsSuppressionRuleName}, for the given subscription
 ///
 /// Uses Azure REST API version 2019-01-01-preview.
@@ -148,6 +181,17 @@ Future<GetAlertsSuppressionRuleResult> getAlertsSuppressionRule(
   return GetAlertsSuppressionRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetAlertsSuppressionRuleResult> getAlertsSuppressionRuleOutput(
+  GetAlertsSuppressionRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAlertsSuppressionRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertsSuppressionRuleResult.fromMap);
+}
+
 /// Get a specific application for the requested scope by applicationId
 ///
 /// Uses Azure REST API version 2022-07-01-preview.
@@ -164,6 +208,17 @@ Future<GetApplicationResult> getApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
 }
 
 /// Get a security assessment on your scanned resource
@@ -186,6 +241,17 @@ Future<GetAssessmentResult> getAssessment(
   return GetAssessmentResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentResult> getAssessmentOutput(
+  GetAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentResult.fromMap);
+}
+
 /// Get metadata information on an assessment type in a specific subscription
 ///
 /// Uses Azure REST API version 2021-06-01.
@@ -206,6 +272,17 @@ Future<GetAssessmentMetadataInSubscriptionResult> getAssessmentMetadataInSubscri
   return GetAssessmentMetadataInSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentMetadataInSubscriptionResult> getAssessmentMetadataInSubscriptionOutput(
+  GetAssessmentMetadataInSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAssessmentMetadataInSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentMetadataInSubscriptionResult.fromMap);
+}
+
 /// Get metadata information on an assessment type in a specific subscription
 ///
 /// Uses Azure REST API version 2019-01-01-preview.
@@ -224,6 +301,17 @@ Future<GetAssessmentsMetadataSubscriptionResult> getAssessmentsMetadataSubscript
   return GetAssessmentsMetadataSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetAssessmentsMetadataSubscriptionResult> getAssessmentsMetadataSubscriptionOutput(
+  GetAssessmentsMetadataSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAssessmentsMetadataSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssessmentsMetadataSubscriptionResult.fromMap);
+}
+
 /// Get a specific standard assignment for the requested scope by resourceId
 ///
 /// Uses Azure REST API version 2021-08-01-preview.
@@ -240,6 +328,17 @@ Future<GetAssignmentResult> getAssignment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetAssignmentResult> getAssignmentOutput(
+  GetAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAssignmentResult.fromMap);
 }
 
 /// Retrieves information about the model of a security automation.
@@ -262,6 +361,17 @@ Future<GetAutomationResult> getAutomation(
   return GetAutomationResult.fromMap(result);
 }
 
+pulumi.Output<GetAutomationResult> getAutomationOutput(
+  GetAutomationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAutomation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutomationResult.fromMap);
+}
+
 /// Get a server vulnerability assessments setting of the requested kind, that is set on the subscription
 ///
 /// Uses Azure REST API version 2023-05-01.
@@ -278,6 +388,17 @@ Future<GetAzureServersSettingResult> getAzureServersSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAzureServersSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetAzureServersSettingResult> getAzureServersSettingOutput(
+  GetAzureServersSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getAzureServersSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAzureServersSettingResult.fromMap);
 }
 
 /// Get a specific custom recommendation for the requested scope by customRecommendationName
@@ -298,6 +419,17 @@ Future<GetCustomRecommendationResult> getCustomRecommendation(
   return GetCustomRecommendationResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomRecommendationResult> getCustomRecommendationOutput(
+  GetCustomRecommendationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getCustomRecommendation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomRecommendationResult.fromMap);
+}
+
 /// Gets a data scanner resource for the specified scope.
 ///
 /// Uses Azure REST API version 2026-08-01.
@@ -314,6 +446,17 @@ Future<GetDataScannerResult> getDataScanner(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataScannerResult.fromMap(result);
+}
+
+pulumi.Output<GetDataScannerResult> getDataScannerOutput(
+  GetDataScannerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getDataScanner',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataScannerResult.fromMap);
 }
 
 /// Gets the Defender for Storage settings for the specified storage account.
@@ -336,6 +479,17 @@ Future<GetDefenderForStorageResult> getDefenderForStorage(
   return GetDefenderForStorageResult.fromMap(result);
 }
 
+pulumi.Output<GetDefenderForStorageResult> getDefenderForStorageOutput(
+  GetDefenderForStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getDefenderForStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefenderForStorageResult.fromMap);
+}
+
 /// DevOps Configuration resource.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -354,6 +508,17 @@ Future<GetDevOpsConfigurationResult> getDevOpsConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDevOpsConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetDevOpsConfigurationResult> getDevOpsConfigurationOutput(
+  GetDevOpsConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getDevOpsConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDevOpsConfigurationResult.fromMap);
 }
 
 /// Use this method to get the device security group for the specified IoT Hub resource.
@@ -376,6 +541,17 @@ Future<GetDeviceSecurityGroupResult> getDeviceSecurityGroup(
   return GetDeviceSecurityGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetDeviceSecurityGroupResult> getDeviceSecurityGroupOutput(
+  GetDeviceSecurityGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getDeviceSecurityGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeviceSecurityGroupResult.fromMap);
+}
+
 /// Get a specific governanceAssignment for the requested scope by AssignmentKey
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -394,6 +570,17 @@ Future<GetGovernanceAssignmentResult> getGovernanceAssignment(
   return GetGovernanceAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetGovernanceAssignmentResult> getGovernanceAssignmentOutput(
+  GetGovernanceAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getGovernanceAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGovernanceAssignmentResult.fromMap);
+}
+
 /// Get a specific governance rule for the requested scope by ruleId
 ///
 /// Uses Azure REST API version 2022-01-01-preview.
@@ -410,6 +597,17 @@ Future<GetGovernanceRuleResult> getGovernanceRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGovernanceRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetGovernanceRuleResult> getGovernanceRuleOutput(
+  GetGovernanceRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getGovernanceRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGovernanceRuleResult.fromMap);
 }
 
 /// User this method to get details of a specific IoT Security solution based on solution name
@@ -432,6 +630,17 @@ Future<GetIotSecuritySolutionResult> getIotSecuritySolution(
   return GetIotSecuritySolutionResult.fromMap(result);
 }
 
+pulumi.Output<GetIotSecuritySolutionResult> getIotSecuritySolutionOutput(
+  GetIotSecuritySolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getIotSecuritySolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotSecuritySolutionResult.fromMap);
+}
+
 /// Policies for protecting resources using Just-in-Time access control for the subscription, location
 ///
 /// Uses Azure REST API version 2020-01-01.
@@ -448,6 +657,17 @@ Future<GetJitNetworkAccessPolicyResult> getJitNetworkAccessPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJitNetworkAccessPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetJitNetworkAccessPolicyResult> getJitNetworkAccessPolicyOutput(
+  GetJitNetworkAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getJitNetworkAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJitNetworkAccessPolicyResult.fromMap);
 }
 
 /// Get the Defender plans pricing configurations of the selected scope (valid scopes are resource id or a subscription id). At the resource level, supported resource types are 'VirtualMachines, VMSS and ARC Machines'.
@@ -470,6 +690,17 @@ Future<GetPricingResult> getPricing(
   return GetPricingResult.fromMap(result);
 }
 
+pulumi.Output<GetPricingResult> getPricingOutput(
+  GetPricingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getPricing',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPricingResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the private link. Returns the connection details, status, and configuration for a specific private endpoint.
 ///
 /// Uses Azure REST API version 2025-09-01-preview.
@@ -488,6 +719,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get a private link resource. Returns the configuration and status of private endpoint connectivity for Microsoft Defender for Cloud services in the specified region.
@@ -510,6 +752,17 @@ Future<GetPrivateLinkResult> getPrivateLink(
   return GetPrivateLinkResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkResult> getPrivateLinkOutput(
+  GetPrivateLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getPrivateLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkResult.fromMap);
+}
+
 /// Retrieves details of a specific security connector
 ///
 /// Uses Azure REST API version 2024-08-01-preview.
@@ -530,6 +783,17 @@ Future<GetSecurityConnectorResult> getSecurityConnector(
   return GetSecurityConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityConnectorResult> getSecurityConnectorOutput(
+  GetSecurityConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSecurityConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityConnectorResult.fromMap);
+}
+
 /// Get a specific application for the requested scope by applicationId
 ///
 /// Uses Azure REST API version 2022-07-01-preview.
@@ -546,6 +810,17 @@ Future<GetSecurityConnectorApplicationResult> getSecurityConnectorApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityConnectorApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityConnectorApplicationResult> getSecurityConnectorApplicationOutput(
+  GetSecurityConnectorApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSecurityConnectorApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityConnectorApplicationResult.fromMap);
 }
 
 /// Get Default Security contact configurations for the subscription
@@ -568,6 +843,17 @@ Future<GetSecurityContactResult> getSecurityContact(
   return GetSecurityContactResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityContactResult> getSecurityContactOutput(
+  GetSecurityContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSecurityContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityContactResult.fromMap);
+}
+
 /// Get a specific security operator for the requested scope.
 ///
 /// Uses Azure REST API version 2023-01-01-preview.
@@ -584,6 +870,17 @@ Future<GetSecurityOperatorResult> getSecurityOperator(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityOperatorResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityOperatorResult> getSecurityOperatorOutput(
+  GetSecurityOperatorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSecurityOperator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityOperatorResult.fromMap);
 }
 
 /// Get a specific security standard for the requested scope by standardId
@@ -604,6 +901,17 @@ Future<GetSecurityStandardResult> getSecurityStandard(
   return GetSecurityStandardResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityStandardResult> getSecurityStandardOutput(
+  GetSecurityStandardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSecurityStandard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityStandardResult.fromMap);
+}
+
 /// Gets a server vulnerability assessment onboarding statuses on a given resource.
 ///
 /// Uses Azure REST API version 2020-01-01.
@@ -620,6 +928,17 @@ Future<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerVulnerabilityAssessmentResult.fromMap(result);
+}
+
+pulumi.Output<GetServerVulnerabilityAssessmentResult> getServerVulnerabilityAssessmentOutput(
+  GetServerVulnerabilityAssessmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getServerVulnerabilityAssessment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerVulnerabilityAssessmentResult.fromMap);
 }
 
 /// Rule results.
@@ -642,6 +961,17 @@ Future<GetSqlVulnerabilityAssessmentBaselineRuleResult> getSqlVulnerabilityAsses
   return GetSqlVulnerabilityAssessmentBaselineRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlVulnerabilityAssessmentBaselineRuleResult> getSqlVulnerabilityAssessmentBaselineRuleOutput(
+  GetSqlVulnerabilityAssessmentBaselineRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getSqlVulnerabilityAssessmentBaselineRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlVulnerabilityAssessmentBaselineRuleResult.fromMap);
+}
+
 /// Get a specific security standard for the requested scope
 ///
 /// Uses Azure REST API version 2021-08-01-preview.
@@ -658,6 +988,17 @@ Future<GetStandardResult> getStandard(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStandardResult.fromMap(result);
+}
+
+pulumi.Output<GetStandardResult> getStandardOutput(
+  GetStandardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getStandard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandardResult.fromMap);
 }
 
 /// This operation retrieves a single standard assignment, given its name and the scope it was created at.
@@ -678,6 +1019,17 @@ Future<GetStandardAssignmentResult> getStandardAssignment(
   return GetStandardAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetStandardAssignmentResult> getStandardAssignmentOutput(
+  GetStandardAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getStandardAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStandardAssignmentResult.fromMap);
+}
+
 /// Settings about where we should store your security data and logs. If the result is empty, it means that no custom-workspace configuration was set
 ///
 /// Uses Azure REST API version 2017-08-01-preview.
@@ -694,6 +1046,17 @@ Future<GetWorkspaceSettingResult> getWorkspaceSetting(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceSettingResult> getWorkspaceSettingOutput(
+  GetWorkspaceSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:getWorkspaceSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceSettingResult.fromMap);
 }
 
 /// List of RP resources which supports pagination.
@@ -716,6 +1079,17 @@ Future<ListAzureDevOpsOrgAvailableResult> listAzureDevOpsOrgAvailable(
   return ListAzureDevOpsOrgAvailableResult.fromMap(result);
 }
 
+pulumi.Output<ListAzureDevOpsOrgAvailableResult> listAzureDevOpsOrgAvailableOutput(
+  ListAzureDevOpsOrgAvailableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:listAzureDevOpsOrgAvailable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAzureDevOpsOrgAvailableResult.fromMap);
+}
+
 /// List of RP resources which supports pagination.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -734,6 +1108,17 @@ Future<ListGitHubOwnerAvailableResult> listGitHubOwnerAvailable(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListGitHubOwnerAvailableResult.fromMap(result);
+}
+
+pulumi.Output<ListGitHubOwnerAvailableResult> listGitHubOwnerAvailableOutput(
+  ListGitHubOwnerAvailableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:listGitHubOwnerAvailable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGitHubOwnerAvailableResult.fromMap);
 }
 
 /// List of RP resources which supports pagination.
@@ -756,6 +1141,17 @@ Future<ListGitLabGroupAvailableResult> listGitLabGroupAvailable(
   return ListGitLabGroupAvailableResult.fromMap(result);
 }
 
+pulumi.Output<ListGitLabGroupAvailableResult> listGitLabGroupAvailableOutput(
+  ListGitLabGroupAvailableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:listGitLabGroupAvailable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGitLabGroupAvailableResult.fromMap);
+}
+
 /// List of RP resources which supports pagination.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -774,4 +1170,15 @@ Future<ListGitLabSubgroupResult> listGitLabSubgroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListGitLabSubgroupResult.fromMap(result);
+}
+
+pulumi.Output<ListGitLabSubgroupResult> listGitLabSubgroupOutput(
+  ListGitLabSubgroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:security:listGitLabSubgroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGitLabSubgroupResult.fromMap);
 }

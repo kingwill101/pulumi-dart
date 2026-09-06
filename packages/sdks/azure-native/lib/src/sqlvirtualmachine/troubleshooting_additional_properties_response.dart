@@ -6,7 +6,7 @@ import 'unhealthy_replica_info_response.dart';
 /// SQL VM Troubleshooting additional properties.
 class TroubleshootingAdditionalPropertiesResponse {
   /// The unhealthy replica information
-  final pulumi.Input<UnhealthyReplicaInfoResponse>? unhealthyReplicaInfo;
+  final pulumi.Input<UnhealthyReplicaInfoResponse?>? unhealthyReplicaInfo;
 
   /// Creates a new [TroubleshootingAdditionalPropertiesResponse].
   /// [unhealthyReplicaInfo] The unhealthy replica information

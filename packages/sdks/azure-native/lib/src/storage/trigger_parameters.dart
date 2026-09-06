@@ -6,15 +6,15 @@ import 'interval_unit.dart';
 /// The trigger parameters update for the storage task assignment execution
 class TriggerParameters {
   /// When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
-  final pulumi.Input<String>? endBy;
+  final pulumi.Input<String?>? endBy;
   /// Run interval of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
   /// Run interval unit of task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
-  final pulumi.Input<IntervalUnit>? intervalUnit;
+  final pulumi.Input<IntervalUnit?>? intervalUnit;
   /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
-  final pulumi.Input<String>? startFrom;
+  final pulumi.Input<String?>? startFrom;
   /// When to start task execution. This is a required field when ExecutionTrigger.properties.type is 'RunOnce'; this property should not be present when ExecutionTrigger.properties.type is 'OnSchedule'
-  final pulumi.Input<String>? startOn;
+  final pulumi.Input<String?>? startOn;
 
   /// Creates a new [TriggerParameters].
   /// [endBy] When to end task execution. This is a required field when ExecutionTrigger.properties.type is 'OnSchedule'; this property should not be present when ExecutionTrigger.properties.type is 'RunOnce'
@@ -43,7 +43,7 @@ class TriggerParameters {
   factory TriggerParameters.fromMap(Map<String, dynamic> map) {
     return TriggerParameters(
       endBy: (() { final guardedValue = map['endBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       intervalUnit: (() { final guardedValue = map['intervalUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntervalUnit.fromValue(guardedValue as String)); })(),
       startFrom: (() { final guardedValue = map['startFrom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startOn: (() { final guardedValue = map['startOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

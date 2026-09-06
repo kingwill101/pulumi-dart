@@ -9,19 +9,19 @@ import 'group_type.dart';
 /// {@macro pulumi_apimanagement_workspace_group_args_doc}
 class WorkspaceGroupArgs {
   /// Group description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Group name.
   final pulumi.Input<String> displayName;
   /// Identifier of the external groups, this property contains the id of the group from the external identity provider, e.g. for Azure Active Directory `aad://&lt;tenant&gt;.onmicrosoft.com/groups/&lt;group object id&gt;`; otherwise the value is null.
-  final pulumi.Input<String>? externalId;
+  final pulumi.Input<String?>? externalId;
   /// Group identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Group type.
-  final pulumi.Input<GroupType>? type;
+  final pulumi.Input<GroupType?>? type;
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum of VM Sizes
-enum VmSizeEnum {
+enum VmSizeEnum implements pulumi.PulumiEnum<String> {
   default_("Default"),
   standardA2V2("Standard_A2_v2"),
   standardA4V2("Standard_A4_v2"),
@@ -25,6 +27,7 @@ enum VmSizeEnum {
   custom("Custom");
 
   const VmSizeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static VmSizeEnum fromValue(String value) {

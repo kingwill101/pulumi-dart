@@ -8,13 +8,13 @@ import 'virtual_machine_properties_response_os_disk.dart';
 /// StorageProfile - contains information about the disks and storage information for the virtual machine
 class VirtualMachinePropertiesResponseStorageProfile {
   /// adds data disks to the virtual machine
-  final pulumi.Input<List<VirtualMachinePropertiesResponseDataDisks>>? dataDisks;
+  final pulumi.Input<List<VirtualMachinePropertiesResponseDataDisks>?>? dataDisks;
   /// Which Image to use for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesResponseImageReference>? imageReference;
+  final pulumi.Input<VirtualMachinePropertiesResponseImageReference?>? imageReference;
   /// VHD to attach as OS disk
-  final pulumi.Input<VirtualMachinePropertiesResponseOsDisk>? osDisk;
+  final pulumi.Input<VirtualMachinePropertiesResponseOsDisk?>? osDisk;
   /// Id of the storage container that hosts the VM configuration file
-  final pulumi.Input<String>? vmConfigStoragePathId;
+  final pulumi.Input<String?>? vmConfigStoragePathId;
 
   /// Creates a new [VirtualMachinePropertiesResponseStorageProfile].
   /// [dataDisks] adds data disks to the virtual machine

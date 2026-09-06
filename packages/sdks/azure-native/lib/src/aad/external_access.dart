@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
-enum ExternalAccess {
+enum ExternalAccess implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const ExternalAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static ExternalAccess fromValue(String value) {

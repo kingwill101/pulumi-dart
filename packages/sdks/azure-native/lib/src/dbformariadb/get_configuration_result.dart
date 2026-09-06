@@ -4,23 +4,23 @@
 /// Result data returned by getConfiguration.
 class GetConfigurationResult {
   /// Allowed values of the configuration.
-  final String allowedValues;
+  final String? allowedValues;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Data type of the configuration.
-  final String dataType;
+  final String? dataType;
   /// Default value of the configuration.
-  final String defaultValue;
+  final String? defaultValue;
   /// Description of the configuration.
-  final String description;
+  final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Source of the configuration.
   final String? source;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Value of the configuration.
   final String? value;
 
@@ -36,44 +36,44 @@ class GetConfigurationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Value of the configuration.
   const GetConfigurationResult({
-    required this.allowedValues,
-    required this.azureApiVersion,
-    required this.dataType,
-    required this.defaultValue,
-    required this.description,
-    required this.id,
-    required this.name,
+    this.allowedValues,
+    this.azureApiVersion,
+    this.dataType,
+    this.defaultValue,
+    this.description,
+    this.id,
+    this.name,
     this.source,
-    required this.type,
+    this.type,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedValues': allowedValues,
-      'azureApiVersion': azureApiVersion,
-      'dataType': dataType,
-      'defaultValue': defaultValue,
-      'description': description,
-      'id': id,
-      'name': name,
+      'allowedValues': ?allowedValues,
+      'azureApiVersion': ?azureApiVersion,
+      'dataType': ?dataType,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'id': ?id,
+      'name': ?name,
       'source': ?source,
-      'type': type,
+      'type': ?type,
       'value': ?value,
     };
   }
 
   factory GetConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationResult(
-      allowedValues: map['allowedValues'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataType: map['dataType'] as String,
-      defaultValue: map['defaultValue'] as String,
-      description: map['description'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      allowedValues: (() { final guardedValue = map['allowedValues']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

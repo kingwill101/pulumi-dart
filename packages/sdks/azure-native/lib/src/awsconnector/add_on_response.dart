@@ -6,11 +6,11 @@ import 'auto_snapshot_add_on_response.dart';
 /// Definition of AddOn
 class AddOnResponse {
   /// The add-on type
-  final pulumi.Input<String>? addOnType;
+  final pulumi.Input<String?>? addOnType;
   /// An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
-  final pulumi.Input<AutoSnapshotAddOnResponse>? autoSnapshotAddOnRequest;
+  final pulumi.Input<AutoSnapshotAddOnResponse?>? autoSnapshotAddOnRequest;
   /// Status of the Addon
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AddOnResponse].
   /// [addOnType] The add-on type

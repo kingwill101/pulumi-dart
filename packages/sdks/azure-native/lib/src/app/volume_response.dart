@@ -6,15 +6,15 @@ import 'secret_volume_item_response.dart';
 /// Volume definitions for the Container App.
 class VolumeResponse {
   /// Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// Volume name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume.
-  final pulumi.Input<List<SecretVolumeItemResponse>>? secrets;
+  final pulumi.Input<List<SecretVolumeItemResponse>?>? secrets;
   /// Name of storage resource. No need to provide for EmptyDir and Secret.
-  final pulumi.Input<String>? storageName;
+  final pulumi.Input<String?>? storageName;
   /// Storage type for the volume. If not provided, use EmptyDir.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<String?>? storageType;
 
   /// Creates a new [VolumeResponse].
   /// [mountOptions] Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.

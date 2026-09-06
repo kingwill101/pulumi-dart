@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the group member.
-enum GroupMemberType {
+enum GroupMemberType implements pulumi.PulumiEnum<String> {
   valueVirtualNetwork("VirtualNetwork"),
   valueSubnet("Subnet");
 
   const GroupMemberType(this.wireValue);
+  @override
   final String wireValue;
 
   static GroupMemberType fromValue(String value) {

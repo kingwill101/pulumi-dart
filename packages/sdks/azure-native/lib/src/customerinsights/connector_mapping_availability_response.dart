@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connector mapping property availability.
 class ConnectorMappingAvailabilityResponse {
   /// The frequency to update.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<String?>? frequency;
   /// The interval of the given frequency to use.
   final pulumi.Input<int> interval;
 
@@ -27,7 +27,7 @@ class ConnectorMappingAvailabilityResponse {
   factory ConnectorMappingAvailabilityResponse.fromMap(Map<String, dynamic> map) {
     return ConnectorMappingAvailabilityResponse(
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
     );
   }
 }

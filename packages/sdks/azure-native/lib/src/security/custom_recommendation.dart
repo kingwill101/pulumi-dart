@@ -593,7 +593,30 @@ class CustomRecommendation extends pulumi.CustomResource {
         ) {
     assessmentKey = registerOutput<String>('assessmentKey');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    cloudProviders = registerOutput<List<String>?>('cloudProviders');
+    cloudProviders = registerOutput<List<String>?>('cloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String?>('query');
+    remediationDescription = registerOutput<String?>('remediationDescription');
+    securityIssue = registerOutput<String?>('securityIssue');
+    severity = registerOutput<String?>('severity');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CustomRecommendation] resource.
+  CustomRecommendation.reference(String urn)
+    : super(
+        'azure-native:security:CustomRecommendation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentKey = registerOutput<String>('assessmentKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cloudProviders = registerOutput<List<String>?>('cloudProviders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     this.name = registerOutput<String>('name');

@@ -10,7 +10,7 @@ class MonitoredResourceArgs {
   /// Name of the SCOM managed instance.
   final pulumi.Input<String> instanceName;
   /// The monitored resource name.
-  final pulumi.Input<String>? monitoredResourceName;
+  final pulumi.Input<String?>? monitoredResourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

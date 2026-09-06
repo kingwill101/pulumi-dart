@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ArtifactNamespace {
+enum ArtifactNamespace implements pulumi.PulumiEnum<String> {
   bUILDID("BUILD_ID"),
   nONE("NONE");
 
   const ArtifactNamespace(this.wireValue);
+  @override
   final String wireValue;
 
   static ArtifactNamespace fromValue(String value) {

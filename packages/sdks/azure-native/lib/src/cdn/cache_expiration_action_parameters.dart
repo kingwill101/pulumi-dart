@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for the cache expiration action.
 class CacheExpirationActionParameters {
   /// Caching behavior for the requests
-  final pulumi.Input<String> cacheBehavior;
+  final pulumi.Input<dynamic> cacheBehavior;
   /// The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
-  final pulumi.Input<String>? cacheDuration;
+  final pulumi.Input<String?>? cacheDuration;
   /// The level at which the content needs to be cached.
-  final pulumi.Input<String> cacheType;
+  final pulumi.Input<dynamic> cacheType;
   /// Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -36,9 +36,9 @@ class CacheExpirationActionParameters {
 
   factory CacheExpirationActionParameters.fromMap(Map<String, dynamic> map) {
     return CacheExpirationActionParameters(
-      cacheBehavior: pulumi.Input.fromValue(map['cacheBehavior'] as String),
+      cacheBehavior: pulumi.Input.fromValue(map['cacheBehavior']),
       cacheDuration: (() { final guardedValue = map['cacheDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cacheType: pulumi.Input.fromValue(map['cacheType'] as String),
+      cacheType: pulumi.Input.fromValue(map['cacheType']),
       typeName: pulumi.Input.fromValue(map['typeName'] as String),
     );
   }

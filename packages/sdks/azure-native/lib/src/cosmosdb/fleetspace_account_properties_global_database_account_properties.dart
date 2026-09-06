@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for fleetspace Account in the fleetspace.
 class FleetspaceAccountPropertiesGlobalDatabaseAccountProperties {
   /// The location of  global database account in the Fleetspace Account.
-  final pulumi.Input<String>? armLocation;
+  final pulumi.Input<String?>? armLocation;
   /// The resource identifier of global database account in the Fleetspace Account.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [FleetspaceAccountPropertiesGlobalDatabaseAccountProperties].
   /// [armLocation] The location of  global database account in the Fleetspace Account.

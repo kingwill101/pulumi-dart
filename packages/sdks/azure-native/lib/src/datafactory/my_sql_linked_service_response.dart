@@ -10,9 +10,9 @@ class MySqlLinkedServiceResponse {
   /// This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.
   final pulumi.Input<dynamic>? allowZeroDateTime;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// The length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error. Type: integer.
@@ -22,17 +22,17 @@ class MySqlLinkedServiceResponse {
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The version of the MySQL driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string.
   final pulumi.Input<dynamic>? driverVersion;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Determines which column type (if any) should be read as a GUID. Type: string. None: No column types are automatically read as a Guid; Char36: All CHAR(36) columns are read/written as a Guid using lowercase hex with hyphens, which matches UUID.
   final pulumi.Input<dynamic>? guidFormat;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? password;
   /// The port for the connection. Type: integer.
   final pulumi.Input<dynamic>? port;
   /// Server name for connection. Type: string.
@@ -53,7 +53,7 @@ class MySqlLinkedServiceResponse {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MySqlLinkedServiceResponse].
   /// [allowZeroDateTime] This allows the special “zero” date value 0000-00-00 to be retrieved from the database. Type: boolean.

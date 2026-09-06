@@ -44,6 +44,17 @@ Future<GetAvailabilitySetResult> getAvailabilitySet(
   return GetAvailabilitySetResult.fromMap(result);
 }
 
+pulumi.Output<GetAvailabilitySetResult> getAvailabilitySetOutput(
+  GetAvailabilitySetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getAvailabilitySet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAvailabilitySetResult.fromMap);
+}
+
 /// Implements Cloud GET method.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -62,6 +73,17 @@ Future<GetCloudResult> getCloud(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCloudResult.fromMap(result);
+}
+
+pulumi.Output<GetCloudResult> getCloudOutput(
+  GetCloudArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getCloud',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudResult.fromMap);
 }
 
 /// Implements GuestAgent GET method.
@@ -84,6 +106,17 @@ Future<GetGuestAgentResult> getGuestAgent(
   return GetGuestAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetGuestAgentResult> getGuestAgentOutput(
+  GetGuestAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getGuestAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuestAgentResult.fromMap);
+}
+
 /// Implements HybridIdentityMetadata GET method.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -102,6 +135,17 @@ Future<GetHybridIdentityMetadataResult> getHybridIdentityMetadata(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHybridIdentityMetadataResult.fromMap(result);
+}
+
+pulumi.Output<GetHybridIdentityMetadataResult> getHybridIdentityMetadataOutput(
+  GetHybridIdentityMetadataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getHybridIdentityMetadata',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridIdentityMetadataResult.fromMap);
 }
 
 /// Shows an inventory item.
@@ -124,6 +168,17 @@ Future<GetInventoryItemResult> getInventoryItem(
   return GetInventoryItemResult.fromMap(result);
 }
 
+pulumi.Output<GetInventoryItemResult> getInventoryItemOutput(
+  GetInventoryItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getInventoryItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInventoryItemResult.fromMap);
+}
+
 /// The operation to get the extension.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -144,6 +199,17 @@ Future<GetMachineExtensionResult> getMachineExtension(
   return GetMachineExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineExtensionResult> getMachineExtensionOutput(
+  GetMachineExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getMachineExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineExtensionResult.fromMap);
+}
+
 /// Implements GuestAgent GET method.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -160,6 +226,17 @@ Future<GetVMInstanceGuestAgentResult> getVMInstanceGuestAgent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVMInstanceGuestAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetVMInstanceGuestAgentResult> getVMInstanceGuestAgentOutput(
+  GetVMInstanceGuestAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVMInstanceGuestAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVMInstanceGuestAgentResult.fromMap);
 }
 
 /// Implements VirtualMachine GET method.
@@ -182,6 +259,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
   return GetVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
+}
+
 /// Retrieves information about a virtual machine instance.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -200,6 +288,17 @@ Future<GetVirtualMachineInstanceResult> getVirtualMachineInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineInstanceResult> getVirtualMachineInstanceOutput(
+  GetVirtualMachineInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVirtualMachineInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineInstanceResult.fromMap);
 }
 
 /// Implements VirtualMachineTemplate GET method.
@@ -222,6 +321,17 @@ Future<GetVirtualMachineTemplateResult> getVirtualMachineTemplate(
   return GetVirtualMachineTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineTemplateResult> getVirtualMachineTemplateOutput(
+  GetVirtualMachineTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVirtualMachineTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineTemplateResult.fromMap);
+}
+
 /// Implements VirtualNetwork GET method.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -242,6 +352,17 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
   return GetVirtualNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
+}
+
 /// Implements VMMServer GET method.
 ///
 /// Uses Azure REST API version 2023-04-01-preview.
@@ -260,4 +381,15 @@ Future<GetVmmServerResult> getVmmServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVmmServerResult.fromMap(result);
+}
+
+pulumi.Output<GetVmmServerResult> getVmmServerOutput(
+  GetVmmServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scvmm:getVmmServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVmmServerResult.fromMap);
 }

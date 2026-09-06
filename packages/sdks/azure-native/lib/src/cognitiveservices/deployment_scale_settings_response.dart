@@ -7,9 +7,9 @@ class DeploymentScaleSettingsResponse {
   /// Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
   final pulumi.Input<int> activeCapacity;
   /// Deployment capacity.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Deployment scale type.
-  final pulumi.Input<String>? scaleType;
+  final pulumi.Input<String?>? scaleType;
 
   /// Creates a new [DeploymentScaleSettingsResponse].
   /// [activeCapacity] Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
@@ -31,8 +31,8 @@ class DeploymentScaleSettingsResponse {
 
   factory DeploymentScaleSettingsResponse.fromMap(Map<String, dynamic> map) {
     return DeploymentScaleSettingsResponse(
-      activeCapacity: pulumi.Input.fromValue(map['activeCapacity'] as int),
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activeCapacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['activeCapacity'])),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

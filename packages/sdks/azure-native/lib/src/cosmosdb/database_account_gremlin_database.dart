@@ -215,7 +215,26 @@ class DatabaseAccountGremlinDatabase extends pulumi.CustomResource {
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     rid = registerOutput<String?>('rid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    ts = registerOutput<dynamic>('ts');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseAccountGremlinDatabase] resource.
+  DatabaseAccountGremlinDatabase.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:DatabaseAccountGremlinDatabase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    rid = registerOutput<String?>('rid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     ts = registerOutput<dynamic>('ts');
     type = registerOutput<String>('type');
   }

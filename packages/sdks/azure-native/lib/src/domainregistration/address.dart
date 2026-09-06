@@ -7,7 +7,7 @@ class Address {
   /// First line of an Address.
   final pulumi.Input<String> address1;
   /// The second line of the Address. Optional.
-  final pulumi.Input<String>? address2;
+  final pulumi.Input<String?>? address2;
   /// The city for the address.
   final pulumi.Input<String> city;
   /// The country for the address.

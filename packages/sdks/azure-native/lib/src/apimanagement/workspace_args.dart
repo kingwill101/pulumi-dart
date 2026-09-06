@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_workspace_args_doc}
 class WorkspaceArgs {
   /// Description of the workspace.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the workspace.
   final pulumi.Input<String> displayName;
   /// The name of the resource group. The name is case insensitive.
@@ -16,7 +16,7 @@ class WorkspaceArgs {
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Workspace identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [WorkspaceArgs].
   /// [description] Description of the workspace.

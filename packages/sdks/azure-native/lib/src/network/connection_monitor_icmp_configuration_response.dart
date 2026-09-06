@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the ICMP configuration.
 class ConnectionMonitorIcmpConfigurationResponse {
   /// Value indicating whether path evaluation with trace route should be disabled.
-  final pulumi.Input<bool>? disableTraceRoute;
+  final pulumi.Input<bool?>? disableTraceRoute;
 
   /// Creates a new [ConnectionMonitorIcmpConfigurationResponse].
   /// [disableTraceRoute] Value indicating whether path evaluation with trace route should be disabled.

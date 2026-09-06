@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identifies the unique system identifier for each Azure resource.
 class Sku {
   /// The sku capacity
-  final pulumi.Input<String>? capacity;
+  final pulumi.Input<String?>? capacity;
   /// The sku family
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// The sku size
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The Sku tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] The sku capacity
@@ -43,7 +43,7 @@ class Sku {
     return Sku(
       capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
       size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

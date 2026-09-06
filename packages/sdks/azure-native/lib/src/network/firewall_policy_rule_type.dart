@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the rule.
-enum FirewallPolicyRuleType {
+enum FirewallPolicyRuleType implements pulumi.PulumiEnum<String> {
   valueFirewallPolicyNatRule("FirewallPolicyNatRule"),
   valueFirewallPolicyFilterRule("FirewallPolicyFilterRule");
 
   const FirewallPolicyRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyRuleType fromValue(String value) {

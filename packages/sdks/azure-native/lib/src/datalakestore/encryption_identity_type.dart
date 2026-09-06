@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of encryption being used. Currently the only supported type is 'SystemAssigned'.
-enum EncryptionIdentityType {
+enum EncryptionIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned");
 
   const EncryptionIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionIdentityType fromValue(String value) {

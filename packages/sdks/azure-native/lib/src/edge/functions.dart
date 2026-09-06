@@ -74,6 +74,17 @@ Future<GetConfigTemplateResult> getConfigTemplate(
   return GetConfigTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigTemplateResult> getConfigTemplateOutput(
+  GetConfigTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getConfigTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigTemplateResult.fromMap);
+}
+
 /// Get a Configuration Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -92,6 +103,17 @@ Future<GetConfigurationResult> getConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
 }
 
 /// Get a ConfigurationReference
@@ -114,6 +136,17 @@ Future<GetConfigurationReferenceResult> getConfigurationReference(
   return GetConfigurationReferenceResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationReferenceResult> getConfigurationReferenceOutput(
+  GetConfigurationReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getConfigurationReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationReferenceResult.fromMap);
+}
+
 /// Get Context Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -132,6 +165,17 @@ Future<GetContextResult> getContext(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContextResult.fromMap(result);
+}
+
+pulumi.Output<GetContextResult> getContextOutput(
+  GetContextArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getContext',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContextResult.fromMap);
 }
 
 /// Returns details of specified Diagnostic resource.
@@ -154,6 +198,17 @@ Future<GetDiagnosticResult> getDiagnostic(
   return GetDiagnosticResult.fromMap(result);
 }
 
+pulumi.Output<GetDiagnosticResult> getDiagnosticOutput(
+  GetDiagnosticArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getDiagnostic',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiagnosticResult.fromMap);
+}
+
 /// Get a Dynamic Configuration Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -172,6 +227,17 @@ Future<GetDynamicConfigurationResult> getDynamicConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDynamicConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetDynamicConfigurationResult> getDynamicConfigurationOutput(
+  GetDynamicConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getDynamicConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamicConfigurationResult.fromMap);
 }
 
 /// Get a Dynamic Configuration Version Resource
@@ -194,6 +260,17 @@ Future<GetDynamicConfigurationVersionResult> getDynamicConfigurationVersion(
   return GetDynamicConfigurationVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetDynamicConfigurationVersionResult> getDynamicConfigurationVersionOutput(
+  GetDynamicConfigurationVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getDynamicConfigurationVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamicConfigurationVersionResult.fromMap);
+}
+
 /// Get a DynamicSchema Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -212,6 +289,17 @@ Future<GetDynamicSchemaResult> getDynamicSchema(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDynamicSchemaResult.fromMap(result);
+}
+
+pulumi.Output<GetDynamicSchemaResult> getDynamicSchemaOutput(
+  GetDynamicSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getDynamicSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamicSchemaResult.fromMap);
 }
 
 /// Get a Dynamic Schema Version Resource
@@ -234,6 +322,17 @@ Future<GetDynamicSchemaVersionResult> getDynamicSchemaVersion(
   return GetDynamicSchemaVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetDynamicSchemaVersionResult> getDynamicSchemaVersionOutput(
+  GetDynamicSchemaVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getDynamicSchemaVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDynamicSchemaVersionResult.fromMap);
+}
+
 /// Get Execution Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -254,6 +353,17 @@ Future<GetExecutionResult> getExecution(
   return GetExecutionResult.fromMap(result);
 }
 
+pulumi.Output<GetExecutionResult> getExecutionOutput(
+  GetExecutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExecutionResult.fromMap);
+}
+
 /// Get ExecutionV2 Resource
 ///
 /// Uses Azure REST API version 2025-08-15-preview.
@@ -270,6 +380,17 @@ Future<GetExecutionV2Result> getExecutionV2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExecutionV2Result.fromMap(result);
+}
+
+pulumi.Output<GetExecutionV2Result> getExecutionV2Output(
+  GetExecutionV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getExecutionV2',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExecutionV2Result.fromMap);
 }
 
 /// Get Instance Resource
@@ -292,6 +413,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Get a Schema Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -310,6 +442,17 @@ Future<GetSchemaResult> getSchema(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemaResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemaResult> getSchemaOutput(
+  GetSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaResult.fromMap);
 }
 
 /// Get a Schema Reference Resource
@@ -332,6 +475,17 @@ Future<GetSchemaReferenceResult> getSchemaReference(
   return GetSchemaReferenceResult.fromMap(result);
 }
 
+pulumi.Output<GetSchemaReferenceResult> getSchemaReferenceOutput(
+  GetSchemaReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSchemaReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaReferenceResult.fromMap);
+}
+
 /// Get a Schema Version Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -350,6 +504,17 @@ Future<GetSchemaVersionResult> getSchemaVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemaVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemaVersionResult> getSchemaVersionOutput(
+  GetSchemaVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSchemaVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaVersionResult.fromMap);
 }
 
 /// Get a Site
@@ -372,6 +537,17 @@ Future<GetSiteResult> getSite(
   return GetSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetSiteResult> getSiteOutput(
+  GetSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteResult.fromMap);
+}
+
 /// Get Site Reference Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -390,6 +566,17 @@ Future<GetSiteReferenceResult> getSiteReference(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSiteReferenceResult.fromMap(result);
+}
+
+pulumi.Output<GetSiteReferenceResult> getSiteReferenceOutput(
+  GetSiteReferenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSiteReference',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteReferenceResult.fromMap);
 }
 
 /// Get a Site
@@ -412,6 +599,17 @@ Future<GetSitesByServiceGroupResult> getSitesByServiceGroup(
   return GetSitesByServiceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetSitesByServiceGroupResult> getSitesByServiceGroupOutput(
+  GetSitesByServiceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSitesByServiceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSitesByServiceGroupResult.fromMap);
+}
+
 /// Get a Site
 ///
 /// Uses Azure REST API version 2024-02-01-preview.
@@ -430,6 +628,17 @@ Future<GetSitesBySubscriptionResult> getSitesBySubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSitesBySubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetSitesBySubscriptionResult> getSitesBySubscriptionOutput(
+  GetSitesBySubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSitesBySubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSitesBySubscriptionResult.fromMap);
 }
 
 /// Get a Solution resource
@@ -452,6 +661,17 @@ Future<GetSolutionResult> getSolution(
   return GetSolutionResult.fromMap(result);
 }
 
+pulumi.Output<GetSolutionResult> getSolutionOutput(
+  GetSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionResult.fromMap);
+}
+
 /// Get a Solution Template Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -470,6 +690,17 @@ Future<GetSolutionTemplateResult> getSolutionTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSolutionTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetSolutionTemplateResult> getSolutionTemplateOutput(
+  GetSolutionTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSolutionTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionTemplateResult.fromMap);
 }
 
 /// Get a Solution Version Resource
@@ -492,6 +723,17 @@ Future<GetSolutionVersionResult> getSolutionVersion(
   return GetSolutionVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetSolutionVersionResult> getSolutionVersionOutput(
+  GetSolutionVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getSolutionVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionVersionResult.fromMap);
+}
+
 /// Get a Target Resource
 ///
 /// Uses Azure REST API version 2025-06-01.
@@ -510,6 +752,17 @@ Future<GetTargetResult> getTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetResult> getTargetOutput(
+  GetTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetResult.fromMap);
 }
 
 /// Get a Workflow resource
@@ -532,6 +785,17 @@ Future<GetWorkflowResult> getWorkflow(
   return GetWorkflowResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowResult> getWorkflowOutput(
+  GetWorkflowArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflow',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowResult.fromMap);
+}
+
 /// Get a Workflow resource
 ///
 /// Uses Azure REST API version 2025-08-15-preview.
@@ -548,6 +812,17 @@ Future<GetWorkflowV2Result> getWorkflowV2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowV2Result.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowV2Result> getWorkflowV2Output(
+  GetWorkflowV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflowV2',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowV2Result.fromMap);
 }
 
 /// Get a Workflow Version Resource
@@ -570,6 +845,17 @@ Future<GetWorkflowVersionResult> getWorkflowVersion(
   return GetWorkflowVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkflowVersionResult> getWorkflowVersionOutput(
+  GetWorkflowVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflowVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowVersionResult.fromMap);
+}
+
 /// Get a Workflow Version Resource
 ///
 /// Uses Azure REST API version 2025-08-15-preview.
@@ -586,4 +872,15 @@ Future<GetWorkflowVersionV2Result> getWorkflowVersionV2(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkflowVersionV2Result.fromMap(result);
+}
+
+pulumi.Output<GetWorkflowVersionV2Result> getWorkflowVersionV2Output(
+  GetWorkflowVersionV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:edge:getWorkflowVersionV2',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkflowVersionV2Result.fromMap);
 }

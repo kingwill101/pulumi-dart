@@ -17,10 +17,10 @@ class WinRMListener {
   /// Linux](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-linux)
   /// or the [Azure Key Vault virtual machine extension for
   /// Windows](https://learn.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
-  final pulumi.Input<String>? certificateUrl;
+  final pulumi.Input<String?>? certificateUrl;
   /// Specifies the protocol of WinRM listener. Possible values are: **http,**
   /// **https.**
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
 
   /// Creates a new [WinRMListener].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a
@@ -40,7 +40,7 @@ class WinRMListener {
   factory WinRMListener.fromMap(Map<String, dynamic> map) {
     return WinRMListener(
       certificateUrl: (() { final guardedValue = map['certificateUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -9,7 +9,7 @@ class ServerlessEndpointPropertiesResponse {
   /// [Required] Specifies the authentication mode for the Serverless endpoint.
   final pulumi.Input<String> authMode;
   /// Specifies the content safety options. If omitted, the default content safety settings will be configured
-  final pulumi.Input<ContentSafetyResponse>? contentSafety;
+  final pulumi.Input<ContentSafetyResponse?>? contentSafety;
   /// The current state of the ServerlessEndpoint.
   final pulumi.Input<String> endpointState;
   /// The inference uri to target when making requests against the serverless endpoint
@@ -17,7 +17,7 @@ class ServerlessEndpointPropertiesResponse {
   /// The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
   final pulumi.Input<String> marketplaceSubscriptionId;
   /// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-  final pulumi.Input<ModelSettingsResponse>? modelSettings;
+  final pulumi.Input<ModelSettingsResponse?>? modelSettings;
   /// State of endpoint provisioning.
   final pulumi.Input<String> provisioningState;
 

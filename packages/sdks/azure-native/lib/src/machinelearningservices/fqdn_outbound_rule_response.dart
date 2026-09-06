@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// FQDN Outbound Rule for the managed network of a machine learning workspace.
 class FqdnOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? category;
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<String?>? category;
+  final pulumi.Input<String?>? destination;
   /// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
   final pulumi.Input<String> errorInformation;
   final pulumi.Input<List<String>> parentRuleNames;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'FQDN'.
   final pulumi.Input<String> type;

@@ -6,7 +6,7 @@ import 'mtls_response.dart';
 /// Peer authentication settings for the Managed Environment
 class ManagedEnvironmentResponsePeerAuthentication {
   /// Mutual TLS authentication settings for the Managed Environment
-  final pulumi.Input<MtlsResponse>? mtls;
+  final pulumi.Input<MtlsResponse?>? mtls;
 
   /// Creates a new [ManagedEnvironmentResponsePeerAuthentication].
   /// [mtls] Mutual TLS authentication settings for the Managed Environment

@@ -6,7 +6,7 @@ import 'placement_v1_cluster_affinity.dart';
 /// Affinity is a group of cluster affinity scheduling rules. More to be added.
 class PlacementV1Affinity {
   /// ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
-  final pulumi.Input<PlacementV1ClusterAffinity>? clusterAffinity;
+  final pulumi.Input<PlacementV1ClusterAffinity?>? clusterAffinity;
 
   /// Creates a new [PlacementV1Affinity].
   /// [clusterAffinity] ClusterAffinity contains cluster affinity scheduling rules for the selected resources.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage type for the volume. If not provided, use EmptyDir.
-enum StorageType {
+enum StorageType implements pulumi.PulumiEnum<String> {
   valueAzureFile("AzureFile"),
   valueEmptyDir("EmptyDir"),
   valueSecret("Secret"),
@@ -7,6 +9,7 @@ enum StorageType {
   valueSmb("Smb");
 
   const StorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageType fromValue(String value) {

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Radius client root certificate of P2SVpnServerConfiguration.
 class P2SVpnServerConfigRadiusClientRootCertificateResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the radius client root certificate resource.
   final pulumi.Input<String> provisioningState;
   /// The Radius client root certificate thumbprint.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [P2SVpnServerConfigRadiusClientRootCertificateResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

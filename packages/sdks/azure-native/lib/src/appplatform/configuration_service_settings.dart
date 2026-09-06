@@ -6,9 +6,9 @@ import 'configuration_service_git_property.dart';
 /// The settings of Application Configuration Service.
 class ConfigurationServiceSettings {
   /// Property of git environment.
-  final pulumi.Input<ConfigurationServiceGitProperty>? gitProperty;
+  final pulumi.Input<ConfigurationServiceGitProperty?>? gitProperty;
   /// How often (in seconds) to check repository updates. Minimum value is 0.
-  final pulumi.Input<int>? refreshIntervalInSeconds;
+  final pulumi.Input<int?>? refreshIntervalInSeconds;
 
   /// Creates a new [ConfigurationServiceSettings].
   /// [gitProperty] Property of git environment.
@@ -28,7 +28,7 @@ class ConfigurationServiceSettings {
   factory ConfigurationServiceSettings.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceSettings(
       gitProperty: (() { final guardedValue = map['gitProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationServiceGitProperty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      refreshIntervalInSeconds: (() { final guardedValue = map['refreshIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      refreshIntervalInSeconds: (() { final guardedValue = map['refreshIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

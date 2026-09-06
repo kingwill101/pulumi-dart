@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User principals.
 class Principals {
   /// Object Id for the user
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// UPN of the user.
-  final pulumi.Input<String>? upn;
+  final pulumi.Input<String?>? upn;
 
   /// Creates a new [Principals].
   /// [objectId] Object Id for the user

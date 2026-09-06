@@ -6,7 +6,7 @@ import 'export_policy_rule_capacity_pool_volume_response.dart';
 /// Set of export policy rules
 class VolumePropertiesResponseExportPolicy {
   /// Export policy rule
-  final pulumi.Input<List<ExportPolicyRuleCapacityPoolVolumeResponse>>? rules;
+  final pulumi.Input<List<ExportPolicyRuleCapacityPoolVolumeResponse>?>? rules;
 
   /// Creates a new [VolumePropertiesResponseExportPolicy].
   /// [rules] Export policy rule

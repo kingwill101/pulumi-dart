@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_managed_server_dns_alias_args_doc}
 class ManagedServerDnsAliasArgs {
   /// Whether or not DNS record should be created for this alias.
-  final pulumi.Input<bool>? createDnsRecord;
-  final pulumi.Input<String>? dnsAliasName;
+  final pulumi.Input<bool?>? createDnsRecord;
+  final pulumi.Input<String?>? dnsAliasName;
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -20,12 +20,12 @@ class ManagedServerDnsAliasArgs {
   /// [dnsAliasName] Optional.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  const ManagedServerDnsAliasArgs({
-    this.createDnsRecord,
+  ManagedServerDnsAliasArgs({
+    pulumi.Input<bool?>? createDnsRecord,
     this.dnsAliasName,
     required this.managedInstanceName,
     required this.resourceGroupName,
-  });
+  }) : createDnsRecord = createDnsRecord ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

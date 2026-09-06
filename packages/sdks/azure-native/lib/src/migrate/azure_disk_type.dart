@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure Disk Type
-enum AzureDiskType {
+enum AzureDiskType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   standard("Standard"),
   standardSSD("StandardSSD"),
@@ -9,6 +11,7 @@ enum AzureDiskType {
   premiumV2("PremiumV2");
 
   const AzureDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureDiskType fromValue(String value) {

@@ -8,15 +8,15 @@ import 'virtual_network_rule_response.dart';
 /// Network rule set
 class NetworkRuleSetResponse {
   /// Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// Specifies the default action of allow or deny when no other rules match.
   final pulumi.Input<String> defaultAction;
   /// Sets the IP ACL rules
-  final pulumi.Input<List<IPRuleResponse>>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>?>? ipRules;
   /// Sets the resource access rules
-  final pulumi.Input<List<ResourceAccessRuleResponse>>? resourceAccessRules;
+  final pulumi.Input<List<ResourceAccessRuleResponse>?>? resourceAccessRules;
   /// Sets the virtual network rules
-  final pulumi.Input<List<VirtualNetworkRuleResponse>>? virtualNetworkRules;
+  final pulumi.Input<List<VirtualNetworkRuleResponse>?>? virtualNetworkRules;
 
   /// Creates a new [NetworkRuleSetResponse].
   /// [bypass] Specifies whether traffic is bypassed for Logging/Metrics/AzureServices. Possible values are any combination of Logging|Metrics|AzureServices (For example, "Logging, Metrics"), or None to bypass none of those traffics.
@@ -24,13 +24,13 @@ class NetworkRuleSetResponse {
   /// [ipRules] Sets the IP ACL rules
   /// [resourceAccessRules] Sets the resource access rules
   /// [virtualNetworkRules] Sets the virtual network rules
-  const NetworkRuleSetResponse({
-    this.bypass,
-    required this.defaultAction,
+  NetworkRuleSetResponse({
+    pulumi.Input<String?>? bypass,
+    pulumi.Input<String>? defaultAction,
     this.ipRules,
     this.resourceAccessRules,
     this.virtualNetworkRules,
-  });
+  }) : bypass = bypass ?? pulumi.Input.fromValue('AzureServices'), defaultAction = defaultAction ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

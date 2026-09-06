@@ -30,6 +30,17 @@ Future<GetDpsCertificateResult> getDpsCertificate(
   return GetDpsCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetDpsCertificateResult> getDpsCertificateOutput(
+  GetDpsCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceprovisioningservices:getDpsCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDpsCertificateResult.fromMap);
+}
+
 /// Get the metadata of the provisioning service without SAS keys.
 ///
 /// Uses Azure REST API version 2023-03-01-preview.
@@ -48,6 +59,17 @@ Future<GetIotDpsResourceResult> getIotDpsResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIotDpsResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetIotDpsResourceResult> getIotDpsResourceOutput(
+  GetIotDpsResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceprovisioningservices:getIotDpsResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotDpsResourceResult.fromMap);
 }
 
 /// Get private endpoint connection properties
@@ -70,6 +92,17 @@ Future<GetIotDpsResourcePrivateEndpointConnectionResult> getIotDpsResourcePrivat
   return GetIotDpsResourcePrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetIotDpsResourcePrivateEndpointConnectionResult> getIotDpsResourcePrivateEndpointConnectionOutput(
+  GetIotDpsResourcePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceprovisioningservices:getIotDpsResourcePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotDpsResourcePrivateEndpointConnectionResult.fromMap);
+}
+
 /// List the primary and secondary keys for a provisioning service.
 ///
 /// Uses Azure REST API version 2023-03-01-preview.
@@ -90,6 +123,17 @@ Future<ListIotDpsResourceKeysResult> listIotDpsResourceKeys(
   return ListIotDpsResourceKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListIotDpsResourceKeysResult> listIotDpsResourceKeysOutput(
+  ListIotDpsResourceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceprovisioningservices:listIotDpsResourceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIotDpsResourceKeysResult.fromMap);
+}
+
 /// List primary and secondary keys for a specific key name
 ///
 /// Uses Azure REST API version 2023-03-01-preview.
@@ -108,4 +152,15 @@ Future<ListIotDpsResourceKeysForKeyNameResult> listIotDpsResourceKeysForKeyName(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIotDpsResourceKeysForKeyNameResult.fromMap(result);
+}
+
+pulumi.Output<ListIotDpsResourceKeysForKeyNameResult> listIotDpsResourceKeysForKeyNameOutput(
+  ListIotDpsResourceKeysForKeyNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:deviceprovisioningservices:listIotDpsResourceKeysForKeyName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIotDpsResourceKeysForKeyNameResult.fromMap);
 }

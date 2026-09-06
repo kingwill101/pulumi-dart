@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ConnectionState information.
 class ConnectionState {
   /// Description of the connection state.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Status of the connection.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ConnectionState].
   /// [description] Description of the connection state.
@@ -27,7 +27,7 @@ class ConnectionState {
   factory ConnectionState.fromMap(Map<String, dynamic> map) {
     return ConnectionState(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum to determine the datastore contents type.
-enum DatastoreType {
+enum DatastoreType implements pulumi.PulumiEnum<String> {
   azureBlob("AzureBlob"),
   azureDataLakeGen1("AzureDataLakeGen1"),
   azureDataLakeGen2("AzureDataLakeGen2"),
@@ -7,6 +9,7 @@ enum DatastoreType {
   oneLake("OneLake");
 
   const DatastoreType(this.wireValue);
+  @override
   final String wireValue;
 
   static DatastoreType fromValue(String value) {

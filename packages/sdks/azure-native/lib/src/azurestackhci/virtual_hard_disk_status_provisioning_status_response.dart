@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VHD Status provisioning status
 class VirtualHardDiskStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the virtual hard disk
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

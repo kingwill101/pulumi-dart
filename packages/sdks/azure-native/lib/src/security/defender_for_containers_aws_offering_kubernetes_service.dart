@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The kubernetes service connection configuration
 class DefenderForContainersAwsOfferingKubernetesService {
   /// The cloud role ARN in AWS for this feature used for provisioning resources
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingKubernetesService].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for provisioning resources

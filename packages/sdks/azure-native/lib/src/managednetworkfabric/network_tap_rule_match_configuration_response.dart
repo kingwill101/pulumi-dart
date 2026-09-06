@@ -7,15 +7,15 @@ import 'network_tap_rule_match_condition_response.dart';
 /// Defines the match configuration that are supported to filter the traffic.
 class NetworkTapRuleMatchConfigurationResponse {
   /// List of actions that need to be performed for the matched conditions.
-  final pulumi.Input<List<NetworkTapRuleActionResponse>>? actions;
+  final pulumi.Input<List<NetworkTapRuleActionResponse>?>? actions;
   /// Type of IP Address. IPv4 or IPv6
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// List of the match conditions.
-  final pulumi.Input<List<NetworkTapRuleMatchConditionResponse>>? matchConditions;
+  final pulumi.Input<List<NetworkTapRuleMatchConditionResponse>?>? matchConditions;
   /// The name of the match configuration.
-  final pulumi.Input<String>? matchConfigurationName;
+  final pulumi.Input<String?>? matchConfigurationName;
   /// Sequence Number of the match configuration..
-  final pulumi.Input<double>? sequenceNumber;
+  final pulumi.Input<double?>? sequenceNumber;
 
   /// Creates a new [NetworkTapRuleMatchConfigurationResponse].
   /// [actions] List of actions that need to be performed for the matched conditions.
@@ -47,7 +47,7 @@ class NetworkTapRuleMatchConfigurationResponse {
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       matchConditions: (() { final guardedValue = map['matchConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkTapRuleMatchConditionResponse>(guardedValue, (value) => NetworkTapRuleMatchConditionResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       matchConfigurationName: (() { final guardedValue = map['matchConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      sequenceNumber: (() { final guardedValue = map['sequenceNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

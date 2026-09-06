@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// LinkedService specific properties.
 class LinkedServicePropsResponse {
   /// The creation time of the linked service.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   /// Type of the link target.
-  final pulumi.Input<String>? linkType;
+  final pulumi.Input<String?>? linkType;
   /// ResourceId of the link target of the linked service.
   final pulumi.Input<String> linkedServiceResourceId;
   /// The last modified time of the linked service.
-  final pulumi.Input<String>? modifiedTime;
+  final pulumi.Input<String?>? modifiedTime;
 
   /// Creates a new [LinkedServicePropsResponse].
   /// [createdTime] The creation time of the linked service.

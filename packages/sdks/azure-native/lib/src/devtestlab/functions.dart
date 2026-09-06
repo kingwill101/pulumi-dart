@@ -64,6 +64,17 @@ Future<GetArtifactSourceResult> getArtifactSource(
   return GetArtifactSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetArtifactSourceResult> getArtifactSourceOutput(
+  GetArtifactSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getArtifactSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArtifactSourceResult.fromMap);
+}
+
 /// Get custom image.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -80,6 +91,17 @@ Future<GetCustomImageResult> getCustomImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomImageResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomImageResult> getCustomImageOutput(
+  GetCustomImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getCustomImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomImageResult.fromMap);
 }
 
 /// Get disk.
@@ -100,6 +122,17 @@ Future<GetDiskResult> getDisk(
   return GetDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskResult> getDiskOutput(
+  GetDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskResult.fromMap);
+}
+
 /// Get environment.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -116,6 +149,17 @@ Future<GetEnvironmentResult> getEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
 }
 
 /// Get formula.
@@ -136,6 +180,17 @@ Future<GetFormulaResult> getFormula(
   return GetFormulaResult.fromMap(result);
 }
 
+pulumi.Output<GetFormulaResult> getFormulaOutput(
+  GetFormulaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getFormula',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFormulaResult.fromMap);
+}
+
 /// Get schedule.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -152,6 +207,17 @@ Future<GetGlobalScheduleResult> getGlobalSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalScheduleResult> getGlobalScheduleOutput(
+  GetGlobalScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getGlobalSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalScheduleResult.fromMap);
 }
 
 /// Get lab.
@@ -172,6 +238,17 @@ Future<GetLabResult> getLab(
   return GetLabResult.fromMap(result);
 }
 
+pulumi.Output<GetLabResult> getLabOutput(
+  GetLabArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getLab',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabResult.fromMap);
+}
+
 /// Get notification channel.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -188,6 +265,17 @@ Future<GetNotificationChannelResult> getNotificationChannel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNotificationChannelResult.fromMap(result);
+}
+
+pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
+  GetNotificationChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getNotificationChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationChannelResult.fromMap);
 }
 
 /// Get policy.
@@ -208,6 +296,17 @@ Future<GetPolicyResult> getPolicy(
   return GetPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
+}
+
 /// Get schedule.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -224,6 +323,17 @@ Future<GetScheduleResult> getSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
 }
 
 /// Get secret.
@@ -244,6 +354,17 @@ Future<GetSecretResult> getSecret(
   return GetSecretResult.fromMap(result);
 }
 
+pulumi.Output<GetSecretResult> getSecretOutput(
+  GetSecretArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getSecret',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecretResult.fromMap);
+}
+
 /// Get service fabric.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -260,6 +381,17 @@ Future<GetServiceFabricResult> getServiceFabric(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceFabricResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceFabricResult> getServiceFabricOutput(
+  GetServiceFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getServiceFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceFabricResult.fromMap);
 }
 
 /// Get schedule.
@@ -280,6 +412,17 @@ Future<GetServiceFabricScheduleResult> getServiceFabricSchedule(
   return GetServiceFabricScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceFabricScheduleResult> getServiceFabricScheduleOutput(
+  GetServiceFabricScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getServiceFabricSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceFabricScheduleResult.fromMap);
+}
+
 /// Get service runner.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -296,6 +439,17 @@ Future<GetServiceRunnerResult> getServiceRunner(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceRunnerResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceRunnerResult> getServiceRunnerOutput(
+  GetServiceRunnerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getServiceRunner',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceRunnerResult.fromMap);
 }
 
 /// Get user profile.
@@ -316,6 +470,17 @@ Future<GetUserResult> getUser(
   return GetUserResult.fromMap(result);
 }
 
+pulumi.Output<GetUserResult> getUserOutput(
+  GetUserArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getUser',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserResult.fromMap);
+}
+
 /// Get virtual machine.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -332,6 +497,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
 }
 
 /// Gets a string that represents the contents of the RDP file for the virtual machine
@@ -352,6 +528,17 @@ Future<GetVirtualMachineRdpFileContentsResult> getVirtualMachineRdpFileContents(
   return GetVirtualMachineRdpFileContentsResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineRdpFileContentsResult> getVirtualMachineRdpFileContentsOutput(
+  GetVirtualMachineRdpFileContentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getVirtualMachineRdpFileContents',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineRdpFileContentsResult.fromMap);
+}
+
 /// Get schedule.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -368,6 +555,17 @@ Future<GetVirtualMachineScheduleResult> getVirtualMachineSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineScheduleResult> getVirtualMachineScheduleOutput(
+  GetVirtualMachineScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getVirtualMachineSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineScheduleResult.fromMap);
 }
 
 /// Get virtual network.
@@ -388,6 +586,17 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
   return GetVirtualNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
+}
+
 /// List disk images available for custom image creation.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -404,6 +613,17 @@ Future<ListLabVhdsResult> listLabVhds(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLabVhdsResult.fromMap(result);
+}
+
+pulumi.Output<ListLabVhdsResult> listLabVhdsOutput(
+  ListLabVhdsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:listLabVhds',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLabVhdsResult.fromMap);
 }
 
 /// Lists all applicable schedules
@@ -424,6 +644,17 @@ Future<ListScheduleApplicableResult> listScheduleApplicable(
   return ListScheduleApplicableResult.fromMap(result);
 }
 
+pulumi.Output<ListScheduleApplicableResult> listScheduleApplicableOutput(
+  ListScheduleApplicableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:listScheduleApplicable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListScheduleApplicableResult.fromMap);
+}
+
 /// Lists the applicable start/stop schedules, if any.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -442,6 +673,17 @@ Future<ListServiceFabricApplicableSchedulesResult> listServiceFabricApplicableSc
   return ListServiceFabricApplicableSchedulesResult.fromMap(result);
 }
 
+pulumi.Output<ListServiceFabricApplicableSchedulesResult> listServiceFabricApplicableSchedulesOutput(
+  ListServiceFabricApplicableSchedulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:listServiceFabricApplicableSchedules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServiceFabricApplicableSchedulesResult.fromMap);
+}
+
 /// Lists the applicable start/stop schedules, if any.
 ///
 /// Uses Azure REST API version 2018-09-15.
@@ -458,4 +700,15 @@ Future<ListVirtualMachineApplicableSchedulesResult> listVirtualMachineApplicable
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListVirtualMachineApplicableSchedulesResult.fromMap(result);
+}
+
+pulumi.Output<ListVirtualMachineApplicableSchedulesResult> listVirtualMachineApplicableSchedulesOutput(
+  ListVirtualMachineApplicableSchedulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devtestlab:listVirtualMachineApplicableSchedules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVirtualMachineApplicableSchedulesResult.fromMap);
 }

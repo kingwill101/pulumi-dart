@@ -11,21 +11,21 @@ import 'subnet.dart';
 /// {@macro pulumi_azurestackhci_logical_network_args_doc}
 class LogicalNetworkArgs {
   /// DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.
-  final pulumi.Input<LogicalNetworkPropertiesDhcpOptions>? dhcpOptions;
+  final pulumi.Input<LogicalNetworkPropertiesDhcpOptions?>? dhcpOptions;
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the logical network
-  final pulumi.Input<String>? logicalNetworkName;
+  final pulumi.Input<String?>? logicalNetworkName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Subnet - list of subnets under the logical network
-  final pulumi.Input<List<Subnet>>? subnets;
+  final pulumi.Input<List<Subnet>?>? subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// name of the network switch to be used for VMs
-  final pulumi.Input<String>? vmSwitchName;
+  final pulumi.Input<String?>? vmSwitchName;
 
   /// Creates a new [LogicalNetworkArgs].
   /// [dhcpOptions] DhcpOptions contains an array of DNS servers available to VMs deployed in the logical network. Standard DHCP option for a subnet overrides logical network DHCP options.

@@ -13,27 +13,27 @@ import 'service_response.dart';
 class ConfigurationResponse {
   /// ActiveRevisionsMode controls how active revisions are handled for the Container app:
   /// &lt;list&gt;&lt;item&gt;Single: Only one revision can be active at a time. Traffic weights cannot be used. This is the default.&lt;/item&gt;&lt;item&gt;Multiple: Multiple revisions can be active, including optional traffic weights and labels.&lt;/item&gt;&lt;item&gt;Labels: Only revisions with labels are active. Traffic weights can be applied to labels.&lt;/item&gt;&lt;/list&gt;
-  final pulumi.Input<String>? activeRevisionsMode;
+  final pulumi.Input<String?>? activeRevisionsMode;
   /// Dapr configuration for the Container App.
-  final pulumi.Input<DaprResponse>? dapr;
+  final pulumi.Input<DaprResponse?>? dapr;
   /// Optional settings for Managed Identities that are assigned to the Container App. If a Managed Identity is not specified here, default settings will be used.
-  final pulumi.Input<List<IdentitySettingsResponse>>? identitySettings;
+  final pulumi.Input<List<IdentitySettingsResponse>?>? identitySettings;
   /// Ingress configurations.
-  final pulumi.Input<IngressResponse>? ingress;
+  final pulumi.Input<IngressResponse?>? ingress;
   /// Optional. Max inactive revisions a Container App can have.
-  final pulumi.Input<int>? maxInactiveRevisions;
+  final pulumi.Input<int?>? maxInactiveRevisions;
   /// Collection of private container registry credentials for containers used by the Container app
-  final pulumi.Input<List<RegistryCredentialsResponse>>? registries;
+  final pulumi.Input<List<RegistryCredentialsResponse>?>? registries;
   /// Optional. The percent of the total number of replicas that must be brought up before revision transition occurs. Defaults to 100 when none is given. Value must be greater than 0 and less than or equal to 100.
-  final pulumi.Input<int>? revisionTransitionThreshold;
+  final pulumi.Input<int?>? revisionTransitionThreshold;
   /// App runtime configuration for the Container App.
-  final pulumi.Input<RuntimeResponse>? runtime;
+  final pulumi.Input<RuntimeResponse?>? runtime;
   /// Collection of secrets used by a Container app
-  final pulumi.Input<List<SecretResponse>>? secrets;
+  final pulumi.Input<List<SecretResponse>?>? secrets;
   /// Container App to be a dev Container App Service
-  final pulumi.Input<ServiceResponse>? service;
+  final pulumi.Input<ServiceResponse?>? service;
   /// Required in labels revisions mode. Label to apply to newly created revision.
-  final pulumi.Input<String>? targetLabel;
+  final pulumi.Input<String?>? targetLabel;
 
   /// Creates a new [ConfigurationResponse].
   /// [activeRevisionsMode] ActiveRevisionsMode controls how active revisions are handled for the Container app:
@@ -47,8 +47,8 @@ class ConfigurationResponse {
   /// [secrets] Collection of secrets used by a Container app
   /// [service] Container App to be a dev Container App Service
   /// [targetLabel] Required in labels revisions mode. Label to apply to newly created revision.
-  const ConfigurationResponse({
-    this.activeRevisionsMode,
+  ConfigurationResponse({
+    pulumi.Input<String?>? activeRevisionsMode,
     this.dapr,
     this.identitySettings,
     this.ingress,
@@ -59,7 +59,7 @@ class ConfigurationResponse {
     this.secrets,
     this.service,
     this.targetLabel,
-  });
+  }) : activeRevisionsMode = activeRevisionsMode ?? pulumi.Input.fromValue('Single');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,9 +83,9 @@ class ConfigurationResponse {
       dapr: (() { final guardedValue = map['dapr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaprResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identitySettings: (() { final guardedValue = map['identitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IdentitySettingsResponse>(guardedValue, (value) => IdentitySettingsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ingress: (() { final guardedValue = map['ingress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInactiveRevisions: (() { final guardedValue = map['maxInactiveRevisions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       registries: (() { final guardedValue = map['registries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryCredentialsResponse>(guardedValue, (value) => RegistryCredentialsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      revisionTransitionThreshold: (() { final guardedValue = map['revisionTransitionThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      revisionTransitionThreshold: (() { final guardedValue = map['revisionTransitionThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       runtime: (() { final guardedValue = map['runtime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuntimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecretResponse>(guardedValue, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       service: (() { final guardedValue = map['service']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

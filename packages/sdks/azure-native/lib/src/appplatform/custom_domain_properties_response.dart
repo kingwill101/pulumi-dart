@@ -7,11 +7,11 @@ class CustomDomainPropertiesResponse {
   /// The app name of domain.
   final pulumi.Input<String> appName;
   /// The bound certificate name of domain.
-  final pulumi.Input<String>? certName;
+  final pulumi.Input<String?>? certName;
   /// Provisioning state of the Domain
   final pulumi.Input<String> provisioningState;
   /// The thumbprint of bound certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CustomDomainPropertiesResponse].
   /// [appName] The app name of domain.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_redis_access_policy_assignment_args_doc}
 class AccessPolicyAssignmentArgs {
   /// The name of the access policy assignment.
-  final pulumi.Input<String>? accessPolicyAssignmentName;
+  final pulumi.Input<String?>? accessPolicyAssignmentName;
   /// The name of the access policy that is being assigned
   final pulumi.Input<String> accessPolicyName;
   /// The name of the Redis cache.

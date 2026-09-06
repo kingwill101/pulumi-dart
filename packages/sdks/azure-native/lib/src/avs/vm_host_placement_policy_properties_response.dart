@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VM-Host placement policy properties
 class VmHostPlacementPolicyPropertiesResponse {
   /// vm-host placement policy affinity strength (should/must)
-  final pulumi.Input<String>? affinityStrength;
+  final pulumi.Input<String?>? affinityStrength;
   /// placement policy affinity type
   final pulumi.Input<String> affinityType;
   /// placement policy azure hybrid benefit opt-in type
-  final pulumi.Input<String>? azureHybridBenefitType;
+  final pulumi.Input<String?>? azureHybridBenefitType;
   /// Display name of the placement policy
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Host members list
   final pulumi.Input<List<String>> hostMembers;
   /// The provisioning state
   final pulumi.Input<String> provisioningState;
   /// Whether the placement policy is enabled or disabled
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Placement Policy type
   /// Expected value is 'VmHost'.
   final pulumi.Input<String> type;

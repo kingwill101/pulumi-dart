@@ -2,15 +2,14 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_data_storage_properties.dart';
-import 'list_selector.dart';
 import 'step.dart';
 
 /// Model that represents the Experiment properties model.
 class ExperimentProperties {
   /// Optional customer-managed Storage account where Experiment schema will be stored.
-  final pulumi.Input<CustomerDataStorageProperties>? customerDataStorage;
+  final pulumi.Input<CustomerDataStorageProperties?>? customerDataStorage;
   /// List of selectors.
-  final pulumi.Input<List<ListSelector>> selectors;
+  final pulumi.Input<List<dynamic>> selectors;
   /// List of steps.
   final pulumi.Input<List<Step>> steps;
 
@@ -27,7 +26,7 @@ class ExperimentProperties {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'customerDataStorage': ?pulumi.Input.mapOptionalInputValue<CustomerDataStorageProperties, Map<String, dynamic>>(customerDataStorage, (value) => value.toMap()),
-      'selectors': pulumi.Input.mapInputValue<List<ListSelector>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<ListSelector, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selectors': selectors,
       'steps': pulumi.Input.mapInputValue<List<Step>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<Step, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -35,7 +34,7 @@ class ExperimentProperties {
   factory ExperimentProperties.fromMap(Map<String, dynamic> map) {
     return ExperimentProperties(
       customerDataStorage: (() { final guardedValue = map['customerDataStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomerDataStorageProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      selectors: pulumi.Input.fromValue(pulumi.Input.decodeList<ListSelector>(map['selectors']!, (value) => ListSelector.fromMap((value as Map).cast<String, dynamic>()))),
+      selectors: pulumi.Input.fromValue((map['selectors'] as List).cast<dynamic>()),
       steps: pulumi.Input.fromValue(pulumi.Input.decodeList<Step>(map['steps']!, (value) => Step.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

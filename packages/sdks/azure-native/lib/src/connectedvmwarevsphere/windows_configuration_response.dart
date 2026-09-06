@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the Windows Configuration settings for the virtual machine.
 class WindowsConfigurationResponse {
   /// Sets a value indicating whether auto logon is enabled.
-  final pulumi.Input<bool>? autoLogon;
+  final pulumi.Input<bool?>? autoLogon;
   /// Sets auto logon count.
-  final pulumi.Input<int>? autoLogonCount;
+  final pulumi.Input<int?>? autoLogonCount;
   /// Sets domain name that vm should join.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Sets domain username.
-  final pulumi.Input<String>? domainUsername;
+  final pulumi.Input<String?>? domainUsername;
   /// Sets first logon commands
-  final pulumi.Input<List<String>>? firstLogonCommands;
+  final pulumi.Input<List<String>?>? firstLogonCommands;
   /// Sets full name of the owner of the vm.
-  final pulumi.Input<String>? fullName;
+  final pulumi.Input<String?>? fullName;
   /// Sets org name to which the owner of the vm belongs.
-  final pulumi.Input<String>? orgName;
+  final pulumi.Input<String?>? orgName;
   /// Sets product id of the vm.
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
   /// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Time zone name correspond to time zones listed at Microsoft Time Zone name values(https://learn.microsoft.com/en-us/previous-versions/windows/embedded/ms912391(v=winembedded.11)).
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Sets work group name that vm should join.
-  final pulumi.Input<String>? workGroupName;
+  final pulumi.Input<String?>? workGroupName;
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [autoLogon] Sets a value indicating whether auto logon is enabled.
@@ -67,7 +67,7 @@ class WindowsConfigurationResponse {
   factory WindowsConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return WindowsConfigurationResponse(
       autoLogon: (() { final guardedValue = map['autoLogon']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      autoLogonCount: (() { final guardedValue = map['autoLogonCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      autoLogonCount: (() { final guardedValue = map['autoLogonCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       domainName: (() { final guardedValue = map['domainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       domainUsername: (() { final guardedValue = map['domainUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firstLogonCommands: (() { final guardedValue = map['firstLogonCommands']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

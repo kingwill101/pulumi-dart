@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'express_route_circuit_peering_response.dart';
 import 'route_filter_args.dart';
+import 'route_filter_rule_response.dart';
 
 /// Route Filter Resource.
 ///
@@ -238,17 +240,17 @@ class RouteFilter extends pulumi.CustomResource {
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// A collection of references to express route circuit ipv6 peerings.
-  late final pulumi.Output<List<Map<String, dynamic>>> ipv6Peerings;
+  late final pulumi.Output<List<ExpressRouteCircuitPeeringResponse>> ipv6Peerings;
   /// Resource location.
   late final pulumi.Output<String> location;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// A collection of references to express route circuit peerings.
-  late final pulumi.Output<List<Map<String, dynamic>>> peerings;
+  late final pulumi.Output<List<ExpressRouteCircuitPeeringResponse>> peerings;
   /// The provisioning state of the route filter resource.
   late final pulumi.Output<String> provisioningState;
   /// Collection of RouteFilterRules contained within a route filter.
-  late final pulumi.Output<List<Map<String, dynamic>>?> rules;
+  late final pulumi.Output<List<RouteFilterRuleResponse>?> rules;
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Resource type.
@@ -270,13 +272,34 @@ class RouteFilter extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    ipv6Peerings = registerOutput<List<Map<String, dynamic>>>('ipv6Peerings');
+    ipv6Peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('ipv6Peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    peerings = registerOutput<List<Map<String, dynamic>>>('peerings');
+    peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    rules = registerOutput<List<Map<String, dynamic>>?>('rules');
-    tags = registerOutput<Map<String, String>?>('tags');
+    rules = registerOutput<List<RouteFilterRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteFilterRuleResponse>(guardedValue, (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RouteFilter] resource.
+  RouteFilter.reference(String urn)
+    : super(
+        'azure-native:network:RouteFilter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    ipv6Peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('ipv6Peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    peerings = registerOutput<List<ExpressRouteCircuitPeeringResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    rules = registerOutput<List<RouteFilterRuleResponse>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteFilterRuleResponse>(guardedValue, (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The garbage collection properties of the connected registry.
 class GarbageCollectionPropertiesResponse {
   /// Indicates whether garbage collection is enabled for the connected registry.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The cron expression indicating the schedule that the connected registry will run garbage collection.
-  final pulumi.Input<String>? schedule;
+  final pulumi.Input<String?>? schedule;
 
   /// Creates a new [GarbageCollectionPropertiesResponse].
   /// [enabled] Indicates whether garbage collection is enabled for the connected registry.

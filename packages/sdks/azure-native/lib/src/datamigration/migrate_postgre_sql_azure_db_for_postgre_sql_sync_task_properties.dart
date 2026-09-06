@@ -6,15 +6,15 @@ import 'migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_input.dart';
 /// Properties for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Task input
-  final pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput>? input;
+  final pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInput?>? input;
   /// whether the task can be cloned or not
-  final pulumi.Input<bool>? isCloneable;
+  final pulumi.Input<bool?>? isCloneable;
   /// task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
   final pulumi.Input<String> taskType;

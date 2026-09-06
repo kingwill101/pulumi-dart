@@ -7,11 +7,11 @@ import 'static_route_properties.dart';
 /// NPB Static Route Configuration properties.
 class NpbStaticRouteConfiguration {
   /// BFD Configuration properties.
-  final pulumi.Input<BfdConfiguration>? bfdConfiguration;
+  final pulumi.Input<BfdConfiguration?>? bfdConfiguration;
   /// List of IPv4 Routes.
-  final pulumi.Input<List<StaticRouteProperties>>? ipv4Routes;
+  final pulumi.Input<List<StaticRouteProperties>?>? ipv4Routes;
   /// List of IPv6 Routes.
-  final pulumi.Input<List<StaticRouteProperties>>? ipv6Routes;
+  final pulumi.Input<List<StaticRouteProperties>?>? ipv6Routes;
 
   /// Creates a new [NpbStaticRouteConfiguration].
   /// [bfdConfiguration] BFD Configuration properties.

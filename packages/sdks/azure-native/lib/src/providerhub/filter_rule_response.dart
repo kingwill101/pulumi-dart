@@ -5,9 +5,9 @@ import 'endpoint_information_response.dart';
 
 class FilterRuleResponse {
   /// The endpoint information.
-  final pulumi.Input<List<EndpointInformationResponse>>? endpointInformation;
+  final pulumi.Input<List<EndpointInformationResponse>?>? endpointInformation;
   /// The filter query.
-  final pulumi.Input<String>? filterQuery;
+  final pulumi.Input<String?>? filterQuery;
 
   /// Creates a new [FilterRuleResponse].
   /// [endpointInformation] The endpoint information.

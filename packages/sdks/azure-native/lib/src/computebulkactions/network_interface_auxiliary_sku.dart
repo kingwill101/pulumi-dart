@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-enum NetworkInterfaceAuxiliarySku {
+enum NetworkInterfaceAuxiliarySku implements pulumi.PulumiEnum<String> {
   none("None"),
   a1("A1"),
   a2("A2"),
@@ -7,6 +9,7 @@ enum NetworkInterfaceAuxiliarySku {
   a8("A8");
 
   const NetworkInterfaceAuxiliarySku(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkInterfaceAuxiliarySku fromValue(String value) {

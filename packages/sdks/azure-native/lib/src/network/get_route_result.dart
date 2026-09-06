@@ -6,11 +6,11 @@ class GetRouteResult {
   /// The destination CIDR to which the route applies.
   final String? addressPrefix;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// A value indicating whether this route overrides overlapping BGP routes regardless of LPM.
-  final bool hasBgpOverride;
+  final bool? hasBgpOverride;
   /// Resource ID.
   final String? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -18,9 +18,9 @@ class GetRouteResult {
   /// The IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is VirtualAppliance.
   final String? nextHopIpAddress;
   /// The type of Azure hop the packet should be sent to.
-  final String nextHopType;
+  final String? nextHopType;
   /// The provisioning state of the route resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The type of the resource.
   final String? type;
 
@@ -37,28 +37,28 @@ class GetRouteResult {
   /// [type] The type of the resource.
   const GetRouteResult({
     this.addressPrefix,
-    required this.azureApiVersion,
-    required this.etag,
-    required this.hasBgpOverride,
+    this.azureApiVersion,
+    this.etag,
+    this.hasBgpOverride,
     this.id,
     this.name,
     this.nextHopIpAddress,
-    required this.nextHopType,
-    required this.provisioningState,
+    this.nextHopType,
+    this.provisioningState,
     this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'addressPrefix': ?addressPrefix,
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'hasBgpOverride': hasBgpOverride,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'hasBgpOverride': ?hasBgpOverride,
       'id': ?id,
       'name': ?name,
       'nextHopIpAddress': ?nextHopIpAddress,
-      'nextHopType': nextHopType,
-      'provisioningState': provisioningState,
+      'nextHopType': ?nextHopType,
+      'provisioningState': ?provisioningState,
       'type': ?type,
     };
   }
@@ -66,14 +66,14 @@ class GetRouteResult {
   factory GetRouteResult.fromMap(Map<String, dynamic> map) {
     return GetRouteResult(
       addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      hasBgpOverride: map['hasBgpOverride'] as bool,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hasBgpOverride: (() { final guardedValue = map['hasBgpOverride']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nextHopIpAddress: (() { final guardedValue = map['nextHopIpAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      nextHopType: map['nextHopType'] as String,
-      provisioningState: map['provisioningState'] as String,
+      nextHopType: (() { final guardedValue = map['nextHopType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

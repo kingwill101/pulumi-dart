@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cognitive Services Rai Monitor Config.
 class RaiMonitorConfig {
   /// The storage resource Id.
-  final pulumi.Input<String>? adxStorageResourceId;
+  final pulumi.Input<String?>? adxStorageResourceId;
   /// The identity client Id to access the storage.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
 
   /// Creates a new [RaiMonitorConfig].
   /// [adxStorageResourceId] The storage resource Id.

@@ -6,7 +6,7 @@ import 'mapper_attribute_mapping.dart';
 /// Attribute mapping details.
 class MapperAttributeMappings {
   /// List of attribute mappings.
-  final pulumi.Input<List<MapperAttributeMapping>>? attributeMappings;
+  final pulumi.Input<List<MapperAttributeMapping>?>? attributeMappings;
 
   /// Creates a new [MapperAttributeMappings].
   /// [attributeMappings] List of attribute mappings.

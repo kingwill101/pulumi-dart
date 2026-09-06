@@ -7,12 +7,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class WindowsEventLogDataSourceResponse {
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of streams that this data source will be sent to.
   /// A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to.
-  final pulumi.Input<List<String>>? streams;
+  final pulumi.Input<List<String>?>? streams;
   /// A list of Windows Event Log queries in XPATH format.
-  final pulumi.Input<List<String>>? xPathQueries;
+  final pulumi.Input<List<String>?>? xPathQueries;
 
   /// Creates a new [WindowsEventLogDataSourceResponse].
   /// [name] A friendly name for the data source.

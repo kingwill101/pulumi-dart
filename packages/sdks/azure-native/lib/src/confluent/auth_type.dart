@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Kafka Auth Type
-enum AuthType {
+enum AuthType implements pulumi.PulumiEnum<String> {
   sERVICEACCOUNT("SERVICE_ACCOUNT"),
   kAFKAAPIKEY("KAFKA_API_KEY");
 
   const AuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthType fromValue(String value) {

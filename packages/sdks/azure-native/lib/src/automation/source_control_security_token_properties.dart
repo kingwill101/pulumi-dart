@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SourceControlSecurityTokenProperties {
   /// The access token.
-  final pulumi.Input<String>? accessToken;
+  final pulumi.Input<String?>? accessToken;
   /// The refresh token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The token type. Must be either PersonalAccessToken or Oauth.
-  final pulumi.Input<String>? tokenType;
+  final pulumi.Input<dynamic>? tokenType;
 
   /// Creates a new [SourceControlSecurityTokenProperties].
   /// [accessToken] The access token.
@@ -32,7 +32,7 @@ class SourceControlSecurityTokenProperties {
     return SourceControlSecurityTokenProperties(
       accessToken: (() { final guardedValue = map['accessToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       refreshToken: (() { final guardedValue = map['refreshToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tokenType: (() { final guardedValue = map['tokenType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tokenType: (() { final guardedValue = map['tokenType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An option to store secret value in secure place
 class SecretStoreResponse {
   /// The key vault id to store secret
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// The key vault secret name to store secret, only valid when storing one secret
-  final pulumi.Input<String>? keyVaultSecretName;
+  final pulumi.Input<String?>? keyVaultSecretName;
 
   /// Creates a new [SecretStoreResponse].
   /// [keyVaultId] The key vault id to store secret

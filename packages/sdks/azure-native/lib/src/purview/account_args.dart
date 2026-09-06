@@ -11,29 +11,29 @@ import 'ingestion_storage.dart';
 /// {@macro pulumi_purview_account_args_doc}
 class AccountArgs {
   /// The name of the account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The Managed Identity of the resource
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Ingestion Storage Account Info
-  final pulumi.Input<IngestionStorage>? ingestionStorage;
+  final pulumi.Input<IngestionStorage?>? ingestionStorage;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the state of managed eventhub. If enabled managed eventhub will be created, if disabled the managed eventhub will be removed.
-  final pulumi.Input<String>? managedEventHubState;
+  final pulumi.Input<dynamic>? managedEventHubState;
   /// Gets or sets the managed resource group name
-  final pulumi.Input<String>? managedResourceGroupName;
+  final pulumi.Input<String?>? managedResourceGroupName;
   /// Gets or sets the public network access for managed resources.
-  final pulumi.Input<String>? managedResourcesPublicNetworkAccess;
+  final pulumi.Input<dynamic>? managedResourcesPublicNetworkAccess;
   /// Gets or sets the public network access.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the Sku.
-  final pulumi.Input<AccountSku>? sku;
+  final pulumi.Input<AccountSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the state of tenant endpoint.
-  final pulumi.Input<String>? tenantEndpointState;
+  final pulumi.Input<dynamic>? tenantEndpointState;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of the account.
@@ -48,20 +48,20 @@ class AccountArgs {
   /// [sku] Gets or sets the Sku.
   /// [tags] Resource tags.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
-  const AccountArgs({
+  AccountArgs({
     this.accountName,
     this.identity,
     this.ingestionStorage,
     this.location,
-    this.managedEventHubState,
+    pulumi.Input<dynamic>? managedEventHubState,
     this.managedResourceGroupName,
-    this.managedResourcesPublicNetworkAccess,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? managedResourcesPublicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     required this.resourceGroupName,
     this.sku,
     this.tags,
     this.tenantEndpointState,
-  });
+  }) : managedEventHubState = managedEventHubState ?? pulumi.Input.fromValue('NotSpecified'), managedResourcesPublicNetworkAccess = managedResourcesPublicNetworkAccess ?? pulumi.Input.fromValue('NotSpecified'), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -86,14 +86,14 @@ class AccountArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ingestionStorage: (() { final guardedValue = map['ingestionStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngestionStorage.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managedEventHubState: (() { final guardedValue = map['managedEventHubState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedEventHubState: (() { final guardedValue = map['managedEventHubState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       managedResourceGroupName: (() { final guardedValue = map['managedResourceGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      managedResourcesPublicNetworkAccess: (() { final guardedValue = map['managedResourcesPublicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      managedResourcesPublicNetworkAccess: (() { final guardedValue = map['managedResourcesPublicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AccountSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      tenantEndpointState: (() { final guardedValue = map['tenantEndpointState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tenantEndpointState: (() { final guardedValue = map['tenantEndpointState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

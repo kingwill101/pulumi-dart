@@ -5,37 +5,37 @@ import 'system_data_response.dart';
 /// Result data returned by getPrivateZone.
 class GetPrivateZoneResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The ETag of the zone.
   final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Private zone internal Id
-  final String internalId;
+  final String? internalId;
   /// The Azure Region where the resource lives
   final String? location;
   /// The maximum number of record sets that can be created in this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
-  final double maxNumberOfRecordSets;
+  final double? maxNumberOfRecordSets;
   /// The maximum number of virtual networks that can be linked to this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
-  final double maxNumberOfVirtualNetworkLinks;
+  final double? maxNumberOfVirtualNetworkLinks;
   /// The maximum number of virtual networks that can be linked to this Private DNS zone with registration enabled. This is a read-only property and any attempt to set this value will be ignored.
-  final double maxNumberOfVirtualNetworkLinksWithRegistration;
+  final double? maxNumberOfVirtualNetworkLinksWithRegistration;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The current number of record sets in this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
-  final double numberOfRecordSets;
+  final double? numberOfRecordSets;
   /// The current number of virtual networks that are linked to this Private DNS zone. This is a read-only property and any attempt to set this value will be ignored.
-  final double numberOfVirtualNetworkLinks;
+  final double? numberOfVirtualNetworkLinks;
   /// The current number of virtual networks that are linked to this Private DNS zone with registration enabled. This is a read-only property and any attempt to set this value will be ignored.
-  final double numberOfVirtualNetworkLinksWithRegistration;
+  final double? numberOfVirtualNetworkLinksWithRegistration;
   /// The provisioning state of the resource. This is a read-only property and any attempt to set this value will be ignored.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPrivateZoneResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,63 +55,63 @@ class GetPrivateZoneResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrivateZoneResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.etag,
-    required this.id,
-    required this.internalId,
+    this.id,
+    this.internalId,
     this.location,
-    required this.maxNumberOfRecordSets,
-    required this.maxNumberOfVirtualNetworkLinks,
-    required this.maxNumberOfVirtualNetworkLinksWithRegistration,
-    required this.name,
-    required this.numberOfRecordSets,
-    required this.numberOfVirtualNetworkLinks,
-    required this.numberOfVirtualNetworkLinksWithRegistration,
-    required this.provisioningState,
-    required this.systemData,
+    this.maxNumberOfRecordSets,
+    this.maxNumberOfVirtualNetworkLinks,
+    this.maxNumberOfVirtualNetworkLinksWithRegistration,
+    this.name,
+    this.numberOfRecordSets,
+    this.numberOfVirtualNetworkLinks,
+    this.numberOfVirtualNetworkLinksWithRegistration,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'etag': ?etag,
-      'id': id,
-      'internalId': internalId,
+      'id': ?id,
+      'internalId': ?internalId,
       'location': ?location,
-      'maxNumberOfRecordSets': maxNumberOfRecordSets,
-      'maxNumberOfVirtualNetworkLinks': maxNumberOfVirtualNetworkLinks,
-      'maxNumberOfVirtualNetworkLinksWithRegistration': maxNumberOfVirtualNetworkLinksWithRegistration,
-      'name': name,
-      'numberOfRecordSets': numberOfRecordSets,
-      'numberOfVirtualNetworkLinks': numberOfVirtualNetworkLinks,
-      'numberOfVirtualNetworkLinksWithRegistration': numberOfVirtualNetworkLinksWithRegistration,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'maxNumberOfRecordSets': ?maxNumberOfRecordSets,
+      'maxNumberOfVirtualNetworkLinks': ?maxNumberOfVirtualNetworkLinks,
+      'maxNumberOfVirtualNetworkLinksWithRegistration': ?maxNumberOfVirtualNetworkLinksWithRegistration,
+      'name': ?name,
+      'numberOfRecordSets': ?numberOfRecordSets,
+      'numberOfVirtualNetworkLinks': ?numberOfVirtualNetworkLinks,
+      'numberOfVirtualNetworkLinksWithRegistration': ?numberOfVirtualNetworkLinksWithRegistration,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPrivateZoneResult.fromMap(Map<String, dynamic> map) {
     return GetPrivateZoneResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      internalId: map['internalId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      internalId: (() { final guardedValue = map['internalId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxNumberOfRecordSets: map['maxNumberOfRecordSets'] as double,
-      maxNumberOfVirtualNetworkLinks: map['maxNumberOfVirtualNetworkLinks'] as double,
-      maxNumberOfVirtualNetworkLinksWithRegistration: map['maxNumberOfVirtualNetworkLinksWithRegistration'] as double,
-      name: map['name'] as String,
-      numberOfRecordSets: map['numberOfRecordSets'] as double,
-      numberOfVirtualNetworkLinks: map['numberOfVirtualNetworkLinks'] as double,
-      numberOfVirtualNetworkLinksWithRegistration: map['numberOfVirtualNetworkLinksWithRegistration'] as double,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      maxNumberOfRecordSets: (() { final guardedValue = map['maxNumberOfRecordSets']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      maxNumberOfVirtualNetworkLinks: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinks']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      maxNumberOfVirtualNetworkLinksWithRegistration: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinksWithRegistration']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numberOfRecordSets: (() { final guardedValue = map['numberOfRecordSets']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      numberOfVirtualNetworkLinks: (() { final guardedValue = map['numberOfVirtualNetworkLinks']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      numberOfVirtualNetworkLinksWithRegistration: (() { final guardedValue = map['numberOfVirtualNetworkLinksWithRegistration']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

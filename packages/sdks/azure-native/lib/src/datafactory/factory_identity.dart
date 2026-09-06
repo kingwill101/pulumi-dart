@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity properties of the factory resource.
 class FactoryIdentity {
   /// The identity type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// List of user assigned identities for the factory.
   final pulumi.Input<dynamic>? userAssignedIdentities;
 
@@ -26,7 +26,7 @@ class FactoryIdentity {
 
   factory FactoryIdentity.fromMap(Map<String, dynamic> map) {
     return FactoryIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }

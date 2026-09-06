@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GraphQLApiTypeEnumValue
 class GraphQLApiTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [GraphQLApiTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class GraphQLApiTypeEnumValue {
 
   factory GraphQLApiTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return GraphQLApiTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

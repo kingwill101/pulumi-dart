@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Azure hop the packet should be sent to.
-enum RouteNextHopType {
+enum RouteNextHopType implements pulumi.PulumiEnum<String> {
   valueVirtualNetworkGateway("VirtualNetworkGateway"),
   valueVnetLocal("VnetLocal"),
   valueInternet("Internet"),
@@ -7,6 +9,7 @@ enum RouteNextHopType {
   valueNone("None");
 
   const RouteNextHopType(this.wireValue);
+  @override
   final String wireValue;
 
   static RouteNextHopType fromValue(String value) {

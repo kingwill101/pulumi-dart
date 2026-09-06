@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the type of threshold criteria
-enum CriterionType {
+enum CriterionType implements pulumi.PulumiEnum<String> {
   staticThresholdCriterion("StaticThresholdCriterion"),
   dynamicThresholdCriterion("DynamicThresholdCriterion");
 
   const CriterionType(this.wireValue);
+  @override
   final String wireValue;
 
   static CriterionType fromValue(String value) {

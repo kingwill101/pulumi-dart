@@ -2,19 +2,18 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_resource_group_configuration_response.dart';
-import 'open_deployment_resource_reference_response.dart';
 import 'referenced_resource_response.dart';
 
 /// Site network service properties.
 class SiteNetworkServicePropertiesFormatResponse {
   /// The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
-  final pulumi.Input<Map<String, ReferencedResourceResponse>>? desiredStateConfigurationGroupValueReferences;
+  final pulumi.Input<Map<String, ReferencedResourceResponse>?>? desiredStateConfigurationGroupValueReferences;
   /// The last state of the site network service resource.
   final pulumi.Input<Map<String, ReferencedResourceResponse>> lastStateConfigurationGroupValueReferences;
   /// The network service design version for the site network service.
   final pulumi.Input<String> lastStateNetworkServiceDesignVersionName;
   /// Managed resource group configuration.
-  final pulumi.Input<ManagedResourceGroupConfigurationResponse>? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfigurationResponse?>? managedResourceGroupConfiguration;
   /// The network service design group name for the site network service.
   final pulumi.Input<String> networkServiceDesignGroupName;
   /// The network service design version for the site network service.
@@ -22,7 +21,7 @@ class SiteNetworkServicePropertiesFormatResponse {
   /// The location of the network service design offering.
   final pulumi.Input<String> networkServiceDesignVersionOfferingLocation;
   /// The network service design version resource reference.
-  final pulumi.Input<OpenDeploymentResourceReferenceResponse>? networkServiceDesignVersionResourceReference;
+  final pulumi.Input<dynamic>? networkServiceDesignVersionResourceReference;
   /// The provisioning state of the site network service resource.
   final pulumi.Input<String> provisioningState;
   /// The publisher name for the site network service.
@@ -30,7 +29,7 @@ class SiteNetworkServicePropertiesFormatResponse {
   /// The scope of the publisher.
   final pulumi.Input<String> publisherScope;
   /// The site details
-  final pulumi.Input<ReferencedResourceResponse>? siteReference;
+  final pulumi.Input<ReferencedResourceResponse?>? siteReference;
 
   /// Creates a new [SiteNetworkServicePropertiesFormatResponse].
   /// [desiredStateConfigurationGroupValueReferences] The goal state of the site network service resource. This has references to the configuration group value objects that describe the desired state of the site network service.
@@ -69,7 +68,7 @@ class SiteNetworkServicePropertiesFormatResponse {
       'networkServiceDesignGroupName': networkServiceDesignGroupName,
       'networkServiceDesignVersionName': networkServiceDesignVersionName,
       'networkServiceDesignVersionOfferingLocation': networkServiceDesignVersionOfferingLocation,
-      'networkServiceDesignVersionResourceReference': ?pulumi.Input.mapOptionalInputValue<OpenDeploymentResourceReferenceResponse, Map<String, dynamic>>(networkServiceDesignVersionResourceReference, (value) => value.toMap()),
+      'networkServiceDesignVersionResourceReference': ?networkServiceDesignVersionResourceReference,
       'provisioningState': provisioningState,
       'publisherName': publisherName,
       'publisherScope': publisherScope,
@@ -86,7 +85,7 @@ class SiteNetworkServicePropertiesFormatResponse {
       networkServiceDesignGroupName: pulumi.Input.fromValue(map['networkServiceDesignGroupName'] as String),
       networkServiceDesignVersionName: pulumi.Input.fromValue(map['networkServiceDesignVersionName'] as String),
       networkServiceDesignVersionOfferingLocation: pulumi.Input.fromValue(map['networkServiceDesignVersionOfferingLocation'] as String),
-      networkServiceDesignVersionResourceReference: (() { final guardedValue = map['networkServiceDesignVersionResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenDeploymentResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      networkServiceDesignVersionResourceReference: (() { final guardedValue = map['networkServiceDesignVersionResourceReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
       publisherScope: pulumi.Input.fromValue(map['publisherScope'] as String),

@@ -1,10 +1,13 @@
-enum GrantType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GrantType implements pulumi.PulumiEnum<String> {
   valueAuthorizationCode("authorizationCode"),
   valueImplicit("implicit"),
   valueResourceOwnerPassword("resourceOwnerPassword"),
   valueClientCredentials("clientCredentials");
 
   const GrantType(this.wireValue);
+  @override
   final String wireValue;
 
   static GrantType fromValue(String value) {

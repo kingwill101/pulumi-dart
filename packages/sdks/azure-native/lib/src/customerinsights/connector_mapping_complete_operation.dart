@@ -6,9 +6,9 @@ import 'completion_operation_types.dart';
 /// The complete operation.
 class ConnectorMappingCompleteOperation {
   /// The type of completion operation.
-  final pulumi.Input<CompletionOperationTypes>? completionOperationType;
+  final pulumi.Input<CompletionOperationTypes?>? completionOperationType;
   /// The destination folder where files will be moved to once the import is done.
-  final pulumi.Input<String>? destinationFolder;
+  final pulumi.Input<String?>? destinationFolder;
 
   /// Creates a new [ConnectorMappingCompleteOperation].
   /// [completionOperationType] The type of completion operation.

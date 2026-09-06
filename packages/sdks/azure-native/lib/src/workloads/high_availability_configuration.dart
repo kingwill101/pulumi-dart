@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the high availability configuration.
 class HighAvailabilityConfiguration {
   /// The high availability type.
-  final pulumi.Input<String> highAvailabilityType;
+  final pulumi.Input<dynamic> highAvailabilityType;
 
   /// Creates a new [HighAvailabilityConfiguration].
   /// [highAvailabilityType] The high availability type.
@@ -21,7 +21,7 @@ class HighAvailabilityConfiguration {
 
   factory HighAvailabilityConfiguration.fromMap(Map<String, dynamic> map) {
     return HighAvailabilityConfiguration(
-      highAvailabilityType: pulumi.Input.fromValue(map['highAvailabilityType'] as String),
+      highAvailabilityType: pulumi.Input.fromValue(map['highAvailabilityType']),
     );
   }
 }

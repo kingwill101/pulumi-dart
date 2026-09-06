@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Custom header name and value.
 class EndpointPropertiesCustomHeadersItemResponse {
   /// Header name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Header value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EndpointPropertiesCustomHeadersItemResponse].
   /// [name] Header name.

@@ -9,15 +9,15 @@ import 'edge_sites_properties_global_communications_site.dart';
 /// {@macro pulumi_orbital_edge_site_args_doc}
 class EdgeSiteArgs {
   /// Edge site name.
-  final pulumi.Input<String>? edgeSiteName;
+  final pulumi.Input<String?>? edgeSiteName;
   /// A reference to global communications site.
   final pulumi.Input<EdgeSitesPropertiesGlobalCommunicationsSite> globalCommunicationsSite;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EdgeSiteArgs].
   /// [edgeSiteName] Edge site name.

@@ -30,6 +30,17 @@ Future<GetConfigurationStoreResult> getConfigurationStore(
   return GetConfigurationStoreResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationStoreResult> getConfigurationStoreOutput(
+  GetConfigurationStoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appconfiguration:getConfigurationStore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationStoreResult.fromMap);
+}
+
 /// Gets the properties of the specified key-value. NOTE: This operation is intended for use in ARM Template deployments. For all other scenarios involving App Configuration key-values the data plane API should be used instead.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -48,6 +59,17 @@ Future<GetKeyValueResult> getKeyValue(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetKeyValueResult.fromMap(result);
+}
+
+pulumi.Output<GetKeyValueResult> getKeyValueOutput(
+  GetKeyValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appconfiguration:getKeyValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKeyValueResult.fromMap);
 }
 
 /// Gets the specified private endpoint connection associated with the configuration store.
@@ -70,6 +92,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appconfiguration:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the properties of the specified replica.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -90,6 +123,17 @@ Future<GetReplicaResult> getReplica(
   return GetReplicaResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicaResult> getReplicaOutput(
+  GetReplicaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appconfiguration:getReplica',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicaResult.fromMap);
+}
+
 /// Lists the access key for the specified configuration store.
 ///
 /// Uses Azure REST API version 2024-05-01.
@@ -108,4 +152,15 @@ Future<ListConfigurationStoreKeysResult> listConfigurationStoreKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListConfigurationStoreKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListConfigurationStoreKeysResult> listConfigurationStoreKeysOutput(
+  ListConfigurationStoreKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appconfiguration:listConfigurationStoreKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConfigurationStoreKeysResult.fromMap);
 }

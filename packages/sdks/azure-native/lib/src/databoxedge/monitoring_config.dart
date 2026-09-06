@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'metric_configuration_response.dart';
 import 'monitoring_config_args.dart';
 import 'system_data_response.dart';
 
@@ -239,7 +240,7 @@ class MonitoringConfig extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The metrics configuration details
-  late final pulumi.Output<List<Map<String, dynamic>>> metricConfigurations;
+  late final pulumi.Output<List<MetricConfigurationResponse>> metricConfigurations;
   /// The object name.
   late final pulumi.Output<String> name;
   /// Metadata pertaining to creation and last modification of MonitoringConfiguration
@@ -262,7 +263,23 @@ class MonitoringConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    metricConfigurations = registerOutput<List<Map<String, dynamic>>>('metricConfigurations');
+    metricConfigurations = registerOutput<List<MetricConfigurationResponse>>('metricConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricConfigurationResponse>(guardedValue, (value) => MetricConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MonitoringConfig] resource.
+  MonitoringConfig.reference(String urn)
+    : super(
+        'azure-native:databoxedge:MonitoringConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    metricConfigurations = registerOutput<List<MetricConfigurationResponse>>('metricConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricConfigurationResponse>(guardedValue, (value) => MetricConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

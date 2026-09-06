@@ -7,13 +7,13 @@ import 'enrichment_domain_whois_registrar_details_response.dart';
 /// The whois record for a given domain
 class EnrichmentDomainWhoisDetailsResponse {
   /// The set of contacts associated with this domain
-  final pulumi.Input<EnrichmentDomainWhoisContactsResponse>? contacts;
+  final pulumi.Input<EnrichmentDomainWhoisContactsResponse?>? contacts;
   /// A list of name servers associated with this domain
-  final pulumi.Input<List<String>>? nameServers;
+  final pulumi.Input<List<String>?>? nameServers;
   /// The registrar associated with this domain
-  final pulumi.Input<EnrichmentDomainWhoisRegistrarDetailsResponse>? registrar;
+  final pulumi.Input<EnrichmentDomainWhoisRegistrarDetailsResponse?>? registrar;
   /// The set of status flags for this whois record
-  final pulumi.Input<List<String>>? statuses;
+  final pulumi.Input<List<String>?>? statuses;
 
   /// Creates a new [EnrichmentDomainWhoisDetailsResponse].
   /// [contacts] The set of contacts associated with this domain

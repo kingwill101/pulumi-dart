@@ -7,11 +7,11 @@ import 'trigger_pipeline_reference_response.dart';
 /// Trigger that allows the referenced pipeline to depend on other pipeline runs based on runDimension Name/Value pairs. Upstream pipelines should declare the same runDimension Name and their runs should have the values for those runDimensions. The referenced pipeline run would be triggered if the values for the runDimension match for all upstream pipeline runs.
 class ChainingTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Upstream Pipelines.
   final pulumi.Input<List<PipelineReferenceResponse>> dependsOn;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Pipeline for which runs are created when all upstream pipelines complete successfully.
   final pulumi.Input<TriggerPipelineReferenceResponse> pipeline;
   /// Run Dimension property that needs to be emitted by upstream pipelines.

@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managednetworkfabric_network_interface_args_doc}
 class NetworkInterfaceArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// Name of the Network Device.
   final pulumi.Input<String> networkDeviceName;
   /// Name of the Network Interface.
-  final pulumi.Input<String>? networkInterfaceName;
+  final pulumi.Input<String?>? networkInterfaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

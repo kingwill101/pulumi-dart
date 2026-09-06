@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatasetCreateRequestRegistration {
   /// The description for the dataset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the dataset.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tags associated with the dataset.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DatasetCreateRequestRegistration].
   /// [description] The description for the dataset.

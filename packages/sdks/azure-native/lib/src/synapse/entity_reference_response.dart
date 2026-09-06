@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The entity reference.
 class EntityReferenceResponse {
   /// The name of this referenced entity.
-  final pulumi.Input<String>? referenceName;
+  final pulumi.Input<String?>? referenceName;
   /// The type of this referenced entity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EntityReferenceResponse].
   /// [referenceName] The name of this referenced entity.

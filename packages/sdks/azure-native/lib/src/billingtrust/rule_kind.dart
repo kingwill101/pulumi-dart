@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of rule to initialize
-enum RuleKind {
+enum RuleKind implements pulumi.PulumiEnum<String> {
   eduQualification("eduQualification"),
   businessVerification("businessVerification");
 
   const RuleKind(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleKind fromValue(String value) {

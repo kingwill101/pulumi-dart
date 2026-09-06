@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkflowRun {
   /// Describes the status of the workflow run
-  final pulumi.Input<String>? workflowRunStatus;
+  final pulumi.Input<dynamic>? workflowRunStatus;
 
   /// Creates a new [WorkflowRun].
   /// [workflowRunStatus] Describes the status of the workflow run
@@ -20,7 +20,7 @@ class WorkflowRun {
 
   factory WorkflowRun.fromMap(Map<String, dynamic> map) {
     return WorkflowRun(
-      workflowRunStatus: (() { final guardedValue = map['workflowRunStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      workflowRunStatus: (() { final guardedValue = map['workflowRunStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

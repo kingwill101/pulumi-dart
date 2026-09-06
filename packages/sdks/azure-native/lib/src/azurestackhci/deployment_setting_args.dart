@@ -15,11 +15,11 @@ class DeploymentSettingArgs {
   /// Scale units will contains list of deployment data
   final pulumi.Input<DeploymentConfiguration> deploymentConfiguration;
   /// The deployment mode for cluster deployment.
-  final pulumi.Input<String> deploymentMode;
+  final pulumi.Input<dynamic> deploymentMode;
   /// Name of Deployment Setting
-  final pulumi.Input<String>? deploymentSettingsName;
+  final pulumi.Input<String?>? deploymentSettingsName;
   /// The intended operation for a cluster.
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<dynamic>? operationType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -31,15 +31,15 @@ class DeploymentSettingArgs {
   /// [deploymentSettingsName] Name of Deployment Setting
   /// [operationType] The intended operation for a cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  const DeploymentSettingArgs({
+  DeploymentSettingArgs({
     required this.arcNodeResourceIds,
     required this.clusterName,
     required this.deploymentConfiguration,
     required this.deploymentMode,
     this.deploymentSettingsName,
-    this.operationType,
+    pulumi.Input<dynamic>? operationType,
     required this.resourceGroupName,
-  });
+  }) : operationType = operationType ?? pulumi.Input.fromValue('ClusterProvisioning');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,9 +58,9 @@ class DeploymentSettingArgs {
       arcNodeResourceIds: pulumi.Input.fromValue((map['arcNodeResourceIds'] as List).cast<String>()),
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       deploymentConfiguration: pulumi.Input.fromValue(DeploymentConfiguration.fromMap((map['deploymentConfiguration']! as Map).cast<String, dynamic>())),
-      deploymentMode: pulumi.Input.fromValue(map['deploymentMode'] as String),
+      deploymentMode: pulumi.Input.fromValue(map['deploymentMode']),
       deploymentSettingsName: (() { final guardedValue = map['deploymentSettingsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

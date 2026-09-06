@@ -7,22 +7,22 @@ import 'price_guarantee_properties.dart';
 /// Discount type properties including product family name and product id.
 class DiscountProduct {
   /// The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
-  final pulumi.Input<String> applyDiscountOn;
+  final pulumi.Input<dynamic> applyDiscountOn;
   /// Array of conditions for the discount. Validation: Optional. Maximum length is 1000.
-  final pulumi.Input<List<ConditionsItem>>? conditions;
+  final pulumi.Input<List<ConditionsItem>?>? conditions;
   /// The discount combination rule when there are multiple applicable custom prices. Validation: Required. Supported values are Stackable and BestOf.
-  final pulumi.Input<String>? discountCombinationRule;
+  final pulumi.Input<dynamic>? discountCombinationRule;
   /// Discount percentage provided for the customer. Validation: Required unless this is a price rule.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
   /// Expected value is 'Product'.
   final pulumi.Input<String> discountType;
   /// Set only in price guarantee scenario.
-  final pulumi.Input<PriceGuaranteeProperties>? priceGuaranteeProperties;
+  final pulumi.Input<PriceGuaranteeProperties?>? priceGuaranteeProperties;
   /// Product family for which the discount is given. Validation: Optional
-  final pulumi.Input<String>? productFamilyName;
+  final pulumi.Input<String?>? productFamilyName;
   /// Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
-  final pulumi.Input<String>? productId;
+  final pulumi.Input<String?>? productId;
 
   /// Creates a new [DiscountProduct].
   /// [applyDiscountOn] The customer action on which the discount is applied. Supported values are Purchase, Consume, and Renew. Validation: Required, one of supported values.
@@ -59,10 +59,10 @@ class DiscountProduct {
 
   factory DiscountProduct.fromMap(Map<String, dynamic> map) {
     return DiscountProduct(
-      applyDiscountOn: pulumi.Input.fromValue(map['applyDiscountOn'] as String),
+      applyDiscountOn: pulumi.Input.fromValue(map['applyDiscountOn']),
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConditionsItem>(guardedValue, (value) => ConditionsItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      discountCombinationRule: (() { final guardedValue = map['discountCombinationRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      discountCombinationRule: (() { final guardedValue = map['discountCombinationRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       discountType: pulumi.Input.fromValue(map['discountType'] as String),
       priceGuaranteeProperties: (() { final guardedValue = map['priceGuaranteeProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriceGuaranteeProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       productFamilyName: (() { final guardedValue = map['productFamilyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

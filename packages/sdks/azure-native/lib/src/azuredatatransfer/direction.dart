@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Direction of data movement
-enum Direction {
+enum Direction implements pulumi.PulumiEnum<String> {
   valueSend("Send"),
   valueReceive("Receive");
 
   const Direction(this.wireValue);
+  @override
   final String wireValue;
 
   static Direction fromValue(String value) {

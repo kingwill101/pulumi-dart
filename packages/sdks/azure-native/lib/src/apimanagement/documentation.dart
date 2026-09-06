@@ -194,4 +194,20 @@ class Documentation extends pulumi.CustomResource {
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Documentation] resource.
+  Documentation.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Documentation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    content = registerOutput<String?>('content');
+    this.name = registerOutput<String>('name');
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+  }
 }

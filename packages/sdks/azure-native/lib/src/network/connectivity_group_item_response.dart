@@ -7,11 +7,11 @@ class ConnectivityGroupItemResponse {
   /// Group connectivity type.
   final pulumi.Input<String> groupConnectivity;
   /// Flag if global is supported.
-  final pulumi.Input<String>? isGlobal;
+  final pulumi.Input<String?>? isGlobal;
   /// Network group Id.
   final pulumi.Input<String> networkGroupId;
   /// Flag if need to use hub gateway.
-  final pulumi.Input<String>? useHubGateway;
+  final pulumi.Input<String?>? useHubGateway;
 
   /// Creates a new [ConnectivityGroupItemResponse].
   /// [groupConnectivity] Group connectivity type.

@@ -262,7 +262,7 @@ class SiteCertificateSlot extends pulumi.CustomResource {
     domainValidationMethod = registerOutput<String?>('domainValidationMethod');
     expirationDate = registerOutput<String>('expirationDate');
     friendlyName = registerOutput<String>('friendlyName');
-    hostNames = registerOutput<List<String>?>('hostNames');
+    hostNames = registerOutput<List<String>?>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     issueDate = registerOutput<String>('issueDate');
     issuer = registerOutput<String>('issuer');
@@ -280,7 +280,46 @@ class SiteCertificateSlot extends pulumi.CustomResource {
     siteName = registerOutput<String>('siteName');
     subjectName = registerOutput<String>('subjectName');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    thumbprint = registerOutput<String>('thumbprint');
+    type = registerOutput<String>('type');
+    valid = registerOutput<bool>('valid');
+  }
+
+  /// Creates a typed reference to an existing [SiteCertificateSlot] resource.
+  SiteCertificateSlot.reference(String urn)
+    : super(
+        'azure-native:web:SiteCertificateSlot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    canonicalName = registerOutput<String?>('canonicalName');
+    cerBlob = registerOutput<String>('cerBlob');
+    domainValidationMethod = registerOutput<String?>('domainValidationMethod');
+    expirationDate = registerOutput<String>('expirationDate');
+    friendlyName = registerOutput<String>('friendlyName');
+    hostNames = registerOutput<List<String>?>('hostNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    hostingEnvironmentProfile = registerOutput<HostingEnvironmentProfileResponse>('hostingEnvironmentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingEnvironmentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    issueDate = registerOutput<String>('issueDate');
+    issuer = registerOutput<String>('issuer');
+    keyVaultId = registerOutput<String?>('keyVaultId');
+    keyVaultSecretName = registerOutput<String?>('keyVaultSecretName');
+    keyVaultSecretStatus = registerOutput<String>('keyVaultSecretStatus');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password');
+    pfxBlob = registerOutput<String?>('pfxBlob');
+    publicKeyHash = registerOutput<String>('publicKeyHash');
+    selfLink = registerOutput<String>('selfLink');
+    serverFarmId = registerOutput<String?>('serverFarmId');
+    siteName = registerOutput<String>('siteName');
+    subjectName = registerOutput<String>('subjectName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     thumbprint = registerOutput<String>('thumbprint');
     type = registerOutput<String>('type');
     valid = registerOutput<bool>('valid');

@@ -9,17 +9,17 @@ import 'status_codes_range_based_trigger_response.dart';
 /// Triggers for auto-heal.
 class AutoHealTriggersResponse {
   /// A rule based on private bytes.
-  final pulumi.Input<int>? privateBytesInKB;
+  final pulumi.Input<int?>? privateBytesInKB;
   /// A rule based on total requests.
-  final pulumi.Input<RequestsBasedTriggerResponse>? requests;
+  final pulumi.Input<RequestsBasedTriggerResponse?>? requests;
   /// A rule based on request execution time.
-  final pulumi.Input<SlowRequestsBasedTriggerResponse>? slowRequests;
+  final pulumi.Input<SlowRequestsBasedTriggerResponse?>? slowRequests;
   /// A rule based on multiple Slow Requests Rule with path
-  final pulumi.Input<List<SlowRequestsBasedTriggerResponse>>? slowRequestsWithPath;
+  final pulumi.Input<List<SlowRequestsBasedTriggerResponse>?>? slowRequestsWithPath;
   /// A rule based on status codes.
-  final pulumi.Input<List<StatusCodesBasedTriggerResponse>>? statusCodes;
+  final pulumi.Input<List<StatusCodesBasedTriggerResponse>?>? statusCodes;
   /// A rule based on status codes ranges.
-  final pulumi.Input<List<StatusCodesRangeBasedTriggerResponse>>? statusCodesRange;
+  final pulumi.Input<List<StatusCodesRangeBasedTriggerResponse>?>? statusCodesRange;
 
   /// Creates a new [AutoHealTriggersResponse].
   /// [privateBytesInKB] A rule based on private bytes.
@@ -50,7 +50,7 @@ class AutoHealTriggersResponse {
 
   factory AutoHealTriggersResponse.fromMap(Map<String, dynamic> map) {
     return AutoHealTriggersResponse(
-      privateBytesInKB: (() { final guardedValue = map['privateBytesInKB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateBytesInKB: (() { final guardedValue = map['privateBytesInKB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requests: (() { final guardedValue = map['requests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RequestsBasedTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequests: (() { final guardedValue = map['slowRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SlowRequestsBasedTriggerResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       slowRequestsWithPath: (() { final guardedValue = map['slowRequestsWithPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SlowRequestsBasedTriggerResponse>(guardedValue, (value) => SlowRequestsBasedTriggerResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

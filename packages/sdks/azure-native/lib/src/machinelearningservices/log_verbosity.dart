@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum for setting log verbosity.
-enum LogVerbosity {
+enum LogVerbosity implements pulumi.PulumiEnum<String> {
   notSet("NotSet"),
   debug("Debug"),
   info("Info"),
@@ -8,6 +10,7 @@ enum LogVerbosity {
   critical("Critical");
 
   const LogVerbosity(this.wireValue);
+  @override
   final String wireValue;
 
   static LogVerbosity fromValue(String value) {

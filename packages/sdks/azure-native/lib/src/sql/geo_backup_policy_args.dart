@@ -11,7 +11,7 @@ class GeoBackupPolicyArgs {
   /// The name of the database.
   final pulumi.Input<String> databaseName;
   /// The name of the Geo backup policy. This should always be 'Default'.
-  final pulumi.Input<String>? geoBackupPolicyName;
+  final pulumi.Input<String?>? geoBackupPolicyName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

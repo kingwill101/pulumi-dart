@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'resource_status_response.dart';
 import 'system_data_response.dart';
 import 'vcenter_args.dart';
 import 'vicredential_response.dart';
@@ -249,7 +250,7 @@ class VCenter extends pulumi.CustomResource {
   /// Gets the provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// The resource status information.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ResourceStatusResponse>> statuses;
   /// The system data.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Gets or sets the Resource tags.
@@ -287,9 +288,38 @@ class VCenter extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [VCenter] resource.
+  VCenter.reference(String urn)
+    : super(
+        'azure-native:connectedvmwarevsphere:VCenter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    credentials = registerOutput<VICredentialResponse?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VICredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    customResourceName = registerOutput<String>('customResourceName');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    fqdn = registerOutput<String>('fqdn');
+    instanceUuid = registerOutput<String>('instanceUuid');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    statuses = registerOutput<List<ResourceStatusResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
     version = registerOutput<String>('version');

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Set this property to filter the application logs for your function that Lambda sends to CloudWatch. Lambda only sends application logs at the selected level of detail and lower, where ``TRACE`` is the highest level and ``FATAL`` is the lowest.
-enum LoggingConfigApplicationLogLevel {
+enum LoggingConfigApplicationLogLevel implements pulumi.PulumiEnum<String> {
   dEBUG("DEBUG"),
   eRROR("ERROR"),
   fATAL("FATAL"),
@@ -8,6 +10,7 @@ enum LoggingConfigApplicationLogLevel {
   wARN("WARN");
 
   const LoggingConfigApplicationLogLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingConfigApplicationLogLevel fromValue(String value) {

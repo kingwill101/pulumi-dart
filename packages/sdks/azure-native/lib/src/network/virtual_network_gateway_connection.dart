@@ -1,6 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'gateway_custom_bgp_ip_address_ip_configuration_response.dart';
+import 'ipsec_policy_response.dart';
 import 'local_network_gateway_response.dart';
 import 'sub_resource_response.dart';
+import 'traffic_selector_policy_response.dart';
+import 'tunnel_connection_health_response.dart';
 import 'virtual_network_gateway_connection_args.dart';
 import 'virtual_network_gateway_response.dart';
 
@@ -640,7 +644,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   /// The egress bytes transferred in this connection.
   late final pulumi.Output<double> egressBytesTransferred;
   /// List of egress NatRules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> egressNatRules;
+  late final pulumi.Output<List<SubResourceResponse>?> egressNatRules;
   /// EnableBgp flag.
   late final pulumi.Output<bool?> enableBgp;
   /// Bypass the ExpressRoute gateway when accessing private-links. ExpressRoute FastPath (expressRouteGatewayBypass) must be enabled.
@@ -650,13 +654,13 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   /// Bypass ExpressRoute Gateway for data forwarding.
   late final pulumi.Output<bool?> expressRouteGatewayBypass;
   /// GatewayCustomBgpIpAddresses to be used for virtual network gateway Connection.
-  late final pulumi.Output<List<Map<String, dynamic>>?> gatewayCustomBgpIpAddresses;
+  late final pulumi.Output<List<GatewayCustomBgpIpAddressIpConfigurationResponse>?> gatewayCustomBgpIpAddresses;
   /// The ingress bytes transferred in this connection.
   late final pulumi.Output<double> ingressBytesTransferred;
   /// List of ingress NatRules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ingressNatRules;
+  late final pulumi.Output<List<SubResourceResponse>?> ingressNatRules;
   /// The IPSec Policies to be considered by this connection.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipsecPolicies;
+  late final pulumi.Output<List<IpsecPolicyResponse>?> ipsecPolicies;
   /// The reference to local network gateway resource.
   late final pulumi.Output<LocalNetworkGatewayResponse?> localNetworkGateway2;
   /// Resource location.
@@ -676,9 +680,9 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The Traffic Selector Policies to be considered by this connection.
-  late final pulumi.Output<List<Map<String, dynamic>>?> trafficSelectorPolicies;
+  late final pulumi.Output<List<TrafficSelectorPolicyResponse>?> trafficSelectorPolicies;
   /// Collection of all tunnels' connection health status.
-  late final pulumi.Output<List<Map<String, dynamic>>> tunnelConnectionStatus;
+  late final pulumi.Output<List<TunnelConnectionHealthResponse>> tunnelConnectionStatus;
   /// Resource type.
   late final pulumi.Output<String> type;
   /// Use private local Azure IP for the connection.
@@ -712,15 +716,15 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     connectionType = registerOutput<String>('connectionType');
     dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
     egressBytesTransferred = registerOutput<double>('egressBytesTransferred');
-    egressNatRules = registerOutput<List<Map<String, dynamic>>?>('egressNatRules');
+    egressNatRules = registerOutput<List<SubResourceResponse>?>('egressNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     enableBgp = registerOutput<bool?>('enableBgp');
     enablePrivateLinkFastPath = registerOutput<bool?>('enablePrivateLinkFastPath');
     etag = registerOutput<String>('etag');
     expressRouteGatewayBypass = registerOutput<bool?>('expressRouteGatewayBypass');
-    gatewayCustomBgpIpAddresses = registerOutput<List<Map<String, dynamic>>?>('gatewayCustomBgpIpAddresses');
+    gatewayCustomBgpIpAddresses = registerOutput<List<GatewayCustomBgpIpAddressIpConfigurationResponse>?>('gatewayCustomBgpIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GatewayCustomBgpIpAddressIpConfigurationResponse>(guardedValue, (value) => GatewayCustomBgpIpAddressIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ingressBytesTransferred = registerOutput<double>('ingressBytesTransferred');
-    ingressNatRules = registerOutput<List<Map<String, dynamic>>?>('ingressNatRules');
-    ipsecPolicies = registerOutput<List<Map<String, dynamic>>?>('ipsecPolicies');
+    ingressNatRules = registerOutput<List<SubResourceResponse>?>('ingressNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipsecPolicies = registerOutput<List<IpsecPolicyResponse>?>('ipsecPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpsecPolicyResponse>(guardedValue, (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     localNetworkGateway2 = registerOutput<LocalNetworkGatewayResponse?>('localNetworkGateway2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalNetworkGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -729,9 +733,53 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
     resourceGuid = registerOutput<String>('resourceGuid');
     routingWeight = registerOutput<int?>('routingWeight');
     sharedKey = registerOutput<String?>('sharedKey');
-    tags = registerOutput<Map<String, String>?>('tags');
-    trafficSelectorPolicies = registerOutput<List<Map<String, dynamic>>?>('trafficSelectorPolicies');
-    tunnelConnectionStatus = registerOutput<List<Map<String, dynamic>>>('tunnelConnectionStatus');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficSelectorPolicies = registerOutput<List<TrafficSelectorPolicyResponse>?>('trafficSelectorPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(guardedValue, (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tunnelConnectionStatus = registerOutput<List<TunnelConnectionHealthResponse>>('tunnelConnectionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TunnelConnectionHealthResponse>(guardedValue, (value) => TunnelConnectionHealthResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    useLocalAzureIpAddress = registerOutput<bool?>('useLocalAzureIpAddress');
+    usePolicyBasedTrafficSelectors = registerOutput<bool?>('usePolicyBasedTrafficSelectors');
+    virtualNetworkGateway1 = registerOutput<VirtualNetworkGatewayResponse>('virtualNetworkGateway1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualNetworkGateway2 = registerOutput<VirtualNetworkGatewayResponse?>('virtualNetworkGateway2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkGatewayConnection] resource.
+  VirtualNetworkGatewayConnection.reference(String urn)
+    : super(
+        'azure-native:network:VirtualNetworkGatewayConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionMode = registerOutput<String?>('connectionMode');
+    connectionProtocol = registerOutput<String?>('connectionProtocol');
+    connectionStatus = registerOutput<String>('connectionStatus');
+    connectionType = registerOutput<String>('connectionType');
+    dpdTimeoutSeconds = registerOutput<int?>('dpdTimeoutSeconds');
+    egressBytesTransferred = registerOutput<double>('egressBytesTransferred');
+    egressNatRules = registerOutput<List<SubResourceResponse>?>('egressNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    enableBgp = registerOutput<bool?>('enableBgp');
+    enablePrivateLinkFastPath = registerOutput<bool?>('enablePrivateLinkFastPath');
+    etag = registerOutput<String>('etag');
+    expressRouteGatewayBypass = registerOutput<bool?>('expressRouteGatewayBypass');
+    gatewayCustomBgpIpAddresses = registerOutput<List<GatewayCustomBgpIpAddressIpConfigurationResponse>?>('gatewayCustomBgpIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GatewayCustomBgpIpAddressIpConfigurationResponse>(guardedValue, (value) => GatewayCustomBgpIpAddressIpConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ingressBytesTransferred = registerOutput<double>('ingressBytesTransferred');
+    ingressNatRules = registerOutput<List<SubResourceResponse>?>('ingressNatRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipsecPolicies = registerOutput<List<IpsecPolicyResponse>?>('ipsecPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpsecPolicyResponse>(guardedValue, (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    localNetworkGateway2 = registerOutput<LocalNetworkGatewayResponse?>('localNetworkGateway2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LocalNetworkGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    peer = registerOutput<SubResourceResponse?>('peer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    routingWeight = registerOutput<int?>('routingWeight');
+    sharedKey = registerOutput<String?>('sharedKey');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    trafficSelectorPolicies = registerOutput<List<TrafficSelectorPolicyResponse>?>('trafficSelectorPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficSelectorPolicyResponse>(guardedValue, (value) => TrafficSelectorPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    tunnelConnectionStatus = registerOutput<List<TunnelConnectionHealthResponse>>('tunnelConnectionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TunnelConnectionHealthResponse>(guardedValue, (value) => TunnelConnectionHealthResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     useLocalAzureIpAddress = registerOutput<bool?>('useLocalAzureIpAddress');
     usePolicyBasedTrafficSelectors = registerOutput<bool?>('usePolicyBasedTrafficSelectors');

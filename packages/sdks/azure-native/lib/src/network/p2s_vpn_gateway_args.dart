@@ -10,27 +10,27 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_p2s_vpn_gateway_args_doc}
 class P2sVpnGatewayArgs {
   /// List of all customer specified DNS servers IP addresses.
-  final pulumi.Input<List<String>>? customDnsServers;
+  final pulumi.Input<List<String>?>? customDnsServers;
   /// The name of the gateway.
-  final pulumi.Input<String>? gatewayName;
+  final pulumi.Input<String?>? gatewayName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Enable Routing Preference property for the Public IP Interface of the P2SVpnGateway.
-  final pulumi.Input<bool>? isRoutingPreferenceInternet;
+  final pulumi.Input<bool?>? isRoutingPreferenceInternet;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// List of all p2s connection configurations of the gateway.
-  final pulumi.Input<List<P2SConnectionConfiguration>>? p2SConnectionConfigurations;
+  final pulumi.Input<List<P2SConnectionConfiguration>?>? p2SConnectionConfigurations;
   /// The resource group name of the P2SVpnGateway.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The VirtualHub to which the gateway belongs.
-  final pulumi.Input<SubResource>? virtualHub;
+  final pulumi.Input<SubResource?>? virtualHub;
   /// The scale unit for this p2s vpn gateway.
-  final pulumi.Input<int>? vpnGatewayScaleUnit;
+  final pulumi.Input<int?>? vpnGatewayScaleUnit;
   /// The VpnServerConfiguration to which the p2sVpnGateway is attached to.
-  final pulumi.Input<SubResource>? vpnServerConfiguration;
+  final pulumi.Input<SubResource?>? vpnServerConfiguration;
 
   /// Creates a new [P2sVpnGatewayArgs].
   /// [customDnsServers] List of all customer specified DNS servers IP addresses.
@@ -85,7 +85,7 @@ class P2sVpnGatewayArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualHub: (() { final guardedValue = map['virtualHub']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vpnGatewayScaleUnit: (() { final guardedValue = map['vpnGatewayScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vpnGatewayScaleUnit: (() { final guardedValue = map['vpnGatewayScaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vpnServerConfiguration: (() { final guardedValue = map['vpnServerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

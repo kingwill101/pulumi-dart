@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Common api versions merge mode.
-enum CommonApiVersionsMergeMode {
+enum CommonApiVersionsMergeMode implements pulumi.PulumiEnum<String> {
   merge("Merge"),
   overwrite("Overwrite");
 
   const CommonApiVersionsMergeMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CommonApiVersionsMergeMode fromValue(String value) {

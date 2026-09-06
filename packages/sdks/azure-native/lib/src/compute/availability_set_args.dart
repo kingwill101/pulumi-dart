@@ -11,25 +11,25 @@ import 'sub_resource.dart';
 /// {@macro pulumi_compute_availability_set_args_doc}
 class AvailabilitySetArgs {
   /// The name of the availability set.
-  final pulumi.Input<String>? availabilitySetName;
+  final pulumi.Input<String?>? availabilitySetName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Fault Domain count.
-  final pulumi.Input<int>? platformFaultDomainCount;
+  final pulumi.Input<int?>? platformFaultDomainCount;
   /// Update Domain count.
-  final pulumi.Input<int>? platformUpdateDomainCount;
+  final pulumi.Input<int?>? platformUpdateDomainCount;
   /// Specifies information about the proximity placement group that the availability set should be assigned to. Minimum api-version: 2018-04-01.
-  final pulumi.Input<SubResource>? proximityPlacementGroup;
+  final pulumi.Input<SubResource?>? proximityPlacementGroup;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the availability set.
-  final pulumi.Input<ScheduledEventsPolicy>? scheduledEventsPolicy;
+  final pulumi.Input<ScheduledEventsPolicy?>? scheduledEventsPolicy;
   /// Sku of the availability set, only name is required to be set. See AvailabilitySetSkuTypes for possible set of values. Use 'Aligned' for virtual machines with managed disks and 'Classic' for virtual machines with unmanaged disks. Default value is 'Classic'.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of references to all virtual machines in the availability set.
-  final pulumi.Input<List<SubResource>>? virtualMachines;
+  final pulumi.Input<List<SubResource>?>? virtualMachines;
 
   /// Creates a new [AvailabilitySetArgs].
   /// [availabilitySetName] The name of the availability set.
@@ -74,8 +74,8 @@ class AvailabilitySetArgs {
     return AvailabilitySetArgs(
       availabilitySetName: (() { final guardedValue = map['availabilitySetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      platformUpdateDomainCount: (() { final guardedValue = map['platformUpdateDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      platformUpdateDomainCount: (() { final guardedValue = map['platformUpdateDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scheduledEventsPolicy: (() { final guardedValue = map['scheduledEventsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduledEventsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

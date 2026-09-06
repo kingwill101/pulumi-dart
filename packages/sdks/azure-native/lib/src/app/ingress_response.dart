@@ -11,33 +11,33 @@ import 'traffic_weight_response.dart';
 /// Container App Ingress configuration.
 class IngressResponse {
   /// Settings to expose additional ports on container app
-  final pulumi.Input<List<IngressPortMappingResponse>>? additionalPortMappings;
+  final pulumi.Input<List<IngressPortMappingResponse>?>? additionalPortMappings;
   /// Bool indicating if HTTP connections to is allowed. If set to false HTTP connections are automatically redirected to HTTPS connections
-  final pulumi.Input<bool>? allowInsecure;
+  final pulumi.Input<bool?>? allowInsecure;
   /// Client certificate mode for mTLS authentication. Ignore indicates server drops client certificate on forwarding. Accept indicates server forwards client certificate but does not require a client certificate. Require indicates server requires a client certificate.
-  final pulumi.Input<String>? clientCertificateMode;
+  final pulumi.Input<String?>? clientCertificateMode;
   /// CORS policy for container app
-  final pulumi.Input<CorsPolicyResponse>? corsPolicy;
+  final pulumi.Input<CorsPolicyResponse?>? corsPolicy;
   /// custom domain bindings for Container Apps' hostnames.
-  final pulumi.Input<List<CustomDomainResponse>>? customDomains;
+  final pulumi.Input<List<CustomDomainResponse>?>? customDomains;
   /// Exposed Port in containers for TCP traffic from ingress
-  final pulumi.Input<int>? exposedPort;
+  final pulumi.Input<int?>? exposedPort;
   /// Bool indicating if app exposes an external http endpoint
-  final pulumi.Input<bool>? external;
+  final pulumi.Input<bool?>? external;
   /// Hostname.
   final pulumi.Input<String> fqdn;
   /// Rules to restrict incoming IP address.
-  final pulumi.Input<List<IpSecurityRestrictionRuleResponse>>? ipSecurityRestrictions;
+  final pulumi.Input<List<IpSecurityRestrictionRuleResponse>?>? ipSecurityRestrictions;
   /// Sticky Sessions for Single Revision Mode
-  final pulumi.Input<IngressResponseStickySessions>? stickySessions;
+  final pulumi.Input<IngressResponseStickySessions?>? stickySessions;
   /// Target Port in containers for traffic from ingress
-  final pulumi.Input<int>? targetPort;
+  final pulumi.Input<int?>? targetPort;
   /// Whether an http app listens on http or https
-  final pulumi.Input<String>? targetPortHttpScheme;
+  final pulumi.Input<String?>? targetPortHttpScheme;
   /// Traffic weights for app's revisions
-  final pulumi.Input<List<TrafficWeightResponse>>? traffic;
+  final pulumi.Input<List<TrafficWeightResponse>?>? traffic;
   /// Ingress transport protocol
-  final pulumi.Input<String>? transport;
+  final pulumi.Input<String?>? transport;
 
   /// Creates a new [IngressResponse].
   /// [additionalPortMappings] Settings to expose additional ports on container app
@@ -54,22 +54,22 @@ class IngressResponse {
   /// [targetPortHttpScheme] Whether an http app listens on http or https
   /// [traffic] Traffic weights for app's revisions
   /// [transport] Ingress transport protocol
-  const IngressResponse({
+  IngressResponse({
     this.additionalPortMappings,
-    this.allowInsecure,
+    pulumi.Input<bool?>? allowInsecure,
     this.clientCertificateMode,
     this.corsPolicy,
     this.customDomains,
     this.exposedPort,
-    this.external,
+    pulumi.Input<bool?>? external,
     required this.fqdn,
     this.ipSecurityRestrictions,
     this.stickySessions,
     this.targetPort,
     this.targetPortHttpScheme,
     this.traffic,
-    this.transport,
-  });
+    pulumi.Input<String?>? transport,
+  }) : allowInsecure = allowInsecure ?? pulumi.Input.fromValue(false), external = external ?? pulumi.Input.fromValue(false), transport = transport ?? pulumi.Input.fromValue('auto');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -97,12 +97,12 @@ class IngressResponse {
       clientCertificateMode: (() { final guardedValue = map['clientCertificateMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       corsPolicy: (() { final guardedValue = map['corsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CorsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customDomains: (() { final guardedValue = map['customDomains']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomDomainResponse>(guardedValue, (value) => CustomDomainResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      exposedPort: (() { final guardedValue = map['exposedPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       external: (() { final guardedValue = map['external']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fqdn: pulumi.Input.fromValue(map['fqdn'] as String),
       ipSecurityRestrictions: (() { final guardedValue = map['ipSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpSecurityRestrictionRuleResponse>(guardedValue, (value) => IpSecurityRestrictionRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       stickySessions: (() { final guardedValue = map['stickySessions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IngressResponseStickySessions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      targetPort: (() { final guardedValue = map['targetPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      targetPort: (() { final guardedValue = map['targetPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetPortHttpScheme: (() { final guardedValue = map['targetPortHttpScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       traffic: (() { final guardedValue = map['traffic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrafficWeightResponse>(guardedValue, (value) => TrafficWeightResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       transport: (() { final guardedValue = map['transport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

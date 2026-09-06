@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the paths HTTP requests.
 class HttpSettingsRoutesResponse {
   /// The prefix that should precede all the authentication/authorization paths.
-  final pulumi.Input<String>? apiPrefix;
+  final pulumi.Input<String?>? apiPrefix;
 
   /// Creates a new [HttpSettingsRoutesResponse].
   /// [apiPrefix] The prefix that should precede all the authentication/authorization paths.

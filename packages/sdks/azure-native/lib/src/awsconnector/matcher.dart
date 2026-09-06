@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Matcher
 class Matcher {
   /// You can specify values between 0 and 99. You can specify multiple values, or a range of values. The default value is 12.
-  final pulumi.Input<String>? grpcCode;
+  final pulumi.Input<String?>? grpcCode;
   /// For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values or a range of values.
-  final pulumi.Input<String>? httpCode;
+  final pulumi.Input<String?>? httpCode;
 
   /// Creates a new [Matcher].
   /// [grpcCode] You can specify values between 0 and 99. You can specify multiple values, or a range of values. The default value is 12.

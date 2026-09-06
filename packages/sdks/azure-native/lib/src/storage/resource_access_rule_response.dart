@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource Access Rule.
 class ResourceAccessRuleResponse {
   /// Resource Id
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Tenant Id
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ResourceAccessRuleResponse].
   /// [resourceId] Resource Id

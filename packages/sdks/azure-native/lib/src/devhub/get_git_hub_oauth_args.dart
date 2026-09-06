@@ -10,7 +10,7 @@ class GetGitHubOAuthArgs {
   /// The name of Azure region.
   final pulumi.Input<String> location;
   /// The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
 
   /// Creates a new [GetGitHubOAuthArgs].
   /// [location] The name of Azure region.

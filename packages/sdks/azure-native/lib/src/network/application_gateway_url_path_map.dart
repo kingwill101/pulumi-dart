@@ -7,21 +7,21 @@ import 'sub_resource.dart';
 /// UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
 class ApplicationGatewayUrlPathMap {
   /// Default backend address pool resource of URL path map.
-  final pulumi.Input<SubResource>? defaultBackendAddressPool;
+  final pulumi.Input<SubResource?>? defaultBackendAddressPool;
   /// Default backend http settings resource of URL path map.
-  final pulumi.Input<SubResource>? defaultBackendHttpSettings;
+  final pulumi.Input<SubResource?>? defaultBackendHttpSettings;
   /// Default Load Distribution Policy resource of URL path map.
-  final pulumi.Input<SubResource>? defaultLoadDistributionPolicy;
+  final pulumi.Input<SubResource?>? defaultLoadDistributionPolicy;
   /// Default redirect configuration resource of URL path map.
-  final pulumi.Input<SubResource>? defaultRedirectConfiguration;
+  final pulumi.Input<SubResource?>? defaultRedirectConfiguration;
   /// Default Rewrite rule set resource of URL path map.
-  final pulumi.Input<SubResource>? defaultRewriteRuleSet;
+  final pulumi.Input<SubResource?>? defaultRewriteRuleSet;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the URL path map that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rule of URL path map resource.
-  final pulumi.Input<List<ApplicationGatewayPathRule>>? pathRules;
+  final pulumi.Input<List<ApplicationGatewayPathRule>?>? pathRules;
 
   /// Creates a new [ApplicationGatewayUrlPathMap].
   /// [defaultBackendAddressPool] Default backend address pool resource of URL path map.

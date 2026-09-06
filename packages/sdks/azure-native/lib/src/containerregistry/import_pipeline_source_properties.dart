@@ -7,21 +7,21 @@ class ImportPipelineSourceProperties {
   /// They key vault secret uri to obtain the source storage SAS token.
   final pulumi.Input<String> keyVaultUri;
   /// The type of source for the import pipeline.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The source uri of the import pipeline.
   /// When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
   /// When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ImportPipelineSourceProperties].
   /// [keyVaultUri] They key vault secret uri to obtain the source storage SAS token.
   /// [type] The type of source for the import pipeline.
   /// [uri] The source uri of the import pipeline.
-  const ImportPipelineSourceProperties({
+  ImportPipelineSourceProperties({
     required this.keyVaultUri,
-    this.type,
+    pulumi.Input<dynamic>? type,
     this.uri,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('AzureStorageBlobContainer');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,7 +34,7 @@ class ImportPipelineSourceProperties {
   factory ImportPipelineSourceProperties.fromMap(Map<String, dynamic> map) {
     return ImportPipelineSourceProperties(
       keyVaultUri: pulumi.Input.fromValue(map['keyVaultUri'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

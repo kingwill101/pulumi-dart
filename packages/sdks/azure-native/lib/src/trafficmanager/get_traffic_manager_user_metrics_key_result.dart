@@ -4,7 +4,7 @@
 /// Result data returned by getTrafficManagerUserMetricsKey.
 class GetTrafficManagerUserMetricsKeyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource Id for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{resourceName}
   final String? id;
   /// The key returned by the User Metrics operation.
@@ -21,7 +21,7 @@ class GetTrafficManagerUserMetricsKeyResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   const GetTrafficManagerUserMetricsKeyResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.id,
     this.key,
     this.name,
@@ -30,7 +30,7 @@ class GetTrafficManagerUserMetricsKeyResult {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'id': ?id,
       'key': ?key,
       'name': ?name,
@@ -40,7 +40,7 @@ class GetTrafficManagerUserMetricsKeyResult {
 
   factory GetTrafficManagerUserMetricsKeyResult.fromMap(Map<String, dynamic> map) {
     return GetTrafficManagerUserMetricsKeyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

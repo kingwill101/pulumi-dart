@@ -1,8 +1,11 @@
-enum TriggersOn {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TriggersOn implements pulumi.PulumiEnum<String> {
   valueIncidents("Incidents"),
   valueAlerts("Alerts");
 
   const TriggersOn(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggersOn fromValue(String value) {

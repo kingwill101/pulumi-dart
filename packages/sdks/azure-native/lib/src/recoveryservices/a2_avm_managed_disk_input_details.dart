@@ -6,19 +6,19 @@ import 'disk_encryption_info.dart';
 /// A2A managed disk input details.
 class A2AVmManagedDiskInputDetails {
   /// The recovery disk encryption information (for one / single pass flows).
-  final pulumi.Input<DiskEncryptionInfo>? diskEncryptionInfo;
+  final pulumi.Input<DiskEncryptionInfo?>? diskEncryptionInfo;
   /// The disk Id.
   final pulumi.Input<String> diskId;
   /// The primary staging storage account Arm Id.
   final pulumi.Input<String> primaryStagingAzureStorageAccountId;
   /// The recovery disk encryption set Id.
-  final pulumi.Input<String>? recoveryDiskEncryptionSetId;
+  final pulumi.Input<String?>? recoveryDiskEncryptionSetId;
   /// The replica disk type. Its an optional value and will be same as source disk type if not user provided.
-  final pulumi.Input<String>? recoveryReplicaDiskAccountType;
+  final pulumi.Input<String?>? recoveryReplicaDiskAccountType;
   /// The target resource group Arm Id.
   final pulumi.Input<String> recoveryResourceGroupId;
   /// The target disk type after failover. Its an optional value and will be same as source disk type if not user provided.
-  final pulumi.Input<String>? recoveryTargetDiskAccountType;
+  final pulumi.Input<String?>? recoveryTargetDiskAccountType;
 
   /// Creates a new [A2AVmManagedDiskInputDetails].
   /// [diskEncryptionInfo] The recovery disk encryption information (for one / single pass flows).

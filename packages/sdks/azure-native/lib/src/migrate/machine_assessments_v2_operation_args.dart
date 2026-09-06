@@ -9,11 +9,11 @@ import 'machine_assessment_v2_properties.dart';
 /// {@macro pulumi_migrate_machine_assessments_v2_operation_args_doc}
 class MachineAssessmentsV2OperationArgs {
   /// Machine Assessment V2 ARM name
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<MachineAssessmentV2Properties>? properties;
+  final pulumi.Input<MachineAssessmentV2Properties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

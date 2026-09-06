@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StaticStringRoutingEnrichment {
   /// Static routing enrichment key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// String type routing enrichment value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
   /// Static routing enrichment value type. For e.g. this property value can be 'String'.
   /// Expected value is 'String'.
   final pulumi.Input<String> valueType;

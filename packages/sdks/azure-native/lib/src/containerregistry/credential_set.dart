@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'auth_credential_response.dart';
 import 'credential_set_args.dart';
 import 'identity_properties_response.dart';
 import 'system_data_response.dart';
@@ -223,7 +224,7 @@ import 'system_data_response.dart';
 class CredentialSet extends pulumi.CustomResource {
   /// List of authentication credentials stored for an upstream.
   /// Usually consists of a primary and an optional secondary credential.
-  late final pulumi.Output<List<Map<String, dynamic>>?> authCredentials;
+  late final pulumi.Output<List<AuthCredentialResponse>?> authCredentials;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The creation date of credential store resource.
@@ -255,7 +256,27 @@ class CredentialSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    authCredentials = registerOutput<List<Map<String, dynamic>>?>('authCredentials');
+    authCredentials = registerOutput<List<AuthCredentialResponse>?>('authCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthCredentialResponse>(guardedValue, (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationDate = registerOutput<String>('creationDate');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loginServer = registerOutput<String?>('loginServer');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CredentialSet] resource.
+  CredentialSet.reference(String urn)
+    : super(
+        'azure-native:containerregistry:CredentialSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authCredentials = registerOutput<List<AuthCredentialResponse>?>('authCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuthCredentialResponse>(guardedValue, (value) => AuthCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     creationDate = registerOutput<String>('creationDate');
     identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

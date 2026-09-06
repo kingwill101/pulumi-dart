@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_bridge_args.dart';
+import 'access_bridge_endpoint_response.dart';
+import 'access_bridge_security_rule_response.dart';
 import 'extended_location_response.dart';
 import 'system_data_response.dart';
 
@@ -303,7 +305,7 @@ class AccessBridge extends pulumi.CustomResource {
   /// The descriptive message that accompanies the detailed status.
   late final pulumi.Output<String> detailedStatusMessage;
   /// The observed endpoints that clients should use to reach the access bridge.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<AccessBridgeEndpointResponse>> endpoints;
   /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
   late final pulumi.Output<String> etag;
   /// The extended location of the resource. This property is required when creating the resource.
@@ -323,7 +325,7 @@ class AccessBridge extends pulumi.CustomResource {
   /// The provisioning state of the access bridge.
   late final pulumi.Output<String> provisioningState;
   /// The list of security rules enforced by the access bridge.
-  late final pulumi.Output<List<Map<String, dynamic>>?> securityRules;
+  late final pulumi.Output<List<AccessBridgeSecurityRuleResponse>?> securityRules;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -348,7 +350,7 @@ class AccessBridge extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<AccessBridgeEndpointResponse>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeEndpointResponse>(guardedValue, (value) => AccessBridgeEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipv4ConnectedPrefix = registerOutput<String?>('ipv4ConnectedPrefix');
@@ -358,9 +360,37 @@ class AccessBridge extends pulumi.CustomResource {
     networkId = registerOutput<String>('networkId');
     protocol = registerOutput<String>('protocol');
     provisioningState = registerOutput<String>('provisioningState');
-    securityRules = registerOutput<List<Map<String, dynamic>>?>('securityRules');
+    securityRules = registerOutput<List<AccessBridgeSecurityRuleResponse>?>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeSecurityRuleResponse>(guardedValue, (value) => AccessBridgeSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AccessBridge] resource.
+  AccessBridge.reference(String urn)
+    : super(
+        'azure-native:networkcloud:AccessBridge',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    endpoints = registerOutput<List<AccessBridgeEndpointResponse>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeEndpointResponse>(guardedValue, (value) => AccessBridgeEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipv4ConnectedPrefix = registerOutput<String?>('ipv4ConnectedPrefix');
+    ipv6ConnectedPrefix = registerOutput<String?>('ipv6ConnectedPrefix');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkId = registerOutput<String>('networkId');
+    protocol = registerOutput<String>('protocol');
+    provisioningState = registerOutput<String>('provisioningState');
+    securityRules = registerOutput<List<AccessBridgeSecurityRuleResponse>?>('securityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessBridgeSecurityRuleResponse>(guardedValue, (value) => AccessBridgeSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

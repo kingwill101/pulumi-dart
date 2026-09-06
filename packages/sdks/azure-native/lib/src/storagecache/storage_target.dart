@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'blob_nfs_target_response.dart';
 import 'clfs_target_response.dart';
+import 'namespace_junction_response.dart';
 import 'nfs3_target_response.dart';
 import 'storage_target_args.dart';
 import 'system_data_response.dart';
@@ -680,7 +681,7 @@ class StorageTarget extends pulumi.CustomResource {
   /// Properties when targetType is clfs.
   late final pulumi.Output<ClfsTargetResponse?> clfs;
   /// List of cache namespace junctions to target for namespace associations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> junctions;
+  late final pulumi.Output<List<NamespaceJunctionResponse>?> junctions;
   /// Region name string.
   late final pulumi.Output<String> location;
   /// Name of the Storage Target.
@@ -718,7 +719,32 @@ class StorageTarget extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobNfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clfs = registerOutput<ClfsTargetResponse?>('clfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    junctions = registerOutput<List<Map<String, dynamic>>?>('junctions');
+    junctions = registerOutput<List<NamespaceJunctionResponse>?>('junctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceJunctionResponse>(guardedValue, (value) => NamespaceJunctionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Nfs3TargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetType = registerOutput<String>('targetType');
+    type = registerOutput<String>('type');
+    unknown = registerOutput<UnknownTargetResponse?>('unknown', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UnknownTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [StorageTarget] resource.
+  StorageTarget.reference(String urn)
+    : super(
+        'azure-native:storagecache:StorageTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationPercentage = registerOutput<int>('allocationPercentage');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobNfs = registerOutput<BlobNfsTargetResponse?>('blobNfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BlobNfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clfs = registerOutput<ClfsTargetResponse?>('clfs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClfsTargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    junctions = registerOutput<List<NamespaceJunctionResponse>?>('junctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NamespaceJunctionResponse>(guardedValue, (value) => NamespaceJunctionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nfs3 = registerOutput<Nfs3TargetResponse?>('nfs3', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Nfs3TargetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

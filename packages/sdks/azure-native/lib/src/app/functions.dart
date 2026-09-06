@@ -103,6 +103,17 @@ Future<GetAgentResult> getAgent(
   return GetAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentResult> getAgentOutput(
+  GetAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentResult.fromMap);
+}
+
 /// Get the properties of an Agent Space
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -119,6 +130,17 @@ Future<GetAgentSpaceResult> getAgentSpace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAgentSpaceResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentSpaceResult> getAgentSpaceOutput(
+  GetAgentSpaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getAgentSpace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentSpaceResult.fromMap);
 }
 
 /// Get the properties of an Agent Space Connector
@@ -139,6 +161,17 @@ Future<GetAgentSpacesConnectorResult> getAgentSpacesConnector(
   return GetAgentSpacesConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentSpacesConnectorResult> getAgentSpacesConnectorOutput(
+  GetAgentSpacesConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getAgentSpacesConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentSpacesConnectorResult.fromMap);
+}
+
 /// Get the properties of an Agent Connector
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -155,6 +188,17 @@ Future<GetAgentsConnectorResult> getAgentsConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAgentsConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetAgentsConnectorResult> getAgentsConnectorOutput(
+  GetAgentsConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getAgentsConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentsConnectorResult.fromMap);
 }
 
 /// Get container app resiliency policy.
@@ -177,6 +221,17 @@ Future<GetAppResiliencyResult> getAppResiliency(
   return GetAppResiliencyResult.fromMap(result);
 }
 
+pulumi.Output<GetAppResiliencyResult> getAppResiliencyOutput(
+  GetAppResiliencyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getAppResiliency',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppResiliencyResult.fromMap);
+}
+
 /// Get a BuildResource
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -195,6 +250,17 @@ Future<GetBuildResult> getBuild(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBuildResult.fromMap(result);
+}
+
+pulumi.Output<GetBuildResult> getBuildOutput(
+  GetBuildArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getBuild',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuildResult.fromMap);
 }
 
 /// Get a BuilderResource
@@ -217,6 +283,17 @@ Future<GetBuilderResult> getBuilder(
   return GetBuilderResult.fromMap(result);
 }
 
+pulumi.Output<GetBuilderResult> getBuilderOutput(
+  GetBuilderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getBuilder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBuilderResult.fromMap);
+}
+
 /// Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -235,6 +312,17 @@ Future<GetCertificateResult> getCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
 }
 
 /// Get the properties of an connectedEnvironment.
@@ -257,6 +345,17 @@ Future<GetConnectedEnvironmentResult> getConnectedEnvironment(
   return GetConnectedEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectedEnvironmentResult> getConnectedEnvironmentOutput(
+  GetConnectedEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getConnectedEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedEnvironmentResult.fromMap);
+}
+
 /// Certificate used for Custom Domain bindings of Container Apps in a Managed Environment
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -275,6 +374,17 @@ Future<GetConnectedEnvironmentsCertificateResult> getConnectedEnvironmentsCertif
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectedEnvironmentsCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectedEnvironmentsCertificateResult> getConnectedEnvironmentsCertificateOutput(
+  GetConnectedEnvironmentsCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getConnectedEnvironmentsCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedEnvironmentsCertificateResult.fromMap);
 }
 
 /// Dapr Component.
@@ -297,6 +407,17 @@ Future<GetConnectedEnvironmentsDaprComponentResult> getConnectedEnvironmentsDapr
   return GetConnectedEnvironmentsDaprComponentResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectedEnvironmentsDaprComponentResult> getConnectedEnvironmentsDaprComponentOutput(
+  GetConnectedEnvironmentsDaprComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getConnectedEnvironmentsDaprComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedEnvironmentsDaprComponentResult.fromMap);
+}
+
 /// Get storage for a connectedEnvironment.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -315,6 +436,17 @@ Future<GetConnectedEnvironmentsStorageResult> getConnectedEnvironmentsStorage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectedEnvironmentsStorageResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectedEnvironmentsStorageResult> getConnectedEnvironmentsStorageOutput(
+  GetConnectedEnvironmentsStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getConnectedEnvironmentsStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectedEnvironmentsStorageResult.fromMap);
 }
 
 /// Container App.
@@ -337,6 +469,17 @@ Future<GetContainerAppResult> getContainerApp(
   return GetContainerAppResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerAppResult> getContainerAppOutput(
+  GetContainerAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getContainerApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerAppResult.fromMap);
+}
+
 /// Container App Auth Token.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -355,6 +498,17 @@ Future<GetContainerAppAuthTokenResult> getContainerAppAuthToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerAppAuthTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerAppAuthTokenResult> getContainerAppAuthTokenOutput(
+  GetContainerAppAuthTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getContainerAppAuthToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerAppAuthTokenResult.fromMap);
 }
 
 /// Configuration settings for the Azure ContainerApp Service Authentication / Authorization feature.
@@ -377,6 +531,17 @@ Future<GetContainerAppsAuthConfigResult> getContainerAppsAuthConfig(
   return GetContainerAppsAuthConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerAppsAuthConfigResult> getContainerAppsAuthConfigOutput(
+  GetContainerAppsAuthConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getContainerAppsAuthConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerAppsAuthConfigResult.fromMap);
+}
+
 /// Container App session pool.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -395,6 +560,17 @@ Future<GetContainerAppsSessionPoolResult> getContainerAppsSessionPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContainerAppsSessionPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetContainerAppsSessionPoolResult> getContainerAppsSessionPoolOutput(
+  GetContainerAppsSessionPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getContainerAppsSessionPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerAppsSessionPoolResult.fromMap);
 }
 
 /// Container App SourceControl.
@@ -417,6 +593,17 @@ Future<GetContainerAppsSourceControlResult> getContainerAppsSourceControl(
   return GetContainerAppsSourceControlResult.fromMap(result);
 }
 
+pulumi.Output<GetContainerAppsSourceControlResult> getContainerAppsSourceControlOutput(
+  GetContainerAppsSourceControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getContainerAppsSourceControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContainerAppsSourceControlResult.fromMap);
+}
+
 /// Get the verification id of a subscription used for verifying custom domains
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -434,6 +621,17 @@ Future<GetCustomDomainVerificationIdResult> getCustomDomainVerificationId(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomDomainVerificationIdResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomDomainVerificationIdResult> getCustomDomainVerificationIdOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getCustomDomainVerificationId',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetCustomDomainVerificationIdResult.fromMap);
 }
 
 /// Dapr Component.
@@ -456,6 +654,17 @@ Future<GetDaprComponentResult> getDaprComponent(
   return GetDaprComponentResult.fromMap(result);
 }
 
+pulumi.Output<GetDaprComponentResult> getDaprComponentOutput(
+  GetDaprComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getDaprComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDaprComponentResult.fromMap);
+}
+
 /// Dapr Component Resiliency Policy.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -474,6 +683,17 @@ Future<GetDaprComponentResiliencyPolicyResult> getDaprComponentResiliencyPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDaprComponentResiliencyPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDaprComponentResiliencyPolicyResult> getDaprComponentResiliencyPolicyOutput(
+  GetDaprComponentResiliencyPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getDaprComponentResiliencyPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDaprComponentResiliencyPolicyResult.fromMap);
 }
 
 /// Dapr PubSub Event Subscription.
@@ -496,6 +716,17 @@ Future<GetDaprSubscriptionResult> getDaprSubscription(
   return GetDaprSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetDaprSubscriptionResult> getDaprSubscriptionOutput(
+  GetDaprSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getDaprSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDaprSubscriptionResult.fromMap);
+}
+
 /// .NET Component.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -514,6 +745,17 @@ Future<GetDotNetComponentResult> getDotNetComponent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDotNetComponentResult.fromMap(result);
+}
+
+pulumi.Output<GetDotNetComponentResult> getDotNetComponentOutput(
+  GetDotNetComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getDotNetComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDotNetComponentResult.fromMap);
 }
 
 /// Advanced Ingress routing for path/header based routing for a Container App Environment
@@ -536,6 +778,17 @@ Future<GetHttpRouteConfigResult> getHttpRouteConfig(
   return GetHttpRouteConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetHttpRouteConfigResult> getHttpRouteConfigOutput(
+  GetHttpRouteConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getHttpRouteConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpRouteConfigResult.fromMap);
+}
+
 /// Java Component.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -554,6 +807,17 @@ Future<GetJavaComponentResult> getJavaComponent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJavaComponentResult.fromMap(result);
+}
+
+pulumi.Output<GetJavaComponentResult> getJavaComponentOutput(
+  GetJavaComponentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getJavaComponent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJavaComponentResult.fromMap);
 }
 
 /// Container App Job
@@ -576,6 +840,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// A logic app extension resource
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -594,6 +869,17 @@ Future<GetLogicAppResult> getLogicApp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLogicAppResult.fromMap(result);
+}
+
+pulumi.Output<GetLogicAppResult> getLogicAppOutput(
+  GetLogicAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getLogicApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLogicAppResult.fromMap);
 }
 
 /// Gets the maintenance configuration of a ManagedEnvironment .
@@ -616,6 +902,17 @@ Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(
   return GetMaintenanceConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetMaintenanceConfigurationResult> getMaintenanceConfigurationOutput(
+  GetMaintenanceConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getMaintenanceConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMaintenanceConfigurationResult.fromMap);
+}
+
 /// Managed certificates used for Custom Domain bindings of Container Apps in a Managed Environment
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -634,6 +931,17 @@ Future<GetManagedCertificateResult> getManagedCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedCertificateResult> getManagedCertificateOutput(
+  GetManagedCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getManagedCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedCertificateResult.fromMap);
 }
 
 /// Get the properties of a Managed Environment used to host container apps.
@@ -656,6 +964,17 @@ Future<GetManagedEnvironmentResult> getManagedEnvironment(
   return GetManagedEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedEnvironmentResult> getManagedEnvironmentOutput(
+  GetManagedEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getManagedEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedEnvironmentResult.fromMap);
+}
+
 /// Checks if resource name is available.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -674,6 +993,17 @@ Future<GetManagedEnvironmentAuthTokenResult> getManagedEnvironmentAuthToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedEnvironmentAuthTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedEnvironmentAuthTokenResult> getManagedEnvironmentAuthTokenOutput(
+  GetManagedEnvironmentAuthTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getManagedEnvironmentAuthToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedEnvironmentAuthTokenResult.fromMap);
 }
 
 /// The Private Endpoint Connection resource.
@@ -696,6 +1026,17 @@ Future<GetManagedEnvironmentPrivateEndpointConnectionResult> getManagedEnvironme
   return GetManagedEnvironmentPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedEnvironmentPrivateEndpointConnectionResult> getManagedEnvironmentPrivateEndpointConnectionOutput(
+  GetManagedEnvironmentPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getManagedEnvironmentPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedEnvironmentPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get storage for a managedEnvironment.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -716,6 +1057,17 @@ Future<GetManagedEnvironmentsStorageResult> getManagedEnvironmentsStorage(
   return GetManagedEnvironmentsStorageResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedEnvironmentsStorageResult> getManagedEnvironmentsStorageOutput(
+  GetManagedEnvironmentsStorageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:getManagedEnvironmentsStorage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedEnvironmentsStorageResult.fromMap);
+}
+
 /// List all secrets for AgentSpace Connectors
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -732,6 +1084,17 @@ Future<ListAgentSpacesConnectorAllSecretsResult> listAgentSpacesConnectorAllSecr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAgentSpacesConnectorAllSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListAgentSpacesConnectorAllSecretsResult> listAgentSpacesConnectorAllSecretsOutput(
+  ListAgentSpacesConnectorAllSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listAgentSpacesConnectorAllSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentSpacesConnectorAllSecretsResult.fromMap);
 }
 
 /// List secrets for an Agent Space Connector
@@ -752,6 +1115,17 @@ Future<ListAgentSpacesConnectorSecretsResult> listAgentSpacesConnectorSecrets(
   return ListAgentSpacesConnectorSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListAgentSpacesConnectorSecretsResult> listAgentSpacesConnectorSecretsOutput(
+  ListAgentSpacesConnectorSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listAgentSpacesConnectorSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentSpacesConnectorSecretsResult.fromMap);
+}
+
 /// Get a Data Connector with secrets from an Agent
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -770,6 +1144,17 @@ Future<ListAgentsConnectorSecretsResult> listAgentsConnectorSecrets(
   return ListAgentsConnectorSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListAgentsConnectorSecretsResult> listAgentsConnectorSecretsOutput(
+  ListAgentsConnectorSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listAgentsConnectorSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentsConnectorSecretsResult.fromMap);
+}
+
 /// List all Data Connectors with secrets from an Agent
 ///
 /// Uses Azure REST API version 2026-01-01.
@@ -786,6 +1171,17 @@ Future<ListAgentsConnectorWithSecretsByAgentResult> listAgentsConnectorWithSecre
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAgentsConnectorWithSecretsByAgentResult.fromMap(result);
+}
+
+pulumi.Output<ListAgentsConnectorWithSecretsByAgentResult> listAgentsConnectorWithSecretsByAgentOutput(
+  ListAgentsConnectorWithSecretsByAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listAgentsConnectorWithSecretsByAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgentsConnectorWithSecretsByAgentResult.fromMap);
 }
 
 /// Gets the token used to connect to the endpoint where source code can be uploaded for a build.
@@ -808,6 +1204,17 @@ Future<ListBuildAuthTokenResult> listBuildAuthToken(
   return ListBuildAuthTokenResult.fromMap(result);
 }
 
+pulumi.Output<ListBuildAuthTokenResult> listBuildAuthTokenOutput(
+  ListBuildAuthTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listBuildAuthToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBuildAuthTokenResult.fromMap);
+}
+
 /// Dapr component Secrets Collection for ListSecrets Action.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -826,6 +1233,17 @@ Future<ListConnectedEnvironmentsDaprComponentSecretsResult> listConnectedEnviron
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListConnectedEnvironmentsDaprComponentSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListConnectedEnvironmentsDaprComponentSecretsResult> listConnectedEnvironmentsDaprComponentSecretsOutput(
+  ListConnectedEnvironmentsDaprComponentSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listConnectedEnvironmentsDaprComponentSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectedEnvironmentsDaprComponentSecretsResult.fromMap);
 }
 
 /// Custom domain analysis.
@@ -848,6 +1266,17 @@ Future<ListContainerAppCustomHostNameAnalysisResult> listContainerAppCustomHostN
   return ListContainerAppCustomHostNameAnalysisResult.fromMap(result);
 }
 
+pulumi.Output<ListContainerAppCustomHostNameAnalysisResult> listContainerAppCustomHostNameAnalysisOutput(
+  ListContainerAppCustomHostNameAnalysisArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listContainerAppCustomHostNameAnalysis',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListContainerAppCustomHostNameAnalysisResult.fromMap);
+}
+
 /// Container App Secrets Collection ARM resource.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -866,6 +1295,17 @@ Future<ListContainerAppSecretsResult> listContainerAppSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListContainerAppSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListContainerAppSecretsResult> listContainerAppSecretsOutput(
+  ListContainerAppSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listContainerAppSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListContainerAppSecretsResult.fromMap);
 }
 
 /// Dapr component Secrets Collection for ListSecrets Action.
@@ -888,6 +1328,17 @@ Future<ListDaprComponentSecretsResult> listDaprComponentSecrets(
   return ListDaprComponentSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListDaprComponentSecretsResult> listDaprComponentSecretsOutput(
+  ListDaprComponentSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listDaprComponentSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDaprComponentSecretsResult.fromMap);
+}
+
 /// Container Apps Job Secrets Collection ARM resource.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -908,6 +1359,17 @@ Future<ListJobSecretsResult> listJobSecrets(
   return ListJobSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListJobSecretsResult> listJobSecretsOutput(
+  ListJobSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listJobSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListJobSecretsResult.fromMap);
+}
+
 /// Workflow properties definition.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -926,4 +1388,15 @@ Future<ListLogicAppWorkflowsConnectionsResult> listLogicAppWorkflowsConnections(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListLogicAppWorkflowsConnectionsResult.fromMap(result);
+}
+
+pulumi.Output<ListLogicAppWorkflowsConnectionsResult> listLogicAppWorkflowsConnectionsOutput(
+  ListLogicAppWorkflowsConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:app:listLogicAppWorkflowsConnections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListLogicAppWorkflowsConnectionsResult.fromMap);
 }

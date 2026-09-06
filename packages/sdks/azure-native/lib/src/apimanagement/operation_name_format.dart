@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format of the Operation Name for Application Insights telemetries. Default is Name.
-enum OperationNameFormat {
+enum OperationNameFormat implements pulumi.PulumiEnum<String> {
   valueName("Name"),
   valueUrl("Url");
 
   const OperationNameFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationNameFormat fromValue(String value) {

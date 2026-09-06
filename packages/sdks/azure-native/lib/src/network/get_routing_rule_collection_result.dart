@@ -7,27 +7,27 @@ import 'system_data_response.dart';
 /// Result data returned by getRoutingRuleCollection.
 class GetRoutingRuleCollectionResult {
   /// Groups for configuration
-  final List<NetworkManagerRoutingGroupItemResponse> appliesTo;
+  final List<NetworkManagerRoutingGroupItemResponse>? appliesTo;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A description of the routing rule collection.
   final String? description;
   /// Determines whether BGP route propagation is enabled. Defaults to true.
   final String? disableBgpRoutePropagation;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Unique identifier for this resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// The system metadata related to this resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRoutingRuleCollectionResult].
   /// [appliesTo] Groups for configuration
@@ -42,48 +42,48 @@ class GetRoutingRuleCollectionResult {
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
   const GetRoutingRuleCollectionResult({
-    required this.appliesTo,
-    required this.azureApiVersion,
+    this.appliesTo,
+    this.azureApiVersion,
     this.description,
     this.disableBgpRoutePropagation,
-    required this.etag,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceGuid,
-    required this.systemData,
-    required this.type,
+    this.etag,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.resourceGuid,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'appliesTo': pulumi.Input.encodeList<NetworkManagerRoutingGroupItemResponse, Map<String, dynamic>>(appliesTo, (value) => value.toMap()),
-      'azureApiVersion': azureApiVersion,
+      'appliesTo': ?(() { final guardedValue = appliesTo; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkManagerRoutingGroupItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'disableBgpRoutePropagation': ?disableBgpRoutePropagation,
-      'etag': etag,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'etag': ?etag,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetRoutingRuleCollectionResult.fromMap(Map<String, dynamic> map) {
     return GetRoutingRuleCollectionResult(
-      appliesTo: pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(map['appliesTo']!, (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      azureApiVersion: map['azureApiVersion'] as String,
+      appliesTo: (() { final guardedValue = map['appliesTo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerRoutingGroupItemResponse>(guardedValue, (value) => NetworkManagerRoutingGroupItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableBgpRoutePropagation: (() { final guardedValue = map['disableBgpRoutePropagation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

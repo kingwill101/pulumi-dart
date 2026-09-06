@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_loadtestservice_load_test_mapping_args_doc}
 class LoadTestMappingArgs {
   /// Mapped Azure Load Test resource Id.
-  final pulumi.Input<String>? azureLoadTestingResourceId;
+  final pulumi.Input<String?>? azureLoadTestingResourceId;
   /// Load Test Mapping name
-  final pulumi.Input<String>? loadTestMappingName;
+  final pulumi.Input<String?>? loadTestMappingName;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// Mapped source resource Id.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Mapped Azure Load Test resource test-id.
-  final pulumi.Input<String>? testId;
+  final pulumi.Input<String?>? testId;
 
   /// Creates a new [LoadTestMappingArgs].
   /// [azureLoadTestingResourceId] Mapped Azure Load Test resource Id.

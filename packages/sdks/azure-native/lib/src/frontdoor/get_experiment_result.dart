@@ -5,7 +5,7 @@ import 'endpoint_response.dart';
 /// Result data returned by getExperiment.
 class GetExperimentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The description of the details or intents of the Experiment
   final String? description;
   /// The state of the Experiment
@@ -15,21 +15,21 @@ class GetExperimentResult {
   /// The endpoint B of an experiment
   final EndpointResponse? endpointB;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource status.
-  final String resourceState;
+  final String? resourceState;
   /// The uri to the Script used in the Experiment
-  final String scriptFileUri;
+  final String? scriptFileUri;
   /// The description of Experiment status from the server side
-  final String status;
+  final String? status;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetExperimentResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -46,54 +46,54 @@ class GetExperimentResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetExperimentResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.enabledState,
     this.endpointA,
     this.endpointB,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.resourceState,
-    required this.scriptFileUri,
-    required this.status,
+    this.name,
+    this.resourceState,
+    this.scriptFileUri,
+    this.status,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'enabledState': ?enabledState,
       'endpointA': ?endpointA?.toMap(),
       'endpointB': ?endpointB?.toMap(),
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'resourceState': resourceState,
-      'scriptFileUri': scriptFileUri,
-      'status': status,
+      'name': ?name,
+      'resourceState': ?resourceState,
+      'scriptFileUri': ?scriptFileUri,
+      'status': ?status,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetExperimentResult.fromMap(Map<String, dynamic> map) {
     return GetExperimentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointA: (() { final guardedValue = map['endpointA']; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       endpointB: (() { final guardedValue = map['endpointB']; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      resourceState: map['resourceState'] as String,
-      scriptFileUri: map['scriptFileUri'] as String,
-      status: map['status'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scriptFileUri: (() { final guardedValue = map['scriptFileUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

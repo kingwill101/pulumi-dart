@@ -420,7 +420,28 @@ class DelegatedSubnetServiceDetails extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
     subnetDetails = registerOutput<SubnetDetailsResponse?>('subnetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DelegatedSubnetServiceDetails] resource.
+  DelegatedSubnetServiceDetails.reference(String urn)
+    : super(
+        'azure-native:delegatednetwork:DelegatedSubnetServiceDetails',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationBlockPrefixSize = registerOutput<int?>('allocationBlockPrefixSize');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    controllerDetails = registerOutput<ControllerDetailsResponse?>('controllerDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControllerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    subnetDetails = registerOutput<SubnetDetailsResponse?>('subnetDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

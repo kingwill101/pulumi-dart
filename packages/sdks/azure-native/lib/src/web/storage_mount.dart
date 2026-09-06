@@ -6,15 +6,15 @@ import 'key_vault_reference_with_status.dart';
 /// Server farm storage mount configuration.
 class StorageMount {
   /// KV reference to the credentials to connect to the share.
-  final pulumi.Input<KeyVaultReferenceWithStatus>? credentialsKeyVaultReference;
+  final pulumi.Input<KeyVaultReferenceWithStatus?>? credentialsKeyVaultReference;
   /// Path on worker where storage will be mounted.
-  final pulumi.Input<String>? destinationPath;
+  final pulumi.Input<String?>? destinationPath;
   /// Name of the storage mount.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Source of the fileshare/storage.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Type of the storage mount.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [StorageMount].
   /// [credentialsKeyVaultReference] KV reference to the credentials to connect to the share.
@@ -46,7 +46,7 @@ class StorageMount {
       destinationPath: (() { final guardedValue = map['destinationPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

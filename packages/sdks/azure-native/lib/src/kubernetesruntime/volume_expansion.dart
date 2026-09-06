@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Volume can be expanded or not
-enum VolumeExpansion {
+enum VolumeExpansion implements pulumi.PulumiEnum<String> {
   allow("Allow"),
   disallow("Disallow");
 
   const VolumeExpansion(this.wireValue);
+  @override
   final String wireValue;
 
   static VolumeExpansion fromValue(String value) {

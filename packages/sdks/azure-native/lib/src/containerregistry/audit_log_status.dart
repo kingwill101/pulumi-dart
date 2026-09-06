@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether audit logs are enabled on the connected registry.
-enum AuditLogStatus {
+enum AuditLogStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const AuditLogStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AuditLogStatus fromValue(String value) {

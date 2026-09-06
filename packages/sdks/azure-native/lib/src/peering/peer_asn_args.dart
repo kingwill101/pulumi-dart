@@ -9,13 +9,13 @@ import 'contact_detail.dart';
 /// {@macro pulumi_peering_peer_asn_args_doc}
 class PeerAsnArgs {
   /// The Autonomous System Number (ASN) of the peer.
-  final pulumi.Input<int>? peerAsn;
+  final pulumi.Input<int?>? peerAsn;
   /// The peer ASN name.
-  final pulumi.Input<String>? peerAsnName;
+  final pulumi.Input<String?>? peerAsnName;
   /// The contact details of the peer.
-  final pulumi.Input<List<ContactDetail>>? peerContactDetail;
+  final pulumi.Input<List<ContactDetail>?>? peerContactDetail;
   /// The name of the peer.
-  final pulumi.Input<String>? peerName;
+  final pulumi.Input<String?>? peerName;
 
   /// Creates a new [PeerAsnArgs].
   /// [peerAsn] The Autonomous System Number (ASN) of the peer.
@@ -40,7 +40,7 @@ class PeerAsnArgs {
 
   factory PeerAsnArgs.fromMap(Map<String, dynamic> map) {
     return PeerAsnArgs(
-      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peerAsnName: (() { final guardedValue = map['peerAsnName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerContactDetail: (() { final guardedValue = map['peerContactDetail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ContactDetail>(guardedValue, (value) => ContactDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
       peerName: (() { final guardedValue = map['peerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

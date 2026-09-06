@@ -6,13 +6,13 @@ import 'microsoft_common_retention_policy.dart';
 /// Part of MultiTenantDiagnosticSettings. Specifies the settings for a particular metric.
 class DiagnosticsMetricSettings {
   /// Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// a value indicating whether this category is enabled.
   final pulumi.Input<bool> enabled;
   /// the retention policy for this category.
-  final pulumi.Input<MicrosoftCommonRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<MicrosoftCommonRetentionPolicy?>? retentionPolicy;
   /// the timegrain of the metric in ISO8601 format.
-  final pulumi.Input<String>? timeGrain;
+  final pulumi.Input<String?>? timeGrain;
 
   /// Creates a new [DiagnosticsMetricSettings].
   /// [category] Name of a Diagnostic Metric category for a resource type this setting is applied to. To obtain the list of Diagnostic metric categories for a resource, first perform a GET diagnostic settings operation.

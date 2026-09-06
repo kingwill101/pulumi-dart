@@ -9,6 +9,7 @@ import 'os_profile_response.dart';
 import 'storage_profile_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_args.dart';
+import 'virtual_machine_properties_response_availability_sets.dart';
 
 /// The VirtualMachines resource definition.
 ///
@@ -238,13 +239,13 @@ import 'virtual_machine_args.dart';
 /// ```
 class VirtualMachine extends pulumi.CustomResource {
   /// Availability Sets in vm.
-  late final pulumi.Output<List<Map<String, dynamic>>?> availabilitySets;
+  late final pulumi.Output<List<VirtualMachinePropertiesResponseAvailabilitySets>?> availabilitySets;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Type of checkpoint supported for the vm.
   late final pulumi.Output<String?> checkpointType;
   /// Checkpoints in the vm.
-  late final pulumi.Output<List<Map<String, dynamic>>?> checkpoints;
+  late final pulumi.Output<List<CheckpointResponse>?> checkpoints;
   /// ARM Id of the cloud resource to use for deploying the vm.
   late final pulumi.Output<String?> cloudId;
   /// The extended location.
@@ -304,10 +305,10 @@ class VirtualMachine extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    availabilitySets = registerOutput<List<Map<String, dynamic>>?>('availabilitySets');
+    availabilitySets = registerOutput<List<VirtualMachinePropertiesResponseAvailabilitySets>?>('availabilitySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachinePropertiesResponseAvailabilitySets>(guardedValue, (value) => VirtualMachinePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     checkpointType = registerOutput<String?>('checkpointType');
-    checkpoints = registerOutput<List<Map<String, dynamic>>?>('checkpoints');
+    checkpoints = registerOutput<List<CheckpointResponse>?>('checkpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CheckpointResponse>(guardedValue, (value) => CheckpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cloudId = registerOutput<String?>('cloudId');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     generation = registerOutput<int?>('generation');
@@ -324,7 +325,44 @@ class VirtualMachine extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    templateId = registerOutput<String?>('templateId');
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmName = registerOutput<String?>('vmName');
+    vmmServerId = registerOutput<String?>('vmmServerId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure-native:scvmm:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilitySets = registerOutput<List<VirtualMachinePropertiesResponseAvailabilitySets>?>('availabilitySets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachinePropertiesResponseAvailabilitySets>(guardedValue, (value) => VirtualMachinePropertiesResponseAvailabilitySets.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    checkpointType = registerOutput<String?>('checkpointType');
+    checkpoints = registerOutput<List<CheckpointResponse>?>('checkpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CheckpointResponse>(guardedValue, (value) => CheckpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cloudId = registerOutput<String?>('cloudId');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generation = registerOutput<int?>('generation');
+    guestAgentProfile = registerOutput<GuestAgentProfileResponse?>('guestAgentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GuestAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hardwareProfile = registerOutput<HardwareProfileResponse?>('hardwareProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HardwareProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    lastRestoredVMCheckpoint = registerOutput<CheckpointResponse>('lastRestoredVMCheckpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CheckpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkProfile = registerOutput<NetworkProfileResponse?>('networkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    osProfile = registerOutput<OsProfileResponse?>('osProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OsProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    powerState = registerOutput<String>('powerState');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageProfile = registerOutput<StorageProfileResponse?>('storageProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     templateId = registerOutput<String?>('templateId');
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');

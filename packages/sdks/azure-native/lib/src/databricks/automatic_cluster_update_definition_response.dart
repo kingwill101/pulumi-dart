@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of automated cluster updates feature.
 class AutomaticClusterUpdateDefinitionResponse {
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AutomaticClusterUpdateDefinitionResponse].
   /// [value] Optional.

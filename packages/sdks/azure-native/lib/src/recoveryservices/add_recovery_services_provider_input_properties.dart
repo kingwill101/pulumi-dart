@@ -8,11 +8,11 @@ class AddRecoveryServicesProviderInputProperties {
   /// The identity provider input for DRA authentication.
   final pulumi.Input<IdentityProviderInput> authenticationIdentityInput;
   /// The Bios Id of the machine.
-  final pulumi.Input<String>? biosId;
+  final pulumi.Input<String?>? biosId;
   /// The identity provider input for data plane authentication.
-  final pulumi.Input<IdentityProviderInput>? dataPlaneAuthenticationIdentityInput;
+  final pulumi.Input<IdentityProviderInput?>? dataPlaneAuthenticationIdentityInput;
   /// The Id of the machine where the provider is getting added.
-  final pulumi.Input<String>? machineId;
+  final pulumi.Input<String?>? machineId;
   /// The name of the machine where the provider is getting added.
   final pulumi.Input<String> machineName;
   /// The identity provider input for resource access.

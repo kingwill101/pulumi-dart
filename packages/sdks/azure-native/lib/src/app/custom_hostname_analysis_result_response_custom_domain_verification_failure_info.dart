@@ -8,7 +8,7 @@ class CustomHostnameAnalysisResultResponseCustomDomainVerificationFailureInfo {
   /// Standardized string to programmatically identify the error.
   final pulumi.Input<String> code;
   /// Details or the error
-  final pulumi.Input<List<CustomHostnameAnalysisResultResponseDetails>>? details;
+  final pulumi.Input<List<CustomHostnameAnalysisResultResponseDetails>?>? details;
   /// Detailed error description and debugging information.
   final pulumi.Input<String> message;
   /// Detailed error description and debugging information.

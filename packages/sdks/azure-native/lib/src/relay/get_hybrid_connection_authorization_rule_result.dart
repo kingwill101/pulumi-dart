@@ -5,19 +5,19 @@ import 'system_data_response.dart';
 /// Result data returned by getHybridConnectionAuthorizationRule.
 class GetHybridConnectionAuthorizationRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The rights associated with the rule.
-  final List<String> rights;
+  final List<String>? rights;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetHybridConnectionAuthorizationRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -28,36 +28,36 @@ class GetHybridConnectionAuthorizationRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetHybridConnectionAuthorizationRuleResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.rights,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.rights,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'rights': rights,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'rights': ?rights,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetHybridConnectionAuthorizationRuleResult.fromMap(Map<String, dynamic> map) {
     return GetHybridConnectionAuthorizationRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      rights: (map['rights'] as List).cast<String>(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rights: (() { final guardedValue = map['rights']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model for API authentication with session cookie.
 class SessionAuthModel {
   /// HTTP request headers to session service endpoint.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// Indicating whether API key is set in HTTP POST payload.
-  final pulumi.Input<bool>? isPostPayloadJson;
+  final pulumi.Input<bool?>? isPostPayloadJson;
   /// The password attribute name.
   final pulumi.Input<Map<String, String>> password;
   /// Query parameters to session service endpoint.
   final pulumi.Input<dynamic>? queryParameters;
   /// Session id attribute name from HTTP response header.
-  final pulumi.Input<String>? sessionIdName;
+  final pulumi.Input<String?>? sessionIdName;
   /// HTTP request URL to session service endpoint.
-  final pulumi.Input<String>? sessionLoginRequestUri;
+  final pulumi.Input<String?>? sessionLoginRequestUri;
   /// Session timeout in minutes.
-  final pulumi.Input<int>? sessionTimeoutInMinutes;
+  final pulumi.Input<int?>? sessionTimeoutInMinutes;
   /// Type of paging
   /// Expected value is 'Session'.
   final pulumi.Input<String> type;
@@ -68,7 +68,7 @@ class SessionAuthModel {
       queryParameters: (() { final guardedValue = map['queryParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sessionIdName: (() { final guardedValue = map['sessionIdName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionLoginRequestUri: (() { final guardedValue = map['sessionLoginRequestUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sessionTimeoutInMinutes: (() { final guardedValue = map['sessionTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sessionTimeoutInMinutes: (() { final guardedValue = map['sessionTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userName: pulumi.Input.fromValue((map['userName'] as Map).cast<String, String>()),
     );

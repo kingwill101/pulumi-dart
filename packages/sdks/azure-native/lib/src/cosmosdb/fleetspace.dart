@@ -241,7 +241,27 @@ class Fleetspace extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dataRegions = registerOutput<List<String>?>('dataRegions');
+    dataRegions = registerOutput<List<String>?>('dataRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fleetspaceApiKind = registerOutput<String?>('fleetspaceApiKind');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceTier = registerOutput<String?>('serviceTier');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    throughputPoolConfiguration = registerOutput<FleetspacePropertiesResponseThroughputPoolConfiguration?>('throughputPoolConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetspacePropertiesResponseThroughputPoolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Fleetspace] resource.
+  Fleetspace.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:Fleetspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataRegions = registerOutput<List<String>?>('dataRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fleetspaceApiKind = registerOutput<String?>('fleetspaceApiKind');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');

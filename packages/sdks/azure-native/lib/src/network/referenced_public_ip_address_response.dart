@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to a public IP address.
 class ReferencedPublicIpAddressResponse {
   /// The PublicIPAddress Reference.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ReferencedPublicIpAddressResponse].
   /// [id] The PublicIPAddress Reference.

@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'amazon_s3_compatible_location_response.dart';
 import 'dataset_compression_response.dart';
 import 'dataset_folder_response.dart';
 import 'linked_service_reference_response.dart';
@@ -10,23 +9,23 @@ import 'parameter_specification_response.dart';
 /// Xml dataset.
 class XmlDatasetResponse {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The data compression method used for the json dataset.
-  final pulumi.Input<DatasetCompressionResponse>? compression;
+  final pulumi.Input<DatasetCompressionResponse?>? compression;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The code page name of the preferred encoding. If not specified, the default value is UTF-8, unless BOM denotes another Unicode encoding. Refer to the name column of the table in the following link to set supported values: https://msdn.microsoft.com/library/system.text.encoding.aspx. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? encodingName;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolderResponse>? folder;
+  final pulumi.Input<DatasetFolderResponse?>? folder;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReferenceResponse> linkedServiceName;
   /// The location of the json data storage.
-  final pulumi.Input<AmazonS3CompatibleLocationResponse> location;
+  final pulumi.Input<dynamic> location;
   /// The null value string. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? nullValue;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
@@ -71,7 +70,7 @@ class XmlDatasetResponse {
       'encodingName': ?encodingName,
       'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolderResponse, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReferenceResponse, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
-      'location': pulumi.Input.mapInputValue<AmazonS3CompatibleLocationResponse, Map<String, dynamic>>(location, (value) => value.toMap()),
+      'location': location,
       'nullValue': ?nullValue,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'schema': ?schema,
@@ -88,7 +87,7 @@ class XmlDatasetResponse {
       encodingName: (() { final guardedValue = map['encodingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolderResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReferenceResponse.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
-      location: pulumi.Input.fromValue(AmazonS3CompatibleLocationResponse.fromMap((map['location']! as Map).cast<String, dynamic>())),
+      location: pulumi.Input.fromValue(map['location']),
       nullValue: (() { final guardedValue = map['nullValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

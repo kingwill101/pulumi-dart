@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Api key object for connection credential.
 class ConnectionApiKeyResponse {
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [ConnectionApiKeyResponse].
   /// [key] Optional.

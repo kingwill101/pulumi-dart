@@ -6,7 +6,7 @@ import 'instance_auto_recovery_state_enum_value.dart';
 /// Definition of InstanceMaintenanceOptions
 class InstanceMaintenanceOptions {
   /// &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
-  final pulumi.Input<InstanceAutoRecoveryStateEnumValue>? autoRecovery;
+  final pulumi.Input<InstanceAutoRecoveryStateEnumValue?>? autoRecovery;
 
   /// Creates a new [InstanceMaintenanceOptions].
   /// [autoRecovery] &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;

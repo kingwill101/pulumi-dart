@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum JobStatus {
+enum JobStatus implements pulumi.PulumiEnum<String> {
   cANCELLED("CANCELLED"),
   cOMPLETE("COMPLETE"),
   iDLE("IDLE"),
@@ -8,6 +10,7 @@ enum JobStatus {
   uSERPAUSED("USER_PAUSED");
 
   const JobStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static JobStatus fromValue(String value) {

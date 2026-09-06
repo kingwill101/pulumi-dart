@@ -6,7 +6,7 @@ import 'log_analytics.dart';
 /// Container group diagnostic information.
 class ContainerGroupDiagnostics {
   /// Container group log analytics information.
-  final pulumi.Input<LogAnalytics>? logAnalytics;
+  final pulumi.Input<LogAnalytics?>? logAnalytics;
 
   /// Creates a new [ContainerGroupDiagnostics].
   /// [logAnalytics] Container group log analytics information.

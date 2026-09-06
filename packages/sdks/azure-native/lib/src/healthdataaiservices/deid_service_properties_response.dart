@@ -10,7 +10,7 @@ class DeidServicePropertiesResponse {
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets allow or disallow public network access to resource
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Deid service url.
   final pulumi.Input<String> serviceUrl;
 

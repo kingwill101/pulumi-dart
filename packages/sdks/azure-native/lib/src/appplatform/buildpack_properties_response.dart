@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Buildpack properties payload
 class BuildpackPropertiesResponse {
   /// Id of the buildpack
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Version of the buildpack
   final pulumi.Input<String> version;
 

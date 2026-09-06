@@ -9,7 +9,7 @@ class TimelineResultsMetadataResponse {
   /// timeline aggregation per kind
   final pulumi.Input<List<TimelineAggregationResponse>> aggregations;
   /// information about the failure queries
-  final pulumi.Input<List<TimelineErrorResponse>>? errors;
+  final pulumi.Input<List<TimelineErrorResponse>?>? errors;
   /// the total items found for the timeline request
   final pulumi.Input<int> totalCount;
 
@@ -35,7 +35,7 @@ class TimelineResultsMetadataResponse {
     return TimelineResultsMetadataResponse(
       aggregations: pulumi.Input.fromValue(pulumi.Input.decodeList<TimelineAggregationResponse>(map['aggregations']!, (value) => TimelineAggregationResponse.fromMap((value as Map).cast<String, dynamic>()))),
       errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TimelineErrorResponse>(guardedValue, (value) => TimelineErrorResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      totalCount: pulumi.Input.fromValue(map['totalCount'] as int),
+      totalCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCount'])),
     );
   }
 }

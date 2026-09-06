@@ -10,13 +10,13 @@ class CapacityPoolSnapshotArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the snapshot
-  final pulumi.Input<String>? snapshotName;
+  final pulumi.Input<String?>? snapshotName;
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 

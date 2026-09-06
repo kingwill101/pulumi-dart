@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Local storage disk types supported by Azure VMs.
-enum LocalStorageDiskType {
+enum LocalStorageDiskType implements pulumi.PulumiEnum<String> {
   hDD("HDD"),
   sSD("SSD");
 
   const LocalStorageDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static LocalStorageDiskType fromValue(String value) {

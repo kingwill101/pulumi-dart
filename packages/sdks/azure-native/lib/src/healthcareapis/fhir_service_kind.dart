@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the service.
-enum FhirServiceKind {
+enum FhirServiceKind implements pulumi.PulumiEnum<String> {
   valueFhirStu3("fhir-Stu3"),
   valueFhirR4("fhir-R4");
 
   const FhirServiceKind(this.wireValue);
+  @override
   final String wireValue;
 
   static FhirServiceKind fromValue(String value) {

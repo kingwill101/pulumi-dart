@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'ip_tag_response.dart';
 import 'nat_gateway_response.dart';
 import 'public_ipprefix_args.dart';
 import 'public_ipprefix_sku_response.dart';
+import 'referenced_public_ip_address_response.dart';
 import 'sub_resource_response.dart';
 
 /// Public IP prefix resource.
@@ -366,7 +368,7 @@ class PublicIPPrefix extends pulumi.CustomResource {
   /// The allocated Prefix.
   late final pulumi.Output<String> ipPrefix;
   /// The list of tags associated with the public IP prefix.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+  late final pulumi.Output<List<IpTagResponse>?> ipTags;
   /// The reference to load balancer frontend IP configuration associated with the public IP prefix.
   late final pulumi.Output<SubResourceResponse> loadBalancerFrontendIpConfiguration;
   /// Resource location.
@@ -382,7 +384,7 @@ class PublicIPPrefix extends pulumi.CustomResource {
   /// The public IP address version.
   late final pulumi.Output<String?> publicIPAddressVersion;
   /// The list of all referenced PublicIPAddresses.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicIPAddresses;
+  late final pulumi.Output<List<ReferencedPublicIpAddressResponse>> publicIPAddresses;
   /// The resource GUID property of the public IP prefix resource.
   late final pulumi.Output<String> resourceGuid;
   /// The public IP prefix SKU.
@@ -413,7 +415,7 @@ class PublicIPPrefix extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipPrefix = registerOutput<String>('ipPrefix');
-    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
     loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>('loadBalancerFrontendIpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
@@ -421,11 +423,41 @@ class PublicIPPrefix extends pulumi.CustomResource {
     prefixLength = registerOutput<int?>('prefixLength');
     provisioningState = registerOutput<String>('provisioningState');
     publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
-    publicIPAddresses = registerOutput<List<Map<String, dynamic>>>('publicIPAddresses');
+    publicIPAddresses = registerOutput<List<ReferencedPublicIpAddressResponse>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferencedPublicIpAddressResponse>(guardedValue, (value) => ReferencedPublicIpAddressResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGuid = registerOutput<String>('resourceGuid');
     sku = registerOutput<PublicIPPrefixSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPPrefixSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [PublicIPPrefix] resource.
+  PublicIPPrefix.reference(String urn)
+    : super(
+        'azure-native:network:PublicIPPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customIPPrefix = registerOutput<SubResourceResponse?>('customIPPrefix', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipPrefix = registerOutput<String>('ipPrefix');
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    loadBalancerFrontendIpConfiguration = registerOutput<SubResourceResponse>('loadBalancerFrontendIpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    natGateway = registerOutput<NatGatewayResponse?>('natGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NatGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    prefixLength = registerOutput<int?>('prefixLength');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPAddressVersion = registerOutput<String?>('publicIPAddressVersion');
+    publicIPAddresses = registerOutput<List<ReferencedPublicIpAddressResponse>>('publicIPAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReferencedPublicIpAddressResponse>(guardedValue, (value) => ReferencedPublicIpAddressResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGuid = registerOutput<String>('resourceGuid');
+    sku = registerOutput<PublicIPPrefixSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PublicIPPrefixSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional settings for the VM app that contains the target package and config file name when it is deployed to target VM or VM scale set.
 class UserArtifactSettingsResponse {
   /// Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".
-  final pulumi.Input<String>? configFileName;
+  final pulumi.Input<String?>? configFileName;
   /// Optional. The name to assign the downloaded package file on the VM. This is limited to 4096 characters. If not specified, the package file will be named the same as the Gallery Application name.
-  final pulumi.Input<String>? packageFileName;
+  final pulumi.Input<String?>? packageFileName;
   /// Optional. The action to be taken with regards to install/update/remove of the gallery application in the event of a reboot.
-  final pulumi.Input<String>? scriptBehaviorAfterReboot;
+  final pulumi.Input<String?>? scriptBehaviorAfterReboot;
 
   /// Creates a new [UserArtifactSettingsResponse].
   /// [configFileName] Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".

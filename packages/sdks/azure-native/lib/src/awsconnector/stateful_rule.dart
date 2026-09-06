@@ -7,11 +7,11 @@ import 'rule_option.dart';
 /// Definition of StatefulRule
 class StatefulRule {
   /// Property action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Property header
-  final pulumi.Input<Header>? header;
+  final pulumi.Input<Header?>? header;
   /// Property ruleOptions
-  final pulumi.Input<List<RuleOption>>? ruleOptions;
+  final pulumi.Input<List<RuleOption>?>? ruleOptions;
 
   /// Creates a new [StatefulRule].
   /// [action] Property action
@@ -33,7 +33,7 @@ class StatefulRule {
 
   factory StatefulRule.fromMap(Map<String, dynamic> map) {
     return StatefulRule(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       header: (() { final guardedValue = map['header']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Header.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleOptions: (() { final guardedValue = map['ruleOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RuleOption>(guardedValue, (value) => RuleOption.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

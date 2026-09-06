@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The abuse penalty.
 class AbusePenaltyResponse {
   /// The action of AbusePenalty.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The datetime of expiration of the AbusePenalty.
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// The percentage of rate limit.
-  final pulumi.Input<double>? rateLimitPercentage;
+  final pulumi.Input<double?>? rateLimitPercentage;
 
   /// Creates a new [AbusePenaltyResponse].
   /// [action] The action of AbusePenalty.
@@ -33,7 +33,7 @@ class AbusePenaltyResponse {
     return AbusePenaltyResponse(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateLimitPercentage: (() { final guardedValue = map['rateLimitPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      rateLimitPercentage: (() { final guardedValue = map['rateLimitPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

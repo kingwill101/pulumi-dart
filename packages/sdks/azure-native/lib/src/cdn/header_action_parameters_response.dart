@@ -11,7 +11,7 @@ class HeaderActionParametersResponse {
   /// Expected value is 'DeliveryRuleHeaderActionParameters'.
   final pulumi.Input<String> typeName;
   /// Value for the specified action
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HeaderActionParametersResponse].
   /// [headerAction] Action to perform

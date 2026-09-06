@@ -47,9 +47,9 @@ class IncidentAdditionalDataResponse {
   factory IncidentAdditionalDataResponse.fromMap(Map<String, dynamic> map) {
     return IncidentAdditionalDataResponse(
       alertProductNames: pulumi.Input.fromValue((map['alertProductNames'] as List).cast<String>()),
-      alertsCount: pulumi.Input.fromValue(map['alertsCount'] as int),
-      bookmarksCount: pulumi.Input.fromValue(map['bookmarksCount'] as int),
-      commentsCount: pulumi.Input.fromValue(map['commentsCount'] as int),
+      alertsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['alertsCount'])),
+      bookmarksCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bookmarksCount'])),
+      commentsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['commentsCount'])),
       providerIncidentUrl: pulumi.Input.fromValue(map['providerIncidentUrl'] as String),
       tactics: pulumi.Input.fromValue((map['tactics'] as List).cast<String>()),
     );

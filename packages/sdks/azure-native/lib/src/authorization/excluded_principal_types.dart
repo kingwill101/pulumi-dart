@@ -1,8 +1,11 @@
-enum ExcludedPrincipalTypes {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ExcludedPrincipalTypes implements pulumi.PulumiEnum<String> {
   servicePrincipalsAsTarget("ServicePrincipalsAsTarget"),
   servicePrincipalsAsRequestor("ServicePrincipalsAsRequestor");
 
   const ExcludedPrincipalTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ExcludedPrincipalTypes fromValue(String value) {

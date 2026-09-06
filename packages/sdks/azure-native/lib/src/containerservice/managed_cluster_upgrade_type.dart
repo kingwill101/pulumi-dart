@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ManagedClusterUpgradeType is the type of upgrade to be applied.
-enum ManagedClusterUpgradeType {
+enum ManagedClusterUpgradeType implements pulumi.PulumiEnum<String> {
   full("Full"),
   nodeImageOnly("NodeImageOnly"),
   controlPlaneOnly("ControlPlaneOnly");
 
   const ManagedClusterUpgradeType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedClusterUpgradeType fromValue(String value) {

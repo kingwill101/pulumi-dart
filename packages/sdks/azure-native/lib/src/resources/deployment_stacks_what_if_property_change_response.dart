@@ -11,7 +11,7 @@ class DeploymentStacksWhatIfPropertyChangeResponse {
   /// Type of change that will be made to the resource when the deployment is executed.
   final pulumi.Input<String> changeType;
   /// Nested property changes.
-  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>? children;
+  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>?>? children;
   /// Type of change that will be made to the resource when the deployment is executed.
   final pulumi.Input<String> path;
 

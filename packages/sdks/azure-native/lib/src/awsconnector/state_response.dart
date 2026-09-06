@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of State
 class StateResponse {
   /// Status code of the Instance.
-  final pulumi.Input<int>? code;
+  final pulumi.Input<int?>? code;
   /// Status code of the Instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [StateResponse].
   /// [code] Status code of the Instance.
@@ -26,7 +26,7 @@ class StateResponse {
 
   factory StateResponse.fromMap(Map<String, dynamic> map) {
     return StateResponse(
-      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      code: (() { final guardedValue = map['code']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

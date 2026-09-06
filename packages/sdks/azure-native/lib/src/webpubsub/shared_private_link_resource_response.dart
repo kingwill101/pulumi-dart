@@ -16,7 +16,7 @@ class SharedPrivateLinkResourceResponse {
   /// Provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// The request message for requesting approval of the shared private link resource
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// Status of the shared private link resource
   final pulumi.Input<String> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.

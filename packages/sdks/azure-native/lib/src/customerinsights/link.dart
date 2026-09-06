@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'link_args.dart';
+import 'participant_property_reference_response.dart';
+import 'type_properties_mapping_response.dart';
 
 /// The link resource format.
 ///
@@ -297,13 +299,13 @@ class Link extends pulumi.CustomResource {
   /// The link name.
   late final pulumi.Output<String> linkName;
   /// The set of properties mappings between the source and target Types.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mappings;
+  late final pulumi.Output<List<TypePropertiesMappingResponse>?> mappings;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only.
   late final pulumi.Output<String?> operationType;
   /// The properties that represent the participating profile.
-  late final pulumi.Output<List<Map<String, dynamic>>> participantPropertyReferences;
+  late final pulumi.Output<List<ParticipantPropertyReferenceResponse>> participantPropertyReferences;
   /// Provisioning state.
   late final pulumi.Output<String> provisioningState;
   /// Indicating whether the link is reference only link. This flag is ignored if the Mappings are defined. If the mappings are not defined and it is set to true, links processing will not create or update profiles.
@@ -336,13 +338,40 @@ class Link extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    description = registerOutput<Map<String, String>?>('description');
-    displayName = registerOutput<Map<String, String>?>('displayName');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linkName = registerOutput<String>('linkName');
-    mappings = registerOutput<List<Map<String, dynamic>>?>('mappings');
+    mappings = registerOutput<List<TypePropertiesMappingResponse>?>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypePropertiesMappingResponse>(guardedValue, (value) => TypePropertiesMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     operationType = registerOutput<String?>('operationType');
-    participantPropertyReferences = registerOutput<List<Map<String, dynamic>>>('participantPropertyReferences');
+    participantPropertyReferences = registerOutput<List<ParticipantPropertyReferenceResponse>>('participantPropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantPropertyReferenceResponse>(guardedValue, (value) => ParticipantPropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    referenceOnly = registerOutput<bool?>('referenceOnly');
+    sourceEntityType = registerOutput<String>('sourceEntityType');
+    sourceEntityTypeName = registerOutput<String>('sourceEntityTypeName');
+    targetEntityType = registerOutput<String>('targetEntityType');
+    targetEntityTypeName = registerOutput<String>('targetEntityTypeName');
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Link] resource.
+  Link.reference(String urn)
+    : super(
+        'azure-native:customerinsights:Link',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<Map<String, String>?>('description', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    displayName = registerOutput<Map<String, String>?>('displayName', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linkName = registerOutput<String>('linkName');
+    mappings = registerOutput<List<TypePropertiesMappingResponse>?>('mappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TypePropertiesMappingResponse>(guardedValue, (value) => TypePropertiesMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    operationType = registerOutput<String?>('operationType');
+    participantPropertyReferences = registerOutput<List<ParticipantPropertyReferenceResponse>>('participantPropertyReferences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ParticipantPropertyReferenceResponse>(guardedValue, (value) => ParticipantPropertyReferenceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     referenceOnly = registerOutput<bool?>('referenceOnly');
     sourceEntityType = registerOutput<String>('sourceEntityType');

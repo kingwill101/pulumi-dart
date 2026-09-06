@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Credential type.
-enum CredentialType {
+enum CredentialType implements pulumi.PulumiEnum<String> {
   valueIntuneAccount("IntuneAccount");
 
   const CredentialType(this.wireValue);
+  @override
   final String wireValue;
 
   static CredentialType fromValue(String value) {

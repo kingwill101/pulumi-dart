@@ -6,25 +6,25 @@ import 'web_application_firewall_scrubbing_rules.dart';
 /// Defines top-level WebApplicationFirewallPolicy configuration settings.
 class PolicySettings {
   /// Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
-  final pulumi.Input<int>? captchaExpirationInMinutes;
+  final pulumi.Input<int?>? captchaExpirationInMinutes;
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final pulumi.Input<String>? customBlockResponseBody;
+  final pulumi.Input<String?>? customBlockResponseBody;
   /// If the action type is block, customer can override the response status code.
-  final pulumi.Input<int>? customBlockResponseStatusCode;
+  final pulumi.Input<int?>? customBlockResponseStatusCode;
   /// Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified.
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<dynamic>? enabledState;
   /// Defines the JavaScript challenge cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
-  final pulumi.Input<int>? javascriptChallengeExpirationInMinutes;
+  final pulumi.Input<int?>? javascriptChallengeExpirationInMinutes;
   /// Describes if it is in detection mode or prevention mode at policy level.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// If action type is redirect, this field represents redirect URL for the client.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// Describes if policy managed rules will inspect the request body content.
-  final pulumi.Input<String>? requestBodyCheck;
+  final pulumi.Input<dynamic>? requestBodyCheck;
   /// List of log scrubbing rules applied to the Web Application Firewall logs.
-  final pulumi.Input<List<WebApplicationFirewallScrubbingRules>>? scrubbingRules;
+  final pulumi.Input<List<WebApplicationFirewallScrubbingRules>?>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [PolicySettings].
   /// [captchaExpirationInMinutes] Defines the Captcha cookie validity lifetime in minutes. This setting is only applicable to Premium_AzureFrontDoor. Value must be an integer between 5 and 1440 with the default value being 30.
@@ -67,16 +67,16 @@ class PolicySettings {
 
   factory PolicySettings.fromMap(Map<String, dynamic> map) {
     return PolicySettings(
-      captchaExpirationInMinutes: (() { final guardedValue = map['captchaExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      captchaExpirationInMinutes: (() { final guardedValue = map['captchaExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customBlockResponseBody: (() { final guardedValue = map['customBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      javascriptChallengeExpirationInMinutes: (() { final guardedValue = map['javascriptChallengeExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customBlockResponseStatusCode: (() { final guardedValue = map['customBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      javascriptChallengeExpirationInMinutes: (() { final guardedValue = map['javascriptChallengeExpirationInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       redirectUrl: (() { final guardedValue = map['redirectUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      requestBodyCheck: (() { final guardedValue = map['requestBodyCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      requestBodyCheck: (() { final guardedValue = map['requestBodyCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scrubbingRules: (() { final guardedValue = map['scrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<WebApplicationFirewallScrubbingRules>(guardedValue, (value) => WebApplicationFirewallScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

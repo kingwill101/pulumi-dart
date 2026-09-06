@@ -8,17 +8,17 @@ import 'network_configuration.dart';
 /// The integration service environment properties.
 class IntegrationServiceEnvironmentProperties {
   /// The encryption configuration.
-  final pulumi.Input<IntegrationServiceEnvironmenEncryptionConfiguration>? encryptionConfiguration;
+  final pulumi.Input<IntegrationServiceEnvironmenEncryptionConfiguration?>? encryptionConfiguration;
   /// The endpoints configuration.
-  final pulumi.Input<FlowEndpointsConfiguration>? endpointsConfiguration;
+  final pulumi.Input<FlowEndpointsConfiguration?>? endpointsConfiguration;
   /// Gets the tracking id.
-  final pulumi.Input<String>? integrationServiceEnvironmentId;
+  final pulumi.Input<String?>? integrationServiceEnvironmentId;
   /// The network configuration.
-  final pulumi.Input<NetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<NetworkConfiguration?>? networkConfiguration;
   /// The provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The integration service environment state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [IntegrationServiceEnvironmentProperties].
   /// [encryptionConfiguration] The encryption configuration.
@@ -53,8 +53,8 @@ class IntegrationServiceEnvironmentProperties {
       endpointsConfiguration: (() { final guardedValue = map['endpointsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FlowEndpointsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       integrationServiceEnvironmentId: (() { final guardedValue = map['integrationServiceEnvironmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfiguration: (() { final guardedValue = map['networkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

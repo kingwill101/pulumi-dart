@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_server_trust_certificate_args_doc}
 class ServerTrustCertificateArgs {
   /// Name of of the certificate to upload.
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// The name of the managed instance.
   final pulumi.Input<String> managedInstanceName;
   /// The certificate public blob
-  final pulumi.Input<String>? publicBlob;
+  final pulumi.Input<String?>? publicBlob;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
 

@@ -6,9 +6,9 @@ import 'guest_configuration_navigation.dart';
 /// Guest configuration assignment properties.
 class GuestConfigurationAssignmentProperties {
   /// The source which initiated the guest configuration assignment. Ex: Azure Policy
-  final pulumi.Input<String>? context;
+  final pulumi.Input<String?>? context;
   /// The guest configuration to assign.
-  final pulumi.Input<GuestConfigurationNavigation>? guestConfiguration;
+  final pulumi.Input<GuestConfigurationNavigation?>? guestConfiguration;
 
   /// Creates a new [GuestConfigurationAssignmentProperties].
   /// [context] The source which initiated the guest configuration assignment. Ex: Azure Policy

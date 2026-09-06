@@ -10,13 +10,13 @@ import 'workflow_version_v2_properties.dart';
 /// {@macro pulumi_edge_workflow_version_v2_args_doc}
 class WorkflowVersionV2Args {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<WorkflowVersionV2Properties>? properties;
+  final pulumi.Input<WorkflowVersionV2Properties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the WorkflowVersionV2.
-  final pulumi.Input<String>? versionName;
+  final pulumi.Input<String?>? versionName;
   /// Name of the workflow
   final pulumi.Input<String> workflowName;
 

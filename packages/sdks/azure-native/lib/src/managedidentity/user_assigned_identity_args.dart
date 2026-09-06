@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managedidentity_user_assigned_identity_args_doc}
 class UserAssignedIdentityArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Resource Group to which the identity belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the identity resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [UserAssignedIdentityArgs].
   /// [location] The geo-location where the resource lives

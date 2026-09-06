@@ -7,27 +7,27 @@ import 'route_filter_rule_response.dart';
 /// Result data returned by getRouteFilter.
 class GetRouteFilterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// A collection of references to express route circuit ipv6 peerings.
-  final List<ExpressRouteCircuitPeeringResponse> ipv6Peerings;
+  final List<ExpressRouteCircuitPeeringResponse>? ipv6Peerings;
   /// Resource location.
-  final String location;
+  final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// A collection of references to express route circuit peerings.
-  final List<ExpressRouteCircuitPeeringResponse> peerings;
+  final List<ExpressRouteCircuitPeeringResponse>? peerings;
   /// The provisioning state of the route filter resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Collection of RouteFilterRules contained within a route filter.
   final List<RouteFilterRuleResponse>? rules;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRouteFilterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -42,48 +42,48 @@ class GetRouteFilterResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetRouteFilterResult({
-    required this.azureApiVersion,
-    required this.etag,
+    this.azureApiVersion,
+    this.etag,
     this.id,
-    required this.ipv6Peerings,
-    required this.location,
-    required this.name,
-    required this.peerings,
-    required this.provisioningState,
+    this.ipv6Peerings,
+    this.location,
+    this.name,
+    this.peerings,
+    this.provisioningState,
     this.rules,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
       'id': ?id,
-      'ipv6Peerings': pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(ipv6Peerings, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'peerings': pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(peerings, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'ipv6Peerings': ?(() { final guardedValue = ipv6Peerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'peerings': ?(() { final guardedValue = peerings; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExpressRouteCircuitPeeringResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouteFilterRuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRouteFilterResult.fromMap(Map<String, dynamic> map) {
     return GetRouteFilterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ipv6Peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['ipv6Peerings']!, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      peerings: pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(map['peerings']!, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      ipv6Peerings: (() { final guardedValue = map['ipv6Peerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      peerings: (() { final guardedValue = map['peerings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitPeeringResponse>(guardedValue, (value) => ExpressRouteCircuitPeeringResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteFilterRuleResponse>(guardedValue, (value) => RouteFilterRuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

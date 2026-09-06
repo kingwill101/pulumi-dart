@@ -10,17 +10,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_sovereign_landing_zone_account_operation_args_doc}
 class LandingZoneAccountOperationArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The landing zone account.
-  final pulumi.Input<String>? landingZoneAccountName;
+  final pulumi.Input<String?>? landingZoneAccountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LandingZoneAccountResourceProperties>? properties;
+  final pulumi.Input<LandingZoneAccountResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LandingZoneAccountOperationArgs].
   /// [identity] The managed service identities assigned to this resource.

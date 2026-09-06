@@ -7,15 +7,15 @@ import 'mapper_connection_reference.dart';
 /// Source and target table mapping details.
 class DataMapperMapping {
   /// This holds the user provided attribute mapping information.
-  final pulumi.Input<MapperAttributeMappings>? attributeMappingInfo;
+  final pulumi.Input<MapperAttributeMappings?>? attributeMappingInfo;
   /// The connection reference for the source connection.
-  final pulumi.Input<MapperConnectionReference>? sourceConnectionReference;
+  final pulumi.Input<MapperConnectionReference?>? sourceConnectionReference;
   /// This holds the source denormalization information used while joining multiple sources.
   final pulumi.Input<dynamic>? sourceDenormalizeInfo;
   /// Name of the source table
-  final pulumi.Input<String>? sourceEntityName;
+  final pulumi.Input<String?>? sourceEntityName;
   /// Name of the target table
-  final pulumi.Input<String>? targetEntityName;
+  final pulumi.Input<String?>? targetEntityName;
 
   /// Creates a new [DataMapperMapping].
   /// [attributeMappingInfo] This holds the user provided attribute mapping information.

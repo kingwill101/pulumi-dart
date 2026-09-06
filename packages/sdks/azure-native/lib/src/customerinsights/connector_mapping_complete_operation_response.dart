@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The complete operation.
 class ConnectorMappingCompleteOperationResponse {
   /// The type of completion operation.
-  final pulumi.Input<String>? completionOperationType;
+  final pulumi.Input<String?>? completionOperationType;
   /// The destination folder where files will be moved to once the import is done.
-  final pulumi.Input<String>? destinationFolder;
+  final pulumi.Input<String?>? destinationFolder;
 
   /// Creates a new [ConnectorMappingCompleteOperationResponse].
   /// [completionOperationType] The type of completion operation.

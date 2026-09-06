@@ -237,4 +237,25 @@ class OpenIdConnectProvider extends pulumi.CustomResource {
     useInApiDocumentation = registerOutput<bool?>('useInApiDocumentation');
     useInTestConsole = registerOutput<bool?>('useInTestConsole');
   }
+
+  /// Creates a typed reference to an existing [OpenIdConnectProvider] resource.
+  OpenIdConnectProvider.reference(String urn)
+    : super(
+        'azure-native:apimanagement:OpenIdConnectProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String>('clientId');
+    clientSecret = registerOutput<String?>('clientSecret');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    metadataEndpoint = registerOutput<String>('metadataEndpoint');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+    useInApiDocumentation = registerOutput<bool?>('useInApiDocumentation');
+    useInTestConsole = registerOutput<bool?>('useInTestConsole');
+  }
 }

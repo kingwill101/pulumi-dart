@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol of routed Azure Spring Apps applications.
-enum GatewayRouteConfigProtocol {
+enum GatewayRouteConfigProtocol implements pulumi.PulumiEnum<String> {
   valueHTTP("HTTP"),
   valueHTTPS("HTTPS");
 
   const GatewayRouteConfigProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayRouteConfigProtocol fromValue(String value) {

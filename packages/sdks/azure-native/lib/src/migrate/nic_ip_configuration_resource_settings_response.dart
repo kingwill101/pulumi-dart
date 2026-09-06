@@ -9,21 +9,21 @@ import 'subnet_reference_response.dart';
 /// Defines NIC IP configuration properties.
 class NicIpConfigurationResourceSettingsResponse {
   /// Gets or sets the references of the load balancer backend address pools.
-  final pulumi.Input<List<LoadBalancerBackendAddressPoolReferenceResponse>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<LoadBalancerBackendAddressPoolReferenceResponse>?>? loadBalancerBackendAddressPools;
   /// Gets or sets the references of the load balancer NAT rules.
-  final pulumi.Input<List<LoadBalancerNatRuleReferenceResponse>>? loadBalancerNatRules;
+  final pulumi.Input<List<LoadBalancerNatRuleReferenceResponse>?>? loadBalancerNatRules;
   /// Gets or sets the IP configuration name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets a value indicating whether this IP configuration is the primary.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Gets or sets the private IP address of the network interface IP Configuration.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Gets or sets the private IP address allocation method.
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<String?>? privateIpAllocationMethod;
   /// Defines reference to a public IP.
-  final pulumi.Input<PublicIpReferenceResponse>? publicIp;
+  final pulumi.Input<PublicIpReferenceResponse?>? publicIp;
   /// Defines reference to subnet.
-  final pulumi.Input<SubnetReferenceResponse>? subnet;
+  final pulumi.Input<SubnetReferenceResponse?>? subnet;
 
   /// Creates a new [NicIpConfigurationResourceSettingsResponse].
   /// [loadBalancerBackendAddressPools] Gets or sets the references of the load balancer backend address pools.

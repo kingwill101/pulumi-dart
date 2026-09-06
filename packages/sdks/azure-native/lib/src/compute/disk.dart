@@ -8,6 +8,7 @@ import 'encryption_response.dart';
 import 'encryption_settings_collection_response.dart';
 import 'extended_location_response.dart';
 import 'property_updates_in_progress_response.dart';
+import 'share_info_element_response.dart';
 import 'supported_capabilities_response.dart';
 import 'system_data_response.dart';
 
@@ -4562,7 +4563,7 @@ class Disk extends pulumi.CustomResource {
   /// Contains the security related information for the resource.
   late final pulumi.Output<DiskSecurityProfileResponse?> securityProfile;
   /// Details of the list of all VMs that have the disk attached. maxShares should be set to a value greater than one for disks to allow attaching them to multiple VMs.
-  late final pulumi.Output<List<Map<String, dynamic>>> shareInfo;
+  late final pulumi.Output<List<ShareInfoElementResponse>> shareInfo;
   /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
   late final pulumi.Output<DiskSkuResponse?> sku;
   /// List of supported capabilities for the image from which the OS disk was created.
@@ -4619,7 +4620,7 @@ class Disk extends pulumi.CustomResource {
     lastOwnershipUpdateTime = registerOutput<String>('lastOwnershipUpdateTime');
     location = registerOutput<String>('location');
     managedBy = registerOutput<String>('managedBy');
-    managedByExtended = registerOutput<List<String>>('managedByExtended');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     maxShares = registerOutput<int?>('maxShares');
     this.name = registerOutput<String>('name');
     networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
@@ -4630,16 +4631,70 @@ class Disk extends pulumi.CustomResource {
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     purchasePlan = registerOutput<DiskPurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     securityProfile = registerOutput<DiskSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    shareInfo = registerOutput<List<Map<String, dynamic>>>('shareInfo');
+    shareInfo = registerOutput<List<ShareInfoElementResponse>>('shareInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareInfoElementResponse>(guardedValue, (value) => ShareInfoElementResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<DiskSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportsHibernation = registerOutput<bool?>('supportsHibernation');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tier = registerOutput<String?>('tier');
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
     uniqueId = registerOutput<String>('uniqueId');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Disk] resource.
+  Disk.reference(String urn)
+    : super(
+        'azure-native:compute:Disk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    burstingEnabled = registerOutput<bool?>('burstingEnabled');
+    burstingEnabledTime = registerOutput<String>('burstingEnabledTime');
+    completionPercent = registerOutput<double?>('completionPercent');
+    creationData = registerOutput<CreationDataResponse>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataAccessAuthMode = registerOutput<String?>('dataAccessAuthMode');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskIOPSReadOnly = registerOutput<double?>('diskIOPSReadOnly');
+    diskIOPSReadWrite = registerOutput<double?>('diskIOPSReadWrite');
+    diskMBpsReadOnly = registerOutput<double?>('diskMBpsReadOnly');
+    diskMBpsReadWrite = registerOutput<double?>('diskMBpsReadWrite');
+    diskSizeBytes = registerOutput<double>('diskSizeBytes');
+    diskSizeGB = registerOutput<int?>('diskSizeGB');
+    diskState = registerOutput<String>('diskState');
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettingsCollection = registerOutput<EncryptionSettingsCollectionResponse?>('encryptionSettingsCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSettingsCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    lastOwnershipUpdateTime = registerOutput<String>('lastOwnershipUpdateTime');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String>('managedBy');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    maxShares = registerOutput<int?>('maxShares');
+    this.name = registerOutput<String>('name');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    optimizedForFrequentAttach = registerOutput<bool?>('optimizedForFrequentAttach');
+    osType = registerOutput<String?>('osType');
+    propertyUpdatesInProgress = registerOutput<PropertyUpdatesInProgressResponse>('propertyUpdatesInProgress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PropertyUpdatesInProgressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purchasePlan = registerOutput<DiskPurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<DiskSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shareInfo = registerOutput<List<ShareInfoElementResponse>>('shareInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ShareInfoElementResponse>(guardedValue, (value) => ShareInfoElementResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<DiskSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportsHibernation = registerOutput<bool?>('supportsHibernation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tier = registerOutput<String?>('tier');
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

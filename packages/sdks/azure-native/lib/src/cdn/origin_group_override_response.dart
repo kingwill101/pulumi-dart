@@ -6,9 +6,9 @@ import 'resource_reference_response.dart';
 /// Defines the parameters for the origin group override configuration.
 class OriginGroupOverrideResponse {
   /// Protocol this rule will use when forwarding traffic to backends.
-  final pulumi.Input<String>? forwardingProtocol;
+  final pulumi.Input<String?>? forwardingProtocol;
   /// defines the OriginGroup that would override the DefaultOriginGroup on route.
-  final pulumi.Input<ResourceReferenceResponse>? originGroup;
+  final pulumi.Input<ResourceReferenceResponse?>? originGroup;
 
   /// Creates a new [OriginGroupOverrideResponse].
   /// [forwardingProtocol] Protocol this rule will use when forwarding traffic to backends.

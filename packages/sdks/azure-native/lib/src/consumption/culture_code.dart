@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Language in which the recipient will receive the notification
-enum CultureCode {
+enum CultureCode implements pulumi.PulumiEnum<String> {
   enUs("en-us"),
   jaJp("ja-jp"),
   zhCn("zh-cn"),
@@ -23,6 +25,7 @@ enum CultureCode {
   svSe("sv-se");
 
   const CultureCode(this.wireValue);
+  @override
   final String wireValue;
 
   static CultureCode fromValue(String value) {

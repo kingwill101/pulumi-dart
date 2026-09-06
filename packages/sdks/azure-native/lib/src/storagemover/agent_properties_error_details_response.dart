@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentPropertiesErrorDetailsResponse {
   /// Error code reported by Agent
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Expanded description of reported error code
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [AgentPropertiesErrorDetailsResponse].
   /// [code] Error code reported by Agent

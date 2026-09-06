@@ -11,11 +11,11 @@ class EntityArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
   /// Name of the entity. Must be unique within a health model.
-  final pulumi.Input<String>? entityName;
+  final pulumi.Input<String?>? entityName;
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<EntityProperties>? properties;
+  final pulumi.Input<EntityProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

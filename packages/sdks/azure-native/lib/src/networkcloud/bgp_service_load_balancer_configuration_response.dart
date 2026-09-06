@@ -7,25 +7,25 @@ import 'service_load_balancer_bgp_peer_response.dart';
 
 class BgpServiceLoadBalancerConfigurationResponse {
   /// The association of IP address pools to the communities and peers, allowing for announcement of IPs.
-  final pulumi.Input<List<BgpAdvertisementResponse>>? bgpAdvertisements;
+  final pulumi.Input<List<BgpAdvertisementResponse>?>? bgpAdvertisements;
   /// The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
-  final pulumi.Input<List<ServiceLoadBalancerBgpPeerResponse>>? bgpPeers;
+  final pulumi.Input<List<ServiceLoadBalancerBgpPeerResponse>?>? bgpPeers;
   /// The indicator to specify if the load balancer peers with the network fabric.
-  final pulumi.Input<String>? fabricPeeringEnabled;
+  final pulumi.Input<String?>? fabricPeeringEnabled;
   /// The list of pools of IP addresses that can be allocated to load balancer services.
-  final pulumi.Input<List<IpAddressPoolResponse>>? ipAddressPools;
+  final pulumi.Input<List<IpAddressPoolResponse>?>? ipAddressPools;
 
   /// Creates a new [BgpServiceLoadBalancerConfigurationResponse].
   /// [bgpAdvertisements] The association of IP address pools to the communities and peers, allowing for announcement of IPs.
   /// [bgpPeers] The list of additional BgpPeer entities that the Kubernetes cluster will peer with. All peering must be explicitly defined.
   /// [fabricPeeringEnabled] The indicator to specify if the load balancer peers with the network fabric.
   /// [ipAddressPools] The list of pools of IP addresses that can be allocated to load balancer services.
-  const BgpServiceLoadBalancerConfigurationResponse({
+  BgpServiceLoadBalancerConfigurationResponse({
     this.bgpAdvertisements,
     this.bgpPeers,
-    this.fabricPeeringEnabled,
+    pulumi.Input<String?>? fabricPeeringEnabled,
     this.ipAddressPools,
-  });
+  }) : fabricPeeringEnabled = fabricPeeringEnabled ?? pulumi.Input.fromValue('True');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

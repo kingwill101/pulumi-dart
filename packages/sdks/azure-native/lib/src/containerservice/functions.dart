@@ -74,6 +74,17 @@ Future<GetAgentPoolResult> getAgentPool(
   return GetAgentPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetAgentPoolResult> getAgentPoolOutput(
+  GetAgentPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getAgentPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgentPoolResult.fromMap);
+}
+
 /// Get a AutoUpgradeProfile
 ///
 /// Uses Azure REST API version 2024-05-02-preview.
@@ -92,6 +103,17 @@ Future<GetAutoUpgradeProfileResult> getAutoUpgradeProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoUpgradeProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoUpgradeProfileResult> getAutoUpgradeProfileOutput(
+  GetAutoUpgradeProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getAutoUpgradeProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoUpgradeProfileResult.fromMap);
 }
 
 /// Fetch a deployment safeguard by name
@@ -114,6 +136,17 @@ Future<GetDeploymentSafeguardResult> getDeploymentSafeguard(
   return GetDeploymentSafeguardResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentSafeguardResult> getDeploymentSafeguardOutput(
+  GetDeploymentSafeguardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getDeploymentSafeguard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentSafeguardResult.fromMap);
+}
+
 /// Gets a Fleet.
 ///
 /// Uses Azure REST API version 2024-05-02-preview.
@@ -132,6 +165,17 @@ Future<GetFleetResult> getFleet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
 }
 
 /// Get a FleetManagedNamespace
@@ -154,6 +198,17 @@ Future<GetFleetManagedNamespaceResult> getFleetManagedNamespace(
   return GetFleetManagedNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetManagedNamespaceResult> getFleetManagedNamespaceOutput(
+  GetFleetManagedNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getFleetManagedNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetManagedNamespaceResult.fromMap);
+}
+
 /// Get a FleetMember
 ///
 /// Uses Azure REST API version 2024-05-02-preview.
@@ -172,6 +227,17 @@ Future<GetFleetMemberResult> getFleetMember(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetMemberResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetMemberResult> getFleetMemberOutput(
+  GetFleetMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getFleetMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetMemberResult.fromMap);
 }
 
 /// Get a FleetUpdateStrategy
@@ -194,6 +260,17 @@ Future<GetFleetUpdateStrategyResult> getFleetUpdateStrategy(
   return GetFleetUpdateStrategyResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetUpdateStrategyResult> getFleetUpdateStrategyOutput(
+  GetFleetUpdateStrategyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getFleetUpdateStrategy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetUpdateStrategyResult.fromMap);
+}
+
 /// The IdentityBinding resource.
 ///
 /// Uses Azure REST API version 2025-06-02-preview.
@@ -212,6 +289,17 @@ Future<GetIdentityBindingResult> getIdentityBinding(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIdentityBindingResult.fromMap(result);
+}
+
+pulumi.Output<GetIdentityBindingResult> getIdentityBindingOutput(
+  GetIdentityBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getIdentityBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIdentityBindingResult.fromMap);
 }
 
 /// Configuration for JWT authenticator in the managed cluster.
@@ -234,6 +322,17 @@ Future<GetJWTAuthenticatorResult> getJWTAuthenticator(
   return GetJWTAuthenticatorResult.fromMap(result);
 }
 
+pulumi.Output<GetJWTAuthenticatorResult> getJWTAuthenticatorOutput(
+  GetJWTAuthenticatorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getJWTAuthenticator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJWTAuthenticatorResult.fromMap);
+}
+
 /// The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`.
 ///
 /// Uses Azure REST API version 2024-10-02-preview.
@@ -252,6 +351,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
@@ -274,6 +384,17 @@ Future<GetMaintenanceConfigurationResult> getMaintenanceConfiguration(
   return GetMaintenanceConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetMaintenanceConfigurationResult> getMaintenanceConfigurationOutput(
+  GetMaintenanceConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getMaintenanceConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMaintenanceConfigurationResult.fromMap);
+}
+
 /// Managed cluster.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -292,6 +413,17 @@ Future<GetManagedClusterResult> getManagedCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedClusterResult> getManagedClusterOutput(
+  GetManagedClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getManagedCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterResult.fromMap);
 }
 
 /// A managed cluster snapshot resource.
@@ -314,6 +446,17 @@ Future<GetManagedClusterSnapshotResult> getManagedClusterSnapshot(
   return GetManagedClusterSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedClusterSnapshotResult> getManagedClusterSnapshotOutput(
+  GetManagedClusterSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getManagedClusterSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedClusterSnapshotResult.fromMap);
+}
+
 /// Namespace managed by ARM.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -332,6 +475,17 @@ Future<GetManagedNamespaceResult> getManagedNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedNamespaceResult> getManagedNamespaceOutput(
+  GetManagedNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getManagedNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNamespaceResult.fromMap);
 }
 
 /// Mesh membership of a managed cluster.
@@ -354,6 +508,17 @@ Future<GetMeshMembershipResult> getMeshMembership(
   return GetMeshMembershipResult.fromMap(result);
 }
 
+pulumi.Output<GetMeshMembershipResult> getMeshMembershipOutput(
+  GetMeshMembershipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getMeshMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMeshMembershipResult.fromMap);
+}
+
 /// Namespace managed by ARM.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -370,6 +535,17 @@ Future<GetNamespaceResult> getNamespace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
 }
 
 /// To learn more about private clusters, see: https://docs.microsoft.com/azure/aks/private-clusters
@@ -392,6 +568,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// A node pool snapshot resource.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -410,6 +597,17 @@ Future<GetSnapshotResult> getSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
 }
 
 /// Defines binding between a resource and role
@@ -432,6 +630,17 @@ Future<GetTrustedAccessRoleBindingResult> getTrustedAccessRoleBinding(
   return GetTrustedAccessRoleBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetTrustedAccessRoleBindingResult> getTrustedAccessRoleBindingOutput(
+  GetTrustedAccessRoleBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getTrustedAccessRoleBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTrustedAccessRoleBindingResult.fromMap);
+}
+
 /// Get a UpdateRun
 ///
 /// Uses Azure REST API version 2024-05-02-preview.
@@ -450,6 +659,17 @@ Future<GetUpdateRunResult> getUpdateRun(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUpdateRunResult.fromMap(result);
+}
+
+pulumi.Output<GetUpdateRunResult> getUpdateRunOutput(
+  GetUpdateRunArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:getUpdateRun',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUpdateRunResult.fromMap);
 }
 
 /// Lists the user credentials of a Fleet.
@@ -472,6 +692,17 @@ Future<ListFleetCredentialsResult> listFleetCredentials(
   return ListFleetCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListFleetCredentialsResult> listFleetCredentialsOutput(
+  ListFleetCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listFleetCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFleetCredentialsResult.fromMap);
+}
+
 /// Gets the accessProfile for the specified role name of the managed cluster with a specified resource group and name.
 ///
 /// Uses Azure REST API version 2020-03-01.
@@ -490,6 +721,17 @@ Future<ListManagedClusterAccessProfileResult> listManagedClusterAccessProfile(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListManagedClusterAccessProfileResult.fromMap(result);
+}
+
+pulumi.Output<ListManagedClusterAccessProfileResult> listManagedClusterAccessProfileOutput(
+  ListManagedClusterAccessProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listManagedClusterAccessProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedClusterAccessProfileResult.fromMap);
 }
 
 /// The list credential result response.
@@ -512,6 +754,17 @@ Future<ListManagedClusterAdminCredentialsResult> listManagedClusterAdminCredenti
   return ListManagedClusterAdminCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListManagedClusterAdminCredentialsResult> listManagedClusterAdminCredentialsOutput(
+  ListManagedClusterAdminCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listManagedClusterAdminCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedClusterAdminCredentialsResult.fromMap);
+}
+
 /// The list credential result response.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -530,6 +783,17 @@ Future<ListManagedClusterMonitoringUserCredentialsResult> listManagedClusterMoni
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListManagedClusterMonitoringUserCredentialsResult.fromMap(result);
+}
+
+pulumi.Output<ListManagedClusterMonitoringUserCredentialsResult> listManagedClusterMonitoringUserCredentialsOutput(
+  ListManagedClusterMonitoringUserCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listManagedClusterMonitoringUserCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedClusterMonitoringUserCredentialsResult.fromMap);
 }
 
 /// The list credential result response.
@@ -552,6 +816,17 @@ Future<ListManagedClusterUserCredentialsResult> listManagedClusterUserCredential
   return ListManagedClusterUserCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListManagedClusterUserCredentialsResult> listManagedClusterUserCredentialsOutput(
+  ListManagedClusterUserCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listManagedClusterUserCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedClusterUserCredentialsResult.fromMap);
+}
+
 /// The list credential result response.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -572,6 +847,17 @@ Future<ListManagedNamespaceCredentialResult> listManagedNamespaceCredential(
   return ListManagedNamespaceCredentialResult.fromMap(result);
 }
 
+pulumi.Output<ListManagedNamespaceCredentialResult> listManagedNamespaceCredentialOutput(
+  ListManagedNamespaceCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listManagedNamespaceCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListManagedNamespaceCredentialResult.fromMap);
+}
+
 /// The list credential result response.
 ///
 /// Uses Azure REST API version 2025-02-02-preview.
@@ -588,4 +874,15 @@ Future<ListNamespaceCredentialResult> listNamespaceCredential(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNamespaceCredentialResult.fromMap(result);
+}
+
+pulumi.Output<ListNamespaceCredentialResult> listNamespaceCredentialOutput(
+  ListNamespaceCredentialArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerservice:listNamespaceCredential',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceCredentialResult.fromMap);
 }

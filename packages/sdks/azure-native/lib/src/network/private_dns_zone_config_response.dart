@@ -6,9 +6,9 @@ import 'record_set_response.dart';
 /// PrivateDnsZoneConfig resource.
 class PrivateDnsZoneConfigResponse {
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource id of the private dns zone.
-  final pulumi.Input<String>? privateDnsZoneId;
+  final pulumi.Input<String?>? privateDnsZoneId;
   /// A collection of information regarding a recordSet, holding information to identify private resources.
   final pulumi.Input<List<RecordSetResponse>> recordSets;
 

@@ -4,17 +4,17 @@
 /// Result data returned by getBackupShortTermRetentionPolicy.
 class GetBackupShortTermRetentionPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The differential backup interval in hours. This is how many interval hours between each differential backup will be supported. This is only applicable to live databases but not dropped databases.
   final int? diffBackupIntervalInHours;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   final int? retentionDays;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBackupShortTermRetentionPolicyResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -24,33 +24,33 @@ class GetBackupShortTermRetentionPolicyResult {
   /// [retentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [type] Resource type.
   const GetBackupShortTermRetentionPolicyResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.diffBackupIntervalInHours,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.retentionDays,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'diffBackupIntervalInHours': ?diffBackupIntervalInHours,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'retentionDays': ?retentionDays,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetBackupShortTermRetentionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBackupShortTermRetentionPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      diffBackupIntervalInHours: (() { final guardedValue = map['diffBackupIntervalInHours']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diffBackupIntervalInHours: (() { final guardedValue = map['diffBackupIntervalInHours']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

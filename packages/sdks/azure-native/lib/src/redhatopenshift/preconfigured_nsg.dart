@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether subnets are pre-attached with an NSG
-enum PreconfiguredNSG {
+enum PreconfiguredNSG implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const PreconfiguredNSG(this.wireValue);
+  @override
   final String wireValue;
 
   static PreconfiguredNSG fromValue(String value) {

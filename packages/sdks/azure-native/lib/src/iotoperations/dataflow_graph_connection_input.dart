@@ -8,7 +8,7 @@ class DataflowGraphConnectionInput {
   /// Name of the input node.
   final pulumi.Input<String> name;
   /// Schema settings for the input node.
-  final pulumi.Input<DataflowGraphConnectionSchemaSettings>? schema;
+  final pulumi.Input<DataflowGraphConnectionSchemaSettings?>? schema;
 
   /// Creates a new [DataflowGraphConnectionInput].
   /// [name] Name of the input node.

@@ -11,7 +11,7 @@ class ReplicationExtensionArgs {
   /// Replication extension model properties.
   final pulumi.Input<ReplicationExtensionModelProperties> properties;
   /// The replication extension name.
-  final pulumi.Input<String>? replicationExtensionName;
+  final pulumi.Input<String?>? replicationExtensionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The vault name.

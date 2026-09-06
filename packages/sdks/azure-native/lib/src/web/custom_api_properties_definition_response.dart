@@ -9,29 +9,29 @@ import 'wsdl_definition_response.dart';
 /// Custom API properties
 class CustomApiPropertiesDefinitionResponse {
   /// API Definitions
-  final pulumi.Input<ApiResourceDefinitionsResponse>? apiDefinitions;
+  final pulumi.Input<ApiResourceDefinitionsResponse?>? apiDefinitions;
   /// The API type
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// The API backend service
-  final pulumi.Input<ApiResourceBackendServiceResponse>? backendService;
+  final pulumi.Input<ApiResourceBackendServiceResponse?>? backendService;
   /// Brand color
-  final pulumi.Input<String>? brandColor;
+  final pulumi.Input<String?>? brandColor;
   /// The custom API capabilities
-  final pulumi.Input<List<String>>? capabilities;
+  final pulumi.Input<List<String>?>? capabilities;
   /// Connection parameters
-  final pulumi.Input<Map<String, ConnectionParameterResponse>>? connectionParameters;
+  final pulumi.Input<Map<String, ConnectionParameterResponse>?>? connectionParameters;
   /// The custom API description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The icon URI
-  final pulumi.Input<String>? iconUri;
+  final pulumi.Input<String?>? iconUri;
   /// Runtime URLs
-  final pulumi.Input<List<String>>? runtimeUrls;
+  final pulumi.Input<List<String>?>? runtimeUrls;
   /// The JSON representation of the swagger
   final pulumi.Input<dynamic>? swagger;
   /// The WSDL definition
-  final pulumi.Input<WsdlDefinitionResponse>? wsdlDefinition;
+  final pulumi.Input<WsdlDefinitionResponse?>? wsdlDefinition;
 
   /// Creates a new [CustomApiPropertiesDefinitionResponse].
   /// [apiDefinitions] API Definitions

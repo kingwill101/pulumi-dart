@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The parameter defining how if AutoML should handle short time series.
-enum ShortSeriesHandlingConfiguration {
+enum ShortSeriesHandlingConfiguration implements pulumi.PulumiEnum<String> {
   none("None"),
   auto("Auto"),
   pad("Pad"),
   drop("Drop");
 
   const ShortSeriesHandlingConfiguration(this.wireValue);
+  @override
   final String wireValue;
 
   static ShortSeriesHandlingConfiguration fromValue(String value) {

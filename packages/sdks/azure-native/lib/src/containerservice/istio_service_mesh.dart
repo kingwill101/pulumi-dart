@@ -7,11 +7,11 @@ import 'istio_components.dart';
 /// Istio service mesh configuration.
 class IstioServiceMesh {
   /// Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca
-  final pulumi.Input<IstioCertificateAuthority>? certificateAuthority;
+  final pulumi.Input<IstioCertificateAuthority?>? certificateAuthority;
   /// Istio components configuration.
-  final pulumi.Input<IstioComponents>? components;
+  final pulumi.Input<IstioComponents?>? components;
   /// The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade
-  final pulumi.Input<List<String>>? revisions;
+  final pulumi.Input<List<String>?>? revisions;
 
   /// Creates a new [IstioServiceMesh].
   /// [certificateAuthority] Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca

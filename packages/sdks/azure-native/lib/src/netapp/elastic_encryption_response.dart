@@ -7,11 +7,11 @@ import 'elastic_key_vault_properties_response.dart';
 /// Encryption settings
 class ElasticEncryptionResponse {
   /// Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<ElasticEncryptionIdentityResponse>? identity;
+  final pulumi.Input<ElasticEncryptionIdentityResponse?>? identity;
   /// The encryption keySource (provider). Possible values (case-insensitive): Microsoft.NetApp, Microsoft.KeyVault
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Properties provided by KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.
-  final pulumi.Input<ElasticKeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<ElasticKeyVaultPropertiesResponse?>? keyVaultProperties;
 
   /// Creates a new [ElasticEncryptionResponse].
   /// [identity] Identity used to authenticate to KeyVault. Applicable if keySource is 'Microsoft.KeyVault'.

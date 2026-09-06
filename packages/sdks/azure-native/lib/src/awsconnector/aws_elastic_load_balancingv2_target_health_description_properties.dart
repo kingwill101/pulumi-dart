@@ -8,13 +8,13 @@ import 'target_health.dart';
 /// Definition of awsElasticLoadBalancingv2TargetHealthDescription
 class AwsElasticLoadBalancingv2TargetHealthDescriptionProperties {
   /// &lt;p&gt;The anomaly detection result for the target.&lt;/p&gt; &lt;p&gt;If no anomalies were detected, the result is &lt;code&gt;normal&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If anomalies were detected, the result is &lt;code&gt;anomalous&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<AnomalyDetection>? anomalyDetection;
+  final pulumi.Input<AnomalyDetection?>? anomalyDetection;
   /// &lt;p&gt;The port to use to connect with the target.&lt;/p&gt;
-  final pulumi.Input<String>? healthCheckPort;
+  final pulumi.Input<String?>? healthCheckPort;
   /// &lt;p&gt;The description of the target.&lt;/p&gt;
-  final pulumi.Input<TargetDescription>? target;
+  final pulumi.Input<TargetDescription?>? target;
   /// &lt;p&gt;The health information for the target.&lt;/p&gt;
-  final pulumi.Input<TargetHealth>? targetHealth;
+  final pulumi.Input<TargetHealth?>? targetHealth;
 
   /// Creates a new [AwsElasticLoadBalancingv2TargetHealthDescriptionProperties].
   /// [anomalyDetection] &lt;p&gt;The anomaly detection result for the target.&lt;/p&gt; &lt;p&gt;If no anomalies were detected, the result is &lt;code&gt;normal&lt;/code&gt;.&lt;/p&gt; &lt;p&gt;If anomalies were detected, the result is &lt;code&gt;anomalous&lt;/code&gt;.&lt;/p&gt;

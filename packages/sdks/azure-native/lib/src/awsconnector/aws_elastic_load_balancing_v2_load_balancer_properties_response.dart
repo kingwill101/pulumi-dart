@@ -8,35 +8,35 @@ import 'tag_response.dart';
 /// Definition of awsElasticLoadBalancingV2LoadBalancer
 class AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse {
   /// Property canonicalHostedZoneID
-  final pulumi.Input<String>? canonicalHostedZoneID;
+  final pulumi.Input<String?>? canonicalHostedZoneID;
   /// Property dnsName
-  final pulumi.Input<String>? dnsName;
+  final pulumi.Input<String?>? dnsName;
   /// Indicates whether to evaluate inbound security group rules for traffic sent to a Network Load Balancer through privatelink.
-  final pulumi.Input<String>? enforceSecurityGroupInboundRulesOnPrivateLinkTraffic;
+  final pulumi.Input<String?>? enforceSecurityGroupInboundRulesOnPrivateLinkTraffic;
   /// The IP address type. The possible values are ``ipv4`` (for IPv4 addresses) and ``dualstack`` (for IPv4 and IPv6 addresses). You can’t specify ``dualstack`` for a load balancer with a UDP or TCP_UDP listener.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// Property loadBalancerArn
-  final pulumi.Input<String>? loadBalancerArn;
+  final pulumi.Input<String?>? loadBalancerArn;
   /// The load balancer attributes.
-  final pulumi.Input<List<LoadBalancerAttributeResponse>>? loadBalancerAttributes;
+  final pulumi.Input<List<LoadBalancerAttributeResponse>?>? loadBalancerAttributes;
   /// Property loadBalancerFullName
-  final pulumi.Input<String>? loadBalancerFullName;
+  final pulumi.Input<String?>? loadBalancerFullName;
   /// Property loadBalancerName
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// The name of the load balancer. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, must not begin or end with a hyphen, and must not begin with 'internal-'. If you don't specify a name, AWS CloudFormation generates a unique physical ID for the load balancer. If you specify a name, you cannot perform updates that require replacement of this resource, but you can perform other updates. To replace the resource, specify a new name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The nodes of an Internet-facing load balancer have public IP addresses. The DNS name of an Internet-facing load balancer is publicly resolvable to the public IP addresses of the nodes. Therefore, Internet-facing load balancers can route requests from clients over the internet. The nodes of an internal load balancer have only private IP addresses. The DNS name of an internal load balancer is publicly resolvable to the private IP addresses of the nodes. Therefore, internal load balancers can route requests only from clients with access to the VPC for the load balancer. The default is an Internet-facing load balancer. You cannot specify a scheme for a Gateway Load Balancer.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
   /// [Application Load Balancers and Network Load Balancers] The IDs of the security groups for the load balancer.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The IDs of the subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings, but not both. [Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets. [Application Load Balancers on Outposts] You must specify one Outpost subnet. [Application Load Balancers on Local Zones] You can specify subnets from one or more Local Zones. [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet if you need static IP addresses for your internet-facing load balancer. For internal load balancers, you can specify one private IP address per subnet from the IPv4 range of the subnet. For internet-facing load balancer, you can specify one IPv6 address per subnet. [Gateway Load Balancers] You can specify subnets from one or more Availability Zones. You cannot specify Elastic IP addresses for your subnets.
-  final pulumi.Input<List<SubnetMappingResponse>>? subnetMappings;
+  final pulumi.Input<List<SubnetMappingResponse>?>? subnetMappings;
   /// The IDs of the subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings, but not both. To specify an Elastic IP address, specify subnet mappings instead of subnets. [Application Load Balancers] You must specify subnets from at least two Availability Zones. [Application Load Balancers on Outposts] You must specify one Outpost subnet. [Application Load Balancers on Local Zones] You can specify subnets from one or more Local Zones. [Network Load Balancers] You can specify subnets from one or more Availability Zones. [Gateway Load Balancers] You can specify subnets from one or more Availability Zones.
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? subnets;
   /// The tags to assign to the load balancer.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// The type of load balancer. The default is ``application``.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AwsElasticLoadBalancingV2LoadBalancerPropertiesResponse].
   /// [canonicalHostedZoneID] Property canonicalHostedZoneID

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the DirectLine Speech channel.
 class DirectLineSpeechChannelProperties {
   /// The cognitive service region with this channel registration.
-  final pulumi.Input<String>? cognitiveServiceRegion;
+  final pulumi.Input<String?>? cognitiveServiceRegion;
   /// The cognitive service id with this channel registration.
-  final pulumi.Input<String>? cognitiveServiceResourceId;
+  final pulumi.Input<String?>? cognitiveServiceResourceId;
   /// The cognitive service subscription key to use with this channel registration.
-  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String?>? cognitiveServiceSubscriptionKey;
   /// Custom voice deployment id (optional).
-  final pulumi.Input<String>? customSpeechModelId;
+  final pulumi.Input<String?>? customSpeechModelId;
   /// Custom speech model id (optional).
-  final pulumi.Input<String>? customVoiceDeploymentId;
+  final pulumi.Input<String?>? customVoiceDeploymentId;
   /// Make this a default bot for chosen cognitive service account.
-  final pulumi.Input<bool>? isDefaultBotForCogSvcAccount;
+  final pulumi.Input<bool?>? isDefaultBotForCogSvcAccount;
   /// Whether this channel is enabled or not.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
 
   /// Creates a new [DirectLineSpeechChannelProperties].
   /// [cognitiveServiceRegion] The cognitive service region with this channel registration.

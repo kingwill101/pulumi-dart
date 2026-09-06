@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters schema of integration account map.
 class IntegrationAccountMapPropertiesParametersSchema {
   /// The reference name.
-  final pulumi.Input<String>? ref;
+  final pulumi.Input<String?>? ref;
 
   /// Creates a new [IntegrationAccountMapPropertiesParametersSchema].
   /// [ref] The reference name.

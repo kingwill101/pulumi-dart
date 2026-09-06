@@ -6,9 +6,9 @@ import 'data_disk_response.dart';
 /// The storage profile of the VMSS.
 class StorageProfileResponse {
   /// A list of empty data disks to attach.
-  final pulumi.Input<List<DataDiskResponse>>? dataDisks;
+  final pulumi.Input<List<DataDiskResponse>?>? dataDisks;
   /// The Azure SKU name of the machines in the pool.
-  final pulumi.Input<String>? osDiskStorageAccountType;
+  final pulumi.Input<String?>? osDiskStorageAccountType;
 
   /// Creates a new [StorageProfileResponse].
   /// [dataDisks] A list of empty data disks to attach.

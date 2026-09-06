@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_servicefabricmesh_secret_value_args_doc}
 class SecretValueArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// The name of the secret resource.
   final pulumi.Input<String> secretResourceName;
   /// The name of the secret resource value which is typically the version identifier for the value.
-  final pulumi.Input<String>? secretValueResourceName;
+  final pulumi.Input<String?>? secretValueResourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The actual value of the secret.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SecretValueArgs].
   /// [location] The geo-location where the resource lives

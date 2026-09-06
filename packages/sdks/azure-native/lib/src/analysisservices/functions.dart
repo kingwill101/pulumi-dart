@@ -22,6 +22,17 @@ Future<GetServerDetailsResult> getServerDetails(
   return GetServerDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetServerDetailsResult> getServerDetailsOutput(
+  GetServerDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:analysisservices:getServerDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerDetailsResult.fromMap);
+}
+
 /// Return the gateway status of the specified Analysis Services server instance.
 ///
 /// Uses Azure REST API version 2017-08-01.
@@ -38,4 +49,15 @@ Future<ListServerGatewayStatusResult> listServerGatewayStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListServerGatewayStatusResult.fromMap(result);
+}
+
+pulumi.Output<ListServerGatewayStatusResult> listServerGatewayStatusOutput(
+  ListServerGatewayStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:analysisservices:listServerGatewayStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServerGatewayStatusResult.fromMap);
 }

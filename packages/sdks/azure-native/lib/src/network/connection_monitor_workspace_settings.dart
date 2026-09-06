@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the settings for producing output into a log analytics workspace.
 class ConnectionMonitorWorkspaceSettings {
   /// Log analytics workspace resource ID.
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [ConnectionMonitorWorkspaceSettings].
   /// [workspaceResourceId] Log analytics workspace resource ID.

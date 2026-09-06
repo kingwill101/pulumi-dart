@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the endpoint. If the endpoint is Enabled, it is probed for endpoint health and is included in the traffic routing method.
-enum EndpointStatus {
+enum EndpointStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const EndpointStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointStatus fromValue(String value) {

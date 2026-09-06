@@ -6,7 +6,7 @@ import 'dashboard_lens_response.dart';
 /// Dashboard Properties with Provisioning state
 class DashboardPropertiesWithProvisioningStateResponse {
   /// The dashboard lenses.
-  final pulumi.Input<List<DashboardLensResponse>>? lenses;
+  final pulumi.Input<List<DashboardLensResponse>?>? lenses;
   /// The dashboard metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The status of the last operation.

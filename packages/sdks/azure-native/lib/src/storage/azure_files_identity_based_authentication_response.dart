@@ -6,9 +6,9 @@ import 'active_directory_properties_response.dart';
 /// Settings for Azure Files identity based authentication.
 class AzureFilesIdentityBasedAuthenticationResponse {
   /// Required if directoryServiceOptions are AD, optional if they are AADKERB.
-  final pulumi.Input<ActiveDirectoryPropertiesResponse>? activeDirectoryProperties;
+  final pulumi.Input<ActiveDirectoryPropertiesResponse?>? activeDirectoryProperties;
   /// Default share permission for users using Kerberos authentication if RBAC role is not assigned.
-  final pulumi.Input<String>? defaultSharePermission;
+  final pulumi.Input<String?>? defaultSharePermission;
   /// Indicates the directory service used. Note that this enum may be extended in the future.
   final pulumi.Input<String> directoryServiceOptions;
 

@@ -9,19 +9,19 @@ import 'license_details.dart';
 /// {@macro pulumi_hybridcompute_license_args_doc}
 class LicenseArgs {
   /// Describes the properties of a License.
-  final pulumi.Input<LicenseDetails>? licenseDetails;
+  final pulumi.Input<LicenseDetails?>? licenseDetails;
   /// The name of the license.
-  final pulumi.Input<String>? licenseName;
+  final pulumi.Input<String?>? licenseName;
   /// The type of the license resource.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Describes the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [LicenseArgs].
   /// [licenseDetails] Describes the properties of a License.
@@ -57,7 +57,7 @@ class LicenseArgs {
     return LicenseArgs(
       licenseDetails: (() { final guardedValue = map['licenseDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LicenseDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       licenseName: (() { final guardedValue = map['licenseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

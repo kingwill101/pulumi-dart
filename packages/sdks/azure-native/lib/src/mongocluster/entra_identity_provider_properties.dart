@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Microsoft Entra ID provider properties.
 class EntraIdentityProviderProperties {
   /// The principal type of the user.
-  final pulumi.Input<String> principalType;
+  final pulumi.Input<dynamic> principalType;
 
   /// Creates a new [EntraIdentityProviderProperties].
   /// [principalType] The principal type of the user.
@@ -21,7 +21,7 @@ class EntraIdentityProviderProperties {
 
   factory EntraIdentityProviderProperties.fromMap(Map<String, dynamic> map) {
     return EntraIdentityProviderProperties(
-      principalType: pulumi.Input.fromValue(map['principalType'] as String),
+      principalType: pulumi.Input.fromValue(map['principalType']),
     );
   }
 }

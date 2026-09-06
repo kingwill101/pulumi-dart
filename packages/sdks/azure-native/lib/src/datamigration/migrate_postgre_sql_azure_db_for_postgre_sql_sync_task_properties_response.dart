@@ -1,31 +1,29 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'migrate_misync_complete_command_properties_response.dart';
 import 'migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_input_response.dart';
-import 'migrate_postgre_sql_azure_db_for_postgre_sql_sync_task_output_database_error_response.dart';
 import 'odata_error_response.dart';
 
 /// Properties for the task that migrates PostgreSQL databases to Azure Database for PostgreSQL for online migrations
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Array of command properties.
-  final pulumi.Input<List<MigrateMISyncCompleteCommandPropertiesResponse>> commands;
+  final pulumi.Input<List<dynamic>> commands;
   /// DateTime in UTC when the task was created
-  final pulumi.Input<String>? createdOn;
+  final pulumi.Input<String?>? createdOn;
   /// Array of errors. This is ignored if submitted.
   final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Task input
-  final pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse>? input;
+  final pulumi.Input<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse?>? input;
   /// whether the task can be cloned or not
-  final pulumi.Input<bool>? isCloneable;
+  final pulumi.Input<bool?>? isCloneable;
   /// Task output. This is ignored if submitted.
-  final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse>> output;
+  final pulumi.Input<List<dynamic>> output;
   /// The state of the task. This is ignored if submitted.
   final pulumi.Input<String> state;
   /// task id
-  final pulumi.Input<String>? taskId;
+  final pulumi.Input<String?>? taskId;
   /// Task type.
   /// Expected value is 'Migrate.PostgreSql.AzureDbForPostgreSql.SyncV2'.
   final pulumi.Input<String> taskType;
@@ -57,12 +55,12 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'clientData': ?clientData,
-      'commands': pulumi.Input.mapInputValue<List<MigrateMISyncCompleteCommandPropertiesResponse>, List<Map<String, dynamic>>>(commands, (value) => pulumi.Input.encodeList<MigrateMISyncCompleteCommandPropertiesResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'commands': commands,
       'createdOn': ?createdOn,
       'errors': pulumi.Input.mapInputValue<List<ODataErrorResponse>, List<Map<String, dynamic>>>(errors, (value) => pulumi.Input.encodeList<ODataErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'input': ?pulumi.Input.mapOptionalInputValue<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse, Map<String, dynamic>>(input, (value) => value.toMap()),
       'isCloneable': ?isCloneable,
-      'output': pulumi.Input.mapInputValue<List<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse>, List<Map<String, dynamic>>>(output, (value) => pulumi.Input.encodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'output': output,
       'state': state,
       'taskId': ?taskId,
       'taskType': taskType,
@@ -72,12 +70,12 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskPropertiesResponse(
       clientData: (() { final guardedValue = map['clientData']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      commands: pulumi.Input.fromValue(pulumi.Input.decodeList<MigrateMISyncCompleteCommandPropertiesResponse>(map['commands']!, (value) => MigrateMISyncCompleteCommandPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      commands: pulumi.Input.fromValue((map['commands'] as List).cast<dynamic>()),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ODataErrorResponse>(map['errors']!, (value) => ODataErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       input: (() { final guardedValue = map['input']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MigratePostgreSqlAzureDbForPostgreSqlSyncTaskInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       isCloneable: (() { final guardedValue = map['isCloneable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      output: pulumi.Input.fromValue(pulumi.Input.decodeList<MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse>(map['output']!, (value) => MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputDatabaseErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      output: pulumi.Input.fromValue((map['output'] as List).cast<dynamic>()),
       state: pulumi.Input.fromValue(map['state'] as String),
       taskId: (() { final guardedValue = map['taskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taskType: pulumi.Input.fromValue(map['taskType'] as String),

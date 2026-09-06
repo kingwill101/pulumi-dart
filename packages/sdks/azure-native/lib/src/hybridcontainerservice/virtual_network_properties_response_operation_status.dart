@@ -6,11 +6,11 @@ import 'virtual_network_properties_response_error.dart';
 /// The detailed status of the long running operation.
 class VirtualNetworkPropertiesResponseOperationStatus {
   /// The error if any from the operation.
-  final pulumi.Input<VirtualNetworkPropertiesResponseError>? error;
+  final pulumi.Input<VirtualNetworkPropertiesResponseError?>? error;
   /// The identifier of the operation.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [VirtualNetworkPropertiesResponseOperationStatus].
   /// [error] The error if any from the operation.

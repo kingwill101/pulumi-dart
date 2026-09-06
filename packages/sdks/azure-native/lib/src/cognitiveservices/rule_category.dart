@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Category of a managed network Outbound Rule of a cognitive services account.
-enum RuleCategory {
+enum RuleCategory implements pulumi.PulumiEnum<String> {
   required("Required"),
   recommended("Recommended"),
   userDefined("UserDefined"),
   dependency("Dependency");
 
   const RuleCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static RuleCategory fromValue(String value) {

@@ -10,15 +10,15 @@ import 'broker_authenticator_method_x509.dart';
 /// Collection of different CrdAuthenticator methods of Broker Resource. NOTE Enum - Only one method is supported for each entry.
 class BrokerAuthenticatorMethods {
   /// Custom Authentication Method.
-  final pulumi.Input<BrokerAuthenticatorMethodCustom>? custom;
+  final pulumi.Input<BrokerAuthenticatorMethodCustom?>? custom;
   /// Service Account Token Method.
-  final pulumi.Input<BrokerAuthenticatorMethodSat>? sat;
+  final pulumi.Input<BrokerAuthenticatorMethodSat?>? sat;
   /// Service Account Token Method.
-  final pulumi.Input<BrokerAuthenticatorMethodSvid>? svid;
+  final pulumi.Input<BrokerAuthenticatorMethodSvid?>? svid;
   /// UsernamePassword Method.
-  final pulumi.Input<BrokerAuthenticatorMethodUsernamePassword>? usernamePassword;
+  final pulumi.Input<BrokerAuthenticatorMethodUsernamePassword?>? usernamePassword;
   /// X509 Method.
-  final pulumi.Input<BrokerAuthenticatorMethodX509>? x509;
+  final pulumi.Input<BrokerAuthenticatorMethodX509?>? x509;
 
   /// Creates a new [BrokerAuthenticatorMethods].
   /// [custom] Custom Authentication Method.

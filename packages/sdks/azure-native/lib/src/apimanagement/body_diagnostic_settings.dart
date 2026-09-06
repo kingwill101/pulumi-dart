@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Body logging settings.
 class BodyDiagnosticSettings {
   /// Number of request body bytes to log.
-  final pulumi.Input<int>? bytes;
+  final pulumi.Input<int?>? bytes;
 
   /// Creates a new [BodyDiagnosticSettings].
   /// [bytes] Number of request body bytes to log.
@@ -21,7 +21,7 @@ class BodyDiagnosticSettings {
 
   factory BodyDiagnosticSettings.fromMap(Map<String, dynamic> map) {
     return BodyDiagnosticSettings(
-      bytes: (() { final guardedValue = map['bytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bytes: (() { final guardedValue = map['bytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

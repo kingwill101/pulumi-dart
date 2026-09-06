@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// cipher suite set type that will be used for Https
-enum AfdCipherSuiteSetType {
+enum AfdCipherSuiteSetType implements pulumi.PulumiEnum<String> {
   customized("Customized"),
   tLS102019("TLS10_2019"),
   tLS122022("TLS12_2022"),
   tLS122023("TLS12_2023");
 
   const AfdCipherSuiteSetType(this.wireValue);
+  @override
   final String wireValue;
 
   static AfdCipherSuiteSetType fromValue(String value) {

@@ -5,23 +5,23 @@ import 'system_data_response.dart';
 /// Result data returned by getBandwidthSchedule.
 class GetBandwidthScheduleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The days of the week when this schedule is applicable.
-  final List<String> days;
+  final List<String>? days;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// The object name.
-  final String name;
+  final String? name;
   /// The bandwidth rate in Mbps.
-  final int rateInMbps;
+  final int? rateInMbps;
   /// The start time of the schedule in UTC.
-  final String start;
+  final String? start;
   /// The stop time of the schedule in UTC.
-  final String stop;
+  final String? stop;
   /// Metadata pertaining to creation and last modification of BandwidthSchedule
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBandwidthScheduleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -34,42 +34,42 @@ class GetBandwidthScheduleResult {
   /// [systemData] Metadata pertaining to creation and last modification of BandwidthSchedule
   /// [type] The hierarchical type of the object.
   const GetBandwidthScheduleResult({
-    required this.azureApiVersion,
-    required this.days,
-    required this.id,
-    required this.name,
-    required this.rateInMbps,
-    required this.start,
-    required this.stop,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.days,
+    this.id,
+    this.name,
+    this.rateInMbps,
+    this.start,
+    this.stop,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'days': days,
-      'id': id,
-      'name': name,
-      'rateInMbps': rateInMbps,
-      'start': start,
-      'stop': stop,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'days': ?days,
+      'id': ?id,
+      'name': ?name,
+      'rateInMbps': ?rateInMbps,
+      'start': ?start,
+      'stop': ?stop,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetBandwidthScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetBandwidthScheduleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      days: (map['days'] as List).cast<String>(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      rateInMbps: map['rateInMbps'] as int,
-      start: map['start'] as String,
-      stop: map['stop'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rateInMbps: (() { final guardedValue = map['rateInMbps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      start: (() { final guardedValue = map['start']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stop: (() { final guardedValue = map['stop']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

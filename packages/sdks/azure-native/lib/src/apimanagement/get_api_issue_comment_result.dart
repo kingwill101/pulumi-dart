@@ -4,19 +4,19 @@
 /// Result data returned by getApiIssueComment.
 class GetApiIssueCommentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Date and time when the comment was created.
   final String? createdDate;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Comment text.
-  final String text;
+  final String? text;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// A resource identifier for the user who left the comment.
-  final String userId;
+  final String? userId;
 
   /// Creates a new [GetApiIssueCommentResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,36 +27,36 @@ class GetApiIssueCommentResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userId] A resource identifier for the user who left the comment.
   const GetApiIssueCommentResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.createdDate,
-    required this.id,
-    required this.name,
-    required this.text,
-    required this.type,
-    required this.userId,
+    this.id,
+    this.name,
+    this.text,
+    this.type,
+    this.userId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'createdDate': ?createdDate,
-      'id': id,
-      'name': name,
-      'text': text,
-      'type': type,
-      'userId': userId,
+      'id': ?id,
+      'name': ?name,
+      'text': ?text,
+      'type': ?type,
+      'userId': ?userId,
     };
   }
 
   factory GetApiIssueCommentResult.fromMap(Map<String, dynamic> map) {
     return GetApiIssueCommentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      text: map['text'] as String,
-      type: map['type'] as String,
-      userId: map['userId'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      text: (() { final guardedValue = map['text']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userId: (() { final guardedValue = map['userId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

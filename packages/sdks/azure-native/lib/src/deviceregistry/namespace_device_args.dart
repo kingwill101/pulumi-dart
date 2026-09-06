@@ -12,33 +12,33 @@ class NamespaceDeviceArgs {
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final pulumi.Input<dynamic>? attributes;
   /// The name of the device.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// Reference to a device. Populated only if the device had been created from discovery flow. Discovered device name must be provided.
-  final pulumi.Input<String>? discoveredDeviceRef;
+  final pulumi.Input<String?>? discoveredDeviceRef;
   /// Indicates if the resource is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Property bag containing the device's unassigned and assigned endpoints.
-  final pulumi.Input<MessagingEndpoints>? endpoints;
+  final pulumi.Input<MessagingEndpoints?>? endpoints;
   /// The extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The Device ID provided by the customer.
-  final pulumi.Input<String>? externalDeviceId;
+  final pulumi.Input<String?>? externalDeviceId;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Device manufacturer.
-  final pulumi.Input<String>? manufacturer;
+  final pulumi.Input<String?>? manufacturer;
   /// Device model.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// Device operating system.
-  final pulumi.Input<String>? operatingSystem;
+  final pulumi.Input<String?>? operatingSystem;
   /// Device operating system version.
-  final pulumi.Input<String>? operatingSystemVersion;
+  final pulumi.Input<String?>? operatingSystemVersion;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NamespaceDeviceArgs].
   /// [attributes] A set of key-value pairs that contain custom attributes set by the customer.
@@ -56,11 +56,11 @@ class NamespaceDeviceArgs {
   /// [operatingSystemVersion] Device operating system version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  const NamespaceDeviceArgs({
+  NamespaceDeviceArgs({
     this.attributes,
     this.deviceName,
     this.discoveredDeviceRef,
-    this.enabled,
+    pulumi.Input<bool?>? enabled,
     this.endpoints,
     this.extendedLocation,
     this.externalDeviceId,
@@ -72,7 +72,7 @@ class NamespaceDeviceArgs {
     this.operatingSystemVersion,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

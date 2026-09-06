@@ -36,4 +36,18 @@ class AccessPolicy extends pulumi.CustomResource {
     resourceGroupName = registerOutput<String?>('resourceGroupName');
     vaultName = registerOutput<String?>('vaultName');
   }
+
+  /// Creates a typed reference to an existing [AccessPolicy] resource.
+  AccessPolicy.reference(String urn)
+    : super(
+        'azure-native:keyvault:AccessPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    policy = registerOutput<AccessPolicyEntry?>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPolicyEntry.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceGroupName = registerOutput<String?>('resourceGroupName');
+    vaultName = registerOutput<String?>('vaultName');
+  }
 }

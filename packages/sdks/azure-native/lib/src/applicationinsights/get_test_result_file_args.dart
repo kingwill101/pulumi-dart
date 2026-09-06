@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_get_test_result_file_args_doc}
 class GetTestResultFileArgs {
   /// The continuation token.
-  final pulumi.Input<String>? continuationToken;
+  final pulumi.Input<String?>? continuationToken;
   /// The format to use when returning the webtest result.
   final pulumi.Input<String> downloadAs;
   /// The location ID where the webtest was physically run.
@@ -16,7 +16,7 @@ class GetTestResultFileArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The success state criteria for the webtest result.
-  final pulumi.Input<bool>? testSuccessfulCriteria;
+  final pulumi.Input<bool?>? testSuccessfulCriteria;
   /// The posix (epoch) time stamp for the webtest result.
   final pulumi.Input<int> timeStamp;
   /// The name of the Application Insights webtest resource.
@@ -59,7 +59,7 @@ class GetTestResultFileArgs {
       geoLocationId: pulumi.Input.fromValue(map['geoLocationId'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       testSuccessfulCriteria: (() { final guardedValue = map['testSuccessfulCriteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeStamp: pulumi.Input.fromValue(map['timeStamp'] as int),
+      timeStamp: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeStamp'])),
       webTestName: pulumi.Input.fromValue(map['webTestName'] as String),
     );
   }

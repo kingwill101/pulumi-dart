@@ -30,6 +30,17 @@ Future<GetCapabilityResult> getCapability(
   return GetCapabilityResult.fromMap(result);
 }
 
+pulumi.Output<GetCapabilityResult> getCapabilityOutput(
+  GetCapabilityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:chaos:getCapability',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapabilityResult.fromMap);
+}
+
 /// Get a Experiment resource.
 ///
 /// Uses Azure REST API version 2024-03-22-preview.
@@ -48,6 +59,17 @@ Future<GetExperimentResult> getExperiment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExperimentResult.fromMap(result);
+}
+
+pulumi.Output<GetExperimentResult> getExperimentOutput(
+  GetExperimentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:chaos:getExperiment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExperimentResult.fromMap);
 }
 
 /// Execution details of an experiment resource.
@@ -70,6 +92,17 @@ Future<GetExperimentExecutionDetailsResult> getExperimentExecutionDetails(
   return GetExperimentExecutionDetailsResult.fromMap(result);
 }
 
+pulumi.Output<GetExperimentExecutionDetailsResult> getExperimentExecutionDetailsOutput(
+  GetExperimentExecutionDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:chaos:getExperimentExecutionDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExperimentExecutionDetailsResult.fromMap);
+}
+
 /// Get a private access resource
 ///
 /// Uses Azure REST API version 2024-03-22-preview.
@@ -90,6 +123,17 @@ Future<GetPrivateAccessResult> getPrivateAccess(
   return GetPrivateAccessResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateAccessResult> getPrivateAccessOutput(
+  GetPrivateAccessArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:chaos:getPrivateAccess',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateAccessResult.fromMap);
+}
+
 /// Get a Target resource that extends a tracked regional resource.
 ///
 /// Uses Azure REST API version 2024-03-22-preview.
@@ -108,4 +152,15 @@ Future<GetTargetResult> getTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetResult> getTargetOutput(
+  GetTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:chaos:getTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetResult.fromMap);
 }

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The environment or the network to which cluster belongs
 class SCClusterNetworkEnvironmentEntity {
   /// Environment of the referred resource
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// ID of the referred resource
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// API URL for accessing or modifying the referred object
-  final pulumi.Input<String>? related;
+  final pulumi.Input<String?>? related;
   /// CRN reference to the referred resource
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
 
   /// Creates a new [SCClusterNetworkEnvironmentEntity].
   /// [environment] Environment of the referred resource

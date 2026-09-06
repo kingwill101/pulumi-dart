@@ -10,7 +10,7 @@ class BlobInventoryPolicySchema {
   /// The storage account blob inventory policy rules. The rule is applied when it is enabled.
   final pulumi.Input<List<BlobInventoryPolicyRule>> rules;
   /// The valid value is Inventory
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [BlobInventoryPolicySchema].
   /// [enabled] Policy is enabled if set to true.
@@ -34,7 +34,7 @@ class BlobInventoryPolicySchema {
     return BlobInventoryPolicySchema(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<BlobInventoryPolicyRule>(map['rules']!, (value) => BlobInventoryPolicyRule.fromMap((value as Map).cast<String, dynamic>()))),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

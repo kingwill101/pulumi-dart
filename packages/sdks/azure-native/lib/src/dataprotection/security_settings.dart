@@ -8,11 +8,11 @@ import 'soft_delete_settings.dart';
 /// Class containing security settings of vault
 class SecuritySettings {
   /// Customer Managed Key details of the resource.
-  final pulumi.Input<EncryptionSettings>? encryptionSettings;
+  final pulumi.Input<EncryptionSettings?>? encryptionSettings;
   /// Immutability Settings at vault level
-  final pulumi.Input<ImmutabilitySettings>? immutabilitySettings;
+  final pulumi.Input<ImmutabilitySettings?>? immutabilitySettings;
   /// Soft delete related settings
-  final pulumi.Input<SoftDeleteSettings>? softDeleteSettings;
+  final pulumi.Input<SoftDeleteSettings?>? softDeleteSettings;
 
   /// Creates a new [SecuritySettings].
   /// [encryptionSettings] Customer Managed Key details of the resource.

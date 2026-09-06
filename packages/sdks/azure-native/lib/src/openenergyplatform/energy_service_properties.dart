@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_partition_names.dart';
 
 class EnergyServiceProperties {
-  final pulumi.Input<String>? authAppId;
-  final pulumi.Input<List<DataPartitionNames>>? dataPartitionNames;
+  final pulumi.Input<String?>? authAppId;
+  final pulumi.Input<List<DataPartitionNames>?>? dataPartitionNames;
 
   /// Creates a new [EnergyServiceProperties].
   /// [authAppId] Optional.

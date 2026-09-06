@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties on upload watermark.  Mostly timestamp for each upload data type
 class UploadWatermarkResponse {
   /// Last uploaded date for logs from kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? logs;
+  final pulumi.Input<String?>? logs;
   /// Last uploaded date for metrics from kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? metrics;
+  final pulumi.Input<String?>? metrics;
   /// Last uploaded date for usages from kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? usages;
+  final pulumi.Input<String?>? usages;
 
   /// Creates a new [UploadWatermarkResponse].
   /// [logs] Last uploaded date for logs from kubernetes cluster. Defaults to current date time

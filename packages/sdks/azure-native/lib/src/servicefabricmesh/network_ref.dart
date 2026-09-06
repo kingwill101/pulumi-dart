@@ -6,9 +6,9 @@ import 'endpoint_ref.dart';
 /// Describes a network reference in a service.
 class NetworkRef {
   /// A list of endpoints that are exposed on this network.
-  final pulumi.Input<List<EndpointRef>>? endpointRefs;
+  final pulumi.Input<List<EndpointRef>?>? endpointRefs;
   /// Name of the network
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NetworkRef].
   /// [endpointRefs] A list of endpoints that are exposed on this network.

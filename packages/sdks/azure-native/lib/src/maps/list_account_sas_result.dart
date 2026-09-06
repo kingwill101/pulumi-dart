@@ -4,23 +4,23 @@
 /// Result data returned by listAccountSas.
 class ListAccountSasResult {
   /// The shared access signature access token.
-  final String accountSasToken;
+  final String? accountSasToken;
 
   /// Creates a new [ListAccountSasResult].
   /// [accountSasToken] The shared access signature access token.
   const ListAccountSasResult({
-    required this.accountSasToken,
+    this.accountSasToken,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accountSasToken': accountSasToken,
+      'accountSasToken': ?accountSasToken,
     };
   }
 
   factory ListAccountSasResult.fromMap(Map<String, dynamic> map) {
     return ListAccountSasResult(
-      accountSasToken: map['accountSasToken'] as String,
+      accountSasToken: (() { final guardedValue = map['accountSasToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

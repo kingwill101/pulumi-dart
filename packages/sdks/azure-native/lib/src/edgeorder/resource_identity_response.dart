@@ -10,21 +10,21 @@ class ResourceIdentityResponse {
   /// Home Tenant Id
   final pulumi.Input<String> tenantId;
   /// Identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// User Assigned Identities
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] Service Principal Id backing the Msi
   /// [tenantId] Home Tenant Id
   /// [type] Identity type
   /// [userAssignedIdentities] User Assigned Identities
-  const ResourceIdentityResponse({
+  ResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
-    this.type,
+    pulumi.Input<String?>? type,
     this.userAssignedIdentities,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

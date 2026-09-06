@@ -206,4 +206,24 @@ class RouteNetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String?>('type');
   }
+
+  /// Creates a typed reference to an existing [RouteNetwork] resource.
+  RouteNetwork.reference(String urn)
+    : super(
+        'azure-native:network:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addressPrefix = registerOutput<String?>('addressPrefix');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    hasBgpOverride = registerOutput<bool>('hasBgpOverride');
+    this.name = registerOutput<String?>('name');
+    nextHopIpAddress = registerOutput<String?>('nextHopIpAddress');
+    nextHopType = registerOutput<String>('nextHopType');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String?>('type');
+  }
 }

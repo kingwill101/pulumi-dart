@@ -10,9 +10,9 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomProperties {
   /// Expected value is 'VMwareToAzStackHCI'.
   final pulumi.Input<String> instanceType;
   /// Gets or sets the storage account Id.
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Gets or sets the Sas Secret of storage account.
-  final pulumi.Input<String>? storageAccountSasSecretName;
+  final pulumi.Input<String?>? storageAccountSasSecretName;
   /// Gets or sets the ARM Id of the source VMware fabric.
   final pulumi.Input<String> vmwareFabricArmId;
 

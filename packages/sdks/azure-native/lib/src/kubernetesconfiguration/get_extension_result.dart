@@ -16,33 +16,33 @@ class GetExtensionResult {
   /// Flag to note if this extension participates in auto upgrade of minor version, or not.
   final bool? autoUpgradeMinorVersion;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Configuration settings that are sensitive, as name-value pairs for configuring this extension.
   final Map<String, String>? configurationProtectedSettings;
   /// Configuration settings, as name-value pairs for configuring this extension.
   final Map<String, String>? configurationSettings;
   /// Currently installed version of the extension.
-  final String currentVersion;
+  final String? currentVersion;
   /// Custom Location settings properties.
-  final Map<String, String> customLocationSettings;
+  final Map<String, String>? customLocationSettings;
   /// Error information from the Agent - e.g. errors during installation.
-  final ErrorDetailResponse errorInfo;
+  final ErrorDetailResponse? errorInfo;
   /// Type of the Extension, of which this resource is an instance of.  It must be one of the Extension Types registered with Microsoft.KubernetesConfiguration by the Extension publisher.
   final String? extensionType;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Identity of the Extension resource
   final IdentityResponse? identity;
   /// Flag to note if this extension is a system extension
-  final bool isSystemExtension;
+  final bool? isSystemExtension;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Uri of the Helm package
-  final String packageUri;
+  final String? packageUri;
   /// The plan information.
   final PlanResponse? plan;
   /// Status of installation of this extension.
-  final String provisioningState;
+  final String? provisioningState;
   /// ReleaseTrain this extension participates in for auto-upgrade (e.g. Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
   final String? releaseTrain;
   /// Scope at which the extension is installed.
@@ -50,9 +50,9 @@ class GetExtensionResult {
   /// Status from this extension.
   final List<ExtensionStatusResponse>? statuses;
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
   final String? version;
 
@@ -79,54 +79,54 @@ class GetExtensionResult {
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
-  const GetExtensionResult({
+  GetExtensionResult({
     this.aksAssignedIdentity,
-    this.autoUpgradeMinorVersion,
-    required this.azureApiVersion,
+    bool? autoUpgradeMinorVersion,
+    this.azureApiVersion,
     this.configurationProtectedSettings,
     this.configurationSettings,
-    required this.currentVersion,
-    required this.customLocationSettings,
-    required this.errorInfo,
+    this.currentVersion,
+    this.customLocationSettings,
+    this.errorInfo,
     this.extensionType,
-    required this.id,
+    this.id,
     this.identity,
-    required this.isSystemExtension,
-    required this.name,
-    required this.packageUri,
+    bool? isSystemExtension,
+    this.name,
+    this.packageUri,
     this.plan,
-    required this.provisioningState,
-    this.releaseTrain,
+    this.provisioningState,
+    String? releaseTrain,
     this.scope,
     this.statuses,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.version,
-  });
+  }) : autoUpgradeMinorVersion = autoUpgradeMinorVersion ?? true, isSystemExtension = isSystemExtension ?? false, releaseTrain = releaseTrain ?? 'Stable';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'aksAssignedIdentity': ?aksAssignedIdentity?.toMap(),
       'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'configurationProtectedSettings': ?configurationProtectedSettings,
       'configurationSettings': ?configurationSettings,
-      'currentVersion': currentVersion,
-      'customLocationSettings': customLocationSettings,
-      'errorInfo': errorInfo.toMap(),
+      'currentVersion': ?currentVersion,
+      'customLocationSettings': ?customLocationSettings,
+      'errorInfo': ?errorInfo?.toMap(),
       'extensionType': ?extensionType,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'isSystemExtension': isSystemExtension,
-      'name': name,
-      'packageUri': packageUri,
+      'isSystemExtension': ?isSystemExtension,
+      'name': ?name,
+      'packageUri': ?packageUri,
       'plan': ?plan?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'releaseTrain': ?releaseTrain,
       'scope': ?scope?.toMap(),
       'statuses': ?(() { final guardedValue = statuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExtensionStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'version': ?version,
     };
   }
@@ -135,25 +135,25 @@ class GetExtensionResult {
     return GetExtensionResult(
       aksAssignedIdentity: (() { final guardedValue = map['aksAssignedIdentity']; if (guardedValue == null) return null; return ExtensionResponseAksAssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       autoUpgradeMinorVersion: (() { final guardedValue = map['autoUpgradeMinorVersion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configurationProtectedSettings: (() { final guardedValue = map['configurationProtectedSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       configurationSettings: (() { final guardedValue = map['configurationSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      currentVersion: map['currentVersion'] as String,
-      customLocationSettings: (map['customLocationSettings'] as Map).cast<String, String>(),
-      errorInfo: ErrorDetailResponse.fromMap((map['errorInfo']! as Map).cast<String, dynamic>()),
+      currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customLocationSettings: (() { final guardedValue = map['customLocationSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      errorInfo: (() { final guardedValue = map['errorInfo']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       extensionType: (() { final guardedValue = map['extensionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      isSystemExtension: map['isSystemExtension'] as bool,
-      name: map['name'] as String,
-      packageUri: map['packageUri'] as String,
+      isSystemExtension: (() { final guardedValue = map['isSystemExtension']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      packageUri: (() { final guardedValue = map['packageUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       releaseTrain: (() { final guardedValue = map['releaseTrain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionStatusResponse>(guardedValue, (value) => ExtensionStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

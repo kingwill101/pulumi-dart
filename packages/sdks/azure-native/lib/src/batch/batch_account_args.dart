@@ -16,29 +16,29 @@ import 'public_network_access_type.dart';
 /// {@macro pulumi_batch_batch_account_args_doc}
 class BatchAccountArgs {
   /// A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// List of allowed authentication modes for the Batch account that can be used to authenticate with the data plane. This does not affect authentication with the control plane.
-  final pulumi.Input<List<AuthenticationMode>>? allowedAuthenticationModes;
+  final pulumi.Input<List<AuthenticationMode>?>? allowedAuthenticationModes;
   /// The properties related to the auto-storage account.
-  final pulumi.Input<AutoStorageBaseProperties>? autoStorage;
+  final pulumi.Input<AutoStorageBaseProperties?>? autoStorage;
   /// Configures how customer data is encrypted inside the Batch account. By default, accounts are encrypted using a Microsoft managed key. For additional control, a customer-managed key can be used instead.
-  final pulumi.Input<EncryptionProperties>? encryption;
+  final pulumi.Input<EncryptionProperties?>? encryption;
   /// The identity of the Batch account.
-  final pulumi.Input<BatchAccountIdentity>? identity;
+  final pulumi.Input<BatchAccountIdentity?>? identity;
   /// A reference to the Azure key vault associated with the Batch account.
-  final pulumi.Input<KeyVaultReference>? keyVaultReference;
+  final pulumi.Input<KeyVaultReference?>? keyVaultReference;
   /// The region in which to create the account.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The network profile only takes effect when publicNetworkAccess is enabled.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// The pool allocation mode also affects how clients may authenticate to the Batch Service API. If the mode is BatchService, clients may authenticate using access keys or Microsoft Entra ID. If the mode is UserSubscription, clients must use Microsoft Entra ID. The default is BatchService.
-  final pulumi.Input<PoolAllocationMode>? poolAllocationMode;
+  final pulumi.Input<PoolAllocationMode?>? poolAllocationMode;
   /// The network access type for operating on the resources in the Batch account.
-  final pulumi.Input<PublicNetworkAccessType>? publicNetworkAccess;
+  final pulumi.Input<PublicNetworkAccessType?>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The user-specified tags associated with the account.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BatchAccountArgs].
   /// [accountName] A name for the Batch account which must be unique within the region. Batch account names must be between 3 and 24 characters in length and must use only numbers and lowercase letters. This name is used as part of the DNS name that is used to access the Batch service in the region in which the account is created. For example: http://accountname.region.batch.azure.com/.
@@ -53,7 +53,7 @@ class BatchAccountArgs {
   /// [publicNetworkAccess] The network access type for operating on the resources in the Batch account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The user-specified tags associated with the account.
-  const BatchAccountArgs({
+  BatchAccountArgs({
     this.accountName,
     this.allowedAuthenticationModes,
     this.autoStorage,
@@ -63,10 +63,10 @@ class BatchAccountArgs {
     this.location,
     this.networkProfile,
     this.poolAllocationMode,
-    this.publicNetworkAccess,
+    pulumi.Input<PublicNetworkAccessType?>? publicNetworkAccess,
     required this.resourceGroupName,
     this.tags,
-  });
+  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue(PublicNetworkAccessType.fromValue('Enabled'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

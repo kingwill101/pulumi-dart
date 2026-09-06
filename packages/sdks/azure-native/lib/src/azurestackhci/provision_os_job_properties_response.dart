@@ -8,7 +8,7 @@ import 'provisioning_request_response.dart';
 /// Represents the properties of an Azure Linux restricted operating environment Provision Os job.
 class ProvisionOsJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// error details.
@@ -23,7 +23,7 @@ class ProvisionOsJobPropertiesResponse {
   /// Job provisioning state
   final pulumi.Input<String> provisioningState;
   /// Reported Properties for Provision Os job
-  final pulumi.Input<ProvisionOsReportedPropertiesResponse>? reportedProperties;
+  final pulumi.Input<ProvisionOsReportedPropertiesResponse?>? reportedProperties;
   /// The UTC date and time at which the job started.
   final pulumi.Input<String> startTimeUtc;
   /// Status of Edge device job.

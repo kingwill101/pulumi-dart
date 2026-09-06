@@ -242,4 +242,24 @@ class Archife extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Archife] resource.
+  Archife.reference(String urn)
+    : super(
+        'azure-native:containerregistry:Archife',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    packageSource = registerOutput<ArchivePackageSourcePropertiesResponse?>('packageSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArchivePackageSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publishedVersion = registerOutput<String?>('publishedVersion');
+    repositoryEndpoint = registerOutput<String>('repositoryEndpoint');
+    repositoryEndpointPrefix = registerOutput<String?>('repositoryEndpointPrefix');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

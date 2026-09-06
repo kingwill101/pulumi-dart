@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the formal API definition for the app.
 class ApiDefinitionInfo {
   /// The URL of the API definition.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ApiDefinitionInfo].
   /// [url] The URL of the API definition.

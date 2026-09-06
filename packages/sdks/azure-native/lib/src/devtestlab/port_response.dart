@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a network port.
 class PortResponse {
   /// Backend port of the target virtual machine.
-  final pulumi.Input<int>? backendPort;
+  final pulumi.Input<int?>? backendPort;
   /// Protocol type of the port.
-  final pulumi.Input<String>? transportProtocol;
+  final pulumi.Input<String?>? transportProtocol;
 
   /// Creates a new [PortResponse].
   /// [backendPort] Backend port of the target virtual machine.
@@ -26,7 +26,7 @@ class PortResponse {
 
   factory PortResponse.fromMap(Map<String, dynamic> map) {
     return PortResponse(
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       transportProtocol: (() { final guardedValue = map['transportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

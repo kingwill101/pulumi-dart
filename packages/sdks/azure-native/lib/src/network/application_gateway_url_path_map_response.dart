@@ -7,23 +7,23 @@ import 'sub_resource_response.dart';
 /// UrlPathMaps give a url path to the backend mapping information for PathBasedRouting.
 class ApplicationGatewayUrlPathMapResponse {
   /// Default backend address pool resource of URL path map.
-  final pulumi.Input<SubResourceResponse>? defaultBackendAddressPool;
+  final pulumi.Input<SubResourceResponse?>? defaultBackendAddressPool;
   /// Default backend http settings resource of URL path map.
-  final pulumi.Input<SubResourceResponse>? defaultBackendHttpSettings;
+  final pulumi.Input<SubResourceResponse?>? defaultBackendHttpSettings;
   /// Default Load Distribution Policy resource of URL path map.
-  final pulumi.Input<SubResourceResponse>? defaultLoadDistributionPolicy;
+  final pulumi.Input<SubResourceResponse?>? defaultLoadDistributionPolicy;
   /// Default redirect configuration resource of URL path map.
-  final pulumi.Input<SubResourceResponse>? defaultRedirectConfiguration;
+  final pulumi.Input<SubResourceResponse?>? defaultRedirectConfiguration;
   /// Default Rewrite rule set resource of URL path map.
-  final pulumi.Input<SubResourceResponse>? defaultRewriteRuleSet;
+  final pulumi.Input<SubResourceResponse?>? defaultRewriteRuleSet;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the URL path map that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rule of URL path map resource.
-  final pulumi.Input<List<ApplicationGatewayPathRuleResponse>>? pathRules;
+  final pulumi.Input<List<ApplicationGatewayPathRuleResponse>?>? pathRules;
   /// The provisioning state of the URL path map resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

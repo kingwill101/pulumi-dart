@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationProviderAuthorizationResponse {
   /// The managed by role definition ID for the application.
-  final pulumi.Input<String>? managedByRoleDefinitionId;
+  final pulumi.Input<String?>? managedByRoleDefinitionId;
   /// The role definition ID for the application.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
 
   /// Creates a new [ApplicationProviderAuthorizationResponse].
   /// [managedByRoleDefinitionId] The managed by role definition ID for the application.

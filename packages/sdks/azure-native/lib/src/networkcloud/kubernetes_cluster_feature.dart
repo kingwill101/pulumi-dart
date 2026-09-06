@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'kubernetes_cluster_feature_args.dart';
+import 'string_key_value_pair_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2024-06-01-preview.
@@ -232,7 +233,7 @@ class KubernetesClusterFeature extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The configured options for the feature.
-  late final pulumi.Output<List<Map<String, dynamic>>?> options;
+  late final pulumi.Output<List<StringKeyValuePairResponse>?> options;
   /// The provisioning state of the Kubernetes cluster feature.
   late final pulumi.Output<String> provisioningState;
   /// The indicator of if the feature is required or optional. Optional features may be deleted by the user, while required features are managed with the kubernetes cluster lifecycle.
@@ -267,11 +268,36 @@ class KubernetesClusterFeature extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    this.options = registerOutput<List<Map<String, dynamic>>?>('options');
+    this.options = registerOutput<List<StringKeyValuePairResponse>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StringKeyValuePairResponse>(guardedValue, (value) => StringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     required = registerOutput<String>('required');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [KubernetesClusterFeature] resource.
+  KubernetesClusterFeature.reference(String urn)
+    : super(
+        'azure-native:networkcloud:KubernetesClusterFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    availabilityLifecycle = registerOutput<String>('availabilityLifecycle');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<List<StringKeyValuePairResponse>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StringKeyValuePairResponse>(guardedValue, (value) => StringKeyValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    required = registerOutput<String>('required');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');
   }

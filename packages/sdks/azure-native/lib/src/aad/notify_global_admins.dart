@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Should global admins be notified
-enum NotifyGlobalAdmins {
+enum NotifyGlobalAdmins implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const NotifyGlobalAdmins(this.wireValue);
+  @override
   final String wireValue;
 
   static NotifyGlobalAdmins fromValue(String value) {

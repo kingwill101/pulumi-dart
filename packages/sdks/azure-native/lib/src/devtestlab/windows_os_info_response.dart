@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about a Windows OS.
 class WindowsOsInfoResponse {
   /// The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-  final pulumi.Input<String>? windowsOsState;
+  final pulumi.Input<String?>? windowsOsState;
 
   /// Creates a new [WindowsOsInfoResponse].
   /// [windowsOsState] The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).

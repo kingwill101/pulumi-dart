@@ -8,43 +8,43 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_applicationinsights_component_args_doc}
 class ComponentArgs {
   /// Type of application being monitored.
-  final pulumi.Input<String> applicationType;
+  final pulumi.Input<dynamic> applicationType;
   /// Disable IP masking.
-  final pulumi.Input<bool>? disableIpMasking;
+  final pulumi.Input<bool?>? disableIpMasking;
   /// Disable Non-AAD based Auth.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Used by the Application Insights system to determine what kind of flow this component was created by. This is to be set to 'Bluefield' when creating/updating a component via the REST API.
-  final pulumi.Input<String>? flowType;
+  final pulumi.Input<dynamic>? flowType;
   /// Force users to create their own storage account for profiler and debugger.
-  final pulumi.Input<bool>? forceCustomerStorageForProfiler;
+  final pulumi.Input<bool?>? forceCustomerStorageForProfiler;
   /// The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
-  final pulumi.Input<String>? hockeyAppId;
+  final pulumi.Input<String?>? hockeyAppId;
   /// Purge data immediately after 30 days.
-  final pulumi.Input<bool>? immediatePurgeDataOn30Days;
+  final pulumi.Input<bool?>? immediatePurgeDataOn30Days;
   /// Indicates the flow of the ingestion.
-  final pulumi.Input<String>? ingestionMode;
+  final pulumi.Input<dynamic>? ingestionMode;
   /// The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.
   final pulumi.Input<String> kind;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The network access type for accessing Application Insights ingestion.
-  final pulumi.Input<String>? publicNetworkAccessForIngestion;
+  final pulumi.Input<dynamic>? publicNetworkAccessForIngestion;
   /// The network access type for accessing Application Insights query.
-  final pulumi.Input<String>? publicNetworkAccessForQuery;
+  final pulumi.Input<dynamic>? publicNetworkAccessForQuery;
   /// Describes what tool created this Application Insights component. Customers using this API should set this to the default 'rest'.
-  final pulumi.Input<String>? requestSource;
+  final pulumi.Input<dynamic>? requestSource;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Retention period in days.
-  final pulumi.Input<int>? retentionInDays;
+  final pulumi.Input<int?>? retentionInDays;
   /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
-  final pulumi.Input<double>? samplingPercentage;
+  final pulumi.Input<double?>? samplingPercentage;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
-  final pulumi.Input<String>? workspaceResourceId;
+  final pulumi.Input<String?>? workspaceResourceId;
 
   /// Creates a new [ComponentArgs].
   /// [applicationType] Type of application being monitored.
@@ -66,27 +66,27 @@ class ComponentArgs {
   /// [samplingPercentage] Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
   /// [tags] Resource tags
   /// [workspaceResourceId] Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
-  const ComponentArgs({
-    required this.applicationType,
+  ComponentArgs({
+    pulumi.Input<dynamic>? applicationType,
     this.disableIpMasking,
     this.disableLocalAuth,
-    this.flowType,
+    pulumi.Input<dynamic>? flowType,
     this.forceCustomerStorageForProfiler,
     this.hockeyAppId,
     this.immediatePurgeDataOn30Days,
-    this.ingestionMode,
+    pulumi.Input<dynamic>? ingestionMode,
     required this.kind,
     this.location,
-    this.publicNetworkAccessForIngestion,
-    this.publicNetworkAccessForQuery,
-    this.requestSource,
+    pulumi.Input<dynamic>? publicNetworkAccessForIngestion,
+    pulumi.Input<dynamic>? publicNetworkAccessForQuery,
+    pulumi.Input<dynamic>? requestSource,
     required this.resourceGroupName,
     this.resourceName,
     this.retentionInDays,
     this.samplingPercentage,
     this.tags,
     this.workspaceResourceId,
-  });
+  }) : applicationType = applicationType ?? pulumi.Input.fromValue('web'), flowType = flowType ?? pulumi.Input.fromValue('Bluefield'), ingestionMode = ingestionMode ?? pulumi.Input.fromValue('LogAnalytics'), publicNetworkAccessForIngestion = publicNetworkAccessForIngestion ?? pulumi.Input.fromValue('Enabled'), publicNetworkAccessForQuery = publicNetworkAccessForQuery ?? pulumi.Input.fromValue('Enabled'), requestSource = requestSource ?? pulumi.Input.fromValue('rest');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -114,23 +114,23 @@ class ComponentArgs {
 
   factory ComponentArgs.fromMap(Map<String, dynamic> map) {
     return ComponentArgs(
-      applicationType: pulumi.Input.fromValue(map['applicationType'] as String),
+      applicationType: pulumi.Input.fromValue(map['applicationType']),
       disableIpMasking: (() { final guardedValue = map['disableIpMasking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      flowType: (() { final guardedValue = map['flowType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      flowType: (() { final guardedValue = map['flowType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       forceCustomerStorageForProfiler: (() { final guardedValue = map['forceCustomerStorageForProfiler']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hockeyAppId: (() { final guardedValue = map['hockeyAppId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       immediatePurgeDataOn30Days: (() { final guardedValue = map['immediatePurgeDataOn30Days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ingestionMode: (() { final guardedValue = map['ingestionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ingestionMode: (() { final guardedValue = map['ingestionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccessForIngestion: (() { final guardedValue = map['publicNetworkAccessForIngestion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccessForQuery: (() { final guardedValue = map['publicNetworkAccessForQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      requestSource: (() { final guardedValue = map['requestSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccessForIngestion: (() { final guardedValue = map['publicNetworkAccessForIngestion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      publicNetworkAccessForQuery: (() { final guardedValue = map['publicNetworkAccessForQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      requestSource: (() { final guardedValue = map['requestSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      samplingPercentage: (() { final guardedValue = map['samplingPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workspaceResourceId: (() { final guardedValue = map['workspaceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

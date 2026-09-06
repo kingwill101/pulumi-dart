@@ -91,9 +91,39 @@ class AmlFilesystem extends pulumi.CustomResource {
     sku = registerOutput<SkuNameResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuNameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageCapacityTiB = registerOutput<double>('storageCapacityTiB');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     throughputProvisionedMBps = registerOutput<int>('throughputProvisionedMBps');
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AmlFilesystem] resource.
+  AmlFilesystem.reference(String urn)
+    : super(
+        'azure-native:storagecache:AmlFilesystem',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientInfo = registerOutput<AmlFilesystemClientInfoResponse>('clientInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettings = registerOutput<AmlFilesystemEncryptionSettingsResponse?>('encryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filesystemSubnet = registerOutput<String>('filesystemSubnet');
+    health = registerOutput<AmlFilesystemHealthResponse>('health', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hsm = registerOutput<AmlFilesystemResponseHsm?>('hsm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemResponseHsm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<AmlFilesystemIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<AmlFilesystemResponseMaintenanceWindow>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemResponseMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    rootSquashSettings = registerOutput<AmlFilesystemRootSquashSettingsResponse?>('rootSquashSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AmlFilesystemRootSquashSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuNameResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuNameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageCapacityTiB = registerOutput<double>('storageCapacityTiB');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    throughputProvisionedMBps = registerOutput<int>('throughputProvisionedMBps');
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

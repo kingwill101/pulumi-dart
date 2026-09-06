@@ -189,4 +189,23 @@ class ExpressRouteCircuitAuthorizationNetwork extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ExpressRouteCircuitAuthorizationNetwork] resource.
+  ExpressRouteCircuitAuthorizationNetwork.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRouteCircuitAuthorization',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationKey = registerOutput<String?>('authorizationKey');
+    authorizationUseStatus = registerOutput<String?>('authorizationUseStatus');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionResourceUri = registerOutput<String>('connectionResourceUri');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

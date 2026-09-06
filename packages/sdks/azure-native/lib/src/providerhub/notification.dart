@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class Notification {
   /// The notification type.
-  final pulumi.Input<String>? notificationType;
+  final pulumi.Input<dynamic>? notificationType;
   /// Whether notifications should be skipped.
-  final pulumi.Input<String>? skipNotifications;
+  final pulumi.Input<dynamic>? skipNotifications;
 
   /// Creates a new [Notification].
   /// [notificationType] The notification type.
@@ -25,8 +25,8 @@ class Notification {
 
   factory Notification.fromMap(Map<String, dynamic> map) {
     return Notification(
-      notificationType: (() { final guardedValue = map['notificationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      skipNotifications: (() { final guardedValue = map['skipNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationType: (() { final guardedValue = map['notificationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      skipNotifications: (() { final guardedValue = map['skipNotifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

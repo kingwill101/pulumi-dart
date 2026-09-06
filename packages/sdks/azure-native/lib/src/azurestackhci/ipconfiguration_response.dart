@@ -6,9 +6,9 @@ import 'ipconfiguration_properties_response.dart';
 /// InterfaceIPConfiguration IPConfiguration in a network interface.
 class IPConfigurationResponse {
   /// Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
-  final pulumi.Input<IPConfigurationPropertiesResponse>? properties;
+  final pulumi.Input<IPConfigurationPropertiesResponse?>? properties;
 
   /// Creates a new [IPConfigurationResponse].
   /// [name] Name - The name of the resource that is unique within a resource group. This name can be used to access the resource.

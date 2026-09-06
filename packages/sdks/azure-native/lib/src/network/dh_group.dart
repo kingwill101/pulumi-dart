@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The DH Group used in IKE Phase 1 for initial SA.
-enum DhGroup {
+enum DhGroup implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueDHGroup1("DHGroup1"),
   valueDHGroup2("DHGroup2"),
@@ -10,6 +12,7 @@ enum DhGroup {
   valueDHGroup24("DHGroup24");
 
   const DhGroup(this.wireValue);
+  @override
   final String wireValue;
 
   static DhGroup fromValue(String value) {

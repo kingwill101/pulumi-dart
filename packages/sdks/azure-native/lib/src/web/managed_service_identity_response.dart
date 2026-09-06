@@ -10,9 +10,9 @@ class ManagedServiceIdentityResponse {
   /// Tenant of managed service identity.
   final pulumi.Input<String> tenantId;
   /// Type of managed service identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedServiceIdentityResponse].
   /// [principalId] Principal Id of managed service identity.

@@ -6,9 +6,9 @@ import 'istio_service_mesh.dart';
 /// Service mesh profile for a managed cluster.
 class ServiceMeshProfile {
   /// Istio service mesh configuration.
-  final pulumi.Input<IstioServiceMesh>? istio;
+  final pulumi.Input<IstioServiceMesh?>? istio;
   /// Mode of the service mesh.
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
 
   /// Creates a new [ServiceMeshProfile].
   /// [istio] Istio service mesh configuration.
@@ -28,7 +28,7 @@ class ServiceMeshProfile {
   factory ServiceMeshProfile.fromMap(Map<String, dynamic> map) {
     return ServiceMeshProfile(
       istio: (() { final guardedValue = map['istio']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IstioServiceMesh.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      mode: pulumi.Input.fromValue(map['mode']),
     );
   }
 }

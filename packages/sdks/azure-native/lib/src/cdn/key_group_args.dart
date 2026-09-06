@@ -9,9 +9,9 @@ import 'resource_reference.dart';
 /// {@macro pulumi_cdn_key_group_args_doc}
 class KeyGroupArgs {
   /// Name of the KeyGroup under the profile.
-  final pulumi.Input<String>? keyGroupName;
+  final pulumi.Input<String?>? keyGroupName;
   /// Names of UrlSigningKey type secret objects
-  final pulumi.Input<List<ResourceReference>>? keyReferences;
+  final pulumi.Input<List<ResourceReference>?>? keyReferences;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   final pulumi.Input<String> profileName;
   /// The name of the resource group. The name is case insensitive.

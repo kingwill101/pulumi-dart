@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the content item we depend on
-enum Kind {
+enum Kind implements pulumi.PulumiEnum<String> {
   valueDataConnector("DataConnector"),
   valueDataType("DataType"),
   valueWorkbook("Workbook"),
@@ -19,6 +21,7 @@ enum Kind {
   valueAutomationRule("AutomationRule");
 
   const Kind(this.wireValue);
+  @override
   final String wireValue;
 
   static Kind fromValue(String value) {

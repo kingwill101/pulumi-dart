@@ -6,17 +6,17 @@ import 'broker_authenticator_method_x509_attributes.dart';
 /// X509 for BrokerAuthentication.
 class BrokerAuthenticatorMethodX509 {
   /// K8S Secret name to mount for username and password.
-  final pulumi.Input<BrokerAuthenticatorMethodX509Attributes>? attributes;
+  final pulumi.Input<BrokerAuthenticatorMethodX509Attributes?>? attributes;
   /// Trusted client ca cert config map.
-  final pulumi.Input<String>? trustedClientCaCertConfigMap;
+  final pulumi.Input<String?>? trustedClientCaCertConfigMap;
 
   /// Creates a new [BrokerAuthenticatorMethodX509].
   /// [attributes] K8S Secret name to mount for username and password.
   /// [trustedClientCaCertConfigMap] Trusted client ca cert config map.
-  const BrokerAuthenticatorMethodX509({
+  BrokerAuthenticatorMethodX509({
     this.attributes,
-    this.trustedClientCaCertConfigMap,
-  });
+    pulumi.Input<String?>? trustedClientCaCertConfigMap,
+  }) : trustedClientCaCertConfigMap = trustedClientCaCertConfigMap ?? pulumi.Input.fromValue('client-ca');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

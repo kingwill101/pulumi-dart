@@ -7,11 +7,11 @@ import 'virtual_machine_scale_set_network_configuration.dart';
 /// Describes a virtual machine scale set network profile.
 class VirtualMachineScaleSetNetworkProfile {
   /// A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
-  final pulumi.Input<ApiEntityReference>? healthProbe;
+  final pulumi.Input<ApiEntityReference?>? healthProbe;
   /// specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
-  final pulumi.Input<String>? networkApiVersion;
+  final pulumi.Input<dynamic>? networkApiVersion;
   /// The list of network configurations.
-  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>?>? networkInterfaceConfigurations;
 
   /// Creates a new [VirtualMachineScaleSetNetworkProfile].
   /// [healthProbe] A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
@@ -34,7 +34,7 @@ class VirtualMachineScaleSetNetworkProfile {
   factory VirtualMachineScaleSetNetworkProfile.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkProfile(
       healthProbe: (() { final guardedValue = map['healthProbe']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiEntityReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      networkApiVersion: (() { final guardedValue = map['networkApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkApiVersion: (() { final guardedValue = map['networkApiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkInterfaceConfigurations: (() { final guardedValue = map['networkInterfaceConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualMachineScaleSetNetworkConfiguration>(guardedValue, (value) => VirtualMachineScaleSetNetworkConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

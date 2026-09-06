@@ -6,7 +6,7 @@ import 'verification_result_response.dart';
 /// The image validation result.
 class ImageValidationResultsResponse {
   /// The validation results of the image.
-  final pulumi.Input<List<VerificationResultResponse>>? results;
+  final pulumi.Input<List<VerificationResultResponse>?>? results;
 
   /// Creates a new [ImageValidationResultsResponse].
   /// [results] The validation results of the image.

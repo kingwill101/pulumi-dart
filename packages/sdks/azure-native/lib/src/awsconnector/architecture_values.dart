@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ArchitectureValues {
+enum ArchitectureValues implements pulumi.PulumiEnum<String> {
   arm64("arm64"),
   arm64Mac("arm64_mac"),
   i386("i386"),
@@ -7,6 +9,7 @@ enum ArchitectureValues {
   x8664Mac("x86_64_mac");
 
   const ArchitectureValues(this.wireValue);
+  @override
   final String wireValue;
 
   static ArchitectureValues fromValue(String value) {

@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties related to an AgriService data connector.
 class DataConnectorCredentialsResponse {
   /// Client Id associated with the provider, if type of credentials is OAuthClientCredentials.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Name of the key vault key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Uri of the key vault
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Version of the key vault key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// Type of credential.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [DataConnectorCredentialsResponse].
   /// [clientId] Client Id associated with the provider, if type of credentials is OAuthClientCredentials.

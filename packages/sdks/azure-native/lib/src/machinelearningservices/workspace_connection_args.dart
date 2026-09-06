@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aadauth_type_workspace_connection_properties.dart';
 
 /// {@template pulumi_machinelearningservices_workspace_connection_args_doc}
 /// The set of arguments for WorkspaceConnection.
@@ -9,8 +8,8 @@ import 'aadauth_type_workspace_connection_properties.dart';
 /// {@macro pulumi_machinelearningservices_workspace_connection_args_doc}
 class WorkspaceConnectionArgs {
   /// Friendly name of the workspace connection
-  final pulumi.Input<String>? connectionName;
-  final pulumi.Input<AADAuthTypeWorkspaceConnectionProperties> properties;
+  final pulumi.Input<String?>? connectionName;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Machine Learning Workspace Name
@@ -31,7 +30,7 @@ class WorkspaceConnectionArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'connectionName': ?connectionName,
-      'properties': pulumi.Input.mapInputValue<AADAuthTypeWorkspaceConnectionProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
       'workspaceName': workspaceName,
     };
@@ -40,7 +39,7 @@ class WorkspaceConnectionArgs {
   factory WorkspaceConnectionArgs.fromMap(Map<String, dynamic> map) {
     return WorkspaceConnectionArgs(
       connectionName: (() { final guardedValue = map['connectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: pulumi.Input.fromValue(AADAuthTypeWorkspaceConnectionProperties.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

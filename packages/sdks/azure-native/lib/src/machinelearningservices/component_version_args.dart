@@ -15,7 +15,7 @@ class ComponentVersionArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Version identifier.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 

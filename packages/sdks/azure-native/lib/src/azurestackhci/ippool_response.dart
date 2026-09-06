@@ -6,15 +6,15 @@ import 'ippool_info_response.dart';
 /// Describes IPPool
 class IPPoolResponse {
   /// End of the IP address pool
-  final pulumi.Input<String>? end;
+  final pulumi.Input<String?>? end;
   /// IPPool info
-  final pulumi.Input<IPPoolInfoResponse>? info;
+  final pulumi.Input<IPPoolInfoResponse?>? info;
   /// Type of the IP Pool [vm, vippool]
-  final pulumi.Input<String>? ipPoolType;
+  final pulumi.Input<String?>? ipPoolType;
   /// Name of the IP-Pool
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Start of the IP address pool
-  final pulumi.Input<String>? start;
+  final pulumi.Input<String?>? start;
 
   /// Creates a new [IPPoolResponse].
   /// [end] End of the IP address pool

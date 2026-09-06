@@ -6,7 +6,7 @@ import 'ssh_public_key_response.dart';
 /// The list of SSH public keys.
 class SshProfileResponse {
   /// The list of SSH public keys.
-  final pulumi.Input<List<SshPublicKeyResponse>>? publicKeys;
+  final pulumi.Input<List<SshPublicKeyResponse>?>? publicKeys;
 
   /// Creates a new [SshProfileResponse].
   /// [publicKeys] The list of SSH public keys.

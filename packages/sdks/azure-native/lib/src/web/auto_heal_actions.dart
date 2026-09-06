@@ -7,12 +7,12 @@ import 'auto_heal_custom_action.dart';
 /// Actions which to take by the auto-heal module when a rule is triggered.
 class AutoHealActions {
   /// Predefined action to be taken.
-  final pulumi.Input<AutoHealActionType>? actionType;
+  final pulumi.Input<AutoHealActionType?>? actionType;
   /// Custom action to be taken.
-  final pulumi.Input<AutoHealCustomAction>? customAction;
+  final pulumi.Input<AutoHealCustomAction?>? customAction;
   /// Minimum time the process must execute
   /// before taking the action
-  final pulumi.Input<String>? minProcessExecutionTime;
+  final pulumi.Input<String?>? minProcessExecutionTime;
 
   /// Creates a new [AutoHealActions].
   /// [actionType] Predefined action to be taken.

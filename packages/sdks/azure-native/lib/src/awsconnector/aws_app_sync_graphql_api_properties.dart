@@ -15,51 +15,51 @@ import 'user_pool_config.dart';
 /// Definition of awsAppSyncGraphqlApi
 class AwsAppSyncGraphqlApiProperties {
   /// &lt;p&gt;A list of additional authentication providers for the &lt;code&gt;GraphqlApi&lt;/code&gt; API.&lt;/p&gt;
-  final pulumi.Input<List<AdditionalAuthenticationProvider>>? additionalAuthenticationProviders;
+  final pulumi.Input<List<AdditionalAuthenticationProvider>?>? additionalAuthenticationProviders;
   /// &lt;p&gt;The API ID.&lt;/p&gt;
-  final pulumi.Input<String>? apiId;
+  final pulumi.Input<String?>? apiId;
   /// &lt;p&gt;The value that indicates whether the GraphQL API is a standard API (&lt;code&gt;GRAPHQL&lt;/code&gt;) or merged API (&lt;code&gt;MERGED&lt;/code&gt;).&lt;/p&gt;
-  final pulumi.Input<GraphQLApiTypeEnumValue>? apiType;
+  final pulumi.Input<GraphQLApiTypeEnumValue?>? apiType;
   /// &lt;p&gt;The Amazon Resource Name (ARN).&lt;/p&gt;
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// &lt;p&gt;The authentication type.&lt;/p&gt;
-  final pulumi.Input<AuthenticationTypeEnumValue>? authenticationType;
+  final pulumi.Input<AuthenticationTypeEnumValue?>? authenticationType;
   /// &lt;p&gt;The DNS records for the API.&lt;/p&gt;
-  final pulumi.Input<Map<String, String>>? dns;
+  final pulumi.Input<Map<String, String>?>? dns;
   /// &lt;p&gt;The &lt;code&gt;enhancedMetricsConfig&lt;/code&gt; object.&lt;/p&gt;
-  final pulumi.Input<EnhancedMetricsConfig>? enhancedMetricsConfig;
+  final pulumi.Input<EnhancedMetricsConfig?>? enhancedMetricsConfig;
   /// &lt;p&gt;Sets the value of the GraphQL API to enable (&lt;code&gt;ENABLED&lt;/code&gt;) or disable (&lt;code&gt;DISABLED&lt;/code&gt;) introspection. If no value is provided, the introspection configuration will be set to &lt;code&gt;ENABLED&lt;/code&gt; by default. This field will produce an error if the operation attempts to use the introspection feature while this field is disabled.&lt;/p&gt; &lt;p&gt;For more information about introspection, see &lt;a href='https://graphql.org/learn/introspection/'&gt;GraphQL introspection&lt;/a&gt;.&lt;/p&gt;
-  final pulumi.Input<GraphQLApiIntrospectionConfigEnumValue>? introspectionConfig;
+  final pulumi.Input<GraphQLApiIntrospectionConfigEnumValue?>? introspectionConfig;
   /// &lt;p&gt;Configuration for Lambda function authorization.&lt;/p&gt;
-  final pulumi.Input<LambdaAuthorizerConfig>? lambdaAuthorizerConfig;
+  final pulumi.Input<LambdaAuthorizerConfig?>? lambdaAuthorizerConfig;
   /// &lt;p&gt;The Amazon CloudWatch Logs configuration.&lt;/p&gt;
-  final pulumi.Input<LogConfig>? logConfig;
+  final pulumi.Input<LogConfig?>? logConfig;
   /// &lt;p&gt;The Identity and Access Management service role ARN for a merged API. The AppSync service assumes this role on behalf of the Merged API to validate access to source APIs at runtime and to prompt the &lt;code&gt;AUTO_MERGE&lt;/code&gt; to update the merged API endpoint with the source API changes automatically.&lt;/p&gt;
-  final pulumi.Input<String>? mergedApiExecutionRoleArn;
+  final pulumi.Input<String?>? mergedApiExecutionRoleArn;
   /// &lt;p&gt;The API name.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;The OpenID Connect configuration.&lt;/p&gt;
-  final pulumi.Input<OpenIDConnectConfig>? openIDConnectConfig;
+  final pulumi.Input<OpenIDConnectConfig?>? openIDConnectConfig;
   /// &lt;p&gt;The account owner of the GraphQL API.&lt;/p&gt;
-  final pulumi.Input<String>? owner;
+  final pulumi.Input<String?>? owner;
   /// &lt;p&gt;The owner contact information for an API resource.&lt;/p&gt; &lt;p&gt;This field accepts any string input with a length of 0 - 256 characters.&lt;/p&gt;
-  final pulumi.Input<String>? ownerContact;
+  final pulumi.Input<String?>? ownerContact;
   /// &lt;p&gt;The maximum depth a query can have in a single request. Depth refers to the amount of nested levels allowed in the body of query. The default value is &lt;code&gt;0&lt;/code&gt; (or unspecified), which indicates there's no depth limit. If you set a limit, it can be between &lt;code&gt;1&lt;/code&gt; and &lt;code&gt;75&lt;/code&gt; nested levels. This field will produce a limit error if the operation falls out of bounds.&lt;/p&gt; &lt;p&gt;Note that fields can still be set to nullable or non-nullable. If a non-nullable field produces an error, the error will be thrown upwards to the first nullable field available.&lt;/p&gt;
-  final pulumi.Input<int>? queryDepthLimit;
+  final pulumi.Input<int?>? queryDepthLimit;
   /// &lt;p&gt;The maximum number of resolvers that can be invoked in a single request. The default value is &lt;code&gt;0&lt;/code&gt; (or unspecified), which will set the limit to &lt;code&gt;10000&lt;/code&gt;. When specified, the limit value can be between &lt;code&gt;1&lt;/code&gt; and &lt;code&gt;10000&lt;/code&gt;. This field will produce a limit error if the operation falls out of bounds.&lt;/p&gt;
-  final pulumi.Input<int>? resolverCountLimit;
+  final pulumi.Input<int?>? resolverCountLimit;
   /// &lt;p&gt;The tags.&lt;/p&gt;
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// &lt;p&gt;The URIs.&lt;/p&gt;
-  final pulumi.Input<Map<String, String>>? uris;
+  final pulumi.Input<Map<String, String>?>? uris;
   /// &lt;p&gt;The Amazon Cognito user pool configuration.&lt;/p&gt;
-  final pulumi.Input<UserPoolConfig>? userPoolConfig;
+  final pulumi.Input<UserPoolConfig?>? userPoolConfig;
   /// &lt;p&gt;Sets the value of the GraphQL API to public (&lt;code&gt;GLOBAL&lt;/code&gt;) or private (&lt;code&gt;PRIVATE&lt;/code&gt;). If no value is provided, the visibility will be set to &lt;code&gt;GLOBAL&lt;/code&gt; by default. This value cannot be changed once the API has been created.&lt;/p&gt;
-  final pulumi.Input<GraphQLApiVisibilityEnumValue>? visibility;
+  final pulumi.Input<GraphQLApiVisibilityEnumValue?>? visibility;
   /// &lt;p&gt;The ARN of the WAF access control list (ACL) associated with this &lt;code&gt;GraphqlApi&lt;/code&gt;, if one exists.&lt;/p&gt;
-  final pulumi.Input<String>? wafWebAclArn;
+  final pulumi.Input<String?>? wafWebAclArn;
   /// &lt;p&gt;A flag indicating whether to use X-Ray tracing for this &lt;code&gt;GraphqlApi&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<bool>? xrayEnabled;
+  final pulumi.Input<bool?>? xrayEnabled;
 
   /// Creates a new [AwsAppSyncGraphqlApiProperties].
   /// [additionalAuthenticationProviders] &lt;p&gt;A list of additional authentication providers for the &lt;code&gt;GraphqlApi&lt;/code&gt; API.&lt;/p&gt;
@@ -156,8 +156,8 @@ class AwsAppSyncGraphqlApiProperties {
       openIDConnectConfig: (() { final guardedValue = map['openIDConnectConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenIDConnectConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerContact: (() { final guardedValue = map['ownerContact']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queryDepthLimit: (() { final guardedValue = map['queryDepthLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      resolverCountLimit: (() { final guardedValue = map['resolverCountLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      queryDepthLimit: (() { final guardedValue = map['queryDepthLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      resolverCountLimit: (() { final guardedValue = map['resolverCountLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       uris: (() { final guardedValue = map['uris']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userPoolConfig: (() { final guardedValue = map['userPoolConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserPoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

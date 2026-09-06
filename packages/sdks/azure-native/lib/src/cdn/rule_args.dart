@@ -1,8 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'delivery_rule_cache_expiration_action.dart';
-import 'delivery_rule_client_port_condition.dart';
 
 /// {@template pulumi_cdn_rule_args_doc}
 /// The set of arguments for Rule.
@@ -10,19 +8,19 @@ import 'delivery_rule_client_port_condition.dart';
 /// {@macro pulumi_cdn_rule_args_doc}
 class RuleArgs {
   /// A list of actions that are executed when all the conditions of a rule are satisfied.
-  final pulumi.Input<List<DeliveryRuleCacheExpirationAction>>? actions;
+  final pulumi.Input<List<dynamic>?>? actions;
   /// A list of conditions that must be matched for the actions to be executed
-  final pulumi.Input<List<DeliveryRuleClientPortCondition>>? conditions;
+  final pulumi.Input<List<dynamic>?>? conditions;
   /// If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
-  final pulumi.Input<String>? matchProcessingBehavior;
+  final pulumi.Input<dynamic>? matchProcessingBehavior;
   /// The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-  final pulumi.Input<int>? order;
+  final pulumi.Input<int?>? order;
   /// Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   final pulumi.Input<String> profileName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the delivery rule which is unique within the endpoint.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// Name of the rule set under the profile which is unique globally.
   final pulumi.Input<String> ruleSetName;
 
@@ -35,21 +33,21 @@ class RuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the delivery rule which is unique within the endpoint.
   /// [ruleSetName] Name of the rule set under the profile which is unique globally.
-  const RuleArgs({
+  RuleArgs({
     this.actions,
     this.conditions,
-    this.matchProcessingBehavior,
+    pulumi.Input<dynamic>? matchProcessingBehavior,
     this.order,
     required this.profileName,
     required this.resourceGroupName,
     this.ruleName,
     required this.ruleSetName,
-  });
+  }) : matchProcessingBehavior = matchProcessingBehavior ?? pulumi.Input.fromValue('Continue');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'actions': ?pulumi.Input.mapOptionalInputValue<List<DeliveryRuleCacheExpirationAction>, List<Map<String, dynamic>>>(actions, (value) => pulumi.Input.encodeList<DeliveryRuleCacheExpirationAction, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'conditions': ?pulumi.Input.mapOptionalInputValue<List<DeliveryRuleClientPortCondition>, List<Map<String, dynamic>>>(conditions, (value) => pulumi.Input.encodeList<DeliveryRuleClientPortCondition, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'actions': ?actions,
+      'conditions': ?conditions,
       'matchProcessingBehavior': ?matchProcessingBehavior,
       'order': ?order,
       'profileName': profileName,
@@ -61,10 +59,10 @@ class RuleArgs {
 
   factory RuleArgs.fromMap(Map<String, dynamic> map) {
     return RuleArgs(
-      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeliveryRuleCacheExpirationAction>(guardedValue, (value) => DeliveryRuleCacheExpirationAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DeliveryRuleClientPortCondition>(guardedValue, (value) => DeliveryRuleClientPortCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      matchProcessingBehavior: (() { final guardedValue = map['matchProcessingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      actions: (() { final guardedValue = map['actions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      matchProcessingBehavior: (() { final guardedValue = map['matchProcessingBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       profileName: pulumi.Input.fromValue(map['profileName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

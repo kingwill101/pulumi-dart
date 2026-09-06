@@ -9,7 +9,7 @@ class IssueProperties {
   /// The issue severity
   final pulumi.Input<String> severity;
   /// The issue status
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
   /// The issue title
   final pulumi.Input<String> title;
 
@@ -38,7 +38,7 @@ class IssueProperties {
     return IssueProperties(
       impactTime: pulumi.Input.fromValue(map['impactTime'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
       title: pulumi.Input.fromValue(map['title'] as String),
     );
   }

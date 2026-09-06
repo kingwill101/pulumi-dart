@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of Authentication.
-enum MqttAuthMethod {
+enum MqttAuthMethod implements pulumi.PulumiEnum<String> {
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity"),
   serviceAccountToken("ServiceAccountToken"),
@@ -7,6 +9,7 @@ enum MqttAuthMethod {
   anonymous("Anonymous");
 
   const MqttAuthMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static MqttAuthMethod fromValue(String value) {

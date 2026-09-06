@@ -9,21 +9,21 @@ import 'triggered_build_result_response.dart';
 /// Build resource properties payload
 class BuildPropertiesResponse {
   /// The resource id of agent pool
-  final pulumi.Input<String>? agentPool;
+  final pulumi.Input<String?>? agentPool;
   /// The APMs for this build
-  final pulumi.Input<List<ApmReferenceResponse>>? apms;
+  final pulumi.Input<List<ApmReferenceResponse>?>? apms;
   /// The resource id of builder to build the source code
-  final pulumi.Input<String>? builder;
+  final pulumi.Input<String?>? builder;
   /// The CA Certificates for this build
-  final pulumi.Input<List<CertificateReferenceResponse>>? certificates;
+  final pulumi.Input<List<CertificateReferenceResponse>?>? certificates;
   /// The environment variables for this build
-  final pulumi.Input<Map<String, String>>? env;
+  final pulumi.Input<Map<String, String>?>? env;
   /// Provisioning state of the KPack build result
   final pulumi.Input<String> provisioningState;
   /// The relative path of source code
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// The customized build resource for this build
-  final pulumi.Input<BuildResourceRequestsResponse>? resourceRequests;
+  final pulumi.Input<BuildResourceRequestsResponse?>? resourceRequests;
   /// The build result triggered by this build
   final pulumi.Input<TriggeredBuildResultResponse> triggeredBuildResult;
 

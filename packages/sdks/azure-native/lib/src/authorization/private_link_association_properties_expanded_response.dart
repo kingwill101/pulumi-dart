@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private Link Association Properties.
 class PrivateLinkAssociationPropertiesExpandedResponse {
   /// The rmpl Resource ID.
-  final pulumi.Input<String>? privateLink;
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? privateLink;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// The scope of the private link association.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The TenantID.
-  final pulumi.Input<String>? tenantID;
+  final pulumi.Input<String?>? tenantID;
 
   /// Creates a new [PrivateLinkAssociationPropertiesExpandedResponse].
   /// [privateLink] The rmpl Resource ID.

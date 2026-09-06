@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'front_end_configuration_response.dart';
 
 class ArcConfigurationResponse {
-  final pulumi.Input<String>? artifactStorageAccessMode;
-  final pulumi.Input<String>? artifactStorageClassName;
-  final pulumi.Input<String>? artifactStorageMountPath;
-  final pulumi.Input<String>? artifactStorageNodeName;
-  final pulumi.Input<String>? artifactsStorageType;
-  final pulumi.Input<FrontEndConfigurationResponse>? frontEndServiceConfiguration;
+  final pulumi.Input<String?>? artifactStorageAccessMode;
+  final pulumi.Input<String?>? artifactStorageClassName;
+  final pulumi.Input<String?>? artifactStorageMountPath;
+  final pulumi.Input<String?>? artifactStorageNodeName;
+  final pulumi.Input<String?>? artifactsStorageType;
+  final pulumi.Input<FrontEndConfigurationResponse?>? frontEndServiceConfiguration;
 
   /// Creates a new [ArcConfigurationResponse].
   /// [artifactStorageAccessMode] Optional.

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'compute_runtime_dto.dart';
 
 class FeatureStoreSettings {
-  final pulumi.Input<ComputeRuntimeDto>? computeRuntime;
-  final pulumi.Input<String>? offlineStoreConnectionName;
-  final pulumi.Input<String>? onlineStoreConnectionName;
+  final pulumi.Input<ComputeRuntimeDto?>? computeRuntime;
+  final pulumi.Input<String?>? offlineStoreConnectionName;
+  final pulumi.Input<String?>? onlineStoreConnectionName;
 
   /// Creates a new [FeatureStoreSettings].
   /// [computeRuntime] Optional.

@@ -6,11 +6,11 @@ import 'export_recurrence_period.dart';
 /// The schedule associated with the export.
 class ExportSchedule {
   /// The schedule recurrence.
-  final pulumi.Input<String>? recurrence;
+  final pulumi.Input<dynamic>? recurrence;
   /// Has start and end date of the recurrence. The start date must be in future. If present, the end date must be greater than start date.
-  final pulumi.Input<ExportRecurrencePeriod>? recurrencePeriod;
+  final pulumi.Input<ExportRecurrencePeriod?>? recurrencePeriod;
   /// The status of the export's schedule. If 'Inactive', the export's schedule is paused.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [ExportSchedule].
   /// [recurrence] The schedule recurrence.
@@ -32,9 +32,9 @@ class ExportSchedule {
 
   factory ExportSchedule.fromMap(Map<String, dynamic> map) {
     return ExportSchedule(
-      recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      recurrence: (() { final guardedValue = map['recurrence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       recurrencePeriod: (() { final guardedValue = map['recurrencePeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportRecurrencePeriod.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

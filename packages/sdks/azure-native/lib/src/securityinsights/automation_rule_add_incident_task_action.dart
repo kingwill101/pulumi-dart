@@ -6,7 +6,7 @@ import 'add_incident_task_action_properties.dart';
 /// Describes an automation rule action to add a task to an incident
 class AutomationRuleAddIncidentTaskAction {
   /// Describes an automation rule action to add a task to an incident.
-  final pulumi.Input<AddIncidentTaskActionProperties>? actionConfiguration;
+  final pulumi.Input<AddIncidentTaskActionProperties?>? actionConfiguration;
   /// The type of the automation rule action.
   /// Expected value is 'AddIncidentTask'.
   final pulumi.Input<String> actionType;
@@ -34,7 +34,7 @@ class AutomationRuleAddIncidentTaskAction {
     return AutomationRuleAddIncidentTaskAction(
       actionConfiguration: (() { final guardedValue = map['actionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddIncidentTaskActionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       actionType: pulumi.Input.fromValue(map['actionType'] as String),
-      order: pulumi.Input.fromValue(map['order'] as int),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
     );
   }
 }

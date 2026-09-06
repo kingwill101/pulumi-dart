@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Directory for virtual application.
 class VirtualDirectory {
   /// Physical path.
-  final pulumi.Input<String>? physicalPath;
+  final pulumi.Input<String?>? physicalPath;
   /// Path to virtual application.
-  final pulumi.Input<String>? virtualPath;
+  final pulumi.Input<String?>? virtualPath;
 
   /// Creates a new [VirtualDirectory].
   /// [physicalPath] Physical path.

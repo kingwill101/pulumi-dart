@@ -6,7 +6,7 @@ import 'hyper_vhost_details_response.dart';
 /// HyperVSite fabric specific details.
 class HyperVSiteDetailsResponse {
   /// The list of Hyper-V hosts associated with the fabric.
-  final pulumi.Input<List<HyperVHostDetailsResponse>>? hyperVHosts;
+  final pulumi.Input<List<HyperVHostDetailsResponse>?>? hyperVHosts;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'HyperVSite'.
   final pulumi.Input<String> instanceType;

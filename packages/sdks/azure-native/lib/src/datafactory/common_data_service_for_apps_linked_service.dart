@@ -1,38 +1,37 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
 /// Common Data Service for Apps linked service.
 class CommonDataServiceForAppsLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The authentication type to connect to Common Data Service for Apps server. 'Office365' for online scenario, 'Ifd' for on-premises with Ifd scenario. 'AADServicePrincipal' for Server-To-Server authentication in online scenario, 'Active Directory' for Dynamics on-premises with IFD. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> authenticationType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The deployment type of the Common Data Service for Apps instance. 'Online' for Common Data Service for Apps Online and 'OnPremisesWithIfd' for Common Data Service for Apps on-premises with Ifd. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> deploymentType;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Active Directory domain that will verify user credentials. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? domain;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The host name of the on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? hostName;
   /// The organization name of the Common Data Service for Apps instance. The property is required for on-prem and required for online when there are more than one Common Data Service for Apps instances associated with the user. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? organizationName;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Password to access the Common Data Service for Apps instance.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// The port of on-premises Common Data Service for Apps server. The property is required for on-prem and not allowed for online. Default is 443. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? port;
   /// The credential of the service principal object in Azure Active Directory. If servicePrincipalCredentialType is 'ServicePrincipalKey', servicePrincipalCredential can be SecureString or AzureKeyVaultSecretReference. If servicePrincipalCredentialType is 'ServicePrincipalCert', servicePrincipalCredential can only be AzureKeyVaultSecretReference.
-  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalCredential;
+  final pulumi.Input<dynamic>? servicePrincipalCredential;
   /// The service principal credential type to use in Server-To-Server authentication. 'ServicePrincipalKey' for key/secret, 'ServicePrincipalCert' for certificate. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalCredentialType;
   /// The client ID of the application in Azure Active Directory used for Server-To-Server authentication. Type: string (or Expression with resultType string).
@@ -45,7 +44,7 @@ class CommonDataServiceForAppsLinkedService {
   /// User name to access the Common Data Service for Apps instance. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CommonDataServiceForAppsLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -101,9 +100,9 @@ class CommonDataServiceForAppsLinkedService {
       'hostName': ?hostName,
       'organizationName': ?organizationName,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'port': ?port,
-      'servicePrincipalCredential': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalCredential, (value) => value.toMap()),
+      'servicePrincipalCredential': ?servicePrincipalCredential,
       'servicePrincipalCredentialType': ?servicePrincipalCredentialType,
       'servicePrincipalId': ?servicePrincipalId,
       'serviceUri': ?serviceUri,
@@ -125,9 +124,9 @@ class CommonDataServiceForAppsLinkedService {
       hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       organizationName: (() { final guardedValue = map['organizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalCredential: (() { final guardedValue = map['servicePrincipalCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalCredential: (() { final guardedValue = map['servicePrincipalCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       servicePrincipalCredentialType: (() { final guardedValue = map['servicePrincipalCredentialType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serviceUri: (() { final guardedValue = map['serviceUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

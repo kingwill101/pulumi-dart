@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information.
-enum Expander {
+enum Expander implements pulumi.PulumiEnum<String> {
   valueLeastWaste("least-waste"),
   valueMostPods("most-pods"),
   valuePriority("priority"),
   valueRandom("random");
 
   const Expander(this.wireValue);
+  @override
   final String wireValue;
 
   static Expander fromValue(String value) {

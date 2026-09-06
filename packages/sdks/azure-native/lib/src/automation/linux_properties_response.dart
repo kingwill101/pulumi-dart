@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Linux specific update configuration.
 class LinuxPropertiesResponse {
   /// packages excluded from the software update configuration.
-  final pulumi.Input<List<String>>? excludedPackageNameMasks;
+  final pulumi.Input<List<String>?>? excludedPackageNameMasks;
   /// Update classifications included in the software update configuration.
-  final pulumi.Input<String>? includedPackageClassifications;
+  final pulumi.Input<String?>? includedPackageClassifications;
   /// packages included from the software update configuration.
-  final pulumi.Input<List<String>>? includedPackageNameMasks;
+  final pulumi.Input<List<String>?>? includedPackageNameMasks;
   /// Reboot setting for the software update configuration.
-  final pulumi.Input<String>? rebootSetting;
+  final pulumi.Input<String?>? rebootSetting;
 
   /// Creates a new [LinuxPropertiesResponse].
   /// [excludedPackageNameMasks] packages excluded from the software update configuration.

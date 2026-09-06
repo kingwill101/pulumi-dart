@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of IPConfigurationBgpPeeringAddress.
 class IPConfigurationBgpPeeringAddressResponse {
   /// The list of custom BGP peering addresses which belong to IP configuration.
-  final pulumi.Input<List<String>>? customBgpIpAddresses;
+  final pulumi.Input<List<String>?>? customBgpIpAddresses;
   /// The list of default BGP peering addresses which belong to IP configuration.
   final pulumi.Input<List<String>> defaultBgpIpAddresses;
   /// The ID of IP configuration which belongs to gateway.
-  final pulumi.Input<String>? ipconfigurationId;
+  final pulumi.Input<String?>? ipconfigurationId;
   /// The list of tunnel public IP addresses which belong to IP configuration.
   final pulumi.Input<List<String>> tunnelIpAddresses;
 

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service Fabric managed cluster Sku definition
 class Sku {
   /// Sku Name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [Sku].
   /// [name] Sku Name.
@@ -21,7 +21,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

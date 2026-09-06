@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The NIC Detail of a device.
 class NicDetailResponse {
   /// Adapter Name of NIC
-  final pulumi.Input<String>? adapterName;
+  final pulumi.Input<String?>? adapterName;
   /// Component Id of NIC
-  final pulumi.Input<String>? componentId;
+  final pulumi.Input<String?>? componentId;
   /// Default Gateway of NIC
-  final pulumi.Input<String>? defaultGateway;
+  final pulumi.Input<String?>? defaultGateway;
   /// Default Isolation of Management NIC
-  final pulumi.Input<String>? defaultIsolationId;
+  final pulumi.Input<String?>? defaultIsolationId;
   /// DNS Servers for NIC
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// Driver Version of NIC
-  final pulumi.Input<String>? driverVersion;
+  final pulumi.Input<String?>? driverVersion;
   /// Interface Description of NIC
-  final pulumi.Input<String>? interfaceDescription;
+  final pulumi.Input<String?>? interfaceDescription;
   /// Subnet Mask of NIC
-  final pulumi.Input<String>? ip4Address;
+  final pulumi.Input<String?>? ip4Address;
   /// Subnet Mask of NIC
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
 
   /// Creates a new [NicDetailResponse].
   /// [adapterName] Adapter Name of NIC

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum JobComparator {
+enum JobComparator implements pulumi.PulumiEnum<String> {
   cONTAINS("CONTAINS"),
   eQ("EQ"),
   gT("GT"),
@@ -10,6 +12,7 @@ enum JobComparator {
   sTARTSWITH("STARTS_WITH");
 
   const JobComparator(this.wireValue);
+  @override
   final String wireValue;
 
   static JobComparator fromValue(String value) {

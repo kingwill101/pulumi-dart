@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HyperVGenerations supported by Azure VMs.
-enum HyperVGeneration {
+enum HyperVGeneration implements pulumi.PulumiEnum<String> {
   gen1("Gen1"),
   gen2("Gen2");
 
   const HyperVGeneration(this.wireValue);
+  @override
   final String wireValue;
 
   static HyperVGeneration fromValue(String value) {

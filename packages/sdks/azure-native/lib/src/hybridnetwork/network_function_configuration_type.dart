@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The value which indicates if NF  values are secrets
-enum NetworkFunctionConfigurationType {
+enum NetworkFunctionConfigurationType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueSecret("Secret"),
   valueOpen("Open");
 
   const NetworkFunctionConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkFunctionConfigurationType fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RulesSourceList
 class RulesSourceList {
   /// Property generatedRulesType
-  final pulumi.Input<String>? generatedRulesType;
+  final pulumi.Input<dynamic>? generatedRulesType;
   /// Property targetTypes
-  final pulumi.Input<List<String>>? targetTypes;
+  final pulumi.Input<List<String>?>? targetTypes;
   /// Property targets
-  final pulumi.Input<List<String>>? targets;
+  final pulumi.Input<List<String>?>? targets;
 
   /// Creates a new [RulesSourceList].
   /// [generatedRulesType] Property generatedRulesType
@@ -31,7 +31,7 @@ class RulesSourceList {
 
   factory RulesSourceList.fromMap(Map<String, dynamic> map) {
     return RulesSourceList(
-      generatedRulesType: (() { final guardedValue = map['generatedRulesType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generatedRulesType: (() { final guardedValue = map['generatedRulesType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetTypes: (() { final guardedValue = map['targetTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

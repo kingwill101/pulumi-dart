@@ -10,9 +10,9 @@ class ApiIssueCommentArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
   /// Comment identifier within an Issue. Must be unique in the current Issue.
-  final pulumi.Input<String>? commentId;
+  final pulumi.Input<String?>? commentId;
   /// Date and time when the comment was created.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// Issue identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> issueId;
   /// The name of the resource group. The name is case insensitive.

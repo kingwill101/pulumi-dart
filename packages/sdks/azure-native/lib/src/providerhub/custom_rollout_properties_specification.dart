@@ -9,19 +9,19 @@ import 'resource_type_registration.dart';
 /// The specification.
 class CustomRolloutPropertiesSpecification {
   /// The auto provisioning configuration.
-  final pulumi.Input<CustomRolloutSpecificationAutoProvisionConfig>? autoProvisionConfig;
+  final pulumi.Input<CustomRolloutSpecificationAutoProvisionConfig?>? autoProvisionConfig;
   /// The canary region configuration.
-  final pulumi.Input<CustomRolloutSpecificationCanary>? canary;
+  final pulumi.Input<CustomRolloutSpecificationCanary?>? canary;
   /// The provider registration.
-  final pulumi.Input<CustomRolloutSpecificationProviderRegistration>? providerRegistration;
+  final pulumi.Input<CustomRolloutSpecificationProviderRegistration?>? providerRegistration;
   /// Whether refreshing subscription registration is enabled or disabled.
-  final pulumi.Input<bool>? refreshSubscriptionRegistration;
+  final pulumi.Input<bool?>? refreshSubscriptionRegistration;
   /// The list of ARM regions scoped for the release.
-  final pulumi.Input<List<String>>? releaseScopes;
+  final pulumi.Input<List<String>?>? releaseScopes;
   /// The resource type registrations.
-  final pulumi.Input<List<ResourceTypeRegistration>>? resourceTypeRegistrations;
+  final pulumi.Input<List<ResourceTypeRegistration>?>? resourceTypeRegistrations;
   /// Whether release scope validation should be skipped.
-  final pulumi.Input<bool>? skipReleaseScopeValidation;
+  final pulumi.Input<bool?>? skipReleaseScopeValidation;
 
   /// Creates a new [CustomRolloutPropertiesSpecification].
   /// [autoProvisionConfig] The auto provisioning configuration.

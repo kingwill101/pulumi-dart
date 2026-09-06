@@ -13,7 +13,7 @@ class DiscoveryRulePropertiesResponse {
   /// Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
   final pulumi.Input<String> discoverRelationships;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
   final pulumi.Input<String> entityName;
   /// Error message if the last discovery operation failed.
@@ -73,7 +73,7 @@ class DiscoveryRulePropertiesResponse {
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entityName: pulumi.Input.fromValue(map['entityName'] as String),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
-      numberOfDiscoveredEntities: pulumi.Input.fromValue(map['numberOfDiscoveredEntities'] as int),
+      numberOfDiscoveredEntities: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfDiscoveredEntities'])),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       resourceGraphQuery: pulumi.Input.fromValue(map['resourceGraphQuery'] as String),
     );

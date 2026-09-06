@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Filter details to transfer Azure files
 class AzureFileFilterDetailsResponse {
   /// List of full path of the files to be transferred.
-  final pulumi.Input<List<String>>? filePathList;
+  final pulumi.Input<List<String>?>? filePathList;
   /// Prefix list of the Azure files to be transferred.
-  final pulumi.Input<List<String>>? filePrefixList;
+  final pulumi.Input<List<String>?>? filePrefixList;
   /// List of file shares to be transferred.
-  final pulumi.Input<List<String>>? fileShareList;
+  final pulumi.Input<List<String>?>? fileShareList;
 
   /// Creates a new [AzureFileFilterDetailsResponse].
   /// [filePathList] List of full path of the files to be transferred.

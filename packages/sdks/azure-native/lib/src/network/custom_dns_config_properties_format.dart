@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Contains custom Dns resolution configuration from customer.
 class CustomDnsConfigPropertiesFormat {
   /// Fqdn that resolves to private endpoint ip address.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// A list of private ip addresses of the private endpoint.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
 
   /// Creates a new [CustomDnsConfigPropertiesFormat].
   /// [fqdn] Fqdn that resolves to private endpoint ip address.

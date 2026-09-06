@@ -7,12 +7,12 @@ import 'sku_recommendation_results_monthly_cost_response.dart';
 /// SKU Recommendation results for Azure SQL Managed Instance.
 class SkuRecommendationResultsAzureSqlManagedInstanceResponse {
   /// The Monthly cost of the particular SKU.
-  final pulumi.Input<SkuRecommendationResultsMonthlyCostResponse>? monthlyCost;
+  final pulumi.Input<SkuRecommendationResultsMonthlyCostResponse?>? monthlyCost;
   /// Number of blocker issues to fix before migrating to the target platform.
-  final pulumi.Input<int>? numberOfServerBlockerIssues;
+  final pulumi.Input<int?>? numberOfServerBlockerIssues;
   /// The target recommendation Status for this database.
-  final pulumi.Input<String>? recommendationStatus;
-  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku>? targetSku;
+  final pulumi.Input<String?>? recommendationStatus;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku?>? targetSku;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlManagedInstanceResponse].
   /// [monthlyCost] The Monthly cost of the particular SKU.
@@ -38,7 +38,7 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponse {
   factory SkuRecommendationResultsAzureSqlManagedInstanceResponse.fromMap(Map<String, dynamic> map) {
     return SkuRecommendationResultsAzureSqlManagedInstanceResponse(
       monthlyCost: (() { final guardedValue = map['monthlyCost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuRecommendationResultsMonthlyCostResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfServerBlockerIssues: (() { final guardedValue = map['numberOfServerBlockerIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfServerBlockerIssues: (() { final guardedValue = map['numberOfServerBlockerIssues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       recommendationStatus: (() { final guardedValue = map['recommendationStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetSku: (() { final guardedValue = map['targetSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

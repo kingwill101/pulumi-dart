@@ -6,7 +6,7 @@ class GetMonitorDefaultApplicationKeyResult {
   /// The user that created the Application key.
   final String? createdBy;
   /// The value of the Application key.
-  final String key;
+  final String? key;
   /// The name of the Application key.
   final String? name;
 
@@ -16,14 +16,14 @@ class GetMonitorDefaultApplicationKeyResult {
   /// [name] The name of the Application key.
   const GetMonitorDefaultApplicationKeyResult({
     this.createdBy,
-    required this.key,
+    this.key,
     this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'createdBy': ?createdBy,
-      'key': key,
+      'key': ?key,
       'name': ?name,
     };
   }
@@ -31,7 +31,7 @@ class GetMonitorDefaultApplicationKeyResult {
   factory GetMonitorDefaultApplicationKeyResult.fromMap(Map<String, dynamic> map) {
     return GetMonitorDefaultApplicationKeyResult(
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      key: map['key'] as String,
+      key: (() { final guardedValue = map['key']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

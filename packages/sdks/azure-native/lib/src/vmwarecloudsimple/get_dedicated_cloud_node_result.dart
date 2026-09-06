@@ -6,21 +6,21 @@ import 'sku_response.dart';
 /// Result data returned by getDedicatedCloudNode.
 class GetDedicatedCloudNodeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName}
-  final String id;
+  final String? id;
   /// Azure region
-  final String location;
+  final String? location;
   /// {dedicatedCloudNodeName}
-  final String name;
+  final String? name;
   /// Dedicated Cloud Nodes properties
-  final DedicatedCloudNodePropertiesResponse properties;
+  final DedicatedCloudNodePropertiesResponse? properties;
   /// Dedicated Cloud Nodes SKU
   final SkuResponse? sku;
   /// Dedicated Cloud Nodes tags
   final Map<String, String>? tags;
   /// {resourceProviderNamespace}/{resourceType}
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDedicatedCloudNodeResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -32,39 +32,39 @@ class GetDedicatedCloudNodeResult {
   /// [tags] Dedicated Cloud Nodes tags
   /// [type] {resourceProviderNamespace}/{resourceType}
   const GetDedicatedCloudNodeResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.properties,
+    this.azureApiVersion,
+    this.id,
+    this.location,
+    this.name,
+    this.properties,
     this.sku,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'location': location,
-      'name': name,
-      'properties': properties.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'sku': ?sku?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDedicatedCloudNodeResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedCloudNodeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      properties: DedicatedCloudNodePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return DedicatedCloudNodePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

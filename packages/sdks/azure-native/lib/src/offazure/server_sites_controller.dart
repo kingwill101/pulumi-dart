@@ -325,7 +325,31 @@ class ServerSitesController extends pulumi.CustomResource {
     serviceEndpoint = registerOutput<String>('serviceEndpoint');
     servicePrincipalIdentityDetails = registerOutput<SiteSpnPropertiesResponse?>('servicePrincipalIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteSpnPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerSitesController] resource.
+  ServerSitesController.reference(String urn)
+    : super(
+        'azure-native:offazure:ServerSitesController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentDetails = registerOutput<SiteAgentPropertiesResponse?>('agentDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteAgentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    applianceName = registerOutput<String?>('applianceName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    discoverySolutionId = registerOutput<String?>('discoverySolutionId');
+    location = registerOutput<String>('location');
+    masterSiteId = registerOutput<String>('masterSiteId');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceEndpoint = registerOutput<String>('serviceEndpoint');
+    servicePrincipalIdentityDetails = registerOutput<SiteSpnPropertiesResponse?>('servicePrincipalIdentityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SiteSpnPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

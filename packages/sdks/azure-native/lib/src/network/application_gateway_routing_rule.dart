@@ -6,19 +6,19 @@ import 'sub_resource.dart';
 /// Routing rule of an application gateway.
 class ApplicationGatewayRoutingRule {
   /// Backend address pool resource of the application gateway.
-  final pulumi.Input<SubResource>? backendAddressPool;
+  final pulumi.Input<SubResource?>? backendAddressPool;
   /// Backend settings resource of the application gateway.
-  final pulumi.Input<SubResource>? backendSettings;
+  final pulumi.Input<SubResource?>? backendSettings;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Listener resource of the application gateway.
-  final pulumi.Input<SubResource>? listener;
+  final pulumi.Input<SubResource?>? listener;
   /// Name of the routing rule that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the routing rule.
   final pulumi.Input<int> priority;
   /// Rule type.
-  final pulumi.Input<String>? ruleType;
+  final pulumi.Input<dynamic>? ruleType;
 
   /// Creates a new [ApplicationGatewayRoutingRule].
   /// [backendAddressPool] Backend address pool resource of the application gateway.
@@ -57,8 +57,8 @@ class ApplicationGatewayRoutingRule {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       listener: (() { final guardedValue = map['listener']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
-      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      ruleType: (() { final guardedValue = map['ruleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

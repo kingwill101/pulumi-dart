@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Values can be SystemAssigned or UserAssigned
-enum CmkIdentityType {
+enum CmkIdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
   const CmkIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static CmkIdentityType fromValue(String value) {

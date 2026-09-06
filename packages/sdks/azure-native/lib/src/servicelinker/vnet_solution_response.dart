@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The VNet solution for linker
 class VNetSolutionResponse {
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<String?>? deleteOrUpdateBehavior;
   /// Type of VNet solution.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [VNetSolutionResponse].
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting

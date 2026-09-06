@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'sql_db_elastic_pool_target_properties.dart';
 
 /// {@template pulumi_databasewatcher_target_args_doc}
 /// The set of arguments for Target.
@@ -9,11 +8,11 @@ import 'sql_db_elastic_pool_target_properties.dart';
 /// {@macro pulumi_databasewatcher_target_args_doc}
 class TargetArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SqlDbElasticPoolTargetProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The target resource name.
-  final pulumi.Input<String>? targetName;
+  final pulumi.Input<String?>? targetName;
   /// The database watcher name.
   final pulumi.Input<String> watcherName;
 
@@ -31,7 +30,7 @@ class TargetArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': ?pulumi.Input.mapOptionalInputValue<SqlDbElasticPoolTargetProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
       'targetName': ?targetName,
       'watcherName': watcherName,
@@ -40,7 +39,7 @@ class TargetArgs {
 
   factory TargetArgs.fromMap(Map<String, dynamic> map) {
     return TargetArgs(
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlDbElasticPoolTargetProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetName: (() { final guardedValue = map['targetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       watcherName: pulumi.Input.fromValue(map['watcherName'] as String),

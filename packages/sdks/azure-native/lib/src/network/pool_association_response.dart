@@ -8,11 +8,11 @@ class PoolAssociationResponse {
   final pulumi.Input<List<String>> addressPrefixes;
   /// Creation time of the association.
   final pulumi.Input<String> createdAt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Total number of reserved IP addresses of the association.
   final pulumi.Input<String> numberOfReservedIPAddresses;
   /// IpamPool id for which the resource is associated to.
-  final pulumi.Input<String>? poolId;
+  final pulumi.Input<String?>? poolId;
   /// Expire time for IP addresses reserved.
   final pulumi.Input<String> reservationExpiresAt;
   /// List of reserved IP address prefixes in the IpamPool of the associated resource.

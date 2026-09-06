@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to a build result
 class BuildResultUserSourceInfo {
   /// Resource id of an existing succeeded build result under the same Spring instance.
-  final pulumi.Input<String>? buildResultId;
+  final pulumi.Input<String?>? buildResultId;
   /// Type of the source uploaded
   /// Expected value is 'BuildResult'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [BuildResultUserSourceInfo].
   /// [buildResultId] Resource id of an existing succeeded build result under the same Spring instance.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Username / Password Credentials to connect to vcenter.
 class VICredentialResponse {
   /// Gets or sets username to connect with the vCenter.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [VICredentialResponse].
   /// [username] Gets or sets username to connect with the vCenter.

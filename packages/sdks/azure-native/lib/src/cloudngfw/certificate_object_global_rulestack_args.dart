@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudngfw_certificate_object_global_rulestack_args_doc}
 class CertificateObjectGlobalRulestackArgs {
   /// comment for this object
-  final pulumi.Input<String>? auditComment;
+  final pulumi.Input<String?>? auditComment;
   /// use certificate self signed
-  final pulumi.Input<String> certificateSelfSigned;
+  final pulumi.Input<dynamic> certificateSelfSigned;
   /// Resource Id of certificate signer, to be populated only when certificateSelfSigned is false
-  final pulumi.Input<String>? certificateSignerResourceId;
+  final pulumi.Input<String?>? certificateSignerResourceId;
   /// user description for this object
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
   /// certificate name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CertificateObjectGlobalRulestackArgs].
   /// [auditComment] comment for this object
@@ -50,7 +50,7 @@ class CertificateObjectGlobalRulestackArgs {
   factory CertificateObjectGlobalRulestackArgs.fromMap(Map<String, dynamic> map) {
     return CertificateObjectGlobalRulestackArgs(
       auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      certificateSelfSigned: pulumi.Input.fromValue(map['certificateSelfSigned'] as String),
+      certificateSelfSigned: pulumi.Input.fromValue(map['certificateSelfSigned']),
       certificateSignerResourceId: (() { final guardedValue = map['certificateSignerResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),

@@ -5,7 +5,7 @@ import 'application_insights_component_analytics_item_properties_response.dart';
 /// Result data returned by getAnalyticsItem.
 class GetAnalyticsItemResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The content of this item
   final String? content;
   /// Internally assigned unique id of the item definition.
@@ -13,17 +13,17 @@ class GetAnalyticsItemResult {
   /// The user-defined name of the item.
   final String? name;
   /// A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
-  final ApplicationInsightsComponentAnalyticsItemPropertiesResponse properties;
+  final ApplicationInsightsComponentAnalyticsItemPropertiesResponse? properties;
   /// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   final String? scope;
   /// Date and time in UTC when this item was created.
-  final String timeCreated;
+  final String? timeCreated;
   /// Date and time in UTC of the last modification that was made to this item.
-  final String timeModified;
+  final String? timeModified;
   /// Enum indicating the type of the Analytics item.
   final String? type;
   /// This instance's version of the data model. This can change as new features are added.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetAnalyticsItemResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,45 +37,45 @@ class GetAnalyticsItemResult {
   /// [type] Enum indicating the type of the Analytics item.
   /// [version] This instance's version of the data model. This can change as new features are added.
   const GetAnalyticsItemResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.content,
     this.id,
     this.name,
-    required this.properties,
+    this.properties,
     this.scope,
-    required this.timeCreated,
-    required this.timeModified,
+    this.timeCreated,
+    this.timeModified,
     this.type,
-    required this.version,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'content': ?content,
       'id': ?id,
       'name': ?name,
-      'properties': properties.toMap(),
+      'properties': ?properties?.toMap(),
       'scope': ?scope,
-      'timeCreated': timeCreated,
-      'timeModified': timeModified,
+      'timeCreated': ?timeCreated,
+      'timeModified': ?timeModified,
       'type': ?type,
-      'version': version,
+      'version': ?version,
     };
   }
 
   factory GetAnalyticsItemResult.fromMap(Map<String, dynamic> map) {
     return GetAnalyticsItemResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      properties: ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return ApplicationInsightsComponentAnalyticsItemPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      timeCreated: map['timeCreated'] as String,
-      timeModified: map['timeModified'] as String,
+      timeCreated: (() { final guardedValue = map['timeCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timeModified: (() { final guardedValue = map['timeModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      version: map['version'] as String,
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

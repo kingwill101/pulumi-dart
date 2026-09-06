@@ -25,69 +25,69 @@ import 'virtual_machine_identity.dart';
 /// {@macro pulumi_compute_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// Specifies additional capabilities enabled or disabled on the virtual machine.
-  final pulumi.Input<AdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<AdditionalCapabilities?>? additionalCapabilities;
   /// Specifies the gallery applications that should be made available to the VM/VMSS.
-  final pulumi.Input<ApplicationProfile>? applicationProfile;
+  final pulumi.Input<ApplicationProfile?>? applicationProfile;
   /// Specifies information about the availability set that the virtual machine should be assigned to. Virtual machines specified in the same availability set are allocated to different nodes to maximize availability. For more information about availability sets, see [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview). For more information on Azure planned maintenance, see [Maintenance and updates for Virtual Machines in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates). Currently, a VM can only be added to availability set at creation time. The availability set to which the VM is being added should be under the same resource group as the availability set resource. An existing VM cannot be added to an availability set. This property cannot exist along with a non-null properties.virtualMachineScaleSet reference.
-  final pulumi.Input<SubResource>? availabilitySet;
+  final pulumi.Input<SubResource?>? availabilitySet;
   /// Specifies the billing related details of a Azure Spot virtual machine. Minimum api-version: 2019-03-01.
-  final pulumi.Input<BillingProfile>? billingProfile;
+  final pulumi.Input<BillingProfile?>? billingProfile;
   /// Specifies information about the capacity reservation that is used to allocate virtual machine. Minimum api-version: 2021-04-01.
-  final pulumi.Input<CapacityReservationProfile>? capacityReservation;
+  final pulumi.Input<CapacityReservationProfile?>? capacityReservation;
   /// Specifies the boot diagnostic settings state. Minimum api-version: 2015-06-15.
-  final pulumi.Input<DiagnosticsProfile>? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfile?>? diagnosticsProfile;
   /// Specifies the eviction policy for the Azure Spot virtual machine and Azure Spot scale set. For Azure Spot virtual machines, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2019-03-01. For Azure Spot scale sets, both 'Deallocate' and 'Delete' are supported and the minimum api-version is 2017-10-30-preview.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<dynamic>? evictionPolicy;
   /// The extended location of the Virtual Machine.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Specifies the time alloted for all extensions to start. The time duration should be between 15 minutes and 120 minutes (inclusive) and should be specified in ISO 8601 format. The default value is 90 minutes (PT1H30M). Minimum api-version: 2020-06-01.
-  final pulumi.Input<String>? extensionsTimeBudget;
+  final pulumi.Input<String?>? extensionsTimeBudget;
   /// Specifies the hardware settings for the virtual machine.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// Specifies information about the dedicated host that the virtual machine resides in. Minimum api-version: 2018-10-01.
-  final pulumi.Input<SubResource>? host;
+  final pulumi.Input<SubResource?>? host;
   /// Specifies information about the dedicated host group that the virtual machine resides in. **Note:** User cannot specify both host and hostGroup properties. Minimum api-version: 2020-06-01.
-  final pulumi.Input<SubResource>? hostGroup;
+  final pulumi.Input<SubResource?>? hostGroup;
   /// The identity of the virtual machine, if configured.
-  final pulumi.Input<VirtualMachineIdentity>? identity;
+  final pulumi.Input<VirtualMachineIdentity?>? identity;
   /// Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt; Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux Server operating system are: &lt;br&gt;&lt;br&gt; RHEL_BYOS (for RHEL) &lt;br&gt;&lt;br&gt; SLES_BYOS (for SUSE) &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux Server](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux) &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the network interfaces of the virtual machine.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// Specifies the operating system settings used while creating the virtual machine. Some of the settings cannot be changed once VM is provisioned.
-  final pulumi.Input<OSProfile>? osProfile;
+  final pulumi.Input<OSProfile?>? osProfile;
   /// Placement section specifies the user-defined constraints for virtual machine hardware placement. This property cannot be changed once VM is provisioned. Minimum api-version: 2024-11-01.
-  final pulumi.Input<Placement>? placement;
+  final pulumi.Input<Placement?>? placement;
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// Specifies the scale set logical fault domain into which the Virtual Machine will be created. By default, the Virtual Machine will by automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the 'virtualMachineScaleSet' property of this Virtual Machine is set. The Virtual Machine Scale Set that is referenced, must have 'platformFaultDomainCount' greater than 1. This property cannot be updated once the Virtual Machine is created. Fault domain assignment can be viewed in the Virtual Machine Instance View. Minimum api‐version: 2020‐12‐01.
-  final pulumi.Input<int>? platformFaultDomain;
+  final pulumi.Input<int?>? platformFaultDomain;
   /// Specifies the priority for the virtual machine. Minimum api-version: 2019-03-01
-  final pulumi.Input<String>? priority;
+  final pulumi.Input<dynamic>? priority;
   /// Specifies information about the proximity placement group that the virtual machine should be assigned to. Minimum api-version: 2018-04-01.
-  final pulumi.Input<SubResource>? proximityPlacementGroup;
+  final pulumi.Input<SubResource?>? proximityPlacementGroup;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies Redeploy, Reboot and ScheduledEventsAdditionalPublishingTargets Scheduled Event related configurations for the virtual machine.
-  final pulumi.Input<ScheduledEventsPolicy>? scheduledEventsPolicy;
+  final pulumi.Input<ScheduledEventsPolicy?>? scheduledEventsPolicy;
   /// Specifies Scheduled Event related configurations.
-  final pulumi.Input<ScheduledEventsProfile>? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfile?>? scheduledEventsProfile;
   /// Specifies the Security related profile settings for the virtual machine.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
   /// Specifies information about the virtual machine scale set that the virtual machine should be assigned to. Virtual machines specified in the same virtual machine scale set are allocated to different nodes to maximize availability. Currently, a VM can only be added to virtual machine scale set at creation time. An existing VM cannot be added to a virtual machine scale set. This property cannot exist along with a non-null properties.availabilitySet reference. Minimum api‐version: 2019‐03‐01.
-  final pulumi.Input<SubResource>? virtualMachineScaleSet;
+  final pulumi.Input<SubResource?>? virtualMachineScaleSet;
   /// The name of the virtual machine.
-  final pulumi.Input<String>? vmName;
+  final pulumi.Input<String?>? vmName;
   /// The availability zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [VirtualMachineArgs].
   /// [additionalCapabilities] Specifies additional capabilities enabled or disabled on the virtual machine.
@@ -202,7 +202,7 @@ class VirtualMachineArgs {
       billingProfile: (() { final guardedValue = map['billingProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       capacityReservation: (() { final guardedValue = map['capacityReservation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CapacityReservationProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diagnosticsProfile: (() { final guardedValue = map['diagnosticsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiagnosticsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       extensionsTimeBudget: (() { final guardedValue = map['extensionsTimeBudget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -215,8 +215,8 @@ class VirtualMachineArgs {
       osProfile: (() { final guardedValue = map['osProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OSProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Placement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Plan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      platformFaultDomain: (() { final guardedValue = map['platformFaultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      platformFaultDomain: (() { final guardedValue = map['platformFaultDomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scheduledEventsPolicy: (() { final guardedValue = map['scheduledEventsPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ScheduledEventsPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Output data delivery mode enums.
-enum OutputDeliveryMode {
+enum OutputDeliveryMode implements pulumi.PulumiEnum<String> {
   readWriteMount("ReadWriteMount"),
   upload("Upload"),
   direct("Direct");
 
   const OutputDeliveryMode(this.wireValue);
+  @override
   final String wireValue;
 
   static OutputDeliveryMode fromValue(String value) {

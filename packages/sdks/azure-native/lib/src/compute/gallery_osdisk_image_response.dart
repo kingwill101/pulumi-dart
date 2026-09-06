@@ -6,11 +6,11 @@ import 'gallery_disk_image_source_response.dart';
 /// This is the OS disk image.
 class GalleryOSDiskImageResponse {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
-  final pulumi.Input<String>? hostCaching;
+  final pulumi.Input<String?>? hostCaching;
   /// This property indicates the size of the VHD to be created.
   final pulumi.Input<int> sizeInGB;
   /// The source for the disk image.
-  final pulumi.Input<GalleryDiskImageSourceResponse>? source;
+  final pulumi.Input<GalleryDiskImageSourceResponse?>? source;
 
   /// Creates a new [GalleryOSDiskImageResponse].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -33,7 +33,7 @@ class GalleryOSDiskImageResponse {
   factory GalleryOSDiskImageResponse.fromMap(Map<String, dynamic> map) {
     return GalleryOSDiskImageResponse(
       hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGB: pulumi.Input.fromValue(map['sizeInGB'] as int),
+      sizeInGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGB'])),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryDiskImageSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

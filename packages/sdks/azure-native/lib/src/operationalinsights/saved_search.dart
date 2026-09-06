@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'saved_search_args.dart';
+import 'tag_response.dart';
 
 /// Value object for saved search results.
 ///
@@ -242,7 +243,7 @@ class SavedSearch extends pulumi.CustomResource {
   /// The query expression for the saved search.
   late final pulumi.Output<String> query;
   /// The tags attached to the saved search.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+  late final pulumi.Output<List<TagResponse>?> tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The version number of the query language. The current version is 2 and is the default.
@@ -270,7 +271,29 @@ class SavedSearch extends pulumi.CustomResource {
     functionParameters = registerOutput<String?>('functionParameters');
     this.name = registerOutput<String>('name');
     query = registerOutput<String>('query');
-    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    tags = registerOutput<List<TagResponse>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    version = registerOutput<double?>('version');
+  }
+
+  /// Creates a typed reference to an existing [SavedSearch] resource.
+  SavedSearch.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:SavedSearch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    functionAlias = registerOutput<String?>('functionAlias');
+    functionParameters = registerOutput<String?>('functionParameters');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    tags = registerOutput<List<TagResponse>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     version = registerOutput<double?>('version');
   }

@@ -14,9 +14,9 @@ class ListWorkspacePolicyFragmentReferencesArgs {
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Number of records to skip.
-  final pulumi.Input<int>? skip;
+  final pulumi.Input<int?>? skip;
   /// Number of records to return.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 
@@ -52,8 +52,8 @@ class ListWorkspacePolicyFragmentReferencesArgs {
       id: pulumi.Input.fromValue(map['id'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
-      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }

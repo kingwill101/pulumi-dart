@@ -5,7 +5,7 @@ import 'resource_identity_type.dart';
 
 class OrchestratorIdentity {
   /// The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
 
   /// Creates a new [OrchestratorIdentity].
   /// [type] The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters

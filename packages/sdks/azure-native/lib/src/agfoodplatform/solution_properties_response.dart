@@ -13,7 +13,7 @@ class SolutionPropertiesResponse {
   /// SaaS application Plan Id.
   final pulumi.Input<String> planId;
   /// Role Assignment Id.
-  final pulumi.Input<String>? roleAssignmentId;
+  final pulumi.Input<String?>? roleAssignmentId;
   /// SaaS subscriptionId of the installed SaaS application.
   final pulumi.Input<String> saasSubscriptionId;
   /// SaaS subscription name of the installed SaaS application.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data boundary.
-enum DataBoundary {
+enum DataBoundary implements pulumi.PulumiEnum<String> {
   notDefined("NotDefined"),
   global("Global"),
   eU("EU"),
   uS("US");
 
   const DataBoundary(this.wireValue);
+  @override
   final String wireValue;
 
   static DataBoundary fromValue(String value) {

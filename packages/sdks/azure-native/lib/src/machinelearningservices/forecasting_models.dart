@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enum for all forecasting models supported by AutoML.
-enum ForecastingModels {
+enum ForecastingModels implements pulumi.PulumiEnum<String> {
   autoArima("AutoArima"),
   prophet("Prophet"),
   naive("Naive"),
@@ -21,6 +23,7 @@ enum ForecastingModels {
   xGBoostRegressor("XGBoostRegressor");
 
   const ForecastingModels(this.wireValue);
+  @override
   final String wireValue;
 
   static ForecastingModels fromValue(String value) {

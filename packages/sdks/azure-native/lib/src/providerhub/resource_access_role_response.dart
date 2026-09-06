@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceAccessRoleResponse {
   /// The actions.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// The allowed group claims.
-  final pulumi.Input<List<String>>? allowedGroupClaims;
+  final pulumi.Input<List<String>?>? allowedGroupClaims;
 
   /// Creates a new [ResourceAccessRoleResponse].
   /// [actions] The actions.

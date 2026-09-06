@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ElasticInferenceAcceleratorAssociation
 class ElasticInferenceAcceleratorAssociationResponse {
   /// &lt;p&gt; The Amazon Resource Name (ARN) of the elastic inference accelerator. &lt;/p&gt;
-  final pulumi.Input<String>? elasticInferenceAcceleratorArn;
+  final pulumi.Input<String?>? elasticInferenceAcceleratorArn;
   /// &lt;p&gt; The ID of the association. &lt;/p&gt;
-  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationId;
+  final pulumi.Input<String?>? elasticInferenceAcceleratorAssociationId;
   /// &lt;p&gt; The state of the elastic inference accelerator. &lt;/p&gt;
-  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationState;
+  final pulumi.Input<String?>? elasticInferenceAcceleratorAssociationState;
   /// &lt;p&gt; The time at which the elastic inference accelerator is associated with an instance. &lt;/p&gt;
-  final pulumi.Input<String>? elasticInferenceAcceleratorAssociationTime;
+  final pulumi.Input<String?>? elasticInferenceAcceleratorAssociationTime;
 
   /// Creates a new [ElasticInferenceAcceleratorAssociationResponse].
   /// [elasticInferenceAcceleratorArn] &lt;p&gt; The Amazon Resource Name (ARN) of the elastic inference accelerator. &lt;/p&gt;

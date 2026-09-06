@@ -5,13 +5,13 @@ import 'route.dart';
 
 class InferenceContainerProperties {
   /// The route to check the liveness of the inference server container.
-  final pulumi.Input<Route>? livenessRoute;
+  final pulumi.Input<Route?>? livenessRoute;
   /// The route to check the readiness of the inference server container.
-  final pulumi.Input<Route>? readinessRoute;
+  final pulumi.Input<Route?>? readinessRoute;
   /// The port to send the scoring requests to, within the inference server container.
-  final pulumi.Input<Route>? scoringRoute;
+  final pulumi.Input<Route?>? scoringRoute;
   /// The route to check the startup of the application in the container.
-  final pulumi.Input<Route>? startupRoute;
+  final pulumi.Input<Route?>? startupRoute;
 
   /// Creates a new [InferenceContainerProperties].
   /// [livenessRoute] The route to check the liveness of the inference server container.

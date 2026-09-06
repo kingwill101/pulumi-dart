@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Non secret deployment resource id reference.
 class OpenDeploymentResourceReference {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The resource reference arm id type.
   /// Expected value is 'Open'.
   final pulumi.Input<String> idType;

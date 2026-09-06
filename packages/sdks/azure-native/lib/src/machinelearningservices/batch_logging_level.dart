@@ -1,12 +1,15 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Log verbosity for batch inferencing.
 /// Increasing verbosity order for logging is : Warning, Info and Debug.
 /// The default value is Info.
-enum BatchLoggingLevel {
+enum BatchLoggingLevel implements pulumi.PulumiEnum<String> {
   info("Info"),
   warning("Warning"),
   debug("Debug");
 
   const BatchLoggingLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static BatchLoggingLevel fromValue(String value) {

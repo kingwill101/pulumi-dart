@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AADProperties {
-  final pulumi.Input<String>? audience;
-  final pulumi.Input<String>? authority;
-  final pulumi.Input<String>? servicePrincipalClientId;
-  final pulumi.Input<String>? servicePrincipalObjectId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? audience;
+  final pulumi.Input<String?>? authority;
+  final pulumi.Input<String?>? servicePrincipalClientId;
+  final pulumi.Input<String?>? servicePrincipalObjectId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AADProperties].
   /// [audience] Optional.

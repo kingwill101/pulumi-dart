@@ -7,7 +7,7 @@ class ReportGrouping {
   /// The name of the column to group.
   final pulumi.Input<String> name;
   /// Has type of the column to group.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ReportGrouping].
   /// [name] The name of the column to group.
@@ -27,7 +27,7 @@ class ReportGrouping {
   factory ReportGrouping.fromMap(Map<String, dynamic> map) {
     return ReportGrouping(
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

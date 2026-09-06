@@ -6,7 +6,7 @@ import 'azure_monitor_alert_settings.dart';
 /// Monitoring Settings
 class MonitoringSettings {
   /// Settings for Azure Monitor based alerts
-  final pulumi.Input<AzureMonitorAlertSettings>? azureMonitorAlertSettings;
+  final pulumi.Input<AzureMonitorAlertSettings?>? azureMonitorAlertSettings;
 
   /// Creates a new [MonitoringSettings].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts

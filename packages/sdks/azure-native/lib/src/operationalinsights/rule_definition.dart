@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule definition parameters.
 class RuleDefinition {
   /// The minimum delay in seconds before bin processing.
-  final pulumi.Input<int>? binDelay;
+  final pulumi.Input<int?>? binDelay;
   /// Scheduled window in minutes. Allowed values: 20, 30, 60, 120, 180, 360, 720, 1440.
-  final pulumi.Input<int>? binSize;
+  final pulumi.Input<int?>? binSize;
   /// The start time (UTC) when Summary rule execution starts.
-  final pulumi.Input<String>? binStartTime;
+  final pulumi.Input<String?>? binStartTime;
   /// The destination table used for the Summary rule results.
-  final pulumi.Input<String>? destinationTable;
+  final pulumi.Input<String?>? destinationTable;
   /// Summary rule query.
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
-  final pulumi.Input<String>? timeSelector;
+  final pulumi.Input<dynamic>? timeSelector;
 
   /// Creates a new [RuleDefinition].
   /// [binDelay] The minimum delay in seconds before bin processing.
@@ -46,12 +46,12 @@ class RuleDefinition {
 
   factory RuleDefinition.fromMap(Map<String, dynamic> map) {
     return RuleDefinition(
-      binDelay: (() { final guardedValue = map['binDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      binSize: (() { final guardedValue = map['binSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      binDelay: (() { final guardedValue = map['binDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      binSize: (() { final guardedValue = map['binSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       binStartTime: (() { final guardedValue = map['binStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationTable: (() { final guardedValue = map['destinationTable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       query: (() { final guardedValue = map['query']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeSelector: (() { final guardedValue = map['timeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      timeSelector: (() { final guardedValue = map['timeSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

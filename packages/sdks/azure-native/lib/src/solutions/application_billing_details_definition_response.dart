@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed application billing details definition.
 class ApplicationBillingDetailsDefinitionResponse {
   /// The managed application resource usage Id.
-  final pulumi.Input<String>? resourceUsageId;
+  final pulumi.Input<String?>? resourceUsageId;
 
   /// Creates a new [ApplicationBillingDetailsDefinitionResponse].
   /// [resourceUsageId] The managed application resource usage Id.

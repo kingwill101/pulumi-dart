@@ -14,11 +14,11 @@ class GetMapDependencyViewForAllMachinesResult {
   /// The resource name of the operation status. It must match the last segment of 'id' field.
   final String? name;
   /// Properties for export dependencies. These should only be set if the status is Succeeded.
-  final GetDependencyViewForAllMachinesResultPropertiesResponse properties;
+  final GetDependencyViewForAllMachinesResultPropertiesResponse? properties;
   /// The start time of the operation.
   final String? startTime;
   /// The overall arm status of the operation. It has one of the terminal states - Succeeded/Failed/Canceled.
-  final String status;
+  final String? status;
 
   /// Creates a new [GetMapDependencyViewForAllMachinesResult].
   /// [endTime] The end time of the operation.
@@ -33,9 +33,9 @@ class GetMapDependencyViewForAllMachinesResult {
     this.error,
     this.id,
     this.name,
-    required this.properties,
+    this.properties,
     this.startTime,
-    required this.status,
+    this.status,
   });
 
   Map<String, dynamic> toMap() {
@@ -44,9 +44,9 @@ class GetMapDependencyViewForAllMachinesResult {
       'error': ?error?.toMap(),
       'id': ?id,
       'name': ?name,
-      'properties': properties.toMap(),
+      'properties': ?properties?.toMap(),
       'startTime': ?startTime,
-      'status': status,
+      'status': ?status,
     };
   }
 
@@ -56,9 +56,9 @@ class GetMapDependencyViewForAllMachinesResult {
       error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      properties: GetDependencyViewForAllMachinesResultPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return GetDependencyViewForAllMachinesResultPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

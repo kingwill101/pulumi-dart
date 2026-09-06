@@ -7,21 +7,21 @@ import 'tag.dart';
 /// Definition of awsEc2SecurityGroup
 class AwsEc2SecurityGroupProperties {
   /// &lt;p&gt;A description of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The ID of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// &lt;p&gt;The name of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// &lt;p&gt;The inbound rules associated with the security group.&lt;/p&gt;
-  final pulumi.Input<List<IpPermission>>? ipPermissions;
+  final pulumi.Input<List<IpPermission>?>? ipPermissions;
   /// &lt;p&gt;The outbound rules associated with the security group.&lt;/p&gt;
-  final pulumi.Input<List<IpPermission>>? ipPermissionsEgress;
+  final pulumi.Input<List<IpPermission>?>? ipPermissionsEgress;
   /// &lt;p&gt;The Amazon Web Services account ID of the owner of the security group.&lt;/p&gt;
-  final pulumi.Input<String>? ownerId;
+  final pulumi.Input<String?>? ownerId;
   /// &lt;p&gt;Any tags assigned to the security group.&lt;/p&gt;
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// &lt;p&gt;The ID of the VPC for the security group.&lt;/p&gt;
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsEc2SecurityGroupProperties].
   /// [description] &lt;p&gt;A description of the security group.&lt;/p&gt;

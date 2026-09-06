@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum MitigationInEffectEnum {
+enum MitigationInEffectEnum implements pulumi.PulumiEnum<String> {
   no("no"),
   yes("yes");
 
   const MitigationInEffectEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static MitigationInEffectEnum fromValue(String value) {

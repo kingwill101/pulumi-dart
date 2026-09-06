@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AzureDataLakeSectionResponse {
   /// The authority URL used for authentication.
-  final pulumi.Input<String>? authorityUrl;
+  final pulumi.Input<String?>? authorityUrl;
   /// The content of the certificate used for authentication.
-  final pulumi.Input<String>? certificate;
+  final pulumi.Input<String?>? certificate;
   /// The Client ID/Application ID
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The client secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// The Azure Data Lake credential type.
-  final pulumi.Input<String>? credentialType;
+  final pulumi.Input<String?>? credentialType;
   /// Is it using certificate to authenticate. If false then use client secret.
-  final pulumi.Input<bool>? isCertAuth;
+  final pulumi.Input<bool?>? isCertAuth;
   /// Resource Group.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The resource the service principal/app has access to.
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<String?>? resourceUri;
   /// Indicates which identity to use to authenticate service data access to customer's storage.
-  final pulumi.Input<String>? serviceDataAccessAuthIdentity;
+  final pulumi.Input<String?>? serviceDataAccessAuthIdentity;
   /// The Azure Data Lake store name.
-  final pulumi.Input<String>? storeName;
+  final pulumi.Input<String?>? storeName;
   /// Subscription ID.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The ID of the tenant the service principal/app belongs to.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The thumbprint of the certificate above.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [AzureDataLakeSectionResponse].
   /// [authorityUrl] The authority URL used for authentication.

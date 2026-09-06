@@ -7,37 +7,37 @@ import 'vmmserver_properties_response_credentials.dart';
 /// Result data returned by getVmmServer.
 class GetVmmServerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the connection status to the vmmServer.
-  final String connectionStatus;
+  final String? connectionStatus;
   /// Credentials to connect to VMMServer.
   final VMMServerPropertiesResponseCredentials? credentials;
   /// Gets or sets any error message if connection to vmmServer is having any issue.
-  final String errorMessage;
+  final String? errorMessage;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fqdn is the hostname/ip of the vmmServer.
-  final String fqdn;
+  final String? fqdn;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Gets or sets the location.
-  final String location;
+  final String? location;
   /// Resource Name
-  final String name;
+  final String? name;
   /// Port is the port on which the vmmServer is listening.
   final int? port;
   /// Gets or sets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The system data.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource Type
-  final String type;
+  final String? type;
   /// Unique ID of vmmServer.
-  final String uuid;
+  final String? uuid;
   /// Version is the version of the vmmSever.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetVmmServerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -57,63 +57,63 @@ class GetVmmServerResult {
   /// [uuid] Unique ID of vmmServer.
   /// [version] Version is the version of the vmmSever.
   const GetVmmServerResult({
-    required this.azureApiVersion,
-    required this.connectionStatus,
+    this.azureApiVersion,
+    this.connectionStatus,
     this.credentials,
-    required this.errorMessage,
-    required this.extendedLocation,
-    required this.fqdn,
-    required this.id,
-    required this.location,
-    required this.name,
+    this.errorMessage,
+    this.extendedLocation,
+    this.fqdn,
+    this.id,
+    this.location,
+    this.name,
     this.port,
-    required this.provisioningState,
-    required this.systemData,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uuid,
-    required this.version,
+    this.type,
+    this.uuid,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'connectionStatus': connectionStatus,
+      'azureApiVersion': ?azureApiVersion,
+      'connectionStatus': ?connectionStatus,
       'credentials': ?credentials?.toMap(),
-      'errorMessage': errorMessage,
-      'extendedLocation': extendedLocation.toMap(),
-      'fqdn': fqdn,
-      'id': id,
-      'location': location,
-      'name': name,
+      'errorMessage': ?errorMessage,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'fqdn': ?fqdn,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
       'port': ?port,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uuid': uuid,
-      'version': version,
+      'type': ?type,
+      'uuid': ?uuid,
+      'version': ?version,
     };
   }
 
   factory GetVmmServerResult.fromMap(Map<String, dynamic> map) {
     return GetVmmServerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionStatus: map['connectionStatus'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionStatus: (() { final guardedValue = map['connectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return VMMServerPropertiesResponseCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      errorMessage: map['errorMessage'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      fqdn: map['fqdn'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

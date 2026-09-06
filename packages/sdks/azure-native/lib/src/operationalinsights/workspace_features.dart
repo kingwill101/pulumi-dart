@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Workspace features.
 class WorkspaceFeatures {
   /// Dedicated LA cluster resourceId that is linked to the workspaces.
-  final pulumi.Input<String>? clusterResourceId;
+  final pulumi.Input<String?>? clusterResourceId;
   /// Disable Non-AAD based Auth.
-  final pulumi.Input<bool>? disableLocalAuth;
+  final pulumi.Input<bool?>? disableLocalAuth;
   /// Flag that indicate if data should be exported.
-  final pulumi.Input<bool>? enableDataExport;
+  final pulumi.Input<bool?>? enableDataExport;
   /// Flag that indicate which permission to use - resource or workspace or both.
-  final pulumi.Input<bool>? enableLogAccessUsingOnlyResourcePermissions;
+  final pulumi.Input<bool?>? enableLogAccessUsingOnlyResourcePermissions;
   /// Flag that describes if we want to remove the data after 30 days.
-  final pulumi.Input<bool>? immediatePurgeDataOn30Days;
+  final pulumi.Input<bool?>? immediatePurgeDataOn30Days;
 
   /// Creates a new [WorkspaceFeatures].
   /// [clusterResourceId] Dedicated LA cluster resourceId that is linked to the workspaces.

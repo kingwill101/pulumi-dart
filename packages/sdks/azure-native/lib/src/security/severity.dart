@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The severity level of the assessment
-enum Severity {
+enum Severity implements pulumi.PulumiEnum<String> {
   valueLow("Low"),
   valueMedium("Medium"),
   valueHigh("High");
 
   const Severity(this.wireValue);
+  @override
   final String wireValue;
 
   static Severity fromValue(String value) {

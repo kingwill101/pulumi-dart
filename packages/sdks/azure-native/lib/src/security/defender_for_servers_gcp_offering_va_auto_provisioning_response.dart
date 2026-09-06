@@ -6,9 +6,9 @@ import 'defender_for_servers_gcp_offering_va_auto_provisioning_configuration_res
 /// The Vulnerability Assessment autoprovisioning configuration
 class DefenderForServersGcpOfferingVaAutoProvisioningResponse {
   /// configuration for Vulnerability Assessment autoprovisioning
-  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningConfigurationResponse>? configuration;
+  final pulumi.Input<DefenderForServersGcpOfferingVaAutoProvisioningConfigurationResponse?>? configuration;
   /// Is Vulnerability Assessment auto provisioning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForServersGcpOfferingVaAutoProvisioningResponse].
   /// [configuration] configuration for Vulnerability Assessment autoprovisioning

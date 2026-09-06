@@ -7,9 +7,9 @@ import 'sub_resource.dart';
 /// A vpn client connection configuration for client connection configuration.
 class VngClientConnectionConfiguration {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of references to virtualNetworkGatewayPolicyGroups
   final pulumi.Input<List<SubResource>> virtualNetworkGatewayPolicyGroups;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.

@@ -11,16 +11,16 @@ class SingleServerConfigurationResponse {
   /// The application resource group where SAP system resources will be deployed.
   final pulumi.Input<String> appResourceGroup;
   /// The set of custom names to be used for underlying azure resources that are part of the SAP system.
-  final pulumi.Input<SingleServerFullResourceNamesResponse>? customResourceNames;
+  final pulumi.Input<SingleServerFullResourceNamesResponse?>? customResourceNames;
   /// The database type.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<String?>? databaseType;
   /// Gets or sets the disk configuration.
-  final pulumi.Input<DiskConfigurationResponse>? dbDiskConfiguration;
+  final pulumi.Input<DiskConfigurationResponse?>? dbDiskConfiguration;
   /// The type of SAP deployment, single server or Three tier.
   /// Expected value is 'SingleServer'.
   final pulumi.Input<String> deploymentType;
   /// Network configuration for the server
-  final pulumi.Input<NetworkConfigurationResponse>? networkConfiguration;
+  final pulumi.Input<NetworkConfigurationResponse?>? networkConfiguration;
   /// The subnet id.
   final pulumi.Input<String> subnetId;
   /// Gets or sets the virtual machine configuration.

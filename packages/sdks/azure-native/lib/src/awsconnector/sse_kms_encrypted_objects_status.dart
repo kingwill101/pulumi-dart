@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
-enum SseKmsEncryptedObjectsStatus {
+enum SseKmsEncryptedObjectsStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const SseKmsEncryptedObjectsStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static SseKmsEncryptedObjectsStatus fromValue(String value) {

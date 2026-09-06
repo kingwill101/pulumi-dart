@@ -3,16 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProductResponse {
-  final pulumi.Input<String>? description;
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<List<String>>? pricingTypes;
-  final pulumi.Input<String>? productType;
-  final pulumi.Input<String>? publisherDisplayName;
-  final pulumi.Input<double>? ratingAverage;
-  final pulumi.Input<String>? smallIconUri;
-  final pulumi.Input<List<String>>? storeFronts;
-  final pulumi.Input<String>? summary;
-  final pulumi.Input<String>? uniqueProductId;
+  final pulumi.Input<String?>? description;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<List<String>?>? pricingTypes;
+  final pulumi.Input<String?>? productType;
+  final pulumi.Input<String?>? publisherDisplayName;
+  final pulumi.Input<double?>? ratingAverage;
+  final pulumi.Input<String?>? smallIconUri;
+  final pulumi.Input<List<String>?>? storeFronts;
+  final pulumi.Input<String?>? summary;
+  final pulumi.Input<String?>? uniqueProductId;
 
   /// Creates a new [ProductResponse].
   /// [description] Optional.
@@ -60,7 +60,7 @@ class ProductResponse {
       pricingTypes: (() { final guardedValue = map['pricingTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       productType: (() { final guardedValue = map['productType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publisherDisplayName: (() { final guardedValue = map['publisherDisplayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ratingAverage: (() { final guardedValue = map['ratingAverage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      ratingAverage: (() { final guardedValue = map['ratingAverage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       smallIconUri: (() { final guardedValue = map['smallIconUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storeFronts: (() { final guardedValue = map['storeFronts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       summary: (() { final guardedValue = map['summary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

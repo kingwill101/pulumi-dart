@@ -6,9 +6,9 @@ import 'export_dataset_configuration.dart';
 /// The definition for data in the export.
 class ExportDataset {
   /// The export dataset configuration.
-  final pulumi.Input<ExportDatasetConfiguration>? configuration;
+  final pulumi.Input<ExportDatasetConfiguration?>? configuration;
   /// The granularity of rows in the export. Currently only 'Daily' is supported.
-  final pulumi.Input<String>? granularity;
+  final pulumi.Input<dynamic>? granularity;
 
   /// Creates a new [ExportDataset].
   /// [configuration] The export dataset configuration.
@@ -28,7 +28,7 @@ class ExportDataset {
   factory ExportDataset.fromMap(Map<String, dynamic> map) {
     return ExportDataset(
       configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportDatasetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      granularity: (() { final guardedValue = map['granularity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      granularity: (() { final guardedValue = map['granularity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'mongo_index_options.dart';
 /// Cosmos DB MongoDB collection index key
 class MongoIndex {
   /// Cosmos DB MongoDB collection index keys
-  final pulumi.Input<MongoIndexKeys>? key;
+  final pulumi.Input<MongoIndexKeys?>? key;
   /// Cosmos DB MongoDB collection index key options
-  final pulumi.Input<MongoIndexOptions>? options;
+  final pulumi.Input<MongoIndexOptions?>? options;
 
   /// Creates a new [MongoIndex].
   /// [key] Cosmos DB MongoDB collection index keys

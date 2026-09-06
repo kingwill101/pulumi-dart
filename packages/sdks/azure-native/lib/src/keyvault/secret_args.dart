@@ -13,9 +13,9 @@ class SecretArgs {
   /// The name of the Resource Group to which the vault belongs.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The tags that will be assigned to the secret.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the vault
   final pulumi.Input<String> vaultName;
 

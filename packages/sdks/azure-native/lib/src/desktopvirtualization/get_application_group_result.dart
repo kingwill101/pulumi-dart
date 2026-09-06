@@ -8,44 +8,44 @@ import 'system_data_response.dart';
 /// Result data returned by getApplicationGroup.
 class GetApplicationGroupResult {
   /// Resource Type of ApplicationGroup.
-  final String applicationGroupType;
+  final String? applicationGroupType;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Is cloud pc resource.
-  final bool cloudPcResource;
+  final bool? cloudPcResource;
   /// Description of ApplicationGroup.
   final String? description;
   /// The etag field is *not* required. If it is provided in the response body, it must also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
-  final String etag;
+  final String? etag;
   /// Friendly name of ApplicationGroup.
   final String? friendlyName;
   /// HostPool arm path of ApplicationGroup.
-  final String hostPoolArmPath;
+  final String? hostPoolArmPath;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   final ResourceModelWithAllowedPropertySetResponseIdentity? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
   final String? managedBy;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// ObjectId of ApplicationGroup. (internal use)
-  final String objectId;
+  final String? objectId;
   final ResourceModelWithAllowedPropertySetResponsePlan? plan;
   /// Boolean representing whether the applicationGroup is show in the feed.
   final bool? showInFeed;
   final ResourceModelWithAllowedPropertySetResponseSku? sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Workspace arm path of ApplicationGroup.
-  final String workspaceArmPath;
+  final String? workspaceArmPath;
 
   /// Creates a new [GetApplicationGroupResult].
   /// [applicationGroupType] Resource Type of ApplicationGroup.
@@ -70,78 +70,78 @@ class GetApplicationGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceArmPath] Workspace arm path of ApplicationGroup.
   const GetApplicationGroupResult({
-    required this.applicationGroupType,
-    required this.azureApiVersion,
-    required this.cloudPcResource,
+    this.applicationGroupType,
+    this.azureApiVersion,
+    this.cloudPcResource,
     this.description,
-    required this.etag,
+    this.etag,
     this.friendlyName,
-    required this.hostPoolArmPath,
-    required this.id,
+    this.hostPoolArmPath,
+    this.id,
     this.identity,
     this.kind,
-    required this.location,
+    this.location,
     this.managedBy,
-    required this.name,
-    required this.objectId,
+    this.name,
+    this.objectId,
     this.plan,
     this.showInFeed,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.workspaceArmPath,
+    this.type,
+    this.workspaceArmPath,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'applicationGroupType': applicationGroupType,
-      'azureApiVersion': azureApiVersion,
-      'cloudPcResource': cloudPcResource,
+      'applicationGroupType': ?applicationGroupType,
+      'azureApiVersion': ?azureApiVersion,
+      'cloudPcResource': ?cloudPcResource,
       'description': ?description,
-      'etag': etag,
+      'etag': ?etag,
       'friendlyName': ?friendlyName,
-      'hostPoolArmPath': hostPoolArmPath,
-      'id': id,
+      'hostPoolArmPath': ?hostPoolArmPath,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'kind': ?kind,
-      'location': location,
+      'location': ?location,
       'managedBy': ?managedBy,
-      'name': name,
-      'objectId': objectId,
+      'name': ?name,
+      'objectId': ?objectId,
       'plan': ?plan?.toMap(),
       'showInFeed': ?showInFeed,
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'workspaceArmPath': workspaceArmPath,
+      'type': ?type,
+      'workspaceArmPath': ?workspaceArmPath,
     };
   }
 
   factory GetApplicationGroupResult.fromMap(Map<String, dynamic> map) {
     return GetApplicationGroupResult(
-      applicationGroupType: map['applicationGroupType'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      cloudPcResource: map['cloudPcResource'] as bool,
+      applicationGroupType: (() { final guardedValue = map['applicationGroupType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cloudPcResource: (() { final guardedValue = map['cloudPcResource']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      hostPoolArmPath: map['hostPoolArmPath'] as String,
-      id: map['id'] as String,
+      hostPoolArmPath: (() { final guardedValue = map['hostPoolArmPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      objectId: map['objectId'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      objectId: (() { final guardedValue = map['objectId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponsePlan.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       showInFeed: (() { final guardedValue = map['showInFeed']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceModelWithAllowedPropertySetResponseSku.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      workspaceArmPath: map['workspaceArmPath'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      workspaceArmPath: (() { final guardedValue = map['workspaceArmPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

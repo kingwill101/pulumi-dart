@@ -7,13 +7,13 @@ import 'mhsmvirtual_network_rule_response.dart';
 /// A set of rules governing the network accessibility of a managed hsm pool.
 class MHSMNetworkRuleSetResponse {
   /// Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.
-  final pulumi.Input<String>? bypass;
+  final pulumi.Input<String?>? bypass;
   /// The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// The list of IP address rules.
-  final pulumi.Input<List<MHSMIPRuleResponse>>? ipRules;
+  final pulumi.Input<List<MHSMIPRuleResponse>?>? ipRules;
   /// The list of virtual network rules.
-  final pulumi.Input<List<MHSMVirtualNetworkRuleResponse>>? virtualNetworkRules;
+  final pulumi.Input<List<MHSMVirtualNetworkRuleResponse>?>? virtualNetworkRules;
 
   /// Creates a new [MHSMNetworkRuleSetResponse].
   /// [bypass] Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'.  If not specified the default is 'AzureServices'.

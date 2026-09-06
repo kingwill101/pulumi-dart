@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Key Vault container for a certificate that is purchased through Azure.
 class AppServiceCertificateResponse {
   /// Key Vault resource Id.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Key Vault secret name.
-  final pulumi.Input<String>? keyVaultSecretName;
+  final pulumi.Input<String?>? keyVaultSecretName;
   /// Status of the Key Vault secret.
   final pulumi.Input<String> provisioningState;
 

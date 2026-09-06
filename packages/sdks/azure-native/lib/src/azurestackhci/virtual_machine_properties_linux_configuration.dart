@@ -6,11 +6,11 @@ import 'virtual_machine_properties_ssh.dart';
 /// LinuxConfiguration - linux specific configuration values for the virtual machine
 class VirtualMachinePropertiesLinuxConfiguration {
   /// DisablePasswordAuthentication - whether password authentication should be disabled
-  final pulumi.Input<bool>? disablePasswordAuthentication;
+  final pulumi.Input<bool?>? disablePasswordAuthentication;
   /// Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine creation process.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// SSH - contains settings related to ssh configuration
-  final pulumi.Input<VirtualMachinePropertiesSsh>? ssh;
+  final pulumi.Input<VirtualMachinePropertiesSsh?>? ssh;
 
   /// Creates a new [VirtualMachinePropertiesLinuxConfiguration].
   /// [disablePasswordAuthentication] DisablePasswordAuthentication - whether password authentication should be disabled

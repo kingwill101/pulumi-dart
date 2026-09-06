@@ -7,7 +7,7 @@ class MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
   /// The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
   final pulumi.Input<String> lookbackPeriod;
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed].
   /// [lookbackPeriod] The lookback period for the feed to be imported. The date-time to begin importing the feed from, for example: 2024-01-01T00:00:00.000Z.
@@ -27,7 +27,7 @@ class MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed {
   factory MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed.fromMap(Map<String, dynamic> map) {
     return MSTIDataConnectorDataTypesMicrosoftEmergingThreatFeed(
       lookbackPeriod: pulumi.Input.fromValue(map['lookbackPeriod'] as String),
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

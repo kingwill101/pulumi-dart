@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application gateway probe health response match.
 class ApplicationGatewayProbeHealthResponseMatchResponse {
   /// Body that must be contained in the health response. Default value is empty.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Allowed ranges of healthy status codes. Default range of healthy status codes is 200-399.
-  final pulumi.Input<List<String>>? statusCodes;
+  final pulumi.Input<List<String>?>? statusCodes;
 
   /// Creates a new [ApplicationGatewayProbeHealthResponseMatchResponse].
   /// [body] Body that must be contained in the health response. Default value is empty.

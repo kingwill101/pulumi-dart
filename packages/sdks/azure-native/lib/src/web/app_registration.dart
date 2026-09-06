@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the app registration for providers that have app ids and app secrets
 class AppRegistration {
   /// The App ID of the app used for login.
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// The app setting name that contains the app secret.
-  final pulumi.Input<String>? appSecretSettingName;
+  final pulumi.Input<String?>? appSecretSettingName;
 
   /// Creates a new [AppRegistration].
   /// [appId] The App ID of the app used for login.

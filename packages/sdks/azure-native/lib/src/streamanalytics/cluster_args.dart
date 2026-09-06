@@ -9,15 +9,15 @@ import 'cluster_sku.dart';
 /// {@macro pulumi_streamanalytics_cluster_args_doc}
 class ClusterArgs {
   /// The name of the cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
-  final pulumi.Input<ClusterSku>? sku;
+  final pulumi.Input<ClusterSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
   /// [clusterName] The name of the cluster.

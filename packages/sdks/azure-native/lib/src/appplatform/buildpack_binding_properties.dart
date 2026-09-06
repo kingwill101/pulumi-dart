@@ -6,9 +6,9 @@ import 'buildpack_binding_launch_properties.dart';
 /// Properties of a buildpack binding
 class BuildpackBindingProperties {
   /// Buildpack Binding Type
-  final pulumi.Input<String>? bindingType;
+  final pulumi.Input<dynamic>? bindingType;
   /// The object describes the buildpack binding launch properties
-  final pulumi.Input<BuildpackBindingLaunchProperties>? launchProperties;
+  final pulumi.Input<BuildpackBindingLaunchProperties?>? launchProperties;
 
   /// Creates a new [BuildpackBindingProperties].
   /// [bindingType] Buildpack Binding Type
@@ -27,7 +27,7 @@ class BuildpackBindingProperties {
 
   factory BuildpackBindingProperties.fromMap(Map<String, dynamic> map) {
     return BuildpackBindingProperties(
-      bindingType: (() { final guardedValue = map['bindingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      bindingType: (() { final guardedValue = map['bindingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       launchProperties: (() { final guardedValue = map['launchProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BuildpackBindingLaunchProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

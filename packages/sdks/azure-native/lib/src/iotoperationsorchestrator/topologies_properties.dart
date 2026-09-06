@@ -6,7 +6,7 @@ import 'binding_properties.dart';
 /// Defines a desired runtime component.
 class TopologiesProperties {
   /// bindings description.
-  final pulumi.Input<List<BindingProperties>>? bindings;
+  final pulumi.Input<List<BindingProperties>?>? bindings;
 
   /// Creates a new [TopologiesProperties].
   /// [bindings] bindings description.

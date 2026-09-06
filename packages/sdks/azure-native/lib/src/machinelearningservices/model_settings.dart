@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ModelSettings {
   /// The unique model identifier that this ServerlessEndpoint should provision.
-  final pulumi.Input<String>? modelId;
+  final pulumi.Input<String?>? modelId;
 
   /// Creates a new [ModelSettings].
   /// [modelId] The unique model identifier that this ServerlessEndpoint should provision.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The native cloud connection configuration
 class CspmMonitorAwsOfferingNativeCloudConnection {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [CspmMonitorAwsOfferingNativeCloudConnection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// placement policy azure hybrid benefit opt-in type
-enum AzureHybridBenefitType {
+enum AzureHybridBenefitType implements pulumi.PulumiEnum<String> {
   sqlHost("SqlHost"),
   none("None");
 
   const AzureHybridBenefitType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureHybridBenefitType fromValue(String value) {

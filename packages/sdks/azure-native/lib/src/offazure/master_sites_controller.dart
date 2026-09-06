@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'master_sites_controller_args.dart';
+import 'private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// A MasterSite
@@ -217,7 +218,7 @@ class MasterSitesController extends pulumi.CustomResource {
   /// Gets the nested sites under Master Site.
   late final pulumi.Output<List<String>> nestedSites;
   /// Gets the private endpoint connections.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// provisioning state enum
   late final pulumi.Output<String> provisioningState;
   /// Gets or sets the state of public network access.
@@ -252,13 +253,37 @@ class MasterSitesController extends pulumi.CustomResource {
     customerStorageAccountArmId = registerOutput<String?>('customerStorageAccountArmId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    nestedSites = registerOutput<List<String>>('nestedSites');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    nestedSites = registerOutput<List<String>>('nestedSites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    sites = registerOutput<List<String>?>('sites');
+    sites = registerOutput<List<String>?>('sites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MasterSitesController] resource.
+  MasterSitesController.reference(String urn)
+    : super(
+        'azure-native:offazure:MasterSitesController',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowMultipleSites = registerOutput<bool?>('allowMultipleSites');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customerStorageAccountArmId = registerOutput<String?>('customerStorageAccountArmId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nestedSites = registerOutput<List<String>>('nestedSites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    sites = registerOutput<List<String>?>('sites', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

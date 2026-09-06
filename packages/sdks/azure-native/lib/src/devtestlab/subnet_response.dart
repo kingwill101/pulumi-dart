@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subnet information.
 class SubnetResponse {
   /// The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).
-  final pulumi.Input<String>? allowPublicIp;
+  final pulumi.Input<String?>? allowPublicIp;
   /// The name of the subnet as seen in the lab.
-  final pulumi.Input<String>? labSubnetName;
+  final pulumi.Input<String?>? labSubnetName;
   /// The resource ID of the subnet.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [SubnetResponse].
   /// [allowPublicIp] The permission policy of the subnet for allowing public IP addresses (i.e. Allow, Deny)).

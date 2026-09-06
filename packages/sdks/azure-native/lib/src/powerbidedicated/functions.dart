@@ -22,6 +22,17 @@ Future<GetAutoScaleVCoreResult> getAutoScaleVCore(
   return GetAutoScaleVCoreResult.fromMap(result);
 }
 
+pulumi.Output<GetAutoScaleVCoreResult> getAutoScaleVCoreOutput(
+  GetAutoScaleVCoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:powerbidedicated:getAutoScaleVCore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoScaleVCoreResult.fromMap);
+}
+
 /// Gets details about the specified dedicated capacity.
 ///
 /// Uses Azure REST API version 2021-01-01.
@@ -38,4 +49,15 @@ Future<GetCapacityDetailsResult> getCapacityDetails(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCapacityDetailsResult.fromMap(result);
+}
+
+pulumi.Output<GetCapacityDetailsResult> getCapacityDetailsOutput(
+  GetCapacityDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:powerbidedicated:getCapacityDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityDetailsResult.fromMap);
 }

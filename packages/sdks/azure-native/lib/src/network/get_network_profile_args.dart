@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_network_profile_args_doc}
 class GetNetworkProfileArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the public IP prefix.
   final pulumi.Input<String> networkProfileName;
   /// The name of the resource group.

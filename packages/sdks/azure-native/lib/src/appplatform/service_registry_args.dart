@@ -12,7 +12,7 @@ class ServiceRegistryArgs {
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// The name of Service Registry.
-  final pulumi.Input<String>? serviceRegistryName;
+  final pulumi.Input<String?>? serviceRegistryName;
 
   /// Creates a new [ServiceRegistryArgs].
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

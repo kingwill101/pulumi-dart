@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceLifecycleTypeEnumValue
 class InstanceLifecycleTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [InstanceLifecycleTypeEnumValueResponse].
   /// [value] Property value

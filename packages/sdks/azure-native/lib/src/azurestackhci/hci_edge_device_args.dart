@@ -9,12 +9,12 @@ import 'hci_edge_device_properties.dart';
 /// {@macro pulumi_azurestackhci_hci_edge_device_args_doc}
 class HciEdgeDeviceArgs {
   /// Name of Device
-  final pulumi.Input<String>? edgeDeviceName;
+  final pulumi.Input<String?>? edgeDeviceName;
   /// Edge device kind.
   /// Expected value is 'HCI'.
   final pulumi.Input<String> kind;
   /// properties for Arc-enabled edge device with HCI OS.
-  final pulumi.Input<HciEdgeDeviceProperties>? properties;
+  final pulumi.Input<HciEdgeDeviceProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

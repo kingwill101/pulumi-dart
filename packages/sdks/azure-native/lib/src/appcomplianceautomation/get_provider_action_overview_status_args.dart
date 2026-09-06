@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_appcomplianceautomation_get_provider_action_overview_status_args_doc}
 class GetProviderActionOverviewStatusArgs {
   /// The resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GetProviderActionOverviewStatusArgs].
   /// [type] The resource type.

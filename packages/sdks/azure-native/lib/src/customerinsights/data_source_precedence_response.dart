@@ -13,7 +13,7 @@ class DataSourcePrecedenceResponse {
   /// The data source name
   final pulumi.Input<String> name;
   /// the precedence value.
-  final pulumi.Input<int>? precedence;
+  final pulumi.Input<int?>? precedence;
   /// The data source status.
   final pulumi.Input<String> status;
 
@@ -48,9 +48,9 @@ class DataSourcePrecedenceResponse {
     return DataSourcePrecedenceResponse(
       dataSourceReferenceId: pulumi.Input.fromValue(map['dataSourceReferenceId'] as String),
       dataSourceType: pulumi.Input.fromValue(map['dataSourceType'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      precedence: (() { final guardedValue = map['precedence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }

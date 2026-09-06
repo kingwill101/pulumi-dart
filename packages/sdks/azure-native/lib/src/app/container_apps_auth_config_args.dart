@@ -14,21 +14,21 @@ import 'login.dart';
 /// {@macro pulumi_app_container_apps_auth_config_args_doc}
 class ContainerAppsAuthConfigArgs {
   /// Name of the Container App AuthConfig.
-  final pulumi.Input<String>? authConfigName;
+  final pulumi.Input<String?>? authConfigName;
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
   /// The configuration settings of the secrets references of encryption key and signing key for ContainerApp Service Authentication/Authorization.
-  final pulumi.Input<EncryptionSettings>? encryptionSettings;
+  final pulumi.Input<EncryptionSettings?>? encryptionSettings;
   /// The configuration settings that determines the validation flow of users using  Service Authentication/Authorization.
-  final pulumi.Input<GlobalValidation>? globalValidation;
+  final pulumi.Input<GlobalValidation?>? globalValidation;
   /// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
-  final pulumi.Input<HttpSettings>? httpSettings;
+  final pulumi.Input<HttpSettings?>? httpSettings;
   /// The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-  final pulumi.Input<IdentityProviders>? identityProviders;
+  final pulumi.Input<IdentityProviders?>? identityProviders;
   /// The configuration settings of the login flow of users using ContainerApp Service Authentication/Authorization.
-  final pulumi.Input<Login>? login;
+  final pulumi.Input<Login?>? login;
   /// The configuration settings of the platform of ContainerApp Service Authentication/Authorization.
-  final pulumi.Input<AuthPlatform>? platform;
+  final pulumi.Input<AuthPlatform?>? platform;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

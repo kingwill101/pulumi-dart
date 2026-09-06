@@ -6,7 +6,7 @@ import 'backend_subnet_configuration_response.dart';
 /// Information regarding how the gateway should integrate with backend systems.
 class BackendConfigurationResponse {
   /// The default hostname of the data-plane gateway to which requests can be sent.
-  final pulumi.Input<BackendSubnetConfigurationResponse>? subnet;
+  final pulumi.Input<BackendSubnetConfigurationResponse?>? subnet;
 
   /// Creates a new [BackendConfigurationResponse].
   /// [subnet] The default hostname of the data-plane gateway to which requests can be sent.

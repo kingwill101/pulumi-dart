@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the uri of a disk.
 class VirtualHardDiskResponse {
   /// Specifies the virtual hard disk's uri.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [VirtualHardDiskResponse].
   /// [uri] Specifies the virtual hard disk's uri.

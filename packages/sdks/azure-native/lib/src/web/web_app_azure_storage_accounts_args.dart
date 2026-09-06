@@ -9,11 +9,11 @@ import 'azure_storage_info_value.dart';
 /// {@macro pulumi_web_web_app_azure_storage_accounts_args_doc}
 class WebAppAzureStorageAccountsArgs {
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Azure storage accounts.
-  final pulumi.Input<Map<String, AzureStorageInfoValue>>? properties;
+  final pulumi.Input<Map<String, AzureStorageInfoValue>?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

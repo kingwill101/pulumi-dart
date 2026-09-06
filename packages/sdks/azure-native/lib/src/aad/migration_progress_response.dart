@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Migration Progress
 class MigrationProgressResponse {
   /// Completion Percentage
-  final pulumi.Input<double>? completionPercentage;
+  final pulumi.Input<double?>? completionPercentage;
   /// Progress Message
-  final pulumi.Input<String>? progressMessage;
+  final pulumi.Input<String?>? progressMessage;
 
   /// Creates a new [MigrationProgressResponse].
   /// [completionPercentage] Completion Percentage
@@ -26,7 +26,7 @@ class MigrationProgressResponse {
 
   factory MigrationProgressResponse.fromMap(Map<String, dynamic> map) {
     return MigrationProgressResponse(
-      completionPercentage: (() { final guardedValue = map['completionPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      completionPercentage: (() { final guardedValue = map['completionPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       progressMessage: (() { final guardedValue = map['progressMessage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

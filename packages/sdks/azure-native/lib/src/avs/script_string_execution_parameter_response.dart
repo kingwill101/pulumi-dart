@@ -10,7 +10,7 @@ class ScriptStringExecutionParameterResponse {
   /// Expected value is 'Value'.
   final pulumi.Input<String> type;
   /// The value for the passed parameter
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ScriptStringExecutionParameterResponse].
   /// [name] The parameter name

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Import source related properties.
 class ImportSourceProperties {
   /// Relative path of data directory in storage.
-  final pulumi.Input<String>? dataDirPath;
+  final pulumi.Input<String?>? dataDirPath;
   /// Sas token for accessing source storage. Read and list permissions are required for sas token.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Storage type of import source.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<dynamic>? storageType;
   /// Uri of the import source storage.
-  final pulumi.Input<String>? storageUrl;
+  final pulumi.Input<String?>? storageUrl;
 
   /// Creates a new [ImportSourceProperties].
   /// [dataDirPath] Relative path of data directory in storage.
@@ -38,7 +38,7 @@ class ImportSourceProperties {
     return ImportSourceProperties(
       dataDirPath: (() { final guardedValue = map['dataDirPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sasToken: (() { final guardedValue = map['sasToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       storageUrl: (() { final guardedValue = map['storageUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

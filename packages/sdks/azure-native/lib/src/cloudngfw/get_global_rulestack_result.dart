@@ -9,35 +9,35 @@ class GetGlobalRulestackResult {
   /// subscription scope of global rulestack
   final List<String>? associatedSubscriptions;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Mode for default rules creation
   final String? defaultMode;
   /// rulestack description
   final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedIdentityPropertiesResponse? identity;
   /// Global Location
-  final String location;
+  final String? location;
   /// minimum version
   final String? minAppIdVersion;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// PanEtag info
   final String? panEtag;
   /// Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
   final String? panLocation;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Rulestack Type
   final String? scope;
   /// Security Profile
   final SecurityServicesResponse? securityServices;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGlobalRulestackResult].
   /// [associatedSubscriptions] subscription scope of global rulestack
@@ -58,62 +58,62 @@ class GetGlobalRulestackResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGlobalRulestackResult({
     this.associatedSubscriptions,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.defaultMode,
     this.description,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
+    this.location,
     this.minAppIdVersion,
-    required this.name,
+    this.name,
     this.panEtag,
     this.panLocation,
-    required this.provisioningState,
+    this.provisioningState,
     this.scope,
     this.securityServices,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'associatedSubscriptions': ?associatedSubscriptions,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'defaultMode': ?defaultMode,
       'description': ?description,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
+      'location': ?location,
       'minAppIdVersion': ?minAppIdVersion,
-      'name': name,
+      'name': ?name,
       'panEtag': ?panEtag,
       'panLocation': ?panLocation,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'scope': ?scope,
       'securityServices': ?securityServices?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetGlobalRulestackResult(
       associatedSubscriptions: (() { final guardedValue = map['associatedSubscriptions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       defaultMode: (() { final guardedValue = map['defaultMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedIdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       minAppIdVersion: (() { final guardedValue = map['minAppIdVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       panEtag: (() { final guardedValue = map['panEtag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       panLocation: (() { final guardedValue = map['panLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityServices: (() { final guardedValue = map['securityServices']; if (guardedValue == null) return null; return SecurityServicesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

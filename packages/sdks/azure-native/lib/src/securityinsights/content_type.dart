@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The content type of a source control path.
-enum ContentType {
+enum ContentType implements pulumi.PulumiEnum<String> {
   analyticsRule("AnalyticsRule"),
   automationRule("AutomationRule"),
   huntingQuery("HuntingQuery"),
@@ -8,6 +10,7 @@ enum ContentType {
   workbook("Workbook");
 
   const ContentType(this.wireValue);
+  @override
   final String wireValue;
 
   static ContentType fromValue(String value) {

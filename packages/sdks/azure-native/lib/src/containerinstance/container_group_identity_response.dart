@@ -10,9 +10,9 @@ class ContainerGroupIdentityResponse {
   /// The tenant id associated with the container group. This property will only be provided for a system assigned identity.
   final pulumi.Input<String> tenantId;
   /// The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The list of user identities associated with the container group.
-  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentitiesResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ContainerGroupIdentityResponse].
   /// [principalId] The principal id of the container group identity. This property will only be provided for a system assigned identity.

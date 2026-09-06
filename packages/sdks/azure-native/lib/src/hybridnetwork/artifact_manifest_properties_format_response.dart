@@ -8,7 +8,7 @@ class ArtifactManifestPropertiesFormatResponse {
   /// The artifact manifest state.
   final pulumi.Input<String> artifactManifestState;
   /// The artifacts list.
-  final pulumi.Input<List<ManifestArtifactFormatResponse>>? artifacts;
+  final pulumi.Input<List<ManifestArtifactFormatResponse>?>? artifacts;
   /// The provisioning state of the ArtifactManifest resource.
   final pulumi.Input<String> provisioningState;
 

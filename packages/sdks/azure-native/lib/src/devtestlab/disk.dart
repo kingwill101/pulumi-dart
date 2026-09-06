@@ -239,7 +239,35 @@ class Disk extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     storageAccountId = registerOutput<String?>('storageAccountId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+  }
+
+  /// Creates a typed reference to an existing [Disk] resource.
+  Disk.reference(String urn)
+    : super(
+        'azure-native:devtestlab:Disk',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    diskBlobName = registerOutput<String?>('diskBlobName');
+    diskSizeGiB = registerOutput<int?>('diskSizeGiB');
+    diskType = registerOutput<String?>('diskType');
+    diskUri = registerOutput<String?>('diskUri');
+    hostCaching = registerOutput<String?>('hostCaching');
+    leasedByLabVmId = registerOutput<String?>('leasedByLabVmId');
+    location = registerOutput<String?>('location');
+    managedDiskId = registerOutput<String?>('managedDiskId');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageAccountId = registerOutput<String?>('storageAccountId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
   }

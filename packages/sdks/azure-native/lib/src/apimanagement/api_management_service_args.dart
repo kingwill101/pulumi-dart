@@ -17,39 +17,39 @@ import 'virtual_network_configuration.dart';
 /// {@macro pulumi_apimanagement_api_management_service_args_doc}
 class ApiManagementServiceArgs {
   /// Additional datacenter locations of the API Management service.
-  final pulumi.Input<List<AdditionalLocation>>? additionalLocations;
+  final pulumi.Input<List<AdditionalLocation>?>? additionalLocations;
   /// Control Plane Apis version constraint for the API Management service.
-  final pulumi.Input<ApiVersionConstraint>? apiVersionConstraint;
+  final pulumi.Input<ApiVersionConstraint?>? apiVersionConstraint;
   /// List of Certificates that need to be installed in the API Management service. Max supported certificates that can be installed is 10.
-  final pulumi.Input<List<CertificateConfiguration>>? certificates;
+  final pulumi.Input<List<CertificateConfiguration>?>? certificates;
   /// Configuration API configuration of the API Management service.
-  final pulumi.Input<ConfigurationApi>? configurationApi;
+  final pulumi.Input<ConfigurationApi?>? configurationApi;
   /// Custom properties of the API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168` will disable the cipher TLS_RSA_WITH_3DES_EDE_CBC_SHA for all TLS(1.0, 1.1 and 1.2).&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11` can be used to disable just TLS 1.1.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10` can be used to disable TLS 1.0 on an API Management service.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11` can be used to disable just TLS 1.1 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10` can be used to disable TLS 1.0 for communications with backends.&lt;/br&gt;Setting `Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2` can be used to enable HTTP2 protocol on an API Management service.&lt;/br&gt;Not specifying any of these properties on PATCH operation will reset omitted properties' values to their defaults. For all the settings except Http2 the default value is `True` if the service was created on or before April 1, 2018 and `False` otherwise. Http2 setting's default value is `False`.&lt;/br&gt;&lt;/br&gt;You can disable any of the following ciphers by using settings `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.[cipher_name]`: TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, TLS_RSA_WITH_AES_128_GCM_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA256, TLS_RSA_WITH_AES_128_CBC_SHA256, TLS_RSA_WITH_AES_256_CBC_SHA, TLS_RSA_WITH_AES_128_CBC_SHA. For example, `Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256`:`false`. The default value is `true` for them.&lt;/br&gt; Note: The following ciphers can't be disabled since they are required by internal platform components: TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-  final pulumi.Input<Map<String, String>>? customProperties;
+  final pulumi.Input<Map<String, String>?>? customProperties;
   /// Status of developer portal in this API Management service.
-  final pulumi.Input<String>? developerPortalStatus;
+  final pulumi.Input<dynamic>? developerPortalStatus;
   /// Property only valid for an Api Management service deployed in multiple locations. This can be used to disable the gateway in master region.
-  final pulumi.Input<bool>? disableGateway;
+  final pulumi.Input<bool?>? disableGateway;
   /// Property only meant to be used for Consumption SKU Service. This enforces a client certificate to be presented on each request to the gateway. This also enables the ability to authenticate the certificate in the policy on the gateway.
-  final pulumi.Input<bool>? enableClientCertificate;
+  final pulumi.Input<bool?>? enableClientCertificate;
   /// Custom hostname configuration of the API Management service.
-  final pulumi.Input<List<HostnameConfiguration>>? hostnameConfigurations;
+  final pulumi.Input<List<HostnameConfiguration>?>? hostnameConfigurations;
   /// Managed service identity of the Api Management service.
-  final pulumi.Input<ApiManagementServiceIdentity>? identity;
+  final pulumi.Input<ApiManagementServiceIdentity?>? identity;
   /// Status of legacy portal in the API Management service.
-  final pulumi.Input<String>? legacyPortalStatus;
+  final pulumi.Input<dynamic>? legacyPortalStatus;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Property can be used to enable NAT Gateway for this API Management service.
-  final pulumi.Input<String>? natGatewayState;
+  final pulumi.Input<dynamic>? natGatewayState;
   /// Email address from which the notification will be sent.
-  final pulumi.Input<String>? notificationSenderEmail;
+  final pulumi.Input<String?>? notificationSenderEmail;
   /// List of Private Endpoint Connections of this service.
-  final pulumi.Input<List<RemotePrivateEndpointConnectionWrapper>>? privateEndpointConnections;
+  final pulumi.Input<List<RemotePrivateEndpointConnectionWrapper>?>? privateEndpointConnections;
   /// Public Standard SKU IP V4 based IP address to be associated with Virtual Network deployed service in the region. Supported only for Developer and Premium SKU being deployed in Virtual Network.
-  final pulumi.Input<String>? publicIpAddressId;
+  final pulumi.Input<String?>? publicIpAddressId;
   /// Whether or not public endpoint access is allowed for this API Management service.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method. Default value is 'Enabled'
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Publisher email.
   final pulumi.Input<String> publisherEmail;
   /// Publisher name.
@@ -57,19 +57,19 @@ class ApiManagementServiceArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Undelete Api Management Service if it was previously soft-deleted. If this flag is specified and set to True all other properties will be ignored.
-  final pulumi.Input<bool>? restore;
+  final pulumi.Input<bool?>? restore;
   /// The name of the API Management service.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// SKU properties of the API Management service.
   final pulumi.Input<ApiManagementServiceSkuProperties> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Virtual network configuration of the API Management service.
-  final pulumi.Input<VirtualNetworkConfiguration>? virtualNetworkConfiguration;
+  final pulumi.Input<VirtualNetworkConfiguration?>? virtualNetworkConfiguration;
   /// The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
-  final pulumi.Input<String>? virtualNetworkType;
+  final pulumi.Input<dynamic>? virtualNetworkType;
   /// A list of availability zones denoting where the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ApiManagementServiceArgs].
   /// [additionalLocations] Additional datacenter locations of the API Management service.
@@ -99,20 +99,20 @@ class ApiManagementServiceArgs {
   /// [virtualNetworkConfiguration] Virtual network configuration of the API Management service.
   /// [virtualNetworkType] The type of VPN in which API Management service needs to be configured in. None (Default Value) means the API Management service is not part of any Virtual Network, External means the API Management deployment is set up inside a Virtual Network having an Internet Facing Endpoint, and Internal means that API Management deployment is setup inside a Virtual Network having an Intranet Facing Endpoint only.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  const ApiManagementServiceArgs({
+  ApiManagementServiceArgs({
     this.additionalLocations,
     this.apiVersionConstraint,
     this.certificates,
     this.configurationApi,
     this.customProperties,
-    this.developerPortalStatus,
-    this.disableGateway,
-    this.enableClientCertificate,
+    pulumi.Input<dynamic>? developerPortalStatus,
+    pulumi.Input<bool?>? disableGateway,
+    pulumi.Input<bool?>? enableClientCertificate,
     this.hostnameConfigurations,
     this.identity,
-    this.legacyPortalStatus,
+    pulumi.Input<dynamic>? legacyPortalStatus,
     this.location,
-    this.natGatewayState,
+    pulumi.Input<dynamic>? natGatewayState,
     this.notificationSenderEmail,
     this.privateEndpointConnections,
     this.publicIpAddressId,
@@ -120,14 +120,14 @@ class ApiManagementServiceArgs {
     required this.publisherEmail,
     required this.publisherName,
     required this.resourceGroupName,
-    this.restore,
+    pulumi.Input<bool?>? restore,
     this.serviceName,
     required this.sku,
     this.tags,
     this.virtualNetworkConfiguration,
-    this.virtualNetworkType,
+    pulumi.Input<dynamic>? virtualNetworkType,
     this.zones,
-  });
+  }) : developerPortalStatus = developerPortalStatus ?? pulumi.Input.fromValue('Enabled'), disableGateway = disableGateway ?? pulumi.Input.fromValue(false), enableClientCertificate = enableClientCertificate ?? pulumi.Input.fromValue(false), legacyPortalStatus = legacyPortalStatus ?? pulumi.Input.fromValue('Enabled'), natGatewayState = natGatewayState ?? pulumi.Input.fromValue('Disabled'), restore = restore ?? pulumi.Input.fromValue(false), virtualNetworkType = virtualNetworkType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -168,18 +168,18 @@ class ApiManagementServiceArgs {
       certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertificateConfiguration>(guardedValue, (value) => CertificateConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       configurationApi: (() { final guardedValue = map['configurationApi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationApi.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      developerPortalStatus: (() { final guardedValue = map['developerPortalStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      developerPortalStatus: (() { final guardedValue = map['developerPortalStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disableGateway: (() { final guardedValue = map['disableGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableClientCertificate: (() { final guardedValue = map['enableClientCertificate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       hostnameConfigurations: (() { final guardedValue = map['hostnameConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HostnameConfiguration>(guardedValue, (value) => HostnameConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApiManagementServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      legacyPortalStatus: (() { final guardedValue = map['legacyPortalStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      legacyPortalStatus: (() { final guardedValue = map['legacyPortalStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      natGatewayState: (() { final guardedValue = map['natGatewayState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      natGatewayState: (() { final guardedValue = map['natGatewayState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       notificationSenderEmail: (() { final guardedValue = map['notificationSenderEmail']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RemotePrivateEndpointConnectionWrapper>(guardedValue, (value) => RemotePrivateEndpointConnectionWrapper.fromMap((value as Map).cast<String, dynamic>()))); })(),
       publicIpAddressId: (() { final guardedValue = map['publicIpAddressId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publisherEmail: pulumi.Input.fromValue(map['publisherEmail'] as String),
       publisherName: pulumi.Input.fromValue(map['publisherName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
@@ -188,7 +188,7 @@ class ApiManagementServiceArgs {
       sku: pulumi.Input.fromValue(ApiManagementServiceSkuProperties.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualNetworkConfiguration: (() { final guardedValue = map['virtualNetworkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

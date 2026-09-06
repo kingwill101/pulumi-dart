@@ -8,11 +8,11 @@ import 'volume.dart';
 /// Container Apps Job versioned application definition. Defines the desired state of an immutable revision. Any changes to this section Will result in a new revision being created
 class JobTemplate {
   /// List of container definitions for the Container App.
-  final pulumi.Input<List<Container>>? containers;
+  final pulumi.Input<List<Container>?>? containers;
   /// List of specialized containers that run before app containers.
-  final pulumi.Input<List<InitContainer>>? initContainers;
+  final pulumi.Input<List<InitContainer>?>? initContainers;
   /// List of volume definitions for the Container App.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
 
   /// Creates a new [JobTemplate].
   /// [containers] List of container definitions for the Container App.

@@ -9,13 +9,13 @@ class LdapsSettingsResponse {
   /// Thumbprint of configure ldaps certificate.
   final pulumi.Input<String> certificateThumbprint;
   /// A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
-  final pulumi.Input<String>? externalAccess;
+  final pulumi.Input<String?>? externalAccess;
   /// A flag to determine whether or not Secure LDAP is enabled or disabled.
-  final pulumi.Input<String>? ldaps;
+  final pulumi.Input<String?>? ldaps;
   /// The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
-  final pulumi.Input<String>? pfxCertificate;
+  final pulumi.Input<String?>? pfxCertificate;
   /// The password to decrypt the provided Secure LDAP certificate pfx file.
-  final pulumi.Input<String>? pfxCertificatePassword;
+  final pulumi.Input<String?>? pfxCertificatePassword;
   /// Public certificate used to configure secure ldap.
   final pulumi.Input<String> publicCertificate;
 
@@ -27,15 +27,15 @@ class LdapsSettingsResponse {
   /// [pfxCertificate] The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
   /// [pfxCertificatePassword] The password to decrypt the provided Secure LDAP certificate pfx file.
   /// [publicCertificate] Public certificate used to configure secure ldap.
-  const LdapsSettingsResponse({
+  LdapsSettingsResponse({
     required this.certificateNotAfter,
     required this.certificateThumbprint,
-    this.externalAccess,
-    this.ldaps,
+    pulumi.Input<String?>? externalAccess,
+    pulumi.Input<String?>? ldaps,
     this.pfxCertificate,
     this.pfxCertificatePassword,
     required this.publicCertificate,
-  });
+  }) : externalAccess = externalAccess ?? pulumi.Input.fromValue('Disabled'), ldaps = ldaps ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

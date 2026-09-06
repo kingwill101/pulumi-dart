@@ -30,6 +30,17 @@ Future<GetConfigurationProfileResult> getConfigurationProfile(
   return GetConfigurationProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationProfileResult> getConfigurationProfileOutput(
+  GetConfigurationProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automanage:getConfigurationProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfileResult.fromMap);
+}
+
 /// Get information about a configuration profile assignment
 ///
 /// Uses Azure REST API version 2022-05-04.
@@ -48,6 +59,17 @@ Future<GetConfigurationProfileAssignmentResult> getConfigurationProfileAssignmen
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationProfileAssignmentResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationProfileAssignmentResult> getConfigurationProfileAssignmentOutput(
+  GetConfigurationProfileAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automanage:getConfigurationProfileAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfileAssignmentResult.fromMap);
 }
 
 /// Get information about a configuration profile assignment
@@ -70,6 +92,17 @@ Future<GetConfigurationProfileHCIAssignmentResult> getConfigurationProfileHCIAss
   return GetConfigurationProfileHCIAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationProfileHCIAssignmentResult> getConfigurationProfileHCIAssignmentOutput(
+  GetConfigurationProfileHCIAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automanage:getConfigurationProfileHCIAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfileHCIAssignmentResult.fromMap);
+}
+
 /// Get information about a configuration profile assignment
 ///
 /// Uses Azure REST API version 2022-05-04.
@@ -90,6 +123,17 @@ Future<GetConfigurationProfileHCRPAssignmentResult> getConfigurationProfileHCRPA
   return GetConfigurationProfileHCRPAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationProfileHCRPAssignmentResult> getConfigurationProfileHCRPAssignmentOutput(
+  GetConfigurationProfileHCRPAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automanage:getConfigurationProfileHCRPAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfileHCRPAssignmentResult.fromMap);
+}
+
 /// Get information about a configuration profile version
 ///
 /// Uses Azure REST API version 2022-05-04.
@@ -108,4 +152,15 @@ Future<GetConfigurationProfilesVersionResult> getConfigurationProfilesVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigurationProfilesVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigurationProfilesVersionResult> getConfigurationProfilesVersionOutput(
+  GetConfigurationProfilesVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:automanage:getConfigurationProfilesVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationProfilesVersionResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameter for a Geneva action
 class GenevaActionParameter {
   /// Name of the parameter
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the parameter
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GenevaActionParameter].
   /// [name] Name of the parameter

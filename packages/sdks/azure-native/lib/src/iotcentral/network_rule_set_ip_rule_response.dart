@@ -7,9 +7,9 @@ class NetworkRuleSetIpRuleResponse {
   /// The network action for the IP mask.
   final pulumi.Input<String> action;
   /// The readable name of the IP rule.
-  final pulumi.Input<String>? filterName;
+  final pulumi.Input<String?>? filterName;
   /// The CIDR block defining the IP range.
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
 
   /// Creates a new [NetworkRuleSetIpRuleResponse].
   /// [action] The network action for the IP mask.

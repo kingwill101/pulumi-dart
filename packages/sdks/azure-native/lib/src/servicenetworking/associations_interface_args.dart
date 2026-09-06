@@ -9,17 +9,17 @@ import 'association_subnet.dart';
 /// {@macro pulumi_servicenetworking_associations_interface_args_doc}
 class AssociationsInterfaceArgs {
   /// Name of Association
-  final pulumi.Input<String>? associationName;
+  final pulumi.Input<String?>? associationName;
   /// Association Type
-  final pulumi.Input<String> associationType;
+  final pulumi.Input<dynamic> associationType;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Association Subnet
-  final pulumi.Input<AssociationSubnet>? subnet;
+  final pulumi.Input<AssociationSubnet?>? subnet;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// traffic controller name for path
   final pulumi.Input<String> trafficControllerName;
 
@@ -56,7 +56,7 @@ class AssociationsInterfaceArgs {
   factory AssociationsInterfaceArgs.fromMap(Map<String, dynamic> map) {
     return AssociationsInterfaceArgs(
       associationName: (() { final guardedValue = map['associationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      associationType: pulumi.Input.fromValue(map['associationType'] as String),
+      associationType: pulumi.Input.fromValue(map['associationType']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AssociationSubnet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

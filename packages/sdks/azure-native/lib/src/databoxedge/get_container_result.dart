@@ -6,23 +6,23 @@ import 'system_data_response.dart';
 /// Result data returned by getContainer.
 class GetContainerResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Current status of the container.
-  final String containerStatus;
+  final String? containerStatus;
   /// The UTC time when container got created.
-  final String createdDateTime;
+  final String? createdDateTime;
   /// DataFormat for Container
-  final String dataFormat;
+  final String? dataFormat;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// The object name.
-  final String name;
+  final String? name;
   /// Details of the refresh job on this container.
-  final RefreshDetailsResponse refreshDetails;
+  final RefreshDetailsResponse? refreshDetails;
   /// Metadata pertaining to creation and last modification of Container
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetContainerResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -35,42 +35,42 @@ class GetContainerResult {
   /// [systemData] Metadata pertaining to creation and last modification of Container
   /// [type] The hierarchical type of the object.
   const GetContainerResult({
-    required this.azureApiVersion,
-    required this.containerStatus,
-    required this.createdDateTime,
-    required this.dataFormat,
-    required this.id,
-    required this.name,
-    required this.refreshDetails,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.containerStatus,
+    this.createdDateTime,
+    this.dataFormat,
+    this.id,
+    this.name,
+    this.refreshDetails,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'containerStatus': containerStatus,
-      'createdDateTime': createdDateTime,
-      'dataFormat': dataFormat,
-      'id': id,
-      'name': name,
-      'refreshDetails': refreshDetails.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'containerStatus': ?containerStatus,
+      'createdDateTime': ?createdDateTime,
+      'dataFormat': ?dataFormat,
+      'id': ?id,
+      'name': ?name,
+      'refreshDetails': ?refreshDetails?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetContainerResult.fromMap(Map<String, dynamic> map) {
     return GetContainerResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      containerStatus: map['containerStatus'] as String,
-      createdDateTime: map['createdDateTime'] as String,
-      dataFormat: map['dataFormat'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      refreshDetails: RefreshDetailsResponse.fromMap((map['refreshDetails']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      containerStatus: (() { final guardedValue = map['containerStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdDateTime: (() { final guardedValue = map['createdDateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      refreshDetails: (() { final guardedValue = map['refreshDetails']; if (guardedValue == null) return null; return RefreshDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

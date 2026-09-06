@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretStorePropertiesResponse {
   final pulumi.Input<String> inputType;
-  final pulumi.Input<String>? secretStoreId;
+  final pulumi.Input<String?>? secretStoreId;
 
   /// Creates a new [SecretStorePropertiesResponse].
   /// [inputType] Required.

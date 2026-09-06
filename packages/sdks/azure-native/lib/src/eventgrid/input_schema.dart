@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This determines the format that Event Grid should expect for incoming events published to the topic.
-enum InputSchema {
+enum InputSchema implements pulumi.PulumiEnum<String> {
   valueEventGridSchema("EventGridSchema"),
   valueCustomEventSchema("CustomEventSchema"),
   valueCloudEventSchemaV10("CloudEventSchemaV1_0");
 
   const InputSchema(this.wireValue);
+  @override
   final String wireValue;
 
   static InputSchema fromValue(String value) {

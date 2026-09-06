@@ -15,9 +15,9 @@ import 'network_configuration.dart';
 /// {@macro pulumi_networkcloud_kubernetes_cluster_args_doc}
 class KubernetesClusterArgs {
   /// The Azure Active Directory Integration properties.
-  final pulumi.Input<AadConfiguration>? aadConfiguration;
+  final pulumi.Input<AadConfiguration?>? aadConfiguration;
   /// The administrative credentials that will be applied to the control plane and agent pool nodes that do not specify their own values.
-  final pulumi.Input<AdministratorConfiguration>? administratorConfiguration;
+  final pulumi.Input<AdministratorConfiguration?>? administratorConfiguration;
   /// The defining characteristics of the control plane for this Kubernetes Cluster.
   final pulumi.Input<ControlPlaneNodeConfiguration> controlPlaneNodeConfiguration;
   /// The extended location of the cluster associated with the resource.
@@ -25,19 +25,19 @@ class KubernetesClusterArgs {
   /// The agent pools that are created with this Kubernetes cluster for running critical system services and workloads. This data in this field is only used during creation, and the field will be empty following the creation of the Kubernetes Cluster. After creation, the management of agent pools is done using the agentPools sub-resource.
   final pulumi.Input<List<InitialAgentPoolConfiguration>> initialAgentPoolConfigurations;
   /// The name of the Kubernetes cluster.
-  final pulumi.Input<String>? kubernetesClusterName;
+  final pulumi.Input<String?>? kubernetesClusterName;
   /// The Kubernetes version for this cluster.
   final pulumi.Input<String> kubernetesVersion;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The configuration of the managed resource group associated with the resource.
-  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
   final pulumi.Input<NetworkConfiguration> networkConfiguration;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [KubernetesClusterArgs].
   /// [aadConfiguration] The Azure Active Directory Integration properties.

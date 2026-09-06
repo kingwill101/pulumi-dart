@@ -10,19 +10,19 @@ import 'backend_configuration.dart';
 /// {@macro pulumi_apimanagement_api_gateway_args_doc}
 class ApiGatewayArgs {
   /// Information regarding how the gateway should integrate with backend systems.
-  final pulumi.Input<BackendConfiguration>? backend;
+  final pulumi.Input<BackendConfiguration?>? backend;
   /// The name of the API Management gateway.
-  final pulumi.Input<String>? gatewayName;
+  final pulumi.Input<String?>? gatewayName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SKU properties of the API Management gateway.
   final pulumi.Input<ApiManagementGatewaySkuProperties> sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The type of VPN in which API Management gateway needs to be configured in.
-  final pulumi.Input<String>? virtualNetworkType;
+  final pulumi.Input<dynamic>? virtualNetworkType;
 
   /// Creates a new [ApiGatewayArgs].
   /// [backend] Information regarding how the gateway should integrate with backend systems.
@@ -62,7 +62,7 @@ class ApiGatewayArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: pulumi.Input.fromValue(ApiManagementGatewaySkuProperties.fromMap((map['sku']! as Map).cast<String, dynamic>())),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      virtualNetworkType: (() { final guardedValue = map['virtualNetworkType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

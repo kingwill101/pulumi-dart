@@ -10,7 +10,7 @@ class ListFeatureAccountArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
   /// Set of features
-  final pulumi.Input<List<String>>? features;
+  final pulumi.Input<List<String>?>? features;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

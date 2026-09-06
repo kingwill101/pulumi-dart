@@ -52,11 +52,11 @@ class X12FramingSettingsResponse {
   factory X12FramingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return X12FramingSettingsResponse(
       characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
-      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
-      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
-      replaceCharacter: pulumi.Input.fromValue(map['replaceCharacter'] as int),
+      componentSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['componentSeparator'])),
+      dataElementSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataElementSeparator'])),
+      replaceCharacter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replaceCharacter'])),
       replaceSeparatorsInPayload: pulumi.Input.fromValue(map['replaceSeparatorsInPayload'] as bool),
-      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      segmentTerminator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['segmentTerminator'])),
       segmentTerminatorSuffix: pulumi.Input.fromValue(map['segmentTerminatorSuffix'] as String),
     );
   }

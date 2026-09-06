@@ -1043,7 +1043,33 @@ class IntegrationAccountSchema extends pulumi.CustomResource {
     metadata = registerOutput<dynamic>('metadata');
     this.name = registerOutput<String>('name');
     schemaType = registerOutput<String>('schemaType');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetNamespace = registerOutput<String?>('targetNamespace');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IntegrationAccountSchema] resource.
+  IntegrationAccountSchema.reference(String urn)
+    : super(
+        'azure-native:logic:IntegrationAccountSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    changedTime = registerOutput<String>('changedTime');
+    content = registerOutput<String?>('content');
+    contentLink = registerOutput<ContentLinkResponse>('contentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentType = registerOutput<String?>('contentType');
+    createdTime = registerOutput<String>('createdTime');
+    documentName = registerOutput<String?>('documentName');
+    fileName = registerOutput<String?>('fileName');
+    location = registerOutput<String?>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    this.name = registerOutput<String>('name');
+    schemaType = registerOutput<String>('schemaType');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetNamespace = registerOutput<String?>('targetNamespace');
     type = registerOutput<String>('type');
   }

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Addon type
-enum AddonType {
+enum AddonType implements pulumi.PulumiEnum<String> {
   sRM("SRM"),
   vR("VR"),
   hCX("HCX"),
   arc("Arc");
 
   const AddonType(this.wireValue);
+  @override
   final String wireValue;
 
   static AddonType fromValue(String value) {

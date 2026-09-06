@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dot_net_component_args.dart';
+import 'dot_net_component_configuration_property_response.dart';
+import 'dot_net_component_service_bind_response.dart';
 import 'system_data_response.dart';
 
 /// .NET Component.
@@ -401,13 +403,13 @@ class DotNetComponent extends pulumi.CustomResource {
   /// Type of the .NET Component.
   late final pulumi.Output<String?> componentType;
   /// List of .NET Components configuration properties
-  late final pulumi.Output<List<Map<String, dynamic>>?> configurations;
+  late final pulumi.Output<List<DotNetComponentConfigurationPropertyResponse>?> configurations;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Provisioning state of the .NET Component.
   late final pulumi.Output<String> provisioningState;
   /// List of .NET Components that are bound to the .NET component
-  late final pulumi.Output<List<Map<String, dynamic>>?> serviceBinds;
+  late final pulumi.Output<List<DotNetComponentServiceBindResponse>?> serviceBinds;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -429,10 +431,29 @@ class DotNetComponent extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     componentType = registerOutput<String?>('componentType');
-    configurations = registerOutput<List<Map<String, dynamic>>?>('configurations');
+    configurations = registerOutput<List<DotNetComponentConfigurationPropertyResponse>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentConfigurationPropertyResponse>(guardedValue, (value) => DotNetComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    serviceBinds = registerOutput<List<Map<String, dynamic>>?>('serviceBinds');
+    serviceBinds = registerOutput<List<DotNetComponentServiceBindResponse>?>('serviceBinds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(guardedValue, (value) => DotNetComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DotNetComponent] resource.
+  DotNetComponent.reference(String urn)
+    : super(
+        'azure-native:app:DotNetComponent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    componentType = registerOutput<String?>('componentType');
+    configurations = registerOutput<List<DotNetComponentConfigurationPropertyResponse>?>('configurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentConfigurationPropertyResponse>(guardedValue, (value) => DotNetComponentConfigurationPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceBinds = registerOutput<List<DotNetComponentServiceBindResponse>?>('serviceBinds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DotNetComponentServiceBindResponse>(guardedValue, (value) => DotNetComponentServiceBindResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

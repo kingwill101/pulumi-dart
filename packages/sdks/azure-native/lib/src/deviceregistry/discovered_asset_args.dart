@@ -14,43 +14,43 @@ class DiscoveredAssetArgs {
   /// A reference to the asset endpoint profile (connection information) used by brokers to connect to an endpoint that provides data points for this asset. Must provide asset endpoint profile name.
   final pulumi.Input<String> assetEndpointProfileRef;
   /// Array of datasets that are part of the asset. Each dataset spec describes the data points that make up the set.
-  final pulumi.Input<List<DiscoveredDataset>>? datasets;
+  final pulumi.Input<List<DiscoveredDataset>?>? datasets;
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultDatasetsConfiguration;
+  final pulumi.Input<String?>? defaultDatasetsConfiguration;
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultEventsConfiguration;
+  final pulumi.Input<String?>? defaultEventsConfiguration;
   /// Object that describes the default topic information for the asset.
-  final pulumi.Input<Topic>? defaultTopic;
+  final pulumi.Input<Topic?>? defaultTopic;
   /// Discovered Asset name parameter.
-  final pulumi.Input<String>? discoveredAssetName;
+  final pulumi.Input<String?>? discoveredAssetName;
   /// Identifier used to detect changes in the asset.
   final pulumi.Input<String> discoveryId;
   /// Reference to the documentation.
-  final pulumi.Input<String>? documentationUri;
+  final pulumi.Input<String?>? documentationUri;
   /// Array of events that are part of the asset. Each event can have per-event configuration.
-  final pulumi.Input<List<DiscoveredEvent>>? events;
+  final pulumi.Input<List<DiscoveredEvent>?>? events;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Revision number of the hardware.
-  final pulumi.Input<String>? hardwareRevision;
+  final pulumi.Input<String?>? hardwareRevision;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Asset manufacturer name.
-  final pulumi.Input<String>? manufacturer;
+  final pulumi.Input<String?>? manufacturer;
   /// Asset manufacturer URI.
-  final pulumi.Input<String>? manufacturerUri;
+  final pulumi.Input<String?>? manufacturerUri;
   /// Asset model name.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// Asset product code.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Asset serial number.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Revision number of the software.
-  final pulumi.Input<String>? softwareRevision;
+  final pulumi.Input<String?>? softwareRevision;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// An integer that is incremented each time the resource is modified.
   final pulumi.Input<double> version;
 
@@ -148,7 +148,7 @@ class DiscoveredAssetArgs {
       serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       softwareRevision: (() { final guardedValue = map['softwareRevision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      version: pulumi.Input.fromValue(map['version'] as double),
+      version: pulumi.Input.fromValue((map['version'] as num).toDouble()),
     );
   }
 }

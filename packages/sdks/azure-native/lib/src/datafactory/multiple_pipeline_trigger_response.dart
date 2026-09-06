@@ -6,11 +6,11 @@ import 'trigger_pipeline_reference_response.dart';
 /// Base class for all triggers that support one to many model for trigger to pipeline.
 class MultiplePipelineTriggerResponse {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReferenceResponse>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReferenceResponse>?>? pipelines;
   /// Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   final pulumi.Input<String> runtimeState;
   /// Trigger type.

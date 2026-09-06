@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The API backend service
 class ApiResourceBackendServiceResponse {
   /// The service URL
-  final pulumi.Input<String>? serviceUrl;
+  final pulumi.Input<String?>? serviceUrl;
 
   /// Creates a new [ApiResourceBackendServiceResponse].
   /// [serviceUrl] The service URL

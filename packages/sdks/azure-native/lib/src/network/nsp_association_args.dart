@@ -9,25 +9,25 @@ import 'sub_resource.dart';
 /// {@macro pulumi_network_nsp_association_args_doc}
 class NspAssociationArgs {
   /// Access mode on the association.
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<dynamic>? accessMode;
   /// The name of the NSP association.
-  final pulumi.Input<String>? associationName;
+  final pulumi.Input<String?>? associationName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
   /// The PaaS resource to be associated.
-  final pulumi.Input<SubResource>? privateLinkResource;
+  final pulumi.Input<SubResource?>? privateLinkResource;
   /// Profile id to which the PaaS resource is associated.
-  final pulumi.Input<SubResource>? profile;
+  final pulumi.Input<SubResource?>? profile;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NspAssociationArgs].
   /// [accessMode] Access mode on the association.
@@ -70,7 +70,7 @@ class NspAssociationArgs {
 
   factory NspAssociationArgs.fromMap(Map<String, dynamic> map) {
     return NspAssociationArgs(
-      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessMode: (() { final guardedValue = map['accessMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       associationName: (() { final guardedValue = map['associationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -9,27 +9,27 @@ import 'ground_stations_properties_global_communications_site.dart';
 /// {@macro pulumi_orbital_ground_station_args_doc}
 class GroundStationArgs {
   /// Altitude of the ground station.
-  final pulumi.Input<double>? altitudeMeters;
+  final pulumi.Input<double?>? altitudeMeters;
   /// Ground station capabilities.
-  final pulumi.Input<List<String>> capabilities;
+  final pulumi.Input<List<dynamic>> capabilities;
   /// City of ground station.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// A reference to global communications site.
   final pulumi.Input<GroundStationsPropertiesGlobalCommunicationsSite> globalCommunicationsSite;
   /// Ground Station name.
-  final pulumi.Input<String>? groundStationName;
+  final pulumi.Input<String?>? groundStationName;
   /// Latitude of the ground station in decimal degrees.
-  final pulumi.Input<double>? latitudeDegrees;
+  final pulumi.Input<double?>? latitudeDegrees;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Longitude of the ground station in decimal degrees.
-  final pulumi.Input<double>? longitudeDegrees;
+  final pulumi.Input<double?>? longitudeDegrees;
   /// Ground station provider name.
-  final pulumi.Input<String>? providerName;
+  final pulumi.Input<String?>? providerName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GroundStationArgs].
   /// [altitudeMeters] Altitude of the ground station.
@@ -75,14 +75,14 @@ class GroundStationArgs {
 
   factory GroundStationArgs.fromMap(Map<String, dynamic> map) {
     return GroundStationArgs(
-      altitudeMeters: (() { final guardedValue = map['altitudeMeters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      capabilities: pulumi.Input.fromValue((map['capabilities'] as List).cast<String>()),
+      altitudeMeters: (() { final guardedValue = map['altitudeMeters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      capabilities: pulumi.Input.fromValue((map['capabilities'] as List).cast<dynamic>()),
       city: (() { final guardedValue = map['city']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       globalCommunicationsSite: pulumi.Input.fromValue(GroundStationsPropertiesGlobalCommunicationsSite.fromMap((map['globalCommunicationsSite']! as Map).cast<String, dynamic>())),
       groundStationName: (() { final guardedValue = map['groundStationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      latitudeDegrees: (() { final guardedValue = map['latitudeDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      latitudeDegrees: (() { final guardedValue = map['latitudeDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      longitudeDegrees: (() { final guardedValue = map['longitudeDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      longitudeDegrees: (() { final guardedValue = map['longitudeDegrees']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       providerName: (() { final guardedValue = map['providerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

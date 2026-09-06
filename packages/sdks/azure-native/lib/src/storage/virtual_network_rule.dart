@@ -6,9 +6,9 @@ import 'action.dart';
 /// Virtual Network rule.
 class VirtualNetworkRule {
   /// The action of virtual network rule.
-  final pulumi.Input<Action>? action;
+  final pulumi.Input<Action?>? action;
   /// Gets the state of virtual network rule.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
   final pulumi.Input<String> virtualNetworkResourceId;
 
@@ -16,11 +16,11 @@ class VirtualNetworkRule {
   /// [action] The action of virtual network rule.
   /// [state] Gets the state of virtual network rule.
   /// [virtualNetworkResourceId] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-  const VirtualNetworkRule({
-    this.action,
+  VirtualNetworkRule({
+    pulumi.Input<Action?>? action,
     this.state,
     required this.virtualNetworkResourceId,
-  });
+  }) : action = action ?? pulumi.Input.fromValue(Action.fromValue('Allow'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class VirtualNetworkRule {
   factory VirtualNetworkRule.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkRule(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Action.fromValue(guardedValue as String)); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       virtualNetworkResourceId: pulumi.Input.fromValue(map['virtualNetworkResourceId'] as String),
     );
   }

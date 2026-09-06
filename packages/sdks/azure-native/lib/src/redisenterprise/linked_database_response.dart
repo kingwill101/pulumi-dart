@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies details of a linked database resource.
 class LinkedDatabaseResponse {
   /// Resource ID of a database resource to link with this database.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// State of the link between the database resources.
   final pulumi.Input<String> state;
 

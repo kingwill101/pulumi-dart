@@ -9,19 +9,19 @@ class IPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The provisioning state of the IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// The reference to the public IP resource.
-  final pulumi.Input<PublicIPAddressResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressResponse?>? publicIPAddress;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
 
   /// Creates a new [IPConfigurationResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -32,16 +32,16 @@ class IPConfigurationResponse {
   /// [provisioningState] The provisioning state of the IP configuration resource.
   /// [publicIPAddress] The reference to the public IP resource.
   /// [subnet] The reference to the subnet resource.
-  const IPConfigurationResponse({
+  IPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,
     this.privateIPAddress,
-    this.privateIPAllocationMethod,
+    pulumi.Input<String?>? privateIPAllocationMethod,
     required this.provisioningState,
     this.publicIPAddress,
     this.subnet,
-  });
+  }) : privateIPAllocationMethod = privateIPAllocationMethod ?? pulumi.Input.fromValue('Dynamic');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   pulumi: ^3.0.0
-  pulumi_azure_native: 3.26.0+1
+  pulumi_azure_native: 3.27.0+1
   http: ^1.5.0
 
 dev_dependencies:

@@ -9,17 +9,17 @@ import 'bmp_configuration_properties.dart';
 /// {@macro pulumi_managednetworkfabric_network_monitor_args_doc}
 class NetworkMonitorArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// BMP Configurations for the Network Fabric.
-  final pulumi.Input<BmpConfigurationProperties>? bmpConfiguration;
+  final pulumi.Input<BmpConfigurationProperties?>? bmpConfiguration;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Network Monitor.
-  final pulumi.Input<String>? networkMonitorName;
+  final pulumi.Input<String?>? networkMonitorName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkMonitorArgs].
   /// [annotation] Switch configuration description.

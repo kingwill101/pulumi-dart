@@ -16,9 +16,9 @@ class ProductFeatureResponse {
   /// The errors that were encountered during the feature enrollment or disenrollment.
   final pulumi.Input<ErrorDetailResponse> error;
   /// Product feature name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates the current status of the product features.
-  final pulumi.Input<String>? subscriptionStatus;
+  final pulumi.Input<String?>? subscriptionStatus;
 
   /// Creates a new [ProductFeatureResponse].
   /// [billingEndDate] The timestamp in UTC when the billing ends.

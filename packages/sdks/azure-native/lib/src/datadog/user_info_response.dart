@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Includes name, email and optionally, phone number. User Information can't be null.
 class UserInfoResponse {
   /// Email of the user used by Datadog for contacting them if needed
-  final pulumi.Input<String>? emailAddress;
+  final pulumi.Input<String?>? emailAddress;
   /// Name of the user
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Phone number of the user used by Datadog for contacting them if needed
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
 
   /// Creates a new [UserInfoResponse].
   /// [emailAddress] Email of the user used by Datadog for contacting them if needed

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of deleted runbook.
 class DeletedRunbookResponse {
   /// Gets or sets the creation time.
-  final pulumi.Input<String>? creationTime;
+  final pulumi.Input<String?>? creationTime;
   /// Gets or sets the last modified time.
-  final pulumi.Input<String>? deletionTime;
+  final pulumi.Input<String?>? deletionTime;
   /// The resource id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the Runbook Id.
-  final pulumi.Input<String>? runbookId;
+  final pulumi.Input<String?>? runbookId;
   /// Type of the runbook.
-  final pulumi.Input<String>? runbookType;
+  final pulumi.Input<String?>? runbookType;
   /// Gets or sets runtime of the runbook.
-  final pulumi.Input<String>? runtime;
+  final pulumi.Input<String?>? runtime;
   /// Environment of the runbook.
-  final pulumi.Input<String>? runtimeEnvironment;
+  final pulumi.Input<String?>? runtimeEnvironment;
 
   /// Creates a new [DeletedRunbookResponse].
   /// [creationTime] Gets or sets the creation time.

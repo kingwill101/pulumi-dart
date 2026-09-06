@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_virtual_machine_args_doc}
 class GetVirtualMachineArgs {
   /// Specify the $expand query. Example: 'properties($expand=artifacts,computeVm,networkInterface,applicableSchedule)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The name of the virtual machine.

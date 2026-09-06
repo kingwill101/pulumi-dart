@@ -11,21 +11,21 @@ import 'sku.dart';
 /// {@macro pulumi_cognitiveservices_account_args_doc}
 class AccountArgs {
   /// The name of Cognitive Services account.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The Kind of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of Cognitive Services account.
-  final pulumi.Input<AccountProperties>? properties;
+  final pulumi.Input<AccountProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource model definition representing SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountName] The name of Cognitive Services account.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Part of Subscription diagnostic setting. Specifies the settings for a particular log.
 class SubscriptionLogSettingsResponse {
   /// Name of a Subscription Diagnostic Log category for a resource type this setting is applied to.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Name of a Subscription Diagnostic Log category group for a resource type this setting is applied to.
-  final pulumi.Input<String>? categoryGroup;
+  final pulumi.Input<String?>? categoryGroup;
   /// a value indicating whether this log is enabled.
   final pulumi.Input<bool> enabled;
 

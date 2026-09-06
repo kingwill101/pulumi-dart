@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The source reference for the GitRepository object.
 class RepositoryRefDefinitionResponse {
   /// The git repository branch name to checkout.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The commit SHA to checkout. This value must be combined with the branch name to be valid. This takes precedence over semver.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// The semver range used to match against git repository tags. This takes precedence over tag.
-  final pulumi.Input<String>? semver;
+  final pulumi.Input<String?>? semver;
   /// The git repository tag name to checkout. This takes precedence over branch.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [RepositoryRefDefinitionResponse].
   /// [branch] The git repository branch name to checkout.

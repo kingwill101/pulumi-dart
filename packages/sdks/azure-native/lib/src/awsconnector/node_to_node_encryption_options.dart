@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of NodeToNodeEncryptionOptions
 class NodeToNodeEncryptionOptions {
   /// &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [NodeToNodeEncryptionOptions].
   /// [enabled] &lt;p&gt;True to enable node-to-node encryption.&lt;/p&gt;

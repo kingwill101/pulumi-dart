@@ -212,4 +212,28 @@ class Assessment extends pulumi.CustomResource {
     workloadId = registerOutput<String?>('workloadId');
     workloadName = registerOutput<String>('workloadName');
   }
+
+  /// Creates a typed reference to an existing [Assessment] resource.
+  Assessment.reference(String urn)
+    : super(
+        'azure-native:advisor:Assessment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assessmentId = registerOutput<String>('assessmentId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String>('description');
+    locale = registerOutput<String?>('locale');
+    this.name = registerOutput<String>('name');
+    score = registerOutput<int>('score');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    typeId = registerOutput<String?>('typeId');
+    typeVersion = registerOutput<String>('typeVersion');
+    workloadId = registerOutput<String?>('workloadId');
+    workloadName = registerOutput<String>('workloadName');
+  }
 }

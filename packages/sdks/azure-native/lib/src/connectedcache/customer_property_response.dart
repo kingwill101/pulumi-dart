@@ -8,9 +8,9 @@ import 'error_detail_response.dart';
 /// Model representing customer for connectedCache resource
 class CustomerPropertyResponse {
   /// Mcc customer resource additional properties.
-  final pulumi.Input<AdditionalCustomerPropertiesResponse>? additionalCustomerProperties;
+  final pulumi.Input<AdditionalCustomerPropertiesResponse?>? additionalCustomerProperties;
   /// Mcc customer resource (customer entity).
-  final pulumi.Input<CustomerEntityResponse>? customer;
+  final pulumi.Input<CustomerEntityResponse?>? customer;
   /// Mcc response error details.
   final pulumi.Input<ErrorDetailResponse> error;
   /// The provisioned state of the resource

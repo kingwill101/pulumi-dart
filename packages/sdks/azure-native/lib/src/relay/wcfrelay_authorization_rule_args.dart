@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_relay_wcfrelay_authorization_rule_args_doc}
 class WCFRelayAuthorizationRuleArgs {
   /// The authorization rule name.
-  final pulumi.Input<String>? authorizationRuleName;
+  final pulumi.Input<String?>? authorizationRuleName;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
   /// The relay name.
@@ -16,7 +16,7 @@ class WCFRelayAuthorizationRuleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The rights associated with the rule.
-  final pulumi.Input<List<String>> rights;
+  final pulumi.Input<List<dynamic>> rights;
 
   /// Creates a new [WCFRelayAuthorizationRuleArgs].
   /// [authorizationRuleName] The authorization rule name.
@@ -48,7 +48,7 @@ class WCFRelayAuthorizationRuleArgs {
       namespaceName: pulumi.Input.fromValue(map['namespaceName'] as String),
       relayName: pulumi.Input.fromValue(map['relayName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      rights: pulumi.Input.fromValue((map['rights'] as List).cast<String>()),
+      rights: pulumi.Input.fromValue((map['rights'] as List).cast<dynamic>()),
     );
   }
 }

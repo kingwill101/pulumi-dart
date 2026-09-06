@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HDInsight On-demand cluster resource group authentication type.
-enum HDInsightOndemandClusterResourceGroupAuthenticationType {
+enum HDInsightOndemandClusterResourceGroupAuthenticationType implements pulumi.PulumiEnum<String> {
   servicePrincipalKey("ServicePrincipalKey"),
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const HDInsightOndemandClusterResourceGroupAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static HDInsightOndemandClusterResourceGroupAuthenticationType fromValue(String value) {

@@ -9,10 +9,10 @@ class DefaultRolloutSpecificationProviderRegistrationResponse {
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The name of the resource
   final pulumi.Input<String> name;
-  final pulumi.Input<ProviderRegistrationPropertiesResponse>? properties;
+  final pulumi.Input<ProviderRegistrationPropertiesResponse?>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -25,14 +25,14 @@ class DefaultRolloutSpecificationProviderRegistrationResponse {
   /// [properties] Optional.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const DefaultRolloutSpecificationProviderRegistrationResponse({
+  DefaultRolloutSpecificationProviderRegistrationResponse({
     required this.id,
-    this.kind,
+    pulumi.Input<String?>? kind,
     required this.name,
     this.properties,
     required this.systemData,
     required this.type,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Managed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum EnvironmentType {
+enum EnvironmentType implements pulumi.PulumiEnum<String> {
   aRMCONTAINER("ARM_CONTAINER"),
   aRMLAMBDACONTAINER("ARM_LAMBDA_CONTAINER"),
   lINUXCONTAINER("LINUX_CONTAINER"),
@@ -9,6 +11,7 @@ enum EnvironmentType {
   wINDOWSSERVER2019CONTAINER("WINDOWS_SERVER_2019_CONTAINER");
 
   const EnvironmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentType fromValue(String value) {

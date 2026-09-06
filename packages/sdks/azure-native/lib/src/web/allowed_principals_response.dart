@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the Azure Active Directory allowed principals.
 class AllowedPrincipalsResponse {
   /// The list of the allowed groups.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// The list of the allowed identities.
-  final pulumi.Input<List<String>>? identities;
+  final pulumi.Input<List<String>?>? identities;
 
   /// Creates a new [AllowedPrincipalsResponse].
   /// [groups] The list of the allowed groups.

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// specified for managed disk.
 class DiffDiskSettings {
   /// Specifies the ephemeral disk settings for operating system disk.
-  final pulumi.Input<String>? option;
+  final pulumi.Input<dynamic>? option;
   /// Specifies the ephemeral disk placement for operating system disk. Possible
   /// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
   /// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
@@ -15,7 +15,7 @@ class DiffDiskSettings {
   /// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
   /// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
   /// sizes exposes a cache disk.
-  final pulumi.Input<String>? placement;
+  final pulumi.Input<dynamic>? placement;
 
   /// Creates a new [DiffDiskSettings].
   /// [option] Specifies the ephemeral disk settings for operating system disk.
@@ -34,8 +34,8 @@ class DiffDiskSettings {
 
   factory DiffDiskSettings.fromMap(Map<String, dynamic> map) {
     return DiffDiskSettings(
-      option: (() { final guardedValue = map['option']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      option: (() { final guardedValue = map['option']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      placement: (() { final guardedValue = map['placement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

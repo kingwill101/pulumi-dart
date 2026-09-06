@@ -8,21 +8,21 @@ import 'system_service_response.dart';
 /// AKS properties
 class AKSSchemaPropertiesResponse {
   /// Number of agents
-  final pulumi.Input<int>? agentCount;
+  final pulumi.Input<int?>? agentCount;
   /// Agent virtual machine size
-  final pulumi.Input<String>? agentVmSize;
+  final pulumi.Input<String?>? agentVmSize;
   /// AKS networking configuration for vnet
-  final pulumi.Input<AksNetworkingConfigurationResponse>? aksNetworkingConfiguration;
+  final pulumi.Input<AksNetworkingConfigurationResponse?>? aksNetworkingConfiguration;
   /// Cluster full qualified domain name
-  final pulumi.Input<String>? clusterFqdn;
+  final pulumi.Input<String?>? clusterFqdn;
   /// Intended usage of the cluster
-  final pulumi.Input<String>? clusterPurpose;
+  final pulumi.Input<String?>? clusterPurpose;
   /// Load Balancer Subnet
-  final pulumi.Input<String>? loadBalancerSubnet;
+  final pulumi.Input<String?>? loadBalancerSubnet;
   /// Load Balancer Type
-  final pulumi.Input<String>? loadBalancerType;
+  final pulumi.Input<String?>? loadBalancerType;
   /// SSL configuration
-  final pulumi.Input<SslConfigurationResponse>? sslConfiguration;
+  final pulumi.Input<SslConfigurationResponse?>? sslConfiguration;
   /// System services
   final pulumi.Input<List<SystemServiceResponse>> systemServices;
 
@@ -36,17 +36,17 @@ class AKSSchemaPropertiesResponse {
   /// [loadBalancerType] Load Balancer Type
   /// [sslConfiguration] SSL configuration
   /// [systemServices] System services
-  const AKSSchemaPropertiesResponse({
+  AKSSchemaPropertiesResponse({
     this.agentCount,
     this.agentVmSize,
     this.aksNetworkingConfiguration,
     this.clusterFqdn,
-    this.clusterPurpose,
+    pulumi.Input<String?>? clusterPurpose,
     this.loadBalancerSubnet,
-    this.loadBalancerType,
+    pulumi.Input<String?>? loadBalancerType,
     this.sslConfiguration,
     required this.systemServices,
-  });
+  }) : clusterPurpose = clusterPurpose ?? pulumi.Input.fromValue('FastProd'), loadBalancerType = loadBalancerType ?? pulumi.Input.fromValue('PublicIp');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -64,7 +64,7 @@ class AKSSchemaPropertiesResponse {
 
   factory AKSSchemaPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AKSSchemaPropertiesResponse(
-      agentCount: (() { final guardedValue = map['agentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      agentCount: (() { final guardedValue = map['agentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       agentVmSize: (() { final guardedValue = map['agentVmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       aksNetworkingConfiguration: (() { final guardedValue = map['aksNetworkingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AksNetworkingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterFqdn: (() { final guardedValue = map['clusterFqdn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

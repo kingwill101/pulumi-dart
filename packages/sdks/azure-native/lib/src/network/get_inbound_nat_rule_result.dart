@@ -6,11 +6,11 @@ import 'sub_resource_response.dart';
 /// Result data returned by getInboundNatRule.
 class GetInboundNatRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// A reference to backendAddressPool resource.
   final SubResourceResponse? backendAddressPool;
   /// A reference to a private IP address defined on a network interface of a VM. Traffic sent to the frontend port of each of the frontend IP configurations is forwarded to the backend IP.
-  final NetworkInterfaceIPConfigurationResponse backendIPConfiguration;
+  final NetworkInterfaceIPConfigurationResponse? backendIPConfiguration;
   /// The port used for the internal endpoint. Acceptable values range from 1 to 65535.
   final int? backendPort;
   /// Configures a virtual machine's endpoint for the floating IP capability required to configure a SQL AlwaysOn Availability Group. This setting is required when using the SQL AlwaysOn Availability Groups in SQL server. This setting can't be changed after you create the endpoint.
@@ -18,7 +18,7 @@ class GetInboundNatRuleResult {
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
   final bool? enableTcpReset;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// A reference to frontend IP addresses.
   final SubResourceResponse? frontendIPConfiguration;
   /// The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values range from 1 to 65534.
@@ -36,9 +36,9 @@ class GetInboundNatRuleResult {
   /// The reference to the transport protocol used by the load balancing rule.
   final String? protocol;
   /// The provisioning state of the inbound NAT rule resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetInboundNatRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -59,13 +59,13 @@ class GetInboundNatRuleResult {
   /// [provisioningState] The provisioning state of the inbound NAT rule resource.
   /// [type] Type of the resource.
   const GetInboundNatRuleResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backendAddressPool,
-    required this.backendIPConfiguration,
+    this.backendIPConfiguration,
     this.backendPort,
     this.enableFloatingIP,
     this.enableTcpReset,
-    required this.etag,
+    this.etag,
     this.frontendIPConfiguration,
     this.frontendPort,
     this.frontendPortRangeEnd,
@@ -74,19 +74,19 @@ class GetInboundNatRuleResult {
     this.idleTimeoutInMinutes,
     this.name,
     this.protocol,
-    required this.provisioningState,
-    required this.type,
+    this.provisioningState,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backendAddressPool': ?backendAddressPool?.toMap(),
-      'backendIPConfiguration': backendIPConfiguration.toMap(),
+      'backendIPConfiguration': ?backendIPConfiguration?.toMap(),
       'backendPort': ?backendPort,
       'enableFloatingIP': ?enableFloatingIP,
       'enableTcpReset': ?enableTcpReset,
-      'etag': etag,
+      'etag': ?etag,
       'frontendIPConfiguration': ?frontendIPConfiguration?.toMap(),
       'frontendPort': ?frontendPort,
       'frontendPortRangeEnd': ?frontendPortRangeEnd,
@@ -95,30 +95,30 @@ class GetInboundNatRuleResult {
       'idleTimeoutInMinutes': ?idleTimeoutInMinutes,
       'name': ?name,
       'protocol': ?protocol,
-      'provisioningState': provisioningState,
-      'type': type,
+      'provisioningState': ?provisioningState,
+      'type': ?type,
     };
   }
 
   factory GetInboundNatRuleResult.fromMap(Map<String, dynamic> map) {
     return GetInboundNatRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backendAddressPool: (() { final guardedValue = map['backendAddressPool']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      backendIPConfiguration: NetworkInterfaceIPConfigurationResponse.fromMap((map['backendIPConfiguration']! as Map).cast<String, dynamic>()),
-      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      backendIPConfiguration: (() { final guardedValue = map['backendIPConfiguration']; if (guardedValue == null) return null; return NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      backendPort: (() { final guardedValue = map['backendPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       enableFloatingIP: (() { final guardedValue = map['enableFloatingIP']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableTcpReset: (() { final guardedValue = map['enableTcpReset']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       frontendIPConfiguration: (() { final guardedValue = map['frontendIPConfiguration']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      frontendPortRangeEnd: (() { final guardedValue = map['frontendPortRangeEnd']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      frontendPortRangeStart: (() { final guardedValue = map['frontendPortRangeStart']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      type: map['type'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

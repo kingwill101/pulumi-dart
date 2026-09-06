@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU name. Required for account creation; optional for update.
 class Sku {
   /// The sku name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// The sku tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [Sku].
   /// [name] The sku name.
@@ -26,8 +26,8 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      name: pulumi.Input.fromValue(map['name'] as String),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: pulumi.Input.fromValue(map['name']),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

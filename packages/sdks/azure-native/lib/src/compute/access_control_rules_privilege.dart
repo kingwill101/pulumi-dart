@@ -9,7 +9,7 @@ class AccessControlRulesPrivilege {
   /// The HTTP path corresponding to the privilege.
   final pulumi.Input<String> path;
   /// The query parameters to match in the path.
-  final pulumi.Input<Map<String, String>>? queryParameters;
+  final pulumi.Input<Map<String, String>?>? queryParameters;
 
   /// Creates a new [AccessControlRulesPrivilege].
   /// [name] The name of the privilege.

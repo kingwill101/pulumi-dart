@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueCreated("created");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

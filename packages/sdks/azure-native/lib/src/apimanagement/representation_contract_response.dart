@@ -9,13 +9,13 @@ class RepresentationContractResponse {
   /// Specifies a registered or custom content type for this representation, e.g. application/xml.
   final pulumi.Input<String> contentType;
   /// Exampled defined for the representation.
-  final pulumi.Input<Map<String, ParameterExampleContractResponse>>? examples;
+  final pulumi.Input<Map<String, ParameterExampleContractResponse>?>? examples;
   /// Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
-  final pulumi.Input<List<ParameterContractResponse>>? formParameters;
+  final pulumi.Input<List<ParameterContractResponse>?>? formParameters;
   /// Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
-  final pulumi.Input<String>? typeName;
+  final pulumi.Input<String?>? typeName;
 
   /// Creates a new [RepresentationContractResponse].
   /// [contentType] Specifies a registered or custom content type for this representation, e.g. application/xml.

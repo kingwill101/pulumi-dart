@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'server_info_response.dart';
 import 'server_trust_group_args.dart';
 
 /// A server trust group.
@@ -228,7 +229,7 @@ class ServerTrustGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Group members information for the server trust group.
-  late final pulumi.Output<List<Map<String, dynamic>>> groupMembers;
+  late final pulumi.Output<List<ServerInfoResponse>> groupMembers;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Trust scope of the server trust group.
@@ -251,9 +252,25 @@ class ServerTrustGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    groupMembers = registerOutput<List<Map<String, dynamic>>>('groupMembers');
+    groupMembers = registerOutput<List<ServerInfoResponse>>('groupMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerInfoResponse>(guardedValue, (value) => ServerInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    trustScopes = registerOutput<List<String>>('trustScopes');
+    trustScopes = registerOutput<List<String>>('trustScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerTrustGroup] resource.
+  ServerTrustGroup.reference(String urn)
+    : super(
+        'azure-native:sql:ServerTrustGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    groupMembers = registerOutput<List<ServerInfoResponse>>('groupMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerInfoResponse>(guardedValue, (value) => ServerInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    trustScopes = registerOutput<List<String>>('trustScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

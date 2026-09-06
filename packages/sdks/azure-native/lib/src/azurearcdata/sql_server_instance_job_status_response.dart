@@ -7,17 +7,17 @@ import 'sequencer_action_response.dart';
 /// The status of the job running on the SQL Server instance.
 class SqlServerInstanceJobStatusResponse {
   /// The background job details.
-  final pulumi.Input<BackgroundJobResponse>? backgroundJob;
+  final pulumi.Input<BackgroundJobResponse?>? backgroundJob;
   /// The unique identifier of the job.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the SQL Server instance.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// The exception message if the job failed.
-  final pulumi.Input<String>? jobException;
+  final pulumi.Input<String?>? jobException;
   /// The status of the job.
-  final pulumi.Input<String>? jobStatus;
+  final pulumi.Input<String?>? jobStatus;
   /// The list of sequencer actions.
-  final pulumi.Input<List<SequencerActionResponse>>? sequencerActions;
+  final pulumi.Input<List<SequencerActionResponse>?>? sequencerActions;
 
   /// Creates a new [SqlServerInstanceJobStatusResponse].
   /// [backgroundJob] The background job details.

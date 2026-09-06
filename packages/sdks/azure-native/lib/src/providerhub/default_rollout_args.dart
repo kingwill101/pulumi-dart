@@ -9,11 +9,11 @@ import 'default_rollout_properties.dart';
 /// {@macro pulumi_providerhub_default_rollout_args_doc}
 class DefaultRolloutArgs {
   /// Properties of the rollout.
-  final pulumi.Input<DefaultRolloutProperties>? properties;
+  final pulumi.Input<DefaultRolloutProperties?>? properties;
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
   /// The rollout name.
-  final pulumi.Input<String>? rolloutName;
+  final pulumi.Input<String?>? rolloutName;
 
   /// Creates a new [DefaultRolloutArgs].
   /// [properties] Properties of the rollout.

@@ -312,4 +312,25 @@ class GovernanceAssignment extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [GovernanceAssignment] resource.
+  GovernanceAssignment.reference(String urn)
+    : super(
+        'azure-native:security:GovernanceAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalData = registerOutput<GovernanceAssignmentAdditionalDataResponse?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceAssignmentAdditionalDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    governanceEmailNotification = registerOutput<GovernanceEmailNotificationResponse?>('governanceEmailNotification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GovernanceEmailNotificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isGracePeriod = registerOutput<bool?>('isGracePeriod');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String?>('owner');
+    remediationDueDate = registerOutput<String>('remediationDueDate');
+    remediationEta = registerOutput<RemediationEtaResponse?>('remediationEta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationEtaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

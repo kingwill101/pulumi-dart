@@ -184,4 +184,19 @@ class ManagedInstanceAzureADOnlyAuthentication extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ManagedInstanceAzureADOnlyAuthentication] resource.
+  ManagedInstanceAzureADOnlyAuthentication.reference(String urn)
+    : super(
+        'azure-native:sql:ManagedInstanceAzureADOnlyAuthentication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureADOnlyAuthentication = registerOutput<bool>('azureADOnlyAuthentication');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Learning rate scheduler enum.
-enum LearningRateScheduler {
+enum LearningRateScheduler implements pulumi.PulumiEnum<String> {
   none("None"),
   warmupCosine("WarmupCosine"),
   step("Step");
 
   const LearningRateScheduler(this.wireValue);
+  @override
   final String wireValue;
 
   static LearningRateScheduler fromValue(String value) {

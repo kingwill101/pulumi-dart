@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines reference to load balancer NAT rules.
 class LoadBalancerNatRuleReferenceResponse {
   /// Gets the name of the proxy resource on the target side.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets the ARM resource ID of the tracked resource being referenced.
   final pulumi.Input<String> sourceArmResourceId;
 

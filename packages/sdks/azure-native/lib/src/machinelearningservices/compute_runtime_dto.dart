@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeRuntimeDto {
-  final pulumi.Input<String>? sparkRuntimeVersion;
+  final pulumi.Input<String?>? sparkRuntimeVersion;
 
   /// Creates a new [ComputeRuntimeDto].
   /// [sparkRuntimeVersion] Optional.

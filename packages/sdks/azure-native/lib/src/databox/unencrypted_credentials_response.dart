@@ -1,14 +1,13 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'customer_disk_job_secrets_response.dart';
 
 /// Unencrypted credentials for accessing device.
 class UnencryptedCredentialsResponse {
   /// Name of the job.
   final pulumi.Input<String> jobName;
   /// Secrets related to this job.
-  final pulumi.Input<CustomerDiskJobSecretsResponse> jobSecrets;
+  final pulumi.Input<dynamic> jobSecrets;
 
   /// Creates a new [UnencryptedCredentialsResponse].
   /// [jobName] Name of the job.
@@ -21,14 +20,14 @@ class UnencryptedCredentialsResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'jobName': jobName,
-      'jobSecrets': pulumi.Input.mapInputValue<CustomerDiskJobSecretsResponse, Map<String, dynamic>>(jobSecrets, (value) => value.toMap()),
+      'jobSecrets': jobSecrets,
     };
   }
 
   factory UnencryptedCredentialsResponse.fromMap(Map<String, dynamic> map) {
     return UnencryptedCredentialsResponse(
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
-      jobSecrets: pulumi.Input.fromValue(CustomerDiskJobSecretsResponse.fromMap((map['jobSecrets']! as Map).cast<String, dynamic>())),
+      jobSecrets: pulumi.Input.fromValue(map['jobSecrets']),
     );
   }
 }

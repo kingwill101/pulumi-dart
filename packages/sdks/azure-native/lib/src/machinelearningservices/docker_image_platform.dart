@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DockerImagePlatform {
   /// The OS type the Environment.
-  final pulumi.Input<String>? operatingSystemType;
+  final pulumi.Input<dynamic>? operatingSystemType;
 
   /// Creates a new [DockerImagePlatform].
   /// [operatingSystemType] The OS type the Environment.
@@ -20,7 +20,7 @@ class DockerImagePlatform {
 
   factory DockerImagePlatform.fromMap(Map<String, dynamic> map) {
     return DockerImagePlatform(
-      operatingSystemType: (() { final guardedValue = map['operatingSystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operatingSystemType: (() { final guardedValue = map['operatingSystemType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

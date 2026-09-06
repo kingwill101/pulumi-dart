@@ -11,7 +11,7 @@ class ReplicationRecoveryPlanArgs {
   /// Recovery plan creation properties.
   final pulumi.Input<CreateRecoveryPlanInputProperties> properties;
   /// Recovery plan name.
-  final pulumi.Input<String>? recoveryPlanName;
+  final pulumi.Input<String?>? recoveryPlanName;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

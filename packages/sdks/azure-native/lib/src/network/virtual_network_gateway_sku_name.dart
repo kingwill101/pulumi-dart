@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gateway SKU name.
-enum VirtualNetworkGatewaySkuName {
+enum VirtualNetworkGatewaySkuName implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueHighPerformance("HighPerformance"),
   valueStandard("Standard"),
@@ -20,6 +22,7 @@ enum VirtualNetworkGatewaySkuName {
   valueErGwScale("ErGwScale");
 
   const VirtualNetworkGatewaySkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkGatewaySkuName fromValue(String value) {

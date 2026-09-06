@@ -16,23 +16,23 @@ import 'storage_profile.dart';
 /// {@macro pulumi_connectedvmwarevsphere_virtual_machine_instance_args_doc}
 class VirtualMachineInstanceArgs {
   /// Gets or sets the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Hardware properties.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// Gets the infrastructure profile.
-  final pulumi.Input<InfrastructureProfile>? infrastructureProfile;
+  final pulumi.Input<InfrastructureProfile?>? infrastructureProfile;
   /// Network properties.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// OS properties.
-  final pulumi.Input<OsProfileForVMInstance>? osProfile;
+  final pulumi.Input<OsProfileForVMInstance?>? osProfile;
   /// Placement properties.
-  final pulumi.Input<PlacementProfile>? placementProfile;
+  final pulumi.Input<PlacementProfile?>? placementProfile;
   /// The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   final pulumi.Input<String> resourceUri;
   /// Gets the security profile.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Storage properties.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
 
   /// Creates a new [VirtualMachineInstanceArgs].
   /// [extendedLocation] Gets or sets the extended location.

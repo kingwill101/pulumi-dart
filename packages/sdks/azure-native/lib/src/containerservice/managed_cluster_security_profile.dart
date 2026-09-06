@@ -9,15 +9,15 @@ import 'managed_cluster_security_profile_workload_identity.dart';
 /// Security profile for the container service cluster.
 class ManagedClusterSecurityProfile {
   /// Azure Key Vault [key management service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) settings for the security profile.
-  final pulumi.Input<AzureKeyVaultKms>? azureKeyVaultKms;
+  final pulumi.Input<AzureKeyVaultKms?>? azureKeyVaultKms;
   /// A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority).
-  final pulumi.Input<List<String>>? customCATrustCertificates;
+  final pulumi.Input<List<String>?>? customCATrustCertificates;
   /// Microsoft Defender settings for the security profile.
-  final pulumi.Input<ManagedClusterSecurityProfileDefender>? defender;
+  final pulumi.Input<ManagedClusterSecurityProfileDefender?>? defender;
   /// Image Cleaner settings for the security profile.
-  final pulumi.Input<ManagedClusterSecurityProfileImageCleaner>? imageCleaner;
+  final pulumi.Input<ManagedClusterSecurityProfileImageCleaner?>? imageCleaner;
   /// Workload identity settings for the security profile. Workload identity enables Kubernetes applications to access Azure cloud resources securely with Azure AD. See https://aka.ms/aks/wi for more details.
-  final pulumi.Input<ManagedClusterSecurityProfileWorkloadIdentity>? workloadIdentity;
+  final pulumi.Input<ManagedClusterSecurityProfileWorkloadIdentity?>? workloadIdentity;
 
   /// Creates a new [ManagedClusterSecurityProfile].
   /// [azureKeyVaultKms] Azure Key Vault [key management service](https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/) settings for the security profile.

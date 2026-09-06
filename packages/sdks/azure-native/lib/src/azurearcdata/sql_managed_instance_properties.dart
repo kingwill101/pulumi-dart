@@ -8,27 +8,27 @@ import 'sql_managed_instance_k8s_raw.dart';
 /// Properties of sqlManagedInstance.
 class SqlManagedInstanceProperties {
   /// Active Directory information related to this SQL Managed Instance.
-  final pulumi.Input<ActiveDirectoryInformation>? activeDirectoryInformation;
+  final pulumi.Input<ActiveDirectoryInformation?>? activeDirectoryInformation;
   /// The instance admin user
-  final pulumi.Input<String>? admin;
+  final pulumi.Input<String?>? admin;
   /// Username and password for basic authentication.
-  final pulumi.Input<BasicLoginInformation>? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformation?>? basicLoginInformation;
   /// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// null
-  final pulumi.Input<String>? dataControllerId;
+  final pulumi.Input<String?>? dataControllerId;
   /// The instance end time
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
-  final pulumi.Input<String>? extensionId;
+  final pulumi.Input<String?>? extensionId;
   /// The raw kubernetes information
-  final pulumi.Input<SqlManagedInstanceK8sRaw>? k8sRaw;
+  final pulumi.Input<SqlManagedInstanceK8sRaw?>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? lastUploadedDate;
+  final pulumi.Input<String?>? lastUploadedDate;
   /// The license type to apply for this managed instance.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The instance start time
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [SqlManagedInstanceProperties].
   /// [activeDirectoryInformation] Active Directory information related to this SQL Managed Instance.
@@ -42,7 +42,7 @@ class SqlManagedInstanceProperties {
   /// [lastUploadedDate] Last uploaded date from Kubernetes cluster. Defaults to current date time
   /// [licenseType] The license type to apply for this managed instance.
   /// [startTime] The instance start time
-  const SqlManagedInstanceProperties({
+  SqlManagedInstanceProperties({
     this.activeDirectoryInformation,
     this.admin,
     this.basicLoginInformation,
@@ -52,9 +52,9 @@ class SqlManagedInstanceProperties {
     this.extensionId,
     this.k8sRaw,
     this.lastUploadedDate,
-    this.licenseType,
+    pulumi.Input<dynamic>? licenseType,
     this.startTime,
-  });
+  }) : licenseType = licenseType ?? pulumi.Input.fromValue('BasePrice');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -83,7 +83,7 @@ class SqlManagedInstanceProperties {
       extensionId: (() { final guardedValue = map['extensionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       k8sRaw: (() { final guardedValue = map['k8sRaw']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SqlManagedInstanceK8sRaw.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastUploadedDate: (() { final guardedValue = map['lastUploadedDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -7,7 +7,7 @@ class CustomNamingConvention {
   /// The custom naming formula for the resource type.
   final pulumi.Input<String> formula;
   /// The type of the resource.
-  final pulumi.Input<String> resourceType;
+  final pulumi.Input<dynamic> resourceType;
 
   /// Creates a new [CustomNamingConvention].
   /// [formula] The custom naming formula for the resource type.
@@ -27,7 +27,7 @@ class CustomNamingConvention {
   factory CustomNamingConvention.fromMap(Map<String, dynamic> map) {
     return CustomNamingConvention(
       formula: pulumi.Input.fromValue(map['formula'] as String),
-      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType']),
     );
   }
 }

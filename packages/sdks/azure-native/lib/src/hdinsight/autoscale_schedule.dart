@@ -6,9 +6,9 @@ import 'autoscale_time_and_capacity.dart';
 /// Parameters for a schedule-based autoscale rule, consisting of an array of days + a time and capacity
 class AutoscaleSchedule {
   /// Days of the week for a schedule-based autoscale rule
-  final pulumi.Input<List<String>>? days;
+  final pulumi.Input<List<dynamic>?>? days;
   /// Time and capacity for a schedule-based autoscale rule
-  final pulumi.Input<AutoscaleTimeAndCapacity>? timeAndCapacity;
+  final pulumi.Input<AutoscaleTimeAndCapacity?>? timeAndCapacity;
 
   /// Creates a new [AutoscaleSchedule].
   /// [days] Days of the week for a schedule-based autoscale rule
@@ -27,7 +27,7 @@ class AutoscaleSchedule {
 
   factory AutoscaleSchedule.fromMap(Map<String, dynamic> map) {
     return AutoscaleSchedule(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       timeAndCapacity: (() { final guardedValue = map['timeAndCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoscaleTimeAndCapacity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

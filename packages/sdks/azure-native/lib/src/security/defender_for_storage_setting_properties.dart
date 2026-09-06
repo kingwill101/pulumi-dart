@@ -7,13 +7,13 @@ import 'sensitive_data_discovery_properties.dart';
 /// Defender for Storage resource properties.
 class DefenderForStorageSettingProperties {
   /// Indicates whether Defender for Storage is enabled on this storage account.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
   /// Properties of Malware Scanning.
-  final pulumi.Input<MalwareScanningProperties>? malwareScanning;
+  final pulumi.Input<MalwareScanningProperties?>? malwareScanning;
   /// Indicates whether the settings defined for this storage account should override the settings defined for the subscription.
-  final pulumi.Input<bool>? overrideSubscriptionLevelSettings;
+  final pulumi.Input<bool?>? overrideSubscriptionLevelSettings;
   /// Properties of Sensitive Data Discovery.
-  final pulumi.Input<SensitiveDataDiscoveryProperties>? sensitiveDataDiscovery;
+  final pulumi.Input<SensitiveDataDiscoveryProperties?>? sensitiveDataDiscovery;
 
   /// Creates a new [DefenderForStorageSettingProperties].
   /// [isEnabled] Indicates whether Defender for Storage is enabled on this storage account.

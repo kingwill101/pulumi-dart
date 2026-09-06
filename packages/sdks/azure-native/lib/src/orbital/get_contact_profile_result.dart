@@ -11,31 +11,31 @@ class GetContactProfileResult {
   /// Auto-tracking configuration.
   final String? autoTrackingConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// ARM resource identifier of the Event Hub used for telemetry. Requires granting Orbital Resource Provider the rights to send telemetry into the hub.
   final String? eventHubUri;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  final List<ContactProfileLinkResponse> links;
+  final List<ContactProfileLinkResponse>? links;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Minimum viable elevation for the contact in decimal degrees. Used for listing the available contacts with a spacecraft at a given ground station.
   final double? minimumElevationDegrees;
   /// Minimum viable contact duration in ISO 8601 format. Used for listing the available contacts with a spacecraft at a given ground station.
   final String? minimumViableContactDuration;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Network configuration of customer virtual network.
-  final ContactProfilesPropertiesResponseNetworkConfiguration networkConfiguration;
+  final ContactProfilesPropertiesResponseNetworkConfiguration? networkConfiguration;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
   final List<ContactProfileThirdPartyConfigurationResponse>? thirdPartyConfigurations;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetContactProfileResult].
   /// [autoTrackingConfiguration] Auto-tracking configuration.
@@ -54,56 +54,56 @@ class GetContactProfileResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetContactProfileResult({
     this.autoTrackingConfiguration,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.eventHubUri,
-    required this.id,
-    required this.links,
-    required this.location,
+    this.id,
+    this.links,
+    this.location,
     this.minimumElevationDegrees,
     this.minimumViableContactDuration,
-    required this.name,
-    required this.networkConfiguration,
-    required this.systemData,
+    this.name,
+    this.networkConfiguration,
+    this.systemData,
     this.tags,
     this.thirdPartyConfigurations,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoTrackingConfiguration': ?autoTrackingConfiguration,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'eventHubUri': ?eventHubUri,
-      'id': id,
-      'links': pulumi.Input.encodeList<ContactProfileLinkResponse, Map<String, dynamic>>(links, (value) => value.toMap()),
-      'location': location,
+      'id': ?id,
+      'links': ?(() { final guardedValue = links; if (guardedValue == null) return null; return pulumi.Input.encodeList<ContactProfileLinkResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
       'minimumElevationDegrees': ?minimumElevationDegrees,
       'minimumViableContactDuration': ?minimumViableContactDuration,
-      'name': name,
-      'networkConfiguration': networkConfiguration.toMap(),
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'networkConfiguration': ?networkConfiguration?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'thirdPartyConfigurations': ?(() { final guardedValue = thirdPartyConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<ContactProfileThirdPartyConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetContactProfileResult.fromMap(Map<String, dynamic> map) {
     return GetContactProfileResult(
       autoTrackingConfiguration: (() { final guardedValue = map['autoTrackingConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eventHubUri: (() { final guardedValue = map['eventHubUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      links: pulumi.Input.decodeList<ContactProfileLinkResponse>(map['links']!, (value) => ContactProfileLinkResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      links: (() { final guardedValue = map['links']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileLinkResponse>(guardedValue, (value) => ContactProfileLinkResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      minimumElevationDegrees: (() { final guardedValue = map['minimumElevationDegrees']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       minimumViableContactDuration: (() { final guardedValue = map['minimumViableContactDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      networkConfiguration: ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkConfiguration: (() { final guardedValue = map['networkConfiguration']; if (guardedValue == null) return null; return ContactProfilesPropertiesResponseNetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       thirdPartyConfigurations: (() { final guardedValue = map['thirdPartyConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContactProfileThirdPartyConfigurationResponse>(guardedValue, (value) => ContactProfileThirdPartyConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

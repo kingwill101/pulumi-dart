@@ -7,23 +7,23 @@ import 'system_data_response.dart';
 /// Result data returned by getService.
 class GetServiceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource Id for the resource.
-  final String id;
+  final String? id;
   /// The GEO location of the resource.
   final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// Properties of the Service resource
-  final ClusterResourcePropertiesResponse properties;
+  final ClusterResourcePropertiesResponse? properties;
   /// Sku of the Service resource
   final SkuResponse? sku;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tags of the service which is a list of key value pairs that describe the resource.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetServiceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -36,42 +36,42 @@ class GetServiceResult {
   /// [tags] Tags of the service which is a list of key value pairs that describe the resource.
   /// [type] The type of the resource.
   const GetServiceResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.location,
-    required this.name,
-    required this.properties,
+    this.name,
+    this.properties,
     this.sku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'properties': properties.toMap(),
+      'name': ?name,
+      'properties': ?properties?.toMap(),
       'sku': ?sku?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetServiceResult.fromMap(Map<String, dynamic> map) {
     return GetServiceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: ClusterResourcePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return ClusterResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

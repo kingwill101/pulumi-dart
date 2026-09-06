@@ -6,7 +6,7 @@ import 'provisioning_issue_properties_response.dart';
 /// Describes Provisioning issue for given Network Security Perimeter configuration
 class ProvisioningIssueResponse {
   /// Name of the issue
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Properties of Provisioning Issue
   final pulumi.Input<ProvisioningIssuePropertiesResponse> properties;
 

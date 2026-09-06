@@ -13,13 +13,13 @@ class DatastoreArgs {
   /// Name of the cluster
   final pulumi.Input<String> clusterName;
   /// Name of the datastore
-  final pulumi.Input<String>? datastoreName;
+  final pulumi.Input<String?>? datastoreName;
   /// An iSCSI volume
-  final pulumi.Input<DiskPoolVolume>? diskPoolVolume;
+  final pulumi.Input<DiskPoolVolume?>? diskPoolVolume;
   /// An Elastic SAN volume
-  final pulumi.Input<ElasticSanVolume>? elasticSanVolume;
+  final pulumi.Input<ElasticSanVolume?>? elasticSanVolume;
   /// An Azure NetApp Files volume
-  final pulumi.Input<NetAppVolume>? netAppVolume;
+  final pulumi.Input<NetAppVolume?>? netAppVolume;
   /// Name of the private cloud
   final pulumi.Input<String> privateCloudName;
   /// The name of the resource group. The name is case insensitive.

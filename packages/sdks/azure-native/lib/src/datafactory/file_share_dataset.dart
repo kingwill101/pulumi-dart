@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'avro_format.dart';
 import 'dataset_compression.dart';
 import 'dataset_folder.dart';
 import 'linked_service_reference.dart';
@@ -10,21 +9,21 @@ import 'parameter_specification.dart';
 /// An on-premises file system dataset.
 class FileShareDataset {
   /// List of tags that can be used for describing the Dataset.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The data compression method used for the file system.
-  final pulumi.Input<DatasetCompression>? compression;
+  final pulumi.Input<DatasetCompression?>? compression;
   /// Dataset description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specify a filter to be used to select a subset of files in the folderPath rather than all files. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileFilter;
   /// The name of the on-premises file system. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? fileName;
   /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
-  final pulumi.Input<DatasetFolder>? folder;
+  final pulumi.Input<DatasetFolder?>? folder;
   /// The path of the on-premises file system. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? folderPath;
   /// The format of the files.
-  final pulumi.Input<AvroFormat>? format;
+  final pulumi.Input<dynamic>? format;
   /// Linked service reference.
   final pulumi.Input<LinkedServiceReference> linkedServiceName;
   /// The end of file's modified datetime. Type: string (or Expression with resultType string).
@@ -32,7 +31,7 @@ class FileShareDataset {
   /// The start of file's modified datetime. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? modifiedDatetimeStart;
   /// Parameters for dataset.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   final pulumi.Input<dynamic>? schema;
   /// Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
@@ -84,7 +83,7 @@ class FileShareDataset {
       'fileName': ?fileName,
       'folder': ?pulumi.Input.mapOptionalInputValue<DatasetFolder, Map<String, dynamic>>(folder, (value) => value.toMap()),
       'folderPath': ?folderPath,
-      'format': ?pulumi.Input.mapOptionalInputValue<AvroFormat, Map<String, dynamic>>(format, (value) => value.toMap()),
+      'format': ?format,
       'linkedServiceName': pulumi.Input.mapInputValue<LinkedServiceReference, Map<String, dynamic>>(linkedServiceName, (value) => value.toMap()),
       'modifiedDatetimeEnd': ?modifiedDatetimeEnd,
       'modifiedDatetimeStart': ?modifiedDatetimeStart,
@@ -104,7 +103,7 @@ class FileShareDataset {
       fileName: (() { final guardedValue = map['fileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       folder: (() { final guardedValue = map['folder']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatasetFolder.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       folderPath: (() { final guardedValue = map['folderPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvroFormat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       linkedServiceName: pulumi.Input.fromValue(LinkedServiceReference.fromMap((map['linkedServiceName']! as Map).cast<String, dynamic>())),
       modifiedDatetimeEnd: (() { final guardedValue = map['modifiedDatetimeEnd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       modifiedDatetimeStart: (() { final guardedValue = map['modifiedDatetimeStart']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

@@ -8,21 +8,21 @@ import 'vwan_configuration.dart';
 /// Network settings for Firewall
 class NetworkProfile {
   /// Egress nat IP to use
-  final pulumi.Input<List<IPAddress>>? egressNatIp;
+  final pulumi.Input<List<IPAddress>?>? egressNatIp;
   /// Enable egress NAT, enabled by default
-  final pulumi.Input<String> enableEgressNat;
+  final pulumi.Input<dynamic> enableEgressNat;
   /// vnet or vwan, cannot be updated
-  final pulumi.Input<String> networkType;
+  final pulumi.Input<dynamic> networkType;
   /// Array of ipv4 destination address for which source NAT is to be performed
-  final pulumi.Input<List<String>>? privateSourceNatRulesDestination;
+  final pulumi.Input<List<String>?>? privateSourceNatRulesDestination;
   /// List of IPs associated with the Firewall
   final pulumi.Input<List<IPAddress>> publicIps;
   /// Non-RFC 1918 address
-  final pulumi.Input<List<String>>? trustedRanges;
+  final pulumi.Input<List<String>?>? trustedRanges;
   /// Vnet configurations
-  final pulumi.Input<VnetConfiguration>? vnetConfiguration;
+  final pulumi.Input<VnetConfiguration?>? vnetConfiguration;
   /// Vwan configurations
-  final pulumi.Input<VwanConfiguration>? vwanConfiguration;
+  final pulumi.Input<VwanConfiguration?>? vwanConfiguration;
 
   /// Creates a new [NetworkProfile].
   /// [egressNatIp] Egress nat IP to use
@@ -60,8 +60,8 @@ class NetworkProfile {
   factory NetworkProfile.fromMap(Map<String, dynamic> map) {
     return NetworkProfile(
       egressNatIp: (() { final guardedValue = map['egressNatIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPAddress>(guardedValue, (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      enableEgressNat: pulumi.Input.fromValue(map['enableEgressNat'] as String),
-      networkType: pulumi.Input.fromValue(map['networkType'] as String),
+      enableEgressNat: pulumi.Input.fromValue(map['enableEgressNat']),
+      networkType: pulumi.Input.fromValue(map['networkType']),
       privateSourceNatRulesDestination: (() { final guardedValue = map['privateSourceNatRulesDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       publicIps: pulumi.Input.fromValue(pulumi.Input.decodeList<IPAddress>(map['publicIps']!, (value) => IPAddress.fromMap((value as Map).cast<String, dynamic>()))),
       trustedRanges: (() { final guardedValue = map['trustedRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

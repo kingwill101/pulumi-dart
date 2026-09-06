@@ -5,27 +5,27 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Git repository property payload for config server
 class GitPatternRepositoryResponse {
   /// Public sshKey of git repository.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// SshKey algorithm of git repository.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Label of the repository
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Name of the repository
   final pulumi.Input<String> name;
   /// Password of git repository basic auth.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Collection of pattern of the repository
-  final pulumi.Input<List<String>>? pattern;
+  final pulumi.Input<List<String>?>? pattern;
   /// Private sshKey algorithm of git repository.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
   /// Searching path of the repository
-  final pulumi.Input<List<String>>? searchPaths;
+  final pulumi.Input<List<String>?>? searchPaths;
   /// Strict host key checking or not.
-  final pulumi.Input<bool>? strictHostKeyChecking;
+  final pulumi.Input<bool?>? strictHostKeyChecking;
   /// URI of the repository
   final pulumi.Input<String> uri;
   /// Username of git repository basic auth.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [GitPatternRepositoryResponse].
   /// [hostKey] Public sshKey of git repository.

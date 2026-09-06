@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
-enum ModelingFeatures {
+enum ModelingFeatures implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueStandard("Standard"),
   valuePremium("Premium");
 
   const ModelingFeatures(this.wireValue);
+  @override
   final String wireValue;
 
   static ModelingFeatures fromValue(String value) {

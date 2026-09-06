@@ -6,25 +6,25 @@ import 'sql_connection_info_response.dart';
 /// Input for the task that validates connection to Azure SQL Database Managed Instance.
 class ConnectToTargetSqlMITaskInputResponse {
   /// Flag for whether to collect agent jobs from target SQL MI server.
-  final pulumi.Input<bool>? collectAgentJobs;
+  final pulumi.Input<bool?>? collectAgentJobs;
   /// Flag for whether to collect logins from target SQL MI server.
-  final pulumi.Input<bool>? collectLogins;
+  final pulumi.Input<bool?>? collectLogins;
   /// Connection information for target SQL Server
   final pulumi.Input<SqlConnectionInfoResponse> targetConnectionInfo;
   /// Flag for whether to validate SSIS catalog is reachable on the target SQL MI server.
-  final pulumi.Input<bool>? validateSsisCatalogOnly;
+  final pulumi.Input<bool?>? validateSsisCatalogOnly;
 
   /// Creates a new [ConnectToTargetSqlMITaskInputResponse].
   /// [collectAgentJobs] Flag for whether to collect agent jobs from target SQL MI server.
   /// [collectLogins] Flag for whether to collect logins from target SQL MI server.
   /// [targetConnectionInfo] Connection information for target SQL Server
   /// [validateSsisCatalogOnly] Flag for whether to validate SSIS catalog is reachable on the target SQL MI server.
-  const ConnectToTargetSqlMITaskInputResponse({
-    this.collectAgentJobs,
-    this.collectLogins,
+  ConnectToTargetSqlMITaskInputResponse({
+    pulumi.Input<bool?>? collectAgentJobs,
+    pulumi.Input<bool?>? collectLogins,
     required this.targetConnectionInfo,
-    this.validateSsisCatalogOnly,
-  });
+    pulumi.Input<bool?>? validateSsisCatalogOnly,
+  }) : collectAgentJobs = collectAgentJobs ?? pulumi.Input.fromValue(true), collectLogins = collectLogins ?? pulumi.Input.fromValue(true), validateSsisCatalogOnly = validateSsisCatalogOnly ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

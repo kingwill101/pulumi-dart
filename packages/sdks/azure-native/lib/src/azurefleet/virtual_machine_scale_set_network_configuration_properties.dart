@@ -9,29 +9,29 @@ import 'virtual_machine_scale_set_network_configuration_dns_settings.dart';
 class VirtualMachineScaleSetNetworkConfigurationProperties {
   /// Specifies whether the Auxiliary mode is enabled for the Network Interface
   /// resource.
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<dynamic>? auxiliaryMode;
   /// Specifies whether the Auxiliary sku is enabled for the Network Interface
   /// resource.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<dynamic>? auxiliarySku;
   /// Specify what happens to the network interface when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// Specifies whether the network interface is disabled for tcp state tracking.
-  final pulumi.Input<bool>? disableTcpStateTracking;
+  final pulumi.Input<bool?>? disableTcpStateTracking;
   /// The dns settings to be applied on the network interfaces.
-  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationDnsSettings>? dnsSettings;
+  final pulumi.Input<VirtualMachineScaleSetNetworkConfigurationDnsSettings?>? dnsSettings;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Specifies whether the network interface is FPGA networking-enabled.
-  final pulumi.Input<bool>? enableFpga;
+  final pulumi.Input<bool?>? enableFpga;
   /// Whether IP forwarding enabled on this NIC.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// Specifies the IP configurations of the network interface.
   final pulumi.Input<List<VirtualMachineScaleSetIPConfiguration>> ipConfigurations;
   /// The network security group.
-  final pulumi.Input<SubResource>? networkSecurityGroup;
+  final pulumi.Input<SubResource?>? networkSecurityGroup;
   /// Specifies the primary network interface in case the virtual machine has more
   /// than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [VirtualMachineScaleSetNetworkConfigurationProperties].
   /// [auxiliaryMode] Specifies whether the Auxiliary mode is enabled for the Network Interface
@@ -77,9 +77,9 @@ class VirtualMachineScaleSetNetworkConfigurationProperties {
 
   factory VirtualMachineScaleSetNetworkConfigurationProperties.fromMap(Map<String, dynamic> map) {
     return VirtualMachineScaleSetNetworkConfigurationProperties(
-      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disableTcpStateTracking: (() { final guardedValue = map['disableTcpStateTracking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetNetworkConfigurationDnsSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableAcceleratedNetworking: (() { final guardedValue = map['enableAcceleratedNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

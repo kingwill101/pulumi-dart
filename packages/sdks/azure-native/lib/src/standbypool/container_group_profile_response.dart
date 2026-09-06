@@ -7,7 +7,7 @@ class ContainerGroupProfileResponse {
   /// Specifies container group profile id of standby container groups.
   final pulumi.Input<String> id;
   /// Specifies revision of container group profile.
-  final pulumi.Input<double>? revision;
+  final pulumi.Input<double?>? revision;
 
   /// Creates a new [ContainerGroupProfileResponse].
   /// [id] Specifies container group profile id of standby container groups.
@@ -27,7 +27,7 @@ class ContainerGroupProfileResponse {
   factory ContainerGroupProfileResponse.fromMap(Map<String, dynamic> map) {
     return ContainerGroupProfileResponse(
       id: pulumi.Input.fromValue(map['id'] as String),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

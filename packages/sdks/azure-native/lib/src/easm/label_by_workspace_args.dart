@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_easm_label_by_workspace_args_doc}
 class LabelByWorkspaceArgs {
   /// Label color.
-  final pulumi.Input<String>? color;
+  final pulumi.Input<String?>? color;
   /// Label display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the Label.
-  final pulumi.Input<String>? labelName;
+  final pulumi.Input<String?>? labelName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Workspace.

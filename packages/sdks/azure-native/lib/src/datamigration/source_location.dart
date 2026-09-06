@@ -7,9 +7,9 @@ import 'sql_file_share.dart';
 /// Source Location details of backups.
 class SourceLocation {
   /// Source Azure Blob.
-  final pulumi.Input<AzureBlob>? azureBlob;
+  final pulumi.Input<AzureBlob?>? azureBlob;
   /// Source File share.
-  final pulumi.Input<SqlFileShare>? fileShare;
+  final pulumi.Input<SqlFileShare?>? fileShare;
 
   /// Creates a new [SourceLocation].
   /// [azureBlob] Source Azure Blob.

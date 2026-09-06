@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TagItem
 class TagItemResponse {
   /// Property key
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagItemResponse].
   /// [key] Property key

@@ -6,9 +6,9 @@ import 'extended_location_response.dart';
 /// ExtendedLocation details data.
 class A2AExtendedLocationDetailsResponse {
   /// The primary ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? primaryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? primaryExtendedLocation;
   /// The recovery ExtendedLocation.
-  final pulumi.Input<ExtendedLocationResponse>? recoveryExtendedLocation;
+  final pulumi.Input<ExtendedLocationResponse?>? recoveryExtendedLocation;
 
   /// Creates a new [A2AExtendedLocationDetailsResponse].
   /// [primaryExtendedLocation] The primary ExtendedLocation.

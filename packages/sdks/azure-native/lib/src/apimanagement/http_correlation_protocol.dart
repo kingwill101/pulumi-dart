@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sets correlation protocol to use for Application Insights diagnostics.
-enum HttpCorrelationProtocol {
+enum HttpCorrelationProtocol implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueLegacy("Legacy"),
   valueW3C("W3C");
 
   const HttpCorrelationProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpCorrelationProtocol fromValue(String value) {

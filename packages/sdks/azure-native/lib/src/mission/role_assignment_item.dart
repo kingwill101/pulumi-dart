@@ -6,7 +6,7 @@ import 'principal.dart';
 /// Role assignment item that indicates which principals should be assigned this role definition
 class RoleAssignmentItem {
   /// List of principal IDs to which to assign this role definition
-  final pulumi.Input<List<Principal>>? principals;
+  final pulumi.Input<List<Principal>?>? principals;
   /// Role definition identifier
   final pulumi.Input<String> roleDefinitionId;
 

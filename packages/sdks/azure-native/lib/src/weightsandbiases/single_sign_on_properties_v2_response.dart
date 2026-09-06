@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties specific to Single Sign On Resource
 class SingleSignOnPropertiesV2Response {
   /// List of AAD domains fetched from Microsoft Graph for user.
-  final pulumi.Input<List<String>>? aadDomains;
+  final pulumi.Input<List<String>?>? aadDomains;
   /// AAD enterprise application Id used to setup SSO
-  final pulumi.Input<String>? enterpriseAppId;
+  final pulumi.Input<String?>? enterpriseAppId;
   /// State of the Single Sign On for the resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of Single Sign-On mechanism being used
   final pulumi.Input<String> type;
   /// URL for SSO to be used by the partner to redirect the user to their system
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [SingleSignOnPropertiesV2Response].
   /// [aadDomains] List of AAD domains fetched from Microsoft Graph for user.

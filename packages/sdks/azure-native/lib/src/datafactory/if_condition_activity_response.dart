@@ -2,33 +2,32 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency_response.dart';
-import 'append_variable_activity_response.dart';
 import 'expression_response.dart';
 import 'user_property_response.dart';
 
 /// This activity evaluates a boolean expression and executes either the activities under the ifTrueActivities property or the ifFalseActivities property depending on the result of the expression.
 class IfConditionActivityResponse {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An expression that would evaluate to Boolean. This is used to determine the block of activities (ifTrueActivities or ifFalseActivities) that will be executed.
   final pulumi.Input<ExpressionResponse> expression;
   /// List of activities to execute if expression is evaluated to false. This is an optional property and if not provided, the activity will exit without any action.
-  final pulumi.Input<List<AppendVariableActivityResponse>>? ifFalseActivities;
+  final pulumi.Input<List<dynamic>?>? ifFalseActivities;
   /// List of activities to execute if expression is evaluated to true. This is an optional property and if not provided, the activity will exit without any action.
-  final pulumi.Input<List<AppendVariableActivityResponse>>? ifTrueActivities;
+  final pulumi.Input<List<dynamic>?>? ifTrueActivities;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'IfCondition'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [IfConditionActivityResponse].
   /// [dependsOn] Activity depends on condition.
@@ -59,8 +58,8 @@ class IfConditionActivityResponse {
       'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
       'expression': pulumi.Input.mapInputValue<ExpressionResponse, Map<String, dynamic>>(expression, (value) => value.toMap()),
-      'ifFalseActivities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivityResponse>, List<Map<String, dynamic>>>(ifFalseActivities, (value) => pulumi.Input.encodeList<AppendVariableActivityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'ifTrueActivities': ?pulumi.Input.mapOptionalInputValue<List<AppendVariableActivityResponse>, List<Map<String, dynamic>>>(ifTrueActivities, (value) => pulumi.Input.encodeList<AppendVariableActivityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'ifFalseActivities': ?ifFalseActivities,
+      'ifTrueActivities': ?ifTrueActivities,
       'name': name,
       'onInactiveMarkAs': ?onInactiveMarkAs,
       'state': ?state,
@@ -74,8 +73,8 @@ class IfConditionActivityResponse {
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expression: pulumi.Input.fromValue(ExpressionResponse.fromMap((map['expression']! as Map).cast<String, dynamic>())),
-      ifFalseActivities: (() { final guardedValue = map['ifFalseActivities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivityResponse>(guardedValue, (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ifTrueActivities: (() { final guardedValue = map['ifTrueActivities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivityResponse>(guardedValue, (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      ifFalseActivities: (() { final guardedValue = map['ifFalseActivities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      ifTrueActivities: (() { final guardedValue = map['ifTrueActivities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -14,7 +14,7 @@ class AzureBlobFSWriteSettingsResponse {
   /// The maximum concurrent connection count for the source data store. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxConcurrentConnections;
   /// Specify the custom metadata to be added to sink data. Type: array of objects (or Expression with resultType array of objects).
-  final pulumi.Input<List<MetadataItemResponse>>? metadata;
+  final pulumi.Input<List<MetadataItemResponse>?>? metadata;
   /// The write setting type.
   /// Expected value is 'AzureBlobFSWriteSettings'.
   final pulumi.Input<String> type;

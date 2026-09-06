@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The domain name label scope. If a domain name label and a domain name label scope are specified, an A DNS record is created for the public IP in the Microsoft Azure DNS system with a hashed value includes in FQDN.
-enum PublicIpAddressDnsSettingsDomainNameLabelScope {
+enum PublicIpAddressDnsSettingsDomainNameLabelScope implements pulumi.PulumiEnum<String> {
   valueTenantReuse("TenantReuse"),
   valueSubscriptionReuse("SubscriptionReuse"),
   valueResourceGroupReuse("ResourceGroupReuse"),
   valueNoReuse("NoReuse");
 
   const PublicIpAddressDnsSettingsDomainNameLabelScope(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicIpAddressDnsSettingsDomainNameLabelScope fromValue(String value) {

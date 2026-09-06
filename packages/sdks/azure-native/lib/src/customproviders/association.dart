@@ -178,4 +178,20 @@ class Association extends pulumi.CustomResource {
     targetResourceId = registerOutput<String?>('targetResourceId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Association] resource.
+  Association.reference(String urn)
+    : super(
+        'azure-native:customproviders:Association',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    targetResourceId = registerOutput<String?>('targetResourceId');
+    type = registerOutput<String>('type');
+  }
 }

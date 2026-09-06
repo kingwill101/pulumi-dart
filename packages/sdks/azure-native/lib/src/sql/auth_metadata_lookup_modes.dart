@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The managed instance's authentication metadata lookup mode.
-enum AuthMetadataLookupModes {
+enum AuthMetadataLookupModes implements pulumi.PulumiEnum<String> {
   valueAzureAD("AzureAD"),
   valuePaired("Paired"),
   valueWindows("Windows");
 
   const AuthMetadataLookupModes(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthMetadataLookupModes fromValue(String value) {

@@ -11,7 +11,7 @@ class MqttBridgeRemoteBrokerConnectionSpec {
   /// The endpoint of remote broker to connect to.
   final pulumi.Input<String> endpoint;
   /// Protocol for remote connection.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// TLS details for Remote broker Connection.
   final pulumi.Input<MqttBridgeRemoteBrokerConnectionTls> tls;
 
@@ -20,12 +20,12 @@ class MqttBridgeRemoteBrokerConnectionSpec {
   /// [endpoint] The endpoint of remote broker to connect to.
   /// [protocol] Protocol for remote connection.
   /// [tls] TLS details for Remote broker Connection.
-  const MqttBridgeRemoteBrokerConnectionSpec({
+  MqttBridgeRemoteBrokerConnectionSpec({
     required this.authentication,
     required this.endpoint,
-    this.protocol,
+    pulumi.Input<dynamic>? protocol,
     required this.tls,
-  });
+  }) : protocol = protocol ?? pulumi.Input.fromValue('mqtt');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -40,7 +40,7 @@ class MqttBridgeRemoteBrokerConnectionSpec {
     return MqttBridgeRemoteBrokerConnectionSpec(
       authentication: pulumi.Input.fromValue(MqttBridgeRemoteBrokerAuthenticationMethods.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tls: pulumi.Input.fromValue(MqttBridgeRemoteBrokerConnectionTls.fromMap((map['tls']! as Map).cast<String, dynamic>())),
     );
   }

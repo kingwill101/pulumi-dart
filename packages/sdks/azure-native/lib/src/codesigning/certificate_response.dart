@@ -5,29 +5,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the certificate.
 class CertificateResponse {
   /// Certificate created date.
-  final pulumi.Input<String>? createdDate;
+  final pulumi.Input<String?>? createdDate;
   /// The timestamp when the revocation is effective.
-  final pulumi.Input<String>? effectiveAt;
+  final pulumi.Input<String?>? effectiveAt;
   /// Enhanced key usage of the certificate.
-  final pulumi.Input<String>? enhancedKeyUsage;
+  final pulumi.Input<String?>? enhancedKeyUsage;
   /// Certificate expiry date.
-  final pulumi.Input<String>? expiryDate;
+  final pulumi.Input<String?>? expiryDate;
   /// Reason for the revocation failure.
-  final pulumi.Input<String>? failureReason;
+  final pulumi.Input<String?>? failureReason;
   /// Reason for revocation.
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Remarks for the revocation.
-  final pulumi.Input<String>? remarks;
+  final pulumi.Input<String?>? remarks;
   /// The timestamp when the revocation is requested.
-  final pulumi.Input<String>? requestedAt;
+  final pulumi.Input<String?>? requestedAt;
   /// Serial number of the certificate.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Status of the certificate.
   final pulumi.Input<String> status;
   /// Subject name of the certificate.
-  final pulumi.Input<String>? subjectName;
+  final pulumi.Input<String?>? subjectName;
   /// Thumbprint of the certificate.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
 
   /// Creates a new [CertificateResponse].
   /// [createdDate] Certificate created date.

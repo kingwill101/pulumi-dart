@@ -9,51 +9,51 @@ import 'target_group_attribute.dart';
 /// Definition of awsElasticLoadBalancingV2TargetGroup
 class AwsElasticLoadBalancingV2TargetGroupProperties {
   /// Indicates whether health checks are enabled. If the target type is lambda, health checks are disabled by default but can be enabled. If the target type is instance, ip, or alb, health checks are always enabled and cannot be disabled.
-  final pulumi.Input<bool>? healthCheckEnabled;
+  final pulumi.Input<bool?>? healthCheckEnabled;
   /// The approximate amount of time, in seconds, between health checks of an individual target.
-  final pulumi.Input<int>? healthCheckIntervalSeconds;
+  final pulumi.Input<int?>? healthCheckIntervalSeconds;
   /// [HTTP/HTTPS health checks] The destination for health checks on the targets. [HTTP1 or HTTP2 protocol version] The ping path. The default is /. [GRPC protocol version] The path of a custom health check method with the format /package.service/method. The default is /AWS.ALB/healthcheck.
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// The port the load balancer uses when performing health checks on targets.
-  final pulumi.Input<String>? healthCheckPort;
+  final pulumi.Input<String?>? healthCheckPort;
   /// The protocol the load balancer uses when performing health checks on targets.
-  final pulumi.Input<String>? healthCheckProtocol;
+  final pulumi.Input<String?>? healthCheckProtocol;
   /// The amount of time, in seconds, during which no response from a target means a failed health check.
-  final pulumi.Input<int>? healthCheckTimeoutSeconds;
+  final pulumi.Input<int?>? healthCheckTimeoutSeconds;
   /// The number of consecutive health checks successes required before considering an unhealthy target healthy.
-  final pulumi.Input<int>? healthyThresholdCount;
+  final pulumi.Input<int?>? healthyThresholdCount;
   /// The type of IP address used for this target group. The possible values are ipv4 and ipv6.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<String?>? ipAddressType;
   /// The Amazon Resource Names (ARNs) of the load balancers that route traffic to this target group.
-  final pulumi.Input<List<String>>? loadBalancerArns;
+  final pulumi.Input<List<String>?>? loadBalancerArns;
   /// [HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking for a successful response from a target.
-  final pulumi.Input<Matcher>? matcher;
+  final pulumi.Input<Matcher?>? matcher;
   /// The name of the target group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The port on which the targets receive traffic. This port is used unless you specify a port override when registering the target. If the target is a Lambda function, this parameter does not apply. If the protocol is GENEVE, the supported port is 6081.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// The protocol to use for routing traffic to the targets.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// [HTTP/HTTPS protocol] The protocol version. The possible values are GRPC, HTTP1, and HTTP2.
-  final pulumi.Input<String>? protocolVersion;
+  final pulumi.Input<String?>? protocolVersion;
   /// The tags.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// The ARN of the Target Group
-  final pulumi.Input<String>? targetGroupArn;
+  final pulumi.Input<String?>? targetGroupArn;
   /// The attributes.
-  final pulumi.Input<List<TargetGroupAttribute>>? targetGroupAttributes;
+  final pulumi.Input<List<TargetGroupAttribute>?>? targetGroupAttributes;
   /// The full name of the target group.
-  final pulumi.Input<String>? targetGroupFullName;
+  final pulumi.Input<String?>? targetGroupFullName;
   /// The name of the target group.
-  final pulumi.Input<String>? targetGroupName;
+  final pulumi.Input<String?>? targetGroupName;
   /// The type of target that you must specify when registering targets with this target group. You can't specify targets for a target group using more than one target type.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
   /// The targets.
-  final pulumi.Input<List<TargetDescription>>? targets;
+  final pulumi.Input<List<TargetDescription>?>? targets;
   /// The number of consecutive health check failures required before considering a target unhealthy.
-  final pulumi.Input<int>? unhealthyThresholdCount;
+  final pulumi.Input<int?>? unhealthyThresholdCount;
   /// The identifier of the virtual private cloud (VPC). If the target is a Lambda function, this parameter does not apply.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsElasticLoadBalancingV2TargetGroupProperties].
   /// [healthCheckEnabled] Indicates whether health checks are enabled. If the target type is lambda, health checks are disabled by default but can be enabled. If the target type is instance, ip, or alb, health checks are always enabled and cannot be disabled.
@@ -136,17 +136,17 @@ class AwsElasticLoadBalancingV2TargetGroupProperties {
   factory AwsElasticLoadBalancingV2TargetGroupProperties.fromMap(Map<String, dynamic> map) {
     return AwsElasticLoadBalancingV2TargetGroupProperties(
       healthCheckEnabled: (() { final guardedValue = map['healthCheckEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      healthCheckIntervalSeconds: (() { final guardedValue = map['healthCheckIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckIntervalSeconds: (() { final guardedValue = map['healthCheckIntervalSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthCheckPort: (() { final guardedValue = map['healthCheckPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       healthCheckProtocol: (() { final guardedValue = map['healthCheckProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      healthCheckTimeoutSeconds: (() { final guardedValue = map['healthCheckTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      healthyThresholdCount: (() { final guardedValue = map['healthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      healthCheckTimeoutSeconds: (() { final guardedValue = map['healthCheckTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      healthyThresholdCount: (() { final guardedValue = map['healthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancerArns: (() { final guardedValue = map['loadBalancerArns']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       matcher: (() { final guardedValue = map['matcher']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Matcher.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolVersion: (() { final guardedValue = map['protocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -156,7 +156,7 @@ class AwsElasticLoadBalancingV2TargetGroupProperties {
       targetGroupName: (() { final guardedValue = map['targetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TargetDescription>(guardedValue, (value) => TargetDescription.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      unhealthyThresholdCount: (() { final guardedValue = map['unhealthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      unhealthyThresholdCount: (() { final guardedValue = map['unhealthyThresholdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

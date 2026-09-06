@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The CORS policy for the Cosmos DB database account.
 class CorsPolicyResponse {
   /// The request headers that the origin domain may specify on the CORS request.
-  final pulumi.Input<String>? allowedHeaders;
+  final pulumi.Input<String?>? allowedHeaders;
   /// The methods (HTTP request verbs) that the origin domain may use for a CORS request.
-  final pulumi.Input<String>? allowedMethods;
+  final pulumi.Input<String?>? allowedMethods;
   /// The origin domains that are permitted to make a request against the service via CORS.
   final pulumi.Input<String> allowedOrigins;
   /// The response headers that may be sent in the response to the CORS request and exposed by the browser to the request issuer.
-  final pulumi.Input<String>? exposedHeaders;
+  final pulumi.Input<String?>? exposedHeaders;
   /// The maximum amount time that a browser should cache the preflight OPTIONS request.
-  final pulumi.Input<double>? maxAgeInSeconds;
+  final pulumi.Input<double?>? maxAgeInSeconds;
 
   /// Creates a new [CorsPolicyResponse].
   /// [allowedHeaders] The request headers that the origin domain may specify on the CORS request.
@@ -45,7 +45,7 @@ class CorsPolicyResponse {
       allowedMethods: (() { final guardedValue = map['allowedMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       allowedOrigins: pulumi.Input.fromValue(map['allowedOrigins'] as String),
       exposedHeaders: (() { final guardedValue = map['exposedHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxAgeInSeconds: (() { final guardedValue = map['maxAgeInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

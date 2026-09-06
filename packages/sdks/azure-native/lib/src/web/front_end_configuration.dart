@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'front_end_service_type.dart';
 
 class FrontEndConfiguration {
-  final pulumi.Input<FrontEndServiceType>? kind;
+  final pulumi.Input<FrontEndServiceType?>? kind;
 
   /// Creates a new [FrontEndConfiguration].
   /// [kind] Optional.

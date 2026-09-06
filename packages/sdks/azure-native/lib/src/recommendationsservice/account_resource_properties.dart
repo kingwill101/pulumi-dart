@@ -7,13 +7,13 @@ import 'endpoint_authentication.dart';
 /// Account resource properties.
 class AccountResourceProperties {
   /// Account configuration. This can only be set at RecommendationsService Account creation.
-  final pulumi.Input<String>? configuration;
+  final pulumi.Input<dynamic>? configuration;
   /// The list of CORS details.
-  final pulumi.Input<List<CorsRule>>? cors;
+  final pulumi.Input<List<CorsRule>?>? cors;
   /// The list of service endpoints authentication details.
-  final pulumi.Input<List<EndpointAuthentication>>? endpointAuthentications;
+  final pulumi.Input<List<EndpointAuthentication>?>? endpointAuthentications;
   /// Connection string to write Accounts reports to.
-  final pulumi.Input<String>? reportsConnectionString;
+  final pulumi.Input<String?>? reportsConnectionString;
 
   /// Creates a new [AccountResourceProperties].
   /// [configuration] Account configuration. This can only be set at RecommendationsService Account creation.
@@ -38,7 +38,7 @@ class AccountResourceProperties {
 
   factory AccountResourceProperties.fromMap(Map<String, dynamic> map) {
     return AccountResourceProperties(
-      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configuration: (() { final guardedValue = map['configuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CorsRule>(guardedValue, (value) => CorsRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       endpointAuthentications: (() { final guardedValue = map['endpointAuthentications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointAuthentication>(guardedValue, (value) => EndpointAuthentication.fromMap((value as Map).cast<String, dynamic>()))); })(),
       reportsConnectionString: (() { final guardedValue = map['reportsConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

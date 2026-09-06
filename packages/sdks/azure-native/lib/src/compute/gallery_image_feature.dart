@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A feature for gallery image.
 class GalleryImageFeature {
   /// The name of the gallery image feature.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The minimum gallery image version which supports this feature.
-  final pulumi.Input<String>? startsAtVersion;
+  final pulumi.Input<String?>? startsAtVersion;
   /// The value of the gallery image feature.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GalleryImageFeature].
   /// [name] The name of the gallery image feature.

@@ -6,26 +6,26 @@ import 'operating_system_details.dart';
 /// IISWeb server.
 class IISWebServer {
   /// Gets or sets the display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Gets or sets list of ip addresses.
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// Gets or sets the list of machines.
-  final pulumi.Input<List<String>>? machines;
-  final pulumi.Input<OperatingSystemDetails>? operatingSystemDetails;
+  final pulumi.Input<List<String>?>? machines;
+  final pulumi.Input<OperatingSystemDetails?>? operatingSystemDetails;
   /// Gets or sets the server root configuration location.
-  final pulumi.Input<String>? rootConfigurationLocation;
+  final pulumi.Input<String?>? rootConfigurationLocation;
   /// Gets or sets the run as account id.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
   /// Gets or sets the server FQDN.
-  final pulumi.Input<String>? serverFqdn;
+  final pulumi.Input<String?>? serverFqdn;
   /// Gets or sets the web server id.
-  final pulumi.Input<String>? serverId;
+  final pulumi.Input<String?>? serverId;
   /// Gets or sets the web server name.
-  final pulumi.Input<String>? serverName;
+  final pulumi.Input<String?>? serverName;
   /// Gets or sets the server version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Gets or sets the list of web applications.
-  final pulumi.Input<List<String>>? webApplications;
+  final pulumi.Input<List<String>?>? webApplications;
 
   /// Creates a new [IISWebServer].
   /// [displayName] Gets or sets the display name.

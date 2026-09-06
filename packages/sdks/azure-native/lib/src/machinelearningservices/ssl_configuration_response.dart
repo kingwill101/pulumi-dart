@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The ssl configuration for scoring
 class SslConfigurationResponse {
   /// Cert data
-  final pulumi.Input<String>? cert;
+  final pulumi.Input<String?>? cert;
   /// CNAME of the cert
-  final pulumi.Input<String>? cname;
+  final pulumi.Input<String?>? cname;
   /// Key data
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Leaf domain label of public endpoint
-  final pulumi.Input<String>? leafDomainLabel;
+  final pulumi.Input<String?>? leafDomainLabel;
   /// Indicates whether to overwrite existing domain label.
-  final pulumi.Input<bool>? overwriteExistingDomain;
+  final pulumi.Input<bool?>? overwriteExistingDomain;
   /// Enable or disable ssl for scoring
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SslConfigurationResponse].
   /// [cert] Cert data

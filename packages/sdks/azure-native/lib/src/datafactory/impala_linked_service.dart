@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'impala_thrift_transport_protocol.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
@@ -13,29 +12,29 @@ class ImpalaLinkedService {
   /// Specifies whether to allow self-signed certificates from the server. The default value is false.
   final pulumi.Input<dynamic>? allowSelfSignedServerCert;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The authentication type to use.
-  final pulumi.Input<String> authenticationType;
+  final pulumi.Input<dynamic> authenticationType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specify whether to enable server SSL certificate validation when you connect.Always use System Trust Store (for V2 only). The default value is true.
   final pulumi.Input<dynamic>? enableServerCertificateValidation;
   /// Specifies whether the connections to the server are encrypted using SSL. The default value is false.
   final pulumi.Input<dynamic>? enableSsl;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The IP address or host name of the Impala server. (i.e. 192.168.222.160)
   final pulumi.Input<dynamic> host;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The password corresponding to the user name when using UsernameAndPassword.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// The TCP port that the Impala server uses to listen for client connections. The default value is 21050.
   final pulumi.Input<dynamic>? port;
   /// The transport protocol to use in the Thrift layer (for V2 only). Default value is Binary.
-  final pulumi.Input<ImpalaThriftTransportProtocol>? thriftTransportProtocol;
+  final pulumi.Input<ImpalaThriftTransportProtocol?>? thriftTransportProtocol;
   /// The full path of the .pem file containing trusted CA certificates for verifying the server when connecting over SSL. This property can only be set when using SSL on self-hosted IR. The default value is the cacerts.pem file installed with the IR.
   final pulumi.Input<dynamic>? trustedCertPath;
   /// Type of linked service.
@@ -46,7 +45,7 @@ class ImpalaLinkedService {
   /// The user name used to access the Impala server. The default value is anonymous when using SASLUsername.
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImpalaLinkedService].
   /// [allowHostNameCNMismatch] Specifies whether to require a CA-issued SSL certificate name to match the host name of the server when connecting over SSL. The default value is false.
@@ -103,7 +102,7 @@ class ImpalaLinkedService {
       'encryptedCredential': ?encryptedCredential,
       'host': host,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'port': ?port,
       'thriftTransportProtocol': ?pulumi.Input.mapOptionalInputValue<ImpalaThriftTransportProtocol, String>(thriftTransportProtocol, (value) => value.wireValue),
       'trustedCertPath': ?trustedCertPath,
@@ -119,7 +118,7 @@ class ImpalaLinkedService {
       allowHostNameCNMismatch: (() { final guardedValue = map['allowHostNameCNMismatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       allowSelfSignedServerCert: (() { final guardedValue = map['allowSelfSignedServerCert']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
+      authenticationType: pulumi.Input.fromValue(map['authenticationType']),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableServerCertificateValidation: (() { final guardedValue = map['enableServerCertificateValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -127,7 +126,7 @@ class ImpalaLinkedService {
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       host: pulumi.Input.fromValue(map['host']),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       thriftTransportProtocol: (() { final guardedValue = map['thriftTransportProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImpalaThriftTransportProtocol.fromValue(guardedValue as String)); })(),
       trustedCertPath: (() { final guardedValue = map['trustedCertPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

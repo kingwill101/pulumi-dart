@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'managed_integration_runtime.dart';
 
 /// {@template pulumi_datafactory_integration_runtime_args_doc}
 /// The set of arguments for IntegrationRuntime.
@@ -11,9 +10,9 @@ class IntegrationRuntimeArgs {
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// The integration runtime name.
-  final pulumi.Input<String>? integrationRuntimeName;
+  final pulumi.Input<String?>? integrationRuntimeName;
   /// Integration runtime properties.
-  final pulumi.Input<ManagedIntegrationRuntime> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,7 +32,7 @@ class IntegrationRuntimeArgs {
     return <String, dynamic>{
       'factoryName': factoryName,
       'integrationRuntimeName': ?integrationRuntimeName,
-      'properties': pulumi.Input.mapInputValue<ManagedIntegrationRuntime, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -42,7 +41,7 @@ class IntegrationRuntimeArgs {
     return IntegrationRuntimeArgs(
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
       integrationRuntimeName: (() { final guardedValue = map['integrationRuntimeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: pulumi.Input.fromValue(ManagedIntegrationRuntime.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

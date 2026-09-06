@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Replica Set Definition
 class ReplicaSet {
   /// Virtual network location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [ReplicaSet].
   /// [location] Virtual network location

@@ -6,7 +6,7 @@ import 'commitment_quota_response.dart';
 /// Cognitive Services account commitment period.
 class CommitmentPeriodResponse {
   /// Commitment period commitment count.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// Commitment period end date.
   final pulumi.Input<String> endDate;
   /// Cognitive Services account commitment quota.
@@ -14,7 +14,7 @@ class CommitmentPeriodResponse {
   /// Commitment period start date.
   final pulumi.Input<String> startDate;
   /// Commitment period commitment tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [CommitmentPeriodResponse].
   /// [count] Commitment period commitment count.
@@ -42,7 +42,7 @@ class CommitmentPeriodResponse {
 
   factory CommitmentPeriodResponse.fromMap(Map<String, dynamic> map) {
     return CommitmentPeriodResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       endDate: pulumi.Input.fromValue(map['endDate'] as String),
       quota: pulumi.Input.fromValue(CommitmentQuotaResponse.fromMap((map['quota']! as Map).cast<String, dynamic>())),
       startDate: pulumi.Input.fromValue(map['startDate'] as String),

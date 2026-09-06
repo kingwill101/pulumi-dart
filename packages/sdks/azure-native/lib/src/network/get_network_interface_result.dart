@@ -17,25 +17,25 @@ class GetNetworkInterfaceResult {
   /// Auxiliary sku of Network Interface resource.
   final String? auxiliarySku;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Whether default outbound connectivity for nic was configured or not.
-  final bool defaultOutboundConnectivityEnabled;
+  final bool? defaultOutboundConnectivityEnabled;
   /// Indicates whether to disable tcp state tracking.
   final bool? disableTcpStateTracking;
   /// The DNS settings in network interface.
   final NetworkInterfaceDnsSettingsResponse? dnsSettings;
   /// A reference to the dscp configuration to which the network interface is linked.
-  final SubResourceResponse dscpConfiguration;
+  final SubResourceResponse? dscpConfiguration;
   /// If the network interface is configured for accelerated networking. Not applicable to VM sizes which require accelerated networking.
   final bool? enableAcceleratedNetworking;
   /// Indicates whether IP forwarding is enabled on this network interface.
   final bool? enableIPForwarding;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// The extended location of the network interface.
   final ExtendedLocationResponse? extendedLocation;
   /// A list of references to linked BareMetal resources.
-  final List<String> hostedWorkloads;
+  final List<String>? hostedWorkloads;
   /// Resource ID.
   final String? id;
   /// A list of IPConfigurations of the network interface.
@@ -43,35 +43,35 @@ class GetNetworkInterfaceResult {
   /// Resource location.
   final String? location;
   /// The MAC address of the network interface.
-  final String macAddress;
+  final String? macAddress;
   /// Migration phase of Network Interface resource.
   final String? migrationPhase;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The reference to the NetworkSecurityGroup resource.
   final NetworkSecurityGroupResponse? networkSecurityGroup;
   /// Type of Network Interface resource.
   final String? nicType;
   /// Whether this is a primary network interface on a virtual machine.
-  final bool primary;
+  final bool? primary;
   /// A reference to the private endpoint to which the network interface is linked.
-  final PrivateEndpointResponse privateEndpoint;
+  final PrivateEndpointResponse? privateEndpoint;
   /// Privatelinkservice of the network interface resource.
   final PrivateLinkServiceResponse? privateLinkService;
   /// The provisioning state of the network interface resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource GUID property of the network interface resource.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// Resource tags.
   final Map<String, String>? tags;
   /// A list of TapConfigurations of the network interface.
-  final List<NetworkInterfaceTapConfigurationResponse> tapConfigurations;
+  final List<NetworkInterfaceTapConfigurationResponse>? tapConfigurations;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The reference to a virtual machine.
-  final SubResourceResponse virtualMachine;
+  final SubResourceResponse? virtualMachine;
   /// Whether the virtual machine this nic is attached to supports encryption.
-  final bool vnetEncryptionSupported;
+  final bool? vnetEncryptionSupported;
   /// WorkloadType of the NetworkInterface for BareMetal resources
   final String? workloadType;
 
@@ -110,34 +110,34 @@ class GetNetworkInterfaceResult {
   const GetNetworkInterfaceResult({
     this.auxiliaryMode,
     this.auxiliarySku,
-    required this.azureApiVersion,
-    required this.defaultOutboundConnectivityEnabled,
+    this.azureApiVersion,
+    this.defaultOutboundConnectivityEnabled,
     this.disableTcpStateTracking,
     this.dnsSettings,
-    required this.dscpConfiguration,
+    this.dscpConfiguration,
     this.enableAcceleratedNetworking,
     this.enableIPForwarding,
-    required this.etag,
+    this.etag,
     this.extendedLocation,
-    required this.hostedWorkloads,
+    this.hostedWorkloads,
     this.id,
     this.ipConfigurations,
     this.location,
-    required this.macAddress,
+    this.macAddress,
     this.migrationPhase,
-    required this.name,
+    this.name,
     this.networkSecurityGroup,
     this.nicType,
-    required this.primary,
-    required this.privateEndpoint,
+    this.primary,
+    this.privateEndpoint,
     this.privateLinkService,
-    required this.provisioningState,
-    required this.resourceGuid,
+    this.provisioningState,
+    this.resourceGuid,
     this.tags,
-    required this.tapConfigurations,
-    required this.type,
-    required this.virtualMachine,
-    required this.vnetEncryptionSupported,
+    this.tapConfigurations,
+    this.type,
+    this.virtualMachine,
+    this.vnetEncryptionSupported,
     this.workloadType,
   });
 
@@ -145,34 +145,34 @@ class GetNetworkInterfaceResult {
     return <String, dynamic>{
       'auxiliaryMode': ?auxiliaryMode,
       'auxiliarySku': ?auxiliarySku,
-      'azureApiVersion': azureApiVersion,
-      'defaultOutboundConnectivityEnabled': defaultOutboundConnectivityEnabled,
+      'azureApiVersion': ?azureApiVersion,
+      'defaultOutboundConnectivityEnabled': ?defaultOutboundConnectivityEnabled,
       'disableTcpStateTracking': ?disableTcpStateTracking,
       'dnsSettings': ?dnsSettings?.toMap(),
-      'dscpConfiguration': dscpConfiguration.toMap(),
+      'dscpConfiguration': ?dscpConfiguration?.toMap(),
       'enableAcceleratedNetworking': ?enableAcceleratedNetworking,
       'enableIPForwarding': ?enableIPForwarding,
-      'etag': etag,
+      'etag': ?etag,
       'extendedLocation': ?extendedLocation?.toMap(),
-      'hostedWorkloads': hostedWorkloads,
+      'hostedWorkloads': ?hostedWorkloads,
       'id': ?id,
       'ipConfigurations': ?(() { final guardedValue = ipConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkInterfaceIPConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'location': ?location,
-      'macAddress': macAddress,
+      'macAddress': ?macAddress,
       'migrationPhase': ?migrationPhase,
-      'name': name,
+      'name': ?name,
       'networkSecurityGroup': ?networkSecurityGroup?.toMap(),
       'nicType': ?nicType,
-      'primary': primary,
-      'privateEndpoint': privateEndpoint.toMap(),
+      'primary': ?primary,
+      'privateEndpoint': ?privateEndpoint?.toMap(),
       'privateLinkService': ?privateLinkService?.toMap(),
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
       'tags': ?tags,
-      'tapConfigurations': pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(tapConfigurations, (value) => value.toMap()),
-      'type': type,
-      'virtualMachine': virtualMachine.toMap(),
-      'vnetEncryptionSupported': vnetEncryptionSupported,
+      'tapConfigurations': ?(() { final guardedValue = tapConfigurations; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkInterfaceTapConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
+      'virtualMachine': ?virtualMachine?.toMap(),
+      'vnetEncryptionSupported': ?vnetEncryptionSupported,
       'workloadType': ?workloadType,
     };
   }
@@ -181,34 +181,34 @@ class GetNetworkInterfaceResult {
     return GetNetworkInterfaceResult(
       auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      defaultOutboundConnectivityEnabled: map['defaultOutboundConnectivityEnabled'] as bool,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultOutboundConnectivityEnabled: (() { final guardedValue = map['defaultOutboundConnectivityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       disableTcpStateTracking: (() { final guardedValue = map['disableTcpStateTracking']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return NetworkInterfaceDnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      dscpConfiguration: SubResourceResponse.fromMap((map['dscpConfiguration']! as Map).cast<String, dynamic>()),
+      dscpConfiguration: (() { final guardedValue = map['dscpConfiguration']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       enableAcceleratedNetworking: (() { final guardedValue = map['enableAcceleratedNetworking']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableIPForwarding: (() { final guardedValue = map['enableIPForwarding']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      hostedWorkloads: (map['hostedWorkloads'] as List).cast<String>(),
+      hostedWorkloads: (() { final guardedValue = map['hostedWorkloads']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipConfigurations: (() { final guardedValue = map['ipConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(guardedValue, (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      macAddress: map['macAddress'] as String,
+      macAddress: (() { final guardedValue = map['macAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       migrationPhase: (() { final guardedValue = map['migrationPhase']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkSecurityGroup: (() { final guardedValue = map['networkSecurityGroup']; if (guardedValue == null) return null; return NetworkSecurityGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      primary: map['primary'] as bool,
-      privateEndpoint: PrivateEndpointResponse.fromMap((map['privateEndpoint']! as Map).cast<String, dynamic>()),
+      primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       privateLinkService: (() { final guardedValue = map['privateLinkService']; if (guardedValue == null) return null; return PrivateLinkServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tapConfigurations: pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(map['tapConfigurations']!, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
-      virtualMachine: SubResourceResponse.fromMap((map['virtualMachine']! as Map).cast<String, dynamic>()),
-      vnetEncryptionSupported: map['vnetEncryptionSupported'] as bool,
+      tapConfigurations: (() { final guardedValue = map['tapConfigurations']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      virtualMachine: (() { final guardedValue = map['virtualMachine']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      vnetEncryptionSupported: (() { final guardedValue = map['vnetEncryptionSupported']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       workloadType: (() { final guardedValue = map['workloadType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

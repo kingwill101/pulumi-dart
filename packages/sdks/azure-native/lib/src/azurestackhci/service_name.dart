@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the service.
-enum ServiceName {
+enum ServiceName implements pulumi.PulumiEnum<String> {
   valueWAC("WAC");
 
   const ServiceName(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceName fromValue(String value) {

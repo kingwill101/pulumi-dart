@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Git integration settings
 class WorkspaceRepositoryConfigurationResponse {
   /// Account name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// Collaboration branch
-  final pulumi.Input<String>? collaborationBranch;
+  final pulumi.Input<String?>? collaborationBranch;
   /// GitHub Enterprise host name. For example: `https://github.mydomain.com`
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// The last commit ID
-  final pulumi.Input<String>? lastCommitId;
+  final pulumi.Input<String?>? lastCommitId;
   /// VSTS project name
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Repository name
-  final pulumi.Input<String>? repositoryName;
+  final pulumi.Input<String?>? repositoryName;
   /// Root folder to use in the repository
-  final pulumi.Input<String>? rootFolder;
+  final pulumi.Input<String?>? rootFolder;
   /// The VSTS tenant ID
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WorkspaceRepositoryConfigurationResponse].
   /// [accountName] Account name

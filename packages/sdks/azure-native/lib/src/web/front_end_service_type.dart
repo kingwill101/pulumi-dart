@@ -1,8 +1,11 @@
-enum FrontEndServiceType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum FrontEndServiceType implements pulumi.PulumiEnum<String> {
   valueNodePort("NodePort"),
   valueLoadBalancer("LoadBalancer");
 
   const FrontEndServiceType(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontEndServiceType fromValue(String value) {

@@ -57,7 +57,7 @@ class GatewayRouteResponse {
       nextHop: pulumi.Input.fromValue(map['nextHop'] as String),
       origin: pulumi.Input.fromValue(map['origin'] as String),
       sourcePeer: pulumi.Input.fromValue(map['sourcePeer'] as String),
-      weight: pulumi.Input.fromValue(map['weight'] as int),
+      weight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weight'])),
     );
   }
 }

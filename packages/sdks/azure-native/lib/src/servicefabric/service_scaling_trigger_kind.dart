@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the trigger associated with this scaling policy.
-enum ServiceScalingTriggerKind {
+enum ServiceScalingTriggerKind implements pulumi.PulumiEnum<String> {
   valueAveragePartitionLoadTrigger("AveragePartitionLoadTrigger"),
   valueAverageServiceLoadTrigger("AverageServiceLoadTrigger");
 
   const ServiceScalingTriggerKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceScalingTriggerKind fromValue(String value) {

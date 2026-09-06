@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ExcludedPathResponse {
   /// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [ExcludedPathResponse].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)

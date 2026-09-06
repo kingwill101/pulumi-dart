@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Type modeling the protocol and version used by an agent/exposed by a deployment.
 class AgentProtocolVersion {
   /// The protocol used by the agent/exposed by a deployment.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// The version of the protocol.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AgentProtocolVersion].
   /// [protocol] The protocol used by the agent/exposed by a deployment.
@@ -26,7 +26,7 @@ class AgentProtocolVersion {
 
   factory AgentProtocolVersion.fromMap(Map<String, dynamic> map) {
     return AgentProtocolVersion(
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

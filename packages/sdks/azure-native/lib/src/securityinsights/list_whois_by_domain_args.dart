@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_list_whois_by_domain_args_doc}
 class ListWhoisByDomainArgs {
   /// The domain name
-  final pulumi.Input<String>? domain;
+  final pulumi.Input<String?>? domain;
   /// Enrichment type
   final pulumi.Input<String> enrichmentType;
   /// The name of the resource group. The name is case insensitive.

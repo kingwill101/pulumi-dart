@@ -9,9 +9,9 @@ import 'registration_assignment_properties.dart';
 /// {@macro pulumi_managedservices_registration_assignment_args_doc}
 class RegistrationAssignmentArgs {
   /// The properties of a registration assignment.
-  final pulumi.Input<RegistrationAssignmentProperties>? properties;
+  final pulumi.Input<RegistrationAssignmentProperties?>? properties;
   /// The GUID of the registration assignment.
-  final pulumi.Input<String>? registrationAssignmentId;
+  final pulumi.Input<String?>? registrationAssignmentId;
   /// The scope of the resource.
   final pulumi.Input<String> scope;
 

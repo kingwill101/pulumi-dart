@@ -6,11 +6,11 @@ import 'ssh_profile_response.dart';
 /// The ssh username, password, and ssh public key.
 class LinuxOperatingSystemProfileResponse {
   /// The password.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The SSH profile.
-  final pulumi.Input<SshProfileResponse>? sshProfile;
+  final pulumi.Input<SshProfileResponse?>? sshProfile;
   /// The username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [LinuxOperatingSystemProfileResponse].
   /// [password] The password.

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the encryption key properties
 class EncryptionKeyDetails {
   /// The type of kek encryption key
-  final pulumi.Input<String>? kekType;
+  final pulumi.Input<dynamic>? kekType;
   /// Specifies the url for kek encryption key.
-  final pulumi.Input<String>? kekUrl;
+  final pulumi.Input<String?>? kekUrl;
   /// Specifies the keyvault resource id for kek encryption key.
-  final pulumi.Input<String>? kekVaultResourceID;
+  final pulumi.Input<String?>? kekVaultResourceID;
 
   /// Creates a new [EncryptionKeyDetails].
   /// [kekType] The type of kek encryption key
   /// [kekUrl] Specifies the url for kek encryption key.
   /// [kekVaultResourceID] Specifies the keyvault resource id for kek encryption key.
-  const EncryptionKeyDetails({
-    this.kekType,
+  EncryptionKeyDetails({
+    pulumi.Input<dynamic>? kekType,
     this.kekUrl,
     this.kekVaultResourceID,
-  });
+  }) : kekType = kekType ?? pulumi.Input.fromValue('MicrosoftManaged');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,7 +31,7 @@ class EncryptionKeyDetails {
 
   factory EncryptionKeyDetails.fromMap(Map<String, dynamic> map) {
     return EncryptionKeyDetails(
-      kekType: (() { final guardedValue = map['kekType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kekType: (() { final guardedValue = map['kekType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kekUrl: (() { final guardedValue = map['kekUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kekVaultResourceID: (() { final guardedValue = map['kekVaultResourceID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

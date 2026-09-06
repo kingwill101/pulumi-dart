@@ -228,4 +228,24 @@ class AzureADAdministrator extends pulumi.CustomResource {
     tenantId = registerOutput<String?>('tenantId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AzureADAdministrator] resource.
+  AzureADAdministrator.reference(String urn)
+    : super(
+        'azure-native:dbformysql:AzureADAdministrator',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorType = registerOutput<String?>('administratorType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identityResourceId = registerOutput<String?>('identityResourceId');
+    login = registerOutput<String?>('login');
+    this.name = registerOutput<String>('name');
+    sid = registerOutput<String?>('sid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    type = registerOutput<String>('type');
+  }
 }

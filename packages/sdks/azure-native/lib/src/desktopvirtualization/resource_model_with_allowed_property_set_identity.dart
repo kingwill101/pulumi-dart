@@ -5,7 +5,7 @@ import 'resource_identity_type.dart';
 
 class ResourceModelWithAllowedPropertySetIdentity {
   /// The identity type.
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
 
   /// Creates a new [ResourceModelWithAllowedPropertySetIdentity].
   /// [type] The identity type.

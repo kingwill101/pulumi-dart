@@ -8,7 +8,7 @@ class MCASDataConnectorDataTypesResponse {
   /// Alerts data type connection.
   final pulumi.Input<DataConnectorDataTypeCommonResponse> alerts;
   /// Discovery log data type connection.
-  final pulumi.Input<DataConnectorDataTypeCommonResponse>? discoveryLogs;
+  final pulumi.Input<DataConnectorDataTypeCommonResponse?>? discoveryLogs;
 
   /// Creates a new [MCASDataConnectorDataTypesResponse].
   /// [alerts] Alerts data type connection.

@@ -26,8 +26,8 @@ class ThirdPartyManagementSettings {
 
   factory ThirdPartyManagementSettings.fromMap(Map<String, dynamic> map) {
     return ThirdPartyManagementSettings(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      supportCost: pulumi.Input.fromValue(map['supportCost'] as double),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
+      supportCost: pulumi.Input.fromValue((map['supportCost'] as num).toDouble()),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'resource_reference_response.dart';
 /// Desired outbound IP Prefix resources for the cluster load balancer.
 class ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes {
   /// A list of public IP prefix resources.
-  final pulumi.Input<List<ResourceReferenceResponse>>? publicIPPrefixes;
+  final pulumi.Input<List<ResourceReferenceResponse>?>? publicIPPrefixes;
 
   /// Creates a new [ManagedClusterLoadBalancerProfileResponseOutboundIPPrefixes].
   /// [publicIPPrefixes] A list of public IP prefix resources.

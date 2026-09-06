@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// These properties lets user specify default catalog properties during workspace creation. Not allowed in Serverless ComputeMode workspace.
 class DefaultCatalogPropertiesResponse {
   /// Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
-  final pulumi.Input<String>? initialName;
+  final pulumi.Input<String?>? initialName;
   /// Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  final pulumi.Input<String>? initialType;
+  final pulumi.Input<String?>? initialType;
 
   /// Creates a new [DefaultCatalogPropertiesResponse].
   /// [initialName] Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   /// [initialType] Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  const DefaultCatalogPropertiesResponse({
+  DefaultCatalogPropertiesResponse({
     this.initialName,
-    this.initialType,
-  });
+    pulumi.Input<String?>? initialType,
+  }) : initialType = initialType ?? pulumi.Input.fromValue('HiveMetastore');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -9,15 +9,15 @@ import 'sku.dart';
 /// {@macro pulumi_engagementfabric_account_args_doc}
 class AccountArgs {
   /// Account Name
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The location of the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource Group Name
   final pulumi.Input<String> resourceGroupName;
   /// The SKU of the resource
   final pulumi.Input<SKU> sku;
   /// The tags of the resource
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AccountArgs].
   /// [accountName] Account Name

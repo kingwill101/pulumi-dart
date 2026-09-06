@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Optimization objective.
 class Objective {
   /// [Required] Defines supported metric goals for hyperparameter tuning
-  final pulumi.Input<String> goal;
+  final pulumi.Input<dynamic> goal;
   /// [Required] Name of the metric to optimize.
   final pulumi.Input<String> primaryMetric;
 
@@ -26,7 +26,7 @@ class Objective {
 
   factory Objective.fromMap(Map<String, dynamic> map) {
     return Objective(
-      goal: pulumi.Input.fromValue(map['goal'] as String),
+      goal: pulumi.Input.fromValue(map['goal']),
       primaryMetric: pulumi.Input.fromValue(map['primaryMetric'] as String),
     );
   }

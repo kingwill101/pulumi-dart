@@ -9,15 +9,15 @@ import 'customer_property.dart';
 /// {@macro pulumi_connectedcache_enterprise_mcc_customer_args_doc}
 class EnterpriseMccCustomerArgs {
   /// Name of the Customer resource
-  final pulumi.Input<String>? customerResourceName;
+  final pulumi.Input<String?>? customerResourceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<CustomerProperty>? properties;
+  final pulumi.Input<CustomerProperty?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnterpriseMccCustomerArgs].
   /// [customerResourceName] Name of the Customer resource

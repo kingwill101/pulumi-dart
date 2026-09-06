@@ -10,13 +10,13 @@ class ListActiveConnectivityConfigurationsArgs {
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// List of regions.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// When present, the value can be passed to a subsequent query call (together with the same query and scopes used in the current request) to retrieve the next page of data.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// An optional query parameter which specifies the maximum number of records to be returned by the server.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListActiveConnectivityConfigurationsArgs].
   /// [networkManagerName] The name of the network manager.
@@ -48,7 +48,7 @@ class ListActiveConnectivityConfigurationsArgs {
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

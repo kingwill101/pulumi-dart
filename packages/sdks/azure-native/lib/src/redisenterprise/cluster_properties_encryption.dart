@@ -6,7 +6,7 @@ import 'cluster_properties_customer_managed_key_encryption.dart';
 /// Encryption-at-rest configuration for the cluster.
 class ClusterPropertiesEncryption {
   /// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
-  final pulumi.Input<ClusterPropertiesCustomerManagedKeyEncryption>? customerManagedKeyEncryption;
+  final pulumi.Input<ClusterPropertiesCustomerManagedKeyEncryption?>? customerManagedKeyEncryption;
 
   /// Creates a new [ClusterPropertiesEncryption].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.

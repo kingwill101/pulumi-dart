@@ -6,9 +6,9 @@ import 'indexes.dart';
 /// The paths that are included in indexing
 class IncludedPath {
   /// List of indexes for this path
-  final pulumi.Input<List<Indexes>>? indexes;
+  final pulumi.Input<List<Indexes>?>? indexes;
   /// The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [IncludedPath].
   /// [indexes] List of indexes for this path

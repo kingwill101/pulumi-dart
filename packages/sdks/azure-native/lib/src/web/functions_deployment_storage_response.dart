@@ -6,11 +6,11 @@ import 'functions_deployment_storage_authentication_response.dart';
 /// Storage for deployed package used by the function app.
 class FunctionsDeploymentStorageResponse {
   /// Authentication method to access the storage account for deployment.
-  final pulumi.Input<FunctionsDeploymentStorageAuthenticationResponse>? authentication;
+  final pulumi.Input<FunctionsDeploymentStorageAuthenticationResponse?>? authentication;
   /// Property to select Azure Storage type. Available options: blobContainer.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Property to set the URL for the selected Azure Storage type. Example: For blobContainer, the value could be https://&lt;storageAccountName&gt;.blob.core.windows.net/&lt;containerName&gt;.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [FunctionsDeploymentStorageResponse].
   /// [authentication] Authentication method to access the storage account for deployment.

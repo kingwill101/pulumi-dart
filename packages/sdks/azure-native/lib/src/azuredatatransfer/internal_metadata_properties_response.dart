@@ -6,7 +6,7 @@ import 'operation_status_properties_response.dart';
 /// Internal metadata of the connection inside pipeline.
 class InternalMetadataPropertiesResponse {
   /// Operation status associated with the last patch request
-  final pulumi.Input<OperationStatusPropertiesResponse>? operationStatus;
+  final pulumi.Input<OperationStatusPropertiesResponse?>? operationStatus;
   /// User that last set the approved status for this connection
   final pulumi.Input<String> statusSetBy;
 

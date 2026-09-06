@@ -6,7 +6,7 @@ import 'data_plane_aad_or_api_key_auth_option.dart';
 /// Defines the options for how the search service authenticates a data plane request. This cannot be set if 'disableLocalAuth' is set to true.
 class DataPlaneAuthOptions {
   /// Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
-  final pulumi.Input<DataPlaneAadOrApiKeyAuthOption>? aadOrApiKey;
+  final pulumi.Input<DataPlaneAadOrApiKeyAuthOption?>? aadOrApiKey;
   /// Indicates that only the API key can be used for authentication.
   final pulumi.Input<dynamic>? apiKeyOnly;
 

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// CS Accounts Details.
 class RunAsAccountResponse {
   /// The CS RunAs account Id.
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// The CS RunAs account name.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
 
   /// Creates a new [RunAsAccountResponse].
   /// [accountId] The CS RunAs account Id.

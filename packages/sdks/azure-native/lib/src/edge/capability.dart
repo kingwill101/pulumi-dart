@@ -9,7 +9,7 @@ class Capability {
   /// Name of Capability
   final pulumi.Input<String> name;
   /// State of resource
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [Capability].
   /// [description] Description of Capability
@@ -33,7 +33,7 @@ class Capability {
     return Capability(
       description: pulumi.Input.fromValue(map['description'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

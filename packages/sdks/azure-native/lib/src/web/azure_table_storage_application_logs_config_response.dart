@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Application logs to Azure table storage configuration.
 class AzureTableStorageApplicationLogsConfigResponse {
   /// Log level.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
   /// SAS URL to an Azure table with add/query/delete permissions.
   final pulumi.Input<String> sasUrl;
 

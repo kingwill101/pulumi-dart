@@ -7,11 +7,11 @@ import 'advanced_networking_security.dart';
 /// Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking.
 class AdvancedNetworking {
   /// Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Observability profile to enable advanced network metrics and flow logs with historical contexts.
-  final pulumi.Input<AdvancedNetworkingObservability>? observability;
+  final pulumi.Input<AdvancedNetworkingObservability?>? observability;
   /// Security profile to enable security features on cilium based cluster.
-  final pulumi.Input<AdvancedNetworkingSecurity>? security;
+  final pulumi.Input<AdvancedNetworkingSecurity?>? security;
 
   /// Creates a new [AdvancedNetworking].
   /// [enabled] Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false.

@@ -10,9 +10,9 @@ class ContactProfileLinkResponse {
   /// Direction (Uplink or Downlink).
   final pulumi.Input<String> direction;
   /// Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  final pulumi.Input<double>? eirpdBW;
+  final pulumi.Input<double?>? eirpdBW;
   /// Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
-  final pulumi.Input<double>? gainOverTemperature;
+  final pulumi.Input<double?>? gainOverTemperature;
   /// Link name.
   final pulumi.Input<String> name;
   /// Polarization. e.g. (RHCP, LHCP).
@@ -49,8 +49,8 @@ class ContactProfileLinkResponse {
     return ContactProfileLinkResponse(
       channels: pulumi.Input.fromValue(pulumi.Input.decodeList<ContactProfileLinkChannelResponse>(map['channels']!, (value) => ContactProfileLinkChannelResponse.fromMap((value as Map).cast<String, dynamic>()))),
       direction: pulumi.Input.fromValue(map['direction'] as String),
-      eirpdBW: (() { final guardedValue = map['eirpdBW']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      gainOverTemperature: (() { final guardedValue = map['gainOverTemperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      eirpdBW: (() { final guardedValue = map['eirpdBW']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      gainOverTemperature: (() { final guardedValue = map['gainOverTemperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       polarization: pulumi.Input.fromValue(map['polarization'] as String),
     );

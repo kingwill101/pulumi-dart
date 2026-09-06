@@ -6,11 +6,11 @@ import 'user_assigned_identity_properties_response.dart';
 /// User assigned managed identity details
 class UserAssignedManagedIdentityDetailsResponse {
   /// The ARM id of the assigned identity.
-  final pulumi.Input<String>? identityArmId;
+  final pulumi.Input<String?>? identityArmId;
   /// The name of the assigned identity.
-  final pulumi.Input<String>? identityName;
+  final pulumi.Input<String?>? identityName;
   /// User assigned managed identity properties
-  final pulumi.Input<UserAssignedIdentityPropertiesResponse>? userAssignedIdentityProperties;
+  final pulumi.Input<UserAssignedIdentityPropertiesResponse?>? userAssignedIdentityProperties;
 
   /// Creates a new [UserAssignedManagedIdentityDetailsResponse].
   /// [identityArmId] The ARM id of the assigned identity.

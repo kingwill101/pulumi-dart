@@ -5,9 +5,9 @@ import 'recurrence_frequency.dart';
 
 class JobMaxRecurrence {
   /// Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
-  final pulumi.Input<RecurrenceFrequency>? frequency;
+  final pulumi.Input<RecurrenceFrequency?>? frequency;
   /// Gets or sets the interval between retries.
-  final pulumi.Input<int>? interval;
+  final pulumi.Input<int?>? interval;
 
   /// Creates a new [JobMaxRecurrence].
   /// [frequency] Gets or sets the frequency of recurrence (second, minute, hour, day, week, month).
@@ -27,7 +27,7 @@ class JobMaxRecurrence {
   factory JobMaxRecurrence.fromMap(Map<String, dynamic> map) {
     return JobMaxRecurrence(
       frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RecurrenceFrequency.fromValue(guardedValue as String)); })(),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -6,11 +6,11 @@ import 'os_patching_status_response.dart';
 /// Returns metadata about the operating system image for this compute instance.
 class ImageMetadataResponse {
   /// Specifies the current operating system image version this compute instance is running on.
-  final pulumi.Input<String>? currentImageVersion;
+  final pulumi.Input<String?>? currentImageVersion;
   /// Specifies whether this compute instance is running on the latest operating system image.
-  final pulumi.Input<bool>? isLatestOsImageVersion;
+  final pulumi.Input<bool?>? isLatestOsImageVersion;
   /// Specifies the latest available operating system image version.
-  final pulumi.Input<String>? latestImageVersion;
+  final pulumi.Input<String?>? latestImageVersion;
   /// Metadata about the os patching.
   final pulumi.Input<OsPatchingStatusResponse> osPatchingStatus;
 

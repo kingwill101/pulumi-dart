@@ -7,19 +7,19 @@ import 'bgp_settings.dart';
 /// A common class for general resource information.
 class LocalNetworkGateway {
   /// Local network gateway's BGP speaker settings.
-  final pulumi.Input<BgpSettings>? bgpSettings;
+  final pulumi.Input<BgpSettings?>? bgpSettings;
   /// FQDN of local network gateway.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// IP address of local network gateway.
-  final pulumi.Input<String>? gatewayIpAddress;
+  final pulumi.Input<String?>? gatewayIpAddress;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Local network site address space.
-  final pulumi.Input<AddressSpace>? localNetworkAddressSpace;
+  final pulumi.Input<AddressSpace?>? localNetworkAddressSpace;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LocalNetworkGateway].
   /// [bgpSettings] Local network gateway's BGP speaker settings.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database specific information
 class DistributedAvailabilityGroupDatabase {
   /// The name of the database in link
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
 
   /// Creates a new [DistributedAvailabilityGroupDatabase].
   /// [databaseName] The name of the database in link

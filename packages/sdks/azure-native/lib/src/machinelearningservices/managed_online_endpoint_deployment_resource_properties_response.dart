@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedOnlineEndpointDeploymentResourcePropertiesResponse {
-  final pulumi.Input<String>? endpointComputeType;
+  final pulumi.Input<String?>? endpointComputeType;
   /// The failure reason if the creation failed.
-  final pulumi.Input<String>? failureReason;
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? failureReason;
+  final pulumi.Input<String?>? model;
   /// Read-only provision state status property.
   final pulumi.Input<String> provisioningState;
   /// Kind of the deployment.

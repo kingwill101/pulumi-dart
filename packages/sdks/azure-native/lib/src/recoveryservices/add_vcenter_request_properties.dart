@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of an add vCenter request.
 class AddVCenterRequestProperties {
   /// The friendly name of the vCenter.
-  final pulumi.Input<String>? friendlyName;
+  final pulumi.Input<String?>? friendlyName;
   /// The IP address of the vCenter to be discovered.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The port number for discovery.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// The process server Id from where the discovery is orchestrated.
-  final pulumi.Input<String>? processServerId;
+  final pulumi.Input<String?>? processServerId;
   /// The account Id which has privileges to discover the vCenter.
-  final pulumi.Input<String>? runAsAccountId;
+  final pulumi.Input<String?>? runAsAccountId;
 
   /// Creates a new [AddVCenterRequestProperties].
   /// [friendlyName] The friendly name of the vCenter.

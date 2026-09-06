@@ -11,9 +11,9 @@ class PrivateEndpointConnectionResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// Connection state of the private endpoint connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Provisioning state of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

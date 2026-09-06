@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DestinationsSpecResponseAzureMonitorMetrics {
   /// A friendly name for the destination.
   /// This name should be unique across all destinations (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DestinationsSpecResponseAzureMonitorMetrics].
   /// [name] A friendly name for the destination.

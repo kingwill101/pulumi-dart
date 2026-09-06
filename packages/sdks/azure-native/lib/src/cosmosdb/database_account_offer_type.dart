@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The offer type for the database
-enum DatabaseAccountOfferType {
+enum DatabaseAccountOfferType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard");
 
   const DatabaseAccountOfferType(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabaseAccountOfferType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VMwareToAzStackHCI NIC properties.
 class VMwareToAzStackHCIProtectedNicPropertiesResponse {
   /// Gets or sets a value indicating whether this is the primary NIC.
-  final pulumi.Input<bool>? isPrimaryNic;
+  final pulumi.Input<bool?>? isPrimaryNic;
   /// Gets or sets the NIC label.
   final pulumi.Input<String> label;
   /// Gets or sets the NIC mac address.

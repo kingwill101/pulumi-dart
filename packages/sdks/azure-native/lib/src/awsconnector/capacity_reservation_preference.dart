@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum CapacityReservationPreference {
+enum CapacityReservationPreference implements pulumi.PulumiEnum<String> {
   none("none"),
   open("open");
 
   const CapacityReservationPreference(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityReservationPreference fromValue(String value) {

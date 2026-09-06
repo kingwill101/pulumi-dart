@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SecretStoreProperties {
-  final pulumi.Input<String>? secretStoreId;
+  final pulumi.Input<String?>? secretStoreId;
 
   /// Creates a new [SecretStoreProperties].
   /// [secretStoreId] Optional.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an APM
 class ApmProperties {
   /// Non-sensitive properties for the APM
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Sensitive properties for the APM
-  final pulumi.Input<Map<String, String>>? secrets;
+  final pulumi.Input<Map<String, String>?>? secrets;
   /// APM Type
   final pulumi.Input<String> type;
 

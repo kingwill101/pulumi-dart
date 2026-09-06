@@ -8,11 +8,11 @@ class BatchEndpointPropertiesResponse {
   /// [Required] The authentication method for invoking the endpoint (data plane operation). Use 'Key' for key-based authentication. Use 'AMLToken' for Azure Machine Learning token-based authentication. Use 'AADToken' for Microsoft Entra token-based authentication.
   final pulumi.Input<String> authMode;
   /// Default values for Batch Endpoint
-  final pulumi.Input<BatchEndpointDefaultsResponse>? defaults;
+  final pulumi.Input<BatchEndpointDefaultsResponse?>? defaults;
   /// Description of the inference endpoint.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property dictionary. Properties can be added, but not removed or altered.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the endpoint.
   final pulumi.Input<String> provisioningState;
   /// Endpoint URI.

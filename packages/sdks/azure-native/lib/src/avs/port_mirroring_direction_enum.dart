@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Direction of port mirroring profile.
-enum PortMirroringDirectionEnum {
+enum PortMirroringDirectionEnum implements pulumi.PulumiEnum<String> {
   iNGRESS("INGRESS"),
   eGRESS("EGRESS"),
   bIDIRECTIONAL("BIDIRECTIONAL");
 
   const PortMirroringDirectionEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static PortMirroringDirectionEnum fromValue(String value) {

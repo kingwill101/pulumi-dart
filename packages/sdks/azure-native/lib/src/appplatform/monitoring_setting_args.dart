@@ -9,7 +9,7 @@ import 'monitoring_setting_properties.dart';
 /// {@macro pulumi_appplatform_monitoring_setting_args_doc}
 class MonitoringSettingArgs {
   /// Properties of the Monitoring Setting resource
-  final pulumi.Input<MonitoringSettingProperties>? properties;
+  final pulumi.Input<MonitoringSettingProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

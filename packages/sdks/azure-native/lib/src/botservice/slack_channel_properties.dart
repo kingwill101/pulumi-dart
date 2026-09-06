@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The parameters to provide for the Slack channel.
 class SlackChannelProperties {
   /// The Slack client id
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Slack client secret. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Whether this channel is enabled for the bot
   final pulumi.Input<bool> isEnabled;
   /// The Slack landing page Url
-  final pulumi.Input<String>? landingPageUrl;
+  final pulumi.Input<String?>? landingPageUrl;
   /// Whether to register the settings before OAuth validation is performed. Recommended to True.
-  final pulumi.Input<bool>? registerBeforeOAuthFlow;
+  final pulumi.Input<bool?>? registerBeforeOAuthFlow;
   /// The Slack permission scopes.
-  final pulumi.Input<String>? scopes;
+  final pulumi.Input<String?>? scopes;
   /// The Slack signing secret.
-  final pulumi.Input<String>? signingSecret;
+  final pulumi.Input<String?>? signingSecret;
   /// The Slack verification token. Value only returned through POST to the action Channel List API, otherwise empty.
-  final pulumi.Input<String>? verificationToken;
+  final pulumi.Input<String?>? verificationToken;
 
   /// Creates a new [SlackChannelProperties].
   /// [clientId] The Slack client id

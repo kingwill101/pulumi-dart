@@ -6,9 +6,9 @@ import 'sync_group_schema_table.dart';
 /// Properties of sync group schema.
 class SyncGroupSchema {
   /// Name of master sync member where the schema is from.
-  final pulumi.Input<String>? masterSyncMemberName;
+  final pulumi.Input<String?>? masterSyncMemberName;
   /// List of tables in sync group schema.
-  final pulumi.Input<List<SyncGroupSchemaTable>>? tables;
+  final pulumi.Input<List<SyncGroupSchemaTable>?>? tables;
 
   /// Creates a new [SyncGroupSchema].
   /// [masterSyncMemberName] Name of master sync member where the schema is from.

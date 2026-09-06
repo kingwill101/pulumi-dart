@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Group properties.
 class IpGroupProperties {
   /// IP Address type.
-  final pulumi.Input<String>? ipAddressType;
+  final pulumi.Input<dynamic>? ipAddressType;
   /// List of IP Prefixes.
-  final pulumi.Input<List<String>>? ipPrefixes;
+  final pulumi.Input<List<String>?>? ipPrefixes;
   /// IP Group name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [IpGroupProperties].
   /// [ipAddressType] IP Address type.
@@ -31,7 +31,7 @@ class IpGroupProperties {
 
   factory IpGroupProperties.fromMap(Map<String, dynamic> map) {
     return IpGroupProperties(
-      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipAddressType: (() { final guardedValue = map['ipAddressType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipPrefixes: (() { final guardedValue = map['ipPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

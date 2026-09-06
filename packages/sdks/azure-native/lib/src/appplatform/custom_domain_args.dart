@@ -11,9 +11,9 @@ class CustomDomainArgs {
   /// The name of the App resource.
   final pulumi.Input<String> appName;
   /// The name of the custom domain resource.
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Properties of the custom domain resource.
-  final pulumi.Input<CustomDomainProperties>? properties;
+  final pulumi.Input<CustomDomainProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Access Review History Definition Instance.
 class AccessReviewHistoryInstanceResponse {
   /// The display name for the parent history definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Uri which can be used to retrieve review history data. To generate this Uri, generateDownloadUri() must be called for a specific accessReviewHistoryDefinitionInstance. The link expires after a 24 hour period. Callers can see the expiration date time by looking at the 'se' parameter in the generated uri.
   final pulumi.Input<String> downloadUri;
   /// Date time when history data report expires and the associated data is deleted.
-  final pulumi.Input<String>? expiration;
+  final pulumi.Input<String?>? expiration;
   /// Date time when the history data report is scheduled to be generated.
-  final pulumi.Input<String>? fulfilledDateTime;
+  final pulumi.Input<String?>? fulfilledDateTime;
   /// The access review history definition instance id.
   final pulumi.Input<String> id;
   /// The access review history definition instance unique id.
   final pulumi.Input<String> name;
   /// Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
-  final pulumi.Input<String>? reviewHistoryPeriodEndDateTime;
+  final pulumi.Input<String?>? reviewHistoryPeriodEndDateTime;
   /// Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
-  final pulumi.Input<String>? reviewHistoryPeriodStartDateTime;
+  final pulumi.Input<String?>? reviewHistoryPeriodStartDateTime;
   /// Date time when the history data report is scheduled to be generated.
-  final pulumi.Input<String>? runDateTime;
+  final pulumi.Input<String?>? runDateTime;
   /// Status of the requested review history instance data. This is either requested, in-progress, done or error. The state transitions are as follows - Requested -&gt; InProgress -&gt; Done -&gt; Expired
   final pulumi.Input<String> status;
   /// The resource type.

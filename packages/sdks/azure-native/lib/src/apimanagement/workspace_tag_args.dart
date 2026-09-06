@@ -14,7 +14,7 @@ class WorkspaceTagArgs {
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Tag identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? tagId;
+  final pulumi.Input<String?>? tagId;
   /// Workspace identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> workspaceId;
 

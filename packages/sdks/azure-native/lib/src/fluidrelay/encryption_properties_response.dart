@@ -6,7 +6,7 @@ import 'customer_managed_key_encryption_properties_response.dart';
 /// All encryption configuration for a resource.
 class EncryptionPropertiesResponse {
   /// All Customer-managed key encryption properties for the resource.
-  final pulumi.Input<CustomerManagedKeyEncryptionPropertiesResponse>? customerManagedKeyEncryption;
+  final pulumi.Input<CustomerManagedKeyEncryptionPropertiesResponse?>? customerManagedKeyEncryption;
 
   /// Creates a new [EncryptionPropertiesResponse].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.

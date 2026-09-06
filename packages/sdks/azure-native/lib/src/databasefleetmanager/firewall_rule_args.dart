@@ -9,13 +9,13 @@ import 'firewall_rule_properties.dart';
 /// {@macro pulumi_databasefleetmanager_firewall_rule_args_doc}
 class FirewallRuleArgs {
   /// Name of the firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
   /// Name of the fleetspace.
   final pulumi.Input<String> fleetspaceName;
   /// A Firewall rule properties.
-  final pulumi.Input<FirewallRuleProperties>? properties;
+  final pulumi.Input<FirewallRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

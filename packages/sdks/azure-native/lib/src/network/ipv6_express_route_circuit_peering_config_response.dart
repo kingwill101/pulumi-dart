@@ -7,15 +7,15 @@ import 'sub_resource_response.dart';
 /// Contains IPv6 peering config.
 class Ipv6ExpressRouteCircuitPeeringConfigResponse {
   /// The Microsoft peering configuration.
-  final pulumi.Input<ExpressRouteCircuitPeeringConfigResponse>? microsoftPeeringConfig;
+  final pulumi.Input<ExpressRouteCircuitPeeringConfigResponse?>? microsoftPeeringConfig;
   /// The primary address prefix.
-  final pulumi.Input<String>? primaryPeerAddressPrefix;
+  final pulumi.Input<String?>? primaryPeerAddressPrefix;
   /// The reference to the RouteFilter resource.
-  final pulumi.Input<SubResourceResponse>? routeFilter;
+  final pulumi.Input<SubResourceResponse?>? routeFilter;
   /// The secondary address prefix.
-  final pulumi.Input<String>? secondaryPeerAddressPrefix;
+  final pulumi.Input<String?>? secondaryPeerAddressPrefix;
   /// The state of peering.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [Ipv6ExpressRouteCircuitPeeringConfigResponse].
   /// [microsoftPeeringConfig] The Microsoft peering configuration.

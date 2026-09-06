@@ -7,23 +7,23 @@ class GetPrefixListGlobalRulestackResult {
   /// comment for this object
   final String? auditComment;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// prefix description
   final String? description;
   /// etag info
   final String? etag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// prefix list
-  final List<String> prefixList;
+  final List<String>? prefixList;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPrefixListGlobalRulestackResult].
   /// [auditComment] comment for this object
@@ -38,44 +38,44 @@ class GetPrefixListGlobalRulestackResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPrefixListGlobalRulestackResult({
     this.auditComment,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.etag,
-    required this.id,
-    required this.name,
-    required this.prefixList,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.name,
+    this.prefixList,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'auditComment': ?auditComment,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'etag': ?etag,
-      'id': id,
-      'name': name,
-      'prefixList': prefixList,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'prefixList': ?prefixList,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetPrefixListGlobalRulestackResult.fromMap(Map<String, dynamic> map) {
     return GetPrefixListGlobalRulestackResult(
       auditComment: (() { final guardedValue = map['auditComment']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      prefixList: (map['prefixList'] as List).cast<String>(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      prefixList: (() { final guardedValue = map['prefixList']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

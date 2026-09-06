@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'asset_args.dart';
 import 'asset_status_response.dart';
+import 'dataset_response.dart';
+import 'event_response.dart';
 import 'extended_location_response.dart';
 import 'system_data_response.dart';
 import 'topic_response.dart';
@@ -2396,7 +2398,7 @@ class Asset extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> datasets;
+  late final pulumi.Output<List<DatasetResponse>?> datasets;
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
   late final pulumi.Output<String?> defaultDatasetsConfiguration;
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
@@ -2414,7 +2416,7 @@ class Asset extends pulumi.CustomResource {
   /// Enabled/Disabled status of the asset.
   late final pulumi.Output<bool?> enabled;
   /// Array of events that are part of the asset. Each event can have per-event configuration.
-  late final pulumi.Output<List<Map<String, dynamic>>?> events;
+  late final pulumi.Output<List<EventResponse>?> events;
   /// The extended location.
   late final pulumi.Output<ExtendedLocationResponse> extendedLocation;
   /// Asset id provided by the customer.
@@ -2469,16 +2471,16 @@ class Asset extends pulumi.CustomResource {
     assetEndpointProfileRef = registerOutput<String>('assetEndpointProfileRef');
     attributes = registerOutput<dynamic>('attributes');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    datasets = registerOutput<List<Map<String, dynamic>>?>('datasets');
+    datasets = registerOutput<List<DatasetResponse>?>('datasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetResponse>(guardedValue, (value) => DatasetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
     defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
     defaultTopic = registerOutput<TopicResponse?>('defaultTopic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');
-    discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs');
+    discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String?>('displayName');
     documentationUri = registerOutput<String?>('documentationUri');
     enabled = registerOutput<bool?>('enabled');
-    events = registerOutput<List<Map<String, dynamic>>?>('events');
+    events = registerOutput<List<EventResponse>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); });
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     externalAssetId = registerOutput<String?>('externalAssetId');
     hardwareRevision = registerOutput<String?>('hardwareRevision');
@@ -2493,7 +2495,49 @@ class Asset extends pulumi.CustomResource {
     softwareRevision = registerOutput<String?>('softwareRevision');
     status = registerOutput<AssetStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String>('uuid');
+    version = registerOutput<double>('version');
+  }
+
+  /// Creates a typed reference to an existing [Asset] resource.
+  Asset.reference(String urn)
+    : super(
+        'azure-native:deviceregistry:Asset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetEndpointProfileRef = registerOutput<String>('assetEndpointProfileRef');
+    attributes = registerOutput<dynamic>('attributes');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    datasets = registerOutput<List<DatasetResponse>?>('datasets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatasetResponse>(guardedValue, (value) => DatasetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultDatasetsConfiguration = registerOutput<String?>('defaultDatasetsConfiguration');
+    defaultEventsConfiguration = registerOutput<String?>('defaultEventsConfiguration');
+    defaultTopic = registerOutput<TopicResponse?>('defaultTopic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TopicResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    discoveredAssetRefs = registerOutput<List<String>?>('discoveredAssetRefs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String?>('displayName');
+    documentationUri = registerOutput<String?>('documentationUri');
+    enabled = registerOutput<bool?>('enabled');
+    events = registerOutput<List<EventResponse>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalAssetId = registerOutput<String?>('externalAssetId');
+    hardwareRevision = registerOutput<String?>('hardwareRevision');
+    location = registerOutput<String>('location');
+    manufacturer = registerOutput<String?>('manufacturer');
+    manufacturerUri = registerOutput<String?>('manufacturerUri');
+    model = registerOutput<String?>('model');
+    this.name = registerOutput<String>('name');
+    productCode = registerOutput<String?>('productCode');
+    provisioningState = registerOutput<String>('provisioningState');
+    serialNumber = registerOutput<String?>('serialNumber');
+    softwareRevision = registerOutput<String?>('softwareRevision');
+    status = registerOutput<AssetStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String>('uuid');
     version = registerOutput<double>('version');

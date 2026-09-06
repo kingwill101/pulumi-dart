@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enumerates the possible values for the status of the Event Hub.
-enum EntityStatus {
+enum EntityStatus implements pulumi.PulumiEnum<String> {
   valueActive("Active"),
   valueDisabled("Disabled"),
   valueRestoring("Restoring"),
@@ -11,6 +13,7 @@ enum EntityStatus {
   valueUnknown("Unknown");
 
   const EntityStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityStatus fromValue(String value) {

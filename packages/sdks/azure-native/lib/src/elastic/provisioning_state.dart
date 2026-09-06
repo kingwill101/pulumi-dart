@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the monitoring tag rules.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueAccepted("Accepted"),
   valueCreating("Creating"),
   valueUpdating("Updating"),
@@ -11,6 +13,7 @@ enum ProvisioningState {
   valueNotSpecified("NotSpecified");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

@@ -8,19 +8,19 @@ class GetVirtualMachineScaleSetVMExtensionResult {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   final bool? autoUpgradeMinorVersion;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
   final bool? enableAutomaticUpgrade;
   /// How the extension handler should be forced to update even if the extension configuration has not changed.
   final String? forceUpdateTag;
   /// Resource Id
-  final String id;
+  final String? id;
   /// The virtual machine extension instance view.
   final VirtualMachineExtensionInstanceViewResponse? instanceView;
   /// The location of the extension.
   final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final dynamic protectedSettings;
   /// The extensions protected settings that are passed by reference, and consumed from key vault
@@ -28,7 +28,7 @@ class GetVirtualMachineScaleSetVMExtensionResult {
   /// Collection of extension names after which this extension needs to be provisioned.
   final List<String>? provisionAfterExtensions;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// The name of the extension handler publisher.
   final String? publisher;
   /// Json formatted public settings for the extension.
@@ -36,7 +36,7 @@ class GetVirtualMachineScaleSetVMExtensionResult {
   /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
   final bool? suppressFailures;
   /// Resource type
-  final String type;
+  final String? type;
   /// Specifies the version of the script handler.
   final String? typeHandlerVersion;
 
@@ -60,42 +60,42 @@ class GetVirtualMachineScaleSetVMExtensionResult {
   /// [typeHandlerVersion] Specifies the version of the script handler.
   const GetVirtualMachineScaleSetVMExtensionResult({
     this.autoUpgradeMinorVersion,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,
-    required this.id,
+    this.id,
     this.instanceView,
     this.location,
-    required this.name,
+    this.name,
     this.protectedSettings,
     this.protectedSettingsFromKeyVault,
     this.provisionAfterExtensions,
-    required this.provisioningState,
+    this.provisioningState,
     this.publisher,
     this.settings,
     this.suppressFailures,
-    required this.type,
+    this.type,
     this.typeHandlerVersion,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoUpgradeMinorVersion': ?autoUpgradeMinorVersion,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'enableAutomaticUpgrade': ?enableAutomaticUpgrade,
       'forceUpdateTag': ?forceUpdateTag,
-      'id': id,
+      'id': ?id,
       'instanceView': ?instanceView?.toMap(),
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'protectedSettings': ?protectedSettings,
       'protectedSettingsFromKeyVault': ?protectedSettingsFromKeyVault?.toMap(),
       'provisionAfterExtensions': ?provisionAfterExtensions,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'publisher': ?publisher,
       'settings': ?settings,
       'suppressFailures': ?suppressFailures,
-      'type': type,
+      'type': ?type,
       'typeHandlerVersion': ?typeHandlerVersion,
     };
   }
@@ -103,21 +103,21 @@ class GetVirtualMachineScaleSetVMExtensionResult {
   factory GetVirtualMachineScaleSetVMExtensionResult.fromMap(Map<String, dynamic> map) {
     return GetVirtualMachineScaleSetVMExtensionResult(
       autoUpgradeMinorVersion: (() { final guardedValue = map['autoUpgradeMinorVersion']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       forceUpdateTag: (() { final guardedValue = map['forceUpdateTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       instanceView: (() { final guardedValue = map['instanceView']; if (guardedValue == null) return null; return VirtualMachineExtensionInstanceViewResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       protectedSettings: (() { final guardedValue = map['protectedSettings']; if (guardedValue == null) return null; return guardedValue; })(),
       protectedSettingsFromKeyVault: (() { final guardedValue = map['protectedSettingsFromKeyVault']; if (guardedValue == null) return null; return KeyVaultSecretReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       provisionAfterExtensions: (() { final guardedValue = map['provisionAfterExtensions']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publisher: (() { final guardedValue = map['publisher']; if (guardedValue == null) return null; return guardedValue as String; })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return guardedValue; })(),
       suppressFailures: (() { final guardedValue = map['suppressFailures']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       typeHandlerVersion: (() { final guardedValue = map['typeHandlerVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

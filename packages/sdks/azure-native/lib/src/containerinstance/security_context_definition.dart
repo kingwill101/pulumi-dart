@@ -6,17 +6,17 @@ import 'security_context_capabilities_definition.dart';
 /// The security context for the container.
 class SecurityContextDefinition {
   /// A boolean value indicating whether the init process can elevate its privileges
-  final pulumi.Input<bool>? allowPrivilegeEscalation;
+  final pulumi.Input<bool?>? allowPrivilegeEscalation;
   /// The capabilities to add or drop from a container.
-  final pulumi.Input<SecurityContextCapabilitiesDefinition>? capabilities;
+  final pulumi.Input<SecurityContextCapabilitiesDefinition?>? capabilities;
   /// The flag to determine if the container permissions is elevated to Privileged.
-  final pulumi.Input<bool>? privileged;
+  final pulumi.Input<bool?>? privileged;
   /// Sets the User GID for the container.
-  final pulumi.Input<int>? runAsGroup;
+  final pulumi.Input<int?>? runAsGroup;
   /// Sets the User UID for the container.
-  final pulumi.Input<int>? runAsUser;
+  final pulumi.Input<int?>? runAsUser;
   /// a base64 encoded string containing the contents of the JSON in the seccomp profile
-  final pulumi.Input<String>? seccompProfile;
+  final pulumi.Input<String?>? seccompProfile;
 
   /// Creates a new [SecurityContextDefinition].
   /// [allowPrivilegeEscalation] A boolean value indicating whether the init process can elevate its privileges
@@ -50,8 +50,8 @@ class SecurityContextDefinition {
       allowPrivilegeEscalation: (() { final guardedValue = map['allowPrivilegeEscalation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityContextCapabilitiesDefinition.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privileged: (() { final guardedValue = map['privileged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       seccompProfile: (() { final guardedValue = map['seccompProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

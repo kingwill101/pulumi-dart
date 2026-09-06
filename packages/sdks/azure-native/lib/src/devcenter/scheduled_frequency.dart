@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The frequency of this scheduled task.
-enum ScheduledFrequency {
+enum ScheduledFrequency implements pulumi.PulumiEnum<String> {
   valueDaily("Daily");
 
   const ScheduledFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static ScheduledFrequency fromValue(String value) {

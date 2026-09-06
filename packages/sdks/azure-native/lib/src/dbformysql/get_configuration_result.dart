@@ -5,35 +5,35 @@ import 'system_data_response.dart';
 /// Result data returned by getConfiguration.
 class GetConfigurationResult {
   /// Allowed values of the configuration.
-  final String allowedValues;
+  final String? allowedValues;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Current value of the configuration.
   final String? currentValue;
   /// Data type of the configuration.
-  final String dataType;
+  final String? dataType;
   /// Default value of the configuration.
-  final String defaultValue;
+  final String? defaultValue;
   /// Description of the configuration.
-  final String description;
+  final String? description;
   /// The link used to get the document from community or Azure site.
-  final String documentationLink;
+  final String? documentationLink;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// If is the configuration pending restart or not.
-  final String isConfigPendingRestart;
+  final String? isConfigPendingRestart;
   /// If is the configuration dynamic.
-  final String isDynamicConfig;
+  final String? isDynamicConfig;
   /// If is the configuration read only.
-  final String isReadOnly;
+  final String? isReadOnly;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Source of the configuration.
   final String? source;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Value of the configuration.
   final String? value;
 
@@ -55,62 +55,62 @@ class GetConfigurationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Value of the configuration.
   const GetConfigurationResult({
-    required this.allowedValues,
-    required this.azureApiVersion,
+    this.allowedValues,
+    this.azureApiVersion,
     this.currentValue,
-    required this.dataType,
-    required this.defaultValue,
-    required this.description,
-    required this.documentationLink,
-    required this.id,
-    required this.isConfigPendingRestart,
-    required this.isDynamicConfig,
-    required this.isReadOnly,
-    required this.name,
+    this.dataType,
+    this.defaultValue,
+    this.description,
+    this.documentationLink,
+    this.id,
+    this.isConfigPendingRestart,
+    this.isDynamicConfig,
+    this.isReadOnly,
+    this.name,
     this.source,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'allowedValues': allowedValues,
-      'azureApiVersion': azureApiVersion,
+      'allowedValues': ?allowedValues,
+      'azureApiVersion': ?azureApiVersion,
       'currentValue': ?currentValue,
-      'dataType': dataType,
-      'defaultValue': defaultValue,
-      'description': description,
-      'documentationLink': documentationLink,
-      'id': id,
-      'isConfigPendingRestart': isConfigPendingRestart,
-      'isDynamicConfig': isDynamicConfig,
-      'isReadOnly': isReadOnly,
-      'name': name,
+      'dataType': ?dataType,
+      'defaultValue': ?defaultValue,
+      'description': ?description,
+      'documentationLink': ?documentationLink,
+      'id': ?id,
+      'isConfigPendingRestart': ?isConfigPendingRestart,
+      'isDynamicConfig': ?isDynamicConfig,
+      'isReadOnly': ?isReadOnly,
+      'name': ?name,
       'source': ?source,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'value': ?value,
     };
   }
 
   factory GetConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetConfigurationResult(
-      allowedValues: map['allowedValues'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      allowedValues: (() { final guardedValue = map['allowedValues']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currentValue: (() { final guardedValue = map['currentValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      dataType: map['dataType'] as String,
-      defaultValue: map['defaultValue'] as String,
-      description: map['description'] as String,
-      documentationLink: map['documentationLink'] as String,
-      id: map['id'] as String,
-      isConfigPendingRestart: map['isConfigPendingRestart'] as String,
-      isDynamicConfig: map['isDynamicConfig'] as String,
-      isReadOnly: map['isReadOnly'] as String,
-      name: map['name'] as String,
+      dataType: (() { final guardedValue = map['dataType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultValue: (() { final guardedValue = map['defaultValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      documentationLink: (() { final guardedValue = map['documentationLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isConfigPendingRestart: (() { final guardedValue = map['isConfigPendingRestart']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isDynamicConfig: (() { final guardedValue = map['isDynamicConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isReadOnly: (() { final guardedValue = map['isReadOnly']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

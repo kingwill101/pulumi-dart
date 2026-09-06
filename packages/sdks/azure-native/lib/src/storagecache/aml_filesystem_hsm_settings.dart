@@ -7,9 +7,9 @@ class AmlFilesystemHsmSettings {
   /// Resource ID of storage container used for hydrating the namespace and archiving from the namespace. The resource provider must have permission to create SAS tokens on the storage account.
   final pulumi.Input<String> container;
   /// Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
-  final pulumi.Input<String>? importPrefix;
+  final pulumi.Input<String?>? importPrefix;
   /// Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
-  final pulumi.Input<List<String>>? importPrefixesInitial;
+  final pulumi.Input<List<String>?>? importPrefixesInitial;
   /// Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
   final pulumi.Input<String> loggingContainer;
 
@@ -18,12 +18,12 @@ class AmlFilesystemHsmSettings {
   /// [importPrefix] Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
   /// [importPrefixesInitial] Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
   /// [loggingContainer] Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
-  const AmlFilesystemHsmSettings({
+  AmlFilesystemHsmSettings({
     required this.container,
-    this.importPrefix,
+    pulumi.Input<String?>? importPrefix,
     this.importPrefixesInitial,
     required this.loggingContainer,
-  });
+  }) : importPrefix = importPrefix ?? pulumi.Input.fromValue('/');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

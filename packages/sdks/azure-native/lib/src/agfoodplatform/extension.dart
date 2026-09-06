@@ -198,4 +198,26 @@ class Extension extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure-native:agfoodplatform:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalApiProperties = registerOutput<Map<String, ApiPropertiesResponse>>('additionalApiProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ApiPropertiesResponse>(guardedValue, (value) => ApiPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    extensionApiDocsLink = registerOutput<String>('extensionApiDocsLink');
+    extensionAuthLink = registerOutput<String>('extensionAuthLink');
+    extensionCategory = registerOutput<String>('extensionCategory');
+    extensionId = registerOutput<String>('extensionId');
+    installedExtensionVersion = registerOutput<String>('installedExtensionVersion');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

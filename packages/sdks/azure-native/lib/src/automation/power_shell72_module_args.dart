@@ -13,15 +13,15 @@ class PowerShell72ModuleArgs {
   /// Sets the hash.
   final pulumi.Input<ContentLink> contentLink;
   /// Sets the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of module.
-  final pulumi.Input<String>? moduleName;
+  final pulumi.Input<String?>? moduleName;
   /// Sets name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PowerShell72ModuleArgs].
   /// [automationAccountName] The name of the automation account.

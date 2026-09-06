@@ -9,15 +9,15 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_applink_app_link_args_doc}
 class AppLinkArgs {
   /// The name of the AppLink
-  final pulumi.Input<String>? appLinkName;
+  final pulumi.Input<String?>? appLinkName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AppLinkArgs].
   /// [appLinkName] The name of the AppLink

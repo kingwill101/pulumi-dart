@@ -6,13 +6,13 @@ import 'ip_tag_response.dart';
 /// The network properties.
 class NetworkPropertiesResponse {
   /// A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.
-  final pulumi.Input<String>? outboundDependenciesManagedType;
+  final pulumi.Input<String?>? outboundDependenciesManagedType;
   /// Indicates whether or not private link is enabled.
-  final pulumi.Input<String>? privateLink;
+  final pulumi.Input<String?>? privateLink;
   /// Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters.
-  final pulumi.Input<IpTagResponse>? publicIpTag;
+  final pulumi.Input<IpTagResponse?>? publicIpTag;
   /// The direction for the resource provider connection.
-  final pulumi.Input<String>? resourceProviderConnection;
+  final pulumi.Input<String?>? resourceProviderConnection;
 
   /// Creates a new [NetworkPropertiesResponse].
   /// [outboundDependenciesManagedType] A value to describe how the outbound dependencies of a HDInsight cluster are managed. 'Managed' means that the outbound dependencies are managed by the HDInsight service. 'External' means that the outbound dependencies are managed by a customer specific solution.

@@ -9,15 +9,15 @@ import 'private_link_connection_state.dart';
 /// {@macro pulumi_web_web_app_private_endpoint_connection_slot_args_doc}
 class WebAppPrivateEndpointConnectionSlotArgs {
   /// Private IPAddresses mapped to the remote private endpoint
-  final pulumi.Input<List<String>>? ipAddresses;
+  final pulumi.Input<List<String>?>? ipAddresses;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the site.
   final pulumi.Input<String> name;
   /// Name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The state of a private link connection
-  final pulumi.Input<PrivateLinkConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkConnectionState?>? privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the site deployment slot.

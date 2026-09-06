@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration values for periodic mode backup
 class ContinuousModeProperties {
   /// Enum to indicate type of Continuous backup mode
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [ContinuousModeProperties].
   /// [tier] Enum to indicate type of Continuous backup mode
@@ -21,7 +21,7 @@ class ContinuousModeProperties {
 
   factory ContinuousModeProperties.fromMap(Map<String, dynamic> map) {
     return ContinuousModeProperties(
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

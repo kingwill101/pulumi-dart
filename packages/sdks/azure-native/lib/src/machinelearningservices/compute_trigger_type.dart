@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The schedule trigger type.
-enum ComputeTriggerType {
+enum ComputeTriggerType implements pulumi.PulumiEnum<String> {
   recurrence("Recurrence"),
   cron("Cron");
 
   const ComputeTriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeTriggerType fromValue(String value) {

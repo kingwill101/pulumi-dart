@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'aadauth_type_connection_properties_response.dart';
 import 'project_connection_args.dart';
 
 /// Connection base resource schema.
@@ -204,7 +203,7 @@ class ProjectConnection extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Connection property base schema.
-  late final pulumi.Output<AADAuthTypeConnectionPropertiesResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -224,7 +223,22 @@ class ProjectConnection extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<AADAuthTypeConnectionPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AADAuthTypeConnectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ProjectConnection] resource.
+  ProjectConnection.reference(String urn)
+    : super(
+        'azure-native:cognitiveservices:ProjectConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     type = registerOutput<String>('type');
   }
 }

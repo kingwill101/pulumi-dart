@@ -10,7 +10,7 @@ class GetEntityResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The EntityInfo items on this page
-  final List<EntityInfoResponse> value;
+  final List<EntityInfoResponse>? value;
 
   /// Creates a new [GetEntityResult].
   /// [count] Total count of records that match the filter.
@@ -19,22 +19,22 @@ class GetEntityResult {
   const GetEntityResult({
     this.count,
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'count': ?count,
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<EntityInfoResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<EntityInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetEntityResult.fromMap(Map<String, dynamic> map) {
     return GetEntityResult(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<EntityInfoResponse>(map['value']!, (value) => EntityInfoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityInfoResponse>(guardedValue, (value) => EntityInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

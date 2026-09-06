@@ -8,13 +8,13 @@ class IPConfiguration {
   /// The name of private link IP configuration.
   final pulumi.Input<String> name;
   /// Indicates whether this IP configuration is primary for the corresponding NIC.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The IP address.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The method that private IP address is allocated.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<dynamic>? privateIPAllocationMethod;
   /// The subnet resource id.
-  final pulumi.Input<ResourceId>? subnet;
+  final pulumi.Input<ResourceId?>? subnet;
 
   /// Creates a new [IPConfiguration].
   /// [name] The name of private link IP configuration.
@@ -45,7 +45,7 @@ class IPConfiguration {
       name: pulumi.Input.fromValue(map['name'] as String),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceId.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The encryptionScope state.
-enum EncryptionScopeState {
+enum EncryptionScopeState implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const EncryptionScopeState(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionScopeState fromValue(String value) {

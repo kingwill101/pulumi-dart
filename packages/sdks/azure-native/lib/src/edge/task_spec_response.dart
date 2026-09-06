@@ -9,7 +9,7 @@ class TaskSpecResponse {
   /// Task specification
   final pulumi.Input<dynamic> specification;
   /// Target ARM id
-  final pulumi.Input<String>? targetId;
+  final pulumi.Input<String?>? targetId;
 
   /// Creates a new [TaskSpecResponse].
   /// [name] Name of Task

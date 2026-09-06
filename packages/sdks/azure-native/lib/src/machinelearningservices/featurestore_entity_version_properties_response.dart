@@ -6,21 +6,21 @@ import 'index_column_response.dart';
 /// DTO object representing feature entity version
 class FeaturestoreEntityVersionPropertiesResponse {
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies index columns
-  final pulumi.Input<List<IndexColumnResponse>>? indexColumns;
+  final pulumi.Input<List<IndexColumnResponse>?>? indexColumns;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the featurestore entity version.
   final pulumi.Input<String> provisioningState;
   /// Specifies the asset stage
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FeaturestoreEntityVersionPropertiesResponse].
   /// [description] The asset description text.
@@ -31,16 +31,16 @@ class FeaturestoreEntityVersionPropertiesResponse {
   /// [provisioningState] Provisioning state for the featurestore entity version.
   /// [stage] Specifies the asset stage
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const FeaturestoreEntityVersionPropertiesResponse({
+  FeaturestoreEntityVersionPropertiesResponse({
     this.description,
     this.indexColumns,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.properties,
     required this.provisioningState,
     this.stage,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -8,9 +8,9 @@ class BatchConfigurationProperties {
   /// The name of the batch group.
   final pulumi.Input<String> batchGroupName;
   /// The artifact changed time.
-  final pulumi.Input<String>? changedTime;
+  final pulumi.Input<String?>? changedTime;
   /// The artifact creation time.
-  final pulumi.Input<String>? createdTime;
+  final pulumi.Input<String?>? createdTime;
   final pulumi.Input<dynamic>? metadata;
   /// The batch release criteria.
   final pulumi.Input<BatchReleaseCriteria> releaseCriteria;

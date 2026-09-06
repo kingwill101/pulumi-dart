@@ -5,20 +5,20 @@ import 'system_data_response.dart';
 /// Result data returned by getAzureServersSetting.
 class GetAzureServersSettingResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The kind of the server vulnerability assessments setting
   /// Expected value is 'AzureServersSetting'.
-  final String kind;
+  final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The selected vulnerability assessments provider on Azure servers in the defined scope.
-  final String selectedProvider;
+  final String? selectedProvider;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAzureServersSettingResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -29,36 +29,36 @@ class GetAzureServersSettingResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetAzureServersSettingResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.kind,
-    required this.name,
-    required this.selectedProvider,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.kind,
+    this.name,
+    this.selectedProvider,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'kind': kind,
-      'name': name,
-      'selectedProvider': selectedProvider,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
+      'selectedProvider': ?selectedProvider,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetAzureServersSettingResult.fromMap(Map<String, dynamic> map) {
     return GetAzureServersSettingResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      selectedProvider: map['selectedProvider'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selectedProvider: (() { final guardedValue = map['selectedProvider']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

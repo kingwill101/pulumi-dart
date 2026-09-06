@@ -9,11 +9,11 @@ class SpacecraftLink {
   /// Center Frequency in MHz.
   final pulumi.Input<double> centerFrequencyMHz;
   /// Direction (Uplink or Downlink).
-  final pulumi.Input<String> direction;
+  final pulumi.Input<dynamic> direction;
   /// Link name.
   final pulumi.Input<String> name;
   /// Polarization. e.g. (RHCP, LHCP).
-  final pulumi.Input<String> polarization;
+  final pulumi.Input<dynamic> polarization;
 
   /// Creates a new [SpacecraftLink].
   /// [bandwidthMHz] Bandwidth in MHz.
@@ -41,11 +41,11 @@ class SpacecraftLink {
 
   factory SpacecraftLink.fromMap(Map<String, dynamic> map) {
     return SpacecraftLink(
-      bandwidthMHz: pulumi.Input.fromValue(map['bandwidthMHz'] as double),
-      centerFrequencyMHz: pulumi.Input.fromValue(map['centerFrequencyMHz'] as double),
-      direction: pulumi.Input.fromValue(map['direction'] as String),
+      bandwidthMHz: pulumi.Input.fromValue((map['bandwidthMHz'] as num).toDouble()),
+      centerFrequencyMHz: pulumi.Input.fromValue((map['centerFrequencyMHz'] as num).toDouble()),
+      direction: pulumi.Input.fromValue(map['direction']),
       name: pulumi.Input.fromValue(map['name'] as String),
-      polarization: pulumi.Input.fromValue(map['polarization'] as String),
+      polarization: pulumi.Input.fromValue(map['polarization']),
     );
   }
 }

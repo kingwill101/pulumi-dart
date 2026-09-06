@@ -7,9 +7,9 @@ import 'max_count_rule.dart';
 /// Definition of ApplicationVersionLifecycleConfig
 class ApplicationVersionLifecycleConfig {
   /// Specify a max age rule to restrict the length of time that application versions are retained for an application.
-  final pulumi.Input<MaxAgeRule>? maxAgeRule;
+  final pulumi.Input<MaxAgeRule?>? maxAgeRule;
   /// Specify a max count rule to restrict the number of application versions that are retained for an application.
-  final pulumi.Input<MaxCountRule>? maxCountRule;
+  final pulumi.Input<MaxCountRule?>? maxCountRule;
 
   /// Creates a new [ApplicationVersionLifecycleConfig].
   /// [maxAgeRule] Specify a max age rule to restrict the length of time that application versions are retained for an application.

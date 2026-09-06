@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'live_trace_configuration_response.dart';
 import 'managed_identity_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'resource_log_configuration_response.dart';
 import 'resource_sku_response.dart';
+import 'shared_private_link_resource_response.dart';
 import 'system_data_response.dart';
 import 'web_pub_sub_args.dart';
 import 'web_pub_sub_network_acls_response.dart';
@@ -479,7 +481,7 @@ class WebPubSub extends pulumi.CustomResource {
   /// Network ACLs for the resource
   late final pulumi.Output<WebPubSubNetworkACLsResponse?> networkACLs;
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Enable or disable public network access. Default to "Enabled".
@@ -501,7 +503,7 @@ class WebPubSub extends pulumi.CustomResource {
   /// The publicly accessible port of the resource which is designed for customer server side usage.
   late final pulumi.Output<int> serverPort;
   /// The list of shared private link resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> sharedPrivateLinkResources;
+  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>> sharedPrivateLinkResources;
   /// The billing information of the resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
   /// SocketIO settings for the resource
@@ -543,7 +545,7 @@ class WebPubSub extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>('networkACLs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publicPort = registerOutput<int>('publicPort');
@@ -551,11 +553,50 @@ class WebPubSub extends pulumi.CustomResource {
     resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLogConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     resourceStopped = registerOutput<String?>('resourceStopped');
     serverPort = registerOutput<int>('serverPort');
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>('sharedPrivateLinkResources');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<ResourceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>('socketIO', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubSocketIOSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tls = registerOutput<WebPubSubTlsSettingsResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [WebPubSub] resource.
+  WebPubSub.reference(String urn)
+    : super(
+        'azure-native:webpubsub:WebPubSub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableAadAuth = registerOutput<bool?>('disableAadAuth');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    externalIP = registerOutput<String>('externalIP');
+    hostName = registerOutput<String>('hostName');
+    hostNamePrefix = registerOutput<String>('hostNamePrefix');
+    identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>('liveTraceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiveTraceConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkACLs = registerOutput<WebPubSubNetworkACLsResponse?>('networkACLs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publicPort = registerOutput<int>('publicPort');
+    regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
+    resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLogConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStopped = registerOutput<String?>('resourceStopped');
+    serverPort = registerOutput<int>('serverPort');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<ResourceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    socketIO = registerOutput<WebPubSubSocketIOSettingsResponse?>('socketIO', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubSocketIOSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tls = registerOutput<WebPubSubTlsSettingsResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebPubSubTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');

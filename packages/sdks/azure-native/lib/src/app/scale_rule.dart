@@ -9,15 +9,15 @@ import 'tcp_scale_rule.dart';
 /// Container App container scaling rule.
 class ScaleRule {
   /// Azure Queue based scaling.
-  final pulumi.Input<QueueScaleRule>? azureQueue;
+  final pulumi.Input<QueueScaleRule?>? azureQueue;
   /// Custom scale rule.
-  final pulumi.Input<CustomScaleRule>? custom;
+  final pulumi.Input<CustomScaleRule?>? custom;
   /// HTTP requests based scaling.
-  final pulumi.Input<HttpScaleRule>? http;
+  final pulumi.Input<HttpScaleRule?>? http;
   /// Scale Rule Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tcp requests based scaling.
-  final pulumi.Input<TcpScaleRule>? tcp;
+  final pulumi.Input<TcpScaleRule?>? tcp;
 
   /// Creates a new [ScaleRule].
   /// [azureQueue] Azure Queue based scaling.

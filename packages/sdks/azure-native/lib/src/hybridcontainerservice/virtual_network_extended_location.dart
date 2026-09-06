@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Extended location pointing to the underlying infrastructure
 class VirtualNetworkExtendedLocation {
   /// ARM Id of the extended location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The extended location type. Allowed value: 'CustomLocation'
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [VirtualNetworkExtendedLocation].
   /// [name] ARM Id of the extended location.
@@ -27,7 +27,7 @@ class VirtualNetworkExtendedLocation {
   factory VirtualNetworkExtendedLocation.fromMap(Map<String, dynamic> map) {
     return VirtualNetworkExtendedLocation(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

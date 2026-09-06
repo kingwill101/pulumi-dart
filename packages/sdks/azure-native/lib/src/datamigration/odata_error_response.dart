@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Error information in OData format.
 class ODataErrorResponse {
   /// The machine-readable description of the error, such as 'InvalidRequest' or 'InternalServerError'
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Inner errors that caused this error
-  final pulumi.Input<List<ODataErrorResponse>>? details;
+  final pulumi.Input<List<ODataErrorResponse>?>? details;
   /// The human-readable description of the error
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ODataErrorResponse].
   /// [code] The machine-readable description of the error, such as 'InvalidRequest' or 'InternalServerError'

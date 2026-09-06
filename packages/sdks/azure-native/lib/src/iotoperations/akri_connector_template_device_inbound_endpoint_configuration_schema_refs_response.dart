@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefs properties.
 class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse {
   /// The additional configuration schema reference.
-  final pulumi.Input<String>? additionalConfigSchemaRef;
+  final pulumi.Input<String?>? additionalConfigSchemaRef;
   /// The default configuration schema reference for datasets.
-  final pulumi.Input<String>? defaultDatasetConfigSchemaRef;
+  final pulumi.Input<String?>? defaultDatasetConfigSchemaRef;
   /// The default configuration schema reference for events.
-  final pulumi.Input<String>? defaultEventsConfigSchemaRef;
+  final pulumi.Input<String?>? defaultEventsConfigSchemaRef;
   /// The default configuration schema reference for process control.
-  final pulumi.Input<String>? defaultProcessControlConfigSchemaRef;
+  final pulumi.Input<String?>? defaultProcessControlConfigSchemaRef;
   /// The default configuration schema reference for streams.
-  final pulumi.Input<String>? defaultStreamsConfigSchemaRef;
+  final pulumi.Input<String?>? defaultStreamsConfigSchemaRef;
 
   /// Creates a new [AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse].
   /// [additionalConfigSchemaRef] The additional configuration schema reference.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum QueryStringOperator {
+enum QueryStringOperator implements pulumi.PulumiEnum<String> {
   any("Any"),
   equal("Equal"),
   contains("Contains"),
@@ -12,6 +14,7 @@ enum QueryStringOperator {
   regEx("RegEx");
 
   const QueryStringOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static QueryStringOperator fromValue(String value) {

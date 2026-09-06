@@ -28,6 +28,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasefleetmanager:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets a fleet resource.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -44,6 +55,17 @@ Future<GetFleetResult> getFleet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasefleetmanager:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
 }
 
 /// Gets a fleet database.
@@ -64,6 +86,17 @@ Future<GetFleetDatabaseResult> getFleetDatabase(
   return GetFleetDatabaseResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetDatabaseResult> getFleetDatabaseOutput(
+  GetFleetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasefleetmanager:getFleetDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetDatabaseResult.fromMap);
+}
+
 /// Gets a tier resource.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -82,6 +115,17 @@ Future<GetFleetTierResult> getFleetTier(
   return GetFleetTierResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetTierResult> getFleetTierOutput(
+  GetFleetTierArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasefleetmanager:getFleetTier',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetTierResult.fromMap);
+}
+
 /// Gets fleetspace resource.
 ///
 /// Uses Azure REST API version 2025-02-01-preview.
@@ -98,4 +142,15 @@ Future<GetFleetspaceResult> getFleetspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetspaceResult> getFleetspaceOutput(
+  GetFleetspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:databasefleetmanager:getFleetspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetspaceResult.fromMap);
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The required feature policy.
-enum FeaturesPolicy {
+enum FeaturesPolicy implements pulumi.PulumiEnum<String> {
   any("Any"),
   all("All");
 
   const FeaturesPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static FeaturesPolicy fromValue(String value) {

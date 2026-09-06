@@ -22,6 +22,17 @@ Future<GetEnergyServiceResult> getEnergyService(
   return GetEnergyServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetEnergyServiceResult> getEnergyServiceOutput(
+  GetEnergyServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:openenergyplatform:getEnergyService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnergyServiceResult.fromMap);
+}
+
 /// Method that gets called when list of partitions is requested.
 ///
 /// Uses Azure REST API version 2022-04-04-preview.
@@ -38,4 +49,15 @@ Future<ListEnergyServicePartitionsResult> listEnergyServicePartitions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListEnergyServicePartitionsResult.fromMap(result);
+}
+
+pulumi.Output<ListEnergyServicePartitionsResult> listEnergyServicePartitionsOutput(
+  ListEnergyServicePartitionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:openenergyplatform:listEnergyServicePartitions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEnergyServicePartitionsResult.fromMap);
 }

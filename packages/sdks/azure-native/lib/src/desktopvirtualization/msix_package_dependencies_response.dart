@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schema for MSIX Package Dependencies properties.
 class MsixPackageDependenciesResponse {
   /// Name of package dependency.
-  final pulumi.Input<String>? dependencyName;
+  final pulumi.Input<String?>? dependencyName;
   /// Dependency version required.
-  final pulumi.Input<String>? minVersion;
+  final pulumi.Input<String?>? minVersion;
   /// Name of dependency publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
 
   /// Creates a new [MsixPackageDependenciesResponse].
   /// [dependencyName] Name of package dependency.

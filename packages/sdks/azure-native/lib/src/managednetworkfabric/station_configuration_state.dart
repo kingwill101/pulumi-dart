@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enabling a station. Either True/False.
-enum StationConfigurationState {
+enum StationConfigurationState implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const StationConfigurationState(this.wireValue);
+  @override
   final String wireValue;
 
   static StationConfigurationState fromValue(String value) {

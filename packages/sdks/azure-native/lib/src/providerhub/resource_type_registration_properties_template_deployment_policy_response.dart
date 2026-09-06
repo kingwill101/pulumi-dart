@@ -7,7 +7,7 @@ class ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse {
   /// The capabilities.
   final pulumi.Input<String> capabilities;
   /// The preflight notifications.
-  final pulumi.Input<String>? preflightNotifications;
+  final pulumi.Input<String?>? preflightNotifications;
   /// The preflight options.
   final pulumi.Input<String> preflightOptions;
 

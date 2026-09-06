@@ -12,11 +12,11 @@ class PrivateEndpointConnectionArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
   /// The private endpoint information.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// Name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The private link service connection state.
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Name of the hardware type (vendor and/or their product name)
-enum AzureBareMetalHardwareTypeNamesEnum {
+enum AzureBareMetalHardwareTypeNamesEnum implements pulumi.PulumiEnum<String> {
   valueCiscoUCS("Cisco_UCS"),
   valueHPE("HPE"),
   valueSDFLEX("SDFLEX");
 
   const AzureBareMetalHardwareTypeNamesEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureBareMetalHardwareTypeNamesEnum fromValue(String value) {

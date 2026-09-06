@@ -5,6 +5,7 @@ import 'garbage_collection_properties_response.dart';
 import 'logging_properties_response.dart';
 import 'login_server_properties_response.dart';
 import 'parent_properties_response.dart';
+import 'status_detail_properties_response.dart';
 import 'system_data_response.dart';
 
 /// An object that represents a connected registry for a container registry.
@@ -313,7 +314,7 @@ class ConnectedRegistry extends pulumi.CustomResource {
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The list of current statuses of the connected registry.
-  late final pulumi.Output<List<Map<String, dynamic>>> statusDetails;
+  late final pulumi.Output<List<StatusDetailPropertiesResponse>> statusDetails;
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource.
@@ -337,7 +338,7 @@ class ConnectedRegistry extends pulumi.CustomResource {
         ) {
     activation = registerOutput<ActivationPropertiesResponse>('activation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    clientTokenIds = registerOutput<List<String>?>('clientTokenIds');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     connectionState = registerOutput<String>('connectionState');
     garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>('garbageCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GarbageCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastActivityTime = registerOutput<String>('lastActivityTime');
@@ -345,10 +346,38 @@ class ConnectedRegistry extends pulumi.CustomResource {
     loginServer = registerOutput<LoginServerPropertiesResponse?>('loginServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoginServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    notificationsList = registerOutput<List<String>?>('notificationsList');
+    notificationsList = registerOutput<List<String>?>('notificationsList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parent = registerOutput<ParentPropertiesResponse>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    statusDetails = registerOutput<List<Map<String, dynamic>>>('statusDetails');
+    statusDetails = registerOutput<List<StatusDetailPropertiesResponse>>('statusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusDetailPropertiesResponse>(guardedValue, (value) => StatusDetailPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [ConnectedRegistry] resource.
+  ConnectedRegistry.reference(String urn)
+    : super(
+        'azure-native:containerregistry:ConnectedRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activation = registerOutput<ActivationPropertiesResponse>('activation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    connectionState = registerOutput<String>('connectionState');
+    garbageCollection = registerOutput<GarbageCollectionPropertiesResponse?>('garbageCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GarbageCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastActivityTime = registerOutput<String>('lastActivityTime');
+    logging = registerOutput<LoggingPropertiesResponse?>('logging', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoggingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    loginServer = registerOutput<LoginServerPropertiesResponse?>('loginServer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoginServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    notificationsList = registerOutput<List<String>?>('notificationsList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parent = registerOutput<ParentPropertiesResponse>('parent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ParentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    statusDetails = registerOutput<List<StatusDetailPropertiesResponse>>('statusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusDetailPropertiesResponse>(guardedValue, (value) => StatusDetailPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String>('version');

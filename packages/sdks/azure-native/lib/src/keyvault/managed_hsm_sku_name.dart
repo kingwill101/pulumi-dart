@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU of the managed HSM Pool
-enum ManagedHsmSkuName {
+enum ManagedHsmSkuName implements pulumi.PulumiEnum<String> {
   valueStandardB1("Standard_B1"),
   valueCustomB32("Custom_B32"),
   valueCustomB6("Custom_B6"),
@@ -7,6 +9,7 @@ enum ManagedHsmSkuName {
   valueCustomC10("Custom_C10");
 
   const ManagedHsmSkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedHsmSkuName fromValue(String value) {

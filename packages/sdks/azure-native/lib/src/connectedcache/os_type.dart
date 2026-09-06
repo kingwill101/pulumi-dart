@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operating system of the cache node
-enum OsType {
+enum OsType implements pulumi.PulumiEnum<String> {
   windows("Windows"),
   linux("Linux"),
   eflow("Eflow");
 
   const OsType(this.wireValue);
+  @override
   final String wireValue;
 
   static OsType fromValue(String value) {

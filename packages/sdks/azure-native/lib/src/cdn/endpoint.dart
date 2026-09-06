@@ -1,9 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'deep_created_custom_domain_response.dart';
+import 'deep_created_origin_group_response.dart';
+import 'deep_created_origin_response.dart';
 import 'endpoint_args.dart';
 import 'endpoint_properties_update_parameters_delivery_policy_response.dart';
 import 'endpoint_properties_update_parameters_web_application_firewall_policy_link_response.dart';
+import 'geo_filter_response.dart';
 import 'resource_reference_response.dart';
 import 'system_data_response.dart';
+import 'url_signing_key_response.dart';
 
 /// CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format &lt;endpointname&gt;.azureedge.net.
 ///
@@ -907,13 +912,13 @@ class Endpoint extends pulumi.CustomResource {
   /// List of content types on which compression applies. The value should be a valid MIME type.
   late final pulumi.Output<List<String>?> contentTypesToCompress;
   /// The custom domains under the endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>> customDomains;
+  late final pulumi.Output<List<DeepCreatedCustomDomainResponse>> customDomains;
   /// A reference to the origin group.
   late final pulumi.Output<ResourceReferenceResponse?> defaultOriginGroup;
   /// A policy that specifies the delivery rules to be used for an endpoint.
   late final pulumi.Output<EndpointPropertiesUpdateParametersDeliveryPolicyResponse?> deliveryPolicy;
   /// List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
-  late final pulumi.Output<List<Map<String, dynamic>>?> geoFilters;
+  late final pulumi.Output<List<GeoFilterResponse>?> geoFilters;
   /// The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net
   late final pulumi.Output<String> hostName;
   /// Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB.
@@ -929,13 +934,13 @@ class Endpoint extends pulumi.CustomResource {
   /// Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization.
   late final pulumi.Output<String?> optimizationType;
   /// The origin groups comprising of origins that are used for load balancing the traffic based on availability.
-  late final pulumi.Output<List<Map<String, dynamic>>?> originGroups;
+  late final pulumi.Output<List<DeepCreatedOriginGroupResponse>?> originGroups;
   /// The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default.
   late final pulumi.Output<String?> originHostHeader;
   /// A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath.
   late final pulumi.Output<String?> originPath;
   /// The source of the content being delivered via CDN.
-  late final pulumi.Output<List<Map<String, dynamic>>> origins;
+  late final pulumi.Output<List<DeepCreatedOriginResponse>> origins;
   /// Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin.
   late final pulumi.Output<String?> probePath;
   /// Provisioning status of the endpoint.
@@ -951,7 +956,7 @@ class Endpoint extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// List of keys used to validate the signed URL hashes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> urlSigningKeys;
+  late final pulumi.Output<List<UrlSigningKeyResponse>?> urlSigningKeys;
   /// Defines the Web Application Firewall policy for the endpoint (if applicable)
   late final pulumi.Output<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?> webApplicationFirewallPolicyLink;
 
@@ -970,11 +975,11 @@ class Endpoint extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contentTypesToCompress = registerOutput<List<String>?>('contentTypesToCompress');
-    customDomains = registerOutput<List<Map<String, dynamic>>>('customDomains');
+    contentTypesToCompress = registerOutput<List<String>?>('contentTypesToCompress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customDomains = registerOutput<List<DeepCreatedCustomDomainResponse>>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedCustomDomainResponse>(guardedValue, (value) => DeepCreatedCustomDomainResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultOriginGroup = registerOutput<ResourceReferenceResponse?>('defaultOriginGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deliveryPolicy = registerOutput<EndpointPropertiesUpdateParametersDeliveryPolicyResponse?>('deliveryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPropertiesUpdateParametersDeliveryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    geoFilters = registerOutput<List<Map<String, dynamic>>?>('geoFilters');
+    geoFilters = registerOutput<List<GeoFilterResponse>?>('geoFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoFilterResponse>(guardedValue, (value) => GeoFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     hostName = registerOutput<String>('hostName');
     isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
     isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
@@ -982,18 +987,55 @@ class Endpoint extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     optimizationType = registerOutput<String?>('optimizationType');
-    originGroups = registerOutput<List<Map<String, dynamic>>?>('originGroups');
+    originGroups = registerOutput<List<DeepCreatedOriginGroupResponse>?>('originGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedOriginGroupResponse>(guardedValue, (value) => DeepCreatedOriginGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     originHostHeader = registerOutput<String?>('originHostHeader');
     originPath = registerOutput<String?>('originPath');
-    origins = registerOutput<List<Map<String, dynamic>>>('origins');
+    origins = registerOutput<List<DeepCreatedOriginResponse>>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedOriginResponse>(guardedValue, (value) => DeepCreatedOriginResponse.fromMap((value as Map).cast<String, dynamic>())); });
     probePath = registerOutput<String?>('probePath');
     provisioningState = registerOutput<String>('provisioningState');
     queryStringCachingBehavior = registerOutput<String?>('queryStringCachingBehavior');
     resourceState = registerOutput<String>('resourceState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    urlSigningKeys = registerOutput<List<Map<String, dynamic>>?>('urlSigningKeys');
+    urlSigningKeys = registerOutput<List<UrlSigningKeyResponse>?>('urlSigningKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlSigningKeyResponse>(guardedValue, (value) => UrlSigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    webApplicationFirewallPolicyLink = registerOutput<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?>('webApplicationFirewallPolicyLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Endpoint] resource.
+  Endpoint.reference(String urn)
+    : super(
+        'azure-native:cdn:Endpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentTypesToCompress = registerOutput<List<String>?>('contentTypesToCompress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    customDomains = registerOutput<List<DeepCreatedCustomDomainResponse>>('customDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedCustomDomainResponse>(guardedValue, (value) => DeepCreatedCustomDomainResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultOriginGroup = registerOutput<ResourceReferenceResponse?>('defaultOriginGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryPolicy = registerOutput<EndpointPropertiesUpdateParametersDeliveryPolicyResponse?>('deliveryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPropertiesUpdateParametersDeliveryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    geoFilters = registerOutput<List<GeoFilterResponse>?>('geoFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoFilterResponse>(guardedValue, (value) => GeoFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostName = registerOutput<String>('hostName');
+    isCompressionEnabled = registerOutput<bool?>('isCompressionEnabled');
+    isHttpAllowed = registerOutput<bool?>('isHttpAllowed');
+    isHttpsAllowed = registerOutput<bool?>('isHttpsAllowed');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    optimizationType = registerOutput<String?>('optimizationType');
+    originGroups = registerOutput<List<DeepCreatedOriginGroupResponse>?>('originGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedOriginGroupResponse>(guardedValue, (value) => DeepCreatedOriginGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    originHostHeader = registerOutput<String?>('originHostHeader');
+    originPath = registerOutput<String?>('originPath');
+    origins = registerOutput<List<DeepCreatedOriginResponse>>('origins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeepCreatedOriginResponse>(guardedValue, (value) => DeepCreatedOriginResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    probePath = registerOutput<String?>('probePath');
+    provisioningState = registerOutput<String>('provisioningState');
+    queryStringCachingBehavior = registerOutput<String?>('queryStringCachingBehavior');
+    resourceState = registerOutput<String>('resourceState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    urlSigningKeys = registerOutput<List<UrlSigningKeyResponse>?>('urlSigningKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlSigningKeyResponse>(guardedValue, (value) => UrlSigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     webApplicationFirewallPolicyLink = registerOutput<EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse?>('webApplicationFirewallPolicyLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS.
 class DiskSku {
   /// Defines the disk sku name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<dynamic>? name;
 
   /// Creates a new [DiskSku].
   /// [name] Defines the disk sku name.
@@ -21,7 +21,7 @@ class DiskSku {
 
   factory DiskSku.fromMap(Map<String, dynamic> map) {
     return DiskSku(
-      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

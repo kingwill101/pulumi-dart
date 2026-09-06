@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EndpointModelSkuRateLimitRulePatternPropertiesResponse {
-  final pulumi.Input<String>? method;
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? method;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [EndpointModelSkuRateLimitRulePatternPropertiesResponse].
   /// [method] Optional.

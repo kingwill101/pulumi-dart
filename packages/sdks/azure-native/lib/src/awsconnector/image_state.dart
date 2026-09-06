@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ImageState {
+enum ImageState implements pulumi.PulumiEnum<String> {
   available("available"),
   deregistered("deregistered"),
   disabled("disabled"),
@@ -10,6 +12,7 @@ enum ImageState {
   transient("transient");
 
   const ImageState(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageState fromValue(String value) {

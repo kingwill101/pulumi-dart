@@ -58,12 +58,12 @@ class GatewayOperationDetailsResponse {
     return GatewayOperationDetailsResponse(
       dataStores: pulumi.Input.fromValue((map['dataStores'] as List).cast<String>()),
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
-      progressPercentage: pulumi.Input.fromValue(map['progressPercentage'] as int),
+      progressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['progressPercentage'])),
       state: pulumi.Input.fromValue(map['state'] as String),
-      timeElapsed: pulumi.Input.fromValue(map['timeElapsed'] as double),
-      timeRemaining: pulumi.Input.fromValue(map['timeRemaining'] as double),
-      uploadSpeed: pulumi.Input.fromValue(map['uploadSpeed'] as double),
-      vmwareReadThroughput: pulumi.Input.fromValue(map['vmwareReadThroughput'] as double),
+      timeElapsed: pulumi.Input.fromValue((map['timeElapsed'] as num).toDouble()),
+      timeRemaining: pulumi.Input.fromValue((map['timeRemaining'] as num).toDouble()),
+      uploadSpeed: pulumi.Input.fromValue((map['uploadSpeed'] as num).toDouble()),
+      vmwareReadThroughput: pulumi.Input.fromValue((map['vmwareReadThroughput'] as num).toDouble()),
     );
   }
 }

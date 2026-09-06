@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Accepted protocol schemes.
-enum FrontDoorProtocol {
+enum FrontDoorProtocol implements pulumi.PulumiEnum<String> {
   http("Http"),
   https("Https");
 
   const FrontDoorProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontDoorProtocol fromValue(String value) {

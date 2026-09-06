@@ -6,17 +6,17 @@ import 'storage_account.dart';
 /// Describes a blob input data source that contains reference data.
 class BlobReferenceInputDataSource {
   /// Authentication Mode.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<dynamic>? authenticationMode;
   /// The name of a container within the associated Storage account. This container contains either the blob(s) to be read from or written to. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? container;
+  final pulumi.Input<String?>? container;
   /// The date format. Wherever {date} appears in pathPattern, the value of this property is used as the date format instead.
-  final pulumi.Input<String>? dateFormat;
+  final pulumi.Input<String?>? dateFormat;
   /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and example.
-  final pulumi.Input<String>? pathPattern;
+  final pulumi.Input<String?>? pathPattern;
   /// A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<List<StorageAccount>>? storageAccounts;
+  final pulumi.Input<List<StorageAccount>?>? storageAccounts;
   /// The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
-  final pulumi.Input<String>? timeFormat;
+  final pulumi.Input<String?>? timeFormat;
   /// Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.Storage/Blob'.
   final pulumi.Input<String> type;
@@ -53,7 +53,7 @@ class BlobReferenceInputDataSource {
 
   factory BlobReferenceInputDataSource.fromMap(Map<String, dynamic> map) {
     return BlobReferenceInputDataSource(
-      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       container: (() { final guardedValue = map['container']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dateFormat: (() { final guardedValue = map['dateFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathPattern: (() { final guardedValue = map['pathPattern']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

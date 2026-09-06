@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The integration service environment access endpoint.
 class IntegrationServiceEnvironmentAccessEndpoint {
   /// The access endpoint type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [IntegrationServiceEnvironmentAccessEndpoint].
   /// [type] The access endpoint type.
@@ -21,7 +21,7 @@ class IntegrationServiceEnvironmentAccessEndpoint {
 
   factory IntegrationServiceEnvironmentAccessEndpoint.fromMap(Map<String, dynamic> map) {
     return IntegrationServiceEnvironmentAccessEndpoint(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

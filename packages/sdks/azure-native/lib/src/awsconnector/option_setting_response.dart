@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OptionSetting
 class OptionSettingResponse {
   /// A unique namespace that identifies the option's associated AWS resource.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// The name of the configuration option.
-  final pulumi.Input<String>? optionName;
+  final pulumi.Input<String?>? optionName;
   /// A unique resource name for the option setting. Use it for a time–based scaling configuration option.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The current value for the configuration option.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OptionSettingResponse].
   /// [namespace] A unique namespace that identifies the option's associated AWS resource.

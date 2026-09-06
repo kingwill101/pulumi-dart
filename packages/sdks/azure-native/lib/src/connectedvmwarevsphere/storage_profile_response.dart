@@ -7,7 +7,7 @@ import 'virtual_scsicontroller_response.dart';
 /// Specifies the storage settings for the virtual machine disks.
 class StorageProfileResponse {
   /// Gets or sets the list of virtual disks associated with the virtual machine.
-  final pulumi.Input<List<VirtualDiskResponse>>? disks;
+  final pulumi.Input<List<VirtualDiskResponse>?>? disks;
   /// Gets or sets the list of virtual SCSI controllers associated with the virtual machine.
   final pulumi.Input<List<VirtualSCSIControllerResponse>> scsiControllers;
 

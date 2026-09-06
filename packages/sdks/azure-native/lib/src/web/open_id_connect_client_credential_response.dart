@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication client credentials of the custom Open ID Connect provider.
 class OpenIdConnectClientCredentialResponse {
   /// The app setting that contains the client secret for the custom Open ID Connect provider.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// The method that should be used to authenticate the user.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
 
   /// Creates a new [OpenIdConnectClientCredentialResponse].
   /// [clientSecretSettingName] The app setting that contains the client secret for the custom Open ID Connect provider.

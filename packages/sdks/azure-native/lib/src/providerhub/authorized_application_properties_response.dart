@@ -6,8 +6,8 @@ import 'application_provider_authorization_response.dart';
 
 class AuthorizedApplicationPropertiesResponse {
   /// The authorizations that determine the level of data access permissions on the specified resource types.
-  final pulumi.Input<List<ApplicationDataAuthorizationResponse>>? dataAuthorizations;
-  final pulumi.Input<ApplicationProviderAuthorizationResponse>? providerAuthorization;
+  final pulumi.Input<List<ApplicationDataAuthorizationResponse>?>? dataAuthorizations;
+  final pulumi.Input<ApplicationProviderAuthorizationResponse?>? providerAuthorization;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
 

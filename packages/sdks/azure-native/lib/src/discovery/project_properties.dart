@@ -6,9 +6,9 @@ import 'project_settings.dart';
 /// Project properties
 class ProjectProperties {
   /// Settings for the project.
-  final pulumi.Input<ProjectSettings>? settings;
+  final pulumi.Input<ProjectSettings?>? settings;
   /// Allowed StorageContainers (Control plane resource references).
-  final pulumi.Input<List<String>>? storageContainerIds;
+  final pulumi.Input<List<String>?>? storageContainerIds;
 
   /// Creates a new [ProjectProperties].
   /// [settings] Settings for the project.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the url and storage account ID where deployer VM packages are uploaded
 class DeployerVmPackagesResponse {
   /// The deployer VM packages storage account id
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// The URL to the deployer VM packages file.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [DeployerVmPackagesResponse].
   /// [storageAccountId] The deployer VM packages storage account id

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Destination of the view data. Currently only CSV format is supported.
-enum FileFormat {
+enum FileFormat implements pulumi.PulumiEnum<String> {
   valueCsv("Csv");
 
   const FileFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static FileFormat fromValue(String value) {

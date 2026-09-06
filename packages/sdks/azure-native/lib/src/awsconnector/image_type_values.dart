@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ImageTypeValues {
+enum ImageTypeValues implements pulumi.PulumiEnum<String> {
   kernel("kernel"),
   machine("machine"),
   ramdisk("ramdisk");
 
   const ImageTypeValues(this.wireValue);
+  @override
   final String wireValue;
 
   static ImageTypeValues fromValue(String value) {

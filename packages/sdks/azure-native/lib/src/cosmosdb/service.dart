@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'data_transfer_service_resource_properties_response.dart';
 import 'service_args.dart';
 
 /// Properties for the database account.
@@ -692,7 +691,7 @@ class Service extends pulumi.CustomResource {
   /// The name of the database account.
   late final pulumi.Output<String> name;
   /// Services response resource.
-  late final pulumi.Output<DataTransferServiceResourcePropertiesResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
 
@@ -712,7 +711,22 @@ class Service extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<DataTransferServiceResourcePropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataTransferServiceResourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Service] resource.
+  Service.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     type = registerOutput<String>('type');
   }
 }

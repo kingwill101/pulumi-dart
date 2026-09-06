@@ -6,15 +6,15 @@ import 'site_address_properties.dart';
 /// Site properties
 class SiteProperties {
   /// AddressResource ArmId of Site resource
-  final pulumi.Input<String>? addressResourceId;
+  final pulumi.Input<String?>? addressResourceId;
   /// Description of Site resource
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// displayName of Site resource
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Key-value pairs for labeling the site resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Physical address of the site
-  final pulumi.Input<SiteAddressProperties>? siteAddress;
+  final pulumi.Input<SiteAddressProperties?>? siteAddress;
 
   /// Creates a new [SiteProperties].
   /// [addressResourceId] AddressResource ArmId of Site resource

@@ -8,21 +8,21 @@ import 'health_error.dart';
 /// Shared Disk Replication item custom data details.
 class SharedDiskReplicationItemProperties {
   /// The Current active location of the PE.
-  final pulumi.Input<String>? activeLocation;
+  final pulumi.Input<String?>? activeLocation;
   /// The allowed operations on the Replication protected item.
-  final pulumi.Input<List<String>>? allowedOperations;
+  final pulumi.Input<List<String>?>? allowedOperations;
   /// The current scenario.
-  final pulumi.Input<CurrentScenarioDetails>? currentScenario;
+  final pulumi.Input<CurrentScenarioDetails?>? currentScenario;
   /// List of health errors.
-  final pulumi.Input<List<HealthError>>? healthErrors;
+  final pulumi.Input<List<HealthError>?>? healthErrors;
   /// The protection state of shared disk.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
-  final pulumi.Input<String>? replicationHealth;
+  final pulumi.Input<String?>? replicationHealth;
   /// The Replication provider custom settings.
-  final pulumi.Input<A2ASharedDiskReplicationDetails>? sharedDiskProviderSpecificDetails;
+  final pulumi.Input<A2ASharedDiskReplicationDetails?>? sharedDiskProviderSpecificDetails;
   /// The tfo state of shared disk.
-  final pulumi.Input<String>? testFailoverState;
+  final pulumi.Input<String?>? testFailoverState;
 
   /// Creates a new [SharedDiskReplicationItemProperties].
   /// [activeLocation] The Current active location of the PE.

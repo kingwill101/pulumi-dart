@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeLicenseDetailsResponse {
   /// The invoice id for the volume license.
-  final pulumi.Input<String>? invoiceId;
+  final pulumi.Input<String?>? invoiceId;
   /// Describes the program year the volume license is for.
-  final pulumi.Input<String>? programYear;
+  final pulumi.Input<String?>? programYear;
 
   /// Creates a new [VolumeLicenseDetailsResponse].
   /// [invoiceId] The invoice id for the volume license.

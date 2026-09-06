@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeploymentCircuitBreaker
 class DeploymentCircuitBreaker {
   /// Determines whether to use the deployment circuit breaker logic for the service.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Determines whether to configure Amazon ECS to roll back the service if a service deployment fails. If rollback is on, when a service deployment fails, the service is rolled back to the last deployment that completed successfully.
-  final pulumi.Input<bool>? rollback;
+  final pulumi.Input<bool?>? rollback;
 
   /// Creates a new [DeploymentCircuitBreaker].
   /// [enable] Determines whether to use the deployment circuit breaker logic for the service.

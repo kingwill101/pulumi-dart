@@ -28,6 +28,17 @@ Future<GetDomainResult> getDomain(
   return GetDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainResult> getDomainOutput(
+  GetDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:domainregistration:getDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainResult.fromMap);
+}
+
 /// Description for Get ownership identifier for domain
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -46,6 +57,17 @@ Future<GetDomainOwnershipIdentifierResult> getDomainOwnershipIdentifier(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDomainOwnershipIdentifierResult.fromMap(result);
+}
+
+pulumi.Output<GetDomainOwnershipIdentifierResult> getDomainOwnershipIdentifierOutput(
+  GetDomainOwnershipIdentifierArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:domainregistration:getDomainOwnershipIdentifier',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainOwnershipIdentifierResult.fromMap);
 }
 
 /// Description for Get domain name recommendations based on keywords.
@@ -68,6 +90,17 @@ Future<ListDomainRecommendationsResult> listDomainRecommendations(
   return ListDomainRecommendationsResult.fromMap(result);
 }
 
+pulumi.Output<ListDomainRecommendationsResult> listDomainRecommendationsOutput(
+  ListDomainRecommendationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:domainregistration:listDomainRecommendations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDomainRecommendationsResult.fromMap);
+}
+
 /// Description for Gets all legal agreements that user needs to accept before purchasing a domain.
 ///
 /// Uses Azure REST API version 2024-04-01.
@@ -86,4 +119,15 @@ Future<ListTopLevelDomainAgreementsResult> listTopLevelDomainAgreements(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListTopLevelDomainAgreementsResult.fromMap(result);
+}
+
+pulumi.Output<ListTopLevelDomainAgreementsResult> listTopLevelDomainAgreementsOutput(
+  ListTopLevelDomainAgreementsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:domainregistration:listTopLevelDomainAgreements',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListTopLevelDomainAgreementsResult.fromMap);
 }

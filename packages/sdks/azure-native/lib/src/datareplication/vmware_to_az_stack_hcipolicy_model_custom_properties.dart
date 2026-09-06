@@ -38,10 +38,10 @@ class VMwareToAzStackHCIPolicyModelCustomProperties {
 
   factory VMwareToAzStackHCIPolicyModelCustomProperties.fromMap(Map<String, dynamic> map) {
     return VMwareToAzStackHCIPolicyModelCustomProperties(
-      appConsistentFrequencyInMinutes: pulumi.Input.fromValue(map['appConsistentFrequencyInMinutes'] as int),
-      crashConsistentFrequencyInMinutes: pulumi.Input.fromValue(map['crashConsistentFrequencyInMinutes'] as int),
+      appConsistentFrequencyInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['appConsistentFrequencyInMinutes'])),
+      crashConsistentFrequencyInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['crashConsistentFrequencyInMinutes'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      recoveryPointHistoryInMinutes: pulumi.Input.fromValue(map['recoveryPointHistoryInMinutes'] as int),
+      recoveryPointHistoryInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recoveryPointHistoryInMinutes'])),
     );
   }
 }

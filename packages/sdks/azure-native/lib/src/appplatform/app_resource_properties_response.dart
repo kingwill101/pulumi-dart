@@ -12,37 +12,37 @@ import 'temporary_disk_response.dart';
 /// App resource properties payload
 class AppResourcePropertiesResponse {
   /// Collection of addons
-  final pulumi.Input<Map<String, dynamic>>? addonConfigs;
+  final pulumi.Input<Map<String, dynamic>?>? addonConfigs;
   /// List of custom persistent disks
-  final pulumi.Input<List<CustomPersistentDiskResourceResponse>>? customPersistentDisks;
+  final pulumi.Input<List<CustomPersistentDiskResourceResponse>?>? customPersistentDisks;
   /// Indicate if end to end TLS is enabled.
-  final pulumi.Input<bool>? enableEndToEndTLS;
+  final pulumi.Input<bool?>? enableEndToEndTLS;
   /// Fully qualified dns Name.
   final pulumi.Input<String> fqdn;
   /// Indicate if only https is allowed.
-  final pulumi.Input<bool>? httpsOnly;
+  final pulumi.Input<bool?>? httpsOnly;
   /// App ingress settings payload.
-  final pulumi.Input<IngressSettingsResponse>? ingressSettings;
+  final pulumi.Input<IngressSettingsResponse?>? ingressSettings;
   /// Collection of loaded certificates
-  final pulumi.Input<List<LoadedCertificateResponse>>? loadedCertificates;
+  final pulumi.Input<List<LoadedCertificateResponse>?>? loadedCertificates;
   /// Persistent disk settings
-  final pulumi.Input<PersistentDiskResponse>? persistentDisk;
+  final pulumi.Input<PersistentDiskResponse?>? persistentDisk;
   /// Provisioning state of the App
   final pulumi.Input<String> provisioningState;
   /// Indicates whether the App exposes public endpoint
-  final pulumi.Input<bool>? public;
+  final pulumi.Input<bool?>? public;
   /// Collection of auth secrets
-  final pulumi.Input<List<SecretResponse>>? secrets;
+  final pulumi.Input<List<SecretResponse>?>? secrets;
   /// Temporary disk settings
-  final pulumi.Input<TemporaryDiskResponse>? temporaryDisk;
+  final pulumi.Input<TemporaryDiskResponse?>? temporaryDisk;
   /// State of test endpoint auth.
-  final pulumi.Input<String>? testEndpointAuthState;
+  final pulumi.Input<String?>? testEndpointAuthState;
   /// URL of the App
   final pulumi.Input<String> url;
   /// Additional App settings in vnet injection instance
-  final pulumi.Input<AppVNetAddonsResponse>? vnetAddons;
+  final pulumi.Input<AppVNetAddonsResponse?>? vnetAddons;
   /// The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [AppResourcePropertiesResponse].
   /// [addonConfigs] Collection of addons
@@ -61,12 +61,12 @@ class AppResourcePropertiesResponse {
   /// [url] URL of the App
   /// [vnetAddons] Additional App settings in vnet injection instance
   /// [workloadProfileName] The workload profile used for this app. Supported for Consumption + Dedicated plan.
-  const AppResourcePropertiesResponse({
+  AppResourcePropertiesResponse({
     this.addonConfigs,
     this.customPersistentDisks,
-    this.enableEndToEndTLS,
+    pulumi.Input<bool?>? enableEndToEndTLS,
     required this.fqdn,
-    this.httpsOnly,
+    pulumi.Input<bool?>? httpsOnly,
     this.ingressSettings,
     this.loadedCertificates,
     this.persistentDisk,
@@ -74,11 +74,11 @@ class AppResourcePropertiesResponse {
     this.public,
     this.secrets,
     this.temporaryDisk,
-    this.testEndpointAuthState,
+    pulumi.Input<String?>? testEndpointAuthState,
     required this.url,
     this.vnetAddons,
     this.workloadProfileName,
-  });
+  }) : enableEndToEndTLS = enableEndToEndTLS ?? pulumi.Input.fromValue(false), httpsOnly = httpsOnly ?? pulumi.Input.fromValue(false), testEndpointAuthState = testEndpointAuthState ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

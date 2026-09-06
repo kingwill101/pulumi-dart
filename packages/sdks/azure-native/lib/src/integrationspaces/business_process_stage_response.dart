@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of business process stage.
 class BusinessProcessStageResponse {
   /// The description of the business stage.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The properties within the properties of the business process stage.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The property to keep track of stages before current in the business process stage.
-  final pulumi.Input<List<String>>? stagesBefore;
+  final pulumi.Input<List<String>?>? stagesBefore;
 
   /// Creates a new [BusinessProcessStageResponse].
   /// [description] The description of the business stage.

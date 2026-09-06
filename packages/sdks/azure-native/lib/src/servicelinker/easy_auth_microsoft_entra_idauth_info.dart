@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication info when authType is EasyAuth Microsoft Entra ID
 class EasyAuthMicrosoftEntraIDAuthInfo {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final pulumi.Input<String>? authMode;
+  final pulumi.Input<dynamic>? authMode;
   /// The authentication type.
   /// Expected value is 'easyAuthMicrosoftEntraID'.
   final pulumi.Input<String> authType;
   /// Application clientId for EasyAuth Microsoft Entra ID.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<dynamic>? deleteOrUpdateBehavior;
   /// Application Secret for EasyAuth Microsoft Entra ID.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
 
   /// Creates a new [EasyAuthMicrosoftEntraIDAuthInfo].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -42,10 +42,10 @@ class EasyAuthMicrosoftEntraIDAuthInfo {
 
   factory EasyAuthMicrosoftEntraIDAuthInfo.fromMap(Map<String, dynamic> map) {
     return EasyAuthMicrosoftEntraIDAuthInfo(
-      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       authType: pulumi.Input.fromValue(map['authType'] as String),
       clientId: (() { final guardedValue = map['clientId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

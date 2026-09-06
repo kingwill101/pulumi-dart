@@ -6,9 +6,9 @@ import 'severity_summary_response.dart';
 /// Definition of CompliantSummary
 class CompliantSummaryResponse {
   /// &lt;p&gt;The total number of resources that are compliant.&lt;/p&gt;
-  final pulumi.Input<int>? compliantCount;
+  final pulumi.Input<int?>? compliantCount;
   /// &lt;p&gt;A summary of the compliance severity by compliance type.&lt;/p&gt;
-  final pulumi.Input<SeveritySummaryResponse>? severitySummary;
+  final pulumi.Input<SeveritySummaryResponse?>? severitySummary;
 
   /// Creates a new [CompliantSummaryResponse].
   /// [compliantCount] &lt;p&gt;The total number of resources that are compliant.&lt;/p&gt;
@@ -27,7 +27,7 @@ class CompliantSummaryResponse {
 
   factory CompliantSummaryResponse.fromMap(Map<String, dynamic> map) {
     return CompliantSummaryResponse(
-      compliantCount: (() { final guardedValue = map['compliantCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      compliantCount: (() { final guardedValue = map['compliantCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       severitySummary: (() { final guardedValue = map['severitySummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SeveritySummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -9,7 +9,7 @@ class SqlServerLicensingSettings {
   /// Software assurance (SA) cost.
   final pulumi.Input<double> softwareAssuranceCost;
   /// SQL Server version.
-  final pulumi.Input<String> version;
+  final pulumi.Input<dynamic> version;
 
   /// Creates a new [SqlServerLicensingSettings].
   /// [licenseCost] Licence cost.
@@ -31,9 +31,9 @@ class SqlServerLicensingSettings {
 
   factory SqlServerLicensingSettings.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensingSettings(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
-      version: pulumi.Input.fromValue(map['version'] as String),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
+      softwareAssuranceCost: pulumi.Input.fromValue((map['softwareAssuranceCost'] as num).toDouble()),
+      version: pulumi.Input.fromValue(map['version']),
     );
   }
 }

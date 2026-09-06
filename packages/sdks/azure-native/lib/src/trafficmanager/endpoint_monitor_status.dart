@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The monitoring status of the endpoint.
-enum EndpointMonitorStatus {
+enum EndpointMonitorStatus implements pulumi.PulumiEnum<String> {
   checkingEndpoint("CheckingEndpoint"),
   online("Online"),
   degraded("Degraded"),
@@ -9,6 +11,7 @@ enum EndpointMonitorStatus {
   unmonitored("Unmonitored");
 
   const EndpointMonitorStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointMonitorStatus fromValue(String value) {

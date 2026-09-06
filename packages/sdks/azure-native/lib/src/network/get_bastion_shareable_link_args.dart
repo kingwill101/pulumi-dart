@@ -13,7 +13,7 @@ class GetBastionShareableLinkArgs {
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// List of VM references.
-  final pulumi.Input<List<BastionShareableLink>>? vms;
+  final pulumi.Input<List<BastionShareableLink>?>? vms;
 
   /// Creates a new [GetBastionShareableLinkArgs].
   /// [bastionHostName] The name of the Bastion Host.

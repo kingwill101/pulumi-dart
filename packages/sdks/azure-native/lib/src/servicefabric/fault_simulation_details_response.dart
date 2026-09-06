@@ -7,13 +7,13 @@ import 'zone_fault_simulation_content_response.dart';
 /// Details for Fault Simulation.
 class FaultSimulationDetailsResponse {
   /// unique identifier for the cluster resource.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// List of node type simulations associated with the cluster fault simulation.
-  final pulumi.Input<List<NodeTypeFaultSimulationResponse>>? nodeTypeFaultSimulation;
+  final pulumi.Input<List<NodeTypeFaultSimulationResponse>?>? nodeTypeFaultSimulation;
   /// unique identifier for the operation associated with the fault simulation.
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// Fault simulation parameters.
-  final pulumi.Input<ZoneFaultSimulationContentResponse>? parameters;
+  final pulumi.Input<ZoneFaultSimulationContentResponse?>? parameters;
 
   /// Creates a new [FaultSimulationDetailsResponse].
   /// [clusterId] unique identifier for the cluster resource.

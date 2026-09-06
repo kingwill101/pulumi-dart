@@ -6,9 +6,9 @@ import 'resource_health_details_response.dart';
 /// KPI Resource Health Details
 class KPIResourceHealthDetailsResponse {
   /// Resource Health Status
-  final pulumi.Input<List<ResourceHealthDetailsResponse>>? resourceHealthDetails;
+  final pulumi.Input<List<ResourceHealthDetailsResponse>?>? resourceHealthDetails;
   /// Resource Health Status
-  final pulumi.Input<String>? resourceHealthStatus;
+  final pulumi.Input<String?>? resourceHealthStatus;
 
   /// Creates a new [KPIResourceHealthDetailsResponse].
   /// [resourceHealthDetails] Resource Health Status

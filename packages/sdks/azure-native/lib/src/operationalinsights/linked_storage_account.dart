@@ -201,7 +201,23 @@ class LinkedStorageAccount extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     dataSourceType = registerOutput<String>('dataSourceType');
     this.name = registerOutput<String>('name');
-    storageAccountIds = registerOutput<List<String>?>('storageAccountIds');
+    storageAccountIds = registerOutput<List<String>?>('storageAccountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [LinkedStorageAccount] resource.
+  LinkedStorageAccount.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:LinkedStorageAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSourceType = registerOutput<String>('dataSourceType');
+    this.name = registerOutput<String>('name');
+    storageAccountIds = registerOutput<List<String>?>('storageAccountIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -11,7 +11,7 @@ class NetworkSecurityGroupRuleResponse {
   /// Valid values are a single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), default tag, or * (for all addresses).  If any other values are provided the request fails with HTTP status code 400.
   final pulumi.Input<String> sourceAddressPrefix;
   /// Valid values are '*' (for all ports 0 - 65535) or arrays of ports or port ranges (i.e. 100-200). The ports should in the range of 0 to 65535 and the port ranges or ports can't overlap. If any other values are provided the request fails with HTTP status code 400. Default value will be *.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
 
   /// Creates a new [NetworkSecurityGroupRuleResponse].
   /// [access] The action that should be taken for a specified IP address, subnet range or tag.
@@ -37,7 +37,7 @@ class NetworkSecurityGroupRuleResponse {
   factory NetworkSecurityGroupRuleResponse.fromMap(Map<String, dynamic> map) {
     return NetworkSecurityGroupRuleResponse(
       access: pulumi.Input.fromValue(map['access'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       sourceAddressPrefix: pulumi.Input.fromValue(map['sourceAddressPrefix'] as String),
       sourcePortRanges: (() { final guardedValue = map['sourcePortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

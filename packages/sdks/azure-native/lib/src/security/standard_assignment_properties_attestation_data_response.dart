@@ -7,13 +7,13 @@ import 'attestation_evidence_response.dart';
 /// Additional data about assignment that has Attest effect
 class StandardAssignmentPropertiesAttestationDataResponse {
   /// Component item with key as applied to this standard assignment over the given scope
-  final pulumi.Input<AssignedAssessmentItemResponse>? assignedAssessment;
+  final pulumi.Input<AssignedAssessmentItemResponse?>? assignedAssessment;
   /// Attestation compliance date
   final pulumi.Input<String> complianceDate;
   /// Attest category of this assignment
-  final pulumi.Input<String>? complianceState;
+  final pulumi.Input<String?>? complianceState;
   /// Array of links to attestation evidence
-  final pulumi.Input<List<AttestationEvidenceResponse>>? evidence;
+  final pulumi.Input<List<AttestationEvidenceResponse>?>? evidence;
 
   /// Creates a new [StandardAssignmentPropertiesAttestationDataResponse].
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope

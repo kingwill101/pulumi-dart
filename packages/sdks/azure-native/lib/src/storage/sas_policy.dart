@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SasPolicy assigned to the storage account.
 class SasPolicy {
   /// The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
-  final pulumi.Input<String> expirationAction;
+  final pulumi.Input<dynamic> expirationAction;
   /// The SAS expiration period, DD.HH:MM:SS.
   final pulumi.Input<String> sasExpirationPeriod;
 
   /// Creates a new [SasPolicy].
   /// [expirationAction] The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
   /// [sasExpirationPeriod] The SAS expiration period, DD.HH:MM:SS.
-  const SasPolicy({
-    required this.expirationAction,
+  SasPolicy({
+    pulumi.Input<dynamic>? expirationAction,
     required this.sasExpirationPeriod,
-  });
+  }) : expirationAction = expirationAction ?? pulumi.Input.fromValue('Log');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +26,7 @@ class SasPolicy {
 
   factory SasPolicy.fromMap(Map<String, dynamic> map) {
     return SasPolicy(
-      expirationAction: pulumi.Input.fromValue(map['expirationAction'] as String),
+      expirationAction: pulumi.Input.fromValue(map['expirationAction']),
       sasExpirationPeriod: pulumi.Input.fromValue(map['sasExpirationPeriod'] as String),
     );
   }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of maintenance for session host components.
-enum SessionHostComponentUpdateType {
+enum SessionHostComponentUpdateType implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueScheduled("Scheduled");
 
   const SessionHostComponentUpdateType(this.wireValue);
+  @override
   final String wireValue;
 
   static SessionHostComponentUpdateType fromValue(String value) {

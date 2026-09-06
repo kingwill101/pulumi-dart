@@ -9,7 +9,7 @@ import 'assessment_properties.dart';
 /// {@macro pulumi_billingtrust_assessment_args_doc}
 class AssessmentArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AssessmentProperties>? properties;
+  final pulumi.Input<AssessmentProperties?>? properties;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
 

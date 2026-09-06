@@ -7,9 +7,9 @@ import 'autoscale_recurrence.dart';
 /// The autoscale request parameters
 class Autoscale {
   /// Parameters for load-based autoscale
-  final pulumi.Input<AutoscaleCapacity>? capacity;
+  final pulumi.Input<AutoscaleCapacity?>? capacity;
   /// Parameters for schedule-based autoscale
-  final pulumi.Input<AutoscaleRecurrence>? recurrence;
+  final pulumi.Input<AutoscaleRecurrence?>? recurrence;
 
   /// Creates a new [Autoscale].
   /// [capacity] Parameters for load-based autoscale

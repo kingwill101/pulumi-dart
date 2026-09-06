@@ -7,9 +7,9 @@ import 'nat_gateway_arm_reference_response.dart';
 /// Public IP Properties resource.
 class PublicIPAddressPropertiesResponse {
   /// IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// ipAllocationScope: Azure Reference to a particular IP Pool (ALM) or a LogicalNetwork (ALL) for allocating public IP
-  final pulumi.Input<String>? ipAllocationScope;
+  final pulumi.Input<String?>? ipAllocationScope;
   /// network interface or LoadBalancer frontendIPconfiguration using this public IP
   final pulumi.Input<IPConfigurationArmReferenceResponse> ipConfiguration;
   /// natGateway using this public IP
@@ -17,7 +17,7 @@ class PublicIPAddressPropertiesResponse {
   /// Provisioning state of the public IP
   final pulumi.Input<String> provisioningState;
   /// Whether the public IP is v4 or v6. Defaults to IPv4
-  final pulumi.Input<String>? publicIPAddressVersion;
+  final pulumi.Input<String?>? publicIPAddressVersion;
 
   /// Creates a new [PublicIPAddressPropertiesResponse].
   /// [ipAddress] IP Address. This is static. If the user specifies, we allocate that otherwise allocate from logical network address space.

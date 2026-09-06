@@ -520,4 +520,19 @@ class QueueServiceProperties extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [QueueServiceProperties] resource.
+  QueueServiceProperties.reference(String urn)
+    : super(
+        'azure-native:storage:QueueServiceProperties',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cors = registerOutput<CorsRulesResponse?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CorsRulesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

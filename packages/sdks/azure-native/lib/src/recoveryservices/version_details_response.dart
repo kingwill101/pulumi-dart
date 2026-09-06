@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Version related details.
 class VersionDetailsResponse {
   /// Version expiry date.
-  final pulumi.Input<String>? expiryDate;
+  final pulumi.Input<String?>? expiryDate;
   /// A value indicating whether security update required.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The agent version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [VersionDetailsResponse].
   /// [expiryDate] Version expiry date.

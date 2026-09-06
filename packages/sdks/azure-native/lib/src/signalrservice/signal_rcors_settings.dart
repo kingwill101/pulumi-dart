@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cross-Origin Resource Sharing (CORS) settings.
 class SignalRCorsSettings {
   /// Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default.
-  final pulumi.Input<List<String>>? allowedOrigins;
+  final pulumi.Input<List<String>?>? allowedOrigins;
 
   /// Creates a new [SignalRCorsSettings].
   /// [allowedOrigins] Gets or sets the list of origins that should be allowed to make cross-origin calls (for example: http://example.com:12345). Use "*" to allow all. If omitted, allow all by default.

@@ -46,7 +46,7 @@ class EventResponse {
 
   factory EventResponse.fromMap(Map<String, dynamic> map) {
     return EventResponse(
-      count: pulumi.Input.fromValue(map['count'] as int),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       firstTimestamp: pulumi.Input.fromValue(map['firstTimestamp'] as String),
       lastTimestamp: pulumi.Input.fromValue(map['lastTimestamp'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),

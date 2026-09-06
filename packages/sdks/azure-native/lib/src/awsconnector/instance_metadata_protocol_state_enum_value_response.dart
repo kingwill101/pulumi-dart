@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceMetadataProtocolStateEnumValue
 class InstanceMetadataProtocolStateEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [InstanceMetadataProtocolStateEnumValueResponse].
   /// [value] Property value
-  const InstanceMetadataProtocolStateEnumValueResponse({
-    this.value,
-  });
+  InstanceMetadataProtocolStateEnumValueResponse({
+    pulumi.Input<String?>? value,
+  }) : value = value ?? pulumi.Input.fromValue('disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

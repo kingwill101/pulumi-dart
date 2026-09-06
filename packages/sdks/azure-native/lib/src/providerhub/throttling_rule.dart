@@ -7,11 +7,11 @@ class ThrottlingRule {
   /// The action.
   final pulumi.Input<String> action;
   /// The application id.
-  final pulumi.Input<List<String>>? applicationId;
+  final pulumi.Input<List<String>?>? applicationId;
   /// The metrics.
   final pulumi.Input<List<ThrottlingMetric>> metrics;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [ThrottlingRule].
   /// [action] The action.

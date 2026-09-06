@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sku name.
-enum IotDpsSku {
+enum IotDpsSku implements pulumi.PulumiEnum<String> {
   valueS1("S1");
 
   const IotDpsSku(this.wireValue);
+  @override
   final String wireValue;
 
   static IotDpsSku fromValue(String value) {

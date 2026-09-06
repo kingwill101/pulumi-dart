@@ -26,7 +26,7 @@ class VirtualMachineFamilyCoreQuotaResponse {
 
   factory VirtualMachineFamilyCoreQuotaResponse.fromMap(Map<String, dynamic> map) {
     return VirtualMachineFamilyCoreQuotaResponse(
-      coreQuota: pulumi.Input.fromValue(map['coreQuota'] as int),
+      coreQuota: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['coreQuota'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

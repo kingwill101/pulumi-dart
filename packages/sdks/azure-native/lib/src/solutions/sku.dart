@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU for the resource.
 class Sku {
   /// The SKU capacity.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// The SKU family.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The SKU model.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// The SKU name.
   final pulumi.Input<String> name;
   /// The SKU size.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The SKU tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [Sku].
   /// [capacity] The SKU capacity.
@@ -46,7 +46,7 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),

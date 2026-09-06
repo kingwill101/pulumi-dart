@@ -1,8 +1,11 @@
-enum ClientAuthenticationMethod {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ClientAuthenticationMethod implements pulumi.PulumiEnum<String> {
   valueBasic("Basic"),
   valueBody("Body");
 
   const ClientAuthenticationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientAuthenticationMethod fromValue(String value) {

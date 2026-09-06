@@ -6,7 +6,7 @@ import 'defender_cspm_jfrog_offering_mdc_containers_image_assessment.dart';
 /// The CSPM P1 for JFrog Artifactory offering
 class DefenderCspmJFrogOffering {
   /// The Microsoft Defender Container image assessment configuration
-  final pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessment>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmJFrogOfferingMdcContainersImageAssessment?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmJFrog'.
   final pulumi.Input<String> offeringType;

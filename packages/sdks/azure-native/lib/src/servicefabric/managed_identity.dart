@@ -6,10 +6,10 @@ import 'managed_identity_type.dart';
 /// Describes the managed identities for an Azure resource.
 class ManagedIdentity {
   /// The type of managed identity for the resource.
-  final pulumi.Input<ManagedIdentityType>? type;
+  final pulumi.Input<ManagedIdentityType?>? type;
   /// The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentity].
   /// [type] The type of managed identity for the resource.

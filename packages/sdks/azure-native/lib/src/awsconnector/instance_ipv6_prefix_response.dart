@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceIpv6Prefix
 class InstanceIpv6PrefixResponse {
   /// &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? ipv6Prefix;
+  final pulumi.Input<String?>? ipv6Prefix;
 
   /// Creates a new [InstanceIpv6PrefixResponse].
   /// [ipv6Prefix] &lt;p&gt;One or more IPv6 prefixes assigned to the network interface.&lt;/p&gt;

@@ -8,7 +8,7 @@ class OnlineExperimentationWorkspacePropertiesResponse {
   /// The resource identifier of App Configuration with which this online experimentation workspace is tied for experimentation. This is a required field for creating an online experimentation workspace.
   final pulumi.Input<String> appConfigurationResourceId;
   /// The encryption configuration for the online experimentation workspace resource.
-  final pulumi.Input<ResourceEncryptionConfigurationResponse>? encryption;
+  final pulumi.Input<ResourceEncryptionConfigurationResponse?>? encryption;
   /// The data plane endpoint for the online experimentation workspace resource.
   final pulumi.Input<String> endpoint;
   /// The resource identifier of the Log Analytics workspace which online experimentation workspace uses for generating experiment analysis results.

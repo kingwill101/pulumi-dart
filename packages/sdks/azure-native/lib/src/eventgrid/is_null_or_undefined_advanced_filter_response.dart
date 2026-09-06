@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IsNullOrUndefined Advanced Filter.
 class IsNullOrUndefinedAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'IsNullOrUndefined'.
   final pulumi.Input<String> operatorType;

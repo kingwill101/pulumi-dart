@@ -14,17 +14,17 @@ class ProductDetailsResponse {
   /// Details of all child configurations that are part of the order item.
   final pulumi.Input<List<ConfigurationDeviceDetailsResponse>> childConfigurationDeviceDetails;
   /// Display details of the product.
-  final pulumi.Input<DisplayInfoResponse>? displayInfo;
+  final pulumi.Input<DisplayInfoResponse?>? displayInfo;
   /// Hierarchy of the product which uniquely identifies the product.
   final pulumi.Input<HierarchyInformationResponse> hierarchyInformation;
   /// Identification type of the configuration.
   final pulumi.Input<String> identificationType;
   /// List of additional configurations customer wants in the order item apart from the ones included in the base configuration.
-  final pulumi.Input<List<AdditionalConfigurationResponse>>? optInAdditionalConfigurations;
+  final pulumi.Input<List<AdditionalConfigurationResponse>?>? optInAdditionalConfigurations;
   /// Device details of the parent configuration.
   final pulumi.Input<DeviceDetailsResponse> parentDeviceDetails;
   /// Device Provisioning Details for Parent.
-  final pulumi.Input<ProvisioningDetailsResponse>? parentProvisioningDetails;
+  final pulumi.Input<ProvisioningDetailsResponse?>? parentProvisioningDetails;
   /// Double encryption status of the configuration. Read-only field.
   final pulumi.Input<String> productDoubleEncryptionStatus;
   /// Term Commitment Information of the Device.

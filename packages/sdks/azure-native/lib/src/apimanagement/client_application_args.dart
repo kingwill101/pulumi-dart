@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_client_application_args_doc}
 class ClientApplicationArgs {
   /// Client Application identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? clientApplicationId;
+  final pulumi.Input<String?>? clientApplicationId;
   /// Client application description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Client application name.
   final pulumi.Input<String> displayName;
   /// A resource identifier for the user who owns the application.

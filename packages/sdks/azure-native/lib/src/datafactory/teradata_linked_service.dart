@@ -1,34 +1,33 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
 /// Linked service for Teradata data source.
 class TeradataLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// AuthenticationType to be used for connection.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// The character set to use for the connection. Type: string (or Expression with resultType string). Only applied for version 2.0.
   final pulumi.Input<dynamic>? characterSet;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// Teradata ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only applied for version 1.0.
   final pulumi.Input<dynamic>? connectionString;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// The port numbers when connecting to server through HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
   final pulumi.Input<dynamic>? httpsPortNumber;
   /// The maximum size of the response buffer for SQL requests, in bytes. Type: integer. Only applied for version 2.0.
   final pulumi.Input<dynamic>? maxRespSize;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Password for authentication.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// The port numbers when connecting to server through non HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only used for V2. Only applied for version 2.0.
   final pulumi.Input<dynamic>? portNumber;
   /// Server name for connection. Type: string (or Expression with resultType string).
@@ -43,7 +42,7 @@ class TeradataLinkedService {
   /// Username for authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [TeradataLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -97,7 +96,7 @@ class TeradataLinkedService {
       'httpsPortNumber': ?httpsPortNumber,
       'maxRespSize': ?maxRespSize,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'portNumber': ?portNumber,
       'server': ?server,
       'sslMode': ?sslMode,
@@ -111,7 +110,7 @@ class TeradataLinkedService {
   factory TeradataLinkedService.fromMap(Map<String, dynamic> map) {
     return TeradataLinkedService(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       characterSet: (() { final guardedValue = map['characterSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -120,7 +119,7 @@ class TeradataLinkedService {
       httpsPortNumber: (() { final guardedValue = map['httpsPortNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       maxRespSize: (() { final guardedValue = map['maxRespSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       portNumber: (() { final guardedValue = map['portNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sslMode: (() { final guardedValue = map['sslMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

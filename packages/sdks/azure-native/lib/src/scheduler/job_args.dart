@@ -11,9 +11,9 @@ class JobArgs {
   /// The job collection name.
   final pulumi.Input<String> jobCollectionName;
   /// The job name.
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// Gets or sets the job properties.
-  final pulumi.Input<JobProperties>? properties;
+  final pulumi.Input<JobProperties?>? properties;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
 

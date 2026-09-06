@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Health status of the backup item, evaluated based on last heartbeat received
-enum ProtectedItemHealthStatus {
+enum ProtectedItemHealthStatus implements pulumi.PulumiEnum<String> {
   valueInvalid("Invalid"),
   valueHealthy("Healthy"),
   valueUnhealthy("Unhealthy"),
@@ -7,6 +9,7 @@ enum ProtectedItemHealthStatus {
   valueIRPending("IRPending");
 
   const ProtectedItemHealthStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ProtectedItemHealthStatus fromValue(String value) {

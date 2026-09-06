@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The effective CIFS username when accessing the volume data.
 class CifsUserResponse {
   /// The CIFS user's username
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [CifsUserResponse].
   /// [username] The CIFS user's username

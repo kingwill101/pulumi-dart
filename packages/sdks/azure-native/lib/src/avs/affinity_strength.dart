@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// vm-host placement policy affinity strength (should/must)
-enum AffinityStrength {
+enum AffinityStrength implements pulumi.PulumiEnum<String> {
   should("Should"),
   must("Must");
 
   const AffinityStrength(this.wireValue);
+  @override
   final String wireValue;
 
   static AffinityStrength fromValue(String value) {

@@ -9,9 +9,9 @@ import 'sql_server_availability_group_resource_properties.dart';
 /// {@macro pulumi_azurearcdata_sql_server_availability_group_args_doc}
 class SqlServerAvailabilityGroupArgs {
   /// Name of SQL Availability Group
-  final pulumi.Input<String>? availabilityGroupName;
+  final pulumi.Input<String?>? availabilityGroupName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of Arc Sql Server availability group
   final pulumi.Input<SqlServerAvailabilityGroupResourceProperties> properties;
   /// The name of the Azure resource group
@@ -19,7 +19,7 @@ class SqlServerAvailabilityGroupArgs {
   /// Name of SQL Server Instance
   final pulumi.Input<String> sqlServerInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SqlServerAvailabilityGroupArgs].
   /// [availabilityGroupName] Name of SQL Availability Group

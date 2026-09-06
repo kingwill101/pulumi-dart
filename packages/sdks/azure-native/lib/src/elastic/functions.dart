@@ -49,6 +49,17 @@ Future<GetBillingInfoResult> getBillingInfo(
   return GetBillingInfoResult.fromMap(result);
 }
 
+pulumi.Output<GetBillingInfoResult> getBillingInfoOutput(
+  GetBillingInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getBillingInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBillingInfoResult.fromMap);
+}
+
 /// Monitor resource.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -67,6 +78,17 @@ Future<GetMonitorResult> getMonitor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMonitorResult.fromMap(result);
+}
+
+pulumi.Output<GetMonitorResult> getMonitorOutput(
+  GetMonitorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getMonitor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitorResult.fromMap);
 }
 
 /// The request to update subscriptions needed to be monitored by the Elastic monitor resource.
@@ -89,6 +111,17 @@ Future<GetMonitoredSubscriptionResult> getMonitoredSubscription(
   return GetMonitoredSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetMonitoredSubscriptionResult> getMonitoredSubscriptionOutput(
+  GetMonitoredSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getMonitoredSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMonitoredSubscriptionResult.fromMap);
+}
+
 /// Capture properties of Open AI resource Integration.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -107,6 +140,17 @@ Future<GetOpenAIResult> getOpenAI(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOpenAIResult.fromMap(result);
+}
+
+pulumi.Output<GetOpenAIResult> getOpenAIOutput(
+  GetOpenAIArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getOpenAI',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenAIResult.fromMap);
 }
 
 /// Status of the OpenAI Integration
@@ -129,6 +173,17 @@ Future<GetOpenAIStatusResult> getOpenAIStatus(
   return GetOpenAIStatusResult.fromMap(result);
 }
 
+pulumi.Output<GetOpenAIStatusResult> getOpenAIStatusOutput(
+  GetOpenAIStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getOpenAIStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOpenAIStatusResult.fromMap);
+}
+
 /// Fetch User API Key from internal database, if it was generated and stored while creating the Elasticsearch Organization.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -149,6 +204,17 @@ Future<GetOrganizationApiKeyResult> getOrganizationApiKey(
   return GetOrganizationApiKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationApiKeyResult> getOrganizationApiKeyOutput(
+  GetOrganizationApiKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getOrganizationApiKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationApiKeyResult.fromMap);
+}
+
 /// Get Elastic Organization To Azure Subscription Mapping details for the logged-in user.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -166,6 +232,17 @@ Future<GetOrganizationElasticToAzureSubscriptionMappingResult> getOrganizationEl
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationElasticToAzureSubscriptionMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationElasticToAzureSubscriptionMappingResult> getOrganizationElasticToAzureSubscriptionMappingOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getOrganizationElasticToAzureSubscriptionMapping',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetOrganizationElasticToAzureSubscriptionMappingResult.fromMap);
 }
 
 /// Capture logs and metrics of Azure resources based on ARM tags.
@@ -188,6 +265,17 @@ Future<GetTagRuleResult> getTagRule(
   return GetTagRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetTagRuleResult> getTagRuleOutput(
+  GetTagRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:getTagRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTagRuleResult.fromMap);
+}
+
 /// List of elastic traffic filters in the account
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -206,6 +294,17 @@ Future<ListAllTrafficFilterResult> listAllTrafficFilter(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAllTrafficFilterResult.fromMap(result);
+}
+
+pulumi.Output<ListAllTrafficFilterResult> listAllTrafficFilterOutput(
+  ListAllTrafficFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listAllTrafficFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAllTrafficFilterResult.fromMap);
 }
 
 /// List of all active elastic deployments.
@@ -228,6 +327,17 @@ Future<ListConnectedPartnerResourceResult> listConnectedPartnerResource(
   return ListConnectedPartnerResourceResult.fromMap(result);
 }
 
+pulumi.Output<ListConnectedPartnerResourceResult> listConnectedPartnerResourceOutput(
+  ListConnectedPartnerResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listConnectedPartnerResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectedPartnerResourceResult.fromMap);
+}
+
 /// The properties of deployment in Elastic cloud corresponding to the Elastic monitor resource.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -246,6 +356,17 @@ Future<ListDeploymentInfoResult> listDeploymentInfo(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListDeploymentInfoResult.fromMap(result);
+}
+
+pulumi.Output<ListDeploymentInfoResult> listDeploymentInfoOutput(
+  ListDeploymentInfoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listDeploymentInfo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDeploymentInfoResult.fromMap);
 }
 
 /// List of elastic traffic filters in the account
@@ -268,6 +389,17 @@ Future<ListListAssociatedTrafficFilterResult> listListAssociatedTrafficFilter(
   return ListListAssociatedTrafficFilterResult.fromMap(result);
 }
 
+pulumi.Output<ListListAssociatedTrafficFilterResult> listListAssociatedTrafficFilterOutput(
+  ListListAssociatedTrafficFilterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listListAssociatedTrafficFilter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListListAssociatedTrafficFilterResult.fromMap);
+}
+
 /// Response of a list operation.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -286,6 +418,17 @@ Future<ListMonitoredResourceResult> listMonitoredResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListMonitoredResourceResult.fromMap(result);
+}
+
+pulumi.Output<ListMonitoredResourceResult> listMonitoredResourceOutput(
+  ListMonitoredResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listMonitoredResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListMonitoredResourceResult.fromMap);
 }
 
 /// Stack Versions that this version can upgrade to
@@ -308,6 +451,17 @@ Future<ListUpgradableVersionDetailsResult> listUpgradableVersionDetails(
   return ListUpgradableVersionDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListUpgradableVersionDetailsResult> listUpgradableVersionDetailsOutput(
+  ListUpgradableVersionDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listUpgradableVersionDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListUpgradableVersionDetailsResult.fromMap);
+}
+
 /// Response of a list operation.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -326,4 +480,15 @@ Future<ListVMHostResult> listVMHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListVMHostResult.fromMap(result);
+}
+
+pulumi.Output<ListVMHostResult> listVMHostOutput(
+  ListVMHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:elastic:listVMHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListVMHostResult.fromMap);
 }

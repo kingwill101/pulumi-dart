@@ -11,7 +11,7 @@ class SubnetConfigurationResponse {
   /// Network security group ID.
   final pulumi.Input<String> networkSecurityGroupResourceId;
   /// Subnet delegation.
-  final pulumi.Input<String>? subnetDelegation;
+  final pulumi.Input<String?>? subnetDelegation;
   /// Subnet name.
   final pulumi.Input<String> subnetName;
   /// Subnet Resource ID.
@@ -47,7 +47,7 @@ class SubnetConfigurationResponse {
   factory SubnetConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return SubnetConfigurationResponse(
       addressPrefix: pulumi.Input.fromValue(map['addressPrefix'] as String),
-      networkPrefixSize: pulumi.Input.fromValue(map['networkPrefixSize'] as int),
+      networkPrefixSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkPrefixSize'])),
       networkSecurityGroupResourceId: pulumi.Input.fromValue(map['networkSecurityGroupResourceId'] as String),
       subnetDelegation: (() { final guardedValue = map['subnetDelegation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetName: pulumi.Input.fromValue(map['subnetName'] as String),

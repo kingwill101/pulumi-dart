@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Confidential Ledger
-enum LedgerType {
+enum LedgerType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valuePublic("Public"),
   valuePrivate("Private");
 
   const LedgerType(this.wireValue);
+  @override
   final String wireValue;
 
   static LedgerType fromValue(String value) {

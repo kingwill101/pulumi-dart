@@ -12,41 +12,41 @@ import 'ssedescription.dart';
 /// Definition of awsDaxCluster
 class AwsDaxClusterProperties {
   /// &lt;p&gt;The number of nodes in the cluster that are active (i.e., capable of serving requests).&lt;/p&gt;
-  final pulumi.Input<int>? activeNodes;
+  final pulumi.Input<int?>? activeNodes;
   /// &lt;p&gt;The Amazon Resource Name (ARN) that uniquely identifies the cluster. &lt;/p&gt;
-  final pulumi.Input<String>? clusterArn;
+  final pulumi.Input<String?>? clusterArn;
   /// &lt;p&gt;The endpoint for this DAX cluster, consisting of a DNS name, a port number, and a URL. Applications should use the URL to configure the DAX client to find their cluster.&lt;/p&gt;
-  final pulumi.Input<DaxClusterEndpoint>? clusterDiscoveryEndpoint;
+  final pulumi.Input<DaxClusterEndpoint?>? clusterDiscoveryEndpoint;
   /// &lt;p&gt;The type of encryption supported by the cluster's endpoint. Values are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;NONE&lt;/code&gt; for no encryption&lt;/p&gt; &lt;p&gt; &lt;code&gt;TLS&lt;/code&gt; for Transport Layer Security&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<ClusterEndpointEncryptionTypeEnumValue>? clusterEndpointEncryptionType;
+  final pulumi.Input<ClusterEndpointEncryptionTypeEnumValue?>? clusterEndpointEncryptionType;
   /// &lt;p&gt;The name of the DAX cluster.&lt;/p&gt;
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// &lt;p&gt;The description of the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;A valid Amazon Resource Name (ARN) that identifies an IAM role. At runtime, DAX will assume this role and use the role's permissions to access DynamoDB on your behalf.&lt;/p&gt;
-  final pulumi.Input<String>? iamRoleArn;
+  final pulumi.Input<String?>? iamRoleArn;
   /// &lt;p&gt;A list of nodes to be removed from the cluster.&lt;/p&gt;
-  final pulumi.Input<List<String>>? nodeIdsToRemove;
+  final pulumi.Input<List<String>?>? nodeIdsToRemove;
   /// &lt;p&gt;The node type for the nodes in the cluster. (All nodes in a DAX cluster are of the same type.)&lt;/p&gt;
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<String?>? nodeType;
   /// &lt;p&gt;A list of nodes that are currently in the cluster.&lt;/p&gt;
-  final pulumi.Input<List<Node>>? nodes;
+  final pulumi.Input<List<Node>?>? nodes;
   /// &lt;p&gt;Describes a notification topic and its status. Notification topics are used for publishing DAX events to subscribers using Amazon Simple Notification Service (SNS).&lt;/p&gt;
-  final pulumi.Input<DaxClusterNotificationConfiguration>? notificationConfiguration;
+  final pulumi.Input<DaxClusterNotificationConfiguration?>? notificationConfiguration;
   /// &lt;p&gt;The parameter group being used by nodes in the cluster.&lt;/p&gt;
-  final pulumi.Input<ParameterGroupStatus>? parameterGroup;
+  final pulumi.Input<ParameterGroupStatus?>? parameterGroup;
   /// &lt;p&gt;A range of time when maintenance of DAX cluster software will be performed. For example: &lt;code&gt;sun:01:00-sun:09:00&lt;/code&gt;. Cluster maintenance normally takes less than 30 minutes, and is performed automatically within the maintenance window.&lt;/p&gt;
-  final pulumi.Input<String>? preferredMaintenanceWindow;
+  final pulumi.Input<String?>? preferredMaintenanceWindow;
   /// &lt;p&gt;A list of security groups, and the status of each, for the nodes in the cluster.&lt;/p&gt;
-  final pulumi.Input<List<SecurityGroupMembership>>? securityGroups;
+  final pulumi.Input<List<SecurityGroupMembership>?>? securityGroups;
   /// &lt;p&gt;The description of the server-side encryption status on the specified DAX cluster.&lt;/p&gt;
-  final pulumi.Input<SSEDescription>? sseDescription;
+  final pulumi.Input<SSEDescription?>? sseDescription;
   /// &lt;p&gt;The current status of the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// &lt;p&gt;The subnet group where the DAX cluster is running.&lt;/p&gt;
-  final pulumi.Input<String>? subnetGroup;
+  final pulumi.Input<String?>? subnetGroup;
   /// &lt;p&gt;The total number of nodes in the cluster.&lt;/p&gt;
-  final pulumi.Input<int>? totalNodes;
+  final pulumi.Input<int?>? totalNodes;
 
   /// Creates a new [AwsDaxClusterProperties].
   /// [activeNodes] &lt;p&gt;The number of nodes in the cluster that are active (i.e., capable of serving requests).&lt;/p&gt;
@@ -113,7 +113,7 @@ class AwsDaxClusterProperties {
 
   factory AwsDaxClusterProperties.fromMap(Map<String, dynamic> map) {
     return AwsDaxClusterProperties(
-      activeNodes: (() { final guardedValue = map['activeNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activeNodes: (() { final guardedValue = map['activeNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       clusterArn: (() { final guardedValue = map['clusterArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterDiscoveryEndpoint: (() { final guardedValue = map['clusterDiscoveryEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DaxClusterEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       clusterEndpointEncryptionType: (() { final guardedValue = map['clusterEndpointEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterEndpointEncryptionTypeEnumValue.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -130,7 +130,7 @@ class AwsDaxClusterProperties {
       sseDescription: (() { final guardedValue = map['sseDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SSEDescription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetGroup: (() { final guardedValue = map['subnetGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalNodes: (() { final guardedValue = map['totalNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalNodes: (() { final guardedValue = map['totalNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

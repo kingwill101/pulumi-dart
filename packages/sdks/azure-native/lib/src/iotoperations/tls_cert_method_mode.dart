@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of TLS server certificate management.
-enum TlsCertMethodMode {
+enum TlsCertMethodMode implements pulumi.PulumiEnum<String> {
   automatic("Automatic"),
   manual("Manual");
 
   const TlsCertMethodMode(this.wireValue);
+  @override
   final String wireValue;
 
   static TlsCertMethodMode fromValue(String value) {

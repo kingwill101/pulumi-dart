@@ -6,18 +6,18 @@ import 'hourly_schedule_response.dart';
 /// Simple policy schedule.
 class SimpleSchedulePolicyResponse {
   /// Hourly Schedule of this Policy
-  final pulumi.Input<HourlyScheduleResponse>? hourlySchedule;
+  final pulumi.Input<HourlyScheduleResponse?>? hourlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleSchedulePolicy'.
   final pulumi.Input<String> schedulePolicyType;
   /// List of days of week this schedule has to be run.
-  final pulumi.Input<List<String>>? scheduleRunDays;
+  final pulumi.Input<List<String>?>? scheduleRunDays;
   /// Frequency of the schedule operation of this policy.
-  final pulumi.Input<String>? scheduleRunFrequency;
+  final pulumi.Input<String?>? scheduleRunFrequency;
   /// List of times of day this schedule has to be run.
-  final pulumi.Input<List<String>>? scheduleRunTimes;
+  final pulumi.Input<List<String>?>? scheduleRunTimes;
   /// At every number weeks this schedule has to be run.
-  final pulumi.Input<int>? scheduleWeeklyFrequency;
+  final pulumi.Input<int?>? scheduleWeeklyFrequency;
 
   /// Creates a new [SimpleSchedulePolicyResponse].
   /// [hourlySchedule] Hourly Schedule of this Policy
@@ -53,7 +53,7 @@ class SimpleSchedulePolicyResponse {
       scheduleRunDays: (() { final guardedValue = map['scheduleRunDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       scheduleRunFrequency: (() { final guardedValue = map['scheduleRunFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scheduleRunTimes: (() { final guardedValue = map['scheduleRunTimes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      scheduleWeeklyFrequency: (() { final guardedValue = map['scheduleWeeklyFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scheduleWeeklyFrequency: (() { final guardedValue = map['scheduleWeeklyFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

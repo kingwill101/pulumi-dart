@@ -24,6 +24,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:powerbi:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Retrieves an existing Power BI Workspace Collection.
 ///
 /// Uses Azure REST API version 2016-01-29.
@@ -42,6 +53,17 @@ Future<GetWorkspaceCollectionResult> getWorkspaceCollection(
   return GetWorkspaceCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceCollectionResult> getWorkspaceCollectionOutput(
+  GetWorkspaceCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:powerbi:getWorkspaceCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceCollectionResult.fromMap);
+}
+
 /// Retrieves the primary and secondary access keys for the specified Power BI Workspace Collection.
 ///
 /// Uses Azure REST API version 2016-01-29.
@@ -58,4 +80,15 @@ Future<ListWorkspaceCollectionAccessKeysResult> listWorkspaceCollectionAccessKey
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkspaceCollectionAccessKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkspaceCollectionAccessKeysResult> listWorkspaceCollectionAccessKeysOutput(
+  ListWorkspaceCollectionAccessKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:powerbi:listWorkspaceCollectionAccessKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceCollectionAccessKeysResult.fromMap);
 }

@@ -7,9 +7,9 @@ class MetadataSourceResponse {
   /// Source type of the content
   final pulumi.Input<String> kind;
   /// Name of the content source.  The repo name, solution name, LA workspace name etc.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the content source.  The solution ID, workspace ID, etc
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
 
   /// Creates a new [MetadataSourceResponse].
   /// [kind] Source type of the content

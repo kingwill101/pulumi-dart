@@ -9,17 +9,17 @@ import 'permission.dart';
 /// {@macro pulumi_authorization_role_definition_args_doc}
 class RoleDefinitionArgs {
   /// Role definition assignable scopes.
-  final pulumi.Input<List<String>>? assignableScopes;
+  final pulumi.Input<List<String>?>? assignableScopes;
   /// The role definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Role definition permissions.
-  final pulumi.Input<List<Permission>>? permissions;
+  final pulumi.Input<List<Permission>?>? permissions;
   /// The ID of the role definition.
-  final pulumi.Input<String>? roleDefinitionId;
+  final pulumi.Input<String?>? roleDefinitionId;
   /// The role name.
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
   /// The role type.
-  final pulumi.Input<String>? roleType;
+  final pulumi.Input<String?>? roleType;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 

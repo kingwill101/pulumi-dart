@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CFNScanEc2InstanceWithFindingsConfiguration
 class CFNScanEc2InstanceWithFindingsConfigurationResponse {
   /// Property ebsVolumes
-  final pulumi.Input<bool>? ebsVolumes;
+  final pulumi.Input<bool?>? ebsVolumes;
 
   /// Creates a new [CFNScanEc2InstanceWithFindingsConfigurationResponse].
   /// [ebsVolumes] Property ebsVolumes

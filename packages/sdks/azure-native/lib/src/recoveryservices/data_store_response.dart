@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The datastore details of the MT.
 class DataStoreResponse {
   /// The capacity of data store in GBs.
-  final pulumi.Input<String>? capacity;
+  final pulumi.Input<String?>? capacity;
   /// The free space of data store in GBs.
-  final pulumi.Input<String>? freeSpace;
+  final pulumi.Input<String?>? freeSpace;
   /// The symbolic name of data store.
-  final pulumi.Input<String>? symbolicName;
+  final pulumi.Input<String?>? symbolicName;
   /// The type of data store.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The uuid of data store.
-  final pulumi.Input<String>? uuid;
+  final pulumi.Input<String?>? uuid;
 
   /// Creates a new [DataStoreResponse].
   /// [capacity] The capacity of data store in GBs.

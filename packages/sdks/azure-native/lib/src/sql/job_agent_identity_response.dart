@@ -6,11 +6,11 @@ import 'job_agent_user_assigned_identity_response.dart';
 /// Azure Active Directory identity configuration for a resource.
 class JobAgentIdentityResponse {
   /// The job agent identity tenant id
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The job agent identity type
   final pulumi.Input<String> type;
   /// The resource ids of the user assigned identities to use
-  final pulumi.Input<Map<String, JobAgentUserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, JobAgentUserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [JobAgentIdentityResponse].
   /// [tenantId] The job agent identity tenant id

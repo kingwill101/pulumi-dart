@@ -9,17 +9,17 @@ import 'node_pool_properties.dart';
 /// {@macro pulumi_discovery_node_pool_args_doc}
 class NodePoolArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the NodePool
-  final pulumi.Input<String>? nodePoolName;
+  final pulumi.Input<String?>? nodePoolName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<NodePoolProperties>? properties;
+  final pulumi.Input<NodePoolProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Supercomputer
   final pulumi.Input<String> supercomputerName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NodePoolArgs].
   /// [location] The geo-location where the resource lives

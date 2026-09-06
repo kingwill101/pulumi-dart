@@ -6,7 +6,7 @@ import 'collector_body_agent_spn_properties_response.dart';
 class CollectorAgentPropertiesResponse {
   final pulumi.Input<String> id;
   final pulumi.Input<String> lastHeartbeatUtc;
-  final pulumi.Input<CollectorBodyAgentSpnPropertiesResponse>? spnDetails;
+  final pulumi.Input<CollectorBodyAgentSpnPropertiesResponse?>? spnDetails;
   final pulumi.Input<String> version;
 
   /// Creates a new [CollectorAgentPropertiesResponse].

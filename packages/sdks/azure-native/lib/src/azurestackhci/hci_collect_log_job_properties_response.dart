@@ -6,7 +6,7 @@ import 'log_collection_reported_properties_response.dart';
 /// Represents the properties of an HCI Collect Log job.
 class HciCollectLogJobPropertiesResponse {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<String?>? deploymentMode;
   /// The UTC date and time at which the job completed.
   final pulumi.Input<String> endTimeUtc;
   /// From date for log collection.

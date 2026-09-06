@@ -8,35 +8,35 @@ import 'tcp_config_response.dart';
 /// Result data returned by getGateway.
 class GetGatewayResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// User readable description of the gateway.
   final String? description;
   /// Network that the Application is using.
-  final NetworkRefResponse destinationNetwork;
+  final NetworkRefResponse? destinationNetwork;
   /// Configuration for http connectivity for this gateway.
   final List<HttpConfigResponse>? http;
   /// Fully qualified identifier for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// IP address of the gateway. This is populated in the response and is ignored for incoming requests.
-  final String ipAddress;
+  final String? ipAddress;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// State of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Network the gateway should listen on for requests.
-  final NetworkRefResponse sourceNetwork;
+  final NetworkRefResponse? sourceNetwork;
   /// Status of the resource.
-  final String status;
+  final String? status;
   /// Gives additional information about the current status of the gateway.
-  final String statusDetails;
+  final String? statusDetails;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Configuration for tcp connectivity for this gateway.
   final List<TcpConfigResponse>? tcp;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGatewayResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,60 +55,60 @@ class GetGatewayResult {
   /// [tcp] Configuration for tcp connectivity for this gateway.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   const GetGatewayResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.destinationNetwork,
+    this.destinationNetwork,
     this.http,
-    required this.id,
-    required this.ipAddress,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.sourceNetwork,
-    required this.status,
-    required this.statusDetails,
+    this.id,
+    this.ipAddress,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.sourceNetwork,
+    this.status,
+    this.statusDetails,
     this.tags,
     this.tcp,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'destinationNetwork': destinationNetwork.toMap(),
+      'destinationNetwork': ?destinationNetwork?.toMap(),
       'http': ?(() { final guardedValue = http; if (guardedValue == null) return null; return pulumi.Input.encodeList<HttpConfigResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'ipAddress': ipAddress,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sourceNetwork': sourceNetwork.toMap(),
-      'status': status,
-      'statusDetails': statusDetails,
+      'id': ?id,
+      'ipAddress': ?ipAddress,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sourceNetwork': ?sourceNetwork?.toMap(),
+      'status': ?status,
+      'statusDetails': ?statusDetails,
       'tags': ?tags,
       'tcp': ?(() { final guardedValue = tcp; if (guardedValue == null) return null; return pulumi.Input.encodeList<TcpConfigResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      destinationNetwork: NetworkRefResponse.fromMap((map['destinationNetwork']! as Map).cast<String, dynamic>()),
+      destinationNetwork: (() { final guardedValue = map['destinationNetwork']; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       http: (() { final guardedValue = map['http']; if (guardedValue == null) return null; return pulumi.Input.decodeList<HttpConfigResponse>(guardedValue, (value) => HttpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      ipAddress: map['ipAddress'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceNetwork: NetworkRefResponse.fromMap((map['sourceNetwork']! as Map).cast<String, dynamic>()),
-      status: map['status'] as String,
-      statusDetails: map['statusDetails'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceNetwork: (() { final guardedValue = map['sourceNetwork']; if (guardedValue == null) return null; return NetworkRefResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusDetails: (() { final guardedValue = map['statusDetails']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tcp: (() { final guardedValue = map['tcp']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TcpConfigResponse>(guardedValue, (value) => TcpConfigResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'maintenance_configuration_args.dart';
 import 'maintenance_window_response.dart';
 import 'system_data_response.dart';
+import 'time_in_week_response.dart';
+import 'time_span_response.dart';
 
 /// Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
 ///
@@ -316,11 +318,11 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String> name;
   /// Time slots on which upgrade is not allowed.
-  late final pulumi.Output<List<Map<String, dynamic>>?> notAllowedTime;
+  late final pulumi.Output<List<TimeSpanResponse>?> notAllowedTime;
   /// The system metadata relating to this resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-  late final pulumi.Output<List<Map<String, dynamic>>?> timeInWeek;
+  late final pulumi.Output<List<TimeInWeekResponse>?> timeInWeek;
   /// Resource type
   late final pulumi.Output<String> type;
 
@@ -341,9 +343,27 @@ class MaintenanceConfiguration extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notAllowedTime = registerOutput<List<Map<String, dynamic>>?>('notAllowedTime');
+    notAllowedTime = registerOutput<List<TimeSpanResponse>?>('notAllowedTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeSpanResponse>(guardedValue, (value) => TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    timeInWeek = registerOutput<List<Map<String, dynamic>>?>('timeInWeek');
+    timeInWeek = registerOutput<List<TimeInWeekResponse>?>('timeInWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeInWeekResponse>(guardedValue, (value) => TimeInWeekResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MaintenanceConfiguration] resource.
+  MaintenanceConfiguration.reference(String urn)
+    : super(
+        'azure-native:containerservice:MaintenanceConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    maintenanceWindow = registerOutput<MaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notAllowedTime = registerOutput<List<TimeSpanResponse>?>('notAllowedTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeSpanResponse>(guardedValue, (value) => TimeSpanResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeInWeek = registerOutput<List<TimeInWeekResponse>?>('timeInWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeInWeekResponse>(guardedValue, (value) => TimeInWeekResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

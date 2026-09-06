@@ -6,9 +6,9 @@ import 'helm_mapping_rule_profile.dart';
 /// Azure arc kubernetes deploy mapping rule profile.
 class AzureArcKubernetesDeployMappingRuleProfile {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<dynamic>? applicationEnablement;
   /// The helm mapping rule profile.
-  final pulumi.Input<HelmMappingRuleProfile>? helmMappingRuleProfile;
+  final pulumi.Input<HelmMappingRuleProfile?>? helmMappingRuleProfile;
 
   /// Creates a new [AzureArcKubernetesDeployMappingRuleProfile].
   /// [applicationEnablement] The application enablement.
@@ -27,7 +27,7 @@ class AzureArcKubernetesDeployMappingRuleProfile {
 
   factory AzureArcKubernetesDeployMappingRuleProfile.fromMap(Map<String, dynamic> map) {
     return AzureArcKubernetesDeployMappingRuleProfile(
-      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationEnablement: (() { final guardedValue = map['applicationEnablement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       helmMappingRuleProfile: (() { final guardedValue = map['helmMappingRuleProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HelmMappingRuleProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An array of administrator user identities.
 class ServerAdministrators {
   /// An array of administrator user identities.
-  final pulumi.Input<List<String>>? members;
+  final pulumi.Input<List<String>?>? members;
 
   /// Creates a new [ServerAdministrators].
   /// [members] An array of administrator user identities.

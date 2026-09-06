@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'curation_profile_args.dart';
+import 'resource_policy_response.dart';
 import 'system_data_response.dart';
 
 /// Represents an curation profile resource.
@@ -197,7 +198,7 @@ class CurationProfile extends pulumi.CustomResource {
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Resource policies that are a part of this curation profile.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resourcePolicies;
+  late final pulumi.Output<List<ResourcePolicyResponse>?> resourcePolicies;
   /// Resources that have access to the shared resources that are a part of this curation profile.
   late final pulumi.Output<List<String>?> scopes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -222,8 +223,26 @@ class CurationProfile extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    resourcePolicies = registerOutput<List<Map<String, dynamic>>?>('resourcePolicies');
-    scopes = registerOutput<List<String>?>('scopes');
+    resourcePolicies = registerOutput<List<ResourcePolicyResponse>?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyResponse>(guardedValue, (value) => ResourcePolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [CurationProfile] resource.
+  CurationProfile.reference(String urn)
+    : super(
+        'azure-native:devcenter:CurationProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourcePolicies = registerOutput<List<ResourcePolicyResponse>?>('resourcePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourcePolicyResponse>(guardedValue, (value) => ResourcePolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

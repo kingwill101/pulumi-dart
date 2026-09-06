@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityHost {
   /// List of AI services connections.
-  final pulumi.Input<List<String>>? aiServicesConnections;
+  final pulumi.Input<List<String>?>? aiServicesConnections;
   /// Kind of this capability host.
-  final pulumi.Input<String>? capabilityHostKind;
+  final pulumi.Input<dynamic>? capabilityHostKind;
   /// Customer subnet info to help set up this capability host.
-  final pulumi.Input<String>? customerSubnet;
+  final pulumi.Input<String?>? customerSubnet;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of connection names from those available in the account or project to be used as a storage resource.
-  final pulumi.Input<List<String>>? storageConnections;
+  final pulumi.Input<List<String>?>? storageConnections;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of connection names from those available in the account or project to be used for Thread storage.
-  final pulumi.Input<List<String>>? threadStorageConnections;
+  final pulumi.Input<List<String>?>? threadStorageConnections;
   /// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
-  final pulumi.Input<List<String>>? vectorStoreConnections;
+  final pulumi.Input<List<String>?>? vectorStoreConnections;
 
   /// Creates a new [CapabilityHost].
   /// [aiServicesConnections] List of AI services connections.
@@ -56,7 +56,7 @@ class CapabilityHost {
   factory CapabilityHost.fromMap(Map<String, dynamic> map) {
     return CapabilityHost(
       aiServicesConnections: (() { final guardedValue = map['aiServicesConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      capabilityHostKind: (() { final guardedValue = map['capabilityHostKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      capabilityHostKind: (() { final guardedValue = map['capabilityHostKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       customerSubnet: (() { final guardedValue = map['customerSubnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageConnections: (() { final guardedValue = map['storageConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

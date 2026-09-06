@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_managedservices_get_registration_assignment_args_doc}
 class GetRegistrationAssignmentArgs {
   /// The flag indicating whether to return the registration definition details along with the registration assignment details.
-  final pulumi.Input<bool>? expandRegistrationDefinition;
+  final pulumi.Input<bool?>? expandRegistrationDefinition;
   /// The GUID of the registration assignment.
   final pulumi.Input<String> registrationAssignmentId;
   /// The scope of the resource.

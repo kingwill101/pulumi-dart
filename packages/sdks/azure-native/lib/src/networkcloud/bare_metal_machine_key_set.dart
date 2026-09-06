@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bare_metal_machine_key_set_args.dart';
 import 'extended_location_response.dart';
+import 'key_set_user_response.dart';
+import 'key_set_user_status_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
@@ -423,9 +425,9 @@ class BareMetalMachineKeySet extends pulumi.CustomResource {
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The unique list of permitted users.
-  late final pulumi.Output<List<Map<String, dynamic>>> userList;
+  late final pulumi.Output<List<KeySetUserResponse>> userList;
   /// The status evaluation of each user.
-  late final pulumi.Output<List<Map<String, dynamic>>> userListStatus;
+  late final pulumi.Output<List<KeySetUserStatusResponse>> userListStatus;
 
   /// Creates a new [BareMetalMachineKeySet].
   /// [name] The Pulumi resource name.
@@ -448,7 +450,7 @@ class BareMetalMachineKeySet extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     expiration = registerOutput<String>('expiration');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    jumpHostsAllowed = registerOutput<List<String>>('jumpHostsAllowed');
+    jumpHostsAllowed = registerOutput<List<String>>('jumpHostsAllowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastValidation = registerOutput<String>('lastValidation');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
@@ -456,9 +458,39 @@ class BareMetalMachineKeySet extends pulumi.CustomResource {
     privilegeLevel = registerOutput<String>('privilegeLevel');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    userList = registerOutput<List<Map<String, dynamic>>>('userList');
-    userListStatus = registerOutput<List<Map<String, dynamic>>>('userListStatus');
+    userList = registerOutput<List<KeySetUserResponse>>('userList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeySetUserResponse>(guardedValue, (value) => KeySetUserResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    userListStatus = registerOutput<List<KeySetUserStatusResponse>>('userListStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeySetUserStatusResponse>(guardedValue, (value) => KeySetUserStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BareMetalMachineKeySet] resource.
+  BareMetalMachineKeySet.reference(String urn)
+    : super(
+        'azure-native:networkcloud:BareMetalMachineKeySet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureGroupId = registerOutput<String>('azureGroupId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    expiration = registerOutput<String>('expiration');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jumpHostsAllowed = registerOutput<List<String>>('jumpHostsAllowed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastValidation = registerOutput<String>('lastValidation');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osGroupName = registerOutput<String?>('osGroupName');
+    privilegeLevel = registerOutput<String>('privilegeLevel');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    userList = registerOutput<List<KeySetUserResponse>>('userList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeySetUserResponse>(guardedValue, (value) => KeySetUserResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    userListStatus = registerOutput<List<KeySetUserStatusResponse>>('userListStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KeySetUserStatusResponse>(guardedValue, (value) => KeySetUserStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

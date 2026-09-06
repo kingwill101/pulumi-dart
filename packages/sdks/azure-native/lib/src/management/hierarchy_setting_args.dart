@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_management_hierarchy_setting_args_doc}
 class HierarchySettingArgs {
   /// Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup
-  final pulumi.Input<String>? defaultManagementGroup;
+  final pulumi.Input<String?>? defaultManagementGroup;
   /// Management Group ID.
   final pulumi.Input<String> groupId;
   /// Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access.
-  final pulumi.Input<bool>? requireAuthorizationForGroupCreation;
+  final pulumi.Input<bool?>? requireAuthorizationForGroupCreation;
 
   /// Creates a new [HierarchySettingArgs].
   /// [defaultManagementGroup] Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup

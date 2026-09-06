@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum DeploymentStatus {
+enum DeploymentStatus implements pulumi.PulumiEnum<String> {
   cOMPLETED("COMPLETED"),
   eLIGIBLE("ELIGIBLE"),
   iNPROGRESS("IN_PROGRESS"),
@@ -7,6 +9,7 @@ enum DeploymentStatus {
   pENDINGUPDATE("PENDING_UPDATE");
 
   const DeploymentStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static DeploymentStatus fromValue(String value) {

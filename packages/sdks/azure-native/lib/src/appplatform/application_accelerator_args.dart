@@ -9,13 +9,13 @@ import 'sku.dart';
 /// {@macro pulumi_appplatform_application_accelerator_args_doc}
 class ApplicationAcceleratorArgs {
   /// The name of the application accelerator.
-  final pulumi.Input<String>? applicationAcceleratorName;
+  final pulumi.Input<String?>? applicationAcceleratorName;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// Sku of the application accelerator resource
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
 
   /// Creates a new [ApplicationAcceleratorArgs].
   /// [applicationAcceleratorName] The name of the application accelerator.

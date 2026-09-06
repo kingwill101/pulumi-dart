@@ -7,17 +7,17 @@ import 'initiated_by_enum_value.dart';
 /// Definition of ChangeProgressDetails
 class ChangeProgressDetails {
   /// &lt;p&gt;The ID of the configuration change.&lt;/p&gt;
-  final pulumi.Input<String>? changeId;
+  final pulumi.Input<String?>? changeId;
   /// &lt;p&gt;The current status of the configuration change.&lt;/p&gt;
-  final pulumi.Input<ConfigChangeStatusEnumValue>? configChangeStatus;
+  final pulumi.Input<ConfigChangeStatusEnumValue?>? configChangeStatus;
   /// &lt;p&gt;The IAM principal who initiated the configuration change.&lt;/p&gt;
-  final pulumi.Input<InitiatedByEnumValue>? initiatedBy;
+  final pulumi.Input<InitiatedByEnumValue?>? initiatedBy;
   /// &lt;p&gt;The last time that the configuration change was updated.&lt;/p&gt;
-  final pulumi.Input<String>? lastUpdatedTime;
+  final pulumi.Input<String?>? lastUpdatedTime;
   /// &lt;p&gt;A message corresponding to the status of the configuration change.&lt;/p&gt;
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// &lt;p&gt;The time that the configuration change was initiated, in Universal Coordinated Time (UTC).&lt;/p&gt;
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [ChangeProgressDetails].
   /// [changeId] &lt;p&gt;The ID of the configuration change.&lt;/p&gt;

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies current state of tabs.
 class TabState {
   /// Current tab.
-  final pulumi.Input<String>? currentTab;
+  final pulumi.Input<dynamic>? currentTab;
   /// visited tabs.
-  final pulumi.Input<List<String>>? visitedTabs;
+  final pulumi.Input<List<dynamic>?>? visitedTabs;
 
   /// Creates a new [TabState].
   /// [currentTab] Current tab.
@@ -26,8 +26,8 @@ class TabState {
 
   factory TabState.fromMap(Map<String, dynamic> map) {
     return TabState(
-      currentTab: (() { final guardedValue = map['currentTab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      visitedTabs: (() { final guardedValue = map['visitedTabs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      currentTab: (() { final guardedValue = map['currentTab']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      visitedTabs: (() { final guardedValue = map['visitedTabs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

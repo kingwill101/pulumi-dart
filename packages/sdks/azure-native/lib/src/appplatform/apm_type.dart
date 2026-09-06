@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of application performance monitoring
-enum ApmType {
+enum ApmType implements pulumi.PulumiEnum<String> {
   valueApplicationInsights("ApplicationInsights"),
   valueAppDynamics("AppDynamics"),
   valueDynatrace("Dynatrace"),
@@ -7,6 +9,7 @@ enum ApmType {
   valueElasticAPM("ElasticAPM");
 
   const ApmType(this.wireValue);
+  @override
   final String wireValue;
 
   static ApmType fromValue(String value) {

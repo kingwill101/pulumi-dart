@@ -6,7 +6,7 @@ import 'resource_id_response.dart';
 
 class PrivateEndpointConnectionPropertiesResponse {
   final pulumi.Input<ResourceIdResponse> privateEndpoint;
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   final pulumi.Input<String> provisioningState;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesResponse].

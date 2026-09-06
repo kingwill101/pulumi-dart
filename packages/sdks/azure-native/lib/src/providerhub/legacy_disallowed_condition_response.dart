@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LegacyDisallowedConditionResponse {
   /// The disallowed legacy operations.
-  final pulumi.Input<List<String>>? disallowedLegacyOperations;
+  final pulumi.Input<List<String>?>? disallowedLegacyOperations;
   /// Feature string.
-  final pulumi.Input<String>? feature;
+  final pulumi.Input<String?>? feature;
 
   /// Creates a new [LegacyDisallowedConditionResponse].
   /// [disallowedLegacyOperations] The disallowed legacy operations.

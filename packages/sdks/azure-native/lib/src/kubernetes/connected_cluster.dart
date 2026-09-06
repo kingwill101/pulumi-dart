@@ -804,14 +804,52 @@ class ConnectedCluster extends pulumi.CustomResource {
     lastConnectivityTime = registerOutput<String>('lastConnectivityTime');
     location = registerOutput<String>('location');
     managedIdentityCertificateExpirationTime = registerOutput<String>('managedIdentityCertificateExpirationTime');
-    miscellaneousProperties = registerOutput<Map<String, String>>('miscellaneousProperties');
+    miscellaneousProperties = registerOutput<Map<String, String>>('miscellaneousProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     offering = registerOutput<String>('offering');
     privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
     privateLinkState = registerOutput<String?>('privateLinkState');
     provisioningState = registerOutput<String?>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalCoreCount = registerOutput<int>('totalCoreCount');
+    totalNodeCount = registerOutput<int>('totalNodeCount');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ConnectedCluster] resource.
+  ConnectedCluster.reference(String urn)
+    : super(
+        'azure-native:kubernetes:ConnectedCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aadProfile = registerOutput<AadProfileResponse?>('aadProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AadProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
+    agentVersion = registerOutput<String>('agentVersion');
+    arcAgentProfile = registerOutput<ArcAgentProfileResponse?>('arcAgentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArcAgentProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureHybridBenefit = registerOutput<String?>('azureHybridBenefit');
+    connectivityStatus = registerOutput<String>('connectivityStatus');
+    distribution = registerOutput<String?>('distribution');
+    distributionVersion = registerOutput<String?>('distributionVersion');
+    identity = registerOutput<ConnectedClusterIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectedClusterIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infrastructure = registerOutput<String?>('infrastructure');
+    kind = registerOutput<String?>('kind');
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    lastConnectivityTime = registerOutput<String>('lastConnectivityTime');
+    location = registerOutput<String>('location');
+    managedIdentityCertificateExpirationTime = registerOutput<String>('managedIdentityCertificateExpirationTime');
+    miscellaneousProperties = registerOutput<Map<String, String>>('miscellaneousProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    offering = registerOutput<String>('offering');
+    privateLinkScopeResourceId = registerOutput<String?>('privateLinkScopeResourceId');
+    privateLinkState = registerOutput<String?>('privateLinkState');
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalCoreCount = registerOutput<int>('totalCoreCount');
     totalNodeCount = registerOutput<int>('totalNodeCount');
     type = registerOutput<String>('type');

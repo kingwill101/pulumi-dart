@@ -9,15 +9,15 @@ import 'config_service_delivery_channel_properties.dart';
 /// {@macro pulumi_awsconnector_config_service_delivery_channel_args_doc}
 class ConfigServiceDeliveryChannelArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of ConfigServiceDeliveryChannel
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConfigServiceDeliveryChannelProperties>? properties;
+  final pulumi.Input<ConfigServiceDeliveryChannelProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigServiceDeliveryChannelArgs].
   /// [location] The geo-location where the resource lives

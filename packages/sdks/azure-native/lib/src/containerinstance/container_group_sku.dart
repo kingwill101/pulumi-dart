@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The SKU for a container group.
-enum ContainerGroupSku {
+enum ContainerGroupSku implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueDedicated("Dedicated"),
   valueConfidential("Confidential");
 
   const ContainerGroupSku(this.wireValue);
+  @override
   final String wireValue;
 
   static ContainerGroupSku fromValue(String value) {

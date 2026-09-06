@@ -19,49 +19,49 @@ import 'workload_profile.dart';
 /// {@macro pulumi_app_managed_environment_args_doc}
 class ManagedEnvironmentArgs {
   /// Environment level Application Insights configuration
-  final pulumi.Input<AppInsightsConfiguration>? appInsightsConfiguration;
+  final pulumi.Input<AppInsightsConfiguration?>? appInsightsConfiguration;
   /// Cluster configuration which enables the log daemon to export app logs to configured destination
-  final pulumi.Input<AppLogsConfiguration>? appLogsConfiguration;
+  final pulumi.Input<AppLogsConfiguration?>? appLogsConfiguration;
   /// The list of availability zones to use for managed environment
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// Custom domain configuration for the environment
-  final pulumi.Input<CustomDomainConfiguration>? customDomainConfiguration;
+  final pulumi.Input<CustomDomainConfiguration?>? customDomainConfiguration;
   /// Application Insights connection string used by Dapr to export Service to Service communication telemetry
-  final pulumi.Input<String>? daprAIConnectionString;
+  final pulumi.Input<String?>? daprAIConnectionString;
   /// Azure Monitor instrumentation key used by Dapr to export Service to Service communication telemetry
-  final pulumi.Input<String>? daprAIInstrumentationKey;
+  final pulumi.Input<String?>? daprAIInstrumentationKey;
   /// Disk encryption configuration for the Managed Environment.
-  final pulumi.Input<DiskEncryptionConfiguration>? diskEncryptionConfiguration;
+  final pulumi.Input<DiskEncryptionConfiguration?>? diskEncryptionConfiguration;
   /// Name of the Environment.
-  final pulumi.Input<String>? environmentName;
+  final pulumi.Input<String?>? environmentName;
   /// Managed identities for the Managed Environment to interact with other Azure services without maintaining any secrets or credentials in code.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Name of the platform-managed resource group created for the Managed Environment to host infrastructure resources. If a subnet ID is provided, this resource group will be created in the same subscription as the subnet.
-  final pulumi.Input<String>? infrastructureResourceGroup;
+  final pulumi.Input<String?>? infrastructureResourceGroup;
   /// Ingress configuration for the Managed Environment.
-  final pulumi.Input<IngressConfiguration>? ingressConfiguration;
+  final pulumi.Input<IngressConfiguration?>? ingressConfiguration;
   /// Kind of the Environment.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Environment Open Telemetry configuration
-  final pulumi.Input<OpenTelemetryConfiguration>? openTelemetryConfiguration;
+  final pulumi.Input<OpenTelemetryConfiguration?>? openTelemetryConfiguration;
   /// Peer authentication settings for the Managed Environment
-  final pulumi.Input<ManagedEnvironmentPeerAuthentication>? peerAuthentication;
+  final pulumi.Input<ManagedEnvironmentPeerAuthentication?>? peerAuthentication;
   /// Peer traffic settings for the Managed Environment
-  final pulumi.Input<ManagedEnvironmentPeerTrafficConfiguration>? peerTrafficConfiguration;
+  final pulumi.Input<ManagedEnvironmentPeerTrafficConfiguration?>? peerTrafficConfiguration;
   /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Vnet configuration for the environment
-  final pulumi.Input<VnetConfiguration>? vnetConfiguration;
+  final pulumi.Input<VnetConfiguration?>? vnetConfiguration;
   /// Workload profiles configured for the Managed Environment.
-  final pulumi.Input<List<WorkloadProfile>>? workloadProfiles;
+  final pulumi.Input<List<WorkloadProfile>?>? workloadProfiles;
   /// Whether or not this Managed Environment is zone-redundant.
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [ManagedEnvironmentArgs].
   /// [appInsightsConfiguration] Environment level Application Insights configuration
@@ -156,7 +156,7 @@ class ManagedEnvironmentArgs {
       openTelemetryConfiguration: (() { final guardedValue = map['openTelemetryConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenTelemetryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peerAuthentication: (() { final guardedValue = map['peerAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedEnvironmentPeerAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peerTrafficConfiguration: (() { final guardedValue = map['peerTrafficConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedEnvironmentPeerTrafficConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vnetConfiguration: (() { final guardedValue = map['vnetConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VnetConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

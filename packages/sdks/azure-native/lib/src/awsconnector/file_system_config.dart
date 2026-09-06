@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of FileSystemConfig
 class FileSystemConfig {
   /// The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The path where the function can access the file system, starting with ``/mnt/``.
-  final pulumi.Input<String>? localMountPath;
+  final pulumi.Input<String?>? localMountPath;
 
   /// Creates a new [FileSystemConfig].
   /// [arn] The Amazon Resource Name (ARN) of the Amazon EFS access point that provides access to the file system.

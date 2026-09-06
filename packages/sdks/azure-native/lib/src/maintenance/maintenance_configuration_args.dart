@@ -9,33 +9,33 @@ import 'input_patch_configuration.dart';
 /// {@macro pulumi_maintenance_maintenance_configuration_args_doc}
 class MaintenanceConfigurationArgs {
   /// Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.
-  final pulumi.Input<String>? duration;
+  final pulumi.Input<String?>? duration;
   /// Effective expiration date of the maintenance window in YYYY-MM-DD hh:mm format. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. Expiration date must be set to a future date. If not provided, it will be set to the maximum datetime 9999-12-31 23:59:59.
-  final pulumi.Input<String>? expirationDateTime;
+  final pulumi.Input<String?>? expirationDateTime;
   /// Gets or sets extensionProperties of the maintenanceConfiguration
-  final pulumi.Input<Map<String, String>>? extensionProperties;
+  final pulumi.Input<Map<String, String>?>? extensionProperties;
   /// The input parameters to be passed to the patch run operation.
-  final pulumi.Input<InputPatchConfiguration>? installPatches;
+  final pulumi.Input<InputPatchConfiguration?>? installPatches;
   /// Gets or sets location of the resource
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets maintenanceScope of the configuration
-  final pulumi.Input<String>? maintenanceScope;
+  final pulumi.Input<dynamic>? maintenanceScope;
   /// Gets or sets namespace of the resource
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days.  Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6.
-  final pulumi.Input<String>? recurEvery;
+  final pulumi.Input<String?>? recurEvery;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the MaintenanceConfiguration
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone.
-  final pulumi.Input<String>? startDateTime;
+  final pulumi.Input<String?>? startDateTime;
   /// Gets or sets tags of the resource
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Gets or sets the visibility of the configuration. The default value is 'Custom'
-  final pulumi.Input<String>? visibility;
+  final pulumi.Input<dynamic>? visibility;
 
   /// Creates a new [MaintenanceConfigurationArgs].
   /// [duration] Duration of the maintenance window in HH:mm format. If not provided, default value will be used based on maintenance scope provided. Example: 05:00.
@@ -95,7 +95,7 @@ class MaintenanceConfigurationArgs {
       extensionProperties: (() { final guardedValue = map['extensionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       installPatches: (() { final guardedValue = map['installPatches']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InputPatchConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maintenanceScope: (() { final guardedValue = map['maintenanceScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maintenanceScope: (() { final guardedValue = map['maintenanceScope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recurEvery: (() { final guardedValue = map['recurEvery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
@@ -103,7 +103,7 @@ class MaintenanceConfigurationArgs {
       startDateTime: (() { final guardedValue = map['startDateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      visibility: (() { final guardedValue = map['visibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      visibility: (() { final guardedValue = map['visibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

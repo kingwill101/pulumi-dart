@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Build properties for the static site.
 class StaticSiteBuildProperties {
   /// A custom command to run during deployment of the Azure Functions API application.
-  final pulumi.Input<String>? apiBuildCommand;
+  final pulumi.Input<String?>? apiBuildCommand;
   /// The path to the api code within the repository.
-  final pulumi.Input<String>? apiLocation;
+  final pulumi.Input<String?>? apiLocation;
   /// Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
-  final pulumi.Input<String>? appArtifactLocation;
+  final pulumi.Input<String?>? appArtifactLocation;
   /// A custom command to run during deployment of the static content application.
-  final pulumi.Input<String>? appBuildCommand;
+  final pulumi.Input<String?>? appBuildCommand;
   /// The path to the app code within the repository.
-  final pulumi.Input<String>? appLocation;
+  final pulumi.Input<String?>? appLocation;
   /// Github Action secret name override.
-  final pulumi.Input<String>? githubActionSecretNameOverride;
+  final pulumi.Input<String?>? githubActionSecretNameOverride;
   /// The output path of the app after building.
-  final pulumi.Input<String>? outputLocation;
+  final pulumi.Input<String?>? outputLocation;
   /// Skip Github Action workflow generation.
-  final pulumi.Input<bool>? skipGithubActionWorkflowGeneration;
+  final pulumi.Input<bool?>? skipGithubActionWorkflowGeneration;
 
   /// Creates a new [StaticSiteBuildProperties].
   /// [apiBuildCommand] A custom command to run during deployment of the Azure Functions API application.

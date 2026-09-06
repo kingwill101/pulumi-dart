@@ -7,14 +7,14 @@ import 'rai_policy_content_filter.dart';
 /// Azure OpenAI Content Filters properties.
 class RaiPolicyProperties {
   /// Name of the base Content Filters.
-  final pulumi.Input<String>? basePolicyName;
-  final pulumi.Input<List<RaiBlocklistConfig>>? completionBlocklists;
-  final pulumi.Input<List<RaiPolicyContentFilter>>? contentFilters;
+  final pulumi.Input<String?>? basePolicyName;
+  final pulumi.Input<List<RaiBlocklistConfig>?>? completionBlocklists;
+  final pulumi.Input<List<RaiPolicyContentFilter>?>? contentFilters;
   /// Content Filters mode.
-  final pulumi.Input<String>? mode;
-  final pulumi.Input<List<RaiBlocklistConfig>>? promptBlocklists;
+  final pulumi.Input<dynamic>? mode;
+  final pulumi.Input<List<RaiBlocklistConfig>?>? promptBlocklists;
   /// Content Filters policy type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [RaiPolicyProperties].
   /// [basePolicyName] Name of the base Content Filters.
@@ -48,9 +48,9 @@ class RaiPolicyProperties {
       basePolicyName: (() { final guardedValue = map['basePolicyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       completionBlocklists: (() { final guardedValue = map['completionBlocklists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RaiBlocklistConfig>(guardedValue, (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       contentFilters: (() { final guardedValue = map['contentFilters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RaiPolicyContentFilter>(guardedValue, (value) => RaiPolicyContentFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       promptBlocklists: (() { final guardedValue = map['promptBlocklists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RaiBlocklistConfig>(guardedValue, (value) => RaiBlocklistConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

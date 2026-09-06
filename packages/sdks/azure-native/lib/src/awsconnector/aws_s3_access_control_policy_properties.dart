@@ -7,9 +7,9 @@ import 'owner.dart';
 /// Definition of awsS3AccessControlPolicy
 class AwsS3AccessControlPolicyProperties {
   /// &lt;p&gt;A list of grants.&lt;/p&gt;
-  final pulumi.Input<List<Grant>>? grants;
+  final pulumi.Input<List<Grant>?>? grants;
   /// &lt;p&gt;Container for the bucket owner's display name and ID.&lt;/p&gt;
-  final pulumi.Input<Owner>? owner;
+  final pulumi.Input<Owner?>? owner;
 
   /// Creates a new [AwsS3AccessControlPolicyProperties].
   /// [grants] &lt;p&gt;A list of grants.&lt;/p&gt;

@@ -6,9 +6,9 @@ import 'scale_rule_auth.dart';
 /// Azure Spring Apps App Instance Http scaling rule.
 class HttpScaleRule {
   /// Authentication secrets for the custom scale rule.
-  final pulumi.Input<List<ScaleRuleAuth>>? auth;
+  final pulumi.Input<List<ScaleRuleAuth>?>? auth;
   /// Metadata properties to describe http scale rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [HttpScaleRule].
   /// [auth] Authentication secrets for the custom scale rule.

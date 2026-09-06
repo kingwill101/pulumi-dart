@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property to allow or block all public traffic. Allowed Values: 'Enabled', 'Disabled'.
-enum PublicNetworkAccess {
+enum PublicNetworkAccess implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const PublicNetworkAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccess fromValue(String value) {

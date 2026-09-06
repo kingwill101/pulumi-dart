@@ -7,19 +7,19 @@ import 'bgp_settings_response.dart';
 /// A common class for general resource information.
 class LocalNetworkGatewayResponse {
   /// Local network gateway's BGP speaker settings.
-  final pulumi.Input<BgpSettingsResponse>? bgpSettings;
+  final pulumi.Input<BgpSettingsResponse?>? bgpSettings;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// FQDN of local network gateway.
-  final pulumi.Input<String>? fqdn;
+  final pulumi.Input<String?>? fqdn;
   /// IP address of local network gateway.
-  final pulumi.Input<String>? gatewayIpAddress;
+  final pulumi.Input<String?>? gatewayIpAddress;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Local network site address space.
-  final pulumi.Input<AddressSpaceResponse>? localNetworkAddressSpace;
+  final pulumi.Input<AddressSpaceResponse?>? localNetworkAddressSpace;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the local network gateway resource.
@@ -27,7 +27,7 @@ class LocalNetworkGatewayResponse {
   /// The resource GUID property of the local network gateway resource.
   final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

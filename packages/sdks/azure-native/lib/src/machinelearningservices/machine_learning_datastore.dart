@@ -1342,7 +1342,26 @@ class MachineLearningDatastore extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<DatastoreResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<SkuMachineLearningDatastoreResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MachineLearningDatastore] resource.
+  MachineLearningDatastore.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:MachineLearningDatastore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityMachineLearningDatastoreResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityMachineLearningDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<DatastoreResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuMachineLearningDatastoreResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

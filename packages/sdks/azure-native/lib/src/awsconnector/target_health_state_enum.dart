@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum TargetHealthStateEnum {
+enum TargetHealthStateEnum implements pulumi.PulumiEnum<String> {
   draining("draining"),
   healthy("healthy"),
   initial("initial"),
@@ -9,6 +11,7 @@ enum TargetHealthStateEnum {
   unused("unused");
 
   const TargetHealthStateEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetHealthStateEnum fromValue(String value) {

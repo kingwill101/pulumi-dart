@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Import operation configuration information
 class FhirServiceImportConfiguration {
   /// If the import operation is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// If the FHIR service is in InitialImportMode.
-  final pulumi.Input<bool>? initialImportMode;
+  final pulumi.Input<bool?>? initialImportMode;
   /// The name of the default integration storage account.
-  final pulumi.Input<String>? integrationDataStore;
+  final pulumi.Input<String?>? integrationDataStore;
 
   /// Creates a new [FhirServiceImportConfiguration].
   /// [enabled] If the import operation is enabled.

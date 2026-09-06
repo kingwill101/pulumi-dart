@@ -1,4 +1,6 @@
-enum SecretPermissions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SecretPermissions implements pulumi.PulumiEnum<String> {
   valueAll("all"),
   valueGet("get"),
   valueList("list"),
@@ -10,6 +12,7 @@ enum SecretPermissions {
   valuePurge("purge");
 
   const SecretPermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretPermissions fromValue(String value) {

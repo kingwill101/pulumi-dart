@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enumerates the possible values for cleanup policy
-enum CleanupPolicyRetentionDescription {
+enum CleanupPolicyRetentionDescription implements pulumi.PulumiEnum<String> {
   valueDelete("Delete"),
   valueCompact("Compact");
 
   const CleanupPolicyRetentionDescription(this.wireValue);
+  @override
   final String wireValue;
 
   static CleanupPolicyRetentionDescription fromValue(String value) {

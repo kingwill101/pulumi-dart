@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resources created in GitHub repository.
 class GitHubResourceInfoResponse {
   /// GitHub application installation id.
-  final pulumi.Input<String>? appInstallationId;
+  final pulumi.Input<String?>? appInstallationId;
 
   /// Creates a new [GitHubResourceInfoResponse].
   /// [appInstallationId] GitHub application installation id.

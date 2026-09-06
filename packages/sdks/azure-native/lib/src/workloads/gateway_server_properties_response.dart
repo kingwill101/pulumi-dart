@@ -27,7 +27,7 @@ class GatewayServerPropertiesResponse {
   factory GatewayServerPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return GatewayServerPropertiesResponse(
       health: pulumi.Input.fromValue(map['health'] as String),
-      port: pulumi.Input.fromValue(map['port'] as double),
+      port: pulumi.Input.fromValue((map['port'] as num).toDouble()),
     );
   }
 }

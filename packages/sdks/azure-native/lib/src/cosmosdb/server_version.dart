@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the version of the MongoDB account.
-enum ServerVersion {
+enum ServerVersion implements pulumi.PulumiEnum<String> {
   value32("3.2"),
   value36("3.6"),
   value40("4.0"),
@@ -9,6 +11,7 @@ enum ServerVersion {
   value70("7.0");
 
   const ServerVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerVersion fromValue(String value) {

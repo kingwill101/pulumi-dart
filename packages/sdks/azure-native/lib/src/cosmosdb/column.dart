@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB Cassandra table column
 class Column {
   /// Name of the Cosmos DB Cassandra table column
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the Cosmos DB Cassandra table column
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [Column].
   /// [name] Name of the Cosmos DB Cassandra table column

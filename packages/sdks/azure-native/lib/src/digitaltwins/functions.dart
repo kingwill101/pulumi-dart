@@ -26,6 +26,17 @@ Future<GetDigitalTwinResult> getDigitalTwin(
   return GetDigitalTwinResult.fromMap(result);
 }
 
+pulumi.Output<GetDigitalTwinResult> getDigitalTwinOutput(
+  GetDigitalTwinArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:digitaltwins:getDigitalTwin',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDigitalTwinResult.fromMap);
+}
+
 /// Get DigitalTwinsInstances Endpoint.
 ///
 /// Uses Azure REST API version 2023-01-31.
@@ -42,6 +53,17 @@ Future<GetDigitalTwinsEndpointResult> getDigitalTwinsEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDigitalTwinsEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetDigitalTwinsEndpointResult> getDigitalTwinsEndpointOutput(
+  GetDigitalTwinsEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:digitaltwins:getDigitalTwinsEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDigitalTwinsEndpointResult.fromMap);
 }
 
 /// Get private endpoint connection properties for the given private endpoint.
@@ -62,6 +84,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:digitaltwins:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get the description of an existing time series database connection.
 ///
 /// Uses Azure REST API version 2023-01-31.
@@ -78,4 +111,15 @@ Future<GetTimeSeriesDatabaseConnectionResult> getTimeSeriesDatabaseConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTimeSeriesDatabaseConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetTimeSeriesDatabaseConnectionResult> getTimeSeriesDatabaseConnectionOutput(
+  GetTimeSeriesDatabaseConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:digitaltwins:getTimeSeriesDatabaseConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTimeSeriesDatabaseConnectionResult.fromMap);
 }

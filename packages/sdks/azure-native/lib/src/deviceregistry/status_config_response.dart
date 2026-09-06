@@ -34,7 +34,7 @@ class StatusConfigResponse {
     return StatusConfigResponse(
       error: pulumi.Input.fromValue(StatusErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       lastTransitionTime: pulumi.Input.fromValue(map['lastTransitionTime'] as String),
-      version: pulumi.Input.fromValue(map['version'] as double),
+      version: pulumi.Input.fromValue((map['version'] as num).toDouble()),
     );
   }
 }

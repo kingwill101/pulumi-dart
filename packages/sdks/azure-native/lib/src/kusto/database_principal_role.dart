@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Database principal role.
-enum DatabasePrincipalRole {
+enum DatabasePrincipalRole implements pulumi.PulumiEnum<String> {
   valueAdmin("Admin"),
   valueIngestor("Ingestor"),
   valueMonitor("Monitor"),
@@ -8,6 +10,7 @@ enum DatabasePrincipalRole {
   valueViewer("Viewer");
 
   const DatabasePrincipalRole(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabasePrincipalRole fromValue(String value) {

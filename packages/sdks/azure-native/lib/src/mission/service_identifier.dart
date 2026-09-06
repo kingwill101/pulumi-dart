@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Service ID
-enum ServiceIdentifier {
+enum ServiceIdentifier implements pulumi.PulumiEnum<String> {
   aKS("AKS"),
   appService("AppService"),
   azureFirewalls("AzureFirewalls"),
@@ -17,6 +19,7 @@ enum ServiceIdentifier {
   storage("Storage");
 
   const ServiceIdentifier(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceIdentifier fromValue(String value) {

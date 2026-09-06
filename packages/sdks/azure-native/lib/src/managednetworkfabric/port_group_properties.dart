@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Port Group properties.
 class PortGroupProperties {
   /// The name of the port group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of the ports that need to be matched.
-  final pulumi.Input<List<String>>? ports;
+  final pulumi.Input<List<String>?>? ports;
 
   /// Creates a new [PortGroupProperties].
   /// [name] The name of the port group.

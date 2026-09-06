@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication type.
-enum AuthType {
+enum AuthType implements pulumi.PulumiEnum<String> {
   valueSystemAssignedIdentity("systemAssignedIdentity"),
   valueUserAssignedIdentity("userAssignedIdentity"),
   valueServicePrincipalSecret("servicePrincipalSecret"),
@@ -10,6 +12,7 @@ enum AuthType {
   valueEasyAuthMicrosoftEntraID("easyAuthMicrosoftEntraID");
 
   const AuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthType fromValue(String value) {

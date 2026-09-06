@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Logger settings for java workloads.
 class LoggerSetting {
   /// The specified logger's log level.
-  final pulumi.Input<String> level;
+  final pulumi.Input<dynamic> level;
   /// Logger name.
   final pulumi.Input<String> logger;
 
@@ -26,7 +26,7 @@ class LoggerSetting {
 
   factory LoggerSetting.fromMap(Map<String, dynamic> map) {
     return LoggerSetting(
-      level: pulumi.Input.fromValue(map['level'] as String),
+      level: pulumi.Input.fromValue(map['level']),
       logger: pulumi.Input.fromValue(map['logger'] as String),
     );
   }

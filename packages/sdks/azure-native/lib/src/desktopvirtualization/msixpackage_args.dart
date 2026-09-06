@@ -10,33 +10,33 @@ import 'msix_package_dependencies.dart';
 /// {@macro pulumi_desktopvirtualization_msixpackage_args_doc}
 class MSIXPackageArgs {
   /// User friendly Name to be displayed in the portal.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the host pool within the specified resource group
   final pulumi.Input<String> hostPoolName;
   /// VHD/CIM image path on Network Share.
-  final pulumi.Input<String>? imagePath;
+  final pulumi.Input<String?>? imagePath;
   /// Make this version of the package the active one across the hostpool.
-  final pulumi.Input<bool>? isActive;
+  final pulumi.Input<bool?>? isActive;
   /// Specifies how to register Package in feed.
-  final pulumi.Input<bool>? isRegularRegistration;
+  final pulumi.Input<bool?>? isRegularRegistration;
   /// Date Package was last updated, found in the appxmanifest.xml.
-  final pulumi.Input<String>? lastUpdated;
+  final pulumi.Input<String?>? lastUpdated;
   /// The version specific package full name of the MSIX package within specified hostpool
-  final pulumi.Input<String>? msixPackageFullName;
+  final pulumi.Input<String?>? msixPackageFullName;
   /// List of package applications.
-  final pulumi.Input<List<MsixPackageApplications>>? packageApplications;
+  final pulumi.Input<List<MsixPackageApplications>?>? packageApplications;
   /// List of package dependencies.
-  final pulumi.Input<List<MsixPackageDependencies>>? packageDependencies;
+  final pulumi.Input<List<MsixPackageDependencies>?>? packageDependencies;
   /// Package Family Name from appxmanifest.xml. Contains Package Name and Publisher name.
-  final pulumi.Input<String>? packageFamilyName;
+  final pulumi.Input<String?>? packageFamilyName;
   /// Package Name from appxmanifest.xml.
-  final pulumi.Input<String>? packageName;
+  final pulumi.Input<String?>? packageName;
   /// Relative Path to the package inside the image.
-  final pulumi.Input<String>? packageRelativePath;
+  final pulumi.Input<String?>? packageRelativePath;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Package version found in the appxmanifest.xml.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MSIXPackageArgs].
   /// [displayName] User friendly Name to be displayed in the portal.

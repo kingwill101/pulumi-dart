@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU (tier) of a workspace.
 class WorkspaceSku {
   /// The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
-  final pulumi.Input<int>? capacityReservationLevel;
+  final pulumi.Input<int?>? capacityReservationLevel;
   /// The name of the SKU.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [WorkspaceSku].
   /// [capacityReservationLevel] The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
@@ -26,8 +26,8 @@ class WorkspaceSku {
 
   factory WorkspaceSku.fromMap(Map<String, dynamic> map) {
     return WorkspaceSku(
-      capacityReservationLevel: (() { final guardedValue = map['capacityReservationLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      capacityReservationLevel: (() { final guardedValue = map['capacityReservationLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

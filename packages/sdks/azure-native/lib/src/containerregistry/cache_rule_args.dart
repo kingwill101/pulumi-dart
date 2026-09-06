@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerregistry_cache_rule_args_doc}
 class CacheRuleArgs {
   /// The name of the cache rule.
-  final pulumi.Input<String>? cacheRuleName;
+  final pulumi.Input<String?>? cacheRuleName;
   /// The ARM resource ID of the credential store which is associated with the cache rule.
-  final pulumi.Input<String>? credentialSetResourceId;
+  final pulumi.Input<String?>? credentialSetResourceId;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Source repository pulled from upstream.
-  final pulumi.Input<String>? sourceRepository;
+  final pulumi.Input<String?>? sourceRepository;
   /// Target repository specified in docker pull command.
   /// Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag}
-  final pulumi.Input<String>? targetRepository;
+  final pulumi.Input<String?>? targetRepository;
 
   /// Creates a new [CacheRuleArgs].
   /// [cacheRuleName] The name of the cache rule.

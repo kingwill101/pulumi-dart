@@ -6,7 +6,7 @@ import 'virtual_machine_scale_set_network_configuration.dart';
 /// Describes a virtual machine scale set VM network profile.
 class VirtualMachineScaleSetVMNetworkProfileConfiguration {
   /// The list of network configurations.
-  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>>? networkInterfaceConfigurations;
+  final pulumi.Input<List<VirtualMachineScaleSetNetworkConfiguration>?>? networkInterfaceConfigurations;
 
   /// Creates a new [VirtualMachineScaleSetVMNetworkProfileConfiguration].
   /// [networkInterfaceConfigurations] The list of network configurations.

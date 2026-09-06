@@ -25,75 +25,75 @@ import 'token_auth_configuration.dart';
 
 class ProviderRegistrationProperties {
   /// The capabilities.
-  final pulumi.Input<List<ResourceProviderCapabilities>>? capabilities;
+  final pulumi.Input<List<ResourceProviderCapabilities>?>? capabilities;
   /// The cross tenant token validation.
-  final pulumi.Input<String>? crossTenantTokenValidation;
+  final pulumi.Input<dynamic>? crossTenantTokenValidation;
   /// Custom manifest version.
-  final pulumi.Input<String>? customManifestVersion;
+  final pulumi.Input<String?>? customManifestVersion;
   /// The dsts configuration.
-  final pulumi.Input<ResourceProviderManifestPropertiesDstsConfiguration>? dstsConfiguration;
+  final pulumi.Input<ResourceProviderManifestPropertiesDstsConfiguration?>? dstsConfiguration;
   /// The enable tenant linked notification.
-  final pulumi.Input<bool>? enableTenantLinkedNotification;
+  final pulumi.Input<bool?>? enableTenantLinkedNotification;
   /// The features rule.
-  final pulumi.Input<ResourceProviderManifestPropertiesFeaturesRule>? featuresRule;
+  final pulumi.Input<ResourceProviderManifestPropertiesFeaturesRule?>? featuresRule;
   /// The global notification endpoints.
-  final pulumi.Input<List<ResourceProviderEndpoint>>? globalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpoint>?>? globalNotificationEndpoints;
   /// Legacy namespace.
-  final pulumi.Input<String>? legacyNamespace;
+  final pulumi.Input<String?>? legacyNamespace;
   /// Legacy registrations.
-  final pulumi.Input<List<String>>? legacyRegistrations;
+  final pulumi.Input<List<String>?>? legacyRegistrations;
   /// The linked notification rules.
-  final pulumi.Input<List<FanoutLinkedNotificationRule>>? linkedNotificationRules;
+  final pulumi.Input<List<FanoutLinkedNotificationRule>?>? linkedNotificationRules;
   /// The resource provider management.
-  final pulumi.Input<ResourceProviderManifestPropertiesManagement>? management;
+  final pulumi.Input<ResourceProviderManifestPropertiesManagement?>? management;
   /// Management groups global notification endpoints.
-  final pulumi.Input<List<ResourceProviderEndpoint>>? managementGroupGlobalNotificationEndpoints;
+  final pulumi.Input<List<ResourceProviderEndpoint>?>? managementGroupGlobalNotificationEndpoints;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The namespace.
-  final pulumi.Input<String>? namespace;
+  final pulumi.Input<String?>? namespace;
   /// Notification options.
-  final pulumi.Input<String>? notificationOptions;
+  final pulumi.Input<dynamic>? notificationOptions;
   /// Notification settings.
-  final pulumi.Input<ResourceProviderManifestPropertiesNotificationSettings>? notificationSettings;
+  final pulumi.Input<ResourceProviderManifestPropertiesNotificationSettings?>? notificationSettings;
   /// The notifications.
-  final pulumi.Input<List<Notification>>? notifications;
+  final pulumi.Input<List<Notification>?>? notifications;
   /// Optional features.
-  final pulumi.Input<List<String>>? optionalFeatures;
+  final pulumi.Input<List<String>?>? optionalFeatures;
   /// The private resource provider configuration.
-  final pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfiguration>? privateResourceProviderConfiguration;
+  final pulumi.Input<ProviderRegistrationPropertiesPrivateResourceProviderConfiguration?>? privateResourceProviderConfiguration;
   /// The provider authentication.
-  final pulumi.Input<ResourceProviderManifestPropertiesProviderAuthentication>? providerAuthentication;
+  final pulumi.Input<ResourceProviderManifestPropertiesProviderAuthentication?>? providerAuthentication;
   /// The provider authorizations.
-  final pulumi.Input<List<ResourceProviderAuthorization>>? providerAuthorizations;
+  final pulumi.Input<List<ResourceProviderAuthorization>?>? providerAuthorizations;
   /// The provider hub metadata.
-  final pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadata>? providerHubMetadata;
+  final pulumi.Input<ProviderRegistrationPropertiesProviderHubMetadata?>? providerHubMetadata;
   /// The provider type.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<dynamic>? providerType;
   /// The provider version.
-  final pulumi.Input<String>? providerVersion;
+  final pulumi.Input<String?>? providerVersion;
   /// The request header options.
-  final pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptions>? requestHeaderOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesRequestHeaderOptions?>? requestHeaderOptions;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// Resource group lock option during move.
-  final pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove>? resourceGroupLockOptionDuringMove;
+  final pulumi.Input<ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove?>? resourceGroupLockOptionDuringMove;
   /// resource hydration accounts
-  final pulumi.Input<List<ResourceHydrationAccount>>? resourceHydrationAccounts;
+  final pulumi.Input<List<ResourceHydrationAccount>?>? resourceHydrationAccounts;
   /// The resource provider authorization rules.
-  final pulumi.Input<ResourceProviderAuthorizationRules>? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRules?>? resourceProviderAuthorizationRules;
   /// Response options.
-  final pulumi.Input<ResourceProviderManifestPropertiesResponseOptions>? responseOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesResponseOptions?>? responseOptions;
   /// The service name.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
   /// The services.
-  final pulumi.Input<List<ResourceProviderService>>? services;
+  final pulumi.Input<List<ResourceProviderService>?>? services;
   /// The subscription lifecycle notification specifications.
-  final pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications>? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ProviderRegistrationPropertiesSubscriptionLifecycleNotificationSpecifications?>? subscriptionLifecycleNotificationSpecifications;
   /// The template deployment options.
-  final pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptions>? templateDeploymentOptions;
+  final pulumi.Input<ResourceProviderManifestPropertiesTemplateDeploymentOptions?>? templateDeploymentOptions;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfiguration>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfiguration?>? tokenAuthConfiguration;
 
   /// Creates a new [ProviderRegistrationProperties].
   /// [capabilities] The capabilities.
@@ -212,7 +212,7 @@ class ProviderRegistrationProperties {
   factory ProviderRegistrationProperties.fromMap(Map<String, dynamic> map) {
     return ProviderRegistrationProperties(
       capabilities: (() { final guardedValue = map['capabilities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceProviderCapabilities>(guardedValue, (value) => ResourceProviderCapabilities.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      crossTenantTokenValidation: (() { final guardedValue = map['crossTenantTokenValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      crossTenantTokenValidation: (() { final guardedValue = map['crossTenantTokenValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       customManifestVersion: (() { final guardedValue = map['customManifestVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dstsConfiguration: (() { final guardedValue = map['dstsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManifestPropertiesDstsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableTenantLinkedNotification: (() { final guardedValue = map['enableTenantLinkedNotification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -225,7 +225,7 @@ class ProviderRegistrationProperties {
       managementGroupGlobalNotificationEndpoints: (() { final guardedValue = map['managementGroupGlobalNotificationEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceProviderEndpoint>(guardedValue, (value) => ResourceProviderEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      notificationOptions: (() { final guardedValue = map['notificationOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      notificationOptions: (() { final guardedValue = map['notificationOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       notificationSettings: (() { final guardedValue = map['notificationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManifestPropertiesNotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       notifications: (() { final guardedValue = map['notifications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Notification>(guardedValue, (value) => Notification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       optionalFeatures: (() { final guardedValue = map['optionalFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
@@ -233,7 +233,7 @@ class ProviderRegistrationProperties {
       providerAuthentication: (() { final guardedValue = map['providerAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManifestPropertiesProviderAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       providerAuthorizations: (() { final guardedValue = map['providerAuthorizations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceProviderAuthorization>(guardedValue, (value) => ResourceProviderAuthorization.fromMap((value as Map).cast<String, dynamic>()))); })(),
       providerHubMetadata: (() { final guardedValue = map['providerHubMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ProviderRegistrationPropertiesProviderHubMetadata.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      providerType: (() { final guardedValue = map['providerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      providerType: (() { final guardedValue = map['providerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       providerVersion: (() { final guardedValue = map['providerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestHeaderOptions: (() { final guardedValue = map['requestHeaderOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceProviderManifestPropertiesRequestHeaderOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

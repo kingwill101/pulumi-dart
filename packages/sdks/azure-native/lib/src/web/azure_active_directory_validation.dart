@@ -7,11 +7,11 @@ import 'jwt_claim_checks.dart';
 /// The configuration settings of the Azure Active Directory token validation flow.
 class AzureActiveDirectoryValidation {
   /// The list of audiences that can make successful authentication/authorization requests.
-  final pulumi.Input<List<String>>? allowedAudiences;
+  final pulumi.Input<List<String>?>? allowedAudiences;
   /// The configuration settings of the default authorization policy.
-  final pulumi.Input<DefaultAuthorizationPolicy>? defaultAuthorizationPolicy;
+  final pulumi.Input<DefaultAuthorizationPolicy?>? defaultAuthorizationPolicy;
   /// The configuration settings of the checks that should be made while validating the JWT Claims.
-  final pulumi.Input<JwtClaimChecks>? jwtClaimChecks;
+  final pulumi.Input<JwtClaimChecks?>? jwtClaimChecks;
 
   /// Creates a new [AzureActiveDirectoryValidation].
   /// [allowedAudiences] The list of audiences that can make successful authentication/authorization requests.

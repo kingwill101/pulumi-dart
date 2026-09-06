@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.
-enum PurgeableOrchestrationState {
+enum PurgeableOrchestrationState implements pulumi.PulumiEnum<String> {
   completed("Completed"),
   failed("Failed"),
   terminated("Terminated"),
   canceled("Canceled");
 
   const PurgeableOrchestrationState(this.wireValue);
+  @override
   final String wireValue;
 
   static PurgeableOrchestrationState fromValue(String value) {

@@ -38,6 +38,17 @@ Future<GetApiResult> getApi(
   return GetApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
+}
+
 /// Returns details of the API definition.
 ///
 /// Uses Azure REST API version 2024-03-15-preview.
@@ -58,6 +69,17 @@ Future<GetApiDefinitionResult> getApiDefinition(
   return GetApiDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetApiDefinitionResult> getApiDefinitionOutput(
+  GetApiDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getApiDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiDefinitionResult.fromMap);
+}
+
 /// Returns details of the API source.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -74,6 +96,17 @@ Future<GetApiSourceResult> getApiSource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiSourceResult.fromMap(result);
+}
+
+pulumi.Output<GetApiSourceResult> getApiSourceOutput(
+  GetApiSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getApiSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiSourceResult.fromMap);
 }
 
 /// Returns details of the API version.
@@ -96,6 +129,17 @@ Future<GetApiVersionResult> getApiVersion(
   return GetApiVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetApiVersionResult> getApiVersionOutput(
+  GetApiVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getApiVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionResult.fromMap);
+}
+
 /// Returns details of the API deployment.
 ///
 /// Uses Azure REST API version 2024-03-15-preview.
@@ -114,6 +158,17 @@ Future<GetDeploymentResult> getDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
 }
 
 /// Returns details of the environment.
@@ -136,6 +191,17 @@ Future<GetEnvironmentResult> getEnvironment(
   return GetEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentResult> getEnvironmentOutput(
+  GetEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentResult.fromMap);
+}
+
 /// Returns details of the metadata schema.
 ///
 /// Uses Azure REST API version 2024-03-15-preview.
@@ -154,6 +220,17 @@ Future<GetMetadataSchemaResult> getMetadataSchema(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetadataSchemaResult.fromMap(result);
+}
+
+pulumi.Output<GetMetadataSchemaResult> getMetadataSchemaOutput(
+  GetMetadataSchemaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getMetadataSchema',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetadataSchemaResult.fromMap);
 }
 
 /// Returns details of the service.
@@ -176,6 +253,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Returns details of the workspace.
 ///
 /// Uses Azure REST API version 2024-03-15-preview.
@@ -194,4 +282,15 @@ Future<GetWorkspaceResult> getWorkspace(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:apicenter:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource Requirements.
 class ResourceRequirements {
   /// Gets or sets the Cpu requirement.
-  final pulumi.Input<String>? cpu;
+  final pulumi.Input<String?>? cpu;
   /// Gets or sets the Memory requirement.
-  final pulumi.Input<String>? memory;
+  final pulumi.Input<String?>? memory;
 
   /// Creates a new [ResourceRequirements].
   /// [cpu] Gets or sets the Cpu requirement.

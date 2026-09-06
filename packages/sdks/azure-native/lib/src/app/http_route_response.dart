@@ -7,9 +7,9 @@ import 'http_route_match_response.dart';
 /// Http Routes configuration, including paths to match on and whether or not rewrites are to be done.
 class HttpRouteResponse {
   /// Once route is matched, what is the desired action
-  final pulumi.Input<HttpRouteActionResponse>? action;
+  final pulumi.Input<HttpRouteActionResponse?>? action;
   /// Conditions route will match on
-  final pulumi.Input<HttpRouteMatchResponse>? match;
+  final pulumi.Input<HttpRouteMatchResponse?>? match;
 
   /// Creates a new [HttpRouteResponse].
   /// [action] Once route is matched, what is the desired action

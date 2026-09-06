@@ -8,7 +8,7 @@ class DistributedAvailabilityGroupDatabaseResponse {
   /// Link connected state
   final pulumi.Input<String> connectedState;
   /// The name of the database in link
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Redo lag when Managed Instance link side is primary
   final pulumi.Input<int> instanceRedoReplicationLagSeconds;
   /// Managed instance replica id
@@ -124,9 +124,9 @@ class DistributedAvailabilityGroupDatabaseResponse {
     return DistributedAvailabilityGroupDatabaseResponse(
       connectedState: pulumi.Input.fromValue(map['connectedState'] as String),
       databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceRedoReplicationLagSeconds: pulumi.Input.fromValue(map['instanceRedoReplicationLagSeconds'] as int),
+      instanceRedoReplicationLagSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceRedoReplicationLagSeconds'])),
       instanceReplicaId: pulumi.Input.fromValue(map['instanceReplicaId'] as String),
-      instanceSendReplicationLagSeconds: pulumi.Input.fromValue(map['instanceSendReplicationLagSeconds'] as int),
+      instanceSendReplicationLagSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceSendReplicationLagSeconds'])),
       lastBackupLsn: pulumi.Input.fromValue(map['lastBackupLsn'] as String),
       lastBackupTime: pulumi.Input.fromValue(map['lastBackupTime'] as String),
       lastCommitLsn: pulumi.Input.fromValue(map['lastCommitLsn'] as String),

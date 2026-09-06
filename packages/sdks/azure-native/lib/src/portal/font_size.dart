@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Size of terminal font.
-enum FontSize {
+enum FontSize implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueSmall("Small"),
   valueMedium("Medium"),
   valueLarge("Large");
 
   const FontSize(this.wireValue);
+  @override
   final String wireValue;
 
   static FontSize fromValue(String value) {

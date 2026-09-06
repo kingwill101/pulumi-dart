@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the channel.
-enum ChannelProvisioningState {
+enum ChannelProvisioningState implements pulumi.PulumiEnum<String> {
   valueCreating("Creating"),
   valueUpdating("Updating"),
   valueDeleting("Deleting"),
@@ -9,6 +11,7 @@ enum ChannelProvisioningState {
   valueIdleDueToMirroredPartnerTopicDeletion("IdleDueToMirroredPartnerTopicDeletion");
 
   const ChannelProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ChannelProvisioningState fromValue(String value) {

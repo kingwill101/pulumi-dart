@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'additional_workspaces_properties_response.dart';
 import 'iot_security_solution_args.dart';
+import 'recommendation_configuration_properties_response.dart';
 import 'system_data_response.dart';
 import 'user_defined_resources_properties_response.dart';
 
@@ -316,7 +318,7 @@ import 'user_defined_resources_properties_response.dart';
 /// ```
 class IotSecuritySolution extends pulumi.CustomResource {
   /// List of additional workspaces
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalWorkspaces;
+  late final pulumi.Output<List<AdditionalWorkspacesPropertiesResponse>?> additionalWorkspaces;
   /// List of resources that were automatically discovered as relevant to the security solution.
   late final pulumi.Output<List<String>> autoDiscoveredResources;
   /// The Azure API version of the resource.
@@ -334,7 +336,7 @@ class IotSecuritySolution extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// List of the configuration status for each recommendation type.
-  late final pulumi.Output<List<Map<String, dynamic>>?> recommendationsConfiguration;
+  late final pulumi.Output<List<RecommendationConfigurationPropertiesResponse>?> recommendationsConfiguration;
   /// Status of the IoT Security solution.
   late final pulumi.Output<String?> status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -364,19 +366,47 @@ class IotSecuritySolution extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalWorkspaces = registerOutput<List<Map<String, dynamic>>?>('additionalWorkspaces');
-    autoDiscoveredResources = registerOutput<List<String>>('autoDiscoveredResources');
+    additionalWorkspaces = registerOutput<List<AdditionalWorkspacesPropertiesResponse>?>('additionalWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AdditionalWorkspacesPropertiesResponse>(guardedValue, (value) => AdditionalWorkspacesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    autoDiscoveredResources = registerOutput<List<String>>('autoDiscoveredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    disabledDataSources = registerOutput<List<String>?>('disabledDataSources');
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     displayName = registerOutput<String>('displayName');
-    export = registerOutput<List<String>?>('export');
-    iotHubs = registerOutput<List<String>>('iotHubs');
+    export = registerOutput<List<String>?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iotHubs = registerOutput<List<String>>('iotHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    recommendationsConfiguration = registerOutput<List<Map<String, dynamic>>?>('recommendationsConfiguration');
+    recommendationsConfiguration = registerOutput<List<RecommendationConfigurationPropertiesResponse>?>('recommendationsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationConfigurationPropertiesResponse>(guardedValue, (value) => RecommendationConfigurationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String?>('status');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    unmaskedIpLoggingStatus = registerOutput<String?>('unmaskedIpLoggingStatus');
+    userDefinedResources = registerOutput<UserDefinedResourcesPropertiesResponse?>('userDefinedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserDefinedResourcesPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspace = registerOutput<String?>('workspace');
+  }
+
+  /// Creates a typed reference to an existing [IotSecuritySolution] resource.
+  IotSecuritySolution.reference(String urn)
+    : super(
+        'azure-native:security:IotSecuritySolution',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalWorkspaces = registerOutput<List<AdditionalWorkspacesPropertiesResponse>?>('additionalWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AdditionalWorkspacesPropertiesResponse>(guardedValue, (value) => AdditionalWorkspacesPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    autoDiscoveredResources = registerOutput<List<String>>('autoDiscoveredResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disabledDataSources = registerOutput<List<String>?>('disabledDataSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    displayName = registerOutput<String>('displayName');
+    export = registerOutput<List<String>?>('export', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    iotHubs = registerOutput<List<String>>('iotHubs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    recommendationsConfiguration = registerOutput<List<RecommendationConfigurationPropertiesResponse>?>('recommendationsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendationConfigurationPropertiesResponse>(guardedValue, (value) => RecommendationConfigurationPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     unmaskedIpLoggingStatus = registerOutput<String?>('unmaskedIpLoggingStatus');
     userDefinedResources = registerOutput<UserDefinedResourcesPropertiesResponse?>('userDefinedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserDefinedResourcesPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

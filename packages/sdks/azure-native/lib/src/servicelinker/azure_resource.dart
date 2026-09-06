@@ -6,9 +6,9 @@ import 'azure_key_vault_properties.dart';
 /// The azure resource info when target service type is AzureResource
 class AzureResource {
   /// The Id of azure resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The azure resource connection related properties.
-  final pulumi.Input<AzureKeyVaultProperties>? resourceProperties;
+  final pulumi.Input<AzureKeyVaultProperties?>? resourceProperties;
   /// The target service type.
   /// Expected value is 'AzureResource'.
   final pulumi.Input<String> type;

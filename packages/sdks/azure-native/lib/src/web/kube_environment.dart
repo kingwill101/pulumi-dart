@@ -231,7 +231,36 @@ class KubeEnvironment extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     staticIp = registerOutput<String?>('staticIp');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [KubeEnvironment] resource.
+  KubeEnvironment.reference(String urn)
+    : super(
+        'azure-native:web:KubeEnvironment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aksResourceID = registerOutput<String?>('aksResourceID');
+    appLogsConfiguration = registerOutput<AppLogsConfigurationResponse?>('appLogsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppLogsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    arcConfiguration = registerOutput<ArcConfigurationResponse?>('arcConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArcConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerAppsConfiguration = registerOutput<ContainerAppsConfigurationResponse?>('containerAppsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerAppsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultDomain = registerOutput<String>('defaultDomain');
+    deploymentErrors = registerOutput<String>('deploymentErrors');
+    environmentType = registerOutput<String?>('environmentType');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    internalLoadBalancerEnabled = registerOutput<bool?>('internalLoadBalancerEnabled');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    staticIp = registerOutput<String?>('staticIp');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

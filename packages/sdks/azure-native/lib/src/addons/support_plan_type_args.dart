@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_addons_support_plan_type_args_doc}
 class SupportPlanTypeArgs {
   /// The Canonical support plan type.
-  final pulumi.Input<String>? planTypeName;
+  final pulumi.Input<String?>? planTypeName;
   /// The support plan type. For now the only valid type is "canonical".
   final pulumi.Input<String> providerName;
 

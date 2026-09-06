@@ -7,7 +7,7 @@ class TrackedResource {
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [TrackedResource].
   /// [location] The geo-location where the resource lives

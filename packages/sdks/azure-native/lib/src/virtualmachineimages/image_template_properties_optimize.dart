@@ -6,7 +6,7 @@ import 'image_template_properties_vm_boot.dart';
 /// Specifies optimization to be performed on image.
 class ImageTemplatePropertiesOptimize {
   /// Optimization is applied on the image for a faster VM boot.
-  final pulumi.Input<ImageTemplatePropertiesVmBoot>? vmBoot;
+  final pulumi.Input<ImageTemplatePropertiesVmBoot?>? vmBoot;
 
   /// Creates a new [ImageTemplatePropertiesOptimize].
   /// [vmBoot] Optimization is applied on the image for a faster VM boot.

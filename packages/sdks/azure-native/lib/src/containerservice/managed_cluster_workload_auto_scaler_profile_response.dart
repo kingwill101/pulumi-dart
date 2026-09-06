@@ -7,9 +7,9 @@ import 'managed_cluster_workload_auto_scaler_profile_vertical_pod_autoscaler_res
 /// Workload Auto-scaler profile for the managed cluster.
 class ManagedClusterWorkloadAutoScalerProfileResponse {
   /// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.
-  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfileKedaResponse>? keda;
+  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfileKedaResponse?>? keda;
   /// VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile.
-  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse>? verticalPodAutoscaler;
+  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscalerResponse?>? verticalPodAutoscaler;
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileResponse].
   /// [keda] KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile.

@@ -6,19 +6,19 @@ import 'service_endpoint_policy_definition.dart';
 /// Service End point policy resource.
 class ServiceEndpointPolicy {
   /// A collection of contextual service endpoint policy.
-  final pulumi.Input<List<String>>? contextualServiceEndpointPolicies;
+  final pulumi.Input<List<String>?>? contextualServiceEndpointPolicies;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The alias indicating if the policy belongs to a service
-  final pulumi.Input<String>? serviceAlias;
+  final pulumi.Input<String?>? serviceAlias;
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  final pulumi.Input<List<ServiceEndpointPolicyDefinition>>? serviceEndpointPolicyDefinitions;
+  final pulumi.Input<List<ServiceEndpointPolicyDefinition>?>? serviceEndpointPolicyDefinitions;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ServiceEndpointPolicy].
   /// [contextualServiceEndpointPolicies] A collection of contextual service endpoint policy.

@@ -21,43 +21,43 @@ import 'webhook_receiver.dart';
 /// {@macro pulumi_monitor_action_group_args_doc}
 class ActionGroupArgs {
   /// The name of the action group.
-  final pulumi.Input<String>? actionGroupName;
+  final pulumi.Input<String?>? actionGroupName;
   /// The list of ARM role receivers that are part of this action group. Roles are Azure RBAC roles and only built-in roles are supported.
-  final pulumi.Input<List<ArmRoleReceiver>>? armRoleReceivers;
+  final pulumi.Input<List<ArmRoleReceiver>?>? armRoleReceivers;
   /// The list of AutomationRunbook receivers that are part of this action group.
-  final pulumi.Input<List<AutomationRunbookReceiver>>? automationRunbookReceivers;
+  final pulumi.Input<List<AutomationRunbookReceiver>?>? automationRunbookReceivers;
   /// The list of AzureAppPush receivers that are part of this action group.
-  final pulumi.Input<List<MicrosoftCommonAzureAppPushReceiver>>? azureAppPushReceivers;
+  final pulumi.Input<List<MicrosoftCommonAzureAppPushReceiver>?>? azureAppPushReceivers;
   /// The list of azure function receivers that are part of this action group.
-  final pulumi.Input<List<AzureFunctionReceiver>>? azureFunctionReceivers;
+  final pulumi.Input<List<AzureFunctionReceiver>?>? azureFunctionReceivers;
   /// The list of email receivers that are part of this action group.
-  final pulumi.Input<List<MicrosoftCommonEmailReceiver>>? emailReceivers;
+  final pulumi.Input<List<MicrosoftCommonEmailReceiver>?>? emailReceivers;
   /// Indicates whether this action group is enabled. If an action group is not enabled, then none of its receivers will receive communications.
   final pulumi.Input<bool> enabled;
   /// The list of event hub receivers that are part of this action group.
-  final pulumi.Input<List<EventHubReceiver>>? eventHubReceivers;
+  final pulumi.Input<List<EventHubReceiver>?>? eventHubReceivers;
   /// The short name of the action group. This will be used in SMS messages.
   final pulumi.Input<String> groupShortName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The list of incident receivers that are part of this action group.
-  final pulumi.Input<List<IncidentReceiver>>? incidentReceivers;
+  final pulumi.Input<List<IncidentReceiver>?>? incidentReceivers;
   /// The list of ITSM receivers that are part of this action group.
-  final pulumi.Input<List<ItsmReceiver>>? itsmReceivers;
+  final pulumi.Input<List<ItsmReceiver>?>? itsmReceivers;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The list of logic app receivers that are part of this action group.
-  final pulumi.Input<List<LogicAppReceiver>>? logicAppReceivers;
+  final pulumi.Input<List<LogicAppReceiver>?>? logicAppReceivers;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The list of SMS receivers that are part of this action group.
-  final pulumi.Input<List<MicrosoftCommonSmsReceiver>>? smsReceivers;
+  final pulumi.Input<List<MicrosoftCommonSmsReceiver>?>? smsReceivers;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The list of voice receivers that are part of this action group.
-  final pulumi.Input<List<MicrosoftCommonVoiceReceiver>>? voiceReceivers;
+  final pulumi.Input<List<MicrosoftCommonVoiceReceiver>?>? voiceReceivers;
   /// The list of webhook receivers that are part of this action group.
-  final pulumi.Input<List<WebhookReceiver>>? webhookReceivers;
+  final pulumi.Input<List<WebhookReceiver>?>? webhookReceivers;
 
   /// Creates a new [ActionGroupArgs].
   /// [actionGroupName] The name of the action group.
@@ -79,14 +79,14 @@ class ActionGroupArgs {
   /// [tags] Resource tags.
   /// [voiceReceivers] The list of voice receivers that are part of this action group.
   /// [webhookReceivers] The list of webhook receivers that are part of this action group.
-  const ActionGroupArgs({
+  ActionGroupArgs({
     this.actionGroupName,
     this.armRoleReceivers,
     this.automationRunbookReceivers,
     this.azureAppPushReceivers,
     this.azureFunctionReceivers,
     this.emailReceivers,
-    required this.enabled,
+    pulumi.Input<bool>? enabled,
     this.eventHubReceivers,
     required this.groupShortName,
     this.identity,
@@ -99,7 +99,7 @@ class ActionGroupArgs {
     this.tags,
     this.voiceReceivers,
     this.webhookReceivers,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -10,13 +10,13 @@ class RestorePointSourceVMOSDiskResponse {
   /// Gets the caching type.
   final pulumi.Input<String> caching;
   /// Contains Disk Restore Point properties.
-  final pulumi.Input<DiskRestorePointAttributesResponse>? diskRestorePoint;
+  final pulumi.Input<DiskRestorePointAttributesResponse?>? diskRestorePoint;
   /// Gets the disk size in GB.
   final pulumi.Input<int> diskSizeGB;
   /// Gets the disk encryption settings.
   final pulumi.Input<DiskEncryptionSettingsResponse> encryptionSettings;
   /// Gets the managed disk details
-  final pulumi.Input<ManagedDiskParametersResponse>? managedDisk;
+  final pulumi.Input<ManagedDiskParametersResponse?>? managedDisk;
   /// Gets the disk name.
   final pulumi.Input<String> name;
   /// Gets the Operating System type.
@@ -61,7 +61,7 @@ class RestorePointSourceVMOSDiskResponse {
     return RestorePointSourceVMOSDiskResponse(
       caching: pulumi.Input.fromValue(map['caching'] as String),
       diskRestorePoint: (() { final guardedValue = map['diskRestorePoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskRestorePointAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      diskSizeGB: pulumi.Input.fromValue(map['diskSizeGB'] as int),
+      diskSizeGB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGB'])),
       encryptionSettings: pulumi.Input.fromValue(DiskEncryptionSettingsResponse.fromMap((map['encryptionSettings']! as Map).cast<String, dynamic>())),
       managedDisk: (() { final guardedValue = map['managedDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedDiskParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),

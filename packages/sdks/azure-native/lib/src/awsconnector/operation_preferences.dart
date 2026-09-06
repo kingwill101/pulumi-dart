@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OperationPreferences
 class OperationPreferences {
   /// Property failureToleranceCount
-  final pulumi.Input<int>? failureToleranceCount;
+  final pulumi.Input<int?>? failureToleranceCount;
   /// Property failureTolerancePercentage
-  final pulumi.Input<int>? failureTolerancePercentage;
+  final pulumi.Input<int?>? failureTolerancePercentage;
   /// Property maxConcurrentCount
-  final pulumi.Input<int>? maxConcurrentCount;
+  final pulumi.Input<int?>? maxConcurrentCount;
   /// Property maxConcurrentPercentage
-  final pulumi.Input<int>? maxConcurrentPercentage;
+  final pulumi.Input<int?>? maxConcurrentPercentage;
   /// The concurrency type of deploying StackSets operations in regions, could be in parallel or one region at a time
-  final pulumi.Input<String>? regionConcurrencyType;
+  final pulumi.Input<dynamic>? regionConcurrencyType;
   /// Property regionOrder
-  final pulumi.Input<List<String>>? regionOrder;
+  final pulumi.Input<List<String>?>? regionOrder;
 
   /// Creates a new [OperationPreferences].
   /// [failureToleranceCount] Property failureToleranceCount
@@ -46,11 +46,11 @@ class OperationPreferences {
 
   factory OperationPreferences.fromMap(Map<String, dynamic> map) {
     return OperationPreferences(
-      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentCount: (() { final guardedValue = map['maxConcurrentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxConcurrentPercentage: (() { final guardedValue = map['maxConcurrentPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      regionConcurrencyType: (() { final guardedValue = map['regionConcurrencyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      failureToleranceCount: (() { final guardedValue = map['failureToleranceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      failureTolerancePercentage: (() { final guardedValue = map['failureTolerancePercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentCount: (() { final guardedValue = map['maxConcurrentCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxConcurrentPercentage: (() { final guardedValue = map['maxConcurrentPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      regionConcurrencyType: (() { final guardedValue = map['regionConcurrencyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       regionOrder: (() { final guardedValue = map['regionOrder']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

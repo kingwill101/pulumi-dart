@@ -289,7 +289,26 @@ class MachineLearningDataset extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     properties = registerOutput<DatasetResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sku = registerOutput<SkuMachineLearningDatasetResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MachineLearningDataset] resource.
+  MachineLearningDataset.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:MachineLearningDataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    identity = registerOutput<IdentityMachineLearningDatasetResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<DatasetResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SkuMachineLearningDatasetResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuMachineLearningDatasetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

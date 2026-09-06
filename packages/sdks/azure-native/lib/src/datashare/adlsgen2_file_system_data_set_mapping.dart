@@ -756,4 +756,27 @@ class ADLSGen2FileSystemDataSetMapping extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ADLSGen2FileSystemDataSetMapping] resource.
+  ADLSGen2FileSystemDataSetMapping.reference(String urn)
+    : super(
+        'azure-native:datashare:ADLSGen2FileSystemDataSetMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
+    fileSystem = registerOutput<String>('fileSystem');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGroup = registerOutput<String>('resourceGroup');
+    storageAccountName = registerOutput<String>('storageAccountName');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

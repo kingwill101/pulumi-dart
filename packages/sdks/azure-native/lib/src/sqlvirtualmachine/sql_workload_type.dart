@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server workload type.
-enum SqlWorkloadType {
+enum SqlWorkloadType implements pulumi.PulumiEnum<String> {
   gENERAL("GENERAL"),
   oLTP("OLTP"),
   dW("DW");
 
   const SqlWorkloadType(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlWorkloadType fromValue(String value) {

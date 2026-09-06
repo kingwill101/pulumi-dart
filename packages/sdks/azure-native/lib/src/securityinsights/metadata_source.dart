@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The original source of the content item, where it comes from.
 class MetadataSource {
   /// Source type of the content
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// Name of the content source.  The repo name, solution name, LA workspace name etc.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// ID of the content source.  The solution ID, workspace ID, etc
-  final pulumi.Input<String>? sourceId;
+  final pulumi.Input<String?>? sourceId;
 
   /// Creates a new [MetadataSource].
   /// [kind] Source type of the content
@@ -31,7 +31,7 @@ class MetadataSource {
 
   factory MetadataSource.fromMap(Map<String, dynamic> map) {
     return MetadataSource(
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceId: (() { final guardedValue = map['sourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

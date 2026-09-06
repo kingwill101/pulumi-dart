@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The object representing the state of the migration between the backup policies.
 class BackupPolicyMigrationStateResponse {
   /// Time at which the backup policy migration started (ISO-8601 format).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Describes the status of migration between backup policy types.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Describes the target backup policy type of the backup policy migration.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<String?>? targetType;
 
   /// Creates a new [BackupPolicyMigrationStateResponse].
   /// [startTime] Time at which the backup policy migration started (ISO-8601 format).

@@ -9,11 +9,11 @@ import 'conn_string_value_type_pair.dart';
 /// {@macro pulumi_web_web_app_connection_strings_args_doc}
 class WebAppConnectionStringsArgs {
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// Connection strings.
-  final pulumi.Input<Map<String, ConnStringValueTypePair>>? properties;
+  final pulumi.Input<Map<String, ConnStringValueTypePair>?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

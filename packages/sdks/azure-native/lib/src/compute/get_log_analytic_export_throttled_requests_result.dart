@@ -5,23 +5,23 @@ import 'log_analytics_output_response.dart';
 /// Result data returned by getLogAnalyticExportThrottledRequests.
 class GetLogAnalyticExportThrottledRequestsResult {
   /// LogAnalyticsOutput
-  final LogAnalyticsOutputResponse properties;
+  final LogAnalyticsOutputResponse? properties;
 
   /// Creates a new [GetLogAnalyticExportThrottledRequestsResult].
   /// [properties] LogAnalyticsOutput
   const GetLogAnalyticExportThrottledRequestsResult({
-    required this.properties,
+    this.properties,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': properties.toMap(),
+      'properties': ?properties?.toMap(),
     };
   }
 
   factory GetLogAnalyticExportThrottledRequestsResult.fromMap(Map<String, dynamic> map) {
     return GetLogAnalyticExportThrottledRequestsResult(
-      properties: LogAnalyticsOutputResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return LogAnalyticsOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

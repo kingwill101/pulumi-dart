@@ -8,16 +8,16 @@ import 'weekly_schedule.dart';
 /// The V2 policy schedule for IaaS that supports hourly backups.
 class SimpleSchedulePolicyV2 {
   /// Daily schedule of this policy
-  final pulumi.Input<DailySchedule>? dailySchedule;
+  final pulumi.Input<DailySchedule?>? dailySchedule;
   /// hourly schedule of this policy
-  final pulumi.Input<HourlySchedule>? hourlySchedule;
+  final pulumi.Input<HourlySchedule?>? hourlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'SimpleSchedulePolicyV2'.
   final pulumi.Input<String> schedulePolicyType;
   /// Frequency of the schedule operation of this policy.
-  final pulumi.Input<String>? scheduleRunFrequency;
+  final pulumi.Input<dynamic>? scheduleRunFrequency;
   /// Weekly schedule of this policy
-  final pulumi.Input<WeeklySchedule>? weeklySchedule;
+  final pulumi.Input<WeeklySchedule?>? weeklySchedule;
 
   /// Creates a new [SimpleSchedulePolicyV2].
   /// [dailySchedule] Daily schedule of this policy
@@ -48,7 +48,7 @@ class SimpleSchedulePolicyV2 {
       dailySchedule: (() { final guardedValue = map['dailySchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DailySchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hourlySchedule: (() { final guardedValue = map['hourlySchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HourlySchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedulePolicyType: pulumi.Input.fromValue(map['schedulePolicyType'] as String),
-      scheduleRunFrequency: (() { final guardedValue = map['scheduleRunFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scheduleRunFrequency: (() { final guardedValue = map['scheduleRunFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       weeklySchedule: (() { final guardedValue = map['weeklySchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WeeklySchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -6,9 +6,9 @@ import 'key_vault_properties.dart';
 /// The encryption settings for a configuration store.
 class PropertiesEncryption {
   /// Key vault properties.
-  final pulumi.Input<KeyVaultProperties>? keyVault;
+  final pulumi.Input<KeyVaultProperties?>? keyVault;
   /// The state of onboarding, which only appears in the response.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [PropertiesEncryption].
   /// [keyVault] Key vault properties.
@@ -28,7 +28,7 @@ class PropertiesEncryption {
   factory PropertiesEncryption.fromMap(Map<String, dynamic> map) {
     return PropertiesEncryption(
       keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

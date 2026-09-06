@@ -14,36 +14,36 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_registry_args_doc}
 class RegistryArgs {
   /// Discovery URL for the Registry
-  final pulumi.Input<String>? discoveryUrl;
+  final pulumi.Input<String?>? discoveryUrl;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// IntellectualPropertyPublisher for the registry
-  final pulumi.Input<String>? intellectualPropertyPublisher;
+  final pulumi.Input<String?>? intellectualPropertyPublisher;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ResourceId of the managed RG if the registry has system created resources
-  final pulumi.Input<ArmResourceId>? managedResourceGroup;
+  final pulumi.Input<ArmResourceId?>? managedResourceGroup;
   /// Managed resource group specific settings
-  final pulumi.Input<ManagedResourceGroupSettings>? managedResourceGroupSettings;
+  final pulumi.Input<ManagedResourceGroupSettings?>? managedResourceGroupSettings;
   /// MLFlow Registry URI for the Registry
-  final pulumi.Input<String>? mlFlowRegistryUri;
+  final pulumi.Input<String?>? mlFlowRegistryUri;
   /// Is the Registry accessible from the internet?
   /// Possible values: "Enabled" or "Disabled"
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Details of each region the registry is in
-  final pulumi.Input<List<RegistryRegionArmDetails>>? regionDetails;
+  final pulumi.Input<List<RegistryRegionArmDetails>?>? regionDetails;
   /// Name of Azure Machine Learning registry. This is case-insensitive
-  final pulumi.Input<String>? registryName;
+  final pulumi.Input<String?>? registryName;
   /// Private endpoint connections info used for pending connections in private link portal
-  final pulumi.Input<List<RegistryPrivateEndpointConnection>>? registryPrivateEndpointConnections;
+  final pulumi.Input<List<RegistryPrivateEndpointConnection>?>? registryPrivateEndpointConnections;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [RegistryArgs].
   /// [discoveryUrl] Discovery URL for the Registry

@@ -6,11 +6,11 @@ import 'arc_auto_provisioning_configuration.dart';
 /// The ARC autoprovisioning configuration
 class DefenderForServersAwsOfferingArcAutoProvisioning {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Configuration for servers Arc auto provisioning for a given environment
-  final pulumi.Input<ArcAutoProvisioningConfiguration>? configuration;
+  final pulumi.Input<ArcAutoProvisioningConfiguration?>? configuration;
   /// Is arc auto provisioning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForServersAwsOfferingArcAutoProvisioning].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

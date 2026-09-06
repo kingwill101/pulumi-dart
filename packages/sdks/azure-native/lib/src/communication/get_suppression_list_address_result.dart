@@ -5,27 +5,27 @@ import 'system_data_response.dart';
 /// Result data returned by getSuppressionListAddress.
 class GetSuppressionListAddressResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The location where the SuppressionListAddress data is stored at rest. This value is inherited from the parent Domains resource.
-  final String dataLocation;
+  final String? dataLocation;
   /// Email address of the recipient.
-  final String email;
+  final String? email;
   /// The first name of the email recipient.
   final String? firstName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The date the address was last updated in a suppression list.
-  final String lastModified;
+  final String? lastModified;
   /// The last name of the email recipient.
   final String? lastName;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// An optional property to provide contextual notes or a description for an address.
   final String? notes;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSuppressionListAddressResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetSuppressionListAddressResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSuppressionListAddressResult({
-    required this.azureApiVersion,
-    required this.dataLocation,
-    required this.email,
+    this.azureApiVersion,
+    this.dataLocation,
+    this.email,
     this.firstName,
-    required this.id,
-    required this.lastModified,
+    this.id,
+    this.lastModified,
     this.lastName,
-    required this.name,
+    this.name,
     this.notes,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'dataLocation': dataLocation,
-      'email': email,
+      'azureApiVersion': ?azureApiVersion,
+      'dataLocation': ?dataLocation,
+      'email': ?email,
       'firstName': ?firstName,
-      'id': id,
-      'lastModified': lastModified,
+      'id': ?id,
+      'lastModified': ?lastModified,
       'lastName': ?lastName,
-      'name': name,
+      'name': ?name,
       'notes': ?notes,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSuppressionListAddressResult.fromMap(Map<String, dynamic> map) {
     return GetSuppressionListAddressResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      dataLocation: map['dataLocation'] as String,
-      email: map['email'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataLocation: (() { final guardedValue = map['dataLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firstName: (() { final guardedValue = map['firstName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      lastModified: map['lastModified'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModified: (() { final guardedValue = map['lastModified']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastName: (() { final guardedValue = map['lastName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

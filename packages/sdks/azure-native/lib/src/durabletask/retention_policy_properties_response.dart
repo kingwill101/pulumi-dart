@@ -8,7 +8,7 @@ class RetentionPolicyPropertiesResponse {
   /// The status of the last operation
   final pulumi.Input<String> provisioningState;
   /// The orchestration retention policies
-  final pulumi.Input<List<RetentionPolicyDetailsResponse>>? retentionPolicies;
+  final pulumi.Input<List<RetentionPolicyDetailsResponse>?>? retentionPolicies;
 
   /// Creates a new [RetentionPolicyPropertiesResponse].
   /// [provisioningState] The status of the last operation

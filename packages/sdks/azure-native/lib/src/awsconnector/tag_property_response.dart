@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TagProperty
 class TagPropertyResponse {
   /// The tag key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Set to ``true`` if you want CloudFormation to copy the tag to EC2 instances that are launched as part of the Auto Scaling group. Set to ``false`` if you want the tag attached only to the Auto Scaling group and not copied to any instances launched as part of the Auto Scaling group.
-  final pulumi.Input<bool>? propagateAtLaunch;
+  final pulumi.Input<bool?>? propagateAtLaunch;
   /// The tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagPropertyResponse].
   /// [key] The tag key.

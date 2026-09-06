@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU for the cache.
 class CacheSku {
   /// SKU name for this cache.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [CacheSku].
   /// [name] SKU name for this cache.

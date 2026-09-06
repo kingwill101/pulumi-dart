@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource type common attribute management.
 class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse {
   /// Common api versions merge mode.
-  final pulumi.Input<String>? commonApiVersionsMergeMode;
+  final pulumi.Input<String?>? commonApiVersionsMergeMode;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse].
   /// [commonApiVersionsMergeMode] Common api versions merge mode.

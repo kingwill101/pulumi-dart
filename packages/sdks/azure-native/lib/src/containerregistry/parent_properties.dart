@@ -6,7 +6,7 @@ import 'sync_properties.dart';
 /// The properties of the connected registry parent.
 class ParentProperties {
   /// The resource ID of the parent to which the connected registry will be associated.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The sync properties of the connected registry with its parent.
   final pulumi.Input<SyncProperties> syncProperties;
 

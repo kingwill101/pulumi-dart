@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_network_virtual_appliance_args_doc}
 class GetNetworkVirtualApplianceArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
   /// The name of the resource group.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Api error base.
 class ApiErrorBaseResponse {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// The target of the particular error.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ApiErrorBaseResponse].
   /// [code] The error code.

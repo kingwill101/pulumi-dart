@@ -6,9 +6,9 @@ import 'cluster_properties_key_encryption_key_identity.dart';
 /// All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
 class ClusterPropertiesCustomerManagedKeyEncryption {
   /// All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.
-  final pulumi.Input<ClusterPropertiesKeyEncryptionKeyIdentity>? keyEncryptionKeyIdentity;
+  final pulumi.Input<ClusterPropertiesKeyEncryptionKeyIdentity?>? keyEncryptionKeyIdentity;
   /// Key encryption key Url, versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78
-  final pulumi.Input<String>? keyEncryptionKeyUrl;
+  final pulumi.Input<String?>? keyEncryptionKeyUrl;
 
   /// Creates a new [ClusterPropertiesCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyIdentity] All identity configuration for Customer-managed key settings defining which identity should be used to auth to Key Vault.

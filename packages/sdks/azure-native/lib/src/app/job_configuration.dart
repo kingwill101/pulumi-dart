@@ -11,23 +11,23 @@ import 'secret.dart';
 /// Non versioned Container Apps Job configuration properties
 class JobConfiguration {
   /// Trigger configuration of an event driven job.
-  final pulumi.Input<JobConfigurationEventTriggerConfig>? eventTriggerConfig;
+  final pulumi.Input<JobConfigurationEventTriggerConfig?>? eventTriggerConfig;
   /// Optional settings for Managed Identities that are assigned to the Container App Job. If a Managed Identity is not specified here, default settings will be used.
-  final pulumi.Input<List<IdentitySettings>>? identitySettings;
+  final pulumi.Input<List<IdentitySettings>?>? identitySettings;
   /// Manual trigger configuration for a single execution job. Properties replicaCompletionCount and parallelism would be set to 1 by default
-  final pulumi.Input<JobConfigurationManualTriggerConfig>? manualTriggerConfig;
+  final pulumi.Input<JobConfigurationManualTriggerConfig?>? manualTriggerConfig;
   /// Collection of private container registry credentials used by a Container apps job
-  final pulumi.Input<List<RegistryCredentials>>? registries;
+  final pulumi.Input<List<RegistryCredentials>?>? registries;
   /// Maximum number of retries before failing the job.
-  final pulumi.Input<int>? replicaRetryLimit;
+  final pulumi.Input<int?>? replicaRetryLimit;
   /// Maximum number of seconds a replica is allowed to run.
   final pulumi.Input<int> replicaTimeout;
   /// Cron formatted repeating trigger schedule ("* * * * *") for cronjobs. Properties completions and parallelism would be set to 1 by default
-  final pulumi.Input<JobConfigurationScheduleTriggerConfig>? scheduleTriggerConfig;
+  final pulumi.Input<JobConfigurationScheduleTriggerConfig?>? scheduleTriggerConfig;
   /// Collection of secrets used by a Container Apps Job
-  final pulumi.Input<List<Secret>>? secrets;
+  final pulumi.Input<List<Secret>?>? secrets;
   /// Trigger type of the job
-  final pulumi.Input<String> triggerType;
+  final pulumi.Input<dynamic> triggerType;
 
   /// Creates a new [JobConfiguration].
   /// [eventTriggerConfig] Trigger configuration of an event driven job.
@@ -39,7 +39,7 @@ class JobConfiguration {
   /// [scheduleTriggerConfig] Cron formatted repeating trigger schedule ("* * * * *") for cronjobs. Properties completions and parallelism would be set to 1 by default
   /// [secrets] Collection of secrets used by a Container Apps Job
   /// [triggerType] Trigger type of the job
-  const JobConfiguration({
+  JobConfiguration({
     this.eventTriggerConfig,
     this.identitySettings,
     this.manualTriggerConfig,
@@ -48,8 +48,8 @@ class JobConfiguration {
     required this.replicaTimeout,
     this.scheduleTriggerConfig,
     this.secrets,
-    required this.triggerType,
-  });
+    pulumi.Input<dynamic>? triggerType,
+  }) : triggerType = triggerType ?? pulumi.Input.fromValue('Manual');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -71,11 +71,11 @@ class JobConfiguration {
       identitySettings: (() { final guardedValue = map['identitySettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IdentitySettings>(guardedValue, (value) => IdentitySettings.fromMap((value as Map).cast<String, dynamic>()))); })(),
       manualTriggerConfig: (() { final guardedValue = map['manualTriggerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobConfigurationManualTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       registries: (() { final guardedValue = map['registries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RegistryCredentials>(guardedValue, (value) => RegistryCredentials.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      replicaRetryLimit: (() { final guardedValue = map['replicaRetryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      replicaTimeout: pulumi.Input.fromValue(map['replicaTimeout'] as int),
+      replicaRetryLimit: (() { final guardedValue = map['replicaRetryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      replicaTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicaTimeout'])),
       scheduleTriggerConfig: (() { final guardedValue = map['scheduleTriggerConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobConfigurationScheduleTriggerConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Secret>(guardedValue, (value) => Secret.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      triggerType: pulumi.Input.fromValue(map['triggerType'] as String),
+      triggerType: pulumi.Input.fromValue(map['triggerType']),
     );
   }
 }

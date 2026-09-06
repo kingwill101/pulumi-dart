@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_signalrservice_signal_rcustom_certificate_args_doc}
 class SignalRCustomCertificateArgs {
   /// Custom certificate name
-  final pulumi.Input<String>? certificateName;
+  final pulumi.Input<String?>? certificateName;
   /// Base uri of the KeyVault that stores certificate.
   final pulumi.Input<String> keyVaultBaseUri;
   /// Certificate secret name.
   final pulumi.Input<String> keyVaultSecretName;
   /// Certificate secret version.
-  final pulumi.Input<String>? keyVaultSecretVersion;
+  final pulumi.Input<String?>? keyVaultSecretVersion;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource.

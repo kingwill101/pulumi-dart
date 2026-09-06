@@ -7,13 +7,13 @@ import 'open_id_authentication_settings_contract.dart';
 /// API Authentication Settings.
 class AuthenticationSettingsContract {
   /// OAuth2 Authentication settings
-  final pulumi.Input<OAuth2AuthenticationSettingsContract>? oAuth2;
+  final pulumi.Input<OAuth2AuthenticationSettingsContract?>? oAuth2;
   /// Collection of OAuth2 authentication settings included into this API.
-  final pulumi.Input<List<OAuth2AuthenticationSettingsContract>>? oAuth2AuthenticationSettings;
+  final pulumi.Input<List<OAuth2AuthenticationSettingsContract>?>? oAuth2AuthenticationSettings;
   /// OpenID Connect Authentication Settings
-  final pulumi.Input<OpenIdAuthenticationSettingsContract>? openid;
+  final pulumi.Input<OpenIdAuthenticationSettingsContract?>? openid;
   /// Collection of Open ID Connect authentication settings included into this API.
-  final pulumi.Input<List<OpenIdAuthenticationSettingsContract>>? openidAuthenticationSettings;
+  final pulumi.Input<List<OpenIdAuthenticationSettingsContract>?>? openidAuthenticationSettings;
 
   /// Creates a new [AuthenticationSettingsContract].
   /// [oAuth2] OAuth2 Authentication settings

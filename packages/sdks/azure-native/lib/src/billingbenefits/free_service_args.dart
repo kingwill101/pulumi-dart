@@ -11,33 +11,33 @@ import 'sku.dart';
 /// {@macro pulumi_billingbenefits_free_service_args_doc}
 class FreeServiceArgs {
   /// Expiration date and time of the free services
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Name of the free service
-  final pulumi.Input<String>? freeServiceName;
+  final pulumi.Input<String?>? freeServiceName;
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type. E.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// Plan for the resource.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// This is the catalog UPN for the product.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource model definition representing SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Date and time when the free services become active
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// Current status of the free services
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// This is the globally unique identifier of the free services which will not change for its lifetime.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FreeServiceArgs].
   /// [endAt] Expiration date and time of the free services
@@ -103,7 +103,7 @@ class FreeServiceArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Sku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startAt: (() { final guardedValue = map['startAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       systemId: (() { final guardedValue = map['systemId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

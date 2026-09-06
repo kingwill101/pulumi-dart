@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagemover_storage_mover_args_doc}
 class StorageMoverArgs {
   /// A description for the Storage Mover.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Storage Mover resource.
-  final pulumi.Input<String>? storageMoverName;
+  final pulumi.Input<String?>? storageMoverName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageMoverArgs].
   /// [description] A description for the Storage Mover.

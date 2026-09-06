@@ -10,19 +10,19 @@ import 'resource_reference.dart';
 /// {@macro pulumi_logic_integration_service_environment_managed_api_args_doc}
 class IntegrationServiceEnvironmentManagedApiArgs {
   /// The api name.
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// The integration service environment managed api deployment parameters.
-  final pulumi.Input<IntegrationServiceEnvironmentManagedApiDeploymentParameters>? deploymentParameters;
+  final pulumi.Input<IntegrationServiceEnvironmentManagedApiDeploymentParameters?>? deploymentParameters;
   /// The integration service environment reference.
-  final pulumi.Input<ResourceReference>? integrationServiceEnvironment;
+  final pulumi.Input<ResourceReference?>? integrationServiceEnvironment;
   /// The integration service environment name.
   final pulumi.Input<String> integrationServiceEnvironmentName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource group name.
   final pulumi.Input<String> resourceGroup;
   /// The resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [IntegrationServiceEnvironmentManagedApiArgs].
   /// [apiName] The api name.

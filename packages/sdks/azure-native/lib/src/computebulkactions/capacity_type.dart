@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies capacity type for launching instances. It can be in terms of VMs or vCPUs.
-enum CapacityType {
+enum CapacityType implements pulumi.PulumiEnum<String> {
   vM("VM"),
   vCpu("VCpu");
 
   const CapacityType(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityType fromValue(String value) {

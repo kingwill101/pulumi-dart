@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ClusterIssueCode {
+enum ClusterIssueCode implements pulumi.PulumiEnum<String> {
   accessDenied("AccessDenied"),
   clusterUnreachable("ClusterUnreachable"),
   configurationConflict("ConfigurationConflict"),
@@ -21,6 +23,7 @@ enum ClusterIssueCode {
   vpcNotFound("VpcNotFound");
 
   const ClusterIssueCode(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterIssueCode fromValue(String value) {

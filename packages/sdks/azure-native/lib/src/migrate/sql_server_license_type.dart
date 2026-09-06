@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server version.
-enum SqlServerLicenseType {
+enum SqlServerLicenseType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   enterprise("Enterprise"),
   standard("Standard");
 
   const SqlServerLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlServerLicenseType fromValue(String value) {

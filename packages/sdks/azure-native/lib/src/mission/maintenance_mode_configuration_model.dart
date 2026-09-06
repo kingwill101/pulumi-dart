@@ -6,21 +6,21 @@ import 'principal.dart';
 /// Maintenance Mode
 class MaintenanceModeConfigurationModel {
   /// Justification for entering or exiting Maintenance Mode
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<dynamic>? justification;
   /// Current mode of Maintenance Mode Configuration
-  final pulumi.Input<String> mode;
+  final pulumi.Input<dynamic> mode;
   /// The user, group or service principal object affected by Maintenance Mode
-  final pulumi.Input<List<Principal>>? principals;
+  final pulumi.Input<List<Principal>?>? principals;
 
   /// Creates a new [MaintenanceModeConfigurationModel].
   /// [justification] Justification for entering or exiting Maintenance Mode
   /// [mode] Current mode of Maintenance Mode Configuration
   /// [principals] The user, group or service principal object affected by Maintenance Mode
-  const MaintenanceModeConfigurationModel({
-    this.justification,
-    required this.mode,
+  MaintenanceModeConfigurationModel({
+    pulumi.Input<dynamic>? justification,
+    pulumi.Input<dynamic>? mode,
     this.principals,
-  });
+  }) : justification = justification ?? pulumi.Input.fromValue('Off'), mode = mode ?? pulumi.Input.fromValue('Off');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +32,8 @@ class MaintenanceModeConfigurationModel {
 
   factory MaintenanceModeConfigurationModel.fromMap(Map<String, dynamic> map) {
     return MaintenanceModeConfigurationModel(
-      justification: (() { final guardedValue = map['justification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: pulumi.Input.fromValue(map['mode'] as String),
+      justification: (() { final guardedValue = map['justification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      mode: pulumi.Input.fromValue(map['mode']),
       principals: (() { final guardedValue = map['principals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Principal>(guardedValue, (value) => Principal.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

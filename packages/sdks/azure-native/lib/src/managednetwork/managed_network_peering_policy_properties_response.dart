@@ -8,13 +8,13 @@ class ManagedNetworkPeeringPolicyPropertiesResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Gets or sets the hub virtual network ID
-  final pulumi.Input<ResourceIdResponse>? hub;
+  final pulumi.Input<ResourceIdResponse?>? hub;
   /// Gets or sets the mesh group IDs
-  final pulumi.Input<List<ResourceIdResponse>>? mesh;
+  final pulumi.Input<List<ResourceIdResponse>?>? mesh;
   /// Provisioning state of the ManagedNetwork resource.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the spokes group IDs
-  final pulumi.Input<List<ResourceIdResponse>>? spokes;
+  final pulumi.Input<List<ResourceIdResponse>?>? spokes;
   /// Gets or sets the connectivity type of a network structure policy
   final pulumi.Input<String> type;
 

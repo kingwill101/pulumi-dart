@@ -6,23 +6,23 @@ import 'system_data_response.dart';
 /// Result data returned by getCapacityPoolCache.
 class GetCapacityPoolCacheResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// "If etag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.")
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Cache properties
-  final CachePropertiesResponse properties;
+  final CachePropertiesResponse? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The availability zones.
   final List<String>? zones;
 
@@ -38,44 +38,44 @@ class GetCapacityPoolCacheResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] The availability zones.
   const GetCapacityPoolCacheResult({
-    required this.azureApiVersion,
-    required this.etag,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.properties,
-    required this.systemData,
+    this.azureApiVersion,
+    this.etag,
+    this.id,
+    this.location,
+    this.name,
+    this.properties,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.zones,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'etag': etag,
-      'id': id,
-      'location': location,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'etag': ?etag,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'zones': ?zones,
     };
   }
 
   factory GetCapacityPoolCacheResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityPoolCacheResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      properties: CachePropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return CachePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

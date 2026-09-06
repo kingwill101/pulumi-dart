@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceNetworkInterfaceAssociation
 class InstanceNetworkInterfaceAssociation {
   /// &lt;p&gt;The carrier IP address associated with the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? carrierIp;
+  final pulumi.Input<String?>? carrierIp;
   /// &lt;p&gt;The customer-owned IP address associated with the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? customerOwnedIp;
+  final pulumi.Input<String?>? customerOwnedIp;
   /// &lt;p&gt;The ID of the owner of the Elastic IP address.&lt;/p&gt;
-  final pulumi.Input<String>? ipOwnerId;
+  final pulumi.Input<String?>? ipOwnerId;
   /// &lt;p&gt;The public DNS name.&lt;/p&gt;
-  final pulumi.Input<String>? publicDnsName;
+  final pulumi.Input<String?>? publicDnsName;
   /// &lt;p&gt;The public IP address or Elastic IP address bound to the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? publicIp;
+  final pulumi.Input<String?>? publicIp;
 
   /// Creates a new [InstanceNetworkInterfaceAssociation].
   /// [carrierIp] &lt;p&gt;The carrier IP address associated with the network interface.&lt;/p&gt;

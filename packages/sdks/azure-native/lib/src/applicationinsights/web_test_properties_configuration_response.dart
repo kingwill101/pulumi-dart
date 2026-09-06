@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An XML configuration specification for a WebTest.
 class WebTestPropertiesConfigurationResponse {
   /// The XML specification of a WebTest to run against an application.
-  final pulumi.Input<String>? webTest;
+  final pulumi.Input<String?>? webTest;
 
   /// Creates a new [WebTestPropertiesConfigurationResponse].
   /// [webTest] The XML specification of a WebTest to run against an application.

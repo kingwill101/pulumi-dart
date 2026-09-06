@@ -7,7 +7,7 @@ class RegistryEndpointUserAssignedManagedIdentitySettingsResponse {
   /// Client ID for the user-assigned managed identity.
   final pulumi.Input<String> clientId;
   /// Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// Tenant ID.
   final pulumi.Input<String> tenantId;
 

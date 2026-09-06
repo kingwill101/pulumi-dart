@@ -7,15 +7,15 @@ import 'transport_preferences_response.dart';
 /// Preferences related to the order
 class PreferencesResponse {
   /// Preferences related to the Encryption.
-  final pulumi.Input<EncryptionPreferencesResponse>? encryptionPreferences;
+  final pulumi.Input<EncryptionPreferencesResponse?>? encryptionPreferences;
   /// Preferred data center region.
-  final pulumi.Input<List<String>>? preferredDataCenterRegion;
+  final pulumi.Input<List<String>?>? preferredDataCenterRegion;
   /// Optional Preferences related to the reverse shipment logistics of the sku.
-  final pulumi.Input<TransportPreferencesResponse>? reverseTransportPreferences;
+  final pulumi.Input<TransportPreferencesResponse?>? reverseTransportPreferences;
   /// Preferences related to the Access Tier of storage accounts.
-  final pulumi.Input<List<String>>? storageAccountAccessTierPreferences;
+  final pulumi.Input<List<String>?>? storageAccountAccessTierPreferences;
   /// Preferences related to the shipment logistics of the sku.
-  final pulumi.Input<TransportPreferencesResponse>? transportPreferences;
+  final pulumi.Input<TransportPreferencesResponse?>? transportPreferences;
 
   /// Creates a new [PreferencesResponse].
   /// [encryptionPreferences] Preferences related to the Encryption.

@@ -11,19 +11,19 @@ class EncryptionSetArgs {
   /// The name of the devcenter.
   final pulumi.Input<String> devCenterName;
   /// Devbox disk encryption enable or disable status. Indicates if Devbox disks encryption using DevCenter CMK is enabled or not.
-  final pulumi.Input<String>? devboxDisksEncryptionEnableStatus;
+  final pulumi.Input<dynamic>? devboxDisksEncryptionEnableStatus;
   /// The name of the devcenter encryption set.
-  final pulumi.Input<String>? encryptionSetName;
+  final pulumi.Input<String?>? encryptionSetName;
   /// Managed identity properties
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Key encryption key Url, versioned or non-versioned. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78 or https://contosovault.vault.azure.net/keys/contosokek.
-  final pulumi.Input<String>? keyEncryptionKeyUrl;
+  final pulumi.Input<String?>? keyEncryptionKeyUrl;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EncryptionSetArgs].
   /// [devCenterName] The name of the devcenter.
@@ -61,7 +61,7 @@ class EncryptionSetArgs {
   factory EncryptionSetArgs.fromMap(Map<String, dynamic> map) {
     return EncryptionSetArgs(
       devCenterName: pulumi.Input.fromValue(map['devCenterName'] as String),
-      devboxDisksEncryptionEnableStatus: (() { final guardedValue = map['devboxDisksEncryptionEnableStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      devboxDisksEncryptionEnableStatus: (() { final guardedValue = map['devboxDisksEncryptionEnableStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptionSetName: (() { final guardedValue = map['encryptionSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyEncryptionKeyUrl: (() { final guardedValue = map['keyEncryptionKeyUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

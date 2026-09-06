@@ -8,14 +8,14 @@ import 'collector_properties.dart';
 /// {@endtemplate}
 /// {@macro pulumi_migrate_server_collector_args_doc}
 class ServerCollectorArgs {
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
-  final pulumi.Input<CollectorProperties>? properties;
+  final pulumi.Input<CollectorProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Unique name of a Server collector within a project.
-  final pulumi.Input<String>? serverCollectorName;
+  final pulumi.Input<String?>? serverCollectorName;
 
   /// Creates a new [ServerCollectorArgs].
   /// [eTag] Optional.

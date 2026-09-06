@@ -10,7 +10,7 @@ class GetAvailabilityGroupListenerArgs {
   /// Name of the availability group listener.
   final pulumi.Input<String> availabilityGroupListenerName;
   /// The child resources to include in the response.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the SQL virtual machine group.

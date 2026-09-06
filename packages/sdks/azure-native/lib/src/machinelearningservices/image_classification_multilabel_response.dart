@@ -13,29 +13,29 @@ class ImageClassificationMultilabelResponse {
   /// [Required] Limit settings for the AutoML job.
   final pulumi.Input<ImageLimitSettingsResponse> limitSettings;
   /// Enum for setting log verbosity.
-  final pulumi.Input<String>? logVerbosity;
+  final pulumi.Input<String?>? logVerbosity;
   /// Settings used for training the model.
-  final pulumi.Input<ImageModelSettingsClassificationResponse>? modelSettings;
+  final pulumi.Input<ImageModelSettingsClassificationResponse?>? modelSettings;
   /// Primary metrics for classification multilabel tasks.
-  final pulumi.Input<String>? primaryMetric;
+  final pulumi.Input<String?>? primaryMetric;
   /// Search space for sampling different combinations of models and their hyperparameters.
-  final pulumi.Input<List<ImageModelDistributionSettingsClassificationResponse>>? searchSpace;
+  final pulumi.Input<List<ImageModelDistributionSettingsClassificationResponse>?>? searchSpace;
   /// Model sweeping and hyperparameter sweeping related settings.
-  final pulumi.Input<ImageSweepSettingsResponse>? sweepSettings;
+  final pulumi.Input<ImageSweepSettingsResponse?>? sweepSettings;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final pulumi.Input<String>? targetColumnName;
+  final pulumi.Input<String?>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'ImageClassificationMultilabel'.
   final pulumi.Input<String> taskType;
   /// [Required] Training data input.
   final pulumi.Input<MLTableJobInputResponse> trainingData;
   /// Validation data inputs.
-  final pulumi.Input<MLTableJobInputResponse>? validationData;
+  final pulumi.Input<MLTableJobInputResponse?>? validationData;
   /// The fraction of training dataset that needs to be set aside for validation purpose.
   /// Values between (0.0 , 1.0)
   /// Applied when validation dataset is not provided.
-  final pulumi.Input<double>? validationDataSize;
+  final pulumi.Input<double?>? validationDataSize;
 
   /// Creates a new [ImageClassificationMultilabelResponse].
   /// [limitSettings] [Required] Limit settings for the AutoML job.
@@ -49,11 +49,11 @@ class ImageClassificationMultilabelResponse {
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
   /// [validationDataSize] The fraction of training dataset that needs to be set aside for validation purpose.
-  const ImageClassificationMultilabelResponse({
+  ImageClassificationMultilabelResponse({
     required this.limitSettings,
-    this.logVerbosity,
+    pulumi.Input<String?>? logVerbosity,
     this.modelSettings,
-    this.primaryMetric,
+    pulumi.Input<String?>? primaryMetric,
     this.searchSpace,
     this.sweepSettings,
     this.targetColumnName,
@@ -61,7 +61,7 @@ class ImageClassificationMultilabelResponse {
     required this.trainingData,
     this.validationData,
     this.validationDataSize,
-  });
+  }) : logVerbosity = logVerbosity ?? pulumi.Input.fromValue('Info'), primaryMetric = primaryMetric ?? pulumi.Input.fromValue('IOU');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -91,7 +91,7 @@ class ImageClassificationMultilabelResponse {
       taskType: pulumi.Input.fromValue(map['taskType'] as String),
       trainingData: pulumi.Input.fromValue(MLTableJobInputResponse.fromMap((map['trainingData']! as Map).cast<String, dynamic>())),
       validationData: (() { final guardedValue = map['validationData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MLTableJobInputResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      validationDataSize: (() { final guardedValue = map['validationDataSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      validationDataSize: (() { final guardedValue = map['validationDataSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

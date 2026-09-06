@@ -227,7 +227,33 @@ class PrivateZone extends pulumi.CustomResource {
     numberOfVirtualNetworkLinksWithRegistration = registerOutput<double>('numberOfVirtualNetworkLinksWithRegistration');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrivateZone] resource.
+  PrivateZone.reference(String urn)
+    : super(
+        'azure-native:privatedns:PrivateZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    internalId = registerOutput<String>('internalId');
+    location = registerOutput<String?>('location');
+    maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
+    maxNumberOfVirtualNetworkLinks = registerOutput<double>('maxNumberOfVirtualNetworkLinks');
+    maxNumberOfVirtualNetworkLinksWithRegistration = registerOutput<double>('maxNumberOfVirtualNetworkLinksWithRegistration');
+    this.name = registerOutput<String>('name');
+    numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
+    numberOfVirtualNetworkLinks = registerOutput<double>('numberOfVirtualNetworkLinks');
+    numberOfVirtualNetworkLinksWithRegistration = registerOutput<double>('numberOfVirtualNetworkLinksWithRegistration');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

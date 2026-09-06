@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The infrastructure the data controller is running on.
-enum Infrastructure {
+enum Infrastructure implements pulumi.PulumiEnum<String> {
   valueAzure("azure"),
   valueGcp("gcp"),
   valueAws("aws"),
@@ -8,6 +10,7 @@ enum Infrastructure {
   valueOther("other");
 
   const Infrastructure(this.wireValue);
+  @override
   final String wireValue;
 
   static Infrastructure fromValue(String value) {

@@ -8,31 +8,31 @@ import 'sccluster_network_environment_entity.dart';
 /// Spec of the cluster record
 class SCClusterSpecEntity {
   /// The Kafka API cluster endpoint
-  final pulumi.Input<String>? apiEndpoint;
+  final pulumi.Input<String?>? apiEndpoint;
   /// The availability zone configuration of the cluster
-  final pulumi.Input<String>? availability;
+  final pulumi.Input<String?>? availability;
   /// Specification of the cluster byok
-  final pulumi.Input<SCClusterByokEntity>? byok;
+  final pulumi.Input<SCClusterByokEntity?>? byok;
   /// The cloud service provider
-  final pulumi.Input<String>? cloud;
+  final pulumi.Input<String?>? cloud;
   /// Specification of the cluster configuration
-  final pulumi.Input<ClusterConfigEntity>? config;
+  final pulumi.Input<ClusterConfigEntity?>? config;
   /// Specification of the cluster environment
-  final pulumi.Input<SCClusterNetworkEnvironmentEntity>? environment;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntity?>? environment;
   /// The cluster HTTP request URL.
-  final pulumi.Input<String>? httpEndpoint;
+  final pulumi.Input<String?>? httpEndpoint;
   /// The bootstrap endpoint used by Kafka clients to connect to the cluster
-  final pulumi.Input<String>? kafkaBootstrapEndpoint;
+  final pulumi.Input<String?>? kafkaBootstrapEndpoint;
   /// The name of the cluster
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Specification of the cluster network
-  final pulumi.Input<SCClusterNetworkEnvironmentEntity>? network;
+  final pulumi.Input<SCClusterNetworkEnvironmentEntity?>? network;
   /// Stream governance configuration
-  final pulumi.Input<String>? package;
+  final pulumi.Input<dynamic>? package;
   /// The cloud service provider region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// type of zone availability
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [SCClusterSpecEntity].
   /// [apiEndpoint] The Kafka API cluster endpoint
@@ -94,7 +94,7 @@ class SCClusterSpecEntity {
       kafkaBootstrapEndpoint: (() { final guardedValue = map['kafkaBootstrapEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SCClusterNetworkEnvironmentEntity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      package: (() { final guardedValue = map['package']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

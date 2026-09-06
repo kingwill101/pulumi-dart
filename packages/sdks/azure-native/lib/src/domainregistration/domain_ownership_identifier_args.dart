@@ -10,11 +10,11 @@ class DomainOwnershipIdentifierArgs {
   /// Name of domain.
   final pulumi.Input<String> domainName;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of identifier.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Ownership Id.
-  final pulumi.Input<String>? ownershipId;
+  final pulumi.Input<String?>? ownershipId;
   /// Name of the resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
 

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserAssignedIdentityProperties {
   /// ARM ID of user Identity selected for encryption
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [UserAssignedIdentityProperties].
   /// [userAssignedIdentity] ARM ID of user Identity selected for encryption

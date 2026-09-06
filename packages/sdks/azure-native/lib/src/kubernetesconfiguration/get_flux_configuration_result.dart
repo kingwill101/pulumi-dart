@@ -11,51 +11,51 @@ import 'system_data_response.dart';
 /// Result data returned by getFluxConfiguration.
 class GetFluxConfigurationResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Parameters to reconcile to the AzureBlob source kind type.
   final AzureBlobDefinitionResponse? azureBlob;
   /// Parameters to reconcile to the Bucket source kind type.
   final BucketDefinitionResponse? bucket;
   /// Combined status of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects.
-  final String complianceState;
+  final String? complianceState;
   /// Key-value pairs of protected configuration settings for the configuration
   final Map<String, String>? configurationProtectedSettings;
   /// Error message returned to the user in the case of provisioning failure.
-  final String errorMessage;
+  final String? errorMessage;
   /// Parameters to reconcile to the GitRepository source kind type.
   final GitRepositoryDefinitionResponse? gitRepository;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
   final Map<String, KustomizationDefinitionResponse>? kustomizations;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The namespace to which this configuration is installed to. Maximum of 253 lower case alphanumeric characters, hyphen and period only.
   final String? namespace;
   /// Status of the creation of the fluxConfiguration.
-  final String provisioningState;
+  final String? provisioningState;
   /// Maximum duration to wait for flux configuration reconciliation. E.g PT1H, PT5M, P1D
   final String? reconciliationWaitDuration;
   /// Public Key associated with this fluxConfiguration (either generated within the cluster or provided by the user).
-  final String repositoryPublicKey;
+  final String? repositoryPublicKey;
   /// Scope at which the operator will be installed.
   final String? scope;
   /// Source Kind to pull the configuration data from.
   final String? sourceKind;
   /// Branch and/or SHA of the source commit synced with the cluster.
-  final String sourceSyncedCommitId;
+  final String? sourceSyncedCommitId;
   /// Datetime the fluxConfiguration synced its source on the cluster.
-  final String sourceUpdatedAt;
+  final String? sourceUpdatedAt;
   /// Datetime the fluxConfiguration synced its status on the cluster with Azure.
-  final String statusUpdatedAt;
+  final String? statusUpdatedAt;
   /// Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
-  final List<ObjectStatusDefinitionResponse> statuses;
+  final List<ObjectStatusDefinitionResponse>? statuses;
   /// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
   final bool? suspend;
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
   final bool? waitForReconciliation;
 
@@ -84,87 +84,87 @@ class GetFluxConfigurationResult {
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [waitForReconciliation] Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
-  const GetFluxConfigurationResult({
-    required this.azureApiVersion,
+  GetFluxConfigurationResult({
+    this.azureApiVersion,
     this.azureBlob,
     this.bucket,
-    required this.complianceState,
+    this.complianceState,
     this.configurationProtectedSettings,
-    required this.errorMessage,
+    this.errorMessage,
     this.gitRepository,
-    required this.id,
+    this.id,
     this.kustomizations,
-    required this.name,
-    this.namespace,
-    required this.provisioningState,
+    this.name,
+    String? namespace,
+    this.provisioningState,
     this.reconciliationWaitDuration,
-    required this.repositoryPublicKey,
+    this.repositoryPublicKey,
     this.scope,
-    this.sourceKind,
-    required this.sourceSyncedCommitId,
-    required this.sourceUpdatedAt,
-    required this.statusUpdatedAt,
-    required this.statuses,
-    this.suspend,
-    required this.systemData,
-    required this.type,
+    String? sourceKind,
+    this.sourceSyncedCommitId,
+    this.sourceUpdatedAt,
+    this.statusUpdatedAt,
+    this.statuses,
+    bool? suspend,
+    this.systemData,
+    this.type,
     this.waitForReconciliation,
-  });
+  }) : namespace = namespace ?? 'default', sourceKind = sourceKind ?? 'GitRepository', suspend = suspend ?? false;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'azureBlob': ?azureBlob?.toMap(),
       'bucket': ?bucket?.toMap(),
-      'complianceState': complianceState,
+      'complianceState': ?complianceState,
       'configurationProtectedSettings': ?configurationProtectedSettings,
-      'errorMessage': errorMessage,
+      'errorMessage': ?errorMessage,
       'gitRepository': ?gitRepository?.toMap(),
-      'id': id,
+      'id': ?id,
       'kustomizations': ?(() { final guardedValue = kustomizations; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<KustomizationDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'name': name,
+      'name': ?name,
       'namespace': ?namespace,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'reconciliationWaitDuration': ?reconciliationWaitDuration,
-      'repositoryPublicKey': repositoryPublicKey,
+      'repositoryPublicKey': ?repositoryPublicKey,
       'scope': ?scope,
       'sourceKind': ?sourceKind,
-      'sourceSyncedCommitId': sourceSyncedCommitId,
-      'sourceUpdatedAt': sourceUpdatedAt,
-      'statusUpdatedAt': statusUpdatedAt,
-      'statuses': pulumi.Input.encodeList<ObjectStatusDefinitionResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
+      'sourceSyncedCommitId': ?sourceSyncedCommitId,
+      'sourceUpdatedAt': ?sourceUpdatedAt,
+      'statusUpdatedAt': ?statusUpdatedAt,
+      'statuses': ?(() { final guardedValue = statuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<ObjectStatusDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'suspend': ?suspend,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'waitForReconciliation': ?waitForReconciliation,
     };
   }
 
   factory GetFluxConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetFluxConfigurationResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureBlob: (() { final guardedValue = map['azureBlob']; if (guardedValue == null) return null; return AzureBlobDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       bucket: (() { final guardedValue = map['bucket']; if (guardedValue == null) return null; return BucketDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      complianceState: map['complianceState'] as String,
+      complianceState: (() { final guardedValue = map['complianceState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       configurationProtectedSettings: (() { final guardedValue = map['configurationProtectedSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      errorMessage: map['errorMessage'] as String,
+      errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gitRepository: (() { final guardedValue = map['gitRepository']; if (guardedValue == null) return null; return GitRepositoryDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kustomizations: (() { final guardedValue = map['kustomizations']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<KustomizationDefinitionResponse>(guardedValue, (value) => KustomizationDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       reconciliationWaitDuration: (() { final guardedValue = map['reconciliationWaitDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      repositoryPublicKey: map['repositoryPublicKey'] as String,
+      repositoryPublicKey: (() { final guardedValue = map['repositoryPublicKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceKind: (() { final guardedValue = map['sourceKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      sourceSyncedCommitId: map['sourceSyncedCommitId'] as String,
-      sourceUpdatedAt: map['sourceUpdatedAt'] as String,
-      statusUpdatedAt: map['statusUpdatedAt'] as String,
-      statuses: pulumi.Input.decodeList<ObjectStatusDefinitionResponse>(map['statuses']!, (value) => ObjectStatusDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      sourceSyncedCommitId: (() { final guardedValue = map['sourceSyncedCommitId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceUpdatedAt: (() { final guardedValue = map['sourceUpdatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusUpdatedAt: (() { final guardedValue = map['statusUpdatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectStatusDefinitionResponse>(guardedValue, (value) => ObjectStatusDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       suspend: (() { final guardedValue = map['suspend']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       waitForReconciliation: (() { final guardedValue = map['waitForReconciliation']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

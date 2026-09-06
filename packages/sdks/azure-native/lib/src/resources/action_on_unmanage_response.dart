@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the behavior of resources that are no longer managed after the stack is updated or deleted.
 class ActionOnUnmanageResponse {
   /// Specifies an action for a newly unmanaged resource management group.
-  final pulumi.Input<String>? managementGroups;
+  final pulumi.Input<String?>? managementGroups;
   /// Specifies an action for a newly unmanaged resource group.
-  final pulumi.Input<String>? resourceGroups;
+  final pulumi.Input<String?>? resourceGroups;
   /// Specifies an action for a newly unmanaged resource.
   final pulumi.Input<String> resources;
 

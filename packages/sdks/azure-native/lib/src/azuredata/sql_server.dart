@@ -222,4 +222,23 @@ class SqlServer extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }
+
+  /// Creates a typed reference to an existing [SqlServer] resource.
+  SqlServer.reference(String urn)
+    : super(
+        'azure-native:azuredata:SqlServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cores = registerOutput<int?>('cores');
+    edition = registerOutput<String?>('edition');
+    this.name = registerOutput<String>('name');
+    propertyBag = registerOutput<String?>('propertyBag');
+    registrationID = registerOutput<String?>('registrationID');
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
 }

@@ -292,14 +292,38 @@ class Hunt extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attackTactics = registerOutput<List<String>?>('attackTactics');
-    attackTechniques = registerOutput<List<String>?>('attackTechniques');
+    attackTactics = registerOutput<List<String>?>('attackTactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    attackTechniques = registerOutput<List<String>?>('attackTechniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');
     hypothesisStatus = registerOutput<String?>('hypothesisStatus');
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<HuntOwnerResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HuntOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String?>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Hunt] resource.
+  Hunt.reference(String urn)
+    : super(
+        'azure-native:securityinsights:Hunt',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attackTactics = registerOutput<List<String>?>('attackTactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    attackTechniques = registerOutput<List<String>?>('attackTechniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    hypothesisStatus = registerOutput<String?>('hypothesisStatus');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     owner = registerOutput<HuntOwnerResponse?>('owner', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HuntOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String?>('status');

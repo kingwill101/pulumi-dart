@@ -7,9 +7,9 @@ class SubscriptionFeatureRegistrationResponseProperties {
   /// The feature approval type.
   final pulumi.Input<String> approvalType;
   /// Authorization Profile
-  final pulumi.Input<AuthorizationProfileResponse>? authorizationProfile;
+  final pulumi.Input<AuthorizationProfileResponse?>? authorizationProfile;
   /// The feature description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The featureDisplayName.
   final pulumi.Input<String> displayName;
   /// The feature documentation link.
@@ -17,7 +17,7 @@ class SubscriptionFeatureRegistrationResponseProperties {
   /// The featureName.
   final pulumi.Input<String> featureName;
   /// Key-value pairs for meta data.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The providerNamespace.
   final pulumi.Input<String> providerNamespace;
   /// The feature registration date.
@@ -25,9 +25,9 @@ class SubscriptionFeatureRegistrationResponseProperties {
   /// The feature release date.
   final pulumi.Input<String> releaseDate;
   /// Indicates whether feature should be displayed in Portal.
-  final pulumi.Input<bool>? shouldFeatureDisplayInPortal;
+  final pulumi.Input<bool?>? shouldFeatureDisplayInPortal;
   /// The state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// The subscriptionId.
   final pulumi.Input<String> subscriptionId;
   /// The tenantId.
@@ -48,7 +48,7 @@ class SubscriptionFeatureRegistrationResponseProperties {
   /// [state] The state.
   /// [subscriptionId] The subscriptionId.
   /// [tenantId] The tenantId.
-  const SubscriptionFeatureRegistrationResponseProperties({
+  SubscriptionFeatureRegistrationResponseProperties({
     required this.approvalType,
     this.authorizationProfile,
     this.description,
@@ -59,11 +59,11 @@ class SubscriptionFeatureRegistrationResponseProperties {
     required this.providerNamespace,
     required this.registrationDate,
     required this.releaseDate,
-    this.shouldFeatureDisplayInPortal,
+    pulumi.Input<bool?>? shouldFeatureDisplayInPortal,
     this.state,
     required this.subscriptionId,
     required this.tenantId,
-  });
+  }) : shouldFeatureDisplayInPortal = shouldFeatureDisplayInPortal ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

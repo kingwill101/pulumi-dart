@@ -8,18 +8,18 @@ class ManagedRuleSetException {
   /// List of values to be matched with.
   final pulumi.Input<List<String>> matchValues;
   /// The variable to be evaluated for excluding the request.
-  final pulumi.Input<String> matchVariable;
+  final pulumi.Input<dynamic> matchVariable;
   /// Scope(s) of the exception.
   final pulumi.Input<List<ManagedRuleSetScope>> scopes;
   /// When matchVariable is a collection, operator used to specify which elements
   /// in the collection this exception applies to.
   /// Currently supported only for RequestHeaderNames.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// Comparison operator to apply to the selector when specifying which elements
   /// in the collection this exception applies to.
-  final pulumi.Input<String>? selectorMatchOperator;
+  final pulumi.Input<dynamic>? selectorMatchOperator;
   /// Comparison operator to apply to the value to be matched.
-  final pulumi.Input<String> valueMatchOperator;
+  final pulumi.Input<dynamic> valueMatchOperator;
 
   /// Creates a new [ManagedRuleSetException].
   /// [matchValues] List of values to be matched with.
@@ -51,11 +51,11 @@ class ManagedRuleSetException {
   factory ManagedRuleSetException.fromMap(Map<String, dynamic> map) {
     return ManagedRuleSetException(
       matchValues: pulumi.Input.fromValue((map['matchValues'] as List).cast<String>()),
-      matchVariable: pulumi.Input.fromValue(map['matchVariable'] as String),
+      matchVariable: pulumi.Input.fromValue(map['matchVariable']),
       scopes: pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRuleSetScope>(map['scopes']!, (value) => ManagedRuleSetScope.fromMap((value as Map).cast<String, dynamic>()))),
       selector: (() { final guardedValue = map['selector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      selectorMatchOperator: (() { final guardedValue = map['selectorMatchOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      valueMatchOperator: pulumi.Input.fromValue(map['valueMatchOperator'] as String),
+      selectorMatchOperator: (() { final guardedValue = map['selectorMatchOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      valueMatchOperator: pulumi.Input.fromValue(map['valueMatchOperator']),
     );
   }
 }

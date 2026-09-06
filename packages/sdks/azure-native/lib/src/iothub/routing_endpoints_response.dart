@@ -10,15 +10,15 @@ import 'routing_storage_container_properties_response.dart';
 /// The properties related to the custom endpoints to which your IoT hub routes messages based on the routing rules. A maximum of 10 custom endpoints are allowed across all endpoint types for paid hubs and only 1 custom endpoint is allowed across all endpoint types for free hubs.
 class RoutingEndpointsResponse {
   /// The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingCosmosDBSqlApiPropertiesResponse>>? cosmosDBSqlContainers;
+  final pulumi.Input<List<RoutingCosmosDBSqlApiPropertiesResponse>?>? cosmosDBSqlContainers;
   /// The list of Event Hubs endpoints that IoT hub routes messages to, based on the routing rules. This list does not include the built-in Event Hubs endpoint.
-  final pulumi.Input<List<RoutingEventHubPropertiesResponse>>? eventHubs;
+  final pulumi.Input<List<RoutingEventHubPropertiesResponse>?>? eventHubs;
   /// The list of Service Bus queue endpoints that IoT hub routes the messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingServiceBusQueueEndpointPropertiesResponse>>? serviceBusQueues;
+  final pulumi.Input<List<RoutingServiceBusQueueEndpointPropertiesResponse>?>? serviceBusQueues;
   /// The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingServiceBusTopicEndpointPropertiesResponse>>? serviceBusTopics;
+  final pulumi.Input<List<RoutingServiceBusTopicEndpointPropertiesResponse>?>? serviceBusTopics;
   /// The list of storage container endpoints that IoT hub routes messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingStorageContainerPropertiesResponse>>? storageContainers;
+  final pulumi.Input<List<RoutingStorageContainerPropertiesResponse>?>? storageContainers;
 
   /// Creates a new [RoutingEndpointsResponse].
   /// [cosmosDBSqlContainers] The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules.

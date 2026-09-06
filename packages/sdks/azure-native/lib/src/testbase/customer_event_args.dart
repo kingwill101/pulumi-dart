@@ -9,7 +9,7 @@ import 'notification_event_receiver.dart';
 /// {@macro pulumi_testbase_customer_event_args_doc}
 class CustomerEventArgs {
   /// The resource name of the Test Base Customer event.
-  final pulumi.Input<String>? customerEventName;
+  final pulumi.Input<String?>? customerEventName;
   /// The name of the event subscribed to.
   final pulumi.Input<String> eventName;
   /// The notification event receivers.

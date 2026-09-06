@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Spark configuration reference type.
-enum SparkConfigurationReferenceType {
+enum SparkConfigurationReferenceType implements pulumi.PulumiEnum<String> {
   sparkConfigurationReference("SparkConfigurationReference");
 
   const SparkConfigurationReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SparkConfigurationReferenceType fromValue(String value) {

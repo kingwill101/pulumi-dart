@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Goal Template created by customer
-enum GoalType {
+enum GoalType implements pulumi.PulumiEnum<String> {
   resiliency("Resiliency");
 
   const GoalType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoalType fromValue(String value) {

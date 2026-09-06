@@ -26,6 +26,17 @@ Future<GetB2CTenantResult> getB2CTenant(
   return GetB2CTenantResult.fromMap(result);
 }
 
+pulumi.Output<GetB2CTenantResult> getB2CTenantOutput(
+  GetB2CTenantArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureactivedirectory:getB2CTenant',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetB2CTenantResult.fromMap);
+}
+
 /// Get the Azure AD for customers tenant resource.
 ///
 /// Uses Azure REST API version 2023-05-17-preview.
@@ -42,6 +53,17 @@ Future<GetCIAMTenantResult> getCIAMTenant(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCIAMTenantResult.fromMap(result);
+}
+
+pulumi.Output<GetCIAMTenantResult> getCIAMTenantOutput(
+  GetCIAMTenantArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureactivedirectory:getCIAMTenant',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCIAMTenantResult.fromMap);
 }
 
 /// Gets a Guest Usages resource for the Microsoft.AzureActiveDirectory resource provider
@@ -62,4 +84,15 @@ Future<GetGuestUsageResult> getGuestUsage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGuestUsageResult.fromMap(result);
+}
+
+pulumi.Output<GetGuestUsageResult> getGuestUsageOutput(
+  GetGuestUsageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azureactivedirectory:getGuestUsage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuestUsageResult.fromMap);
 }

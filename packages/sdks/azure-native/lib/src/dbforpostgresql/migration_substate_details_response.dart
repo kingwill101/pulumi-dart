@@ -8,9 +8,9 @@ import 'validation_details_response.dart';
 class MigrationSubstateDetailsResponse {
   /// Substate of migration.
   final pulumi.Input<String> currentSubState;
-  final pulumi.Input<Map<String, DatabaseMigrationStateResponse>>? dbDetails;
+  final pulumi.Input<Map<String, DatabaseMigrationStateResponse>?>? dbDetails;
   /// Details for the validation for migration.
-  final pulumi.Input<ValidationDetailsResponse>? validationDetails;
+  final pulumi.Input<ValidationDetailsResponse?>? validationDetails;
 
   /// Creates a new [MigrationSubstateDetailsResponse].
   /// [currentSubState] Substate of migration.

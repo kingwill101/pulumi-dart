@@ -7,15 +7,15 @@ import 'scheduled_actions_schedule.dart';
 /// Scheduled action properties
 class ScheduledActionProperties {
   /// The action the scheduled action should perform in the resources
-  final pulumi.Input<String> actionType;
+  final pulumi.Input<dynamic> actionType;
   /// Tell if the scheduled action is disabled or not
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The time when the scheduled action is supposed to stop scheduling
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The notification settings for the scheduled action
   final pulumi.Input<List<NotificationProperties>> notificationSettings;
   /// The type of resource the scheduled action is targeting
-  final pulumi.Input<String> resourceType;
+  final pulumi.Input<dynamic> resourceType;
   /// The schedule the scheduled action is supposed to follow
   final pulumi.Input<ScheduledActionsSchedule> schedule;
   /// The time which the scheduled action is supposed to start running
@@ -29,15 +29,15 @@ class ScheduledActionProperties {
   /// [resourceType] The type of resource the scheduled action is targeting
   /// [schedule] The schedule the scheduled action is supposed to follow
   /// [startTime] The time which the scheduled action is supposed to start running
-  const ScheduledActionProperties({
+  ScheduledActionProperties({
     required this.actionType,
-    this.disabled,
+    pulumi.Input<bool?>? disabled,
     this.endTime,
     required this.notificationSettings,
     required this.resourceType,
     required this.schedule,
     required this.startTime,
-  });
+  }) : disabled = disabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,11 +53,11 @@ class ScheduledActionProperties {
 
   factory ScheduledActionProperties.fromMap(Map<String, dynamic> map) {
     return ScheduledActionProperties(
-      actionType: pulumi.Input.fromValue(map['actionType'] as String),
+      actionType: pulumi.Input.fromValue(map['actionType']),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationSettings: pulumi.Input.fromValue(pulumi.Input.decodeList<NotificationProperties>(map['notificationSettings']!, (value) => NotificationProperties.fromMap((value as Map).cast<String, dynamic>()))),
-      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      resourceType: pulumi.Input.fromValue(map['resourceType']),
       schedule: pulumi.Input.fromValue(ScheduledActionsSchedule.fromMap((map['schedule']! as Map).cast<String, dynamic>())),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
     );

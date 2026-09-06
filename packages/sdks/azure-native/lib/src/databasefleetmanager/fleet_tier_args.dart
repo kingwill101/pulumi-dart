@@ -11,11 +11,11 @@ class FleetTierArgs {
   /// Name of the database fleet.
   final pulumi.Input<String> fleetName;
   /// A Fleet tier properties.
-  final pulumi.Input<FleetTierProperties>? properties;
+  final pulumi.Input<FleetTierProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the tier.
-  final pulumi.Input<String>? tierName;
+  final pulumi.Input<String?>? tierName;
 
   /// Creates a new [FleetTierArgs].
   /// [fleetName] Name of the database fleet.

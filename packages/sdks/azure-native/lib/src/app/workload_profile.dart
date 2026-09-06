@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Workload profile to scope container app execution.
 class WorkloadProfile {
   /// Whether to use a FIPS-enabled OS. Supported only for dedicated workload profiles.
-  final pulumi.Input<bool>? enableFips;
+  final pulumi.Input<bool?>? enableFips;
   /// The maximum capacity.
-  final pulumi.Input<int>? maximumCount;
+  final pulumi.Input<int?>? maximumCount;
   /// The minimum capacity.
-  final pulumi.Input<int>? minimumCount;
+  final pulumi.Input<int?>? minimumCount;
   /// Workload profile type for the workloads to run on.
   final pulumi.Input<String> name;
   /// Workload profile type for the workloads to run on.
@@ -21,13 +21,13 @@ class WorkloadProfile {
   /// [minimumCount] The minimum capacity.
   /// [name] Workload profile type for the workloads to run on.
   /// [workloadProfileType] Workload profile type for the workloads to run on.
-  const WorkloadProfile({
-    this.enableFips,
+  WorkloadProfile({
+    pulumi.Input<bool?>? enableFips,
     this.maximumCount,
     this.minimumCount,
     required this.name,
     required this.workloadProfileType,
-  });
+  }) : enableFips = enableFips ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,8 +42,8 @@ class WorkloadProfile {
   factory WorkloadProfile.fromMap(Map<String, dynamic> map) {
     return WorkloadProfile(
       enableFips: (() { final guardedValue = map['enableFips']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maximumCount: (() { final guardedValue = map['maximumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimumCount: (() { final guardedValue = map['minimumCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       workloadProfileType: pulumi.Input.fromValue(map['workloadProfileType'] as String),
     );

@@ -7,9 +7,9 @@ class ConnectorMappingStructureResponse {
   /// The column name of the import file.
   final pulumi.Input<String> columnName;
   /// Custom format specifier for input parsing.
-  final pulumi.Input<String>? customFormatSpecifier;
+  final pulumi.Input<String?>? customFormatSpecifier;
   /// Indicates if the column is encrypted.
-  final pulumi.Input<bool>? isEncrypted;
+  final pulumi.Input<bool?>? isEncrypted;
   /// The property name of the mapping entity.
   final pulumi.Input<String> propertyName;
 

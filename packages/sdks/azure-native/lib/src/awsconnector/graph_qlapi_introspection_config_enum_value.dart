@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of GraphQLApiIntrospectionConfigEnumValue
 class GraphQLApiIntrospectionConfigEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [GraphQLApiIntrospectionConfigEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class GraphQLApiIntrospectionConfigEnumValue {
 
   factory GraphQLApiIntrospectionConfigEnumValue.fromMap(Map<String, dynamic> map) {
     return GraphQLApiIntrospectionConfigEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

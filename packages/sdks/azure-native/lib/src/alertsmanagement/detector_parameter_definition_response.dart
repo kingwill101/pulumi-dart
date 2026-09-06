@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The detector parameter definition.
 class DetectorParameterDefinitionResponse {
   /// The detector parameter description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The detector parameter display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// A value indicating whether this detector parameter is mandatory.
-  final pulumi.Input<bool>? isMandatory;
+  final pulumi.Input<bool?>? isMandatory;
   /// The detector parameter name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The detector parameter type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DetectorParameterDefinitionResponse].
   /// [description] The detector parameter description.

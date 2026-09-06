@@ -1,4 +1,6 @@
-enum KeyPermissions {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KeyPermissions implements pulumi.PulumiEnum<String> {
   valueAll("all"),
   valueEncrypt("encrypt"),
   valueDecrypt("decrypt"),
@@ -22,6 +24,7 @@ enum KeyPermissions {
   valueSetrotationpolicy("setrotationpolicy");
 
   const KeyPermissions(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyPermissions fromValue(String value) {

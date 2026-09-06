@@ -7,11 +7,11 @@ import 'retention_duration.dart';
 /// Weekly retention schedule.
 class WeeklyRetentionSchedule {
   /// List of days of week for weekly retention policy.
-  final pulumi.Input<List<DayOfWeek>>? daysOfTheWeek;
+  final pulumi.Input<List<DayOfWeek>?>? daysOfTheWeek;
   /// Retention duration of retention Policy.
-  final pulumi.Input<RetentionDuration>? retentionDuration;
+  final pulumi.Input<RetentionDuration?>? retentionDuration;
   /// Retention times of retention policy.
-  final pulumi.Input<List<String>>? retentionTimes;
+  final pulumi.Input<List<String>?>? retentionTimes;
 
   /// Creates a new [WeeklyRetentionSchedule].
   /// [daysOfTheWeek] List of days of week for weekly retention policy.

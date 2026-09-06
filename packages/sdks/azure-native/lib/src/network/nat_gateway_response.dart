@@ -9,31 +9,31 @@ class NatGatewayResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The idle timeout of the nat gateway.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the NAT gateway resource.
   final pulumi.Input<String> provisioningState;
   /// An array of public ip addresses associated with the nat gateway resource.
-  final pulumi.Input<List<SubResourceResponse>>? publicIpAddresses;
+  final pulumi.Input<List<SubResourceResponse>?>? publicIpAddresses;
   /// An array of public ip prefixes associated with the nat gateway resource.
-  final pulumi.Input<List<SubResourceResponse>>? publicIpPrefixes;
+  final pulumi.Input<List<SubResourceResponse>?>? publicIpPrefixes;
   /// The resource GUID property of the NAT gateway resource.
   final pulumi.Input<String> resourceGuid;
   /// The nat gateway SKU.
-  final pulumi.Input<NatGatewaySkuResponse>? sku;
+  final pulumi.Input<NatGatewaySkuResponse?>? sku;
   /// An array of references to the subnets using this nat gateway resource.
   final pulumi.Input<List<SubResourceResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
   /// A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [NatGatewayResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.
@@ -90,7 +90,7 @@ class NatGatewayResponse {
     return NatGatewayResponse(
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),

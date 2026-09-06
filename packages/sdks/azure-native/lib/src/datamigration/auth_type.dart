@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Authentication type used for accessing Azure Blob Storage.
-enum AuthType {
+enum AuthType implements pulumi.PulumiEnum<String> {
   valueAccountKey("AccountKey"),
   valueManagedIdentity("ManagedIdentity");
 
   const AuthType(this.wireValue);
+  @override
   final String wireValue;
 
   static AuthType fromValue(String value) {

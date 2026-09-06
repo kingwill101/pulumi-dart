@@ -6,11 +6,11 @@ import 'metric_dimension_response.dart';
 /// The metric counter
 class MetricCounterResponse {
   /// The additional dimensions to be added to metric.
-  final pulumi.Input<List<MetricDimensionResponse>>? additionalDimensions;
+  final pulumi.Input<List<MetricDimensionResponse>?>? additionalDimensions;
   /// The dimension filter.
-  final pulumi.Input<List<MetricDimensionResponse>>? dimensionFilter;
+  final pulumi.Input<List<MetricDimensionResponse>?>? dimensionFilter;
   /// The instance from which counter should be collected.
-  final pulumi.Input<String>? instance;
+  final pulumi.Input<String?>? instance;
   /// The counter name.
   final pulumi.Input<String> name;
 

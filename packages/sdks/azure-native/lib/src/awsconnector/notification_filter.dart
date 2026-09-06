@@ -6,7 +6,7 @@ import 's3_key_filter.dart';
 /// Definition of NotificationFilter
 class NotificationFilter {
   /// A container for object key name prefix and suffix filtering rules. A container for object key name prefix and suffix filtering rules. For more information about object key name filtering, see [Configuring event notifications using object key name filtering](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-filtering.html) in the *Amazon S3 User Guide*.  The same type of filter rule cannot be used more than once. For example, you cannot specify two prefix rules.
-  final pulumi.Input<S3KeyFilter>? s3Key;
+  final pulumi.Input<S3KeyFilter?>? s3Key;
 
   /// Creates a new [NotificationFilter].
   /// [s3Key] A container for object key name prefix and suffix filtering rules. A container for object key name prefix and suffix filtering rules. For more information about object key name filtering, see [Configuring event notifications using object key name filtering](https://docs.aws.amazon.com/AmazonS3/latest/userguide/notification-how-to-filtering.html) in the *Amazon S3 User Guide*.  The same type of filter rule cannot be used more than once. For example, you cannot specify two prefix rules.

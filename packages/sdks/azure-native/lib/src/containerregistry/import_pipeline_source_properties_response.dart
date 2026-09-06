@@ -7,21 +7,21 @@ class ImportPipelineSourcePropertiesResponse {
   /// They key vault secret uri to obtain the source storage SAS token.
   final pulumi.Input<String> keyVaultUri;
   /// The type of source for the import pipeline.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The source uri of the import pipeline.
   /// When 'AzureStorageBlob': "https://accountName.blob.core.windows.net/containerName/blobName"
   /// When 'AzureStorageBlobContainer': "https://accountName.blob.core.windows.net/containerName"
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [ImportPipelineSourcePropertiesResponse].
   /// [keyVaultUri] They key vault secret uri to obtain the source storage SAS token.
   /// [type] The type of source for the import pipeline.
   /// [uri] The source uri of the import pipeline.
-  const ImportPipelineSourcePropertiesResponse({
+  ImportPipelineSourcePropertiesResponse({
     required this.keyVaultUri,
-    this.type,
+    pulumi.Input<String?>? type,
     this.uri,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('AzureStorageBlobContainer');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

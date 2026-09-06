@@ -59,12 +59,12 @@ class ServerEndpointSyncSessionStatusResponse {
     return ServerEndpointSyncSessionStatusResponse(
       filesNotSyncingErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ServerEndpointFilesNotSyncingErrorResponse>(map['filesNotSyncingErrors']!, (value) => ServerEndpointFilesNotSyncingErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       lastSyncMode: pulumi.Input.fromValue(map['lastSyncMode'] as String),
-      lastSyncPerItemErrorCount: pulumi.Input.fromValue(map['lastSyncPerItemErrorCount'] as double),
-      lastSyncResult: pulumi.Input.fromValue(map['lastSyncResult'] as int),
+      lastSyncPerItemErrorCount: pulumi.Input.fromValue((map['lastSyncPerItemErrorCount'] as num).toDouble()),
+      lastSyncResult: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lastSyncResult'])),
       lastSyncSuccessTimestamp: pulumi.Input.fromValue(map['lastSyncSuccessTimestamp'] as String),
       lastSyncTimestamp: pulumi.Input.fromValue(map['lastSyncTimestamp'] as String),
-      persistentFilesNotSyncingCount: pulumi.Input.fromValue(map['persistentFilesNotSyncingCount'] as double),
-      transientFilesNotSyncingCount: pulumi.Input.fromValue(map['transientFilesNotSyncingCount'] as double),
+      persistentFilesNotSyncingCount: pulumi.Input.fromValue((map['persistentFilesNotSyncingCount'] as num).toDouble()),
+      transientFilesNotSyncingCount: pulumi.Input.fromValue((map['transientFilesNotSyncingCount'] as num).toDouble()),
     );
   }
 }

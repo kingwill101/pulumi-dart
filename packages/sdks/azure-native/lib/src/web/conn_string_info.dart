@@ -6,11 +6,11 @@ import 'connection_string_type.dart';
 /// Database connection string information.
 class ConnStringInfo {
   /// Connection string value.
-  final pulumi.Input<String>? connectionString;
+  final pulumi.Input<String?>? connectionString;
   /// Name of connection string.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of database.
-  final pulumi.Input<ConnectionStringType>? type;
+  final pulumi.Input<ConnectionStringType?>? type;
 
   /// Creates a new [ConnStringInfo].
   /// [connectionString] Connection string value.

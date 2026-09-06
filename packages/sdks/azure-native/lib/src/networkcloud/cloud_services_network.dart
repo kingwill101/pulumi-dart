@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cloud_services_network_args.dart';
+import 'egress_endpoint_response.dart';
 import 'extended_location_response.dart';
 import 'system_data_response.dart';
 
@@ -279,7 +280,7 @@ import 'system_data_response.dart';
 /// ```
 class CloudServicesNetwork extends pulumi.CustomResource {
   /// The list of egress endpoints. This allows for connection from a Hybrid AKS cluster to the specified endpoint.
-  late final pulumi.Output<List<Map<String, dynamic>>?> additionalEgressEndpoints;
+  late final pulumi.Output<List<EgressEndpointResponse>?> additionalEgressEndpoints;
   /// The list of resource IDs for the other Microsoft.NetworkCloud resources that have attached this network.
   late final pulumi.Output<List<String>> associatedResourceIds;
   /// The Azure API version of the resource.
@@ -293,7 +294,7 @@ class CloudServicesNetwork extends pulumi.CustomResource {
   /// The indicator of whether the platform default endpoints are allowed for the egress traffic.
   late final pulumi.Output<String?> enableDefaultEgressEndpoints;
   /// The full list of additional and default egress endpoints that are currently enabled.
-  late final pulumi.Output<List<Map<String, dynamic>>> enabledEgressEndpoints;
+  late final pulumi.Output<List<EgressEndpointResponse>> enabledEgressEndpoints;
   /// Resource ETag.
   late final pulumi.Output<String> etag;
   /// The extended location of the cluster associated with the resource.
@@ -331,24 +332,54 @@ class CloudServicesNetwork extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    additionalEgressEndpoints = registerOutput<List<Map<String, dynamic>>?>('additionalEgressEndpoints');
-    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds');
+    additionalEgressEndpoints = registerOutput<List<EgressEndpointResponse>?>('additionalEgressEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EgressEndpointResponse>(guardedValue, (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clusterId = registerOutput<String>('clusterId');
     detailedStatus = registerOutput<String>('detailedStatus');
     detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
     enableDefaultEgressEndpoints = registerOutput<String?>('enableDefaultEgressEndpoints');
-    enabledEgressEndpoints = registerOutput<List<Map<String, dynamic>>>('enabledEgressEndpoints');
+    enabledEgressEndpoints = registerOutput<List<EgressEndpointResponse>>('enabledEgressEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EgressEndpointResponse>(guardedValue, (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds');
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interfaceName = registerOutput<String>('interfaceName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CloudServicesNetwork] resource.
+  CloudServicesNetwork.reference(String urn)
+    : super(
+        'azure-native:networkcloud:CloudServicesNetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalEgressEndpoints = registerOutput<List<EgressEndpointResponse>?>('additionalEgressEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EgressEndpointResponse>(guardedValue, (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    associatedResourceIds = registerOutput<List<String>>('associatedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String>('clusterId');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    enableDefaultEgressEndpoints = registerOutput<String?>('enableDefaultEgressEndpoints');
+    enabledEgressEndpoints = registerOutput<List<EgressEndpointResponse>>('enabledEgressEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EgressEndpointResponse>(guardedValue, (value) => EgressEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hybridAksClustersAssociatedIds = registerOutput<List<String>>('hybridAksClustersAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interfaceName = registerOutput<String>('interfaceName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualMachinesAssociatedIds = registerOutput<List<String>>('virtualMachinesAssociatedIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -6,7 +6,7 @@ import 'segment_terminator_suffix.dart';
 /// The X12 agreement framing settings.
 class X12FramingSettings {
   /// The X12 character set.
-  final pulumi.Input<String> characterSet;
+  final pulumi.Input<dynamic> characterSet;
   /// The component separator.
   final pulumi.Input<int> componentSeparator;
   /// The data element separator.
@@ -52,12 +52,12 @@ class X12FramingSettings {
 
   factory X12FramingSettings.fromMap(Map<String, dynamic> map) {
     return X12FramingSettings(
-      characterSet: pulumi.Input.fromValue(map['characterSet'] as String),
-      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
-      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
-      replaceCharacter: pulumi.Input.fromValue(map['replaceCharacter'] as int),
+      characterSet: pulumi.Input.fromValue(map['characterSet']),
+      componentSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['componentSeparator'])),
+      dataElementSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataElementSeparator'])),
+      replaceCharacter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replaceCharacter'])),
       replaceSeparatorsInPayload: pulumi.Input.fromValue(map['replaceSeparatorsInPayload'] as bool),
-      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      segmentTerminator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['segmentTerminator'])),
       segmentTerminatorSuffix: pulumi.Input.fromValue(SegmentTerminatorSuffix.fromValue(map['segmentTerminatorSuffix']! as String)),
     );
   }

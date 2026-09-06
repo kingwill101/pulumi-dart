@@ -13,11 +13,11 @@ class ForwardingRuleArgs {
   /// The domain name for the forwarding rule.
   final pulumi.Input<String> domainName;
   /// The name of the forwarding rule.
-  final pulumi.Input<String>? forwardingRuleName;
+  final pulumi.Input<String?>? forwardingRuleName;
   /// The state of forwarding rule.
-  final pulumi.Input<String>? forwardingRuleState;
+  final pulumi.Input<dynamic>? forwardingRuleState;
   /// Metadata attached to the forwarding rule.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// DNS servers to forward the DNS query to.
@@ -58,7 +58,7 @@ class ForwardingRuleArgs {
       dnsForwardingRulesetName: pulumi.Input.fromValue(map['dnsForwardingRulesetName'] as String),
       domainName: pulumi.Input.fromValue(map['domainName'] as String),
       forwardingRuleName: (() { final guardedValue = map['forwardingRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      forwardingRuleState: (() { final guardedValue = map['forwardingRuleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      forwardingRuleState: (() { final guardedValue = map['forwardingRuleState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       targetDnsServers: pulumi.Input.fromValue(pulumi.Input.decodeList<TargetDnsServer>(map['targetDnsServers']!, (value) => TargetDnsServer.fromMap((value as Map).cast<String, dynamic>()))),

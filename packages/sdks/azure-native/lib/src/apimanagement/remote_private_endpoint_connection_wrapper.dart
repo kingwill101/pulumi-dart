@@ -6,13 +6,13 @@ import 'private_link_service_connection_state.dart';
 /// Remote Private Endpoint Connection resource.
 class RemotePrivateEndpointConnectionWrapper {
   /// Private Endpoint connection resource id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Private Endpoint Connection Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// Private Endpoint Connection Resource Type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RemotePrivateEndpointConnectionWrapper].
   /// [id] Private Endpoint connection resource id

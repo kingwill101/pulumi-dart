@@ -5,8 +5,8 @@ import 'dynamic_routing_enrichment_response.dart';
 import 'static_string_routing_enrichment_response.dart';
 
 class RoutingEnrichmentsResponse {
-  final pulumi.Input<List<DynamicRoutingEnrichmentResponse>>? dynamic_;
-  final pulumi.Input<List<StaticStringRoutingEnrichmentResponse>>? static;
+  final pulumi.Input<List<DynamicRoutingEnrichmentResponse>?>? dynamic_;
+  final pulumi.Input<List<StaticStringRoutingEnrichmentResponse>?>? static;
 
   /// Creates a new [RoutingEnrichmentsResponse].
   /// [dynamic_] Optional.

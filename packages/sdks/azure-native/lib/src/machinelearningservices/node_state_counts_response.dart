@@ -46,12 +46,12 @@ class NodeStateCountsResponse {
 
   factory NodeStateCountsResponse.fromMap(Map<String, dynamic> map) {
     return NodeStateCountsResponse(
-      idleNodeCount: pulumi.Input.fromValue(map['idleNodeCount'] as int),
-      leavingNodeCount: pulumi.Input.fromValue(map['leavingNodeCount'] as int),
-      preemptedNodeCount: pulumi.Input.fromValue(map['preemptedNodeCount'] as int),
-      preparingNodeCount: pulumi.Input.fromValue(map['preparingNodeCount'] as int),
-      runningNodeCount: pulumi.Input.fromValue(map['runningNodeCount'] as int),
-      unusableNodeCount: pulumi.Input.fromValue(map['unusableNodeCount'] as int),
+      idleNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleNodeCount'])),
+      leavingNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['leavingNodeCount'])),
+      preemptedNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preemptedNodeCount'])),
+      preparingNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preparingNodeCount'])),
+      runningNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['runningNodeCount'])),
+      unusableNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unusableNodeCount'])),
     );
   }
 }

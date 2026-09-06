@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Regional data boundary for an image
-enum RegionalDataBoundary {
+enum RegionalDataBoundary implements pulumi.PulumiEnum<String> {
   none("None"),
   eU("EU");
 
   const RegionalDataBoundary(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionalDataBoundary fromValue(String value) {

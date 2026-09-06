@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU of the dedicated HSM
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueSafeNetLunaNetworkHSMA790("SafeNet Luna Network HSM A790"),
   valuePayShield10KLMK1CPS60("payShield10K_LMK1_CPS60"),
   valuePayShield10KLMK1CPS250("payShield10K_LMK1_CPS250"),
@@ -9,6 +11,7 @@ enum SkuName {
   valuePayShield10KLMK2CPS2500("payShield10K_LMK2_CPS2500");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

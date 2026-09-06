@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The valid value is Inventory
-enum InventoryRuleType {
+enum InventoryRuleType implements pulumi.PulumiEnum<String> {
   valueInventory("Inventory");
 
   const InventoryRuleType(this.wireValue);
+  @override
   final String wireValue;
 
   static InventoryRuleType fromValue(String value) {

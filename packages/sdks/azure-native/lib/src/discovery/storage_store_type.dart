@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The storage store kind.
-enum StorageStoreType {
+enum StorageStoreType implements pulumi.PulumiEnum<String> {
   azureStorageBlob("AzureStorageBlob"),
   azureNetAppFiles("AzureNetAppFiles");
 
   const StorageStoreType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageStoreType fromValue(String value) {

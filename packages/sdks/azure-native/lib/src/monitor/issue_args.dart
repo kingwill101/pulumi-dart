@@ -11,15 +11,15 @@ class IssueArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
   /// The name of the IssueResource
-  final pulumi.Input<String>? issueName;
+  final pulumi.Input<String?>? issueName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<IssueProperties>? properties;
+  final pulumi.Input<IssueProperties?>? properties;
   /// Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)
-  final pulumi.Input<String>? related;
+  final pulumi.Input<String?>? related;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Whether to automatically start an investigation once the issue is created (default: false)
-  final pulumi.Input<bool>? startInvestigation;
+  final pulumi.Input<bool?>? startInvestigation;
 
   /// Creates a new [IssueArgs].
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive

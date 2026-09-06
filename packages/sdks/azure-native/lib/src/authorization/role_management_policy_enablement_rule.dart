@@ -6,14 +6,14 @@ import 'role_management_policy_rule_target.dart';
 /// The role management policy enablement rule.
 class RoleManagementPolicyEnablementRule {
   /// The list of enabled rules.
-  final pulumi.Input<List<String>>? enabledRules;
+  final pulumi.Input<List<dynamic>?>? enabledRules;
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyEnablementRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTarget>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTarget?>? target;
 
   /// Creates a new [RoleManagementPolicyEnablementRule].
   /// [enabledRules] The list of enabled rules.
@@ -38,7 +38,7 @@ class RoleManagementPolicyEnablementRule {
 
   factory RoleManagementPolicyEnablementRule.fromMap(Map<String, dynamic> map) {
     return RoleManagementPolicyEnablementRule(
-      enabledRules: (() { final guardedValue = map['enabledRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      enabledRules: (() { final guardedValue = map['enabledRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleType: pulumi.Input.fromValue(map['ruleType'] as String),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RoleManagementPolicyRuleTarget.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

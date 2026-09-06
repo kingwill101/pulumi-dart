@@ -8,25 +8,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_gateway_hostname_configuration_args_doc}
 class GatewayHostnameConfigurationArgs {
   /// Identifier of Certificate entity that will be used for TLS connection establishment
-  final pulumi.Input<String>? certificateId;
+  final pulumi.Input<String?>? certificateId;
   /// Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   final pulumi.Input<String> gatewayId;
   /// Gateway hostname configuration identifier. Must be unique in the scope of parent Gateway entity.
-  final pulumi.Input<String>? hcId;
+  final pulumi.Input<String?>? hcId;
   /// Hostname value. Supports valid domain name, partial or full wildcard
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// Specifies if HTTP/2.0 is supported
-  final pulumi.Input<bool>? http2Enabled;
+  final pulumi.Input<bool?>? http2Enabled;
   /// Determines whether gateway requests client certificate
-  final pulumi.Input<bool>? negotiateClientCertificate;
+  final pulumi.Input<bool?>? negotiateClientCertificate;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Specifies if TLS 1.0 is supported
-  final pulumi.Input<bool>? tls10Enabled;
+  final pulumi.Input<bool?>? tls10Enabled;
   /// Specifies if TLS 1.1 is supported
-  final pulumi.Input<bool>? tls11Enabled;
+  final pulumi.Input<bool?>? tls11Enabled;
 
   /// Creates a new [GatewayHostnameConfigurationArgs].
   /// [certificateId] Identifier of Certificate entity that will be used for TLS connection establishment

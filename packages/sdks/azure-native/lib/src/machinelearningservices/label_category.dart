@@ -6,21 +6,21 @@ import 'label_class.dart';
 /// Label category definition
 class LabelCategory {
   /// Dictionary of label classes in this category.
-  final pulumi.Input<Map<String, LabelClass>>? classes;
+  final pulumi.Input<Map<String, LabelClass>?>? classes;
   /// Display name of the label category.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicates whether it is allowed to select multiple classes in this category.
-  final pulumi.Input<String>? multiSelect;
+  final pulumi.Input<dynamic>? multiSelect;
 
   /// Creates a new [LabelCategory].
   /// [classes] Dictionary of label classes in this category.
   /// [displayName] Display name of the label category.
   /// [multiSelect] Indicates whether it is allowed to select multiple classes in this category.
-  const LabelCategory({
+  LabelCategory({
     this.classes,
     this.displayName,
-    this.multiSelect,
-  });
+    pulumi.Input<dynamic>? multiSelect,
+  }) : multiSelect = multiSelect ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,7 +34,7 @@ class LabelCategory {
     return LabelCategory(
       classes: (() { final guardedValue = map['classes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<LabelClass>(guardedValue, (value) => LabelClass.fromMap((value as Map).cast<String, dynamic>()))); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      multiSelect: (() { final guardedValue = map['multiSelect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      multiSelect: (() { final guardedValue = map['multiSelect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -1,4 +1,6 @@
-enum WeekOfMonth {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum WeekOfMonth implements pulumi.PulumiEnum<String> {
   valueFirst("First"),
   valueSecond("Second"),
   valueThird("Third"),
@@ -7,6 +9,7 @@ enum WeekOfMonth {
   valueInvalid("Invalid");
 
   const WeekOfMonth(this.wireValue);
+  @override
   final String wireValue;
 
   static WeekOfMonth fromValue(String value) {

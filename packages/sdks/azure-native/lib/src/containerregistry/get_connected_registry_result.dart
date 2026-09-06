@@ -12,41 +12,41 @@ import 'system_data_response.dart';
 /// Result data returned by getConnectedRegistry.
 class GetConnectedRegistryResult {
   /// The activation properties of the connected registry.
-  final ActivationPropertiesResponse activation;
+  final ActivationPropertiesResponse? activation;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The list of the ACR token resource IDs used to authenticate clients to the connected registry.
   final List<String>? clientTokenIds;
   /// The current connection state of the connected registry.
-  final String connectionState;
+  final String? connectionState;
   /// The garbage collection properties of the connected registry.
   final GarbageCollectionPropertiesResponse? garbageCollection;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The last activity time of the connected registry.
-  final String lastActivityTime;
+  final String? lastActivityTime;
   /// The logging properties of the connected registry.
   final LoggingPropertiesResponse? logging;
   /// The login server properties of the connected registry.
   final LoginServerPropertiesResponse? loginServer;
   /// The mode of the connected registry resource that indicates the permissions of the registry.
-  final String mode;
+  final String? mode;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The list of notifications subscription information for the connected registry.
   final List<String>? notificationsList;
   /// The parent of the connected registry.
-  final ParentPropertiesResponse parent;
+  final ParentPropertiesResponse? parent;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The list of current statuses of the connected registry.
-  final List<StatusDetailPropertiesResponse> statusDetails;
+  final List<StatusDetailPropertiesResponse>? statusDetails;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource.
-  final String type;
+  final String? type;
   /// The current version of ACR runtime on the connected registry.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetConnectedRegistryResult].
   /// [activation] The activation properties of the connected registry.
@@ -68,69 +68,69 @@ class GetConnectedRegistryResult {
   /// [type] The type of the resource.
   /// [version] The current version of ACR runtime on the connected registry.
   const GetConnectedRegistryResult({
-    required this.activation,
-    required this.azureApiVersion,
+    this.activation,
+    this.azureApiVersion,
     this.clientTokenIds,
-    required this.connectionState,
+    this.connectionState,
     this.garbageCollection,
-    required this.id,
-    required this.lastActivityTime,
+    this.id,
+    this.lastActivityTime,
     this.logging,
     this.loginServer,
-    required this.mode,
-    required this.name,
+    this.mode,
+    this.name,
     this.notificationsList,
-    required this.parent,
-    required this.provisioningState,
-    required this.statusDetails,
-    required this.systemData,
-    required this.type,
-    required this.version,
+    this.parent,
+    this.provisioningState,
+    this.statusDetails,
+    this.systemData,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activation': activation.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'activation': ?activation?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
       'clientTokenIds': ?clientTokenIds,
-      'connectionState': connectionState,
+      'connectionState': ?connectionState,
       'garbageCollection': ?garbageCollection?.toMap(),
-      'id': id,
-      'lastActivityTime': lastActivityTime,
+      'id': ?id,
+      'lastActivityTime': ?lastActivityTime,
       'logging': ?logging?.toMap(),
       'loginServer': ?loginServer?.toMap(),
-      'mode': mode,
-      'name': name,
+      'mode': ?mode,
+      'name': ?name,
       'notificationsList': ?notificationsList,
-      'parent': parent.toMap(),
-      'provisioningState': provisioningState,
-      'statusDetails': pulumi.Input.encodeList<StatusDetailPropertiesResponse, Map<String, dynamic>>(statusDetails, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
-      'type': type,
-      'version': version,
+      'parent': ?parent?.toMap(),
+      'provisioningState': ?provisioningState,
+      'statusDetails': ?(() { final guardedValue = statusDetails; if (guardedValue == null) return null; return pulumi.Input.encodeList<StatusDetailPropertiesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetConnectedRegistryResult.fromMap(Map<String, dynamic> map) {
     return GetConnectedRegistryResult(
-      activation: ActivationPropertiesResponse.fromMap((map['activation']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
+      activation: (() { final guardedValue = map['activation']; if (guardedValue == null) return null; return ActivationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientTokenIds: (() { final guardedValue = map['clientTokenIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      connectionState: map['connectionState'] as String,
+      connectionState: (() { final guardedValue = map['connectionState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       garbageCollection: (() { final guardedValue = map['garbageCollection']; if (guardedValue == null) return null; return GarbageCollectionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      lastActivityTime: map['lastActivityTime'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastActivityTime: (() { final guardedValue = map['lastActivityTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return LoggingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       loginServer: (() { final guardedValue = map['loginServer']; if (guardedValue == null) return null; return LoginServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      mode: map['mode'] as String,
-      name: map['name'] as String,
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notificationsList: (() { final guardedValue = map['notificationsList']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      parent: ParentPropertiesResponse.fromMap((map['parent']! as Map).cast<String, dynamic>()),
-      provisioningState: map['provisioningState'] as String,
-      statusDetails: pulumi.Input.decodeList<StatusDetailPropertiesResponse>(map['statusDetails']!, (value) => StatusDetailPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      parent: (() { final guardedValue = map['parent']; if (guardedValue == null) return null; return ParentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusDetails: (() { final guardedValue = map['statusDetails']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusDetailPropertiesResponse>(guardedValue, (value) => StatusDetailPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

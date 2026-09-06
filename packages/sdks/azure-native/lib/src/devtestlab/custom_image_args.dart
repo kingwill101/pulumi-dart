@@ -12,33 +12,33 @@ import 'data_disk_storage_type_info.dart';
 /// {@macro pulumi_devtestlab_custom_image_args_doc}
 class CustomImageArgs {
   /// The author of the custom image.
-  final pulumi.Input<String>? author;
+  final pulumi.Input<String?>? author;
   /// Storage information about the plan related to this custom image
-  final pulumi.Input<CustomImagePropertiesFromPlan>? customImagePlan;
+  final pulumi.Input<CustomImagePropertiesFromPlan?>? customImagePlan;
   /// Storage information about the data disks present in the custom image
-  final pulumi.Input<List<DataDiskStorageTypeInfo>>? dataDiskStorageInfo;
+  final pulumi.Input<List<DataDiskStorageTypeInfo>?>? dataDiskStorageInfo;
   /// The description of the custom image.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether or not the custom images underlying offer/plan has been enabled for programmatic deployment
-  final pulumi.Input<bool>? isPlanAuthorized;
+  final pulumi.Input<bool?>? isPlanAuthorized;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Managed Image Id backing the custom image.
-  final pulumi.Input<String>? managedImageId;
+  final pulumi.Input<String?>? managedImageId;
   /// The Managed Snapshot Id backing the custom image.
-  final pulumi.Input<String>? managedSnapshotId;
+  final pulumi.Input<String?>? managedSnapshotId;
   /// The name of the CustomImage
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The VHD from which the image is to be created.
-  final pulumi.Input<CustomImagePropertiesCustom>? vhd;
+  final pulumi.Input<CustomImagePropertiesCustom?>? vhd;
   /// The virtual machine from which the image is to be created.
-  final pulumi.Input<CustomImagePropertiesFromVm>? vm;
+  final pulumi.Input<CustomImagePropertiesFromVm?>? vm;
 
   /// Creates a new [CustomImageArgs].
   /// [author] The author of the custom image.

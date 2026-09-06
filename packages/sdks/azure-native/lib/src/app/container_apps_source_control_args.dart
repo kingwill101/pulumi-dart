@@ -9,19 +9,19 @@ import 'github_action_configuration.dart';
 /// {@macro pulumi_app_container_apps_source_control_args_doc}
 class ContainerAppsSourceControlArgs {
   /// The branch which will trigger the auto deployment
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
   /// Container App Revision Template with all possible settings and the
   /// defaults if user did not provide them. The defaults are populated
   /// as they were at the creation time
-  final pulumi.Input<GithubActionConfiguration>? githubActionConfiguration;
+  final pulumi.Input<GithubActionConfiguration?>? githubActionConfiguration;
   /// The repo url which will be integrated to ContainerApp.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the Container App SourceControl.
-  final pulumi.Input<String>? sourceControlName;
+  final pulumi.Input<String?>? sourceControlName;
 
   /// Creates a new [ContainerAppsSourceControlArgs].
   /// [branch] The branch which will trigger the auto deployment

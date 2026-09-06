@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum HostnameType {
+enum HostnameType implements pulumi.PulumiEnum<String> {
   ipName("ip-name"),
   resourceName("resource-name");
 
   const HostnameType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostnameType fromValue(String value) {

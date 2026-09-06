@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LogAnalyticsConfiguration {
-  final pulumi.Input<String>? customerId;
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? customerId;
+  final pulumi.Input<String?>? sharedKey;
 
   /// Creates a new [LogAnalyticsConfiguration].
   /// [customerId] Optional.

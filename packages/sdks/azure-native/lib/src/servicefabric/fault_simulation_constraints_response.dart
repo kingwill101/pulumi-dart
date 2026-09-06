@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Constraints for Fault Simulation action.
 class FaultSimulationConstraintsResponse {
   /// The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.
-  final pulumi.Input<String>? expirationTime;
+  final pulumi.Input<String?>? expirationTime;
 
   /// Creates a new [FaultSimulationConstraintsResponse].
   /// [expirationTime] The absolute expiration timestamp (UTC) after which this fault simulation should be stopped if it's still active.

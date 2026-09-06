@@ -7,9 +7,9 @@ import 'target_cost_allocation_resource_response.dart';
 /// Resource details of the cost allocation rule
 class CostAllocationRuleDetailsResponse {
   /// Source resources for cost allocation. At this time, this list can contain no more than one element.
-  final pulumi.Input<List<SourceCostAllocationResourceResponse>>? sourceResources;
+  final pulumi.Input<List<SourceCostAllocationResourceResponse>?>? sourceResources;
   /// Target resources for cost allocation. At this time, this list can contain no more than one element.
-  final pulumi.Input<List<TargetCostAllocationResourceResponse>>? targetResources;
+  final pulumi.Input<List<TargetCostAllocationResourceResponse>?>? targetResources;
 
   /// Creates a new [CostAllocationRuleDetailsResponse].
   /// [sourceResources] Source resources for cost allocation. At this time, this list can contain no more than one element.

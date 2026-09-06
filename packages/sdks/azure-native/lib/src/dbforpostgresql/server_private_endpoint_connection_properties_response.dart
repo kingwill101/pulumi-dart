@@ -7,9 +7,9 @@ import 'server_private_link_service_connection_state_property_response.dart';
 /// Properties of a private endpoint connection.
 class ServerPrivateEndpointConnectionPropertiesResponse {
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointPropertyResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointPropertyResponse?>? privateEndpoint;
   /// Connection state of the private endpoint connection.
-  final pulumi.Input<ServerPrivateLinkServiceConnectionStatePropertyResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<ServerPrivateLinkServiceConnectionStatePropertyResponse?>? privateLinkServiceConnectionState;
   /// State of the private endpoint connection.
   final pulumi.Input<String> provisioningState;
 

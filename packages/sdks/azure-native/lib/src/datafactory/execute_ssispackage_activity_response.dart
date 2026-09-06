@@ -17,46 +17,46 @@ class ExecuteSSISPackageActivityResponse {
   /// The integration runtime reference.
   final pulumi.Input<IntegrationRuntimeReferenceResponse> connectVia;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The environment path to execute the SSIS package. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? environmentPath;
   /// The package execution credential.
-  final pulumi.Input<SSISExecutionCredentialResponse>? executionCredential;
+  final pulumi.Input<SSISExecutionCredentialResponse?>? executionCredential;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// SSIS package execution log location.
-  final pulumi.Input<SSISLogLocationResponse>? logLocation;
+  final pulumi.Input<SSISLogLocationResponse?>? logLocation;
   /// The logging level of SSIS package execution. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? loggingLevel;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// The package level connection managers to execute the SSIS package.
-  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>>? packageConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>?>? packageConnectionManagers;
   /// SSIS package location.
   final pulumi.Input<SSISPackageLocationResponse> packageLocation;
   /// The package level parameters to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISExecutionParameterResponse>>? packageParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameterResponse>?>? packageParameters;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// The project level connection managers to execute the SSIS package.
-  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>>? projectConnectionManagers;
+  final pulumi.Input<Map<String, Map<String, SSISExecutionParameterResponse>>?>? projectConnectionManagers;
   /// The project level parameters to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISExecutionParameterResponse>>? projectParameters;
+  final pulumi.Input<Map<String, SSISExecutionParameterResponse>?>? projectParameters;
   /// The property overrides to execute the SSIS package.
-  final pulumi.Input<Map<String, SSISPropertyOverrideResponse>>? propertyOverrides;
+  final pulumi.Input<Map<String, SSISPropertyOverrideResponse>?>? propertyOverrides;
   /// Specifies the runtime to execute SSIS package. The value should be "x86" or "x64". Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? runtime;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'ExecuteSSISPackage'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [ExecuteSSISPackageActivityResponse].
   /// [connectVia] The integration runtime reference.

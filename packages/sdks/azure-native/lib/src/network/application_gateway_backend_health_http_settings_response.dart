@@ -7,9 +7,9 @@ import 'application_gateway_backend_http_settings_response.dart';
 /// Application gateway BackendHealthHttp settings.
 class ApplicationGatewayBackendHealthHttpSettingsResponse {
   /// Reference to an ApplicationGatewayBackendHttpSettings resource.
-  final pulumi.Input<ApplicationGatewayBackendHttpSettingsResponse>? backendHttpSettings;
+  final pulumi.Input<ApplicationGatewayBackendHttpSettingsResponse?>? backendHttpSettings;
   /// List of ApplicationGatewayBackendHealthServer resources.
-  final pulumi.Input<List<ApplicationGatewayBackendHealthServerResponse>>? servers;
+  final pulumi.Input<List<ApplicationGatewayBackendHealthServerResponse>?>? servers;
 
   /// Creates a new [ApplicationGatewayBackendHealthHttpSettingsResponse].
   /// [backendHttpSettings] Reference to an ApplicationGatewayBackendHttpSettings resource.

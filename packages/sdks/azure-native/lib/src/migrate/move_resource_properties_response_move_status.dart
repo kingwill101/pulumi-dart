@@ -7,9 +7,9 @@ import 'move_resource_error_response.dart';
 /// Defines the move resource status.
 class MoveResourcePropertiesResponseMoveStatus {
   /// An error response from the azure resource mover service.
-  final pulumi.Input<MoveResourceErrorResponse>? errors;
+  final pulumi.Input<MoveResourceErrorResponse?>? errors;
   /// Defines the job status.
-  final pulumi.Input<JobStatusResponse>? jobStatus;
+  final pulumi.Input<JobStatusResponse?>? jobStatus;
   /// Defines the MoveResource states.
   final pulumi.Input<String> moveState;
 

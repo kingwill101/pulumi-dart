@@ -9,27 +9,27 @@ import 'source_control_security_token_properties.dart';
 /// {@macro pulumi_automation_source_control_args_doc}
 class SourceControlArgs {
   /// The auto async of the source control. Default is false.
-  final pulumi.Input<bool>? autoSync;
+  final pulumi.Input<bool?>? autoSync;
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The repo branch of the source control. Include branch as empty string for VsoTfvc.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// The user description of the source control.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The folder path of the source control. Path must be relative.
-  final pulumi.Input<String>? folderPath;
+  final pulumi.Input<String?>? folderPath;
   /// The auto publish of the source control. Default is true.
-  final pulumi.Input<bool>? publishRunbook;
+  final pulumi.Input<bool?>? publishRunbook;
   /// The repo url of the source control.
-  final pulumi.Input<String>? repoUrl;
+  final pulumi.Input<String?>? repoUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The authorization token for the repo of the source control.
-  final pulumi.Input<SourceControlSecurityTokenProperties>? securityToken;
+  final pulumi.Input<SourceControlSecurityTokenProperties?>? securityToken;
   /// The name of source control.
-  final pulumi.Input<String>? sourceControlName;
+  final pulumi.Input<String?>? sourceControlName;
   /// The source type. Must be one of VsoGit, VsoTfvc, GitHub, case sensitive.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<dynamic>? sourceType;
 
   /// Creates a new [SourceControlArgs].
   /// [autoSync] The auto async of the source control. Default is false.
@@ -85,7 +85,7 @@ class SourceControlArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       securityToken: (() { final guardedValue = map['securityToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SourceControlSecurityTokenProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sourceControlName: (() { final guardedValue = map['sourceControlName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

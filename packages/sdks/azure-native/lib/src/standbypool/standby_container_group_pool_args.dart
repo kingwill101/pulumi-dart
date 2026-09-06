@@ -14,13 +14,13 @@ class StandbyContainerGroupPoolArgs {
   /// Specifies elasticity profile of standby container group pools.
   final pulumi.Input<StandbyContainerGroupPoolElasticityProfile> elasticityProfile;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the standby container group pool
-  final pulumi.Input<String>? standbyContainerGroupPoolName;
+  final pulumi.Input<String?>? standbyContainerGroupPoolName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StandbyContainerGroupPoolArgs].
   /// [containerGroupProperties] Specifies container group properties of standby container group pools.

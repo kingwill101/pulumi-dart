@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for the cache-key query string action.
 class CacheKeyQueryStringActionParametersResponse {
   /// query parameters to include or exclude (comma separated).
-  final pulumi.Input<String>? queryParameters;
+  final pulumi.Input<String?>? queryParameters;
   /// Caching behavior for the requests
   final pulumi.Input<String> queryStringBehavior;
   /// Expected value is 'DeliveryRuleCacheKeyQueryStringBehaviorActionParameters'.

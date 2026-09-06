@@ -7,13 +7,13 @@ import 'validation_error_response.dart';
 /// Results for schema comparison between the source and target
 class SchemaComparisonValidationResultResponse {
   /// List of schema differences between the source and target databases
-  final pulumi.Input<SchemaComparisonValidationResultTypeResponse>? schemaDifferences;
+  final pulumi.Input<SchemaComparisonValidationResultTypeResponse?>? schemaDifferences;
   /// Count of source database objects
-  final pulumi.Input<Map<String, double>>? sourceDatabaseObjectCount;
+  final pulumi.Input<Map<String, double>?>? sourceDatabaseObjectCount;
   /// Count of target database objects
-  final pulumi.Input<Map<String, double>>? targetDatabaseObjectCount;
+  final pulumi.Input<Map<String, double>?>? targetDatabaseObjectCount;
   /// List of errors that happened while performing schema compare validation
-  final pulumi.Input<ValidationErrorResponse>? validationErrors;
+  final pulumi.Input<ValidationErrorResponse?>? validationErrors;
 
   /// Creates a new [SchemaComparisonValidationResultResponse].
   /// [schemaDifferences] List of schema differences between the source and target databases

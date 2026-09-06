@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The entity query kind
-enum EntityTimelineKind {
+enum EntityTimelineKind implements pulumi.PulumiEnum<String> {
   valueActivity("Activity"),
   valueBookmark("Bookmark"),
   valueSecurityAlert("SecurityAlert"),
   valueAnomaly("Anomaly");
 
   const EntityTimelineKind(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityTimelineKind fromValue(String value) {

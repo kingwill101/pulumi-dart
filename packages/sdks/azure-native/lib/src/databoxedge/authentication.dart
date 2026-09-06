@@ -6,7 +6,7 @@ import 'symmetric_key.dart';
 /// Authentication mechanism for IoT devices.
 class Authentication {
   /// Symmetric key for authentication.
-  final pulumi.Input<SymmetricKey>? symmetricKey;
+  final pulumi.Input<SymmetricKey?>? symmetricKey;
 
   /// Creates a new [Authentication].
   /// [symmetricKey] Symmetric key for authentication.

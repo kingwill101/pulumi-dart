@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata for expedited rollout.
 class ResourceProviderManagementExpeditedRolloutMetadataResponse {
   /// Expedited rollout enabled?
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Expedited rollout intent.
-  final pulumi.Input<String>? expeditedRolloutIntent;
+  final pulumi.Input<String?>? expeditedRolloutIntent;
 
   /// Creates a new [ResourceProviderManagementExpeditedRolloutMetadataResponse].
   /// [enabled] Expedited rollout enabled?

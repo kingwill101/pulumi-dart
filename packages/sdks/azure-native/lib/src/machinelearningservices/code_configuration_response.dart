@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for a scoring code asset.
 class CodeConfigurationResponse {
   /// ARM resource ID of the code asset.
-  final pulumi.Input<String>? codeId;
+  final pulumi.Input<String?>? codeId;
   /// [Required] The script to execute on startup. eg. "score.py"
   final pulumi.Input<String> scoringScript;
 

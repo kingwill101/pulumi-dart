@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the metadata of AzureFunctionOutputDataSource
 class AzureFunctionOutputDataSource {
   /// If you want to use an Azure Function from another subscription, you can do so by providing the key to access your function.
-  final pulumi.Input<String>? apiKey;
+  final pulumi.Input<String?>? apiKey;
   /// The name of your Azure Functions app.
-  final pulumi.Input<String>? functionAppName;
+  final pulumi.Input<String?>? functionAppName;
   /// The name of the function in your Azure Functions app.
-  final pulumi.Input<String>? functionName;
+  final pulumi.Input<String?>? functionName;
   /// A property that lets you specify the maximum number of events in each batch that's sent to Azure Functions. The default value is 100.
-  final pulumi.Input<double>? maxBatchCount;
+  final pulumi.Input<double?>? maxBatchCount;
   /// A property that lets you set the maximum size for each output batch that's sent to your Azure function. The input unit is in bytes. By default, this value is 262,144 bytes (256 KB).
-  final pulumi.Input<double>? maxBatchSize;
+  final pulumi.Input<double?>? maxBatchSize;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.AzureFunction'.
   final pulumi.Input<String> type;
@@ -50,8 +50,8 @@ class AzureFunctionOutputDataSource {
       apiKey: (() { final guardedValue = map['apiKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionAppName: (() { final guardedValue = map['functionAppName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       functionName: (() { final guardedValue = map['functionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxBatchCount: (() { final guardedValue = map['maxBatchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxBatchCount: (() { final guardedValue = map['maxBatchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      maxBatchSize: (() { final guardedValue = map['maxBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

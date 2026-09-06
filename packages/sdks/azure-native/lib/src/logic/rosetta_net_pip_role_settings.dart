@@ -11,7 +11,7 @@ class RosettaNetPipRoleSettings {
   /// The RosettaNet ProcessConfiguration business document.
   final pulumi.Input<RosettaNetPipBusinessDocument> businessDocument;
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The role name.
   final pulumi.Input<String> role;
   /// The RosettaNet ProcessConfiguration role type.

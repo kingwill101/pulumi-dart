@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Firewall Autoscale Configuration parameters.
 class AzureFirewallAutoscaleConfigurationResponse {
   /// The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
-  final pulumi.Input<int>? maxCapacity;
+  final pulumi.Input<int?>? maxCapacity;
   /// The minimum number of capacity units for this azure firewall. Use null to reset the value to the service default.
-  final pulumi.Input<int>? minCapacity;
+  final pulumi.Input<int?>? minCapacity;
 
   /// Creates a new [AzureFirewallAutoscaleConfigurationResponse].
   /// [maxCapacity] The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
@@ -26,8 +26,8 @@ class AzureFirewallAutoscaleConfigurationResponse {
 
   factory AzureFirewallAutoscaleConfigurationResponse.fromMap(Map<String, dynamic> map) {
     return AzureFirewallAutoscaleConfigurationResponse(
-      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxCapacity: (() { final guardedValue = map['maxCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minCapacity: (() { final guardedValue = map['minCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

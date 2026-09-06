@@ -10,13 +10,13 @@ class IotHubDataConnectionArgs {
   /// The iot hub consumer group.
   final pulumi.Input<String> consumerGroup;
   /// The name of the data connection.
-  final pulumi.Input<String>? dataConnectionName;
+  final pulumi.Input<String?>? dataConnectionName;
   /// The data format of the message. Optionally the data format can be added to each message.
-  final pulumi.Input<String>? dataFormat;
+  final pulumi.Input<dynamic>? dataFormat;
   /// The name of the database in the Kusto pool.
   final pulumi.Input<String> databaseName;
   /// System properties of the iot hub
-  final pulumi.Input<List<String>>? eventSystemProperties;
+  final pulumi.Input<List<String>?>? eventSystemProperties;
   /// The resource ID of the Iot hub to be used to create a data connection.
   final pulumi.Input<String> iotHubResourceId;
   /// Kind of the endpoint for the data connection
@@ -25,15 +25,15 @@ class IotHubDataConnectionArgs {
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
-  final pulumi.Input<String>? mappingRuleName;
+  final pulumi.Input<String?>? mappingRuleName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the share access policy
   final pulumi.Input<String> sharedAccessPolicyName;
   /// The table where the data should be ingested. Optionally the table information can be added to each message.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -92,7 +92,7 @@ class IotHubDataConnectionArgs {
     return IotHubDataConnectionArgs(
       consumerGroup: pulumi.Input.fromValue(map['consumerGroup'] as String),
       dataConnectionName: (() { final guardedValue = map['dataConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataFormat: (() { final guardedValue = map['dataFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       eventSystemProperties: (() { final guardedValue = map['eventSystemProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       iotHubResourceId: pulumi.Input.fromValue(map['iotHubResourceId'] as String),

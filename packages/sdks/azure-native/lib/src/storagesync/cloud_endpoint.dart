@@ -244,4 +244,29 @@ class CloudEndpoint extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CloudEndpoint] resource.
+  CloudEndpoint.reference(String urn)
+    : super(
+        'azure-native:storagesync:CloudEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureFileShareName = registerOutput<String?>('azureFileShareName');
+    backupEnabled = registerOutput<String>('backupEnabled');
+    changeEnumerationStatus = registerOutput<CloudEndpointChangeEnumerationStatusResponse>('changeEnumerationStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CloudEndpointChangeEnumerationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    lastOperationName = registerOutput<String?>('lastOperationName');
+    lastWorkflowId = registerOutput<String?>('lastWorkflowId');
+    this.name = registerOutput<String>('name');
+    partnershipId = registerOutput<String?>('partnershipId');
+    provisioningState = registerOutput<String?>('provisioningState');
+    storageAccountResourceId = registerOutput<String?>('storageAccountResourceId');
+    storageAccountTenantId = registerOutput<String?>('storageAccountTenantId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -2,17 +2,16 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'customer_data_storage_properties_response.dart';
-import 'list_selector_response.dart';
 import 'step_response.dart';
 
 /// Model that represents the Experiment properties model.
 class ExperimentPropertiesResponse {
   /// Optional customer-managed Storage account where Experiment schema will be stored.
-  final pulumi.Input<CustomerDataStoragePropertiesResponse>? customerDataStorage;
+  final pulumi.Input<CustomerDataStoragePropertiesResponse?>? customerDataStorage;
   /// Most recent provisioning state for the given experiment resource.
   final pulumi.Input<String> provisioningState;
   /// List of selectors.
-  final pulumi.Input<List<ListSelectorResponse>> selectors;
+  final pulumi.Input<List<dynamic>> selectors;
   /// List of steps.
   final pulumi.Input<List<StepResponse>> steps;
 
@@ -32,7 +31,7 @@ class ExperimentPropertiesResponse {
     return <String, dynamic>{
       'customerDataStorage': ?pulumi.Input.mapOptionalInputValue<CustomerDataStoragePropertiesResponse, Map<String, dynamic>>(customerDataStorage, (value) => value.toMap()),
       'provisioningState': provisioningState,
-      'selectors': pulumi.Input.mapInputValue<List<ListSelectorResponse>, List<Map<String, dynamic>>>(selectors, (value) => pulumi.Input.encodeList<ListSelectorResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'selectors': selectors,
       'steps': pulumi.Input.mapInputValue<List<StepResponse>, List<Map<String, dynamic>>>(steps, (value) => pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
@@ -41,7 +40,7 @@ class ExperimentPropertiesResponse {
     return ExperimentPropertiesResponse(
       customerDataStorage: (() { final guardedValue = map['customerDataStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CustomerDataStoragePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      selectors: pulumi.Input.fromValue(pulumi.Input.decodeList<ListSelectorResponse>(map['selectors']!, (value) => ListSelectorResponse.fromMap((value as Map).cast<String, dynamic>()))),
+      selectors: pulumi.Input.fromValue((map['selectors'] as List).cast<dynamic>()),
       steps: pulumi.Input.fromValue(pulumi.Input.decodeList<StepResponse>(map['steps']!, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Desired properties of the cluster.
 class ClusterDesiredPropertiesResponse {
   /// Desired level of diagnostic data emitted by the cluster.
-  final pulumi.Input<String>? diagnosticLevel;
+  final pulumi.Input<String?>? diagnosticLevel;
   /// Desired state of Windows Server Subscription.
-  final pulumi.Input<String>? windowsServerSubscription;
+  final pulumi.Input<String?>? windowsServerSubscription;
 
   /// Creates a new [ClusterDesiredPropertiesResponse].
   /// [diagnosticLevel] Desired level of diagnostic data emitted by the cluster.

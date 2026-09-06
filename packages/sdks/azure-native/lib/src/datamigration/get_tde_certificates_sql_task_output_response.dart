@@ -27,7 +27,7 @@ class GetTdeCertificatesSqlTaskOutputResponse {
 
   factory GetTdeCertificatesSqlTaskOutputResponse.fromMap(Map<String, dynamic> map) {
     return GetTdeCertificatesSqlTaskOutputResponse(
-      base64EncodedCertificates: pulumi.Input.fromValue((map['base64EncodedCertificates'] as Map).cast<String, List<String>>()),
+      base64EncodedCertificates: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(map['base64EncodedCertificates']!, (value) => (value as List).cast<String>())),
       validationErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ReportableExceptionResponse>(map['validationErrors']!, (value) => ReportableExceptionResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

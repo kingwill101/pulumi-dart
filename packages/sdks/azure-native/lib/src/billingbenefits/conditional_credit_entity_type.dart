@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of conditional credit entity
-enum ConditionalCreditEntityType {
+enum ConditionalCreditEntityType implements pulumi.PulumiEnum<String> {
   primary("Primary"),
   contributor("Contributor");
 
   const ConditionalCreditEntityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionalCreditEntityType fromValue(String value) {

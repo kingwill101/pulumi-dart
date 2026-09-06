@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workloads_sap_application_server_instance_args_doc}
 class SapApplicationServerInstanceArgs {
   /// The name of SAP Application Server instance resource.
-  final pulumi.Input<String>? applicationInstanceName;
+  final pulumi.Input<String?>? applicationInstanceName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Virtual Instances for SAP solutions resource
   final pulumi.Input<String> sapVirtualInstanceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SapApplicationServerInstanceArgs].
   /// [applicationInstanceName] The name of SAP Application Server instance resource.

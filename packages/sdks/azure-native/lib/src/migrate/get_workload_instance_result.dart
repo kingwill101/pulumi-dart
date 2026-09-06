@@ -6,58 +6,58 @@ import 'workload_instance_model_response_system_data.dart';
 /// Result data returned by getWorkloadInstance.
 class GetWorkloadInstanceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the Id of the resource.
-  final String id;
+  final String? id;
   /// Gets or sets the name of the resource.
-  final String name;
+  final String? name;
   /// Workload instance model properties.
-  final WorkloadInstanceModelPropertiesResponse properties;
-  final WorkloadInstanceModelResponseSystemData systemData;
+  final WorkloadInstanceModelPropertiesResponse? properties;
+  final WorkloadInstanceModelResponseSystemData? systemData;
   /// Gets or sets the resource tags.
   final Map<String, String>? tags;
   /// Gets or sets the type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWorkloadInstanceResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [id] Gets or sets the Id of the resource.
   /// [name] Gets or sets the name of the resource.
   /// [properties] Workload instance model properties.
-  /// [systemData] Required.
+  /// [systemData] Optional.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
   const GetWorkloadInstanceResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.systemData,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetWorkloadInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadInstanceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: WorkloadInstanceModelPropertiesResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: WorkloadInstanceModelResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return WorkloadInstanceModelPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return WorkloadInstanceModelResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

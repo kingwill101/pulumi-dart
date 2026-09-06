@@ -6,15 +6,15 @@ import 'compute_instance_environment_info_response.dart';
 /// Defines an Aml Instance container.
 class ComputeInstanceContainerResponse {
   /// Auto save settings.
-  final pulumi.Input<String>? autosave;
+  final pulumi.Input<String?>? autosave;
   /// Environment information of this container.
-  final pulumi.Input<ComputeInstanceEnvironmentInfoResponse>? environment;
+  final pulumi.Input<ComputeInstanceEnvironmentInfoResponse?>? environment;
   /// Information of GPU.
-  final pulumi.Input<String>? gpu;
+  final pulumi.Input<String?>? gpu;
   /// Name of the ComputeInstance container.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// network of this container.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// services of this containers.
   final pulumi.Input<List<dynamic>> services;
 

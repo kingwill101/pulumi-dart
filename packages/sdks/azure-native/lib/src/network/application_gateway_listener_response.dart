@@ -8,23 +8,23 @@ class ApplicationGatewayListenerResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Frontend IP configuration resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? frontendIPConfiguration;
+  final pulumi.Input<SubResourceResponse?>? frontendIPConfiguration;
   /// Frontend port resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? frontendPort;
+  final pulumi.Input<SubResourceResponse?>? frontendPort;
   /// List of Server Name Indications(SNI) for TLS Multi-site Listener that allows special wildcard characters as well.
-  final pulumi.Input<List<String>>? hostNames;
+  final pulumi.Input<List<String>?>? hostNames;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the listener that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Protocol of the listener.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// The provisioning state of the listener resource.
   final pulumi.Input<String> provisioningState;
   /// SSL certificate resource of an application gateway.
-  final pulumi.Input<SubResourceResponse>? sslCertificate;
+  final pulumi.Input<SubResourceResponse?>? sslCertificate;
   /// SSL profile resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? sslProfile;
+  final pulumi.Input<SubResourceResponse?>? sslProfile;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

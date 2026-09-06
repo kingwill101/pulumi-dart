@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU of an Azure Firewall.
 class AzureFirewallSkuResponse {
   /// Name of an Azure Firewall SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of an Azure Firewall.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [AzureFirewallSkuResponse].
   /// [name] Name of an Azure Firewall SKU.

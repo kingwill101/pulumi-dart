@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// WebApplication port mapping.
 class PortMappingResponse {
   /// Gets or sets the External Port.
-  final pulumi.Input<int>? externalPort;
+  final pulumi.Input<int?>? externalPort;
   /// Gets or sets the Internal Port.
-  final pulumi.Input<int>? internalPort;
+  final pulumi.Input<int?>? internalPort;
 
   /// Creates a new [PortMappingResponse].
   /// [externalPort] Gets or sets the External Port.
@@ -26,8 +26,8 @@ class PortMappingResponse {
 
   factory PortMappingResponse.fromMap(Map<String, dynamic> map) {
     return PortMappingResponse(
-      externalPort: (() { final guardedValue = map['externalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      internalPort: (() { final guardedValue = map['internalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      externalPort: (() { final guardedValue = map['externalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      internalPort: (() { final guardedValue = map['internalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

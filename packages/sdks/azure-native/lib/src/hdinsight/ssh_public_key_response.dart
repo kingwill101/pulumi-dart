@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SSH public key for the cluster nodes.
 class SshPublicKeyResponse {
   /// The certificate for SSH.
-  final pulumi.Input<String>? certificateData;
+  final pulumi.Input<String?>? certificateData;
 
   /// Creates a new [SshPublicKeyResponse].
   /// [certificateData] The certificate for SSH.

@@ -6,13 +6,13 @@ import 'modeling_input_data.dart';
 /// Modeling resource properties.
 class ModelingResourceProperties {
   /// Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
-  final pulumi.Input<String>? features;
+  final pulumi.Input<dynamic>? features;
   /// Modeling frequency controls the modeling compute frequency.
-  final pulumi.Input<String>? frequency;
+  final pulumi.Input<dynamic>? frequency;
   /// The configuration to raw CDM data to be used as Modeling resource input.
-  final pulumi.Input<ModelingInputData>? inputData;
+  final pulumi.Input<ModelingInputData?>? inputData;
   /// Modeling size controls the maximum supported input data size.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<dynamic>? size;
 
   /// Creates a new [ModelingResourceProperties].
   /// [features] Modeling features controls the set of supported scenarios\models being computed. This can only be set at Modeling creation.
@@ -37,10 +37,10 @@ class ModelingResourceProperties {
 
   factory ModelingResourceProperties.fromMap(Map<String, dynamic> map) {
     return ModelingResourceProperties(
-      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      frequency: (() { final guardedValue = map['frequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       inputData: (() { final guardedValue = map['inputData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelingInputData.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enabled configuration.
 class EnabledConfigResponse {
   /// True if configuration is enabled, false if it is disabled and null if configuration is not set.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [EnabledConfigResponse].
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.

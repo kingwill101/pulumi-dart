@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource properties when type is Azure Key Vault
 class AzureKeyVaultProperties {
   /// True if connect via Kubernetes CSI Driver.
-  final pulumi.Input<bool>? connectAsKubernetesCsiDriver;
+  final pulumi.Input<bool?>? connectAsKubernetesCsiDriver;
   /// The azure resource type.
   /// Expected value is 'KeyVault'.
   final pulumi.Input<String> type;

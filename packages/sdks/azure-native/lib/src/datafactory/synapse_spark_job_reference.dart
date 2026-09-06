@@ -7,7 +7,7 @@ class SynapseSparkJobReference {
   /// Reference spark job name. Expression with resultType string.
   final pulumi.Input<dynamic> referenceName;
   /// Synapse spark job reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [SynapseSparkJobReference].
   /// [referenceName] Reference spark job name. Expression with resultType string.
@@ -27,7 +27,7 @@ class SynapseSparkJobReference {
   factory SynapseSparkJobReference.fromMap(Map<String, dynamic> map) {
     return SynapseSparkJobReference(
       referenceName: pulumi.Input.fromValue(map['referenceName']),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

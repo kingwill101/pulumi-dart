@@ -24,6 +24,17 @@ Future<GetBotResult> getBot(
   return GetBotResult.fromMap(result);
 }
 
+pulumi.Output<GetBotResult> getBotOutput(
+  GetBotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthbot:getBot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotResult.fromMap);
+}
+
 /// List all secrets of a HealthBot.
 ///
 /// Uses Azure REST API version 2024-02-01.
@@ -42,4 +53,15 @@ Future<ListBotSecretsResult> listBotSecrets(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListBotSecretsResult.fromMap(result);
+}
+
+pulumi.Output<ListBotSecretsResult> listBotSecretsOutput(
+  ListBotSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:healthbot:listBotSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBotSecretsResult.fromMap);
 }

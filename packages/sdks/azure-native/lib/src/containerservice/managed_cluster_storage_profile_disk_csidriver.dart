@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AzureDisk CSI Driver settings for the storage profile.
 class ManagedClusterStorageProfileDiskCSIDriver {
   /// Whether to enable AzureDisk CSI Driver. The default value is true.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedClusterStorageProfileDiskCSIDriver].
   /// [enabled] Whether to enable AzureDisk CSI Driver. The default value is true.

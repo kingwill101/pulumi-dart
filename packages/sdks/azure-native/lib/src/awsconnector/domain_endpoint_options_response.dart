@@ -6,15 +6,15 @@ import 'tlssecurity_policy_enum_value_response.dart';
 /// Definition of DomainEndpointOptions
 class DomainEndpointOptionsResponse {
   /// &lt;p&gt;The fully qualified URL for the custom endpoint.&lt;/p&gt;
-  final pulumi.Input<String>? customEndpoint;
+  final pulumi.Input<String?>? customEndpoint;
   /// &lt;p&gt;The ARN for your security certificate, managed in Amazon Web Services Certificate Manager (ACM).&lt;/p&gt;
-  final pulumi.Input<String>? customEndpointCertificateArn;
+  final pulumi.Input<String?>? customEndpointCertificateArn;
   /// &lt;p&gt;Whether to enable a custom endpoint for the domain.&lt;/p&gt;
-  final pulumi.Input<bool>? customEndpointEnabled;
+  final pulumi.Input<bool?>? customEndpointEnabled;
   /// &lt;p&gt;True to require that all traffic to the domain arrive over HTTPS.&lt;/p&gt;
-  final pulumi.Input<bool>? enforceHTTPS;
+  final pulumi.Input<bool?>? enforceHTTPS;
   /// &lt;p&gt;Specify the TLS security policy to apply to the HTTPS endpoint of the domain. The policy can be one of the following values:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-0-2019-07:&lt;/b&gt; TLS security policy that supports TLS version 1.0 to TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-2019-07:&lt;/b&gt; TLS security policy that supports only TLS version 1.2&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;b&gt;Policy-Min-TLS-1-2-PFS-2023-10:&lt;/b&gt; TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<TLSSecurityPolicyEnumValueResponse>? tlsSecurityPolicy;
+  final pulumi.Input<TLSSecurityPolicyEnumValueResponse?>? tlsSecurityPolicy;
 
   /// Creates a new [DomainEndpointOptionsResponse].
   /// [customEndpoint] &lt;p&gt;The fully qualified URL for the custom endpoint.&lt;/p&gt;

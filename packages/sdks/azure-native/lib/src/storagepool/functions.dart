@@ -22,6 +22,17 @@ Future<GetDiskPoolResult> getDiskPool(
   return GetDiskPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskPoolResult> getDiskPoolOutput(
+  GetDiskPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagepool:getDiskPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskPoolResult.fromMap);
+}
+
 /// Get an iSCSI Target.
 ///
 /// Uses Azure REST API version 2021-08-01.
@@ -38,4 +49,15 @@ Future<GetIscsiTargetResult> getIscsiTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIscsiTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetIscsiTargetResult> getIscsiTargetOutput(
+  GetIscsiTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:storagepool:getIscsiTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIscsiTargetResult.fromMap);
 }

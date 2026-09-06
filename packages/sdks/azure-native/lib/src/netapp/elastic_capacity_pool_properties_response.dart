@@ -6,13 +6,13 @@ import 'elastic_encryption_configuration_response.dart';
 /// Elastic capacity pool properties
 class ElasticCapacityPoolPropertiesResponse {
   /// The Azure Resource URI for an Active Directory configuration. This is used by all the SMB volumes within the pool
-  final pulumi.Input<String>? activeDirectoryConfigResourceId;
+  final pulumi.Input<String?>? activeDirectoryConfigResourceId;
   /// Current availability status of the resource.
   final pulumi.Input<String> availabilityStatus;
   /// Indicates the current zone of the pool. This can be changed for zoneRedundant service level pool with the changeZone action
   final pulumi.Input<String> currentZone;
   /// Encryption settings
-  final pulumi.Input<ElasticEncryptionConfigurationResponse>? encryption;
+  final pulumi.Input<ElasticEncryptionConfigurationResponse?>? encryption;
   /// Azure lifecycle management.
   final pulumi.Input<String> provisioningState;
   /// The service level of the elastic capacity pool
@@ -68,9 +68,9 @@ class ElasticCapacityPoolPropertiesResponse {
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticEncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       serviceLevel: pulumi.Input.fromValue(map['serviceLevel'] as String),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       subnetResourceId: pulumi.Input.fromValue(map['subnetResourceId'] as String),
-      totalThroughputMibps: pulumi.Input.fromValue(map['totalThroughputMibps'] as double),
+      totalThroughputMibps: pulumi.Input.fromValue((map['totalThroughputMibps'] as num).toDouble()),
     );
   }
 }

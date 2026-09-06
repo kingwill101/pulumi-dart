@@ -9,15 +9,15 @@ import 'vault_model_properties.dart';
 /// {@macro pulumi_datareplication_vault_args_doc}
 class VaultArgs {
   /// Gets or sets the location of the vault.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Vault properties.
-  final pulumi.Input<VaultModelProperties>? properties;
+  final pulumi.Input<VaultModelProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The vault name.
-  final pulumi.Input<String>? vaultName;
+  final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [VaultArgs].
   /// [location] Gets or sets the location of the vault.

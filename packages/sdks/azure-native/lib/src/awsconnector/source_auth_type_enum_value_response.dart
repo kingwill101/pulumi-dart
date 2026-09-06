@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of SourceAuthTypeEnumValue
 class SourceAuthTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SourceAuthTypeEnumValueResponse].
   /// [value] Property value

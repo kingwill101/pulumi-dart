@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional App settings in vnet injection instance
 class AppVNetAddons {
   /// Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
-  final pulumi.Input<bool>? publicEndpoint;
+  final pulumi.Input<bool?>? publicEndpoint;
 
   /// Creates a new [AppVNetAddons].
   /// [publicEndpoint] Indicates whether the App in vnet injection instance exposes endpoint which could be accessed from internet.
-  const AppVNetAddons({
-    this.publicEndpoint,
-  });
+  AppVNetAddons({
+    pulumi.Input<bool?>? publicEndpoint,
+  }) : publicEndpoint = publicEndpoint ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

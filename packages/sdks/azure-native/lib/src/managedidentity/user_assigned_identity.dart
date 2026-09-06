@@ -217,7 +217,27 @@ class UserAssignedIdentity extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     principalId = registerOutput<String>('principalId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [UserAssignedIdentity] resource.
+  UserAssignedIdentity.reference(String urn)
+    : super(
+        'azure-native:managedidentity:UserAssignedIdentity',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientId = registerOutput<String>('clientId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
   }

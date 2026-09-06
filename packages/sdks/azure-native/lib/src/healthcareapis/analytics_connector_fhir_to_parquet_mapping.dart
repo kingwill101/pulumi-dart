@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// FHIR Service data mapping configuration for Analytics Connector.
 class AnalyticsConnectorFhirToParquetMapping {
   /// Artifact reference for extension schema.
-  final pulumi.Input<String>? extensionSchemaReference;
+  final pulumi.Input<String?>? extensionSchemaReference;
   /// Artifact reference for filter configurations.
-  final pulumi.Input<String>? filterConfigurationReference;
+  final pulumi.Input<String?>? filterConfigurationReference;
   /// Type of data mapping.
   /// Expected value is 'fhirToParquet'.
   final pulumi.Input<String> type;

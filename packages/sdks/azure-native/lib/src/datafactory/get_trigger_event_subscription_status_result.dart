@@ -4,29 +4,29 @@
 /// Result data returned by getTriggerEventSubscriptionStatus.
 class GetTriggerEventSubscriptionStatusResult {
   /// Event Subscription Status.
-  final String status;
+  final String? status;
   /// Trigger name.
-  final String triggerName;
+  final String? triggerName;
 
   /// Creates a new [GetTriggerEventSubscriptionStatusResult].
   /// [status] Event Subscription Status.
   /// [triggerName] Trigger name.
   const GetTriggerEventSubscriptionStatusResult({
-    required this.status,
-    required this.triggerName,
+    this.status,
+    this.triggerName,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'status': status,
-      'triggerName': triggerName,
+      'status': ?status,
+      'triggerName': ?triggerName,
     };
   }
 
   factory GetTriggerEventSubscriptionStatusResult.fromMap(Map<String, dynamic> map) {
     return GetTriggerEventSubscriptionStatusResult(
-      status: map['status'] as String,
-      triggerName: map['triggerName'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      triggerName: (() { final guardedValue = map['triggerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

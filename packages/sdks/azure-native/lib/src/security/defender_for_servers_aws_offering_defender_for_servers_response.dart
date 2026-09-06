@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Defender for servers connection configuration
 class DefenderForServersAwsOfferingDefenderForServersResponse {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderForServersAwsOfferingDefenderForServersResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

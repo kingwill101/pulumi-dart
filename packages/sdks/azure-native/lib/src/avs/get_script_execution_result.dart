@@ -1,53 +1,51 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
-import 'package:pulumi/pulumi.dart' as pulumi;
-import 'pscredential_execution_parameter_response.dart';
 import 'system_data_response.dart';
 
 /// Result data returned by getScriptExecution.
 class GetScriptExecutionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Standard error output stream from the powershell execution
-  final List<String> errors;
+  final List<String>? errors;
   /// Error message if the script was able to run, but if the script itself had
   /// errors or powershell threw an exception
   final String? failureReason;
   /// Time the script execution was finished
-  final String finishedAt;
+  final String? finishedAt;
   /// Parameters that will be hidden/not visible to ARM, such as passwords and
   /// credentials
-  final List<PSCredentialExecutionParameterResponse>? hiddenParameters;
+  final List<dynamic>? hiddenParameters;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Standard information out stream from the powershell execution
-  final List<String> information;
+  final List<String>? information;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// User-defined dictionary.
   final Map<String, dynamic>? namedOutputs;
   /// Standard output stream from the powershell execution
   final List<String>? output;
   /// Parameters the script will accept
-  final List<PSCredentialExecutionParameterResponse>? parameters;
+  final List<dynamic>? parameters;
   /// The state of the script execution resource
-  final String provisioningState;
+  final String? provisioningState;
   /// Time to live for the resource. If not provided, will be available for 60 days
   final String? retention;
   /// A reference to the script cmdlet resource if user is running a AVS script
   final String? scriptCmdletId;
   /// Time the script execution was started
-  final String startedAt;
+  final String? startedAt;
   /// Time the script execution was submitted
-  final String submittedAt;
+  final String? submittedAt;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Time limit for execution
-  final String timeout;
+  final String? timeout;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Standard warning out stream from the powershell execution
-  final List<String> warnings;
+  final List<String>? warnings;
 
   /// Creates a new [GetScriptExecutionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -71,75 +69,75 @@ class GetScriptExecutionResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [warnings] Standard warning out stream from the powershell execution
   const GetScriptExecutionResult({
-    required this.azureApiVersion,
-    required this.errors,
+    this.azureApiVersion,
+    this.errors,
     this.failureReason,
-    required this.finishedAt,
+    this.finishedAt,
     this.hiddenParameters,
-    required this.id,
-    required this.information,
-    required this.name,
+    this.id,
+    this.information,
+    this.name,
     this.namedOutputs,
     this.output,
     this.parameters,
-    required this.provisioningState,
+    this.provisioningState,
     this.retention,
     this.scriptCmdletId,
-    required this.startedAt,
-    required this.submittedAt,
-    required this.systemData,
-    required this.timeout,
-    required this.type,
-    required this.warnings,
+    this.startedAt,
+    this.submittedAt,
+    this.systemData,
+    this.timeout,
+    this.type,
+    this.warnings,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'errors': errors,
+      'azureApiVersion': ?azureApiVersion,
+      'errors': ?errors,
       'failureReason': ?failureReason,
-      'finishedAt': finishedAt,
-      'hiddenParameters': ?(() { final guardedValue = hiddenParameters; if (guardedValue == null) return null; return pulumi.Input.encodeList<PSCredentialExecutionParameterResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
-      'information': information,
-      'name': name,
+      'finishedAt': ?finishedAt,
+      'hiddenParameters': ?hiddenParameters,
+      'id': ?id,
+      'information': ?information,
+      'name': ?name,
       'namedOutputs': ?namedOutputs,
       'output': ?output,
-      'parameters': ?(() { final guardedValue = parameters; if (guardedValue == null) return null; return pulumi.Input.encodeList<PSCredentialExecutionParameterResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'provisioningState': provisioningState,
+      'parameters': ?parameters,
+      'provisioningState': ?provisioningState,
       'retention': ?retention,
       'scriptCmdletId': ?scriptCmdletId,
-      'startedAt': startedAt,
-      'submittedAt': submittedAt,
-      'systemData': systemData.toMap(),
-      'timeout': timeout,
-      'type': type,
-      'warnings': warnings,
+      'startedAt': ?startedAt,
+      'submittedAt': ?submittedAt,
+      'systemData': ?systemData?.toMap(),
+      'timeout': ?timeout,
+      'type': ?type,
+      'warnings': ?warnings,
     };
   }
 
   factory GetScriptExecutionResult.fromMap(Map<String, dynamic> map) {
     return GetScriptExecutionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      errors: (map['errors'] as List).cast<String>(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      errors: (() { final guardedValue = map['errors']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       failureReason: (() { final guardedValue = map['failureReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      finishedAt: map['finishedAt'] as String,
-      hiddenParameters: (() { final guardedValue = map['hiddenParameters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PSCredentialExecutionParameterResponse>(guardedValue, (value) => PSCredentialExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
-      information: (map['information'] as List).cast<String>(),
-      name: map['name'] as String,
+      finishedAt: (() { final guardedValue = map['finishedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hiddenParameters: (() { final guardedValue = map['hiddenParameters']; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      information: (() { final guardedValue = map['information']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namedOutputs: (() { final guardedValue = map['namedOutputs']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, dynamic>(); })(),
       output: (() { final guardedValue = map['output']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PSCredentialExecutionParameterResponse>(guardedValue, (value) => PSCredentialExecutionParameterResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      provisioningState: map['provisioningState'] as String,
+      parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       retention: (() { final guardedValue = map['retention']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scriptCmdletId: (() { final guardedValue = map['scriptCmdletId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      startedAt: map['startedAt'] as String,
-      submittedAt: map['submittedAt'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      timeout: map['timeout'] as String,
-      type: map['type'] as String,
-      warnings: (map['warnings'] as List).cast<String>(),
+      startedAt: (() { final guardedValue = map['startedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      submittedAt: (() { final guardedValue = map['submittedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      warnings: (() { final guardedValue = map['warnings']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

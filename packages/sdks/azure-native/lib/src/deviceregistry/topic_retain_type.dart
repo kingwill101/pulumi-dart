@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-enum TopicRetainType {
+enum TopicRetainType implements pulumi.PulumiEnum<String> {
   keep("Keep"),
   never_("Never");
 
   const TopicRetainType(this.wireValue);
+  @override
   final String wireValue;
 
   static TopicRetainType fromValue(String value) {

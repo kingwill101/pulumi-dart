@@ -14,7 +14,7 @@ class FlowProfilePropertiesResponse {
   /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
   final pulumi.Input<String> replicationScenario;
   /// A set of configurable rulesets applied to this FlowProfile.
-  final pulumi.Input<FlowProfileRulesetsResponse>? rulesets;
+  final pulumi.Input<FlowProfileRulesetsResponse?>? rulesets;
   /// The operational status of the FlowProfile.
   final pulumi.Input<String> status;
 

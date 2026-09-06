@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SparkResourceConfigurationResponse {
   /// Optional type of VM used as supported by the compute target.
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
   /// Version of spark runtime used for the job.
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
 
   /// Creates a new [SparkResourceConfigurationResponse].
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [runtimeVersion] Version of spark runtime used for the job.
-  const SparkResourceConfigurationResponse({
+  SparkResourceConfigurationResponse({
     this.instanceType,
-    this.runtimeVersion,
-  });
+    pulumi.Input<String?>? runtimeVersion,
+  }) : runtimeVersion = runtimeVersion ?? pulumi.Input.fromValue('3.1');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

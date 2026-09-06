@@ -12,27 +12,27 @@ class MdsResourceProperties {
   /// AAD Application Id.
   final pulumi.Input<String> aadApplicationId;
   /// AKS Admin Group Id.
-  final pulumi.Input<String>? aksAdminGroupId;
+  final pulumi.Input<String?>? aksAdminGroupId;
   /// Profile of CMK Settings.
-  final pulumi.Input<CmkProfile>? cmkProfile;
+  final pulumi.Input<CmkProfile?>? cmkProfile;
   /// Deny Assignments exclusion list.
-  final pulumi.Input<List<DenyAssignmentExclusion>>? denyAssignmentExclusions;
+  final pulumi.Input<List<DenyAssignmentExclusion>?>? denyAssignmentExclusions;
   /// Enable Copilot.
-  final pulumi.Input<bool>? enableCopilot;
+  final pulumi.Input<bool?>? enableCopilot;
   /// Enable Diagnostic Settings.
-  final pulumi.Input<bool>? enableDiagnosticSettings;
+  final pulumi.Input<bool?>? enableDiagnosticSettings;
   /// Profile of Fabric resources.
-  final pulumi.Input<FabricProfile>? fabricProfile;
+  final pulumi.Input<FabricProfile?>? fabricProfile;
   /// Profile of OpenAI Resource.
-  final pulumi.Input<OpenAIProfile>? openAIProfile;
+  final pulumi.Input<OpenAIProfile?>? openAIProfile;
   /// Zone redundancy state for resources
-  final pulumi.Input<String>? redundancyState;
+  final pulumi.Input<dynamic>? redundancyState;
   /// State of the resource
-  final pulumi.Input<String>? resourceState;
+  final pulumi.Input<dynamic>? resourceState;
   /// Profile of User Managed OpenAI Resource.
-  final pulumi.Input<UserManagedOpenAIProfile>? userManagedOpenAIProfile;
+  final pulumi.Input<UserManagedOpenAIProfile?>? userManagedOpenAIProfile;
   /// Mds Resource Version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MdsResourceProperties].
   /// [aadApplicationId] AAD Application Id.
@@ -47,9 +47,9 @@ class MdsResourceProperties {
   /// [resourceState] State of the resource
   /// [userManagedOpenAIProfile] Profile of User Managed OpenAI Resource.
   /// [version] Mds Resource Version.
-  const MdsResourceProperties({
+  MdsResourceProperties({
     required this.aadApplicationId,
-    this.aksAdminGroupId,
+    pulumi.Input<String?>? aksAdminGroupId,
     this.cmkProfile,
     this.denyAssignmentExclusions,
     this.enableCopilot,
@@ -60,7 +60,7 @@ class MdsResourceProperties {
     this.resourceState,
     this.userManagedOpenAIProfile,
     this.version,
-  });
+  }) : aksAdminGroupId = aksAdminGroupId ?? pulumi.Input.fromValue('00000000-0000-0000-0000-000000000000');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -89,8 +89,8 @@ class MdsResourceProperties {
       enableDiagnosticSettings: (() { final guardedValue = map['enableDiagnosticSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fabricProfile: (() { final guardedValue = map['fabricProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FabricProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       openAIProfile: (() { final guardedValue = map['openAIProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OpenAIProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      redundancyState: (() { final guardedValue = map['redundancyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      redundancyState: (() { final guardedValue = map['redundancyState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      resourceState: (() { final guardedValue = map['resourceState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userManagedOpenAIProfile: (() { final guardedValue = map['userManagedOpenAIProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserManagedOpenAIProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

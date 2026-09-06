@@ -10,19 +10,19 @@ import 'sku.dart';
 /// {@macro pulumi_storagepool_disk_pool_args_doc}
 class DiskPoolArgs {
   /// List of additional capabilities for a Disk Pool.
-  final pulumi.Input<List<String>>? additionalCapabilities;
+  final pulumi.Input<List<String>?>? additionalCapabilities;
   /// Logical zone for Disk Pool resource; example: ["1"].
-  final pulumi.Input<List<String>>? availabilityZones;
+  final pulumi.Input<List<String>?>? availabilityZones;
   /// The name of the Disk Pool.
-  final pulumi.Input<String>? diskPoolName;
+  final pulumi.Input<String?>? diskPoolName;
   /// List of Azure Managed Disks to attach to a Disk Pool.
-  final pulumi.Input<List<Disk>>? disks;
+  final pulumi.Input<List<Disk>?>? disks;
   /// The geo-location where the resource lives.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// List of Azure resource ids that manage this resource.
-  final pulumi.Input<List<String>>? managedByExtended;
+  final pulumi.Input<List<String>?>? managedByExtended;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Determines the SKU of the Disk Pool
@@ -30,7 +30,7 @@ class DiskPoolArgs {
   /// Azure Resource ID of a Subnet for the Disk Pool.
   final pulumi.Input<String> subnetId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DiskPoolArgs].
   /// [additionalCapabilities] List of additional capabilities for a Disk Pool.

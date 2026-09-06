@@ -30,6 +30,17 @@ Future<GetExperimentResult> getExperiment(
   return GetExperimentResult.fromMap(result);
 }
 
+pulumi.Output<GetExperimentResult> getExperimentOutput(
+  GetExperimentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:frontdoor:getExperiment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExperimentResult.fromMap);
+}
+
 /// Gets a Front Door with the specified Front Door name under the specified subscription and resource group.
 ///
 /// Uses Azure REST API version 2025-11-01.
@@ -48,6 +59,17 @@ Future<GetFrontDoorResult> getFrontDoor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFrontDoorResult.fromMap(result);
+}
+
+pulumi.Output<GetFrontDoorResult> getFrontDoorOutput(
+  GetFrontDoorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:frontdoor:getFrontDoor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFrontDoorResult.fromMap);
 }
 
 /// Gets an NetworkExperiment Profile by ProfileName
@@ -70,6 +92,17 @@ Future<GetNetworkExperimentProfileResult> getNetworkExperimentProfile(
   return GetNetworkExperimentProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkExperimentProfileResult> getNetworkExperimentProfileOutput(
+  GetNetworkExperimentProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:frontdoor:getNetworkExperimentProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkExperimentProfileResult.fromMap);
+}
+
 /// Retrieve protection policy with specified name within a resource group.
 ///
 /// Uses Azure REST API version 2025-11-01.
@@ -90,6 +123,17 @@ Future<GetPolicyResult> getPolicy(
   return GetPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyResult> getPolicyOutput(
+  GetPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:frontdoor:getPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyResult.fromMap);
+}
+
 /// Gets a Rules Engine Configuration with the specified name within the specified Front Door.
 ///
 /// Uses Azure REST API version 2025-11-01.
@@ -108,4 +152,15 @@ Future<GetRulesEngineResult> getRulesEngine(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRulesEngineResult.fromMap(result);
+}
+
+pulumi.Output<GetRulesEngineResult> getRulesEngineOutput(
+  GetRulesEngineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:frontdoor:getRulesEngine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRulesEngineResult.fromMap);
 }

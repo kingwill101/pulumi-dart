@@ -6,9 +6,9 @@ import 'dev_tool_portal_feature_detail.dart';
 /// Settings for Dev Tool Portal
 class DevToolPortalFeatureSettings {
   /// Detail of Accelerator plugin
-  final pulumi.Input<DevToolPortalFeatureDetail>? applicationAccelerator;
+  final pulumi.Input<DevToolPortalFeatureDetail?>? applicationAccelerator;
   /// Detail of App Live View plugin
-  final pulumi.Input<DevToolPortalFeatureDetail>? applicationLiveView;
+  final pulumi.Input<DevToolPortalFeatureDetail?>? applicationLiveView;
 
   /// Creates a new [DevToolPortalFeatureSettings].
   /// [applicationAccelerator] Detail of Accelerator plugin

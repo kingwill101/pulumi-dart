@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NGroups application gateway backend address pool
 class ApplicationGatewayBackendAddressPool {
   /// The application gateway backend address pool ARM resource Id.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ApplicationGatewayBackendAddressPool].
   /// [resource] The application gateway backend address pool ARM resource Id.

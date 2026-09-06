@@ -6,15 +6,15 @@ import 'data_encryption_type.dart';
 /// The date encryption for cmk.
 class DataEncryption {
   /// Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup
-  final pulumi.Input<String>? geoBackupKeyURI;
+  final pulumi.Input<String?>? geoBackupKeyURI;
   /// Geo backup user identity resource id as identity can't cross region, need identity in same region as geo backup
-  final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
+  final pulumi.Input<String?>? geoBackupUserAssignedIdentityId;
   /// Primary key uri
-  final pulumi.Input<String>? primaryKeyURI;
+  final pulumi.Input<String?>? primaryKeyURI;
   /// Primary user identity resource id
-  final pulumi.Input<String>? primaryUserAssignedIdentityId;
+  final pulumi.Input<String?>? primaryUserAssignedIdentityId;
   /// The key type, AzureKeyVault for enable cmk, SystemManaged for disable cmk.
-  final pulumi.Input<DataEncryptionType>? type;
+  final pulumi.Input<DataEncryptionType?>? type;
 
   /// Creates a new [DataEncryption].
   /// [geoBackupKeyURI] Geo backup key uri as key vault can't cross region, need cmk in same region as geo backup

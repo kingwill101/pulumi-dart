@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Access allowed by this rule.
-enum NfsAccessRuleAccess {
+enum NfsAccessRuleAccess implements pulumi.PulumiEnum<String> {
   valueNo("no"),
   valueRo("ro"),
   valueRw("rw");
 
   const NfsAccessRuleAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static NfsAccessRuleAccess fromValue(String value) {

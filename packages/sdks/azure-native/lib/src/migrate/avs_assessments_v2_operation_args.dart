@@ -9,11 +9,11 @@ import 'avs_assessment_properties_v2.dart';
 /// {@macro pulumi_migrate_avs_assessments_v2_operation_args_doc}
 class AvsAssessmentsV2OperationArgs {
   /// AVS Assessment ARM name
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<AvsAssessmentPropertiesV2>? properties;
+  final pulumi.Input<AvsAssessmentPropertiesV2?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

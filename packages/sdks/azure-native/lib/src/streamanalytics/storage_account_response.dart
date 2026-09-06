@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties that are associated with an Azure Storage account
 class StorageAccountResponse {
   /// The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountKey;
+  final pulumi.Input<String?>? accountKey;
   /// The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
 
   /// Creates a new [StorageAccountResponse].
   /// [accountKey] The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.

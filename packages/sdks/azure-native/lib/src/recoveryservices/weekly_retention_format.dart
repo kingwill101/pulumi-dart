@@ -7,9 +7,9 @@ import 'week_of_month.dart';
 /// Weekly retention format.
 class WeeklyRetentionFormat {
   /// List of days of the week.
-  final pulumi.Input<List<DayOfWeek>>? daysOfTheWeek;
+  final pulumi.Input<List<DayOfWeek>?>? daysOfTheWeek;
   /// List of weeks of month.
-  final pulumi.Input<List<WeekOfMonth>>? weeksOfTheMonth;
+  final pulumi.Input<List<WeekOfMonth>?>? weeksOfTheMonth;
 
   /// Creates a new [WeeklyRetentionFormat].
   /// [daysOfTheWeek] List of days of the week.

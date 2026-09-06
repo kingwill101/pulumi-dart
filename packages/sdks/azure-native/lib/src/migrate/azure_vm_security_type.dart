@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Azure Vm Security Type
-enum AzureVmSecurityType {
+enum AzureVmSecurityType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   standard("Standard"),
   tVM("TVM"),
   cVM("CVM");
 
   const AzureVmSecurityType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureVmSecurityType fromValue(String value) {

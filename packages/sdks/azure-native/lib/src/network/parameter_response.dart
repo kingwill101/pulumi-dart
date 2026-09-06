@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters for an Action.
 class ParameterResponse {
   /// List of AS paths.
-  final pulumi.Input<List<String>>? asPath;
+  final pulumi.Input<List<String>?>? asPath;
   /// List of BGP communities.
-  final pulumi.Input<List<String>>? community;
+  final pulumi.Input<List<String>?>? community;
   /// List of route prefixes.
-  final pulumi.Input<List<String>>? routePrefix;
+  final pulumi.Input<List<String>?>? routePrefix;
 
   /// Creates a new [ParameterResponse].
   /// [asPath] List of AS paths.

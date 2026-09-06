@@ -76,15 +76,15 @@ class VpnClientConnectionHealthDetailResponse {
 
   factory VpnClientConnectionHealthDetailResponse.fromMap(Map<String, dynamic> map) {
     return VpnClientConnectionHealthDetailResponse(
-      egressBytesTransferred: pulumi.Input.fromValue(map['egressBytesTransferred'] as double),
-      egressPacketsTransferred: pulumi.Input.fromValue(map['egressPacketsTransferred'] as double),
-      ingressBytesTransferred: pulumi.Input.fromValue(map['ingressBytesTransferred'] as double),
-      ingressPacketsTransferred: pulumi.Input.fromValue(map['ingressPacketsTransferred'] as double),
-      maxBandwidth: pulumi.Input.fromValue(map['maxBandwidth'] as double),
-      maxPacketsPerSecond: pulumi.Input.fromValue(map['maxPacketsPerSecond'] as double),
+      egressBytesTransferred: pulumi.Input.fromValue((map['egressBytesTransferred'] as num).toDouble()),
+      egressPacketsTransferred: pulumi.Input.fromValue((map['egressPacketsTransferred'] as num).toDouble()),
+      ingressBytesTransferred: pulumi.Input.fromValue((map['ingressBytesTransferred'] as num).toDouble()),
+      ingressPacketsTransferred: pulumi.Input.fromValue((map['ingressPacketsTransferred'] as num).toDouble()),
+      maxBandwidth: pulumi.Input.fromValue((map['maxBandwidth'] as num).toDouble()),
+      maxPacketsPerSecond: pulumi.Input.fromValue((map['maxPacketsPerSecond'] as num).toDouble()),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       publicIpAddress: pulumi.Input.fromValue(map['publicIpAddress'] as String),
-      vpnConnectionDuration: pulumi.Input.fromValue(map['vpnConnectionDuration'] as double),
+      vpnConnectionDuration: pulumi.Input.fromValue((map['vpnConnectionDuration'] as num).toDouble()),
       vpnConnectionId: pulumi.Input.fromValue(map['vpnConnectionId'] as String),
       vpnConnectionTime: pulumi.Input.fromValue(map['vpnConnectionTime'] as String),
       vpnUserName: pulumi.Input.fromValue(map['vpnUserName'] as String),

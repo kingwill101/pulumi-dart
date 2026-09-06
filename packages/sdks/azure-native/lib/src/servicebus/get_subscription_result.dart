@@ -7,17 +7,17 @@ import 'system_data_response.dart';
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// Last time there was a receive request to this subscription.
-  final String accessedAt;
+  final String? accessedAt;
   /// ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
   final String? autoDeleteOnIdle;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Properties specific to client affine subscriptions.
   final SBClientAffinePropertiesResponse? clientAffineProperties;
   /// Message count details
-  final MessageCountDetailsResponse countDetails;
+  final MessageCountDetailsResponse? countDetails;
   /// Exact time the message was created.
-  final String createdAt;
+  final String? createdAt;
   /// Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
   final bool? deadLetteringOnFilterEvaluationExceptions;
   /// Value that indicates whether a subscription has dead letter support when a message expires.
@@ -32,30 +32,32 @@ class GetSubscriptionResult {
   final String? forwardDeadLetteredMessagesTo;
   /// Queue/Topic name to forward the messages
   final String? forwardTo;
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
+  final String? id;
   /// Value that indicates whether the subscription has an affinity to the client id.
   final bool? isClientAffine;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
   final String? lockDuration;
   /// Number of maximum deliveries.
   final int? maxDeliveryCount;
   /// Number of messages.
-  final double messageCount;
+  final double? messageCount;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Value indicating if a subscription supports the concept of sessions.
   final bool? requiresSession;
   /// Enumerates the possible values for the status of a messaging entity.
   final String? status;
-  /// The system meta data relating to this resource.
-  final SystemDataResponse systemData;
-  /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  final String type;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  final SystemDataResponse? systemData;
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
+  final String? type;
   /// The exact time the message was updated.
-  final String updatedAt;
+  final String? updatedAt;
+  /// Gets and Sets Metadata of User.
+  final String? userMetadata;
 
   /// Creates a new [GetSubscriptionResult].
   /// [accessedAt] Last time there was a receive request to this subscription.
@@ -71,7 +73,7 @@ class GetSubscriptionResult {
   /// [enableBatchedOperations] Value that indicates whether server-side batched operations are enabled.
   /// [forwardDeadLetteredMessagesTo] Queue/Topic name to forward the Dead Letter message
   /// [forwardTo] Queue/Topic name to forward the messages
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [isClientAffine] Value that indicates whether the subscription has an affinity to the client id.
   /// [location] The geo-location where the resource lives
   /// [lockDuration] ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
@@ -80,16 +82,17 @@ class GetSubscriptionResult {
   /// [name] The name of the resource
   /// [requiresSession] Value indicating if a subscription supports the concept of sessions.
   /// [status] Enumerates the possible values for the status of a messaging entity.
-  /// [systemData] The system meta data relating to this resource.
-  /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] The exact time the message was updated.
+  /// [userMetadata] Gets and Sets Metadata of User.
   const GetSubscriptionResult({
-    required this.accessedAt,
+    this.accessedAt,
     this.autoDeleteOnIdle,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.clientAffineProperties,
-    required this.countDetails,
-    required this.createdAt,
+    this.countDetails,
+    this.createdAt,
     this.deadLetteringOnFilterEvaluationExceptions,
     this.deadLetteringOnMessageExpiration,
     this.defaultMessageTimeToLive,
@@ -97,28 +100,29 @@ class GetSubscriptionResult {
     this.enableBatchedOperations,
     this.forwardDeadLetteredMessagesTo,
     this.forwardTo,
-    required this.id,
+    this.id,
     this.isClientAffine,
-    required this.location,
+    this.location,
     this.lockDuration,
     this.maxDeliveryCount,
-    required this.messageCount,
-    required this.name,
+    this.messageCount,
+    this.name,
     this.requiresSession,
     this.status,
-    required this.systemData,
-    required this.type,
-    required this.updatedAt,
+    this.systemData,
+    this.type,
+    this.updatedAt,
+    this.userMetadata,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessedAt': accessedAt,
+      'accessedAt': ?accessedAt,
       'autoDeleteOnIdle': ?autoDeleteOnIdle,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clientAffineProperties': ?clientAffineProperties?.toMap(),
-      'countDetails': countDetails.toMap(),
-      'createdAt': createdAt,
+      'countDetails': ?countDetails?.toMap(),
+      'createdAt': ?createdAt,
       'deadLetteringOnFilterEvaluationExceptions': ?deadLetteringOnFilterEvaluationExceptions,
       'deadLetteringOnMessageExpiration': ?deadLetteringOnMessageExpiration,
       'defaultMessageTimeToLive': ?defaultMessageTimeToLive,
@@ -126,29 +130,30 @@ class GetSubscriptionResult {
       'enableBatchedOperations': ?enableBatchedOperations,
       'forwardDeadLetteredMessagesTo': ?forwardDeadLetteredMessagesTo,
       'forwardTo': ?forwardTo,
-      'id': id,
+      'id': ?id,
       'isClientAffine': ?isClientAffine,
-      'location': location,
+      'location': ?location,
       'lockDuration': ?lockDuration,
       'maxDeliveryCount': ?maxDeliveryCount,
-      'messageCount': messageCount,
-      'name': name,
+      'messageCount': ?messageCount,
+      'name': ?name,
       'requiresSession': ?requiresSession,
       'status': ?status,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'updatedAt': updatedAt,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'updatedAt': ?updatedAt,
+      'userMetadata': ?userMetadata,
     };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
-      accessedAt: map['accessedAt'] as String,
+      accessedAt: (() { final guardedValue = map['accessedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoDeleteOnIdle: (() { final guardedValue = map['autoDeleteOnIdle']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientAffineProperties: (() { final guardedValue = map['clientAffineProperties']; if (guardedValue == null) return null; return SBClientAffinePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      countDetails: MessageCountDetailsResponse.fromMap((map['countDetails']! as Map).cast<String, dynamic>()),
-      createdAt: map['createdAt'] as String,
+      countDetails: (() { final guardedValue = map['countDetails']; if (guardedValue == null) return null; return MessageCountDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deadLetteringOnFilterEvaluationExceptions: (() { final guardedValue = map['deadLetteringOnFilterEvaluationExceptions']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       deadLetteringOnMessageExpiration: (() { final guardedValue = map['deadLetteringOnMessageExpiration']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       defaultMessageTimeToLive: (() { final guardedValue = map['defaultMessageTimeToLive']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -156,18 +161,19 @@ class GetSubscriptionResult {
       enableBatchedOperations: (() { final guardedValue = map['enableBatchedOperations']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       forwardDeadLetteredMessagesTo: (() { final guardedValue = map['forwardDeadLetteredMessagesTo']; if (guardedValue == null) return null; return guardedValue as String; })(),
       forwardTo: (() { final guardedValue = map['forwardTo']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isClientAffine: (() { final guardedValue = map['isClientAffine']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lockDuration: (() { final guardedValue = map['lockDuration']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      messageCount: map['messageCount'] as double,
-      name: map['name'] as String,
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      messageCount: (() { final guardedValue = map['messageCount']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requiresSession: (() { final guardedValue = map['requiresSession']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      updatedAt: map['updatedAt'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userMetadata: (() { final guardedValue = map['userMetadata']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

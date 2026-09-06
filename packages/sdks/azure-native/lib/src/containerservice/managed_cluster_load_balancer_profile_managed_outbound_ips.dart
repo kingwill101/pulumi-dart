@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Desired managed outbound IPs for the cluster load balancer.
 class ManagedClusterLoadBalancerProfileManagedOutboundIPs {
   /// The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
-  final pulumi.Input<int>? count;
+  final pulumi.Input<int?>? count;
   /// The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
-  final pulumi.Input<int>? countIPv6;
+  final pulumi.Input<int?>? countIPv6;
 
   /// Creates a new [ManagedClusterLoadBalancerProfileManagedOutboundIPs].
   /// [count] The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1.
   /// [countIPv6] The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack.
-  const ManagedClusterLoadBalancerProfileManagedOutboundIPs({
-    this.count,
-    this.countIPv6,
-  });
+  ManagedClusterLoadBalancerProfileManagedOutboundIPs({
+    pulumi.Input<int?>? count,
+    pulumi.Input<int?>? countIPv6,
+  }) : count = count ?? pulumi.Input.fromValue(1), countIPv6 = countIPv6 ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,8 +26,8 @@ class ManagedClusterLoadBalancerProfileManagedOutboundIPs {
 
   factory ManagedClusterLoadBalancerProfileManagedOutboundIPs.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLoadBalancerProfileManagedOutboundIPs(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      countIPv6: (() { final guardedValue = map['countIPv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      countIPv6: (() { final guardedValue = map['countIPv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

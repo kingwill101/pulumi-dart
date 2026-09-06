@@ -13,7 +13,7 @@ class ValidateMigrationInputSqlServerSqlMITaskOutputResponse {
   /// Errors associated with the storage account provided.
   final pulumi.Input<List<ReportableExceptionResponse>> backupStorageAccountErrors;
   /// Information about backup files when existing backup mode is used.
-  final pulumi.Input<DatabaseBackupInfoResponse>? databaseBackupInfo;
+  final pulumi.Input<DatabaseBackupInfoResponse?>? databaseBackupInfo;
   /// Errors associated with existing backup files.
   final pulumi.Input<List<ReportableExceptionResponse>> existingBackupErrors;
   /// Result identifier

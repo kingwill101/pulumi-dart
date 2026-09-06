@@ -6,9 +6,9 @@ import 'provider_response.dart';
 /// Definition of EncryptionConfig
 class EncryptionConfigResponse {
   /// &lt;p&gt;Key Management Service (KMS) key. Either the ARN or the alias can be used.&lt;/p&gt;
-  final pulumi.Input<ProviderResponse>? provider;
+  final pulumi.Input<ProviderResponse?>? provider;
   /// &lt;p&gt;Specifies the resources to be encrypted. The only supported value is &lt;code&gt;secrets&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
 
   /// Creates a new [EncryptionConfigResponse].
   /// [provider] &lt;p&gt;Key Management Service (KMS) key. Either the ARN or the alias can be used.&lt;/p&gt;

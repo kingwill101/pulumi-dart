@@ -10,17 +10,17 @@ import 'springbootsites_properties.dart';
 /// {@macro pulumi_offazurespringboot_springbootsite_args_doc}
 class SpringbootsiteArgs {
   /// The extended location definition.
-  final pulumi.Input<SpringbootsitesModelExtendedLocation>? extendedLocation;
+  final pulumi.Input<SpringbootsitesModelExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The springbootsites resource definition.
-  final pulumi.Input<SpringbootsitesProperties>? properties;
+  final pulumi.Input<SpringbootsitesProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The springbootsites name.
-  final pulumi.Input<String>? springbootsitesName;
+  final pulumi.Input<String?>? springbootsitesName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SpringbootsiteArgs].
   /// [extendedLocation] The extended location definition.

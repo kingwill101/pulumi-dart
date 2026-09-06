@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets consolidation type.
-enum ConsolidationType {
+enum ConsolidationType implements pulumi.PulumiEnum<String> {
   full("Full"),
   asOnSource("AsOnSource");
 
   const ConsolidationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConsolidationType fromValue(String value) {

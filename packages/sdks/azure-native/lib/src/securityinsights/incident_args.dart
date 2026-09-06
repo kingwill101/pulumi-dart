@@ -10,29 +10,29 @@ import 'incident_owner_info.dart';
 /// {@macro pulumi_securityinsights_incident_args_doc}
 class IncidentArgs {
   /// The reason the incident was closed
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<dynamic>? classification;
   /// Describes the reason the incident was closed
-  final pulumi.Input<String>? classificationComment;
+  final pulumi.Input<String?>? classificationComment;
   /// The classification reason the incident was closed with
-  final pulumi.Input<String>? classificationReason;
+  final pulumi.Input<dynamic>? classificationReason;
   /// The description of the incident
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The time of the first activity in the incident
-  final pulumi.Input<String>? firstActivityTimeUtc;
+  final pulumi.Input<String?>? firstActivityTimeUtc;
   /// Incident ID
-  final pulumi.Input<String>? incidentId;
+  final pulumi.Input<String?>? incidentId;
   /// List of labels relevant to this incident
-  final pulumi.Input<List<IncidentLabel>>? labels;
+  final pulumi.Input<List<IncidentLabel>?>? labels;
   /// The time of the last activity in the incident
-  final pulumi.Input<String>? lastActivityTimeUtc;
+  final pulumi.Input<String?>? lastActivityTimeUtc;
   /// Describes a user that the incident is assigned to
-  final pulumi.Input<IncidentOwnerInfo>? owner;
+  final pulumi.Input<IncidentOwnerInfo?>? owner;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The severity of the incident
-  final pulumi.Input<String> severity;
+  final pulumi.Input<dynamic> severity;
   /// The status of the incident
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
   /// The title of the incident
   final pulumi.Input<String> title;
   /// The name of the workspace.
@@ -91,9 +91,9 @@ class IncidentArgs {
 
   factory IncidentArgs.fromMap(Map<String, dynamic> map) {
     return IncidentArgs(
-      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       classificationComment: (() { final guardedValue = map['classificationComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       firstActivityTimeUtc: (() { final guardedValue = map['firstActivityTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       incidentId: (() { final guardedValue = map['incidentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -101,8 +101,8 @@ class IncidentArgs {
       lastActivityTimeUtc: (() { final guardedValue = map['lastActivityTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IncidentOwnerInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      severity: pulumi.Input.fromValue(map['severity'] as String),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      severity: pulumi.Input.fromValue(map['severity']),
+      status: pulumi.Input.fromValue(map['status']),
       title: pulumi.Input.fromValue(map['title'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

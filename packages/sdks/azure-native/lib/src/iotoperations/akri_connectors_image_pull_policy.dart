@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The pull policy of the image.
-enum AkriConnectorsImagePullPolicy {
+enum AkriConnectorsImagePullPolicy implements pulumi.PulumiEnum<String> {
   always("Always"),
   ifNotPresent("IfNotPresent"),
   never_("Never");
 
   const AkriConnectorsImagePullPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorsImagePullPolicy fromValue(String value) {

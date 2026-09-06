@@ -9,17 +9,17 @@ class BackendChain {
   /// The desired numbers of backend replicas (pods) in a physical partition.
   final pulumi.Input<int> redundancyFactor;
   /// Number of logical backend workers per replica (pod).
-  final pulumi.Input<int>? workers;
+  final pulumi.Input<int?>? workers;
 
   /// Creates a new [BackendChain].
   /// [partitions] The desired number of physical backend partitions.
   /// [redundancyFactor] The desired numbers of backend replicas (pods) in a physical partition.
   /// [workers] Number of logical backend workers per replica (pod).
-  const BackendChain({
+  BackendChain({
     required this.partitions,
     required this.redundancyFactor,
-    this.workers,
-  });
+    pulumi.Input<int?>? workers,
+  }) : workers = workers ?? pulumi.Input.fromValue(1);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -31,9 +31,9 @@ class BackendChain {
 
   factory BackendChain.fromMap(Map<String, dynamic> map) {
     return BackendChain(
-      partitions: pulumi.Input.fromValue(map['partitions'] as int),
-      redundancyFactor: pulumi.Input.fromValue(map['redundancyFactor'] as int),
-      workers: (() { final guardedValue = map['workers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      partitions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['partitions'])),
+      redundancyFactor: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['redundancyFactor'])),
+      workers: (() { final guardedValue = map['workers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

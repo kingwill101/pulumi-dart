@@ -8,51 +8,51 @@ import 'sub_resource_response.dart';
 /// VpnSiteLinkConnection Resource.
 class VpnSiteLinkConnectionResponse {
   /// Expected bandwidth in MBPS.
-  final pulumi.Input<int>? connectionBandwidth;
+  final pulumi.Input<int?>? connectionBandwidth;
   /// The connection status.
   final pulumi.Input<String> connectionStatus;
   /// Dead Peer Detection timeout in seconds for VpnLink connection.
-  final pulumi.Input<int>? dpdTimeoutSeconds;
+  final pulumi.Input<int?>? dpdTimeoutSeconds;
   /// Egress bytes transferred.
   final pulumi.Input<double> egressBytesTransferred;
   /// List of egress NatRules.
-  final pulumi.Input<List<SubResourceResponse>>? egressNatRules;
+  final pulumi.Input<List<SubResourceResponse>?>? egressNatRules;
   /// EnableBgp flag.
-  final pulumi.Input<bool>? enableBgp;
+  final pulumi.Input<bool?>? enableBgp;
   /// EnableBgp flag.
-  final pulumi.Input<bool>? enableRateLimiting;
+  final pulumi.Input<bool?>? enableRateLimiting;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Ingress bytes transferred.
   final pulumi.Input<double> ingressBytesTransferred;
   /// List of ingress NatRules.
-  final pulumi.Input<List<SubResourceResponse>>? ingressNatRules;
+  final pulumi.Input<List<SubResourceResponse>?>? ingressNatRules;
   /// The IPSec Policies to be considered by this connection.
-  final pulumi.Input<List<IpsecPolicyResponse>>? ipsecPolicies;
+  final pulumi.Input<List<IpsecPolicyResponse>?>? ipsecPolicies;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the VPN site link connection resource.
   final pulumi.Input<String> provisioningState;
   /// Routing weight for vpn connection.
-  final pulumi.Input<int>? routingWeight;
+  final pulumi.Input<int?>? routingWeight;
   /// SharedKey for the vpn connection.
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
   /// Resource type.
   final pulumi.Input<String> type;
   /// Use local azure ip to initiate connection.
-  final pulumi.Input<bool>? useLocalAzureIpAddress;
+  final pulumi.Input<bool?>? useLocalAzureIpAddress;
   /// Enable policy-based traffic selectors.
-  final pulumi.Input<bool>? usePolicyBasedTrafficSelectors;
+  final pulumi.Input<bool?>? usePolicyBasedTrafficSelectors;
   /// Connection protocol used for this connection.
-  final pulumi.Input<String>? vpnConnectionProtocolType;
+  final pulumi.Input<String?>? vpnConnectionProtocolType;
   /// vpnGatewayCustomBgpAddresses used by this connection.
-  final pulumi.Input<List<GatewayCustomBgpIpAddressIpConfigurationResponse>>? vpnGatewayCustomBgpAddresses;
+  final pulumi.Input<List<GatewayCustomBgpIpAddressIpConfigurationResponse>?>? vpnGatewayCustomBgpAddresses;
   /// Vpn link connection mode.
-  final pulumi.Input<String>? vpnLinkConnectionMode;
+  final pulumi.Input<String?>? vpnLinkConnectionMode;
   /// Id of the connected vpn site link.
-  final pulumi.Input<SubResourceResponse>? vpnSiteLink;
+  final pulumi.Input<SubResourceResponse?>? vpnSiteLink;
 
   /// Creates a new [VpnSiteLinkConnectionResponse].
   /// [connectionBandwidth] Expected bandwidth in MBPS.
@@ -134,21 +134,21 @@ class VpnSiteLinkConnectionResponse {
 
   factory VpnSiteLinkConnectionResponse.fromMap(Map<String, dynamic> map) {
     return VpnSiteLinkConnectionResponse(
-      connectionBandwidth: (() { final guardedValue = map['connectionBandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionBandwidth: (() { final guardedValue = map['connectionBandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       connectionStatus: pulumi.Input.fromValue(map['connectionStatus'] as String),
-      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      egressBytesTransferred: pulumi.Input.fromValue(map['egressBytesTransferred'] as double),
+      dpdTimeoutSeconds: (() { final guardedValue = map['dpdTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      egressBytesTransferred: pulumi.Input.fromValue((map['egressBytesTransferred'] as num).toDouble()),
       egressNatRules: (() { final guardedValue = map['egressNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableBgp: (() { final guardedValue = map['enableBgp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableRateLimiting: (() { final guardedValue = map['enableRateLimiting']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ingressBytesTransferred: pulumi.Input.fromValue(map['ingressBytesTransferred'] as double),
+      ingressBytesTransferred: pulumi.Input.fromValue((map['ingressBytesTransferred'] as num).toDouble()),
       ingressNatRules: (() { final guardedValue = map['ingressNatRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipsecPolicies: (() { final guardedValue = map['ipsecPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpsecPolicyResponse>(guardedValue, (value) => IpsecPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      routingWeight: (() { final guardedValue = map['routingWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       useLocalAzureIpAddress: (() { final guardedValue = map['useLocalAzureIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

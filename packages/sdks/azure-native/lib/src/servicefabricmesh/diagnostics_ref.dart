@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to sinks in DiagnosticsDescription.
 class DiagnosticsRef {
   /// Status of whether or not sinks are enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// List of sinks to be used if enabled. References the list of sinks in DiagnosticsDescription.
-  final pulumi.Input<List<String>>? sinkRefs;
+  final pulumi.Input<List<String>?>? sinkRefs;
 
   /// Creates a new [DiagnosticsRef].
   /// [enabled] Status of whether or not sinks are enabled.

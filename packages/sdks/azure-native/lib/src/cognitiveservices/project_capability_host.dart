@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ProjectCapabilityHost {
   /// List of AI services connections.
-  final pulumi.Input<List<String>>? aiServicesConnections;
+  final pulumi.Input<List<String>?>? aiServicesConnections;
   /// List of connection names from those available in the account or project to be used as a storage resource.
-  final pulumi.Input<List<String>>? storageConnections;
+  final pulumi.Input<List<String>?>? storageConnections;
   /// List of connection names from those available in the account or project to be used for Thread storage.
-  final pulumi.Input<List<String>>? threadStorageConnections;
+  final pulumi.Input<List<String>?>? threadStorageConnections;
   /// List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB).
-  final pulumi.Input<List<String>>? vectorStoreConnections;
+  final pulumi.Input<List<String>?>? vectorStoreConnections;
 
   /// Creates a new [ProjectCapabilityHost].
   /// [aiServicesConnections] List of AI services connections.

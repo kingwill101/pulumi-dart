@@ -6,9 +6,9 @@ import 'input_endpoint_response.dart';
 /// Azure to Azure VM synced configuration details.
 class AzureToAzureVmSyncedConfigDetailsResponse {
   /// The Azure VM input endpoints.
-  final pulumi.Input<List<InputEndpointResponse>>? inputEndpoints;
+  final pulumi.Input<List<InputEndpointResponse>?>? inputEndpoints;
   /// The Azure VM tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AzureToAzureVmSyncedConfigDetailsResponse].
   /// [inputEndpoints] The Azure VM input endpoints.

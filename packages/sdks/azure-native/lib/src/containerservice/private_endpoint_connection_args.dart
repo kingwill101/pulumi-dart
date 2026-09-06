@@ -10,9 +10,9 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_containerservice_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The resource of private endpoint.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group. The name is case insensitive.

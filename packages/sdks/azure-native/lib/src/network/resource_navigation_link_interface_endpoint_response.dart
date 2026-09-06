@@ -7,13 +7,13 @@ class ResourceNavigationLinkInterfaceEndpointResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Link to the external resource
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Resource type of the linked resource.
-  final pulumi.Input<String>? linkedResourceType;
+  final pulumi.Input<String?>? linkedResourceType;
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Provisioning state of the ResourceNavigationLink resource.
   final pulumi.Input<String> provisioningState;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Major version of PostgreSQL database engine.
-enum PostgresMajorVersion {
+enum PostgresMajorVersion implements pulumi.PulumiEnum<String> {
   resource18("18"),
   resource17("17"),
   resource16("16"),
@@ -10,6 +12,7 @@ enum PostgresMajorVersion {
   resource11("11");
 
   const PostgresMajorVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static PostgresMajorVersion fromValue(String value) {

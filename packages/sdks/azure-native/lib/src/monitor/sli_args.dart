@@ -10,13 +10,13 @@ import 'sli_resource.dart';
 /// {@macro pulumi_monitor_sli_args_doc}
 class SliArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SliResource>? properties;
+  final pulumi.Input<SliResource?>? properties;
   /// The name of the service group.
   final pulumi.Input<String> serviceGroupName;
   /// Name of the SLI that is given by the user.
-  final pulumi.Input<String>? sliName;
+  final pulumi.Input<String?>? sliName;
 
   /// Creates a new [SliArgs].
   /// [identity] The managed service identities assigned to this resource.

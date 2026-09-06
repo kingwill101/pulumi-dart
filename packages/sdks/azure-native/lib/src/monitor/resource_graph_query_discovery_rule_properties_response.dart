@@ -17,7 +17,7 @@ class ResourceGraphQueryDiscoveryRulePropertiesResponse {
   /// Expected value is 'ResourceGraphQuery'.
   final pulumi.Input<String> discoveryRuleKind;
   /// Display name
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Name of the entity which represents the discovery rule. Note: It might take a few minutes after creating the discovery rule until the entity is created.
   final pulumi.Input<String> entityName;
   /// Error details if the last discovery operation failed.

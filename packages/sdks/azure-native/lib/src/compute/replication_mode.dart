@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional parameter which specifies the mode to be used for replication. This property is not updatable.
-enum ReplicationMode {
+enum ReplicationMode implements pulumi.PulumiEnum<String> {
   full("Full"),
   shallow("Shallow");
 
   const ReplicationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationMode fromValue(String value) {

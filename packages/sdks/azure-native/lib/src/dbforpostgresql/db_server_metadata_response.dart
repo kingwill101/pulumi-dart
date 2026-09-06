@@ -8,11 +8,11 @@ class DbServerMetadataResponse {
   /// Location of database server.
   final pulumi.Input<String> location;
   /// Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
-  final pulumi.Input<ServerSkuResponse>? sku;
+  final pulumi.Input<ServerSkuResponse?>? sku;
   /// Storage size (in MB) for database server.
-  final pulumi.Input<int>? storageMb;
+  final pulumi.Input<int?>? storageMb;
   /// Major version of PostgreSQL database engine.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DbServerMetadataResponse].
   /// [location] Location of database server.
@@ -39,7 +39,7 @@ class DbServerMetadataResponse {
     return DbServerMetadataResponse(
       location: pulumi.Input.fromValue(map['location'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      storageMb: (() { final guardedValue = map['storageMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      storageMb: (() { final guardedValue = map['storageMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

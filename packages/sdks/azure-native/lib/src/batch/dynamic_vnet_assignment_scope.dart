@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scope of dynamic vnet assignment.
-enum DynamicVNetAssignmentScope {
+enum DynamicVNetAssignmentScope implements pulumi.PulumiEnum<String> {
   none("none"),
   job("job");
 
   const DynamicVNetAssignmentScope(this.wireValue);
+  @override
   final String wireValue;
 
   static DynamicVNetAssignmentScope fromValue(String value) {

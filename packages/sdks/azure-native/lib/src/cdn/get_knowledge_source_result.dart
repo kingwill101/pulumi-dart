@@ -5,27 +5,27 @@ import 'system_data_response.dart';
 /// Result data returned by getKnowledgeSource.
 class GetKnowledgeSourceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Description of the knowledge source.
   final String? description;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The last time the knowledge source was updated.
-  final String lastRefreshedTime;
+  final String? lastRefreshedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning status of the knowledge source.
-  final String provisioningState;
+  final String? provisioningState;
   /// Format or origin of the knowledge source.
-  final String sourceType;
+  final String? sourceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Specifies the units of time for scheduling update intervals for the knowledge source.
   final String? updateFrequency;
   /// Endpoint or location of the knowledge source.
-  final String url;
+  final String? url;
 
   /// Creates a new [GetKnowledgeSourceResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -40,48 +40,48 @@ class GetKnowledgeSourceResult {
   /// [updateFrequency] Specifies the units of time for scheduling update intervals for the knowledge source.
   /// [url] Endpoint or location of the knowledge source.
   const GetKnowledgeSourceResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.id,
-    required this.lastRefreshedTime,
-    required this.name,
-    required this.provisioningState,
-    required this.sourceType,
-    required this.systemData,
-    required this.type,
+    this.id,
+    this.lastRefreshedTime,
+    this.name,
+    this.provisioningState,
+    this.sourceType,
+    this.systemData,
+    this.type,
     this.updateFrequency,
-    required this.url,
+    this.url,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'id': id,
-      'lastRefreshedTime': lastRefreshedTime,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sourceType': sourceType,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'id': ?id,
+      'lastRefreshedTime': ?lastRefreshedTime,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sourceType': ?sourceType,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'updateFrequency': ?updateFrequency,
-      'url': url,
+      'url': ?url,
     };
   }
 
   factory GetKnowledgeSourceResult.fromMap(Map<String, dynamic> map) {
     return GetKnowledgeSourceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      lastRefreshedTime: map['lastRefreshedTime'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sourceType: map['sourceType'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastRefreshedTime: (() { final guardedValue = map['lastRefreshedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updateFrequency: (() { final guardedValue = map['updateFrequency']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      url: map['url'] as String,
+      url: (() { final guardedValue = map['url']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

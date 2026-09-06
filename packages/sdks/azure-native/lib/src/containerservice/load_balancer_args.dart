@@ -9,13 +9,13 @@ import 'label_selector.dart';
 /// {@macro pulumi_containerservice_load_balancer_args_doc}
 class LoadBalancerArgs {
   /// Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.
-  final pulumi.Input<bool>? allowServicePlacement;
+  final pulumi.Input<bool?>? allowServicePlacement;
   /// The name of the load balancer.
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// Name of the public load balancer. There will be an internal load balancer created if needed, and the name will be `&lt;name&gt;-internal`. The internal lb shares the same configurations as the external one. The internal lbs are not needed to be included in LoadBalancer list. There must be a name of kubernetes in the list.
   final pulumi.Input<String> name;
   /// Nodes that match this selector will be possible members of this load balancer.
-  final pulumi.Input<LabelSelector>? nodeSelector;
+  final pulumi.Input<LabelSelector?>? nodeSelector;
   /// Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount&gt;=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer.
   final pulumi.Input<String> primaryAgentPoolName;
   /// The name of the resource group. The name is case insensitive.
@@ -23,9 +23,9 @@ class LoadBalancerArgs {
   /// The name of the managed cluster resource.
   final pulumi.Input<String> resourceName;
   /// Only services that must match this selector can be placed on this load balancer.
-  final pulumi.Input<LabelSelector>? serviceLabelSelector;
+  final pulumi.Input<LabelSelector?>? serviceLabelSelector;
   /// Services created in namespaces that match the selector can be placed on this load balancer.
-  final pulumi.Input<LabelSelector>? serviceNamespaceSelector;
+  final pulumi.Input<LabelSelector?>? serviceNamespaceSelector;
 
   /// Creates a new [LoadBalancerArgs].
   /// [allowServicePlacement] Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it.

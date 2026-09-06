@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Days of week.
-enum DaysOfWeek {
+enum DaysOfWeek implements pulumi.PulumiEnum<String> {
   sunday("Sunday"),
   monday("Monday"),
   tuesday("Tuesday"),
@@ -9,6 +11,7 @@ enum DaysOfWeek {
   saturday("Saturday");
 
   const DaysOfWeek(this.wireValue);
+  @override
   final String wireValue;
 
   static DaysOfWeek fromValue(String value) {

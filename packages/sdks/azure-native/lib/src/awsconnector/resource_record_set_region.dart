@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ResourceRecordSetRegion {
+enum ResourceRecordSetRegion implements pulumi.PulumiEnum<String> {
   afSouth1("af-south-1"),
   apEast1("ap-east-1"),
   apNortheast1("ap-northeast-1"),
@@ -33,6 +35,7 @@ enum ResourceRecordSetRegion {
   usWest2("us-west-2");
 
   const ResourceRecordSetRegion(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceRecordSetRegion fromValue(String value) {

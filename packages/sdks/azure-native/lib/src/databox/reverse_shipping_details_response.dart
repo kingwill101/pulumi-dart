@@ -7,12 +7,12 @@ import 'shipping_address_response.dart';
 /// Reverse Shipping Address and contact details for a job.
 class ReverseShippingDetailsResponse {
   /// Contact Info.
-  final pulumi.Input<ContactInfoResponse>? contactDetails;
+  final pulumi.Input<ContactInfoResponse?>? contactDetails;
   /// A flag to indicate whether Reverse Shipping details are updated or not after device has been prepared.
   /// Read only field
   final pulumi.Input<bool> isUpdated;
   /// Shipping address where customer wishes to receive the device.
-  final pulumi.Input<ShippingAddressResponse>? shippingAddress;
+  final pulumi.Input<ShippingAddressResponse?>? shippingAddress;
 
   /// Creates a new [ReverseShippingDetailsResponse].
   /// [contactDetails] Contact Info.

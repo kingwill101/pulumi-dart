@@ -11,15 +11,15 @@ class FleetManagedNamespaceArgs {
   /// The name of the Fleet resource.
   final pulumi.Input<String> fleetName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the fleet managed namespace resource.
-  final pulumi.Input<String>? managedNamespaceName;
+  final pulumi.Input<String?>? managedNamespaceName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<FleetManagedNamespaceProperties>? properties;
+  final pulumi.Input<FleetManagedNamespaceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FleetManagedNamespaceArgs].
   /// [fleetName] The name of the Fleet resource.

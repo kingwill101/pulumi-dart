@@ -5,29 +5,29 @@ import 'system_data_response.dart';
 /// Result data returned by getDedicatedHub.
 class GetDedicatedHubResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Designation of hub resource allocation (Pooled or Reserved)
   final String? designation;
   /// Firewall Policy Resource ID
-  final String firewallPolicyResourceId;
+  final String? firewallPolicyResourceId;
   /// Firewall Resource ID
-  final String firewallResourceId;
+  final String? firewallResourceId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Virtual Hub Resource ID
-  final String vHubResourceId;
+  final String? vHubResourceId;
 
   /// Creates a new [GetDedicatedHubResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,51 +43,51 @@ class GetDedicatedHubResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vHubResourceId] Virtual Hub Resource ID
   const GetDedicatedHubResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.designation,
-    required this.firewallPolicyResourceId,
-    required this.firewallResourceId,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.firewallPolicyResourceId,
+    this.firewallResourceId,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.vHubResourceId,
+    this.type,
+    this.vHubResourceId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'designation': ?designation,
-      'firewallPolicyResourceId': firewallPolicyResourceId,
-      'firewallResourceId': firewallResourceId,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'firewallPolicyResourceId': ?firewallPolicyResourceId,
+      'firewallResourceId': ?firewallResourceId,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'vHubResourceId': vHubResourceId,
+      'type': ?type,
+      'vHubResourceId': ?vHubResourceId,
     };
   }
 
   factory GetDedicatedHubResult.fromMap(Map<String, dynamic> map) {
     return GetDedicatedHubResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       designation: (() { final guardedValue = map['designation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      firewallPolicyResourceId: map['firewallPolicyResourceId'] as String,
-      firewallResourceId: map['firewallResourceId'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      firewallPolicyResourceId: (() { final guardedValue = map['firewallPolicyResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      firewallResourceId: (() { final guardedValue = map['firewallResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      vHubResourceId: map['vHubResourceId'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vHubResourceId: (() { final guardedValue = map['vHubResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

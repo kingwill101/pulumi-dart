@@ -4,23 +4,23 @@
 /// Result data returned by listStorageAccountServiceSAS.
 class ListStorageAccountServiceSASResult {
   /// List service SAS credentials of specific resource.
-  final String serviceSasToken;
+  final String? serviceSasToken;
 
   /// Creates a new [ListStorageAccountServiceSASResult].
   /// [serviceSasToken] List service SAS credentials of specific resource.
   const ListStorageAccountServiceSASResult({
-    required this.serviceSasToken,
+    this.serviceSasToken,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'serviceSasToken': serviceSasToken,
+      'serviceSasToken': ?serviceSasToken,
     };
   }
 
   factory ListStorageAccountServiceSASResult.fromMap(Map<String, dynamic> map) {
     return ListStorageAccountServiceSASResult(
-      serviceSasToken: map['serviceSasToken'] as String,
+      serviceSasToken: (() { final guardedValue = map['serviceSasToken']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

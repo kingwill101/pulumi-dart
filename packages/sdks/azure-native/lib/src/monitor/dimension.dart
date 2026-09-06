@@ -7,7 +7,7 @@ class Dimension {
   /// Name of the dimension
   final pulumi.Input<String> name;
   /// Operator for dimension values
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// List of dimension values
   final pulumi.Input<List<String>> values;
 
@@ -32,7 +32,7 @@ class Dimension {
   factory Dimension.fromMap(Map<String, dynamic> map) {
     return Dimension(
       name: pulumi.Input.fromValue(map['name'] as String),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       values: pulumi.Input.fromValue((map['values'] as List).cast<String>()),
     );
   }

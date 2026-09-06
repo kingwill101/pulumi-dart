@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'tar_gzip_read_settings.dart';
 
 /// Delimited text read settings.
 class DelimitedTextReadSettings {
   /// Compression settings.
-  final pulumi.Input<TarGZipReadSettings>? compressionProperties;
+  final pulumi.Input<dynamic>? compressionProperties;
   /// Indicates the number of non-empty rows to skip when reading data from input files. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? skipLineCount;
   /// The read setting type.
@@ -25,7 +24,7 @@ class DelimitedTextReadSettings {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'compressionProperties': ?pulumi.Input.mapOptionalInputValue<TarGZipReadSettings, Map<String, dynamic>>(compressionProperties, (value) => value.toMap()),
+      'compressionProperties': ?compressionProperties,
       'skipLineCount': ?skipLineCount,
       'type': type,
     };
@@ -33,7 +32,7 @@ class DelimitedTextReadSettings {
 
   factory DelimitedTextReadSettings.fromMap(Map<String, dynamic> map) {
     return DelimitedTextReadSettings(
-      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TarGZipReadSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      compressionProperties: (() { final guardedValue = map['compressionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       skipLineCount: (() { final guardedValue = map['skipLineCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

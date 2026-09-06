@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PingStatusEnumValue
 class PingStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [PingStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class PingStatusEnumValue {
 
   factory PingStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return PingStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

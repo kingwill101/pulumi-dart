@@ -9,7 +9,7 @@ import 'sku.dart';
 /// {@macro pulumi_synapse_sql_pool_args_doc}
 class SqlPoolArgs {
   /// Collation mode
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Specifies the mode of sql pool creation.
   ///
   /// Default: regular sql pool creation.
@@ -19,31 +19,31 @@ class SqlPoolArgs {
   /// Recovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId  must be specified as the recoverableDatabaseId to restore.
   ///
   /// Restore: Creates a sql pool by restoring a backup of a deleted sql  pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum size in bytes
-  final pulumi.Input<double>? maxSizeBytes;
+  final pulumi.Input<double?>? maxSizeBytes;
   /// Resource state
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Backup database to restore from
-  final pulumi.Input<String>? recoverableDatabaseId;
+  final pulumi.Input<String?>? recoverableDatabaseId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Snapshot time to restore
-  final pulumi.Input<String>? restorePointInTime;
+  final pulumi.Input<String?>? restorePointInTime;
   /// SQL pool SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Specifies the time that the sql pool was deleted
-  final pulumi.Input<String>? sourceDatabaseDeletionDate;
+  final pulumi.Input<String?>? sourceDatabaseDeletionDate;
   /// Source database to create from
-  final pulumi.Input<String>? sourceDatabaseId;
+  final pulumi.Input<String?>? sourceDatabaseId;
   /// SQL pool name
-  final pulumi.Input<String>? sqlPoolName;
+  final pulumi.Input<String?>? sqlPoolName;
   /// The storage account type used to store backups for this sql pool.
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<dynamic>? storageAccountType;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -63,8 +63,8 @@ class SqlPoolArgs {
   /// [storageAccountType] The storage account type used to store backups for this sql pool.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
-  const SqlPoolArgs({
-    this.collation,
+  SqlPoolArgs({
+    pulumi.Input<String?>? collation,
     this.createMode,
     this.location,
     this.maxSizeBytes,
@@ -76,10 +76,10 @@ class SqlPoolArgs {
     this.sourceDatabaseDeletionDate,
     this.sourceDatabaseId,
     this.sqlPoolName,
-    this.storageAccountType,
+    pulumi.Input<dynamic>? storageAccountType,
     this.tags,
     required this.workspaceName,
-  });
+  }) : collation = collation ?? pulumi.Input.fromValue(''), storageAccountType = storageAccountType ?? pulumi.Input.fromValue('GRS');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -104,9 +104,9 @@ class SqlPoolArgs {
   factory SqlPoolArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolArgs(
       collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxSizeBytes: (() { final guardedValue = map['maxSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxSizeBytes: (() { final guardedValue = map['maxSizeBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recoverableDatabaseId: (() { final guardedValue = map['recoverableDatabaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
@@ -115,7 +115,7 @@ class SqlPoolArgs {
       sourceDatabaseDeletionDate: (() { final guardedValue = map['sourceDatabaseDeletionDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceDatabaseId: (() { final guardedValue = map['sourceDatabaseId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sqlPoolName: (() { final guardedValue = map['sqlPoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

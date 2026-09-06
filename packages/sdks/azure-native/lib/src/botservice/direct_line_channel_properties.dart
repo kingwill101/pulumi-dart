@@ -6,25 +6,25 @@ import 'direct_line_site.dart';
 /// The parameters to provide for the Direct Line channel.
 class DirectLineChannelProperties {
   /// Direct Line embed code of the resource
-  final pulumi.Input<String>? directLineEmbedCode;
+  final pulumi.Input<String?>? directLineEmbedCode;
   /// The extensionKey1
-  final pulumi.Input<String>? extensionKey1;
+  final pulumi.Input<String?>? extensionKey1;
   /// The extensionKey2
-  final pulumi.Input<String>? extensionKey2;
+  final pulumi.Input<String?>? extensionKey2;
   /// The list of Direct Line sites
-  final pulumi.Input<List<DirectLineSite>>? sites;
+  final pulumi.Input<List<DirectLineSite>?>? sites;
 
   /// Creates a new [DirectLineChannelProperties].
   /// [directLineEmbedCode] Direct Line embed code of the resource
   /// [extensionKey1] The extensionKey1
   /// [extensionKey2] The extensionKey2
   /// [sites] The list of Direct Line sites
-  const DirectLineChannelProperties({
+  DirectLineChannelProperties({
     this.directLineEmbedCode,
-    this.extensionKey1,
-    this.extensionKey2,
+    pulumi.Input<String?>? extensionKey1,
+    pulumi.Input<String?>? extensionKey2,
     this.sites,
-  });
+  }) : extensionKey1 = extensionKey1 ?? pulumi.Input.fromValue(''), extensionKey2 = extensionKey2 ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

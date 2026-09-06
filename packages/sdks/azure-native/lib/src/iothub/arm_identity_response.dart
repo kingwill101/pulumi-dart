@@ -9,8 +9,8 @@ class ArmIdentityResponse {
   /// Tenant Id
   final pulumi.Input<String> tenantId;
   /// The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
-  final pulumi.Input<String>? type;
-  final pulumi.Input<Map<String, ArmUserIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<Map<String, ArmUserIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ArmIdentityResponse].
   /// [principalId] Principal Id

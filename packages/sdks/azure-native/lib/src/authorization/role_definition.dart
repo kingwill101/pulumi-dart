@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'permission_response.dart';
 import 'role_definition_args.dart';
 import 'system_data_response.dart';
 
@@ -156,7 +157,7 @@ class RoleDefinition extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Role definition permissions.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<PermissionResponse>?> permissions;
   /// The role name.
   late final pulumi.Output<String?> roleName;
   /// The role type.
@@ -184,13 +185,37 @@ class RoleDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignableScopes = registerOutput<List<String>?>('assignableScopes');
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<String>('createdBy');
     createdOn = registerOutput<String>('createdOn');
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<PermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    roleName = registerOutput<String?>('roleName');
+    roleType = registerOutput<String?>('roleType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updatedBy = registerOutput<String>('updatedBy');
+    updatedOn = registerOutput<String>('updatedOn');
+  }
+
+  /// Creates a typed reference to an existing [RoleDefinition] resource.
+  RoleDefinition.reference(String urn)
+    : super(
+        'azure-native:authorization:RoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<String>('createdBy');
+    createdOn = registerOutput<String>('createdOn');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<PermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String?>('roleName');
     roleType = registerOutput<String?>('roleType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

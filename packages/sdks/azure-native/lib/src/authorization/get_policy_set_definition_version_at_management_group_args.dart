@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_get_policy_set_definition_version_at_management_group_args_doc}
 class GetPolicySetDefinitionVersionAtManagementGroupArgs {
   /// Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the management group. The name is case insensitive.
   final pulumi.Input<String> managementGroupName;
   /// The policy set definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number

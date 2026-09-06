@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsRoute53DomainsDomainSummary
 class AwsRoute53DomainsDomainSummaryPropertiesResponse {
   /// &lt;p&gt;Indicates whether the domain is automatically renewed upon expiration.&lt;/p&gt;
-  final pulumi.Input<bool>? autoRenew;
+  final pulumi.Input<bool?>? autoRenew;
   /// &lt;p&gt;The name of the domain that the summary information applies to.&lt;/p&gt;
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// &lt;p&gt;Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).&lt;/p&gt;
-  final pulumi.Input<String>? expiry;
+  final pulumi.Input<String?>? expiry;
   /// &lt;p&gt;Indicates whether a domain is locked from unauthorized transfer to another party.&lt;/p&gt;
-  final pulumi.Input<bool>? transferLock;
+  final pulumi.Input<bool?>? transferLock;
 
   /// Creates a new [AwsRoute53DomainsDomainSummaryPropertiesResponse].
   /// [autoRenew] &lt;p&gt;Indicates whether the domain is automatically renewed upon expiration.&lt;/p&gt;

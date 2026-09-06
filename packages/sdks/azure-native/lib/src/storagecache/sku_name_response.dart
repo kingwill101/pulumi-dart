@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SKU for the resource.
 class SkuNameResponse {
   /// SKU name for this resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SkuNameResponse].
   /// [name] SKU name for this resource.

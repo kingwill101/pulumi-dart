@@ -151,7 +151,7 @@ import 'system_data_response.dart';
 /// ```
 class AutomationRule extends pulumi.CustomResource {
   /// The actions to execute when the automation rule is triggered.
-  late final pulumi.Output<List<Map<String, dynamic>>> actions;
+  late final pulumi.Output<List<dynamic>> actions;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Information on the client (user or application) that made some action
@@ -191,7 +191,31 @@ class AutomationRule extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    actions = registerOutput<List<Map<String, dynamic>>>('actions');
+    actions = registerOutput<List<dynamic>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdBy = registerOutput<ClientInfoResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdTimeUtc = registerOutput<String>('createdTimeUtc');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    lastModifiedBy = registerOutput<ClientInfoResponse>('lastModifiedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedTimeUtc = registerOutput<String>('lastModifiedTimeUtc');
+    this.name = registerOutput<String>('name');
+    order = registerOutput<int>('order');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggeringLogic = registerOutput<AutomationRuleTriggeringLogicResponse>('triggeringLogic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomationRuleTriggeringLogicResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AutomationRule] resource.
+  AutomationRule.reference(String urn)
+    : super(
+        'azure-native:securityinsights:AutomationRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<List<dynamic>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdBy = registerOutput<ClientInfoResponse>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTimeUtc = registerOutput<String>('createdTimeUtc');

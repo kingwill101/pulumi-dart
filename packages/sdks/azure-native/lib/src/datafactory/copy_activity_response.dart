@@ -3,8 +3,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency_response.dart';
 import 'activity_policy_response.dart';
-import 'amazon_mwssource_response.dart';
-import 'avro_sink_response.dart';
 import 'dataset_reference_response.dart';
 import 'linked_service_reference_response.dart';
 import 'log_settings_response.dart';
@@ -19,54 +17,54 @@ class CopyActivityResponse {
   /// Maximum number of data integration units that can be used to perform this data movement. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? dataIntegrationUnits;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether to skip incompatible row. Default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableSkipIncompatibleRow;
   /// Specifies whether to copy data via an interim staging. Default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enableStaging;
   /// List of inputs for the activity.
-  final pulumi.Input<List<DatasetReferenceResponse>>? inputs;
+  final pulumi.Input<List<DatasetReferenceResponse>?>? inputs;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Log settings customer needs provide when enabling log.
-  final pulumi.Input<LogSettingsResponse>? logSettings;
+  final pulumi.Input<LogSettingsResponse?>? logSettings;
   /// (Deprecated. Please use LogSettings) Log storage settings customer need to provide when enabling session log.
-  final pulumi.Input<LogStorageSettingsResponse>? logStorageSettings;
+  final pulumi.Input<LogStorageSettingsResponse?>? logStorageSettings;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// List of outputs for the activity.
-  final pulumi.Input<List<DatasetReferenceResponse>>? outputs;
+  final pulumi.Input<List<DatasetReferenceResponse>?>? outputs;
   /// Maximum number of concurrent sessions opened on the source or sink to avoid overloading the data store. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? parallelCopies;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Preserve rules.
-  final pulumi.Input<List<dynamic>>? preserve;
+  final pulumi.Input<List<dynamic>?>? preserve;
   /// Preserve Rules.
-  final pulumi.Input<List<dynamic>>? preserveRules;
+  final pulumi.Input<List<dynamic>?>? preserveRules;
   /// Redirect incompatible row settings when EnableSkipIncompatibleRow is true.
-  final pulumi.Input<RedirectIncompatibleRowSettingsResponse>? redirectIncompatibleRowSettings;
+  final pulumi.Input<RedirectIncompatibleRowSettingsResponse?>? redirectIncompatibleRowSettings;
   /// Copy activity sink.
-  final pulumi.Input<AvroSinkResponse> sink;
+  final pulumi.Input<dynamic> sink;
   /// Specify the fault tolerance for data consistency.
-  final pulumi.Input<SkipErrorFileResponse>? skipErrorFile;
+  final pulumi.Input<SkipErrorFileResponse?>? skipErrorFile;
   /// Copy activity source.
-  final pulumi.Input<AmazonMWSSourceResponse> source;
+  final pulumi.Input<dynamic> source;
   /// Specifies interim staging settings when EnableStaging is true.
-  final pulumi.Input<StagingSettingsResponse>? stagingSettings;
+  final pulumi.Input<StagingSettingsResponse?>? stagingSettings;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Copy activity translator. If not specified, tabular translator is used.
   final pulumi.Input<dynamic>? translator;
   /// Type of activity.
   /// Expected value is 'Copy'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
   /// Whether to enable Data Consistency validation. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? validateDataConsistency;
 
@@ -145,9 +143,9 @@ class CopyActivityResponse {
       'preserve': ?preserve,
       'preserveRules': ?preserveRules,
       'redirectIncompatibleRowSettings': ?pulumi.Input.mapOptionalInputValue<RedirectIncompatibleRowSettingsResponse, Map<String, dynamic>>(redirectIncompatibleRowSettings, (value) => value.toMap()),
-      'sink': pulumi.Input.mapInputValue<AvroSinkResponse, Map<String, dynamic>>(sink, (value) => value.toMap()),
+      'sink': sink,
       'skipErrorFile': ?pulumi.Input.mapOptionalInputValue<SkipErrorFileResponse, Map<String, dynamic>>(skipErrorFile, (value) => value.toMap()),
-      'source': pulumi.Input.mapInputValue<AmazonMWSSourceResponse, Map<String, dynamic>>(source, (value) => value.toMap()),
+      'source': source,
       'stagingSettings': ?pulumi.Input.mapOptionalInputValue<StagingSettingsResponse, Map<String, dynamic>>(stagingSettings, (value) => value.toMap()),
       'state': ?state,
       'translator': ?translator,
@@ -176,9 +174,9 @@ class CopyActivityResponse {
       preserve: (() { final guardedValue = map['preserve']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       preserveRules: (() { final guardedValue = map['preserveRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       redirectIncompatibleRowSettings: (() { final guardedValue = map['redirectIncompatibleRowSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RedirectIncompatibleRowSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      sink: pulumi.Input.fromValue(AvroSinkResponse.fromMap((map['sink']! as Map).cast<String, dynamic>())),
+      sink: pulumi.Input.fromValue(map['sink']),
       skipErrorFile: (() { final guardedValue = map['skipErrorFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SkipErrorFileResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      source: pulumi.Input.fromValue(AmazonMWSSourceResponse.fromMap((map['source']! as Map).cast<String, dynamic>())),
+      source: pulumi.Input.fromValue(map['source']),
       stagingSettings: (() { final guardedValue = map['stagingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StagingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       translator: (() { final guardedValue = map['translator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

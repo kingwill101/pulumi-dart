@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sku of the resource
 class SkuMachineLearningDatasetResponse {
   /// Name of the sku
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tier of the sku like Basic or Enterprise
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [SkuMachineLearningDatasetResponse].
   /// [name] Name of the sku

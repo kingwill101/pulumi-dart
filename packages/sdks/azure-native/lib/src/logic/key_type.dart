@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The key type.
-enum KeyType {
+enum KeyType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valuePrimary("Primary"),
   valueSecondary("Secondary");
 
   const KeyType(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyType fromValue(String value) {

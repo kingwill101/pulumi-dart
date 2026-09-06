@@ -1,3 +1,5 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the mode of sql pool creation.
 ///
 /// Default: regular sql pool creation.
@@ -7,13 +9,14 @@
 /// Recovery: Creates a sql pool by a geo-replicated backup. sourceDatabaseId  must be specified as the recoverableDatabaseId to restore.
 ///
 /// Restore: Creates a sql pool by restoring a backup of a deleted sql  pool. SourceDatabaseId should be the sql pool's original resource ID. SourceDatabaseId and sourceDatabaseDeletionDate must be specified.
-enum CreateMode {
+enum CreateMode implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valuePointInTimeRestore("PointInTimeRestore"),
   valueRecovery("Recovery"),
   valueRestore("Restore");
 
   const CreateMode(this.wireValue);
+  @override
   final String wireValue;
 
   static CreateMode fromValue(String value) {

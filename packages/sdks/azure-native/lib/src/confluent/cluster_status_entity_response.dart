@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status of the cluster record
 class ClusterStatusEntityResponse {
   /// The number of Confluent Kafka Units
-  final pulumi.Input<int>? cku;
+  final pulumi.Input<int?>? cku;
   /// The lifecycle phase of the cluster
-  final pulumi.Input<String>? phase;
+  final pulumi.Input<String?>? phase;
 
   /// Creates a new [ClusterStatusEntityResponse].
   /// [cku] The number of Confluent Kafka Units
@@ -26,7 +26,7 @@ class ClusterStatusEntityResponse {
 
   factory ClusterStatusEntityResponse.fromMap(Map<String, dynamic> map) {
     return ClusterStatusEntityResponse(
-      cku: (() { final guardedValue = map['cku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cku: (() { final guardedValue = map['cku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       phase: (() { final guardedValue = map['phase']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

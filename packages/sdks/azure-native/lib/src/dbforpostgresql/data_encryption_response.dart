@@ -7,17 +7,17 @@ class DataEncryptionResponse {
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.
   final pulumi.Input<String> geoBackupEncryptionKeyStatus;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
-  final pulumi.Input<String>? geoBackupKeyURI;
+  final pulumi.Input<String?>? geoBackupKeyURI;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the geographically redundant storage associated to a server that is configured to support geographically redundant backups.
-  final pulumi.Input<String>? geoBackupUserAssignedIdentityId;
+  final pulumi.Input<String?>? geoBackupUserAssignedIdentityId;
   /// Status of key used by a server configured with data encryption based on customer managed key, to encrypt the primary storage associated to the server.
   final pulumi.Input<String> primaryEncryptionKeyStatus;
   /// URI of the key in Azure Key Vault used for data encryption of the primary storage associated to a server.
-  final pulumi.Input<String>? primaryKeyURI;
+  final pulumi.Input<String?>? primaryKeyURI;
   /// Identifier of the user assigned managed identity used to access the key in Azure Key Vault for data encryption of the primary storage associated to a server.
-  final pulumi.Input<String>? primaryUserAssignedIdentityId;
+  final pulumi.Input<String?>? primaryUserAssignedIdentityId;
   /// Data encryption type used by a server.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [DataEncryptionResponse].
   /// [geoBackupEncryptionKeyStatus] Status of key used by a server configured with data encryption based on customer managed key, to encrypt the geographically redundant storage associated to the server when it is configured to support geographically redundant backups.

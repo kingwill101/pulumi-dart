@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AccessPolicy {
   /// Expiry time of the access policy
-  final pulumi.Input<String>? expiryTime;
+  final pulumi.Input<String?>? expiryTime;
   /// List of abbreviated permissions.
-  final pulumi.Input<String>? permission;
+  final pulumi.Input<String?>? permission;
   /// Start time of the access policy
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [AccessPolicy].
   /// [expiryTime] Expiry time of the access policy

@@ -220,7 +220,26 @@ class RouteFilterRuleNetwork extends pulumi.CustomResource {
         ) {
     access = registerOutput<String>('access');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    communities = registerOutput<List<String>>('communities');
+    communities = registerOutput<List<String>>('communities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    routeFilterRuleType = registerOutput<String>('routeFilterRuleType');
+  }
+
+  /// Creates a typed reference to an existing [RouteFilterRuleNetwork] resource.
+  RouteFilterRuleNetwork.reference(String urn)
+    : super(
+        'azure-native:network:RouteFilterRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    access = registerOutput<String>('access');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    communities = registerOutput<List<String>>('communities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String?>('name');

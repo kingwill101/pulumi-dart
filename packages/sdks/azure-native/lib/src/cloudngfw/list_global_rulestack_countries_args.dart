@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ListGlobalRulestackCountriesArgs {
   /// GlobalRulestack resource name
   final pulumi.Input<String> globalRulestackName;
-  final pulumi.Input<String>? skip;
-  final pulumi.Input<int>? top;
+  final pulumi.Input<String?>? skip;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListGlobalRulestackCountriesArgs].
   /// [globalRulestackName] GlobalRulestack resource name
@@ -34,7 +34,7 @@ class ListGlobalRulestackCountriesArgs {
     return ListGlobalRulestackCountriesArgs(
       globalRulestackName: pulumi.Input.fromValue(map['globalRulestackName'] as String),
       skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

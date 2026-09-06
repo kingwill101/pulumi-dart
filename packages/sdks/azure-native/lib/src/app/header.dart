@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Header of otlp configuration
 class Header {
   /// The key of otlp configuration header
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value of otlp configuration header
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Header].
   /// [key] The key of otlp configuration header

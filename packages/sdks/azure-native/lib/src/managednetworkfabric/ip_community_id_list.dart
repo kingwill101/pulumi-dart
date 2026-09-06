@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP Community ID list properties.
 class IpCommunityIdList {
   /// List of IP Community resource IDs.
-  final pulumi.Input<List<String>>? ipCommunityIds;
+  final pulumi.Input<List<String>?>? ipCommunityIds;
 
   /// Creates a new [IpCommunityIdList].
   /// [ipCommunityIds] List of IP Community resource IDs.

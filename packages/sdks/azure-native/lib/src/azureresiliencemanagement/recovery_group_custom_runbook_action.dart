@@ -6,15 +6,15 @@ import 'associated_identity.dart';
 /// Defines a custom runbook action for the recovery orchestration group.
 class RecoveryGroupCustomRunbookAction {
   /// The ARM Resource ID of the resource that includes the actionable script, such as a Runbook in an Automation Account.
-  final pulumi.Input<String>? actionResourceId;
+  final pulumi.Input<String?>? actionResourceId;
   /// The identity associated with actionResourceId for RBAC.
-  final pulumi.Input<AssociatedIdentity>? associatedIdentity;
+  final pulumi.Input<AssociatedIdentity?>? associatedIdentity;
   /// A description of the recovery orchestration group action, containing the instructions to be performed during this action.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the recovery orchestration group action.
   final pulumi.Input<String> name;
   /// Key-value parameters for the operation.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// The maximum amount of time, in minutes, allowed for the action to complete before it times out.
   final pulumi.Input<int> timeoutInMinutes;
   /// Specifies the type of recovery orchestration group actions.
@@ -58,7 +58,7 @@ class RecoveryGroupCustomRunbookAction {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      timeoutInMinutes: pulumi.Input.fromValue(map['timeoutInMinutes'] as int),
+      timeoutInMinutes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutInMinutes'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

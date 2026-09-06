@@ -9,15 +9,15 @@ import 'storage_container_properties.dart';
 /// {@macro pulumi_discovery_storage_container_args_doc}
 class StorageContainerArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<StorageContainerProperties>? properties;
+  final pulumi.Input<StorageContainerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the StorageContainer
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [StorageContainerArgs].
   /// [location] The geo-location where the resource lives

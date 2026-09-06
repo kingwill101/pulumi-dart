@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The upgrade mode of the cluster when new Service Fabric runtime version is available.
-enum ClusterUpgradeMode {
+enum ClusterUpgradeMode implements pulumi.PulumiEnum<String> {
   valueAutomatic("Automatic"),
   valueManual("Manual");
 
   const ClusterUpgradeMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterUpgradeMode fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the parameters for RemoteAddress match conditions
 class RemoteAddressMatchConditionParametersResponse {
   /// Match values to match against. The operator will apply to each value in here with OR semantics. If any of them match the variable with the given operator this match condition is considered a match.
-  final pulumi.Input<List<String>>? matchValues;
+  final pulumi.Input<List<String>?>? matchValues;
   /// Describes if this is negate condition or not
-  final pulumi.Input<bool>? negateCondition;
+  final pulumi.Input<bool?>? negateCondition;
   /// Describes operator to be matched
   final pulumi.Input<String> operator;
   /// List of transforms
-  final pulumi.Input<List<String>>? transforms;
+  final pulumi.Input<List<String>?>? transforms;
   /// Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
   final pulumi.Input<String> typeName;
 
@@ -21,13 +21,13 @@ class RemoteAddressMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRemoteAddressConditionParameters'.
-  const RemoteAddressMatchConditionParametersResponse({
+  RemoteAddressMatchConditionParametersResponse({
     this.matchValues,
-    this.negateCondition,
+    pulumi.Input<bool?>? negateCondition,
     required this.operator,
     this.transforms,
     required this.typeName,
-  });
+  }) : negateCondition = negateCondition ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

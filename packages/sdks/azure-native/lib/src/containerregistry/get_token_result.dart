@@ -6,25 +6,25 @@ import 'token_credentials_properties_response.dart';
 /// Result data returned by getToken.
 class GetTokenResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The creation date of scope map.
-  final String creationDate;
+  final String? creationDate;
   /// The credentials that can be used for authenticating the token.
   final TokenCredentialsPropertiesResponse? credentials;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource ID of the scope map to which the token will be associated with.
   final String? scopeMapId;
   /// The status of the token example enabled or disabled.
   final String? status;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTokenResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,45 +38,45 @@ class GetTokenResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
   const GetTokenResult({
-    required this.azureApiVersion,
-    required this.creationDate,
+    this.azureApiVersion,
+    this.creationDate,
     this.credentials,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.scopeMapId,
     this.status,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'creationDate': creationDate,
+      'azureApiVersion': ?azureApiVersion,
+      'creationDate': ?creationDate,
       'credentials': ?credentials?.toMap(),
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'scopeMapId': ?scopeMapId,
       'status': ?status,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetTokenResult.fromMap(Map<String, dynamic> map) {
     return GetTokenResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      creationDate: map['creationDate'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return TokenCredentialsPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scopeMapId: (() { final guardedValue = map['scopeMapId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

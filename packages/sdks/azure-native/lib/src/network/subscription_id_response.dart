@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionIdResponse {
   /// Subscription id in the ARM id format.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubscriptionIdResponse].
   /// [id] Subscription id in the ARM id format.

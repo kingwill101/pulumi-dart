@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata pertaining to the geographic location of the resource.
 class LocationData {
   /// The city or locality where the resource is located.
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The country or region where the resource is located
-  final pulumi.Input<String>? countryOrRegion;
+  final pulumi.Input<String?>? countryOrRegion;
   /// The district, state, or province where the resource is located.
-  final pulumi.Input<String>? district;
+  final pulumi.Input<String?>? district;
   /// A canonical name for the geographic or physical location.
   final pulumi.Input<String> name;
 

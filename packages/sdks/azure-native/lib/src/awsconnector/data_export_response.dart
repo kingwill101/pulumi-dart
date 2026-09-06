@@ -6,9 +6,9 @@ import 'destination_response.dart';
 /// Definition of DataExport
 class DataExportResponse {
   /// The place to store the data for an analysis. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
-  final pulumi.Input<DestinationResponse>? destination;
+  final pulumi.Input<DestinationResponse?>? destination;
   /// The version of the output schema to use when exporting data. Must be ``V_1``.
-  final pulumi.Input<String>? outputSchemaVersion;
+  final pulumi.Input<String?>? outputSchemaVersion;
 
   /// Creates a new [DataExportResponse].
   /// [destination] The place to store the data for an analysis. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.

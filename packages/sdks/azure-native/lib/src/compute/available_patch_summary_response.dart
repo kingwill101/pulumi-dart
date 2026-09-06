@@ -58,10 +58,10 @@ class AvailablePatchSummaryResponse {
   factory AvailablePatchSummaryResponse.fromMap(Map<String, dynamic> map) {
     return AvailablePatchSummaryResponse(
       assessmentActivityId: pulumi.Input.fromValue(map['assessmentActivityId'] as String),
-      criticalAndSecurityPatchCount: pulumi.Input.fromValue(map['criticalAndSecurityPatchCount'] as int),
+      criticalAndSecurityPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['criticalAndSecurityPatchCount'])),
       error: pulumi.Input.fromValue(ApiErrorResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),
-      otherPatchCount: pulumi.Input.fromValue(map['otherPatchCount'] as int),
+      otherPatchCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['otherPatchCount'])),
       rebootPending: pulumi.Input.fromValue(map['rebootPending'] as bool),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),

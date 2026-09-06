@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbformariadb_configuration_args_doc}
 class ConfigurationArgs {
   /// The name of the server configuration.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Source of the configuration.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Value of the configuration.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ConfigurationArgs].
   /// [configurationName] The name of the server configuration.

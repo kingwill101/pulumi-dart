@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devcenter_schedule_args_doc}
 class ScheduleArgs {
   /// The frequency of this scheduled task.
-  final pulumi.Input<String> frequency;
+  final pulumi.Input<dynamic> frequency;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the pool.
   final pulumi.Input<String> poolName;
   /// The name of the project.
@@ -18,19 +18,19 @@ class ScheduleArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the schedule that uniquely identifies it.
-  final pulumi.Input<String>? scheduleName;
+  final pulumi.Input<String?>? scheduleName;
   /// Indicates whether or not this scheduled task is enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The target time to trigger the action. The format is HH:MM.
   final pulumi.Input<String> time;
   /// The IANA timezone id at which the schedule should execute.
   final pulumi.Input<String> timeZone;
   /// The maximum number of resources to return from the operation. Example: '$top=10'.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
   /// Supported type this scheduled task represents.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [ScheduleArgs].
   /// [frequency] The frequency of this scheduled task.
@@ -79,18 +79,18 @@ class ScheduleArgs {
 
   factory ScheduleArgs.fromMap(Map<String, dynamic> map) {
     return ScheduleArgs(
-      frequency: pulumi.Input.fromValue(map['frequency'] as String),
+      frequency: pulumi.Input.fromValue(map['frequency']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scheduleName: (() { final guardedValue = map['scheduleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       time: pulumi.Input.fromValue(map['time'] as String),
       timeZone: pulumi.Input.fromValue(map['timeZone'] as String),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The dashboard part metadata type.
-enum DashboardPartMetadataType {
+enum DashboardPartMetadataType implements pulumi.PulumiEnum<String> {
   markdown("Extension/HubsExtension/PartType/MarkdownPart");
 
   const DashboardPartMetadataType(this.wireValue);
+  @override
   final String wireValue;
 
   static DashboardPartMetadataType fromValue(String value) {

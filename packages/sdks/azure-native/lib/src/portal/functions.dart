@@ -31,6 +31,17 @@ Future<GetConsoleResult> getConsole(
   return GetConsoleResult.fromMap(result);
 }
 
+pulumi.Output<GetConsoleResult> getConsoleOutput(
+  GetConsoleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getConsole',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsoleResult.fromMap);
+}
+
 /// Gets the console for the user.
 ///
 /// Uses Azure REST API version 2018-10-01.
@@ -47,6 +58,17 @@ Future<GetConsoleWithLocationResult> getConsoleWithLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConsoleWithLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetConsoleWithLocationResult> getConsoleWithLocationOutput(
+  GetConsoleWithLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getConsoleWithLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsoleWithLocationResult.fromMap);
 }
 
 /// Gets the Dashboard.
@@ -69,6 +91,17 @@ Future<GetDashboardResult> getDashboard(
   return GetDashboardResult.fromMap(result);
 }
 
+pulumi.Output<GetDashboardResult> getDashboardOutput(
+  GetDashboardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getDashboard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDashboardResult.fromMap);
+}
+
 /// Gets the tenant configuration.
 ///
 /// Uses Azure REST API version 2022-12-01-preview.
@@ -89,6 +122,17 @@ Future<GetTenantConfigurationResult> getTenantConfiguration(
   return GetTenantConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetTenantConfigurationResult> getTenantConfigurationOutput(
+  GetTenantConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getTenantConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTenantConfigurationResult.fromMap);
+}
+
 /// Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
 ///
 /// Uses Azure REST API version 2018-10-01.
@@ -105,6 +149,17 @@ Future<GetUserSettingsResult> getUserSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetUserSettingsResult> getUserSettingsOutput(
+  GetUserSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getUserSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserSettingsResult.fromMap);
 }
 
 /// Get current user settings for current signed in user. This operation returns settings for the user's cloud shell preferences including preferred location, storage profile, shell type, font and size settings.
@@ -125,6 +180,17 @@ Future<GetUserSettingsWithLocationResult> getUserSettingsWithLocation(
   return GetUserSettingsWithLocationResult.fromMap(result);
 }
 
+pulumi.Output<GetUserSettingsWithLocationResult> getUserSettingsWithLocationOutput(
+  GetUserSettingsWithLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:getUserSettingsWithLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserSettingsWithLocationResult.fromMap);
+}
+
 /// Gets list of items that violate tenant's configuration.
 ///
 /// Uses Azure REST API version 2022-12-01-preview.
@@ -142,4 +208,15 @@ Future<ListListTenantConfigurationViolationResult> listListTenantConfigurationVi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListListTenantConfigurationViolationResult.fromMap(result);
+}
+
+pulumi.Output<ListListTenantConfigurationViolationResult> listListTenantConfigurationViolationOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:portal:listListTenantConfigurationViolation',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListListTenantConfigurationViolationResult.fromMap);
 }

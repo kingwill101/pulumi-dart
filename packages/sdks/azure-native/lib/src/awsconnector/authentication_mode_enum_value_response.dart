@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of AuthenticationModeEnumValue
 class AuthenticationModeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AuthenticationModeEnumValueResponse].
   /// [value] Property value

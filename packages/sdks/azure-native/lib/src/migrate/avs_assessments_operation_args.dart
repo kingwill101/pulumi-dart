@@ -8,64 +8,64 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_migrate_avs_assessments_operation_args_doc}
 class AvsAssessmentsOperationArgs {
   /// AVS Assessment ARM name
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// AVS Assessment Scenario.
-  final pulumi.Input<String>? avsAssessmentScenario;
+  final pulumi.Input<dynamic>? avsAssessmentScenario;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<dynamic>? azureLocation;
   /// Azure Offer code according to which cost estimation is done.
-  final pulumi.Input<String>? azureOfferCode;
+  final pulumi.Input<dynamic>? azureOfferCode;
   /// Percentage of CPU capacity reserved for processing additional workloads.
-  final pulumi.Input<double>? cpuHeadroom;
+  final pulumi.Input<double?>? cpuHeadroom;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<dynamic>? currency;
   /// De-duplication compression.
-  final pulumi.Input<double>? dedupeCompression;
+  final pulumi.Input<double?>? dedupeCompression;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// List of AVS external storage types.
-  final pulumi.Input<List<String>>? externalStorageTypes;
+  final pulumi.Input<List<dynamic>?>? externalStorageTypes;
   /// Failures to tolerate and RAID level in a common property.
-  final pulumi.Input<String>? failuresToTolerateAndRaidLevel;
+  final pulumi.Input<dynamic>? failuresToTolerateAndRaidLevel;
   /// List of Failures to tolerate and RAID levels in a common property.
-  final pulumi.Input<List<String>>? failuresToTolerateAndRaidLevelList;
+  final pulumi.Input<List<dynamic>?>? failuresToTolerateAndRaidLevelList;
   /// Group ARM name
   final pulumi.Input<String> groupName;
   /// Is Stretch Cluster Enabled.
-  final pulumi.Input<bool>? isStretchClusterEnabled;
+  final pulumi.Input<bool?>? isStretchClusterEnabled;
   /// Is VCF license applied
-  final pulumi.Input<bool>? isVcfByolEnabled;
+  final pulumi.Input<bool?>? isVcfByolEnabled;
   /// Memory overcommit.
-  final pulumi.Input<double>? memOvercommit;
+  final pulumi.Input<double?>? memOvercommit;
   /// AVS node type.
-  final pulumi.Input<String>? nodeType;
+  final pulumi.Input<dynamic>? nodeType;
   /// AVS node types.
-  final pulumi.Input<List<String>>? nodeTypes;
+  final pulumi.Input<List<dynamic>?>? nodeTypes;
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final pulumi.Input<String>? percentile;
+  final pulumi.Input<dynamic>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The status of the last operation.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Reserved instance.
-  final pulumi.Input<String>? reservedInstance;
+  final pulumi.Input<dynamic>? reservedInstance;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<dynamic>? sizingCriterion;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final pulumi.Input<String>? timeRange;
+  final pulumi.Input<dynamic>? timeRange;
   /// VCPU over subscription.
-  final pulumi.Input<double>? vcpuOversubscription;
+  final pulumi.Input<double?>? vcpuOversubscription;
 
   /// Creates a new [AvsAssessmentsOperationArgs].
   /// [assessmentName] AVS Assessment ARM name
@@ -163,33 +163,33 @@ class AvsAssessmentsOperationArgs {
   factory AvsAssessmentsOperationArgs.fromMap(Map<String, dynamic> map) {
     return AvsAssessmentsOperationArgs(
       assessmentName: (() { final guardedValue = map['assessmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      avsAssessmentScenario: (() { final guardedValue = map['avsAssessmentScenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cpuHeadroom: (() { final guardedValue = map['cpuHeadroom']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dedupeCompression: (() { final guardedValue = map['dedupeCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      externalStorageTypes: (() { final guardedValue = map['externalStorageTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      failuresToTolerateAndRaidLevel: (() { final guardedValue = map['failuresToTolerateAndRaidLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failuresToTolerateAndRaidLevelList: (() { final guardedValue = map['failuresToTolerateAndRaidLevelList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      avsAssessmentScenario: (() { final guardedValue = map['avsAssessmentScenario']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureLocation: (() { final guardedValue = map['azureLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureOfferCode: (() { final guardedValue = map['azureOfferCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      cpuHeadroom: (() { final guardedValue = map['cpuHeadroom']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      dedupeCompression: (() { final guardedValue = map['dedupeCompression']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      externalStorageTypes: (() { final guardedValue = map['externalStorageTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      failuresToTolerateAndRaidLevel: (() { final guardedValue = map['failuresToTolerateAndRaidLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      failuresToTolerateAndRaidLevelList: (() { final guardedValue = map['failuresToTolerateAndRaidLevelList']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
       isStretchClusterEnabled: (() { final guardedValue = map['isStretchClusterEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isVcfByolEnabled: (() { final guardedValue = map['isVcfByolEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      memOvercommit: (() { final guardedValue = map['memOvercommit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeTypes: (() { final guardedValue = map['nodeTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      memOvercommit: (() { final guardedValue = map['memOvercommit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      nodeTypes: (() { final guardedValue = map['nodeTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      percentile: (() { final guardedValue = map['percentile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       perfDataEndTime: (() { final guardedValue = map['perfDataEndTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       perfDataStartTime: (() { final guardedValue = map['perfDataStartTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      reservedInstance: (() { final guardedValue = map['reservedInstance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vcpuOversubscription: (() { final guardedValue = map['vcpuOversubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      timeRange: (() { final guardedValue = map['timeRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      vcpuOversubscription: (() { final guardedValue = map['vcpuOversubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

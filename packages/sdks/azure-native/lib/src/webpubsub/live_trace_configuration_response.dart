@@ -6,21 +6,21 @@ import 'live_trace_category_response.dart';
 /// Live trace configuration of a Microsoft.SignalRService resource.
 class LiveTraceConfigurationResponse {
   /// Gets or sets the list of category configurations.
-  final pulumi.Input<List<LiveTraceCategoryResponse>>? categories;
+  final pulumi.Input<List<LiveTraceCategoryResponse>?>? categories;
   /// Indicates whether or not enable live trace.
   /// When it's set to true, live trace client can connect to the service.
   /// Otherwise, live trace client can't connect to the service, so that you are unable to receive any log, no matter what you configure in "categories".
   /// Available values: true, false.
   /// Case insensitive.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
 
   /// Creates a new [LiveTraceConfigurationResponse].
   /// [categories] Gets or sets the list of category configurations.
   /// [enabled] Indicates whether or not enable live trace.
-  const LiveTraceConfigurationResponse({
+  LiveTraceConfigurationResponse({
     this.categories,
-    this.enabled,
-  });
+    pulumi.Input<String?>? enabled,
+  }) : enabled = enabled ?? pulumi.Input.fromValue('false');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

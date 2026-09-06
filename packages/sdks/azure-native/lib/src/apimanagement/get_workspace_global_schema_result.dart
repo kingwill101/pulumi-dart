@@ -4,19 +4,19 @@
 /// Result data returned by getWorkspaceGlobalSchema.
 class GetWorkspaceGlobalSchemaResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Free-form schema entity description.
   final String? description;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// Schema Type. Immutable.
-  final String schemaType;
+  final String? schemaType;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Json-encoded string for non json-based schema.
   final dynamic value;
 
@@ -30,38 +30,38 @@ class GetWorkspaceGlobalSchemaResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Json-encoded string for non json-based schema.
   const GetWorkspaceGlobalSchemaResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.schemaType,
-    required this.type,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.schemaType,
+    this.type,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'schemaType': schemaType,
-      'type': type,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'schemaType': ?schemaType,
+      'type': ?type,
       'value': ?value,
     };
   }
 
   factory GetWorkspaceGlobalSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetWorkspaceGlobalSchemaResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      schemaType: map['schemaType'] as String,
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue; })(),
     );
   }

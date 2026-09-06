@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes if policy managed rules will inspect the request body content.
-enum PolicyRequestBodyCheck {
+enum PolicyRequestBodyCheck implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const PolicyRequestBodyCheck(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyRequestBodyCheck fromValue(String value) {

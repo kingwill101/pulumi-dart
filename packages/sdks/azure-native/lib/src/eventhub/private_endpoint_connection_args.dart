@@ -12,13 +12,13 @@ class PrivateEndpointConnectionArgs {
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
   /// The Private Endpoint resource for this Connection.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// The PrivateEndpointConnection name
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Details about the state of the connection.
-  final pulumi.Input<ConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionState?>? privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Name of the resource group within the azure subscription.
   final pulumi.Input<String> resourceGroupName;
 
@@ -55,7 +55,7 @@ class PrivateEndpointConnectionArgs {
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateEndpointConnectionName: (() { final guardedValue = map['privateEndpointConnectionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

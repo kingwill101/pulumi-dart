@@ -10,11 +10,11 @@ class ListApplicationTokensArgs {
   /// The name of the managed application.
   final pulumi.Input<String> applicationName;
   /// The authorization audience.
-  final pulumi.Input<String>? authorizationAudience;
+  final pulumi.Input<String?>? authorizationAudience;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The user assigned identities.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ListApplicationTokensArgs].
   /// [applicationName] The name of the managed application.

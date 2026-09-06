@@ -9,11 +9,11 @@ import 'discovery_rule_properties.dart';
 /// {@macro pulumi_cloudhealth_discovery_rule_args_doc}
 class DiscoveryRuleArgs {
   /// Name of the discovery rule. Must be unique within a health model.
-  final pulumi.Input<String>? discoveryRuleName;
+  final pulumi.Input<String?>? discoveryRuleName;
   /// Name of health model resource
   final pulumi.Input<String> healthModelName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DiscoveryRuleProperties>? properties;
+  final pulumi.Input<DiscoveryRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

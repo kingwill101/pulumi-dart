@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_chaos_target_args_doc}
 class TargetArgs {
   /// Location of the target resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// String that represents a resource provider namespace.
   final pulumi.Input<String> parentProviderNamespace;
   /// String that represents a resource name.
@@ -20,7 +20,7 @@ class TargetArgs {
   /// String that represents an Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// String that represents a Target resource name.
-  final pulumi.Input<String>? targetName;
+  final pulumi.Input<String?>? targetName;
 
   /// Creates a new [TargetArgs].
   /// [location] Location of the target resource.

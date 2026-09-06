@@ -8,13 +8,13 @@ import 'private_link_service_proxy_response_remote_private_endpoint_connection.d
 /// Private link service proxy details.
 class PrivateLinkServiceProxyResponse {
   /// Group connectivity information.
-  final pulumi.Input<List<GroupConnectivityInformationResponse>>? groupConnectivityInformation;
+  final pulumi.Input<List<GroupConnectivityInformationResponse>?>? groupConnectivityInformation;
   /// NRP resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Remote private endpoint connection details.
-  final pulumi.Input<PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection>? remotePrivateEndpointConnection;
+  final pulumi.Input<PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection?>? remotePrivateEndpointConnection;
   /// Remote private link service connection state
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? remotePrivateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? remotePrivateLinkServiceConnectionState;
 
   /// Creates a new [PrivateLinkServiceProxyResponse].
   /// [groupConnectivityInformation] Group connectivity information.

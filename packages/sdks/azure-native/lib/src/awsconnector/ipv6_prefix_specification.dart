@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Ipv6PrefixSpecification
 class Ipv6PrefixSpecification {
   /// Property ipv6Prefix
-  final pulumi.Input<String>? ipv6Prefix;
+  final pulumi.Input<String?>? ipv6Prefix;
 
   /// Creates a new [Ipv6PrefixSpecification].
   /// [ipv6Prefix] Property ipv6Prefix

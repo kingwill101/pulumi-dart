@@ -14,34 +14,34 @@ class CustomActivityResponse {
   /// Command for custom activity Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> command;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User defined property bag. There is no restriction on the keys or values that can be used. The user specified custom activity has the full responsibility to consume and interpret the content defined.
   final pulumi.Input<dynamic>? extendedProperties;
   /// Folder path for resource files Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? folderPath;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Reference objects
-  final pulumi.Input<CustomActivityReferenceObjectResponse>? referenceObjects;
+  final pulumi.Input<CustomActivityReferenceObjectResponse?>? referenceObjects;
   /// Resource linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? resourceLinkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? resourceLinkedService;
   /// The retention time for the files submitted for custom activity. Type: double (or Expression with resultType double).
   final pulumi.Input<dynamic>? retentionTimeInDays;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [CustomActivityResponse].
   /// [autoUserSpecification] Elevation level and scope for the user, default is nonadmin task. Type: string (or Expression with resultType double).

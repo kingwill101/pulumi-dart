@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scaling plan reference to hostpool.
 class ScalingHostPoolReferenceResponse {
   /// Arm path of referenced hostpool.
-  final pulumi.Input<String>? hostPoolArmPath;
+  final pulumi.Input<String?>? hostPoolArmPath;
   /// Is the scaling plan enabled for this hostpool.
-  final pulumi.Input<bool>? scalingPlanEnabled;
+  final pulumi.Input<bool?>? scalingPlanEnabled;
 
   /// Creates a new [ScalingHostPoolReferenceResponse].
   /// [hostPoolArmPath] Arm path of referenced hostpool.

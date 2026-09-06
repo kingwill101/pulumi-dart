@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ingress transport protocol
-enum IngressTransportMethod {
+enum IngressTransportMethod implements pulumi.PulumiEnum<String> {
   valueAuto("auto"),
   valueHttp("http"),
   valueHttp2("http2"),
   valueTcp("tcp");
 
   const IngressTransportMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static IngressTransportMethod fromValue(String value) {

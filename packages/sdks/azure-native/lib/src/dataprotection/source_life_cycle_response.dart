@@ -11,7 +11,7 @@ class SourceLifeCycleResponse {
   final pulumi.Input<AbsoluteDeleteOptionResponse> deleteAfter;
   /// DataStoreInfo base
   final pulumi.Input<DataStoreInfoBaseResponse> sourceDataStore;
-  final pulumi.Input<List<TargetCopySettingResponse>>? targetDataStoreCopySettings;
+  final pulumi.Input<List<TargetCopySettingResponse>?>? targetDataStoreCopySettings;
 
   /// Creates a new [SourceLifeCycleResponse].
   /// [deleteAfter] Delete Option

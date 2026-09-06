@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ComplianceSeverity {
+enum ComplianceSeverity implements pulumi.PulumiEnum<String> {
   cRITICAL("CRITICAL"),
   hIGH("HIGH"),
   iNFORMATIONAL("INFORMATIONAL"),
@@ -8,6 +10,7 @@ enum ComplianceSeverity {
   uNSPECIFIED("UNSPECIFIED");
 
   const ComplianceSeverity(this.wireValue);
+  @override
   final String wireValue;
 
   static ComplianceSeverity fromValue(String value) {

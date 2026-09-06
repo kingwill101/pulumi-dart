@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AAD based security principal with associated Ledger RoleName
 class AADBasedSecurityPrincipal {
   /// LedgerRole associated with the Security Principal of Ledger
-  final pulumi.Input<String>? ledgerRoleName;
+  final pulumi.Input<dynamic>? ledgerRoleName;
   /// UUID/GUID based Principal Id of the Security Principal
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// UUID/GUID based Tenant Id of the Security Principal
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AADBasedSecurityPrincipal].
   /// [ledgerRoleName] LedgerRole associated with the Security Principal of Ledger
@@ -31,7 +31,7 @@ class AADBasedSecurityPrincipal {
 
   factory AADBasedSecurityPrincipal.fromMap(Map<String, dynamic> map) {
     return AADBasedSecurityPrincipal(
-      ledgerRoleName: (() { final guardedValue = map['ledgerRoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ledgerRoleName: (() { final guardedValue = map['ledgerRoleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       principalId: (() { final guardedValue = map['principalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

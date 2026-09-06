@@ -9,7 +9,7 @@ import 'schedule_properties.dart';
 /// {@macro pulumi_machinelearningservices_schedule_args_doc}
 class ScheduleArgs {
   /// Schedule name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<ScheduleProperties> properties;
   /// The name of the resource group. The name is case insensitive.

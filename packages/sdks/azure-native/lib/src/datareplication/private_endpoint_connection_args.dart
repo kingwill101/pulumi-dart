@@ -9,9 +9,9 @@ import 'private_endpoint_connection_response_properties.dart';
 /// {@macro pulumi_datareplication_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The private endpoint connection name.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<PrivateEndpointConnectionResponseProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionResponseProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The vault name.

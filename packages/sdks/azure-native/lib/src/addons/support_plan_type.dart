@@ -168,4 +168,19 @@ class SupportPlanType extends pulumi.CustomResource {
     provisioningState = registerOutput<String?>('provisioningState');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SupportPlanType] resource.
+  SupportPlanType.reference(String urn)
+    : super(
+        'azure-native:addons:SupportPlanType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    type = registerOutput<String>('type');
+  }
 }

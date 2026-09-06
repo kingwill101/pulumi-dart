@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The allowed permission.
-enum PermissionType {
+enum PermissionType implements pulumi.PulumiEnum<String> {
   valuePublisher("Publisher"),
   valueSubscriber("Subscriber");
 
   const PermissionType(this.wireValue);
+  @override
   final String wireValue;
 
   static PermissionType fromValue(String value) {

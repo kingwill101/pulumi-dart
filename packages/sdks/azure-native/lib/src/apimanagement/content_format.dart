@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Format of the Content in which the API is getting imported. New formats can be added in the future
-enum ContentFormat {
+enum ContentFormat implements pulumi.PulumiEnum<String> {
   valueWadlXml("wadl-xml"),
   valueWadlLinkJson("wadl-link-json"),
   valueSwaggerJson("swagger-json"),
@@ -17,6 +19,7 @@ enum ContentFormat {
   valueGrpcLink("grpc-link");
 
   const ContentFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static ContentFormat fromValue(String value) {

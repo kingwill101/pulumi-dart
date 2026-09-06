@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identity type
-enum MsiIdentityType {
+enum MsiIdentityType implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueSystemAssigned("SystemAssigned"),
   valueUserAssigned("UserAssigned");
 
   const MsiIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static MsiIdentityType fromValue(String value) {

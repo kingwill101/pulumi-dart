@@ -7,9 +7,9 @@ import 'port_set.dart';
 /// Definition of RuleVariables
 class RuleVariables {
   /// Property ipSets
-  final pulumi.Input<Map<String, IPSet>>? ipSets;
+  final pulumi.Input<Map<String, IPSet>?>? ipSets;
   /// Property portSets
-  final pulumi.Input<Map<String, PortSet>>? portSets;
+  final pulumi.Input<Map<String, PortSet>?>? portSets;
 
   /// Creates a new [RuleVariables].
   /// [ipSets] Property ipSets

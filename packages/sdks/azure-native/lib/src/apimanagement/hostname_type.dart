@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Hostname type.
-enum HostnameType {
+enum HostnameType implements pulumi.PulumiEnum<String> {
   valueProxy("Proxy"),
   valuePortal("Portal"),
   valueManagement("Management"),
@@ -8,6 +10,7 @@ enum HostnameType {
   valueConfigurationApi("ConfigurationApi");
 
   const HostnameType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostnameType fromValue(String value) {

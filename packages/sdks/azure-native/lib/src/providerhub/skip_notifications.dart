@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether notifications should be skipped.
-enum SkipNotifications {
+enum SkipNotifications implements pulumi.PulumiEnum<String> {
   unspecified("Unspecified"),
   enabled("Enabled"),
   disabled("Disabled");
 
   const SkipNotifications(this.wireValue);
+  @override
   final String wireValue;
 
   static SkipNotifications fromValue(String value) {

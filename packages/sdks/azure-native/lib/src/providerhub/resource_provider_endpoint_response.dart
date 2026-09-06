@@ -5,23 +5,23 @@ import 'resource_provider_endpoint_features_rule_response.dart';
 
 class ResourceProviderEndpointResponse {
   /// The api versions.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// Whether the endpoint is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The endpoint type.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
   /// The endpoint uri.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// The feature rules.
-  final pulumi.Input<ResourceProviderEndpointFeaturesRuleResponse>? featuresRule;
+  final pulumi.Input<ResourceProviderEndpointFeaturesRuleResponse?>? featuresRule;
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// The sku link.
-  final pulumi.Input<String>? skuLink;
+  final pulumi.Input<String?>? skuLink;
   /// The timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [ResourceProviderEndpointResponse].
   /// [apiVersions] The api versions.

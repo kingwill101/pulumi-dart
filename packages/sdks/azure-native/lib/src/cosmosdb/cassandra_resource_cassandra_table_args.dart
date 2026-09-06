@@ -14,17 +14,17 @@ class CassandraResourceCassandraTableArgs {
   /// Cosmos DB keyspace name.
   final pulumi.Input<String> keyspaceName;
   /// The location of the resource group to which the resource belongs.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
-  final pulumi.Input<CreateUpdateOptions>? options;
+  final pulumi.Input<CreateUpdateOptions?>? options;
   /// The standard JSON format of a Cassandra table
   final pulumi.Input<CassandraTableResource> resource;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Cosmos DB table name.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
   /// Tags are a list of key-value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). A maximum of 15 tags can be provided for a resource. Each tag must have a key no greater than 128 characters and value no greater than 256 characters. For example, the default experience for a template type is set with "defaultExperience": "Cassandra". Current "defaultExperience" values also include "Table", "Graph", "DocumentDB", and "MongoDB".
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CassandraResourceCassandraTableArgs].
   /// [accountName] Cosmos DB database account name.

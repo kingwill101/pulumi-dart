@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containerregistry_replication_args_doc}
 class ReplicationArgs {
   /// The location of the resource. This cannot be changed after the resource is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications.
-  final pulumi.Input<bool>? regionEndpointEnabled;
+  final pulumi.Input<bool?>? regionEndpointEnabled;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the replication.
-  final pulumi.Input<String>? replicationName;
+  final pulumi.Input<String?>? replicationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Whether or not zone redundancy is enabled for this container registry replication
-  final pulumi.Input<String>? zoneRedundancy;
+  final pulumi.Input<dynamic>? zoneRedundancy;
 
   /// Creates a new [ReplicationArgs].
   /// [location] The location of the resource. This cannot be changed after the resource is created.
@@ -30,15 +30,15 @@ class ReplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry replication
-  const ReplicationArgs({
+  ReplicationArgs({
     this.location,
-    this.regionEndpointEnabled,
+    pulumi.Input<bool?>? regionEndpointEnabled,
     required this.registryName,
     this.replicationName,
     required this.resourceGroupName,
     this.tags,
-    this.zoneRedundancy,
-  });
+    pulumi.Input<dynamic>? zoneRedundancy,
+  }) : regionEndpointEnabled = regionEndpointEnabled ?? pulumi.Input.fromValue(true), zoneRedundancy = zoneRedundancy ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -60,7 +60,7 @@ class ReplicationArgs {
       replicationName: (() { final guardedValue = map['replicationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

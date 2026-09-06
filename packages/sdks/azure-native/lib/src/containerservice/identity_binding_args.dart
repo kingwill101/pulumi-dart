@@ -9,9 +9,9 @@ import 'identity_binding_properties.dart';
 /// {@macro pulumi_containerservice_identity_binding_args_doc}
 class IdentityBindingArgs {
   /// The name of the identity binding.
-  final pulumi.Input<String>? identityBindingName;
+  final pulumi.Input<String?>? identityBindingName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<IdentityBindingProperties>? properties;
+  final pulumi.Input<IdentityBindingProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.

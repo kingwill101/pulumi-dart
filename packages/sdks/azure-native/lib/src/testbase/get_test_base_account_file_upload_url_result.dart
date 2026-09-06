@@ -4,29 +4,29 @@
 /// Result data returned by getTestBaseAccountFileUploadUrl.
 class GetTestBaseAccountFileUploadUrlResult {
   /// The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.
-  final String blobPath;
+  final String? blobPath;
   /// The URL used for uploading the package.
-  final String uploadUrl;
+  final String? uploadUrl;
 
   /// Creates a new [GetTestBaseAccountFileUploadUrlResult].
   /// [blobPath] The blob path of the uploaded package. It will be used as the 'blobPath' property of PackageResource.
   /// [uploadUrl] The URL used for uploading the package.
   const GetTestBaseAccountFileUploadUrlResult({
-    required this.blobPath,
-    required this.uploadUrl,
+    this.blobPath,
+    this.uploadUrl,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blobPath': blobPath,
-      'uploadUrl': uploadUrl,
+      'blobPath': ?blobPath,
+      'uploadUrl': ?uploadUrl,
     };
   }
 
   factory GetTestBaseAccountFileUploadUrlResult.fromMap(Map<String, dynamic> map) {
     return GetTestBaseAccountFileUploadUrlResult(
-      blobPath: map['blobPath'] as String,
-      uploadUrl: map['uploadUrl'] as String,
+      blobPath: (() { final guardedValue = map['blobPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uploadUrl: (() { final guardedValue = map['uploadUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

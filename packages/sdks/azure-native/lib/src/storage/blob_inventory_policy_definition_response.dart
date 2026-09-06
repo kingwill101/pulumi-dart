@@ -6,7 +6,7 @@ import 'blob_inventory_policy_filter_response.dart';
 /// An object that defines the blob inventory rule.
 class BlobInventoryPolicyDefinitionResponse {
   /// An object that defines the filter set.
-  final pulumi.Input<BlobInventoryPolicyFilterResponse>? filters;
+  final pulumi.Input<BlobInventoryPolicyFilterResponse?>? filters;
   /// This is a required field, it specifies the format for the inventory files.
   final pulumi.Input<String> format;
   /// This is a required field. This field specifies the scope of the inventory created either at the blob or container level.

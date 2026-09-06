@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifying this parameter adds support for reliable collections
 class ReliableCollectionsRef {
   /// False (the default) if ReliableCollections state is persisted to disk as usual. True if you do not want to persist state, in which case replication is still enabled and you can use ReliableCollections as distributed cache.
-  final pulumi.Input<bool>? doNotPersistState;
+  final pulumi.Input<bool?>? doNotPersistState;
   /// Name of ReliableCollection resource. Right now it's not used and you can use any string.
   final pulumi.Input<String> name;
 

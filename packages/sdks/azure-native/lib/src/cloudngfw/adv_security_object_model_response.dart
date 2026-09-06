@@ -8,7 +8,7 @@ class AdvSecurityObjectModelResponse {
   /// URL entry
   final pulumi.Input<List<NameDescriptionObjectResponse>> entry;
   /// type of object
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AdvSecurityObjectModelResponse].
   /// [entry] URL entry

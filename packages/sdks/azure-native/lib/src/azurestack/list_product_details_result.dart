@@ -7,27 +7,27 @@ import 'os_disk_image_response.dart';
 /// Result data returned by listProductDetails.
 class ListProductDetailsResult {
   /// Specifies kind of compute role included in the package.
-  final String computeRole;
+  final String? computeRole;
   /// List of attached data disks.
-  final List<DataDiskImageResponse> dataDiskImages;
+  final List<DataDiskImageResponse>? dataDiskImages;
   /// The URI to the .azpkg file that provides information required for showing product in the gallery.
-  final String galleryPackageBlobSasUri;
+  final String? galleryPackageBlobSasUri;
   /// Specifies if product is a Virtual Machine Extension.
-  final bool isSystemExtension;
+  final bool? isSystemExtension;
   /// OS disk image used by product.
-  final OsDiskImageResponse osDiskImage;
+  final OsDiskImageResponse? osDiskImage;
   /// Specifies the kind of the product (virtualMachine or virtualMachineExtension).
-  final String productKind;
+  final String? productKind;
   /// Indicates if specified product supports multiple extensions.
-  final bool supportMultipleExtensions;
+  final bool? supportMultipleExtensions;
   /// The URI.
-  final String uri;
+  final String? uri;
   /// Specifies product version.
-  final String version;
+  final String? version;
   /// Specifies operating system used by the product.
-  final String vmOsType;
+  final String? vmOsType;
   /// Indicates if virtual machine Scale Set is enabled in the specified product.
-  final bool vmScaleSetEnabled;
+  final bool? vmScaleSetEnabled;
 
   /// Creates a new [ListProductDetailsResult].
   /// [computeRole] Specifies kind of compute role included in the package.
@@ -42,48 +42,48 @@ class ListProductDetailsResult {
   /// [vmOsType] Specifies operating system used by the product.
   /// [vmScaleSetEnabled] Indicates if virtual machine Scale Set is enabled in the specified product.
   const ListProductDetailsResult({
-    required this.computeRole,
-    required this.dataDiskImages,
-    required this.galleryPackageBlobSasUri,
-    required this.isSystemExtension,
-    required this.osDiskImage,
-    required this.productKind,
-    required this.supportMultipleExtensions,
-    required this.uri,
-    required this.version,
-    required this.vmOsType,
-    required this.vmScaleSetEnabled,
+    this.computeRole,
+    this.dataDiskImages,
+    this.galleryPackageBlobSasUri,
+    this.isSystemExtension,
+    this.osDiskImage,
+    this.productKind,
+    this.supportMultipleExtensions,
+    this.uri,
+    this.version,
+    this.vmOsType,
+    this.vmScaleSetEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'computeRole': computeRole,
-      'dataDiskImages': pulumi.Input.encodeList<DataDiskImageResponse, Map<String, dynamic>>(dataDiskImages, (value) => value.toMap()),
-      'galleryPackageBlobSasUri': galleryPackageBlobSasUri,
-      'isSystemExtension': isSystemExtension,
-      'osDiskImage': osDiskImage.toMap(),
-      'productKind': productKind,
-      'supportMultipleExtensions': supportMultipleExtensions,
-      'uri': uri,
-      'version': version,
-      'vmOsType': vmOsType,
-      'vmScaleSetEnabled': vmScaleSetEnabled,
+      'computeRole': ?computeRole,
+      'dataDiskImages': ?(() { final guardedValue = dataDiskImages; if (guardedValue == null) return null; return pulumi.Input.encodeList<DataDiskImageResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'galleryPackageBlobSasUri': ?galleryPackageBlobSasUri,
+      'isSystemExtension': ?isSystemExtension,
+      'osDiskImage': ?osDiskImage?.toMap(),
+      'productKind': ?productKind,
+      'supportMultipleExtensions': ?supportMultipleExtensions,
+      'uri': ?uri,
+      'version': ?version,
+      'vmOsType': ?vmOsType,
+      'vmScaleSetEnabled': ?vmScaleSetEnabled,
     };
   }
 
   factory ListProductDetailsResult.fromMap(Map<String, dynamic> map) {
     return ListProductDetailsResult(
-      computeRole: map['computeRole'] as String,
-      dataDiskImages: pulumi.Input.decodeList<DataDiskImageResponse>(map['dataDiskImages']!, (value) => DataDiskImageResponse.fromMap((value as Map).cast<String, dynamic>())),
-      galleryPackageBlobSasUri: map['galleryPackageBlobSasUri'] as String,
-      isSystemExtension: map['isSystemExtension'] as bool,
-      osDiskImage: OsDiskImageResponse.fromMap((map['osDiskImage']! as Map).cast<String, dynamic>()),
-      productKind: map['productKind'] as String,
-      supportMultipleExtensions: map['supportMultipleExtensions'] as bool,
-      uri: map['uri'] as String,
-      version: map['version'] as String,
-      vmOsType: map['vmOsType'] as String,
-      vmScaleSetEnabled: map['vmScaleSetEnabled'] as bool,
+      computeRole: (() { final guardedValue = map['computeRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dataDiskImages: (() { final guardedValue = map['dataDiskImages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskImageResponse>(guardedValue, (value) => DataDiskImageResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      galleryPackageBlobSasUri: (() { final guardedValue = map['galleryPackageBlobSasUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isSystemExtension: (() { final guardedValue = map['isSystemExtension']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      osDiskImage: (() { final guardedValue = map['osDiskImage']; if (guardedValue == null) return null; return OsDiskImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      productKind: (() { final guardedValue = map['productKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      supportMultipleExtensions: (() { final guardedValue = map['supportMultipleExtensions']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      uri: (() { final guardedValue = map['uri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmOsType: (() { final guardedValue = map['vmOsType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmScaleSetEnabled: (() { final guardedValue = map['vmScaleSetEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

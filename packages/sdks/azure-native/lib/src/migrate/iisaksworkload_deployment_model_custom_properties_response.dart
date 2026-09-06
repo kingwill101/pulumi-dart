@@ -6,7 +6,7 @@ import 'iisaksworkload_deployment_response.dart';
 /// IIS workload instance model custom properties.
 class IISAKSWorkloadDeploymentModelCustomPropertiesResponse {
   /// IIS AKS workload deployment.
-  final pulumi.Input<IISAKSWorkloadDeploymentResponse>? iisAksWorkloadDeploymentProperties;
+  final pulumi.Input<IISAKSWorkloadDeploymentResponse?>? iisAksWorkloadDeploymentProperties;
   /// Gets or sets the instance type.
   /// Expected value is 'IISAKSWorkloadDeploymentModelCustomProperties'.
   final pulumi.Input<String> instanceType;

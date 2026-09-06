@@ -7,19 +7,19 @@ import 'dapr_properties_response.dart';
 /// The configuration information, used to generate configurations or save to applications
 class ConfigurationInfoResponse {
   /// Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
-  final pulumi.Input<Map<String, String>>? additionalConfigurations;
+  final pulumi.Input<Map<String, String>?>? additionalConfigurations;
   /// A dictionary of additional properties to be added in the end of connection string.
-  final pulumi.Input<Map<String, String>>? additionalConnectionStringProperties;
+  final pulumi.Input<Map<String, String>?>? additionalConnectionStringProperties;
   /// An option to store configuration into different place
-  final pulumi.Input<ConfigurationStoreResponse>? configurationStore;
+  final pulumi.Input<ConfigurationStoreResponse?>? configurationStore;
   /// Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
-  final pulumi.Input<Map<String, String>>? customizedKeys;
+  final pulumi.Input<Map<String, String>?>? customizedKeys;
   /// Indicates some additional properties for dapr client type
-  final pulumi.Input<DaprPropertiesResponse>? daprProperties;
+  final pulumi.Input<DaprPropertiesResponse?>? daprProperties;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<String?>? deleteOrUpdateBehavior;
 
   /// Creates a new [ConfigurationInfoResponse].
   /// [action] Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source.

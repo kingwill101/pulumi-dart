@@ -11,9 +11,9 @@ class LandingZoneRegistrationOperationArgs {
   /// The landing zone account.
   final pulumi.Input<String> landingZoneAccountName;
   /// The name of the landing zone registration resource.
-  final pulumi.Input<String>? landingZoneRegistrationName;
+  final pulumi.Input<String?>? landingZoneRegistrationName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LandingZoneRegistrationResourceProperties>? properties;
+  final pulumi.Input<LandingZoneRegistrationResourceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

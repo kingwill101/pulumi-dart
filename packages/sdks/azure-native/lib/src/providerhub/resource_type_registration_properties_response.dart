@@ -47,155 +47,155 @@ import 'token_auth_configuration_response.dart';
 
 class ResourceTypeRegistrationPropertiesResponse {
   /// Add resource list target locations?
-  final pulumi.Input<bool>? addResourceListTargetLocations;
+  final pulumi.Input<bool?>? addResourceListTargetLocations;
   /// The additional options.
-  final pulumi.Input<String>? additionalOptions;
+  final pulumi.Input<String?>? additionalOptions;
   /// The allow empty role assignments.
-  final pulumi.Input<bool>? allowEmptyRoleAssignments;
+  final pulumi.Input<bool?>? allowEmptyRoleAssignments;
   /// The allowed resource names.
-  final pulumi.Input<List<AllowedResourceNameResponse>>? allowedResourceNames;
+  final pulumi.Input<List<AllowedResourceNameResponse>?>? allowedResourceNames;
   /// Allowed template deployment reference actions.
-  final pulumi.Input<List<String>>? allowedTemplateDeploymentReferenceActions;
+  final pulumi.Input<List<String>?>? allowedTemplateDeploymentReferenceActions;
   /// The allowed unauthorized actions.
-  final pulumi.Input<List<String>>? allowedUnauthorizedActions;
+  final pulumi.Input<List<String>?>? allowedUnauthorizedActions;
   /// The allowed unauthorized actions extensions.
-  final pulumi.Input<List<AllowedUnauthorizedActionsExtensionResponse>>? allowedUnauthorizedActionsExtensions;
+  final pulumi.Input<List<AllowedUnauthorizedActionsExtensionResponse>?>? allowedUnauthorizedActionsExtensions;
   /// The api profiles.
-  final pulumi.Input<List<ApiProfileResponse>>? apiProfiles;
+  final pulumi.Input<List<ApiProfileResponse>?>? apiProfiles;
   /// The async operation resource type name.
-  final pulumi.Input<String>? asyncOperationResourceTypeName;
+  final pulumi.Input<String?>? asyncOperationResourceTypeName;
   /// Async timeout rules
-  final pulumi.Input<List<AsyncTimeoutRuleResponse>>? asyncTimeoutRules;
+  final pulumi.Input<List<AsyncTimeoutRuleResponse>?>? asyncTimeoutRules;
   /// The authorization action mappings
-  final pulumi.Input<List<AuthorizationActionMappingResponse>>? authorizationActionMappings;
+  final pulumi.Input<List<AuthorizationActionMappingResponse>?>? authorizationActionMappings;
   /// The availability zone rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse>? availabilityZoneRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesAvailabilityZoneRuleResponse?>? availabilityZoneRule;
   /// Capacity rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRuleResponse>? capacityRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCapacityRuleResponse?>? capacityRule;
   /// The category.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// The check name availability specifications.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse>? checkNameAvailabilitySpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesCheckNameAvailabilitySpecificationsResponse?>? checkNameAvailabilitySpecifications;
   /// Common API versions for the resource type.
-  final pulumi.Input<List<String>>? commonApiVersions;
+  final pulumi.Input<List<String>?>? commonApiVersions;
   /// The cross tenant token validation.
-  final pulumi.Input<String>? crossTenantTokenValidation;
+  final pulumi.Input<String?>? crossTenantTokenValidation;
   /// The default api version.
-  final pulumi.Input<String>? defaultApiVersion;
+  final pulumi.Input<String?>? defaultApiVersion;
   /// The disallowed action verbs.
-  final pulumi.Input<List<String>>? disallowedActionVerbs;
+  final pulumi.Input<List<String>?>? disallowedActionVerbs;
   /// The disallowed end user operations.
-  final pulumi.Input<List<String>>? disallowedEndUserOperations;
+  final pulumi.Input<List<String>?>? disallowedEndUserOperations;
   /// The dsts configuration.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfigurationResponse>? dstsConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesDstsConfigurationResponse?>? dstsConfiguration;
   /// Whether async operation is enabled.
-  final pulumi.Input<bool>? enableAsyncOperation;
+  final pulumi.Input<bool?>? enableAsyncOperation;
   /// Whether third party S2S is enabled.
-  final pulumi.Input<bool>? enableThirdPartyS2S;
+  final pulumi.Input<bool?>? enableThirdPartyS2S;
   /// The extensions.
-  final pulumi.Input<List<ResourceTypeEndpointResponse>>? endpoints;
+  final pulumi.Input<List<ResourceTypeEndpointResponse>?>? endpoints;
   /// The extended locations.
-  final pulumi.Input<List<ExtendedLocationOptionsResponse>>? extendedLocations;
+  final pulumi.Input<List<ExtendedLocationOptionsResponse>?>? extendedLocations;
   /// The extension options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptionsResponse>? extensionOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesExtensionOptionsResponse?>? extensionOptions;
   /// The features rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRuleResponse>? featuresRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesFeaturesRuleResponse?>? featuresRule;
   /// The frontdoor request mode.
-  final pulumi.Input<String>? frontdoorRequestMode;
+  final pulumi.Input<String?>? frontdoorRequestMode;
   /// Grouping tag.
-  final pulumi.Input<String>? groupingTag;
+  final pulumi.Input<String?>? groupingTag;
   /// The identity management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagementResponse>? identityManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesIdentityManagementResponse?>? identityManagement;
   /// Whether it is pure proxy.
-  final pulumi.Input<bool>? isPureProxy;
+  final pulumi.Input<bool?>? isPureProxy;
   /// The legacy name.
-  final pulumi.Input<String>? legacyName;
+  final pulumi.Input<String?>? legacyName;
   /// The legacy names.
-  final pulumi.Input<List<String>>? legacyNames;
+  final pulumi.Input<List<String>?>? legacyNames;
   /// The legacy policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicyResponse>? legacyPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesLegacyPolicyResponse?>? legacyPolicy;
   /// The linked access checks.
-  final pulumi.Input<List<LinkedAccessCheckResponse>>? linkedAccessChecks;
+  final pulumi.Input<List<LinkedAccessCheckResponse>?>? linkedAccessChecks;
   /// The linked notification rules.
-  final pulumi.Input<List<LinkedNotificationRuleResponse>>? linkedNotificationRules;
+  final pulumi.Input<List<LinkedNotificationRuleResponse>?>? linkedNotificationRules;
   /// The linked operation rules.
-  final pulumi.Input<List<LinkedOperationRuleResponse>>? linkedOperationRules;
+  final pulumi.Input<List<LinkedOperationRuleResponse>?>? linkedOperationRules;
   /// The logging rules.
-  final pulumi.Input<List<LoggingRuleResponse>>? loggingRules;
+  final pulumi.Input<List<LoggingRuleResponse>?>? loggingRules;
   /// The resource provider management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesManagementResponse>? management;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesManagementResponse?>? management;
   /// Manifest link.
-  final pulumi.Input<String>? manifestLink;
+  final pulumi.Input<String?>? manifestLink;
   /// Marketplace options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse>? marketplaceOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse?>? marketplaceOptions;
   /// The marketplace type.
-  final pulumi.Input<String>? marketplaceType;
+  final pulumi.Input<String?>? marketplaceType;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The notifications.
-  final pulumi.Input<List<NotificationResponse>>? notifications;
+  final pulumi.Input<List<NotificationResponse>?>? notifications;
   /// The on behalf of tokens.
-  final pulumi.Input<ResourceTypeOnBehalfOfTokenResponse>? onBehalfOfTokens;
+  final pulumi.Input<ResourceTypeOnBehalfOfTokenResponse?>? onBehalfOfTokens;
   /// The open api configuration.
-  final pulumi.Input<OpenApiConfigurationResponse>? openApiConfiguration;
+  final pulumi.Input<OpenApiConfigurationResponse?>? openApiConfiguration;
   /// The policy execution type.
-  final pulumi.Input<String>? policyExecutionType;
+  final pulumi.Input<String?>? policyExecutionType;
   /// The provisioning state.
   final pulumi.Input<String> provisioningState;
   /// The quota rule.
-  final pulumi.Input<QuotaRuleResponse>? quotaRule;
+  final pulumi.Input<QuotaRuleResponse?>? quotaRule;
   /// The regionality.
-  final pulumi.Input<String>? regionality;
+  final pulumi.Input<String?>? regionality;
   /// The request header options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse>? requestHeaderOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse?>? requestHeaderOptions;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// Resource cache options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceCacheResponse>? resourceCache;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceCacheResponse?>? resourceCache;
   /// The resource concurrency control options.
-  final pulumi.Input<Map<String, ResourceConcurrencyControlOptionResponse>>? resourceConcurrencyControlOptions;
+  final pulumi.Input<Map<String, ResourceConcurrencyControlOptionResponse>?>? resourceConcurrencyControlOptions;
   /// The resource deletion policy.
-  final pulumi.Input<String>? resourceDeletionPolicy;
+  final pulumi.Input<String?>? resourceDeletionPolicy;
   /// The resource graph configuration.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse>? resourceGraphConfiguration;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse?>? resourceGraphConfiguration;
   /// Resource management options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse>? resourceManagementOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceManagementOptionsResponse?>? resourceManagementOptions;
   /// The resource move policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicyResponse>? resourceMovePolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceMovePolicyResponse?>? resourceMovePolicy;
   /// The resource provider authorization rules.
-  final pulumi.Input<ResourceProviderAuthorizationRulesResponse>? resourceProviderAuthorizationRules;
+  final pulumi.Input<ResourceProviderAuthorizationRulesResponse?>? resourceProviderAuthorizationRules;
   /// Resource query management options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagementResponse>? resourceQueryManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceQueryManagementResponse?>? resourceQueryManagement;
   /// The resource sub type.
-  final pulumi.Input<String>? resourceSubType;
+  final pulumi.Input<String?>? resourceSubType;
   /// Resource type common attribute management.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse>? resourceTypeCommonAttributeManagement;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagementResponse?>? resourceTypeCommonAttributeManagement;
   /// The resource validation.
-  final pulumi.Input<String>? resourceValidation;
+  final pulumi.Input<String?>? resourceValidation;
   /// Routing rule.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRuleResponse>? routingRule;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesRoutingRuleResponse?>? routingRule;
   /// The resource routing type.
-  final pulumi.Input<String>? routingType;
+  final pulumi.Input<String?>? routingType;
   /// The service tree infos.
-  final pulumi.Input<List<ServiceTreeInfoResponse>>? serviceTreeInfos;
+  final pulumi.Input<List<ServiceTreeInfoResponse>?>? serviceTreeInfos;
   /// The sku link.
-  final pulumi.Input<String>? skuLink;
+  final pulumi.Input<String?>? skuLink;
   /// The subscription lifecycle notification specifications.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse>? subscriptionLifecycleNotificationSpecifications;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesSubscriptionLifecycleNotificationSpecificationsResponse?>? subscriptionLifecycleNotificationSpecifications;
   /// The subscription state rules.
-  final pulumi.Input<List<SubscriptionStateRuleResponse>>? subscriptionStateRules;
+  final pulumi.Input<List<SubscriptionStateRuleResponse>?>? subscriptionStateRules;
   /// Whether tags are supported.
-  final pulumi.Input<bool>? supportsTags;
+  final pulumi.Input<bool?>? supportsTags;
   /// The swagger specifications.
-  final pulumi.Input<List<SwaggerSpecificationResponse>>? swaggerSpecifications;
+  final pulumi.Input<List<SwaggerSpecificationResponse>?>? swaggerSpecifications;
   /// The template deployment options.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse>? templateDeploymentOptions;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentOptionsResponse?>? templateDeploymentOptions;
   /// The template deployment policy.
-  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse>? templateDeploymentPolicy;
+  final pulumi.Input<ResourceTypeRegistrationPropertiesTemplateDeploymentPolicyResponse?>? templateDeploymentPolicy;
   /// The throttling rules.
-  final pulumi.Input<List<ThrottlingRuleResponse>>? throttlingRules;
+  final pulumi.Input<List<ThrottlingRuleResponse>?>? throttlingRules;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfigurationResponse>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfigurationResponse?>? tokenAuthConfiguration;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResponse].
   /// [addResourceListTargetLocations] Add resource list target locations?

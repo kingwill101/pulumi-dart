@@ -8,6 +8,7 @@ import 'data_collection_endpoint_response_logs_ingestion.dart';
 import 'data_collection_endpoint_response_metadata.dart';
 import 'data_collection_endpoint_response_metrics_ingestion.dart';
 import 'data_collection_endpoint_response_network_acls.dart';
+import 'private_link_scoped_resource_response.dart';
 
 /// Definition of ARM tracked top level resource.
 ///
@@ -208,7 +209,7 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
   /// Network access control rules for the endpoints.
   late final pulumi.Output<DataCollectionEndpointResponseNetworkAcls?> networkAcls;
   /// List of Azure Monitor Private Link Scope Resources to which this data collection endpoint resource is associated. This property is READ-ONLY.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateLinkScopedResources;
+  late final pulumi.Output<List<PrivateLinkScopedResourceResponse>> privateLinkScopedResources;
   /// The resource provisioning state. This property is READ-ONLY.
   late final pulumi.Output<String> provisioningState;
   /// Metadata pertaining to creation and last modification of the resource.
@@ -246,10 +247,40 @@ class DataCollectionEndpoint extends pulumi.CustomResource {
     metricsIngestion = registerOutput<DataCollectionEndpointResponseMetricsIngestion?>('metricsIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseMetricsIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>('privateLinkScopedResources');
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<DataCollectionEndpointResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DataCollectionEndpoint] resource.
+  DataCollectionEndpoint.reference(String urn)
+    : super(
+        'azure-native:monitor:DataCollectionEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationAccess = registerOutput<DataCollectionEndpointResponseConfigurationAccess?>('configurationAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseConfigurationAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    etag = registerOutput<String>('etag');
+    failoverConfiguration = registerOutput<DataCollectionEndpointResponseFailoverConfiguration>('failoverConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseFailoverConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<DataCollectionEndpointResourceResponseIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    immutableId = registerOutput<String?>('immutableId');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    logsIngestion = registerOutput<DataCollectionEndpointResponseLogsIngestion?>('logsIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseLogsIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<DataCollectionEndpointResponseMetadata>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metricsIngestion = registerOutput<DataCollectionEndpointResponseMetricsIngestion?>('metricsIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseMetricsIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkAcls = registerOutput<DataCollectionEndpointResponseNetworkAcls?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResponseNetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<DataCollectionEndpointResourceResponseSystemData>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCollectionEndpointResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

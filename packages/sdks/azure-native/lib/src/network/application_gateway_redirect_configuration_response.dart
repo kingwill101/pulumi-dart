@@ -8,27 +8,27 @@ class ApplicationGatewayRedirectConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Include path in the redirected url.
-  final pulumi.Input<bool>? includePath;
+  final pulumi.Input<bool?>? includePath;
   /// Include query string in the redirected url.
-  final pulumi.Input<bool>? includeQueryString;
+  final pulumi.Input<bool?>? includeQueryString;
   /// Name of the redirect configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Path rules specifying redirect configuration.
-  final pulumi.Input<List<SubResourceResponse>>? pathRules;
+  final pulumi.Input<List<SubResourceResponse>?>? pathRules;
   /// HTTP redirection type.
-  final pulumi.Input<String>? redirectType;
+  final pulumi.Input<String?>? redirectType;
   /// Request routing specifying redirect configuration.
-  final pulumi.Input<List<SubResourceResponse>>? requestRoutingRules;
+  final pulumi.Input<List<SubResourceResponse>?>? requestRoutingRules;
   /// Reference to a listener to redirect the request to.
-  final pulumi.Input<SubResourceResponse>? targetListener;
+  final pulumi.Input<SubResourceResponse?>? targetListener;
   /// Url to redirect the request to.
-  final pulumi.Input<String>? targetUrl;
+  final pulumi.Input<String?>? targetUrl;
   /// Type of the resource.
   final pulumi.Input<String> type;
   /// Url path maps specifying default redirect configuration.
-  final pulumi.Input<List<SubResourceResponse>>? urlPathMaps;
+  final pulumi.Input<List<SubResourceResponse>?>? urlPathMaps;
 
   /// Creates a new [ApplicationGatewayRedirectConfigurationResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

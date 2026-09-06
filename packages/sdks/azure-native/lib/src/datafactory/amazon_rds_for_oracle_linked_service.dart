@@ -1,18 +1,17 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
 /// AmazonRdsForOracle database. This linked service has supported version property. The Version 1.0 is scheduled for deprecation while your pipeline will continue to run after EOL but without any bug fix or new features.
 class AmazonRdsForOracleLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Authentication type for connecting to the AmazonRdsForOracle database. Only used for Version 2.0.
-  final pulumi.Input<String>? authenticationType;
+  final pulumi.Input<dynamic>? authenticationType;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Only used for Version 1.0.
   final pulumi.Input<dynamic>? connectionString;
   /// Specifies the desired data integrity behavior when this client connects to a server. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
@@ -20,11 +19,11 @@ class AmazonRdsForOracleLinkedService {
   /// Specifies the crypto-checksum algorithms that client can use. Supported values are SHA1, SHA256, SHA384, SHA512, default value is (SHA512). Type: string. Only used for Version 2.0.
   final pulumi.Input<dynamic>? cryptoChecksumTypesClient;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies whether to use bulk copy or batch insert when loading data into the database, default value is true. Type: boolean. Only used for Version 2.0.
   final pulumi.Input<dynamic>? enableBulkLoad;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Specifies the encryption client behavior. Supported values are accepted, rejected, requested or required, default value is required. Type: string. Only used for Version 2.0.
   final pulumi.Input<dynamic>? encryptionClient;
   /// Specifies the encryption algorithms that client can use. Supported values are AES128, AES192, AES256, 3DES112, 3DES168, default value is (AES256). Type: string. Only used for Version 2.0.
@@ -38,9 +37,9 @@ class AmazonRdsForOracleLinkedService {
   /// Specifies a command that is issued immediately after connecting to the database to manage session settings. Type: string. Only used for Version 2.0.
   final pulumi.Input<dynamic>? initializationString;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReference>? password;
+  final pulumi.Input<dynamic>? password;
   /// The location of AmazonRdsForOracle database you want to connect to, the supported forms include connector descriptor, Easy Connect (Plus) Naming and Oracle Net Services Name (Only self-hosted IR). Type: string. Only used for Version 2.0.
   final pulumi.Input<dynamic>? server;
   /// Specifies the number of cursors or statements to be cached for each database connection, default value is 0. Type: integer. Only used for Version 2.0.
@@ -53,7 +52,7 @@ class AmazonRdsForOracleLinkedService {
   /// The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AmazonRdsForOracleLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -123,7 +122,7 @@ class AmazonRdsForOracleLinkedService {
       'initialLobFetchSize': ?initialLobFetchSize,
       'initializationString': ?initializationString,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
-      'password': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
+      'password': ?password,
       'server': ?server,
       'statementCacheSize': ?statementCacheSize,
       'supportV1DataTypes': ?supportV1DataTypes,
@@ -136,7 +135,7 @@ class AmazonRdsForOracleLinkedService {
   factory AmazonRdsForOracleLinkedService.fromMap(Map<String, dynamic> map) {
     return AmazonRdsForOracleLinkedService(
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
-      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authenticationType: (() { final guardedValue = map['authenticationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       connectVia: (() { final guardedValue = map['connectVia']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       cryptoChecksumClient: (() { final guardedValue = map['cryptoChecksumClient']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -151,7 +150,7 @@ class AmazonRdsForOracleLinkedService {
       initialLobFetchSize: (() { final guardedValue = map['initialLobFetchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       initializationString: (() { final guardedValue = map['initializationString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       server: (() { final guardedValue = map['server']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       statementCacheSize: (() { final guardedValue = map['statementCacheSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       supportV1DataTypes: (() { final guardedValue = map['supportV1DataTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

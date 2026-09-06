@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Qos Traffic Profiler IP Range properties.
 class QosIpRange {
   /// End IP Address.
-  final pulumi.Input<String>? endIP;
+  final pulumi.Input<String?>? endIP;
   /// Start IP Address.
-  final pulumi.Input<String>? startIP;
+  final pulumi.Input<String?>? startIP;
 
   /// Creates a new [QosIpRange].
   /// [endIP] End IP Address.

@@ -49,7 +49,7 @@ class PurchaseMeterDetailsResponse {
     return PurchaseMeterDetailsResponse(
       billingType: pulumi.Input.fromValue(map['billingType'] as String),
       chargingType: pulumi.Input.fromValue(map['chargingType'] as String),
-      multiplier: pulumi.Input.fromValue(map['multiplier'] as double),
+      multiplier: pulumi.Input.fromValue((map['multiplier'] as num).toDouble()),
       productId: pulumi.Input.fromValue(map['productId'] as String),
       skuId: pulumi.Input.fromValue(map['skuId'] as String),
       termId: pulumi.Input.fromValue(map['termId'] as String),

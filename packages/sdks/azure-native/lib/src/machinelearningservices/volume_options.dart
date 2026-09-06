@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VolumeOptions {
   /// Indicate whether volume is nocopy
-  final pulumi.Input<bool>? nocopy;
+  final pulumi.Input<bool?>? nocopy;
 
   /// Creates a new [VolumeOptions].
   /// [nocopy] Indicate whether volume is nocopy

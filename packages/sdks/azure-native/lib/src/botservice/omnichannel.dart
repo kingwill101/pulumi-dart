@@ -8,19 +8,19 @@ class Omnichannel {
   /// Expected value is 'Omnichannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [Omnichannel].
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  const Omnichannel({
+  Omnichannel({
     required this.channelName,
     this.etag,
-    this.location,
-  });
+    pulumi.Input<String?>? location,
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

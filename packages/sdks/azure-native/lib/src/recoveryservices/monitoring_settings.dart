@@ -7,9 +7,9 @@ import 'classic_alert_settings.dart';
 /// Monitoring Settings of the vault
 class MonitoringSettings {
   /// Settings for Azure Monitor based alerts
-  final pulumi.Input<AzureMonitorAlertSettings>? azureMonitorAlertSettings;
+  final pulumi.Input<AzureMonitorAlertSettings?>? azureMonitorAlertSettings;
   /// Settings for classic alerts
-  final pulumi.Input<ClassicAlertSettings>? classicAlertSettings;
+  final pulumi.Input<ClassicAlertSettings?>? classicAlertSettings;
 
   /// Creates a new [MonitoringSettings].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts

@@ -9,17 +9,17 @@ class FleetDatabasePropertiesResponse {
   /// Backup retention in days.
   final pulumi.Input<int> backupRetentionDays;
   /// Database collation.
-  final pulumi.Input<String>? collation;
+  final pulumi.Input<String?>? collation;
   /// Connection string to connect to the database with.
   final pulumi.Input<String> connectionString;
   /// Create mode. Available options: Default - Create a database. Copy - Copy the source database (source database name must be specified) PointInTimeRestore - Create a database by restoring source database from a point in time (source database name and restore from time must be specified)
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// Maximum database size in Gb.
   final pulumi.Input<int> databaseSizeGbMax;
   /// Earliest restore time.
   final pulumi.Input<String> earliestRestoreTime;
   /// Identity property.
-  final pulumi.Input<IdentityResponse>? identity;
+  final pulumi.Input<IdentityResponse?>? identity;
   /// Latest restore time.
   final pulumi.Input<String> latestRestoreTime;
   /// Resource identifier for the underlying database resource.
@@ -29,15 +29,15 @@ class FleetDatabasePropertiesResponse {
   /// If true, database is recoverable.
   final pulumi.Input<bool> recoverable;
   /// Additional database properties to be applied as the underlying database resource tags.
-  final pulumi.Input<Map<String, String>>? resourceTags;
+  final pulumi.Input<Map<String, String>?>? resourceTags;
   /// Restore from time when CreateMode is PointInTimeRestore.
-  final pulumi.Input<String>? restoreFromTime;
+  final pulumi.Input<String?>? restoreFromTime;
   /// Source database name used when CreateMode is Copy or PointInTimeRestore.
-  final pulumi.Input<String>? sourceDatabaseName;
+  final pulumi.Input<String?>? sourceDatabaseName;
   /// Name of the tier this database belongs to.
-  final pulumi.Input<String>? tierName;
+  final pulumi.Input<String?>? tierName;
   /// Transparent Data Encryption properties
-  final pulumi.Input<TransparentDataEncryptionResponse>? transparentDataEncryption;
+  final pulumi.Input<TransparentDataEncryptionResponse?>? transparentDataEncryption;
 
   /// Creates a new [FleetDatabasePropertiesResponse].
   /// [backupRetentionDays] Backup retention in days.
@@ -98,11 +98,11 @@ class FleetDatabasePropertiesResponse {
 
   factory FleetDatabasePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FleetDatabasePropertiesResponse(
-      backupRetentionDays: pulumi.Input.fromValue(map['backupRetentionDays'] as int),
+      backupRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupRetentionDays'])),
       collation: (() { final guardedValue = map['collation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      databaseSizeGbMax: pulumi.Input.fromValue(map['databaseSizeGbMax'] as int),
+      databaseSizeGbMax: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['databaseSizeGbMax'])),
       earliestRestoreTime: pulumi.Input.fromValue(map['earliestRestoreTime'] as String),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       latestRestoreTime: pulumi.Input.fromValue(map['latestRestoreTime'] as String),

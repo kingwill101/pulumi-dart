@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'health_status_detail_response.dart';
 import 'pool_args.dart';
 import 'stop_on_disconnect_configuration_response.dart';
 import 'system_data_response.dart';
@@ -475,7 +476,7 @@ class Pool extends pulumi.CustomResource {
   /// Overall health status of the Pool. Indicates whether or not the Pool is available to create Dev Boxes.
   late final pulumi.Output<String> healthStatus;
   /// Details on the Pool health status to help diagnose issues. This is only populated when the pool status indicates the pool is in a non-healthy state
-  late final pulumi.Output<List<Map<String, dynamic>>> healthStatusDetails;
+  late final pulumi.Output<List<HealthStatusDetailResponse>> healthStatusDetails;
   /// Specifies the license type indicating the caller has already acquired licenses for the Dev Boxes that will be created.
   late final pulumi.Output<String> licenseType;
   /// Indicates whether owners of Dev Boxes in this pool are added as local administrators on the Dev Box.
@@ -522,18 +523,48 @@ class Pool extends pulumi.CustomResource {
     devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
     displayName = registerOutput<String?>('displayName');
     healthStatus = registerOutput<String>('healthStatus');
-    healthStatusDetails = registerOutput<List<Map<String, dynamic>>>('healthStatusDetails');
+    healthStatusDetails = registerOutput<List<HealthStatusDetailResponse>>('healthStatusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthStatusDetailResponse>(guardedValue, (value) => HealthStatusDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
     licenseType = registerOutput<String>('licenseType');
     localAdministrator = registerOutput<String>('localAdministrator');
     location = registerOutput<String>('location');
-    managedVirtualNetworkRegions = registerOutput<List<String>?>('managedVirtualNetworkRegions');
+    managedVirtualNetworkRegions = registerOutput<List<String>?>('managedVirtualNetworkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     networkConnectionName = registerOutput<String>('networkConnectionName');
     provisioningState = registerOutput<String>('provisioningState');
     singleSignOnStatus = registerOutput<String?>('singleSignOnStatus');
     stopOnDisconnect = registerOutput<StopOnDisconnectConfigurationResponse?>('stopOnDisconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StopOnDisconnectConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetworkType = registerOutput<String?>('virtualNetworkType');
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure-native:devcenter:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    devBoxCount = registerOutput<int>('devBoxCount');
+    devBoxDefinitionName = registerOutput<String>('devBoxDefinitionName');
+    displayName = registerOutput<String?>('displayName');
+    healthStatus = registerOutput<String>('healthStatus');
+    healthStatusDetails = registerOutput<List<HealthStatusDetailResponse>>('healthStatusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HealthStatusDetailResponse>(guardedValue, (value) => HealthStatusDetailResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    licenseType = registerOutput<String>('licenseType');
+    localAdministrator = registerOutput<String>('localAdministrator');
+    location = registerOutput<String>('location');
+    managedVirtualNetworkRegions = registerOutput<List<String>?>('managedVirtualNetworkRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    networkConnectionName = registerOutput<String>('networkConnectionName');
+    provisioningState = registerOutput<String>('provisioningState');
+    singleSignOnStatus = registerOutput<String?>('singleSignOnStatus');
+    stopOnDisconnect = registerOutput<StopOnDisconnectConfigurationResponse?>('stopOnDisconnect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StopOnDisconnectConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualNetworkType = registerOutput<String?>('virtualNetworkType');
   }

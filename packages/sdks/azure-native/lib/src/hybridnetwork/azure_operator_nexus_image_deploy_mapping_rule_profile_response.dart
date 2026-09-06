@@ -6,9 +6,9 @@ import 'image_mapping_rule_profile_response.dart';
 /// Azure Operator Distributed Services image deploy mapping rule profile.
 class AzureOperatorNexusImageDeployMappingRuleProfileResponse {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<String?>? applicationEnablement;
   /// The vhd mapping rule profile.
-  final pulumi.Input<ImageMappingRuleProfileResponse>? imageMappingRuleProfile;
+  final pulumi.Input<ImageMappingRuleProfileResponse?>? imageMappingRuleProfile;
 
   /// Creates a new [AzureOperatorNexusImageDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.

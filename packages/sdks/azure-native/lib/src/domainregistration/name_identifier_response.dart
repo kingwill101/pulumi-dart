@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identifies an object.
 class NameIdentifierResponse {
   /// Name of the object.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NameIdentifierResponse].
   /// [name] Name of the object.

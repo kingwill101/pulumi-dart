@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Placement Policy type
-enum PlacementPolicyType {
+enum PlacementPolicyType implements pulumi.PulumiEnum<String> {
   vmVm("VmVm"),
   vmHost("VmHost");
 
   const PlacementPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static PlacementPolicyType fromValue(String value) {

@@ -1,9 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'aaaa_record_response.dart';
+import 'arecord_response.dart';
+import 'caa_record_response.dart';
 import 'cname_record_response.dart';
+import 'ds_record_response.dart';
+import 'mx_record_response.dart';
+import 'naptr_record_response.dart';
+import 'ns_record_response.dart';
+import 'ptr_record_response.dart';
 import 'record_set_args.dart';
 import 'soa_record_response.dart';
+import 'srv_record_response.dart';
 import 'sub_resource_response.dart';
 import 'system_data_response.dart';
+import 'tlsa_record_response.dart';
+import 'txt_record_response.dart';
 
 /// Describes a DNS record set (a collection of DNS records with the same name and type).
 ///
@@ -3047,17 +3058,17 @@ import 'system_data_response.dart';
 /// ```
 class RecordSet extends pulumi.CustomResource {
   /// The list of A records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aRecords;
+  late final pulumi.Output<List<ARecordResponse>?> aRecords;
   /// The list of AAAA records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> aaaaRecords;
+  late final pulumi.Output<List<AaaaRecordResponse>?> aaaaRecords;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of CAA records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> caaRecords;
+  late final pulumi.Output<List<CaaRecordResponse>?> caaRecords;
   /// The CNAME record in the  record set.
   late final pulumi.Output<CnameRecordResponse?> cnameRecord;
   /// The list of DS records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> dsRecords;
+  late final pulumi.Output<List<DsRecordResponse>?> dsRecords;
   /// The etag of the record set.
   late final pulumi.Output<String?> etag;
   /// Fully qualified domain name of the record set.
@@ -3065,33 +3076,33 @@ class RecordSet extends pulumi.CustomResource {
   /// The metadata attached to the record set.
   late final pulumi.Output<Map<String, String>?> metadata;
   /// The list of MX records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> mxRecords;
+  late final pulumi.Output<List<MxRecordResponse>?> mxRecords;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The list of NAPTR records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> naptrRecords;
+  late final pulumi.Output<List<NaptrRecordResponse>?> naptrRecords;
   /// The list of NS records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> nsRecords;
+  late final pulumi.Output<List<NsRecordResponse>?> nsRecords;
   /// provisioning State of the record set.
   late final pulumi.Output<String> provisioningState;
   /// The list of PTR records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ptrRecords;
+  late final pulumi.Output<List<PtrRecordResponse>?> ptrRecords;
   /// The SOA record in the record set.
   late final pulumi.Output<SoaRecordResponse?> soaRecord;
   /// The list of SRV records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> srvRecords;
+  late final pulumi.Output<List<SrvRecordResponse>?> srvRecords;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// A reference to an azure resource from where the dns resource value is taken.
   late final pulumi.Output<SubResourceResponse?> targetResource;
   /// The list of TLSA records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> tlsaRecords;
+  late final pulumi.Output<List<TlsaRecordResponse>?> tlsaRecords;
   /// A reference to an azure traffic manager profile resource from where the dns resource value is taken.
   late final pulumi.Output<SubResourceResponse?> trafficManagementProfile;
   /// The TTL (time-to-live) of the records in the record set.
   late final pulumi.Output<double?> ttl;
   /// The list of TXT records in the record set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> txtRecords;
+  late final pulumi.Output<List<TxtRecordResponse>?> txtRecords;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -3109,29 +3120,64 @@ class RecordSet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    aRecords = registerOutput<List<Map<String, dynamic>>?>('aRecords');
-    aaaaRecords = registerOutput<List<Map<String, dynamic>>?>('aaaaRecords');
+    aRecords = registerOutput<List<ARecordResponse>?>('aRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ARecordResponse>(guardedValue, (value) => ARecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    aaaaRecords = registerOutput<List<AaaaRecordResponse>?>('aaaaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AaaaRecordResponse>(guardedValue, (value) => AaaaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    caaRecords = registerOutput<List<Map<String, dynamic>>?>('caaRecords');
+    caaRecords = registerOutput<List<CaaRecordResponse>?>('caaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CaaRecordResponse>(guardedValue, (value) => CaaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CnameRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dsRecords = registerOutput<List<Map<String, dynamic>>?>('dsRecords');
+    dsRecords = registerOutput<List<DsRecordResponse>?>('dsRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DsRecordResponse>(guardedValue, (value) => DsRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
     fqdn = registerOutput<String>('fqdn');
-    metadata = registerOutput<Map<String, String>?>('metadata');
-    mxRecords = registerOutput<List<Map<String, dynamic>>?>('mxRecords');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mxRecords = registerOutput<List<MxRecordResponse>?>('mxRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MxRecordResponse>(guardedValue, (value) => MxRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    naptrRecords = registerOutput<List<Map<String, dynamic>>?>('naptrRecords');
-    nsRecords = registerOutput<List<Map<String, dynamic>>?>('nsRecords');
+    naptrRecords = registerOutput<List<NaptrRecordResponse>?>('naptrRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NaptrRecordResponse>(guardedValue, (value) => NaptrRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    nsRecords = registerOutput<List<NsRecordResponse>?>('nsRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NsRecordResponse>(guardedValue, (value) => NsRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    ptrRecords = registerOutput<List<Map<String, dynamic>>?>('ptrRecords');
+    ptrRecords = registerOutput<List<PtrRecordResponse>?>('ptrRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PtrRecordResponse>(guardedValue, (value) => PtrRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     soaRecord = registerOutput<SoaRecordResponse?>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoaRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    srvRecords = registerOutput<List<Map<String, dynamic>>?>('srvRecords');
+    srvRecords = registerOutput<List<SrvRecordResponse>?>('srvRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SrvRecordResponse>(guardedValue, (value) => SrvRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetResource = registerOutput<SubResourceResponse?>('targetResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tlsaRecords = registerOutput<List<Map<String, dynamic>>?>('tlsaRecords');
+    tlsaRecords = registerOutput<List<TlsaRecordResponse>?>('tlsaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsaRecordResponse>(guardedValue, (value) => TlsaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     trafficManagementProfile = registerOutput<SubResourceResponse?>('trafficManagementProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ttl = registerOutput<double?>('ttl');
-    txtRecords = registerOutput<List<Map<String, dynamic>>?>('txtRecords');
+    txtRecords = registerOutput<List<TxtRecordResponse>?>('txtRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TxtRecordResponse>(guardedValue, (value) => TxtRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RecordSet] resource.
+  RecordSet.reference(String urn)
+    : super(
+        'azure-native:dns:RecordSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aRecords = registerOutput<List<ARecordResponse>?>('aRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ARecordResponse>(guardedValue, (value) => ARecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    aaaaRecords = registerOutput<List<AaaaRecordResponse>?>('aaaaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AaaaRecordResponse>(guardedValue, (value) => AaaaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    caaRecords = registerOutput<List<CaaRecordResponse>?>('caaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CaaRecordResponse>(guardedValue, (value) => CaaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cnameRecord = registerOutput<CnameRecordResponse?>('cnameRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CnameRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dsRecords = registerOutput<List<DsRecordResponse>?>('dsRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DsRecordResponse>(guardedValue, (value) => DsRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String?>('etag');
+    fqdn = registerOutput<String>('fqdn');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    mxRecords = registerOutput<List<MxRecordResponse>?>('mxRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MxRecordResponse>(guardedValue, (value) => MxRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    naptrRecords = registerOutput<List<NaptrRecordResponse>?>('naptrRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NaptrRecordResponse>(guardedValue, (value) => NaptrRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    nsRecords = registerOutput<List<NsRecordResponse>?>('nsRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NsRecordResponse>(guardedValue, (value) => NsRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    ptrRecords = registerOutput<List<PtrRecordResponse>?>('ptrRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PtrRecordResponse>(guardedValue, (value) => PtrRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    soaRecord = registerOutput<SoaRecordResponse?>('soaRecord', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SoaRecordResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    srvRecords = registerOutput<List<SrvRecordResponse>?>('srvRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SrvRecordResponse>(guardedValue, (value) => SrvRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetResource = registerOutput<SubResourceResponse?>('targetResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tlsaRecords = registerOutput<List<TlsaRecordResponse>?>('tlsaRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TlsaRecordResponse>(guardedValue, (value) => TlsaRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficManagementProfile = registerOutput<SubResourceResponse?>('trafficManagementProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ttl = registerOutput<double?>('ttl');
+    txtRecords = registerOutput<List<TxtRecordResponse>?>('txtRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TxtRecordResponse>(guardedValue, (value) => TxtRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

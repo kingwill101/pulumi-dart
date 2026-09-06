@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VirtualHub route.
 class VirtualHubRouteResponse {
   /// List of all addressPrefixes.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// NextHop ip address.
-  final pulumi.Input<String>? nextHopIpAddress;
+  final pulumi.Input<String?>? nextHopIpAddress;
 
   /// Creates a new [VirtualHubRouteResponse].
   /// [addressPrefixes] List of all addressPrefixes.

@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity.dart';
-import 'regional_drill_properties.dart';
 
 /// {@template pulumi_azureresiliencemanagement_drill_args_doc}
 /// The set of arguments for Drill.
@@ -10,11 +9,11 @@ import 'regional_drill_properties.dart';
 /// {@macro pulumi_azureresiliencemanagement_drill_args_doc}
 class DrillArgs {
   /// The name of the Drill
-  final pulumi.Input<String>? drillName;
+  final pulumi.Input<String?>? drillName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RegionalDrillProperties>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the service group.
   final pulumi.Input<String> serviceGroupName;
 
@@ -34,7 +33,7 @@ class DrillArgs {
     return <String, dynamic>{
       'drillName': ?drillName,
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
-      'properties': ?pulumi.Input.mapOptionalInputValue<RegionalDrillProperties, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'serviceGroupName': serviceGroupName,
     };
   }
@@ -43,7 +42,7 @@ class DrillArgs {
     return DrillArgs(
       drillName: (() { final guardedValue = map['drillName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionalDrillProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serviceGroupName: pulumi.Input.fromValue(map['serviceGroupName'] as String),
     );
   }

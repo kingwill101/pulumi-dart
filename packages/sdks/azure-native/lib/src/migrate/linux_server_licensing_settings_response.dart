@@ -21,7 +21,7 @@ class LinuxServerLicensingSettingsResponse {
 
   factory LinuxServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return LinuxServerLicensingSettingsResponse(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
     );
   }
 }

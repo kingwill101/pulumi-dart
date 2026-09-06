@@ -14,7 +14,7 @@ class GetAppArgs {
   /// The name of the Service resource.
   final pulumi.Input<String> serviceName;
   /// Indicates whether sync status
-  final pulumi.Input<String>? syncStatus;
+  final pulumi.Input<String?>? syncStatus;
 
   /// Creates a new [GetAppArgs].
   /// [appName] The name of the App resource.

@@ -12,19 +12,19 @@ class CertificateProfileArgs {
   /// Identity validation id used for the certificate subject name.
   final pulumi.Input<String> identityValidationId;
   /// Whether to include L in the certificate subject name. Applicable only for private trust, private trust ci profile types
-  final pulumi.Input<bool>? includeCity;
+  final pulumi.Input<bool?>? includeCity;
   /// Whether to include C in the certificate subject name. Applicable only for private trust, private trust ci profile types
-  final pulumi.Input<bool>? includeCountry;
+  final pulumi.Input<bool?>? includeCountry;
   /// Whether to include PC in the certificate subject name.
-  final pulumi.Input<bool>? includePostalCode;
+  final pulumi.Input<bool?>? includePostalCode;
   /// Whether to include S in the certificate subject name. Applicable only for private trust, private trust ci profile types
-  final pulumi.Input<bool>? includeState;
+  final pulumi.Input<bool?>? includeState;
   /// Whether to include STREET in the certificate subject name.
-  final pulumi.Input<bool>? includeStreetAddress;
+  final pulumi.Input<bool?>? includeStreetAddress;
   /// Certificate profile name.
-  final pulumi.Input<String>? profileName;
+  final pulumi.Input<String?>? profileName;
   /// Profile type of the certificate.
-  final pulumi.Input<String> profileType;
+  final pulumi.Input<dynamic> profileType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -39,18 +39,18 @@ class CertificateProfileArgs {
   /// [profileName] Certificate profile name.
   /// [profileType] Profile type of the certificate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  const CertificateProfileArgs({
+  CertificateProfileArgs({
     required this.accountName,
     required this.identityValidationId,
-    this.includeCity,
-    this.includeCountry,
-    this.includePostalCode,
-    this.includeState,
-    this.includeStreetAddress,
+    pulumi.Input<bool?>? includeCity,
+    pulumi.Input<bool?>? includeCountry,
+    pulumi.Input<bool?>? includePostalCode,
+    pulumi.Input<bool?>? includeState,
+    pulumi.Input<bool?>? includeStreetAddress,
     this.profileName,
     required this.profileType,
     required this.resourceGroupName,
-  });
+  }) : includeCity = includeCity ?? pulumi.Input.fromValue(false), includeCountry = includeCountry ?? pulumi.Input.fromValue(false), includePostalCode = includePostalCode ?? pulumi.Input.fromValue(false), includeState = includeState ?? pulumi.Input.fromValue(false), includeStreetAddress = includeStreetAddress ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -77,7 +77,7 @@ class CertificateProfileArgs {
       includeState: (() { final guardedValue = map['includeState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       includeStreetAddress: (() { final guardedValue = map['includeStreetAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      profileType: pulumi.Input.fromValue(map['profileType'] as String),
+      profileType: pulumi.Input.fromValue(map['profileType']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

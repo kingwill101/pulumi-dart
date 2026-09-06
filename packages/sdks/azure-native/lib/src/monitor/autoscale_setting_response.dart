@@ -8,19 +8,19 @@ import 'predictive_autoscale_policy_response.dart';
 /// A setting that contains all of the configuration for the automatic scaling of a resource.
 class AutoscaleSettingResponse {
   /// the enabled flag. Specifies whether automatic scaling is enabled for the resource. The default value is 'false'.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// the name of the autoscale setting.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// the collection of notifications.
-  final pulumi.Input<List<AutoscaleNotificationResponse>>? notifications;
+  final pulumi.Input<List<AutoscaleNotificationResponse>?>? notifications;
   /// the predictive autoscale policy mode.
-  final pulumi.Input<PredictiveAutoscalePolicyResponse>? predictiveAutoscalePolicy;
+  final pulumi.Input<PredictiveAutoscalePolicyResponse?>? predictiveAutoscalePolicy;
   /// the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
   final pulumi.Input<List<AutoscaleProfileResponse>> profiles;
   /// the location of the resource that the autoscale setting should be added to.
-  final pulumi.Input<String>? targetResourceLocation;
+  final pulumi.Input<String?>? targetResourceLocation;
   /// the resource identifier of the resource that the autoscale setting should be added to.
-  final pulumi.Input<String>? targetResourceUri;
+  final pulumi.Input<String?>? targetResourceUri;
 
   /// Creates a new [AutoscaleSettingResponse].
   /// [enabled] the enabled flag. Specifies whether automatic scaling is enabled for the resource. The default value is 'false'.
@@ -30,15 +30,15 @@ class AutoscaleSettingResponse {
   /// [profiles] the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
   /// [targetResourceLocation] the location of the resource that the autoscale setting should be added to.
   /// [targetResourceUri] the resource identifier of the resource that the autoscale setting should be added to.
-  const AutoscaleSettingResponse({
-    this.enabled,
+  AutoscaleSettingResponse({
+    pulumi.Input<bool?>? enabled,
     this.name,
     this.notifications,
     this.predictiveAutoscalePolicy,
     required this.profiles,
     this.targetResourceLocation,
     this.targetResourceUri,
-  });
+  }) : enabled = enabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

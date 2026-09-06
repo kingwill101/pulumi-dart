@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the PrometheusHaCluster provider properties.
 class PrometheusHaClusterProviderInstanceProperties {
   /// Gets or sets the clusterName.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Gets or sets the target machine name.
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? hostname;
   /// URL of the Node Exporter endpoint.
-  final pulumi.Input<String>? prometheusUrl;
+  final pulumi.Input<String?>? prometheusUrl;
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusHaCluster'.
   final pulumi.Input<String> providerType;
   /// Gets or sets the cluster sid.
-  final pulumi.Input<String>? sid;
+  final pulumi.Input<String?>? sid;
   /// Gets or sets the blob URI to SSL certificate for the HA cluster exporter.
-  final pulumi.Input<String>? sslCertificateUri;
+  final pulumi.Input<String?>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final pulumi.Input<String>? sslPreference;
+  final pulumi.Input<dynamic>? sslPreference;
 
   /// Creates a new [PrometheusHaClusterProviderInstanceProperties].
   /// [clusterName] Gets or sets the clusterName.
@@ -58,7 +58,7 @@ class PrometheusHaClusterProviderInstanceProperties {
       providerType: pulumi.Input.fromValue(map['providerType'] as String),
       sid: (() { final guardedValue = map['sid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertificateUri: (() { final guardedValue = map['sslCertificateUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sslPreference: (() { final guardedValue = map['sslPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sslPreference: (() { final guardedValue = map['sslPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -36,10 +36,10 @@ class FileShareProvisioningConstantsResponse {
 
   factory FileShareProvisioningConstantsResponse.fromMap(Map<String, dynamic> map) {
     return FileShareProvisioningConstantsResponse(
-      baseIOPerSec: pulumi.Input.fromValue(map['baseIOPerSec'] as int),
-      baseThroughputMiBPerSec: pulumi.Input.fromValue(map['baseThroughputMiBPerSec'] as int),
-      scalarIOPerSec: pulumi.Input.fromValue(map['scalarIOPerSec'] as double),
-      scalarThroughputMiBPerSec: pulumi.Input.fromValue(map['scalarThroughputMiBPerSec'] as double),
+      baseIOPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['baseIOPerSec'])),
+      baseThroughputMiBPerSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['baseThroughputMiBPerSec'])),
+      scalarIOPerSec: pulumi.Input.fromValue((map['scalarIOPerSec'] as num).toDouble()),
+      scalarThroughputMiBPerSec: pulumi.Input.fromValue((map['scalarThroughputMiBPerSec'] as num).toDouble()),
     );
   }
 }

@@ -7,9 +7,9 @@ import 'tag_criterion_pair_for_job.dart';
 /// Definition of TagCriterionForJob
 class TagCriterionForJob {
   /// &lt;p&gt;The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).&lt;/p&gt;
-  final pulumi.Input<JobComparatorEnumValue>? comparator;
+  final pulumi.Input<JobComparatorEnumValue?>? comparator;
   /// &lt;p&gt;The tag keys, tag values, or tag key and value pairs to use in the condition.&lt;/p&gt;
-  final pulumi.Input<List<TagCriterionPairForJob>>? tagValues;
+  final pulumi.Input<List<TagCriterionPairForJob>?>? tagValues;
 
   /// Creates a new [TagCriterionForJob].
   /// [comparator] &lt;p&gt;The operator to use in the condition. Valid values are EQ (equals) and NE (not equals).&lt;/p&gt;

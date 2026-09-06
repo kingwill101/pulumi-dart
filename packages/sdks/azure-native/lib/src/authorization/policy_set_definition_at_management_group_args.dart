@@ -11,27 +11,27 @@ import 'policy_definition_reference.dart';
 /// {@macro pulumi_authorization_policy_set_definition_at_management_group_args_doc}
 class PolicySetDefinitionAtManagementGroupArgs {
   /// The policy set definition description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the policy set definition.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The ID of the management group.
   final pulumi.Input<String> managementGroupId;
   /// The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
   final pulumi.Input<dynamic>? metadata;
   /// The policy set definition parameters that can be used in policy definition references.
-  final pulumi.Input<Map<String, ParameterDefinitionsValue>>? parameters;
+  final pulumi.Input<Map<String, ParameterDefinitionsValue>?>? parameters;
   /// The metadata describing groups of policy definition references within the policy set definition.
-  final pulumi.Input<List<PolicyDefinitionGroup>>? policyDefinitionGroups;
+  final pulumi.Input<List<PolicyDefinitionGroup>?>? policyDefinitionGroups;
   /// An array of policy definition references.
   final pulumi.Input<List<PolicyDefinitionReference>> policyDefinitions;
   /// The name of the policy set definition to create.
-  final pulumi.Input<String>? policySetDefinitionName;
+  final pulumi.Input<String?>? policySetDefinitionName;
   /// The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
-  final pulumi.Input<String>? policyType;
+  final pulumi.Input<dynamic>? policyType;
   /// The policy set definition version in #.#.# format.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// A list of available versions for this policy set definition.
-  final pulumi.Input<List<String>>? versions;
+  final pulumi.Input<List<String>?>? versions;
 
   /// Creates a new [PolicySetDefinitionAtManagementGroupArgs].
   /// [description] The policy set definition description.
@@ -85,7 +85,7 @@ class PolicySetDefinitionAtManagementGroupArgs {
       policyDefinitionGroups: (() { final guardedValue = map['policyDefinitionGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyDefinitionGroup>(guardedValue, (value) => PolicyDefinitionGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       policyDefinitions: pulumi.Input.fromValue(pulumi.Input.decodeList<PolicyDefinitionReference>(map['policyDefinitions']!, (value) => PolicyDefinitionReference.fromMap((value as Map).cast<String, dynamic>()))),
       policySetDefinitionName: (() { final guardedValue = map['policySetDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      policyType: (() { final guardedValue = map['policyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

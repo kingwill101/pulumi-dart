@@ -7,9 +7,9 @@ import 'nsp_access_rule_properties_subscriptions_item_response.dart';
 /// Properties of Access Rule
 class NspAccessRulePropertiesResponse {
   /// Address prefixes in the CIDR format for inbound rules
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// Direction of Access Rule
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Email addresses for outbound rules
   final pulumi.Input<List<String>> emailAddresses;
   /// FQDN for outbound rules
@@ -19,7 +19,7 @@ class NspAccessRulePropertiesResponse {
   /// Phone numbers for outbound rules
   final pulumi.Input<List<String>> phoneNumbers;
   /// Subscriptions for inbound rules
-  final pulumi.Input<List<NspAccessRulePropertiesSubscriptionsItemResponse>>? subscriptions;
+  final pulumi.Input<List<NspAccessRulePropertiesSubscriptionsItemResponse>?>? subscriptions;
 
   /// Creates a new [NspAccessRulePropertiesResponse].
   /// [addressPrefixes] Address prefixes in the CIDR format for inbound rules

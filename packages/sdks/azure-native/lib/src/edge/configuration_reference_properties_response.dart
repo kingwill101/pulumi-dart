@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties for ConfigurationReference Resource
 class ConfigurationReferencePropertiesResponse {
   /// ArmId of Configuration resource
-  final pulumi.Input<String>? configurationResourceId;
+  final pulumi.Input<String?>? configurationResourceId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the assessment template whose rules will be evaluated (e.g. 'Edu'). Immutable after creation.
-enum AssessmentType {
+enum AssessmentType implements pulumi.PulumiEnum<String> {
   edu("Edu"),
   businessVerification("BusinessVerification"),
   payeeEnrollment("PayeeEnrollment"),
   payeeProfile("PayeeProfile");
 
   const AssessmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static AssessmentType fromValue(String value) {

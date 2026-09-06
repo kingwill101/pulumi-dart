@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Source platform for the project
-enum ProjectSourcePlatform {
+enum ProjectSourcePlatform implements pulumi.PulumiEnum<String> {
   valueSQL("SQL"),
   valueMySQL("MySQL"),
   valuePostgreSql("PostgreSql"),
@@ -7,6 +9,7 @@ enum ProjectSourcePlatform {
   valueUnknown("Unknown");
 
   const ProjectSourcePlatform(this.wireValue);
+  @override
   final String wireValue;
 
   static ProjectSourcePlatform fromValue(String value) {

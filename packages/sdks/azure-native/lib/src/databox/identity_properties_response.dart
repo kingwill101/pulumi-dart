@@ -6,9 +6,9 @@ import 'user_assigned_properties_response.dart';
 /// Managed identity properties.
 class IdentityPropertiesResponse {
   /// Managed service identity type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// User assigned identity properties.
-  final pulumi.Input<UserAssignedPropertiesResponse>? userAssigned;
+  final pulumi.Input<UserAssignedPropertiesResponse?>? userAssigned;
 
   /// Creates a new [IdentityPropertiesResponse].
   /// [type] Managed service identity type.

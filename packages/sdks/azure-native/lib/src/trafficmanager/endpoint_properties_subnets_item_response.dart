@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subnet first address, scope, and/or last address.
 class EndpointPropertiesSubnetsItemResponse {
   /// First address in the subnet.
-  final pulumi.Input<String>? first;
+  final pulumi.Input<String?>? first;
   /// Last address in the subnet.
-  final pulumi.Input<String>? last;
+  final pulumi.Input<String?>? last;
   /// Block size (number of leading bits in the subnet mask).
-  final pulumi.Input<int>? scope;
+  final pulumi.Input<int?>? scope;
 
   /// Creates a new [EndpointPropertiesSubnetsItemResponse].
   /// [first] First address in the subnet.
@@ -33,7 +33,7 @@ class EndpointPropertiesSubnetsItemResponse {
     return EndpointPropertiesSubnetsItemResponse(
       first: (() { final guardedValue = map['first']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       last: (() { final guardedValue = map['last']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

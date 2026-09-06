@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties for patching a Windows machine.
 class InputWindowsParameters {
   /// Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.
-  final pulumi.Input<List<String>>? classificationsToInclude;
+  final pulumi.Input<List<String>?>? classificationsToInclude;
   /// Exclude patches which need reboot
-  final pulumi.Input<bool>? excludeKbsRequiringReboot;
+  final pulumi.Input<bool?>? excludeKbsRequiringReboot;
   /// Windows KBID to be excluded for patching.
-  final pulumi.Input<List<String>>? kbNumbersToExclude;
+  final pulumi.Input<List<String>?>? kbNumbersToExclude;
   /// Windows KBID to be included for patching.
-  final pulumi.Input<List<String>>? kbNumbersToInclude;
+  final pulumi.Input<List<String>?>? kbNumbersToInclude;
 
   /// Creates a new [InputWindowsParameters].
   /// [classificationsToInclude] Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'.

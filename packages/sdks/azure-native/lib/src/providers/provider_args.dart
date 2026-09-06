@@ -8,47 +8,47 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
   /// Any additional Tenant IDs which should be used for authentication.
-  final pulumi.Input<List<String>>? auxiliaryTenantIds;
+  final pulumi.Input<List<String>?>? auxiliaryTenantIds;
   /// The password associated with the Client Certificate. For use when authenticating as a Service Principal using a Client Certificate
-  final pulumi.Input<String>? clientCertificatePassword;
+  final pulumi.Input<String?>? clientCertificatePassword;
   /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service Principal using a Client Certificate.
-  final pulumi.Input<String>? clientCertificatePath;
+  final pulumi.Input<String?>? clientCertificatePath;
   /// The Client ID which should be used.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The Client Secret which should be used. For use When authenticating as a Service Principal using a Client Secret.
-  final pulumi.Input<String>? clientSecret;
+  final pulumi.Input<String?>? clientSecret;
   /// Determines whether or not instance discovery is performed when attempting to authenticate. Setting this to true will completely disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack.
-  final pulumi.Input<bool>? disableInstanceDiscovery;
+  final pulumi.Input<bool?>? disableInstanceDiscovery;
   /// This will disable the Pulumi Partner ID which is used if a custom `partnerId` isn't specified.
-  final pulumi.Input<bool>? disablePulumiPartnerId;
+  final pulumi.Input<bool?>? disablePulumiPartnerId;
   /// The Cloud Environment which should be used. Possible values are public, usgovernment, and china. Defaults to public. Not used when metadataHost is specified or when ARM_METADATA_HOSTNAME is set.
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// The location to use. ResourceGroups will consult this property for a default location, if one was not supplied explicitly when defining the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Hostname of the Azure Metadata Service.
-  final pulumi.Input<String>? metadataHost;
+  final pulumi.Input<String?>? metadataHost;
   /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected automatically.
-  final pulumi.Input<String>? msiEndpoint;
+  final pulumi.Input<String?>? msiEndpoint;
   /// Your cloud service or provider’s bearer token to exchange for an OIDC ID token.
-  final pulumi.Input<String>? oidcRequestToken;
+  final pulumi.Input<String?>? oidcRequestToken;
   /// The URL to initiate the `oidcRequestToken` OIDC token exchange.
-  final pulumi.Input<String>? oidcRequestUrl;
+  final pulumi.Input<String?>? oidcRequestUrl;
   /// The OIDC token to exchange for an Azure token.
-  final pulumi.Input<String>? oidcToken;
+  final pulumi.Input<String?>? oidcToken;
   /// The path to a file containing an OIDC token to exchange for an Azure token.
-  final pulumi.Input<String>? oidcTokenFilePath;
+  final pulumi.Input<String?>? oidcTokenFilePath;
   /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
-  final pulumi.Input<String>? partnerId;
+  final pulumi.Input<String?>? partnerId;
   /// The Subscription ID which should be used.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The Tenant ID which should be used.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
-  final pulumi.Input<bool>? useDefaultAzureCredential;
+  final pulumi.Input<bool?>? useDefaultAzureCredential;
   /// Allow Managed Service Identity to be used for Authentication.
-  final pulumi.Input<bool>? useMsi;
+  final pulumi.Input<bool?>? useMsi;
   /// Allow OpenID Connect (OIDC) to be used for Authentication.
-  final pulumi.Input<bool>? useOidc;
+  final pulumi.Input<bool?>? useOidc;
 
   /// Creates a new [ProviderArgs].
   /// [auxiliaryTenantIds] Any additional Tenant IDs which should be used for authentication.
@@ -72,7 +72,7 @@ class ProviderArgs {
   /// [useDefaultAzureCredential] Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
   /// [useMsi] Allow Managed Service Identity to be used for Authentication.
   /// [useOidc] Allow OpenID Connect (OIDC) to be used for Authentication.
-  const ProviderArgs({
+  ProviderArgs({
     this.auxiliaryTenantIds,
     this.clientCertificatePassword,
     this.clientCertificatePath,
@@ -80,7 +80,7 @@ class ProviderArgs {
     this.clientSecret,
     this.disableInstanceDiscovery,
     this.disablePulumiPartnerId,
-    this.environment,
+    pulumi.Input<String?>? environment,
     this.location,
     this.metadataHost,
     this.msiEndpoint,
@@ -94,7 +94,7 @@ class ProviderArgs {
     this.useDefaultAzureCredential,
     this.useMsi,
     this.useOidc,
-  });
+  }) : environment = environment ?? pulumi.Input.fromValue('public');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

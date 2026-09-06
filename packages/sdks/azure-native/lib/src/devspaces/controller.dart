@@ -241,7 +241,29 @@ class Controller extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetContainerHostApiServerFqdn = registerOutput<String>('targetContainerHostApiServerFqdn');
+    targetContainerHostResourceId = registerOutput<String>('targetContainerHostResourceId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Controller] resource.
+  Controller.reference(String urn)
+    : super(
+        'azure-native:devspaces:Controller',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataPlaneFqdn = registerOutput<String>('dataPlaneFqdn');
+    hostSuffix = registerOutput<String>('hostSuffix');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetContainerHostApiServerFqdn = registerOutput<String>('targetContainerHostApiServerFqdn');
     targetContainerHostResourceId = registerOutput<String>('targetContainerHostResourceId');
     type = registerOutput<String>('type');

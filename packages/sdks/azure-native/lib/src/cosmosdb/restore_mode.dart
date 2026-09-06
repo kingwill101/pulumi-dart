@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the mode of the restore.
-enum RestoreMode {
+enum RestoreMode implements pulumi.PulumiEnum<String> {
   valuePointInTime("PointInTime");
 
   const RestoreMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RestoreMode fromValue(String value) {

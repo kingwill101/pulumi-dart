@@ -9,15 +9,15 @@ import 'application_properties.dart';
 /// {@macro pulumi_hdinsight_application_args_doc}
 class ApplicationArgs {
   /// The constant value for the application name.
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The properties of the application.
-  final pulumi.Input<ApplicationProperties>? properties;
+  final pulumi.Input<ApplicationProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The tags for the application.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ApplicationArgs].
   /// [applicationName] The constant value for the application name.

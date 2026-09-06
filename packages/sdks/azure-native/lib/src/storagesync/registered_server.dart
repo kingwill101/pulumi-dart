@@ -308,4 +308,46 @@ class RegisteredServer extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RegisteredServer] resource.
+  RegisteredServer.reference(String urn)
+    : super(
+        'azure-native:storagesync:RegisteredServer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeAuthType = registerOutput<String>('activeAuthType');
+    agentVersion = registerOutput<String?>('agentVersion');
+    agentVersionExpirationDate = registerOutput<String>('agentVersionExpirationDate');
+    agentVersionStatus = registerOutput<String>('agentVersionStatus');
+    applicationId = registerOutput<String?>('applicationId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterId = registerOutput<String?>('clusterId');
+    clusterName = registerOutput<String?>('clusterName');
+    discoveryEndpointUri = registerOutput<String?>('discoveryEndpointUri');
+    friendlyName = registerOutput<String?>('friendlyName');
+    identity = registerOutput<bool>('identity');
+    lastHeartBeat = registerOutput<String?>('lastHeartBeat');
+    lastOperationName = registerOutput<String?>('lastOperationName');
+    lastWorkflowId = registerOutput<String?>('lastWorkflowId');
+    latestApplicationId = registerOutput<String?>('latestApplicationId');
+    managementEndpointUri = registerOutput<String?>('managementEndpointUri');
+    monitoringConfiguration = registerOutput<String?>('monitoringConfiguration');
+    monitoringEndpointUri = registerOutput<String?>('monitoringEndpointUri');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String?>('provisioningState');
+    resourceLocation = registerOutput<String?>('resourceLocation');
+    serverCertificate = registerOutput<String?>('serverCertificate');
+    serverId = registerOutput<String?>('serverId');
+    serverManagementErrorCode = registerOutput<int?>('serverManagementErrorCode');
+    serverName = registerOutput<String>('serverName');
+    serverOSVersion = registerOutput<String?>('serverOSVersion');
+    serverRole = registerOutput<String?>('serverRole');
+    serviceLocation = registerOutput<String?>('serviceLocation');
+    storageSyncServiceUid = registerOutput<String?>('storageSyncServiceUid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

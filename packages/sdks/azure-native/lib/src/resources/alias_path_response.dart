@@ -7,13 +7,13 @@ import 'alias_pattern_response.dart';
 /// The type of the paths for alias.
 class AliasPathResponse {
   /// The API versions.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// The metadata of the alias path. If missing, fall back to the default metadata of the alias.
   final pulumi.Input<AliasPathMetadataResponse> metadata;
   /// The path of an alias.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The pattern for an alias path.
-  final pulumi.Input<AliasPatternResponse>? pattern;
+  final pulumi.Input<AliasPatternResponse?>? pattern;
 
   /// Creates a new [AliasPathResponse].
   /// [apiVersions] The API versions.

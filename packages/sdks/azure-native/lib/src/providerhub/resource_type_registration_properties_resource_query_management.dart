@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource query management options.
 class ResourceTypeRegistrationPropertiesResourceQueryManagement {
   /// Filter option.
-  final pulumi.Input<String>? filterOption;
+  final pulumi.Input<dynamic>? filterOption;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceQueryManagement].
   /// [filterOption] Filter option.
@@ -21,7 +21,7 @@ class ResourceTypeRegistrationPropertiesResourceQueryManagement {
 
   factory ResourceTypeRegistrationPropertiesResourceQueryManagement.fromMap(Map<String, dynamic> map) {
     return ResourceTypeRegistrationPropertiesResourceQueryManagement(
-      filterOption: (() { final guardedValue = map['filterOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      filterOption: (() { final guardedValue = map['filterOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

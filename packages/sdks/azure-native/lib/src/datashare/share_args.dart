@@ -10,15 +10,15 @@ class ShareArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// Share description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Share kind.
-  final pulumi.Input<String>? shareKind;
+  final pulumi.Input<dynamic>? shareKind;
   /// The name of the share.
-  final pulumi.Input<String>? shareName;
+  final pulumi.Input<String?>? shareName;
   /// Share terms.
-  final pulumi.Input<String>? terms;
+  final pulumi.Input<String?>? terms;
 
   /// Creates a new [ShareArgs].
   /// [accountName] The name of the share account.
@@ -52,7 +52,7 @@ class ShareArgs {
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      shareKind: (() { final guardedValue = map['shareKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      shareKind: (() { final guardedValue = map['shareKind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       shareName: (() { final guardedValue = map['shareName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

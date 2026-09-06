@@ -9,23 +9,23 @@ class SmsChannel {
   /// Expected value is 'SmsChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to Sms channel resource
-  final pulumi.Input<SmsChannelProperties>? properties;
+  final pulumi.Input<SmsChannelProperties?>? properties;
 
   /// Creates a new [SmsChannel].
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Sms channel resource
-  const SmsChannel({
+  SmsChannel({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

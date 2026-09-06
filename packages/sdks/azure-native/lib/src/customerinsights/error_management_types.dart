@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of error management to use for the mapping.
-enum ErrorManagementTypes {
+enum ErrorManagementTypes implements pulumi.PulumiEnum<String> {
   valueRejectAndContinue("RejectAndContinue"),
   valueStopImport("StopImport"),
   valueRejectUntilLimit("RejectUntilLimit");
 
   const ErrorManagementTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ErrorManagementTypes fromValue(String value) {

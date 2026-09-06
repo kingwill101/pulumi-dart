@@ -11,9 +11,9 @@ class StageSpec {
   /// Stage specification
   final pulumi.Input<dynamic>? specification;
   /// Task option for the stage
-  final pulumi.Input<TaskOption>? taskOption;
+  final pulumi.Input<TaskOption?>? taskOption;
   /// List of tasks in the stage
-  final pulumi.Input<List<TaskSpec>>? tasks;
+  final pulumi.Input<List<TaskSpec>?>? tasks;
 
   /// Creates a new [StageSpec].
   /// [name] Name of Stage

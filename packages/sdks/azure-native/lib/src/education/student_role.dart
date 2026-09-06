@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Student Role
-enum StudentRole {
+enum StudentRole implements pulumi.PulumiEnum<String> {
   student("Student"),
   admin("Admin");
 
   const StudentRole(this.wireValue);
+  @override
   final String wireValue;
 
   static StudentRole fromValue(String value) {

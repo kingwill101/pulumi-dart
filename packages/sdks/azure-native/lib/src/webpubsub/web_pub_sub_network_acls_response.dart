@@ -8,13 +8,13 @@ import 'private_endpoint_aclresponse.dart';
 /// Network ACLs for the resource
 class WebPubSubNetworkACLsResponse {
   /// Azure Networking ACL Action.
-  final pulumi.Input<String>? defaultAction;
+  final pulumi.Input<String?>? defaultAction;
   /// IP rules for filtering public traffic
-  final pulumi.Input<List<IPRuleResponse>>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>?>? ipRules;
   /// ACLs for requests from private endpoints
-  final pulumi.Input<List<PrivateEndpointACLResponse>>? privateEndpoints;
+  final pulumi.Input<List<PrivateEndpointACLResponse>?>? privateEndpoints;
   /// Network ACL
-  final pulumi.Input<NetworkACLResponse>? publicNetwork;
+  final pulumi.Input<NetworkACLResponse?>? publicNetwork;
 
   /// Creates a new [WebPubSubNetworkACLsResponse].
   /// [defaultAction] Azure Networking ACL Action.

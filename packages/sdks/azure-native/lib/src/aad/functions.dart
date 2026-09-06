@@ -24,6 +24,17 @@ Future<GetDomainServiceResult> getDomainService(
   return GetDomainServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetDomainServiceResult> getDomainServiceOutput(
+  GetDomainServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:aad:getDomainService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDomainServiceResult.fromMap);
+}
+
 /// Get OuContainer in DomainService instance.
 ///
 /// Uses Azure REST API version 2022-12-01.
@@ -42,4 +53,15 @@ Future<GetOuContainerResult> getOuContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOuContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetOuContainerResult> getOuContainerOutput(
+  GetOuContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:aad:getOuContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOuContainerResult.fromMap);
 }

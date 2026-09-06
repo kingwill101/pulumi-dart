@@ -6,11 +6,11 @@ import 'auto_snapshot_add_on.dart';
 /// Definition of AddOn
 class AddOn {
   /// The add-on type
-  final pulumi.Input<String>? addOnType;
+  final pulumi.Input<String?>? addOnType;
   /// An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
-  final pulumi.Input<AutoSnapshotAddOn>? autoSnapshotAddOnRequest;
+  final pulumi.Input<AutoSnapshotAddOn?>? autoSnapshotAddOnRequest;
   /// Status of the Addon
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [AddOn].
   /// [addOnType] The add-on type
@@ -34,7 +34,7 @@ class AddOn {
     return AddOn(
       addOnType: (() { final guardedValue = map['addOnType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoSnapshotAddOnRequest: (() { final guardedValue = map['autoSnapshotAddOnRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AutoSnapshotAddOn.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

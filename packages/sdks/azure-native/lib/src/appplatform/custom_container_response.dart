@@ -6,17 +6,17 @@ import 'image_registry_credential_response.dart';
 /// Custom container payload
 class CustomContainerResponse {
   /// Arguments to the entrypoint. The docker image's CMD is used if this is not provided.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Container image of the custom container. This should be in the form of &lt;repository&gt;:&lt;tag&gt; without the server name of the registry
-  final pulumi.Input<String>? containerImage;
+  final pulumi.Input<String?>? containerImage;
   /// Credential of the image registry
-  final pulumi.Input<ImageRegistryCredentialResponse>? imageRegistryCredential;
+  final pulumi.Input<ImageRegistryCredentialResponse?>? imageRegistryCredential;
   /// Language framework of the container image uploaded. Supported values: "springboot", "", null.
-  final pulumi.Input<String>? languageFramework;
+  final pulumi.Input<String?>? languageFramework;
   /// The name of the registry that contains the container image
-  final pulumi.Input<String>? server;
+  final pulumi.Input<String?>? server;
 
   /// Creates a new [CustomContainerResponse].
   /// [args] Arguments to the entrypoint. The docker image's CMD is used if this is not provided.

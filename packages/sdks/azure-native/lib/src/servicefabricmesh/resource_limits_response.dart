@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This type describes the resource limits for a given container. It describes the most amount of resources a container is allowed to use before being restarted.
 class ResourceLimitsResponse {
   /// CPU limits in cores. At present, only full cores are supported.
-  final pulumi.Input<double>? cpu;
+  final pulumi.Input<double?>? cpu;
   /// The memory limit in GB.
-  final pulumi.Input<double>? memoryInGB;
+  final pulumi.Input<double?>? memoryInGB;
 
   /// Creates a new [ResourceLimitsResponse].
   /// [cpu] CPU limits in cores. At present, only full cores are supported.
@@ -26,8 +26,8 @@ class ResourceLimitsResponse {
 
   factory ResourceLimitsResponse.fromMap(Map<String, dynamic> map) {
     return ResourceLimitsResponse(
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      memoryInGB: (() { final guardedValue = map['memoryInGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

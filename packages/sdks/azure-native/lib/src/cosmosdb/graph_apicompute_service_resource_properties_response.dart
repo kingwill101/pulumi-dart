@@ -8,11 +8,11 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
   final pulumi.Input<String> creationTime;
   /// GraphAPICompute endpoint for the service.
-  final pulumi.Input<String>? graphApiComputeEndpoint;
+  final pulumi.Input<String?>? graphApiComputeEndpoint;
   /// Instance count for the service.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance type for the service.
-  final pulumi.Input<String>? instanceSize;
+  final pulumi.Input<String?>? instanceSize;
   /// An array that contains all of the locations for the service.
   final pulumi.Input<List<GraphAPIComputeRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
@@ -55,7 +55,7 @@ class GraphAPIComputeServiceResourcePropertiesResponse {
     return GraphAPIComputeServiceResourcePropertiesResponse(
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
       graphApiComputeEndpoint: (() { final guardedValue = map['graphApiComputeEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSize: (() { final guardedValue = map['instanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: pulumi.Input.fromValue(pulumi.Input.decodeList<GraphAPIComputeRegionalServiceResourceResponse>(map['locations']!, (value) => GraphAPIComputeRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),

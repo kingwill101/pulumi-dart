@@ -12,7 +12,7 @@ class KubernetesRoleResourcesResponse {
   /// Kubernetes role network resource
   final pulumi.Input<KubernetesRoleNetworkResponse> network;
   /// Kubernetes role storage resource
-  final pulumi.Input<KubernetesRoleStorageResponse>? storage;
+  final pulumi.Input<KubernetesRoleStorageResponse?>? storage;
 
   /// Creates a new [KubernetesRoleResourcesResponse].
   /// [compute] Kubernetes role compute resource

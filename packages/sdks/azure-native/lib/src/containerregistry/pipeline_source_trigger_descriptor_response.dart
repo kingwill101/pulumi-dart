@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipelineSourceTriggerDescriptorResponse {
   /// The timestamp when the source update happened.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [PipelineSourceTriggerDescriptorResponse].
   /// [timestamp] The timestamp when the source update happened.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes how changes will be replicated from the source to the target. The default is OneTime.
-enum MongoDbReplication {
+enum MongoDbReplication implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueOneTime("OneTime"),
   valueContinuous("Continuous");
 
   const MongoDbReplication(this.wireValue);
+  @override
   final String wireValue;
 
   static MongoDbReplication fromValue(String value) {

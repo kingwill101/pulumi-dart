@@ -6,7 +6,7 @@ import 'rate_limit_rule.dart';
 /// Defines contents of rate limit rules
 class RateLimitRuleList {
   /// List of rules
-  final pulumi.Input<List<RateLimitRule>>? rules;
+  final pulumi.Input<List<RateLimitRule>?>? rules;
 
   /// Creates a new [RateLimitRuleList].
   /// [rules] List of rules

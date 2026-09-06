@@ -14,11 +14,11 @@ class BudgetFilterProperties {
   /// Supported dimension names for **CategoryType: ReservationUtilization**
   /// - ReservationId
   /// - ReservedResourceType
-  final pulumi.Input<BudgetComparisonExpression>? dimensions;
+  final pulumi.Input<BudgetComparisonExpression?>? dimensions;
   /// Has comparison expression for a tag.
   ///
   /// Supported for CategoryType(s): Cost.
-  final pulumi.Input<BudgetComparisonExpression>? tags;
+  final pulumi.Input<BudgetComparisonExpression?>? tags;
 
   /// Creates a new [BudgetFilterProperties].
   /// [dimensions] Has comparison expression for a dimension.

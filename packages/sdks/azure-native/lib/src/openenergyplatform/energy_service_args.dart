@@ -9,14 +9,14 @@ import 'energy_service_properties.dart';
 /// {@macro pulumi_openenergyplatform_energy_service_args_doc}
 class EnergyServiceArgs {
   /// Geo-location where the resource lives.
-  final pulumi.Input<String>? location;
-  final pulumi.Input<EnergyServiceProperties>? properties;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<EnergyServiceProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource name.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnergyServiceArgs].
   /// [location] Geo-location where the resource lives.

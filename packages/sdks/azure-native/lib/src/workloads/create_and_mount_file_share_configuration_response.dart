@@ -8,9 +8,9 @@ class CreateAndMountFileShareConfigurationResponse {
   /// Expected value is 'CreateAndMount'.
   final pulumi.Input<String> configurationType;
   /// The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// The name of file share storage account name . A custom name is used in case of missing input.
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
 
   /// Creates a new [CreateAndMountFileShareConfigurationResponse].
   /// [configurationType] The type of file share config.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a reference to a sub-resource.
 class SubResourceResponse {
   /// The ID of the sub-resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubResourceResponse].
   /// [id] The ID of the sub-resource.

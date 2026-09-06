@@ -262,7 +262,7 @@ class ImportJob extends pulumi.CustomResource {
     blobsImportedPerSecond = registerOutput<double>('blobsImportedPerSecond');
     blobsWalkedPerSecond = registerOutput<double>('blobsWalkedPerSecond');
     conflictResolutionMode = registerOutput<String?>('conflictResolutionMode');
-    importPrefixes = registerOutput<List<String>?>('importPrefixes');
+    importPrefixes = registerOutput<List<String>?>('importPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     lastCompletionTime = registerOutput<String>('lastCompletionTime');
     lastStartedTime = registerOutput<String>('lastStartedTime');
     location = registerOutput<String>('location');
@@ -272,7 +272,38 @@ class ImportJob extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     statusMessage = registerOutput<String>('statusMessage');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalBlobsImported = registerOutput<double>('totalBlobsImported');
+    totalBlobsWalked = registerOutput<double>('totalBlobsWalked');
+    totalConflicts = registerOutput<int>('totalConflicts');
+    totalErrors = registerOutput<int>('totalErrors');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ImportJob] resource.
+  ImportJob.reference(String urn)
+    : super(
+        'azure-native:storagecache:ImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobsImportedPerSecond = registerOutput<double>('blobsImportedPerSecond');
+    blobsWalkedPerSecond = registerOutput<double>('blobsWalkedPerSecond');
+    conflictResolutionMode = registerOutput<String?>('conflictResolutionMode');
+    importPrefixes = registerOutput<List<String>?>('importPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    lastCompletionTime = registerOutput<String>('lastCompletionTime');
+    lastStartedTime = registerOutput<String>('lastStartedTime');
+    location = registerOutput<String>('location');
+    maximumErrors = registerOutput<int?>('maximumErrors');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalBlobsImported = registerOutput<double>('totalBlobsImported');
     totalBlobsWalked = registerOutput<double>('totalBlobsWalked');
     totalConflicts = registerOutput<int>('totalConflicts');

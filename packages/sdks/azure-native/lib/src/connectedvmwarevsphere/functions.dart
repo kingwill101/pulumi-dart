@@ -48,6 +48,17 @@ Future<GetClusterResult> getCluster(
   return GetClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
+}
+
 /// Implements datastore GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -66,6 +77,17 @@ Future<GetDatastoreResult> getDatastore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatastoreResult.fromMap(result);
+}
+
+pulumi.Output<GetDatastoreResult> getDatastoreOutput(
+  GetDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatastoreResult.fromMap);
 }
 
 /// Implements GuestAgent GET method.
@@ -88,6 +110,17 @@ Future<GetGuestAgentResult> getGuestAgent(
   return GetGuestAgentResult.fromMap(result);
 }
 
+pulumi.Output<GetGuestAgentResult> getGuestAgentOutput(
+  GetGuestAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getGuestAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGuestAgentResult.fromMap);
+}
+
 /// Implements host GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -106,6 +139,17 @@ Future<GetHostResult> getHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostResult.fromMap(result);
+}
+
+pulumi.Output<GetHostResult> getHostOutput(
+  GetHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostResult.fromMap);
 }
 
 /// Implements HybridIdentityMetadata GET method.
@@ -128,6 +172,17 @@ Future<GetHybridIdentityMetadatumResult> getHybridIdentityMetadatum(
   return GetHybridIdentityMetadatumResult.fromMap(result);
 }
 
+pulumi.Output<GetHybridIdentityMetadatumResult> getHybridIdentityMetadatumOutput(
+  GetHybridIdentityMetadatumArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getHybridIdentityMetadatum',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridIdentityMetadatumResult.fromMap);
+}
+
 /// Implements InventoryItem GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -146,6 +201,17 @@ Future<GetInventoryItemResult> getInventoryItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInventoryItemResult.fromMap(result);
+}
+
+pulumi.Output<GetInventoryItemResult> getInventoryItemOutput(
+  GetInventoryItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getInventoryItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInventoryItemResult.fromMap);
 }
 
 /// The operation to get the extension.
@@ -168,6 +234,17 @@ Future<GetMachineExtensionResult> getMachineExtension(
   return GetMachineExtensionResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineExtensionResult> getMachineExtensionOutput(
+  GetMachineExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getMachineExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineExtensionResult.fromMap);
+}
+
 /// Implements resourcePool GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -186,6 +263,17 @@ Future<GetResourcePoolResult> getResourcePool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcePoolResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcePoolResult> getResourcePoolOutput(
+  GetResourcePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getResourcePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePoolResult.fromMap);
 }
 
 /// Implements vCenter GET method.
@@ -208,6 +296,17 @@ Future<GetVCenterResult> getVCenter(
   return GetVCenterResult.fromMap(result);
 }
 
+pulumi.Output<GetVCenterResult> getVCenterOutput(
+  GetVCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVCenterResult.fromMap);
+}
+
 /// Implements GuestAgent GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -226,6 +325,17 @@ Future<GetVMInstanceGuestAgentResult> getVMInstanceGuestAgent(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVMInstanceGuestAgentResult.fromMap(result);
+}
+
+pulumi.Output<GetVMInstanceGuestAgentResult> getVMInstanceGuestAgentOutput(
+  GetVMInstanceGuestAgentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVMInstanceGuestAgent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVMInstanceGuestAgentResult.fromMap);
 }
 
 /// Implements virtual machine GET method.
@@ -248,6 +358,17 @@ Future<GetVirtualMachineResult> getVirtualMachine(
   return GetVirtualMachineResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineResult> getVirtualMachineOutput(
+  GetVirtualMachineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVirtualMachine',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineResult.fromMap);
+}
+
 /// Retrieves information about a virtual machine instance.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -266,6 +387,17 @@ Future<GetVirtualMachineInstanceResult> getVirtualMachineInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualMachineInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualMachineInstanceResult> getVirtualMachineInstanceOutput(
+  GetVirtualMachineInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVirtualMachineInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineInstanceResult.fromMap);
 }
 
 /// Implements virtual machine template GET method.
@@ -288,6 +420,17 @@ Future<GetVirtualMachineTemplateResult> getVirtualMachineTemplate(
   return GetVirtualMachineTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetVirtualMachineTemplateResult> getVirtualMachineTemplateOutput(
+  GetVirtualMachineTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVirtualMachineTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualMachineTemplateResult.fromMap);
+}
+
 /// Implements virtual network GET method.
 ///
 /// Uses Azure REST API version 2023-12-01.
@@ -306,4 +449,15 @@ Future<GetVirtualNetworkResult> getVirtualNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
+  GetVirtualNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:connectedvmwarevsphere:getVirtualNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkResult.fromMap);
 }

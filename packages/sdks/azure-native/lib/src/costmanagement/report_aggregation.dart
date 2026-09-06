@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The aggregation expression to be used in the report.
 class ReportAggregation {
   /// The name of the aggregation function to use.
-  final pulumi.Input<String> function;
+  final pulumi.Input<dynamic> function;
   /// The name of the column to aggregate.
   final pulumi.Input<String> name;
 
@@ -26,7 +26,7 @@ class ReportAggregation {
 
   factory ReportAggregation.fromMap(Map<String, dynamic> map) {
     return ReportAggregation(
-      function: pulumi.Input.fromValue(map['function'] as String),
+      function: pulumi.Input.fromValue(map['function']),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

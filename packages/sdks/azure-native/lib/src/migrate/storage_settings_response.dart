@@ -26,8 +26,8 @@ class StorageSettingsResponse {
 
   factory StorageSettingsResponse.fromMap(Map<String, dynamic> map) {
     return StorageSettingsResponse(
-      costPerGbPerMonth: pulumi.Input.fromValue(map['costPerGbPerMonth'] as double),
-      maintainanceCostPercentageToAcquisitionCost: pulumi.Input.fromValue(map['maintainanceCostPercentageToAcquisitionCost'] as double),
+      costPerGbPerMonth: pulumi.Input.fromValue((map['costPerGbPerMonth'] as num).toDouble()),
+      maintainanceCostPercentageToAcquisitionCost: pulumi.Input.fromValue((map['maintainanceCostPercentageToAcquisitionCost'] as num).toDouble()),
     );
   }
 }

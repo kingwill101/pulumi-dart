@@ -9,15 +9,15 @@ import 'sku.dart';
 /// {@macro pulumi_devspaces_controller_args_doc}
 class ControllerArgs {
   /// Region where the Azure resource is located.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Resource group to which the resource belongs.
   final pulumi.Input<String> resourceGroupName;
   /// Model representing SKU for Azure Dev Spaces Controller.
   final pulumi.Input<Sku> sku;
   /// Tags for the Azure resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Credentials of the target container host (base64).
   final pulumi.Input<String> targetContainerHostCredentialsBase64;
   /// Resource ID of the target container host

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data model of Assessment Scope Parameters.
 class AssessmentScopeParametersResponse {
   /// Gets or sets the server group id.
-  final pulumi.Input<String>? serverGroupId;
+  final pulumi.Input<String?>? serverGroupId;
 
   /// Creates a new [AssessmentScopeParametersResponse].
   /// [serverGroupId] Gets or sets the server group id.

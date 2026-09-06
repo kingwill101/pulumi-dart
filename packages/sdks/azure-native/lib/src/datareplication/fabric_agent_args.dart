@@ -9,11 +9,11 @@ import 'fabric_agent_model_properties.dart';
 /// {@macro pulumi_datareplication_fabric_agent_args_doc}
 class FabricAgentArgs {
   /// The fabric agent name.
-  final pulumi.Input<String>? fabricAgentName;
+  final pulumi.Input<String?>? fabricAgentName;
   /// The fabric name.
   final pulumi.Input<String> fabricName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<FabricAgentModelProperties>? properties;
+  final pulumi.Input<FabricAgentModelProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

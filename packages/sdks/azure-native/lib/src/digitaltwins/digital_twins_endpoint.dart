@@ -1,6 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'digital_twins_endpoint_args.dart';
-import 'event_grid_response.dart';
 import 'system_data_response.dart';
 
 /// DigitalTwinsInstance endpoint resource.
@@ -568,7 +567,7 @@ class DigitalTwinsEndpoint extends pulumi.CustomResource {
   /// Extension resource name.
   late final pulumi.Output<String> name;
   /// DigitalTwinsInstance endpoint resource properties.
-  late final pulumi.Output<EventGridResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Metadata pertaining to creation and last modification of the resource.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The resource type.
@@ -590,7 +589,23 @@ class DigitalTwinsEndpoint extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<EventGridResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGridResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    properties = registerOutput<dynamic>('properties');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DigitalTwinsEndpoint] resource.
+  DigitalTwinsEndpoint.reference(String urn)
+    : super(
+        'azure-native:digitaltwins:DigitalTwinsEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

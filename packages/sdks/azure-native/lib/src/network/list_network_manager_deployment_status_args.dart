@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_list_network_manager_deployment_status_args_doc}
 class ListNetworkManagerDeploymentStatusArgs {
   /// List of deployment types.
-  final pulumi.Input<List<String>>? deploymentTypes;
+  final pulumi.Input<List<dynamic>?>? deploymentTypes;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// List of locations.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
-  final pulumi.Input<String>? skipToken;
+  final pulumi.Input<String?>? skipToken;
   /// An optional query parameter which specifies the maximum number of records to be returned by the server.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListNetworkManagerDeploymentStatusArgs].
   /// [deploymentTypes] List of deployment types.
@@ -49,12 +49,12 @@ class ListNetworkManagerDeploymentStatusArgs {
 
   factory ListNetworkManagerDeploymentStatusArgs.fromMap(Map<String, dynamic> map) {
     return ListNetworkManagerDeploymentStatusArgs(
-      deploymentTypes: (() { final guardedValue = map['deploymentTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      deploymentTypes: (() { final guardedValue = map['deploymentTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       skipToken: (() { final guardedValue = map['skipToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

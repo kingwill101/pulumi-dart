@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sku family of the Cloud HSM Cluster
-enum CloudHsmClusterSkuFamily {
+enum CloudHsmClusterSkuFamily implements pulumi.PulumiEnum<String> {
   valueB("B");
 
   const CloudHsmClusterSkuFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudHsmClusterSkuFamily fromValue(String value) {

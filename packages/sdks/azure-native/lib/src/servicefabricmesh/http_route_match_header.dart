@@ -7,9 +7,9 @@ class HttpRouteMatchHeader {
   /// Name of header to match in request.
   final pulumi.Input<String> name;
   /// how to match header value
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// Value of header to match in request.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [HttpRouteMatchHeader].
   /// [name] Name of header to match in request.
@@ -32,7 +32,7 @@ class HttpRouteMatchHeader {
   factory HttpRouteMatchHeader.fromMap(Map<String, dynamic> map) {
     return HttpRouteMatchHeader(
       name: pulumi.Input.fromValue(map['name'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

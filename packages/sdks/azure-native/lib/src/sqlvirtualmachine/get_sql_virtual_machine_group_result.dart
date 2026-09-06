@@ -6,31 +6,31 @@ import 'wsfc_domain_profile_response.dart';
 /// Result data returned by getSqlVirtualMachineGroup.
 class GetSqlVirtualMachineGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Cluster type.
-  final String clusterConfiguration;
+  final String? clusterConfiguration;
   /// Type of cluster manager: Windows Server Failover Cluster (WSFC), implied by the scale type of the group and the OS type.
-  final String clusterManagerType;
+  final String? clusterManagerType;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state to track the async operation status.
-  final String provisioningState;
+  final String? provisioningState;
   /// Scale type.
-  final String scaleType;
+  final String? scaleType;
   /// SQL image offer. Examples may include SQL2016-WS2016, SQL2017-WS2016.
   final String? sqlImageOffer;
   /// SQL image sku.
   final String? sqlImageSku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Cluster Active Directory domain profile.
   final WsfcDomainProfileResponse? wsfcDomainProfile;
 
@@ -50,56 +50,56 @@ class GetSqlVirtualMachineGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wsfcDomainProfile] Cluster Active Directory domain profile.
   const GetSqlVirtualMachineGroupResult({
-    required this.azureApiVersion,
-    required this.clusterConfiguration,
-    required this.clusterManagerType,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.scaleType,
+    this.azureApiVersion,
+    this.clusterConfiguration,
+    this.clusterManagerType,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.scaleType,
     this.sqlImageOffer,
     this.sqlImageSku,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.wsfcDomainProfile,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'clusterConfiguration': clusterConfiguration,
-      'clusterManagerType': clusterManagerType,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'scaleType': scaleType,
+      'azureApiVersion': ?azureApiVersion,
+      'clusterConfiguration': ?clusterConfiguration,
+      'clusterManagerType': ?clusterManagerType,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'scaleType': ?scaleType,
       'sqlImageOffer': ?sqlImageOffer,
       'sqlImageSku': ?sqlImageSku,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'wsfcDomainProfile': ?wsfcDomainProfile?.toMap(),
     };
   }
 
   factory GetSqlVirtualMachineGroupResult.fromMap(Map<String, dynamic> map) {
     return GetSqlVirtualMachineGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      clusterConfiguration: map['clusterConfiguration'] as String,
-      clusterManagerType: map['clusterManagerType'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      scaleType: map['scaleType'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterConfiguration: (() { final guardedValue = map['clusterConfiguration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clusterManagerType: (() { final guardedValue = map['clusterManagerType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sqlImageOffer: (() { final guardedValue = map['sqlImageOffer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sqlImageSku: (() { final guardedValue = map['sqlImageSku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       wsfcDomainProfile: (() { final guardedValue = map['wsfcDomainProfile']; if (guardedValue == null) return null; return WsfcDomainProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

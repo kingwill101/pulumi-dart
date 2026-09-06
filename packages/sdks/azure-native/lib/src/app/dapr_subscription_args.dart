@@ -10,25 +10,25 @@ import 'dapr_subscription_routes.dart';
 /// {@macro pulumi_app_dapr_subscription_args_doc}
 class DaprSubscriptionArgs {
   /// Bulk subscription options
-  final pulumi.Input<DaprSubscriptionBulkSubscribeOptions>? bulkSubscribe;
+  final pulumi.Input<DaprSubscriptionBulkSubscribeOptions?>? bulkSubscribe;
   /// Deadletter topic name
-  final pulumi.Input<String>? deadLetterTopic;
+  final pulumi.Input<String?>? deadLetterTopic;
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// Subscription metadata
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// Name of the Dapr subscription.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Dapr PubSub component name
-  final pulumi.Input<String>? pubsubName;
+  final pulumi.Input<String?>? pubsubName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Subscription routes
-  final pulumi.Input<DaprSubscriptionRoutes>? routes;
+  final pulumi.Input<DaprSubscriptionRoutes?>? routes;
   /// Application scopes to restrict the subscription to specific apps.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
   /// Topic name
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [DaprSubscriptionArgs].
   /// [bulkSubscribe] Bulk subscription options

@@ -9,7 +9,7 @@ import 'iot_mapping_properties.dart';
 /// {@macro pulumi_healthcareapis_iot_connector_fhir_destination_args_doc}
 class IotConnectorFhirDestinationArgs {
   /// The name of IoT Connector FHIR destination resource.
-  final pulumi.Input<String>? fhirDestinationName;
+  final pulumi.Input<String?>? fhirDestinationName;
   /// FHIR Mappings
   final pulumi.Input<IotMappingProperties> fhirMapping;
   /// Fully qualified resource id of the FHIR service to connect to.
@@ -17,11 +17,11 @@ class IotConnectorFhirDestinationArgs {
   /// The name of IoT Connector resource.
   final pulumi.Input<String> iotConnectorName;
   /// The resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group that contains the service instance.
   final pulumi.Input<String> resourceGroupName;
   /// Determines how resource identity is resolved on the destination.
-  final pulumi.Input<String> resourceIdentityResolutionType;
+  final pulumi.Input<dynamic> resourceIdentityResolutionType;
   /// The name of workspace resource.
   final pulumi.Input<String> workspaceName;
 
@@ -66,7 +66,7 @@ class IotConnectorFhirDestinationArgs {
       iotConnectorName: pulumi.Input.fromValue(map['iotConnectorName'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      resourceIdentityResolutionType: pulumi.Input.fromValue(map['resourceIdentityResolutionType'] as String),
+      resourceIdentityResolutionType: pulumi.Input.fromValue(map['resourceIdentityResolutionType']),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }

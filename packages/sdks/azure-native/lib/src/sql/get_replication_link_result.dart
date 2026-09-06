@@ -4,37 +4,37 @@
 /// Result data returned by getReplicationLink.
 class GetReplicationLinkResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Whether the user is currently allowed to terminate the link.
-  final bool isTerminationAllowed;
+  final bool? isTerminationAllowed;
   /// Link type (GEO, NAMED, STANDBY). Update operation does not support NAMED.
   final String? linkType;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource partner database.
-  final String partnerDatabase;
+  final String? partnerDatabase;
   /// Resource partner database Id.
-  final String partnerDatabaseId;
+  final String? partnerDatabaseId;
   /// Resource partner location.
-  final String partnerLocation;
+  final String? partnerLocation;
   /// Partner replication role.
-  final String partnerRole;
+  final String? partnerRole;
   /// Resource partner server.
-  final String partnerServer;
+  final String? partnerServer;
   /// Seeding completion percentage for the link.
-  final int percentComplete;
+  final int? percentComplete;
   /// Replication mode.
-  final String replicationMode;
+  final String? replicationMode;
   /// Replication state (PENDING, SEEDING, CATCHUP, SUSPENDED).
-  final String replicationState;
+  final String? replicationState;
   /// Local replication role.
-  final String role;
+  final String? role;
   /// Time at which the link was created.
-  final String startTime;
+  final String? startTime;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetReplicationLinkResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -54,63 +54,63 @@ class GetReplicationLinkResult {
   /// [startTime] Time at which the link was created.
   /// [type] Resource type.
   const GetReplicationLinkResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.isTerminationAllowed,
+    this.azureApiVersion,
+    this.id,
+    this.isTerminationAllowed,
     this.linkType,
-    required this.name,
-    required this.partnerDatabase,
-    required this.partnerDatabaseId,
-    required this.partnerLocation,
-    required this.partnerRole,
-    required this.partnerServer,
-    required this.percentComplete,
-    required this.replicationMode,
-    required this.replicationState,
-    required this.role,
-    required this.startTime,
-    required this.type,
+    this.name,
+    this.partnerDatabase,
+    this.partnerDatabaseId,
+    this.partnerLocation,
+    this.partnerRole,
+    this.partnerServer,
+    this.percentComplete,
+    this.replicationMode,
+    this.replicationState,
+    this.role,
+    this.startTime,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'isTerminationAllowed': isTerminationAllowed,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'isTerminationAllowed': ?isTerminationAllowed,
       'linkType': ?linkType,
-      'name': name,
-      'partnerDatabase': partnerDatabase,
-      'partnerDatabaseId': partnerDatabaseId,
-      'partnerLocation': partnerLocation,
-      'partnerRole': partnerRole,
-      'partnerServer': partnerServer,
-      'percentComplete': percentComplete,
-      'replicationMode': replicationMode,
-      'replicationState': replicationState,
-      'role': role,
-      'startTime': startTime,
-      'type': type,
+      'name': ?name,
+      'partnerDatabase': ?partnerDatabase,
+      'partnerDatabaseId': ?partnerDatabaseId,
+      'partnerLocation': ?partnerLocation,
+      'partnerRole': ?partnerRole,
+      'partnerServer': ?partnerServer,
+      'percentComplete': ?percentComplete,
+      'replicationMode': ?replicationMode,
+      'replicationState': ?replicationState,
+      'role': ?role,
+      'startTime': ?startTime,
+      'type': ?type,
     };
   }
 
   factory GetReplicationLinkResult.fromMap(Map<String, dynamic> map) {
     return GetReplicationLinkResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      isTerminationAllowed: map['isTerminationAllowed'] as bool,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isTerminationAllowed: (() { final guardedValue = map['isTerminationAllowed']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       linkType: (() { final guardedValue = map['linkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      partnerDatabase: map['partnerDatabase'] as String,
-      partnerDatabaseId: map['partnerDatabaseId'] as String,
-      partnerLocation: map['partnerLocation'] as String,
-      partnerRole: map['partnerRole'] as String,
-      partnerServer: map['partnerServer'] as String,
-      percentComplete: map['percentComplete'] as int,
-      replicationMode: map['replicationMode'] as String,
-      replicationState: map['replicationState'] as String,
-      role: map['role'] as String,
-      startTime: map['startTime'] as String,
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerDatabase: (() { final guardedValue = map['partnerDatabase']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerDatabaseId: (() { final guardedValue = map['partnerDatabaseId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerLocation: (() { final guardedValue = map['partnerLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerRole: (() { final guardedValue = map['partnerRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      partnerServer: (() { final guardedValue = map['partnerServer']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      percentComplete: (() { final guardedValue = map['percentComplete']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      replicationMode: (() { final guardedValue = map['replicationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      replicationState: (() { final guardedValue = map['replicationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

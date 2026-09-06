@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Validation for inquired protectable items under a given container.
 class InquiryValidation {
   /// Status for the Inquiry Validation.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InquiryValidation].
   /// [status] Status for the Inquiry Validation.

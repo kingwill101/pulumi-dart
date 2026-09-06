@@ -9,11 +9,11 @@ import 'linked_workspace_props.dart';
 /// {@macro pulumi_machinelearningservices_linked_workspace_args_doc}
 class LinkedWorkspaceArgs {
   /// Friendly name of the linked workspace
-  final pulumi.Input<String>? linkName;
+  final pulumi.Input<String?>? linkName;
   /// Friendly name of the linked workspace
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// LinkedWorkspace specific properties.
-  final pulumi.Input<LinkedWorkspaceProps>? properties;
+  final pulumi.Input<LinkedWorkspaceProps?>? properties;
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
   /// Name of Azure Machine Learning workspace.

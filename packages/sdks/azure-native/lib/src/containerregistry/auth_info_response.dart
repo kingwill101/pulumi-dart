@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authorization properties for accessing the source code repository.
 class AuthInfoResponse {
   /// Time in seconds that the token remains valid
-  final pulumi.Input<int>? expiresIn;
+  final pulumi.Input<int?>? expiresIn;
   /// The refresh token used to refresh the access token.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The scope of the access token.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The access token used to access the source control provider.
   final pulumi.Input<String> token;
   /// The type of Auth token.
@@ -41,7 +41,7 @@ class AuthInfoResponse {
 
   factory AuthInfoResponse.fromMap(Map<String, dynamic> map) {
     return AuthInfoResponse(
-      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      expiresIn: (() { final guardedValue = map['expiresIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       refreshToken: (() { final guardedValue = map['refreshToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       token: pulumi.Input.fromValue(map['token'] as String),

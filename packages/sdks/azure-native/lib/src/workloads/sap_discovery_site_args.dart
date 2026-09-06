@@ -9,19 +9,19 @@ import 'extended_location.dart';
 /// {@macro pulumi_workloads_sap_discovery_site_args_doc}
 class SapDiscoverySiteArgs {
   /// The extended location definition.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The master site ID from Azure Migrate.
-  final pulumi.Input<String>? masterSiteId;
+  final pulumi.Input<String?>? masterSiteId;
   /// The migrate project ID from Azure Migrate.
-  final pulumi.Input<String>? migrateProjectId;
+  final pulumi.Input<String?>? migrateProjectId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the discovery site resource for SAP Migration.
-  final pulumi.Input<String>? sapDiscoverySiteName;
+  final pulumi.Input<String?>? sapDiscoverySiteName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SapDiscoverySiteArgs].
   /// [extendedLocation] The extended location definition.

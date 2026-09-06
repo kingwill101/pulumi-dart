@@ -9,7 +9,7 @@ import 'dev_ops_configuration_properties.dart';
 /// {@macro pulumi_security_dev_ops_configuration_args_doc}
 class DevOpsConfigurationArgs {
   /// DevOps Configuration properties.
-  final pulumi.Input<DevOpsConfigurationProperties>? properties;
+  final pulumi.Input<DevOpsConfigurationProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The security connector name.

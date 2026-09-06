@@ -8,7 +8,7 @@ class SkuResponse {
   /// The name.
   final pulumi.Input<String> name;
   /// The reference to plan.
-  final pulumi.Input<ResourceReferenceResponse>? plan;
+  final pulumi.Input<ResourceReferenceResponse?>? plan;
 
   /// Creates a new [SkuResponse].
   /// [name] The name.

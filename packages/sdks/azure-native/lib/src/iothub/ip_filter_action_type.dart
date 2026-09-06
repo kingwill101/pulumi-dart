@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The desired action for requests captured by this rule.
-enum IpFilterActionType {
+enum IpFilterActionType implements pulumi.PulumiEnum<String> {
   valueAccept("Accept"),
   valueReject("Reject");
 
   const IpFilterActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpFilterActionType fromValue(String value) {

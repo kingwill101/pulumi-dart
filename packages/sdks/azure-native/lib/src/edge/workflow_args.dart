@@ -11,11 +11,11 @@ class WorkflowArgs {
   /// The name of the Context.
   final pulumi.Input<String> contextName;
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the workflow
-  final pulumi.Input<String>? workflowName;
+  final pulumi.Input<String?>? workflowName;
 
   /// Creates a new [WorkflowArgs].
   /// [contextName] The name of the Context.

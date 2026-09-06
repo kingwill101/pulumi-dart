@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'applicable_schedule_response.dart';
 import 'artifact_deployment_status_properties_response.dart';
+import 'artifact_install_properties_response.dart';
 import 'compute_vm_properties_response.dart';
+import 'data_disk_properties_response.dart';
 import 'gallery_image_reference_response.dart';
 import 'network_interface_properties_response.dart';
+import 'schedule_creation_parameter_response.dart';
 import 'system_data_response.dart';
 import 'virtual_machine_args.dart';
 
@@ -292,7 +295,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// The artifact deployment status for the virtual machine.
   late final pulumi.Output<ArtifactDeploymentStatusPropertiesResponse> artifactDeploymentStatus;
   /// The artifacts to be installed on the virtual machine.
-  late final pulumi.Output<List<Map<String, dynamic>>?> artifacts;
+  late final pulumi.Output<List<ArtifactInstallPropertiesResponse>?> artifacts;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The resource identifier (Microsoft.Compute) of the virtual machine.
@@ -308,7 +311,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// The custom image identifier of the virtual machine.
   late final pulumi.Output<String?> customImageId;
   /// New or existing data disks to attach to the virtual machine after creation
-  late final pulumi.Output<List<Map<String, dynamic>>?> dataDiskParameters;
+  late final pulumi.Output<List<DataDiskPropertiesResponse>?> dataDiskParameters;
   /// Indicates whether the virtual machine is to be created without a public IP address.
   late final pulumi.Output<bool?> disallowPublicIpAddress;
   /// The resource ID of the environment that contains this virtual machine, if any.
@@ -348,7 +351,7 @@ class VirtualMachine extends pulumi.CustomResource {
   /// The provisioning status of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Virtual Machine schedules to be created
-  late final pulumi.Output<List<Map<String, dynamic>>?> scheduleParameters;
+  late final pulumi.Output<List<ScheduleCreationParameterResponse>?> scheduleParameters;
   /// The size of the virtual machine.
   late final pulumi.Output<String?> size;
   /// The SSH key of the virtual machine administrator.
@@ -385,7 +388,7 @@ class VirtualMachine extends pulumi.CustomResource {
     allowClaim = registerOutput<bool?>('allowClaim');
     applicableSchedule = registerOutput<ApplicableScheduleResponse>('applicableSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicableScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     artifactDeploymentStatus = registerOutput<ArtifactDeploymentStatusPropertiesResponse>('artifactDeploymentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArtifactDeploymentStatusPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    artifacts = registerOutput<List<Map<String, dynamic>>?>('artifacts');
+    artifacts = registerOutput<List<ArtifactInstallPropertiesResponse>?>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArtifactInstallPropertiesResponse>(guardedValue, (value) => ArtifactInstallPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computeId = registerOutput<String>('computeId');
     computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeVmPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -393,7 +396,7 @@ class VirtualMachine extends pulumi.CustomResource {
     createdByUserId = registerOutput<String>('createdByUserId');
     createdDate = registerOutput<String?>('createdDate');
     customImageId = registerOutput<String?>('customImageId');
-    dataDiskParameters = registerOutput<List<Map<String, dynamic>>?>('dataDiskParameters');
+    dataDiskParameters = registerOutput<List<DataDiskPropertiesResponse>?>('dataDiskParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskPropertiesResponse>(guardedValue, (value) => DataDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
     environmentId = registerOutput<String?>('environmentId');
     expirationDate = registerOutput<String?>('expirationDate');
@@ -413,12 +416,64 @@ class VirtualMachine extends pulumi.CustomResource {
     password = registerOutput<String?>('password');
     planId = registerOutput<String?>('planId');
     provisioningState = registerOutput<String>('provisioningState');
-    scheduleParameters = registerOutput<List<Map<String, dynamic>>?>('scheduleParameters');
+    scheduleParameters = registerOutput<List<ScheduleCreationParameterResponse>?>('scheduleParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleCreationParameterResponse>(guardedValue, (value) => ScheduleCreationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     size = registerOutput<String?>('size');
     sshKey = registerOutput<String?>('sshKey');
     storageType = registerOutput<String?>('storageType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    userName = registerOutput<String?>('userName');
+    virtualMachineCreationSource = registerOutput<String>('virtualMachineCreationSource');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachine] resource.
+  VirtualMachine.reference(String urn)
+    : super(
+        'azure-native:devtestlab:VirtualMachine',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowClaim = registerOutput<bool?>('allowClaim');
+    applicableSchedule = registerOutput<ApplicableScheduleResponse>('applicableSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicableScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifactDeploymentStatus = registerOutput<ArtifactDeploymentStatusPropertiesResponse>('artifactDeploymentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArtifactDeploymentStatusPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifacts = registerOutput<List<ArtifactInstallPropertiesResponse>?>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ArtifactInstallPropertiesResponse>(guardedValue, (value) => ArtifactInstallPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeId = registerOutput<String>('computeId');
+    computeVm = registerOutput<ComputeVmPropertiesResponse>('computeVm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeVmPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createdByUser = registerOutput<String>('createdByUser');
+    createdByUserId = registerOutput<String>('createdByUserId');
+    createdDate = registerOutput<String?>('createdDate');
+    customImageId = registerOutput<String?>('customImageId');
+    dataDiskParameters = registerOutput<List<DataDiskPropertiesResponse>?>('dataDiskParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataDiskPropertiesResponse>(guardedValue, (value) => DataDiskPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    disallowPublicIpAddress = registerOutput<bool?>('disallowPublicIpAddress');
+    environmentId = registerOutput<String?>('environmentId');
+    expirationDate = registerOutput<String?>('expirationDate');
+    fqdn = registerOutput<String>('fqdn');
+    galleryImageReference = registerOutput<GalleryImageReferenceResponse?>('galleryImageReference', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GalleryImageReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isAuthenticationWithSshKey = registerOutput<bool?>('isAuthenticationWithSshKey');
+    labSubnetName = registerOutput<String?>('labSubnetName');
+    labVirtualNetworkId = registerOutput<String?>('labVirtualNetworkId');
+    lastKnownPowerState = registerOutput<String>('lastKnownPowerState');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkInterface = registerOutput<NetworkInterfacePropertiesResponse?>('networkInterface', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfacePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notes = registerOutput<String?>('notes');
+    osType = registerOutput<String>('osType');
+    ownerObjectId = registerOutput<String?>('ownerObjectId');
+    ownerUserPrincipalName = registerOutput<String?>('ownerUserPrincipalName');
+    password = registerOutput<String?>('password');
+    planId = registerOutput<String?>('planId');
+    provisioningState = registerOutput<String>('provisioningState');
+    scheduleParameters = registerOutput<List<ScheduleCreationParameterResponse>?>('scheduleParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduleCreationParameterResponse>(guardedValue, (value) => ScheduleCreationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    size = registerOutput<String?>('size');
+    sshKey = registerOutput<String?>('sshKey');
+    storageType = registerOutput<String?>('storageType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     userName = registerOutput<String?>('userName');

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The type of the deployment
-enum BatchDeploymentConfigurationType {
+enum BatchDeploymentConfigurationType implements pulumi.PulumiEnum<String> {
   model("Model"),
   pipelineComponent("PipelineComponent");
 
   const BatchDeploymentConfigurationType(this.wireValue);
+  @override
   final String wireValue;
 
   static BatchDeploymentConfigurationType fromValue(String value) {

@@ -206,4 +206,21 @@ class NetworkInterfaceTapConfiguration extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     virtualNetworkTap = registerOutput<VirtualNetworkTapResponse?>('virtualNetworkTap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkTapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [NetworkInterfaceTapConfiguration] resource.
+  NetworkInterfaceTapConfiguration.reference(String urn)
+    : super(
+        'azure-native:network:NetworkInterfaceTapConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    type = registerOutput<String>('type');
+    virtualNetworkTap = registerOutput<VirtualNetworkTapResponse?>('virtualNetworkTap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualNetworkTapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

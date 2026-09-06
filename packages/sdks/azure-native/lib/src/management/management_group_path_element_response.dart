@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A path element of a management group ancestors.
 class ManagementGroupPathElementResponse {
   /// The friendly name of the group.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The name of the group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagementGroupPathElementResponse].
   /// [displayName] The friendly name of the group.

@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FeatureImportanceSettingsResponse {
   /// The mode of operation for computing feature importance.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// The name of the target column within the input data asset.
-  final pulumi.Input<String>? targetColumn;
+  final pulumi.Input<String?>? targetColumn;
 
   /// Creates a new [FeatureImportanceSettingsResponse].
   /// [mode] The mode of operation for computing feature importance.
   /// [targetColumn] The name of the target column within the input data asset.
-  const FeatureImportanceSettingsResponse({
-    this.mode,
+  FeatureImportanceSettingsResponse({
+    pulumi.Input<String?>? mode,
     this.targetColumn,
-  });
+  }) : mode = mode ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

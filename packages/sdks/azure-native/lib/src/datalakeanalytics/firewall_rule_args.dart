@@ -12,7 +12,7 @@ class FirewallRuleArgs {
   /// The end IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.
   final pulumi.Input<String> endIpAddress;
   /// The name of the firewall rule to create or update.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the Azure resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The start IP address for the firewall rule. This can be either ipv4 or ipv6. Start and End should be in the same protocol.

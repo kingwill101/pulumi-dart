@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes parameters for creating application-scoped volumes provided by Service Fabric Volume Disks
 class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk {
   /// User readable description of the volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies the application-scoped volume kind.
   /// Expected value is 'ServiceFabricVolumeDisk'.
   final pulumi.Input<String> kind;
   /// Volume size
-  final pulumi.Input<String> sizeDisk;
+  final pulumi.Input<dynamic> sizeDisk;
 
   /// Creates a new [ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk].
   /// [description] User readable description of the volume.
@@ -34,7 +34,7 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk {
     return ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      sizeDisk: pulumi.Input.fromValue(map['sizeDisk'] as String),
+      sizeDisk: pulumi.Input.fromValue(map['sizeDisk']),
     );
   }
 }

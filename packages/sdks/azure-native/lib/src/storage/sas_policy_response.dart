@@ -12,10 +12,10 @@ class SasPolicyResponse {
   /// Creates a new [SasPolicyResponse].
   /// [expirationAction] The SAS Expiration Action defines the action to be performed when sasPolicy.sasExpirationPeriod is violated. The 'Log' action can be used for audit purposes and the 'Block' action can be used to block and deny the usage of SAS tokens that do not adhere to the sas policy expiration period.
   /// [sasExpirationPeriod] The SAS expiration period, DD.HH:MM:SS.
-  const SasPolicyResponse({
-    required this.expirationAction,
+  SasPolicyResponse({
+    pulumi.Input<String>? expirationAction,
     required this.sasExpirationPeriod,
-  });
+  }) : expirationAction = expirationAction ?? pulumi.Input.fromValue('Log');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

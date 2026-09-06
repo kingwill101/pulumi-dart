@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The artifact type.
-enum AzureArcKubernetesArtifactType {
+enum AzureArcKubernetesArtifactType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueHelmPackage("HelmPackage");
 
   const AzureArcKubernetesArtifactType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureArcKubernetesArtifactType fromValue(String value) {

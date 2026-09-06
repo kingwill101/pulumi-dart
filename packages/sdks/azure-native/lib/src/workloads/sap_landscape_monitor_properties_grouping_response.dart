@@ -6,9 +6,9 @@ import 'sap_landscape_monitor_sid_mapping_response.dart';
 /// Gets or sets the SID groupings by landscape and Environment.
 class SapLandscapeMonitorPropertiesGroupingResponse {
   /// Gets or sets the list of landscape to SID mappings.
-  final pulumi.Input<List<SapLandscapeMonitorSidMappingResponse>>? landscape;
+  final pulumi.Input<List<SapLandscapeMonitorSidMappingResponse>?>? landscape;
   /// Gets or sets the list of Sap Applications to SID mappings.
-  final pulumi.Input<List<SapLandscapeMonitorSidMappingResponse>>? sapApplication;
+  final pulumi.Input<List<SapLandscapeMonitorSidMappingResponse>?>? sapApplication;
 
   /// Creates a new [SapLandscapeMonitorPropertiesGroupingResponse].
   /// [landscape] Gets or sets the list of landscape to SID mappings.

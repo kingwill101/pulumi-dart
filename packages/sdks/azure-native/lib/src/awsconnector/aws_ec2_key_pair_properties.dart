@@ -6,19 +6,19 @@ import 'tag.dart';
 /// Definition of awsEc2KeyPair
 class AwsEc2KeyPairProperties {
   /// Property keyFingerprint
-  final pulumi.Input<String>? keyFingerprint;
+  final pulumi.Input<String?>? keyFingerprint;
   /// The format of the key pair. Default: ``pem``
-  final pulumi.Input<String>? keyFormat;
+  final pulumi.Input<dynamic>? keyFormat;
   /// A unique name for the key pair. Constraints: Up to 255 ASCII characters
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Property keyPairId
-  final pulumi.Input<String>? keyPairId;
+  final pulumi.Input<String?>? keyPairId;
   /// The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
-  final pulumi.Input<String>? keyType;
+  final pulumi.Input<dynamic>? keyType;
   /// The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
-  final pulumi.Input<String>? publicKeyMaterial;
+  final pulumi.Input<String?>? publicKeyMaterial;
   /// The tags to apply to the key pair.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
 
   /// Creates a new [AwsEc2KeyPairProperties].
   /// [keyFingerprint] Property keyFingerprint
@@ -28,15 +28,15 @@ class AwsEc2KeyPairProperties {
   /// [keyType] The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
   /// [publicKeyMaterial] The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
   /// [tags] The tags to apply to the key pair.
-  const AwsEc2KeyPairProperties({
+  AwsEc2KeyPairProperties({
     this.keyFingerprint,
-    this.keyFormat,
+    pulumi.Input<dynamic>? keyFormat,
     this.keyName,
     this.keyPairId,
-    this.keyType,
+    pulumi.Input<dynamic>? keyType,
     this.publicKeyMaterial,
     this.tags,
-  });
+  }) : keyFormat = keyFormat ?? pulumi.Input.fromValue('pem'), keyType = keyType ?? pulumi.Input.fromValue('rsa');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,10 +53,10 @@ class AwsEc2KeyPairProperties {
   factory AwsEc2KeyPairProperties.fromMap(Map<String, dynamic> map) {
     return AwsEc2KeyPairProperties(
       keyFingerprint: (() { final guardedValue = map['keyFingerprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keyFormat: (() { final guardedValue = map['keyFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyFormat: (() { final guardedValue = map['keyFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       keyPairId: (() { final guardedValue = map['keyPairId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      keyType: (() { final guardedValue = map['keyType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicKeyMaterial: (() { final guardedValue = map['publicKeyMaterial']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Tag>(guardedValue, (value) => Tag.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

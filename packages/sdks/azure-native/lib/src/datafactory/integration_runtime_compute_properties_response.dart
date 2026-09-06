@@ -9,21 +9,21 @@ import 'pipeline_external_compute_scale_properties_response.dart';
 /// The compute resource properties for managed integration runtime.
 class IntegrationRuntimeComputePropertiesResponse {
   /// CopyComputeScale properties for managed integration runtime.
-  final pulumi.Input<CopyComputeScalePropertiesResponse>? copyComputeScaleProperties;
+  final pulumi.Input<CopyComputeScalePropertiesResponse?>? copyComputeScaleProperties;
   /// Data flow properties for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeDataFlowPropertiesResponse>? dataFlowProperties;
+  final pulumi.Input<IntegrationRuntimeDataFlowPropertiesResponse?>? dataFlowProperties;
   /// The location for managed integration runtime. The supported regions could be found on https://docs.microsoft.com/en-us/azure/data-factory/data-factory-data-movement-activities
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maximum parallel executions count per node for managed integration runtime.
-  final pulumi.Input<int>? maxParallelExecutionsPerNode;
+  final pulumi.Input<int?>? maxParallelExecutionsPerNode;
   /// The node size requirement to managed integration runtime.
-  final pulumi.Input<String>? nodeSize;
+  final pulumi.Input<String?>? nodeSize;
   /// The required number of nodes for managed integration runtime.
-  final pulumi.Input<int>? numberOfNodes;
+  final pulumi.Input<int?>? numberOfNodes;
   /// PipelineExternalComputeScale properties for managed integration runtime.
-  final pulumi.Input<PipelineExternalComputeScalePropertiesResponse>? pipelineExternalComputeScaleProperties;
+  final pulumi.Input<PipelineExternalComputeScalePropertiesResponse?>? pipelineExternalComputeScaleProperties;
   /// VNet properties for managed integration runtime.
-  final pulumi.Input<IntegrationRuntimeVNetPropertiesResponse>? vNetProperties;
+  final pulumi.Input<IntegrationRuntimeVNetPropertiesResponse?>? vNetProperties;
 
   /// Creates a new [IntegrationRuntimeComputePropertiesResponse].
   /// [copyComputeScaleProperties] CopyComputeScale properties for managed integration runtime.
@@ -63,9 +63,9 @@ class IntegrationRuntimeComputePropertiesResponse {
       copyComputeScaleProperties: (() { final guardedValue = map['copyComputeScaleProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CopyComputeScalePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataFlowProperties: (() { final guardedValue = map['dataFlowProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeDataFlowPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxParallelExecutionsPerNode: (() { final guardedValue = map['maxParallelExecutionsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxParallelExecutionsPerNode: (() { final guardedValue = map['maxParallelExecutionsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeSize: (() { final guardedValue = map['nodeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfNodes: (() { final guardedValue = map['numberOfNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pipelineExternalComputeScaleProperties: (() { final guardedValue = map['pipelineExternalComputeScaleProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PipelineExternalComputeScalePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vNetProperties: (() { final guardedValue = map['vNetProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationRuntimeVNetPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

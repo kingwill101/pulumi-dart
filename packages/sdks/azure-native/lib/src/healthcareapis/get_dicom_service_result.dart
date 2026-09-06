@@ -14,7 +14,7 @@ class GetDicomServiceResult {
   /// Dicom Service authentication configuration.
   final DicomServiceAuthenticationConfigurationResponse? authenticationConfiguration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Dicom Service Cors configuration.
   final CorsConfigurationResponse? corsConfiguration;
   /// If data partitions is enabled or not.
@@ -24,31 +24,31 @@ class GetDicomServiceResult {
   /// An etag associated with the resource, used for optimistic concurrency when editing it.
   final String? etag;
   /// DICOM Service event support status.
-  final String eventState;
+  final String? eventState;
   /// The resource identifier.
-  final String id;
+  final String? id;
   /// Setting indicating whether the service has a managed identity associated with it.
   final ServiceManagedIdentityResponseIdentity? identity;
   /// The resource location.
   final String? location;
   /// The resource name.
-  final String name;
+  final String? name;
   /// The list of private endpoint connections that are set up for this resource.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// The provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  final String publicNetworkAccess;
+  final String? publicNetworkAccess;
   /// The url of the Dicom Services.
-  final String serviceUrl;
+  final String? serviceUrl;
   /// The configuration of external storage account
   final StorageConfigurationResponse? storageConfiguration;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDicomServiceResult].
   /// [authenticationConfiguration] Dicom Service authentication configuration.
@@ -72,71 +72,71 @@ class GetDicomServiceResult {
   /// [type] The resource type.
   const GetDicomServiceResult({
     this.authenticationConfiguration,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.corsConfiguration,
     this.enableDataPartitions,
     this.encryption,
     this.etag,
-    required this.eventState,
-    required this.id,
+    this.eventState,
+    this.id,
     this.identity,
     this.location,
-    required this.name,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
-    required this.publicNetworkAccess,
-    required this.serviceUrl,
+    this.name,
+    this.privateEndpointConnections,
+    this.provisioningState,
+    this.publicNetworkAccess,
+    this.serviceUrl,
     this.storageConfiguration,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationConfiguration': ?authenticationConfiguration?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'corsConfiguration': ?corsConfiguration?.toMap(),
       'enableDataPartitions': ?enableDataPartitions,
       'encryption': ?encryption?.toMap(),
       'etag': ?etag,
-      'eventState': eventState,
-      'id': id,
+      'eventState': ?eventState,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'publicNetworkAccess': publicNetworkAccess,
-      'serviceUrl': serviceUrl,
+      'name': ?name,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
+      'publicNetworkAccess': ?publicNetworkAccess,
+      'serviceUrl': ?serviceUrl,
       'storageConfiguration': ?storageConfiguration?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDicomServiceResult.fromMap(Map<String, dynamic> map) {
     return GetDicomServiceResult(
       authenticationConfiguration: (() { final guardedValue = map['authenticationConfiguration']; if (guardedValue == null) return null; return DicomServiceAuthenticationConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       corsConfiguration: (() { final guardedValue = map['corsConfiguration']; if (guardedValue == null) return null; return CorsConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       enableDataPartitions: (() { final guardedValue = map['enableDataPartitions']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      eventState: map['eventState'] as String,
-      id: map['id'] as String,
+      eventState: (() { final guardedValue = map['eventState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ServiceManagedIdentityResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      publicNetworkAccess: map['publicNetworkAccess'] as String,
-      serviceUrl: map['serviceUrl'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceUrl: (() { final guardedValue = map['serviceUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageConfiguration: (() { final guardedValue = map['storageConfiguration']; if (guardedValue == null) return null; return StorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

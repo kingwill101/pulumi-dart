@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identifies the service being brought into the virtual network.
 class EndpointServiceResponse {
   /// A unique identifier of the service being referenced by the interface endpoint.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [EndpointServiceResponse].
   /// [id] A unique identifier of the service being referenced by the interface endpoint.

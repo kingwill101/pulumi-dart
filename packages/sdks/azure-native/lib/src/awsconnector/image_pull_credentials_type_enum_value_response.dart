@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ImagePullCredentialsTypeEnumValue
 class ImagePullCredentialsTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ImagePullCredentialsTypeEnumValueResponse].
   /// [value] Property value

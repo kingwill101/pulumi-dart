@@ -9,31 +9,31 @@ import 'system_data_response.dart';
 /// Result data returned by getCloud.
 class GetCloudResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Capacity of the cloud.
-  final CloudCapacityResponse cloudCapacity;
+  final CloudCapacityResponse? cloudCapacity;
   /// Name of the cloud in VMMServer.
-  final String cloudName;
+  final String? cloudName;
   /// The extended location.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Resource Id
-  final String id;
+  final String? id;
   /// Gets or sets the inventory Item ID for the resource.
   final String? inventoryItemId;
   /// Gets or sets the location.
-  final String location;
+  final String? location;
   /// Resource Name
-  final String name;
+  final String? name;
   /// Gets or sets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// List of QoS policies available for the cloud.
-  final List<StorageQoSPolicyResponse> storageQoSPolicies;
+  final List<StorageQoSPolicyResponse>? storageQoSPolicies;
   /// The system data.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource Type
-  final String type;
+  final String? type;
   /// Unique ID of the cloud.
   final String? uuid;
   /// ARM Id of the vmmServer resource in which this resource resides.
@@ -56,38 +56,38 @@ class GetCloudResult {
   /// [uuid] Unique ID of the cloud.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
   const GetCloudResult({
-    required this.azureApiVersion,
-    required this.cloudCapacity,
-    required this.cloudName,
-    required this.extendedLocation,
-    required this.id,
+    this.azureApiVersion,
+    this.cloudCapacity,
+    this.cloudName,
+    this.extendedLocation,
+    this.id,
     this.inventoryItemId,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.storageQoSPolicies,
-    required this.systemData,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.storageQoSPolicies,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.uuid,
     this.vmmServerId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'cloudCapacity': cloudCapacity.toMap(),
-      'cloudName': cloudName,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'cloudCapacity': ?cloudCapacity?.toMap(),
+      'cloudName': ?cloudName,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
       'inventoryItemId': ?inventoryItemId,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'storageQoSPolicies': pulumi.Input.encodeList<StorageQoSPolicyResponse, Map<String, dynamic>>(storageQoSPolicies, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'storageQoSPolicies': ?(() { final guardedValue = storageQoSPolicies; if (guardedValue == null) return null; return pulumi.Input.encodeList<StorageQoSPolicyResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'uuid': ?uuid,
       'vmmServerId': ?vmmServerId,
     };
@@ -95,19 +95,19 @@ class GetCloudResult {
 
   factory GetCloudResult.fromMap(Map<String, dynamic> map) {
     return GetCloudResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      cloudCapacity: CloudCapacityResponse.fromMap((map['cloudCapacity']! as Map).cast<String, dynamic>()),
-      cloudName: map['cloudName'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cloudCapacity: (() { final guardedValue = map['cloudCapacity']; if (guardedValue == null) return null; return CloudCapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      cloudName: (() { final guardedValue = map['cloudName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       inventoryItemId: (() { final guardedValue = map['inventoryItemId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      storageQoSPolicies: pulumi.Input.decodeList<StorageQoSPolicyResponse>(map['storageQoSPolicies']!, (value) => StorageQoSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageQoSPolicies: (() { final guardedValue = map['storageQoSPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageQoSPolicyResponse>(guardedValue, (value) => StorageQoSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmmServerId: (() { final guardedValue = map['vmmServerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

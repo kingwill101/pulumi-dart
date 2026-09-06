@@ -30,6 +30,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:search:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the search service with the given name in the given resource group.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -48,6 +59,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:search:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Gets the details of the shared private link resource managed by the search service in the given resource group.
@@ -70,6 +92,17 @@ Future<GetSharedPrivateLinkResourceResult> getSharedPrivateLinkResource(
   return GetSharedPrivateLinkResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetSharedPrivateLinkResourceResult> getSharedPrivateLinkResourceOutput(
+  GetSharedPrivateLinkResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:search:getSharedPrivateLinkResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSharedPrivateLinkResourceResult.fromMap);
+}
+
 /// Gets the primary and secondary admin API keys for the specified Azure AI Search service.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -90,6 +123,17 @@ Future<ListAdminKeyResult> listAdminKey(
   return ListAdminKeyResult.fromMap(result);
 }
 
+pulumi.Output<ListAdminKeyResult> listAdminKeyOutput(
+  ListAdminKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:search:listAdminKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAdminKeyResult.fromMap);
+}
+
 /// Returns the list of query API keys for the given Azure AI Search service.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -108,4 +152,15 @@ Future<ListQueryKeyBySearchServiceResult> listQueryKeyBySearchService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListQueryKeyBySearchServiceResult.fromMap(result);
+}
+
+pulumi.Output<ListQueryKeyBySearchServiceResult> listQueryKeyBySearchServiceOutput(
+  ListQueryKeyBySearchServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:search:listQueryKeyBySearchService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListQueryKeyBySearchServiceResult.fromMap);
 }

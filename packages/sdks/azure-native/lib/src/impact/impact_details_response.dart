@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// details of of the impact for which insight has been generated.
 class ImpactDetailsResponse {
   /// Time at which impact was ended according to reported impact.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Azure Id of the impact.
   final pulumi.Input<String> impactId;
   /// List of impacted Azure resources.

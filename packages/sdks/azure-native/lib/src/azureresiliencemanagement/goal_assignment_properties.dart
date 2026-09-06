@@ -6,11 +6,11 @@ import 'service_level_resource.dart';
 /// Definition of goal assignment property.
 class GoalAssignmentProperties {
   /// The type of goal assignment.
-  final pulumi.Input<String> goalAssignmentType;
+  final pulumi.Input<dynamic> goalAssignmentType;
   /// Arm id of the goal template.
   final pulumi.Input<String> goalTemplateId;
   /// List of service level resources.
-  final pulumi.Input<List<ServiceLevelResource>>? serviceLevelResources;
+  final pulumi.Input<List<ServiceLevelResource>?>? serviceLevelResources;
 
   /// Creates a new [GoalAssignmentProperties].
   /// [goalAssignmentType] The type of goal assignment.
@@ -32,7 +32,7 @@ class GoalAssignmentProperties {
 
   factory GoalAssignmentProperties.fromMap(Map<String, dynamic> map) {
     return GoalAssignmentProperties(
-      goalAssignmentType: pulumi.Input.fromValue(map['goalAssignmentType'] as String),
+      goalAssignmentType: pulumi.Input.fromValue(map['goalAssignmentType']),
       goalTemplateId: pulumi.Input.fromValue(map['goalTemplateId'] as String),
       serviceLevelResources: (() { final guardedValue = map['serviceLevelResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceLevelResource>(guardedValue, (value) => ServiceLevelResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

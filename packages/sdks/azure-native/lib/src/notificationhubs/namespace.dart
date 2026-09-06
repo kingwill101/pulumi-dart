@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'namespace_args.dart';
 import 'network_acls_response.dart';
 import 'pns_credentials_response.dart';
+import 'private_endpoint_connection_resource_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -339,7 +340,7 @@ class Namespace extends pulumi.CustomResource {
   /// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
   late final pulumi.Output<PnsCredentialsResponse?> pnsCredentials;
   /// Private Endpoint Connections for namespace
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResourceResponse>> privateEndpointConnections;
   /// Defines values for OperationProvisioningState.
   late final pulumi.Output<String?> provisioningState;
   /// Type of public network access.
@@ -396,7 +397,7 @@ class Namespace extends pulumi.CustomResource {
     namespaceType = registerOutput<String?>('namespaceType');
     networkAcls = registerOutput<NetworkAclsResponse?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkAclsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     pnsCredentials = registerOutput<PnsCredentialsResponse?>('pnsCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PnsCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResourceResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResourceResponse>(guardedValue, (value) => PrivateEndpointConnectionResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     region = registerOutput<String>('region');
@@ -407,7 +408,44 @@ class Namespace extends pulumi.CustomResource {
     status = registerOutput<String?>('status');
     subscriptionId = registerOutput<String>('subscriptionId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updatedAt = registerOutput<String>('updatedAt');
+    zoneRedundancy = registerOutput<String?>('zoneRedundancy');
+  }
+
+  /// Creates a typed reference to an existing [Namespace] resource.
+  Namespace.reference(String urn)
+    : super(
+        'azure-native:notificationhubs:Namespace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdAt = registerOutput<String>('createdAt');
+    critical = registerOutput<bool>('critical');
+    dataCenter = registerOutput<String?>('dataCenter');
+    enabled = registerOutput<bool>('enabled');
+    location = registerOutput<String>('location');
+    metricId = registerOutput<String>('metricId');
+    this.name = registerOutput<String>('name');
+    namespaceType = registerOutput<String?>('namespaceType');
+    networkAcls = registerOutput<NetworkAclsResponse?>('networkAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkAclsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pnsCredentials = registerOutput<PnsCredentialsResponse?>('pnsCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PnsCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResourceResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResourceResponse>(guardedValue, (value) => PrivateEndpointConnectionResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String?>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    region = registerOutput<String>('region');
+    replicationRegion = registerOutput<String?>('replicationRegion');
+    scaleUnit = registerOutput<String?>('scaleUnit');
+    serviceBusEndpoint = registerOutput<String>('serviceBusEndpoint');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String?>('status');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updatedAt = registerOutput<String>('updatedAt');
     zoneRedundancy = registerOutput<String?>('zoneRedundancy');

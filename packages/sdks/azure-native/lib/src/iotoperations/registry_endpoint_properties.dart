@@ -1,17 +1,16 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'registry_endpoint_anonymous_authentication.dart';
 import 'registry_endpoint_trusted_settings.dart';
 
 /// RegistryEndpoint properties
 class RegistryEndpointProperties {
   /// The authentication settings for the Azure Container Registry.
-  final pulumi.Input<RegistryEndpointAnonymousAuthentication> authentication;
+  final pulumi.Input<dynamic> authentication;
   /// The Container Registry endpoint hostname.
   final pulumi.Input<String> host;
   /// Trust settings for the registry endpoint
-  final pulumi.Input<RegistryEndpointTrustedSettings>? trustSettings;
+  final pulumi.Input<RegistryEndpointTrustedSettings?>? trustSettings;
 
   /// Creates a new [RegistryEndpointProperties].
   /// [authentication] The authentication settings for the Azure Container Registry.
@@ -25,7 +24,7 @@ class RegistryEndpointProperties {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authentication': pulumi.Input.mapInputValue<RegistryEndpointAnonymousAuthentication, Map<String, dynamic>>(authentication, (value) => value.toMap()),
+      'authentication': authentication,
       'host': host,
       'trustSettings': ?pulumi.Input.mapOptionalInputValue<RegistryEndpointTrustedSettings, Map<String, dynamic>>(trustSettings, (value) => value.toMap()),
     };
@@ -33,7 +32,7 @@ class RegistryEndpointProperties {
 
   factory RegistryEndpointProperties.fromMap(Map<String, dynamic> map) {
     return RegistryEndpointProperties(
-      authentication: pulumi.Input.fromValue(RegistryEndpointAnonymousAuthentication.fromMap((map['authentication']! as Map).cast<String, dynamic>())),
+      authentication: pulumi.Input.fromValue(map['authentication']),
       host: pulumi.Input.fromValue(map['host'] as String),
       trustSettings: (() { final guardedValue = map['trustSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegistryEndpointTrustedSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

@@ -6,25 +6,25 @@ import 'json_array_mapper.dart';
 /// Receiver using UDP as transport protocol.
 class UdpReceiver {
   /// The encoding of the stream being received.
-  final pulumi.Input<String>? encoding;
+  final pulumi.Input<dynamic>? encoding;
   /// TCP endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   final pulumi.Input<String> endpoint;
   /// Json array mapper - allows this udp receiver to parse a value from a given source field as a json array, match a key to each parsed value and output the key-value map to a given output field.
-  final pulumi.Input<JsonArrayMapper>? jsonArrayMapper;
+  final pulumi.Input<JsonArrayMapper?>? jsonArrayMapper;
   /// Max read queue length.
-  final pulumi.Input<int>? readQueueLength;
+  final pulumi.Input<int?>? readQueueLength;
 
   /// Creates a new [UdpReceiver].
   /// [encoding] The encoding of the stream being received.
   /// [endpoint] TCP endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   /// [jsonArrayMapper] Json array mapper - allows this udp receiver to parse a value from a given source field as a json array, match a key to each parsed value and output the key-value map to a given output field.
   /// [readQueueLength] Max read queue length.
-  const UdpReceiver({
-    this.encoding,
+  UdpReceiver({
+    pulumi.Input<dynamic>? encoding,
     required this.endpoint,
     this.jsonArrayMapper,
-    this.readQueueLength,
-  });
+    pulumi.Input<int?>? readQueueLength,
+  }) : encoding = encoding ?? pulumi.Input.fromValue('nop'), readQueueLength = readQueueLength ?? pulumi.Input.fromValue(1000);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -37,10 +37,10 @@ class UdpReceiver {
 
   factory UdpReceiver.fromMap(Map<String, dynamic> map) {
     return UdpReceiver(
-      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       jsonArrayMapper: (() { final guardedValue = map['jsonArrayMapper']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonArrayMapper.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      readQueueLength: (() { final guardedValue = map['readQueueLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      readQueueLength: (() { final guardedValue = map['readQueueLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// LogType enum
-enum LogType {
+enum LogType implements pulumi.PulumiEnum<String> {
   api("api"),
   audit("audit"),
   authenticator("authenticator"),
@@ -7,6 +9,7 @@ enum LogType {
   scheduler("scheduler");
 
   const LogType(this.wireValue);
+  @override
   final String wireValue;
 
   static LogType fromValue(String value) {

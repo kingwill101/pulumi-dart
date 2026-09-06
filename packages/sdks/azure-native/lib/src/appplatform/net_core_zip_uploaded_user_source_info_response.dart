@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Uploaded Jar binary for a deployment
 class NetCoreZipUploadedUserSourceInfoResponse {
   /// The path to the .NET executable relative to zip root
-  final pulumi.Input<String>? netCoreMainEntryPath;
+  final pulumi.Input<String?>? netCoreMainEntryPath;
   /// Relative path of the storage which stores the source
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// Runtime version of the .Net file
-  final pulumi.Input<String>? runtimeVersion;
+  final pulumi.Input<String?>? runtimeVersion;
   /// Type of the source uploaded
   /// Expected value is 'NetCoreZip'.
   final pulumi.Input<String> type;
   /// Version of the source
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NetCoreZipUploadedUserSourceInfoResponse].
   /// [netCoreMainEntryPath] The path to the .NET executable relative to zip root

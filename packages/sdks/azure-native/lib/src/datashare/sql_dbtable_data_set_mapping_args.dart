@@ -12,7 +12,7 @@ class SqlDBTableDataSetMappingArgs {
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
   /// The name of the data set mapping to be created.
-  final pulumi.Input<String>? dataSetMappingName;
+  final pulumi.Input<String?>? dataSetMappingName;
   /// DatabaseName name of the sink data set
   final pulumi.Input<String> databaseName;
   /// Kind of data set mapping.

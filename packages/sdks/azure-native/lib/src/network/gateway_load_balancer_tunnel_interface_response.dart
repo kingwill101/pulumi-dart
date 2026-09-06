@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gateway load balancer tunnel interface of a load balancer backend address pool.
 class GatewayLoadBalancerTunnelInterfaceResponse {
   /// Identifier of gateway load balancer tunnel interface.
-  final pulumi.Input<int>? identifier;
+  final pulumi.Input<int?>? identifier;
   /// Port of gateway load balancer tunnel interface.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol of gateway load balancer tunnel interface.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Traffic type of gateway load balancer tunnel interface.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [GatewayLoadBalancerTunnelInterfaceResponse].
   /// [identifier] Identifier of gateway load balancer tunnel interface.
@@ -36,8 +36,8 @@ class GatewayLoadBalancerTunnelInterfaceResponse {
 
   factory GatewayLoadBalancerTunnelInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return GatewayLoadBalancerTunnelInterfaceResponse(
-      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      identifier: (() { final guardedValue = map['identifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

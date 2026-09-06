@@ -12,9 +12,9 @@ class ManagedIdentityResponse {
   /// Only be used in response
   final pulumi.Input<String> tenantId;
   /// Represents the identity type: systemAssigned, userAssigned, None
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Get or set the user assigned identities
-  final pulumi.Input<Map<String, UserAssignedIdentityPropertyResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityPropertyResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [principalId] Get the principal id for the system assigned identity.

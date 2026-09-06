@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the application-scoped volume kind.
-enum ApplicationScopedVolumeKind {
+enum ApplicationScopedVolumeKind implements pulumi.PulumiEnum<String> {
   valueServiceFabricVolumeDisk("ServiceFabricVolumeDisk");
 
   const ApplicationScopedVolumeKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationScopedVolumeKind fromValue(String value) {

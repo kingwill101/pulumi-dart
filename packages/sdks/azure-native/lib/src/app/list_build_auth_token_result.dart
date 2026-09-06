@@ -4,29 +4,29 @@
 /// Result data returned by listBuildAuthToken.
 class ListBuildAuthTokenResult {
   /// Token expiration date.
-  final String expires;
+  final String? expires;
   /// Authentication token.
-  final String token;
+  final String? token;
 
   /// Creates a new [ListBuildAuthTokenResult].
   /// [expires] Token expiration date.
   /// [token] Authentication token.
   const ListBuildAuthTokenResult({
-    required this.expires,
-    required this.token,
+    this.expires,
+    this.token,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'expires': expires,
-      'token': token,
+      'expires': ?expires,
+      'token': ?token,
     };
   }
 
   factory ListBuildAuthTokenResult.fromMap(Map<String, dynamic> map) {
     return ListBuildAuthTokenResult(
-      expires: map['expires'] as String,
-      token: map['token'] as String,
+      expires: (() { final guardedValue = map['expires']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      token: (() { final guardedValue = map['token']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

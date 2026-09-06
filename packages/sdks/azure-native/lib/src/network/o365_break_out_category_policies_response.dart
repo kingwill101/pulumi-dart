@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Office365 breakout categories.
 class O365BreakOutCategoryPoliciesResponse {
   /// Flag to control allow category.
-  final pulumi.Input<bool>? allow;
+  final pulumi.Input<bool?>? allow;
   /// Flag to control default category.
-  final pulumi.Input<bool>? default_;
+  final pulumi.Input<bool?>? default_;
   /// Flag to control optimize category.
-  final pulumi.Input<bool>? optimize;
+  final pulumi.Input<bool?>? optimize;
 
   /// Creates a new [O365BreakOutCategoryPoliciesResponse].
   /// [allow] Flag to control allow category.

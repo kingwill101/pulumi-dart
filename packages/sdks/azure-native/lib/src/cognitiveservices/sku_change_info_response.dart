@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sku change info of account.
 class SkuChangeInfoResponse {
   /// Gets the count of downgrades.
-  final pulumi.Input<double>? countOfDowngrades;
+  final pulumi.Input<double?>? countOfDowngrades;
   /// Gets the count of upgrades after downgrades.
-  final pulumi.Input<double>? countOfUpgradesAfterDowngrades;
+  final pulumi.Input<double?>? countOfUpgradesAfterDowngrades;
   /// Gets the last change date.
-  final pulumi.Input<String>? lastChangeDate;
+  final pulumi.Input<String?>? lastChangeDate;
 
   /// Creates a new [SkuChangeInfoResponse].
   /// [countOfDowngrades] Gets the count of downgrades.
@@ -31,8 +31,8 @@ class SkuChangeInfoResponse {
 
   factory SkuChangeInfoResponse.fromMap(Map<String, dynamic> map) {
     return SkuChangeInfoResponse(
-      countOfDowngrades: (() { final guardedValue = map['countOfDowngrades']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      countOfUpgradesAfterDowngrades: (() { final guardedValue = map['countOfUpgradesAfterDowngrades']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      countOfDowngrades: (() { final guardedValue = map['countOfDowngrades']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      countOfUpgradesAfterDowngrades: (() { final guardedValue = map['countOfUpgradesAfterDowngrades']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       lastChangeDate: (() { final guardedValue = map['lastChangeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

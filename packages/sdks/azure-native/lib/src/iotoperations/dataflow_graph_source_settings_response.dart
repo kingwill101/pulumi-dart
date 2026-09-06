@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DataflowGraph source node settings.
 class DataflowGraphSourceSettingsResponse {
   /// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
-  final pulumi.Input<String>? assetRef;
+  final pulumi.Input<String?>? assetRef;
   /// List of data sources.
   final pulumi.Input<List<String>> dataSources;
   /// The endpoint reference for the source.

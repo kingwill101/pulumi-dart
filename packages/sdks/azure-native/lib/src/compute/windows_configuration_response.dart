@@ -8,19 +8,19 @@ import 'win_rmconfiguration_response.dart';
 /// Specifies Windows operating system settings on the virtual machine.
 class WindowsConfigurationResponse {
   /// Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.
-  final pulumi.Input<List<AdditionalUnattendContentResponse>>? additionalUnattendContent;
+  final pulumi.Input<List<AdditionalUnattendContentResponse>?>? additionalUnattendContent;
   /// Indicates whether Automatic Updates is enabled for the Windows virtual machine. Default value is true. For virtual machine scale sets, this property can be updated and updates will take effect on OS reprovisioning.
-  final pulumi.Input<bool>? enableAutomaticUpdates;
+  final pulumi.Input<bool?>? enableAutomaticUpdates;
   /// Indicates whether VMAgent Platform Updates are enabled for the Windows Virtual Machine.
   final pulumi.Input<bool> enableVMAgentPlatformUpdates;
   /// [Preview Feature] Specifies settings related to VM Guest Patching on Windows.
-  final pulumi.Input<PatchSettingsResponse>? patchSettings;
+  final pulumi.Input<PatchSettingsResponse?>? patchSettings;
   /// Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified in the request body, it is set to true by default. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later.
-  final pulumi.Input<bool>? provisionVMAgent;
+  final pulumi.Input<bool?>? provisionVMAgent;
   /// Specifies the time zone of the virtual machine. e.g. "Pacific Standard Time". Possible values can be [TimeZoneInfo.Id](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.id?#System_TimeZoneInfo_Id) value from time zones returned by [TimeZoneInfo.GetSystemTimeZones](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.getsystemtimezones).
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
   /// Specifies the Windows Remote Management listeners. This enables remote Windows PowerShell.
-  final pulumi.Input<WinRMConfigurationResponse>? winRM;
+  final pulumi.Input<WinRMConfigurationResponse?>? winRM;
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [additionalUnattendContent] Specifies additional base-64 encoded XML formatted information that can be included in the Unattend.xml file, which is used by Windows Setup.

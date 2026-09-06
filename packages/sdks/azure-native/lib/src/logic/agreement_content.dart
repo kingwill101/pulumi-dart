@@ -8,11 +8,11 @@ import 'x12_agreement_content.dart';
 /// The integration account agreement content.
 class AgreementContent {
   /// The AS2 agreement content.
-  final pulumi.Input<AS2AgreementContent>? aS2;
+  final pulumi.Input<AS2AgreementContent?>? aS2;
   /// The EDIFACT agreement content.
-  final pulumi.Input<EdifactAgreementContent>? edifact;
+  final pulumi.Input<EdifactAgreementContent?>? edifact;
   /// The X12 agreement content.
-  final pulumi.Input<X12AgreementContent>? x12;
+  final pulumi.Input<X12AgreementContent?>? x12;
 
   /// Creates a new [AgreementContent].
   /// [aS2] The AS2 agreement content.

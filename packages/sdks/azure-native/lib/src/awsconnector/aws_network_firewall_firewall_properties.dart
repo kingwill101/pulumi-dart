@@ -7,29 +7,29 @@ import 'tag.dart';
 /// Definition of awsNetworkFirewallFirewall
 class AwsNetworkFirewallFirewallProperties {
   /// Property deleteProtection
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// Property description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property endpointIds
-  final pulumi.Input<List<String>>? endpointIds;
+  final pulumi.Input<List<String>?>? endpointIds;
   /// A resource ARN.
-  final pulumi.Input<String>? firewallArn;
+  final pulumi.Input<String?>? firewallArn;
   /// Property firewallId
-  final pulumi.Input<String>? firewallId;
+  final pulumi.Input<String?>? firewallId;
   /// Property firewallName
-  final pulumi.Input<String>? firewallName;
+  final pulumi.Input<String?>? firewallName;
   /// A resource ARN.
-  final pulumi.Input<String>? firewallPolicyArn;
+  final pulumi.Input<String?>? firewallPolicyArn;
   /// Property firewallPolicyChangeProtection
-  final pulumi.Input<bool>? firewallPolicyChangeProtection;
+  final pulumi.Input<bool?>? firewallPolicyChangeProtection;
   /// Property subnetChangeProtection
-  final pulumi.Input<bool>? subnetChangeProtection;
+  final pulumi.Input<bool?>? subnetChangeProtection;
   /// Property subnetMappings
-  final pulumi.Input<List<SubnetMapping>>? subnetMappings;
+  final pulumi.Input<List<SubnetMapping>?>? subnetMappings;
   /// Property tags
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// Property vpcId
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsNetworkFirewallFirewallProperties].
   /// [deleteProtection] Property deleteProtection

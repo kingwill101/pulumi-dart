@@ -7,15 +7,15 @@ class SyslogReceiverResponse {
   /// Syslog receiver endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   final pulumi.Input<String> endpoint;
   /// Protocol to parse syslog messages. Default rfc3164
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [SyslogReceiverResponse].
   /// [endpoint] Syslog receiver endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   /// [protocol] Protocol to parse syslog messages. Default rfc3164
-  const SyslogReceiverResponse({
+  SyslogReceiverResponse({
     required this.endpoint,
-    this.protocol,
-  });
+    pulumi.Input<String?>? protocol,
+  }) : protocol = protocol ?? pulumi.Input.fromValue('rfc3164');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

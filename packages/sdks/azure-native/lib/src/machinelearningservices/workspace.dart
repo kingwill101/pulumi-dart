@@ -4,8 +4,10 @@ import 'feature_store_settings_response.dart';
 import 'managed_network_settings_response.dart';
 import 'managed_service_identity_response.dart';
 import 'notebook_resource_info_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'serverless_compute_settings_response.dart';
 import 'service_managed_resources_settings_response.dart';
+import 'shared_private_link_resource_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 import 'workspace_args.dart';
@@ -66,7 +68,7 @@ class Workspace extends pulumi.CustomResource {
   /// The user assigned identity resource id that represents the workspace identity.
   late final pulumi.Output<String?> primaryUserAssignedIdentity;
   /// The list of private endpoint connections in the workspace.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Count of private connections in the workspace
   late final pulumi.Output<int> privateLinkCount;
   /// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
@@ -82,7 +84,7 @@ class Workspace extends pulumi.CustomResource {
   /// The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
   late final pulumi.Output<String> serviceProvisionedResourceGroup;
   /// The list of shared private link resources in this workspace.
-  late final pulumi.Output<List<Map<String, dynamic>>?> sharedPrivateLinkResources;
+  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>?> sharedPrivateLinkResources;
   /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
   late final pulumi.Output<SkuResponse?> sku;
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
@@ -121,7 +123,7 @@ class Workspace extends pulumi.CustomResource {
         ) {
     allowPublicAccessWhenBehindVnet = registerOutput<bool?>('allowPublicAccessWhenBehindVnet');
     applicationInsights = registerOutput<String?>('applicationInsights');
-    associatedWorkspaces = registerOutput<List<String>?>('associatedWorkspaces');
+    associatedWorkspaces = registerOutput<List<String>?>('associatedWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     containerRegistry = registerOutput<String?>('containerRegistry');
     description = registerOutput<String?>('description');
@@ -143,7 +145,7 @@ class Workspace extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notebookInfo = registerOutput<NotebookResourceInfoResponse>('notebookInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     privateLinkCount = registerOutput<int>('privateLinkCount');
     provisionNetworkNow = registerOutput<bool?>('provisionNetworkNow');
     provisioningState = registerOutput<String>('provisioningState');
@@ -151,13 +153,68 @@ class Workspace extends pulumi.CustomResource {
     serverlessComputeSettings = registerOutput<ServerlessComputeSettingsResponse?>('serverlessComputeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessComputeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceManagedResourcesSettings = registerOutput<ServiceManagedResourcesSettingsResponse?>('serviceManagedResourcesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceManagedResourcesSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceProvisionedResourceGroup = registerOutput<String>('serviceProvisionedResourceGroup');
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>?>('sharedPrivateLinkResources');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>?>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageAccount = registerOutput<String?>('storageAccount');
     storageHnsEnabled = registerOutput<bool>('storageHnsEnabled');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemDatastoresAuthMode = registerOutput<String?>('systemDatastoresAuthMode');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    v1LegacyMode = registerOutput<bool?>('v1LegacyMode');
+    workspaceHubConfig = registerOutput<WorkspaceHubConfigResponse?>('workspaceHubConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkspaceHubConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    workspaceId = registerOutput<String>('workspaceId');
+  }
+
+  /// Creates a typed reference to an existing [Workspace] resource.
+  Workspace.reference(String urn)
+    : super(
+        'azure-native:machinelearningservices:Workspace',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowPublicAccessWhenBehindVnet = registerOutput<bool?>('allowPublicAccessWhenBehindVnet');
+    applicationInsights = registerOutput<String?>('applicationInsights');
+    associatedWorkspaces = registerOutput<List<String>?>('associatedWorkspaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerRegistry = registerOutput<String?>('containerRegistry');
+    description = registerOutput<String?>('description');
+    discoveryUrl = registerOutput<String?>('discoveryUrl');
+    enableDataIsolation = registerOutput<bool?>('enableDataIsolation');
+    enableServiceSideCMKEncryption = registerOutput<bool?>('enableServiceSideCMKEncryption');
+    encryption = registerOutput<EncryptionPropertyResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    featureStoreSettings = registerOutput<FeatureStoreSettingsResponse?>('featureStoreSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FeatureStoreSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    friendlyName = registerOutput<String?>('friendlyName');
+    hbiWorkspace = registerOutput<bool?>('hbiWorkspace');
+    hubResourceId = registerOutput<String?>('hubResourceId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    imageBuildCompute = registerOutput<String?>('imageBuildCompute');
+    keyVault = registerOutput<String?>('keyVault');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    managedNetwork = registerOutput<ManagedNetworkSettingsResponse?>('managedNetwork', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    mlFlowTrackingUri = registerOutput<String>('mlFlowTrackingUri');
+    this.name = registerOutput<String>('name');
+    notebookInfo = registerOutput<NotebookResourceInfoResponse>('notebookInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryUserAssignedIdentity = registerOutput<String?>('primaryUserAssignedIdentity');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    privateLinkCount = registerOutput<int>('privateLinkCount');
+    provisionNetworkNow = registerOutput<bool?>('provisionNetworkNow');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    serverlessComputeSettings = registerOutput<ServerlessComputeSettingsResponse?>('serverlessComputeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessComputeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceManagedResourcesSettings = registerOutput<ServiceManagedResourcesSettingsResponse?>('serviceManagedResourcesSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceManagedResourcesSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceProvisionedResourceGroup = registerOutput<String>('serviceProvisionedResourceGroup');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>?>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageAccount = registerOutput<String?>('storageAccount');
+    storageHnsEnabled = registerOutput<bool>('storageHnsEnabled');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemDatastoresAuthMode = registerOutput<String?>('systemDatastoresAuthMode');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     v1LegacyMode = registerOutput<bool?>('v1LegacyMode');

@@ -1059,4 +1059,25 @@ class SqlDBTableDataSet extends pulumi.CustomResource {
     tableName = registerOutput<String>('tableName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SqlDBTableDataSet] resource.
+  SqlDBTableDataSet.reference(String urn)
+    : super(
+        'azure-native:datashare:SqlDBTableDataSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    databaseName = registerOutput<String>('databaseName');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    schemaName = registerOutput<String>('schemaName');
+    sqlServerResourceId = registerOutput<String>('sqlServerResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String>('tableName');
+    type = registerOutput<String>('type');
+  }
 }

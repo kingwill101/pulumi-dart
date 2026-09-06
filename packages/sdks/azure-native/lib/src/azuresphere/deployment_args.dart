@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'image_azuresphere.dart';
+import 'image.dart';
 
 /// {@template pulumi_azuresphere_deployment_args_doc}
 /// The set of arguments for Deployment.
@@ -11,11 +11,11 @@ class DeploymentArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
   /// Images deployed
-  final pulumi.Input<List<ImageAzuresphere>>? deployedImages;
+  final pulumi.Input<List<Image>?>? deployedImages;
   /// Deployment ID
-  final pulumi.Input<String>? deploymentId;
+  final pulumi.Input<String?>? deploymentId;
   /// Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group.
-  final pulumi.Input<String>? deploymentName;
+  final pulumi.Input<String?>? deploymentName;
   /// Name of device group.
   final pulumi.Input<String> deviceGroupName;
   /// Name of product.
@@ -44,7 +44,7 @@ class DeploymentArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'catalogName': catalogName,
-      'deployedImages': ?deployedImages,
+      'deployedImages': ?pulumi.Input.mapOptionalInputValue<List<Image>, List<Map<String, dynamic>>>(deployedImages, (value) => pulumi.Input.encodeList<Image, Map<String, dynamic>>(value, (value) => value.toMap())),
       'deploymentId': ?deploymentId,
       'deploymentName': ?deploymentName,
       'deviceGroupName': deviceGroupName,
@@ -56,7 +56,7 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
-      deployedImages: (() { final guardedValue = map['deployedImages']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ImageAzuresphere>()); })(),
+      deployedImages: (() { final guardedValue = map['deployedImages']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Image>(guardedValue, (value) => Image.fromMap((value as Map).cast<String, dynamic>()))); })(),
       deploymentId: (() { final guardedValue = map['deploymentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deploymentName: (() { final guardedValue = map['deploymentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceGroupName: pulumi.Input.fromValue(map['deviceGroupName'] as String),

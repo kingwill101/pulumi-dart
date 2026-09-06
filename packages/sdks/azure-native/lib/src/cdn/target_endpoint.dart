@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// TargetEndpoint object that forms a traffic endpoint.
 class TargetEndpoint {
   /// The Ports to be allowed for the FQDN.
-  final pulumi.Input<List<int>>? ports;
+  final pulumi.Input<List<int>?>? ports;
   /// The FQDN for traffic endpoint.
-  final pulumi.Input<String>? targetFqdn;
+  final pulumi.Input<String?>? targetFqdn;
 
   /// Creates a new [TargetEndpoint].
   /// [ports] The Ports to be allowed for the FQDN.

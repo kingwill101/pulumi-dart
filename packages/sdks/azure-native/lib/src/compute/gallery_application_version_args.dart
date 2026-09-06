@@ -12,19 +12,19 @@ class GalleryApplicationVersionArgs {
   /// The name of the gallery Application Definition to be retrieved.
   final pulumi.Input<String> galleryApplicationName;
   /// The name of the gallery Application Version to be retrieved.
-  final pulumi.Input<String>? galleryApplicationVersionName;
+  final pulumi.Input<String?>? galleryApplicationVersionName;
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The publishing profile of a gallery image version.
   final pulumi.Input<GalleryApplicationVersionPublishingProfile> publishingProfile;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The safety profile of the Gallery Application Version.
-  final pulumi.Input<GalleryApplicationVersionSafetyProfile>? safetyProfile;
+  final pulumi.Input<GalleryApplicationVersionSafetyProfile?>? safetyProfile;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryApplicationVersionArgs].
   /// [galleryApplicationName] The name of the gallery Application Definition to be retrieved.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status information about a virtual machine.
 class ComputeVmInstanceViewStatusResponse {
   /// Gets the status Code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Gets the short localizable label for the status.
-  final pulumi.Input<String>? displayStatus;
+  final pulumi.Input<String?>? displayStatus;
   /// Gets the message associated with the status.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ComputeVmInstanceViewStatusResponse].
   /// [code] Gets the status Code.

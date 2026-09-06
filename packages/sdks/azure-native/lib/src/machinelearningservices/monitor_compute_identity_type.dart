@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] Specifies the type of identity to use within the monitoring jobs.
-enum MonitorComputeIdentityType {
+enum MonitorComputeIdentityType implements pulumi.PulumiEnum<String> {
   amlToken("AmlToken"),
   managedIdentity("ManagedIdentity");
 
   const MonitorComputeIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitorComputeIdentityType fromValue(String value) {

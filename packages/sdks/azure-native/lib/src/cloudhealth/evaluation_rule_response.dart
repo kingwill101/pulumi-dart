@@ -7,11 +7,11 @@ import 'threshold_rule_response.dart';
 /// Evaluation rule for a signal definition
 class EvaluationRuleResponse {
   /// Degraded rule with static threshold.
-  final pulumi.Input<ThresholdRuleResponse>? degradedRule;
+  final pulumi.Input<ThresholdRuleResponse?>? degradedRule;
   /// Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
-  final pulumi.Input<DynamicDetectionRuleResponse>? dynamicDetectionRule;
+  final pulumi.Input<DynamicDetectionRuleResponse?>? dynamicDetectionRule;
   /// Unhealthy rule with static threshold.
-  final pulumi.Input<ThresholdRuleResponse>? unhealthyRule;
+  final pulumi.Input<ThresholdRuleResponse?>? unhealthyRule;
 
   /// Creates a new [EvaluationRuleResponse].
   /// [degradedRule] Degraded rule with static threshold.

@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azurestackhci_hybrid_identity_metadatum_args_doc}
 class HybridIdentityMetadatumArgs {
   /// Name of the hybridIdentityMetadata.
-  final pulumi.Input<String>? metadataName;
+  final pulumi.Input<String?>? metadataName;
   /// The Public Key.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The unique identifier for the resource.
-  final pulumi.Input<String>? resourceUid;
+  final pulumi.Input<String?>? resourceUid;
   /// Name of the vm.
   final pulumi.Input<String> virtualMachineName;
 

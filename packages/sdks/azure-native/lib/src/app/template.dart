@@ -12,19 +12,19 @@ import 'volume.dart';
 /// Any changes to this section Will result in a new revision being created
 class Template {
   /// List of container definitions for the Container App.
-  final pulumi.Input<List<Container>>? containers;
+  final pulumi.Input<List<Container>?>? containers;
   /// List of specialized containers that run before app containers.
-  final pulumi.Input<List<InitContainer>>? initContainers;
+  final pulumi.Input<List<InitContainer>?>? initContainers;
   /// User friendly suffix that is appended to the revision name
-  final pulumi.Input<String>? revisionSuffix;
+  final pulumi.Input<String?>? revisionSuffix;
   /// Scaling properties for the Container App.
-  final pulumi.Input<Scale>? scale;
+  final pulumi.Input<Scale?>? scale;
   /// List of container app services bound to the app
-  final pulumi.Input<List<ServiceBind>>? serviceBinds;
+  final pulumi.Input<List<ServiceBind>?>? serviceBinds;
   /// Optional duration in seconds the Container App Instance needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). If this value is nil, the default grace period will be used instead. Set this value longer than the expected cleanup time for your process. Defaults to 30 seconds.
-  final pulumi.Input<double>? terminationGracePeriodSeconds;
+  final pulumi.Input<double?>? terminationGracePeriodSeconds;
   /// List of volume definitions for the Container App.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
 
   /// Creates a new [Template].
   /// [containers] List of container definitions for the Container App.
@@ -63,7 +63,7 @@ class Template {
       revisionSuffix: (() { final guardedValue = map['revisionSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scale: (() { final guardedValue = map['scale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Scale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serviceBinds: (() { final guardedValue = map['serviceBinds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceBind>(guardedValue, (value) => ServiceBind.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      terminationGracePeriodSeconds: (() { final guardedValue = map['terminationGracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Volume>(guardedValue, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

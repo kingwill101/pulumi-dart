@@ -10,31 +10,31 @@ import 'identity_info.dart';
 /// {@macro pulumi_eventgrid_partner_topic_args_doc}
 class PartnerTopicArgs {
   /// Activation state of the partner topic.
-  final pulumi.Input<String>? activationState;
+  final pulumi.Input<dynamic>? activationState;
   /// Event Type information from the corresponding event channel.
-  final pulumi.Input<EventTypeInfo>? eventTypeInfo;
+  final pulumi.Input<EventTypeInfo?>? eventTypeInfo;
   /// Expiration time of the partner topic. If this timer expires while the partner topic is still never activated,
   /// the partner topic and corresponding event channel are deleted.
-  final pulumi.Input<String>? expirationTimeIfNotActivatedUtc;
+  final pulumi.Input<String?>? expirationTimeIfNotActivatedUtc;
   /// Identity information for the Partner Topic resource.
-  final pulumi.Input<IdentityInfo>? identity;
+  final pulumi.Input<IdentityInfo?>? identity;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Context or helpful message that can be used during the approval process by the subscriber.
-  final pulumi.Input<String>? messageForActivation;
+  final pulumi.Input<String?>? messageForActivation;
   /// The immutableId of the corresponding partner registration.
-  final pulumi.Input<String>? partnerRegistrationImmutableId;
+  final pulumi.Input<String?>? partnerRegistrationImmutableId;
   /// Friendly description about the topic. This can be set by the publisher/partner to show custom description for the customer partner topic.
   /// This will be helpful to remove any ambiguity of the origin of creation of the partner topic for the customer.
-  final pulumi.Input<String>? partnerTopicFriendlyDescription;
+  final pulumi.Input<String?>? partnerTopicFriendlyDescription;
   /// Name of the partner topic.
-  final pulumi.Input<String>? partnerTopicName;
+  final pulumi.Input<String?>? partnerTopicName;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Source associated with this partner topic. This represents a unique partner resource.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PartnerTopicArgs].
   /// [activationState] Activation state of the partner topic.
@@ -83,7 +83,7 @@ class PartnerTopicArgs {
 
   factory PartnerTopicArgs.fromMap(Map<String, dynamic> map) {
     return PartnerTopicArgs(
-      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      activationState: (() { final guardedValue = map['activationState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       eventTypeInfo: (() { final guardedValue = map['eventTypeInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventTypeInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       expirationTimeIfNotActivatedUtc: (() { final guardedValue = map['expirationTimeIfNotActivatedUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

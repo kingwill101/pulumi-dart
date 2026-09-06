@@ -24,6 +24,17 @@ Future<GetPoolResult> getPool(
   return GetPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetPoolResult> getPoolOutput(
+  GetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerstorage:getPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPoolResult.fromMap);
+}
+
 /// Get a Snapshot
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
@@ -42,6 +53,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerstorage:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Get a Volume
 ///
 /// Uses Azure REST API version 2023-07-01-preview.
@@ -58,4 +80,15 @@ Future<GetVolumeResult> getVolume(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumeResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:containerstorage:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
 }

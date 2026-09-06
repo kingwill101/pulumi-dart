@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The detail level.
-enum LoggingDetails {
+enum LoggingDetails implements pulumi.PulumiEnum<String> {
   none("None"),
   body("Body");
 
   const LoggingDetails(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingDetails fromValue(String value) {

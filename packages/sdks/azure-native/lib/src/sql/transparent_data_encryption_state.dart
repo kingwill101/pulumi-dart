@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the state of the transparent data encryption.
-enum TransparentDataEncryptionState {
+enum TransparentDataEncryptionState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const TransparentDataEncryptionState(this.wireValue);
+  @override
   final String wireValue;
 
   static TransparentDataEncryptionState fromValue(String value) {

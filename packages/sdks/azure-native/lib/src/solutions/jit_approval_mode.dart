@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// JIT approval mode.
-enum JitApprovalMode {
+enum JitApprovalMode implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueAutoApprove("AutoApprove"),
   valueManualApprove("ManualApprove");
 
   const JitApprovalMode(this.wireValue);
+  @override
   final String wireValue;
 
   static JitApprovalMode fromValue(String value) {

@@ -8,17 +8,17 @@ import 'mongo_db_throttling_settings.dart';
 /// Describes how a MongoDB data migration should be performed
 class MongoDbMigrationSettings {
   /// The RU limit on a CosmosDB target that collections will be temporarily increased to (if lower) during the initial copy of a migration, from 10,000 to 1,000,000, or 0 to use the default boost (which is generally the maximum), or null to not boost the RUs. This setting has no effect on non-CosmosDB targets.
-  final pulumi.Input<int>? boostRUs;
+  final pulumi.Input<int?>? boostRUs;
   /// The databases on the source cluster to migrate to the target. The keys are the names of the databases.
   final pulumi.Input<Map<String, MongoDbDatabaseSettings>> databases;
   /// Describes how changes will be replicated from the source to the target. The default is OneTime.
-  final pulumi.Input<String>? replication;
+  final pulumi.Input<dynamic>? replication;
   /// Settings used to connect to the source cluster
   final pulumi.Input<MongoDbConnectionInfo> source;
   /// Settings used to connect to the target cluster
   final pulumi.Input<MongoDbConnectionInfo> target;
   /// Settings used to limit the resource usage of the migration
-  final pulumi.Input<MongoDbThrottlingSettings>? throttling;
+  final pulumi.Input<MongoDbThrottlingSettings?>? throttling;
 
   /// Creates a new [MongoDbMigrationSettings].
   /// [boostRUs] The RU limit on a CosmosDB target that collections will be temporarily increased to (if lower) during the initial copy of a migration, from 10,000 to 1,000,000, or 0 to use the default boost (which is generally the maximum), or null to not boost the RUs. This setting has no effect on non-CosmosDB targets.
@@ -49,9 +49,9 @@ class MongoDbMigrationSettings {
 
   factory MongoDbMigrationSettings.fromMap(Map<String, dynamic> map) {
     return MongoDbMigrationSettings(
-      boostRUs: (() { final guardedValue = map['boostRUs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      boostRUs: (() { final guardedValue = map['boostRUs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       databases: pulumi.Input.fromValue(pulumi.Input.decodeMapValues<MongoDbDatabaseSettings>(map['databases']!, (value) => MongoDbDatabaseSettings.fromMap((value as Map).cast<String, dynamic>()))),
-      replication: (() { final guardedValue = map['replication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      replication: (() { final guardedValue = map['replication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       source: pulumi.Input.fromValue(MongoDbConnectionInfo.fromMap((map['source']! as Map).cast<String, dynamic>())),
       target: pulumi.Input.fromValue(MongoDbConnectionInfo.fromMap((map['target']! as Map).cast<String, dynamic>())),
       throttling: (() { final guardedValue = map['throttling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoDbThrottlingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

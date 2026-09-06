@@ -7,11 +7,11 @@ import 'http_settings_routes.dart';
 /// The configuration settings of the HTTP requests for authentication and authorization requests made against ContainerApp Service Authentication/Authorization.
 class HttpSettings {
   /// The configuration settings of a forward proxy used to make the requests.
-  final pulumi.Input<ForwardProxy>? forwardProxy;
+  final pulumi.Input<ForwardProxy?>? forwardProxy;
   /// &lt;code&gt;false&lt;/code&gt; if the authentication/authorization responses not having the HTTPS scheme are permissible; otherwise, &lt;code&gt;true&lt;/code&gt;.
-  final pulumi.Input<bool>? requireHttps;
+  final pulumi.Input<bool?>? requireHttps;
   /// The configuration settings of the paths HTTP requests.
-  final pulumi.Input<HttpSettingsRoutes>? routes;
+  final pulumi.Input<HttpSettingsRoutes?>? routes;
 
   /// Creates a new [HttpSettings].
   /// [forwardProxy] The configuration settings of a forward proxy used to make the requests.

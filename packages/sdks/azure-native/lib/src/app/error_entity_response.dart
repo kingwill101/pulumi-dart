@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Body of the error response returned from the API.
 class ErrorEntityResponse {
   /// Basic error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// Error Details.
-  final pulumi.Input<List<ErrorEntityResponse>>? details;
+  final pulumi.Input<List<ErrorEntityResponse>?>? details;
   /// Type of error.
-  final pulumi.Input<String>? extendedCode;
+  final pulumi.Input<String?>? extendedCode;
   /// Inner errors.
-  final pulumi.Input<List<ErrorEntityResponse>>? innerErrors;
+  final pulumi.Input<List<ErrorEntityResponse>?>? innerErrors;
   /// Any details of the error.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Message template.
-  final pulumi.Input<String>? messageTemplate;
+  final pulumi.Input<String?>? messageTemplate;
   /// Parameters for the template.
-  final pulumi.Input<List<String>>? parameters;
+  final pulumi.Input<List<String>?>? parameters;
   /// The error target.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
 
   /// Creates a new [ErrorEntityResponse].
   /// [code] Basic error code.

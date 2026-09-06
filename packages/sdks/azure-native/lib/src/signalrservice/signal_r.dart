@@ -1,12 +1,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'live_trace_configuration_response.dart';
 import 'managed_identity_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'resource_log_configuration_response.dart';
 import 'resource_sku_response.dart';
 import 'serverless_settings_response.dart';
 import 'serverless_upstream_settings_response.dart';
+import 'shared_private_link_resource_response.dart';
 import 'signal_rargs.dart';
 import 'signal_rcors_settings_response.dart';
+import 'signal_rfeature_response.dart';
 import 'signal_rnetwork_acls_response.dart';
 import 'signal_rtls_settings_response.dart';
 import 'system_data_response.dart';
@@ -767,7 +770,7 @@ class SignalR extends pulumi.CustomResource {
   /// And the response will only include featureFlags that are explicitly set.
   /// When a featureFlag is not explicitly set, its globally default value will be used
   /// But keep in mind, the default value doesn't mean "false". It varies in terms of different FeatureFlags.
-  late final pulumi.Output<List<Map<String, dynamic>>?> features;
+  late final pulumi.Output<List<SignalRFeatureResponse>?> features;
   /// FQDN of the service instance.
   late final pulumi.Output<String> hostName;
   /// Deprecated.
@@ -785,7 +788,7 @@ class SignalR extends pulumi.CustomResource {
   /// Network ACLs for the resource
   late final pulumi.Output<SignalRNetworkACLsResponse?> networkACLs;
   /// Private endpoint connections to the resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Enable or disable public network access. Default to "Enabled".
@@ -809,7 +812,7 @@ class SignalR extends pulumi.CustomResource {
   /// Serverless settings.
   late final pulumi.Output<ServerlessSettingsResponse?> serverless;
   /// The list of shared private link resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> sharedPrivateLinkResources;
+  late final pulumi.Output<List<SharedPrivateLinkResourceResponse>> sharedPrivateLinkResources;
   /// The billing information of the resource.
   late final pulumi.Output<ResourceSkuResponse?> sku;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -844,7 +847,7 @@ class SignalR extends pulumi.CustomResource {
     disableAadAuth = registerOutput<bool?>('disableAadAuth');
     disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
     externalIP = registerOutput<String>('externalIP');
-    features = registerOutput<List<Map<String, dynamic>>?>('features');
+    features = registerOutput<List<SignalRFeatureResponse>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SignalRFeatureResponse>(guardedValue, (value) => SignalRFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
     hostName = registerOutput<String>('hostName');
     hostNamePrefix = registerOutput<String>('hostNamePrefix');
     identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -853,7 +856,7 @@ class SignalR extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     publicPort = registerOutput<int>('publicPort');
@@ -862,10 +865,52 @@ class SignalR extends pulumi.CustomResource {
     resourceStopped = registerOutput<String?>('resourceStopped');
     serverPort = registerOutput<int>('serverPort');
     serverless = registerOutput<ServerlessSettingsResponse?>('serverless', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sharedPrivateLinkResources = registerOutput<List<Map<String, dynamic>>>('sharedPrivateLinkResources');
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<ResourceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tls = registerOutput<SignalRTlsSettingsResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessUpstreamSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [SignalR] resource.
+  SignalR.reference(String urn)
+    : super(
+        'azure-native:signalrservice:SignalR',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cors = registerOutput<SignalRCorsSettingsResponse?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRCorsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableAadAuth = registerOutput<bool?>('disableAadAuth');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    externalIP = registerOutput<String>('externalIP');
+    features = registerOutput<List<SignalRFeatureResponse>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SignalRFeatureResponse>(guardedValue, (value) => SignalRFeatureResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    hostName = registerOutput<String>('hostName');
+    hostNamePrefix = registerOutput<String>('hostNamePrefix');
+    identity = registerOutput<ManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    liveTraceConfiguration = registerOutput<LiveTraceConfigurationResponse?>('liveTraceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LiveTraceConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkACLs = registerOutput<SignalRNetworkACLsResponse?>('networkACLs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    publicPort = registerOutput<int>('publicPort');
+    regionEndpointEnabled = registerOutput<String?>('regionEndpointEnabled');
+    resourceLogConfiguration = registerOutput<ResourceLogConfigurationResponse?>('resourceLogConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceLogConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourceStopped = registerOutput<String?>('resourceStopped');
+    serverPort = registerOutput<int>('serverPort');
+    serverless = registerOutput<ServerlessSettingsResponse?>('serverless', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sharedPrivateLinkResources = registerOutput<List<SharedPrivateLinkResourceResponse>>('sharedPrivateLinkResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<ResourceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tls = registerOutput<SignalRTlsSettingsResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SignalRTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     upstream = registerOutput<ServerlessUpstreamSettingsResponse?>('upstream', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerlessUpstreamSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

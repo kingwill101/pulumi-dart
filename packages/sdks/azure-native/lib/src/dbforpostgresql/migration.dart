@@ -1829,9 +1829,9 @@ class Migration extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     cancel = registerOutput<String?>('cancel');
     currentStatus = registerOutput<MigrationStatusResponse>('currentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    dbsToCancelMigrationOn = registerOutput<List<String>?>('dbsToCancelMigrationOn');
-    dbsToMigrate = registerOutput<List<String>?>('dbsToMigrate');
-    dbsToTriggerCutoverOn = registerOutput<List<String>?>('dbsToTriggerCutoverOn');
+    dbsToCancelMigrationOn = registerOutput<List<String>?>('dbsToCancelMigrationOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dbsToMigrate = registerOutput<List<String>?>('dbsToMigrate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dbsToTriggerCutoverOn = registerOutput<List<String>?>('dbsToTriggerCutoverOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     migrateRoles = registerOutput<String?>('migrateRoles');
     migrationId = registerOutput<String>('migrationId');
@@ -1850,7 +1850,48 @@ class Migration extends pulumi.CustomResource {
     sslMode = registerOutput<String?>('sslMode');
     startDataMigration = registerOutput<String?>('startDataMigration');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetDbServerFullyQualifiedDomainName = registerOutput<String?>('targetDbServerFullyQualifiedDomainName');
+    targetDbServerMetadata = registerOutput<DbServerMetadataResponse>('targetDbServerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbServerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetDbServerResourceId = registerOutput<String>('targetDbServerResourceId');
+    triggerCutover = registerOutput<String?>('triggerCutover');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Migration] resource.
+  Migration.reference(String urn)
+    : super(
+        'azure-native:dbforpostgresql:Migration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    cancel = registerOutput<String?>('cancel');
+    currentStatus = registerOutput<MigrationStatusResponse>('currentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MigrationStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dbsToCancelMigrationOn = registerOutput<List<String>?>('dbsToCancelMigrationOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dbsToMigrate = registerOutput<List<String>?>('dbsToMigrate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dbsToTriggerCutoverOn = registerOutput<List<String>?>('dbsToTriggerCutoverOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    migrateRoles = registerOutput<String?>('migrateRoles');
+    migrationId = registerOutput<String>('migrationId');
+    migrationInstanceResourceId = registerOutput<String?>('migrationInstanceResourceId');
+    migrationMode = registerOutput<String?>('migrationMode');
+    migrationOption = registerOutput<String?>('migrationOption');
+    migrationWindowEndTimeInUtc = registerOutput<String?>('migrationWindowEndTimeInUtc');
+    migrationWindowStartTimeInUtc = registerOutput<String?>('migrationWindowStartTimeInUtc');
+    this.name = registerOutput<String>('name');
+    overwriteDbsInTarget = registerOutput<String?>('overwriteDbsInTarget');
+    setupLogicalReplicationOnSourceDbIfNeeded = registerOutput<String?>('setupLogicalReplicationOnSourceDbIfNeeded');
+    sourceDbServerFullyQualifiedDomainName = registerOutput<String?>('sourceDbServerFullyQualifiedDomainName');
+    sourceDbServerMetadata = registerOutput<DbServerMetadataResponse>('sourceDbServerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbServerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceDbServerResourceId = registerOutput<String?>('sourceDbServerResourceId');
+    sourceType = registerOutput<String?>('sourceType');
+    sslMode = registerOutput<String?>('sslMode');
+    startDataMigration = registerOutput<String?>('startDataMigration');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     targetDbServerFullyQualifiedDomainName = registerOutput<String?>('targetDbServerFullyQualifiedDomainName');
     targetDbServerMetadata = registerOutput<DbServerMetadataResponse>('targetDbServerMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DbServerMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetDbServerResourceId = registerOutput<String>('targetDbServerResourceId');

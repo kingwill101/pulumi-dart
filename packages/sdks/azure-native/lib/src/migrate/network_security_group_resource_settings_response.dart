@@ -9,13 +9,13 @@ class NetworkSecurityGroupResourceSettingsResponse {
   /// Expected value is 'Microsoft.Network/networkSecurityGroups'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets Security rules of network security group.
-  final pulumi.Input<List<NsgSecurityRuleResponse>>? securityRules;
+  final pulumi.Input<List<NsgSecurityRuleResponse>?>? securityRules;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
 
   /// Creates a new [NetworkSecurityGroupResourceSettingsResponse].
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.

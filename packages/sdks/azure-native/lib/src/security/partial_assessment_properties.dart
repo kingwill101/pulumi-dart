@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes properties of an assessment as related to the standard
 class PartialAssessmentProperties {
   /// The assessment key
-  final pulumi.Input<String>? assessmentKey;
+  final pulumi.Input<String?>? assessmentKey;
 
   /// Creates a new [PartialAssessmentProperties].
   /// [assessmentKey] The assessment key

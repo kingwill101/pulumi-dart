@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DataflowGraph connection node output schema settings.
 class DataflowGraphConnectionSchemaSettingsResponse {
   /// Reference to the schema that describes the output of the transformation.
-  final pulumi.Input<String>? schemaRef;
+  final pulumi.Input<String?>? schemaRef;
   /// Output serialization format.
-  final pulumi.Input<String>? serializationFormat;
+  final pulumi.Input<String?>? serializationFormat;
 
   /// Creates a new [DataflowGraphConnectionSchemaSettingsResponse].
   /// [schemaRef] Reference to the schema that describes the output of the transformation.

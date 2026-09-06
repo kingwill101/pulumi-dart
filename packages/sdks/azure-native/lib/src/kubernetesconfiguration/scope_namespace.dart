@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies that the scope of the extension is Namespace
 class ScopeNamespace {
   /// Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created
-  final pulumi.Input<String>? targetNamespace;
+  final pulumi.Input<String?>? targetNamespace;
 
   /// Creates a new [ScopeNamespace].
   /// [targetNamespace] Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created

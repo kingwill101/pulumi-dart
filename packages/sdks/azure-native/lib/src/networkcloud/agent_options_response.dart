@@ -6,15 +6,15 @@ class AgentOptionsResponse {
   /// The number of hugepages to allocate.
   final pulumi.Input<double> hugepagesCount;
   /// The size of the hugepages to allocate.
-  final pulumi.Input<String>? hugepagesSize;
+  final pulumi.Input<String?>? hugepagesSize;
 
   /// Creates a new [AgentOptionsResponse].
   /// [hugepagesCount] The number of hugepages to allocate.
   /// [hugepagesSize] The size of the hugepages to allocate.
-  const AgentOptionsResponse({
+  AgentOptionsResponse({
     required this.hugepagesCount,
-    this.hugepagesSize,
-  });
+    pulumi.Input<String?>? hugepagesSize,
+  }) : hugepagesSize = hugepagesSize ?? pulumi.Input.fromValue('2M');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -25,7 +25,7 @@ class AgentOptionsResponse {
 
   factory AgentOptionsResponse.fromMap(Map<String, dynamic> map) {
     return AgentOptionsResponse(
-      hugepagesCount: pulumi.Input.fromValue(map['hugepagesCount'] as double),
+      hugepagesCount: pulumi.Input.fromValue((map['hugepagesCount'] as num).toDouble()),
       hugepagesSize: (() { final guardedValue = map['hugepagesSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

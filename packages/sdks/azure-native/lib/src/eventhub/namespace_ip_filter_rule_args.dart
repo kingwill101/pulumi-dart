@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventhub_namespace_ip_filter_rule_args_doc}
 class NamespaceIpFilterRuleArgs {
   /// The IP Filter Action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// IP Filter name
-  final pulumi.Input<String>? filterName;
+  final pulumi.Input<String?>? filterName;
   /// The IP Filter Rule name.
-  final pulumi.Input<String>? ipFilterRuleName;
+  final pulumi.Input<String?>? ipFilterRuleName;
   /// IP Mask
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
   /// The Namespace name
   final pulumi.Input<String> namespaceName;
   /// Name of the resource group within the azure subscription.
@@ -49,7 +49,7 @@ class NamespaceIpFilterRuleArgs {
 
   factory NamespaceIpFilterRuleArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceIpFilterRuleArgs(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       filterName: (() { final guardedValue = map['filterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipFilterRuleName: (() { final guardedValue = map['ipFilterRuleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipMask: (() { final guardedValue = map['ipMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

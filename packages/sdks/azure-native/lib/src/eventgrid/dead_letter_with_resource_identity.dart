@@ -8,9 +8,9 @@ import 'storage_blob_dead_letter_destination.dart';
 class DeadLetterWithResourceIdentity {
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses the managed identity setup on the parent resource (namely, topic or domain) to acquire the authentication tokens being used during dead-lettering.
-  final pulumi.Input<StorageBlobDeadLetterDestination>? deadLetterDestination;
+  final pulumi.Input<StorageBlobDeadLetterDestination?>? deadLetterDestination;
   /// The identity to use when dead-lettering events.
-  final pulumi.Input<EventSubscriptionIdentity>? identity;
+  final pulumi.Input<EventSubscriptionIdentity?>? identity;
 
   /// Creates a new [DeadLetterWithResourceIdentity].
   /// [deadLetterDestination] Information about the destination where events have to be delivered for the event subscription.

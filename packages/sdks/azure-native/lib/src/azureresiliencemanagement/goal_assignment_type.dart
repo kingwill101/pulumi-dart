@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of goal assignment.
-enum GoalAssignmentType {
+enum GoalAssignmentType implements pulumi.PulumiEnum<String> {
   resiliency("Resiliency");
 
   const GoalAssignmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoalAssignmentType fromValue(String value) {

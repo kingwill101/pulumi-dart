@@ -10,11 +10,11 @@ class PrefixArgs {
   /// The name of the peering service.
   final pulumi.Input<String> peeringServiceName;
   /// The peering service prefix key
-  final pulumi.Input<String>? peeringServicePrefixKey;
+  final pulumi.Input<String?>? peeringServicePrefixKey;
   /// The prefix from which your traffic originates.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
   /// The name of the prefix.
-  final pulumi.Input<String>? prefixName;
+  final pulumi.Input<String?>? prefixName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

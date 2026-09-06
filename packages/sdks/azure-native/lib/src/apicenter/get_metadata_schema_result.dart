@@ -9,17 +9,17 @@ class GetMetadataSchemaResult {
   /// The assignees
   final List<MetadataAssignmentResponse>? assignedTo;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The schema defining the type.
-  final String schema;
+  final String? schema;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMetadataSchemaResult].
   /// [assignedTo] The assignees
@@ -31,35 +31,35 @@ class GetMetadataSchemaResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetMetadataSchemaResult({
     this.assignedTo,
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.schema,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.schema,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'assignedTo': ?(() { final guardedValue = assignedTo; if (guardedValue == null) return null; return pulumi.Input.encodeList<MetadataAssignmentResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'schema': schema,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'schema': ?schema,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetMetadataSchemaResult.fromMap(Map<String, dynamic> map) {
     return GetMetadataSchemaResult(
       assignedTo: (() { final guardedValue = map['assignedTo']; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetadataAssignmentResponse>(guardedValue, (value) => MetadataAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      schema: map['schema'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

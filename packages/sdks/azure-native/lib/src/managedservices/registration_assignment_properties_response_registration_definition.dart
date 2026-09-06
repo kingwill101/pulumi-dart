@@ -12,9 +12,9 @@ class RegistrationAssignmentPropertiesResponseRegistrationDefinition {
   /// The name of the registration definition.
   final pulumi.Input<String> name;
   /// The details for the Managed Services offer’s plan in Azure Marketplace.
-  final pulumi.Input<PlanResponse>? plan;
+  final pulumi.Input<PlanResponse?>? plan;
   /// The properties of the registration definition associated with the registration assignment.
-  final pulumi.Input<RegistrationAssignmentPropertiesResponseProperties>? properties;
+  final pulumi.Input<RegistrationAssignmentPropertiesResponseProperties?>? properties;
   /// The metadata for the registration definition resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).

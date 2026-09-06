@@ -7,15 +7,15 @@ class TopicResponse {
   /// The topic path for messages published to an MQTT broker.
   final pulumi.Input<String> path;
   /// When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-  final pulumi.Input<String>? retain;
+  final pulumi.Input<String?>? retain;
 
   /// Creates a new [TopicResponse].
   /// [path] The topic path for messages published to an MQTT broker.
   /// [retain] When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-  const TopicResponse({
+  TopicResponse({
     required this.path,
-    this.retain,
-  });
+    pulumi.Input<String?>? retain,
+  }) : retain = retain ?? pulumi.Input.fromValue('Never');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

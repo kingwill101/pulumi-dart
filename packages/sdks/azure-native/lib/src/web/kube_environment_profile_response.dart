@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification for a Kubernetes Environment to use for this resource.
 class KubeEnvironmentProfileResponse {
   /// Resource ID of the Kubernetes Environment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the Kubernetes Environment.
   final pulumi.Input<String> name;
   /// Resource type of the Kubernetes Environment.

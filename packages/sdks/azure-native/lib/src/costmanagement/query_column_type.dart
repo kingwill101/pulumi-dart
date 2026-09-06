@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Has type of the column to group.
-enum QueryColumnType {
+enum QueryColumnType implements pulumi.PulumiEnum<String> {
   valueTagKey("TagKey"),
   valueDimension("Dimension");
 
   const QueryColumnType(this.wireValue);
+  @override
   final String wireValue;
 
   static QueryColumnType fromValue(String value) {

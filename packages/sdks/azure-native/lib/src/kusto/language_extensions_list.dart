@@ -6,7 +6,7 @@ import 'language_extension.dart';
 /// The list of language extension objects.
 class LanguageExtensionsList {
   /// The list of language extensions.
-  final pulumi.Input<List<LanguageExtension>>? value;
+  final pulumi.Input<List<LanguageExtension>?>? value;
 
   /// Creates a new [LanguageExtensionsList].
   /// [value] The list of language extensions.

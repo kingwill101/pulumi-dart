@@ -194,4 +194,22 @@ class Suppression extends pulumi.CustomResource {
     ttl = registerOutput<String?>('ttl');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Suppression] resource.
+  Suppression.reference(String urn)
+    : super(
+        'azure-native:advisor:Suppression',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationTimeStamp = registerOutput<String>('expirationTimeStamp');
+    this.name = registerOutput<String>('name');
+    suppressionId = registerOutput<String?>('suppressionId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ttl = registerOutput<String?>('ttl');
+    type = registerOutput<String>('type');
+  }
 }

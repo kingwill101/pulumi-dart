@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the mode that ProxyAgent will execute on. Warning: this property has been deprecated, please specify 'mode' under particular hostendpoint setting.
-enum Mode {
+enum Mode implements pulumi.PulumiEnum<String> {
   audit("Audit"),
   enforce("Enforce");
 
   const Mode(this.wireValue);
+  @override
   final String wireValue;
 
   static Mode fromValue(String value) {

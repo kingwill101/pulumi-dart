@@ -220,4 +220,20 @@ class NetworkSecurityPerimeterLoggingConfiguration extends pulumi.CustomResource
     properties = registerOutput<NspLoggingConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NspLoggingConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [NetworkSecurityPerimeterLoggingConfiguration] resource.
+  NetworkSecurityPerimeterLoggingConfiguration.reference(String urn)
+    : super(
+        'azure-native:network:NetworkSecurityPerimeterLoggingConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<NspLoggingConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NspLoggingConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

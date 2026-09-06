@@ -11,48 +11,48 @@ class VolumeGroupVolumePropertiesResponse {
   /// Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
   final pulumi.Input<double> actualThroughputMibps;
   /// Specifies whether the volume is enabled for Azure VMware Solution (AVS) datastore purpose
-  final pulumi.Input<String>? avsDataStore;
+  final pulumi.Input<String?>? avsDataStore;
   /// Resource identifier used to identify the Backup.
-  final pulumi.Input<String>? backupId;
+  final pulumi.Input<String?>? backupId;
   /// Unique Baremetal Tenant Identifier.
   final pulumi.Input<String> baremetalTenantId;
   /// Pool Resource Id used in case of creating a volume through volume group
-  final pulumi.Input<String>? capacityPoolResourceId;
+  final pulumi.Input<String?>? capacityPoolResourceId;
   /// When a volume is being restored from another volume's snapshot, will show the percentage completion of this cloning process. When this value is empty/null there is no cloning process currently happening on this volume. This value will update every 5 minutes during cloning.
   final pulumi.Input<int> cloneProgress;
   /// Specifies whether Cool Access(tiering) is enabled for the volume.
-  final pulumi.Input<bool>? coolAccess;
+  final pulumi.Input<bool?>? coolAccess;
   /// coolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are:
   /// Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
   /// OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
   /// Never - No client-driven data is pulled from cool tier to standard storage.
-  final pulumi.Input<String>? coolAccessRetrievalPolicy;
+  final pulumi.Input<String?>? coolAccessRetrievalPolicy;
   /// coolAccessTieringPolicy determines which cold data blocks are moved to cool tier. The possible values for this field are: Auto - Moves cold user data blocks in both the Snapshot copies and the active file system to the cool tier tier. This policy is the default. SnapshotOnly - Moves user data blocks of the Volume Snapshot copies that are not associated with the active file system to the cool tier.
-  final pulumi.Input<String>? coolAccessTieringPolicy;
+  final pulumi.Input<String?>? coolAccessTieringPolicy;
   /// Specifies the number of days after which data that is not accessed by clients will be tiered.
-  final pulumi.Input<int>? coolnessPeriod;
+  final pulumi.Input<int?>? coolnessPeriod;
   /// A unique file path for the volume. Used when creating mount targets
   final pulumi.Input<String> creationToken;
   /// DataProtection type volumes include an object containing details of the replication
-  final pulumi.Input<VolumePropertiesResponseDataProtection>? dataProtection;
+  final pulumi.Input<VolumePropertiesResponseDataProtection?>? dataProtection;
   /// Data store resource unique identifier
   final pulumi.Input<List<String>> dataStoreResourceId;
   /// Default group quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies.
-  final pulumi.Input<double>? defaultGroupQuotaInKiBs;
+  final pulumi.Input<double?>? defaultGroupQuotaInKiBs;
   /// Default user quota for volume in KiBs. If isDefaultQuotaEnabled is set, the minimum value of 4 KiBs applies .
-  final pulumi.Input<double>? defaultUserQuotaInKiBs;
+  final pulumi.Input<double?>? defaultUserQuotaInKiBs;
   /// If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
-  final pulumi.Input<bool>? deleteBaseSnapshot;
+  final pulumi.Input<bool?>? deleteBaseSnapshot;
   /// The effective value of the network features type available to the volume, or current effective state of update.
   final pulumi.Input<String> effectiveNetworkFeatures;
   /// Flag indicating whether subvolume operations are enabled on the volume
-  final pulumi.Input<String>? enableSubvolumes;
+  final pulumi.Input<String?>? enableSubvolumes;
   /// Specifies if the volume is encrypted or not. Only available on volumes created or updated after 2022-01-01.
   final pulumi.Input<bool> encrypted;
   /// Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values (case-insensitive) are: 'Microsoft.NetApp, Microsoft.KeyVault'
-  final pulumi.Input<String>? encryptionKeySource;
+  final pulumi.Input<String?>? encryptionKeySource;
   /// Set of export policy rules
-  final pulumi.Input<VolumePropertiesResponseExportPolicyV1>? exportPolicy;
+  final pulumi.Input<VolumePropertiesResponseExportPolicyV1?>? exportPolicy;
   /// Flag indicating whether file access logs are enabled for the volume, based on active diagnostic settings present on the volume.
   final pulumi.Input<String> fileAccessLogs;
   /// Unique FileSystem Identifier.
@@ -60,55 +60,55 @@ class VolumeGroupVolumePropertiesResponse {
   /// Resource Id
   final pulumi.Input<String> id;
   /// Specifies if default quota is enabled for the volume.
-  final pulumi.Input<bool>? isDefaultQuotaEnabled;
+  final pulumi.Input<bool?>? isDefaultQuotaEnabled;
   /// Specifies whether volume is a Large Volume or Regular Volume.
-  final pulumi.Input<bool>? isLargeVolume;
+  final pulumi.Input<bool?>? isLargeVolume;
   /// Restoring
-  final pulumi.Input<bool>? isRestoring;
+  final pulumi.Input<bool?>? isRestoring;
   /// Describe if a volume is KerberosEnabled. To be use with swagger version 2020-05-01 or later
-  final pulumi.Input<bool>? kerberosEnabled;
+  final pulumi.Input<bool?>? kerberosEnabled;
   /// The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
-  final pulumi.Input<String>? keyVaultPrivateEndpointResourceId;
+  final pulumi.Input<String?>? keyVaultPrivateEndpointResourceId;
   /// Specifies whether LDAP is enabled or not for a given NFS volume.
-  final pulumi.Input<bool>? ldapEnabled;
+  final pulumi.Input<bool?>? ldapEnabled;
   /// Maximum number of files allowed. Needs a service request in order to be changed. Only allowed to be changed if volume quota is more than 4TiB.
   final pulumi.Input<double> maximumNumberOfFiles;
   /// List of mount targets
   final pulumi.Input<List<MountTargetPropertiesResponse>> mountTargets;
   /// Resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The original value of the network features type available to the volume at the time it was created.
-  final pulumi.Input<String>? networkFeatures;
+  final pulumi.Input<String?>? networkFeatures;
   /// Network Sibling Set ID for the the group of volumes sharing networking resources.
   final pulumi.Input<String> networkSiblingSetId;
   /// Id of the snapshot or backup that the volume is restored from.
   final pulumi.Input<String> originatingResourceId;
   /// Application specific placement rules for the particular volume
-  final pulumi.Input<List<PlacementKeyValuePairsResponse>>? placementRules;
+  final pulumi.Input<List<PlacementKeyValuePairsResponse>?>? placementRules;
   /// Set of protocol types, default NFSv3, CIFS for SMB protocol
-  final pulumi.Input<List<String>>? protocolTypes;
+  final pulumi.Input<List<String>?>? protocolTypes;
   /// The availability zone where the volume is provisioned. This refers to the logical availability zone where the volume resides.
   final pulumi.Input<String> provisionedAvailabilityZone;
   /// Azure lifecycle management
   final pulumi.Input<String> provisioningState;
   /// Proximity placement group associated with the volume
-  final pulumi.Input<String>? proximityPlacementGroup;
+  final pulumi.Input<String?>? proximityPlacementGroup;
   /// The security style of volume, default unix, defaults to ntfs for dual protocol or CIFS protocol
-  final pulumi.Input<String>? securityStyle;
+  final pulumi.Input<String?>? securityStyle;
   /// The service level of the file system
-  final pulumi.Input<String>? serviceLevel;
+  final pulumi.Input<String?>? serviceLevel;
   /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbAccessBasedEnumeration;
+  final pulumi.Input<String?>? smbAccessBasedEnumeration;
   /// Enables continuously available share property for smb volume. Only applicable for SMB volume
-  final pulumi.Input<bool>? smbContinuouslyAvailable;
+  final pulumi.Input<bool?>? smbContinuouslyAvailable;
   /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol volume. To be used with swagger version 2020-08-01 or later
-  final pulumi.Input<bool>? smbEncryption;
+  final pulumi.Input<bool?>? smbEncryption;
   /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbNonBrowsable;
+  final pulumi.Input<String?>? smbNonBrowsable;
   /// If enabled (true) the volume will contain a read-only snapshot directory which provides access to each of the volume's snapshots (defaults to true).
-  final pulumi.Input<bool>? snapshotDirectoryVisible;
+  final pulumi.Input<bool?>? snapshotDirectoryVisible;
   /// Resource identifier used to identify the Snapshot.
-  final pulumi.Input<String>? snapshotId;
+  final pulumi.Input<String?>? snapshotId;
   /// Provides storage to network proximity information for the volume.
   final pulumi.Input<String> storageToNetworkProximity;
   /// The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/volumes
@@ -116,22 +116,22 @@ class VolumeGroupVolumePropertiesResponse {
   /// T2 network information
   final pulumi.Input<String> t2Network;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
-  final pulumi.Input<double>? throughputMibps;
+  final pulumi.Input<Map<String, String>?>? tags;
+  final pulumi.Input<double?>? throughputMibps;
   /// Resource type
   final pulumi.Input<String> type;
   /// UNIX permissions for NFS volume accepted in octal 4 digit format. First digit selects the set user ID(4), set group ID (2) and sticky (1) attributes. Second digit selects permission for the owner of the file: read (4), write (2) and execute (1). Third selects permissions for other users in the same group. the fourth for other users not in the group. 0755 - gives read/write/execute permissions to owner and read/execute to group and other users.
-  final pulumi.Input<String>? unixPermissions;
+  final pulumi.Input<String?>? unixPermissions;
   /// Maximum storage quota allowed for a file system in bytes. This is a soft quota used for alerting only. For regular volumes, valid values are in the range 50GiB to 100TiB. For large volumes, valid values are in the range 100TiB to 500TiB, and on an exceptional basis, from to 2400GiB to 2400TiB. Values expressed in bytes as multiples of 1 GiB.
   final pulumi.Input<double> usageThreshold;
   /// Volume Group Name
   final pulumi.Input<String> volumeGroupName;
   /// Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
-  final pulumi.Input<String>? volumeSpecName;
+  final pulumi.Input<String?>? volumeSpecName;
   /// What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
-  final pulumi.Input<String>? volumeType;
+  final pulumi.Input<String?>? volumeType;
   /// Availability Zone
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [VolumeGroupVolumePropertiesResponse].
   /// [actualThroughputMibps] Actual throughput in MiB/s for auto qosType volumes calculated based on size and serviceLevel
@@ -195,37 +195,37 @@ class VolumeGroupVolumePropertiesResponse {
   /// [volumeSpecName] Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
   /// [volumeType] What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
   /// [zones] Availability Zone
-  const VolumeGroupVolumePropertiesResponse({
+  VolumeGroupVolumePropertiesResponse({
     required this.actualThroughputMibps,
-    this.avsDataStore,
+    pulumi.Input<String?>? avsDataStore,
     this.backupId,
     required this.baremetalTenantId,
     this.capacityPoolResourceId,
     required this.cloneProgress,
-    this.coolAccess,
+    pulumi.Input<bool?>? coolAccess,
     this.coolAccessRetrievalPolicy,
     this.coolAccessTieringPolicy,
     this.coolnessPeriod,
     required this.creationToken,
     this.dataProtection,
     required this.dataStoreResourceId,
-    this.defaultGroupQuotaInKiBs,
-    this.defaultUserQuotaInKiBs,
+    pulumi.Input<double?>? defaultGroupQuotaInKiBs,
+    pulumi.Input<double?>? defaultUserQuotaInKiBs,
     this.deleteBaseSnapshot,
     required this.effectiveNetworkFeatures,
-    this.enableSubvolumes,
+    pulumi.Input<String?>? enableSubvolumes,
     required this.encrypted,
-    this.encryptionKeySource,
+    pulumi.Input<String?>? encryptionKeySource,
     this.exportPolicy,
-    required this.fileAccessLogs,
+    pulumi.Input<String>? fileAccessLogs,
     required this.fileSystemId,
     required this.id,
-    this.isDefaultQuotaEnabled,
-    this.isLargeVolume,
+    pulumi.Input<bool?>? isDefaultQuotaEnabled,
+    pulumi.Input<bool?>? isLargeVolume,
     this.isRestoring,
-    this.kerberosEnabled,
+    pulumi.Input<bool?>? kerberosEnabled,
     this.keyVaultPrivateEndpointResourceId,
-    this.ldapEnabled,
+    pulumi.Input<bool?>? ldapEnabled,
     required this.maximumNumberOfFiles,
     required this.mountTargets,
     this.name,
@@ -237,13 +237,13 @@ class VolumeGroupVolumePropertiesResponse {
     required this.provisionedAvailabilityZone,
     required this.provisioningState,
     this.proximityPlacementGroup,
-    this.securityStyle,
+    pulumi.Input<String?>? securityStyle,
     this.serviceLevel,
     this.smbAccessBasedEnumeration,
-    this.smbContinuouslyAvailable,
-    this.smbEncryption,
+    pulumi.Input<bool?>? smbContinuouslyAvailable,
+    pulumi.Input<bool?>? smbEncryption,
     this.smbNonBrowsable,
-    this.snapshotDirectoryVisible,
+    pulumi.Input<bool?>? snapshotDirectoryVisible,
     this.snapshotId,
     required this.storageToNetworkProximity,
     required this.subnetId,
@@ -252,12 +252,12 @@ class VolumeGroupVolumePropertiesResponse {
     this.throughputMibps,
     required this.type,
     this.unixPermissions,
-    required this.usageThreshold,
+    pulumi.Input<double>? usageThreshold,
     required this.volumeGroupName,
     this.volumeSpecName,
     this.volumeType,
     this.zones,
-  });
+  }) : avsDataStore = avsDataStore ?? pulumi.Input.fromValue('Disabled'), coolAccess = coolAccess ?? pulumi.Input.fromValue(false), defaultGroupQuotaInKiBs = defaultGroupQuotaInKiBs ?? pulumi.Input.fromValue(0), defaultUserQuotaInKiBs = defaultUserQuotaInKiBs ?? pulumi.Input.fromValue(0), enableSubvolumes = enableSubvolumes ?? pulumi.Input.fromValue('Disabled'), encryptionKeySource = encryptionKeySource ?? pulumi.Input.fromValue('Microsoft.NetApp'), fileAccessLogs = fileAccessLogs ?? pulumi.Input.fromValue('Disabled'), isDefaultQuotaEnabled = isDefaultQuotaEnabled ?? pulumi.Input.fromValue(false), isLargeVolume = isLargeVolume ?? pulumi.Input.fromValue(false), kerberosEnabled = kerberosEnabled ?? pulumi.Input.fromValue(false), ldapEnabled = ldapEnabled ?? pulumi.Input.fromValue(false), securityStyle = securityStyle ?? pulumi.Input.fromValue('unix'), smbContinuouslyAvailable = smbContinuouslyAvailable ?? pulumi.Input.fromValue(false), smbEncryption = smbEncryption ?? pulumi.Input.fromValue(false), snapshotDirectoryVisible = snapshotDirectoryVisible ?? pulumi.Input.fromValue(true), usageThreshold = usageThreshold ?? pulumi.Input.fromValue(1.073741824e+11);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -327,21 +327,21 @@ class VolumeGroupVolumePropertiesResponse {
 
   factory VolumeGroupVolumePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return VolumeGroupVolumePropertiesResponse(
-      actualThroughputMibps: pulumi.Input.fromValue(map['actualThroughputMibps'] as double),
+      actualThroughputMibps: pulumi.Input.fromValue((map['actualThroughputMibps'] as num).toDouble()),
       avsDataStore: (() { final guardedValue = map['avsDataStore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupId: (() { final guardedValue = map['backupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       baremetalTenantId: pulumi.Input.fromValue(map['baremetalTenantId'] as String),
       capacityPoolResourceId: (() { final guardedValue = map['capacityPoolResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cloneProgress: pulumi.Input.fromValue(map['cloneProgress'] as int),
+      cloneProgress: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cloneProgress'])),
       coolAccess: (() { final guardedValue = map['coolAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       coolAccessRetrievalPolicy: (() { final guardedValue = map['coolAccessRetrievalPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       coolAccessTieringPolicy: (() { final guardedValue = map['coolAccessTieringPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      coolnessPeriod: (() { final guardedValue = map['coolnessPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      coolnessPeriod: (() { final guardedValue = map['coolnessPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       creationToken: pulumi.Input.fromValue(map['creationToken'] as String),
       dataProtection: (() { final guardedValue = map['dataProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumePropertiesResponseDataProtection.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dataStoreResourceId: pulumi.Input.fromValue((map['dataStoreResourceId'] as List).cast<String>()),
-      defaultGroupQuotaInKiBs: (() { final guardedValue = map['defaultGroupQuotaInKiBs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      defaultUserQuotaInKiBs: (() { final guardedValue = map['defaultUserQuotaInKiBs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      defaultGroupQuotaInKiBs: (() { final guardedValue = map['defaultGroupQuotaInKiBs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      defaultUserQuotaInKiBs: (() { final guardedValue = map['defaultUserQuotaInKiBs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       deleteBaseSnapshot: (() { final guardedValue = map['deleteBaseSnapshot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       effectiveNetworkFeatures: pulumi.Input.fromValue(map['effectiveNetworkFeatures'] as String),
       enableSubvolumes: (() { final guardedValue = map['enableSubvolumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -357,7 +357,7 @@ class VolumeGroupVolumePropertiesResponse {
       kerberosEnabled: (() { final guardedValue = map['kerberosEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       keyVaultPrivateEndpointResourceId: (() { final guardedValue = map['keyVaultPrivateEndpointResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ldapEnabled: (() { final guardedValue = map['ldapEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maximumNumberOfFiles: pulumi.Input.fromValue(map['maximumNumberOfFiles'] as double),
+      maximumNumberOfFiles: pulumi.Input.fromValue((map['maximumNumberOfFiles'] as num).toDouble()),
       mountTargets: pulumi.Input.fromValue(pulumi.Input.decodeList<MountTargetPropertiesResponse>(map['mountTargets']!, (value) => MountTargetPropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFeatures: (() { final guardedValue = map['networkFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -380,10 +380,10 @@ class VolumeGroupVolumePropertiesResponse {
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       t2Network: pulumi.Input.fromValue(map['t2Network'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      throughputMibps: (() { final guardedValue = map['throughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      throughputMibps: (() { final guardedValue = map['throughputMibps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       unixPermissions: (() { final guardedValue = map['unixPermissions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      usageThreshold: pulumi.Input.fromValue(map['usageThreshold'] as double),
+      usageThreshold: pulumi.Input.fromValue((map['usageThreshold'] as num).toDouble()),
       volumeGroupName: pulumi.Input.fromValue(map['volumeGroupName'] as String),
       volumeSpecName: (() { final guardedValue = map['volumeSpecName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeType: (() { final guardedValue = map['volumeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

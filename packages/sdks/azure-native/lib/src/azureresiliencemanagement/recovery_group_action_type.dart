@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the recovery orchestration group action.
-enum RecoveryGroupActionType {
+enum RecoveryGroupActionType implements pulumi.PulumiEnum<String> {
   manualAction("ManualAction"),
   customRunbook("CustomRunbook");
 
   const RecoveryGroupActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static RecoveryGroupActionType fromValue(String value) {

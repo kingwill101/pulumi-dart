@@ -10,23 +10,23 @@ import 'subnet_override.dart';
 /// {@macro pulumi_devtestlab_virtual_network_args_doc}
 class VirtualNetworkArgs {
   /// The allowed subnets of the virtual network.
-  final pulumi.Input<List<Subnet>>? allowedSubnets;
+  final pulumi.Input<List<Subnet>?>? allowedSubnets;
   /// The description of the virtual network.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The Microsoft.Network resource identifier of the virtual network.
-  final pulumi.Input<String>? externalProviderResourceId;
+  final pulumi.Input<String?>? externalProviderResourceId;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the virtual network.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The subnet overrides of the virtual network.
-  final pulumi.Input<List<SubnetOverride>>? subnetOverrides;
+  final pulumi.Input<List<SubnetOverride>?>? subnetOverrides;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VirtualNetworkArgs].
   /// [allowedSubnets] The allowed subnets of the virtual network.

@@ -6,9 +6,9 @@ import 'upstream_auth_settings_response.dart';
 /// Properties of event handler.
 class EventHandlerResponse {
   /// Upstream auth settings. If not set, no auth is used for upstream messages.
-  final pulumi.Input<UpstreamAuthSettingsResponse>? auth;
+  final pulumi.Input<UpstreamAuthSettingsResponse?>? auth;
   /// Gets or sets the list of system events.
-  final pulumi.Input<List<String>>? systemEvents;
+  final pulumi.Input<List<String>?>? systemEvents;
   /// Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.
   /// For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
   final pulumi.Input<String> urlTemplate;
@@ -17,7 +17,7 @@ class EventHandlerResponse {
   /// 1. "*", it matches any event name
   /// 2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"
   /// 3. A single event name, for example, "event1", it matches "event1"
-  final pulumi.Input<String>? userEventPattern;
+  final pulumi.Input<String?>? userEventPattern;
 
   /// Creates a new [EventHandlerResponse].
   /// [auth] Upstream auth settings. If not set, no auth is used for upstream messages.

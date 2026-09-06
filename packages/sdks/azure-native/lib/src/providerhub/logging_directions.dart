@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The direction.
-enum LoggingDirections {
+enum LoggingDirections implements pulumi.PulumiEnum<String> {
   none("None"),
   request("Request"),
   response("Response");
 
   const LoggingDirections(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingDirections fromValue(String value) {

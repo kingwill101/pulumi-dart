@@ -16,79 +16,79 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
 class ImageModelDistributionSettingsClassification {
   /// Enable AMSGrad when optimizer is 'adam' or 'adamw'.
-  final pulumi.Input<String>? amsGradient;
+  final pulumi.Input<String?>? amsGradient;
   /// Settings for using Augmentations.
-  final pulumi.Input<String>? augmentations;
+  final pulumi.Input<String?>? augmentations;
   /// Value of 'beta1' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? beta1;
+  final pulumi.Input<String?>? beta1;
   /// Value of 'beta2' when optimizer is 'adam' or 'adamw'. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? beta2;
+  final pulumi.Input<String?>? beta2;
   /// Whether to use distributer training.
-  final pulumi.Input<String>? distributed;
+  final pulumi.Input<String?>? distributed;
   /// Enable early stopping logic during training.
-  final pulumi.Input<String>? earlyStopping;
+  final pulumi.Input<String?>? earlyStopping;
   /// Minimum number of epochs or validation evaluations to wait before primary metric improvement
   /// is tracked for early stopping. Must be a positive integer.
-  final pulumi.Input<String>? earlyStoppingDelay;
+  final pulumi.Input<String?>? earlyStoppingDelay;
   /// Minimum number of epochs or validation evaluations with no primary metric improvement before
   /// the run is stopped. Must be a positive integer.
-  final pulumi.Input<String>? earlyStoppingPatience;
+  final pulumi.Input<String?>? earlyStoppingPatience;
   /// Enable normalization when exporting ONNX model.
-  final pulumi.Input<String>? enableOnnxNormalization;
+  final pulumi.Input<String?>? enableOnnxNormalization;
   /// Frequency to evaluate validation dataset to get metric scores. Must be a positive integer.
-  final pulumi.Input<String>? evaluationFrequency;
+  final pulumi.Input<String?>? evaluationFrequency;
   /// Gradient accumulation means running a configured number of "GradAccumulationStep" steps without
   /// updating the model weights while accumulating the gradients of those steps, and then using
   /// the accumulated gradients to compute the weight updates. Must be a positive integer.
-  final pulumi.Input<String>? gradientAccumulationStep;
+  final pulumi.Input<String?>? gradientAccumulationStep;
   /// Number of layers to freeze for the model. Must be a positive integer.
   /// For instance, passing 2 as value for 'seresnext' means
   /// freezing layer0 and layer1. For a full list of models supported and details on layer freeze, please
   /// see: https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<String>? layersToFreeze;
+  final pulumi.Input<String?>? layersToFreeze;
   /// Initial learning rate. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? learningRate;
+  final pulumi.Input<String?>? learningRate;
   /// Type of learning rate scheduler. Must be 'warmup_cosine' or 'step'.
-  final pulumi.Input<String>? learningRateScheduler;
+  final pulumi.Input<String?>? learningRateScheduler;
   /// Name of the model to use for training.
   /// For more information on the available models please visit the official documentation:
   /// https://docs.microsoft.com/en-us/azure/machine-learning/how-to-auto-train-image-models.
-  final pulumi.Input<String>? modelName;
+  final pulumi.Input<String?>? modelName;
   /// Value of momentum when optimizer is 'sgd'. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? momentum;
+  final pulumi.Input<String?>? momentum;
   /// Enable nesterov when optimizer is 'sgd'.
-  final pulumi.Input<String>? nesterov;
+  final pulumi.Input<String?>? nesterov;
   /// Number of training epochs. Must be a positive integer.
-  final pulumi.Input<String>? numberOfEpochs;
+  final pulumi.Input<String?>? numberOfEpochs;
   /// Number of data loader workers. Must be a non-negative integer.
-  final pulumi.Input<String>? numberOfWorkers;
+  final pulumi.Input<String?>? numberOfWorkers;
   /// Type of optimizer. Must be either 'sgd', 'adam', or 'adamw'.
-  final pulumi.Input<String>? optimizer;
+  final pulumi.Input<String?>? optimizer;
   /// Random seed to be used when using deterministic training.
-  final pulumi.Input<String>? randomSeed;
+  final pulumi.Input<String?>? randomSeed;
   /// Value of gamma when learning rate scheduler is 'step'. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? stepLRGamma;
+  final pulumi.Input<String?>? stepLRGamma;
   /// Value of step size when learning rate scheduler is 'step'. Must be a positive integer.
-  final pulumi.Input<String>? stepLRStepSize;
+  final pulumi.Input<String?>? stepLRStepSize;
   /// Training batch size. Must be a positive integer.
-  final pulumi.Input<String>? trainingBatchSize;
+  final pulumi.Input<String?>? trainingBatchSize;
   /// Image crop size that is input to the neural network for the training dataset. Must be a positive integer.
-  final pulumi.Input<String>? trainingCropSize;
+  final pulumi.Input<String?>? trainingCropSize;
   /// Validation batch size. Must be a positive integer.
-  final pulumi.Input<String>? validationBatchSize;
+  final pulumi.Input<String?>? validationBatchSize;
   /// Image crop size that is input to the neural network for the validation dataset. Must be a positive integer.
-  final pulumi.Input<String>? validationCropSize;
+  final pulumi.Input<String?>? validationCropSize;
   /// Image size to which to resize before cropping for validation dataset. Must be a positive integer.
-  final pulumi.Input<String>? validationResizeSize;
+  final pulumi.Input<String?>? validationResizeSize;
   /// Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
-  final pulumi.Input<String>? warmupCosineLRCycles;
+  final pulumi.Input<String?>? warmupCosineLRCycles;
   /// Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
-  final pulumi.Input<String>? warmupCosineLRWarmupEpochs;
+  final pulumi.Input<String?>? warmupCosineLRWarmupEpochs;
   /// Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  final pulumi.Input<String>? weightDecay;
+  final pulumi.Input<String?>? weightDecay;
   /// Weighted loss. The accepted values are 0 for no weighted loss.
   /// 1 for weighted loss with sqrt.(class_weights). 2 for weighted loss with class_weights. Must be 0 or 1 or 2.
-  final pulumi.Input<String>? weightedLoss;
+  final pulumi.Input<String?>? weightedLoss;
 
   /// Creates a new [ImageModelDistributionSettingsClassification].
   /// [amsGradient] Enable AMSGrad when optimizer is 'adam' or 'adamw'.

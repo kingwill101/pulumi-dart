@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Transfer Storage Blobs or Tables
-enum DataType {
+enum DataType implements pulumi.PulumiEnum<String> {
   valueBlob("Blob"),
   valueTable("Table");
 
   const DataType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataType fromValue(String value) {

@@ -25,14 +25,14 @@ class ExtensionResponse {
   /// [managedBy] Extension managed by user or Azure.
   /// [state] Arc extension state from arc machine extension.
   /// [typeHandlerVersion] Extension version installed.
-  const ExtensionResponse({
+  ExtensionResponse({
     required this.errorDetails,
     required this.extensionName,
     required this.extensionResourceId,
-    required this.managedBy,
+    pulumi.Input<String>? managedBy,
     required this.state,
     required this.typeHandlerVersion,
-  });
+  }) : managedBy = managedBy ?? pulumi.Input.fromValue('Azure');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

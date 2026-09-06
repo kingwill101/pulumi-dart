@@ -9,31 +9,31 @@ class GetCapacityDetailsResult {
   /// A collection of Dedicated capacity administrators
   final DedicatedCapacityAdministratorsResponse? administration;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Capacity name
-  final String friendlyName;
+  final String? friendlyName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Specifies the generation of the Power BI Embedded capacity. If no value is specified, the default value 'Gen2' is used. [Learn More](https://docs.microsoft.com/power-bi/developer/embedded/power-bi-embedded-generation-2)
   final String? mode;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The current deployment state of PowerBI Dedicated resource. The provisioningState is to indicate states for resource provisioning.
-  final String provisioningState;
+  final String? provisioningState;
   /// The SKU of the PowerBI Dedicated capacity resource.
-  final CapacitySkuResponse sku;
+  final CapacitySkuResponse? sku;
   /// The current state of PowerBI Dedicated resource. The state is to indicate more states outside of resource provisioning.
-  final String state;
+  final String? state;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Tenant ID for the capacity. Used for creating Pro Plus capacity.
-  final String tenantId;
+  final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetCapacityDetailsResult].
   /// [administration] A collection of Dedicated capacity administrators
@@ -52,56 +52,56 @@ class GetCapacityDetailsResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetCapacityDetailsResult({
     this.administration,
-    required this.azureApiVersion,
-    required this.friendlyName,
-    required this.id,
-    required this.location,
+    this.azureApiVersion,
+    this.friendlyName,
+    this.id,
+    this.location,
     this.mode,
-    required this.name,
-    required this.provisioningState,
-    required this.sku,
-    required this.state,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.sku,
+    this.state,
+    this.systemData,
     this.tags,
-    required this.tenantId,
-    required this.type,
+    this.tenantId,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'administration': ?administration?.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'friendlyName': friendlyName,
-      'id': id,
-      'location': location,
+      'azureApiVersion': ?azureApiVersion,
+      'friendlyName': ?friendlyName,
+      'id': ?id,
+      'location': ?location,
       'mode': ?mode,
-      'name': name,
-      'provisioningState': provisioningState,
-      'sku': sku.toMap(),
-      'state': state,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'sku': ?sku?.toMap(),
+      'state': ?state,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'tenantId': tenantId,
-      'type': type,
+      'tenantId': ?tenantId,
+      'type': ?type,
     };
   }
 
   factory GetCapacityDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetCapacityDetailsResult(
       administration: (() { final guardedValue = map['administration']; if (guardedValue == null) return null; return DedicatedCapacityAdministratorsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      friendlyName: map['friendlyName'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      sku: CapacitySkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return CapacitySkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

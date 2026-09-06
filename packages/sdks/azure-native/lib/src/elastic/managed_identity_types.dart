@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Managed identity type.
-enum ManagedIdentityTypes {
+enum ManagedIdentityTypes implements pulumi.PulumiEnum<String> {
   valueSystemAssigned("SystemAssigned");
 
   const ManagedIdentityTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedIdentityTypes fromValue(String value) {

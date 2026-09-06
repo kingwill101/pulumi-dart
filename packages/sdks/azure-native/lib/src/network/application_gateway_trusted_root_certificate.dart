@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trusted Root certificates of an application gateway.
 class ApplicationGatewayTrustedRootCertificate {
   /// Certificate public data.
-  final pulumi.Input<String>? data;
+  final pulumi.Input<String?>? data;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
-  final pulumi.Input<String>? keyVaultSecretId;
+  final pulumi.Input<String?>? keyVaultSecretId;
   /// Name of the trusted root certificate that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ApplicationGatewayTrustedRootCertificate].
   /// [data] Certificate public data.

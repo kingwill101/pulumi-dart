@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target aggregate function.
-enum TargetAggregationFunction {
+enum TargetAggregationFunction implements pulumi.PulumiEnum<String> {
   none("None"),
   sum("Sum"),
   max("Max"),
@@ -7,6 +9,7 @@ enum TargetAggregationFunction {
   mean("Mean");
 
   const TargetAggregationFunction(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetAggregationFunction fromValue(String value) {

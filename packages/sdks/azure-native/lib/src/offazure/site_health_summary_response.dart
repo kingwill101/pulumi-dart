@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of ServerSiteResource.
 class SiteHealthSummaryResponse {
   /// Gets or sets the count of affected objects.
-  final pulumi.Input<double>? affectedObjectsCount;
+  final pulumi.Input<double?>? affectedObjectsCount;
   /// Gets the affected resource type.
   final pulumi.Input<String> affectedResourceType;
   /// Gets or sets the affected resources.
-  final pulumi.Input<List<String>>? affectedResources;
+  final pulumi.Input<List<String>?>? affectedResources;
   /// Gets the appliance name.
   final pulumi.Input<String> applianceName;
   /// Gets the error code.
@@ -19,9 +19,9 @@ class SiteHealthSummaryResponse {
   /// Gets the error message.
   final pulumi.Input<String> errorMessage;
   /// Gets or sets sources of the exception.
-  final pulumi.Input<List<String>>? fabricLayoutUpdateSources;
+  final pulumi.Input<List<String>?>? fabricLayoutUpdateSources;
   /// Gets or sets the hit count of the error.
-  final pulumi.Input<double>? hitCount;
+  final pulumi.Input<double?>? hitCount;
   /// Gets the remediation guidance.
   final pulumi.Input<String> remediationGuidance;
   /// Gets the severity of error.
@@ -76,15 +76,15 @@ class SiteHealthSummaryResponse {
 
   factory SiteHealthSummaryResponse.fromMap(Map<String, dynamic> map) {
     return SiteHealthSummaryResponse(
-      affectedObjectsCount: (() { final guardedValue = map['affectedObjectsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      affectedObjectsCount: (() { final guardedValue = map['affectedObjectsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       affectedResourceType: pulumi.Input.fromValue(map['affectedResourceType'] as String),
       affectedResources: (() { final guardedValue = map['affectedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       applianceName: pulumi.Input.fromValue(map['applianceName'] as String),
       errorCode: pulumi.Input.fromValue(map['errorCode'] as String),
-      errorId: pulumi.Input.fromValue(map['errorId'] as double),
+      errorId: pulumi.Input.fromValue((map['errorId'] as num).toDouble()),
       errorMessage: pulumi.Input.fromValue(map['errorMessage'] as String),
       fabricLayoutUpdateSources: (() { final guardedValue = map['fabricLayoutUpdateSources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      hitCount: (() { final guardedValue = map['hitCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      hitCount: (() { final guardedValue = map['hitCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       remediationGuidance: pulumi.Input.fromValue(map['remediationGuidance'] as String),
       severity: pulumi.Input.fromValue(map['severity'] as String),
       summaryMessage: pulumi.Input.fromValue(map['summaryMessage'] as String),

@@ -9,11 +9,11 @@ class BaseImageTriggerResponse {
   /// The name of the trigger.
   final pulumi.Input<String> name;
   /// The current status of trigger.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// The endpoint URL for receiving update triggers.
-  final pulumi.Input<String>? updateTriggerEndpoint;
+  final pulumi.Input<String?>? updateTriggerEndpoint;
   /// Type of Payload body for Base image update triggers.
-  final pulumi.Input<String>? updateTriggerPayloadType;
+  final pulumi.Input<String?>? updateTriggerPayloadType;
 
   /// Creates a new [BaseImageTriggerResponse].
   /// [baseImageTriggerType] The type of the auto trigger for base image dependency updates.
@@ -21,13 +21,13 @@ class BaseImageTriggerResponse {
   /// [status] The current status of trigger.
   /// [updateTriggerEndpoint] The endpoint URL for receiving update triggers.
   /// [updateTriggerPayloadType] Type of Payload body for Base image update triggers.
-  const BaseImageTriggerResponse({
+  BaseImageTriggerResponse({
     required this.baseImageTriggerType,
     required this.name,
-    this.status,
+    pulumi.Input<String?>? status,
     this.updateTriggerEndpoint,
     this.updateTriggerPayloadType,
-  });
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

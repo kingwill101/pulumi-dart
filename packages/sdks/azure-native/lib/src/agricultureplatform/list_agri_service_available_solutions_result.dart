@@ -6,23 +6,23 @@ import 'data_manager_for_agriculture_solution_response.dart';
 /// Result data returned by listAgriServiceAvailableSolutions.
 class ListAgriServiceAvailableSolutionsResult {
   /// Agri solutions list.
-  final List<DataManagerForAgricultureSolutionResponse> solutions;
+  final List<DataManagerForAgricultureSolutionResponse>? solutions;
 
   /// Creates a new [ListAgriServiceAvailableSolutionsResult].
   /// [solutions] Agri solutions list.
   const ListAgriServiceAvailableSolutionsResult({
-    required this.solutions,
+    this.solutions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'solutions': pulumi.Input.encodeList<DataManagerForAgricultureSolutionResponse, Map<String, dynamic>>(solutions, (value) => value.toMap()),
+      'solutions': ?(() { final guardedValue = solutions; if (guardedValue == null) return null; return pulumi.Input.encodeList<DataManagerForAgricultureSolutionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListAgriServiceAvailableSolutionsResult.fromMap(Map<String, dynamic> map) {
     return ListAgriServiceAvailableSolutionsResult(
-      solutions: pulumi.Input.decodeList<DataManagerForAgricultureSolutionResponse>(map['solutions']!, (value) => DataManagerForAgricultureSolutionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      solutions: (() { final guardedValue = map['solutions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataManagerForAgricultureSolutionResponse>(guardedValue, (value) => DataManagerForAgricultureSolutionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

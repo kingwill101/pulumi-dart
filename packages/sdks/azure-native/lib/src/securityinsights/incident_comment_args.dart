@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securityinsights_incident_comment_args_doc}
 class IncidentCommentArgs {
   /// Incident comment ID
-  final pulumi.Input<String>? incidentCommentId;
+  final pulumi.Input<String?>? incidentCommentId;
   /// Incident ID
   final pulumi.Input<String> incidentId;
   /// The comment message

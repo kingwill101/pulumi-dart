@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure OpenAI Content Filter.
 class RaiPolicyContentFilter {
   /// The action types to apply to the content filters
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// If blocking would occur.
-  final pulumi.Input<bool>? blocking;
+  final pulumi.Input<bool?>? blocking;
   /// If the ContentFilter is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Name of ContentFilter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Level at which content is filtered.
-  final pulumi.Input<String>? severityThreshold;
+  final pulumi.Input<dynamic>? severityThreshold;
   /// Content source to apply the Content Filters.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<dynamic>? source;
 
   /// Creates a new [RaiPolicyContentFilter].
   /// [action] The action types to apply to the content filters
@@ -46,12 +46,12 @@ class RaiPolicyContentFilter {
 
   factory RaiPolicyContentFilter.fromMap(Map<String, dynamic> map) {
     return RaiPolicyContentFilter(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       blocking: (() { final guardedValue = map['blocking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severityThreshold: (() { final guardedValue = map['severityThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severityThreshold: (() { final guardedValue = map['severityThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

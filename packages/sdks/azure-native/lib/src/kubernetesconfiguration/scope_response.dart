@@ -7,9 +7,9 @@ import 'scope_namespace_response.dart';
 /// Scope of the extension. It can be either Cluster or Namespace; but not both.
 class ScopeResponse {
   /// Specifies that the scope of the extension is Cluster
-  final pulumi.Input<ScopeClusterResponse>? cluster;
+  final pulumi.Input<ScopeClusterResponse?>? cluster;
   /// Specifies that the scope of the extension is Namespace
-  final pulumi.Input<ScopeNamespaceResponse>? namespace;
+  final pulumi.Input<ScopeNamespaceResponse?>? namespace;
 
   /// Creates a new [ScopeResponse].
   /// [cluster] Specifies that the scope of the extension is Cluster

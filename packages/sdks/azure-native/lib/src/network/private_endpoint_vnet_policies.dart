@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Private Endpoint VNet Policies.
-enum PrivateEndpointVNetPolicies {
+enum PrivateEndpointVNetPolicies implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueBasic("Basic");
 
   const PrivateEndpointVNetPolicies(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateEndpointVNetPolicies fromValue(String value) {

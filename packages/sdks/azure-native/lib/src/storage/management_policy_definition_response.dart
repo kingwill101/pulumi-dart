@@ -9,7 +9,7 @@ class ManagementPolicyDefinitionResponse {
   /// An object that defines the action set.
   final pulumi.Input<ManagementPolicyActionResponse> actions;
   /// An object that defines the filter set.
-  final pulumi.Input<ManagementPolicyFilterResponse>? filters;
+  final pulumi.Input<ManagementPolicyFilterResponse?>? filters;
 
   /// Creates a new [ManagementPolicyDefinitionResponse].
   /// [actions] An object that defines the action set.

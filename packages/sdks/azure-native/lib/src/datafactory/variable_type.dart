@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Variable type.
-enum VariableType {
+enum VariableType implements pulumi.PulumiEnum<String> {
   string_("String"),
   bool_("Bool"),
   array("Array");
 
   const VariableType(this.wireValue);
+  @override
   final String wireValue;
 
   static VariableType fromValue(String value) {

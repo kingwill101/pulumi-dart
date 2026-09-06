@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current status of trigger.
-enum TriggerStatus {
+enum TriggerStatus implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const TriggerStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerStatus fromValue(String value) {

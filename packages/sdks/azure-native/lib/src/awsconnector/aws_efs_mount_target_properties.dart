@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsEfsMountTarget
 class AwsEfsMountTargetProperties {
   /// The ID of the file system for which to create the mount target.
-  final pulumi.Input<String>? fileSystemId;
+  final pulumi.Input<String?>? fileSystemId;
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Valid IPv4 address within the address range of the specified subnet.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Up to five VPC security group IDs, of the form ``sg-xxxxxxxx``. These must be for the same VPC as subnet specified.
-  final pulumi.Input<List<String>>? securityGroups;
+  final pulumi.Input<List<String>?>? securityGroups;
   /// The ID of the subnet to add the mount target in. For One Zone file systems, use the subnet that is associated with the file system's Availability Zone.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [AwsEfsMountTargetProperties].
   /// [fileSystemId] The ID of the file system for which to create the mount target.

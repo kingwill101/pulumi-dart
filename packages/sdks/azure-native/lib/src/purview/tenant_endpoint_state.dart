@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the state of tenant endpoint.
-enum TenantEndpointState {
+enum TenantEndpointState implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   disabled("Disabled"),
   enabled("Enabled");
 
   const TenantEndpointState(this.wireValue);
+  @override
   final String wireValue;
 
   static TenantEndpointState fromValue(String value) {

@@ -5,9 +5,9 @@ import 'key_vault_properties.dart';
 
 class EncryptionProperty {
   /// Key vault properties.
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
   /// Indicates whether or not the encryption is enabled for container registry.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [EncryptionProperty].
   /// [keyVaultProperties] Key vault properties.
@@ -27,7 +27,7 @@ class EncryptionProperty {
   factory EncryptionProperty.fromMap(Map<String, dynamic> map) {
     return EncryptionProperty(
       keyVaultProperties: (() { final guardedValue = map['keyVaultProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KeyVaultProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

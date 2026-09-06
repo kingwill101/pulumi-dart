@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePlacementHint {
   /// The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
-  final pulumi.Input<String> hintType;
+  final pulumi.Input<dynamic> hintType;
   /// The resource ID of the target object that the placement hints will be checked against, e.g., the bare metal node to host the virtual machine.
   final pulumi.Input<String> resourceId;
   /// The indicator of whether the hint is a hard or soft requirement during scheduling.
-  final pulumi.Input<String> schedulingExecution;
+  final pulumi.Input<dynamic> schedulingExecution;
   /// The scope for the virtual machine affinity or anti-affinity placement hint. It should always be "Machine" in the case of node affinity.
-  final pulumi.Input<String> scope;
+  final pulumi.Input<dynamic> scope;
 
   /// Creates a new [VirtualMachinePlacementHint].
   /// [hintType] The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
@@ -35,10 +35,10 @@ class VirtualMachinePlacementHint {
 
   factory VirtualMachinePlacementHint.fromMap(Map<String, dynamic> map) {
     return VirtualMachinePlacementHint(
-      hintType: pulumi.Input.fromValue(map['hintType'] as String),
+      hintType: pulumi.Input.fromValue(map['hintType']),
       resourceId: pulumi.Input.fromValue(map['resourceId'] as String),
-      schedulingExecution: pulumi.Input.fromValue(map['schedulingExecution'] as String),
-      scope: pulumi.Input.fromValue(map['scope'] as String),
+      schedulingExecution: pulumi.Input.fromValue(map['schedulingExecution']),
+      scope: pulumi.Input.fromValue(map['scope']),
     );
   }
 }

@@ -9,25 +9,25 @@ class GetDelegatedSubnetServiceDetailsResult {
   /// Delegated subnet's prefix size should be smaller than this by a minimum of 3.
   final int? allocationBlockPrefixSize;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Properties of the controller.
   final ControllerDetailsResponse? controllerDetails;
   /// An identifier that represents the resource.
-  final String id;
+  final String? id;
   /// Location of the resource.
   final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The current state of dnc delegated subnet resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Resource guid.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// subnet details
   final SubnetDetailsResponse? subnetDetails;
   /// The resource tags.
   final Map<String, String>? tags;
   /// The type of resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDelegatedSubnetServiceDetailsResult].
   /// [allocationBlockPrefixSize] Defines prefix size of CIDR blocks allocated to nodes in VnetBlock Mode.
@@ -43,47 +43,47 @@ class GetDelegatedSubnetServiceDetailsResult {
   /// [type] The type of resource.
   const GetDelegatedSubnetServiceDetailsResult({
     this.allocationBlockPrefixSize,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.controllerDetails,
-    required this.id,
+    this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceGuid,
+    this.name,
+    this.provisioningState,
+    this.resourceGuid,
     this.subnetDetails,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allocationBlockPrefixSize': ?allocationBlockPrefixSize,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'controllerDetails': ?controllerDetails?.toMap(),
-      'id': id,
+      'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
       'subnetDetails': ?subnetDetails?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDelegatedSubnetServiceDetailsResult.fromMap(Map<String, dynamic> map) {
     return GetDelegatedSubnetServiceDetailsResult(
-      allocationBlockPrefixSize: (() { final guardedValue = map['allocationBlockPrefixSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      allocationBlockPrefixSize: (() { final guardedValue = map['allocationBlockPrefixSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       controllerDetails: (() { final guardedValue = map['controllerDetails']; if (guardedValue == null) return null; return ControllerDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subnetDetails: (() { final guardedValue = map['subnetDetails']; if (guardedValue == null) return null; return SubnetDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

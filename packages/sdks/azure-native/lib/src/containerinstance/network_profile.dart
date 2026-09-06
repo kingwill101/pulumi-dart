@@ -7,9 +7,9 @@ import 'load_balancer.dart';
 /// A network profile for network settings of a ContainerGroupProfile. Used to manage load balancer and application gateway backend pools, specifically updating the IP addresses of CGs within the backend pool.
 class NetworkProfile {
   /// Application Gateway the CG profile will use to interact with CGs in a backend pool
-  final pulumi.Input<ApplicationGateway>? applicationGateway;
+  final pulumi.Input<ApplicationGateway?>? applicationGateway;
   /// LoadBalancer the CG profile will use to interact with CGs in a backend pool
-  final pulumi.Input<LoadBalancer>? loadBalancer;
+  final pulumi.Input<LoadBalancer?>? loadBalancer;
 
   /// Creates a new [NetworkProfile].
   /// [applicationGateway] Application Gateway the CG profile will use to interact with CGs in a backend pool

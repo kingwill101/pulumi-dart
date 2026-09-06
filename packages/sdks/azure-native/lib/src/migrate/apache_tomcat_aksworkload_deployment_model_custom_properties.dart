@@ -6,7 +6,7 @@ import 'apache_tomcat_aksworkload_deployment.dart';
 /// ApacheTomcat workload instance model custom properties.
 class ApacheTomcatAKSWorkloadDeploymentModelCustomProperties {
   /// ApacheTomcat web application.
-  final pulumi.Input<ApacheTomcatAKSWorkloadDeployment>? apacheTomcatAksWorkloadDeploymentProperties;
+  final pulumi.Input<ApacheTomcatAKSWorkloadDeployment?>? apacheTomcatAksWorkloadDeploymentProperties;
   /// Gets or sets the instance type.
   /// Expected value is 'ApacheTomcatAKSWorkloadDeploymentModelCustomProperties'.
   final pulumi.Input<String> instanceType;

@@ -32,6 +32,17 @@ Future<GetAccessPolicyResult> getAccessPolicy(
   return GetAccessPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
+  GetAccessPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getAccessPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessPolicyResult.fromMap);
+}
+
 /// Gets the event source with the specified name in the specified environment.
 ///
 /// Uses Azure REST API version 2020-05-15.
@@ -48,6 +59,17 @@ Future<GetEventHubEventSourceResult> getEventHubEventSource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventHubEventSourceResult.fromMap(result);
+}
+
+pulumi.Output<GetEventHubEventSourceResult> getEventHubEventSourceOutput(
+  GetEventHubEventSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getEventHubEventSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubEventSourceResult.fromMap);
 }
 
 /// Gets the environment with the specified name in the specified subscription and resource group.
@@ -68,6 +90,17 @@ Future<GetGen1EnvironmentResult> getGen1Environment(
   return GetGen1EnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetGen1EnvironmentResult> getGen1EnvironmentOutput(
+  GetGen1EnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getGen1Environment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGen1EnvironmentResult.fromMap);
+}
+
 /// Gets the environment with the specified name in the specified subscription and resource group.
 ///
 /// Uses Azure REST API version 2020-05-15.
@@ -84,6 +117,17 @@ Future<GetGen2EnvironmentResult> getGen2Environment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGen2EnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetGen2EnvironmentResult> getGen2EnvironmentOutput(
+  GetGen2EnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getGen2Environment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGen2EnvironmentResult.fromMap);
 }
 
 /// Gets the event source with the specified name in the specified environment.
@@ -104,6 +148,17 @@ Future<GetIoTHubEventSourceResult> getIoTHubEventSource(
   return GetIoTHubEventSourceResult.fromMap(result);
 }
 
+pulumi.Output<GetIoTHubEventSourceResult> getIoTHubEventSourceOutput(
+  GetIoTHubEventSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getIoTHubEventSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIoTHubEventSourceResult.fromMap);
+}
+
 /// Gets the reference data set with the specified name in the specified environment.
 ///
 /// Uses Azure REST API version 2020-05-15.
@@ -122,4 +177,15 @@ Future<GetReferenceDataSetResult> getReferenceDataSet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReferenceDataSetResult.fromMap(result);
+}
+
+pulumi.Output<GetReferenceDataSetResult> getReferenceDataSetOutput(
+  GetReferenceDataSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:timeseriesinsights:getReferenceDataSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReferenceDataSetResult.fromMap);
 }

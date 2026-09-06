@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The current state of a private endpoint connection
 class PrivateLinkServiceConnectionState {
   /// Actions required for a private endpoint connection
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// The description for the current state of a private endpoint connection
   final pulumi.Input<String> description;
   /// The status of a private endpoint connection
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
 
   /// Creates a new [PrivateLinkServiceConnectionState].
   /// [actionsRequired] Actions required for a private endpoint connection
@@ -33,7 +33,7 @@ class PrivateLinkServiceConnectionState {
     return PrivateLinkServiceConnectionState(
       actionsRequired: (() { final guardedValue = map['actionsRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: pulumi.Input.fromValue(map['description'] as String),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
     );
   }
 }

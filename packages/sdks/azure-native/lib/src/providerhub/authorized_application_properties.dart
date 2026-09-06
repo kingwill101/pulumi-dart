@@ -6,8 +6,8 @@ import 'application_provider_authorization.dart';
 
 class AuthorizedApplicationProperties {
   /// The authorizations that determine the level of data access permissions on the specified resource types.
-  final pulumi.Input<List<ApplicationDataAuthorization>>? dataAuthorizations;
-  final pulumi.Input<ApplicationProviderAuthorization>? providerAuthorization;
+  final pulumi.Input<List<ApplicationDataAuthorization>?>? dataAuthorizations;
+  final pulumi.Input<ApplicationProviderAuthorization?>? providerAuthorization;
 
   /// Creates a new [AuthorizedApplicationProperties].
   /// [dataAuthorizations] The authorizations that determine the level of data access permissions on the specified resource types.

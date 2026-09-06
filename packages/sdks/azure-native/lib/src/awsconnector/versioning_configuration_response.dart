@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of VersioningConfiguration
 class VersioningConfigurationResponse {
   /// The versioning state of the bucket.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [VersioningConfigurationResponse].
   /// [status] The versioning state of the bucket.
-  const VersioningConfigurationResponse({
-    this.status,
-  });
+  VersioningConfigurationResponse({
+    pulumi.Input<String?>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Suspended');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

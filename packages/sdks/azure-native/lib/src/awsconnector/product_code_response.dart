@@ -6,9 +6,9 @@ import 'product_code_values_enum_value_response.dart';
 /// Definition of ProductCode
 class ProductCodeResponse {
   /// &lt;p&gt;The product code.&lt;/p&gt;
-  final pulumi.Input<String>? productCodeId;
+  final pulumi.Input<String?>? productCodeId;
   /// &lt;p&gt;The type of product code.&lt;/p&gt;
-  final pulumi.Input<ProductCodeValuesEnumValueResponse>? productCodeType;
+  final pulumi.Input<ProductCodeValuesEnumValueResponse?>? productCodeType;
 
   /// Creates a new [ProductCodeResponse].
   /// [productCodeId] &lt;p&gt;The product code.&lt;/p&gt;

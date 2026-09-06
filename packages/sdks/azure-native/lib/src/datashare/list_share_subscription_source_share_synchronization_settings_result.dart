@@ -8,27 +8,27 @@ class ListShareSubscriptionSourceShareSynchronizationSettingsResult {
   /// The Url of next result page.
   final String? nextLink;
   /// Collection of items of type DataTransferObjects.
-  final List<ScheduledSourceSynchronizationSettingResponse> value;
+  final List<ScheduledSourceSynchronizationSettingResponse>? value;
 
   /// Creates a new [ListShareSubscriptionSourceShareSynchronizationSettingsResult].
   /// [nextLink] The Url of next result page.
   /// [value] Collection of items of type DataTransferObjects.
   const ListShareSubscriptionSourceShareSynchronizationSettingsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ScheduledSourceSynchronizationSettingResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ScheduledSourceSynchronizationSettingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListShareSubscriptionSourceShareSynchronizationSettingsResult.fromMap(Map<String, dynamic> map) {
     return ListShareSubscriptionSourceShareSynchronizationSettingsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<ScheduledSourceSynchronizationSettingResponse>(map['value']!, (value) => ScheduledSourceSynchronizationSettingResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledSourceSynchronizationSettingResponse>(guardedValue, (value) => ScheduledSourceSynchronizationSettingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A piece of evidence supporting the compliance state set in the attestation.
 class AttestationEvidenceResponse {
   /// The description for this piece of evidence.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The URI location of the evidence.
-  final pulumi.Input<String>? sourceUri;
+  final pulumi.Input<String?>? sourceUri;
 
   /// Creates a new [AttestationEvidenceResponse].
   /// [description] The description for this piece of evidence.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data connector kind
-enum DataConnectorKind {
+enum DataConnectorKind implements pulumi.PulumiEnum<String> {
   valueAzureActiveDirectory("AzureActiveDirectory"),
   valueAzureSecurityCenter("AzureSecurityCenter"),
   valueMicrosoftCloudAppSecurity("MicrosoftCloudAppSecurity"),
@@ -13,6 +15,7 @@ enum DataConnectorKind {
   valueRestApiPoller("RestApiPoller");
 
   const DataConnectorKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DataConnectorKind fromValue(String value) {

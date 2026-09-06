@@ -9,13 +9,13 @@ import 'with_mobo_broker_resources_response.dart';
 /// Workspace properties
 class WorkspacePropertiesResponse {
   /// Agent Subnet ID for agent resources.
-  final pulumi.Input<String>? agentSubnetId;
+  final pulumi.Input<String?>? agentSubnetId;
   /// Whether or not to use a customer managed key when encrypting data at rest
-  final pulumi.Input<String>? customerManagedKeys;
+  final pulumi.Input<String?>? customerManagedKeys;
   /// The key to use for encrypting data at rest when customer managed keys are enabled.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
   /// The Log Analytics Cluster to use for debug logs. This is required when Customer Managed Keys are enabled.
-  final pulumi.Input<String>? logAnalyticsClusterId;
+  final pulumi.Input<String?>? logAnalyticsClusterId;
   /// Managed-On-Behalf-Of configuration properties. This configuration exists for the resources where a resource provider manages those resources on behalf of the resource owner.
   final pulumi.Input<WithMoboBrokerResourcesResponse> managedOnBehalfOfConfiguration;
   /// The resource group for resources managed on behalf of customer.
@@ -23,19 +23,19 @@ class WorkspacePropertiesResponse {
   /// List of private endpoint connections.
   final pulumi.Input<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Private Endpoint Subnet ID for private endpoint connections.
-  final pulumi.Input<String>? privateEndpointSubnetId;
+  final pulumi.Input<String?>? privateEndpointSubnetId;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Whether or not public network access is allowed for this resource. For security reasons, it is recommended to disable it whenever possible.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// List of linked SuperComputers.
-  final pulumi.Input<List<String>>? supercomputerIds;
+  final pulumi.Input<List<String>?>? supercomputerIds;
   /// workspace API endpoint Uri.
   final pulumi.Input<String> workspaceApiUri;
   /// Identity IDs used for leveraging Workspace resources.
   final pulumi.Input<IdentityResponse> workspaceIdentity;
   /// Function Subnet ID for workspace resources.
-  final pulumi.Input<String>? workspaceSubnetId;
+  final pulumi.Input<String?>? workspaceSubnetId;
   /// workspace User Interface Uri.
   final pulumi.Input<String> workspaceUiUri;
 

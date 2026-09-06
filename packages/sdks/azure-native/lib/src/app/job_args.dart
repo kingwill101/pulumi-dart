@@ -12,25 +12,25 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_app_job_args_doc}
 class JobArgs {
   /// Container Apps Job configuration properties.
-  final pulumi.Input<JobConfiguration>? configuration;
+  final pulumi.Input<JobConfiguration?>? configuration;
   /// Resource ID of environment.
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// The complex type of the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Managed identities needed by a container app job to interact with other Azure services to not maintain any secrets or credentials in code.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Job Name
-  final pulumi.Input<String>? jobName;
+  final pulumi.Input<String?>? jobName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Container Apps job definition.
-  final pulumi.Input<JobTemplate>? template;
+  final pulumi.Input<JobTemplate?>? template;
   /// Workload profile name to pin for container apps job execution.
-  final pulumi.Input<String>? workloadProfileName;
+  final pulumi.Input<String?>? workloadProfileName;
 
   /// Creates a new [JobArgs].
   /// [configuration] Container Apps Job configuration properties.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the data transfer.
-enum TransferType {
+enum TransferType implements pulumi.PulumiEnum<String> {
   valueImportToAzure("ImportToAzure"),
   valueExportFromAzure("ExportFromAzure");
 
   const TransferType(this.wireValue);
+  @override
   final String wireValue;
 
   static TransferType fromValue(String value) {

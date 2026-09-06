@@ -8,17 +8,17 @@ import 'tcpflag_field.dart';
 /// Definition of MatchAttributes
 class MatchAttributes {
   /// Property destinationPorts
-  final pulumi.Input<List<PortRange>>? destinationPorts;
+  final pulumi.Input<List<PortRange>?>? destinationPorts;
   /// Property destinations
-  final pulumi.Input<List<Address>>? destinations;
+  final pulumi.Input<List<Address>?>? destinations;
   /// Property protocols
-  final pulumi.Input<List<int>>? protocols;
+  final pulumi.Input<List<int>?>? protocols;
   /// Property sourcePorts
-  final pulumi.Input<List<PortRange>>? sourcePorts;
+  final pulumi.Input<List<PortRange>?>? sourcePorts;
   /// Property sources
-  final pulumi.Input<List<Address>>? sources;
+  final pulumi.Input<List<Address>?>? sources;
   /// Property tcpFlags
-  final pulumi.Input<List<TCPFlagField>>? tcpFlags;
+  final pulumi.Input<List<TCPFlagField>?>? tcpFlags;
 
   /// Creates a new [MatchAttributes].
   /// [destinationPorts] Property destinationPorts

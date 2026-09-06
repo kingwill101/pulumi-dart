@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Private link service connection details.
 class PrivateLinkServiceConnectionResponse {
   /// List of group IDs.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// Private link service connection name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Request message.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
 
   /// Creates a new [PrivateLinkServiceConnectionResponse].
   /// [groupIds] List of group IDs.

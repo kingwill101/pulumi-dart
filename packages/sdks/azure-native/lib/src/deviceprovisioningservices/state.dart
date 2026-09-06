@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Current state of the provisioning service.
-enum State {
+enum State implements pulumi.PulumiEnum<String> {
   valueActivating("Activating"),
   valueActive("Active"),
   valueDeleting("Deleting"),
@@ -14,6 +16,7 @@ enum State {
   valueFailoverFailed("FailoverFailed");
 
   const State(this.wireValue);
+  @override
   final String wireValue;
 
   static State fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Extended Location.
 class ExtendedLocation {
   /// Name of extended location.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ExtendedLocation].
   /// [name] Name of extended location.

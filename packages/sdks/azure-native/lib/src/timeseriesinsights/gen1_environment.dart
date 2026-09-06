@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_status_response.dart';
 import 'gen1_environment_args.dart';
 import 'sku_response.dart';
+import 'time_series_id_property_response.dart';
 
 /// An environment is a set of time-series data available for query, and is the top level Azure Time Series Insights resource. Gen1 environments have data retention limits.
 ///
@@ -244,7 +245,7 @@ class Gen1Environment extends pulumi.CustomResource {
   /// Resource name
   late final pulumi.Output<String> name;
   /// The list of event properties which will be used to partition data in the environment. Currently, only a single partition key property is supported.
-  late final pulumi.Output<List<Map<String, dynamic>>?> partitionKeyProperties;
+  late final pulumi.Output<List<TimeSeriesIdPropertyResponse>?> partitionKeyProperties;
   /// Provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// The sku determines the type of environment, either Gen1 (S1 or S2) or Gen2 (L1). For Gen1 environments the sku determines the capacity of the environment, the ingress rate, and the billing rate.
@@ -280,12 +281,38 @@ class Gen1Environment extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    partitionKeyProperties = registerOutput<List<Map<String, dynamic>>?>('partitionKeyProperties');
+    partitionKeyProperties = registerOutput<List<TimeSeriesIdPropertyResponse>?>('partitionKeyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(guardedValue, (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<EnvironmentStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     storageLimitExceededBehavior = registerOutput<String?>('storageLimitExceededBehavior');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Gen1Environment] resource.
+  Gen1Environment.reference(String urn)
+    : super(
+        'azure-native:timeseriesinsights:Gen1Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String>('creationTime');
+    dataAccessFqdn = registerOutput<String>('dataAccessFqdn');
+    dataAccessId = registerOutput<String>('dataAccessId');
+    dataRetentionTime = registerOutput<String>('dataRetentionTime');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partitionKeyProperties = registerOutput<List<TimeSeriesIdPropertyResponse>?>('partitionKeyProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeSeriesIdPropertyResponse>(guardedValue, (value) => TimeSeriesIdPropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<EnvironmentStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    storageLimitExceededBehavior = registerOutput<String?>('storageLimitExceededBehavior');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

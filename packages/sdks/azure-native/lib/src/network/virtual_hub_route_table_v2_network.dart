@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'virtual_hub_route_table_v2_args.dart';
+import 'virtual_hub_route_v2_response.dart';
 
 /// VirtualHubRouteTableV2 Resource.
 ///
@@ -302,7 +303,7 @@ class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
   /// The provisioning state of the virtual hub route table v2 resource.
   late final pulumi.Output<String> provisioningState;
   /// List of all routes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<VirtualHubRouteV2Response>?> routes;
 
   /// Creates a new [VirtualHubRouteTableV2Network].
   /// [name] The Pulumi resource name.
@@ -318,11 +319,28 @@ class VirtualHubRouteTableV2Network extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    attachedConnections = registerOutput<List<String>?>('attachedConnections');
+    attachedConnections = registerOutput<List<String>?>('attachedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<VirtualHubRouteV2Response>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRouteV2Response>(guardedValue, (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualHubRouteTableV2Network] resource.
+  VirtualHubRouteTableV2Network.reference(String urn)
+    : super(
+        'azure-native:network:VirtualHubRouteTableV2',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attachedConnections = registerOutput<List<String>?>('attachedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<VirtualHubRouteV2Response>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualHubRouteV2Response>(guardedValue, (value) => VirtualHubRouteV2Response.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

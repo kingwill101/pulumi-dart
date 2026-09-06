@@ -6,9 +6,9 @@ import 'logical_network_arm_reference.dart';
 /// InterfaceIPConfigurationPropertiesFormat properties of IP configuration.
 class IPConfigurationProperties {
   /// PrivateIPAddress - Private IP address of the IP configuration.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// Subnet - Name of Subnet bound to the IP configuration.
-  final pulumi.Input<LogicalNetworkArmReference>? subnet;
+  final pulumi.Input<LogicalNetworkArmReference?>? subnet;
 
   /// Creates a new [IPConfigurationProperties].
   /// [privateIPAddress] PrivateIPAddress - Private IP address of the IP configuration.

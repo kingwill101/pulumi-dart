@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Family of an application gateway SKU.
-enum ApplicationGatewaySkuFamily {
+enum ApplicationGatewaySkuFamily implements pulumi.PulumiEnum<String> {
   valueGeneration1("Generation_1"),
   valueGeneration2("Generation_2");
 
   const ApplicationGatewaySkuFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewaySkuFamily fromValue(String value) {

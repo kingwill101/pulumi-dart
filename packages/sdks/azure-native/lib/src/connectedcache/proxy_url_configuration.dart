@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// ProxyUrl configuration of cache node
 class ProxyUrlConfiguration {
   /// Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80
-  final pulumi.Input<String>? proxyUrl;
+  final pulumi.Input<String?>? proxyUrl;
 
   /// Creates a new [ProxyUrlConfiguration].
   /// [proxyUrl] Host Proxy Address configuration along with port number. This can be a proxy or ip address. ex: xx.xx.xx.xxxx:80 or host name http://exampleproxy.com:80

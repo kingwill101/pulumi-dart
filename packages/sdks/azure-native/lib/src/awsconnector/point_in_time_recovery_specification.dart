@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PointInTimeRecoverySpecification
 class PointInTimeRecoverySpecification {
   /// Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.
-  final pulumi.Input<bool>? pointInTimeRecoveryEnabled;
+  final pulumi.Input<bool?>? pointInTimeRecoveryEnabled;
 
   /// Creates a new [PointInTimeRecoverySpecification].
   /// [pointInTimeRecoveryEnabled] Indicates whether point in time recovery is enabled (true) or disabled (false) on the table.

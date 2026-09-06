@@ -36,6 +36,17 @@ Future<GetAuthenticationSettingResult> getAuthenticationSetting(
   return GetAuthenticationSettingResult.fromMap(result);
 }
 
+pulumi.Output<GetAuthenticationSettingResult> getAuthenticationSettingOutput(
+  GetAuthenticationSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getAuthenticationSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAuthenticationSettingResult.fromMap);
+}
+
 /// Get a DiscoveryRule
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -54,6 +65,17 @@ Future<GetDiscoveryRuleResult> getDiscoveryRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiscoveryRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetDiscoveryRuleResult> getDiscoveryRuleOutput(
+  GetDiscoveryRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getDiscoveryRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiscoveryRuleResult.fromMap);
 }
 
 /// Get a Entity
@@ -76,6 +98,17 @@ Future<GetEntityResult> getEntity(
   return GetEntityResult.fromMap(result);
 }
 
+pulumi.Output<GetEntityResult> getEntityOutput(
+  GetEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityResult.fromMap);
+}
+
 /// Retrieve the health state transition history for an entity
 ///
 /// Uses Azure REST API version 2026-01-01-preview.
@@ -94,6 +127,17 @@ Future<GetEntityHistoryResult> getEntityHistory(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEntityHistoryResult.fromMap(result);
+}
+
+pulumi.Output<GetEntityHistoryResult> getEntityHistoryOutput(
+  GetEntityHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getEntityHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityHistoryResult.fromMap);
 }
 
 /// Retrieve the time series history for a signal on an entity
@@ -116,6 +160,17 @@ Future<GetEntitySignalHistoryResult> getEntitySignalHistory(
   return GetEntitySignalHistoryResult.fromMap(result);
 }
 
+pulumi.Output<GetEntitySignalHistoryResult> getEntitySignalHistoryOutput(
+  GetEntitySignalHistoryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getEntitySignalHistory',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntitySignalHistoryResult.fromMap);
+}
+
 /// Get a HealthModel
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -134,6 +189,17 @@ Future<GetHealthModelResult> getHealthModel(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHealthModelResult.fromMap(result);
+}
+
+pulumi.Output<GetHealthModelResult> getHealthModelOutput(
+  GetHealthModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getHealthModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthModelResult.fromMap);
 }
 
 /// Get a Relationship
@@ -156,6 +222,17 @@ Future<GetRelationshipResult> getRelationship(
   return GetRelationshipResult.fromMap(result);
 }
 
+pulumi.Output<GetRelationshipResult> getRelationshipOutput(
+  GetRelationshipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getRelationship',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRelationshipResult.fromMap);
+}
+
 /// Get a SignalDefinition
 ///
 /// Uses Azure REST API version 2025-05-01-preview.
@@ -174,4 +251,15 @@ Future<GetSignalDefinitionResult> getSignalDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSignalDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetSignalDefinitionResult> getSignalDefinitionOutput(
+  GetSignalDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:cloudhealth:getSignalDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSignalDefinitionResult.fromMap);
 }

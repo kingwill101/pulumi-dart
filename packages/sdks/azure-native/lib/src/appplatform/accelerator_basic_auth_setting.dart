@@ -8,9 +8,9 @@ class AcceleratorBasicAuthSetting {
   /// Expected value is 'BasicAuth'.
   final pulumi.Input<String> authType;
   /// Resource Id of CA certificate for https URL of Git repository.
-  final pulumi.Input<String>? caCertResourceId;
+  final pulumi.Input<String?>? caCertResourceId;
   /// Password of git repository basic auth.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username of git repository basic auth.
   final pulumi.Input<String> username;
 

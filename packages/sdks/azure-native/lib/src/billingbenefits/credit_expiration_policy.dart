@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Expiration policy of the Credit
-enum CreditExpirationPolicy {
+enum CreditExpirationPolicy implements pulumi.PulumiEnum<String> {
   none("None"),
   suspendBillingProfile("SuspendBillingProfile");
 
   const CreditExpirationPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static CreditExpirationPolicy fromValue(String value) {

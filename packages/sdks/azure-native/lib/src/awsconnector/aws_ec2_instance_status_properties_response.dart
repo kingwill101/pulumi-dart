@@ -8,19 +8,19 @@ import 'instance_status_summary_response.dart';
 /// Definition of awsEc2InstanceStatus
 class AwsEc2InstanceStatusPropertiesResponse {
   /// &lt;p&gt;The Availability Zone of the instance.&lt;/p&gt;
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// &lt;p&gt;Any scheduled events associated with the instance.&lt;/p&gt;
-  final pulumi.Input<List<InstanceStatusEventResponse>>? events;
+  final pulumi.Input<List<InstanceStatusEventResponse>?>? events;
   /// &lt;p&gt;The ID of the instance.&lt;/p&gt;
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// &lt;p&gt;The intended state of the instance. &lt;a&gt;DescribeInstanceStatus&lt;/a&gt; requires that an instance be in the &lt;code&gt;running&lt;/code&gt; state.&lt;/p&gt;
-  final pulumi.Input<InstanceStateResponse>? instanceState;
+  final pulumi.Input<InstanceStateResponse?>? instanceState;
   /// &lt;p&gt;Reports impaired functionality that stems from issues internal to the instance, such as impaired reachability.&lt;/p&gt;
-  final pulumi.Input<InstanceStatusSummaryResponse>? instanceStatus;
+  final pulumi.Input<InstanceStatusSummaryResponse?>? instanceStatus;
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the Outpost.&lt;/p&gt;
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? outpostArn;
   /// &lt;p&gt;Reports impaired functionality that stems from issues related to the systems that support an instance, such as hardware failures and network connectivity problems.&lt;/p&gt;
-  final pulumi.Input<InstanceStatusSummaryResponse>? systemStatus;
+  final pulumi.Input<InstanceStatusSummaryResponse?>? systemStatus;
 
   /// Creates a new [AwsEc2InstanceStatusPropertiesResponse].
   /// [availabilityZone] &lt;p&gt;The Availability Zone of the instance.&lt;/p&gt;

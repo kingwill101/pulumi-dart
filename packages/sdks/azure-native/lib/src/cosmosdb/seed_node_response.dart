@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SeedNodeResponse {
   /// IP address of this seed node.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
 
   /// Creates a new [SeedNodeResponse].
   /// [ipAddress] IP address of this seed node.

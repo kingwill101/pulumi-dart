@@ -6,7 +6,7 @@ import 'azure_arc_kubernetes_helm_application.dart';
 /// Azure Arc kubernetes network function template.
 class AzureArcKubernetesNetworkFunctionTemplate {
   /// Network function applications.
-  final pulumi.Input<List<AzureArcKubernetesHelmApplication>>? networkFunctionApplications;
+  final pulumi.Input<List<AzureArcKubernetesHelmApplication>?>? networkFunctionApplications;
   /// The network function type.
   /// Expected value is 'AzureArcKubernetes'.
   final pulumi.Input<String> nfviType;

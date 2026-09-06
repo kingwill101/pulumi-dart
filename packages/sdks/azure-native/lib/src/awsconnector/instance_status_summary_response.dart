@@ -7,9 +7,9 @@ import 'summary_status_enum_value_response.dart';
 /// Definition of InstanceStatusSummary
 class InstanceStatusSummaryResponse {
   /// &lt;p&gt;The system instance health or application instance health.&lt;/p&gt;
-  final pulumi.Input<List<InstanceStatusDetailsResponse>>? details;
+  final pulumi.Input<List<InstanceStatusDetailsResponse>?>? details;
   /// &lt;p&gt;The status.&lt;/p&gt;
-  final pulumi.Input<SummaryStatusEnumValueResponse>? status;
+  final pulumi.Input<SummaryStatusEnumValueResponse?>? status;
 
   /// Creates a new [InstanceStatusSummaryResponse].
   /// [details] &lt;p&gt;The system instance health or application instance health.&lt;/p&gt;

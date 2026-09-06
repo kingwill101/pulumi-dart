@@ -12,9 +12,9 @@ class PrivateEndpointConnectionResponse {
   /// The name of the resource.
   final pulumi.Input<String> name;
   /// The resource of private endpoint.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The provisioning state of private endpoint connection resource.
   final pulumi.Input<String> provisioningState;
   /// Metadata pertaining to creation and last modification of the resource.

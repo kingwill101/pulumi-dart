@@ -7,11 +7,11 @@ class NodePoolPropertiesResponse {
   /// The maximum number of nodes.
   final pulumi.Input<int> maxNodeCount;
   /// The minimum number of nodes.
-  final pulumi.Input<int>? minNodeCount;
+  final pulumi.Input<int?>? minNodeCount;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
-  final pulumi.Input<String>? scaleSetPriority;
+  final pulumi.Input<String?>? scaleSetPriority;
   /// The node pool subnet.
   final pulumi.Input<String> subnetId;
   /// The size of the underlying Azure VM.
@@ -24,14 +24,14 @@ class NodePoolPropertiesResponse {
   /// [scaleSetPriority] The Virtual Machine Scale Set priority. If not specified, the default is 'Regular'.
   /// [subnetId] The node pool subnet.
   /// [vmSize] The size of the underlying Azure VM.
-  const NodePoolPropertiesResponse({
+  NodePoolPropertiesResponse({
     required this.maxNodeCount,
-    this.minNodeCount,
+    pulumi.Input<int?>? minNodeCount,
     required this.provisioningState,
-    this.scaleSetPriority,
+    pulumi.Input<String?>? scaleSetPriority,
     required this.subnetId,
     required this.vmSize,
-  });
+  }) : minNodeCount = minNodeCount ?? pulumi.Input.fromValue(0), scaleSetPriority = scaleSetPriority ?? pulumi.Input.fromValue('Regular');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -46,8 +46,8 @@ class NodePoolPropertiesResponse {
 
   factory NodePoolPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return NodePoolPropertiesResponse(
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       scaleSetPriority: (() { final guardedValue = map['scaleSetPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),

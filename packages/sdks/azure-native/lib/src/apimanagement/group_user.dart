@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'group_contract_properties_response.dart';
 import 'group_user_args.dart';
+import 'user_identity_contract_response.dart';
 
 /// User details.
 ///
@@ -163,9 +165,9 @@ class GroupUser extends pulumi.CustomResource {
   /// First name.
   late final pulumi.Output<String?> firstName;
   /// Collection of groups user is part of.
-  late final pulumi.Output<List<Map<String, dynamic>>> groups;
+  late final pulumi.Output<List<GroupContractPropertiesResponse>> groups;
   /// Collection of user identities.
-  late final pulumi.Output<List<Map<String, dynamic>>?> identities;
+  late final pulumi.Output<List<UserIdentityContractResponse>?> identities;
   /// Last name.
   late final pulumi.Output<String?> lastName;
   /// The name of the resource
@@ -196,8 +198,30 @@ class GroupUser extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     email = registerOutput<String?>('email');
     firstName = registerOutput<String?>('firstName');
-    groups = registerOutput<List<Map<String, dynamic>>>('groups');
-    identities = registerOutput<List<Map<String, dynamic>>?>('identities');
+    groups = registerOutput<List<GroupContractPropertiesResponse>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupContractPropertiesResponse>(guardedValue, (value) => GroupContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identities = registerOutput<List<UserIdentityContractResponse>?>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserIdentityContractResponse>(guardedValue, (value) => UserIdentityContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lastName = registerOutput<String?>('lastName');
+    this.name = registerOutput<String>('name');
+    note = registerOutput<String?>('note');
+    registrationDate = registerOutput<String?>('registrationDate');
+    state = registerOutput<String?>('state');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [GroupUser] resource.
+  GroupUser.reference(String urn)
+    : super(
+        'azure-native:apimanagement:GroupUser',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    email = registerOutput<String?>('email');
+    firstName = registerOutput<String?>('firstName');
+    groups = registerOutput<List<GroupContractPropertiesResponse>>('groups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GroupContractPropertiesResponse>(guardedValue, (value) => GroupContractPropertiesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identities = registerOutput<List<UserIdentityContractResponse>?>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserIdentityContractResponse>(guardedValue, (value) => UserIdentityContractResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lastName = registerOutput<String?>('lastName');
     this.name = registerOutput<String>('name');
     note = registerOutput<String?>('note');

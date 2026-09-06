@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property direction
-enum HeaderDirection {
+enum HeaderDirection implements pulumi.PulumiEnum<String> {
   aNY("ANY"),
   fORWARD("FORWARD");
 
   const HeaderDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static HeaderDirection fromValue(String value) {

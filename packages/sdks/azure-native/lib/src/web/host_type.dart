@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether the hostname is a standard or repository hostname.
-enum HostType {
+enum HostType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueRepository("Repository");
 
   const HostType(this.wireValue);
+  @override
   final String wireValue;
 
   static HostType fromValue(String value) {

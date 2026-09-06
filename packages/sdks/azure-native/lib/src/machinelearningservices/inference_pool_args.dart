@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'inference_pool_machinelearningservices.dart';
+import 'inference_pool.dart';
 import 'managed_service_identity.dart';
 import 'sku.dart';
 
@@ -11,21 +11,21 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_inference_pool_args_doc}
 class InferencePoolArgs {
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Name of InferencePool
-  final pulumi.Input<String>? inferencePoolName;
+  final pulumi.Input<String?>? inferencePoolName;
   /// [Required] Additional attributes of the entity.
-  final pulumi.Input<InferencePoolMachinelearningservices> inferencePoolProperties;
+  final pulumi.Input<InferencePool> inferencePoolProperties;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of Azure Machine Learning workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -55,7 +55,7 @@ class InferencePoolArgs {
     return <String, dynamic>{
       'identity': ?pulumi.Input.mapOptionalInputValue<ManagedServiceIdentity, Map<String, dynamic>>(identity, (value) => value.toMap()),
       'inferencePoolName': ?inferencePoolName,
-      'inferencePoolProperties': inferencePoolProperties,
+      'inferencePoolProperties': pulumi.Input.mapInputValue<InferencePool, Map<String, dynamic>>(inferencePoolProperties, (value) => value.toMap()),
       'kind': ?kind,
       'location': ?location,
       'resourceGroupName': resourceGroupName,
@@ -69,7 +69,7 @@ class InferencePoolArgs {
     return InferencePoolArgs(
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       inferencePoolName: (() { final guardedValue = map['inferencePoolName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      inferencePoolProperties: pulumi.Input.fromValue(map['inferencePoolProperties'] as InferencePoolMachinelearningservices),
+      inferencePoolProperties: pulumi.Input.fromValue(InferencePool.fromMap((map['inferencePoolProperties']! as Map).cast<String, dynamic>())),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

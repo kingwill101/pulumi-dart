@@ -10,7 +10,7 @@ class GetProfileResult {
   /// The list of allowed endpoint record types.
   final List<String>? allowedEndpointRecordTypes;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The DNS settings of the Traffic Manager profile.
   final DnsConfigResponse? dnsConfig;
   /// The list of endpoints in the Traffic Manager profile.
@@ -53,7 +53,7 @@ class GetProfileResult {
   /// [type] The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
   const GetProfileResult({
     this.allowedEndpointRecordTypes,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.dnsConfig,
     this.endpoints,
     this.id,
@@ -71,7 +71,7 @@ class GetProfileResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedEndpointRecordTypes': ?allowedEndpointRecordTypes,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'dnsConfig': ?dnsConfig?.toMap(),
       'endpoints': ?(() { final guardedValue = endpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<EndpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'id': ?id,
@@ -90,12 +90,12 @@ class GetProfileResult {
   factory GetProfileResult.fromMap(Map<String, dynamic> map) {
     return GetProfileResult(
       allowedEndpointRecordTypes: (() { final guardedValue = map['allowedEndpointRecordTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsConfig: (() { final guardedValue = map['dnsConfig']; if (guardedValue == null) return null; return DnsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponse>(guardedValue, (value) => EndpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       monitorConfig: (() { final guardedValue = map['monitorConfig']; if (guardedValue == null) return null; return MonitorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a desired runtime component.
 class ComponentProperties {
   /// Component dependencies.
-  final pulumi.Input<List<String>>? dependencies;
+  final pulumi.Input<List<String>?>? dependencies;
   /// Name of the component.
   final pulumi.Input<String> name;
   /// Properties of the component.

@@ -529,7 +529,48 @@ class ScalingPlanPersonalSchedule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    daysOfWeek = registerOutput<List<String>?>('daysOfWeek');
+    daysOfWeek = registerOutput<List<String>?>('daysOfWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    offPeakActionOnDisconnect = registerOutput<String?>('offPeakActionOnDisconnect');
+    offPeakActionOnLogoff = registerOutput<String?>('offPeakActionOnLogoff');
+    offPeakMinutesToWaitOnDisconnect = registerOutput<int?>('offPeakMinutesToWaitOnDisconnect');
+    offPeakMinutesToWaitOnLogoff = registerOutput<int?>('offPeakMinutesToWaitOnLogoff');
+    offPeakStartTime = registerOutput<TimeResponse?>('offPeakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    offPeakStartVMOnConnect = registerOutput<String?>('offPeakStartVMOnConnect');
+    peakActionOnDisconnect = registerOutput<String?>('peakActionOnDisconnect');
+    peakActionOnLogoff = registerOutput<String?>('peakActionOnLogoff');
+    peakMinutesToWaitOnDisconnect = registerOutput<int?>('peakMinutesToWaitOnDisconnect');
+    peakMinutesToWaitOnLogoff = registerOutput<int?>('peakMinutesToWaitOnLogoff');
+    peakStartTime = registerOutput<TimeResponse?>('peakStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    peakStartVMOnConnect = registerOutput<String?>('peakStartVMOnConnect');
+    rampDownActionOnDisconnect = registerOutput<String?>('rampDownActionOnDisconnect');
+    rampDownActionOnLogoff = registerOutput<String?>('rampDownActionOnLogoff');
+    rampDownMinutesToWaitOnDisconnect = registerOutput<int?>('rampDownMinutesToWaitOnDisconnect');
+    rampDownMinutesToWaitOnLogoff = registerOutput<int?>('rampDownMinutesToWaitOnLogoff');
+    rampDownStartTime = registerOutput<TimeResponse?>('rampDownStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampDownStartVMOnConnect = registerOutput<String?>('rampDownStartVMOnConnect');
+    rampUpActionOnDisconnect = registerOutput<String?>('rampUpActionOnDisconnect');
+    rampUpActionOnLogoff = registerOutput<String?>('rampUpActionOnLogoff');
+    rampUpAutoStartHosts = registerOutput<String?>('rampUpAutoStartHosts');
+    rampUpMinutesToWaitOnDisconnect = registerOutput<int?>('rampUpMinutesToWaitOnDisconnect');
+    rampUpMinutesToWaitOnLogoff = registerOutput<int?>('rampUpMinutesToWaitOnLogoff');
+    rampUpStartTime = registerOutput<TimeResponse?>('rampUpStartTime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rampUpStartVMOnConnect = registerOutput<String?>('rampUpStartVMOnConnect');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ScalingPlanPersonalSchedule] resource.
+  ScalingPlanPersonalSchedule.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:ScalingPlanPersonalSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    daysOfWeek = registerOutput<List<String>?>('daysOfWeek', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     offPeakActionOnDisconnect = registerOutput<String?>('offPeakActionOnDisconnect');
     offPeakActionOnLogoff = registerOutput<String?>('offPeakActionOnLogoff');

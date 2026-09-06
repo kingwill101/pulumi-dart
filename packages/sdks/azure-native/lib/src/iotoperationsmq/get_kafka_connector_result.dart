@@ -10,37 +10,37 @@ import 'system_data_response.dart';
 /// Result data returned by getKafkaConnector.
 class GetKafkaConnectorResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The client id prefix of the dynamically generated client ids.
   final String? clientIdPrefix;
   /// Extended Location
-  final ExtendedLocationPropertyResponse extendedLocation;
+  final ExtendedLocationPropertyResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The details of KafkaConnector Docker Image.
   final ContainerImageResponse? image;
   /// The number of KafkaConnector pods to spin up.
   final int? instances;
   /// The details for connecting with Remote Kafka Broker.
-  final KafkaRemoteBrokerConnectionSpecResponse kafkaConnection;
+  final KafkaRemoteBrokerConnectionSpecResponse? kafkaConnection;
   /// The details for connecting with Local Broker.
   final LocalBrokerConnectionSpecResponse? localBrokerConnection;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The log level of the Bridge Connector instances.
   final String? logLevel;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The Node Tolerations for the Bridge Connector pods.
   final NodeTolerationsResponse? nodeTolerations;
   /// The status of the last operation.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKafkaConnectorResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -59,64 +59,64 @@ class GetKafkaConnectorResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  const GetKafkaConnectorResult({
-    required this.azureApiVersion,
+  GetKafkaConnectorResult({
+    this.azureApiVersion,
     this.clientIdPrefix,
-    required this.extendedLocation,
-    required this.id,
+    this.extendedLocation,
+    this.id,
     this.image,
     this.instances,
-    required this.kafkaConnection,
+    this.kafkaConnection,
     this.localBrokerConnection,
-    required this.location,
-    this.logLevel,
-    required this.name,
+    this.location,
+    String? logLevel,
+    this.name,
     this.nodeTolerations,
-    required this.provisioningState,
-    required this.systemData,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-  });
+    this.type,
+  }) : logLevel = logLevel ?? 'info';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clientIdPrefix': ?clientIdPrefix,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
       'image': ?image?.toMap(),
       'instances': ?instances,
-      'kafkaConnection': kafkaConnection.toMap(),
+      'kafkaConnection': ?kafkaConnection?.toMap(),
       'localBrokerConnection': ?localBrokerConnection?.toMap(),
-      'location': location,
+      'location': ?location,
       'logLevel': ?logLevel,
-      'name': name,
+      'name': ?name,
       'nodeTolerations': ?nodeTolerations?.toMap(),
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetKafkaConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetKafkaConnectorResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientIdPrefix: (() { final guardedValue = map['clientIdPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      extendedLocation: ExtendedLocationPropertyResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      kafkaConnection: KafkaRemoteBrokerConnectionSpecResponse.fromMap((map['kafkaConnection']! as Map).cast<String, dynamic>()),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      kafkaConnection: (() { final guardedValue = map['kafkaConnection']; if (guardedValue == null) return null; return KafkaRemoteBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       localBrokerConnection: (() { final guardedValue = map['localBrokerConnection']; if (guardedValue == null) return null; return LocalBrokerConnectionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logLevel: (() { final guardedValue = map['logLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeTolerations: (() { final guardedValue = map['nodeTolerations']; if (guardedValue == null) return null; return NodeTolerationsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

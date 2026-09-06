@@ -12,25 +12,25 @@ import 'service_principal.dart';
 /// {@macro pulumi_securityinsights_source_control_args_doc}
 class SourceControlArgs {
   /// Array of source control content types.
-  final pulumi.Input<List<String>> contentTypes;
+  final pulumi.Input<List<dynamic>> contentTypes;
   /// A description of the source control
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the source control
   final pulumi.Input<String> displayName;
   /// The repository type of the source control
-  final pulumi.Input<String> repoType;
+  final pulumi.Input<dynamic> repoType;
   /// Repository metadata.
   final pulumi.Input<Repository> repository;
   /// Repository access credentials. This is write-only object and it never returns back to a user.
-  final pulumi.Input<RepositoryAccess>? repositoryAccess;
+  final pulumi.Input<RepositoryAccess?>? repositoryAccess;
   /// Information regarding the resources created in user's repository.
-  final pulumi.Input<RepositoryResourceInfo>? repositoryResourceInfo;
+  final pulumi.Input<RepositoryResourceInfo?>? repositoryResourceInfo;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Service principal metadata.
-  final pulumi.Input<ServicePrincipal>? servicePrincipal;
+  final pulumi.Input<ServicePrincipal?>? servicePrincipal;
   /// Source control Id
-  final pulumi.Input<String>? sourceControlId;
+  final pulumi.Input<String?>? sourceControlId;
   /// The name of the monitor workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -78,10 +78,10 @@ class SourceControlArgs {
 
   factory SourceControlArgs.fromMap(Map<String, dynamic> map) {
     return SourceControlArgs(
-      contentTypes: pulumi.Input.fromValue((map['contentTypes'] as List).cast<String>()),
+      contentTypes: pulumi.Input.fromValue((map['contentTypes'] as List).cast<dynamic>()),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
-      repoType: pulumi.Input.fromValue(map['repoType'] as String),
+      repoType: pulumi.Input.fromValue(map['repoType']),
       repository: pulumi.Input.fromValue(Repository.fromMap((map['repository']! as Map).cast<String, dynamic>())),
       repositoryAccess: (() { final guardedValue = map['repositoryAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryAccess.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       repositoryResourceInfo: (() { final guardedValue = map['repositoryResourceInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RepositoryResourceInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

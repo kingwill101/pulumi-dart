@@ -8,27 +8,27 @@ import 'update_run_strategy_response.dart';
 /// Result data returned by getUpdateRun.
 class GetUpdateRunResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// If eTag is provided in the response body, it may also be provided as a header per the normal etag convention.  Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields.
-  final String eTag;
+  final String? eTag;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started.
-  final ManagedClusterUpdateResponse managedClusterUpdate;
+  final ManagedClusterUpdateResponse? managedClusterUpdate;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the UpdateRun resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The status of the UpdateRun.
-  final UpdateRunStatusResponse status;
+  final UpdateRunStatusResponse? status;
   /// The strategy defines the order in which the clusters will be updated.
   /// If not set, all members will be updated sequentially. The UpdateRun status will show a single UpdateStage and a single UpdateGroup targeting all members.
   /// The strategy of the UpdateRun can be modified until the run is started.
   final UpdateRunStrategyResponse? strategy;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The resource id of the FleetUpdateStrategy resource to reference.
   ///
   /// When creating a new run, there are three ways to define a strategy for the run:
@@ -56,47 +56,47 @@ class GetUpdateRunResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updateStrategyId] The resource id of the FleetUpdateStrategy resource to reference.
   const GetUpdateRunResult({
-    required this.azureApiVersion,
-    required this.eTag,
-    required this.id,
-    required this.managedClusterUpdate,
-    required this.name,
-    required this.provisioningState,
-    required this.status,
+    this.azureApiVersion,
+    this.eTag,
+    this.id,
+    this.managedClusterUpdate,
+    this.name,
+    this.provisioningState,
+    this.status,
     this.strategy,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
     this.updateStrategyId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'eTag': eTag,
-      'id': id,
-      'managedClusterUpdate': managedClusterUpdate.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
-      'status': status.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'eTag': ?eTag,
+      'id': ?id,
+      'managedClusterUpdate': ?managedClusterUpdate?.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'status': ?status?.toMap(),
       'strategy': ?strategy?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
       'updateStrategyId': ?updateStrategyId,
     };
   }
 
   factory GetUpdateRunResult.fromMap(Map<String, dynamic> map) {
     return GetUpdateRunResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      eTag: map['eTag'] as String,
-      id: map['id'] as String,
-      managedClusterUpdate: ManagedClusterUpdateResponse.fromMap((map['managedClusterUpdate']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      status: UpdateRunStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managedClusterUpdate: (() { final guardedValue = map['managedClusterUpdate']; if (guardedValue == null) return null; return ManagedClusterUpdateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return UpdateRunStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       strategy: (() { final guardedValue = map['strategy']; if (guardedValue == null) return null; return UpdateRunStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updateStrategyId: (() { final guardedValue = map['updateStrategyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

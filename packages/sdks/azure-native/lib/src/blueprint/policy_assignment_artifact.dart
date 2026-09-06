@@ -989,7 +989,28 @@ class PolicyAssignmentArtifact extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    dependsOn = registerOutput<List<String>?>('dependsOn');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, ParameterValueResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<ParameterValueResponse>(guardedValue, (value) => ParameterValueResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    policyDefinitionId = registerOutput<String>('policyDefinitionId');
+    resourceGroup = registerOutput<String?>('resourceGroup');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PolicyAssignmentArtifact] resource.
+  PolicyAssignmentArtifact.reference(String urn)
+    : super(
+        'azure-native:blueprint:PolicyAssignmentArtifact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dependsOn = registerOutput<List<String>?>('dependsOn', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');
     kind = registerOutput<String>('kind');

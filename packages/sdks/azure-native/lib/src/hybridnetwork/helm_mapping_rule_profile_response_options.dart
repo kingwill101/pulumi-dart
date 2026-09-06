@@ -7,9 +7,9 @@ import 'helm_upgrade_options_response.dart';
 /// The helm deployment options
 class HelmMappingRuleProfileResponseOptions {
   /// The helm deployment install options
-  final pulumi.Input<HelmInstallOptionsResponse>? installOptions;
+  final pulumi.Input<HelmInstallOptionsResponse?>? installOptions;
   /// The helm deployment upgrade options
-  final pulumi.Input<HelmUpgradeOptionsResponse>? upgradeOptions;
+  final pulumi.Input<HelmUpgradeOptionsResponse?>? upgradeOptions;
 
   /// Creates a new [HelmMappingRuleProfileResponseOptions].
   /// [installOptions] The helm deployment install options

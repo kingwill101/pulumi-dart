@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Automanage configuration profile assignment properties.
 class ConfigurationProfileAssignmentPropertiesResponse {
   /// The Automanage configurationProfile ARM Resource URI.
-  final pulumi.Input<String>? configurationProfile;
+  final pulumi.Input<String?>? configurationProfile;
   /// The status of onboarding, which only appears in the response.
   final pulumi.Input<String> status;
   /// The target VM resource URI

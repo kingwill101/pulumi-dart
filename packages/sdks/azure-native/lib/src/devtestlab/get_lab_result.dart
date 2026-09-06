@@ -9,25 +9,25 @@ class GetLabResult {
   /// The properties of any lab announcement associated with this lab
   final LabAnnouncementPropertiesResponse? announcement;
   /// The lab's artifact storage account.
-  final String artifactsStorageAccount;
+  final String? artifactsStorageAccount;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The creation date of the lab.
-  final String createdDate;
+  final String? createdDate;
   /// The lab's default premium storage account.
-  final String defaultPremiumStorageAccount;
+  final String? defaultPremiumStorageAccount;
   /// The lab's default storage account.
-  final String defaultStorageAccount;
+  final String? defaultStorageAccount;
   /// The access rights to be granted to the user when provisioning an environment
   final String? environmentPermission;
   /// Extended properties of the lab used for experimental features
   final Map<String, String>? extendedProperties;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Type of storage used by the lab. It can be either Premium or Standard. Default is Premium.
   final String? labStorageType;
   /// The load balancer used to for lab VMs that use shared IP address.
-  final String loadBalancerId;
+  final String? loadBalancerId;
   /// The geo-location where the resource lives
   final String? location;
   /// The ordered list of artifact resource IDs that should be applied on all Linux VM creations by default, prior to the artifacts specified by the user.
@@ -35,33 +35,33 @@ class GetLabResult {
   /// The ordered list of artifact resource IDs that should be applied on all Windows VM creations by default, prior to the artifacts specified by the user.
   final List<String>? mandatoryArtifactsResourceIdsWindows;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The Network Security Group attached to the lab VMs Network interfaces to restrict open ports.
-  final String networkSecurityGroupId;
+  final String? networkSecurityGroupId;
   /// The lab's premium data disk storage account.
-  final String premiumDataDiskStorageAccount;
+  final String? premiumDataDiskStorageAccount;
   /// The setting to enable usage of premium data disks.
   /// When its value is 'Enabled', creation of standard or premium data disks is allowed.
   /// When its value is 'Disabled', only creation of standard data disks is allowed.
   final String? premiumDataDisks;
   /// The provisioning status of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The public IP address for the lab's load balancer.
-  final String publicIpId;
+  final String? publicIpId;
   /// The properties of any lab support message associated with this lab
   final LabSupportPropertiesResponse? support;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The unique immutable identifier of a resource (Guid).
-  final String uniqueIdentifier;
+  final String? uniqueIdentifier;
   /// The lab's Key vault.
-  final String vaultName;
+  final String? vaultName;
   /// The resource group in which all new lab virtual machines will be created. To let DevTest Labs manage resource group creation, set this value to null.
-  final String vmCreationResourceGroup;
+  final String? vmCreationResourceGroup;
 
   /// Creates a new [GetLabResult].
   /// [announcement] The properties of any lab announcement associated with this lab
@@ -91,97 +91,97 @@ class GetLabResult {
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vaultName] The lab's Key vault.
   /// [vmCreationResourceGroup] The resource group in which all new lab virtual machines will be created. To let DevTest Labs manage resource group creation, set this value to null.
-  const GetLabResult({
+  GetLabResult({
     this.announcement,
-    required this.artifactsStorageAccount,
-    required this.azureApiVersion,
-    required this.createdDate,
-    required this.defaultPremiumStorageAccount,
-    required this.defaultStorageAccount,
+    this.artifactsStorageAccount,
+    this.azureApiVersion,
+    this.createdDate,
+    this.defaultPremiumStorageAccount,
+    this.defaultStorageAccount,
     this.environmentPermission,
     this.extendedProperties,
-    required this.id,
-    this.labStorageType,
-    required this.loadBalancerId,
+    this.id,
+    String? labStorageType,
+    this.loadBalancerId,
     this.location,
     this.mandatoryArtifactsResourceIdsLinux,
     this.mandatoryArtifactsResourceIdsWindows,
-    required this.name,
-    required this.networkSecurityGroupId,
-    required this.premiumDataDiskStorageAccount,
+    this.name,
+    this.networkSecurityGroupId,
+    this.premiumDataDiskStorageAccount,
     this.premiumDataDisks,
-    required this.provisioningState,
-    required this.publicIpId,
+    this.provisioningState,
+    this.publicIpId,
     this.support,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uniqueIdentifier,
-    required this.vaultName,
-    required this.vmCreationResourceGroup,
-  });
+    this.type,
+    this.uniqueIdentifier,
+    this.vaultName,
+    this.vmCreationResourceGroup,
+  }) : labStorageType = labStorageType ?? 'Premium';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'announcement': ?announcement?.toMap(),
-      'artifactsStorageAccount': artifactsStorageAccount,
-      'azureApiVersion': azureApiVersion,
-      'createdDate': createdDate,
-      'defaultPremiumStorageAccount': defaultPremiumStorageAccount,
-      'defaultStorageAccount': defaultStorageAccount,
+      'artifactsStorageAccount': ?artifactsStorageAccount,
+      'azureApiVersion': ?azureApiVersion,
+      'createdDate': ?createdDate,
+      'defaultPremiumStorageAccount': ?defaultPremiumStorageAccount,
+      'defaultStorageAccount': ?defaultStorageAccount,
       'environmentPermission': ?environmentPermission,
       'extendedProperties': ?extendedProperties,
-      'id': id,
+      'id': ?id,
       'labStorageType': ?labStorageType,
-      'loadBalancerId': loadBalancerId,
+      'loadBalancerId': ?loadBalancerId,
       'location': ?location,
       'mandatoryArtifactsResourceIdsLinux': ?mandatoryArtifactsResourceIdsLinux,
       'mandatoryArtifactsResourceIdsWindows': ?mandatoryArtifactsResourceIdsWindows,
-      'name': name,
-      'networkSecurityGroupId': networkSecurityGroupId,
-      'premiumDataDiskStorageAccount': premiumDataDiskStorageAccount,
+      'name': ?name,
+      'networkSecurityGroupId': ?networkSecurityGroupId,
+      'premiumDataDiskStorageAccount': ?premiumDataDiskStorageAccount,
       'premiumDataDisks': ?premiumDataDisks,
-      'provisioningState': provisioningState,
-      'publicIpId': publicIpId,
+      'provisioningState': ?provisioningState,
+      'publicIpId': ?publicIpId,
       'support': ?support?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uniqueIdentifier': uniqueIdentifier,
-      'vaultName': vaultName,
-      'vmCreationResourceGroup': vmCreationResourceGroup,
+      'type': ?type,
+      'uniqueIdentifier': ?uniqueIdentifier,
+      'vaultName': ?vaultName,
+      'vmCreationResourceGroup': ?vmCreationResourceGroup,
     };
   }
 
   factory GetLabResult.fromMap(Map<String, dynamic> map) {
     return GetLabResult(
       announcement: (() { final guardedValue = map['announcement']; if (guardedValue == null) return null; return LabAnnouncementPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      artifactsStorageAccount: map['artifactsStorageAccount'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdDate: map['createdDate'] as String,
-      defaultPremiumStorageAccount: map['defaultPremiumStorageAccount'] as String,
-      defaultStorageAccount: map['defaultStorageAccount'] as String,
+      artifactsStorageAccount: (() { final guardedValue = map['artifactsStorageAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdDate: (() { final guardedValue = map['createdDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultPremiumStorageAccount: (() { final guardedValue = map['defaultPremiumStorageAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultStorageAccount: (() { final guardedValue = map['defaultStorageAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       environmentPermission: (() { final guardedValue = map['environmentPermission']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedProperties: (() { final guardedValue = map['extendedProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       labStorageType: (() { final guardedValue = map['labStorageType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      loadBalancerId: map['loadBalancerId'] as String,
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       mandatoryArtifactsResourceIdsLinux: (() { final guardedValue = map['mandatoryArtifactsResourceIdsLinux']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       mandatoryArtifactsResourceIdsWindows: (() { final guardedValue = map['mandatoryArtifactsResourceIdsWindows']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      name: map['name'] as String,
-      networkSecurityGroupId: map['networkSecurityGroupId'] as String,
-      premiumDataDiskStorageAccount: map['premiumDataDiskStorageAccount'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkSecurityGroupId: (() { final guardedValue = map['networkSecurityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      premiumDataDiskStorageAccount: (() { final guardedValue = map['premiumDataDiskStorageAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
       premiumDataDisks: (() { final guardedValue = map['premiumDataDisks']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      publicIpId: map['publicIpId'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      publicIpId: (() { final guardedValue = map['publicIpId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       support: (() { final guardedValue = map['support']; if (guardedValue == null) return null; return LabSupportPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uniqueIdentifier: map['uniqueIdentifier'] as String,
-      vaultName: map['vaultName'] as String,
-      vmCreationResourceGroup: map['vmCreationResourceGroup'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uniqueIdentifier: (() { final guardedValue = map['uniqueIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vaultName: (() { final guardedValue = map['vaultName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmCreationResourceGroup: (() { final guardedValue = map['vmCreationResourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

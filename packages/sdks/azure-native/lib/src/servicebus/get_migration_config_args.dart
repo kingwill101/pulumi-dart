@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_servicebus_get_migration_config_args_doc}
 class GetMigrationConfigArgs {
-  /// The configuration name. Should always be "$default".
+  /// The configuration name. Should always be $default.
   final pulumi.Input<String> configName;
   /// The namespace name
   final pulumi.Input<String> namespaceName;
@@ -15,7 +15,7 @@ class GetMigrationConfigArgs {
   final pulumi.Input<String> resourceGroupName;
 
   /// Creates a new [GetMigrationConfigArgs].
-  /// [configName] The configuration name. Should always be "$default".
+  /// [configName] The configuration name. Should always be $default.
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   const GetMigrationConfigArgs({

@@ -9,13 +9,13 @@ class StaticSiteUserARMResourceResponse {
   /// Resource Id.
   final pulumi.Input<String> id;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Name.
   final pulumi.Input<String> name;
   /// The identity provider for the static site user.
   final pulumi.Input<String> provider;
   /// The roles for the static site user, in free-form string format
-  final pulumi.Input<String>? roles;
+  final pulumi.Input<String?>? roles;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The user id for the static site user.

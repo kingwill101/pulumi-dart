@@ -7,9 +7,9 @@ class MetaV1LabelSelectorRequirement {
   /// key is the label key that the selector applies to.
   final pulumi.Input<String> key;
   /// operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist.
-  final pulumi.Input<String> operator;
+  final pulumi.Input<dynamic> operator;
   /// values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [MetaV1LabelSelectorRequirement].
   /// [key] key is the label key that the selector applies to.
@@ -32,7 +32,7 @@ class MetaV1LabelSelectorRequirement {
   factory MetaV1LabelSelectorRequirement.fromMap(Map<String, dynamic> map) {
     return MetaV1LabelSelectorRequirement(
       key: pulumi.Input.fromValue(map['key'] as String),
-      operator: pulumi.Input.fromValue(map['operator'] as String),
+      operator: pulumi.Input.fromValue(map['operator']),
       values: (() { final guardedValue = map['values']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

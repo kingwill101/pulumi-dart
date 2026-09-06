@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Geo for CIDR advertising. Should be an Geo code.
-enum Geo {
+enum Geo implements pulumi.PulumiEnum<String> {
   valueGLOBAL("GLOBAL"),
   valueAFRI("AFRI"),
   valueAPAC("APAC"),
@@ -11,6 +13,7 @@ enum Geo {
   valueAQ("AQ");
 
   const Geo(this.wireValue);
+  @override
   final String wireValue;
 
   static Geo fromValue(String value) {

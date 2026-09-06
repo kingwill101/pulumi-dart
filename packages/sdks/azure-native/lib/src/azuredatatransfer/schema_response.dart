@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The schema object.
 class SchemaResponse {
   /// Connection ID associated with this schema
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// Content of the schema
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The direction of the schema.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// ID associated with this schema
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the schema
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Schema Type
-  final pulumi.Input<String>? schemaType;
+  final pulumi.Input<String?>? schemaType;
   /// Uri containing SAS token for the zipped schema
-  final pulumi.Input<String>? schemaUri;
+  final pulumi.Input<String?>? schemaUri;
   /// Status of the schema
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SchemaResponse].
   /// [connectionId] Connection ID associated with this schema

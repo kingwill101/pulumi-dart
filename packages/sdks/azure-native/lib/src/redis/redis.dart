@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_service_identity_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'redis_access_keys_response.dart';
 import 'redis_args.dart';
 import 'redis_common_properties_redis_configuration_response.dart';
+import 'redis_instance_details_response.dart';
+import 'redis_linked_server_response.dart';
 import 'sku_response.dart';
 import 'system_data_response.dart';
 
@@ -1511,9 +1514,9 @@ class Redis extends pulumi.CustomResource {
   /// The managed service identities assigned to this resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// List of the Redis instances associated with the cache
-  late final pulumi.Output<List<Map<String, dynamic>>> instances;
+  late final pulumi.Output<List<RedisInstanceDetailsResponse>> instances;
   /// List of the linked servers associated with the cache
-  late final pulumi.Output<List<Map<String, dynamic>>> linkedServers;
+  late final pulumi.Output<List<RedisLinkedServerResponse>> linkedServers;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// Optional: requires clients to use a specified TLS version (or higher) to connect (e,g, '1.0', '1.1', '1.2')
@@ -1523,7 +1526,7 @@ class Redis extends pulumi.CustomResource {
   /// Redis non-SSL port.
   late final pulumi.Output<int> port;
   /// List of private endpoint connection associated with the specified redis cache
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Redis instance provisioning status.
   late final pulumi.Output<String> provisioningState;
   /// Whether or not public endpoint access is allowed for this cache.  Value is optional but if passed in, must be 'Enabled' or 'Disabled'. If 'Disabled', private endpoints are the exclusive access method.
@@ -1581,13 +1584,13 @@ class Redis extends pulumi.CustomResource {
     enableNonSslPort = registerOutput<bool?>('enableNonSslPort');
     hostName = registerOutput<String>('hostName');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    instances = registerOutput<List<Map<String, dynamic>>>('instances');
-    linkedServers = registerOutput<List<Map<String, dynamic>>>('linkedServers');
+    instances = registerOutput<List<RedisInstanceDetailsResponse>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RedisInstanceDetailsResponse>(guardedValue, (value) => RedisInstanceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedServers = registerOutput<List<RedisLinkedServerResponse>>('linkedServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RedisLinkedServerResponse>(guardedValue, (value) => RedisLinkedServerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
     this.name = registerOutput<String>('name');
     port = registerOutput<int>('port');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
     redisConfiguration = registerOutput<RedisCommonPropertiesRedisConfigurationResponse?>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RedisCommonPropertiesRedisConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1600,11 +1603,53 @@ class Redis extends pulumi.CustomResource {
     staticIP = registerOutput<String?>('staticIP');
     subnetId = registerOutput<String?>('subnetId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     updateChannel = registerOutput<String?>('updateChannel');
     zonalAllocationPolicy = registerOutput<String?>('zonalAllocationPolicy');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Redis] resource.
+  Redis.reference(String urn)
+    : super(
+        'azure-native:redis:Redis',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessKeys = registerOutput<RedisAccessKeysResponse>('accessKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RedisAccessKeysResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableAccessKeyAuthentication = registerOutput<bool?>('disableAccessKeyAuthentication');
+    enableNonSslPort = registerOutput<bool?>('enableNonSslPort');
+    hostName = registerOutput<String>('hostName');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instances = registerOutput<List<RedisInstanceDetailsResponse>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RedisInstanceDetailsResponse>(guardedValue, (value) => RedisInstanceDetailsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    linkedServers = registerOutput<List<RedisLinkedServerResponse>>('linkedServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RedisLinkedServerResponse>(guardedValue, (value) => RedisLinkedServerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    minimumTlsVersion = registerOutput<String?>('minimumTlsVersion');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    redisConfiguration = registerOutput<RedisCommonPropertiesRedisConfigurationResponse?>('redisConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RedisCommonPropertiesRedisConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    redisVersion = registerOutput<String?>('redisVersion');
+    replicasPerMaster = registerOutput<int?>('replicasPerMaster');
+    replicasPerPrimary = registerOutput<int?>('replicasPerPrimary');
+    shardCount = registerOutput<int?>('shardCount');
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sslPort = registerOutput<int>('sslPort');
+    staticIP = registerOutput<String?>('staticIP');
+    subnetId = registerOutput<String?>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantSettings = registerOutput<Map<String, String>?>('tenantSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    updateChannel = registerOutput<String?>('updateChannel');
+    zonalAllocationPolicy = registerOutput<String?>('zonalAllocationPolicy');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network dataplane used in the Kubernetes cluster.
-enum NetworkDataplane {
+enum NetworkDataplane implements pulumi.PulumiEnum<String> {
   valueAzure("azure"),
   valueCilium("cilium");
 
   const NetworkDataplane(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkDataplane fromValue(String value) {

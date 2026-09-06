@@ -6,9 +6,9 @@ import 'network_interface.dart';
 /// Specifies the network settings for the Azure Bare Metal Instance disks.
 class NetworkProfile {
   /// Specifies the circuit id for connecting to express route.
-  final pulumi.Input<String>? circuitId;
+  final pulumi.Input<String?>? circuitId;
   /// Specifies the network interfaces for the Azure Bare Metal Instance.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
 
   /// Creates a new [NetworkProfile].
   /// [circuitId] Specifies the circuit id for connecting to express route.

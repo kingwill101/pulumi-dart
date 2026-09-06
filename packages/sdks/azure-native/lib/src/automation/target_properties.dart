@@ -7,9 +7,9 @@ import 'non_azure_query_properties.dart';
 /// Group specific to the update configuration.
 class TargetProperties {
   /// List of Azure queries in the software update configuration.
-  final pulumi.Input<List<AzureQueryProperties>>? azureQueries;
+  final pulumi.Input<List<AzureQueryProperties>?>? azureQueries;
   /// List of non Azure queries in the software update configuration.
-  final pulumi.Input<List<NonAzureQueryProperties>>? nonAzureQueries;
+  final pulumi.Input<List<NonAzureQueryProperties>?>? nonAzureQueries;
 
   /// Creates a new [TargetProperties].
   /// [azureQueries] List of Azure queries in the software update configuration.

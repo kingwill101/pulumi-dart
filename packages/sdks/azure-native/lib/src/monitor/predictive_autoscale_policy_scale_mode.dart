@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// the predictive autoscale mode
-enum PredictiveAutoscalePolicyScaleMode {
+enum PredictiveAutoscalePolicyScaleMode implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueForecastOnly("ForecastOnly"),
   valueEnabled("Enabled");
 
   const PredictiveAutoscalePolicyScaleMode(this.wireValue);
+  @override
   final String wireValue;
 
   static PredictiveAutoscalePolicyScaleMode fromValue(String value) {

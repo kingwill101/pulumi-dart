@@ -14,43 +14,43 @@ import 'virtual_network_tap_virtual_network_appliance_response.dart';
 /// IPConfiguration in a network interface.
 class NetworkInterfaceIPConfigurationResponseV3 {
   /// The reference to ApplicationGatewayBackendAddressPool resource.
-  final pulumi.Input<List<ApplicationGatewayBackendAddressPoolVirtualNetworkApplianceResponse>>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPoolVirtualNetworkApplianceResponse>?>? applicationGatewayBackendAddressPools;
   /// Application security groups in which the IP configuration is included.
-  final pulumi.Input<List<ApplicationSecurityGroupResponse>>? applicationSecurityGroups;
+  final pulumi.Input<List<ApplicationSecurityGroupResponse>?>? applicationSecurityGroups;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The reference to gateway load balancer frontend IP.
-  final pulumi.Input<SubResourceResponse>? gatewayLoadBalancer;
+  final pulumi.Input<SubResourceResponse?>? gatewayLoadBalancer;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The reference to LoadBalancerBackendAddressPool resource.
-  final pulumi.Input<List<BackendAddressPoolResponse>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<BackendAddressPoolResponse>?>? loadBalancerBackendAddressPools;
   /// A list of references of LoadBalancerInboundNatRules.
-  final pulumi.Input<List<InboundNatRuleResponse>>? loadBalancerInboundNatRules;
+  final pulumi.Input<List<InboundNatRuleResponse>?>? loadBalancerInboundNatRules;
   /// Name of the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether this is a primary customer address on the network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Private IP address of the IP configuration. It can be a single IP address or a CIDR block in the format &lt;address&gt;/&lt;prefix-length&gt;.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The private IP address prefix length. If specified and the allocation method is dynamic, the service will allocate a CIDR block instead of a single IP address.
-  final pulumi.Input<int>? privateIPAddressPrefixLength;
+  final pulumi.Input<int?>? privateIPAddressPrefixLength;
   /// Whether the specific IP configuration is IPv4 or IPv6. Default is IPv4.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<String?>? privateIPAddressVersion;
   /// The private IP address allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// PrivateLinkConnection properties for the network interface.
   final pulumi.Input<NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse> privateLinkConnectionProperties;
   /// The provisioning state of the network interface IP configuration.
   final pulumi.Input<String> provisioningState;
   /// Public IP address bound to the IP configuration.
-  final pulumi.Input<PublicIPAddressVirtualNetworkApplianceResponse>? publicIPAddress;
+  final pulumi.Input<PublicIPAddressVirtualNetworkApplianceResponse?>? publicIPAddress;
   /// Subnet bound to the IP configuration.
-  final pulumi.Input<SubnetResponse>? subnet;
+  final pulumi.Input<SubnetResponse?>? subnet;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The reference to Virtual Network Taps.
-  final pulumi.Input<List<VirtualNetworkTapVirtualNetworkApplianceResponse>>? virtualNetworkTaps;
+  final pulumi.Input<List<VirtualNetworkTapVirtualNetworkApplianceResponse>?>? virtualNetworkTaps;
 
   /// Creates a new [NetworkInterfaceIPConfigurationResponseV3].
   /// [applicationGatewayBackendAddressPools] The reference to ApplicationGatewayBackendAddressPool resource.
@@ -130,7 +130,7 @@ class NetworkInterfaceIPConfigurationResponseV3 {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privateIPAddress: (() { final guardedValue = map['privateIPAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateIPAddressPrefixLength: (() { final guardedValue = map['privateIPAddressPrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      privateIPAddressPrefixLength: (() { final guardedValue = map['privateIPAddressPrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateIPAddressVersion: (() { final guardedValue = map['privateIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateIPAllocationMethod: (() { final guardedValue = map['privateIPAllocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateLinkConnectionProperties: pulumi.Input.fromValue(NetworkInterfaceIPConfigurationPrivateLinkConnectionPropertiesResponse.fromMap((map['privateLinkConnectionProperties']! as Map).cast<String, dynamic>())),

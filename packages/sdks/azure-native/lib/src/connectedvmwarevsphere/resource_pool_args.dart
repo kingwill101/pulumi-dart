@@ -9,23 +9,23 @@ import 'extended_location.dart';
 /// {@macro pulumi_connectedvmwarevsphere_resource_pool_args_doc}
 class ResourcePoolArgs {
   /// Gets or sets the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Gets or sets the inventory Item ID for the resource pool.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the resource pool.
-  final pulumi.Input<String>? moRefId;
+  final pulumi.Input<String?>? moRefId;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the resourcePool.
-  final pulumi.Input<String>? resourcePoolName;
+  final pulumi.Input<String?>? resourcePoolName;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  final pulumi.Input<String>? vCenterId;
+  final pulumi.Input<String?>? vCenterId;
 
   /// Creates a new [ResourcePoolArgs].
   /// [extendedLocation] Gets or sets the extended location.

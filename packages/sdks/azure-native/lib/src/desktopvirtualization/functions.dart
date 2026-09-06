@@ -50,6 +50,17 @@ Future<GetAppAttachPackageResult> getAppAttachPackage(
   return GetAppAttachPackageResult.fromMap(result);
 }
 
+pulumi.Output<GetAppAttachPackageResult> getAppAttachPackageOutput(
+  GetAppAttachPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getAppAttachPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppAttachPackageResult.fromMap);
+}
+
 /// Get an application.
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -68,6 +79,17 @@ Future<GetApplicationResult> getApplication(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApplicationResult.fromMap(result);
+}
+
+pulumi.Output<GetApplicationResult> getApplicationOutput(
+  GetApplicationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getApplication',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationResult.fromMap);
 }
 
 /// Get an application group.
@@ -90,6 +112,17 @@ Future<GetApplicationGroupResult> getApplicationGroup(
   return GetApplicationGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationGroupResult> getApplicationGroupOutput(
+  GetApplicationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getApplicationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGroupResult.fromMap);
+}
+
 /// Get a host pool.
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -108,6 +141,17 @@ Future<GetHostPoolResult> getHostPool(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHostPoolResult.fromMap(result);
+}
+
+pulumi.Output<GetHostPoolResult> getHostPoolOutput(
+  GetHostPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getHostPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostPoolResult.fromMap);
 }
 
 /// Registration token of the host pool.
@@ -130,6 +174,17 @@ Future<GetHostPoolRegistrationTokenResult> getHostPoolRegistrationToken(
   return GetHostPoolRegistrationTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetHostPoolRegistrationTokenResult> getHostPoolRegistrationTokenOutput(
+  GetHostPoolRegistrationTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getHostPoolRegistrationToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHostPoolRegistrationTokenResult.fromMap);
+}
+
 /// Get a msixpackage.
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -148,6 +203,17 @@ Future<GetMSIXPackageResult> getMSIXPackage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMSIXPackageResult.fromMap(result);
+}
+
+pulumi.Output<GetMSIXPackageResult> getMSIXPackageOutput(
+  GetMSIXPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getMSIXPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMSIXPackageResult.fromMap);
 }
 
 /// Get a private endpoint connection.
@@ -170,6 +236,17 @@ Future<GetPrivateEndpointConnectionByHostPoolResult> getPrivateEndpointConnectio
   return GetPrivateEndpointConnectionByHostPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionByHostPoolResult> getPrivateEndpointConnectionByHostPoolOutput(
+  GetPrivateEndpointConnectionByHostPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getPrivateEndpointConnectionByHostPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionByHostPoolResult.fromMap);
+}
+
 /// Get a private endpoint connection.
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -188,6 +265,17 @@ Future<GetPrivateEndpointConnectionByWorkspaceResult> getPrivateEndpointConnecti
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionByWorkspaceResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionByWorkspaceResult> getPrivateEndpointConnectionByWorkspaceOutput(
+  GetPrivateEndpointConnectionByWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getPrivateEndpointConnectionByWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionByWorkspaceResult.fromMap);
 }
 
 /// Get a scaling plan.
@@ -210,6 +298,17 @@ Future<GetScalingPlanResult> getScalingPlan(
   return GetScalingPlanResult.fromMap(result);
 }
 
+pulumi.Output<GetScalingPlanResult> getScalingPlanOutput(
+  GetScalingPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getScalingPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScalingPlanResult.fromMap);
+}
+
 /// Get a ScalingPlanPersonalSchedule.
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -228,6 +327,17 @@ Future<GetScalingPlanPersonalScheduleResult> getScalingPlanPersonalSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScalingPlanPersonalScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetScalingPlanPersonalScheduleResult> getScalingPlanPersonalScheduleOutput(
+  GetScalingPlanPersonalScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getScalingPlanPersonalSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScalingPlanPersonalScheduleResult.fromMap);
 }
 
 /// Get a ScalingPlanPooledSchedule.
@@ -250,6 +360,17 @@ Future<GetScalingPlanPooledScheduleResult> getScalingPlanPooledSchedule(
   return GetScalingPlanPooledScheduleResult.fromMap(result);
 }
 
+pulumi.Output<GetScalingPlanPooledScheduleResult> getScalingPlanPooledScheduleOutput(
+  GetScalingPlanPooledScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getScalingPlanPooledSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScalingPlanPooledScheduleResult.fromMap);
+}
+
 /// Get a session host.
 ///
 /// Uses Azure REST API version 2026-01-01-preview.
@@ -268,6 +389,17 @@ Future<GetSessionHostResult> getSessionHost(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSessionHostResult.fromMap(result);
+}
+
+pulumi.Output<GetSessionHostResult> getSessionHostOutput(
+  GetSessionHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getSessionHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSessionHostResult.fromMap);
 }
 
 /// Get a workspace.
@@ -290,6 +422,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Operation to list the RegistrationTokens associated with the HostPool
 ///
 /// Uses Azure REST API version 2024-04-03.
@@ -310,6 +453,17 @@ Future<ListHostPoolRegistrationTokensResult> listHostPoolRegistrationTokens(
   return ListHostPoolRegistrationTokensResult.fromMap(result);
 }
 
+pulumi.Output<ListHostPoolRegistrationTokensResult> listHostPoolRegistrationTokensOutput(
+  ListHostPoolRegistrationTokensArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:listHostPoolRegistrationTokens',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListHostPoolRegistrationTokensResult.fromMap);
+}
+
 /// Operation to list the scoped RegistrationTokens associated with the SessionHost.
 ///
 /// Uses Azure REST API version 2026-01-01-preview.
@@ -328,4 +482,15 @@ Future<ListSessionHostSingleRegistrationTokensResult> listSessionHostSingleRegis
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSessionHostSingleRegistrationTokensResult.fromMap(result);
+}
+
+pulumi.Output<ListSessionHostSingleRegistrationTokensResult> listSessionHostSingleRegistrationTokensOutput(
+  ListSessionHostSingleRegistrationTokensArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:desktopvirtualization:listSessionHostSingleRegistrationTokens',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSessionHostSingleRegistrationTokensResult.fromMap);
 }

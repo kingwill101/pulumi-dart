@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration to set up an ICA.
 class CertificateAuthorityConfiguration {
   /// Crypto type: ECC.
-  final pulumi.Input<String> keyType;
+  final pulumi.Input<dynamic> keyType;
 
   /// Creates a new [CertificateAuthorityConfiguration].
   /// [keyType] Crypto type: ECC.
@@ -21,7 +21,7 @@ class CertificateAuthorityConfiguration {
 
   factory CertificateAuthorityConfiguration.fromMap(Map<String, dynamic> map) {
     return CertificateAuthorityConfiguration(
-      keyType: pulumi.Input.fromValue(map['keyType'] as String),
+      keyType: pulumi.Input.fromValue(map['keyType']),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data type for Microsoft Defender for Threat Intelligence Premium data connector.
 class PremiumMdtiDataConnectorDataTypesConnector {
   /// Describe whether this data type connection is enabled or not.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [PremiumMdtiDataConnectorDataTypesConnector].
   /// [state] Describe whether this data type connection is enabled or not.
@@ -21,7 +21,7 @@ class PremiumMdtiDataConnectorDataTypesConnector {
 
   factory PremiumMdtiDataConnectorDataTypesConnector.fromMap(Map<String, dynamic> map) {
     return PremiumMdtiDataConnectorDataTypesConnector(
-      state: pulumi.Input.fromValue(map['state'] as String),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

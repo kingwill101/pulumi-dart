@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudhealth_get_entity_signal_history_args_doc}
 class GetEntitySignalHistoryArgs {
   /// End time for the history query. Defaults to now if not specified.
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Name of the entity. Must be unique within a health model.
   final pulumi.Input<String> entityName;
   /// Name of health model resource
@@ -18,7 +18,7 @@ class GetEntitySignalHistoryArgs {
   /// Name of the signal to get history for
   final pulumi.Input<String> signalName;
   /// Start time for the history query. Defaults to 24 hours ago if not specified.
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
 
   /// Creates a new [GetEntitySignalHistoryArgs].
   /// [endAt] End time for the history query. Defaults to now if not specified.

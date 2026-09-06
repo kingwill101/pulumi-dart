@@ -191,4 +191,19 @@ class WorkspaceNotificationRecipientEmail extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkspaceNotificationRecipientEmail] resource.
+  WorkspaceNotificationRecipientEmail.reference(String urn)
+    : super(
+        'azure-native:apimanagement:WorkspaceNotificationRecipientEmail',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    email = registerOutput<String?>('email');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The object representing the state of the migration between the backup policies.
 class BackupPolicyMigrationState {
   /// Time at which the backup policy migration started (ISO-8601 format).
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Describes the status of migration between backup policy types.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Describes the target backup policy type of the backup policy migration.
-  final pulumi.Input<String>? targetType;
+  final pulumi.Input<dynamic>? targetType;
 
   /// Creates a new [BackupPolicyMigrationState].
   /// [startTime] Time at which the backup policy migration started (ISO-8601 format).
@@ -32,8 +32,8 @@ class BackupPolicyMigrationState {
   factory BackupPolicyMigrationState.fromMap(Map<String, dynamic> map) {
     return BackupPolicyMigrationState(
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      targetType: (() { final guardedValue = map['targetType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

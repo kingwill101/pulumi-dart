@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'basic_error_dryrun_prerequisite_result_response.dart';
 import 'create_or_update_dryrun_parameters_response.dart';
 import 'dryrun_operation_preview_response.dart';
 import 'system_data_response.dart';
@@ -9,23 +8,23 @@ import 'system_data_response.dart';
 /// Result data returned by getLinkerDryrun.
 class GetLinkerDryrunResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// the preview of the operations for creation
-  final List<DryrunOperationPreviewResponse> operationPreviews;
+  final List<DryrunOperationPreviewResponse>? operationPreviews;
   /// The parameters of the dryrun
   final CreateOrUpdateDryrunParametersResponse? parameters;
   /// the result of the dryrun
-  final List<BasicErrorDryrunPrerequisiteResultResponse> prerequisiteResults;
+  final List<dynamic>? prerequisiteResults;
   /// The provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetLinkerDryrunResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -38,42 +37,42 @@ class GetLinkerDryrunResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetLinkerDryrunResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.operationPreviews,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.operationPreviews,
     this.parameters,
-    required this.prerequisiteResults,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.prerequisiteResults,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'operationPreviews': pulumi.Input.encodeList<DryrunOperationPreviewResponse, Map<String, dynamic>>(operationPreviews, (value) => value.toMap()),
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'operationPreviews': ?(() { final guardedValue = operationPreviews; if (guardedValue == null) return null; return pulumi.Input.encodeList<DryrunOperationPreviewResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'parameters': ?parameters?.toMap(),
-      'prerequisiteResults': pulumi.Input.encodeList<BasicErrorDryrunPrerequisiteResultResponse, Map<String, dynamic>>(prerequisiteResults, (value) => value.toMap()),
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'prerequisiteResults': ?prerequisiteResults,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetLinkerDryrunResult.fromMap(Map<String, dynamic> map) {
     return GetLinkerDryrunResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      operationPreviews: pulumi.Input.decodeList<DryrunOperationPreviewResponse>(map['operationPreviews']!, (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      operationPreviews: (() { final guardedValue = map['operationPreviews']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DryrunOperationPreviewResponse>(guardedValue, (value) => DryrunOperationPreviewResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return CreateOrUpdateDryrunParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      prerequisiteResults: pulumi.Input.decodeList<BasicErrorDryrunPrerequisiteResultResponse>(map['prerequisiteResults']!, (value) => BasicErrorDryrunPrerequisiteResultResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      prerequisiteResults: (() { final guardedValue = map['prerequisiteResults']; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

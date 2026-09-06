@@ -35,6 +35,17 @@ Future<GetBotResult> getBot(
   return GetBotResult.fromMap(result);
 }
 
+pulumi.Output<GetBotResult> getBotOutput(
+  GetBotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:getBot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotResult.fromMap);
+}
+
 /// Get a Connection Setting registration for a Bot Service
 ///
 /// Uses Azure REST API version 2023-09-15-preview.
@@ -53,6 +64,17 @@ Future<GetBotConnectionResult> getBotConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBotConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetBotConnectionResult> getBotConnectionOutput(
+  GetBotConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:getBotConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBotConnectionResult.fromMap);
 }
 
 /// Returns a BotService Channel registration specified by the parameters.
@@ -75,6 +97,17 @@ Future<GetChannelResult> getChannel(
   return GetChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetChannelResult> getChannelOutput(
+  GetChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:getChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetChannelResult.fromMap);
+}
+
 /// Gets the specified private endpoint connection associated with the Bot.
 ///
 /// Uses Azure REST API version 2023-09-15-preview.
@@ -95,6 +128,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Lists the available Service Providers for creating Connection Settings
 ///
 /// Uses Azure REST API version 2023-09-15-preview.
@@ -112,6 +156,17 @@ Future<ListBotConnectionServiceProvidersResult> listBotConnectionServiceProvider
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListBotConnectionServiceProvidersResult.fromMap(result);
+}
+
+pulumi.Output<ListBotConnectionServiceProvidersResult> listBotConnectionServiceProvidersOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:listBotConnectionServiceProviders',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListBotConnectionServiceProvidersResult.fromMap);
 }
 
 /// Get a Connection Setting registration for a Bot Service
@@ -134,6 +189,17 @@ Future<ListBotConnectionWithSecretsResult> listBotConnectionWithSecrets(
   return ListBotConnectionWithSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListBotConnectionWithSecretsResult> listBotConnectionWithSecretsOutput(
+  ListBotConnectionWithSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:listBotConnectionWithSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBotConnectionWithSecretsResult.fromMap);
+}
+
 /// Lists a Channel registration for a Bot Service including secrets
 ///
 /// Uses Azure REST API version 2023-09-15-preview.
@@ -154,6 +220,17 @@ Future<ListChannelWithKeysResult> listChannelWithKeys(
   return ListChannelWithKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListChannelWithKeysResult> listChannelWithKeysOutput(
+  ListChannelWithKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:listChannelWithKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListChannelWithKeysResult.fromMap);
+}
+
 /// Lists the QnA Maker endpoint keys
 ///
 /// Uses Azure REST API version 2023-09-15-preview.
@@ -172,4 +249,15 @@ Future<ListQnAMakerEndpointKeyResult> listQnAMakerEndpointKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListQnAMakerEndpointKeyResult.fromMap(result);
+}
+
+pulumi.Output<ListQnAMakerEndpointKeyResult> listQnAMakerEndpointKeyOutput(
+  ListQnAMakerEndpointKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:botservice:listQnAMakerEndpointKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListQnAMakerEndpointKeyResult.fromMap);
 }

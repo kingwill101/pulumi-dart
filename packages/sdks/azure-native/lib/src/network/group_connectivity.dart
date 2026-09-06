@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Group connectivity type.
-enum GroupConnectivity {
+enum GroupConnectivity implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueDirectlyConnected("DirectlyConnected");
 
   const GroupConnectivity(this.wireValue);
+  @override
   final String wireValue;
 
   static GroupConnectivity fromValue(String value) {

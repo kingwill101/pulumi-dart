@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes an output column for the Azure Machine Learning web service endpoint.
 class AzureMachineLearningWebServiceOutputColumnResponse {
   /// The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// The name of the output column.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureMachineLearningWebServiceOutputColumnResponse].
   /// [dataType] The (Azure Machine Learning supported) data type of the output column. A list of valid  Azure Machine Learning data types are described at https://msdn.microsoft.com/en-us/library/azure/dn905923.aspx .

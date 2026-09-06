@@ -8,17 +8,17 @@ class CustomHttpsConfigurationResponse {
   /// Defines the source of the SSL certificate
   final pulumi.Input<String> certificateSource;
   /// Defines the type of the certificate used for secure connections to a frontendEndpoint
-  final pulumi.Input<String>? certificateType;
+  final pulumi.Input<String?>? certificateType;
   /// The minimum TLS version required from the clients to establish an SSL handshake with Front Door.
   final pulumi.Input<String> minimumTlsVersion;
   /// Defines the TLS extension protocol that is used for secure delivery
   final pulumi.Input<String> protocolType;
   /// The name of the Key Vault secret representing the full certificate PFX
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
   /// The version of the Key Vault secret representing the full certificate PFX
-  final pulumi.Input<String>? secretVersion;
+  final pulumi.Input<String?>? secretVersion;
   /// The Key Vault containing the SSL certificate
-  final pulumi.Input<KeyVaultCertificateSourceParametersVaultResponse>? vault;
+  final pulumi.Input<KeyVaultCertificateSourceParametersVaultResponse?>? vault;
 
   /// Creates a new [CustomHttpsConfigurationResponse].
   /// [certificateSource] Defines the source of the SSL certificate

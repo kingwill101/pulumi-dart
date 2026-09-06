@@ -6,33 +6,33 @@ import 'key_vault_secret_reference_response.dart';
 /// Describes a Virtual Machine Scale Set Extension.
 class VirtualMachineScaleSetExtensionResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// Resource Id
   final pulumi.Input<String> id;
   /// Resource name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final pulumi.Input<dynamic>? protectedSettings;
   /// The extensions protected settings that are passed by reference, and consumed from key vault
-  final pulumi.Input<KeyVaultSecretReferenceResponse>? protectedSettingsFromKeyVault;
+  final pulumi.Input<KeyVaultSecretReferenceResponse?>? protectedSettingsFromKeyVault;
   /// Collection of extension names after which this extension needs to be provisioned.
-  final pulumi.Input<List<String>>? provisionAfterExtensions;
+  final pulumi.Input<List<String>?>? provisionAfterExtensions;
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
   /// The name of the extension handler publisher.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// Json formatted public settings for the extension.
   final pulumi.Input<dynamic>? settings;
   /// Indicates whether failures stemming from the extension will be suppressed (Operational failures such as not connecting to the VM will not be suppressed regardless of this value). The default is false.
-  final pulumi.Input<bool>? suppressFailures;
+  final pulumi.Input<bool?>? suppressFailures;
   /// Resource type
   final pulumi.Input<String> type;
   /// Specifies the version of the script handler.
-  final pulumi.Input<String>? typeHandlerVersion;
+  final pulumi.Input<String?>? typeHandlerVersion;
 
   /// Creates a new [VirtualMachineScaleSetExtensionResponse].
   /// [autoUpgradeMinorVersion] Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.

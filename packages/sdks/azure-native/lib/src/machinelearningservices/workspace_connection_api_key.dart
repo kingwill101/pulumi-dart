@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Api key object for workspace connection credential.
 class WorkspaceConnectionApiKey {
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [WorkspaceConnectionApiKey].
   /// [key] Optional.

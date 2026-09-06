@@ -6,21 +6,21 @@ import 'recorder_status_enum_value_response.dart';
 /// Definition of awsConfigServiceConfigurationRecorderStatus
 class AwsConfigServiceConfigurationRecorderStatusPropertiesResponse {
   /// &lt;p&gt;The latest error code from when the recorder last failed.&lt;/p&gt;
-  final pulumi.Input<String>? lastErrorCode;
+  final pulumi.Input<String?>? lastErrorCode;
   /// &lt;p&gt;The latest error message from when the recorder last failed.&lt;/p&gt;
-  final pulumi.Input<String>? lastErrorMessage;
+  final pulumi.Input<String?>? lastErrorMessage;
   /// &lt;p&gt;The time the recorder was last started.&lt;/p&gt;
-  final pulumi.Input<String>? lastStartTime;
+  final pulumi.Input<String?>? lastStartTime;
   /// &lt;p&gt;The status of the latest recording event processed by the recorder.&lt;/p&gt;
-  final pulumi.Input<RecorderStatusEnumValueResponse>? lastStatus;
+  final pulumi.Input<RecorderStatusEnumValueResponse?>? lastStatus;
   /// &lt;p&gt;The time of the latest change in status of an recording event processed by the recorder.&lt;/p&gt;
-  final pulumi.Input<String>? lastStatusChangeTime;
+  final pulumi.Input<String?>? lastStatusChangeTime;
   /// &lt;p&gt;The time the recorder was last stopped.&lt;/p&gt;
-  final pulumi.Input<String>? lastStopTime;
+  final pulumi.Input<String?>? lastStopTime;
   /// &lt;p&gt;The name of the configuration recorder.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;Specifies whether or not the recorder is currently recording.&lt;/p&gt;
-  final pulumi.Input<bool>? recording;
+  final pulumi.Input<bool?>? recording;
 
   /// Creates a new [AwsConfigServiceConfigurationRecorderStatusPropertiesResponse].
   /// [lastErrorCode] &lt;p&gt;The latest error code from when the recorder last failed.&lt;/p&gt;

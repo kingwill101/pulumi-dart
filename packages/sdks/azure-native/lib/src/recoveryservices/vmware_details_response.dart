@@ -10,74 +10,74 @@ import 'version_details_response.dart';
 /// Store the fabric details specific to the VMware fabric.
 class VMwareDetailsResponse {
   /// The number of source and target servers configured to talk to this CS.
-  final pulumi.Input<String>? agentCount;
+  final pulumi.Input<String?>? agentCount;
   /// Agent expiry date.
-  final pulumi.Input<String>? agentExpiryDate;
+  final pulumi.Input<String?>? agentExpiryDate;
   /// The agent Version.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// The agent version details.
-  final pulumi.Input<VersionDetailsResponse>? agentVersionDetails;
+  final pulumi.Input<VersionDetailsResponse?>? agentVersionDetails;
   /// The available memory.
-  final pulumi.Input<double>? availableMemoryInBytes;
+  final pulumi.Input<double?>? availableMemoryInBytes;
   /// The available space.
-  final pulumi.Input<double>? availableSpaceInBytes;
+  final pulumi.Input<double?>? availableSpaceInBytes;
   /// The percentage of the CPU load.
-  final pulumi.Input<String>? cpuLoad;
+  final pulumi.Input<String?>? cpuLoad;
   /// The CPU load status.
-  final pulumi.Input<String>? cpuLoadStatus;
+  final pulumi.Input<String?>? cpuLoadStatus;
   /// The CS service status.
-  final pulumi.Input<String>? csServiceStatus;
+  final pulumi.Input<String?>? csServiceStatus;
   /// The database server load.
-  final pulumi.Input<String>? databaseServerLoad;
+  final pulumi.Input<String?>? databaseServerLoad;
   /// The database server load status.
-  final pulumi.Input<String>? databaseServerLoadStatus;
+  final pulumi.Input<String?>? databaseServerLoadStatus;
   /// The host name.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Gets the class type. Overridden in derived classes.
   /// Expected value is 'VMware'.
   final pulumi.Input<String> instanceType;
   /// The IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The last heartbeat received from CS server.
-  final pulumi.Input<String>? lastHeartbeat;
+  final pulumi.Input<String?>? lastHeartbeat;
   /// The list of Master Target servers associated with the fabric.
-  final pulumi.Input<List<MasterTargetServerResponse>>? masterTargetServers;
+  final pulumi.Input<List<MasterTargetServerResponse>?>? masterTargetServers;
   /// The memory usage status.
-  final pulumi.Input<String>? memoryUsageStatus;
+  final pulumi.Input<String?>? memoryUsageStatus;
   /// The number of process servers.
-  final pulumi.Input<String>? processServerCount;
+  final pulumi.Input<String?>? processServerCount;
   /// The list of Process Servers associated with the fabric.
-  final pulumi.Input<List<ProcessServerResponse>>? processServers;
+  final pulumi.Input<List<ProcessServerResponse>?>? processServers;
   /// The number of protected servers.
-  final pulumi.Input<String>? protectedServers;
+  final pulumi.Input<String?>? protectedServers;
   /// PS template version.
-  final pulumi.Input<String>? psTemplateVersion;
+  final pulumi.Input<String?>? psTemplateVersion;
   /// The number of replication pairs configured in this CS.
-  final pulumi.Input<String>? replicationPairCount;
+  final pulumi.Input<String?>? replicationPairCount;
   /// The list of run as accounts created on the server.
-  final pulumi.Input<List<RunAsAccountResponse>>? runAsAccounts;
+  final pulumi.Input<List<RunAsAccountResponse>?>? runAsAccounts;
   /// The space usage status.
-  final pulumi.Input<String>? spaceUsageStatus;
+  final pulumi.Input<String?>? spaceUsageStatus;
   /// CS SSL cert expiry date.
-  final pulumi.Input<String>? sslCertExpiryDate;
+  final pulumi.Input<String?>? sslCertExpiryDate;
   /// CS SSL cert expiry date.
-  final pulumi.Input<int>? sslCertExpiryRemainingDays;
+  final pulumi.Input<int?>? sslCertExpiryRemainingDays;
   /// The switch provider blocking error information.
-  final pulumi.Input<List<InMageFabricSwitchProviderBlockingErrorDetailsResponse>>? switchProviderBlockingErrorDetails;
+  final pulumi.Input<List<InMageFabricSwitchProviderBlockingErrorDetailsResponse>?>? switchProviderBlockingErrorDetails;
   /// The percentage of the system load.
-  final pulumi.Input<String>? systemLoad;
+  final pulumi.Input<String?>? systemLoad;
   /// The system load status.
-  final pulumi.Input<String>? systemLoadStatus;
+  final pulumi.Input<String?>? systemLoadStatus;
   /// The total memory.
-  final pulumi.Input<double>? totalMemoryInBytes;
+  final pulumi.Input<double?>? totalMemoryInBytes;
   /// The total space.
-  final pulumi.Input<double>? totalSpaceInBytes;
+  final pulumi.Input<double?>? totalSpaceInBytes;
   /// Version status.
-  final pulumi.Input<String>? versionStatus;
+  final pulumi.Input<String?>? versionStatus;
   /// The web load.
-  final pulumi.Input<String>? webLoad;
+  final pulumi.Input<String?>? webLoad;
   /// The web load status.
-  final pulumi.Input<String>? webLoadStatus;
+  final pulumi.Input<String?>? webLoadStatus;
 
   /// Creates a new [VMwareDetailsResponse].
   /// [agentCount] The number of source and target servers configured to talk to this CS.
@@ -196,8 +196,8 @@ class VMwareDetailsResponse {
       agentExpiryDate: (() { final guardedValue = map['agentExpiryDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentVersion: (() { final guardedValue = map['agentVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentVersionDetails: (() { final guardedValue = map['agentVersionDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VersionDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      availableMemoryInBytes: (() { final guardedValue = map['availableMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      availableSpaceInBytes: (() { final guardedValue = map['availableSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      availableMemoryInBytes: (() { final guardedValue = map['availableMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      availableSpaceInBytes: (() { final guardedValue = map['availableSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       cpuLoad: (() { final guardedValue = map['cpuLoad']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cpuLoadStatus: (() { final guardedValue = map['cpuLoadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       csServiceStatus: (() { final guardedValue = map['csServiceStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -217,12 +217,12 @@ class VMwareDetailsResponse {
       runAsAccounts: (() { final guardedValue = map['runAsAccounts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RunAsAccountResponse>(guardedValue, (value) => RunAsAccountResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       spaceUsageStatus: (() { final guardedValue = map['spaceUsageStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sslCertExpiryDate: (() { final guardedValue = map['sslCertExpiryDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sslCertExpiryRemainingDays: (() { final guardedValue = map['sslCertExpiryRemainingDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      sslCertExpiryRemainingDays: (() { final guardedValue = map['sslCertExpiryRemainingDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       switchProviderBlockingErrorDetails: (() { final guardedValue = map['switchProviderBlockingErrorDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InMageFabricSwitchProviderBlockingErrorDetailsResponse>(guardedValue, (value) => InMageFabricSwitchProviderBlockingErrorDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       systemLoad: (() { final guardedValue = map['systemLoad']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       systemLoadStatus: (() { final guardedValue = map['systemLoadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalMemoryInBytes: (() { final guardedValue = map['totalMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      totalSpaceInBytes: (() { final guardedValue = map['totalSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      totalMemoryInBytes: (() { final guardedValue = map['totalMemoryInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      totalSpaceInBytes: (() { final guardedValue = map['totalSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       versionStatus: (() { final guardedValue = map['versionStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webLoad: (() { final guardedValue = map['webLoad']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webLoadStatus: (() { final guardedValue = map['webLoadStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

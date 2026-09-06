@@ -15,11 +15,11 @@ class TextMatchResponse {
   /// [caseSensitivity] Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
   /// [matchType] Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
   /// [text] The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
-  const TextMatchResponse({
-    required this.caseSensitivity,
-    required this.matchType,
+  TextMatchResponse({
+    pulumi.Input<String>? caseSensitivity,
+    pulumi.Input<String>? matchType,
     required this.text,
-  });
+  }) : caseSensitivity = caseSensitivity ?? pulumi.Input.fromValue('Insensitive'), matchType = matchType ?? pulumi.Input.fromValue('Partial');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

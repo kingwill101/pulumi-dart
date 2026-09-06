@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// State of the update as it relates to this stamp.
-enum State {
+enum State implements pulumi.PulumiEnum<String> {
   valueHasPrerequisite("HasPrerequisite"),
   valueObsolete("Obsolete"),
   valueReady("Ready"),
@@ -21,6 +23,7 @@ enum State {
   valueAdditionalContentRequired("AdditionalContentRequired");
 
   const State(this.wireValue);
+  @override
   final String wireValue;
 
   static State fromValue(String value) {

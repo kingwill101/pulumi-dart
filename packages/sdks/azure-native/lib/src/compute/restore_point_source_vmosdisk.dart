@@ -7,9 +7,9 @@ import 'managed_disk_parameters.dart';
 /// Describes an Operating System disk.
 class RestorePointSourceVMOSDisk {
   /// Contains Disk Restore Point properties.
-  final pulumi.Input<DiskRestorePointAttributes>? diskRestorePoint;
+  final pulumi.Input<DiskRestorePointAttributes?>? diskRestorePoint;
   /// Gets the managed disk details
-  final pulumi.Input<ManagedDiskParameters>? managedDisk;
+  final pulumi.Input<ManagedDiskParameters?>? managedDisk;
 
   /// Creates a new [RestorePointSourceVMOSDisk].
   /// [diskRestorePoint] Contains Disk Restore Point properties.

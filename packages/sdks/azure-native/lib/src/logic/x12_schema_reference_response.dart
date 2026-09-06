@@ -11,7 +11,7 @@ class X12SchemaReferenceResponse {
   /// The schema version.
   final pulumi.Input<String> schemaVersion;
   /// The sender application id.
-  final pulumi.Input<String>? senderApplicationId;
+  final pulumi.Input<String?>? senderApplicationId;
 
   /// Creates a new [X12SchemaReferenceResponse].
   /// [messageId] The message id.

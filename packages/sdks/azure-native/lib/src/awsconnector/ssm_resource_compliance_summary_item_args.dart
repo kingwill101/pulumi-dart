@@ -9,15 +9,15 @@ import 'ssm_resource_compliance_summary_item_properties.dart';
 /// {@macro pulumi_awsconnector_ssm_resource_compliance_summary_item_args_doc}
 class SsmResourceComplianceSummaryItemArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of SsmResourceComplianceSummaryItem
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SsmResourceComplianceSummaryItemProperties>? properties;
+  final pulumi.Input<SsmResourceComplianceSummaryItemProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SsmResourceComplianceSummaryItemArgs].
   /// [location] The geo-location where the resource lives

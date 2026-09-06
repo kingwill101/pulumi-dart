@@ -9,7 +9,7 @@ import 'io_tdevice_info.dart';
 /// {@macro pulumi_databoxedge_io_taddon_args_doc}
 class IoTAddonArgs {
   /// The addon name.
-  final pulumi.Input<String>? addonName;
+  final pulumi.Input<String?>? addonName;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// IoT device metadata to which appliance needs to be connected.

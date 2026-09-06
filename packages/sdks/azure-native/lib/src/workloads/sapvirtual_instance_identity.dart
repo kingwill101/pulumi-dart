@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed service identity (user assigned identities)
 class SAPVirtualInstanceIdentity {
   /// The type of managed identity assigned to this resource.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The identities assigned to this resource by the user.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [SAPVirtualInstanceIdentity].
   /// [type] The type of managed identity assigned to this resource.
@@ -26,7 +26,7 @@ class SAPVirtualInstanceIdentity {
 
   factory SAPVirtualInstanceIdentity.fromMap(Map<String, dynamic> map) {
     return SAPVirtualInstanceIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

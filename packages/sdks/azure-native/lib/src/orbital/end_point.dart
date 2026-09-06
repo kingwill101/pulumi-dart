@@ -11,7 +11,7 @@ class EndPoint {
   /// TCP port to listen on to receive data.
   final pulumi.Input<String> port;
   /// Protocol either UDP or TCP.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
 
   /// Creates a new [EndPoint].
   /// [endPointName] Name of an end point.
@@ -39,7 +39,7 @@ class EndPoint {
       endPointName: pulumi.Input.fromValue(map['endPointName'] as String),
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       port: pulumi.Input.fromValue(map['port'] as String),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
     );
   }
 }

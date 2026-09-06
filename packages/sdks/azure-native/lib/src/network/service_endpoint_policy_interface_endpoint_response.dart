@@ -7,11 +7,11 @@ import 'subnet_response.dart';
 /// Service End point policy resource.
 class ServiceEndpointPolicyInterfaceEndpointResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the service endpoint policy. Possible values are: 'Updating', 'Deleting', and 'Failed'.
@@ -19,11 +19,11 @@ class ServiceEndpointPolicyInterfaceEndpointResponse {
   /// The resource GUID property of the service endpoint policy resource.
   final pulumi.Input<String> resourceGuid;
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  final pulumi.Input<List<ServiceEndpointPolicyDefinitionInterfaceEndpointResponse>>? serviceEndpointPolicyDefinitions;
+  final pulumi.Input<List<ServiceEndpointPolicyDefinitionInterfaceEndpointResponse>?>? serviceEndpointPolicyDefinitions;
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

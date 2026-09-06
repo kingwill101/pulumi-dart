@@ -6,13 +6,13 @@ import 'ipconfiguration_bgp_peering_address.dart';
 /// BGP settings details.
 class BgpSettings {
   /// The BGP speaker's ASN.
-  final pulumi.Input<double>? asn;
+  final pulumi.Input<double?>? asn;
   /// The BGP peering address and BGP identifier of this BGP speaker.
-  final pulumi.Input<String>? bgpPeeringAddress;
+  final pulumi.Input<String?>? bgpPeeringAddress;
   /// BGP peering address with IP configuration ID for virtual network gateway.
-  final pulumi.Input<List<IPConfigurationBgpPeeringAddress>>? bgpPeeringAddresses;
+  final pulumi.Input<List<IPConfigurationBgpPeeringAddress>?>? bgpPeeringAddresses;
   /// The weight added to routes learned from this BGP speaker.
-  final pulumi.Input<int>? peerWeight;
+  final pulumi.Input<int?>? peerWeight;
 
   /// Creates a new [BgpSettings].
   /// [asn] The BGP speaker's ASN.
@@ -37,10 +37,10 @@ class BgpSettings {
 
   factory BgpSettings.fromMap(Map<String, dynamic> map) {
     return BgpSettings(
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       bgpPeeringAddress: (() { final guardedValue = map['bgpPeeringAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bgpPeeringAddresses: (() { final guardedValue = map['bgpPeeringAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IPConfigurationBgpPeeringAddress>(guardedValue, (value) => IPConfigurationBgpPeeringAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      peerWeight: (() { final guardedValue = map['peerWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

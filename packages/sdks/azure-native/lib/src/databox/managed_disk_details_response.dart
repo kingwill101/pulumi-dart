@@ -16,11 +16,11 @@ class ManagedDiskDetailsResponse {
   /// [dataAccountType] Account Type of the data to be transferred.
   /// [resourceGroupId] Resource Group Id of the compute disks.
   /// [stagingStorageAccountId] Resource Id of the storage account that can be used to copy the vhd for staging.
-  const ManagedDiskDetailsResponse({
-    required this.dataAccountType,
+  ManagedDiskDetailsResponse({
+    pulumi.Input<String>? dataAccountType,
     required this.resourceGroupId,
     required this.stagingStorageAccountId,
-  });
+  }) : dataAccountType = dataAccountType ?? pulumi.Input.fromValue('StorageAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

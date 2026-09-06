@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The output configuration of a job step.
 class JobStepOutput {
   /// The resource ID of the credential to use to connect to the output destination.
-  final pulumi.Input<String>? credential;
+  final pulumi.Input<String?>? credential;
   /// The output destination database.
   final pulumi.Input<String> databaseName;
   /// The output destination resource group.
-  final pulumi.Input<String>? resourceGroupName;
+  final pulumi.Input<String?>? resourceGroupName;
   /// The output destination schema.
-  final pulumi.Input<String>? schemaName;
+  final pulumi.Input<String?>? schemaName;
   /// The output destination server name.
   final pulumi.Input<String> serverName;
   /// The output destination subscription id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// The output destination table.
   final pulumi.Input<String> tableName;
   /// The output destination type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [JobStepOutput].
   /// [credential] The resource ID of the credential to use to connect to the output destination.
@@ -30,16 +30,16 @@ class JobStepOutput {
   /// [subscriptionId] The output destination subscription id.
   /// [tableName] The output destination table.
   /// [type] The output destination type.
-  const JobStepOutput({
+  JobStepOutput({
     this.credential,
     required this.databaseName,
     this.resourceGroupName,
-    this.schemaName,
+    pulumi.Input<String?>? schemaName,
     required this.serverName,
     this.subscriptionId,
     required this.tableName,
-    this.type,
-  });
+    pulumi.Input<dynamic>? type,
+  }) : schemaName = schemaName ?? pulumi.Input.fromValue('dbo'), type = type ?? pulumi.Input.fromValue('SqlDatabase');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -63,7 +63,7 @@ class JobStepOutput {
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tableName: pulumi.Input.fromValue(map['tableName'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

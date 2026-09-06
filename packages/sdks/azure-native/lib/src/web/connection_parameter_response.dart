@@ -6,9 +6,9 @@ import 'api_oauth_settings_response.dart';
 /// Connection provider parameters
 class ConnectionParameterResponse {
   /// OAuth settings for the connection provider
-  final pulumi.Input<ApiOAuthSettingsResponse>? oAuthSettings;
+  final pulumi.Input<ApiOAuthSettingsResponse?>? oAuthSettings;
   /// Type of the parameter
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConnectionParameterResponse].
   /// [oAuthSettings] OAuth settings for the connection provider

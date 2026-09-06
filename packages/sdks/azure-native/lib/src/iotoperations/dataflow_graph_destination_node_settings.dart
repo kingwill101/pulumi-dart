@@ -10,7 +10,7 @@ class DataflowGraphDestinationNodeSettings {
   /// The name of the DataflowEndpoint resource .
   final pulumi.Input<String> endpointRef;
   /// Output schema settings.
-  final pulumi.Input<DataflowGraphDestinationSchemaSettings>? outputSchemaSettings;
+  final pulumi.Input<DataflowGraphDestinationSchemaSettings?>? outputSchemaSettings;
 
   /// Creates a new [DataflowGraphDestinationNodeSettings].
   /// [dataDestination] Data destination at the endpoint.

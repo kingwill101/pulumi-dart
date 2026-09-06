@@ -9,7 +9,7 @@ class ManagedCassandraManagedServiceIdentityResponse {
   /// The tenant id of the resource.
   final pulumi.Input<String> tenantId;
   /// The type of the resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ManagedCassandraManagedServiceIdentityResponse].
   /// [principalId] The object id of the identity resource.

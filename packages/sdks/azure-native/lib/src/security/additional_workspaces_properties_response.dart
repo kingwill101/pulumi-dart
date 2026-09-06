@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the additional workspaces.
 class AdditionalWorkspacesPropertiesResponse {
   /// List of data types sent to workspace
-  final pulumi.Input<List<String>>? dataTypes;
+  final pulumi.Input<List<String>?>? dataTypes;
   /// Workspace type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Workspace resource id
-  final pulumi.Input<String>? workspace;
+  final pulumi.Input<String?>? workspace;
 
   /// Creates a new [AdditionalWorkspacesPropertiesResponse].
   /// [dataTypes] List of data types sent to workspace
   /// [type] Workspace type.
   /// [workspace] Workspace resource id
-  const AdditionalWorkspacesPropertiesResponse({
+  AdditionalWorkspacesPropertiesResponse({
     this.dataTypes,
-    this.type,
+    pulumi.Input<String?>? type,
     this.workspace,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('Sentinel');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

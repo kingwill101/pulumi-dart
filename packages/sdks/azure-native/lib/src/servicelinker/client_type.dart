@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The application client type
-enum ClientType {
+enum ClientType implements pulumi.PulumiEnum<String> {
   valueNone("none"),
   valueDotnet("dotnet"),
   valueJava("java"),
@@ -15,6 +17,7 @@ enum ClientType {
   valueDapr("dapr");
 
   const ClientType(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientType fromValue(String value) {

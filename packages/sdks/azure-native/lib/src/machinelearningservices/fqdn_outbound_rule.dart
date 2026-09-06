@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// FQDN Outbound Rule for the managed network of a machine learning workspace.
 class FqdnOutboundRule {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? category;
-  final pulumi.Input<String>? destination;
+  final pulumi.Input<dynamic>? category;
+  final pulumi.Input<String?>? destination;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'FQDN'.
   final pulumi.Input<String> type;
@@ -36,9 +36,9 @@ class FqdnOutboundRule {
 
   factory FqdnOutboundRule.fromMap(Map<String, dynamic> map) {
     return FqdnOutboundRule(
-      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      category: (() { final guardedValue = map['category']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

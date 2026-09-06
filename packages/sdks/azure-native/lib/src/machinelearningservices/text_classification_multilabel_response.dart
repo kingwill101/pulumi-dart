@@ -9,24 +9,24 @@ import 'nlp_vertical_limit_settings_response.dart';
 /// NLP - Natural Language Processing.
 class TextClassificationMultilabelResponse {
   /// Featurization inputs needed for AutoML job.
-  final pulumi.Input<NlpVerticalFeaturizationSettingsResponse>? featurizationSettings;
+  final pulumi.Input<NlpVerticalFeaturizationSettingsResponse?>? featurizationSettings;
   /// Execution constraints for AutoMLJob.
-  final pulumi.Input<NlpVerticalLimitSettingsResponse>? limitSettings;
+  final pulumi.Input<NlpVerticalLimitSettingsResponse?>? limitSettings;
   /// Enum for setting log verbosity.
-  final pulumi.Input<String>? logVerbosity;
+  final pulumi.Input<String?>? logVerbosity;
   /// Primary metric for Text-Classification-Multilabel task.
   /// Currently only Accuracy is supported as primary metric, hence user need not set it explicitly.
   final pulumi.Input<String> primaryMetric;
   /// Target column name: This is prediction values column.
   /// Also known as label column name in context of classification tasks.
-  final pulumi.Input<String>? targetColumnName;
+  final pulumi.Input<String?>? targetColumnName;
   /// AutoMLJob Task type.
   /// Expected value is 'TextClassificationMultilabel'.
   final pulumi.Input<String> taskType;
   /// [Required] Training data input.
   final pulumi.Input<MLTableJobInputResponse> trainingData;
   /// Validation data inputs.
-  final pulumi.Input<MLTableJobInputResponse>? validationData;
+  final pulumi.Input<MLTableJobInputResponse?>? validationData;
 
   /// Creates a new [TextClassificationMultilabelResponse].
   /// [featurizationSettings] Featurization inputs needed for AutoML job.
@@ -37,16 +37,16 @@ class TextClassificationMultilabelResponse {
   /// [taskType] AutoMLJob Task type.
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
-  const TextClassificationMultilabelResponse({
+  TextClassificationMultilabelResponse({
     this.featurizationSettings,
     this.limitSettings,
-    this.logVerbosity,
+    pulumi.Input<String?>? logVerbosity,
     required this.primaryMetric,
     this.targetColumnName,
     required this.taskType,
     required this.trainingData,
     this.validationData,
-  });
+  }) : logVerbosity = logVerbosity ?? pulumi.Input.fromValue('Info');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

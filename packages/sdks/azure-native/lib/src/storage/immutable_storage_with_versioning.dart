@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Object level immutability properties of the container.
 class ImmutableStorageWithVersioning {
   /// This is an immutable property, when set to true it enables object level immutability at the container level.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ImmutableStorageWithVersioning].
   /// [enabled] This is an immutable property, when set to true it enables object level immutability at the container level.

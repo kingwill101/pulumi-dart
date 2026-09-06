@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'machine_group_args.dart';
+import 'machine_reference_with_hints_response.dart';
 
 /// A user-defined logical grouping of machines.
 ///
@@ -216,7 +217,7 @@ class MachineGroup extends pulumi.CustomResource {
   /// Expected value is 'machineGroup'.
   late final pulumi.Output<String> kind;
   /// References of the machines in this group. The hints within each reference do not represent the current value of the corresponding fields. They are a snapshot created during the last time the machine group was updated.
-  late final pulumi.Output<List<Map<String, dynamic>>?> machines;
+  late final pulumi.Output<List<MachineReferenceWithHintsResponse>?> machines;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Resource type.
@@ -242,7 +243,27 @@ class MachineGroup extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     groupType = registerOutput<String?>('groupType');
     kind = registerOutput<String>('kind');
-    machines = registerOutput<List<Map<String, dynamic>>?>('machines');
+    machines = registerOutput<List<MachineReferenceWithHintsResponse>?>('machines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineReferenceWithHintsResponse>(guardedValue, (value) => MachineReferenceWithHintsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MachineGroup] resource.
+  MachineGroup.reference(String urn)
+    : super(
+        'azure-native:operationalinsights:MachineGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    count = registerOutput<int?>('count');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    groupType = registerOutput<String?>('groupType');
+    kind = registerOutput<String>('kind');
+    machines = registerOutput<List<MachineReferenceWithHintsResponse>?>('machines', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MachineReferenceWithHintsResponse>(guardedValue, (value) => MachineReferenceWithHintsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

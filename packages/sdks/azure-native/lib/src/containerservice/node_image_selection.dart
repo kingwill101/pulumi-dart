@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The node image upgrade to be applied to the target nodes in update run.
 class NodeImageSelection {
   /// The node image upgrade type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [NodeImageSelection].
   /// [type] The node image upgrade type.
@@ -21,7 +21,7 @@ class NodeImageSelection {
 
   factory NodeImageSelection.fromMap(Map<String, dynamic> map) {
     return NodeImageSelection(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

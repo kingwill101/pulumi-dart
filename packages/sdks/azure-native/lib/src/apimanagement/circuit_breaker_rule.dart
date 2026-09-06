@@ -6,13 +6,13 @@ import 'circuit_breaker_failure_condition.dart';
 /// Rule configuration to trip the backend.
 class CircuitBreakerRule {
   /// flag to accept Retry-After header from the backend.
-  final pulumi.Input<bool>? acceptRetryAfter;
+  final pulumi.Input<bool?>? acceptRetryAfter;
   /// The conditions for tripping the circuit breaker.
-  final pulumi.Input<CircuitBreakerFailureCondition>? failureCondition;
+  final pulumi.Input<CircuitBreakerFailureCondition?>? failureCondition;
   /// The rule name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The duration for which the circuit will be tripped.
-  final pulumi.Input<String>? tripDuration;
+  final pulumi.Input<String?>? tripDuration;
 
   /// Creates a new [CircuitBreakerRule].
   /// [acceptRetryAfter] flag to accept Retry-After header from the backend.

@@ -6,11 +6,11 @@ import 'device_detail.dart';
 /// Properties for device pool.
 class DevicePoolProperties {
   /// Custom Location Name for the pool, default: &lt;DevicePoolName&gt;-CL
-  final pulumi.Input<String>? customLocationName;
+  final pulumi.Input<String?>? customLocationName;
   /// List of machines in device pool.
-  final pulumi.Input<List<DeviceDetail>>? devices;
+  final pulumi.Input<List<DeviceDetail>?>? devices;
   /// Managed resource group name for the pool
-  final pulumi.Input<String>? managedResourceGroup;
+  final pulumi.Input<String?>? managedResourceGroup;
 
   /// Creates a new [DevicePoolProperties].
   /// [customLocationName] Custom Location Name for the pool, default: &lt;DevicePoolName&gt;-CL

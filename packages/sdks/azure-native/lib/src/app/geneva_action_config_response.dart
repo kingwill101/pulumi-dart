@@ -6,13 +6,13 @@ import 'geneva_action_parameter_response.dart';
 /// Configuration for a Geneva action
 class GenevaActionConfigResponse {
   /// Name of the Geneva action
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
   /// Parameters for the Geneva action
-  final pulumi.Input<List<GenevaActionParameterResponse>>? actionParameters;
+  final pulumi.Input<List<GenevaActionParameterResponse>?>? actionParameters;
   /// Indicates whether approval is required for this action
-  final pulumi.Input<bool>? approvalRequired;
+  final pulumi.Input<bool?>? approvalRequired;
   /// Extension associated with the action
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<String?>? extension;
 
   /// Creates a new [GenevaActionConfigResponse].
   /// [actionName] Name of the Geneva action

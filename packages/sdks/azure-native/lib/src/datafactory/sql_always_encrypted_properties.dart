@@ -1,19 +1,18 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'credential_reference.dart';
 
 /// Sql always encrypted properties.
 class SqlAlwaysEncryptedProperties {
   /// Sql always encrypted AKV authentication type. Type: string.
-  final pulumi.Input<String> alwaysEncryptedAkvAuthType;
+  final pulumi.Input<dynamic> alwaysEncryptedAkvAuthType;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReference>? credential;
+  final pulumi.Input<CredentialReference?>? credential;
   /// The client ID of the application in Azure Active Directory used for Azure Key Vault authentication. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key of the service principal used to authenticate against Azure Key Vault.
-  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalKey;
+  final pulumi.Input<dynamic>? servicePrincipalKey;
 
   /// Creates a new [SqlAlwaysEncryptedProperties].
   /// [alwaysEncryptedAkvAuthType] Sql always encrypted AKV authentication type. Type: string.
@@ -32,16 +31,16 @@ class SqlAlwaysEncryptedProperties {
       'alwaysEncryptedAkvAuthType': alwaysEncryptedAkvAuthType,
       'credential': ?pulumi.Input.mapOptionalInputValue<CredentialReference, Map<String, dynamic>>(credential, (value) => value.toMap()),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': ?servicePrincipalKey,
     };
   }
 
   factory SqlAlwaysEncryptedProperties.fromMap(Map<String, dynamic> map) {
     return SqlAlwaysEncryptedProperties(
-      alwaysEncryptedAkvAuthType: pulumi.Input.fromValue(map['alwaysEncryptedAkvAuthType'] as String),
+      alwaysEncryptedAkvAuthType: pulumi.Input.fromValue(map['alwaysEncryptedAkvAuthType']),
       credential: (() { final guardedValue = map['credential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CredentialReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

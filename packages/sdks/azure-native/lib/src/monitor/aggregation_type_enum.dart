@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// the criteria time aggregation types.
-enum AggregationTypeEnum {
+enum AggregationTypeEnum implements pulumi.PulumiEnum<String> {
   valueAverage("Average"),
   valueCount("Count"),
   valueMinimum("Minimum"),
@@ -7,6 +9,7 @@ enum AggregationTypeEnum {
   valueTotal("Total");
 
   const AggregationTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static AggregationTypeEnum fromValue(String value) {

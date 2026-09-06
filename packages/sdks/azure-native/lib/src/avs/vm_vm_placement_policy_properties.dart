@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VM-VM placement policy properties
 class VmVmPlacementPolicyProperties {
   /// placement policy affinity type
-  final pulumi.Input<String> affinityType;
+  final pulumi.Input<dynamic> affinityType;
   /// Display name of the placement policy
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Whether the placement policy is enabled or disabled
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Placement Policy type
   /// Expected value is 'VmVm'.
   final pulumi.Input<String> type;
@@ -42,9 +42,9 @@ class VmVmPlacementPolicyProperties {
 
   factory VmVmPlacementPolicyProperties.fromMap(Map<String, dynamic> map) {
     return VmVmPlacementPolicyProperties(
-      affinityType: pulumi.Input.fromValue(map['affinityType'] as String),
+      affinityType: pulumi.Input.fromValue(map['affinityType']),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       vmMembers: pulumi.Input.fromValue((map['vmMembers'] as List).cast<String>()),
     );

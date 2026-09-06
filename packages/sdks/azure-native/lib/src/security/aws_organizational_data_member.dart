@@ -8,7 +8,7 @@ class AwsOrganizationalDataMember {
   /// Expected value is 'Member'.
   final pulumi.Input<String> organizationMembershipType;
   /// If the multi cloud account is not of membership type organization, this will be the ID of the account's parent
-  final pulumi.Input<String>? parentHierarchyId;
+  final pulumi.Input<String?>? parentHierarchyId;
 
   /// Creates a new [AwsOrganizationalDataMember].
   /// [organizationMembershipType] The multi cloud account's membership type in the organization

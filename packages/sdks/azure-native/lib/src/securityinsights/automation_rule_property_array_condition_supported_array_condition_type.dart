@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes an array condition evaluation type.
-enum AutomationRulePropertyArrayConditionSupportedArrayConditionType {
+enum AutomationRulePropertyArrayConditionSupportedArrayConditionType implements pulumi.PulumiEnum<String> {
   valueAnyItem("AnyItem");
 
   const AutomationRulePropertyArrayConditionSupportedArrayConditionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutomationRulePropertyArrayConditionSupportedArrayConditionType fromValue(String value) {

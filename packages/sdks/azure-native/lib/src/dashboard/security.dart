@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Grafana security settings
 class Security {
   /// Set to true to execute the CSRF check even if the login cookie is not in a request (default false).
-  final pulumi.Input<bool>? csrfAlwaysCheck;
+  final pulumi.Input<bool?>? csrfAlwaysCheck;
 
   /// Creates a new [Security].
   /// [csrfAlwaysCheck] Set to true to execute the CSRF check even if the login cookie is not in a request (default false).

@@ -194,4 +194,20 @@ class Key extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'azure-native:synapse:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    isActiveCMK = registerOutput<bool?>('isActiveCMK');
+    keyVaultUrl = registerOutput<String?>('keyVaultUrl');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
 }

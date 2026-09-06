@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'instance_failover_group_args.dart';
 import 'instance_failover_group_read_only_endpoint_response.dart';
 import 'instance_failover_group_read_write_endpoint_response.dart';
+import 'managed_instance_pair_info_response.dart';
+import 'partner_region_info_response.dart';
 
 /// An instance failover group.
 ///
@@ -273,11 +275,11 @@ class InstanceFailoverGroup extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of managed instance pairs in the failover group.
-  late final pulumi.Output<List<Map<String, dynamic>>> managedInstancePairs;
+  late final pulumi.Output<List<ManagedInstancePairInfoResponse>> managedInstancePairs;
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Partner region information for the failover group.
-  late final pulumi.Output<List<Map<String, dynamic>>> partnerRegions;
+  late final pulumi.Output<List<PartnerRegionInfoResponse>> partnerRegions;
   /// Read-only endpoint of the failover group instance.
   late final pulumi.Output<InstanceFailoverGroupReadOnlyEndpointResponse?> readOnlyEndpoint;
   /// Read-write endpoint of the failover group instance.
@@ -306,9 +308,30 @@ class InstanceFailoverGroup extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    managedInstancePairs = registerOutput<List<Map<String, dynamic>>>('managedInstancePairs');
+    managedInstancePairs = registerOutput<List<ManagedInstancePairInfoResponse>>('managedInstancePairs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(guardedValue, (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    partnerRegions = registerOutput<List<Map<String, dynamic>>>('partnerRegions');
+    partnerRegions = registerOutput<List<PartnerRegionInfoResponse>>('partnerRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerRegionInfoResponse>(guardedValue, (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    readOnlyEndpoint = registerOutput<InstanceFailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    readWriteEndpoint = registerOutput<InstanceFailoverGroupReadWriteEndpointResponse>('readWriteEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    replicationRole = registerOutput<String>('replicationRole');
+    replicationState = registerOutput<String>('replicationState');
+    secondaryType = registerOutput<String?>('secondaryType');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [InstanceFailoverGroup] resource.
+  InstanceFailoverGroup.reference(String urn)
+    : super(
+        'azure-native:sql:InstanceFailoverGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    managedInstancePairs = registerOutput<List<ManagedInstancePairInfoResponse>>('managedInstancePairs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagedInstancePairInfoResponse>(guardedValue, (value) => ManagedInstancePairInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    partnerRegions = registerOutput<List<PartnerRegionInfoResponse>>('partnerRegions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerRegionInfoResponse>(guardedValue, (value) => PartnerRegionInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     readOnlyEndpoint = registerOutput<InstanceFailoverGroupReadOnlyEndpointResponse?>('readOnlyEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverGroupReadOnlyEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     readWriteEndpoint = registerOutput<InstanceFailoverGroupReadWriteEndpointResponse>('readWriteEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceFailoverGroupReadWriteEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     replicationRole = registerOutput<String>('replicationRole');

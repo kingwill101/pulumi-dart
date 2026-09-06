@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'error_detail_response.dart';
 import 'extension_args.dart';
 import 'extension_response_aks_assigned_identity.dart';
+import 'extension_status_response.dart';
 import 'identity_response.dart';
 import 'plan_response.dart';
 import 'scope_response.dart';
@@ -510,7 +511,7 @@ class Extension extends pulumi.CustomResource {
   /// Scope at which the extension is installed.
   late final pulumi.Output<ScopeResponse?> scope;
   /// Status from this extension.
-  late final pulumi.Output<List<Map<String, dynamic>>?> statuses;
+  late final pulumi.Output<List<ExtensionStatusResponse>?> statuses;
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
@@ -535,10 +536,10 @@ class Extension extends pulumi.CustomResource {
     aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>('aksAssignedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionResponseAksAssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
-    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     currentVersion = registerOutput<String>('currentVersion');
-    customLocationSettings = registerOutput<Map<String, String>>('customLocationSettings');
+    customLocationSettings = registerOutput<Map<String, String>>('customLocationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     errorInfo = registerOutput<ErrorDetailResponse>('errorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     extensionType = registerOutput<String?>('extensionType');
     identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -549,7 +550,39 @@ class Extension extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     releaseTrain = registerOutput<String?>('releaseTrain');
     scope = registerOutput<ScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    statuses = registerOutput<List<Map<String, dynamic>>?>('statuses');
+    statuses = registerOutput<List<ExtensionStatusResponse>?>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionStatusResponse>(guardedValue, (value) => ExtensionStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure-native:kubernetesconfiguration:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aksAssignedIdentity = registerOutput<ExtensionResponseAksAssignedIdentity?>('aksAssignedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtensionResponseAksAssignedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    configurationSettings = registerOutput<Map<String, String>?>('configurationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    currentVersion = registerOutput<String>('currentVersion');
+    customLocationSettings = registerOutput<Map<String, String>>('customLocationSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errorInfo = registerOutput<ErrorDetailResponse>('errorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorDetailResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extensionType = registerOutput<String?>('extensionType');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isSystemExtension = registerOutput<bool>('isSystemExtension');
+    this.name = registerOutput<String>('name');
+    packageUri = registerOutput<String>('packageUri');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    releaseTrain = registerOutput<String?>('releaseTrain');
+    scope = registerOutput<ScopeResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScopeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    statuses = registerOutput<List<ExtensionStatusResponse>?>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExtensionStatusResponse>(guardedValue, (value) => ExtensionStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');

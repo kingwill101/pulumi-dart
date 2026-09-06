@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties specific to the dashboard definition.
 class DashboardDefinitionProperties {
   /// The dashboard definition data in JSON format.
-  final pulumi.Input<String>? serializedData;
+  final pulumi.Input<String?>? serializedData;
 
   /// Creates a new [DashboardDefinitionProperties].
   /// [serializedData] The dashboard definition data in JSON format.

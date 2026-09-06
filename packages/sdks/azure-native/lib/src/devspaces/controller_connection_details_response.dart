@@ -5,7 +5,7 @@ import 'kubernetes_connection_details_response.dart';
 
 class ControllerConnectionDetailsResponse {
   /// Base class for types that supply values used to connect to container orchestrators
-  final pulumi.Input<KubernetesConnectionDetailsResponse>? orchestratorSpecificConnectionDetails;
+  final pulumi.Input<KubernetesConnectionDetailsResponse?>? orchestratorSpecificConnectionDetails;
 
   /// Creates a new [ControllerConnectionDetailsResponse].
   /// [orchestratorSpecificConnectionDetails] Base class for types that supply values used to connect to container orchestrators

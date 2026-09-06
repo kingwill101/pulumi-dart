@@ -6,9 +6,9 @@ import 'source_auth_type_enum_value.dart';
 /// Definition of SourceAuth
 class SourceAuth {
   /// &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
   /// &lt;p&gt;The authorization type to use. Valid options are OAUTH or CODECONNECTIONS.&lt;/p&gt;
-  final pulumi.Input<SourceAuthTypeEnumValue>? type;
+  final pulumi.Input<SourceAuthTypeEnumValue?>? type;
 
   /// Creates a new [SourceAuth].
   /// [resource] &lt;p&gt;The resource value that applies to the specified authorization type.&lt;/p&gt;

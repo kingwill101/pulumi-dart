@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The last operation on ComputeInstance.
 class ComputeInstanceLastOperationResponse {
   /// Name of the last operation.
-  final pulumi.Input<String>? operationName;
+  final pulumi.Input<String?>? operationName;
   /// Operation status.
-  final pulumi.Input<String>? operationStatus;
+  final pulumi.Input<String?>? operationStatus;
   /// Time of the last operation.
-  final pulumi.Input<String>? operationTime;
+  final pulumi.Input<String?>? operationTime;
   /// Trigger of operation.
-  final pulumi.Input<String>? operationTrigger;
+  final pulumi.Input<String?>? operationTrigger;
 
   /// Creates a new [ComputeInstanceLastOperationResponse].
   /// [operationName] Name of the last operation.

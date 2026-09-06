@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a HorizonDB firewall rule.
 class HorizonDbFirewallRulePropertiesResponse {
   /// The description of the HorizonDB firewall rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The end IP address of the firewall rule (IPv4).
   final pulumi.Input<String> endIpAddress;
   /// The provisioning state of the firewall rule.

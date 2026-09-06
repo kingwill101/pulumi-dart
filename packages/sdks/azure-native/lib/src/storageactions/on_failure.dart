@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action to be taken when the operation fails for a object.
-enum OnFailure {
+enum OnFailure implements pulumi.PulumiEnum<String> {
   break_("break");
 
   const OnFailure(this.wireValue);
+  @override
   final String wireValue;
 
   static OnFailure fromValue(String value) {

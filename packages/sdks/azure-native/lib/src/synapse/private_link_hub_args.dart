@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_private_link_hub_args_doc}
 class PrivateLinkHubArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the privateLinkHub
-  final pulumi.Input<String>? privateLinkHubName;
+  final pulumi.Input<String?>? privateLinkHubName;
   /// PrivateLinkHub provisioning state
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrivateLinkHubArgs].
   /// [location] The geo-location where the resource lives

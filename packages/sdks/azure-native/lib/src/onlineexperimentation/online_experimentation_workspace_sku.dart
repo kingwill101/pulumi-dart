@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU (Stock Keeping Unit) assigned to this resource.
 class OnlineExperimentationWorkspaceSku {
   /// The name of the SKU. Ex - F0, P0. It is typically a letter+number code
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [OnlineExperimentationWorkspaceSku].
   /// [name] The name of the SKU. Ex - F0, P0. It is typically a letter+number code
@@ -21,7 +21,7 @@ class OnlineExperimentationWorkspaceSku {
 
   factory OnlineExperimentationWorkspaceSku.fromMap(Map<String, dynamic> map) {
     return OnlineExperimentationWorkspaceSku(
-      name: pulumi.Input.fromValue(map['name'] as String),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

@@ -9,35 +9,35 @@ class HorizonDbClusterPropertiesResponse {
   /// The administrator login name.
   final pulumi.Input<String> administratorLogin;
   /// The mode to create a new HorizonDB cluster.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<String?>? createMode;
   /// The fully qualified domain name of the cluster.
   final pulumi.Input<String> fullyQualifiedDomainName;
   /// The network related info.
-  final pulumi.Input<NetworkResponse>? network;
+  final pulumi.Input<NetworkResponse?>? network;
   /// Defines connection to a parameter group.
-  final pulumi.Input<HorizonDbClusterParameterGroupConnectionPropertiesResponse>? parameterGroup;
+  final pulumi.Input<HorizonDbClusterParameterGroupConnectionPropertiesResponse?>? parameterGroup;
   /// Restore point creation time specifying the time to restore from.
-  final pulumi.Input<String>? pointInTimeUTC;
+  final pulumi.Input<String?>? pointInTimeUTC;
   /// The pool name for restore or replica operations.
-  final pulumi.Input<String>? poolName;
+  final pulumi.Input<String?>? poolName;
   /// The processor type for the HorizonDB cluster.
-  final pulumi.Input<String>? processorType;
+  final pulumi.Input<String?>? processorType;
   /// The provisioning state of the cluster.
   final pulumi.Input<String> provisioningState;
   /// The fully qualified domain name used for readonly endpoint for the cluster.
   final pulumi.Input<String> readonlyEndpoint;
   /// Number of replicas.
-  final pulumi.Input<int>? replicaCount;
+  final pulumi.Input<int?>? replicaCount;
   /// The source cluster resource ID for restore or replica creation.
-  final pulumi.Input<String>? sourceClusterResourceId;
+  final pulumi.Input<String?>? sourceClusterResourceId;
   /// Current state of the cluster.
   final pulumi.Input<String> state;
   /// Number of vCores.
-  final pulumi.Input<int>? vCores;
+  final pulumi.Input<int?>? vCores;
   /// The version of the HorizonDB cluster.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
   /// Defines how replicas are placed across availability zones.
-  final pulumi.Input<String>? zonePlacementPolicy;
+  final pulumi.Input<String?>? zonePlacementPolicy;
 
   /// Creates a new [HorizonDbClusterPropertiesResponse].
   /// [administratorLogin] The administrator login name.
@@ -108,10 +108,10 @@ class HorizonDbClusterPropertiesResponse {
       processorType: (() { final guardedValue = map['processorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       readonlyEndpoint: pulumi.Input.fromValue(map['readonlyEndpoint'] as String),
-      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      replicaCount: (() { final guardedValue = map['replicaCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sourceClusterResourceId: (() { final guardedValue = map['sourceClusterResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       state: pulumi.Input.fromValue(map['state'] as String),
-      vCores: (() { final guardedValue = map['vCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vCores: (() { final guardedValue = map['vCores']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zonePlacementPolicy: (() { final guardedValue = map['zonePlacementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

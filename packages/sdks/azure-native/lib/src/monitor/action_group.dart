@@ -7,7 +7,7 @@ class ActionGroup {
   /// The resource ID of the Action Group. This cannot be null or empty.
   final pulumi.Input<String> actionGroupId;
   /// the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
-  final pulumi.Input<Map<String, String>>? webhookProperties;
+  final pulumi.Input<Map<String, String>?>? webhookProperties;
 
   /// Creates a new [ActionGroup].
   /// [actionGroupId] The resource ID of the Action Group. This cannot be null or empty.

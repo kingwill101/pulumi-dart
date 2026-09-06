@@ -9,17 +9,17 @@ class PrivateEndpointConnectionResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The consumer link id.
   final pulumi.Input<String> linkIdentifier;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource of private end point.
   final pulumi.Input<PrivateEndpointResponse> privateEndpoint;
   /// The location of the private endpoint.
   final pulumi.Input<String> privateEndpointLocation;
   /// A collection of information about the state of the connection between service consumer and provider.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
   final pulumi.Input<String> provisioningState;
   /// The resource type.

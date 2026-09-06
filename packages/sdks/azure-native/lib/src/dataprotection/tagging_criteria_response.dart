@@ -7,7 +7,7 @@ import 'schedule_based_backup_criteria_response.dart';
 /// Tagging criteria
 class TaggingCriteriaResponse {
   /// Criteria which decides whether the tag can be applied to a triggered backup.
-  final pulumi.Input<List<ScheduleBasedBackupCriteriaResponse>>? criteria;
+  final pulumi.Input<List<ScheduleBasedBackupCriteriaResponse>?>? criteria;
   /// Specifies if tag is default.
   final pulumi.Input<bool> isDefault;
   /// Retention tag information
@@ -41,7 +41,7 @@ class TaggingCriteriaResponse {
       criteria: (() { final guardedValue = map['criteria']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScheduleBasedBackupCriteriaResponse>(guardedValue, (value) => ScheduleBasedBackupCriteriaResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       isDefault: pulumi.Input.fromValue(map['isDefault'] as bool),
       tagInfo: pulumi.Input.fromValue(RetentionTagResponse.fromMap((map['tagInfo']! as Map).cast<String, dynamic>())),
-      taggingPriority: pulumi.Input.fromValue(map['taggingPriority'] as double),
+      taggingPriority: pulumi.Input.fromValue((map['taggingPriority'] as num).toDouble()),
     );
   }
 }

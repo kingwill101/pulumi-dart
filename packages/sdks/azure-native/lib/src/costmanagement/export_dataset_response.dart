@@ -6,9 +6,9 @@ import 'export_dataset_configuration_response.dart';
 /// The definition for data in the export.
 class ExportDatasetResponse {
   /// The export dataset configuration.
-  final pulumi.Input<ExportDatasetConfigurationResponse>? configuration;
+  final pulumi.Input<ExportDatasetConfigurationResponse?>? configuration;
   /// The granularity of rows in the export. Currently only 'Daily' is supported.
-  final pulumi.Input<String>? granularity;
+  final pulumi.Input<String?>? granularity;
 
   /// Creates a new [ExportDatasetResponse].
   /// [configuration] The export dataset configuration.

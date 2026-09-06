@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The indicator of whether this is the default gateway.
 /// Only one of the attached networks (including the CloudServicesNetwork attachment) for a single machine may be specified as True.
-enum DefaultGateway {
+enum DefaultGateway implements pulumi.PulumiEnum<String> {
   valueTrue("True"),
   valueFalse("False");
 
   const DefaultGateway(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultGateway fromValue(String value) {

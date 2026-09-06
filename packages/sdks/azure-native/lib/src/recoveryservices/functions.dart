@@ -58,6 +58,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
 /// call the GetItemOperationResult API.
 ///
@@ -79,6 +90,17 @@ Future<GetProtectedItemResult> getProtectedItem(
   return GetProtectedItemResult.fromMap(result);
 }
 
+pulumi.Output<GetProtectedItemResult> getProtectedItemOutput(
+  GetProtectedItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getProtectedItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectedItemResult.fromMap);
+}
+
 /// Gets details of the specific container registered to your Recovery Services Vault.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -97,6 +119,17 @@ Future<GetProtectionContainerResult> getProtectionContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProtectionContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetProtectionContainerResult> getProtectionContainerOutput(
+  GetProtectionContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getProtectionContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectionContainerResult.fromMap);
 }
 
 /// Provides the details of the protection intent up item. This is an asynchronous operation. To know the status of the operation,
@@ -120,6 +153,17 @@ Future<GetProtectionIntentResult> getProtectionIntent(
   return GetProtectionIntentResult.fromMap(result);
 }
 
+pulumi.Output<GetProtectionIntentResult> getProtectionIntentOutput(
+  GetProtectionIntentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getProtectionIntent',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectionIntentResult.fromMap);
+}
+
 /// Provides the details of the backup policies associated to Recovery Services Vault. This is an asynchronous
 /// operation. Status of the operation can be fetched using GetPolicyOperationResult API.
 ///
@@ -141,6 +185,17 @@ Future<GetProtectionPolicyResult> getProtectionPolicy(
   return GetProtectionPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetProtectionPolicyResult> getProtectionPolicyOutput(
+  GetProtectionPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getProtectionPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProtectionPolicyResult.fromMap);
+}
+
 /// Uses Azure REST API version 2023-01-15.
 /// [args] Arguments passed to this invoke. {@macro pulumi_recoveryservices_get_recovery_point_access_token_args_doc}
 /// [options] Invoke options controlling this call.
@@ -155,6 +210,17 @@ Future<GetRecoveryPointAccessTokenResult> getRecoveryPointAccessToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRecoveryPointAccessTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetRecoveryPointAccessTokenResult> getRecoveryPointAccessTokenOutput(
+  GetRecoveryPointAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getRecoveryPointAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRecoveryPointAccessTokenResult.fromMap);
 }
 
 /// Gets the details of an Azure Site Recovery fabric.
@@ -177,6 +243,17 @@ Future<GetReplicationFabricResult> getReplicationFabric(
   return GetReplicationFabricResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationFabricResult> getReplicationFabricOutput(
+  GetReplicationFabricArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationFabric',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationFabricResult.fromMap);
+}
+
 /// Migration item.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -195,6 +272,17 @@ Future<GetReplicationMigrationItemResult> getReplicationMigrationItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationMigrationItemResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationMigrationItemResult> getReplicationMigrationItemOutput(
+  GetReplicationMigrationItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationMigrationItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationMigrationItemResult.fromMap);
 }
 
 /// Gets the details of an ASR network mapping.
@@ -217,6 +305,17 @@ Future<GetReplicationNetworkMappingResult> getReplicationNetworkMapping(
   return GetReplicationNetworkMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationNetworkMappingResult> getReplicationNetworkMappingOutput(
+  GetReplicationNetworkMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationNetworkMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationNetworkMappingResult.fromMap);
+}
+
 /// Gets the details of a replication policy.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -235,6 +334,17 @@ Future<GetReplicationPolicyResult> getReplicationPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationPolicyResult> getReplicationPolicyOutput(
+  GetReplicationPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationPolicyResult.fromMap);
 }
 
 /// Gets the details of an ASR replication protected item.
@@ -257,6 +367,17 @@ Future<GetReplicationProtectedItemResult> getReplicationProtectedItem(
   return GetReplicationProtectedItemResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationProtectedItemResult> getReplicationProtectedItemOutput(
+  GetReplicationProtectedItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationProtectedItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationProtectedItemResult.fromMap);
+}
+
 /// Gets the details of an ASR replication protection cluster.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -275,6 +396,17 @@ Future<GetReplicationProtectionClusterResult> getReplicationProtectionCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationProtectionClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationProtectionClusterResult> getReplicationProtectionClusterOutput(
+  GetReplicationProtectionClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationProtectionCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationProtectionClusterResult.fromMap);
 }
 
 /// Gets the details of a protection container mapping.
@@ -297,6 +429,17 @@ Future<GetReplicationProtectionContainerMappingResult> getReplicationProtectionC
   return GetReplicationProtectionContainerMappingResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationProtectionContainerMappingResult> getReplicationProtectionContainerMappingOutput(
+  GetReplicationProtectionContainerMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationProtectionContainerMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationProtectionContainerMappingResult.fromMap);
+}
+
 /// Gets the details of the recovery plan.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -315,6 +458,17 @@ Future<GetReplicationRecoveryPlanResult> getReplicationRecoveryPlan(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationRecoveryPlanResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationRecoveryPlanResult> getReplicationRecoveryPlanOutput(
+  GetReplicationRecoveryPlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationRecoveryPlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationRecoveryPlanResult.fromMap);
 }
 
 /// Gets the details of registered recovery services provider.
@@ -337,6 +491,17 @@ Future<GetReplicationRecoveryServicesProviderResult> getReplicationRecoveryServi
   return GetReplicationRecoveryServicesProviderResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationRecoveryServicesProviderResult> getReplicationRecoveryServicesProviderOutput(
+  GetReplicationRecoveryServicesProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationRecoveryServicesProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationRecoveryServicesProviderResult.fromMap);
+}
+
 /// Gets the details of the specified storage classification mapping.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -355,6 +520,17 @@ Future<GetReplicationStorageClassificationMappingResult> getReplicationStorageCl
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReplicationStorageClassificationMappingResult.fromMap(result);
+}
+
+pulumi.Output<GetReplicationStorageClassificationMappingResult> getReplicationStorageClassificationMappingOutput(
+  GetReplicationStorageClassificationMappingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationStorageClassificationMapping',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationStorageClassificationMappingResult.fromMap);
 }
 
 /// Gets the details of a registered vCenter server(Add vCenter server).
@@ -377,6 +553,17 @@ Future<GetReplicationvCenterResult> getReplicationvCenter(
   return GetReplicationvCenterResult.fromMap(result);
 }
 
+pulumi.Output<GetReplicationvCenterResult> getReplicationvCenterOutput(
+  GetReplicationvCenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getReplicationvCenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReplicationvCenterResult.fromMap);
+}
+
 /// Returns ResourceGuardProxy under vault and with the name referenced in request
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -397,6 +584,17 @@ Future<GetResourceGuardProxyResult> getResourceGuardProxy(
   return GetResourceGuardProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetResourceGuardProxyResult> getResourceGuardProxyOutput(
+  GetResourceGuardProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getResourceGuardProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceGuardProxyResult.fromMap);
+}
+
 /// Get the Vault details.
 ///
 /// Uses Azure REST API version 2024-10-01.
@@ -415,4 +613,15 @@ Future<GetVaultResult> getVault(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVaultResult.fromMap(result);
+}
+
+pulumi.Output<GetVaultResult> getVaultOutput(
+  GetVaultArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:recoveryservices:getVault',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVaultResult.fromMap);
 }

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Reference to an asset via its path in a job output.
 class OutputPathAssetReference {
   /// ARM resource ID of the job.
-  final pulumi.Input<String>? jobId;
+  final pulumi.Input<String?>? jobId;
   /// The path of the file/directory in the job output.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Enum to determine which reference method to use for an asset.
   /// Expected value is 'OutputPath'.
   final pulumi.Input<String> referenceType;

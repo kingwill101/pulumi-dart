@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Treatment of URL query terms when forming the cache key.
-enum FrontDoorQuery {
+enum FrontDoorQuery implements pulumi.PulumiEnum<String> {
   stripNone("StripNone"),
   stripAll("StripAll"),
   stripOnly("StripOnly"),
   stripAllExcept("StripAllExcept");
 
   const FrontDoorQuery(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontDoorQuery fromValue(String value) {

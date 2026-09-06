@@ -18,7 +18,7 @@ class GitLabGroupPropertiesResponse {
   /// Onboarded - this resource has already been onboarded by the specified connector.
   /// NotOnboarded - this resource has not been onboarded to any connector.
   /// NotApplicable - the onboarding state is not applicable to the current endpoint.
-  final pulumi.Input<String>? onboardingState;
+  final pulumi.Input<String?>? onboardingState;
   /// The provisioning state of the resource.
   ///
   /// Pending - Provisioning pending.
@@ -28,7 +28,7 @@ class GitLabGroupPropertiesResponse {
   /// PendingDeletion - Deletion pending.
   /// DeletionSuccess - Deletion successful.
   /// DeletionFailure - Deletion failure.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// Gets or sets resource status message.
   final pulumi.Input<String> provisioningStatusMessage;
   /// Gets or sets time when resource was last checked.

@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'container_network_interface_configuration_response.dart';
+import 'container_network_interface_response.dart';
 import 'network_profile_args.dart';
 
 /// Network profile resource.
@@ -226,9 +228,9 @@ class NetworkProfile extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of chid container network interface configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>?> containerNetworkInterfaceConfigurations;
+  late final pulumi.Output<List<ContainerNetworkInterfaceConfigurationResponse>?> containerNetworkInterfaceConfigurations;
   /// List of child container network interfaces.
-  late final pulumi.Output<List<Map<String, dynamic>>> containerNetworkInterfaces;
+  late final pulumi.Output<List<ContainerNetworkInterfaceResponse>> containerNetworkInterfaces;
   /// A unique read-only string that changes whenever the resource is updated.
   late final pulumi.Output<String> etag;
   /// Resource location.
@@ -259,14 +261,35 @@ class NetworkProfile extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    containerNetworkInterfaceConfigurations = registerOutput<List<Map<String, dynamic>>?>('containerNetworkInterfaceConfigurations');
-    containerNetworkInterfaces = registerOutput<List<Map<String, dynamic>>>('containerNetworkInterfaces');
+    containerNetworkInterfaceConfigurations = registerOutput<List<ContainerNetworkInterfaceConfigurationResponse>?>('containerNetworkInterfaceConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkInterfaceConfigurationResponse>(guardedValue, (value) => ContainerNetworkInterfaceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    containerNetworkInterfaces = registerOutput<List<ContainerNetworkInterfaceResponse>>('containerNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkInterfaceResponse>(guardedValue, (value) => ContainerNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkProfile] resource.
+  NetworkProfile.reference(String urn)
+    : super(
+        'azure-native:network:NetworkProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerNetworkInterfaceConfigurations = registerOutput<List<ContainerNetworkInterfaceConfigurationResponse>?>('containerNetworkInterfaceConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkInterfaceConfigurationResponse>(guardedValue, (value) => ContainerNetworkInterfaceConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    containerNetworkInterfaces = registerOutput<List<ContainerNetworkInterfaceResponse>>('containerNetworkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerNetworkInterfaceResponse>(guardedValue, (value) => ContainerNetworkInterfaceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

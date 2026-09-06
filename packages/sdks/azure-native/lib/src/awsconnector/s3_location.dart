@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of S3Location
 class S3Location {
   /// The name of the S3 bucket where the OpenAPI file is stored.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
   /// The Amazon S3 ETag (a file checksum) of the OpenAPI file. If you don't specify a value, API Gateway skips ETag validation of your OpenAPI file.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// The file name of the OpenAPI file (Amazon S3 object name).
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// For versioning-enabled buckets, a specific version of the OpenAPI file.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [S3Location].
   /// [bucket] The name of the S3 bucket where the OpenAPI file is stored.

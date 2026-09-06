@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Column data type.
-enum ColumnTypeEnum {
+enum ColumnTypeEnum implements pulumi.PulumiEnum<String> {
   valueString("string"),
   valueInt("int"),
   valueLong("long"),
@@ -10,6 +12,7 @@ enum ColumnTypeEnum {
   valueDynamic("dynamic");
 
   const ColumnTypeEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static ColumnTypeEnum fromValue(String value) {

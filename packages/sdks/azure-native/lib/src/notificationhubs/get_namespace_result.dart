@@ -10,23 +10,23 @@ import 'system_data_response.dart';
 /// Result data returned by getNamespace.
 class GetNamespaceResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Time when the namespace was created.
-  final String createdAt;
+  final String? createdAt;
   /// Gets or sets whether or not the namespace is set as Critical.
-  final bool critical;
+  final bool? critical;
   /// Deprecated.
   final String? dataCenter;
   /// Gets or sets whether or not the namespace is currently enabled.
-  final bool enabled;
+  final bool? enabled;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Azure Insights Metrics id.
-  final String metricId;
+  final String? metricId;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Defines values for NamespaceType.
   final String? namespaceType;
   /// A collection of network authorization rules.
@@ -34,35 +34,35 @@ class GetNamespaceResult {
   /// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
   final PnsCredentialsResponse? pnsCredentials;
   /// Private Endpoint Connections for namespace
-  final List<PrivateEndpointConnectionResourceResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResourceResponse>? privateEndpointConnections;
   /// Defines values for OperationProvisioningState.
   final String? provisioningState;
   /// Type of public network access.
   final String? publicNetworkAccess;
   /// Region. The value is always set to the same value as Namespace.Location, so we are deprecating
   /// this property.
-  final String region;
+  final String? region;
   /// Allowed replication region
   final String? replicationRegion;
   /// Gets or sets scaleUnit where the namespace gets created
   final String? scaleUnit;
   /// Gets or sets endpoint you can use to perform NotificationHub
   /// operations.
-  final String serviceBusEndpoint;
+  final String? serviceBusEndpoint;
   /// The Sku description for a namespace
-  final SkuResponse sku;
+  final SkuResponse? sku;
   /// Namespace status.
   final String? status;
   /// Namespace subscription id.
-  final String subscriptionId;
+  final String? subscriptionId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Time when the namespace was updated.
-  final String updatedAt;
+  final String? updatedAt;
   /// Namespace SKU name.
   final String? zoneRedundancy;
 
@@ -94,96 +94,96 @@ class GetNamespaceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] Time when the namespace was updated.
   /// [zoneRedundancy] Namespace SKU name.
-  const GetNamespaceResult({
-    required this.azureApiVersion,
-    required this.createdAt,
-    required this.critical,
+  GetNamespaceResult({
+    this.azureApiVersion,
+    this.createdAt,
+    this.critical,
     this.dataCenter,
-    required this.enabled,
-    required this.id,
-    required this.location,
-    required this.metricId,
-    required this.name,
+    this.enabled,
+    this.id,
+    this.location,
+    this.metricId,
+    this.name,
     this.namespaceType,
     this.networkAcls,
     this.pnsCredentials,
-    required this.privateEndpointConnections,
+    this.privateEndpointConnections,
     this.provisioningState,
-    this.publicNetworkAccess,
-    required this.region,
+    String? publicNetworkAccess,
+    this.region,
     this.replicationRegion,
     this.scaleUnit,
-    required this.serviceBusEndpoint,
-    required this.sku,
+    this.serviceBusEndpoint,
+    this.sku,
     this.status,
-    required this.subscriptionId,
-    required this.systemData,
+    this.subscriptionId,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.updatedAt,
-    this.zoneRedundancy,
-  });
+    this.type,
+    this.updatedAt,
+    String? zoneRedundancy,
+  }) : publicNetworkAccess = publicNetworkAccess ?? 'Enabled', zoneRedundancy = zoneRedundancy ?? 'Disabled';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'createdAt': createdAt,
-      'critical': critical,
+      'azureApiVersion': ?azureApiVersion,
+      'createdAt': ?createdAt,
+      'critical': ?critical,
       'dataCenter': ?dataCenter,
-      'enabled': enabled,
-      'id': id,
-      'location': location,
-      'metricId': metricId,
-      'name': name,
+      'enabled': ?enabled,
+      'id': ?id,
+      'location': ?location,
+      'metricId': ?metricId,
+      'name': ?name,
       'namespaceType': ?namespaceType,
       'networkAcls': ?networkAcls?.toMap(),
       'pnsCredentials': ?pnsCredentials?.toMap(),
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResourceResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'region': region,
+      'region': ?region,
       'replicationRegion': ?replicationRegion,
       'scaleUnit': ?scaleUnit,
-      'serviceBusEndpoint': serviceBusEndpoint,
-      'sku': sku.toMap(),
+      'serviceBusEndpoint': ?serviceBusEndpoint,
+      'sku': ?sku?.toMap(),
       'status': ?status,
-      'subscriptionId': subscriptionId,
-      'systemData': systemData.toMap(),
+      'subscriptionId': ?subscriptionId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'updatedAt': updatedAt,
+      'type': ?type,
+      'updatedAt': ?updatedAt,
       'zoneRedundancy': ?zoneRedundancy,
     };
   }
 
   factory GetNamespaceResult.fromMap(Map<String, dynamic> map) {
     return GetNamespaceResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      createdAt: map['createdAt'] as String,
-      critical: map['critical'] as bool,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      critical: (() { final guardedValue = map['critical']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dataCenter: (() { final guardedValue = map['dataCenter']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      enabled: map['enabled'] as bool,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      metricId: map['metricId'] as String,
-      name: map['name'] as String,
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metricId: (() { final guardedValue = map['metricId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       namespaceType: (() { final guardedValue = map['namespaceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return NetworkAclsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       pnsCredentials: (() { final guardedValue = map['pnsCredentials']; if (guardedValue == null) return null; return PnsCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResourceResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResourceResponse>(guardedValue, (value) => PrivateEndpointConnectionResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      region: map['region'] as String,
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       replicationRegion: (() { final guardedValue = map['replicationRegion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scaleUnit: (() { final guardedValue = map['scaleUnit']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serviceBusEndpoint: map['serviceBusEndpoint'] as String,
-      sku: SkuResponse.fromMap((map['sku']! as Map).cast<String, dynamic>()),
+      serviceBusEndpoint: (() { final guardedValue = map['serviceBusEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      subscriptionId: map['subscriptionId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      subscriptionId: (() { final guardedValue = map['subscriptionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      updatedAt: map['updatedAt'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updatedAt: (() { final guardedValue = map['updatedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -6,9 +6,9 @@ import 'l3_export_route_policy.dart';
 /// Connected Subnet Route Policy properties.
 class ConnectedSubnetRoutePolicy {
   /// Array of ARM Resource ID of the RoutePolicies.
-  final pulumi.Input<L3ExportRoutePolicy>? exportRoutePolicy;
+  final pulumi.Input<L3ExportRoutePolicy?>? exportRoutePolicy;
   /// ARM Resource ID of the Route Policy. This is used for the backward compatibility.
-  final pulumi.Input<String>? exportRoutePolicyId;
+  final pulumi.Input<String?>? exportRoutePolicyId;
 
   /// Creates a new [ConnectedSubnetRoutePolicy].
   /// [exportRoutePolicy] Array of ARM Resource ID of the RoutePolicies.

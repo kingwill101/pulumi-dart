@@ -9,7 +9,7 @@ class SaveOrGetBusinessProcessDevelopmentArtifactResponseResponse {
   /// The name of the business process development artifact.
   final pulumi.Input<String> name;
   /// The properties of the business process development artifact.
-  final pulumi.Input<BusinessProcessDevelopmentArtifactPropertiesResponse>? properties;
+  final pulumi.Input<BusinessProcessDevelopmentArtifactPropertiesResponse?>? properties;
   /// The system data of the business process development artifact.
   final pulumi.Input<SystemDataResponse> systemData;
 

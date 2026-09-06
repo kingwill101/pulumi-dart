@@ -4,15 +4,15 @@
 /// Result data returned by listWebAppMetadataSlot.
 class ListWebAppMetadataSlotResult {
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// Settings.
-  final Map<String, String> properties;
+  final Map<String, String>? properties;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListWebAppMetadataSlotResult].
   /// [id] Resource Id.
@@ -21,30 +21,30 @@ class ListWebAppMetadataSlotResult {
   /// [properties] Settings.
   /// [type] Resource type.
   const ListWebAppMetadataSlotResult({
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'properties': properties,
-      'type': type,
+      'name': ?name,
+      'properties': ?properties,
+      'type': ?type,
     };
   }
 
   factory ListWebAppMetadataSlotResult.fromMap(Map<String, dynamic> map) {
     return ListWebAppMetadataSlotResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      properties: (map['properties'] as Map).cast<String, String>(),
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Support information for the content item.
 class MetadataSupportResponse {
   /// Email of support contact
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Link for support help, like to support page to open a ticket etc.
-  final pulumi.Input<String>? link;
+  final pulumi.Input<String?>? link;
   /// Name of the support contact. Company or person.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of support for content item
   final pulumi.Input<String> tier;
 

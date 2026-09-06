@@ -11,9 +11,9 @@ class CapacityPoolCacheArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// The name of the cache resource.
-  final pulumi.Input<String>? cacheName;
+  final pulumi.Input<String?>? cacheName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
   /// Cache properties
@@ -21,9 +21,9 @@ class CapacityPoolCacheArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The availability zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [CapacityPoolCacheArgs].
   /// [accountName] The name of the NetApp account

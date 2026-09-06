@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resource Uri of Public Ip for Standard Load Balancer Frontend End.
 class InternetIngressPublicIpsPropertiesResponse {
   /// Resource Uri of Public Ip
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [InternetIngressPublicIpsPropertiesResponse].
   /// [id] Resource Uri of Public Ip

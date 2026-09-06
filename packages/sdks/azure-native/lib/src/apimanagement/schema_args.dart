@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_schema_args_doc}
 class SchemaArgs {
   /// Free-form schema entity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Schema id identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? schemaId;
+  final pulumi.Input<String?>? schemaId;
   /// Schema Type. Immutable.
-  final pulumi.Input<String> schemaType;
+  final pulumi.Input<dynamic> schemaType;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// Json-encoded string for non json-based schema.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [SchemaArgs].
   /// [description] Free-form schema entity description.
@@ -52,7 +52,7 @@ class SchemaArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       schemaId: (() { final guardedValue = map['schemaId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      schemaType: pulumi.Input.fromValue(map['schemaType'] as String),
+      schemaType: pulumi.Input.fromValue(map['schemaType']),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the TCP configuration.
 class ConnectionMonitorTcpConfiguration {
   /// Destination port behavior.
-  final pulumi.Input<String>? destinationPortBehavior;
+  final pulumi.Input<dynamic>? destinationPortBehavior;
   /// Value indicating whether path evaluation with trace route should be disabled.
-  final pulumi.Input<bool>? disableTraceRoute;
+  final pulumi.Input<bool?>? disableTraceRoute;
   /// The port to connect to.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
 
   /// Creates a new [ConnectionMonitorTcpConfiguration].
   /// [destinationPortBehavior] Destination port behavior.
@@ -31,9 +31,9 @@ class ConnectionMonitorTcpConfiguration {
 
   factory ConnectionMonitorTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectionMonitorTcpConfiguration(
-      destinationPortBehavior: (() { final guardedValue = map['destinationPortBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationPortBehavior: (() { final guardedValue = map['destinationPortBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disableTraceRoute: (() { final guardedValue = map['disableTraceRoute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

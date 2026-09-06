@@ -6,9 +6,9 @@ import 'osdisk_image_security_profile_response.dart';
 /// Contains encryption settings for an OS disk image.
 class OSDiskImageEncryptionResponse {
   /// A relative URI containing the resource ID of the disk encryption set.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// This property specifies the security profile of an OS disk image.
-  final pulumi.Input<OSDiskImageSecurityProfileResponse>? securityProfile;
+  final pulumi.Input<OSDiskImageSecurityProfileResponse?>? securityProfile;
 
   /// Creates a new [OSDiskImageEncryptionResponse].
   /// [diskEncryptionSetId] A relative URI containing the resource ID of the disk encryption set.

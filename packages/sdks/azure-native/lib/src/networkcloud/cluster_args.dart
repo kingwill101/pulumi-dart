@@ -23,50 +23,50 @@ class ClusterArgs {
   /// The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
   final pulumi.Input<RackDefinition> aggregatorOrSingleRackDefinition;
   /// The settings for the log analytics workspace used for output of logs from this cluster.
-  final pulumi.Input<AnalyticsOutputSettings>? analyticsOutputSettings;
+  final pulumi.Input<AnalyticsOutputSettings?>? analyticsOutputSettings;
   /// Field Deprecated. The resource ID of the Log Analytics Workspace that will be used for storing relevant logs.
-  final pulumi.Input<String>? analyticsWorkspaceId;
+  final pulumi.Input<String?>? analyticsWorkspaceId;
   /// The customer-provided location information to identify where the cluster resides.
-  final pulumi.Input<String>? clusterLocation;
+  final pulumi.Input<String?>? clusterLocation;
   /// The name of the cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The service principal to be used by the cluster during Arc Appliance installation.
-  final pulumi.Input<ServicePrincipalInformation>? clusterServicePrincipal;
+  final pulumi.Input<ServicePrincipalInformation?>? clusterServicePrincipal;
   /// The type of rack configuration for the cluster.
-  final pulumi.Input<String> clusterType;
+  final pulumi.Input<dynamic> clusterType;
   /// The current runtime version of the cluster.
   final pulumi.Input<String> clusterVersion;
   /// The settings for commands run in this cluster, such as bare metal machine run read only commands and data extracts.
-  final pulumi.Input<CommandOutputSettings>? commandOutputSettings;
+  final pulumi.Input<CommandOutputSettings?>? commandOutputSettings;
   /// The validation threshold indicating the allowable failures of compute machines during environment validation and deployment.
-  final pulumi.Input<ValidationThreshold>? computeDeploymentThreshold;
+  final pulumi.Input<ValidationThreshold?>? computeDeploymentThreshold;
   /// The list of rack definitions for the compute racks in a multi-rack
   /// cluster, or an empty list in a single-rack cluster.
-  final pulumi.Input<List<RackDefinition>>? computeRackDefinitions;
+  final pulumi.Input<List<RackDefinition>?>? computeRackDefinitions;
   /// The extended location of the cluster manager associated with the cluster.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The identity for the resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The configuration of the managed resource group associated with the resource.
-  final pulumi.Input<ManagedResourceGroupConfiguration>? managedResourceGroupConfiguration;
+  final pulumi.Input<ManagedResourceGroupConfiguration?>? managedResourceGroupConfiguration;
   /// The resource ID of the Network Fabric associated with the cluster.
   final pulumi.Input<String> networkFabricId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The settings for cluster runtime protection.
-  final pulumi.Input<RuntimeProtectionConfiguration>? runtimeProtectionConfiguration;
+  final pulumi.Input<RuntimeProtectionConfiguration?>? runtimeProtectionConfiguration;
   /// The configuration for use of a key vault to store secrets for later retrieval by the operator.
-  final pulumi.Input<ClusterSecretArchive>? secretArchive;
+  final pulumi.Input<ClusterSecretArchive?>? secretArchive;
   /// The settings for the secret archive used to hold credentials for the cluster.
-  final pulumi.Input<SecretArchiveSettings>? secretArchiveSettings;
+  final pulumi.Input<SecretArchiveSettings?>? secretArchiveSettings;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The strategy for updating the cluster.
-  final pulumi.Input<ClusterUpdateStrategy>? updateStrategy;
+  final pulumi.Input<ClusterUpdateStrategy?>? updateStrategy;
   /// The settings for how security vulnerability scanning is applied to the cluster.
-  final pulumi.Input<VulnerabilityScanningSettings>? vulnerabilityScanningSettings;
+  final pulumi.Input<VulnerabilityScanningSettings?>? vulnerabilityScanningSettings;
 
   /// Creates a new [ClusterArgs].
   /// [aggregatorOrSingleRackDefinition] The rack definition that is intended to reflect only a single rack in a single rack cluster, or an aggregator rack in a multi-rack cluster.
@@ -154,7 +154,7 @@ class ClusterArgs {
       clusterLocation: (() { final guardedValue = map['clusterLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterServicePrincipal: (() { final guardedValue = map['clusterServicePrincipal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServicePrincipalInformation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      clusterType: pulumi.Input.fromValue(map['clusterType'] as String),
+      clusterType: pulumi.Input.fromValue(map['clusterType']),
       clusterVersion: pulumi.Input.fromValue(map['clusterVersion'] as String),
       commandOutputSettings: (() { final guardedValue = map['commandOutputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CommandOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       computeDeploymentThreshold: (() { final guardedValue = map['computeDeploymentThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ValidationThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -8,27 +8,27 @@ class ListProductsAndConfigurationsResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The Configuration items on this page
-  final List<ConfigurationResponse> value;
+  final List<ConfigurationResponse>? value;
 
   /// Creates a new [ListProductsAndConfigurationsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Configuration items on this page
   const ListProductsAndConfigurationsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ConfigurationResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ConfigurationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListProductsAndConfigurationsResult.fromMap(Map<String, dynamic> map) {
     return ListProductsAndConfigurationsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<ConfigurationResponse>(map['value']!, (value) => ConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationResponse>(guardedValue, (value) => ConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -15,73 +15,73 @@ import 'tag_response.dart';
 /// Definition of awsEmrCluster
 class AwsEmrClusterPropertiesResponse {
   /// &lt;p&gt;The applications installed on this cluster.&lt;/p&gt;
-  final pulumi.Input<List<ApplicationResponse>>? applications;
+  final pulumi.Input<List<ApplicationResponse>?>? applications;
   /// &lt;p&gt;An IAM role for automatic scaling policies. The default role is &lt;code&gt;EMR_AutoScaling_DefaultRole&lt;/code&gt;. The IAM role provides permissions that the automatic scaling feature requires to launch and terminate Amazon EC2 instances in an instance group.&lt;/p&gt;
-  final pulumi.Input<String>? autoScalingRole;
+  final pulumi.Input<String?>? autoScalingRole;
   /// &lt;p&gt;Specifies whether the cluster should terminate after completing all steps.&lt;/p&gt;
-  final pulumi.Input<bool>? autoTerminate;
+  final pulumi.Input<bool?>? autoTerminate;
   /// &lt;p&gt;The Amazon Resource Name of the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? clusterArn;
+  final pulumi.Input<String?>? clusterArn;
   /// &lt;p&gt;Applies only to Amazon EMR releases 4.x and later. The list of configurations that are supplied to the Amazon EMR cluster.&lt;/p&gt;
-  final pulumi.Input<List<ConfigurationResponse>>? configurations;
+  final pulumi.Input<List<ConfigurationResponse>?>? configurations;
   /// &lt;p&gt;Available only in Amazon EMR releases 5.7.0 and later. The ID of a custom Amazon EBS-backed Linux AMI if the cluster uses a custom AMI.&lt;/p&gt;
-  final pulumi.Input<String>? customAmiId;
+  final pulumi.Input<String?>? customAmiId;
   /// &lt;p&gt;The IOPS, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.&lt;/p&gt;
-  final pulumi.Input<int>? ebsRootVolumeIops;
+  final pulumi.Input<int?>? ebsRootVolumeIops;
   /// &lt;p&gt;The size, in GiB, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 4.x and later.&lt;/p&gt;
-  final pulumi.Input<int>? ebsRootVolumeSize;
+  final pulumi.Input<int?>? ebsRootVolumeSize;
   /// &lt;p&gt;The throughput, in MiB/s, of the Amazon EBS root device volume of the Linux AMI that is used for each Amazon EC2 instance. Available in Amazon EMR releases 6.15.0 and later.&lt;/p&gt;
-  final pulumi.Input<int>? ebsRootVolumeThroughput;
+  final pulumi.Input<int?>? ebsRootVolumeThroughput;
   /// &lt;p&gt;Provides information about the Amazon EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.&lt;/p&gt;
-  final pulumi.Input<Ec2InstanceAttributesResponse>? ec2InstanceAttributes;
+  final pulumi.Input<Ec2InstanceAttributesResponse?>? ec2InstanceAttributes;
   /// &lt;p&gt;The unique identifier for the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// &lt;note&gt; &lt;p&gt;The instance fleet configuration is available only in Amazon EMR releases 4.8.0 and later, excluding 5.0.x versions.&lt;/p&gt; &lt;/note&gt; &lt;p&gt;The instance group configuration of the cluster. A value of &lt;code&gt;INSTANCE_GROUP&lt;/code&gt; indicates a uniform instance group configuration. A value of &lt;code&gt;INSTANCE_FLEET&lt;/code&gt; indicates an instance fleets configuration.&lt;/p&gt;
-  final pulumi.Input<InstanceCollectionTypeEnumValueResponse>? instanceCollectionType;
+  final pulumi.Input<InstanceCollectionTypeEnumValueResponse?>? instanceCollectionType;
   /// &lt;p&gt;Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see &lt;a href='https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html'&gt;Use Kerberos Authentication&lt;/a&gt; in the &lt;i&gt;Amazon EMR Management Guide&lt;/i&gt;.&lt;/p&gt;
-  final pulumi.Input<KerberosAttributesResponse>? kerberosAttributes;
+  final pulumi.Input<KerberosAttributesResponse?>? kerberosAttributes;
   /// &lt;p&gt; The KMS key used for encrypting log files. This attribute is only available with Amazon EMR 5.30.0 and later, excluding Amazon EMR 6.0.0. &lt;/p&gt;
-  final pulumi.Input<String>? logEncryptionKmsKeyId;
+  final pulumi.Input<String?>? logEncryptionKmsKeyId;
   /// &lt;p&gt;The path to the Amazon S3 location where logs for this cluster are stored.&lt;/p&gt;
-  final pulumi.Input<String>? logUri;
+  final pulumi.Input<String?>? logUri;
   /// &lt;p&gt;The DNS name of the master node. If the cluster is on a private subnet, this is the private DNS name. On a public subnet, this is the public DNS name.&lt;/p&gt;
-  final pulumi.Input<String>? masterPublicDnsName;
+  final pulumi.Input<String?>? masterPublicDnsName;
   /// &lt;p&gt;The name of the cluster. This parameter can't contain the characters &lt;, &gt;, $, |, or ` (backtick).&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an Amazon EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.&lt;/p&gt;
-  final pulumi.Input<int>? normalizedInstanceHours;
+  final pulumi.Input<int?>? normalizedInstanceHours;
   /// &lt;p&gt;The Amazon Linux release specified in a cluster launch RunJobFlow request. If no Amazon Linux release was specified, the default Amazon Linux release is shown in the response.&lt;/p&gt;
-  final pulumi.Input<String>? osReleaseLabel;
+  final pulumi.Input<String?>? osReleaseLabel;
   /// &lt;p&gt; The Amazon Resource Name (ARN) of the Outpost where the cluster is launched. &lt;/p&gt;
-  final pulumi.Input<String>? outpostArn;
+  final pulumi.Input<String?>? outpostArn;
   /// &lt;p&gt;Placement group configured for an Amazon EMR cluster.&lt;/p&gt;
-  final pulumi.Input<List<PlacementGroupConfigResponse>>? placementGroups;
+  final pulumi.Input<List<PlacementGroupConfigResponse>?>? placementGroups;
   /// &lt;p&gt;The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form &lt;code&gt;emr-x.x.x&lt;/code&gt;, where x.x.x is an Amazon EMR release version such as &lt;code&gt;emr-5.14.0&lt;/code&gt;. For more information about Amazon EMR release versions and included application versions and features, see &lt;a href='https://docs.aws.amazon.com/emr/latest/ReleaseGuide/'&gt;https://docs.aws.amazon.com/emr/latest/ReleaseGuide/&lt;/a&gt;. The release label applies only to Amazon EMR releases version 4.0 and later. Earlier versions use &lt;code&gt;AmiVersion&lt;/code&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? releaseLabel;
+  final pulumi.Input<String?>? releaseLabel;
   /// &lt;p&gt;Applies only when &lt;code&gt;CustomAmiID&lt;/code&gt; is used. Specifies the type of updates that the Amazon Linux AMI package repositories apply when an instance boots using the AMI.&lt;/p&gt;
-  final pulumi.Input<RepoUpgradeOnBootEnumValueResponse>? repoUpgradeOnBoot;
+  final pulumi.Input<RepoUpgradeOnBootEnumValueResponse?>? repoUpgradeOnBoot;
   /// &lt;p&gt;The AMI version requested for this cluster.&lt;/p&gt;
-  final pulumi.Input<String>? requestedAmiVersion;
+  final pulumi.Input<String?>? requestedAmiVersion;
   /// &lt;p&gt;The AMI version running on this cluster.&lt;/p&gt;
-  final pulumi.Input<String>? runningAmiVersion;
+  final pulumi.Input<String?>? runningAmiVersion;
   /// &lt;p&gt;The way that individual Amazon EC2 instances terminate when an automatic scale-in activity occurs or an instance group is resized. &lt;code&gt;TERMINATE_AT_INSTANCE_HOUR&lt;/code&gt; indicates that Amazon EMR terminates nodes at the instance-hour boundary, regardless of when the request to terminate the instance was submitted. This option is only available with Amazon EMR 5.1.0 and later and is the default for clusters created using that version. &lt;code&gt;TERMINATE_AT_TASK_COMPLETION&lt;/code&gt; indicates that Amazon EMR adds nodes to a deny list and drains tasks from nodes before terminating the Amazon EC2 instances, regardless of the instance-hour boundary. With either behavior, Amazon EMR removes the least active nodes first and blocks instance termination if it could lead to HDFS corruption. &lt;code&gt;TERMINATE_AT_TASK_COMPLETION&lt;/code&gt; is available only in Amazon EMR releases 4.1.0 and later, and is the default for versions of Amazon EMR earlier than 5.1.0.&lt;/p&gt;
-  final pulumi.Input<ScaleDownBehaviorEnumValueResponse>? scaleDownBehavior;
+  final pulumi.Input<ScaleDownBehaviorEnumValueResponse?>? scaleDownBehavior;
   /// &lt;p&gt;The name of the security configuration applied to the cluster.&lt;/p&gt;
-  final pulumi.Input<String>? securityConfiguration;
+  final pulumi.Input<String?>? securityConfiguration;
   /// &lt;p&gt;The IAM role that Amazon EMR assumes in order to access Amazon Web Services resources on your behalf.&lt;/p&gt;
-  final pulumi.Input<String>? serviceRole;
+  final pulumi.Input<String?>? serviceRole;
   /// &lt;p&gt;The current status details about the cluster.&lt;/p&gt;
-  final pulumi.Input<EmrClusterStatusResponse>? status;
+  final pulumi.Input<EmrClusterStatusResponse?>? status;
   /// &lt;p&gt;Specifies the number of steps that can be executed concurrently.&lt;/p&gt;
-  final pulumi.Input<int>? stepConcurrencyLevel;
+  final pulumi.Input<int?>? stepConcurrencyLevel;
   /// &lt;p&gt;A list of tags associated with a cluster.&lt;/p&gt;
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// &lt;p&gt;Indicates whether Amazon EMR will lock the cluster to prevent the Amazon EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.&lt;/p&gt;
-  final pulumi.Input<bool>? terminationProtected;
+  final pulumi.Input<bool?>? terminationProtected;
   /// &lt;p&gt;Indicates whether Amazon EMR should gracefully replace Amazon EC2 core instances that have degraded within the cluster.&lt;/p&gt;
-  final pulumi.Input<bool>? unhealthyNodeReplacement;
+  final pulumi.Input<bool?>? unhealthyNodeReplacement;
   /// &lt;p&gt;Indicates whether the cluster is visible to IAM principals in the Amazon Web Services account associated with the cluster. When &lt;code&gt;true&lt;/code&gt;, IAM principals in the Amazon Web Services account can perform Amazon EMR cluster actions on the cluster that their IAM policies allow. When &lt;code&gt;false&lt;/code&gt;, only the IAM principal that created the cluster and the Amazon Web Services account root user can perform Amazon EMR actions, regardless of IAM permissions policies attached to other IAM principals.&lt;/p&gt; &lt;p&gt;The default value is &lt;code&gt;true&lt;/code&gt; if a value is not provided when creating a cluster using the Amazon EMR API &lt;a&gt;RunJobFlow&lt;/a&gt; command, the CLI &lt;a href='https://docs.aws.amazon.com/cli/latest/reference/emr/create-cluster.html'&gt;create-cluster&lt;/a&gt; command, or the Amazon Web Services Management Console.&lt;/p&gt;
-  final pulumi.Input<bool>? visibleToAllUsers;
+  final pulumi.Input<bool?>? visibleToAllUsers;
 
   /// Creates a new [AwsEmrClusterPropertiesResponse].
   /// [applications] &lt;p&gt;The applications installed on this cluster.&lt;/p&gt;
@@ -202,9 +202,9 @@ class AwsEmrClusterPropertiesResponse {
       clusterArn: (() { final guardedValue = map['clusterArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       configurations: (() { final guardedValue = map['configurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ConfigurationResponse>(guardedValue, (value) => ConfigurationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customAmiId: (() { final guardedValue = map['customAmiId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ebsRootVolumeIops: (() { final guardedValue = map['ebsRootVolumeIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ebsRootVolumeSize: (() { final guardedValue = map['ebsRootVolumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      ebsRootVolumeThroughput: (() { final guardedValue = map['ebsRootVolumeThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ebsRootVolumeIops: (() { final guardedValue = map['ebsRootVolumeIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ebsRootVolumeSize: (() { final guardedValue = map['ebsRootVolumeSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      ebsRootVolumeThroughput: (() { final guardedValue = map['ebsRootVolumeThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ec2InstanceAttributes: (() { final guardedValue = map['ec2InstanceAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Ec2InstanceAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceCollectionType: (() { final guardedValue = map['instanceCollectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceCollectionTypeEnumValueResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -213,7 +213,7 @@ class AwsEmrClusterPropertiesResponse {
       logUri: (() { final guardedValue = map['logUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterPublicDnsName: (() { final guardedValue = map['masterPublicDnsName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      normalizedInstanceHours: (() { final guardedValue = map['normalizedInstanceHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      normalizedInstanceHours: (() { final guardedValue = map['normalizedInstanceHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       osReleaseLabel: (() { final guardedValue = map['osReleaseLabel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outpostArn: (() { final guardedValue = map['outpostArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroups: (() { final guardedValue = map['placementGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PlacementGroupConfigResponse>(guardedValue, (value) => PlacementGroupConfigResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
@@ -225,7 +225,7 @@ class AwsEmrClusterPropertiesResponse {
       securityConfiguration: (() { final guardedValue = map['securityConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceRole: (() { final guardedValue = map['serviceRole']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EmrClusterStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      stepConcurrencyLevel: (() { final guardedValue = map['stepConcurrencyLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      stepConcurrencyLevel: (() { final guardedValue = map['stepConcurrencyLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TagResponse>(guardedValue, (value) => TagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       terminationProtected: (() { final guardedValue = map['terminationProtected']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       unhealthyNodeReplacement: (() { final guardedValue = map['unhealthyNodeReplacement']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

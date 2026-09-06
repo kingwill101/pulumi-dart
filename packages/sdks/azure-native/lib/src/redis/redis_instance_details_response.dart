@@ -48,9 +48,9 @@ class RedisInstanceDetailsResponse {
     return RedisInstanceDetailsResponse(
       isMaster: pulumi.Input.fromValue(map['isMaster'] as bool),
       isPrimary: pulumi.Input.fromValue(map['isPrimary'] as bool),
-      nonSslPort: pulumi.Input.fromValue(map['nonSslPort'] as int),
-      shardId: pulumi.Input.fromValue(map['shardId'] as int),
-      sslPort: pulumi.Input.fromValue(map['sslPort'] as int),
+      nonSslPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nonSslPort'])),
+      shardId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['shardId'])),
+      sslPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sslPort'])),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );
   }

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_create_request_data_path.dart';
 
 class DatasetCreateRequestPath {
-  final pulumi.Input<DatasetCreateRequestDataPath>? dataPath;
+  final pulumi.Input<DatasetCreateRequestDataPath?>? dataPath;
   /// The Http URL.
-  final pulumi.Input<String>? httpUrl;
+  final pulumi.Input<String?>? httpUrl;
 
   /// Creates a new [DatasetCreateRequestPath].
   /// [dataPath] Optional.

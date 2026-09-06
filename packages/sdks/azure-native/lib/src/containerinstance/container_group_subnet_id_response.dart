@@ -7,7 +7,7 @@ class ContainerGroupSubnetIdResponse {
   /// Resource ID of virtual network and subnet.
   final pulumi.Input<String> id;
   /// Friendly name for the subnet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ContainerGroupSubnetIdResponse].
   /// [id] Resource ID of virtual network and subnet.

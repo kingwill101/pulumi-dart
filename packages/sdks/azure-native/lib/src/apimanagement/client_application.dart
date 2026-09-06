@@ -213,4 +213,24 @@ class ClientApplication extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ClientApplication] resource.
+  ClientApplication.reference(String urn)
+    : super(
+        'azure-native:apimanagement:ClientApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    entraApplicationId = registerOutput<String>('entraApplicationId');
+    entraTenantId = registerOutput<String>('entraTenantId');
+    this.name = registerOutput<String>('name');
+    ownerId = registerOutput<String>('ownerId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
 }

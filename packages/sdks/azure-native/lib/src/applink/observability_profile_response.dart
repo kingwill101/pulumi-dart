@@ -6,7 +6,7 @@ import 'metrics_profile_response.dart';
 /// AppLinkMember observability profile
 class ObservabilityProfileResponse {
   /// Metrics configuration
-  final pulumi.Input<MetricsProfileResponse>? metrics;
+  final pulumi.Input<MetricsProfileResponse?>? metrics;
 
   /// Creates a new [ObservabilityProfileResponse].
   /// [metrics] Metrics configuration

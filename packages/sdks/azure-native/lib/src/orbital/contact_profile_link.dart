@@ -8,15 +8,15 @@ class ContactProfileLink {
   /// Contact Profile Link Channel.
   final pulumi.Input<List<ContactProfileLinkChannel>> channels;
   /// Direction (Uplink or Downlink).
-  final pulumi.Input<String> direction;
+  final pulumi.Input<dynamic> direction;
   /// Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  final pulumi.Input<double>? eirpdBW;
+  final pulumi.Input<double?>? eirpdBW;
   /// Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
-  final pulumi.Input<double>? gainOverTemperature;
+  final pulumi.Input<double?>? gainOverTemperature;
   /// Link name.
   final pulumi.Input<String> name;
   /// Polarization. e.g. (RHCP, LHCP).
-  final pulumi.Input<String> polarization;
+  final pulumi.Input<dynamic> polarization;
 
   /// Creates a new [ContactProfileLink].
   /// [channels] Contact Profile Link Channel.
@@ -48,11 +48,11 @@ class ContactProfileLink {
   factory ContactProfileLink.fromMap(Map<String, dynamic> map) {
     return ContactProfileLink(
       channels: pulumi.Input.fromValue(pulumi.Input.decodeList<ContactProfileLinkChannel>(map['channels']!, (value) => ContactProfileLinkChannel.fromMap((value as Map).cast<String, dynamic>()))),
-      direction: pulumi.Input.fromValue(map['direction'] as String),
-      eirpdBW: (() { final guardedValue = map['eirpdBW']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      gainOverTemperature: (() { final guardedValue = map['gainOverTemperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      direction: pulumi.Input.fromValue(map['direction']),
+      eirpdBW: (() { final guardedValue = map['eirpdBW']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      gainOverTemperature: (() { final guardedValue = map['gainOverTemperature']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      polarization: pulumi.Input.fromValue(map['polarization'] as String),
+      polarization: pulumi.Input.fromValue(map['polarization']),
     );
   }
 }

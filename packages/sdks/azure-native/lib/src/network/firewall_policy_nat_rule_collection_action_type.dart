@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of action.
-enum FirewallPolicyNatRuleCollectionActionType {
+enum FirewallPolicyNatRuleCollectionActionType implements pulumi.PulumiEnum<String> {
   valueDNAT("DNAT");
 
   const FirewallPolicyNatRuleCollectionActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallPolicyNatRuleCollectionActionType fromValue(String value) {

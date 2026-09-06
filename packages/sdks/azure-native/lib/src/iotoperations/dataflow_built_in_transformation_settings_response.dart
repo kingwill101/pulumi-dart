@@ -8,15 +8,15 @@ import 'dataflow_built_in_transformation_map_response.dart';
 /// Dataflow BuiltIn Transformation properties
 class DataflowBuiltInTransformationSettingsResponse {
   /// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-  final pulumi.Input<List<DataflowBuiltInTransformationDatasetResponse>>? datasets;
+  final pulumi.Input<List<DataflowBuiltInTransformationDatasetResponse>?>? datasets;
   /// Filters input record or datapoints based on condition.
-  final pulumi.Input<List<DataflowBuiltInTransformationFilterResponse>>? filter;
+  final pulumi.Input<List<DataflowBuiltInTransformationFilterResponse>?>? filter;
   /// Maps input to output message.
-  final pulumi.Input<List<DataflowBuiltInTransformationMapResponse>>? map;
+  final pulumi.Input<List<DataflowBuiltInTransformationMapResponse>?>? map;
   /// Reference to the schema that describes the output of the transformation.
-  final pulumi.Input<String>? schemaRef;
+  final pulumi.Input<String?>? schemaRef;
   /// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-  final pulumi.Input<String>? serializationFormat;
+  final pulumi.Input<String?>? serializationFormat;
 
   /// Creates a new [DataflowBuiltInTransformationSettingsResponse].
   /// [datasets] Enrich data from Broker State Store. Dataset references a key in Broker State Store.
@@ -24,13 +24,13 @@ class DataflowBuiltInTransformationSettingsResponse {
   /// [map] Maps input to output message.
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-  const DataflowBuiltInTransformationSettingsResponse({
+  DataflowBuiltInTransformationSettingsResponse({
     this.datasets,
     this.filter,
     this.map,
     this.schemaRef,
-    this.serializationFormat,
-  });
+    pulumi.Input<String?>? serializationFormat,
+  }) : serializationFormat = serializationFormat ?? pulumi.Input.fromValue('Json');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

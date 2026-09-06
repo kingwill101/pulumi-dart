@@ -6,11 +6,11 @@ import 'database_identity_response.dart';
 /// Database Identity.
 class IdentityResponse {
   /// The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
-  final pulumi.Input<String>? federatedClientId;
+  final pulumi.Input<String?>? federatedClientId;
   /// Identity type of the main principal.
-  final pulumi.Input<String>? identityType;
+  final pulumi.Input<String?>? identityType;
   /// User identity ids
-  final pulumi.Input<List<DatabaseIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<List<DatabaseIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [federatedClientId] The federated client id for the SQL Database. It is used for cross tenant CMK scenario.

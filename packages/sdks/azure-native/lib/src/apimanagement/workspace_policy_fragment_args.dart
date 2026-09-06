@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_workspace_policy_fragment_args_doc}
 class WorkspacePolicyFragmentArgs {
   /// Policy fragment description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Format of the policy fragment content.
-  final pulumi.Input<String>? format;
+  final pulumi.Input<dynamic>? format;
   /// A resource identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
@@ -30,15 +30,15 @@ class WorkspacePolicyFragmentArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the policy fragment.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  const WorkspacePolicyFragmentArgs({
+  WorkspacePolicyFragmentArgs({
     this.description,
-    this.format,
+    pulumi.Input<dynamic>? format,
     this.id,
     required this.resourceGroupName,
     required this.serviceName,
     required this.value,
     required this.workspaceId,
-  });
+  }) : format = format ?? pulumi.Input.fromValue('xml');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -55,7 +55,7 @@ class WorkspacePolicyFragmentArgs {
   factory WorkspacePolicyFragmentArgs.fromMap(Map<String, dynamic> map) {
     return WorkspacePolicyFragmentArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      format: (() { final guardedValue = map['format']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),

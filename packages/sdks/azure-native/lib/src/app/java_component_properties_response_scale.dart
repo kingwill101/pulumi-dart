@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Java component scaling configurations
 class JavaComponentPropertiesResponseScale {
   /// Optional. Maximum number of Java component replicas
-  final pulumi.Input<int>? maxReplicas;
+  final pulumi.Input<int?>? maxReplicas;
   /// Optional. Minimum number of Java component replicas. Defaults to 1 if not set
-  final pulumi.Input<int>? minReplicas;
+  final pulumi.Input<int?>? minReplicas;
 
   /// Creates a new [JavaComponentPropertiesResponseScale].
   /// [maxReplicas] Optional. Maximum number of Java component replicas
@@ -26,8 +26,8 @@ class JavaComponentPropertiesResponseScale {
 
   factory JavaComponentPropertiesResponseScale.fromMap(Map<String, dynamic> map) {
     return JavaComponentPropertiesResponseScale(
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

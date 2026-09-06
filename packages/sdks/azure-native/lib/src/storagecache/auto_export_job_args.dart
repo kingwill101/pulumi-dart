@@ -8,21 +8,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagecache_auto_export_job_args_doc}
 class AutoExportJobArgs {
   /// The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'.
-  final pulumi.Input<String>? adminStatus;
+  final pulumi.Input<dynamic>? adminStatus;
   /// Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   final pulumi.Input<String> amlFilesystemName;
   /// Name for the auto export job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  final pulumi.Input<String>? autoExportJobName;
+  final pulumi.Input<String?>? autoExportJobName;
   /// An array of blob paths/prefixes that get auto exported to the cluster namespace. It has '/' as the default value. Number of maximum allowed paths for now is 1.
-  final pulumi.Input<List<String>>? autoExportPrefixes;
+  final pulumi.Input<List<String>?>? autoExportPrefixes;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AutoExportJobArgs].
   /// [adminStatus] The administrative status of the auto export job. Possible values: 'Enable', 'Disable'. Passing in a value of 'Disable' will disable the current active auto export job. By default it is set to 'Enable'.
@@ -33,8 +33,8 @@ class AutoExportJobArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [state] The operational state of auto export. InProgress indicates the export is running.  Disabling indicates the user has requested to disable the export but the disabling is still in progress. Disabled indicates auto export has been disabled.  DisableFailed indicates the disabling has failed.  Failed means the export was unable to continue, due to a fatal error.
   /// [tags] Resource tags.
-  const AutoExportJobArgs({
-    this.adminStatus,
+  AutoExportJobArgs({
+    pulumi.Input<dynamic>? adminStatus,
     required this.amlFilesystemName,
     this.autoExportJobName,
     this.autoExportPrefixes,
@@ -42,7 +42,7 @@ class AutoExportJobArgs {
     required this.resourceGroupName,
     this.state,
     this.tags,
-  });
+  }) : adminStatus = adminStatus ?? pulumi.Input.fromValue('Enable');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -59,13 +59,13 @@ class AutoExportJobArgs {
 
   factory AutoExportJobArgs.fromMap(Map<String, dynamic> map) {
     return AutoExportJobArgs(
-      adminStatus: (() { final guardedValue = map['adminStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      adminStatus: (() { final guardedValue = map['adminStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       amlFilesystemName: pulumi.Input.fromValue(map['amlFilesystemName'] as String),
       autoExportJobName: (() { final guardedValue = map['autoExportJobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoExportPrefixes: (() { final guardedValue = map['autoExportPrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

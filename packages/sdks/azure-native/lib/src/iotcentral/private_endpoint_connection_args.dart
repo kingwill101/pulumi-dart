@@ -9,7 +9,7 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_iotcentral_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The private endpoint connection name.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group that contains the IoT Central application.

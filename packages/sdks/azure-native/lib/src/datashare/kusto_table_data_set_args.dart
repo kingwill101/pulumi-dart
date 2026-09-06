@@ -11,7 +11,7 @@ class KustoTableDataSetArgs {
   /// The name of the share account.
   final pulumi.Input<String> accountName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// Kind of data set.
   /// Expected value is 'KustoTable'.
   final pulumi.Input<String> kind;

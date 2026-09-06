@@ -11,13 +11,13 @@ class PrivateEndpointConnectionProxyArgs {
   /// Account name.
   final pulumi.Input<String> accountName;
   /// The ID of the private endpoint connection proxy object.
-  final pulumi.Input<String>? privateEndpointConnectionProxyId;
+  final pulumi.Input<String?>? privateEndpointConnectionProxyId;
   /// Remote private endpoint details.
-  final pulumi.Input<RemotePrivateEndpoint>? remotePrivateEndpoint;
+  final pulumi.Input<RemotePrivateEndpoint?>? remotePrivateEndpoint;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Operation status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateEndpointConnectionProxyArgs].
   /// [accountName] Account name.

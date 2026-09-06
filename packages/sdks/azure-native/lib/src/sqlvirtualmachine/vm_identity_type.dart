@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identity type of the virtual machine. Specify None to opt-out of Managed Identities.
-enum VmIdentityType {
+enum VmIdentityType implements pulumi.PulumiEnum<String> {
   none("None"),
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned");
 
   const VmIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static VmIdentityType fromValue(String value) {

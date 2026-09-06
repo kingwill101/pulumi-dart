@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The commitment plan association.
 class CommitmentPlanAssociationResponse {
   /// The Azure resource id of the commitment plan.
-  final pulumi.Input<String>? commitmentPlanId;
+  final pulumi.Input<String?>? commitmentPlanId;
   /// The location of of the commitment plan.
-  final pulumi.Input<String>? commitmentPlanLocation;
+  final pulumi.Input<String?>? commitmentPlanLocation;
 
   /// Creates a new [CommitmentPlanAssociationResponse].
   /// [commitmentPlanId] The Azure resource id of the commitment plan.

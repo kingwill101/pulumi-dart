@@ -9,19 +9,19 @@ import 'resource_identity.dart';
 /// {@endtemplate}
 /// {@macro pulumi_migrate_modernize_project_args_doc}
 class ModernizeProjectArgs {
-  final pulumi.Input<ResourceIdentity>? identity;
+  final pulumi.Input<ResourceIdentity?>? identity;
   /// Gets or sets the location of the modernizeProject.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ModernizeProject Name.
-  final pulumi.Input<String>? modernizeProjectName;
+  final pulumi.Input<String?>? modernizeProjectName;
   /// ModernizeProject properties.
-  final pulumi.Input<ModernizeProjectModelProperties>? properties;
+  final pulumi.Input<ModernizeProjectModelProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Subscription Id in which project was created.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ModernizeProjectArgs].
   /// [identity] Optional.

@@ -24,6 +24,17 @@ Future<GetOnlineExperimentationWorkspaceResult> getOnlineExperimentationWorkspac
   return GetOnlineExperimentationWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetOnlineExperimentationWorkspaceResult> getOnlineExperimentationWorkspaceOutput(
+  GetOnlineExperimentationWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:onlineexperimentation:getOnlineExperimentationWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOnlineExperimentationWorkspaceResult.fromMap);
+}
+
 /// Gets the private endpoint connection details for an online experimentation workspace resource.
 ///
 /// Uses Azure REST API version 2025-08-01-preview.
@@ -40,4 +51,15 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:onlineexperimentation:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }

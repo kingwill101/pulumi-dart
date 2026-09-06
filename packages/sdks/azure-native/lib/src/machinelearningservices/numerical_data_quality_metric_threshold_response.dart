@@ -9,7 +9,7 @@ class NumericalDataQualityMetricThresholdResponse {
   /// [Required] The numerical data quality metric to calculate.
   final pulumi.Input<String> metric;
   /// The threshold value. If null, a default value will be set depending on the selected metric.
-  final pulumi.Input<MonitoringThresholdResponse>? threshold;
+  final pulumi.Input<MonitoringThresholdResponse?>? threshold;
 
   /// Creates a new [NumericalDataQualityMetricThresholdResponse].
   /// [dataType] Expected value is 'Numerical'.

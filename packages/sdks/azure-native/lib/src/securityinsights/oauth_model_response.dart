@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Model for API authentication with OAuth2.
 class OAuthModelResponse {
   /// Access token prepend. Default is 'Bearer'.
-  final pulumi.Input<String>? accessTokenPrepend;
+  final pulumi.Input<String?>? accessTokenPrepend;
   /// The user's authorization code.
-  final pulumi.Input<String>? authorizationCode;
+  final pulumi.Input<String?>? authorizationCode;
   /// The authorization endpoint.
-  final pulumi.Input<String>? authorizationEndpoint;
+  final pulumi.Input<String?>? authorizationEndpoint;
   /// The authorization endpoint headers.
-  final pulumi.Input<Map<String, String>>? authorizationEndpointHeaders;
+  final pulumi.Input<Map<String, String>?>? authorizationEndpointHeaders;
   /// The authorization endpoint query parameters.
-  final pulumi.Input<Map<String, String>>? authorizationEndpointQueryParameters;
+  final pulumi.Input<Map<String, String>?>? authorizationEndpointQueryParameters;
   /// The Application (client) ID that the OAuth provider assigned to your app.
   final pulumi.Input<String> clientId;
   /// The Application (client) secret that the OAuth provider assigned to your app.
@@ -21,19 +21,19 @@ class OAuthModelResponse {
   /// The grant type, usually will be 'authorization code'.
   final pulumi.Input<String> grantType;
   /// Indicating whether we want to send the clientId and clientSecret to token endpoint in the headers.
-  final pulumi.Input<bool>? isCredentialsInHeaders;
+  final pulumi.Input<bool?>? isCredentialsInHeaders;
   /// A value indicating whether it's a JWT flow.
-  final pulumi.Input<bool>? isJwtBearerFlow;
+  final pulumi.Input<bool?>? isJwtBearerFlow;
   /// The Application redirect url that the user config in the OAuth provider.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
   /// The Application (client) Scope that the OAuth provider assigned to your app.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
   /// The token endpoint. Defines the OAuth2 refresh token.
   final pulumi.Input<String> tokenEndpoint;
   /// The token endpoint headers.
-  final pulumi.Input<Map<String, String>>? tokenEndpointHeaders;
+  final pulumi.Input<Map<String, String>?>? tokenEndpointHeaders;
   /// The token endpoint query parameters.
-  final pulumi.Input<Map<String, String>>? tokenEndpointQueryParameters;
+  final pulumi.Input<Map<String, String>?>? tokenEndpointQueryParameters;
   /// Type of paging
   /// Expected value is 'OAuth2'.
   final pulumi.Input<String> type;
@@ -55,7 +55,7 @@ class OAuthModelResponse {
   /// [tokenEndpointHeaders] The token endpoint headers.
   /// [tokenEndpointQueryParameters] The token endpoint query parameters.
   /// [type] Type of paging
-  const OAuthModelResponse({
+  OAuthModelResponse({
     this.accessTokenPrepend,
     this.authorizationCode,
     this.authorizationEndpoint,
@@ -64,7 +64,7 @@ class OAuthModelResponse {
     required this.clientId,
     required this.clientSecret,
     required this.grantType,
-    this.isCredentialsInHeaders,
+    pulumi.Input<bool?>? isCredentialsInHeaders,
     this.isJwtBearerFlow,
     this.redirectUri,
     this.scope,
@@ -72,7 +72,7 @@ class OAuthModelResponse {
     this.tokenEndpointHeaders,
     this.tokenEndpointQueryParameters,
     required this.type,
-  });
+  }) : isCredentialsInHeaders = isCredentialsInHeaders ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

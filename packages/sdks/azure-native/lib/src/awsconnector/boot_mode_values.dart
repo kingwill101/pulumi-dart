@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum BootModeValues {
+enum BootModeValues implements pulumi.PulumiEnum<String> {
   legacyBios("legacy-bios"),
   uefi("uefi"),
   uefiPreferred("uefi-preferred");
 
   const BootModeValues(this.wireValue);
+  @override
   final String wireValue;
 
   static BootModeValues fromValue(String value) {

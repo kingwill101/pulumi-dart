@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID of an IPConfiguration resource
 class IPConfigurationArmReference {
   /// The Azure Resource ID of an IPConfiguration resource
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [IPConfigurationArmReference].
   /// [resourceId] The Azure Resource ID of an IPConfiguration resource

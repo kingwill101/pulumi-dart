@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional information of the DPMContainer.
 class DPMContainerExtendedInfo {
   /// Last refresh time of the DPMContainer.
-  final pulumi.Input<String>? lastRefreshedAt;
+  final pulumi.Input<String?>? lastRefreshedAt;
 
   /// Creates a new [DPMContainerExtendedInfo].
   /// [lastRefreshedAt] Last refresh time of the DPMContainer.

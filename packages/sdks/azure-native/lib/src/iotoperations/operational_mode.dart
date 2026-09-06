@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Disk persistence mode.
-enum OperationalMode {
+enum OperationalMode implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const OperationalMode(this.wireValue);
+  @override
   final String wireValue;
 
   static OperationalMode fromValue(String value) {

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The bootstrap profile.
 class ManagedClusterBootstrapProfileResponse {
   /// The artifact source. The source where the artifacts are downloaded from.
-  final pulumi.Input<String>? artifactSource;
+  final pulumi.Input<String?>? artifactSource;
   /// The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
-  final pulumi.Input<String>? containerRegistryId;
+  final pulumi.Input<String?>? containerRegistryId;
 
   /// Creates a new [ManagedClusterBootstrapProfileResponse].
   /// [artifactSource] The artifact source. The source where the artifacts are downloaded from.
   /// [containerRegistryId] The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
-  const ManagedClusterBootstrapProfileResponse({
-    this.artifactSource,
+  ManagedClusterBootstrapProfileResponse({
+    pulumi.Input<String?>? artifactSource,
     this.containerRegistryId,
-  });
+  }) : artifactSource = artifactSource ?? pulumi.Input.fromValue('Direct');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

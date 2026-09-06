@@ -10,29 +10,29 @@ class GetApprovalResult {
   /// List of approvers for the approval request
   final List<ApproverResponse>? approvers;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Approval request creation time
   final String? createdAt;
   /// Parameter for optimizing query results
   final String? grandparentResourceId;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Parameter for optimizing query results
   final String? parentResourceId;
   /// Provisioning State.
-  final String provisioningState;
+  final String? provisioningState;
   /// Request metadata for the approval request.
-  final RequestMetadataResponse requestMetadata;
+  final RequestMetadataResponse? requestMetadata;
   /// Approval request state change time, time at which approval request state changed from pending to approved or rejected.
   final String? stateChangedAt;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Ticket ID for the approval request
   final String? ticketId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetApprovalResult].
   /// [approvers] List of approvers for the approval request
@@ -50,53 +50,53 @@ class GetApprovalResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetApprovalResult({
     this.approvers,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.createdAt,
     this.grandparentResourceId,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.parentResourceId,
-    required this.provisioningState,
-    required this.requestMetadata,
+    this.provisioningState,
+    this.requestMetadata,
     this.stateChangedAt,
-    required this.systemData,
+    this.systemData,
     this.ticketId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'approvers': ?(() { final guardedValue = approvers; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApproverResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'createdAt': ?createdAt,
       'grandparentResourceId': ?grandparentResourceId,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'parentResourceId': ?parentResourceId,
-      'provisioningState': provisioningState,
-      'requestMetadata': requestMetadata.toMap(),
+      'provisioningState': ?provisioningState,
+      'requestMetadata': ?requestMetadata?.toMap(),
       'stateChangedAt': ?stateChangedAt,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'ticketId': ?ticketId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetApprovalResult.fromMap(Map<String, dynamic> map) {
     return GetApprovalResult(
       approvers: (() { final guardedValue = map['approvers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApproverResponse>(guardedValue, (value) => ApproverResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
       grandparentResourceId: (() { final guardedValue = map['grandparentResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parentResourceId: (() { final guardedValue = map['parentResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      requestMetadata: RequestMetadataResponse.fromMap((map['requestMetadata']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      requestMetadata: (() { final guardedValue = map['requestMetadata']; if (guardedValue == null) return null; return RequestMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       stateChangedAt: (() { final guardedValue = map['stateChangedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       ticketId: (() { final guardedValue = map['ticketId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

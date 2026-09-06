@@ -8,7 +8,7 @@ class MarketplaceDetailsResponse {
   /// Offer details for the marketplace that is selected by the user
   final pulumi.Input<OfferDetailsResponse> offerDetails;
   /// Azure subscription id for the the marketplace offer is purchased from
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Marketplace subscription status
   final pulumi.Input<String> subscriptionStatus;
 

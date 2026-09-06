@@ -8,11 +8,11 @@ import 'sql_server_availability_group_resource_properties_replicas.dart';
 /// The properties of Arc Sql Server availability group resource
 class SqlServerAvailabilityGroupResourceProperties {
   /// A list of Availability Group Database Replicas.
-  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabases>? databases;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesDatabases?>? databases;
   /// Availability Group Info
-  final pulumi.Input<AvailabilityGroupInfo>? info;
+  final pulumi.Input<AvailabilityGroupInfo?>? info;
   /// A list of Availability Group Replicas.
-  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicas>? replicas;
+  final pulumi.Input<SqlServerAvailabilityGroupResourcePropertiesReplicas?>? replicas;
 
   /// Creates a new [SqlServerAvailabilityGroupResourceProperties].
   /// [databases] A list of Availability Group Database Replicas.

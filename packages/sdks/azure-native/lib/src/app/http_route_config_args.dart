@@ -11,9 +11,9 @@ class HttpRouteConfigArgs {
   /// Name of the Managed Environment.
   final pulumi.Input<String> environmentName;
   /// Name of the Http Route Config Resource.
-  final pulumi.Input<String>? httpRouteName;
+  final pulumi.Input<String?>? httpRouteName;
   /// Http Route Config properties
-  final pulumi.Input<HttpRouteConfigProperties>? properties;
+  final pulumi.Input<HttpRouteConfigProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

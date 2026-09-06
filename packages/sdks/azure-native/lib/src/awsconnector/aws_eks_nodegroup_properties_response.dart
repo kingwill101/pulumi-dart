@@ -10,45 +10,45 @@ import 'update_config_response.dart';
 /// Definition of awsEksNodegroup
 class AwsEksNodegroupPropertiesResponse {
   /// The AMI type for your node group.
-  final pulumi.Input<String>? amiType;
+  final pulumi.Input<String?>? amiType;
   /// Property arn
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// The capacity type of your managed node group.
-  final pulumi.Input<String>? capacityType;
+  final pulumi.Input<String?>? capacityType;
   /// Name of the cluster to create the node group in.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// The root device disk size (in GiB) for your node group instances.
-  final pulumi.Input<int>? diskSize;
+  final pulumi.Input<int?>? diskSize;
   /// Force the update if the existing node group's pods are unable to be drained due to a pod disruption budget issue.
-  final pulumi.Input<bool>? forceUpdateEnabled;
+  final pulumi.Input<bool?>? forceUpdateEnabled;
   /// Property id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Specify the instance types for a node group.
-  final pulumi.Input<List<String>>? instanceTypes;
+  final pulumi.Input<List<String>?>? instanceTypes;
   /// The Kubernetes labels to be applied to the nodes in the node group when they are created.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// An object representing a node group's launch template specification. An object representing a launch template specification for AWS EKS Nodegroup.
-  final pulumi.Input<LaunchTemplateSpecificationEksNodegroupResponse>? launchTemplate;
+  final pulumi.Input<LaunchTemplateSpecificationEksNodegroupResponse?>? launchTemplate;
   /// The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
-  final pulumi.Input<String>? nodeRole;
+  final pulumi.Input<String?>? nodeRole;
   /// The unique name to give your node group.
-  final pulumi.Input<String>? nodegroupName;
+  final pulumi.Input<String?>? nodegroupName;
   /// The AMI version of the Amazon EKS-optimized AMI to use with your node group.
-  final pulumi.Input<String>? releaseVersion;
+  final pulumi.Input<String?>? releaseVersion;
   /// The remote access (SSH) configuration to use with your node group. An object representing a remote access configuration specification for AWS EKS Nodegroup.
-  final pulumi.Input<RemoteAccessResponse>? remoteAccess;
+  final pulumi.Input<RemoteAccessResponse?>? remoteAccess;
   /// The scaling configuration details for the Auto Scaling group that is created for your node group. An object representing a auto scaling group specification for AWS EKS Nodegroup.
-  final pulumi.Input<ScalingConfigResponse>? scalingConfig;
+  final pulumi.Input<ScalingConfigResponse?>? scalingConfig;
   /// The subnets to use for the Auto Scaling group that is created for your node group.
-  final pulumi.Input<List<String>>? subnets;
+  final pulumi.Input<List<String>?>? subnets;
   /// The metadata, as key-value pairs, to apply to the node group to assist with categorization and organization. Follows same schema as Labels for consistency.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The Kubernetes taints to be applied to the nodes in the node group when they are created.
-  final pulumi.Input<List<TaintResponse>>? taints;
+  final pulumi.Input<List<TaintResponse>?>? taints;
   /// The node group update configuration. The node group update configuration.
-  final pulumi.Input<UpdateConfigResponse>? updateConfig;
+  final pulumi.Input<UpdateConfigResponse?>? updateConfig;
   /// The Kubernetes version to use for your managed nodes.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [AwsEksNodegroupPropertiesResponse].
   /// [amiType] The AMI type for your node group.
@@ -125,7 +125,7 @@ class AwsEksNodegroupPropertiesResponse {
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacityType: (() { final guardedValue = map['capacityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clusterName: (() { final guardedValue = map['clusterName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSize: (() { final guardedValue = map['diskSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       forceUpdateEnabled: (() { final guardedValue = map['forceUpdateEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceTypes: (() { final guardedValue = map['instanceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

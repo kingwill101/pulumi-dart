@@ -7,7 +7,7 @@ import 'if_condition.dart';
 /// The storage task action represents conditional statements and operations to be performed on target objects.
 class StorageTaskAction {
   /// The else block of storage task operation
-  final pulumi.Input<ElseCondition>? else_;
+  final pulumi.Input<ElseCondition?>? else_;
   /// The if block of storage task operation
   final pulumi.Input<IfCondition> if_;
 

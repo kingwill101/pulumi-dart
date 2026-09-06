@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Customer Intent for Software Assurance Benefit.
-enum SoftwareAssuranceIntent {
+enum SoftwareAssuranceIntent implements pulumi.PulumiEnum<String> {
   valueEnable("Enable"),
   valueDisable("Disable");
 
   const SoftwareAssuranceIntent(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftwareAssuranceIntent fromValue(String value) {

@@ -7,13 +7,13 @@ import 'toleration_response.dart';
 /// PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected.
 class PlacementPolicyResponse {
   /// Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".
-  final pulumi.Input<AffinityResponse>? affinity;
+  final pulumi.Input<AffinityResponse?>? affinity;
   /// ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed"
-  final pulumi.Input<List<String>>? clusterNames;
+  final pulumi.Input<List<String>?>? clusterNames;
   /// Type of placement. Can be "PickAll", "PickN" or "PickFixed". Default is PickAll.
-  final pulumi.Input<String>? placementType;
+  final pulumi.Input<String?>? placementType;
   /// If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature.
-  final pulumi.Input<List<TolerationResponse>>? tolerations;
+  final pulumi.Input<List<TolerationResponse>?>? tolerations;
 
   /// Creates a new [PlacementPolicyResponse].
   /// [affinity] Affinity contains cluster affinity scheduling rules. Defines which member clusters to place the selected resources. Only valid if the placement type is "PickAll" or "PickN".

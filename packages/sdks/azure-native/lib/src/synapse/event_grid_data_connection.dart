@@ -224,4 +224,30 @@ class EventGridDataConnection extends pulumi.CustomResource {
     tableName = registerOutput<String?>('tableName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [EventGridDataConnection] resource.
+  EventGridDataConnection.reference(String urn)
+    : super(
+        'azure-native:synapse:EventGridDataConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    blobStorageEventType = registerOutput<String?>('blobStorageEventType');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    eventHubResourceId = registerOutput<String>('eventHubResourceId');
+    ignoreFirstRecord = registerOutput<bool?>('ignoreFirstRecord');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    storageAccountResourceId = registerOutput<String>('storageAccountResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
+  }
 }

@@ -12,21 +12,21 @@ import 'storage_table_destination.dart';
 /// The specification of destinations.
 class DataCollectionRuleDestinations {
   /// Azure Monitor Metrics destination.
-  final pulumi.Input<DestinationsSpecAzureMonitorMetrics>? azureMonitorMetrics;
+  final pulumi.Input<DestinationsSpecAzureMonitorMetrics?>? azureMonitorMetrics;
   /// List of Event Hubs destinations.
-  final pulumi.Input<List<EventHubDestination>>? eventHubs;
+  final pulumi.Input<List<EventHubDestination>?>? eventHubs;
   /// List of Event Hubs Direct destinations.
-  final pulumi.Input<List<EventHubDirectDestination>>? eventHubsDirect;
+  final pulumi.Input<List<EventHubDirectDestination>?>? eventHubsDirect;
   /// List of Log Analytics destinations.
-  final pulumi.Input<List<LogAnalyticsDestination>>? logAnalytics;
+  final pulumi.Input<List<LogAnalyticsDestination>?>? logAnalytics;
   /// List of monitoring account destinations.
-  final pulumi.Input<List<MonitoringAccountDestination>>? monitoringAccounts;
+  final pulumi.Input<List<MonitoringAccountDestination>?>? monitoringAccounts;
   /// List of storage accounts destinations.
-  final pulumi.Input<List<StorageBlobDestination>>? storageAccounts;
+  final pulumi.Input<List<StorageBlobDestination>?>? storageAccounts;
   /// List of Storage Blob Direct destinations. To be used only for sending data directly to store from the agent.
-  final pulumi.Input<List<StorageBlobDestination>>? storageBlobsDirect;
+  final pulumi.Input<List<StorageBlobDestination>?>? storageBlobsDirect;
   /// List of Storage Table Direct destinations.
-  final pulumi.Input<List<StorageTableDestination>>? storageTablesDirect;
+  final pulumi.Input<List<StorageTableDestination>?>? storageTablesDirect;
 
   /// Creates a new [DataCollectionRuleDestinations].
   /// [azureMonitorMetrics] Azure Monitor Metrics destination.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'routing_intent_args.dart';
+import 'routing_policy_response.dart';
 
 /// The routing intent child resource of a Virtual hub.
 ///
@@ -250,7 +251,7 @@ class RoutingIntent extends pulumi.CustomResource {
   /// The provisioning state of the RoutingIntent resource.
   late final pulumi.Output<String> provisioningState;
   /// List of routing policies.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routingPolicies;
+  late final pulumi.Output<List<RoutingPolicyResponse>?> routingPolicies;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -272,7 +273,24 @@ class RoutingIntent extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
     provisioningState = registerOutput<String>('provisioningState');
-    routingPolicies = registerOutput<List<Map<String, dynamic>>?>('routingPolicies');
+    routingPolicies = registerOutput<List<RoutingPolicyResponse>?>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingPolicyResponse>(guardedValue, (value) => RoutingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [RoutingIntent] resource.
+  RoutingIntent.reference(String urn)
+    : super(
+        'azure-native:network:RoutingIntent',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    routingPolicies = registerOutput<List<RoutingPolicyResponse>?>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingPolicyResponse>(guardedValue, (value) => RoutingPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

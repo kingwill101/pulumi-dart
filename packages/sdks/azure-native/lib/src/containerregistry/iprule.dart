@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IP rule with specific IP or IP range in CIDR format.
 class IPRule {
   /// The action of IP ACL rule.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
   final pulumi.Input<String> iPAddressOrRange;
 
   /// Creates a new [IPRule].
   /// [action] The action of IP ACL rule.
   /// [iPAddressOrRange] Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  const IPRule({
-    this.action,
+  IPRule({
+    pulumi.Input<dynamic>? action,
     required this.iPAddressOrRange,
-  });
+  }) : action = action ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -26,7 +26,7 @@ class IPRule {
 
   factory IPRule.fromMap(Map<String, dynamic> map) {
     return IPRule(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       iPAddressOrRange: pulumi.Input.fromValue(map['iPAddressOrRange'] as String),
     );
   }

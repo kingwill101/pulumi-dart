@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Emission policy destination properties.
 class EmissionPolicyDestination {
   /// Emission destination type.
-  final pulumi.Input<String>? destinationType;
+  final pulumi.Input<dynamic>? destinationType;
 
   /// Creates a new [EmissionPolicyDestination].
   /// [destinationType] Emission destination type.
@@ -21,7 +21,7 @@ class EmissionPolicyDestination {
 
   factory EmissionPolicyDestination.fromMap(Map<String, dynamic> map) {
     return EmissionPolicyDestination(
-      destinationType: (() { final guardedValue = map['destinationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      destinationType: (() { final guardedValue = map['destinationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

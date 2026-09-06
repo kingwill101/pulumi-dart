@@ -27,7 +27,7 @@ class AkriConnectorTemplateBucketizedAllocationResponse {
 
   factory AkriConnectorTemplateBucketizedAllocationResponse.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateBucketizedAllocationResponse(
-      bucketSize: pulumi.Input.fromValue(map['bucketSize'] as int),
+      bucketSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bucketSize'])),
       policy: pulumi.Input.fromValue(map['policy'] as String),
     );
   }

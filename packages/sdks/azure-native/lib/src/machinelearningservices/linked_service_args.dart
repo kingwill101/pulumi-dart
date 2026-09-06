@@ -10,15 +10,15 @@ import 'linked_service_props.dart';
 /// {@macro pulumi_machinelearningservices_linked_service_args_doc}
 class LinkedServiceArgs {
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Friendly name of the linked workspace
-  final pulumi.Input<String>? linkName;
+  final pulumi.Input<String?>? linkName;
   /// location of the linked service.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Friendly name of the linked service
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// LinkedService specific properties.
-  final pulumi.Input<LinkedServiceProps>? properties;
+  final pulumi.Input<LinkedServiceProps?>? properties;
   /// Name of the resource group in which workspace is located.
   final pulumi.Input<String> resourceGroupName;
   /// Name of Azure Machine Learning workspace.

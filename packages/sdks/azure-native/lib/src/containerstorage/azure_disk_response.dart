@@ -7,13 +7,13 @@ import 'encryption_response.dart';
 /// Azure Disk Pool Properties
 class AzureDiskResponse {
   /// Only required if individual disk selection is desired. Path to disk, e.g. &lt;nodename&gt;:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).
-  final pulumi.Input<List<DiskResponse>>? disks;
+  final pulumi.Input<List<DiskResponse>?>? disks;
   /// Encryption specifies the encryption configuration for the Azure Disk pool
-  final pulumi.Input<EncryptionResponse>? encryption;
+  final pulumi.Input<EncryptionResponse?>? encryption;
   /// Managed resource group for the pool.
   final pulumi.Input<String> resourceGroup;
   /// Sku name
-  final pulumi.Input<String>? skuName;
+  final pulumi.Input<String?>? skuName;
 
   /// Creates a new [AzureDiskResponse].
   /// [disks] Only required if individual disk selection is desired. Path to disk, e.g. &lt;nodename&gt;:/dev/sda or WWN. Supports specifying multiple disks (same syntax as tags).

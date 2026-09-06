@@ -14,7 +14,7 @@ class ProviderProvider extends pulumi.ProviderResource {
   }) : super(
           'azure-native',
           name,
-          pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
+          pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
           options ?? pulumi.CustomResourceOptions(),
         );
 }

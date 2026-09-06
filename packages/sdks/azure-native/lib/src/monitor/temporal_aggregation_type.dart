@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of temporal aggregation.
-enum TemporalAggregationType {
+enum TemporalAggregationType implements pulumi.PulumiEnum<String> {
   average("Average"),
   min("Min"),
   max("Max"),
@@ -11,6 +13,7 @@ enum TemporalAggregationType {
   increase("Increase");
 
   const TemporalAggregationType(this.wireValue);
+  @override
   final String wireValue;
 
   static TemporalAggregationType fromValue(String value) {

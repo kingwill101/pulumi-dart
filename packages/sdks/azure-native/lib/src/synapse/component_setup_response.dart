@@ -8,7 +8,7 @@ class ComponentSetupResponse {
   /// The name of the 3rd party component.
   final pulumi.Input<String> componentName;
   /// The license key to activate the component.
-  final pulumi.Input<SecureStringResponse>? licenseKey;
+  final pulumi.Input<SecureStringResponse?>? licenseKey;
   /// The type of custom setup.
   /// Expected value is 'ComponentSetup'.
   final pulumi.Input<String> type;

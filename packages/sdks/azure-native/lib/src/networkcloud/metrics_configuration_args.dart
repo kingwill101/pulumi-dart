@@ -13,17 +13,17 @@ class MetricsConfigurationArgs {
   /// The interval in minutes by which metrics will be collected.
   final pulumi.Input<double> collectionInterval;
   /// The list of metric names that have been chosen to be enabled in addition to the core set of enabled metrics.
-  final pulumi.Input<List<String>>? enabledMetrics;
+  final pulumi.Input<List<String>?>? enabledMetrics;
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the metrics configuration for the cluster.
-  final pulumi.Input<String>? metricsConfigurationName;
+  final pulumi.Input<String?>? metricsConfigurationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MetricsConfigurationArgs].
   /// [clusterName] The name of the cluster.
@@ -61,7 +61,7 @@ class MetricsConfigurationArgs {
   factory MetricsConfigurationArgs.fromMap(Map<String, dynamic> map) {
     return MetricsConfigurationArgs(
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
-      collectionInterval: pulumi.Input.fromValue(map['collectionInterval'] as double),
+      collectionInterval: pulumi.Input.fromValue((map['collectionInterval'] as num).toDouble()),
       enabledMetrics: (() { final guardedValue = map['enabledMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

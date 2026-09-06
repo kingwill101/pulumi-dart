@@ -8,18 +8,18 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_kusto_read_only_following_database_args_doc}
 class ReadOnlyFollowingDatabaseArgs {
   /// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
-  final pulumi.Input<String>? callerRole;
+  final pulumi.Input<String?>? callerRole;
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the database in the Kusto cluster.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The time the data should be kept in cache for fast queries in TimeSpan.
-  final pulumi.Input<String>? hotCachePeriod;
+  final pulumi.Input<String?>? hotCachePeriod;
   /// Kind of the database
   /// Expected value is 'ReadOnlyFollowing'.
   final pulumi.Input<String> kind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

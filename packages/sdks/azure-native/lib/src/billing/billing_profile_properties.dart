@@ -11,27 +11,27 @@ import 'billing_profile_properties_sold_to.dart';
 /// A billing profile.
 class BillingProfileProperties {
   /// Billing address.
-  final pulumi.Input<BillingProfilePropertiesBillTo>? billTo;
+  final pulumi.Input<BillingProfilePropertiesBillTo?>? billTo;
   /// The current payment term of the billing profile.
-  final pulumi.Input<BillingProfilePropertiesCurrentPaymentTerm>? currentPaymentTerm;
+  final pulumi.Input<BillingProfilePropertiesCurrentPaymentTerm?>? currentPaymentTerm;
   /// The name of the billing profile.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Information about the enabled azure plans.
-  final pulumi.Input<List<AzurePlan>>? enabledAzurePlans;
+  final pulumi.Input<List<AzurePlan>?>? enabledAzurePlans;
   /// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
-  final pulumi.Input<BillingProfilePropertiesIndirectRelationshipInfo>? indirectRelationshipInfo;
+  final pulumi.Input<BillingProfilePropertiesIndirectRelationshipInfo?>? indirectRelationshipInfo;
   /// Flag controlling whether the invoices for the billing profile are sent through email.
-  final pulumi.Input<bool>? invoiceEmailOptIn;
+  final pulumi.Input<bool?>? invoiceEmailOptIn;
   /// The list of email addresses to receive invoices by email for the billing profile.
-  final pulumi.Input<List<String>>? invoiceRecipients;
+  final pulumi.Input<List<String>?>? invoiceRecipients;
   /// The default purchase order number that will appear on the invoices generated for the billing profile.
-  final pulumi.Input<String>? poNumber;
+  final pulumi.Input<String?>? poNumber;
   /// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
-  final pulumi.Input<BillingProfilePropertiesShipTo>? shipTo;
+  final pulumi.Input<BillingProfilePropertiesShipTo?>? shipTo;
   /// The address of the individual or organization that is responsible for the billing account.
-  final pulumi.Input<BillingProfilePropertiesSoldTo>? soldTo;
+  final pulumi.Input<BillingProfilePropertiesSoldTo?>? soldTo;
   /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BillingProfileProperties].
   /// [billTo] Billing address.

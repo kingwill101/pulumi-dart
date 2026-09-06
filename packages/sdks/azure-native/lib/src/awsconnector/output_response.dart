@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Output
 class OutputResponse {
   /// Property description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property exportName
-  final pulumi.Input<String>? exportName;
+  final pulumi.Input<String?>? exportName;
   /// Property outputKey
-  final pulumi.Input<String>? outputKey;
+  final pulumi.Input<String?>? outputKey;
   /// Property outputValue
-  final pulumi.Input<String>? outputValue;
+  final pulumi.Input<String?>? outputValue;
 
   /// Creates a new [OutputResponse].
   /// [description] Property description

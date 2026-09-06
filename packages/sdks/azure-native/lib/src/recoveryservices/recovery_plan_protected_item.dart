@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Recovery plan protected item.
 class RecoveryPlanProtectedItem {
   /// The ARM Id of the recovery plan protected item.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The virtual machine Id.
-  final pulumi.Input<String>? virtualMachineId;
+  final pulumi.Input<String?>? virtualMachineId;
 
   /// Creates a new [RecoveryPlanProtectedItem].
   /// [id] The ARM Id of the recovery plan protected item.

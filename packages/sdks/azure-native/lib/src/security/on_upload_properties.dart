@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of On Upload malware scanning.
 class OnUploadProperties {
   /// Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
-  final pulumi.Input<int>? capGBPerMonth;
+  final pulumi.Input<int?>? capGBPerMonth;
   /// Indicates whether On Upload malware scanning should be enabled.
-  final pulumi.Input<bool>? isEnabled;
+  final pulumi.Input<bool?>? isEnabled;
 
   /// Creates a new [OnUploadProperties].
   /// [capGBPerMonth] Defines the max GB to be scanned per Month. Set to -1 if no capping is needed.
@@ -26,7 +26,7 @@ class OnUploadProperties {
 
   factory OnUploadProperties.fromMap(Map<String, dynamic> map) {
     return OnUploadProperties(
-      capGBPerMonth: (() { final guardedValue = map['capGBPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capGBPerMonth: (() { final guardedValue = map['capGBPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

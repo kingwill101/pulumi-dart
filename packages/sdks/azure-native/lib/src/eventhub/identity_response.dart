@@ -10,9 +10,9 @@ class IdentityResponse {
   /// TenantId from the KeyVault
   final pulumi.Input<String> tenantId;
   /// Type of managed service identity.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Properties for User Assigned Identities
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] ObjectId from the KeyVault

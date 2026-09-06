@@ -9,33 +9,33 @@ import 'traffic_analytics_properties_response.dart';
 /// A flow log resource.
 class FlowLogServiceGatewayResponse {
   /// Flag to enable/disable flow logging.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Optional field to filter network traffic logs based on SrcIP, SrcPort, DstIP, DstPort, Protocol, Encryption, Direction and Action. If not specified, all network traffic will be logged.
-  final pulumi.Input<String>? enabledFilteringCriteria;
+  final pulumi.Input<String?>? enabledFilteringCriteria;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Parameters that define the configuration of traffic analytics.
-  final pulumi.Input<TrafficAnalyticsPropertiesResponse>? flowAnalyticsConfiguration;
+  final pulumi.Input<TrafficAnalyticsPropertiesResponse?>? flowAnalyticsConfiguration;
   /// Parameters that define the flow log format.
-  final pulumi.Input<FlowLogFormatParametersResponse>? format;
+  final pulumi.Input<FlowLogFormatParametersResponse?>? format;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// FlowLog resource Managed Identity
-  final pulumi.Input<ManagedServiceIdentityServiceGatewayResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityServiceGatewayResponse?>? identity;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the flow log.
   final pulumi.Input<String> provisioningState;
   /// Optional field to filter network traffic logs based on flow states. Value of this field could be any comma separated combination string of letters B,C,E or D. B represents Begin, when a flow is created. C represents Continue for an ongoing flow generated at every five-minute interval. E represents End, when a flow is terminated. D represents Deny, when a flow is denied. If not specified, all network traffic will be logged.
-  final pulumi.Input<String>? recordTypes;
+  final pulumi.Input<String?>? recordTypes;
   /// Parameters that define the retention policy for flow log.
-  final pulumi.Input<RetentionPolicyParametersResponse>? retentionPolicy;
+  final pulumi.Input<RetentionPolicyParametersResponse?>? retentionPolicy;
   /// ID of the storage account which is used to store the flow log.
   final pulumi.Input<String> storageId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Guid of network security group to which flow log will be applied.
   final pulumi.Input<String> targetResourceGuid;
   /// ID of network security group to which flow log will be applied.

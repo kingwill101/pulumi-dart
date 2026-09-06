@@ -7,7 +7,7 @@ class StandbyContainerGroupPoolElasticityProfileResponse {
   /// Specifies maximum number of standby container groups in the standby pool.
   final pulumi.Input<double> maxReadyCapacity;
   /// Specifies refill policy of the pool.
-  final pulumi.Input<String>? refillPolicy;
+  final pulumi.Input<String?>? refillPolicy;
 
   /// Creates a new [StandbyContainerGroupPoolElasticityProfileResponse].
   /// [maxReadyCapacity] Specifies maximum number of standby container groups in the standby pool.
@@ -26,7 +26,7 @@ class StandbyContainerGroupPoolElasticityProfileResponse {
 
   factory StandbyContainerGroupPoolElasticityProfileResponse.fromMap(Map<String, dynamic> map) {
     return StandbyContainerGroupPoolElasticityProfileResponse(
-      maxReadyCapacity: pulumi.Input.fromValue(map['maxReadyCapacity'] as double),
+      maxReadyCapacity: pulumi.Input.fromValue((map['maxReadyCapacity'] as num).toDouble()),
       refillPolicy: (() { final guardedValue = map['refillPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

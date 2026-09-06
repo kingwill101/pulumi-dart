@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies the feature window
 class FeatureWindowResponse {
   /// Specifies the feature window end time
-  final pulumi.Input<String>? featureWindowEnd;
+  final pulumi.Input<String?>? featureWindowEnd;
   /// Specifies the feature window start time
-  final pulumi.Input<String>? featureWindowStart;
+  final pulumi.Input<String?>? featureWindowStart;
 
   /// Creates a new [FeatureWindowResponse].
   /// [featureWindowEnd] Specifies the feature window end time

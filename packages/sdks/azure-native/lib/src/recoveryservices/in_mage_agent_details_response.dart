@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The details of the InMage agent.
 class InMageAgentDetailsResponse {
   /// Agent expiry date.
-  final pulumi.Input<String>? agentExpiryDate;
+  final pulumi.Input<String?>? agentExpiryDate;
   /// A value indicating whether installed agent needs to be updated.
-  final pulumi.Input<String>? agentUpdateStatus;
+  final pulumi.Input<String?>? agentUpdateStatus;
   /// The agent version.
-  final pulumi.Input<String>? agentVersion;
+  final pulumi.Input<String?>? agentVersion;
   /// A value indicating whether reboot is required after update is applied.
-  final pulumi.Input<String>? postUpdateRebootStatus;
+  final pulumi.Input<String?>? postUpdateRebootStatus;
 
   /// Creates a new [InMageAgentDetailsResponse].
   /// [agentExpiryDate] Agent expiry date.

@@ -8,7 +8,7 @@ class DataFlowStagingInfo {
   /// Folder path for staging blob. Type: string (or Expression with resultType string)
   final pulumi.Input<dynamic>? folderPath;
   /// Staging linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedService;
+  final pulumi.Input<LinkedServiceReference?>? linkedService;
 
   /// Creates a new [DataFlowStagingInfo].
   /// [folderPath] Folder path for staging blob. Type: string (or Expression with resultType string)

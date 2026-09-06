@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Open authentication policy claim.
 class OpenAuthenticationPolicyClaimResponse {
   /// The name of the claim.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the claim.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [OpenAuthenticationPolicyClaimResponse].
   /// [name] The name of the claim.

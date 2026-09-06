@@ -4,23 +4,23 @@
 /// Result data returned by listFeatureAccount.
 class ListFeatureAccountResult {
   /// Features with enabled status
-  final Map<String, bool> features;
+  final Map<String, bool>? features;
 
   /// Creates a new [ListFeatureAccountResult].
   /// [features] Features with enabled status
   const ListFeatureAccountResult({
-    required this.features,
+    this.features,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'features': features,
+      'features': ?features,
     };
   }
 
   factory ListFeatureAccountResult.fromMap(Map<String, dynamic> map) {
     return ListFeatureAccountResult(
-      features: (map['features'] as Map).cast<String, bool>(),
+      features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, bool>(); })(),
     );
   }
 }

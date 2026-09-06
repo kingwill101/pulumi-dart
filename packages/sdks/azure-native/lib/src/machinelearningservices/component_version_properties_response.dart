@@ -8,17 +8,17 @@ class ComponentVersionPropertiesResponse {
   /// &lt;see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /&gt;
   final pulumi.Input<dynamic>? componentSpec;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the component version.
   final pulumi.Input<String> provisioningState;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ComponentVersionPropertiesResponse].
   /// [componentSpec] Defines Component definition details.
@@ -28,15 +28,15 @@ class ComponentVersionPropertiesResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the component version.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const ComponentVersionPropertiesResponse({
+  ComponentVersionPropertiesResponse({
     this.componentSpec,
     this.description,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.properties,
     required this.provisioningState,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Buildpack Binding Launch Properties
 class BuildpackBindingLaunchPropertiesResponse {
   /// Non-sensitive properties for launchProperties
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Sensitive properties for launchProperties
-  final pulumi.Input<Map<String, String>>? secrets;
+  final pulumi.Input<Map<String, String>?>? secrets;
 
   /// Creates a new [BuildpackBindingLaunchPropertiesResponse].
   /// [properties] Non-sensitive properties for launchProperties

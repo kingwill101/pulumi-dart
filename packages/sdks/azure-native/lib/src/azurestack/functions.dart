@@ -36,6 +36,17 @@ Future<GetCustomerSubscriptionResult> getCustomerSubscription(
   return GetCustomerSubscriptionResult.fromMap(result);
 }
 
+pulumi.Output<GetCustomerSubscriptionResult> getCustomerSubscriptionOutput(
+  GetCustomerSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getCustomerSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomerSubscriptionResult.fromMap);
+}
+
 /// Returns the properties of a Linked Subscription resource.
 ///
 /// Uses Azure REST API version 2020-06-01-preview.
@@ -52,6 +63,17 @@ Future<GetLinkedSubscriptionResult> getLinkedSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkedSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkedSubscriptionResult> getLinkedSubscriptionOutput(
+  GetLinkedSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getLinkedSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedSubscriptionResult.fromMap);
 }
 
 /// Returns the specified product.
@@ -74,6 +96,17 @@ Future<GetProductResult> getProduct(
   return GetProductResult.fromMap(result);
 }
 
+pulumi.Output<GetProductResult> getProductOutput(
+  GetProductArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getProduct',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductResult.fromMap);
+}
+
 /// Returns a list of products.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -92,6 +125,17 @@ Future<GetProductsResult> getProducts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProductsResult.fromMap(result);
+}
+
+pulumi.Output<GetProductsResult> getProductsOutput(
+  GetProductsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getProducts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProductsResult.fromMap);
 }
 
 /// Returns the properties of an Azure Stack registration.
@@ -114,6 +158,17 @@ Future<GetRegistrationResult> getRegistration(
   return GetRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistrationResult> getRegistrationOutput(
+  GetRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationResult.fromMap);
+}
+
 /// Returns Azure Stack Activation Key.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -132,6 +187,17 @@ Future<GetRegistrationActivationKeyResult> getRegistrationActivationKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationActivationKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationActivationKeyResult> getRegistrationActivationKeyOutput(
+  GetRegistrationActivationKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:getRegistrationActivationKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationActivationKeyResult.fromMap);
 }
 
 /// Returns the extended properties of a product.
@@ -154,6 +220,17 @@ Future<ListProductDetailsResult> listProductDetails(
   return ListProductDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListProductDetailsResult> listProductDetailsOutput(
+  ListProductDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:listProductDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProductDetailsResult.fromMap);
+}
+
 /// Returns a list of products.
 ///
 /// Uses Azure REST API version 2022-06-01.
@@ -170,4 +247,15 @@ Future<ListProductsResult> listProducts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListProductsResult.fromMap(result);
+}
+
+pulumi.Output<ListProductsResult> listProductsOutput(
+  ListProductsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurestack:listProducts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProductsResult.fromMap);
 }

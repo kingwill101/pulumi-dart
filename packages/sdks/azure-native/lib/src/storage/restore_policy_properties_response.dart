@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The blob service properties for blob restore policy
 class RestorePolicyPropertiesResponse {
   /// how long this blob can be restored. It should be great than zero and less than DeleteRetentionPolicy.days.
-  final pulumi.Input<int>? days;
+  final pulumi.Input<int?>? days;
   /// Blob restore is enabled if set to true.
   final pulumi.Input<bool> enabled;
   /// Deprecated in favor of minRestoreTime property.
@@ -36,7 +36,7 @@ class RestorePolicyPropertiesResponse {
 
   factory RestorePolicyPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return RestorePolicyPropertiesResponse(
-      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      days: (() { final guardedValue = map['days']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       lastEnabledTime: pulumi.Input.fromValue(map['lastEnabledTime'] as String),
       minRestoreTime: pulumi.Input.fromValue(map['minRestoreTime'] as String),

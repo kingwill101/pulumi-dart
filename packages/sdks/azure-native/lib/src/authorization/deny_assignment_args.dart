@@ -10,27 +10,27 @@ import 'deny_assignment_principal.dart';
 /// {@macro pulumi_authorization_deny_assignment_args_doc}
 class DenyAssignmentArgs {
   /// The conditions on the deny assignment. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// Version of the condition.
-  final pulumi.Input<String>? conditionVersion;
+  final pulumi.Input<String?>? conditionVersion;
   /// The effect of the deny assignment. 'enforced' blocks access, 'audit' logs without blocking.
-  final pulumi.Input<String>? denyAssignmentEffect;
+  final pulumi.Input<dynamic>? denyAssignmentEffect;
   /// The ID of the deny assignment to get.
-  final pulumi.Input<String>? denyAssignmentId;
+  final pulumi.Input<String?>? denyAssignmentId;
   /// The display name of the deny assignment.
-  final pulumi.Input<String>? denyAssignmentName;
+  final pulumi.Input<String?>? denyAssignmentName;
   /// The description of the deny assignment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Determines if the deny assignment applies to child scopes. Default value is false.
-  final pulumi.Input<bool>? doNotApplyToChildScopes;
+  final pulumi.Input<bool?>? doNotApplyToChildScopes;
   /// Array of principals to which the deny assignment does not apply.
-  final pulumi.Input<List<DenyAssignmentPrincipal>>? excludePrincipals;
+  final pulumi.Input<List<DenyAssignmentPrincipal>?>? excludePrincipals;
   /// Specifies whether this deny assignment was created by Azure and cannot be edited or deleted.
-  final pulumi.Input<bool>? isSystemProtected;
+  final pulumi.Input<bool?>? isSystemProtected;
   /// An array of permissions that are denied by the deny assignment.
-  final pulumi.Input<List<DenyAssignmentPermission>>? permissions;
+  final pulumi.Input<List<DenyAssignmentPermission>?>? permissions;
   /// Array of principals to which the deny assignment applies.
-  final pulumi.Input<List<DenyAssignmentPrincipal>>? principals;
+  final pulumi.Input<List<DenyAssignmentPrincipal>?>? principals;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scope;
 
@@ -83,7 +83,7 @@ class DenyAssignmentArgs {
     return DenyAssignmentArgs(
       condition: (() { final guardedValue = map['condition']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       conditionVersion: (() { final guardedValue = map['conditionVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      denyAssignmentEffect: (() { final guardedValue = map['denyAssignmentEffect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      denyAssignmentEffect: (() { final guardedValue = map['denyAssignmentEffect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       denyAssignmentId: (() { final guardedValue = map['denyAssignmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       denyAssignmentName: (() { final guardedValue = map['denyAssignmentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

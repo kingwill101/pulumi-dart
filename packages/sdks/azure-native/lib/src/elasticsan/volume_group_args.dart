@@ -13,21 +13,21 @@ class VolumeGroupArgs {
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
   /// Type of encryption
-  final pulumi.Input<String>? encryption;
+  final pulumi.Input<dynamic>? encryption;
   /// Encryption Properties describing Key Vault and Identity information
-  final pulumi.Input<EncryptionProperties>? encryptionProperties;
+  final pulumi.Input<EncryptionProperties?>? encryptionProperties;
   /// A boolean indicating whether or not Data Integrity Check is enabled
-  final pulumi.Input<bool>? enforceDataIntegrityCheckForIscsi;
+  final pulumi.Input<bool?>? enforceDataIntegrityCheckForIscsi;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// A collection of rules governing the accessibility from specific network locations.
-  final pulumi.Input<NetworkRuleSet>? networkAcls;
+  final pulumi.Input<NetworkRuleSet?>? networkAcls;
   /// Type of storage target
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<dynamic>? protocolType;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the VolumeGroup.
-  final pulumi.Input<String>? volumeGroupName;
+  final pulumi.Input<String?>? volumeGroupName;
 
   /// Creates a new [VolumeGroupArgs].
   /// [elasticSanName] The name of the ElasticSan.
@@ -68,12 +68,12 @@ class VolumeGroupArgs {
   factory VolumeGroupArgs.fromMap(Map<String, dynamic> map) {
     return VolumeGroupArgs(
       elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
-      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       encryptionProperties: (() { final guardedValue = map['encryptionProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EncryptionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enforceDataIntegrityCheckForIscsi: (() { final guardedValue = map['enforceDataIntegrityCheckForIscsi']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       volumeGroupName: (() { final guardedValue = map['volumeGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

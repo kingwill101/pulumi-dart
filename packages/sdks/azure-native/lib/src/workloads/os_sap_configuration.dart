@@ -6,9 +6,9 @@ import 'deployer_vm_packages.dart';
 /// Defines the OS and SAP Configurations for Deployment
 class OsSapConfiguration {
   /// The url and storage account ID where deployer VM packages are uploaded
-  final pulumi.Input<DeployerVmPackages>? deployerVmPackages;
+  final pulumi.Input<DeployerVmPackages?>? deployerVmPackages;
   /// The FQDN to set for the SAP system
-  final pulumi.Input<String>? sapFqdn;
+  final pulumi.Input<String?>? sapFqdn;
 
   /// Creates a new [OsSapConfiguration].
   /// [deployerVmPackages] The url and storage account ID where deployer VM packages are uploaded

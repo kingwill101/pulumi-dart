@@ -1,6 +1,8 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// VMCategories defined for Azure VMs.
 /// See: https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview?tabs=breakdownseries%2Cgeneralsizelist%2Ccomputesizelist%2Cmemorysizelist%2Cstoragesizelist%2Cgpusizelist%2Cfpgasizelist%2Chpcsizelist#general-purpose
-enum VMCategory {
+enum VMCategory implements pulumi.PulumiEnum<String> {
   generalPurpose("GeneralPurpose"),
   computeOptimized("ComputeOptimized"),
   memoryOptimized("MemoryOptimized"),
@@ -10,6 +12,7 @@ enum VMCategory {
   highPerformanceCompute("HighPerformanceCompute");
 
   const VMCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static VMCategory fromValue(String value) {

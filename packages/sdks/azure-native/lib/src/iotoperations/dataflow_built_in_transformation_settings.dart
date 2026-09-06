@@ -8,15 +8,15 @@ import 'dataflow_built_in_transformation_map.dart';
 /// Dataflow BuiltIn Transformation properties
 class DataflowBuiltInTransformationSettings {
   /// Enrich data from Broker State Store. Dataset references a key in Broker State Store.
-  final pulumi.Input<List<DataflowBuiltInTransformationDataset>>? datasets;
+  final pulumi.Input<List<DataflowBuiltInTransformationDataset>?>? datasets;
   /// Filters input record or datapoints based on condition.
-  final pulumi.Input<List<DataflowBuiltInTransformationFilter>>? filter;
+  final pulumi.Input<List<DataflowBuiltInTransformationFilter>?>? filter;
   /// Maps input to output message.
-  final pulumi.Input<List<DataflowBuiltInTransformationMap>>? map;
+  final pulumi.Input<List<DataflowBuiltInTransformationMap>?>? map;
   /// Reference to the schema that describes the output of the transformation.
-  final pulumi.Input<String>? schemaRef;
+  final pulumi.Input<String?>? schemaRef;
   /// Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-  final pulumi.Input<String>? serializationFormat;
+  final pulumi.Input<dynamic>? serializationFormat;
 
   /// Creates a new [DataflowBuiltInTransformationSettings].
   /// [datasets] Enrich data from Broker State Store. Dataset references a key in Broker State Store.
@@ -24,13 +24,13 @@ class DataflowBuiltInTransformationSettings {
   /// [map] Maps input to output message.
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] Serialization format. Optional; defaults to JSON. Allowed value JSON Schema/draft-7, Parquet. Default: Json
-  const DataflowBuiltInTransformationSettings({
+  DataflowBuiltInTransformationSettings({
     this.datasets,
     this.filter,
     this.map,
     this.schemaRef,
-    this.serializationFormat,
-  });
+    pulumi.Input<dynamic>? serializationFormat,
+  }) : serializationFormat = serializationFormat ?? pulumi.Input.fromValue('Json');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,7 +48,7 @@ class DataflowBuiltInTransformationSettings {
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataflowBuiltInTransformationFilter>(guardedValue, (value) => DataflowBuiltInTransformationFilter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       map: (() { final guardedValue = map['map']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataflowBuiltInTransformationMap>(guardedValue, (value) => DataflowBuiltInTransformationMap.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schemaRef: (() { final guardedValue = map['schemaRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serializationFormat: (() { final guardedValue = map['serializationFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serializationFormat: (() { final guardedValue = map['serializationFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

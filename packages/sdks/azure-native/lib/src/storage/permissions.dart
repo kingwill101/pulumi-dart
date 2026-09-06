@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The signed permissions for the service SAS. Possible values include: Read (r), Write (w), Delete (d), List (l), Add (a), Create (c), Update (u) and Process (p).
-enum Permissions {
+enum Permissions implements pulumi.PulumiEnum<String> {
   valueR("r"),
   valueD("d"),
   valueW("w"),
@@ -10,6 +12,7 @@ enum Permissions {
   valueP("p");
 
   const Permissions(this.wireValue);
+  @override
   final String wireValue;
 
   static Permissions fromValue(String value) {

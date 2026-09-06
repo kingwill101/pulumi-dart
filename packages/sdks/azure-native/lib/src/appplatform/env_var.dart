@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Spring Apps components' environment variable.
 class EnvVar {
   /// Environment variable name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// secret environment variable value.
-  final pulumi.Input<String>? secretValue;
+  final pulumi.Input<String?>? secretValue;
   /// Non-secret environment variable value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvVar].
   /// [name] Environment variable name.

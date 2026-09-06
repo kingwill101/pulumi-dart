@@ -7,11 +7,11 @@ class VmVmPlacementPolicyPropertiesResponse {
   /// placement policy affinity type
   final pulumi.Input<String> affinityType;
   /// Display name of the placement policy
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The provisioning state
   final pulumi.Input<String> provisioningState;
   /// Whether the placement policy is enabled or disabled
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Placement Policy type
   /// Expected value is 'VmVm'.
   final pulumi.Input<String> type;

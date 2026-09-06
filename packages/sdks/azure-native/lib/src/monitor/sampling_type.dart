@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the sampling type.
-enum SamplingType {
+enum SamplingType implements pulumi.PulumiEnum<String> {
   average("Average"),
   sum("Sum"),
   count("Count"),
@@ -7,6 +9,7 @@ enum SamplingType {
   max("Max");
 
   const SamplingType(this.wireValue);
+  @override
   final String wireValue;
 
   static SamplingType fromValue(String value) {

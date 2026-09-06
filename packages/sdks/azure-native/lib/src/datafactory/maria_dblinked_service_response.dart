@@ -8,23 +8,23 @@ import 'parameter_specification_response.dart';
 /// MariaDB server linked service.
 class MariaDBLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The version of the MariaDB driver. Type: string. V1 or empty for legacy driver, V2 for new driver. V1 can support connection string and property bag, V2 can only support connection string. The legacy driver is scheduled for deprecation by October 2024.
   final pulumi.Input<dynamic>? driverVersion;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? password;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? password;
   /// The port for the connection. Type: integer.
   final pulumi.Input<dynamic>? port;
   /// Server name for connection. Type: string.
@@ -39,7 +39,7 @@ class MariaDBLinkedServiceResponse {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic>? username;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MariaDBLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.

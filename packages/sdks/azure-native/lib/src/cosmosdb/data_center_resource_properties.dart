@@ -7,35 +7,35 @@ import 'cassandra_error.dart';
 /// Properties of a managed Cassandra data center.
 class DataCenterResourceProperties {
   /// Ldap authentication method properties. This feature is in preview.
-  final pulumi.Input<AuthenticationMethodLdapProperties>? authenticationMethodLdapProperties;
+  final pulumi.Input<AuthenticationMethodLdapProperties?>? authenticationMethodLdapProperties;
   /// If the data center has Availability Zone support, apply it to the Virtual Machine ScaleSet that host the cassandra data center virtual machines.
-  final pulumi.Input<bool>? availabilityZone;
+  final pulumi.Input<bool?>? availabilityZone;
   /// Indicates the Key Uri of the customer key to use for encryption of the backup storage account.
-  final pulumi.Input<String>? backupStorageCustomerKeyUri;
+  final pulumi.Input<String?>? backupStorageCustomerKeyUri;
   /// A fragment of a cassandra.yaml configuration file to be included in the cassandra.yaml for all nodes in this data center. The fragment should be Base64 encoded, and only a subset of keys are allowed.
-  final pulumi.Input<String>? base64EncodedCassandraYamlFragment;
+  final pulumi.Input<String?>? base64EncodedCassandraYamlFragment;
   /// The region this data center should be created in.
-  final pulumi.Input<String>? dataCenterLocation;
+  final pulumi.Input<String?>? dataCenterLocation;
   /// Whether the data center has been deallocated.
-  final pulumi.Input<bool>? deallocated;
+  final pulumi.Input<bool?>? deallocated;
   /// Resource id of a subnet the nodes in this data center should have their network interfaces connected to. The subnet must be in the same region specified in 'dataCenterLocation' and must be able to route to the subnet specified in the cluster's 'delegatedManagementSubnetId' property. This resource id will be of the form '/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.Network/virtualNetworks/&lt;virtual network&gt;/subnets/&lt;subnet&gt;'.
-  final pulumi.Input<String>? delegatedSubnetId;
+  final pulumi.Input<String?>? delegatedSubnetId;
   /// Number of disks attached to each node. Default is 4.
-  final pulumi.Input<int>? diskCapacity;
+  final pulumi.Input<int?>? diskCapacity;
   /// Disk SKU used for data centers. Default value is P30.
-  final pulumi.Input<String>? diskSku;
+  final pulumi.Input<String?>? diskSku;
   /// Key uri to use for encryption of managed disks. Ensure the system assigned identity of the cluster has been assigned appropriate permissions(key get/wrap/unwrap permissions) on the key.
-  final pulumi.Input<String>? managedDiskCustomerKeyUri;
+  final pulumi.Input<String?>? managedDiskCustomerKeyUri;
   /// The number of nodes the data center should have. This is the desired number. After it is set, it may take some time for the data center to be scaled to match. To monitor the number of nodes and their status, use the fetchNodeStatus method on the cluster.
-  final pulumi.Input<int>? nodeCount;
+  final pulumi.Input<int?>? nodeCount;
   /// Ip of the VPN Endpoint for this data center.
-  final pulumi.Input<String>? privateEndpointIpAddress;
+  final pulumi.Input<String?>? privateEndpointIpAddress;
   /// Error related to resource provisioning.
-  final pulumi.Input<CassandraError>? provisionError;
+  final pulumi.Input<CassandraError?>? provisionError;
   /// The status of the resource at the time the operation was called.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Virtual Machine SKU used for data centers. Default value is Standard_DS14_v2
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
 
   /// Creates a new [DataCenterResourceProperties].
   /// [authenticationMethodLdapProperties] Ldap authentication method properties. This feature is in preview.
@@ -100,13 +100,13 @@ class DataCenterResourceProperties {
       dataCenterLocation: (() { final guardedValue = map['dataCenterLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deallocated: (() { final guardedValue = map['deallocated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       delegatedSubnetId: (() { final guardedValue = map['delegatedSubnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskCapacity: (() { final guardedValue = map['diskCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskCapacity: (() { final guardedValue = map['diskCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       diskSku: (() { final guardedValue = map['diskSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managedDiskCustomerKeyUri: (() { final guardedValue = map['managedDiskCustomerKeyUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       privateEndpointIpAddress: (() { final guardedValue = map['privateEndpointIpAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisionError: (() { final guardedValue = map['provisionError']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CassandraError.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

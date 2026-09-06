@@ -9,17 +9,17 @@ import 'user_details.dart';
 /// Represents a provisioning request.
 class ProvisioningRequest {
   /// Base64 encoded custom configuration for CAPI to use
-  final pulumi.Input<String>? customConfiguration;
+  final pulumi.Input<String?>? customConfiguration;
   /// Device configuration.
-  final pulumi.Input<TargetDeviceConfiguration>? deviceConfiguration;
+  final pulumi.Input<TargetDeviceConfiguration?>? deviceConfiguration;
   /// Onboarding configuration.
-  final pulumi.Input<OnboardingConfiguration>? onboardingConfiguration;
+  final pulumi.Input<OnboardingConfiguration?>? onboardingConfiguration;
   /// Operating system profile.
   final pulumi.Input<OsProvisionProfile> osProfile;
   /// Target operating system to support polymorphic resource.
-  final pulumi.Input<String> target;
+  final pulumi.Input<dynamic> target;
   /// User configuration.
-  final pulumi.Input<List<UserDetails>>? userDetails;
+  final pulumi.Input<List<UserDetails>?>? userDetails;
 
   /// Creates a new [ProvisioningRequest].
   /// [customConfiguration] Base64 encoded custom configuration for CAPI to use
@@ -54,7 +54,7 @@ class ProvisioningRequest {
       deviceConfiguration: (() { final guardedValue = map['deviceConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TargetDeviceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       onboardingConfiguration: (() { final guardedValue = map['onboardingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(OnboardingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       osProfile: pulumi.Input.fromValue(OsProvisionProfile.fromMap((map['osProfile']! as Map).cast<String, dynamic>())),
-      target: pulumi.Input.fromValue(map['target'] as String),
+      target: pulumi.Input.fromValue(map['target']),
       userDetails: (() { final guardedValue = map['userDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserDetails>(guardedValue, (value) => UserDetails.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

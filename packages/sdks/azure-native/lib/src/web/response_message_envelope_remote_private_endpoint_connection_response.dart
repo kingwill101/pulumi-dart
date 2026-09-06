@@ -10,31 +10,31 @@ import 'sku_description_response.dart';
 /// Message envelope that contains the common Azure resource manager properties and the resource provider specific content.
 class ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse {
   /// Azure-AsyncOperation Error info.
-  final pulumi.Input<ErrorEntityResponse>? error;
+  final pulumi.Input<ErrorEntityResponse?>? error;
   /// Resource Id. Typically ID is populated only for responses to GET requests. Caller is responsible for passing in this
   /// value for GET requests only.
   /// For example: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupId}/providers/Microsoft.Web/sites/{sitename}
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// MSI resource
-  final pulumi.Input<ManagedServiceIdentityResponse>? identity;
+  final pulumi.Input<ManagedServiceIdentityResponse?>? identity;
   /// Geographical region resource belongs to e.g. SouthCentralUS, SouthEastAsia.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Azure resource manager plan.
-  final pulumi.Input<ArmPlanResponse>? plan;
+  final pulumi.Input<ArmPlanResponse?>? plan;
   /// Resource specific properties.
-  final pulumi.Input<RemotePrivateEndpointConnectionResponse>? properties;
+  final pulumi.Input<RemotePrivateEndpointConnectionResponse?>? properties;
   /// SKU description of the resource.
-  final pulumi.Input<SkuDescriptionResponse>? sku;
+  final pulumi.Input<SkuDescriptionResponse?>? sku;
   /// Azure-AsyncOperation Status info.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Tags associated with resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Type of resource e.g "Microsoft.Web/sites".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Logical Availability Zones the service is hosted in
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse].
   /// [error] Azure-AsyncOperation Error info.

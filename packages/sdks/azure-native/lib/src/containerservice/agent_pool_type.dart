@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of Agent Pool.
-enum AgentPoolType {
+enum AgentPoolType implements pulumi.PulumiEnum<String> {
   valueVirtualMachineScaleSets("VirtualMachineScaleSets"),
   valueAvailabilitySet("AvailabilitySet"),
   valueVirtualMachines("VirtualMachines");
 
   const AgentPoolType(this.wireValue);
+  @override
   final String wireValue;
 
   static AgentPoolType fromValue(String value) {

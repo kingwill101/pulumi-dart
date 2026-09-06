@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the target.
-enum PipelineRunTargetType {
+enum PipelineRunTargetType implements pulumi.PulumiEnum<String> {
   valueAzureStorageBlob("AzureStorageBlob");
 
   const PipelineRunTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static PipelineRunTargetType fromValue(String value) {

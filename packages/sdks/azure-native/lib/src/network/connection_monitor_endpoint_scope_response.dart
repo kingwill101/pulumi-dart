@@ -6,9 +6,9 @@ import 'connection_monitor_endpoint_scope_item_response.dart';
 /// Describes the connection monitor endpoint scope.
 class ConnectionMonitorEndpointScopeResponse {
   /// List of items which needs to be excluded from the endpoint scope.
-  final pulumi.Input<List<ConnectionMonitorEndpointScopeItemResponse>>? exclude;
+  final pulumi.Input<List<ConnectionMonitorEndpointScopeItemResponse>?>? exclude;
   /// List of items which needs to be included to the endpoint scope.
-  final pulumi.Input<List<ConnectionMonitorEndpointScopeItemResponse>>? include;
+  final pulumi.Input<List<ConnectionMonitorEndpointScopeItemResponse>?>? include;
 
   /// Creates a new [ConnectionMonitorEndpointScopeResponse].
   /// [exclude] List of items which needs to be excluded from the endpoint scope.

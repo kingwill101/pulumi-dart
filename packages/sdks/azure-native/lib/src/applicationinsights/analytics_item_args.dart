@@ -9,25 +9,25 @@ import 'application_insights_component_analytics_item_properties.dart';
 /// {@macro pulumi_applicationinsights_analytics_item_args_doc}
 class AnalyticsItemArgs {
   /// The content of this item
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Internally assigned unique id of the item definition.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The user-defined name of the item.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Flag indicating whether or not to force save an item. This allows overriding an item if it already exists.
-  final pulumi.Input<bool>? overrideItem;
+  final pulumi.Input<bool?>? overrideItem;
   /// A set of properties that can be defined in the context of a specific item type. Each type may have its own properties.
-  final pulumi.Input<ApplicationInsightsComponentAnalyticsItemProperties>? properties;
+  final pulumi.Input<ApplicationInsightsComponentAnalyticsItemProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Application Insights component resource.
   final pulumi.Input<String> resourceName;
   /// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<dynamic>? scope;
   /// Enum indicating if this item definition is owned by a specific user or is shared between all users with access to the Application Insights component.
   final pulumi.Input<String> scopePath;
   /// Enum indicating the type of the Analytics item.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [AnalyticsItemArgs].
   /// [content] The content of this item
@@ -77,9 +77,9 @@ class AnalyticsItemArgs {
       properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationInsightsComponentAnalyticsItemProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: pulumi.Input.fromValue(map['resourceName'] as String),
-      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scopePath: pulumi.Input.fromValue(map['scopePath'] as String),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

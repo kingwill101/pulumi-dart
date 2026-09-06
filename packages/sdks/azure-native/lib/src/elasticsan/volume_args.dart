@@ -10,11 +10,11 @@ import 'source_creation_data.dart';
 /// {@macro pulumi_elasticsan_volume_args_doc}
 class VolumeArgs {
   /// State of the operation on the resource.
-  final pulumi.Input<SourceCreationData>? creationData;
+  final pulumi.Input<SourceCreationData?>? creationData;
   /// The name of the ElasticSan.
   final pulumi.Input<String> elasticSanName;
   /// Parent resource information.
-  final pulumi.Input<ManagedByInfo>? managedBy;
+  final pulumi.Input<ManagedByInfo?>? managedBy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Volume size.
@@ -22,7 +22,7 @@ class VolumeArgs {
   /// The name of the VolumeGroup.
   final pulumi.Input<String> volumeGroupName;
   /// The name of the Volume.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [VolumeArgs].
   /// [creationData] State of the operation on the resource.
@@ -60,7 +60,7 @@ class VolumeArgs {
       elasticSanName: pulumi.Input.fromValue(map['elasticSanName'] as String),
       managedBy: (() { final guardedValue = map['managedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedByInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      sizeGiB: pulumi.Input.fromValue(map['sizeGiB'] as double),
+      sizeGiB: pulumi.Input.fromValue((map['sizeGiB'] as num).toDouble()),
       volumeGroupName: pulumi.Input.fromValue(map['volumeGroupName'] as String),
       volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

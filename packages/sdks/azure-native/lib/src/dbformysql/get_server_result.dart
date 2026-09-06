@@ -20,33 +20,33 @@ class GetServerResult {
   /// availability Zone information of the server.
   final String? availabilityZone;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Backup related properties of a server.
   final BackupResponse? backup;
   /// The Data Encryption for CMK.
   final DataEncryptionResponse? dataEncryption;
   /// The fully qualified domain name of a server.
-  final String fullyQualifiedDomainName;
+  final String? fullyQualifiedDomainName;
   /// High availability related properties of a server.
   final HighAvailabilityResponse? highAvailability;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The cmk identity for the server.
   final MySQLServerIdentityResponse? identity;
   /// Source properties for import from storage.
   final ImportSourcePropertiesResponse? importSourceProperties;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Maintenance window of a server.
   final MaintenanceWindowResponse? maintenanceWindow;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Network related properties of a server.
   final NetworkResponse? network;
   /// PrivateEndpointConnections related properties of a server.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// The maximum number of replicas that a primary server can have.
-  final int replicaCapacity;
+  final int? replicaCapacity;
   /// The replication role.
   final String? replicationRole;
   /// The SKU (pricing tier) of the server.
@@ -54,15 +54,15 @@ class GetServerResult {
   /// The source MySQL server id.
   final String? sourceServerResourceId;
   /// The state of a server.
-  final String state;
+  final String? state;
   /// Storage related properties of a server.
   final StorageResponse? storage;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Server version.
   final String? version;
 
@@ -95,28 +95,28 @@ class GetServerResult {
   const GetServerResult({
     this.administratorLogin,
     this.availabilityZone,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.backup,
     this.dataEncryption,
-    required this.fullyQualifiedDomainName,
+    this.fullyQualifiedDomainName,
     this.highAvailability,
-    required this.id,
+    this.id,
     this.identity,
     this.importSourceProperties,
-    required this.location,
+    this.location,
     this.maintenanceWindow,
-    required this.name,
+    this.name,
     this.network,
-    required this.privateEndpointConnections,
-    required this.replicaCapacity,
+    this.privateEndpointConnections,
+    this.replicaCapacity,
     this.replicationRole,
     this.sku,
     this.sourceServerResourceId,
-    required this.state,
+    this.state,
     this.storage,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.version,
   });
 
@@ -124,28 +124,28 @@ class GetServerResult {
     return <String, dynamic>{
       'administratorLogin': ?administratorLogin,
       'availabilityZone': ?availabilityZone,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'backup': ?backup?.toMap(),
       'dataEncryption': ?dataEncryption?.toMap(),
-      'fullyQualifiedDomainName': fullyQualifiedDomainName,
+      'fullyQualifiedDomainName': ?fullyQualifiedDomainName,
       'highAvailability': ?highAvailability?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'importSourceProperties': ?importSourceProperties?.toMap(),
-      'location': location,
+      'location': ?location,
       'maintenanceWindow': ?maintenanceWindow?.toMap(),
-      'name': name,
+      'name': ?name,
       'network': ?network?.toMap(),
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'replicaCapacity': replicaCapacity,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'replicaCapacity': ?replicaCapacity,
       'replicationRole': ?replicationRole,
       'sku': ?sku?.toMap(),
       'sourceServerResourceId': ?sourceServerResourceId,
-      'state': state,
+      'state': ?state,
       'storage': ?storage?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'version': ?version,
     };
   }
@@ -154,28 +154,28 @@ class GetServerResult {
     return GetServerResult(
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       backup: (() { final guardedValue = map['backup']; if (guardedValue == null) return null; return BackupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       dataEncryption: (() { final guardedValue = map['dataEncryption']; if (guardedValue == null) return null; return DataEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      fullyQualifiedDomainName: map['fullyQualifiedDomainName'] as String,
+      fullyQualifiedDomainName: (() { final guardedValue = map['fullyQualifiedDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       highAvailability: (() { final guardedValue = map['highAvailability']; if (guardedValue == null) return null; return HighAvailabilityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return MySQLServerIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       importSourceProperties: (() { final guardedValue = map['importSourceProperties']; if (guardedValue == null) return null; return ImportSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return MaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return NetworkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      replicaCapacity: map['replicaCapacity'] as int,
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      replicaCapacity: (() { final guardedValue = map['replicaCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return MySQLServerSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sourceServerResourceId: (() { final guardedValue = map['sourceServerResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      state: map['state'] as String,
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return StorageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

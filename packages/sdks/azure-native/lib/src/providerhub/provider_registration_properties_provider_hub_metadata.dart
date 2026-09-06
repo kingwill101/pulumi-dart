@@ -8,17 +8,17 @@ import 'resource_provider_authorization.dart';
 /// The provider hub metadata.
 class ProviderRegistrationPropertiesProviderHubMetadata {
   /// The direct RP role definition id.
-  final pulumi.Input<String>? directRpRoleDefinitionId;
+  final pulumi.Input<String?>? directRpRoleDefinitionId;
   /// The global async operation resource type name.
-  final pulumi.Input<String>? globalAsyncOperationResourceTypeName;
+  final pulumi.Input<String?>? globalAsyncOperationResourceTypeName;
   /// The provider authentication.
-  final pulumi.Input<ProviderHubMetadataProviderAuthentication>? providerAuthentication;
+  final pulumi.Input<ProviderHubMetadataProviderAuthentication?>? providerAuthentication;
   /// The provider authorizations.
-  final pulumi.Input<List<ResourceProviderAuthorization>>? providerAuthorizations;
+  final pulumi.Input<List<ResourceProviderAuthorization>?>? providerAuthorizations;
   /// The regional async operation resource type name.
-  final pulumi.Input<String>? regionalAsyncOperationResourceTypeName;
+  final pulumi.Input<String?>? regionalAsyncOperationResourceTypeName;
   /// The third party provider authorization.
-  final pulumi.Input<ProviderHubMetadataThirdPartyProviderAuthorization>? thirdPartyProviderAuthorization;
+  final pulumi.Input<ProviderHubMetadataThirdPartyProviderAuthorization?>? thirdPartyProviderAuthorization;
 
   /// Creates a new [ProviderRegistrationPropertiesProviderHubMetadata].
   /// [directRpRoleDefinitionId] The direct RP role definition id.

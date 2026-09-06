@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for Log Analytics linking to SCOM managed instance.
 class LogAnalyticsConfigurationResponse {
   /// The types of data to be ingested to Log Analytics workspace.
-  final pulumi.Input<List<String>>? dataTypes;
+  final pulumi.Input<List<String>?>? dataTypes;
   /// A one-time optional parameter to import data of last 7 days.
-  final pulumi.Input<bool>? importData;
+  final pulumi.Input<bool?>? importData;
   /// The resource ID of the Log Analytics workspace to be used.
-  final pulumi.Input<String>? workspaceId;
+  final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [dataTypes] The types of data to be ingested to Log Analytics workspace.
   /// [importData] A one-time optional parameter to import data of last 7 days.
   /// [workspaceId] The resource ID of the Log Analytics workspace to be used.
-  const LogAnalyticsConfigurationResponse({
+  LogAnalyticsConfigurationResponse({
     this.dataTypes,
-    this.importData,
+    pulumi.Input<bool?>? importData,
     this.workspaceId,
-  });
+  }) : importData = importData ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -6,9 +6,9 @@ import 'full_text_path.dart';
 /// Cosmos DB FullText Policy
 class FullTextPolicy {
   /// The default language for a full text paths.
-  final pulumi.Input<String>? defaultLanguage;
+  final pulumi.Input<String?>? defaultLanguage;
   /// List of FullText Paths
-  final pulumi.Input<List<FullTextPath>>? fullTextPaths;
+  final pulumi.Input<List<FullTextPath>?>? fullTextPaths;
 
   /// Creates a new [FullTextPolicy].
   /// [defaultLanguage] The default language for a full text paths.

@@ -7,7 +7,7 @@ class Sku {
   /// The SKU name.
   final pulumi.Input<String> name;
   /// The SKU tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<String?>? tier;
 
   /// Creates a new [Sku].
   /// [name] The SKU name.

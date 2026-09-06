@@ -6,15 +6,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// the container file system.
 class AzureFileShareHydrationProfileResponse {
   /// Gets or sets the cloud directory path of the directory on azure file share.
-  final pulumi.Input<String>? azureFileShareDirPath;
+  final pulumi.Input<String?>? azureFileShareDirPath;
   /// Gets or sets the name of the azure file share.
-  final pulumi.Input<String>? azureFileShareName;
+  final pulumi.Input<String?>? azureFileShareName;
   /// Gets or sets the name of the azure file share resource group.
-  final pulumi.Input<String>? azureFileShareResourceGroup;
+  final pulumi.Input<String?>? azureFileShareResourceGroup;
   /// Gets or sets the name of the azure file share storage account.
-  final pulumi.Input<String>? azureFileShareStorageAccount;
+  final pulumi.Input<String?>? azureFileShareStorageAccount;
   /// Gets or sets the subscription id of the azure file share.
-  final pulumi.Input<String>? azureFileShareSubscriptionId;
+  final pulumi.Input<String?>? azureFileShareSubscriptionId;
 
   /// Creates a new [AzureFileShareHydrationProfileResponse].
   /// [azureFileShareDirPath] Gets or sets the cloud directory path of the directory on azure file share.

@@ -11,21 +11,21 @@ import 'sku.dart';
 /// {@macro pulumi_machinelearningservices_serverless_endpoint_args_doc}
 class ServerlessEndpointArgs {
   /// Managed service identity (system assigned and/or user assigned identities)
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Serverless Endpoint name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// [Required] Additional attributes of the entity.
   final pulumi.Input<ServerlessEndpointProperties> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Sku details required for ARM contract for Autoscaling.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 

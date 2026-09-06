@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties supplied for Subnet
 class SubnetResponse {
   /// Resource ID of Virtual Network Subnet
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [SubnetResponse].
   /// [id] Resource ID of Virtual Network Subnet

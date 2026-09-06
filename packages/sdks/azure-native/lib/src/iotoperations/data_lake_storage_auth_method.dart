@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of Authentication.
-enum DataLakeStorageAuthMethod {
+enum DataLakeStorageAuthMethod implements pulumi.PulumiEnum<String> {
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity"),
   accessToken("AccessToken");
 
   const DataLakeStorageAuthMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static DataLakeStorageAuthMethod fromValue(String value) {

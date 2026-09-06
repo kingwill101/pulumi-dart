@@ -11,7 +11,7 @@ class DatasetResponse {
   /// Unique Dataset identifier.
   final pulumi.Input<String> datasetId;
   /// Dataset state
-  final pulumi.Input<DatasetStateResponse>? datasetState;
+  final pulumi.Input<DatasetStateResponse?>? datasetState;
   /// Dataset Type.
   final pulumi.Input<String> datasetType;
   /// Name of the default compute to be used for any Dataset actions (such as Profile, Write).
@@ -23,7 +23,7 @@ class DatasetResponse {
   /// Flag to hide Dataset in UI
   final pulumi.Input<bool> isVisible;
   /// Last created Dataset definition.
-  final pulumi.Input<DatasetResponseLatest>? latest;
+  final pulumi.Input<DatasetResponseLatest?>? latest;
   /// The dataset last modified time (UTC).
   final pulumi.Input<String> modifiedTime;
   /// Unique dataset name

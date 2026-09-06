@@ -6,15 +6,15 @@ class ClusterSecretArchiveResponse {
   /// The resource ID of the key vault to archive the secrets of the cluster.
   final pulumi.Input<String> keyVaultId;
   /// The indicator if the specified key vault should be used to archive the secrets of the cluster.
-  final pulumi.Input<String>? useKeyVault;
+  final pulumi.Input<String?>? useKeyVault;
 
   /// Creates a new [ClusterSecretArchiveResponse].
   /// [keyVaultId] The resource ID of the key vault to archive the secrets of the cluster.
   /// [useKeyVault] The indicator if the specified key vault should be used to archive the secrets of the cluster.
-  const ClusterSecretArchiveResponse({
+  ClusterSecretArchiveResponse({
     required this.keyVaultId,
-    this.useKeyVault,
-  });
+    pulumi.Input<String?>? useKeyVault,
+  }) : useKeyVault = useKeyVault ?? pulumi.Input.fromValue('False');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

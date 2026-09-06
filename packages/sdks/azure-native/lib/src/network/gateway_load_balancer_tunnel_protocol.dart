@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol of gateway load balancer tunnel interface.
-enum GatewayLoadBalancerTunnelProtocol {
+enum GatewayLoadBalancerTunnelProtocol implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueNative("Native"),
   valueVXLAN("VXLAN");
 
   const GatewayLoadBalancerTunnelProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayLoadBalancerTunnelProtocol fromValue(String value) {

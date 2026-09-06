@@ -10,15 +10,15 @@ class ListCatalogDeviceInsightsArgs {
   /// Name of catalog
   final pulumi.Input<String> catalogName;
   /// Filter the result list using the given expression
-  final pulumi.Input<String>? filter;
+  final pulumi.Input<String?>? filter;
   /// The maximum number of result items per page.
-  final pulumi.Input<int>? maxpagesize;
+  final pulumi.Input<int?>? maxpagesize;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The number of result items to skip.
-  final pulumi.Input<int>? skip;
+  final pulumi.Input<int?>? skip;
   /// The number of result items to return.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListCatalogDeviceInsightsArgs].
   /// [catalogName] Name of catalog
@@ -51,10 +51,10 @@ class ListCatalogDeviceInsightsArgs {
     return ListCatalogDeviceInsightsArgs(
       catalogName: pulumi.Input.fromValue(map['catalogName'] as String),
       filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxpagesize: (() { final guardedValue = map['maxpagesize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxpagesize: (() { final guardedValue = map['maxpagesize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      skip: (() { final guardedValue = map['skip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum CertificateStatus {
+enum CertificateStatus implements pulumi.PulumiEnum<String> {
   eXPIRED("EXPIRED"),
   fAILED("FAILED"),
   iNACTIVE("INACTIVE"),
@@ -9,6 +11,7 @@ enum CertificateStatus {
   vALIDATIONTIMEDOUT("VALIDATION_TIMED_OUT");
 
   const CertificateStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateStatus fromValue(String value) {

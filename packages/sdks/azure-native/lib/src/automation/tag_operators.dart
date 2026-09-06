@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Filter VMs by Any or All specified tags.
-enum TagOperators {
+enum TagOperators implements pulumi.PulumiEnum<String> {
   all("All"),
   any("Any");
 
   const TagOperators(this.wireValue);
+  @override
   final String wireValue;
 
   static TagOperators fromValue(String value) {

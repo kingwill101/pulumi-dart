@@ -14,7 +14,7 @@ class TeradataSourceResponse {
   /// The partition mechanism that will be used for teradata read in parallel. Possible values include: "None", "Hash", "DynamicRange".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for teradata source partitioning.
-  final pulumi.Input<TeradataPartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<TeradataPartitionSettingsResponse?>? partitionSettings;
   /// Teradata query. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? query;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).

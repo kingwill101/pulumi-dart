@@ -1,9 +1,12 @@
-enum ManagedPEStatus {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ManagedPEStatus implements pulumi.PulumiEnum<String> {
   inactive("Inactive"),
   active("Active"),
   notApplicable("NotApplicable");
 
   const ManagedPEStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedPEStatus fromValue(String value) {

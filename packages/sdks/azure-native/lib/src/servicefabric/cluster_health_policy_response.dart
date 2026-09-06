@@ -24,10 +24,10 @@ class ClusterHealthPolicyResponse {
   /// Creates a new [ClusterHealthPolicyResponse].
   /// [maxPercentUnhealthyApplications] The maximum allowed percentage of unhealthy applications before reporting an error. For example, to allow 10% of applications to be unhealthy, this value would be 10.
   /// [maxPercentUnhealthyNodes] The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10.
-  const ClusterHealthPolicyResponse({
-    required this.maxPercentUnhealthyApplications,
-    required this.maxPercentUnhealthyNodes,
-  });
+  ClusterHealthPolicyResponse({
+    pulumi.Input<int>? maxPercentUnhealthyApplications,
+    pulumi.Input<int>? maxPercentUnhealthyNodes,
+  }) : maxPercentUnhealthyApplications = maxPercentUnhealthyApplications ?? pulumi.Input.fromValue(0), maxPercentUnhealthyNodes = maxPercentUnhealthyNodes ?? pulumi.Input.fromValue(0);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -38,8 +38,8 @@ class ClusterHealthPolicyResponse {
 
   factory ClusterHealthPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ClusterHealthPolicyResponse(
-      maxPercentUnhealthyApplications: pulumi.Input.fromValue(map['maxPercentUnhealthyApplications'] as int),
-      maxPercentUnhealthyNodes: pulumi.Input.fromValue(map['maxPercentUnhealthyNodes'] as int),
+      maxPercentUnhealthyApplications: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyApplications'])),
+      maxPercentUnhealthyNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyNodes'])),
     );
   }
 }

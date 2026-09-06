@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_authorization_resource_management_private_link_args_doc}
 class ResourceManagementPrivateLinkArgs {
   /// the region to create private link association.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource management private link.
-  final pulumi.Input<String>? rmplName;
+  final pulumi.Input<String?>? rmplName;
 
   /// Creates a new [ResourceManagementPrivateLinkArgs].
   /// [location] the region to create private link association.

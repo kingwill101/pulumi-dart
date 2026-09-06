@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_testbase_image_definition_args_doc}
 class ImageDefinitionArgs {
   /// Custom image architecture.
-  final pulumi.Input<String> architecture;
+  final pulumi.Input<dynamic> architecture;
   /// The resource name of the test base image definition.
-  final pulumi.Input<String>? imageDefinitionName;
+  final pulumi.Input<String?>? imageDefinitionName;
   /// Custom image OS state.
-  final pulumi.Input<String> osState;
+  final pulumi.Input<dynamic> osState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Custom image security type.
-  final pulumi.Input<String> securityType;
+  final pulumi.Input<dynamic> securityType;
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
 
@@ -49,11 +49,11 @@ class ImageDefinitionArgs {
 
   factory ImageDefinitionArgs.fromMap(Map<String, dynamic> map) {
     return ImageDefinitionArgs(
-      architecture: pulumi.Input.fromValue(map['architecture'] as String),
+      architecture: pulumi.Input.fromValue(map['architecture']),
       imageDefinitionName: (() { final guardedValue = map['imageDefinitionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      osState: pulumi.Input.fromValue(map['osState'] as String),
+      osState: pulumi.Input.fromValue(map['osState']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      securityType: pulumi.Input.fromValue(map['securityType'] as String),
+      securityType: pulumi.Input.fromValue(map['securityType']),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
     );
   }

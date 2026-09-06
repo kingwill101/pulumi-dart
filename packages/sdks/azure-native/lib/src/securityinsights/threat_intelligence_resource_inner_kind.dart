@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of the entity.
-enum ThreatIntelligenceResourceInnerKind {
+enum ThreatIntelligenceResourceInnerKind implements pulumi.PulumiEnum<String> {
   valueIndicator("indicator");
 
   const ThreatIntelligenceResourceInnerKind(this.wireValue);
+  @override
   final String wireValue;
 
   static ThreatIntelligenceResourceInnerKind fromValue(String value) {

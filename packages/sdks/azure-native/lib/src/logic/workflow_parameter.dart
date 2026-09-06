@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The workflow parameters.
 class WorkflowParameter {
   /// The description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The metadata.
   final pulumi.Input<dynamic>? metadata;
   /// The type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The value.
   final pulumi.Input<dynamic>? value;
 
@@ -38,7 +38,7 @@ class WorkflowParameter {
     return WorkflowParameter(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }

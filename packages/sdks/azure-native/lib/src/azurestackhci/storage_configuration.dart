@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Storage configuration.
 class StorageConfiguration {
   /// Partition size.
-  final pulumi.Input<String>? partitionSize;
+  final pulumi.Input<String?>? partitionSize;
 
   /// Creates a new [StorageConfiguration].
   /// [partitionSize] Partition size.

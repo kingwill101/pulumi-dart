@@ -11,31 +11,31 @@ import 'vpn_client_root_certificate_response.dart';
 /// VpnClientConfiguration for P2S client.
 class VpnClientConfigurationResponse {
   /// The AADAudience property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final pulumi.Input<String>? aadAudience;
+  final pulumi.Input<String?>? aadAudience;
   /// The AADIssuer property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final pulumi.Input<String>? aadIssuer;
+  final pulumi.Input<String?>? aadIssuer;
   /// The AADTenant property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.
-  final pulumi.Input<String>? aadTenant;
+  final pulumi.Input<String?>? aadTenant;
   /// The radius server address property of the VirtualNetworkGateway resource for vpn client connection.
-  final pulumi.Input<String>? radiusServerAddress;
+  final pulumi.Input<String?>? radiusServerAddress;
   /// The radius secret property of the VirtualNetworkGateway resource for vpn client connection.
-  final pulumi.Input<String>? radiusServerSecret;
+  final pulumi.Input<String?>? radiusServerSecret;
   /// The radiusServers property for multiple radius server configuration.
-  final pulumi.Input<List<RadiusServerResponse>>? radiusServers;
+  final pulumi.Input<List<RadiusServerResponse>?>? radiusServers;
   /// per ip address pool connection policy for virtual network gateway P2S client.
-  final pulumi.Input<List<VngClientConnectionConfigurationResponse>>? vngClientConnectionConfigurations;
+  final pulumi.Input<List<VngClientConnectionConfigurationResponse>?>? vngClientConnectionConfigurations;
   /// VPN authentication types for the virtual network gateway..
-  final pulumi.Input<List<String>>? vpnAuthenticationTypes;
+  final pulumi.Input<List<String>?>? vpnAuthenticationTypes;
   /// The reference to the address space resource which represents Address space for P2S VpnClient.
-  final pulumi.Input<AddressSpaceResponse>? vpnClientAddressPool;
+  final pulumi.Input<AddressSpaceResponse?>? vpnClientAddressPool;
   /// VpnClientIpsecPolicies for virtual network gateway P2S client.
-  final pulumi.Input<List<IpsecPolicyResponse>>? vpnClientIpsecPolicies;
+  final pulumi.Input<List<IpsecPolicyResponse>?>? vpnClientIpsecPolicies;
   /// VpnClientProtocols for Virtual network gateway.
-  final pulumi.Input<List<String>>? vpnClientProtocols;
+  final pulumi.Input<List<String>?>? vpnClientProtocols;
   /// VpnClientRevokedCertificate for Virtual network gateway.
-  final pulumi.Input<List<VpnClientRevokedCertificateResponse>>? vpnClientRevokedCertificates;
+  final pulumi.Input<List<VpnClientRevokedCertificateResponse>?>? vpnClientRevokedCertificates;
   /// VpnClientRootCertificate for virtual network gateway.
-  final pulumi.Input<List<VpnClientRootCertificateResponse>>? vpnClientRootCertificates;
+  final pulumi.Input<List<VpnClientRootCertificateResponse>?>? vpnClientRootCertificates;
 
   /// Creates a new [VpnClientConfigurationResponse].
   /// [aadAudience] The AADAudience property of the VirtualNetworkGateway resource for vpn client connection used for AAD authentication.

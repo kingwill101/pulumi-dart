@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The tier of this particular SKU.
-enum Tier {
+enum Tier implements pulumi.PulumiEnum<String> {
   valueStandard("Standard");
 
   const Tier(this.wireValue);
+  @override
   final String wireValue;
 
   static Tier fromValue(String value) {

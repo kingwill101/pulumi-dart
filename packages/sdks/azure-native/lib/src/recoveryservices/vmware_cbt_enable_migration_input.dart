@@ -7,7 +7,7 @@ import 'vmware_cbt_security_profile_properties.dart';
 /// VMwareCbt specific enable migration input.
 class VMwareCbtEnableMigrationInput {
   /// The confidential VM key vault Id for ADE installation.
-  final pulumi.Input<String>? confidentialVmKeyVaultId;
+  final pulumi.Input<String?>? confidentialVmKeyVaultId;
   /// The data mover run as account Id.
   final pulumi.Input<String> dataMoverRunAsAccountId;
   /// The disks to include list.
@@ -16,51 +16,51 @@ class VMwareCbtEnableMigrationInput {
   /// Expected value is 'VMwareCbt'.
   final pulumi.Input<String> instanceType;
   /// License type.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<dynamic>? licenseType;
   /// The license type for Linux VM's.
-  final pulumi.Input<String>? linuxLicenseType;
+  final pulumi.Input<dynamic>? linuxLicenseType;
   /// A value indicating whether auto resync is to be done.
-  final pulumi.Input<String>? performAutoResync;
+  final pulumi.Input<String?>? performAutoResync;
   /// A value indicating whether bulk SQL RP registration to be done.
-  final pulumi.Input<String>? performSqlBulkRegistration;
+  final pulumi.Input<String?>? performSqlBulkRegistration;
   /// The tags for the seed disks.
-  final pulumi.Input<Map<String, String>>? seedDiskTags;
+  final pulumi.Input<Map<String, String>?>? seedDiskTags;
   /// The snapshot run as account Id.
   final pulumi.Input<String> snapshotRunAsAccountId;
   /// The SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<dynamic>? sqlServerLicenseType;
   /// The target availability set ARM Id.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String?>? targetBootDiagnosticsStorageAccountId;
   /// The tags for the target disks.
-  final pulumi.Input<Map<String, String>>? targetDiskTags;
+  final pulumi.Input<Map<String, String>?>? targetDiskTags;
   /// The target network ARM Id.
   final pulumi.Input<String> targetNetworkId;
   /// The tags for the target NICs.
-  final pulumi.Input<Map<String, String>>? targetNicTags;
+  final pulumi.Input<Map<String, String>?>? targetNicTags;
   /// The target proximity placement group ARM Id.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The target resource group ARM Id.
   final pulumi.Input<String> targetResourceGroupId;
   /// The target subnet name.
-  final pulumi.Input<String>? targetSubnetName;
+  final pulumi.Input<String?>? targetSubnetName;
   /// The target VM name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// The target VM security profile.
-  final pulumi.Input<VMwareCbtSecurityProfileProperties>? targetVmSecurityProfile;
+  final pulumi.Input<VMwareCbtSecurityProfileProperties?>? targetVmSecurityProfile;
   /// The target VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// The target VM tags.
-  final pulumi.Input<Map<String, String>>? targetVmTags;
+  final pulumi.Input<Map<String, String>?>? targetVmTags;
   /// The selected test network ARM Id.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
   /// The selected test subnet name.
-  final pulumi.Input<String>? testSubnetName;
+  final pulumi.Input<String?>? testSubnetName;
   /// The OS name selected by user.
-  final pulumi.Input<String>? userSelectedOSName;
+  final pulumi.Input<String?>? userSelectedOSName;
   /// The ARM Id of the VM discovered in VMware.
   final pulumi.Input<String> vmwareMachineId;
 
@@ -163,13 +163,13 @@ class VMwareCbtEnableMigrationInput {
       dataMoverRunAsAccountId: pulumi.Input.fromValue(map['dataMoverRunAsAccountId'] as String),
       disksToInclude: pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareCbtDiskInput>(map['disksToInclude']!, (value) => VMwareCbtDiskInput.fromMap((value as Map).cast<String, dynamic>()))),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
-      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       performAutoResync: (() { final guardedValue = map['performAutoResync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performSqlBulkRegistration: (() { final guardedValue = map['performSqlBulkRegistration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       seedDiskTags: (() { final guardedValue = map['seedDiskTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       snapshotRunAsAccountId: pulumi.Input.fromValue(map['snapshotRunAsAccountId'] as String),
-      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sqlServerLicenseType: (() { final guardedValue = map['sqlServerLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetAvailabilitySetId: (() { final guardedValue = map['targetAvailabilitySetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAvailabilityZone: (() { final guardedValue = map['targetAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetBootDiagnosticsStorageAccountId: (() { final guardedValue = map['targetBootDiagnosticsStorageAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

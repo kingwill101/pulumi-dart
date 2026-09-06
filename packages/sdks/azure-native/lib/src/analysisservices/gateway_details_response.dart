@@ -9,7 +9,7 @@ class GatewayDetailsResponse {
   /// Gateway object id from in the DMTS cluster for the gateway resource.
   final pulumi.Input<String> gatewayObjectId;
   /// Gateway resource to be associated with the server.
-  final pulumi.Input<String>? gatewayResourceId;
+  final pulumi.Input<String?>? gatewayResourceId;
 
   /// Creates a new [GatewayDetailsResponse].
   /// [dmtsClusterUri] Uri of the DMTS cluster.

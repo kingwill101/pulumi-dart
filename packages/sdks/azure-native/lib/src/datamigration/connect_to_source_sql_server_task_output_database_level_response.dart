@@ -59,7 +59,7 @@ class ConnectToSourceSqlServerTaskOutputDatabaseLevelResponse {
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),
-      sizeMB: pulumi.Input.fromValue(map['sizeMB'] as double),
+      sizeMB: pulumi.Input.fromValue((map['sizeMB'] as num).toDouble()),
     );
   }
 }

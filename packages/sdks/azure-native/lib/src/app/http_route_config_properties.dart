@@ -7,9 +7,9 @@ import 'http_route_rule.dart';
 /// Http Route Config properties
 class HttpRouteConfigProperties {
   /// Custom domain bindings for http Routes' hostnames.
-  final pulumi.Input<List<CustomDomain>>? customDomains;
+  final pulumi.Input<List<CustomDomain>?>? customDomains;
   /// Routing Rules for http route resource.
-  final pulumi.Input<List<HttpRouteRule>>? rules;
+  final pulumi.Input<List<HttpRouteRule>?>? rules;
 
   /// Creates a new [HttpRouteConfigProperties].
   /// [customDomains] Custom domain bindings for http Routes' hostnames.

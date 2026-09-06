@@ -6,11 +6,11 @@ import 'control_plane_placement_response.dart';
 /// Definition of OutpostConfigResponse
 class OutpostConfigResponse {
   /// &lt;p&gt;The Amazon EC2 instance type used for the control plane. The instance type is the same for all control plane instances.&lt;/p&gt;
-  final pulumi.Input<String>? controlPlaneInstanceType;
+  final pulumi.Input<String?>? controlPlaneInstanceType;
   /// &lt;p&gt;An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on an Amazon Web Services Outpost. For more information, see &lt;a href='https://docs.aws.amazon.com/eks/latest/userguide/eks-outposts-capacity-considerations.html'&gt;Capacity considerations&lt;/a&gt; in the &lt;i&gt;Amazon EKS User Guide&lt;/i&gt;.&lt;/p&gt;
-  final pulumi.Input<ControlPlanePlacementResponse>? controlPlanePlacement;
+  final pulumi.Input<ControlPlanePlacementResponse?>? controlPlanePlacement;
   /// &lt;p&gt;The ARN of the Outpost that you specified for use with your local Amazon EKS cluster on Outposts.&lt;/p&gt;
-  final pulumi.Input<List<String>>? outpostArns;
+  final pulumi.Input<List<String>?>? outpostArns;
 
   /// Creates a new [OutpostConfigResponse].
   /// [controlPlaneInstanceType] &lt;p&gt;The Amazon EC2 instance type used for the control plane. The instance type is the same for all control plane instances.&lt;/p&gt;

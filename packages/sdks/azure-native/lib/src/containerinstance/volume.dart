@@ -7,17 +7,17 @@ import 'git_repo_volume.dart';
 /// The properties of the volume.
 class Volume {
   /// The Azure File volume.
-  final pulumi.Input<AzureFileVolume>? azureFile;
+  final pulumi.Input<AzureFileVolume?>? azureFile;
   /// The empty directory volume.
   final pulumi.Input<dynamic>? emptyDir;
   /// The git repo volume.
-  final pulumi.Input<GitRepoVolume>? gitRepo;
+  final pulumi.Input<GitRepoVolume?>? gitRepo;
   /// The name of the volume.
   final pulumi.Input<String> name;
   /// The secret volume.
-  final pulumi.Input<Map<String, String>>? secret;
+  final pulumi.Input<Map<String, String>?>? secret;
   /// The secret reference volume.
-  final pulumi.Input<Map<String, String>>? secretReference;
+  final pulumi.Input<Map<String, String>?>? secretReference;
 
   /// Creates a new [Volume].
   /// [azureFile] The Azure File volume.

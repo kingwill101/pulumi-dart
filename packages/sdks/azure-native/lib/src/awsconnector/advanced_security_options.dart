@@ -6,15 +6,15 @@ import 'samloptions_output.dart';
 /// Definition of AdvancedSecurityOptions
 class AdvancedSecurityOptions {
   /// &lt;p&gt;Date and time when the migration period will be disabled. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
-  final pulumi.Input<String>? anonymousAuthDisableDate;
+  final pulumi.Input<String?>? anonymousAuthDisableDate;
   /// &lt;p&gt;True if a 30-day migration period is enabled, during which administrators can create role mappings. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;
-  final pulumi.Input<bool>? anonymousAuthEnabled;
+  final pulumi.Input<bool?>? anonymousAuthEnabled;
   /// &lt;p&gt;True if fine-grained access control is enabled.&lt;/p&gt;
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// &lt;p&gt;True if the internal user database is enabled.&lt;/p&gt;
-  final pulumi.Input<bool>? internalUserDatabaseEnabled;
+  final pulumi.Input<bool?>? internalUserDatabaseEnabled;
   /// &lt;p&gt;Container for information about the SAML configuration for OpenSearch Dashboards.&lt;/p&gt;
-  final pulumi.Input<SAMLOptionsOutput>? samlOptions;
+  final pulumi.Input<SAMLOptionsOutput?>? samlOptions;
 
   /// Creates a new [AdvancedSecurityOptions].
   /// [anonymousAuthDisableDate] &lt;p&gt;Date and time when the migration period will be disabled. Only necessary when &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-enabling-existing'&gt;enabling fine-grained access control on an existing domain&lt;/a&gt;.&lt;/p&gt;

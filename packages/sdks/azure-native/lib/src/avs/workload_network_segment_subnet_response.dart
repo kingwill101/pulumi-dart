@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subnet configuration for segment
 class WorkloadNetworkSegmentSubnetResponse {
   /// DHCP Range assigned for subnet.
-  final pulumi.Input<List<String>>? dhcpRanges;
+  final pulumi.Input<List<String>?>? dhcpRanges;
   /// Gateway address.
-  final pulumi.Input<String>? gatewayAddress;
+  final pulumi.Input<String?>? gatewayAddress;
 
   /// Creates a new [WorkloadNetworkSegmentSubnetResponse].
   /// [dhcpRanges] DHCP Range assigned for subnet.

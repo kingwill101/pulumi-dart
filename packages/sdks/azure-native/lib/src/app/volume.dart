@@ -6,15 +6,15 @@ import 'secret_volume_item.dart';
 /// Volume definitions for the Container App.
 class Volume {
   /// Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
-  final pulumi.Input<String>? mountOptions;
+  final pulumi.Input<String?>? mountOptions;
   /// Volume name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume.
-  final pulumi.Input<List<SecretVolumeItem>>? secrets;
+  final pulumi.Input<List<SecretVolumeItem>?>? secrets;
   /// Name of storage resource. No need to provide for EmptyDir and Secret.
-  final pulumi.Input<String>? storageName;
+  final pulumi.Input<String?>? storageName;
   /// Storage type for the volume. If not provided, use EmptyDir.
-  final pulumi.Input<String>? storageType;
+  final pulumi.Input<dynamic>? storageType;
 
   /// Creates a new [Volume].
   /// [mountOptions] Mount options used while mounting the Azure file share or NFS Azure file share. Must be a comma-separated string.
@@ -46,7 +46,7 @@ class Volume {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secrets: (() { final guardedValue = map['secrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SecretVolumeItem>(guardedValue, (value) => SecretVolumeItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       storageName: (() { final guardedValue = map['storageName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageType: (() { final guardedValue = map['storageType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

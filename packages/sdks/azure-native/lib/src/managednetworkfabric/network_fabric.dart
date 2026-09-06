@@ -839,8 +839,8 @@ class NetworkFabric extends pulumi.CustomResource {
     fabricVersion = registerOutput<String?>('fabricVersion');
     ipv4Prefix = registerOutput<String>('ipv4Prefix');
     ipv6Prefix = registerOutput<String?>('ipv6Prefix');
-    l2IsolationDomains = registerOutput<List<String>>('l2IsolationDomains');
-    l3IsolationDomains = registerOutput<List<String>>('l3IsolationDomains');
+    l2IsolationDomains = registerOutput<List<String>>('l2IsolationDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    l3IsolationDomains = registerOutput<List<String>>('l3IsolationDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     managementNetworkConfiguration = registerOutput<ManagementNetworkConfigurationPropertiesResponse>('managementNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementNetworkConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
@@ -848,11 +848,46 @@ class NetworkFabric extends pulumi.CustomResource {
     networkFabricSku = registerOutput<String>('networkFabricSku');
     provisioningState = registerOutput<String>('provisioningState');
     rackCount = registerOutput<int?>('rackCount');
-    racks = registerOutput<List<String>>('racks');
-    routerIds = registerOutput<List<String>>('routerIds');
+    racks = registerOutput<List<String>>('racks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    routerIds = registerOutput<List<String>>('routerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     serverCountPerRack = registerOutput<int>('serverCountPerRack');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    terminalServerConfiguration = registerOutput<TerminalServerConfigurationResponse>('terminalServerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TerminalServerConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkFabric] resource.
+  NetworkFabric.reference(String urn)
+    : super(
+        'azure-native:managednetworkfabric:NetworkFabric',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeState = registerOutput<String>('administrativeState');
+    annotation = registerOutput<String?>('annotation');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configurationState = registerOutput<String>('configurationState');
+    fabricASN = registerOutput<double>('fabricASN');
+    fabricVersion = registerOutput<String?>('fabricVersion');
+    ipv4Prefix = registerOutput<String>('ipv4Prefix');
+    ipv6Prefix = registerOutput<String?>('ipv6Prefix');
+    l2IsolationDomains = registerOutput<List<String>>('l2IsolationDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    l3IsolationDomains = registerOutput<List<String>>('l3IsolationDomains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    managementNetworkConfiguration = registerOutput<ManagementNetworkConfigurationPropertiesResponse>('managementNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagementNetworkConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkFabricControllerId = registerOutput<String>('networkFabricControllerId');
+    networkFabricSku = registerOutput<String>('networkFabricSku');
+    provisioningState = registerOutput<String>('provisioningState');
+    rackCount = registerOutput<int?>('rackCount');
+    racks = registerOutput<List<String>>('racks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    routerIds = registerOutput<List<String>>('routerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverCountPerRack = registerOutput<int>('serverCountPerRack');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     terminalServerConfiguration = registerOutput<TerminalServerConfigurationResponse>('terminalServerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TerminalServerConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

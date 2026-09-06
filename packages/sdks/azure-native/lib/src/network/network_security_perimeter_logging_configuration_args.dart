@@ -9,11 +9,11 @@ import 'nsp_logging_configuration_properties.dart';
 /// {@macro pulumi_network_network_security_perimeter_logging_configuration_args_doc}
 class NetworkSecurityPerimeterLoggingConfigurationArgs {
   /// The name of the NSP logging configuration. Accepts 'instance' as name.
-  final pulumi.Input<String>? loggingConfigurationName;
+  final pulumi.Input<String?>? loggingConfigurationName;
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
   /// Properties of the NSP logging configuration.
-  final pulumi.Input<NspLoggingConfigurationProperties>? properties;
+  final pulumi.Input<NspLoggingConfigurationProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

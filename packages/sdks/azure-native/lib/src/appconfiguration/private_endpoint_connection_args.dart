@@ -12,9 +12,9 @@ class PrivateEndpointConnectionArgs {
   /// The name of the configuration store.
   final pulumi.Input<String> configStoreName;
   /// The resource of private endpoint.
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// Private endpoint connection name
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group to which the container registry belongs.

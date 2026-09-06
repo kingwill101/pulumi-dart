@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OAuthAuthenticationResponse {
   /// Gets or sets the audience.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Gets or sets the client identifier.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Gets or sets the secret, return value will always be empty.
-  final pulumi.Input<String>? secret;
+  final pulumi.Input<String?>? secret;
   /// Gets or sets the tenant.
-  final pulumi.Input<String>? tenant;
+  final pulumi.Input<String?>? tenant;
   /// Gets or sets the HTTP authentication type.
   /// Expected value is 'ActiveDirectoryOAuth'.
   final pulumi.Input<String> type;

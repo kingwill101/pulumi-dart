@@ -7,9 +7,9 @@ import 'linked_service_reference.dart';
 /// Reference objects for custom activity
 class CustomActivityReferenceObject {
   /// Dataset references.
-  final pulumi.Input<List<DatasetReference>>? datasets;
+  final pulumi.Input<List<DatasetReference>?>? datasets;
   /// Linked service references.
-  final pulumi.Input<List<LinkedServiceReference>>? linkedServices;
+  final pulumi.Input<List<LinkedServiceReference>?>? linkedServices;
 
   /// Creates a new [CustomActivityReferenceObject].
   /// [datasets] Dataset references.

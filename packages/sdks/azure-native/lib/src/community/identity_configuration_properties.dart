@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the Community CommunityTraining Identity Configuration
 class IdentityConfigurationProperties {
   /// The name of the authentication policy registered in ADB2C for the Community Training Resource
-  final pulumi.Input<String>? b2cAuthenticationPolicy;
+  final pulumi.Input<String?>? b2cAuthenticationPolicy;
   /// The name of the password reset policy registered in ADB2C for the Community Training Resource
-  final pulumi.Input<String>? b2cPasswordResetPolicy;
+  final pulumi.Input<String?>? b2cPasswordResetPolicy;
   /// The clientId of the application registered in the selected identity provider for the Community Training Resource
   final pulumi.Input<String> clientId;
   /// The client secret of the application registered in the selected identity provider for the Community Training Resource
   final pulumi.Input<String> clientSecret;
   /// The custom login parameters for the Community Training Resource
-  final pulumi.Input<String>? customLoginParameters;
+  final pulumi.Input<String?>? customLoginParameters;
   /// The domain name of the selected identity provider for the Community Training Resource
   final pulumi.Input<String> domainName;
   /// The identity type of the Community Training Resource
   final pulumi.Input<String> identityType;
   /// To indicate whether the Community Training Resource has Teams enabled
-  final pulumi.Input<bool>? teamsEnabled;
+  final pulumi.Input<bool?>? teamsEnabled;
   /// The tenantId of the selected identity provider for the Community Training Resource
   final pulumi.Input<String> tenantId;
 
@@ -33,7 +33,7 @@ class IdentityConfigurationProperties {
   /// [identityType] The identity type of the Community Training Resource
   /// [teamsEnabled] To indicate whether the Community Training Resource has Teams enabled
   /// [tenantId] The tenantId of the selected identity provider for the Community Training Resource
-  const IdentityConfigurationProperties({
+  IdentityConfigurationProperties({
     this.b2cAuthenticationPolicy,
     this.b2cPasswordResetPolicy,
     required this.clientId,
@@ -41,9 +41,9 @@ class IdentityConfigurationProperties {
     this.customLoginParameters,
     required this.domainName,
     required this.identityType,
-    this.teamsEnabled,
+    pulumi.Input<bool?>? teamsEnabled,
     required this.tenantId,
-  });
+  }) : teamsEnabled = teamsEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

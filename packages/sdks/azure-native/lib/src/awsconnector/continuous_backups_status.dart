@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ContinuousBackupsStatus {
+enum ContinuousBackupsStatus implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const ContinuousBackupsStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ContinuousBackupsStatus fromValue(String value) {

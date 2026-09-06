@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
 import 'account_encryption_response.dart';
+import 'active_directory_response.dart';
 import 'managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -373,7 +374,7 @@ import 'system_data_response.dart';
 /// ```
 class Account extends pulumi.CustomResource {
   /// Active Directories
-  late final pulumi.Output<List<Map<String, dynamic>>?> activeDirectories;
+  late final pulumi.Output<List<ActiveDirectoryResponse>?> activeDirectories;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Shows the status of disableShowmount for all volumes under the subscription, null equals false
@@ -411,7 +412,7 @@ class Account extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    activeDirectories = registerOutput<List<Map<String, dynamic>>?>('activeDirectories');
+    activeDirectories = registerOutput<List<ActiveDirectoryResponse>?>('activeDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActiveDirectoryResponse>(guardedValue, (value) => ActiveDirectoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     disableShowmount = registerOutput<bool>('disableShowmount');
     encryption = registerOutput<AccountEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -421,7 +422,30 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure-native:netapp:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeDirectories = registerOutput<List<ActiveDirectoryResponse>?>('activeDirectories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActiveDirectoryResponse>(guardedValue, (value) => ActiveDirectoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disableShowmount = registerOutput<bool>('disableShowmount');
+    encryption = registerOutput<AccountEncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

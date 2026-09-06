@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ResourceRecordSetFailover {
+enum ResourceRecordSetFailover implements pulumi.PulumiEnum<String> {
   pRIMARY("PRIMARY"),
   sECONDARY("SECONDARY");
 
   const ResourceRecordSetFailover(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceRecordSetFailover fromValue(String value) {

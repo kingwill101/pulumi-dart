@@ -8,19 +8,19 @@ import 'session_probe.dart';
 /// Container definitions for the sessions of the session pool.
 class SessionContainer {
   /// Container start command arguments.
-  final pulumi.Input<List<String>>? args;
+  final pulumi.Input<List<String>?>? args;
   /// Container start command.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
   /// Container environment variables.
-  final pulumi.Input<List<EnvironmentVar>>? env;
+  final pulumi.Input<List<EnvironmentVar>?>? env;
   /// Container image tag.
-  final pulumi.Input<String>? image;
+  final pulumi.Input<String?>? image;
   /// Custom container name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of probes for the container.
-  final pulumi.Input<List<SessionProbe>>? probes;
+  final pulumi.Input<List<SessionProbe>?>? probes;
   /// Container resource requirements.
-  final pulumi.Input<SessionContainerResources>? resources;
+  final pulumi.Input<SessionContainerResources?>? resources;
 
   /// Creates a new [SessionContainer].
   /// [args] Container start command arguments.

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Infrastructure network profile for HCI platform
 class VirtualNetworkPropertiesResponseHci {
   /// Group in MOC(Microsoft On-premises Cloud)
-  final pulumi.Input<String>? mocGroup;
+  final pulumi.Input<String?>? mocGroup;
   /// Location in MOC(Microsoft On-premises Cloud)
-  final pulumi.Input<String>? mocLocation;
+  final pulumi.Input<String?>? mocLocation;
   /// Virtual Network name in MOC(Microsoft On-premises Cloud)
-  final pulumi.Input<String>? mocVnetName;
+  final pulumi.Input<String?>? mocVnetName;
 
   /// Creates a new [VirtualNetworkPropertiesResponseHci].
   /// [mocGroup] Group in MOC(Microsoft On-premises Cloud)

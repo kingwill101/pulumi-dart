@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_ip_allocation_args_doc}
 class GetIpAllocationArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the IpAllocation.
   final pulumi.Input<String> ipAllocationName;
   /// The name of the resource group.

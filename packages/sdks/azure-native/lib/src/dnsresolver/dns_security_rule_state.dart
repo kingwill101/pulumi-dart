@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of DNS security rule.
-enum DnsSecurityRuleState {
+enum DnsSecurityRuleState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const DnsSecurityRuleState(this.wireValue);
+  @override
   final String wireValue;
 
   static DnsSecurityRuleState fromValue(String value) {

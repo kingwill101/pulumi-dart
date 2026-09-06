@@ -11,15 +11,15 @@ class GalleryScriptArgs {
   /// The name of the Shared Image Gallery.
   final pulumi.Input<String> galleryName;
   /// The name of the gallery Script Definition to be retrieved.
-  final pulumi.Input<String>? galleryScriptName;
+  final pulumi.Input<String?>? galleryScriptName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Describes the properties of a gallery Script Definition.
-  final pulumi.Input<GalleryScriptProperties>? properties;
+  final pulumi.Input<GalleryScriptProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GalleryScriptArgs].
   /// [galleryName] The name of the Shared Image Gallery.

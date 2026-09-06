@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Which Image to use for the virtual machine
 class VirtualMachinePropertiesResponseImageReference {
   /// Resource ID of the image
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualMachinePropertiesResponseImageReference].
   /// [id] Resource ID of the image

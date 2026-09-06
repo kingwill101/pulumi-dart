@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Supported option for a migration.
-enum MigrationOption {
+enum MigrationOption implements pulumi.PulumiEnum<String> {
   validate("Validate"),
   migrate("Migrate"),
   validateAndMigrate("ValidateAndMigrate");
 
   const MigrationOption(this.wireValue);
+  @override
   final String wireValue;
 
   static MigrationOption fromValue(String value) {

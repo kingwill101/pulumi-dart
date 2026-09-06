@@ -6,9 +6,9 @@ import 'traffic_routing_rule.dart';
 /// Type representing an application traffic policy as a property of an agentic application.
 class ApplicationTrafficRoutingPolicy {
   /// Methodology used to route traffic to the application's deployments.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// Gets or sets the collection of traffic routing rules.
-  final pulumi.Input<List<TrafficRoutingRule>>? rules;
+  final pulumi.Input<List<TrafficRoutingRule>?>? rules;
 
   /// Creates a new [ApplicationTrafficRoutingPolicy].
   /// [protocol] Methodology used to route traffic to the application's deployments.
@@ -27,7 +27,7 @@ class ApplicationTrafficRoutingPolicy {
 
   factory ApplicationTrafficRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationTrafficRoutingPolicy(
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TrafficRoutingRule>(guardedValue, (value) => TrafficRoutingRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

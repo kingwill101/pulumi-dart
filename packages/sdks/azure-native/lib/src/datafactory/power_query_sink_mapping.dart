@@ -6,9 +6,9 @@ import 'power_query_sink.dart';
 /// Map Power Query mashup query to sink dataset(s).
 class PowerQuerySinkMapping {
   /// List of sinks mapped to Power Query mashup query.
-  final pulumi.Input<List<PowerQuerySink>>? dataflowSinks;
+  final pulumi.Input<List<PowerQuerySink>?>? dataflowSinks;
   /// Name of the query in Power Query mashup document.
-  final pulumi.Input<String>? queryName;
+  final pulumi.Input<String?>? queryName;
 
   /// Creates a new [PowerQuerySinkMapping].
   /// [dataflowSinks] List of sinks mapped to Power Query mashup query.

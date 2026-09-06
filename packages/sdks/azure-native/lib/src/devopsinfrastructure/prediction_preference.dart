@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the balance between cost and performance.
-enum PredictionPreference {
+enum PredictionPreference implements pulumi.PulumiEnum<String> {
   balanced("Balanced"),
   mostCostEffective("MostCostEffective"),
   moreCostEffective("MoreCostEffective"),
@@ -7,6 +9,7 @@ enum PredictionPreference {
   bestPerformance("BestPerformance");
 
   const PredictionPreference(this.wireValue);
+  @override
   final String wireValue;
 
   static PredictionPreference fromValue(String value) {

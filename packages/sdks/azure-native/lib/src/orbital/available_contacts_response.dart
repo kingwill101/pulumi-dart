@@ -18,7 +18,7 @@ class AvailableContactsResponse {
   /// Earliest time to receive a signal (ISO 8601 UTC standard).
   final pulumi.Input<String> rxStartTime;
   /// The reference to the spacecraft resource.
-  final pulumi.Input<AvailableContactsResponseSpacecraft>? spacecraft;
+  final pulumi.Input<AvailableContactsResponseSpacecraft?>? spacecraft;
   /// Azimuth of the antenna at the start of the contact in decimal degrees.
   final pulumi.Input<double> startAzimuthDegrees;
   /// Spacecraft elevation above the horizon at contact start.
@@ -72,15 +72,15 @@ class AvailableContactsResponse {
 
   factory AvailableContactsResponse.fromMap(Map<String, dynamic> map) {
     return AvailableContactsResponse(
-      endAzimuthDegrees: pulumi.Input.fromValue(map['endAzimuthDegrees'] as double),
-      endElevationDegrees: pulumi.Input.fromValue(map['endElevationDegrees'] as double),
+      endAzimuthDegrees: pulumi.Input.fromValue((map['endAzimuthDegrees'] as num).toDouble()),
+      endElevationDegrees: pulumi.Input.fromValue((map['endElevationDegrees'] as num).toDouble()),
       groundStationName: pulumi.Input.fromValue(map['groundStationName'] as String),
-      maximumElevationDegrees: pulumi.Input.fromValue(map['maximumElevationDegrees'] as double),
+      maximumElevationDegrees: pulumi.Input.fromValue((map['maximumElevationDegrees'] as num).toDouble()),
       rxEndTime: pulumi.Input.fromValue(map['rxEndTime'] as String),
       rxStartTime: pulumi.Input.fromValue(map['rxStartTime'] as String),
       spacecraft: (() { final guardedValue = map['spacecraft']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AvailableContactsResponseSpacecraft.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      startAzimuthDegrees: pulumi.Input.fromValue(map['startAzimuthDegrees'] as double),
-      startElevationDegrees: pulumi.Input.fromValue(map['startElevationDegrees'] as double),
+      startAzimuthDegrees: pulumi.Input.fromValue((map['startAzimuthDegrees'] as num).toDouble()),
+      startElevationDegrees: pulumi.Input.fromValue((map['startElevationDegrees'] as num).toDouble()),
       txEndTime: pulumi.Input.fromValue(map['txEndTime'] as String),
       txStartTime: pulumi.Input.fromValue(map['txStartTime'] as String),
     );

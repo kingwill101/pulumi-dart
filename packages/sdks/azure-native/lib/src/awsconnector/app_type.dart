@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of app.
-enum AppType {
+enum AppType implements pulumi.PulumiEnum<String> {
   canvas("Canvas"),
   jupyterServer("JupyterServer"),
   kernelGateway("KernelGateway"),
@@ -7,6 +9,7 @@ enum AppType {
   rStudioServerPro("RStudioServerPro");
 
   const AppType(this.wireValue);
+  @override
   final String wireValue;
 
   static AppType fromValue(String value) {

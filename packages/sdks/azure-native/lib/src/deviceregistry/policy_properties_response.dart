@@ -6,7 +6,7 @@ import 'certificate_configuration_response.dart';
 /// Details of the Credential Policy.
 class PolicyPropertiesResponse {
   /// The certificate configuration.
-  final pulumi.Input<CertificateConfigurationResponse>? certificate;
+  final pulumi.Input<CertificateConfigurationResponse?>? certificate;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 

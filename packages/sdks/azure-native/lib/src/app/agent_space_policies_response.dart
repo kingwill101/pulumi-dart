@@ -6,7 +6,7 @@ import 'geneva_actions_policy_response.dart';
 /// Policy configurations for an Agent Space
 class AgentSpacePoliciesResponse {
   /// Configuration for Geneva Actions policy
-  final pulumi.Input<GenevaActionsPolicyResponse>? genevaActionsConfiguration;
+  final pulumi.Input<GenevaActionsPolicyResponse?>? genevaActionsConfiguration;
 
   /// Creates a new [AgentSpacePoliciesResponse].
   /// [genevaActionsConfiguration] Configuration for Geneva Actions policy

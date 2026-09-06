@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// how to match header value
-enum HeaderMatchType {
+enum HeaderMatchType implements pulumi.PulumiEnum<String> {
   valueExact("exact");
 
   const HeaderMatchType(this.wireValue);
+  @override
   final String wireValue;
 
   static HeaderMatchType fromValue(String value) {

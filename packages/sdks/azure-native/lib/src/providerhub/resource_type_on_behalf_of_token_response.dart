@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceTypeOnBehalfOfTokenResponse {
   /// The action name.
-  final pulumi.Input<String>? actionName;
+  final pulumi.Input<String?>? actionName;
   /// This is a TimeSpan property.
-  final pulumi.Input<String>? lifeTime;
+  final pulumi.Input<String?>? lifeTime;
 
   /// Creates a new [ResourceTypeOnBehalfOfTokenResponse].
   /// [actionName] The action name.

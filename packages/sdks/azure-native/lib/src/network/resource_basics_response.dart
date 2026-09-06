@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Representation of basic resource information.
 class ResourceBasicsResponse {
   /// List of IP address prefixes of the resource.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// ResourceId of the Azure resource.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ResourceBasicsResponse].
   /// [addressPrefixes] List of IP address prefixes of the resource.

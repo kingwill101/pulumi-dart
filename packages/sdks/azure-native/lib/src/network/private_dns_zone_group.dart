@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'private_dns_zone_config_response.dart';
 import 'private_dns_zone_group_args.dart';
 
 /// Private dns zone group resource.
@@ -183,7 +184,7 @@ class PrivateDnsZoneGroup extends pulumi.CustomResource {
   /// Name of the resource that is unique within a resource group. This name can be used to access the resource.
   late final pulumi.Output<String?> name;
   /// A collection of private dns zone configurations of the private dns zone group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> privateDnsZoneConfigs;
+  late final pulumi.Output<List<PrivateDnsZoneConfigResponse>?> privateDnsZoneConfigs;
   /// The provisioning state of the private dns zone group resource.
   late final pulumi.Output<String> provisioningState;
 
@@ -204,7 +205,23 @@ class PrivateDnsZoneGroup extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String?>('name');
-    privateDnsZoneConfigs = registerOutput<List<Map<String, dynamic>>?>('privateDnsZoneConfigs');
+    privateDnsZoneConfigs = registerOutput<List<PrivateDnsZoneConfigResponse>?>('privateDnsZoneConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateDnsZoneConfigResponse>(guardedValue, (value) => PrivateDnsZoneConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+  }
+
+  /// Creates a typed reference to an existing [PrivateDnsZoneGroup] resource.
+  PrivateDnsZoneGroup.reference(String urn)
+    : super(
+        'azure-native:network:PrivateDnsZoneGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    privateDnsZoneConfigs = registerOutput<List<PrivateDnsZoneConfigResponse>?>('privateDnsZoneConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateDnsZoneConfigResponse>(guardedValue, (value) => PrivateDnsZoneConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
   }
 }

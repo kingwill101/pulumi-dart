@@ -8,7 +8,7 @@ import 'system_data_response.dart';
 /// Result data returned by getManagementGroup.
 class GetManagementGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The list of children.
   final List<ManagementGroupChildInfoResponse>? children;
   /// The details of a management group.
@@ -16,15 +16,15 @@ class GetManagementGroupResult {
   /// The friendly name of the management group.
   final String? displayName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
   final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetManagementGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -37,42 +37,42 @@ class GetManagementGroupResult {
   /// [tenantId] The AAD Tenant ID associated with the management group. For example, 00000000-0000-0000-0000-000000000000
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetManagementGroupResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.children,
     this.details,
     this.displayName,
-    required this.id,
-    required this.name,
-    required this.systemData,
+    this.id,
+    this.name,
+    this.systemData,
     this.tenantId,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'children': ?(() { final guardedValue = children; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagementGroupChildInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'details': ?details?.toMap(),
       'displayName': ?displayName,
-      'id': id,
-      'name': name,
-      'systemData': systemData.toMap(),
+      'id': ?id,
+      'name': ?name,
+      'systemData': ?systemData?.toMap(),
       'tenantId': ?tenantId,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetManagementGroupResult.fromMap(Map<String, dynamic> map) {
     return GetManagementGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       children: (() { final guardedValue = map['children']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementGroupChildInfoResponse>(guardedValue, (value) => ManagementGroupChildInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       details: (() { final guardedValue = map['details']; if (guardedValue == null) return null; return ManagementGroupDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

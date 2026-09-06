@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// List of features that are enabled for the database
 class SqlServerDatabaseResourcePropertiesDatabaseOptions {
-  final pulumi.Input<bool>? isAutoCloseOn;
-  final pulumi.Input<bool>? isAutoCreateStatsOn;
-  final pulumi.Input<bool>? isAutoShrinkOn;
-  final pulumi.Input<bool>? isAutoUpdateStatsOn;
-  final pulumi.Input<bool>? isEncrypted;
-  final pulumi.Input<bool>? isMemoryOptimizationEnabled;
-  final pulumi.Input<bool>? isRemoteDataArchiveEnabled;
-  final pulumi.Input<bool>? isTrustworthyOn;
+  final pulumi.Input<bool?>? isAutoCloseOn;
+  final pulumi.Input<bool?>? isAutoCreateStatsOn;
+  final pulumi.Input<bool?>? isAutoShrinkOn;
+  final pulumi.Input<bool?>? isAutoUpdateStatsOn;
+  final pulumi.Input<bool?>? isEncrypted;
+  final pulumi.Input<bool?>? isMemoryOptimizationEnabled;
+  final pulumi.Input<bool?>? isRemoteDataArchiveEnabled;
+  final pulumi.Input<bool?>? isTrustworthyOn;
 
   /// Creates a new [SqlServerDatabaseResourcePropertiesDatabaseOptions].
   /// [isAutoCloseOn] Optional.

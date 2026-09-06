@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the transport type.
-enum ServiceBusTransportType {
+enum ServiceBusTransportType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNetMessaging("NetMessaging"),
   valueAMQP("AMQP");
 
   const ServiceBusTransportType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceBusTransportType fromValue(String value) {

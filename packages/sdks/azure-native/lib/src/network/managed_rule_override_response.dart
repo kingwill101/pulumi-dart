@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines a managed rule group override setting.
 class ManagedRuleOverrideResponse {
   /// Describes the override action to be applied when rule matches.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Identifier for the managed rule.
   final pulumi.Input<String> ruleId;
   /// Describes the override sensitivity to be applied when rule matches.
-  final pulumi.Input<String>? sensitivity;
+  final pulumi.Input<String?>? sensitivity;
   /// The state of the managed rule. Defaults to Disabled if not specified.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ManagedRuleOverrideResponse].
   /// [action] Describes the override action to be applied when rule matches.

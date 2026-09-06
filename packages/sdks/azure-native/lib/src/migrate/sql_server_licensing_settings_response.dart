@@ -31,8 +31,8 @@ class SqlServerLicensingSettingsResponse {
 
   factory SqlServerLicensingSettingsResponse.fromMap(Map<String, dynamic> map) {
     return SqlServerLicensingSettingsResponse(
-      licenseCost: pulumi.Input.fromValue(map['licenseCost'] as double),
-      softwareAssuranceCost: pulumi.Input.fromValue(map['softwareAssuranceCost'] as double),
+      licenseCost: pulumi.Input.fromValue((map['licenseCost'] as num).toDouble()),
+      softwareAssuranceCost: pulumi.Input.fromValue((map['softwareAssuranceCost'] as num).toDouble()),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

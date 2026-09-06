@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Client incident details ex: incidentId , incident source
 class ClientIncidentDetailsResponse {
   /// Client incident id. ex : id of the incident created to investigate and address the impact if any.
-  final pulumi.Input<String>? clientIncidentId;
+  final pulumi.Input<String?>? clientIncidentId;
   /// Client incident source. ex : source system name where the incident is created
-  final pulumi.Input<String>? clientIncidentSource;
+  final pulumi.Input<String?>? clientIncidentSource;
 
   /// Creates a new [ClientIncidentDetailsResponse].
   /// [clientIncidentId] Client incident id. ex : id of the incident created to investigate and address the impact if any.

@@ -14,9 +14,9 @@ class ApplicationResourceArgs {
   /// The Arm id of the application resource.
   final pulumi.Input<String> resourceId;
   /// The kind of the application resource.
-  final pulumi.Input<String>? resourceKind;
+  final pulumi.Input<String?>? resourceKind;
   /// The name of the application resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The type of the application resource.
   final pulumi.Input<String> resourceType;
   /// The name of the space

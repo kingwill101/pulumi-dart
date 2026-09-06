@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The edition for the SSIS Integration Runtime
-enum IntegrationRuntimeEdition {
+enum IntegrationRuntimeEdition implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueEnterprise("Enterprise");
 
   const IntegrationRuntimeEdition(this.wireValue);
+  @override
   final String wireValue;
 
   static IntegrationRuntimeEdition fromValue(String value) {

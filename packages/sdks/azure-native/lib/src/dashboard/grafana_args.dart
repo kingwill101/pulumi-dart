@@ -11,19 +11,19 @@ import 'resource_sku.dart';
 /// {@macro pulumi_dashboard_grafana_args_doc}
 class GrafanaArgs {
   /// The managed identity of the grafana resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the grafana resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties specific to the grafana resource.
-  final pulumi.Input<ManagedGrafanaProperties>? properties;
+  final pulumi.Input<ManagedGrafanaProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Sku of the grafana resource.
-  final pulumi.Input<ResourceSku>? sku;
+  final pulumi.Input<ResourceSku?>? sku;
   /// The tags for grafana resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The workspace name of Azure Managed Grafana.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [GrafanaArgs].
   /// [identity] The managed identity of the grafana resource.

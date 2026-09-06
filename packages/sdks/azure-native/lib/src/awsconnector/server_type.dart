@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ServerType {
+enum ServerType implements pulumi.PulumiEnum<String> {
   bITBUCKET("BITBUCKET"),
   gITHUB("GITHUB"),
   gITHUBENTERPRISE("GITHUB_ENTERPRISE"),
@@ -7,6 +9,7 @@ enum ServerType {
   gITLABSELFMANAGED("GITLAB_SELF_MANAGED");
 
   const ServerType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerType fromValue(String value) {

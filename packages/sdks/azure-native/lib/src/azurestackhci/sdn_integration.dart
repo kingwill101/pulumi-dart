@@ -6,7 +6,7 @@ import 'network_controller.dart';
 /// SDN Integration config to deploy AzureStackHCI Cluster.
 class SdnIntegration {
   /// network controller config for SDN Integration to deploy AzureStackHCI Cluster.
-  final pulumi.Input<NetworkController>? networkController;
+  final pulumi.Input<NetworkController?>? networkController;
 
   /// Creates a new [SdnIntegration].
   /// [networkController] network controller config for SDN Integration to deploy AzureStackHCI Cluster.

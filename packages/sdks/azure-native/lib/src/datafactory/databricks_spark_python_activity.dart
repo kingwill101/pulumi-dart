@@ -9,30 +9,30 @@ import 'user_property.dart';
 /// DatabricksSparkPython activity.
 class DatabricksSparkPythonActivity {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependency>>? dependsOn;
+  final pulumi.Input<List<ActivityDependency>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of libraries to be installed on the cluster that will execute the job.
-  final pulumi.Input<List<dynamic>>? libraries;
+  final pulumi.Input<List<dynamic>?>? libraries;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReference>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<dynamic>? onInactiveMarkAs;
   /// Command line parameters that will be passed to the Python file.
-  final pulumi.Input<List<dynamic>>? parameters;
+  final pulumi.Input<List<dynamic>?>? parameters;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicy>? policy;
+  final pulumi.Input<ActivityPolicy?>? policy;
   /// The URI of the Python file to be executed. DBFS paths are supported. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> pythonFile;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
   /// Type of activity.
   /// Expected value is 'DatabricksSparkPython'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserProperty>>? userProperties;
+  final pulumi.Input<List<UserProperty>?>? userProperties;
 
   /// Creates a new [DatabricksSparkPythonActivity].
   /// [dependsOn] Activity depends on condition.
@@ -86,11 +86,11 @@ class DatabricksSparkPythonActivity {
       libraries: (() { final guardedValue = map['libraries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       linkedServiceName: (() { final guardedValue = map['linkedServiceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LinkedServiceReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      onInactiveMarkAs: (() { final guardedValue = map['onInactiveMarkAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       policy: (() { final guardedValue = map['policy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ActivityPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pythonFile: pulumi.Input.fromValue(map['pythonFile']),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       userProperties: (() { final guardedValue = map['userProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UserProperty>(guardedValue, (value) => UserProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

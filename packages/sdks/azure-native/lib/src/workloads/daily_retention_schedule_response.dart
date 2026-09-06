@@ -6,9 +6,9 @@ import 'retention_duration_response.dart';
 /// Daily retention schedule.
 class DailyRetentionScheduleResponse {
   /// Retention duration of retention Policy.
-  final pulumi.Input<RetentionDurationResponse>? retentionDuration;
+  final pulumi.Input<RetentionDurationResponse?>? retentionDuration;
   /// Retention times of retention policy.
-  final pulumi.Input<List<String>>? retentionTimes;
+  final pulumi.Input<List<String>?>? retentionTimes;
 
   /// Creates a new [DailyRetentionScheduleResponse].
   /// [retentionDuration] Retention duration of retention Policy.

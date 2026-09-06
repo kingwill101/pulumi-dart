@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The tracking event definition.
 class TrackingEventDefinitionResponse {
   /// The operation name.
-  final pulumi.Input<String>? operationName;
+  final pulumi.Input<String?>? operationName;
   /// The operation type.
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<String?>? operationType;
   /// The properties to be collected for event.
-  final pulumi.Input<Map<String, dynamic>>? properties;
+  final pulumi.Input<Map<String, dynamic>?>? properties;
 
   /// Creates a new [TrackingEventDefinitionResponse].
   /// [operationName] The operation name.

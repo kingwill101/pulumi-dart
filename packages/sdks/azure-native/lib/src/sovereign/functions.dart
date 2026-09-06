@@ -24,6 +24,17 @@ Future<GetLandingZoneAccountOperationResult> getLandingZoneAccountOperation(
   return GetLandingZoneAccountOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetLandingZoneAccountOperationResult> getLandingZoneAccountOperationOutput(
+  GetLandingZoneAccountOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sovereign:getLandingZoneAccountOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLandingZoneAccountOperationResult.fromMap);
+}
+
 /// Get a landing zone configuration.
 ///
 /// Uses Azure REST API version 2025-02-27-preview.
@@ -42,6 +53,17 @@ Future<GetLandingZoneConfigurationOperationResult> getLandingZoneConfigurationOp
   return GetLandingZoneConfigurationOperationResult.fromMap(result);
 }
 
+pulumi.Output<GetLandingZoneConfigurationOperationResult> getLandingZoneConfigurationOperationOutput(
+  GetLandingZoneConfigurationOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sovereign:getLandingZoneConfigurationOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLandingZoneConfigurationOperationResult.fromMap);
+}
+
 /// Get a landing zone registration.
 ///
 /// Uses Azure REST API version 2025-02-27-preview.
@@ -58,4 +80,15 @@ Future<GetLandingZoneRegistrationOperationResult> getLandingZoneRegistrationOper
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLandingZoneRegistrationOperationResult.fromMap(result);
+}
+
+pulumi.Output<GetLandingZoneRegistrationOperationResult> getLandingZoneRegistrationOperationOutput(
+  GetLandingZoneRegistrationOperationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:sovereign:getLandingZoneRegistrationOperation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLandingZoneRegistrationOperationResult.fromMap);
 }

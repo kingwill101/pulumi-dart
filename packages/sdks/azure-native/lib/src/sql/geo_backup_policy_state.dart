@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the geo backup policy.
-enum GeoBackupPolicyState {
+enum GeoBackupPolicyState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const GeoBackupPolicyState(this.wireValue);
+  @override
   final String wireValue;
 
   static GeoBackupPolicyState fromValue(String value) {

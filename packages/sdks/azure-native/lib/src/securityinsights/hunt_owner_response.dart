@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a user that the hunt is assigned to
 class HuntOwnerResponse {
   /// The name of the user the hunt is assigned to.
-  final pulumi.Input<String>? assignedTo;
+  final pulumi.Input<String?>? assignedTo;
   /// The email of the user the hunt is assigned to.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The object id of the user the hunt is assigned to.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The type of the owner the hunt is assigned to.
-  final pulumi.Input<String>? ownerType;
+  final pulumi.Input<String?>? ownerType;
   /// The user principal name of the user the hunt is assigned to.
-  final pulumi.Input<String>? userPrincipalName;
+  final pulumi.Input<String?>? userPrincipalName;
 
   /// Creates a new [HuntOwnerResponse].
   /// [assignedTo] The name of the user the hunt is assigned to.

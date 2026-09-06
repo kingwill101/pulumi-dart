@@ -7,9 +7,9 @@ import 'managed_instance_private_link_service_connection_state_property_response
 /// Properties of a private endpoint connection.
 class ManagedInstancePrivateEndpointConnectionPropertiesResponse {
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<ManagedInstancePrivateEndpointPropertyResponse>? privateEndpoint;
+  final pulumi.Input<ManagedInstancePrivateEndpointPropertyResponse?>? privateEndpoint;
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse?>? privateLinkServiceConnectionState;
   /// State of the Private Endpoint Connection.
   final pulumi.Input<String> provisioningState;
 

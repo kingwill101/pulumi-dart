@@ -9,17 +9,17 @@ import 'user_details_response.dart';
 /// Represents a provisioning request.
 class ProvisioningRequestResponse {
   /// Base64 encoded custom configuration for CAPI to use
-  final pulumi.Input<String>? customConfiguration;
+  final pulumi.Input<String?>? customConfiguration;
   /// Device configuration.
-  final pulumi.Input<TargetDeviceConfigurationResponse>? deviceConfiguration;
+  final pulumi.Input<TargetDeviceConfigurationResponse?>? deviceConfiguration;
   /// Onboarding configuration.
-  final pulumi.Input<OnboardingConfigurationResponse>? onboardingConfiguration;
+  final pulumi.Input<OnboardingConfigurationResponse?>? onboardingConfiguration;
   /// Operating system profile.
   final pulumi.Input<OsProvisionProfileResponse> osProfile;
   /// Target operating system to support polymorphic resource.
   final pulumi.Input<String> target;
   /// User configuration.
-  final pulumi.Input<List<UserDetailsResponse>>? userDetails;
+  final pulumi.Input<List<UserDetailsResponse>?>? userDetails;
 
   /// Creates a new [ProvisioningRequestResponse].
   /// [customConfiguration] Base64 encoded custom configuration for CAPI to use

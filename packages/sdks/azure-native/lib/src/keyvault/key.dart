@@ -219,7 +219,7 @@ class Key extends pulumi.CustomResource {
     attributes = registerOutput<KeyAttributesResponse?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     curveName = registerOutput<String?>('curveName');
-    keyOps = registerOutput<List<String>?>('keyOps');
+    keyOps = registerOutput<List<String>?>('keyOps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     keySize = registerOutput<int?>('keySize');
     keyUri = registerOutput<String>('keyUri');
     keyUriWithVersion = registerOutput<String>('keyUriWithVersion');
@@ -228,7 +228,32 @@ class Key extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     releasePolicy = registerOutput<KeyReleasePolicyResponse?>('releasePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyReleasePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     rotationPolicy = registerOutput<RotationPolicyResponse?>('rotationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RotationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'azure-native:keyvault:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<KeyAttributesResponse?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    curveName = registerOutput<String?>('curveName');
+    keyOps = registerOutput<List<String>?>('keyOps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keySize = registerOutput<int?>('keySize');
+    keyUri = registerOutput<String>('keyUri');
+    keyUriWithVersion = registerOutput<String>('keyUriWithVersion');
+    kty = registerOutput<String?>('kty');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    releasePolicy = registerOutput<KeyReleasePolicyResponse?>('releasePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KeyReleasePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rotationPolicy = registerOutput<RotationPolicyResponse?>('rotationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RotationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of EnvironmentTypeEnumValue
 class EnvironmentTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [EnvironmentTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class EnvironmentTypeEnumValue {
 
   factory EnvironmentTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return EnvironmentTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

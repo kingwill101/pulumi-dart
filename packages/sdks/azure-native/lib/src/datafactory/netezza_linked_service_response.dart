@@ -8,25 +8,25 @@ import 'parameter_specification_response.dart';
 /// Netezza linked service.
 class NetezzaLinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// An ODBC connection string. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic>? connectionString;
   /// Database name for connection. Type: string.
   final pulumi.Input<dynamic>? database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// The port for the connection. Type: integer.
   final pulumi.Input<dynamic>? port;
   /// The Azure key vault secret reference of password in connection string.
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse>? pwd;
+  final pulumi.Input<AzureKeyVaultSecretReferenceResponse?>? pwd;
   /// Specifies the security level for the driver connection to the data store. PreferredUnSecured : prefer unsecured, allow fallback to secured connection if required. OnlyUnSecured : strictly unsecured, no fallback.
-  final pulumi.Input<String>? securityLevel;
+  final pulumi.Input<String?>? securityLevel;
   /// Server name for connection. Type: string.
   final pulumi.Input<dynamic>? server;
   /// Type of linked service.
@@ -35,7 +35,7 @@ class NetezzaLinkedServiceResponse {
   /// Username for authentication. Type: string.
   final pulumi.Input<dynamic>? uid;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NetezzaLinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the network configuration type for SAP system infrastructure that is being deployed
 class NetworkConfiguration {
   /// Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
-  final pulumi.Input<bool>? isSecondaryIpEnabled;
+  final pulumi.Input<bool?>? isSecondaryIpEnabled;
 
   /// Creates a new [NetworkConfiguration].
   /// [isSecondaryIpEnabled] Specifies whether a secondary IP address should be added to the network interface on all VMs of the SAP system being deployed
-  const NetworkConfiguration({
-    this.isSecondaryIpEnabled,
-  });
+  NetworkConfiguration({
+    pulumi.Input<bool?>? isSecondaryIpEnabled,
+  }) : isSecondaryIpEnabled = isSecondaryIpEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

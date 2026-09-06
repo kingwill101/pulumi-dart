@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of a hostname derived from a domain.
 class HostNameResponse {
   /// Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.
-  final pulumi.Input<String>? azureResourceName;
+  final pulumi.Input<String?>? azureResourceName;
   /// Type of the Azure resource the hostname is assigned to.
-  final pulumi.Input<String>? azureResourceType;
+  final pulumi.Input<String?>? azureResourceType;
   /// Type of the DNS record.
-  final pulumi.Input<String>? customHostNameDnsRecordType;
+  final pulumi.Input<String?>? customHostNameDnsRecordType;
   /// Type of the hostname.
-  final pulumi.Input<String>? hostNameType;
+  final pulumi.Input<String?>? hostNameType;
   /// Name of the hostname.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of apps the hostname is assigned to. This list will have more than one app only if the hostname is pointing to a Traffic Manager.
-  final pulumi.Input<List<String>>? siteNames;
+  final pulumi.Input<List<String>?>? siteNames;
 
   /// Creates a new [HostNameResponse].
   /// [azureResourceName] Name of the Azure resource the hostname is assigned to. If it is assigned to a Traffic Manager then it will be the Traffic Manager name otherwise it will be the app name.

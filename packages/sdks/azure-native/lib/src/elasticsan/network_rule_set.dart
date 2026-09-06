@@ -6,7 +6,7 @@ import 'virtual_network_rule.dart';
 /// A set of rules governing the network accessibility.
 class NetworkRuleSet {
   /// The list of virtual network rules.
-  final pulumi.Input<List<VirtualNetworkRule>>? virtualNetworkRules;
+  final pulumi.Input<List<VirtualNetworkRule>?>? virtualNetworkRules;
 
   /// Creates a new [NetworkRuleSet].
   /// [virtualNetworkRules] The list of virtual network rules.

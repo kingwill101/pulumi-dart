@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of expressions supported by the system. Type: string.
-enum ExpressionV2Type {
+enum ExpressionV2Type implements pulumi.PulumiEnum<String> {
   constant("Constant"),
   field("Field"),
   unary("Unary"),
@@ -7,6 +9,7 @@ enum ExpressionV2Type {
   nAry("NAry");
 
   const ExpressionV2Type(this.wireValue);
+  @override
   final String wireValue;
 
   static ExpressionV2Type fromValue(String value) {

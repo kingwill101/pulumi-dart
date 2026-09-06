@@ -11,13 +11,13 @@ class ReplicationvCenterArgs {
   /// Fabric name.
   final pulumi.Input<String> fabricName;
   /// The properties of an add vCenter request.
-  final pulumi.Input<AddVCenterRequestProperties>? properties;
+  final pulumi.Input<AddVCenterRequestProperties?>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.
   final pulumi.Input<String> resourceName;
   /// vcenter name.
-  final pulumi.Input<String>? vcenterName;
+  final pulumi.Input<String?>? vcenterName;
 
   /// Creates a new [ReplicationvCenterArgs].
   /// [fabricName] Fabric name.

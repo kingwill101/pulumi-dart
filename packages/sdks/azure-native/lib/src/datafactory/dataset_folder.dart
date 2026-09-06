@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The folder that this Dataset is in. If not specified, Dataset will appear at the root level.
 class DatasetFolder {
   /// The name of the folder that this Dataset is in.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [DatasetFolder].
   /// [name] The name of the folder that this Dataset is in.

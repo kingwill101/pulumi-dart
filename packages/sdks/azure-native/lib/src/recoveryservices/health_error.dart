@@ -6,35 +6,35 @@ import 'inner_health_error.dart';
 /// Health Error.
 class HealthError {
   /// Error creation time (UTC).
-  final pulumi.Input<String>? creationTimeUtc;
+  final pulumi.Input<String?>? creationTimeUtc;
   /// Value indicating whether the health error is customer resolvable.
-  final pulumi.Input<String>? customerResolvability;
+  final pulumi.Input<dynamic>? customerResolvability;
   /// ID of the entity.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// Category of error.
-  final pulumi.Input<String>? errorCategory;
+  final pulumi.Input<String?>? errorCategory;
   /// Error code.
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// The health error unique id.
-  final pulumi.Input<String>? errorId;
+  final pulumi.Input<String?>? errorId;
   /// Level of error.
-  final pulumi.Input<String>? errorLevel;
+  final pulumi.Input<String?>? errorLevel;
   /// Error message.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Source of error.
-  final pulumi.Input<String>? errorSource;
+  final pulumi.Input<String?>? errorSource;
   /// Type of error.
-  final pulumi.Input<String>? errorType;
+  final pulumi.Input<String?>? errorType;
   /// The inner health errors. HealthError having a list of HealthError as child errors is problematic. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
-  final pulumi.Input<List<InnerHealthError>>? innerHealthErrors;
+  final pulumi.Input<List<InnerHealthError>?>? innerHealthErrors;
   /// Possible causes of error.
-  final pulumi.Input<String>? possibleCauses;
+  final pulumi.Input<String?>? possibleCauses;
   /// Recommended action to resolve error.
-  final pulumi.Input<String>? recommendedAction;
+  final pulumi.Input<String?>? recommendedAction;
   /// DRA error message.
-  final pulumi.Input<String>? recoveryProviderErrorMessage;
+  final pulumi.Input<String?>? recoveryProviderErrorMessage;
   /// Summary message of the entity.
-  final pulumi.Input<String>? summaryMessage;
+  final pulumi.Input<String?>? summaryMessage;
 
   /// Creates a new [HealthError].
   /// [creationTimeUtc] Error creation time (UTC).
@@ -93,7 +93,7 @@ class HealthError {
   factory HealthError.fromMap(Map<String, dynamic> map) {
     return HealthError(
       creationTimeUtc: (() { final guardedValue = map['creationTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customerResolvability: (() { final guardedValue = map['customerResolvability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      customerResolvability: (() { final guardedValue = map['customerResolvability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       entityId: (() { final guardedValue = map['entityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCategory: (() { final guardedValue = map['errorCategory']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       errorCode: (() { final guardedValue = map['errorCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

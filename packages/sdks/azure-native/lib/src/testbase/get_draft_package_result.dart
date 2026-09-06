@@ -19,11 +19,11 @@ class GetDraftPackageResult {
   /// Application name
   final String? applicationName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Comments added by user.
   final String? comments;
   /// The relative path of the folder hosting package files.
-  final String draftPackagePath;
+  final String? draftPackagePath;
   /// Specifies whether this draft package is used to edit a package.
   final bool? editPackage;
   /// The executable launch command for script auto-fill. Will be used to run the application.
@@ -37,7 +37,7 @@ class GetDraftPackageResult {
   /// The highlight files in the package.
   final List<HighlightedFileResponse>? highlightedFiles;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Specifies the baseline os and target os for inplace upgrade.
   final InplaceUpgradeOSInfoResponse? inplaceUpgradeOSPair;
   /// The metadata of Intune enrollment.
@@ -45,9 +45,9 @@ class GetDraftPackageResult {
   /// Metadata used to generate draft package folder and scripts.
   final DraftPackageIntuneAppMetadataResponse? intuneMetadata;
   /// The UTC timestamp when the package was last modified.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Specifies the package id from which the draft package copied.
   final String? packageId;
   /// Tags of the package to be created.
@@ -55,11 +55,11 @@ class GetDraftPackageResult {
   /// The process name for script auto-fill. Will be used to identify the application process.
   final String? processName;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The source type.
   final String? sourceType;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tab state.
   final TabStateResponse? tabState;
   /// Specifies the target OSs of specific OS Update types.
@@ -69,7 +69,7 @@ class GetDraftPackageResult {
   /// The detailed test information.
   final List<TestResponse>? tests;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Indicates whether user choose to enable script auto-fill.
   final bool? useAutofill;
   /// Specifies whether a sample package should be used instead of the one uploaded by the user.
@@ -77,7 +77,7 @@ class GetDraftPackageResult {
   /// Application version
   final String? version;
   /// The relative path for a temporarily folder for package creation work.
-  final String workingPath;
+  final String? workingPath;
 
   /// Creates a new [GetDraftPackageResult].
   /// [appFileName] The name of the app file.
@@ -112,75 +112,75 @@ class GetDraftPackageResult {
   /// [useSample] Specifies whether a sample package should be used instead of the one uploaded by the user.
   /// [version] Application version
   /// [workingPath] The relative path for a temporarily folder for package creation work.
-  const GetDraftPackageResult({
+  GetDraftPackageResult({
     this.appFileName,
     this.applicationName,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.comments,
-    required this.draftPackagePath,
-    this.editPackage,
+    this.draftPackagePath,
+    bool? editPackage,
     this.executableLaunchCommand,
     this.firstPartyApps,
     this.flightingRing,
     this.galleryApps,
     this.highlightedFiles,
-    required this.id,
+    this.id,
     this.inplaceUpgradeOSPair,
     this.intuneEnrollmentMetadata,
     this.intuneMetadata,
-    required this.lastModifiedTime,
-    required this.name,
+    this.lastModifiedTime,
+    this.name,
     this.packageId,
     this.packageTags,
     this.processName,
-    required this.provisioningState,
-    this.sourceType,
-    required this.systemData,
+    this.provisioningState,
+    String? sourceType,
+    this.systemData,
     this.tabState,
     this.targetOSList,
     this.testTypes,
     this.tests,
-    required this.type,
+    this.type,
     this.useAutofill,
     this.useSample,
     this.version,
-    required this.workingPath,
-  });
+    this.workingPath,
+  }) : editPackage = editPackage ?? false, sourceType = sourceType ?? 'Native';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'appFileName': ?appFileName,
       'applicationName': ?applicationName,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'comments': ?comments,
-      'draftPackagePath': draftPackagePath,
+      'draftPackagePath': ?draftPackagePath,
       'editPackage': ?editPackage,
       'executableLaunchCommand': ?executableLaunchCommand,
       'firstPartyApps': ?(() { final guardedValue = firstPartyApps; if (guardedValue == null) return null; return pulumi.Input.encodeList<FirstPartyAppDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'flightingRing': ?flightingRing,
       'galleryApps': ?(() { final guardedValue = galleryApps; if (guardedValue == null) return null; return pulumi.Input.encodeList<GalleryAppDefinitionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'highlightedFiles': ?(() { final guardedValue = highlightedFiles; if (guardedValue == null) return null; return pulumi.Input.encodeList<HighlightedFileResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'id': id,
+      'id': ?id,
       'inplaceUpgradeOSPair': ?inplaceUpgradeOSPair?.toMap(),
       'intuneEnrollmentMetadata': ?intuneEnrollmentMetadata?.toMap(),
       'intuneMetadata': ?intuneMetadata?.toMap(),
-      'lastModifiedTime': lastModifiedTime,
-      'name': name,
+      'lastModifiedTime': ?lastModifiedTime,
+      'name': ?name,
       'packageId': ?packageId,
       'packageTags': ?packageTags,
       'processName': ?processName,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'sourceType': ?sourceType,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tabState': ?tabState?.toMap(),
       'targetOSList': ?(() { final guardedValue = targetOSList; if (guardedValue == null) return null; return pulumi.Input.encodeList<TargetOSInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'testTypes': ?testTypes,
       'tests': ?(() { final guardedValue = tests; if (guardedValue == null) return null; return pulumi.Input.encodeList<TestResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'type': type,
+      'type': ?type,
       'useAutofill': ?useAutofill,
       'useSample': ?useSample,
       'version': ?version,
-      'workingPath': workingPath,
+      'workingPath': ?workingPath,
     };
   }
 
@@ -188,36 +188,36 @@ class GetDraftPackageResult {
     return GetDraftPackageResult(
       appFileName: (() { final guardedValue = map['appFileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       applicationName: (() { final guardedValue = map['applicationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       comments: (() { final guardedValue = map['comments']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      draftPackagePath: map['draftPackagePath'] as String,
+      draftPackagePath: (() { final guardedValue = map['draftPackagePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       editPackage: (() { final guardedValue = map['editPackage']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       executableLaunchCommand: (() { final guardedValue = map['executableLaunchCommand']; if (guardedValue == null) return null; return guardedValue as String; })(),
       firstPartyApps: (() { final guardedValue = map['firstPartyApps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirstPartyAppDefinitionResponse>(guardedValue, (value) => FirstPartyAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       flightingRing: (() { final guardedValue = map['flightingRing']; if (guardedValue == null) return null; return guardedValue as String; })(),
       galleryApps: (() { final guardedValue = map['galleryApps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GalleryAppDefinitionResponse>(guardedValue, (value) => GalleryAppDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       highlightedFiles: (() { final guardedValue = map['highlightedFiles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<HighlightedFileResponse>(guardedValue, (value) => HighlightedFileResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       inplaceUpgradeOSPair: (() { final guardedValue = map['inplaceUpgradeOSPair']; if (guardedValue == null) return null; return InplaceUpgradeOSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       intuneEnrollmentMetadata: (() { final guardedValue = map['intuneEnrollmentMetadata']; if (guardedValue == null) return null; return IntuneEnrollmentMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       intuneMetadata: (() { final guardedValue = map['intuneMetadata']; if (guardedValue == null) return null; return DraftPackageIntuneAppMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      name: map['name'] as String,
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageId: (() { final guardedValue = map['packageId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       packageTags: (() { final guardedValue = map['packageTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       processName: (() { final guardedValue = map['processName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tabState: (() { final guardedValue = map['tabState']; if (guardedValue == null) return null; return TabStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       targetOSList: (() { final guardedValue = map['targetOSList']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetOSInfoResponse>(guardedValue, (value) => TargetOSInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       testTypes: (() { final guardedValue = map['testTypes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       tests: (() { final guardedValue = map['tests']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TestResponse>(guardedValue, (value) => TestResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       useAutofill: (() { final guardedValue = map['useAutofill']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       useSample: (() { final guardedValue = map['useSample']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      workingPath: map['workingPath'] as String,
+      workingPath: (() { final guardedValue = map['workingPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

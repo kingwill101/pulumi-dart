@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The source trigger that caused a run.
 class SourceTriggerDescriptorResponse {
   /// The branch name in the repository.
-  final pulumi.Input<String>? branchName;
+  final pulumi.Input<String?>? branchName;
   /// The unique ID that identifies a commit.
-  final pulumi.Input<String>? commitId;
+  final pulumi.Input<String?>? commitId;
   /// The event type of the trigger.
-  final pulumi.Input<String>? eventType;
+  final pulumi.Input<String?>? eventType;
   /// The unique ID of the trigger.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The source control provider type.
-  final pulumi.Input<String>? providerType;
+  final pulumi.Input<String?>? providerType;
   /// The unique ID that identifies pull request.
-  final pulumi.Input<String>? pullRequestId;
+  final pulumi.Input<String?>? pullRequestId;
   /// The repository URL.
-  final pulumi.Input<String>? repositoryUrl;
+  final pulumi.Input<String?>? repositoryUrl;
 
   /// Creates a new [SourceTriggerDescriptorResponse].
   /// [branchName] The branch name in the repository.

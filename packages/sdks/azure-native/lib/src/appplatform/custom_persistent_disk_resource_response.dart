@@ -6,7 +6,7 @@ import 'azure_file_volume_response.dart';
 /// Custom persistent disk resource payload.
 class CustomPersistentDiskResourceResponse {
   /// Properties of the custom persistent disk resource payload.
-  final pulumi.Input<AzureFileVolumeResponse>? customPersistentDiskProperties;
+  final pulumi.Input<AzureFileVolumeResponse?>? customPersistentDiskProperties;
   /// The resource id of Azure Spring Apps Storage resource.
   final pulumi.Input<String> storageId;
 

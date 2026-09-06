@@ -7,7 +7,7 @@ class SpatialAggregation {
   /// Dimensions considered for spatial aggregation.
   final pulumi.Input<List<String>> dimensions;
   /// Type of spatial aggregation.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [SpatialAggregation].
   /// [dimensions] Dimensions considered for spatial aggregation.
@@ -27,7 +27,7 @@ class SpatialAggregation {
   factory SpatialAggregation.fromMap(Map<String, dynamic> map) {
     return SpatialAggregation(
       dimensions: pulumi.Input.fromValue((map['dimensions'] as List).cast<String>()),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

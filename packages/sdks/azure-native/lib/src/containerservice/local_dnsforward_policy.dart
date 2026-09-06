@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information.
-enum LocalDNSForwardPolicy {
+enum LocalDNSForwardPolicy implements pulumi.PulumiEnum<String> {
   valueSequential("Sequential"),
   valueRoundRobin("RoundRobin"),
   valueRandom("Random");
 
   const LocalDNSForwardPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static LocalDNSForwardPolicy fromValue(String value) {

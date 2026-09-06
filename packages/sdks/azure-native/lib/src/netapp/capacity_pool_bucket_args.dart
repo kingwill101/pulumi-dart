@@ -12,17 +12,17 @@ class CapacityPoolBucketArgs {
   /// The name of the NetApp account
   final pulumi.Input<String> accountName;
   /// The name of the bucket
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// File System user having access to volume data. For Unix, this is the user's uid and gid. For Windows, this is the user's username. Note that the Unix and Windows user details are mutually exclusive, meaning one or other must be supplied, but not both.
-  final pulumi.Input<FileSystemUser>? fileSystemUser;
+  final pulumi.Input<FileSystemUser?>? fileSystemUser;
   /// The volume path mounted inside the bucket. The default is the root path '/' if no value is provided when the bucket is created.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The name of the capacity pool
   final pulumi.Input<String> poolName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Properties of the server managing the lifecycle of volume buckets
-  final pulumi.Input<BucketServerProperties>? server;
+  final pulumi.Input<BucketServerProperties?>? server;
   /// The name of the volume
   final pulumi.Input<String> volumeName;
 
@@ -35,16 +35,16 @@ class CapacityPoolBucketArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [server] Properties of the server managing the lifecycle of volume buckets
   /// [volumeName] The name of the volume
-  const CapacityPoolBucketArgs({
+  CapacityPoolBucketArgs({
     required this.accountName,
     this.bucketName,
     this.fileSystemUser,
-    this.path,
+    pulumi.Input<String?>? path,
     required this.poolName,
     required this.resourceGroupName,
     this.server,
     required this.volumeName,
-  });
+  }) : path = path ?? pulumi.Input.fromValue('/');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

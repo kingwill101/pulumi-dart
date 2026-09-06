@@ -6,10 +6,10 @@ import 'virtual_network_status_response_provisioning_status.dart';
 /// The observed state of virtual networks
 class VirtualNetworkStatusResponse {
   /// VirtualNetwork provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
-  final pulumi.Input<VirtualNetworkStatusResponseProvisioningStatus>? provisioningStatus;
+  final pulumi.Input<String?>? errorMessage;
+  final pulumi.Input<VirtualNetworkStatusResponseProvisioningStatus?>? provisioningStatus;
 
   /// Creates a new [VirtualNetworkStatusResponse].
   /// [errorCode] VirtualNetwork provisioning error code

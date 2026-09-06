@@ -12,7 +12,7 @@ class VMwareCbtMigrationDetailsResponse {
   /// A value indicating the appliance monitoring details.
   final pulumi.Input<ApplianceMonitoringDetailsResponse> applianceMonitoringDetails;
   /// The confidential VM key vault Id for ADE installation.
-  final pulumi.Input<String>? confidentialVmKeyVaultId;
+  final pulumi.Input<String?>? confidentialVmKeyVaultId;
   /// The data mover run as account Id.
   final pulumi.Input<String> dataMoverRunAsAccountId;
   /// The delta sync progress percentage.
@@ -37,9 +37,9 @@ class VMwareCbtMigrationDetailsResponse {
   /// The last recovery point received time.
   final pulumi.Input<String> lastRecoveryPointReceived;
   /// License Type of the VM to be used.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The license type for Linux VM's.
-  final pulumi.Input<String>? linuxLicenseType;
+  final pulumi.Input<String?>? linuxLicenseType;
   /// The migration progress percentage.
   final pulumi.Input<int> migrationProgressPercentage;
   /// The recovery point Id to which the VM was migrated.
@@ -51,9 +51,9 @@ class VMwareCbtMigrationDetailsResponse {
   /// The type of the OS on the VM.
   final pulumi.Input<String> osType;
   /// A value indicating whether auto resync is to be done.
-  final pulumi.Input<String>? performAutoResync;
+  final pulumi.Input<String?>? performAutoResync;
   /// The list of protected disks.
-  final pulumi.Input<List<VMwareCbtProtectedDiskDetailsResponse>>? protectedDisks;
+  final pulumi.Input<List<VMwareCbtProtectedDiskDetailsResponse>?>? protectedDisks;
   /// The resume progress percentage.
   final pulumi.Input<int> resumeProgressPercentage;
   /// The resume retry count.
@@ -67,47 +67,47 @@ class VMwareCbtMigrationDetailsResponse {
   /// The resync state.
   final pulumi.Input<String> resyncState;
   /// The tags for the seed disks.
-  final pulumi.Input<Map<String, String>>? seedDiskTags;
+  final pulumi.Input<Map<String, String>?>? seedDiskTags;
   /// The snapshot run as account Id.
   final pulumi.Input<String> snapshotRunAsAccountId;
   /// The SQL Server license type.
-  final pulumi.Input<String>? sqlServerLicenseType;
+  final pulumi.Input<String?>? sqlServerLicenseType;
   /// The replication storage account ARM Id. This is applicable only for the blob based replication test hook.
   final pulumi.Input<String> storageAccountId;
   /// A value indicating the inplace OS Upgrade version.
-  final pulumi.Input<List<String>>? supportedOSVersions;
+  final pulumi.Input<List<String>?>? supportedOSVersions;
   /// The target availability set Id.
-  final pulumi.Input<String>? targetAvailabilitySetId;
+  final pulumi.Input<String?>? targetAvailabilitySetId;
   /// The target availability zone.
-  final pulumi.Input<String>? targetAvailabilityZone;
+  final pulumi.Input<String?>? targetAvailabilityZone;
   /// The target boot diagnostics storage account ARM Id.
-  final pulumi.Input<String>? targetBootDiagnosticsStorageAccountId;
+  final pulumi.Input<String?>? targetBootDiagnosticsStorageAccountId;
   /// The tags for the target disks.
-  final pulumi.Input<Map<String, String>>? targetDiskTags;
+  final pulumi.Input<Map<String, String>?>? targetDiskTags;
   /// The target generation.
   final pulumi.Input<String> targetGeneration;
   /// The target location.
   final pulumi.Input<String> targetLocation;
   /// The target network Id.
-  final pulumi.Input<String>? targetNetworkId;
+  final pulumi.Input<String?>? targetNetworkId;
   /// The tags for the target NICs.
-  final pulumi.Input<Map<String, String>>? targetNicTags;
+  final pulumi.Input<Map<String, String>?>? targetNicTags;
   /// The target proximity placement group Id.
-  final pulumi.Input<String>? targetProximityPlacementGroupId;
+  final pulumi.Input<String?>? targetProximityPlacementGroupId;
   /// The target resource group Id.
-  final pulumi.Input<String>? targetResourceGroupId;
+  final pulumi.Input<String?>? targetResourceGroupId;
   /// Target VM name.
-  final pulumi.Input<String>? targetVmName;
+  final pulumi.Input<String?>? targetVmName;
   /// The target VM security profile.
-  final pulumi.Input<VMwareCbtSecurityProfilePropertiesResponse>? targetVmSecurityProfile;
+  final pulumi.Input<VMwareCbtSecurityProfilePropertiesResponse?>? targetVmSecurityProfile;
   /// The target VM size.
-  final pulumi.Input<String>? targetVmSize;
+  final pulumi.Input<String?>? targetVmSize;
   /// The target VM tags.
-  final pulumi.Input<Map<String, String>>? targetVmTags;
+  final pulumi.Input<Map<String, String>?>? targetVmTags;
   /// The test network Id.
-  final pulumi.Input<String>? testNetworkId;
+  final pulumi.Input<String?>? testNetworkId;
   /// The network details.
-  final pulumi.Input<List<VMwareCbtNicDetailsResponse>>? vmNics;
+  final pulumi.Input<List<VMwareCbtNicDetailsResponse>?>? vmNics;
   /// The ARM Id of the VM discovered in VMware.
   final pulumi.Input<String> vmwareMachineId;
 
@@ -275,30 +275,30 @@ class VMwareCbtMigrationDetailsResponse {
       applianceMonitoringDetails: pulumi.Input.fromValue(ApplianceMonitoringDetailsResponse.fromMap((map['applianceMonitoringDetails']! as Map).cast<String, dynamic>())),
       confidentialVmKeyVaultId: (() { final guardedValue = map['confidentialVmKeyVaultId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataMoverRunAsAccountId: pulumi.Input.fromValue(map['dataMoverRunAsAccountId'] as String),
-      deltaSyncProgressPercentage: pulumi.Input.fromValue(map['deltaSyncProgressPercentage'] as int),
-      deltaSyncRetryCount: pulumi.Input.fromValue(map['deltaSyncRetryCount'] as double),
+      deltaSyncProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deltaSyncProgressPercentage'])),
+      deltaSyncRetryCount: pulumi.Input.fromValue((map['deltaSyncRetryCount'] as num).toDouble()),
       firmwareType: pulumi.Input.fromValue(map['firmwareType'] as String),
       gatewayOperationDetails: pulumi.Input.fromValue(GatewayOperationDetailsResponse.fromMap((map['gatewayOperationDetails']! as Map).cast<String, dynamic>())),
-      initialSeedingProgressPercentage: pulumi.Input.fromValue(map['initialSeedingProgressPercentage'] as int),
-      initialSeedingRetryCount: pulumi.Input.fromValue(map['initialSeedingRetryCount'] as double),
+      initialSeedingProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['initialSeedingProgressPercentage'])),
+      initialSeedingRetryCount: pulumi.Input.fromValue((map['initialSeedingRetryCount'] as num).toDouble()),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       isCheckSumResyncCycle: pulumi.Input.fromValue(map['isCheckSumResyncCycle'] as String),
       lastRecoveryPointId: pulumi.Input.fromValue(map['lastRecoveryPointId'] as String),
       lastRecoveryPointReceived: pulumi.Input.fromValue(map['lastRecoveryPointReceived'] as String),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linuxLicenseType: (() { final guardedValue = map['linuxLicenseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      migrationProgressPercentage: pulumi.Input.fromValue(map['migrationProgressPercentage'] as int),
+      migrationProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['migrationProgressPercentage'])),
       migrationRecoveryPointId: pulumi.Input.fromValue(map['migrationRecoveryPointId'] as String),
       operationName: pulumi.Input.fromValue(map['operationName'] as String),
       osName: pulumi.Input.fromValue(map['osName'] as String),
       osType: pulumi.Input.fromValue(map['osType'] as String),
       performAutoResync: (() { final guardedValue = map['performAutoResync']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protectedDisks: (() { final guardedValue = map['protectedDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VMwareCbtProtectedDiskDetailsResponse>(guardedValue, (value) => VMwareCbtProtectedDiskDetailsResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      resumeProgressPercentage: pulumi.Input.fromValue(map['resumeProgressPercentage'] as int),
-      resumeRetryCount: pulumi.Input.fromValue(map['resumeRetryCount'] as double),
-      resyncProgressPercentage: pulumi.Input.fromValue(map['resyncProgressPercentage'] as int),
+      resumeProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resumeProgressPercentage'])),
+      resumeRetryCount: pulumi.Input.fromValue((map['resumeRetryCount'] as num).toDouble()),
+      resyncProgressPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resyncProgressPercentage'])),
       resyncRequired: pulumi.Input.fromValue(map['resyncRequired'] as String),
-      resyncRetryCount: pulumi.Input.fromValue(map['resyncRetryCount'] as double),
+      resyncRetryCount: pulumi.Input.fromValue((map['resyncRetryCount'] as num).toDouble()),
       resyncState: pulumi.Input.fromValue(map['resyncState'] as String),
       seedDiskTags: (() { final guardedValue = map['seedDiskTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       snapshotRunAsAccountId: pulumi.Input.fromValue(map['snapshotRunAsAccountId'] as String),

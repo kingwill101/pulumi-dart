@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class for site agent properties.
 class SiteAgentProperties {
   /// Gets or sets the key vault ARM Id.
-  final pulumi.Input<String>? keyVaultId;
+  final pulumi.Input<String?>? keyVaultId;
   /// Gets or sets the key vault URI.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
 
   /// Creates a new [SiteAgentProperties].
   /// [keyVaultId] Gets or sets the key vault ARM Id.

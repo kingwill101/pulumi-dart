@@ -7,9 +7,9 @@ import 'referenced_resource_response.dart';
 /// Azure Operator Distributed Services image artifact profile properties.
 class AzureOperatorNexusImageArtifactProfileResponse {
   /// The reference to artifact store.
-  final pulumi.Input<ReferencedResourceResponse>? artifactStore;
+  final pulumi.Input<ReferencedResourceResponse?>? artifactStore;
   /// Image artifact profile.
-  final pulumi.Input<ImageArtifactProfileResponse>? imageArtifactProfile;
+  final pulumi.Input<ImageArtifactProfileResponse?>? imageArtifactProfile;
 
   /// Creates a new [AzureOperatorNexusImageArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.

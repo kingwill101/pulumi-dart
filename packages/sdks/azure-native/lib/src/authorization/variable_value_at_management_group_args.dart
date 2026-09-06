@@ -15,7 +15,7 @@ class VariableValueAtManagementGroupArgs {
   /// The name of the variable to operate on.
   final pulumi.Input<String> variableName;
   /// The name of the variable value to operate on.
-  final pulumi.Input<String>? variableValueName;
+  final pulumi.Input<String?>? variableValueName;
 
   /// Creates a new [VariableValueAtManagementGroupArgs].
   /// [managementGroupId] The ID of the management group.

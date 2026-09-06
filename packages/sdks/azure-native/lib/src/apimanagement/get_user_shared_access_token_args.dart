@@ -25,13 +25,13 @@ class GetUserSharedAccessTokenArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  const GetUserSharedAccessTokenArgs({
+  GetUserSharedAccessTokenArgs({
     required this.expiry,
-    required this.keyType,
+    pulumi.Input<KeyType>? keyType,
     required this.resourceGroupName,
     required this.serviceName,
     required this.userId,
-  });
+  }) : keyType = keyType ?? pulumi.Input.fromValue(KeyType.fromValue('primary'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

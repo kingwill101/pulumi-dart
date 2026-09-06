@@ -6,7 +6,7 @@ import 'compute_start_stop_schedule.dart';
 /// The list of schedules to be applied on the computes
 class ComputeSchedules {
   /// The list of compute start stop schedules to be applied.
-  final pulumi.Input<List<ComputeStartStopSchedule>>? computeStartStop;
+  final pulumi.Input<List<ComputeStartStopSchedule>?>? computeStartStop;
 
   /// Creates a new [ComputeSchedules].
   /// [computeStartStop] The list of compute start stop schedules to be applied.

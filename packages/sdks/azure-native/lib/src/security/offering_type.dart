@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the security offering.
-enum OfferingType {
+enum OfferingType implements pulumi.PulumiEnum<String> {
   cspmMonitorAws("CspmMonitorAws"),
   defenderForContainersAws("DefenderForContainersAws"),
   defenderForServersAws("DefenderForServersAws"),
@@ -21,6 +23,7 @@ enum OfferingType {
   defenderCspmJFrog("DefenderCspmJFrog");
 
   const OfferingType(this.wireValue);
+  @override
   final String wireValue;
 
   static OfferingType fromValue(String value) {

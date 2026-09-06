@@ -12,13 +12,13 @@ class ServerlessSettings {
   /// You can set the timeout to a longer period if messages are expected to be sent in longer intervals,
   /// and they want to keep the same client connection alive during this session.
   /// The service considers the client disconnected if it hasn't received a message (including keep-alive) in this interval.
-  final pulumi.Input<int>? connectionTimeoutInSeconds;
+  final pulumi.Input<int?>? connectionTimeoutInSeconds;
 
   /// Creates a new [ServerlessSettings].
   /// [connectionTimeoutInSeconds] Gets or sets Client Connection Timeout. Optional to be set.
-  const ServerlessSettings({
-    this.connectionTimeoutInSeconds,
-  });
+  ServerlessSettings({
+    pulumi.Input<int?>? connectionTimeoutInSeconds,
+  }) : connectionTimeoutInSeconds = connectionTimeoutInSeconds ?? pulumi.Input.fromValue(30);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -28,7 +28,7 @@ class ServerlessSettings {
 
   factory ServerlessSettings.fromMap(Map<String, dynamic> map) {
     return ServerlessSettings(
-      connectionTimeoutInSeconds: (() { final guardedValue = map['connectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      connectionTimeoutInSeconds: (() { final guardedValue = map['connectionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

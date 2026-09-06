@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of domain controller to which SCOM and SQL servers join for AuthN/AuthZ.
 class DomainControllerProperties {
   /// IP address of DNS server
-  final pulumi.Input<String>? dnsServer;
+  final pulumi.Input<String?>? dnsServer;
   /// Fully qualified domain name
-  final pulumi.Input<String>? domainName;
+  final pulumi.Input<String?>? domainName;
   /// Organizational Unit path in which the SCOM servers will be present
-  final pulumi.Input<String>? ouPath;
+  final pulumi.Input<String?>? ouPath;
 
   /// Creates a new [DomainControllerProperties].
   /// [dnsServer] IP address of DNS server
   /// [domainName] Fully qualified domain name
   /// [ouPath] Organizational Unit path in which the SCOM servers will be present
-  const DomainControllerProperties({
+  DomainControllerProperties({
     this.dnsServer,
     this.domainName,
-    this.ouPath,
-  });
+    pulumi.Input<String?>? ouPath,
+  }) : ouPath = ouPath ?? pulumi.Input.fromValue('');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

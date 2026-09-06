@@ -9,7 +9,7 @@ class EndpointAccessProfile {
   /// Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.
   final pulumi.Input<EndpointAccessDefaultAction> defaultAction;
   /// Array of IP ranges to filter client IP address.
-  final pulumi.Input<List<IPRule>>? ipRules;
+  final pulumi.Input<List<IPRule>?>? ipRules;
 
   /// Creates a new [EndpointAccessProfile].
   /// [defaultAction] Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.

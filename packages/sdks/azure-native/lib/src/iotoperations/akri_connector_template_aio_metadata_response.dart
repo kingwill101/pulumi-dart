@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AkriConnectorTemplateAioMetadata properties.
 class AkriConnectorTemplateAioMetadataResponse {
   /// The maximum version of AIO required for the connector.
-  final pulumi.Input<String>? aioMaxVersion;
+  final pulumi.Input<String?>? aioMaxVersion;
   /// The minimum version of AIO required for the connector.
-  final pulumi.Input<String>? aioMinVersion;
+  final pulumi.Input<String?>? aioMinVersion;
 
   /// Creates a new [AkriConnectorTemplateAioMetadataResponse].
   /// [aioMaxVersion] The maximum version of AIO required for the connector.

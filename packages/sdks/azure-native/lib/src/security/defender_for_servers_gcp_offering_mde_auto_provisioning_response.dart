@@ -7,7 +7,7 @@ class DefenderForServersGcpOfferingMdeAutoProvisioningResponse {
   /// configuration for Microsoft Defender for Endpoint autoprovisioning
   final pulumi.Input<dynamic>? configuration;
   /// Is Microsoft Defender for Endpoint auto provisioning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForServersGcpOfferingMdeAutoProvisioningResponse].
   /// [configuration] configuration for Microsoft Defender for Endpoint autoprovisioning

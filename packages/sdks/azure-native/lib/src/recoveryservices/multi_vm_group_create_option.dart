@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether Multi VM group is auto created or specified by user.
-enum MultiVmGroupCreateOption {
+enum MultiVmGroupCreateOption implements pulumi.PulumiEnum<String> {
   valueAutoCreated("AutoCreated"),
   valueUserSpecified("UserSpecified");
 
   const MultiVmGroupCreateOption(this.wireValue);
+  @override
   final String wireValue;
 
   static MultiVmGroupCreateOption fromValue(String value) {

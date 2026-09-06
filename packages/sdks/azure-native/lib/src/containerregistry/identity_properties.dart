@@ -7,16 +7,16 @@ import 'user_identity_properties.dart';
 /// Managed identity for the resource.
 class IdentityProperties {
   /// The principal ID of resource identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// The tenant ID of resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// The identity type.
-  final pulumi.Input<ResourceIdentityType>? type;
+  final pulumi.Input<ResourceIdentityType?>? type;
   /// The list of user identities associated with the resource. The user identity
   /// dictionary key references will be ARM resource ids in the form:
   /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/
   /// providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  final pulumi.Input<Map<String, UserIdentityProperties>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityProperties>?>? userAssignedIdentities;
 
   /// Creates a new [IdentityProperties].
   /// [principalId] The principal ID of resource identity.

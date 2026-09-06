@@ -6,11 +6,11 @@ import 'snapshot_status_provisioning_status_response.dart';
 /// The observed state of snapshots
 class SnapshotStatusResponse {
   /// Snapshot provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Provisioning status of the snapshot
-  final pulumi.Input<SnapshotStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<SnapshotStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [SnapshotStatusResponse].
   /// [errorCode] Snapshot provisioning error code

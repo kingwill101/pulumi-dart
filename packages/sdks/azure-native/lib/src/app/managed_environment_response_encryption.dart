@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Peer traffic encryption settings for the Managed Environment
 class ManagedEnvironmentResponseEncryption {
   /// Boolean indicating whether the peer traffic encryption is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedEnvironmentResponseEncryption].
   /// [enabled] Boolean indicating whether the peer traffic encryption is enabled

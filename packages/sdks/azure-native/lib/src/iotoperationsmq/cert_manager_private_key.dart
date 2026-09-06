@@ -15,11 +15,11 @@ class CertManagerPrivateKey {
   /// [algorithm] algorithm for private key.
   /// [rotationPolicy] cert-manager rotationPolicy.
   /// [size] size of private key.
-  const CertManagerPrivateKey({
-    required this.algorithm,
-    required this.rotationPolicy,
-    required this.size,
-  });
+  CertManagerPrivateKey({
+    pulumi.Input<String>? algorithm,
+    pulumi.Input<String>? rotationPolicy,
+    pulumi.Input<int>? size,
+  }) : algorithm = algorithm ?? pulumi.Input.fromValue('ECDSA'), rotationPolicy = rotationPolicy ?? pulumi.Input.fromValue('Always'), size = size ?? pulumi.Input.fromValue(256);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -33,7 +33,7 @@ class CertManagerPrivateKey {
     return CertManagerPrivateKey(
       algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
       rotationPolicy: pulumi.Input.fromValue(map['rotationPolicy'] as String),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

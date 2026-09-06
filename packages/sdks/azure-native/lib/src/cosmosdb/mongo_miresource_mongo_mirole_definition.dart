@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mongo_miresource_mongo_mirole_definition_args.dart';
+import 'permission_response.dart';
 import 'system_data_response.dart';
 
 /// Parameters to create and update an Azure Cosmos DB MongoMI Role Definition.
@@ -246,7 +247,7 @@ class MongoMIResourceMongoMIRoleDefinition extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The set of operations allowed through this Role Definition.
-  late final pulumi.Output<List<Map<String, dynamic>>?> permissions;
+  late final pulumi.Output<List<PermissionResponse>?> permissions;
   /// A user-friendly name for the Role Definition. Must be unique for the database account.
   late final pulumi.Output<String?> roleName;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -268,10 +269,28 @@ class MongoMIResourceMongoMIRoleDefinition extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    assignableScopes = registerOutput<List<String>?>('assignableScopes');
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     this.name = registerOutput<String>('name');
-    permissions = registerOutput<List<Map<String, dynamic>>?>('permissions');
+    permissions = registerOutput<List<PermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    roleName = registerOutput<String?>('roleName');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [MongoMIResourceMongoMIRoleDefinition] resource.
+  MongoMIResourceMongoMIRoleDefinition.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:MongoMIResourceMongoMIRoleDefinition',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignableScopes = registerOutput<List<String>?>('assignableScopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    permissions = registerOutput<List<PermissionResponse>?>('permissions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PermissionResponse>(guardedValue, (value) => PermissionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     roleName = registerOutput<String?>('roleName');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

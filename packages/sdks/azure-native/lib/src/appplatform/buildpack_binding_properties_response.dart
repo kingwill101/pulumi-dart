@@ -6,9 +6,9 @@ import 'buildpack_binding_launch_properties_response.dart';
 /// Properties of a buildpack binding
 class BuildpackBindingPropertiesResponse {
   /// Buildpack Binding Type
-  final pulumi.Input<String>? bindingType;
+  final pulumi.Input<String?>? bindingType;
   /// The object describes the buildpack binding launch properties
-  final pulumi.Input<BuildpackBindingLaunchPropertiesResponse>? launchProperties;
+  final pulumi.Input<BuildpackBindingLaunchPropertiesResponse?>? launchProperties;
   /// State of the Buildpack Binding.
   final pulumi.Input<String> provisioningState;
 

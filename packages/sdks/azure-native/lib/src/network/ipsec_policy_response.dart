@@ -62,8 +62,8 @@ class IpsecPolicyResponse {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKilobytes: pulumi.Input.fromValue(map['saDataSizeKilobytes'] as int),
-      saLifeTimeSeconds: pulumi.Input.fromValue(map['saLifeTimeSeconds'] as int),
+      saDataSizeKilobytes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saDataSizeKilobytes'])),
+      saLifeTimeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saLifeTimeSeconds'])),
     );
   }
 }

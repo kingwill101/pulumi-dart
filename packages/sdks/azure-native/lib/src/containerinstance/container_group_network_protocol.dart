@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The protocol associated with the port.
-enum ContainerGroupNetworkProtocol {
+enum ContainerGroupNetworkProtocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP");
 
   const ContainerGroupNetworkProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static ContainerGroupNetworkProtocol fromValue(String value) {

@@ -7,24 +7,24 @@ import 'parameter_specification.dart';
 /// Linked service for CosmosDB (MongoDB API) data source.
 class CosmosDbMongoDbApiLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// The CosmosDB (MongoDB API) connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic> connectionString;
   /// The name of the CosmosDB (MongoDB API) database that you want to access. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the CosmosDB (MongoDB API) server version is higher than 3.2. The default value is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? isServerVersionAbove32;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Type of linked service.
   /// Expected value is 'CosmosDbMongoDbApi'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [CosmosDbMongoDbApiLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.

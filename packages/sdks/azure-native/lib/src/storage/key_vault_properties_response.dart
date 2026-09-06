@@ -9,11 +9,11 @@ class KeyVaultPropertiesResponse {
   /// The object identifier of the current versioned Key Vault Key in use.
   final pulumi.Input<String> currentVersionedKeyIdentifier;
   /// The name of KeyVault key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The Uri of KeyVault.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// The version of KeyVault key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
   /// Timestamp of last rotation of the Key Vault Key.
   final pulumi.Input<String> lastKeyRotationTimestamp;
 

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings concerning key vault encryption for a configuration store.
 class KeyVaultPropertiesResponse {
   /// The client id of the identity which will be used to access key vault.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// The URI of the key vault key used to encrypt data.
-  final pulumi.Input<String>? keyIdentifier;
+  final pulumi.Input<String?>? keyIdentifier;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [identityClientId] The client id of the identity which will be used to access key vault.

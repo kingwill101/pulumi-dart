@@ -10,17 +10,17 @@ import 'load_balancer_properties.dart';
 /// {@macro pulumi_azurestackhci_load_balancer_args_doc}
 class LoadBalancerArgs {
   /// The extendedLocation of the resource.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Name of the load balancer
-  final pulumi.Input<String>? loadBalancerName;
+  final pulumi.Input<String?>? loadBalancerName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<LoadBalancerProperties>? properties;
+  final pulumi.Input<LoadBalancerProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LoadBalancerArgs].
   /// [extendedLocation] The extendedLocation of the resource.

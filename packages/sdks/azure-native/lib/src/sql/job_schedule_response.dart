@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Scheduling properties of a job.
 class JobScheduleResponse {
   /// Whether or not the schedule is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Schedule end time.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// Schedule start time.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// Schedule interval type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobScheduleResponse].
   /// [enabled] Whether or not the schedule is enabled.
@@ -21,13 +21,13 @@ class JobScheduleResponse {
   /// [interval] Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
   /// [startTime] Schedule start time.
   /// [type] Schedule interval type
-  const JobScheduleResponse({
+  JobScheduleResponse({
     this.enabled,
-    this.endTime,
+    pulumi.Input<String?>? endTime,
     this.interval,
-    this.startTime,
-    this.type,
-  });
+    pulumi.Input<String?>? startTime,
+    pulumi.Input<String?>? type,
+  }) : endTime = endTime ?? pulumi.Input.fromValue('9999-12-31T17:29:59+05:30'), startTime = startTime ?? pulumi.Input.fromValue('0001-01-01T05:30:00+05:30'), type = type ?? pulumi.Input.fromValue('Once');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

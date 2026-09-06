@@ -9,15 +9,15 @@ class MaintenanceWindowResponse {
   /// Length of maintenance window range from 4 to 24 hours.
   final pulumi.Input<int> durationHours;
   /// Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time.
-  final pulumi.Input<List<DateSpanResponse>>? notAllowedDates;
+  final pulumi.Input<List<DateSpanResponse>?>? notAllowedDates;
   /// Recurrence schedule for the maintenance window.
   final pulumi.Input<ScheduleResponse> schedule;
   /// The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
   final pulumi.Input<String> startTime;
   /// The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-  final pulumi.Input<String>? utcOffset;
+  final pulumi.Input<String?>? utcOffset;
 
   /// Creates a new [MaintenanceWindowResponse].
   /// [durationHours] Length of maintenance window range from 4 to 24 hours.
@@ -26,14 +26,14 @@ class MaintenanceWindowResponse {
   /// [startDate] The date the maintenance window activates. If the current date is before this date, the maintenance window is inactive and will not be used for upgrades. If not specified, the maintenance window will be active right away.
   /// [startTime] The start time of the maintenance window. Accepted values are from '00:00' to '23:59'. 'utcOffset' applies to this field. For example: '02:00' with 'utcOffset: +02:00' means UTC time '00:00'.
   /// [utcOffset] The UTC offset in format +/-HH:mm. For example, '+05:30' for IST and '-07:00' for PST. If not specified, the default is '+00:00'.
-  const MaintenanceWindowResponse({
-    required this.durationHours,
+  MaintenanceWindowResponse({
+    pulumi.Input<int>? durationHours,
     this.notAllowedDates,
     required this.schedule,
     this.startDate,
     required this.startTime,
     this.utcOffset,
-  });
+  }) : durationHours = durationHours ?? pulumi.Input.fromValue(24);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -48,7 +48,7 @@ class MaintenanceWindowResponse {
 
   factory MaintenanceWindowResponse.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowResponse(
-      durationHours: pulumi.Input.fromValue(map['durationHours'] as int),
+      durationHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['durationHours'])),
       notAllowedDates: (() { final guardedValue = map['notAllowedDates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DateSpanResponse>(guardedValue, (value) => DateSpanResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       schedule: pulumi.Input.fromValue(ScheduleResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>())),
       startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -4,6 +4,7 @@ import 'destination_addr_response.dart';
 import 'post_rule_args.dart';
 import 'source_addr_response.dart';
 import 'system_data_response.dart';
+import 'tag_info_response.dart';
 
 /// PostRulestack rule list
 ///
@@ -645,7 +646,7 @@ class PostRule extends pulumi.CustomResource {
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// tag for rule
-  late final pulumi.Output<List<Map<String, dynamic>>?> tags;
+  late final pulumi.Output<List<TagInfoResponse>?> tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -664,7 +665,7 @@ class PostRule extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     actionType = registerOutput<String?>('actionType');
-    applications = registerOutput<List<String>?>('applications');
+    applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     auditComment = registerOutput<String?>('auditComment');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<CategoryResponse?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CategoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -679,13 +680,48 @@ class PostRule extends pulumi.CustomResource {
     negateSource = registerOutput<String?>('negateSource');
     priority = registerOutput<int>('priority');
     protocol = registerOutput<String?>('protocol');
-    protocolPortList = registerOutput<List<String>?>('protocolPortList');
+    protocolPortList = registerOutput<List<String>?>('protocolPortList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
     ruleName = registerOutput<String>('ruleName');
     ruleState = registerOutput<String?>('ruleState');
     source = registerOutput<SourceAddrResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceAddrResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<List<Map<String, dynamic>>?>('tags');
+    tags = registerOutput<List<TagInfoResponse>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagInfoResponse>(guardedValue, (value) => TagInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PostRule] resource.
+  PostRule.reference(String urn)
+    : super(
+        'azure-native:cloudngfw:PostRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actionType = registerOutput<String?>('actionType');
+    applications = registerOutput<List<String>?>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    auditComment = registerOutput<String?>('auditComment');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<CategoryResponse?>('category', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CategoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    decryptionRuleType = registerOutput<String?>('decryptionRuleType');
+    description = registerOutput<String?>('description');
+    destination = registerOutput<DestinationAddrResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationAddrResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableLogging = registerOutput<String?>('enableLogging');
+    etag = registerOutput<String?>('etag');
+    inboundInspectionCertificate = registerOutput<String?>('inboundInspectionCertificate');
+    this.name = registerOutput<String>('name');
+    negateDestination = registerOutput<String?>('negateDestination');
+    negateSource = registerOutput<String?>('negateSource');
+    priority = registerOutput<int>('priority');
+    protocol = registerOutput<String?>('protocol');
+    protocolPortList = registerOutput<List<String>?>('protocolPortList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    ruleName = registerOutput<String>('ruleName');
+    ruleState = registerOutput<String?>('ruleState');
+    source = registerOutput<SourceAddrResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceAddrResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<List<TagInfoResponse>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TagInfoResponse>(guardedValue, (value) => TagInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of encapsulation.
-enum Encapsulation {
+enum Encapsulation implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueGRE("GRE");
 
   const Encapsulation(this.wireValue);
+  @override
   final String wireValue;
 
   static Encapsulation fromValue(String value) {

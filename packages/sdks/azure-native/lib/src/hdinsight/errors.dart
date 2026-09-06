@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The error message associated with the cluster creation.
 class Errors {
   /// The error code.
-  final pulumi.Input<String>? code;
+  final pulumi.Input<String?>? code;
   /// The error message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [Errors].
   /// [code] The error code.

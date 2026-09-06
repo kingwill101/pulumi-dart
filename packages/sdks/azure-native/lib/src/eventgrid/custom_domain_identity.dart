@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The identity information for retrieving the certificate for the custom domain.
 class CustomDomainIdentity {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
   /// The user identity associated with the resource.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [CustomDomainIdentity].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
@@ -26,7 +26,7 @@ class CustomDomainIdentity {
 
   factory CustomDomainIdentity.fromMap(Map<String, dynamic> map) {
     return CustomDomainIdentity(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       userAssignedIdentity: (() { final guardedValue = map['userAssignedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

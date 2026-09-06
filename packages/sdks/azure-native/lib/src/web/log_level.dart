@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Log level.
-enum LogLevel {
+enum LogLevel implements pulumi.PulumiEnum<String> {
   valueOff("Off"),
   valueVerbose("Verbose"),
   valueInformation("Information"),
@@ -7,6 +9,7 @@ enum LogLevel {
   valueError("Error");
 
   const LogLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static LogLevel fromValue(String value) {

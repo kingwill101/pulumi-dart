@@ -19,111 +19,111 @@ import 'vmssextension.dart';
 /// {@macro pulumi_servicefabric_node_type_args_doc}
 class NodeTypeArgs {
   /// Additional managed data disks.
-  final pulumi.Input<List<VmssDataDisk>>? additionalDataDisks;
+  final pulumi.Input<List<VmssDataDisk>?>? additionalDataDisks;
   /// Specifies the settings for any additional secondary network interfaces to attach to the node type.
-  final pulumi.Input<List<AdditionalNetworkInterfaceConfiguration>>? additionalNetworkInterfaceConfigurations;
+  final pulumi.Input<List<AdditionalNetworkInterfaceConfiguration>?>? additionalNetworkInterfaceConfigurations;
   /// The range of ports from which cluster assigned port to Service Fabric applications.
-  final pulumi.Input<EndpointRangeDescription>? applicationPorts;
+  final pulumi.Input<EndpointRangeDescription?>? applicationPorts;
   /// The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has.
-  final pulumi.Input<Map<String, String>>? capacities;
+  final pulumi.Input<Map<String, String>?>? capacities;
   /// The name of the cluster resource.
   final pulumi.Input<String> clusterName;
   /// Specifies the computer name prefix. Limited to 9 characters. If specified, allows for a longer name to be specified for the node type name.
-  final pulumi.Input<String>? computerNamePrefix;
+  final pulumi.Input<String?>? computerNamePrefix;
   /// Managed data disk letter. It can not use the reserved letter C or D and it can not change after created.
-  final pulumi.Input<String>? dataDiskLetter;
+  final pulumi.Input<String?>? dataDiskLetter;
   /// Disk size for the managed disk attached to the vms on the node type in GBs.
-  final pulumi.Input<int>? dataDiskSizeGB;
+  final pulumi.Input<int?>? dataDiskSizeGB;
   /// Managed data disk type. Specifies the storage account type for the managed disk
-  final pulumi.Input<String>? dataDiskType;
+  final pulumi.Input<dynamic>? dataDiskType;
   /// Specifies the resource id of the DSCP configuration to apply to the node type network interface.
-  final pulumi.Input<String>? dscpConfigurationId;
+  final pulumi.Input<String?>? dscpConfigurationId;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Enable or disable the Host Encryption for the virtual machines on the node type. This will enable the encryption for all the disks including Resource/Temp disk at host itself. Default: The Encryption at host will be disabled unless this property is set to true for the resource.
-  final pulumi.Input<bool>? enableEncryptionAtHost;
+  final pulumi.Input<bool?>? enableEncryptionAtHost;
   /// Specifies whether each node is allocated its own public IPv4 address. This is only supported on secondary node types with custom Load Balancers.
-  final pulumi.Input<bool>? enableNodePublicIP;
+  final pulumi.Input<bool?>? enableNodePublicIP;
   /// Specifies whether each node is allocated its own public IPv6 address. This is only supported on secondary node types with custom Load Balancers.
-  final pulumi.Input<bool>? enableNodePublicIPv6;
+  final pulumi.Input<bool?>? enableNodePublicIPv6;
   /// Specifies whether the node type should be overprovisioned. It is only allowed for stateless node types.
-  final pulumi.Input<bool>? enableOverProvisioning;
+  final pulumi.Input<bool?>? enableOverProvisioning;
   /// The range of ephemeral ports that nodes in this node type should be configured with.
-  final pulumi.Input<EndpointRangeDescription>? ephemeralPorts;
+  final pulumi.Input<EndpointRangeDescription?>? ephemeralPorts;
   /// Specifies the eviction policy for virtual machines in a SPOT node type. Default is Delete.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<dynamic>? evictionPolicy;
   /// Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created.
-  final pulumi.Input<List<FrontendConfiguration>>? frontendConfigurations;
+  final pulumi.Input<List<FrontendConfiguration>?>? frontendConfigurations;
   /// Specifies the full host group resource Id. This property is used for deploying on azure dedicated hosts.
-  final pulumi.Input<String>? hostGroupId;
+  final pulumi.Input<String?>? hostGroupId;
   /// Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created.
   final pulumi.Input<bool> isPrimary;
   /// Indicates whether the node type will be Spot Virtual Machines. Azure will allocate the VMs if there is capacity available and the VMs can be evicted at any time.
-  final pulumi.Input<bool>? isSpotVM;
+  final pulumi.Input<bool?>? isSpotVM;
   /// Indicates if the node type can only host Stateless workloads.
-  final pulumi.Input<bool>? isStateless;
+  final pulumi.Input<bool?>? isStateless;
   /// Indicates if scale set associated with the node type can be composed of multiple placement groups.
-  final pulumi.Input<bool>? multiplePlacementGroups;
+  final pulumi.Input<bool?>? multiplePlacementGroups;
   /// Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer.
-  final pulumi.Input<List<NodeTypeNatConfig>>? natConfigurations;
+  final pulumi.Input<List<NodeTypeNatConfig>?>? natConfigurations;
   /// Specifies the resource id of a NAT Gateway to attach to the subnet of this node type. Node type must use custom load balancer.
-  final pulumi.Input<String>? natGatewayId;
+  final pulumi.Input<String?>? natGatewayId;
   /// The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations.
-  final pulumi.Input<List<NetworkSecurityRule>>? networkSecurityRules;
+  final pulumi.Input<List<NetworkSecurityRule>?>? networkSecurityRules;
   /// The name of the node type.
-  final pulumi.Input<String>? nodeTypeName;
+  final pulumi.Input<String?>? nodeTypeName;
   /// The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
-  final pulumi.Input<Map<String, String>>? placementProperties;
+  final pulumi.Input<Map<String, String>?>? placementProperties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies whether secure boot should be enabled on the nodeType. Can only be used with TrustedLaunch SecurityType
-  final pulumi.Input<bool>? secureBootEnabled;
+  final pulumi.Input<bool?>? secureBootEnabled;
   /// Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported
-  final pulumi.Input<String>? securityType;
+  final pulumi.Input<dynamic>? securityType;
   /// Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version.
-  final pulumi.Input<String>? serviceArtifactReferenceId;
+  final pulumi.Input<String?>? serviceArtifactReferenceId;
   /// The node type sku.
-  final pulumi.Input<NodeTypeSku>? sku;
+  final pulumi.Input<NodeTypeSku?>? sku;
   /// Indicates the time duration after which the platform will not try to restore the VMSS SPOT instances specified as ISO 8601.
-  final pulumi.Input<String>? spotRestoreTimeout;
+  final pulumi.Input<String?>? spotRestoreTimeout;
   /// Indicates the resource id of the subnet for the node type.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
   /// Azure resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Specifies whether the use public load balancer. If not specified and the node type doesn't have its own frontend configuration, it will be attached to the default load balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is true, then the frontend has to be an Internal Load Balancer. If the node type uses its own Load balancer and useDefaultPublicLoadBalancer is false or not set, then the custom load balancer must include a public load balancer to provide outbound connectivity.
-  final pulumi.Input<bool>? useDefaultPublicLoadBalancer;
+  final pulumi.Input<bool?>? useDefaultPublicLoadBalancer;
   /// Indicates whether to use ephemeral os disk. The sku selected on the vmSize property needs to support this feature.
-  final pulumi.Input<bool>? useEphemeralOSDisk;
+  final pulumi.Input<bool?>? useEphemeralOSDisk;
   /// Specifies whether to use the temporary disk for the service fabric data root, in which case no managed data disk will be attached and the temporary disk will be used. It is only allowed for stateless node types.
-  final pulumi.Input<bool>? useTempDataDisk;
+  final pulumi.Input<bool?>? useTempDataDisk;
   /// Set of extensions that should be installed onto the virtual machines.
-  final pulumi.Input<List<VMSSExtension>>? vmExtensions;
+  final pulumi.Input<List<VMSSExtension>?>? vmExtensions;
   /// The offer type of the Azure Virtual Machines Marketplace image. For example, UbuntuServer or WindowsServer.
-  final pulumi.Input<String>? vmImageOffer;
+  final pulumi.Input<String?>? vmImageOffer;
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started -&gt;. Enter any required information and then click Save.
-  final pulumi.Input<VmImagePlan>? vmImagePlan;
+  final pulumi.Input<VmImagePlan?>? vmImagePlan;
   /// The publisher of the Azure Virtual Machines Marketplace image. For example, Canonical or MicrosoftWindowsServer.
-  final pulumi.Input<String>? vmImagePublisher;
+  final pulumi.Input<String?>? vmImagePublisher;
   /// Indicates the resource id of the vm image. This parameter is used for custom vm image.
-  final pulumi.Input<String>? vmImageResourceId;
+  final pulumi.Input<String?>? vmImageResourceId;
   /// The SKU of the Azure Virtual Machines Marketplace image. For example, 14.04.0-LTS or 2012-R2-Datacenter.
-  final pulumi.Input<String>? vmImageSku;
+  final pulumi.Input<String?>? vmImageSku;
   /// The version of the Azure Virtual Machines Marketplace image. A value of 'latest' can be specified to select the latest version of an image. If omitted, the default is 'latest'.
-  final pulumi.Input<String>? vmImageVersion;
+  final pulumi.Input<String?>? vmImageVersion;
   /// The number of nodes in the node type. &lt;br /&gt;&lt;br /&gt;**Values:** &lt;br /&gt;-1 - Use when auto scale rules are configured or sku.capacity is defined &lt;br /&gt; 0 - Not supported &lt;br /&gt; &gt;0 - Use for manual scale.
   final pulumi.Input<int> vmInstanceCount;
   /// Identities to assign to the virtual machine scale set under the node type.
-  final pulumi.Input<VmManagedIdentity>? vmManagedIdentity;
+  final pulumi.Input<VmManagedIdentity?>? vmManagedIdentity;
   /// The secrets to install in the virtual machines.
-  final pulumi.Input<List<VaultSecretGroup>>? vmSecrets;
+  final pulumi.Input<List<VaultSecretGroup>?>? vmSecrets;
   /// Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime.
-  final pulumi.Input<List<String>>? vmSetupActions;
+  final pulumi.Input<List<dynamic>?>? vmSetupActions;
   /// Indicates the resource id of the vm shared galleries image. This parameter is used for custom vm image.
-  final pulumi.Input<String>? vmSharedGalleryImageId;
+  final pulumi.Input<String?>? vmSharedGalleryImageId;
   /// The size of virtual machines in the pool. All virtual machines in a pool are the same size. For example, Standard_D3.
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
   /// Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [NodeTypeArgs].
   /// [additionalDataDisks] Additional managed data disks.
@@ -179,7 +179,7 @@ class NodeTypeArgs {
   /// [vmSharedGalleryImageId] Indicates the resource id of the vm shared galleries image. This parameter is used for custom vm image.
   /// [vmSize] The size of virtual machines in the pool. All virtual machines in a pool are the same size. For example, Standard_D3.
   /// [zones] Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
-  const NodeTypeArgs({
+  NodeTypeArgs({
     this.additionalDataDisks,
     this.additionalNetworkInterfaceConfigurations,
     this.applicationPorts,
@@ -191,7 +191,7 @@ class NodeTypeArgs {
     this.dataDiskType,
     this.dscpConfigurationId,
     this.enableAcceleratedNetworking,
-    this.enableEncryptionAtHost,
+    pulumi.Input<bool?>? enableEncryptionAtHost,
     this.enableNodePublicIP,
     this.enableNodePublicIPv6,
     this.enableOverProvisioning,
@@ -201,8 +201,8 @@ class NodeTypeArgs {
     this.hostGroupId,
     required this.isPrimary,
     this.isSpotVM,
-    this.isStateless,
-    this.multiplePlacementGroups,
+    pulumi.Input<bool?>? isStateless,
+    pulumi.Input<bool?>? multiplePlacementGroups,
     this.natConfigurations,
     this.natGatewayId,
     this.networkSecurityRules,
@@ -233,7 +233,7 @@ class NodeTypeArgs {
     this.vmSharedGalleryImageId,
     this.vmSize,
     this.zones,
-  });
+  }) : enableEncryptionAtHost = enableEncryptionAtHost ?? pulumi.Input.fromValue(false), isStateless = isStateless ?? pulumi.Input.fromValue(false), multiplePlacementGroups = multiplePlacementGroups ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -302,8 +302,8 @@ class NodeTypeArgs {
       clusterName: pulumi.Input.fromValue(map['clusterName'] as String),
       computerNamePrefix: (() { final guardedValue = map['computerNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataDiskLetter: (() { final guardedValue = map['dataDiskLetter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      dataDiskSizeGB: (() { final guardedValue = map['dataDiskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataDiskSizeGB: (() { final guardedValue = map['dataDiskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dscpConfigurationId: (() { final guardedValue = map['dscpConfigurationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableAcceleratedNetworking: (() { final guardedValue = map['enableAcceleratedNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableEncryptionAtHost: (() { final guardedValue = map['enableEncryptionAtHost']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -311,7 +311,7 @@ class NodeTypeArgs {
       enableNodePublicIPv6: (() { final guardedValue = map['enableNodePublicIPv6']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableOverProvisioning: (() { final guardedValue = map['enableOverProvisioning']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ephemeralPorts: (() { final guardedValue = map['ephemeralPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointRangeDescription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       frontendConfigurations: (() { final guardedValue = map['frontendConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FrontendConfiguration>(guardedValue, (value) => FrontendConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hostGroupId: (() { final guardedValue = map['hostGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isPrimary: pulumi.Input.fromValue(map['isPrimary'] as bool),
@@ -325,7 +325,7 @@ class NodeTypeArgs {
       placementProperties: (() { final guardedValue = map['placementProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       secureBootEnabled: (() { final guardedValue = map['secureBootEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      securityType: (() { final guardedValue = map['securityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      securityType: (() { final guardedValue = map['securityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       serviceArtifactReferenceId: (() { final guardedValue = map['serviceArtifactReferenceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeTypeSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       spotRestoreTimeout: (() { final guardedValue = map['spotRestoreTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -341,10 +341,10 @@ class NodeTypeArgs {
       vmImageResourceId: (() { final guardedValue = map['vmImageResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmImageSku: (() { final guardedValue = map['vmImageSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmImageVersion: (() { final guardedValue = map['vmImageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmInstanceCount: pulumi.Input.fromValue(map['vmInstanceCount'] as int),
+      vmInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmInstanceCount'])),
       vmManagedIdentity: (() { final guardedValue = map['vmManagedIdentity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmSecrets: (() { final guardedValue = map['vmSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VaultSecretGroup>(guardedValue, (value) => VaultSecretGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vmSetupActions: (() { final guardedValue = map['vmSetupActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      vmSetupActions: (() { final guardedValue = map['vmSetupActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       vmSharedGalleryImageId: (() { final guardedValue = map['vmSharedGalleryImageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmSize: (() { final guardedValue = map['vmSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

@@ -11,16 +11,16 @@ class SingleServerConfiguration {
   /// The application resource group where SAP system resources will be deployed.
   final pulumi.Input<String> appResourceGroup;
   /// The set of custom names to be used for underlying azure resources that are part of the SAP system.
-  final pulumi.Input<SingleServerFullResourceNames>? customResourceNames;
+  final pulumi.Input<SingleServerFullResourceNames?>? customResourceNames;
   /// The database type.
-  final pulumi.Input<String>? databaseType;
+  final pulumi.Input<dynamic>? databaseType;
   /// Gets or sets the disk configuration.
-  final pulumi.Input<DiskConfiguration>? dbDiskConfiguration;
+  final pulumi.Input<DiskConfiguration?>? dbDiskConfiguration;
   /// The type of SAP deployment, single server or Three tier.
   /// Expected value is 'SingleServer'.
   final pulumi.Input<String> deploymentType;
   /// Network configuration for the server
-  final pulumi.Input<NetworkConfiguration>? networkConfiguration;
+  final pulumi.Input<NetworkConfiguration?>? networkConfiguration;
   /// The subnet id.
   final pulumi.Input<String> subnetId;
   /// Gets or sets the virtual machine configuration.
@@ -63,7 +63,7 @@ class SingleServerConfiguration {
     return SingleServerConfiguration(
       appResourceGroup: pulumi.Input.fromValue(map['appResourceGroup'] as String),
       customResourceNames: (() { final guardedValue = map['customResourceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SingleServerFullResourceNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      databaseType: (() { final guardedValue = map['databaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dbDiskConfiguration: (() { final guardedValue = map['dbDiskConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deploymentType: pulumi.Input.fromValue(map['deploymentType'] as String),
       networkConfiguration: (() { final guardedValue = map['networkConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -9,7 +9,7 @@ class IntegrationRuntimeReference {
   /// Reference integration runtime name.
   final pulumi.Input<String> referenceName;
   /// Type of integration runtime.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [IntegrationRuntimeReference].
   /// [parameters] Arguments for integration runtime.
@@ -33,7 +33,7 @@ class IntegrationRuntimeReference {
     return IntegrationRuntimeReference(
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

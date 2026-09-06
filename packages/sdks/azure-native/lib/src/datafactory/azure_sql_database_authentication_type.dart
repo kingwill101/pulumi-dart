@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type used for authentication. Type: string.
-enum AzureSqlDatabaseAuthenticationType {
+enum AzureSqlDatabaseAuthenticationType implements pulumi.PulumiEnum<String> {
   sQL("SQL"),
   servicePrincipal("ServicePrincipal"),
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity");
 
   const AzureSqlDatabaseAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureSqlDatabaseAuthenticationType fromValue(String value) {

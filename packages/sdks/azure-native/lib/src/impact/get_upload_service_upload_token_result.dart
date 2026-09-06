@@ -4,23 +4,23 @@
 /// Result data returned by getUploadServiceUploadToken.
 class GetUploadServiceUploadTokenResult {
   /// The SAS token URL for uploading
-  final String uploadUrl;
+  final String? uploadUrl;
 
   /// Creates a new [GetUploadServiceUploadTokenResult].
   /// [uploadUrl] The SAS token URL for uploading
   const GetUploadServiceUploadTokenResult({
-    required this.uploadUrl,
+    this.uploadUrl,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'uploadUrl': uploadUrl,
+      'uploadUrl': ?uploadUrl,
     };
   }
 
   factory GetUploadServiceUploadTokenResult.fromMap(Map<String, dynamic> map) {
     return GetUploadServiceUploadTokenResult(
-      uploadUrl: map['uploadUrl'] as String,
+      uploadUrl: (() { final guardedValue = map['uploadUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

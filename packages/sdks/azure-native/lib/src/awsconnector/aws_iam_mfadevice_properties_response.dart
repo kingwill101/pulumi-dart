@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsIamMFADevice
 class AwsIamMFADevicePropertiesResponse {
   /// &lt;p&gt;The date when the MFA device was enabled for the user.&lt;/p&gt;
-  final pulumi.Input<String>? enableDate;
+  final pulumi.Input<String?>? enableDate;
   /// &lt;p&gt;The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.&lt;/p&gt;
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// &lt;p&gt;The user with whom the MFA device is associated.&lt;/p&gt;
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [AwsIamMFADevicePropertiesResponse].
   /// [enableDate] &lt;p&gt;The date when the MFA device was enabled for the user.&lt;/p&gt;

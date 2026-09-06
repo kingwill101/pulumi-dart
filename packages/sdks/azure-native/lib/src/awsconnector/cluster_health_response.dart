@@ -6,7 +6,7 @@ import 'cluster_issue_response.dart';
 /// Definition of ClusterHealth
 class ClusterHealthResponse {
   /// &lt;p&gt;An object representing the health issues of your local Amazon EKS cluster on an Amazon Web Services Outpost.&lt;/p&gt;
-  final pulumi.Input<List<ClusterIssueResponse>>? issues;
+  final pulumi.Input<List<ClusterIssueResponse>?>? issues;
 
   /// Creates a new [ClusterHealthResponse].
   /// [issues] &lt;p&gt;An object representing the health issues of your local Amazon EKS cluster on an Amazon Web Services Outpost.&lt;/p&gt;

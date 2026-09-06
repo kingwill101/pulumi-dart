@@ -6,9 +6,9 @@ import 'filter.dart';
 /// Definition of LoggingFilterModelProperties
 class LoggingFilterModelProperties {
   /// Default handling for logs that don't match any of the specified filtering conditions.
-  final pulumi.Input<String>? defaultBehavior;
+  final pulumi.Input<dynamic>? defaultBehavior;
   /// The filters that you want to apply to the logs.
-  final pulumi.Input<List<Filter>>? filters;
+  final pulumi.Input<List<Filter>?>? filters;
 
   /// Creates a new [LoggingFilterModelProperties].
   /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions.
@@ -27,7 +27,7 @@ class LoggingFilterModelProperties {
 
   factory LoggingFilterModelProperties.fromMap(Map<String, dynamic> map) {
     return LoggingFilterModelProperties(
-      defaultBehavior: (() { final guardedValue = map['defaultBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultBehavior: (() { final guardedValue = map['defaultBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Filter>(guardedValue, (value) => Filter.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

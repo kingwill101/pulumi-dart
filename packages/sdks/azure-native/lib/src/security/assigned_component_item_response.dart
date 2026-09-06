@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// describe the properties of a security assessment object reference (by key)
 class AssignedComponentItemResponse {
   /// unique key to a security assessment object
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [AssignedComponentItemResponse].
   /// [key] unique key to a security assessment object

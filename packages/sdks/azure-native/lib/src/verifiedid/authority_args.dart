@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_verifiedid_authority_args_doc}
 class AuthorityArgs {
   /// The ID of the authority
-  final pulumi.Input<String>? authorityName;
+  final pulumi.Input<String?>? authorityName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AuthorityArgs].
   /// [authorityName] The ID of the authority

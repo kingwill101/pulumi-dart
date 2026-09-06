@@ -13,37 +13,37 @@ import 'spending_limit_details_response.dart';
 /// A billing profile.
 class BillingProfilePropertiesResponse {
   /// Billing address.
-  final pulumi.Input<BillingProfilePropertiesBillToResponse>? billTo;
+  final pulumi.Input<BillingProfilePropertiesBillToResponse?>? billTo;
   /// Identifies the billing relationship represented by the billing profile. The billing relationship may be between Microsoft, the customer, and/or a third-party.
   final pulumi.Input<String> billingRelationshipType;
   /// The currency in which the charges for the billing profile are billed.
   final pulumi.Input<String> currency;
   /// The current payment term of the billing profile.
-  final pulumi.Input<BillingProfilePropertiesCurrentPaymentTermResponse>? currentPaymentTerm;
+  final pulumi.Input<BillingProfilePropertiesCurrentPaymentTermResponse?>? currentPaymentTerm;
   /// The name of the billing profile.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Information about the enabled azure plans.
-  final pulumi.Input<List<AzurePlanResponse>>? enabledAzurePlans;
+  final pulumi.Input<List<AzurePlanResponse>?>? enabledAzurePlans;
   /// Indicates whether user has read access to the billing profile.
   final pulumi.Input<bool> hasReadAccess;
   /// Identifies the billing profile that is linked to another billing profile in indirect purchase motion.
-  final pulumi.Input<BillingProfilePropertiesIndirectRelationshipInfoResponse>? indirectRelationshipInfo;
+  final pulumi.Input<BillingProfilePropertiesIndirectRelationshipInfoResponse?>? indirectRelationshipInfo;
   /// The day of the month when the invoice for the billing profile is generated.
   final pulumi.Input<int> invoiceDay;
   /// Flag controlling whether the invoices for the billing profile are sent through email.
-  final pulumi.Input<bool>? invoiceEmailOptIn;
+  final pulumi.Input<bool?>? invoiceEmailOptIn;
   /// The list of email addresses to receive invoices by email for the billing profile.
-  final pulumi.Input<List<String>>? invoiceRecipients;
+  final pulumi.Input<List<String>?>? invoiceRecipients;
   /// The other payment terms of the billing profile.
   final pulumi.Input<List<PaymentTermResponse>> otherPaymentTerms;
   /// The default purchase order number that will appear on the invoices generated for the billing profile.
-  final pulumi.Input<String>? poNumber;
+  final pulumi.Input<String?>? poNumber;
   /// The provisioning state of the resource during a long-running operation.
   final pulumi.Input<String> provisioningState;
   /// The default address where the products are shipped, or the services are being used. If a ship to is not specified for a product or a subscription, then this address will be used.
-  final pulumi.Input<BillingProfilePropertiesShipToResponse>? shipTo;
+  final pulumi.Input<BillingProfilePropertiesShipToResponse?>? shipTo;
   /// The address of the individual or organization that is responsible for the billing account.
-  final pulumi.Input<BillingProfilePropertiesSoldToResponse>? soldTo;
+  final pulumi.Input<BillingProfilePropertiesSoldToResponse?>? soldTo;
   /// The billing profile spending limit.
   final pulumi.Input<String> spendingLimit;
   /// The details of billing profile spending limit.
@@ -55,7 +55,7 @@ class BillingProfilePropertiesResponse {
   /// The system generated unique identifier for a billing profile.
   final pulumi.Input<String> systemId;
   /// Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Identifies the cloud environments that are associated with a billing profile. This is a system managed optional field and gets updated as the billing profile gets associated with accounts in various clouds.
   final pulumi.Input<List<String>> targetClouds;
 
@@ -147,7 +147,7 @@ class BillingProfilePropertiesResponse {
       enabledAzurePlans: (() { final guardedValue = map['enabledAzurePlans']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AzurePlanResponse>(guardedValue, (value) => AzurePlanResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       hasReadAccess: pulumi.Input.fromValue(map['hasReadAccess'] as bool),
       indirectRelationshipInfo: (() { final guardedValue = map['indirectRelationshipInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingProfilePropertiesIndirectRelationshipInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      invoiceDay: pulumi.Input.fromValue(map['invoiceDay'] as int),
+      invoiceDay: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['invoiceDay'])),
       invoiceEmailOptIn: (() { final guardedValue = map['invoiceEmailOptIn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       invoiceRecipients: (() { final guardedValue = map['invoiceRecipients']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       otherPaymentTerms: pulumi.Input.fromValue(pulumi.Input.decodeList<PaymentTermResponse>(map['otherPaymentTerms']!, (value) => PaymentTermResponse.fromMap((value as Map).cast<String, dynamic>()))),

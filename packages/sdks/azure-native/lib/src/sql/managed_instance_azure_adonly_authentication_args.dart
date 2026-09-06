@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_managed_instance_azure_adonly_authentication_args_doc}
 class ManagedInstanceAzureADOnlyAuthenticationArgs {
   /// The name of server azure active directory only authentication.
-  final pulumi.Input<String>? authenticationName;
+  final pulumi.Input<String?>? authenticationName;
   /// Azure Active Directory only Authentication enabled.
   final pulumi.Input<bool> azureADOnlyAuthentication;
   /// The name of the managed instance.

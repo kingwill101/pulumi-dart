@@ -7,13 +7,13 @@ import 'ipaddress_space.dart';
 /// VwanInfo for Firewall Networking
 class VwanConfiguration {
   /// IP of trust subnet for UDR
-  final pulumi.Input<IPAddress>? ipOfTrustSubnetForUdr;
+  final pulumi.Input<IPAddress?>? ipOfTrustSubnetForUdr;
   /// Network Virtual Appliance resource ID
-  final pulumi.Input<String>? networkVirtualApplianceId;
+  final pulumi.Input<String?>? networkVirtualApplianceId;
   /// Trust Subnet
-  final pulumi.Input<IPAddressSpace>? trustSubnet;
+  final pulumi.Input<IPAddressSpace?>? trustSubnet;
   /// Untrust Subnet
-  final pulumi.Input<IPAddressSpace>? unTrustSubnet;
+  final pulumi.Input<IPAddressSpace?>? unTrustSubnet;
   /// vHub Address
   final pulumi.Input<IPAddressSpace> vHub;
 

@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'signing_key_response.dart';
+import 'sub_resource_response.dart';
 import 'system_data_response.dart';
 import 'zone_args.dart';
 
@@ -186,11 +188,11 @@ class Zone extends pulumi.CustomResource {
   /// The current number of record sets in this DNS zone.  This is a read-only property and any attempt to set this value will be ignored.
   late final pulumi.Output<double> numberOfRecordSets;
   /// A list of references to virtual networks that register hostnames in this DNS zone. This is a only when ZoneType is Private.
-  late final pulumi.Output<List<Map<String, dynamic>>?> registrationVirtualNetworks;
+  late final pulumi.Output<List<SubResourceResponse>?> registrationVirtualNetworks;
   /// A list of references to virtual networks that resolve records in this DNS zone. This is a only when ZoneType is Private.
-  late final pulumi.Output<List<Map<String, dynamic>>?> resolutionVirtualNetworks;
+  late final pulumi.Output<List<SubResourceResponse>?> resolutionVirtualNetworks;
   /// The list of signing keys.
-  late final pulumi.Output<List<Map<String, dynamic>>> signingKeys;
+  late final pulumi.Output<List<SigningKeyResponse>> signingKeys;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// Resource tags.
@@ -220,13 +222,39 @@ class Zone extends pulumi.CustomResource {
     maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
     maxNumberOfRecordsPerRecordSet = registerOutput<double>('maxNumberOfRecordsPerRecordSet');
     this.name = registerOutput<String>('name');
-    nameServers = registerOutput<List<String>>('nameServers');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
-    registrationVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>('registrationVirtualNetworks');
-    resolutionVirtualNetworks = registerOutput<List<Map<String, dynamic>>?>('resolutionVirtualNetworks');
-    signingKeys = registerOutput<List<Map<String, dynamic>>>('signingKeys');
+    registrationVirtualNetworks = registerOutput<List<SubResourceResponse>?>('registrationVirtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resolutionVirtualNetworks = registerOutput<List<SubResourceResponse>?>('resolutionVirtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    signingKeys = registerOutput<List<SigningKeyResponse>>('signingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SigningKeyResponse>(guardedValue, (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zoneType = registerOutput<String?>('zoneType');
+  }
+
+  /// Creates a typed reference to an existing [Zone] resource.
+  Zone.reference(String urn)
+    : super(
+        'azure-native:dns:Zone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String>('location');
+    maxNumberOfRecordSets = registerOutput<double>('maxNumberOfRecordSets');
+    maxNumberOfRecordsPerRecordSet = registerOutput<double>('maxNumberOfRecordsPerRecordSet');
+    this.name = registerOutput<String>('name');
+    nameServers = registerOutput<List<String>>('nameServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    numberOfRecordSets = registerOutput<double>('numberOfRecordSets');
+    registrationVirtualNetworks = registerOutput<List<SubResourceResponse>?>('registrationVirtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resolutionVirtualNetworks = registerOutput<List<SubResourceResponse>?>('resolutionVirtualNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    signingKeys = registerOutput<List<SigningKeyResponse>>('signingKeys', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SigningKeyResponse>(guardedValue, (value) => SigningKeyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     zoneType = registerOutput<String?>('zoneType');
   }

@@ -8,7 +8,7 @@ class IoTEdgeAgentInfoResponse {
   /// Name of the IoT edge agent image.
   final pulumi.Input<String> imageName;
   /// Image repository details.
-  final pulumi.Input<ImageRepositoryCredentialResponse>? imageRepository;
+  final pulumi.Input<ImageRepositoryCredentialResponse?>? imageRepository;
   /// Image Tag.
   final pulumi.Input<String> tag;
 

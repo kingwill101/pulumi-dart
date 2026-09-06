@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration properties for mutual TLS authentication
 class Mtls {
   /// Boolean indicating whether the mutual TLS authentication is enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [Mtls].
   /// [enabled] Boolean indicating whether the mutual TLS authentication is enabled

@@ -7,35 +7,35 @@ import 'volume_backups_response.dart';
 /// Result data returned by getBackupPolicy.
 class GetBackupPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Backup Policy GUID ID
-  final String backupPolicyId;
+  final String? backupPolicyId;
   /// Daily backups count to keep
   final int? dailyBackupsToKeep;
   /// The property to decide policy is enabled or not
   final bool? enabled;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Monthly backups count to keep
   final int? monthlyBackupsToKeep;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Azure lifecycle management
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// A list of volumes assigned to this policy
-  final List<VolumeBackupsResponse> volumeBackups;
+  final List<VolumeBackupsResponse>? volumeBackups;
   /// Volumes using current backup policy
-  final int volumesAssigned;
+  final int? volumesAssigned;
   /// Weekly backups count to keep
   final int? weeklyBackupsToKeep;
 
@@ -57,63 +57,63 @@ class GetBackupPolicyResult {
   /// [volumesAssigned] Volumes using current backup policy
   /// [weeklyBackupsToKeep] Weekly backups count to keep
   const GetBackupPolicyResult({
-    required this.azureApiVersion,
-    required this.backupPolicyId,
+    this.azureApiVersion,
+    this.backupPolicyId,
     this.dailyBackupsToKeep,
     this.enabled,
-    required this.etag,
-    required this.id,
-    required this.location,
+    this.etag,
+    this.id,
+    this.location,
     this.monthlyBackupsToKeep,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.volumeBackups,
-    required this.volumesAssigned,
+    this.type,
+    this.volumeBackups,
+    this.volumesAssigned,
     this.weeklyBackupsToKeep,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'backupPolicyId': backupPolicyId,
+      'azureApiVersion': ?azureApiVersion,
+      'backupPolicyId': ?backupPolicyId,
       'dailyBackupsToKeep': ?dailyBackupsToKeep,
       'enabled': ?enabled,
-      'etag': etag,
-      'id': id,
-      'location': location,
+      'etag': ?etag,
+      'id': ?id,
+      'location': ?location,
       'monthlyBackupsToKeep': ?monthlyBackupsToKeep,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'volumeBackups': pulumi.Input.encodeList<VolumeBackupsResponse, Map<String, dynamic>>(volumeBackups, (value) => value.toMap()),
-      'volumesAssigned': volumesAssigned,
+      'type': ?type,
+      'volumeBackups': ?(() { final guardedValue = volumeBackups; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeBackupsResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'volumesAssigned': ?volumesAssigned,
       'weeklyBackupsToKeep': ?weeklyBackupsToKeep,
     };
   }
 
   factory GetBackupPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetBackupPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      backupPolicyId: map['backupPolicyId'] as String,
-      dailyBackupsToKeep: (() { final guardedValue = map['dailyBackupsToKeep']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      backupPolicyId: (() { final guardedValue = map['backupPolicyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      dailyBackupsToKeep: (() { final guardedValue = map['dailyBackupsToKeep']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      monthlyBackupsToKeep: (() { final guardedValue = map['monthlyBackupsToKeep']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      monthlyBackupsToKeep: (() { final guardedValue = map['monthlyBackupsToKeep']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      volumeBackups: pulumi.Input.decodeList<VolumeBackupsResponse>(map['volumeBackups']!, (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())),
-      volumesAssigned: map['volumesAssigned'] as int,
-      weeklyBackupsToKeep: (() { final guardedValue = map['weeklyBackupsToKeep']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumeBackups: (() { final guardedValue = map['volumeBackups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeBackupsResponse>(guardedValue, (value) => VolumeBackupsResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      volumesAssigned: (() { final guardedValue = map['volumesAssigned']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      weeklyBackupsToKeep: (() { final guardedValue = map['weeklyBackupsToKeep']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

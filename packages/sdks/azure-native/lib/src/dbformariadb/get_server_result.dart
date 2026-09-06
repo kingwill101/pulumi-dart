@@ -10,23 +10,23 @@ class GetServerResult {
   /// The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   final String? administratorLogin;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Earliest restore point creation time (ISO8601 format)
   final String? earliestRestoreDate;
   /// The fully qualified domain name of a server.
   final String? fullyQualifiedDomainName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The master server id of a replica server.
   final String? masterServerId;
   /// Enforce a minimal Tls version for the server.
   final String? minimalTlsVersion;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// List of private endpoint connections on a server
-  final List<ServerPrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<ServerPrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   final String? publicNetworkAccess;
   /// The maximum number of replicas that a master server can have.
@@ -42,7 +42,7 @@ class GetServerResult {
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// A state of a server that is visible to user.
   final String? userVisibleState;
   /// Server version.
@@ -71,15 +71,15 @@ class GetServerResult {
   /// [version] Server version.
   const GetServerResult({
     this.administratorLogin,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.earliestRestoreDate,
     this.fullyQualifiedDomainName,
-    required this.id,
-    required this.location,
+    this.id,
+    this.location,
     this.masterServerId,
     this.minimalTlsVersion,
-    required this.name,
-    required this.privateEndpointConnections,
+    this.name,
+    this.privateEndpointConnections,
     this.publicNetworkAccess,
     this.replicaCapacity,
     this.replicationRole,
@@ -87,7 +87,7 @@ class GetServerResult {
     this.sslEnforcement,
     this.storageProfile,
     this.tags,
-    required this.type,
+    this.type,
     this.userVisibleState,
     this.version,
   });
@@ -95,15 +95,15 @@ class GetServerResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'administratorLogin': ?administratorLogin,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'earliestRestoreDate': ?earliestRestoreDate,
       'fullyQualifiedDomainName': ?fullyQualifiedDomainName,
-      'id': id,
-      'location': location,
+      'id': ?id,
+      'location': ?location,
       'masterServerId': ?masterServerId,
       'minimalTlsVersion': ?minimalTlsVersion,
-      'name': name,
-      'privateEndpointConnections': pulumi.Input.encodeList<ServerPrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
+      'name': ?name,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ServerPrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'publicNetworkAccess': ?publicNetworkAccess,
       'replicaCapacity': ?replicaCapacity,
       'replicationRole': ?replicationRole,
@@ -111,7 +111,7 @@ class GetServerResult {
       'sslEnforcement': ?sslEnforcement,
       'storageProfile': ?storageProfile?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'userVisibleState': ?userVisibleState,
       'version': ?version,
     };
@@ -120,23 +120,23 @@ class GetServerResult {
   factory GetServerResult.fromMap(Map<String, dynamic> map) {
     return GetServerResult(
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       earliestRestoreDate: (() { final guardedValue = map['earliestRestoreDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fullyQualifiedDomainName: (() { final guardedValue = map['fullyQualifiedDomainName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       masterServerId: (() { final guardedValue = map['masterServerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       minimalTlsVersion: (() { final guardedValue = map['minimalTlsVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      privateEndpointConnections: pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerPrivateEndpointConnectionResponse>(guardedValue, (value) => ServerPrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      replicaCapacity: (() { final guardedValue = map['replicaCapacity']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      replicaCapacity: (() { final guardedValue = map['replicaCapacity']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       replicationRole: (() { final guardedValue = map['replicationRole']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sslEnforcement: (() { final guardedValue = map['sslEnforcement']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return StorageProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userVisibleState: (() { final guardedValue = map['userVisibleState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

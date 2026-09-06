@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of the application rule protocol.
 class FirewallPolicyRuleConditionApplicationProtocolResponse {
   /// Port number for the protocol, cannot be greater than 64000.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Protocol type.
-  final pulumi.Input<String>? protocolType;
+  final pulumi.Input<String?>? protocolType;
 
   /// Creates a new [FirewallPolicyRuleConditionApplicationProtocolResponse].
   /// [port] Port number for the protocol, cannot be greater than 64000.
@@ -26,7 +26,7 @@ class FirewallPolicyRuleConditionApplicationProtocolResponse {
 
   factory FirewallPolicyRuleConditionApplicationProtocolResponse.fromMap(Map<String, dynamic> map) {
     return FirewallPolicyRuleConditionApplicationProtocolResponse(
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocolType: (() { final guardedValue = map['protocolType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -6,13 +6,13 @@ import 'flow_access_control_configuration_policy.dart';
 /// The access control configuration.
 class FlowAccessControlConfiguration {
   /// The access control configuration for workflow actions.
-  final pulumi.Input<FlowAccessControlConfigurationPolicy>? actions;
+  final pulumi.Input<FlowAccessControlConfigurationPolicy?>? actions;
   /// The access control configuration for accessing workflow run contents.
-  final pulumi.Input<FlowAccessControlConfigurationPolicy>? contents;
+  final pulumi.Input<FlowAccessControlConfigurationPolicy?>? contents;
   /// The access control configuration for invoking workflow triggers.
-  final pulumi.Input<FlowAccessControlConfigurationPolicy>? triggers;
+  final pulumi.Input<FlowAccessControlConfigurationPolicy?>? triggers;
   /// The access control configuration for workflow management.
-  final pulumi.Input<FlowAccessControlConfigurationPolicy>? workflowManagement;
+  final pulumi.Input<FlowAccessControlConfigurationPolicy?>? workflowManagement;
 
   /// Creates a new [FlowAccessControlConfiguration].
   /// [actions] The access control configuration for workflow actions.

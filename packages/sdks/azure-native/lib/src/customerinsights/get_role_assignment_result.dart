@@ -7,9 +7,9 @@ import 'resource_set_description_response.dart';
 /// Result data returned by getRoleAssignment.
 class GetRoleAssignmentResult {
   /// The name of the metadata object.
-  final String assignmentName;
+  final String? assignmentName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Widget types set for the assignment.
   final ResourceSetDescriptionResponse? conflationPolicies;
   /// Connectors set for the assignment.
@@ -19,7 +19,7 @@ class GetRoleAssignmentResult {
   /// Localized display names for the metadata.
   final Map<String, String>? displayName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Interactions set for the assignment.
   final ResourceSetDescriptionResponse? interactions;
   /// Kpis set for the assignment.
@@ -27,19 +27,19 @@ class GetRoleAssignmentResult {
   /// Links set for the assignment.
   final ResourceSetDescriptionResponse? links;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The principals being assigned to.
-  final List<AssignmentPrincipalResponse> principals;
+  final List<AssignmentPrincipalResponse>? principals;
   /// Profiles set for the assignment.
   final ResourceSetDescriptionResponse? profiles;
   /// Provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The Role assignments set for the relationship links.
   final ResourceSetDescriptionResponse? relationshipLinks;
   /// The Role assignments set for the relationships.
   final ResourceSetDescriptionResponse? relationships;
   /// Type of roles.
-  final String role;
+  final String? role;
   /// The Role assignments set for the assignment.
   final ResourceSetDescriptionResponse? roleAssignments;
   /// Sas Policies set for the assignment.
@@ -47,9 +47,9 @@ class GetRoleAssignmentResult {
   /// The Role assignments set for the assignment.
   final ResourceSetDescriptionResponse? segments;
   /// The hub name.
-  final String tenantId;
+  final String? tenantId;
   /// Resource type.
-  final String type;
+  final String? type;
   /// Views set for the assignment.
   final ResourceSetDescriptionResponse? views;
   /// Widget types set for the assignment.
@@ -81,56 +81,56 @@ class GetRoleAssignmentResult {
   /// [views] Views set for the assignment.
   /// [widgetTypes] Widget types set for the assignment.
   const GetRoleAssignmentResult({
-    required this.assignmentName,
-    required this.azureApiVersion,
+    this.assignmentName,
+    this.azureApiVersion,
     this.conflationPolicies,
     this.connectors,
     this.description,
     this.displayName,
-    required this.id,
+    this.id,
     this.interactions,
     this.kpis,
     this.links,
-    required this.name,
-    required this.principals,
+    this.name,
+    this.principals,
     this.profiles,
-    required this.provisioningState,
+    this.provisioningState,
     this.relationshipLinks,
     this.relationships,
-    required this.role,
+    this.role,
     this.roleAssignments,
     this.sasPolicies,
     this.segments,
-    required this.tenantId,
-    required this.type,
+    this.tenantId,
+    this.type,
     this.views,
     this.widgetTypes,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assignmentName': assignmentName,
-      'azureApiVersion': azureApiVersion,
+      'assignmentName': ?assignmentName,
+      'azureApiVersion': ?azureApiVersion,
       'conflationPolicies': ?conflationPolicies?.toMap(),
       'connectors': ?connectors?.toMap(),
       'description': ?description,
       'displayName': ?displayName,
-      'id': id,
+      'id': ?id,
       'interactions': ?interactions?.toMap(),
       'kpis': ?kpis?.toMap(),
       'links': ?links?.toMap(),
-      'name': name,
-      'principals': pulumi.Input.encodeList<AssignmentPrincipalResponse, Map<String, dynamic>>(principals, (value) => value.toMap()),
+      'name': ?name,
+      'principals': ?(() { final guardedValue = principals; if (guardedValue == null) return null; return pulumi.Input.encodeList<AssignmentPrincipalResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'profiles': ?profiles?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'relationshipLinks': ?relationshipLinks?.toMap(),
       'relationships': ?relationships?.toMap(),
-      'role': role,
+      'role': ?role,
       'roleAssignments': ?roleAssignments?.toMap(),
       'sasPolicies': ?sasPolicies?.toMap(),
       'segments': ?segments?.toMap(),
-      'tenantId': tenantId,
-      'type': type,
+      'tenantId': ?tenantId,
+      'type': ?type,
       'views': ?views?.toMap(),
       'widgetTypes': ?widgetTypes?.toMap(),
     };
@@ -138,28 +138,28 @@ class GetRoleAssignmentResult {
 
   factory GetRoleAssignmentResult.fromMap(Map<String, dynamic> map) {
     return GetRoleAssignmentResult(
-      assignmentName: map['assignmentName'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
+      assignmentName: (() { final guardedValue = map['assignmentName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       conflationPolicies: (() { final guardedValue = map['conflationPolicies']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       connectors: (() { final guardedValue = map['connectors']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       interactions: (() { final guardedValue = map['interactions']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kpis: (() { final guardedValue = map['kpis']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       links: (() { final guardedValue = map['links']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      name: map['name'] as String,
-      principals: pulumi.Input.decodeList<AssignmentPrincipalResponse>(map['principals']!, (value) => AssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      principals: (() { final guardedValue = map['principals']; if (guardedValue == null) return null; return pulumi.Input.decodeList<AssignmentPrincipalResponse>(guardedValue, (value) => AssignmentPrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       profiles: (() { final guardedValue = map['profiles']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       relationshipLinks: (() { final guardedValue = map['relationshipLinks']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       relationships: (() { final guardedValue = map['relationships']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      role: map['role'] as String,
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return guardedValue as String; })(),
       roleAssignments: (() { final guardedValue = map['roleAssignments']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sasPolicies: (() { final guardedValue = map['sasPolicies']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       segments: (() { final guardedValue = map['segments']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       views: (() { final guardedValue = map['views']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       widgetTypes: (() { final guardedValue = map['widgetTypes']; if (guardedValue == null) return null; return ResourceSetDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );

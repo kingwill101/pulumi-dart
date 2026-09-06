@@ -82,7 +82,7 @@ class ServerEndpointCloudTieringStatusResponse {
       filesNotTiering: pulumi.Input.fromValue(CloudTieringFilesNotTieringResponse.fromMap((map['filesNotTiering']! as Map).cast<String, dynamic>())),
       health: pulumi.Input.fromValue(map['health'] as String),
       healthLastUpdatedTimestamp: pulumi.Input.fromValue(map['healthLastUpdatedTimestamp'] as String),
-      lastCloudTieringResult: pulumi.Input.fromValue(map['lastCloudTieringResult'] as int),
+      lastCloudTieringResult: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lastCloudTieringResult'])),
       lastSuccessTimestamp: pulumi.Input.fromValue(map['lastSuccessTimestamp'] as String),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
       lowDiskMode: pulumi.Input.fromValue(CloudTieringLowDiskModeResponse.fromMap((map['lowDiskMode']! as Map).cast<String, dynamic>())),

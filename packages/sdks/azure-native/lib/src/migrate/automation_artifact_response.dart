@@ -6,12 +6,12 @@ import 'azure_file_share_hydration_profile_response.dart';
 /// Class for automation artifact.
 class AutomationArtifactResponse {
   /// Gets or sets the artifacts.
-  final pulumi.Input<Map<String, String>>? artifacts;
+  final pulumi.Input<Map<String, String>?>? artifacts;
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final pulumi.Input<AzureFileShareHydrationProfileResponse>? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfileResponse?>? azureFileShareProfile;
   /// Gets or sets the status of automation artifacts.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [AutomationArtifactResponse].
   /// [artifacts] Gets or sets the artifacts.

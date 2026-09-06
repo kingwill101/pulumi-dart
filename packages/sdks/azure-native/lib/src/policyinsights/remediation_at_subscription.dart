@@ -685,4 +685,32 @@ class RemediationAtSubscription extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [RemediationAtSubscription] resource.
+  RemediationAtSubscription.reference(String urn)
+    : super(
+        'azure-native:policyinsights:RemediationAtSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    correlationId = registerOutput<String>('correlationId');
+    createdOn = registerOutput<String>('createdOn');
+    deploymentStatus = registerOutput<RemediationDeploymentSummaryResponse>('deploymentStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationDeploymentSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failureThreshold = registerOutput<RemediationPropertiesFailureThresholdResponse?>('failureThreshold', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationPropertiesFailureThresholdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    filters = registerOutput<RemediationFiltersResponse?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RemediationFiltersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastUpdatedOn = registerOutput<String>('lastUpdatedOn');
+    this.name = registerOutput<String>('name');
+    parallelDeployments = registerOutput<int?>('parallelDeployments');
+    policyAssignmentId = registerOutput<String?>('policyAssignmentId');
+    policyDefinitionReferenceId = registerOutput<String?>('policyDefinitionReferenceId');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceCount = registerOutput<int?>('resourceCount');
+    resourceDiscoveryMode = registerOutput<String?>('resourceDiscoveryMode');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a Virtual Network subnet
 class VirtualNetworkSubnetArmReference {
   /// The Azure Resource ID for a Virtual Network subnet.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [VirtualNetworkSubnetArmReference].
   /// [resourceId] The Azure Resource ID for a Virtual Network subnet.

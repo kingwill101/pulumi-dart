@@ -6,9 +6,9 @@ import 'helm_mapping_rule_profile_response.dart';
 /// Azure arc kubernetes deploy mapping rule profile.
 class AzureArcKubernetesDeployMappingRuleProfileResponse {
   /// The application enablement.
-  final pulumi.Input<String>? applicationEnablement;
+  final pulumi.Input<String?>? applicationEnablement;
   /// The helm mapping rule profile.
-  final pulumi.Input<HelmMappingRuleProfileResponse>? helmMappingRuleProfile;
+  final pulumi.Input<HelmMappingRuleProfileResponse?>? helmMappingRuleProfile;
 
   /// Creates a new [AzureArcKubernetesDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.

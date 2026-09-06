@@ -6,9 +6,9 @@ import 'severity_summary_response.dart';
 /// Definition of NonCompliantSummary
 class NonCompliantSummaryResponse {
   /// &lt;p&gt;The total number of compliance items that aren't compliant.&lt;/p&gt;
-  final pulumi.Input<int>? nonCompliantCount;
+  final pulumi.Input<int?>? nonCompliantCount;
   /// &lt;p&gt;A summary of the non-compliance severity by compliance type&lt;/p&gt;
-  final pulumi.Input<SeveritySummaryResponse>? severitySummary;
+  final pulumi.Input<SeveritySummaryResponse?>? severitySummary;
 
   /// Creates a new [NonCompliantSummaryResponse].
   /// [nonCompliantCount] &lt;p&gt;The total number of compliance items that aren't compliant.&lt;/p&gt;
@@ -27,7 +27,7 @@ class NonCompliantSummaryResponse {
 
   factory NonCompliantSummaryResponse.fromMap(Map<String, dynamic> map) {
     return NonCompliantSummaryResponse(
-      nonCompliantCount: (() { final guardedValue = map['nonCompliantCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      nonCompliantCount: (() { final guardedValue = map['nonCompliantCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       severitySummary: (() { final guardedValue = map['severitySummary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SeveritySummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

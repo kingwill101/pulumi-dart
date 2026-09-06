@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The agent that initiated the event. For most situations, this could be from the authorization context of the request.
 class ActorResponse {
   /// The subject or username associated with the request context that generated the event.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ActorResponse].
   /// [name] The subject or username associated with the request context that generated the event.

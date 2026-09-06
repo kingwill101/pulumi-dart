@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether to enable incremental data refresh.
-enum IncrementalDataRefresh {
+enum IncrementalDataRefresh implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const IncrementalDataRefresh(this.wireValue);
+  @override
   final String wireValue;
 
   static IncrementalDataRefresh fromValue(String value) {

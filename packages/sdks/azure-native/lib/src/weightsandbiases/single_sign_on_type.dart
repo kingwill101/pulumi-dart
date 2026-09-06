@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of Single Sign-On mechanism being used
-enum SingleSignOnType {
+enum SingleSignOnType implements pulumi.PulumiEnum<String> {
   saml("Saml"),
   openId("OpenId");
 
   const SingleSignOnType(this.wireValue);
+  @override
   final String wireValue;
 
   static SingleSignOnType fromValue(String value) {

@@ -21,11 +21,11 @@ import 'setup_scripts_response.dart';
 /// Compute Instance properties
 class ComputeInstancePropertiesResponse {
   /// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-  final pulumi.Input<String>? applicationSharingPolicy;
+  final pulumi.Input<String?>? applicationSharingPolicy;
   /// Describes available applications and their endpoints on this ComputeInstance.
   final pulumi.Input<List<ComputeInstanceApplicationResponse>> applications;
   /// The Compute Instance Authorization type. Available values are personal (default).
-  final pulumi.Input<String>? computeInstanceAuthorizationType;
+  final pulumi.Input<String?>? computeInstanceAuthorizationType;
   /// Describes all connectivity endpoints available for this ComputeInstance.
   final pulumi.Input<ComputeInstanceConnectivityEndpointsResponse> connectivityEndpoints;
   /// Describes informations of containers on this ComputeInstance.
@@ -33,39 +33,39 @@ class ComputeInstancePropertiesResponse {
   /// Describes information on user who created this ComputeInstance.
   final pulumi.Input<ComputeInstanceCreatedByResponse> createdBy;
   /// List of Custom Services added to the compute.
-  final pulumi.Input<List<CustomServiceResponse>>? customServices;
+  final pulumi.Input<List<CustomServiceResponse>?>? customServices;
   /// Describes informations of dataDisks on this ComputeInstance.
   final pulumi.Input<List<ComputeInstanceDataDiskResponse>> dataDisks;
   /// Describes informations of dataMounts on this ComputeInstance.
   final pulumi.Input<List<ComputeInstanceDataMountResponse>> dataMounts;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final pulumi.Input<bool>? enableNodePublicIp;
+  final pulumi.Input<bool?>? enableNodePublicIp;
   /// Enable SSO (single sign on). Possible values are: true, false.
-  final pulumi.Input<bool>? enableSSO;
+  final pulumi.Input<bool?>? enableSSO;
   /// Collection of errors encountered on this ComputeInstance.
   final pulumi.Input<List<ErrorResponseResponse>> errors;
   /// Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
-  final pulumi.Input<String>? idleTimeBeforeShutdown;
+  final pulumi.Input<String?>? idleTimeBeforeShutdown;
   /// The last operation on ComputeInstance.
   final pulumi.Input<ComputeInstanceLastOperationResponse> lastOperation;
   /// Returns metadata about the operating system image for this compute instance.
   final pulumi.Input<ImageMetadataResponse> osImageMetadata;
   /// Settings for a personal compute instance.
-  final pulumi.Input<PersonalComputeInstanceSettingsResponse>? personalComputeInstanceSettings;
+  final pulumi.Input<PersonalComputeInstanceSettingsResponse?>? personalComputeInstanceSettings;
   /// The list of schedules to be applied on the computes.
-  final pulumi.Input<ComputeSchedulesResponse>? schedules;
+  final pulumi.Input<ComputeSchedulesResponse?>? schedules;
   /// Details of customized scripts to execute for setting up the cluster.
-  final pulumi.Input<SetupScriptsResponse>? setupScripts;
+  final pulumi.Input<SetupScriptsResponse?>? setupScripts;
   /// Specifies policy and settings for SSH access.
-  final pulumi.Input<ComputeInstanceSshSettingsResponse>? sshSettings;
+  final pulumi.Input<ComputeInstanceSshSettingsResponse?>? sshSettings;
   /// The current state of this ComputeInstance.
   final pulumi.Input<String> state;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final pulumi.Input<ResourceIdResponse>? subnet;
+  final pulumi.Input<ResourceIdResponse?>? subnet;
   /// ComputeInstance version.
   final pulumi.Input<ComputeInstanceVersionResponse> versions;
   /// Virtual Machine Size
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [ComputeInstancePropertiesResponse].
   /// [applicationSharingPolicy] Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -91,10 +91,10 @@ class ComputeInstancePropertiesResponse {
   /// [subnet] Virtual network subnet resource ID the compute nodes belong to.
   /// [versions] ComputeInstance version.
   /// [vmSize] Virtual Machine Size
-  const ComputeInstancePropertiesResponse({
-    this.applicationSharingPolicy,
+  ComputeInstancePropertiesResponse({
+    pulumi.Input<String?>? applicationSharingPolicy,
     required this.applications,
-    this.computeInstanceAuthorizationType,
+    pulumi.Input<String?>? computeInstanceAuthorizationType,
     required this.connectivityEndpoints,
     required this.containers,
     required this.createdBy,
@@ -102,7 +102,7 @@ class ComputeInstancePropertiesResponse {
     required this.dataDisks,
     required this.dataMounts,
     this.enableNodePublicIp,
-    this.enableSSO,
+    pulumi.Input<bool?>? enableSSO,
     required this.errors,
     this.idleTimeBeforeShutdown,
     required this.lastOperation,
@@ -115,7 +115,7 @@ class ComputeInstancePropertiesResponse {
     this.subnet,
     required this.versions,
     this.vmSize,
-  });
+  }) : applicationSharingPolicy = applicationSharingPolicy ?? pulumi.Input.fromValue('Shared'), computeInstanceAuthorizationType = computeInstanceAuthorizationType ?? pulumi.Input.fromValue('personal'), enableSSO = enableSSO ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

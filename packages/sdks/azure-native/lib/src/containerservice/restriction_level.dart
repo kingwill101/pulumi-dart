@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-enum RestrictionLevel {
+enum RestrictionLevel implements pulumi.PulumiEnum<String> {
   valueUnrestricted("Unrestricted"),
   valueReadOnly("ReadOnly");
 
   const RestrictionLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static RestrictionLevel fromValue(String value) {

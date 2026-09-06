@@ -237,4 +237,27 @@ class KustoPoolPrincipalAssignment extends pulumi.CustomResource {
     tenantName = registerOutput<String>('tenantName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [KustoPoolPrincipalAssignment] resource.
+  KustoPoolPrincipalAssignment.reference(String urn)
+    : super(
+        'azure-native:synapse:KustoPoolPrincipalAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aadObjectId = registerOutput<String>('aadObjectId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    principalId = registerOutput<String>('principalId');
+    principalName = registerOutput<String>('principalName');
+    principalType = registerOutput<String>('principalType');
+    provisioningState = registerOutput<String>('provisioningState');
+    role = registerOutput<String>('role');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String?>('tenantId');
+    tenantName = registerOutput<String>('tenantName');
+    type = registerOutput<String>('type');
+  }
 }

@@ -9,9 +9,9 @@ class ScheduledActionPropertiesResponse {
   /// The action the scheduled action should perform in the resources
   final pulumi.Input<String> actionType;
   /// Tell if the scheduled action is disabled or not
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
   /// The time when the scheduled action is supposed to stop scheduling
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// The notification settings for the scheduled action
   final pulumi.Input<List<NotificationPropertiesResponse>> notificationSettings;
   /// The status of the last provisioning operation performed on the resource.
@@ -32,16 +32,16 @@ class ScheduledActionPropertiesResponse {
   /// [resourceType] The type of resource the scheduled action is targeting
   /// [schedule] The schedule the scheduled action is supposed to follow
   /// [startTime] The time which the scheduled action is supposed to start running
-  const ScheduledActionPropertiesResponse({
+  ScheduledActionPropertiesResponse({
     required this.actionType,
-    this.disabled,
+    pulumi.Input<bool?>? disabled,
     this.endTime,
     required this.notificationSettings,
     required this.provisioningState,
     required this.resourceType,
     required this.schedule,
     required this.startTime,
-  });
+  }) : disabled = disabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

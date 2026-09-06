@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName.
-enum ServiceCorrelationScheme {
+enum ServiceCorrelationScheme implements pulumi.PulumiEnum<String> {
   valueAlignedAffinity("AlignedAffinity"),
   valueNonAlignedAffinity("NonAlignedAffinity");
 
   const ServiceCorrelationScheme(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceCorrelationScheme fromValue(String value) {

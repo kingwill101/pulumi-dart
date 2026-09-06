@@ -7,9 +7,9 @@ import 'network_interface.dart';
 /// The network profile definition.
 class NetworkProfile {
   /// Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
   /// Specifies the identifier of the subnet.
-  final pulumi.Input<ApiEntityReference>? subnet;
+  final pulumi.Input<ApiEntityReference?>? subnet;
 
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.

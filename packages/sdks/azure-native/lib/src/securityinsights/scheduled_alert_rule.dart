@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'alert_details_override_response.dart';
+import 'entity_mapping_response.dart';
 import 'event_grouping_settings_response.dart';
 import 'incident_configuration_response.dart';
 import 'scheduled_alert_rule_args.dart';
@@ -936,7 +937,7 @@ class ScheduledAlertRule extends pulumi.CustomResource {
   /// Determines whether this alert rule is enabled or disabled.
   late final pulumi.Output<bool> enabled;
   /// Array of the entity mappings of the alert rule
-  late final pulumi.Output<List<Map<String, dynamic>>?> entityMappings;
+  late final pulumi.Output<List<EntityMappingResponse>?> entityMappings;
   /// Etag of the azure resource
   late final pulumi.Output<String?> etag;
   /// The event grouping settings.
@@ -994,11 +995,11 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     alertDetailsOverride = registerOutput<AlertDetailsOverrideResponse?>('alertDetailsOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertDetailsOverrideResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    customDetails = registerOutput<Map<String, String>?>('customDetails');
+    customDetails = registerOutput<Map<String, String>?>('customDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
-    entityMappings = registerOutput<List<Map<String, dynamic>>?>('entityMappings');
+    entityMappings = registerOutput<List<EntityMappingResponse>?>('entityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityMappingResponse>(guardedValue, (value) => EntityMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     etag = registerOutput<String?>('etag');
     eventGroupingSettings = registerOutput<EventGroupingSettingsResponse?>('eventGroupingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGroupingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     incidentConfiguration = registerOutput<IncidentConfigurationResponse?>('incidentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -1012,8 +1013,46 @@ class ScheduledAlertRule extends pulumi.CustomResource {
     suppressionDuration = registerOutput<String>('suppressionDuration');
     suppressionEnabled = registerOutput<bool>('suppressionEnabled');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tactics = registerOutput<List<String>?>('tactics');
-    techniques = registerOutput<List<String>?>('techniques');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    templateVersion = registerOutput<String?>('templateVersion');
+    triggerOperator = registerOutput<String>('triggerOperator');
+    triggerThreshold = registerOutput<int>('triggerThreshold');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ScheduledAlertRule] resource.
+  ScheduledAlertRule.reference(String urn)
+    : super(
+        'azure-native:securityinsights:ScheduledAlertRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alertDetailsOverride = registerOutput<AlertDetailsOverrideResponse?>('alertDetailsOverride', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertDetailsOverrideResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    alertRuleTemplateName = registerOutput<String?>('alertRuleTemplateName');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customDetails = registerOutput<Map<String, String>?>('customDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    entityMappings = registerOutput<List<EntityMappingResponse>?>('entityMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntityMappingResponse>(guardedValue, (value) => EntityMappingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    etag = registerOutput<String?>('etag');
+    eventGroupingSettings = registerOutput<EventGroupingSettingsResponse?>('eventGroupingSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventGroupingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    incidentConfiguration = registerOutput<IncidentConfigurationResponse?>('incidentConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+    this.name = registerOutput<String>('name');
+    query = registerOutput<String>('query');
+    queryFrequency = registerOutput<String>('queryFrequency');
+    queryPeriod = registerOutput<String>('queryPeriod');
+    severity = registerOutput<String>('severity');
+    suppressionDuration = registerOutput<String>('suppressionDuration');
+    suppressionEnabled = registerOutput<bool>('suppressionEnabled');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     templateVersion = registerOutput<String?>('templateVersion');
     triggerOperator = registerOutput<String>('triggerOperator');
     triggerThreshold = registerOutput<int>('triggerThreshold');

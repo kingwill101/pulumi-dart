@@ -6,12 +6,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This condition must contain 'field' and either 'equals' or 'containsAny'.
 class AlertRuleLeafConditionResponse {
   /// The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
-  final pulumi.Input<List<String>>? containsAny;
+  final pulumi.Input<List<String>?>? containsAny;
   /// The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
-  final pulumi.Input<String>? equals;
+  final pulumi.Input<String?>? equals;
   /// The name of the Activity Log event's field that this condition will examine.
   /// The possible values for this field are (case-insensitive): 'resourceId', 'category', 'caller', 'level', 'operationName', 'resourceGroup', 'resourceProvider', 'status', 'subStatus', 'resourceType', or anything beginning with 'properties'.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
 
   /// Creates a new [AlertRuleLeafConditionResponse].
   /// [containsAny] The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.

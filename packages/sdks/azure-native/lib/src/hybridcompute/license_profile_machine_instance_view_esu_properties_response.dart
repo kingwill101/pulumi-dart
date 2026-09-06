@@ -7,7 +7,7 @@ import 'license_response.dart';
 /// Properties for the Machine ESU profile.
 class LicenseProfileMachineInstanceViewEsuPropertiesResponse {
   /// The assigned license resource.
-  final pulumi.Input<LicenseResponse>? assignedLicense;
+  final pulumi.Input<LicenseResponse?>? assignedLicense;
   /// The guid id of the license.
   final pulumi.Input<String> assignedLicenseImmutableId;
   /// Indicates the eligibility state of Esu.
@@ -17,7 +17,7 @@ class LicenseProfileMachineInstanceViewEsuPropertiesResponse {
   /// The list of ESU keys.
   final pulumi.Input<List<EsuKeyResponse>> esuKeys;
   /// Describes the license assignment state (Assigned or NotAssigned).
-  final pulumi.Input<String>? licenseAssignmentState;
+  final pulumi.Input<String?>? licenseAssignmentState;
   /// The type of the Esu servers.
   final pulumi.Input<String> serverType;
 

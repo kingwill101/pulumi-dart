@@ -9,12 +9,12 @@ import 'database_migration_properties_sql_db.dart';
 /// {@macro pulumi_datamigration_database_migrations_sql_db_args_doc}
 class DatabaseMigrationsSqlDbArgs {
   /// Database Migration Resource properties for SQL database.
-  final pulumi.Input<DatabaseMigrationPropertiesSqlDb>? properties;
+  final pulumi.Input<DatabaseMigrationPropertiesSqlDb?>? properties;
   /// Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   final pulumi.Input<String> sqlDbInstanceName;
   /// The name of the target database.
-  final pulumi.Input<String>? targetDbName;
+  final pulumi.Input<String?>? targetDbName;
 
   /// Creates a new [DatabaseMigrationsSqlDbArgs].
   /// [properties] Database Migration Resource properties for SQL database.

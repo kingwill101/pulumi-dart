@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Database Identity properties.
 class DatabaseIdentityResponse {
   /// Client Id of the database identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Principal Id of the database identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
   /// Resource Id of the database identity.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [DatabaseIdentityResponse].
   /// [clientId] Client Id of the database identity.

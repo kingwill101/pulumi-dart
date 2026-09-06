@@ -9,15 +9,15 @@ import 's3_access_control_policy_properties.dart';
 /// {@macro pulumi_awsconnector_s3_access_control_policy_args_doc}
 class S3AccessControlPolicyArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of S3AccessControlPolicy
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<S3AccessControlPolicyProperties>? properties;
+  final pulumi.Input<S3AccessControlPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [S3AccessControlPolicyArgs].
   /// [location] The geo-location where the resource lives

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ElasticFileSystemTag
 class ElasticFileSystemTag {
   /// The tag key (String). The key can't start with ``aws:``.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value of the tag key.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ElasticFileSystemTag].
   /// [key] The tag key (String). The key can't start with ``aws:``.

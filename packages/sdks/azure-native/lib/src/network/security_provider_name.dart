@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The security provider name.
-enum SecurityProviderName {
+enum SecurityProviderName implements pulumi.PulumiEnum<String> {
   valueZScaler("ZScaler"),
   valueIBoss("IBoss"),
   valueCheckpoint("Checkpoint");
 
   const SecurityProviderName(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityProviderName fromValue(String value) {

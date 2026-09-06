@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the Security policy to create.
-enum SecurityPolicyType {
+enum SecurityPolicyType implements pulumi.PulumiEnum<String> {
   webApplicationFirewall("WebApplicationFirewall");
 
   const SecurityPolicyType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyType fromValue(String value) {

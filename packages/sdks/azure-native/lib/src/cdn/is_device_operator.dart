@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes operator to be matched
-enum IsDeviceOperator {
+enum IsDeviceOperator implements pulumi.PulumiEnum<String> {
   equal("Equal");
 
   const IsDeviceOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static IsDeviceOperator fromValue(String value) {

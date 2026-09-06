@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object.
 class CacheConfigurationResponse {
   /// The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year
-  final pulumi.Input<String>? cacheDuration;
+  final pulumi.Input<String?>? cacheDuration;
   /// Whether to use dynamic compression for cached content
-  final pulumi.Input<String>? dynamicCompression;
+  final pulumi.Input<String?>? dynamicCompression;
   /// Treatment of URL query terms when forming the cache key.
-  final pulumi.Input<String>? queryParameterStripDirective;
+  final pulumi.Input<String?>? queryParameterStripDirective;
   /// query parameters to include or exclude (comma separated).
-  final pulumi.Input<String>? queryParameters;
+  final pulumi.Input<String?>? queryParameters;
 
   /// Creates a new [CacheConfigurationResponse].
   /// [cacheDuration] The duration for which the content needs to be cached. Allowed format is in ISO 8601 format (http://en.wikipedia.org/wiki/ISO_8601#Durations). HTTP requires the value to be no more than a year

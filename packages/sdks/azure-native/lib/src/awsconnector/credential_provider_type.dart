@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum CredentialProviderType {
+enum CredentialProviderType implements pulumi.PulumiEnum<String> {
   sECRETSMANAGER("SECRETS_MANAGER");
 
   const CredentialProviderType(this.wireValue);
+  @override
   final String wireValue;
 
   static CredentialProviderType fromValue(String value) {

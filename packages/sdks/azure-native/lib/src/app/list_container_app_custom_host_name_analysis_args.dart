@@ -10,7 +10,7 @@ class ListContainerAppCustomHostNameAnalysisArgs {
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
   /// Custom hostname.
-  final pulumi.Input<String>? customHostname;
+  final pulumi.Input<String?>? customHostname;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

@@ -9,13 +9,13 @@ import 'springbootapps_properties.dart';
 /// {@macro pulumi_offazurespringboot_springbootapp_args_doc}
 class SpringbootappArgs {
   /// The springbootapps resource definition.
-  final pulumi.Input<SpringbootappsProperties>? properties;
+  final pulumi.Input<SpringbootappsProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The springbootsites name.
   final pulumi.Input<String> siteName;
   /// The springbootapps name.
-  final pulumi.Input<String>? springbootappsName;
+  final pulumi.Input<String?>? springbootappsName;
 
   /// Creates a new [SpringbootappArgs].
   /// [properties] The springbootapps resource definition.

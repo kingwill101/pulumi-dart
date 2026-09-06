@@ -6,7 +6,7 @@ import 'mount_point_map.dart';
 /// Kubernetes role storage resource
 class KubernetesRoleStorage {
   /// Mount points of shares in role(s).
-  final pulumi.Input<List<MountPointMap>>? endpoints;
+  final pulumi.Input<List<MountPointMap>?>? endpoints;
 
   /// Creates a new [KubernetesRoleStorage].
   /// [endpoints] Mount points of shares in role(s).

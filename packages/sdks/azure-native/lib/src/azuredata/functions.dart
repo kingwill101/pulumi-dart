@@ -22,6 +22,17 @@ Future<GetSqlServerResult> getSqlServer(
   return GetSqlServerResult.fromMap(result);
 }
 
+pulumi.Output<GetSqlServerResult> getSqlServerOutput(
+  GetSqlServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredata:getSqlServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerResult.fromMap);
+}
+
 /// Gets a SQL Server registration.
 ///
 /// Uses Azure REST API version 2019-07-24-preview.
@@ -38,4 +49,15 @@ Future<GetSqlServerRegistrationResult> getSqlServerRegistration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSqlServerRegistrationResult.fromMap(result);
+}
+
+pulumi.Output<GetSqlServerRegistrationResult> getSqlServerRegistrationOutput(
+  GetSqlServerRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azuredata:getSqlServerRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSqlServerRegistrationResult.fromMap);
 }

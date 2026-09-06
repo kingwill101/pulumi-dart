@@ -7,7 +7,7 @@ class DomainEntry {
   /// Domain names associated with a tenant.
   final pulumi.Input<List<String>> domainNames;
   /// The Microsoft Entra tenant ID owning these domains. Defaults to the calling user's tenant when omitted.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [DomainEntry].
   /// [domainNames] Domain names associated with a tenant.

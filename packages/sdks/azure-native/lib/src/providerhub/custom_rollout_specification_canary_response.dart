@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// The canary region configuration.
 class CustomRolloutSpecificationCanaryResponse {
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
 
   /// Creates a new [CustomRolloutSpecificationCanaryResponse].
   /// [regions] Optional.

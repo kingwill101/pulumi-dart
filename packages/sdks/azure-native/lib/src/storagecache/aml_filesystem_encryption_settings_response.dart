@@ -6,7 +6,7 @@ import 'key_vault_key_reference_response.dart';
 /// AML file system encryption settings.
 class AmlFilesystemEncryptionSettingsResponse {
   /// Specifies the location of the encryption key in Key Vault.
-  final pulumi.Input<KeyVaultKeyReferenceResponse>? keyEncryptionKey;
+  final pulumi.Input<KeyVaultKeyReferenceResponse?>? keyEncryptionKey;
 
   /// Creates a new [AmlFilesystemEncryptionSettingsResponse].
   /// [keyEncryptionKey] Specifies the location of the encryption key in Key Vault.

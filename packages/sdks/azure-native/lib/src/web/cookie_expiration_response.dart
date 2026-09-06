@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration settings of the session cookie's expiration.
 class CookieExpirationResponse {
   /// The convention used when determining the session cookie's expiration.
-  final pulumi.Input<String>? convention;
+  final pulumi.Input<String?>? convention;
   /// The time after the request is made when the session cookie should expire.
-  final pulumi.Input<String>? timeToExpiration;
+  final pulumi.Input<String?>? timeToExpiration;
 
   /// Creates a new [CookieExpirationResponse].
   /// [convention] The convention used when determining the session cookie's expiration.

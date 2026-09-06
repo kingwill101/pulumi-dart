@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The MQTT QoS setting. Defaults to QoS 1.
-enum MqttDestinationQos {
+enum MqttDestinationQos implements pulumi.PulumiEnum<String> {
   qos0("Qos0"),
   qos1("Qos1");
 
   const MqttDestinationQos(this.wireValue);
+  @override
   final String wireValue;
 
   static MqttDestinationQos fromValue(String value) {

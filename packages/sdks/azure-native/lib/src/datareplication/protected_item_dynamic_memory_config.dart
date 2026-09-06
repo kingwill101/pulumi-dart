@@ -31,9 +31,9 @@ class ProtectedItemDynamicMemoryConfig {
 
   factory ProtectedItemDynamicMemoryConfig.fromMap(Map<String, dynamic> map) {
     return ProtectedItemDynamicMemoryConfig(
-      maximumMemoryInMegaBytes: pulumi.Input.fromValue(map['maximumMemoryInMegaBytes'] as double),
-      minimumMemoryInMegaBytes: pulumi.Input.fromValue(map['minimumMemoryInMegaBytes'] as double),
-      targetMemoryBufferPercentage: pulumi.Input.fromValue(map['targetMemoryBufferPercentage'] as int),
+      maximumMemoryInMegaBytes: pulumi.Input.fromValue((map['maximumMemoryInMegaBytes'] as num).toDouble()),
+      minimumMemoryInMegaBytes: pulumi.Input.fromValue((map['minimumMemoryInMegaBytes'] as num).toDouble()),
+      targetMemoryBufferPercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetMemoryBufferPercentage'])),
     );
   }
 }

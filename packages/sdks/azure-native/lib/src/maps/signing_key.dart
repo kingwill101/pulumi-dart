@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
-enum SigningKey {
+enum SigningKey implements pulumi.PulumiEnum<String> {
   valuePrimaryKey("primaryKey"),
   valueSecondaryKey("secondaryKey"),
   valueManagedIdentity("managedIdentity");
 
   const SigningKey(this.wireValue);
+  @override
   final String wireValue;
 
   static SigningKey fromValue(String value) {

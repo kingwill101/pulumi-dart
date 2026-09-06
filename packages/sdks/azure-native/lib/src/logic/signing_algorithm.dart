@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The signing algorithm.
-enum SigningAlgorithm {
+enum SigningAlgorithm implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueDefault("Default"),
   valueSHA1("SHA1"),
@@ -8,6 +10,7 @@ enum SigningAlgorithm {
   valueSHA2512("SHA2512");
 
   const SigningAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static SigningAlgorithm fromValue(String value) {

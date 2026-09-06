@@ -7,9 +7,9 @@ import 'export_time_period_response.dart';
 /// The definition of an export.
 class ExportDefinitionResponse {
   /// The definition for data in the export.
-  final pulumi.Input<ExportDatasetResponse>? dataSet;
+  final pulumi.Input<ExportDatasetResponse?>? dataSet;
   /// Has time period for pulling data for the export.
-  final pulumi.Input<ExportTimePeriodResponse>? timePeriod;
+  final pulumi.Input<ExportTimePeriodResponse?>? timePeriod;
   /// The time frame for pulling data for the export. If custom, then a specific time period must be provided.
   final pulumi.Input<String> timeframe;
   /// The type of the export. Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.

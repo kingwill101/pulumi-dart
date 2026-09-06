@@ -11,9 +11,9 @@ class ConfigurationProfileHCIAssignmentArgs {
   /// The name of the Arc machine.
   final pulumi.Input<String> clusterName;
   /// Name of the configuration profile assignment. Only default is supported.
-  final pulumi.Input<String>? configurationProfileAssignmentName;
+  final pulumi.Input<String?>? configurationProfileAssignmentName;
   /// Properties of the configuration profile assignment.
-  final pulumi.Input<ConfigurationProfileAssignmentProperties>? properties;
+  final pulumi.Input<ConfigurationProfileAssignmentProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

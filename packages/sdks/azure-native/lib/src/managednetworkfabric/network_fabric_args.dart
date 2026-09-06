@@ -10,33 +10,33 @@ import 'terminal_server_configuration.dart';
 /// {@macro pulumi_managednetworkfabric_network_fabric_args_doc}
 class NetworkFabricArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// ASN of CE devices for CE/PE connectivity.
   final pulumi.Input<double> fabricASN;
   /// The version of Network Fabric.
-  final pulumi.Input<String>? fabricVersion;
+  final pulumi.Input<String?>? fabricVersion;
   /// IPv4Prefix for Management Network. Example: 10.1.0.0/19.
   final pulumi.Input<String> ipv4Prefix;
   /// IPv6Prefix for Management Network. Example: 3FFE:FFFF:0:CD40::/59
-  final pulumi.Input<String>? ipv6Prefix;
+  final pulumi.Input<String?>? ipv6Prefix;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Configuration to be used to setup the management network.
   final pulumi.Input<ManagementNetworkConfigurationProperties> managementNetworkConfiguration;
   /// Azure resource ID for the NetworkFabricController the NetworkFabric belongs.
   final pulumi.Input<String> networkFabricControllerId;
   /// Name of the Network Fabric.
-  final pulumi.Input<String>? networkFabricName;
+  final pulumi.Input<String?>? networkFabricName;
   /// Supported Network Fabric SKU.Example: Compute / Aggregate racks. Once the user chooses a particular SKU, only supported racks can be added to the Network Fabric. The SKU determines whether it is a single / multi rack Network Fabric.
   final pulumi.Input<String> networkFabricSku;
   /// Number of compute racks associated to Network Fabric.
-  final pulumi.Input<int>? rackCount;
+  final pulumi.Input<int?>? rackCount;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Number of servers.Possible values are from 1-16.
   final pulumi.Input<int> serverCountPerRack;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Network and credentials configuration currently applied to terminal server.
   final pulumi.Input<TerminalServerConfiguration> terminalServerConfiguration;
 
@@ -97,7 +97,7 @@ class NetworkFabricArgs {
   factory NetworkFabricArgs.fromMap(Map<String, dynamic> map) {
     return NetworkFabricArgs(
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fabricASN: pulumi.Input.fromValue(map['fabricASN'] as double),
+      fabricASN: pulumi.Input.fromValue((map['fabricASN'] as num).toDouble()),
       fabricVersion: (() { final guardedValue = map['fabricVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4Prefix: pulumi.Input.fromValue(map['ipv4Prefix'] as String),
       ipv6Prefix: (() { final guardedValue = map['ipv6Prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -106,9 +106,9 @@ class NetworkFabricArgs {
       networkFabricControllerId: pulumi.Input.fromValue(map['networkFabricControllerId'] as String),
       networkFabricName: (() { final guardedValue = map['networkFabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkFabricSku: pulumi.Input.fromValue(map['networkFabricSku'] as String),
-      rackCount: (() { final guardedValue = map['rackCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rackCount: (() { final guardedValue = map['rackCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      serverCountPerRack: pulumi.Input.fromValue(map['serverCountPerRack'] as int),
+      serverCountPerRack: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverCountPerRack'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       terminalServerConfiguration: pulumi.Input.fromValue(TerminalServerConfiguration.fromMap((map['terminalServerConfiguration']! as Map).cast<String, dynamic>())),
     );

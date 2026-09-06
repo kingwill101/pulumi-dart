@@ -8,35 +8,35 @@ import 'system_data_response.dart';
 /// Result data returned by getScheduledAction.
 class GetScheduledActionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Scheduled action name.
-  final String displayName;
+  final String? displayName;
   /// Resource Etag. For update calls, eTag is optional and can be specified to achieve optimistic concurrency. Fetch the resource's eTag by doing a 'GET' call first and then including the latest eTag as part of the request body or 'If-Match' header while performing the update. For create calls, eTag is not required.
-  final String eTag;
+  final String? eTag;
   /// Destination format of the view data. This is optional.
   final FileDestinationResponse? fileDestination;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Kind of the scheduled action.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Notification properties based on scheduled action kind.
-  final NotificationPropertiesResponse notification;
+  final NotificationPropertiesResponse? notification;
   /// Email address of the point of contact that should get the unsubscribe requests and notification emails.
   final String? notificationEmail;
   /// Schedule of the scheduled action.
-  final SchedulePropertiesResponse schedule;
+  final SchedulePropertiesResponse? schedule;
   /// For private scheduled action(Create or Update), scope will be empty.&lt;br /&gt; For shared scheduled action(Create or Update By Scope), Cost Management scope can be 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for BillingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}' for InvoiceSection scope, '/providers/Microsoft.CostManagement/externalBillingAccounts/{externalBillingAccountName}' for ExternalBillingAccount scope, and '/providers/Microsoft.CostManagement/externalSubscriptions/{externalSubscriptionName}' for ExternalSubscription scope.
   final String? scope;
   /// Status of the scheduled action.
-  final String status;
+  final String? status;
   /// Kind of the scheduled action.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
-  final String viewId;
+  final String? viewId;
 
   /// Creates a new [GetScheduledActionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,60 +55,60 @@ class GetScheduledActionResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [viewId] Cost analysis viewId used for scheduled action. For example, '/providers/Microsoft.CostManagement/views/swaggerExample'
   const GetScheduledActionResult({
-    required this.azureApiVersion,
-    required this.displayName,
-    required this.eTag,
+    this.azureApiVersion,
+    this.displayName,
+    this.eTag,
     this.fileDestination,
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.notification,
+    this.name,
+    this.notification,
     this.notificationEmail,
-    required this.schedule,
+    this.schedule,
     this.scope,
-    required this.status,
-    required this.systemData,
-    required this.type,
-    required this.viewId,
+    this.status,
+    this.systemData,
+    this.type,
+    this.viewId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'displayName': displayName,
-      'eTag': eTag,
+      'azureApiVersion': ?azureApiVersion,
+      'displayName': ?displayName,
+      'eTag': ?eTag,
       'fileDestination': ?fileDestination?.toMap(),
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'notification': notification.toMap(),
+      'name': ?name,
+      'notification': ?notification?.toMap(),
       'notificationEmail': ?notificationEmail,
-      'schedule': schedule.toMap(),
+      'schedule': ?schedule?.toMap(),
       'scope': ?scope,
-      'status': status,
-      'systemData': systemData.toMap(),
-      'type': type,
-      'viewId': viewId,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'viewId': ?viewId,
     };
   }
 
   factory GetScheduledActionResult.fromMap(Map<String, dynamic> map) {
     return GetScheduledActionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      displayName: map['displayName'] as String,
-      eTag: map['eTag'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fileDestination: (() { final guardedValue = map['fileDestination']; if (guardedValue == null) return null; return FileDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      notification: NotificationPropertiesResponse.fromMap((map['notification']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notification: (() { final guardedValue = map['notification']; if (guardedValue == null) return null; return NotificationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       notificationEmail: (() { final guardedValue = map['notificationEmail']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      schedule: SchedulePropertiesResponse.fromMap((map['schedule']! as Map).cast<String, dynamic>()),
+      schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return SchedulePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       scope: (() { final guardedValue = map['scope']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      viewId: map['viewId'] as String,
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      viewId: (() { final guardedValue = map['viewId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

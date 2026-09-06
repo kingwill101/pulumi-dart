@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
-enum DataClassType {
+enum DataClassType implements pulumi.PulumiEnum<String> {
   messaging("Messaging"),
   aPI("API"),
   stream("Stream"),
@@ -8,6 +10,7 @@ enum DataClassType {
   complex("Complex");
 
   const DataClassType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataClassType fromValue(String value) {

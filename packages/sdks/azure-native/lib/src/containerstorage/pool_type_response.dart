@@ -8,11 +8,11 @@ import 'ephemeral_disk_response.dart';
 /// Type of the Pool: ephemeralDisk, azureDisk, or elasticsan
 class PoolTypeResponse {
   /// Disk Pool Properties
-  final pulumi.Input<AzureDiskResponse>? azureDisk;
+  final pulumi.Input<AzureDiskResponse?>? azureDisk;
   /// Elastic San Pool Properties
-  final pulumi.Input<ElasticSanResponse>? elasticSan;
+  final pulumi.Input<ElasticSanResponse?>? elasticSan;
   /// Ephemeral Pool Properties
-  final pulumi.Input<EphemeralDiskResponse>? ephemeralDisk;
+  final pulumi.Input<EphemeralDiskResponse?>? ephemeralDisk;
 
   /// Creates a new [PoolTypeResponse].
   /// [azureDisk] Disk Pool Properties

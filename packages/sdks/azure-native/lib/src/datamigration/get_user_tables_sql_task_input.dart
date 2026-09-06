@@ -8,7 +8,7 @@ class GetUserTablesSqlTaskInput {
   /// Connection information for SQL Server
   final pulumi.Input<SqlConnectionInfo> connectionInfo;
   /// encrypted key for secure fields
-  final pulumi.Input<String>? encryptedKeyForSecureFields;
+  final pulumi.Input<String?>? encryptedKeyForSecureFields;
   /// List of database names to collect tables for
   final pulumi.Input<List<String>> selectedDatabases;
 

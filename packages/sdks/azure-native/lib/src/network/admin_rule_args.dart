@@ -9,17 +9,17 @@ import 'address_prefix_item.dart';
 /// {@macro pulumi_network_admin_rule_args_doc}
 class AdminRuleArgs {
   /// Indicates the access allowed for this particular rule
-  final pulumi.Input<String> access;
+  final pulumi.Input<dynamic> access;
   /// The name of the network manager Security Configuration.
   final pulumi.Input<String> configurationName;
   /// A description for this rule. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The destination port ranges.
-  final pulumi.Input<List<String>>? destinationPortRanges;
+  final pulumi.Input<List<String>?>? destinationPortRanges;
   /// The destination address prefixes. CIDR or destination IP ranges.
-  final pulumi.Input<List<AddressPrefixItem>>? destinations;
+  final pulumi.Input<List<AddressPrefixItem>?>? destinations;
   /// Indicates if the traffic matched against the rule in inbound or outbound.
-  final pulumi.Input<String> direction;
+  final pulumi.Input<dynamic> direction;
   /// Whether the rule is custom or default.
   /// Expected value is 'Custom'.
   final pulumi.Input<String> kind;
@@ -28,17 +28,17 @@ class AdminRuleArgs {
   /// The priority of the rule. The value can be between 1 and 4096. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.
   final pulumi.Input<int> priority;
   /// Network protocol this rule applies to.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the network manager security Configuration rule collection.
   final pulumi.Input<String> ruleCollectionName;
   /// The name of the rule.
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// The source port ranges.
-  final pulumi.Input<List<String>>? sourcePortRanges;
+  final pulumi.Input<List<String>?>? sourcePortRanges;
   /// The CIDR or source IP ranges.
-  final pulumi.Input<List<AddressPrefixItem>>? sources;
+  final pulumi.Input<List<AddressPrefixItem>?>? sources;
 
   /// Creates a new [AdminRuleArgs].
   /// [access] Indicates the access allowed for this particular rule
@@ -96,16 +96,16 @@ class AdminRuleArgs {
 
   factory AdminRuleArgs.fromMap(Map<String, dynamic> map) {
     return AdminRuleArgs(
-      access: pulumi.Input.fromValue(map['access'] as String),
+      access: pulumi.Input.fromValue(map['access']),
       configurationName: pulumi.Input.fromValue(map['configurationName'] as String),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationPortRanges: (() { final guardedValue = map['destinationPortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AddressPrefixItem>(guardedValue, (value) => AddressPrefixItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      direction: pulumi.Input.fromValue(map['direction'] as String),
+      direction: pulumi.Input.fromValue(map['direction']),
       kind: pulumi.Input.fromValue(map['kind'] as String),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
+      protocol: pulumi.Input.fromValue(map['protocol']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleCollectionName: pulumi.Input.fromValue(map['ruleCollectionName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

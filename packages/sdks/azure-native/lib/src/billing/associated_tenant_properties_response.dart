@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An associated tenant.
 class AssociatedTenantPropertiesResponse {
   /// The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.
-  final pulumi.Input<String>? billingManagementState;
+  final pulumi.Input<String?>? billingManagementState;
   /// The name of the associated tenant.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The unique identifier for the billing request that is created when enabling provisioning for an associated tenant.
   final pulumi.Input<String> provisioningBillingRequestId;
   /// The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
-  final pulumi.Input<String>? provisioningManagementState;
+  final pulumi.Input<String?>? provisioningManagementState;
   /// The provisioning state of the resource during a long-running operation.
   final pulumi.Input<String> provisioningState;
   /// The ID that uniquely identifies a tenant.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [AssociatedTenantPropertiesResponse].
   /// [billingManagementState] The state determines whether users from the associated tenant can be assigned roles for commerce activities like viewing and downloading invoices, managing payments, and making purchases.

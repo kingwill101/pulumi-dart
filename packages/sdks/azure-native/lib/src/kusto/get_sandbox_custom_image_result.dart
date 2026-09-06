@@ -4,23 +4,23 @@
 /// Result data returned by getSandboxCustomImage.
 class GetSandboxCustomImageResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The base image name on which the custom image is built on top of. It can be one of the LanguageExtensionImageName (e.g.: 'Python3_10_8', 'Python3_10_8_DL') or the name of an existing custom image. Either this property or languageVersion should be specified.
   final String? baseImageName;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The language name, for example Python.
-  final String language;
+  final String? language;
   /// The version of the language. Either this property or baseImageName should be specified.
   final String? languageVersion;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The requirements file content.
   final String? requirementsFileContent;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSandboxCustomImageResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,42 +33,42 @@ class GetSandboxCustomImageResult {
   /// [requirementsFileContent] The requirements file content.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSandboxCustomImageResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.baseImageName,
-    required this.id,
-    required this.language,
+    this.id,
+    this.language,
     this.languageVersion,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.requirementsFileContent,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'baseImageName': ?baseImageName,
-      'id': id,
-      'language': language,
+      'id': ?id,
+      'language': ?language,
       'languageVersion': ?languageVersion,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'requirementsFileContent': ?requirementsFileContent,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetSandboxCustomImageResult.fromMap(Map<String, dynamic> map) {
     return GetSandboxCustomImageResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       baseImageName: (() { final guardedValue = map['baseImageName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      language: map['language'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      language: (() { final guardedValue = map['language']; if (guardedValue == null) return null; return guardedValue as String; })(),
       languageVersion: (() { final guardedValue = map['languageVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       requirementsFileContent: (() { final guardedValue = map['requirementsFileContent']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

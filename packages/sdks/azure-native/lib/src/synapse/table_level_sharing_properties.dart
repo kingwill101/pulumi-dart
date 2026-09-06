@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tables that will be included and excluded in the follower database
 class TableLevelSharingProperties {
   /// List of external tables exclude from the follower database
-  final pulumi.Input<List<String>>? externalTablesToExclude;
+  final pulumi.Input<List<String>?>? externalTablesToExclude;
   /// List of external tables to include in the follower database
-  final pulumi.Input<List<String>>? externalTablesToInclude;
+  final pulumi.Input<List<String>?>? externalTablesToInclude;
   /// List of materialized views exclude from the follower database
-  final pulumi.Input<List<String>>? materializedViewsToExclude;
+  final pulumi.Input<List<String>?>? materializedViewsToExclude;
   /// List of materialized views to include in the follower database
-  final pulumi.Input<List<String>>? materializedViewsToInclude;
+  final pulumi.Input<List<String>?>? materializedViewsToInclude;
   /// List of tables to exclude from the follower database
-  final pulumi.Input<List<String>>? tablesToExclude;
+  final pulumi.Input<List<String>?>? tablesToExclude;
   /// List of tables to include in the follower database
-  final pulumi.Input<List<String>>? tablesToInclude;
+  final pulumi.Input<List<String>?>? tablesToInclude;
 
   /// Creates a new [TableLevelSharingProperties].
   /// [externalTablesToExclude] List of external tables exclude from the follower database

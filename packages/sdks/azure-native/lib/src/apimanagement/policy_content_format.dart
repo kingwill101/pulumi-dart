@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Format of the policyContent.
-enum PolicyContentFormat {
+enum PolicyContentFormat implements pulumi.PulumiEnum<String> {
   valueXml("xml"),
   valueXmlLink("xml-link"),
   valueRawxml("rawxml"),
   valueRawxmlLink("rawxml-link");
 
   const PolicyContentFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyContentFormat fromValue(String value) {

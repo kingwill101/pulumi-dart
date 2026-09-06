@@ -10,7 +10,7 @@ class ManagedDiskEncryptionResponse {
   /// Key Vault input properties for encryption.
   final pulumi.Input<ManagedDiskEncryptionKeyVaultPropertiesResponse> keyVaultProperties;
   /// Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
-  final pulumi.Input<bool>? rotationToLatestKeyVersionEnabled;
+  final pulumi.Input<bool?>? rotationToLatestKeyVersionEnabled;
 
   /// Creates a new [ManagedDiskEncryptionResponse].
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault. Not allowed in Serverless ComputeMode workspace.

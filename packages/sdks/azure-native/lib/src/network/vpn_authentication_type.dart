@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// VPN authentication types enabled for the VpnServerConfiguration.
-enum VpnAuthenticationType {
+enum VpnAuthenticationType implements pulumi.PulumiEnum<String> {
   valueCertificate("Certificate"),
   valueRadius("Radius"),
   valueAAD("AAD");
 
   const VpnAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static VpnAuthenticationType fromValue(String value) {

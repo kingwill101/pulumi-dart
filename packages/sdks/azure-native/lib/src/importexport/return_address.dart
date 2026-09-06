@@ -17,11 +17,11 @@ class ReturnAddress {
   /// The name of the recipient who will receive the hard drives when they are returned.
   final pulumi.Input<String> recipientName;
   /// The state or province to use when returning the drives.
-  final pulumi.Input<String>? stateOrProvince;
+  final pulumi.Input<String?>? stateOrProvince;
   /// The first line of the street address to use when returning the drives.
   final pulumi.Input<String> streetAddress1;
   /// The second line of the street address to use when returning the drives.
-  final pulumi.Input<String>? streetAddress2;
+  final pulumi.Input<String?>? streetAddress2;
 
   /// Creates a new [ReturnAddress].
   /// [city] The city name to use when returning the drives.

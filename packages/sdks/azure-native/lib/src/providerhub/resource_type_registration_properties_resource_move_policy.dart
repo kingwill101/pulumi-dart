@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource move policy.
 class ResourceTypeRegistrationPropertiesResourceMovePolicy {
   /// Whether cross resource group move is enabled.
-  final pulumi.Input<bool>? crossResourceGroupMoveEnabled;
+  final pulumi.Input<bool?>? crossResourceGroupMoveEnabled;
   /// Whether cross subscription move is enabled.
-  final pulumi.Input<bool>? crossSubscriptionMoveEnabled;
+  final pulumi.Input<bool?>? crossSubscriptionMoveEnabled;
   /// Whether validation is required.
-  final pulumi.Input<bool>? validationRequired;
+  final pulumi.Input<bool?>? validationRequired;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceMovePolicy].
   /// [crossResourceGroupMoveEnabled] Whether cross resource group move is enabled.

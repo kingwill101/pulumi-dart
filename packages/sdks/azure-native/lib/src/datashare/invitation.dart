@@ -229,4 +229,29 @@ class Invitation extends pulumi.CustomResource {
     userEmail = registerOutput<String>('userEmail');
     userName = registerOutput<String>('userName');
   }
+
+  /// Creates a typed reference to an existing [Invitation] resource.
+  Invitation.reference(String urn)
+    : super(
+        'azure-native:datashare:Invitation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    expirationDate = registerOutput<String?>('expirationDate');
+    invitationId = registerOutput<String>('invitationId');
+    invitationStatus = registerOutput<String>('invitationStatus');
+    this.name = registerOutput<String>('name');
+    respondedAt = registerOutput<String>('respondedAt');
+    sentAt = registerOutput<String>('sentAt');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetActiveDirectoryId = registerOutput<String?>('targetActiveDirectoryId');
+    targetEmail = registerOutput<String?>('targetEmail');
+    targetObjectId = registerOutput<String?>('targetObjectId');
+    type = registerOutput<String>('type');
+    userEmail = registerOutput<String>('userEmail');
+    userName = registerOutput<String>('userName');
+  }
 }

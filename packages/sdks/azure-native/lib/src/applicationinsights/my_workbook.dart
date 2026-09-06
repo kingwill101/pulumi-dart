@@ -68,7 +68,7 @@ class MyWorkbook extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');
-    etag = registerOutput<Map<String, String>?>('etag');
+    etag = registerOutput<Map<String, String>?>('etag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     identity = registerOutput<MyWorkbookManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MyWorkbookManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
@@ -77,7 +77,35 @@ class MyWorkbook extends pulumi.CustomResource {
     sourceId = registerOutput<String?>('sourceId');
     storageUri = registerOutput<String?>('storageUri');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeModified = registerOutput<String>('timeModified');
+    type = registerOutput<String?>('type');
+    userId = registerOutput<String>('userId');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [MyWorkbook] resource.
+  MyWorkbook.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:MyWorkbook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String>('category');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<Map<String, String>?>('etag', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    identity = registerOutput<MyWorkbookManagedIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MyWorkbookManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String?>('name');
+    serializedData = registerOutput<String>('serializedData');
+    sourceId = registerOutput<String?>('sourceId');
+    storageUri = registerOutput<String?>('storageUri');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeModified = registerOutput<String>('timeModified');
     type = registerOutput<String?>('type');
     userId = registerOutput<String>('userId');

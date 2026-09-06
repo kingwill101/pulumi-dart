@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a Power BI output data source.
 class PowerBIOutputDataSourceResponse {
   /// Authentication Mode.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// The name of the Power BI dataset. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? dataset;
+  final pulumi.Input<String?>? dataset;
   /// The ID of the Power BI group.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The name of the Power BI group. Use this property to help remember which specific Power BI group id was used.
-  final pulumi.Input<String>? groupName;
+  final pulumi.Input<String?>? groupName;
   /// A refresh token that can be used to obtain a valid access token that can then be used to authenticate with the data source. A valid refresh token is currently only obtainable via the Azure Portal. It is recommended to put a dummy string value here when creating the data source and then going to the Azure Portal to authenticate the data source which will update this property with a valid refresh token. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? refreshToken;
+  final pulumi.Input<String?>? refreshToken;
   /// The name of the Power BI table under the specified dataset. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
   /// The user display name of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserDisplayName;
+  final pulumi.Input<String?>? tokenUserDisplayName;
   /// The user principal name (UPN) of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
-  final pulumi.Input<String>? tokenUserPrincipalName;
+  final pulumi.Input<String?>? tokenUserPrincipalName;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'PowerBI'.
   final pulumi.Input<String> type;

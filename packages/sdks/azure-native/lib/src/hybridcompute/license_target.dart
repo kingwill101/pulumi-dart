@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the license target server.
-enum LicenseTarget {
+enum LicenseTarget implements pulumi.PulumiEnum<String> {
   valueWindowsServer2012("Windows Server 2012"),
   valueWindowsServer2012R2("Windows Server 2012 R2");
 
   const LicenseTarget(this.wireValue);
+  @override
   final String wireValue;
 
   static LicenseTarget fromValue(String value) {

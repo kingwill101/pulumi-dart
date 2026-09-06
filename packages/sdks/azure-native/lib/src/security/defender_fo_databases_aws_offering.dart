@@ -8,14 +8,14 @@ import 'defender_fo_databases_aws_offering_rds.dart';
 /// The Defender for Databases AWS offering
 class DefenderFoDatabasesAwsOffering {
   /// The ARC autoprovisioning configuration
-  final pulumi.Input<DefenderFoDatabasesAwsOfferingArcAutoProvisioning>? arcAutoProvisioning;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingArcAutoProvisioning?>? arcAutoProvisioning;
   /// The databases data security posture management (DSPM) configuration
-  final pulumi.Input<DefenderFoDatabasesAwsOfferingDatabasesDspm>? databasesDspm;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingDatabasesDspm?>? databasesDspm;
   /// The type of the security offering.
   /// Expected value is 'DefenderForDatabasesAws'.
   final pulumi.Input<String> offeringType;
   /// The RDS configuration
-  final pulumi.Input<DefenderFoDatabasesAwsOfferingRds>? rds;
+  final pulumi.Input<DefenderFoDatabasesAwsOfferingRds?>? rds;
 
   /// Creates a new [DefenderFoDatabasesAwsOffering].
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration

@@ -8,11 +8,11 @@ class NetworkTapPropertiesDestinations {
   /// The destination Id. ARM Resource ID of either NNI or Internal Networks.
   final pulumi.Input<String> destinationId;
   /// ARM Resource ID of destination Tap Rule that contains match configurations.
-  final pulumi.Input<String>? destinationTapRuleId;
+  final pulumi.Input<String?>? destinationTapRuleId;
   /// Type of destination. Input can be IsolationDomain or Direct.
-  final pulumi.Input<String> destinationType;
+  final pulumi.Input<dynamic> destinationType;
   /// Isolation Domain Properties.
-  final pulumi.Input<IsolationDomainProperties>? isolationDomainProperties;
+  final pulumi.Input<IsolationDomainProperties?>? isolationDomainProperties;
   /// Destination name.
   final pulumi.Input<String> name;
 
@@ -44,7 +44,7 @@ class NetworkTapPropertiesDestinations {
     return NetworkTapPropertiesDestinations(
       destinationId: pulumi.Input.fromValue(map['destinationId'] as String),
       destinationTapRuleId: (() { final guardedValue = map['destinationTapRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      destinationType: pulumi.Input.fromValue(map['destinationType'] as String),
+      destinationType: pulumi.Input.fromValue(map['destinationType']),
       isolationDomainProperties: (() { final guardedValue = map['isolationDomainProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IsolationDomainProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the parameter.
-enum ScriptActivityParameterType {
+enum ScriptActivityParameterType implements pulumi.PulumiEnum<String> {
   boolean("Boolean"),
   dateTime("DateTime"),
   dateTimeOffset("DateTimeOffset"),
@@ -14,6 +16,7 @@ enum ScriptActivityParameterType {
   timespan("Timespan");
 
   const ScriptActivityParameterType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScriptActivityParameterType fromValue(String value) {

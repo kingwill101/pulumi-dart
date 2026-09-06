@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'session_host_args.dart';
+import 'session_host_health_check_report_response.dart';
 import 'system_data_response.dart';
 
 /// Represents a SessionHost definition.
@@ -183,7 +184,7 @@ class SessionHost extends pulumi.CustomResource {
   /// SessionHostConfiguration version reference at the time the update is initiated, in the format of date time. Example: 2024-04-26T04:56:45Z
   late final pulumi.Output<String> sessionHostConfiguration;
   /// List of SessionHostHealthCheckReports
-  late final pulumi.Output<List<Map<String, dynamic>>> sessionHostHealthCheckResults;
+  late final pulumi.Output<List<SessionHostHealthCheckReportResponse>> sessionHostHealthCheckResults;
   /// Number of sessions on SessionHost.
   late final pulumi.Output<int> sessions;
   /// Status for a SessionHost.
@@ -233,7 +234,44 @@ class SessionHost extends pulumi.CustomResource {
     pendingSessions = registerOutput<int>('pendingSessions');
     resourceId = registerOutput<String>('resourceId');
     sessionHostConfiguration = registerOutput<String>('sessionHostConfiguration');
-    sessionHostHealthCheckResults = registerOutput<List<Map<String, dynamic>>>('sessionHostHealthCheckResults');
+    sessionHostHealthCheckResults = registerOutput<List<SessionHostHealthCheckReportResponse>>('sessionHostHealthCheckResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionHostHealthCheckReportResponse>(guardedValue, (value) => SessionHostHealthCheckReportResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sessions = registerOutput<int>('sessions');
+    status = registerOutput<String>('status');
+    statusTimestamp = registerOutput<String>('statusTimestamp');
+    sxSStackVersion = registerOutput<String>('sxSStackVersion');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateErrorMessage = registerOutput<String>('updateErrorMessage');
+    updateState = registerOutput<String>('updateState');
+    virtualMachineId = registerOutput<String>('virtualMachineId');
+  }
+
+  /// Creates a typed reference to an existing [SessionHost] resource.
+  SessionHost.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:SessionHost',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activeSessions = registerOutput<int>('activeSessions');
+    agentVersion = registerOutput<String>('agentVersion');
+    allowNewSession = registerOutput<bool?>('allowNewSession');
+    assignedUser = registerOutput<String?>('assignedUser');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disconnectedSessions = registerOutput<int>('disconnectedSessions');
+    friendlyName = registerOutput<String?>('friendlyName');
+    lastHeartBeat = registerOutput<String>('lastHeartBeat');
+    lastSessionHostUpdateTime = registerOutput<String>('lastSessionHostUpdateTime');
+    lastUpdateTime = registerOutput<String>('lastUpdateTime');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    osVersion = registerOutput<String>('osVersion');
+    pendingSessions = registerOutput<int>('pendingSessions');
+    resourceId = registerOutput<String>('resourceId');
+    sessionHostConfiguration = registerOutput<String>('sessionHostConfiguration');
+    sessionHostHealthCheckResults = registerOutput<List<SessionHostHealthCheckReportResponse>>('sessionHostHealthCheckResults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SessionHostHealthCheckReportResponse>(guardedValue, (value) => SessionHostHealthCheckReportResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sessions = registerOutput<int>('sessions');
     status = registerOutput<String>('status');
     statusTimestamp = registerOutput<String>('statusTimestamp');

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of MaximumExecutionFrequencyEnumValue
 class MaximumExecutionFrequencyEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [MaximumExecutionFrequencyEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class MaximumExecutionFrequencyEnumValue {
 
   factory MaximumExecutionFrequencyEnumValue.fromMap(Map<String, dynamic> map) {
     return MaximumExecutionFrequencyEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

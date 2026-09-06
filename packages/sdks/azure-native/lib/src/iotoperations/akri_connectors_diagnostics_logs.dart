@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AkriConnectorsDiagnostic Log properties.
 class AkriConnectorsDiagnosticsLogs {
   /// The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  final pulumi.Input<String>? level;
+  final pulumi.Input<String?>? level;
 
   /// Creates a new [AkriConnectorsDiagnosticsLogs].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  const AkriConnectorsDiagnosticsLogs({
-    this.level,
-  });
+  AkriConnectorsDiagnosticsLogs({
+    pulumi.Input<String?>? level,
+  }) : level = level ?? pulumi.Input.fromValue('info');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

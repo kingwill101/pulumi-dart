@@ -11,11 +11,11 @@ class TagRuleArgs {
   /// Monitor resource name
   final pulumi.Input<String> monitorName;
   /// Properties of the monitoring tag rules.
-  final pulumi.Input<MonitoringTagRulesProperties>? properties;
+  final pulumi.Input<MonitoringTagRulesProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Tag Rule Set resource name
-  final pulumi.Input<String>? ruleSetName;
+  final pulumi.Input<String?>? ruleSetName;
 
   /// Creates a new [TagRuleArgs].
   /// [monitorName] Monitor resource name

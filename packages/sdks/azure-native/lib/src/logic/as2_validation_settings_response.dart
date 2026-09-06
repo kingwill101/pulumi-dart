@@ -23,7 +23,7 @@ class AS2ValidationSettingsResponse {
   /// The value indicating whether the message has to be signed.
   final pulumi.Input<bool> signMessage;
   /// The signing algorithm.
-  final pulumi.Input<String>? signingAlgorithm;
+  final pulumi.Input<String?>? signingAlgorithm;
 
   /// Creates a new [AS2ValidationSettingsResponse].
   /// [checkCertificateRevocationListOnReceive] The value indicating whether to check for certificate revocation list on receive.
@@ -72,7 +72,7 @@ class AS2ValidationSettingsResponse {
       compressMessage: pulumi.Input.fromValue(map['compressMessage'] as bool),
       encryptMessage: pulumi.Input.fromValue(map['encryptMessage'] as bool),
       encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm'] as String),
-      interchangeDuplicatesValidityDays: pulumi.Input.fromValue(map['interchangeDuplicatesValidityDays'] as int),
+      interchangeDuplicatesValidityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interchangeDuplicatesValidityDays'])),
       overrideMessageProperties: pulumi.Input.fromValue(map['overrideMessageProperties'] as bool),
       signMessage: pulumi.Input.fromValue(map['signMessage'] as bool),
       signingAlgorithm: (() { final guardedValue = map['signingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

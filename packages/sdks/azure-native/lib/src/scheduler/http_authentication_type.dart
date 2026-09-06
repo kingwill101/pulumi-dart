@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the HTTP authentication type.
-enum HttpAuthenticationType {
+enum HttpAuthenticationType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueClientCertificate("ClientCertificate"),
   valueActiveDirectoryOAuth("ActiveDirectoryOAuth"),
   valueBasic("Basic");
 
   const HttpAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpAuthenticationType fromValue(String value) {

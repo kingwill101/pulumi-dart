@@ -6,11 +6,11 @@ import 'users_or_service_principal_set.dart';
 /// The PIM Only Mode settings.
 class PIMOnlyModeSettings {
   /// The list of excluded assignment types allowed.
-  final pulumi.Input<List<String>>? excludedAssignmentTypes;
+  final pulumi.Input<List<dynamic>?>? excludedAssignmentTypes;
   /// The list of excluded entities that the rule does not apply to.
-  final pulumi.Input<List<UsersOrServicePrincipalSet>>? excludes;
+  final pulumi.Input<List<UsersOrServicePrincipalSet>?>? excludes;
   /// Determines whether the setting is enabled, disabled or report only.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [PIMOnlyModeSettings].
   /// [excludedAssignmentTypes] The list of excluded assignment types allowed.
@@ -32,9 +32,9 @@ class PIMOnlyModeSettings {
 
   factory PIMOnlyModeSettings.fromMap(Map<String, dynamic> map) {
     return PIMOnlyModeSettings(
-      excludedAssignmentTypes: (() { final guardedValue = map['excludedAssignmentTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      excludedAssignmentTypes: (() { final guardedValue = map['excludedAssignmentTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       excludes: (() { final guardedValue = map['excludes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UsersOrServicePrincipalSet>(guardedValue, (value) => UsersOrServicePrincipalSet.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

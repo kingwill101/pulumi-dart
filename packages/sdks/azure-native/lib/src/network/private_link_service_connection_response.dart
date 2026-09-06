@@ -8,19 +8,19 @@ class PrivateLinkServiceConnectionResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A collection of read-only information about the state of the connection to the remote resource.
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The resource id of private link service.
-  final pulumi.Input<String>? privateLinkServiceId;
+  final pulumi.Input<String?>? privateLinkServiceId;
   /// The provisioning state of the private link service connection resource.
   final pulumi.Input<String> provisioningState;
   /// A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
-  final pulumi.Input<String>? requestMessage;
+  final pulumi.Input<String?>? requestMessage;
   /// The resource type.
   final pulumi.Input<String> type;
 

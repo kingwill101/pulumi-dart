@@ -6,15 +6,15 @@ import 'scale_rule.dart';
 /// Container App scaling configurations.
 class Scale {
   /// Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
-  final pulumi.Input<int>? cooldownPeriod;
+  final pulumi.Input<int?>? cooldownPeriod;
   /// Optional. Maximum number of container replicas. Defaults to 10 if not set.
-  final pulumi.Input<int>? maxReplicas;
+  final pulumi.Input<int?>? maxReplicas;
   /// Optional. Minimum number of container replicas.
-  final pulumi.Input<int>? minReplicas;
+  final pulumi.Input<int?>? minReplicas;
   /// Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
-  final pulumi.Input<int>? pollingInterval;
+  final pulumi.Input<int?>? pollingInterval;
   /// Scaling rules.
-  final pulumi.Input<List<ScaleRule>>? rules;
+  final pulumi.Input<List<ScaleRule>?>? rules;
 
   /// Creates a new [Scale].
   /// [cooldownPeriod] Optional. KEDA Cooldown Period. Defaults to 300 seconds if not set.
@@ -22,13 +22,13 @@ class Scale {
   /// [minReplicas] Optional. Minimum number of container replicas.
   /// [pollingInterval] Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
   /// [rules] Scaling rules.
-  const Scale({
+  Scale({
     this.cooldownPeriod,
-    this.maxReplicas,
+    pulumi.Input<int?>? maxReplicas,
     this.minReplicas,
     this.pollingInterval,
     this.rules,
-  });
+  }) : maxReplicas = maxReplicas ?? pulumi.Input.fromValue(10);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -42,10 +42,10 @@ class Scale {
 
   factory Scale.fromMap(Map<String, dynamic> map) {
     return Scale(
-      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      pollingInterval: (() { final guardedValue = map['pollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cooldownPeriod: (() { final guardedValue = map['cooldownPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      pollingInterval: (() { final guardedValue = map['pollingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScaleRule>(guardedValue, (value) => ScaleRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

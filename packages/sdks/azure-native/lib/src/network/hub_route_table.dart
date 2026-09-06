@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'hub_route_response.dart';
 import 'hub_route_table_args.dart';
 
 /// RouteTable resource in a virtual hub.
@@ -266,7 +267,7 @@ class HubRouteTable extends pulumi.CustomResource {
   /// The provisioning state of the RouteTable resource.
   late final pulumi.Output<String> provisioningState;
   /// List of all routes.
-  late final pulumi.Output<List<Map<String, dynamic>>?> routes;
+  late final pulumi.Output<List<HubRouteResponse>?> routes;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -284,14 +285,34 @@ class HubRouteTable extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    associatedConnections = registerOutput<List<String>>('associatedConnections');
+    associatedConnections = registerOutput<List<String>>('associatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     etag = registerOutput<String>('etag');
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String?>('name');
-    propagatingConnections = registerOutput<List<String>>('propagatingConnections');
+    propagatingConnections = registerOutput<List<String>>('propagatingConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     provisioningState = registerOutput<String>('provisioningState');
-    routes = registerOutput<List<Map<String, dynamic>>?>('routes');
+    routes = registerOutput<List<HubRouteResponse>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubRouteResponse>(guardedValue, (value) => HubRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [HubRouteTable] resource.
+  HubRouteTable.reference(String urn)
+    : super(
+        'azure-native:network:HubRouteTable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedConnections = registerOutput<List<String>>('associatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String?>('name');
+    propagatingConnections = registerOutput<List<String>>('propagatingConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    provisioningState = registerOutput<String>('provisioningState');
+    routes = registerOutput<List<HubRouteResponse>?>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HubRouteResponse>(guardedValue, (value) => HubRouteResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

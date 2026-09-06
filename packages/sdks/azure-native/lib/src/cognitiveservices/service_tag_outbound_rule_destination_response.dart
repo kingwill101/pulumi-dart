@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Service Tag destination for an outbound rule.
 class ServiceTagOutboundRuleDestinationResponse {
   /// The action for the service tag outbound rule.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// Optional address prefixes. If provided, the serviceTag property will be ignored.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// Destination port ranges.
-  final pulumi.Input<String>? portRanges;
+  final pulumi.Input<String?>? portRanges;
   /// Network protocol used by the service tag rule.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// Name of the Azure service tag to target.
-  final pulumi.Input<String>? serviceTag;
+  final pulumi.Input<String?>? serviceTag;
 
   /// Creates a new [ServiceTagOutboundRuleDestinationResponse].
   /// [action] The action for the service tag outbound rule.

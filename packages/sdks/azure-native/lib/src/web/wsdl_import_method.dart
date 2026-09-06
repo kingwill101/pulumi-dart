@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The WSDL import method
-enum WsdlImportMethod {
+enum WsdlImportMethod implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueSoapToRest("SoapToRest"),
   valueSoapPassThrough("SoapPassThrough");
 
   const WsdlImportMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static WsdlImportMethod fromValue(String value) {

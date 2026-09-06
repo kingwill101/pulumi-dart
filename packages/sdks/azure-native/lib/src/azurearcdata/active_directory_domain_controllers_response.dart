@@ -6,9 +6,9 @@ import 'active_directory_domain_controller_response.dart';
 /// Details about the Active Directory domain controllers associated with this AD connector instance
 class ActiveDirectoryDomainControllersResponse {
   /// Information about the Primary Domain Controller (PDC) in the AD domain.
-  final pulumi.Input<ActiveDirectoryDomainControllerResponse>? primaryDomainController;
+  final pulumi.Input<ActiveDirectoryDomainControllerResponse?>? primaryDomainController;
   /// null
-  final pulumi.Input<List<ActiveDirectoryDomainControllerResponse>>? secondaryDomainControllers;
+  final pulumi.Input<List<ActiveDirectoryDomainControllerResponse>?>? secondaryDomainControllers;
 
   /// Creates a new [ActiveDirectoryDomainControllersResponse].
   /// [primaryDomainController] Information about the Primary Domain Controller (PDC) in the AD domain.

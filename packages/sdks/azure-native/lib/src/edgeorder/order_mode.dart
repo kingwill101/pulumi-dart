@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the mode of the Order item.
-enum OrderMode {
+enum OrderMode implements pulumi.PulumiEnum<String> {
   default_("Default"),
   doNotFulfill("DoNotFulfill");
 
   const OrderMode(this.wireValue);
+  @override
   final String wireValue;
 
   static OrderMode fromValue(String value) {

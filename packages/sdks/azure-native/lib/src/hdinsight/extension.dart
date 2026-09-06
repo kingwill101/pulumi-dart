@@ -188,4 +188,18 @@ class Extension extends pulumi.CustomResource {
     clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
     workspaceId = registerOutput<String?>('workspaceId');
   }
+
+  /// Creates a typed reference to an existing [Extension] resource.
+  Extension.reference(String urn)
+    : super(
+        'azure-native:hdinsight:Extension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clusterMonitoringEnabled = registerOutput<bool?>('clusterMonitoringEnabled');
+    workspaceId = registerOutput<String?>('workspaceId');
+  }
 }

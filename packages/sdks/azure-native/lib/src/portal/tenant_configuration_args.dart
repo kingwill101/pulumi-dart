@@ -9,9 +9,9 @@ import 'configuration_properties.dart';
 /// {@macro pulumi_portal_tenant_configuration_args_doc}
 class TenantConfigurationArgs {
   /// The name of the Configuration
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConfigurationProperties>? properties;
+  final pulumi.Input<ConfigurationProperties?>? properties;
 
   /// Creates a new [TenantConfigurationArgs].
   /// [configurationName] The name of the Configuration

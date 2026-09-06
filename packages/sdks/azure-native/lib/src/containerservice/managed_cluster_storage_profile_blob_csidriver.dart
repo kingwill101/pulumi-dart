@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AzureBlob CSI Driver settings for the storage profile.
 class ManagedClusterStorageProfileBlobCSIDriver {
   /// Whether to enable AzureBlob CSI Driver. The default value is false.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ManagedClusterStorageProfileBlobCSIDriver].
   /// [enabled] Whether to enable AzureBlob CSI Driver. The default value is false.

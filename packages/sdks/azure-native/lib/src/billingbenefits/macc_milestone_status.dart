@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Represents the current status of the Milestone.
-enum MaccMilestoneStatus {
+enum MaccMilestoneStatus implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   scheduled("Scheduled"),
   active("Active"),
@@ -13,6 +15,7 @@ enum MaccMilestoneStatus {
   shortfallWaived("ShortfallWaived");
 
   const MaccMilestoneStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static MaccMilestoneStatus fromValue(String value) {

@@ -13,7 +13,7 @@ class ReachabilityAnalysisIntentArgs {
   /// Represents the Reachability Analysis Intent properties.
   final pulumi.Input<ReachabilityAnalysisIntentProperties> properties;
   /// Reachability Analysis Intent name.
-  final pulumi.Input<String>? reachabilityAnalysisIntentName;
+  final pulumi.Input<String?>? reachabilityAnalysisIntentName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Workspace name.

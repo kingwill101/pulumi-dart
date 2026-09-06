@@ -24,6 +24,17 @@ Future<GetInstanceResult> getInstance(
   return GetInstanceResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsorchestrator:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
+}
+
 /// Get a Solution
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -42,6 +53,17 @@ Future<GetSolutionResult> getSolution(
   return GetSolutionResult.fromMap(result);
 }
 
+pulumi.Output<GetSolutionResult> getSolutionOutput(
+  GetSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsorchestrator:getSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSolutionResult.fromMap);
+}
+
 /// Get a Target
 ///
 /// Uses Azure REST API version 2023-10-04-preview.
@@ -58,4 +80,15 @@ Future<GetTargetResult> getTarget(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetResult> getTargetOutput(
+  GetTargetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iotoperationsorchestrator:getTarget',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetResult.fromMap);
 }

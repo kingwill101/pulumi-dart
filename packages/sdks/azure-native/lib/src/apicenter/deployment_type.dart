@@ -277,4 +277,26 @@ class DeploymentType extends pulumi.CustomResource {
     title = registerOutput<String?>('title');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DeploymentType] resource.
+  DeploymentType.reference(String urn)
+    : super(
+        'azure-native:apicenter:Deployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customProperties = registerOutput<dynamic>('customProperties');
+    definitionId = registerOutput<String?>('definitionId');
+    description = registerOutput<String?>('description');
+    environmentId = registerOutput<String?>('environmentId');
+    this.name = registerOutput<String>('name');
+    server = registerOutput<DeploymentServerResponse?>('server', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentServerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String?>('title');
+    type = registerOutput<String>('type');
+  }
 }

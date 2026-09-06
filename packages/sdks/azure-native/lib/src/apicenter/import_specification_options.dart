@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the specification should be imported along with metadata.
-enum ImportSpecificationOptions {
+enum ImportSpecificationOptions implements pulumi.PulumiEnum<String> {
   never_("never"),
   onDemand("ondemand"),
   always("always");
 
   const ImportSpecificationOptions(this.wireValue);
+  @override
   final String wireValue;
 
   static ImportSpecificationOptions fromValue(String value) {

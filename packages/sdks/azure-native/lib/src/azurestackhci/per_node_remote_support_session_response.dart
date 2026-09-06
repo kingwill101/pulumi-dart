@@ -42,7 +42,7 @@ class PerNodeRemoteSupportSessionResponse {
   factory PerNodeRemoteSupportSessionResponse.fromMap(Map<String, dynamic> map) {
     return PerNodeRemoteSupportSessionResponse(
       accessLevel: pulumi.Input.fromValue(map['accessLevel'] as String),
-      duration: pulumi.Input.fromValue(map['duration'] as double),
+      duration: pulumi.Input.fromValue((map['duration'] as num).toDouble()),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
       sessionEndTime: pulumi.Input.fromValue(map['sessionEndTime'] as String),
       sessionStartTime: pulumi.Input.fromValue(map['sessionStartTime'] as String),

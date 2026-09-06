@@ -6,19 +6,19 @@ import 'vpn_nat_rule_mapping.dart';
 /// VpnGatewayNatRule Resource.
 class VpnGatewayNatRule {
   /// The private IP address external mapping for NAT.
-  final pulumi.Input<List<VpnNatRuleMapping>>? externalMappings;
+  final pulumi.Input<List<VpnNatRuleMapping>?>? externalMappings;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The private IP address internal mapping for NAT.
-  final pulumi.Input<List<VpnNatRuleMapping>>? internalMappings;
+  final pulumi.Input<List<VpnNatRuleMapping>?>? internalMappings;
   /// The IP Configuration ID this NAT rule applies to.
-  final pulumi.Input<String>? ipConfigurationId;
+  final pulumi.Input<String?>? ipConfigurationId;
   /// The Source NAT direction of a VPN NAT.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The type of NAT rule for VPN NAT.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [VpnGatewayNatRule].
   /// [externalMappings] The private IP address external mapping for NAT.
@@ -56,9 +56,9 @@ class VpnGatewayNatRule {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalMappings: (() { final guardedValue = map['internalMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnNatRuleMapping>(guardedValue, (value) => VpnNatRuleMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipConfigurationId: (() { final guardedValue = map['ipConfigurationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

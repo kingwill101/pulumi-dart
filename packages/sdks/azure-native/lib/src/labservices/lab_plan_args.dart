@@ -13,29 +13,29 @@ import 'support_info.dart';
 /// {@macro pulumi_labservices_lab_plan_args_doc}
 class LabPlanArgs {
   /// The allowed regions for the lab creator to use when creating labs using this lab plan.
-  final pulumi.Input<List<String>>? allowedRegions;
+  final pulumi.Input<List<String>?>? allowedRegions;
   /// The default lab shutdown profile. This can be changed on a lab resource and only provides a default profile.
-  final pulumi.Input<AutoShutdownProfile>? defaultAutoShutdownProfile;
+  final pulumi.Input<AutoShutdownProfile?>? defaultAutoShutdownProfile;
   /// The default lab connection profile. This can be changed on a lab resource and only provides a default profile.
-  final pulumi.Input<ConnectionProfile>? defaultConnectionProfile;
+  final pulumi.Input<ConnectionProfile?>? defaultConnectionProfile;
   /// The lab plan network profile. To enforce lab network policies they must be defined here and cannot be changed when there are existing labs associated with this lab plan.
-  final pulumi.Input<LabPlanNetworkProfile>? defaultNetworkProfile;
+  final pulumi.Input<LabPlanNetworkProfile?>? defaultNetworkProfile;
   /// Managed Identity Information
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The name of the lab plan that uniquely identifies it within containing resource group. Used in resource URIs and in UI.
-  final pulumi.Input<String>? labPlanName;
+  final pulumi.Input<String?>? labPlanName;
   /// Base Url of the lms instance this lab plan can link lab rosters against.
-  final pulumi.Input<String>? linkedLmsInstance;
+  final pulumi.Input<String?>? linkedLmsInstance;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  final pulumi.Input<String>? sharedGalleryId;
+  final pulumi.Input<String?>? sharedGalleryId;
   /// Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
-  final pulumi.Input<SupportInfo>? supportInfo;
+  final pulumi.Input<SupportInfo?>? supportInfo;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [LabPlanArgs].
   /// [allowedRegions] The allowed regions for the lab creator to use when creating labs using this lab plan.

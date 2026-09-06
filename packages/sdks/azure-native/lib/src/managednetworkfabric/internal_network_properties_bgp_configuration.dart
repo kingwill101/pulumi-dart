@@ -7,23 +7,23 @@ import 'neighbor_address.dart';
 /// BGP configuration properties.
 class InternalNetworkPropertiesBgpConfiguration {
   /// Allows for routes to be received and processed even if the router detects its own ASN in the AS-Path. 0 is disable, Possible values are 1-10, default is 2.
-  final pulumi.Input<int>? allowAS;
+  final pulumi.Input<int?>? allowAS;
   /// Enable Or Disable state.
-  final pulumi.Input<String>? allowASOverride;
+  final pulumi.Input<dynamic>? allowASOverride;
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// BFD configuration properties
-  final pulumi.Input<BfdConfiguration>? bfdConfiguration;
+  final pulumi.Input<BfdConfiguration?>? bfdConfiguration;
   /// Originate a defaultRoute. Ex: "True" | "False".
-  final pulumi.Input<String>? defaultRouteOriginate;
+  final pulumi.Input<dynamic>? defaultRouteOriginate;
   /// List of BGP IPv4 Listen Range prefixes.
-  final pulumi.Input<List<String>>? ipv4ListenRangePrefixes;
+  final pulumi.Input<List<String>?>? ipv4ListenRangePrefixes;
   /// List with stringified IPv4 Neighbor Addresses.
-  final pulumi.Input<List<NeighborAddress>>? ipv4NeighborAddress;
+  final pulumi.Input<List<NeighborAddress>?>? ipv4NeighborAddress;
   /// List of BGP IPv6 Listen Ranges prefixes.
-  final pulumi.Input<List<String>>? ipv6ListenRangePrefixes;
+  final pulumi.Input<List<String>?>? ipv6ListenRangePrefixes;
   /// List with stringified IPv6 Neighbor Address.
-  final pulumi.Input<List<NeighborAddress>>? ipv6NeighborAddress;
+  final pulumi.Input<List<NeighborAddress>?>? ipv6NeighborAddress;
   /// Peer ASN. Example: 65047.
   final pulumi.Input<double> peerASN;
 
@@ -38,8 +38,8 @@ class InternalNetworkPropertiesBgpConfiguration {
   /// [ipv6ListenRangePrefixes] List of BGP IPv6 Listen Ranges prefixes.
   /// [ipv6NeighborAddress] List with stringified IPv6 Neighbor Address.
   /// [peerASN] Peer ASN. Example: 65047.
-  const InternalNetworkPropertiesBgpConfiguration({
-    this.allowAS,
+  InternalNetworkPropertiesBgpConfiguration({
+    pulumi.Input<int?>? allowAS,
     this.allowASOverride,
     this.annotation,
     this.bfdConfiguration,
@@ -49,7 +49,7 @@ class InternalNetworkPropertiesBgpConfiguration {
     this.ipv6ListenRangePrefixes,
     this.ipv6NeighborAddress,
     required this.peerASN,
-  });
+  }) : allowAS = allowAS ?? pulumi.Input.fromValue(2);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -68,16 +68,16 @@ class InternalNetworkPropertiesBgpConfiguration {
 
   factory InternalNetworkPropertiesBgpConfiguration.fromMap(Map<String, dynamic> map) {
     return InternalNetworkPropertiesBgpConfiguration(
-      allowAS: (() { final guardedValue = map['allowAS']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      allowASOverride: (() { final guardedValue = map['allowASOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      allowAS: (() { final guardedValue = map['allowAS']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      allowASOverride: (() { final guardedValue = map['allowASOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       bfdConfiguration: (() { final guardedValue = map['bfdConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BfdConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      defaultRouteOriginate: (() { final guardedValue = map['defaultRouteOriginate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      defaultRouteOriginate: (() { final guardedValue = map['defaultRouteOriginate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipv4ListenRangePrefixes: (() { final guardedValue = map['ipv4ListenRangePrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipv4NeighborAddress: (() { final guardedValue = map['ipv4NeighborAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NeighborAddress>(guardedValue, (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6ListenRangePrefixes: (() { final guardedValue = map['ipv6ListenRangePrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       ipv6NeighborAddress: (() { final guardedValue = map['ipv6NeighborAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NeighborAddress>(guardedValue, (value) => NeighborAddress.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      peerASN: pulumi.Input.fromValue(map['peerASN'] as double),
+      peerASN: pulumi.Input.fromValue((map['peerASN'] as num).toDouble()),
     );
   }
 }

@@ -25,6 +25,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:trafficmanager:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Gets a Traffic Manager profile.
 ///
 /// Uses Azure REST API version 2022-04-01.
@@ -45,6 +56,17 @@ Future<GetProfileResult> getProfile(
   return GetProfileResult.fromMap(result);
 }
 
+pulumi.Output<GetProfileResult> getProfileOutput(
+  GetProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:trafficmanager:getProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProfileResult.fromMap);
+}
+
 /// Get the subscription-level key used for Real User Metrics collection.
 ///
 /// Uses Azure REST API version 2022-04-01.
@@ -62,4 +84,15 @@ Future<GetTrafficManagerUserMetricsKeyResult> getTrafficManagerUserMetricsKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTrafficManagerUserMetricsKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetTrafficManagerUserMetricsKeyResult> getTrafficManagerUserMetricsKeyOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:trafficmanager:getTrafficManagerUserMetricsKey',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetTrafficManagerUserMetricsKeyResult.fromMap);
 }

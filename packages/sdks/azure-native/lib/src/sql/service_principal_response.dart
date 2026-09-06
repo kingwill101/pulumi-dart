@@ -11,7 +11,7 @@ class ServicePrincipalResponse {
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
   /// Service principal type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServicePrincipalResponse].
   /// [clientId] The Azure Active Directory application client id.

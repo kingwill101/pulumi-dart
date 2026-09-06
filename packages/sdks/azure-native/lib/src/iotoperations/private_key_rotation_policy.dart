@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// cert-manager private key rotationPolicy.
-enum PrivateKeyRotationPolicy {
+enum PrivateKeyRotationPolicy implements pulumi.PulumiEnum<String> {
   always("Always"),
   never_("Never");
 
   const PrivateKeyRotationPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static PrivateKeyRotationPolicy fromValue(String value) {

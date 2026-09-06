@@ -6,9 +6,9 @@ import 'trigger_response.dart';
 
 class LifetimeActionResponse {
   /// The action of key rotation policy lifetimeAction.
-  final pulumi.Input<ActionResponse>? action;
+  final pulumi.Input<ActionResponse?>? action;
   /// The trigger of key rotation policy lifetimeAction.
-  final pulumi.Input<TriggerResponse>? trigger;
+  final pulumi.Input<TriggerResponse?>? trigger;
 
   /// Creates a new [LifetimeActionResponse].
   /// [action] The action of key rotation policy lifetimeAction.

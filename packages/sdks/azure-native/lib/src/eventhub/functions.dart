@@ -52,6 +52,17 @@ Future<GetApplicationGroupResult> getApplicationGroup(
   return GetApplicationGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetApplicationGroupResult> getApplicationGroupOutput(
+  GetApplicationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getApplicationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApplicationGroupResult.fromMap);
+}
+
 /// Gets the resource description of the specified Event Hubs Cluster.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -70,6 +81,17 @@ Future<GetClusterResult> getCluster(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClusterResult.fromMap(result);
+}
+
+pulumi.Output<GetClusterResult> getClusterOutput(
+  GetClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClusterResult.fromMap);
 }
 
 /// Gets a description for the specified consumer group.
@@ -92,6 +114,17 @@ Future<GetConsumerGroupResult> getConsumerGroup(
   return GetConsumerGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetConsumerGroupResult> getConsumerGroupOutput(
+  GetConsumerGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getConsumerGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConsumerGroupResult.fromMap);
+}
+
 /// Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -110,6 +143,17 @@ Future<GetDisasterRecoveryConfigResult> getDisasterRecoveryConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDisasterRecoveryConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetDisasterRecoveryConfigResult> getDisasterRecoveryConfigOutput(
+  GetDisasterRecoveryConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getDisasterRecoveryConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDisasterRecoveryConfigResult.fromMap);
 }
 
 /// Gets an Event Hubs description for the specified Event Hub.
@@ -132,6 +176,17 @@ Future<GetEventHubResult> getEventHub(
   return GetEventHubResult.fromMap(result);
 }
 
+pulumi.Output<GetEventHubResult> getEventHubOutput(
+  GetEventHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getEventHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubResult.fromMap);
+}
+
 /// Gets an AuthorizationRule for an Event Hub by rule name.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -150,6 +205,17 @@ Future<GetEventHubAuthorizationRuleResult> getEventHubAuthorizationRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEventHubAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetEventHubAuthorizationRuleResult> getEventHubAuthorizationRuleOutput(
+  GetEventHubAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getEventHubAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEventHubAuthorizationRuleResult.fromMap);
 }
 
 /// Gets the description of the specified namespace.
@@ -172,6 +238,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Gets an AuthorizationRule for a Namespace by rule name.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -192,6 +269,17 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
   return GetNamespaceAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRuleOutput(
+  GetNamespaceAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getNamespaceAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAuthorizationRuleResult.fromMap);
+}
+
 /// Gets an IpFilterRule for a Namespace by rule name.
 ///
 /// Uses Azure REST API version 2018-01-01-preview.
@@ -208,6 +296,17 @@ Future<GetNamespaceIpFilterRuleResult> getNamespaceIpFilterRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceIpFilterRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceIpFilterRuleResult> getNamespaceIpFilterRuleOutput(
+  GetNamespaceIpFilterRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getNamespaceIpFilterRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceIpFilterRuleResult.fromMap);
 }
 
 /// Gets NetworkRuleSet for a Namespace.
@@ -230,6 +329,17 @@ Future<GetNamespaceNetworkRuleSetResult> getNamespaceNetworkRuleSet(
   return GetNamespaceNetworkRuleSetResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceNetworkRuleSetResult> getNamespaceNetworkRuleSetOutput(
+  GetNamespaceNetworkRuleSetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getNamespaceNetworkRuleSet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceNetworkRuleSetResult.fromMap);
+}
+
 /// Gets an VirtualNetworkRule for a Namespace by rule name.
 ///
 /// Uses Azure REST API version 2018-01-01-preview.
@@ -246,6 +356,17 @@ Future<GetNamespaceVirtualNetworkRuleResult> getNamespaceVirtualNetworkRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceVirtualNetworkRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceVirtualNetworkRuleResult> getNamespaceVirtualNetworkRuleOutput(
+  GetNamespaceVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getNamespaceVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceVirtualNetworkRuleResult.fromMap);
 }
 
 /// Gets a description for the specified Private Endpoint Connection name.
@@ -268,6 +389,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the details of an EventHub schema group.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -286,6 +418,17 @@ Future<GetSchemaRegistryResult> getSchemaRegistry(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSchemaRegistryResult.fromMap(result);
+}
+
+pulumi.Output<GetSchemaRegistryResult> getSchemaRegistryOutput(
+  GetSchemaRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:getSchemaRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSchemaRegistryResult.fromMap);
 }
 
 /// Gets the primary and secondary connection strings for the Namespace.
@@ -308,6 +451,17 @@ Future<ListDisasterRecoveryConfigKeysResult> listDisasterRecoveryConfigKeys(
   return ListDisasterRecoveryConfigKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListDisasterRecoveryConfigKeysResult> listDisasterRecoveryConfigKeysOutput(
+  ListDisasterRecoveryConfigKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:listDisasterRecoveryConfigKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDisasterRecoveryConfigKeysResult.fromMap);
+}
+
 /// Gets the ACS and SAS connection strings for the Event Hub.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -328,6 +482,17 @@ Future<ListEventHubKeysResult> listEventHubKeys(
   return ListEventHubKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListEventHubKeysResult> listEventHubKeysOutput(
+  ListEventHubKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:listEventHubKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEventHubKeysResult.fromMap);
+}
+
 /// Gets the primary and secondary connection strings for the Namespace.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -346,4 +511,15 @@ Future<ListNamespaceKeysResult> listNamespaceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListNamespaceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListNamespaceKeysResult> listNamespaceKeysOutput(
+  ListNamespaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:eventhub:listNamespaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceKeysResult.fromMap);
 }

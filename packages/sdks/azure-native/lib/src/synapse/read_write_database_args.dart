@@ -8,20 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_read_write_database_args_doc}
 class ReadWriteDatabaseArgs {
   /// The name of the database in the Kusto pool.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The time the data should be kept in cache for fast queries in TimeSpan.
-  final pulumi.Input<String>? hotCachePeriod;
+  final pulumi.Input<String?>? hotCachePeriod;
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   final pulumi.Input<String> kind;
   /// The name of the Kusto pool.
   final pulumi.Input<String> kustoPoolName;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
-  final pulumi.Input<String>? softDeletePeriod;
+  final pulumi.Input<String?>? softDeletePeriod;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

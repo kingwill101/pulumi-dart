@@ -8,39 +8,39 @@ import 'system_data_response.dart';
 /// Result data returned by getAFDCustomDomain.
 class GetAFDCustomDomainResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Resource reference to the Azure DNS zone
   final ResourceReferenceResponse? azureDnsZone;
-  final String deploymentStatus;
+  final String? deploymentStatus;
   /// Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
-  final String domainValidationState;
+  final String? domainValidationState;
   /// Key-Value pair representing migration properties for domains.
   final Map<String, String>? extendedProperties;
   /// The host name of the domain. Must be a domain name.
-  final String hostName;
+  final String? hostName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Resource reference to the Azure resource where custom domain ownership was prevalidated
   final ResourceReferenceResponse? preValidatedCustomDomainResourceId;
   /// The name of the profile which holds the domain.
-  final String profileName;
+  final String? profileName;
   /// Provisioning status
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   final AFDDomainHttpsParametersResponse? tlsSettings;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Values the customer needs to validate domain ownership
-  final DomainValidationPropertiesResponse validationProperties;
+  final DomainValidationPropertiesResponse? validationProperties;
 
   /// Creates a new [GetAFDCustomDomainResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [azureDnsZone] Resource reference to the Azure DNS zone
-  /// [deploymentStatus] Required.
+  /// [deploymentStatus] Optional.
   /// [domainValidationState] Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation.
   /// [extendedProperties] Key-Value pair representing migration properties for domains.
   /// [hostName] The host name of the domain. Must be a domain name.
@@ -54,60 +54,60 @@ class GetAFDCustomDomainResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationProperties] Values the customer needs to validate domain ownership
   const GetAFDCustomDomainResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.azureDnsZone,
-    required this.deploymentStatus,
-    required this.domainValidationState,
+    this.deploymentStatus,
+    this.domainValidationState,
     this.extendedProperties,
-    required this.hostName,
-    required this.id,
-    required this.name,
+    this.hostName,
+    this.id,
+    this.name,
     this.preValidatedCustomDomainResourceId,
-    required this.profileName,
-    required this.provisioningState,
-    required this.systemData,
+    this.profileName,
+    this.provisioningState,
+    this.systemData,
     this.tlsSettings,
-    required this.type,
-    required this.validationProperties,
+    this.type,
+    this.validationProperties,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'azureDnsZone': ?azureDnsZone?.toMap(),
-      'deploymentStatus': deploymentStatus,
-      'domainValidationState': domainValidationState,
+      'deploymentStatus': ?deploymentStatus,
+      'domainValidationState': ?domainValidationState,
       'extendedProperties': ?extendedProperties,
-      'hostName': hostName,
-      'id': id,
-      'name': name,
+      'hostName': ?hostName,
+      'id': ?id,
+      'name': ?name,
       'preValidatedCustomDomainResourceId': ?preValidatedCustomDomainResourceId?.toMap(),
-      'profileName': profileName,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'profileName': ?profileName,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tlsSettings': ?tlsSettings?.toMap(),
-      'type': type,
-      'validationProperties': validationProperties.toMap(),
+      'type': ?type,
+      'validationProperties': ?validationProperties?.toMap(),
     };
   }
 
   factory GetAFDCustomDomainResult.fromMap(Map<String, dynamic> map) {
     return GetAFDCustomDomainResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       azureDnsZone: (() { final guardedValue = map['azureDnsZone']; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      deploymentStatus: map['deploymentStatus'] as String,
-      domainValidationState: map['domainValidationState'] as String,
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      domainValidationState: (() { final guardedValue = map['domainValidationState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedProperties: (() { final guardedValue = map['extendedProperties']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      hostName: map['hostName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       preValidatedCustomDomainResourceId: (() { final guardedValue = map['preValidatedCustomDomainResourceId']; if (guardedValue == null) return null; return ResourceReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      profileName: map['profileName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return AFDDomainHttpsParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
-      validationProperties: DomainValidationPropertiesResponse.fromMap((map['validationProperties']! as Map).cast<String, dynamic>()),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validationProperties: (() { final guardedValue = map['validationProperties']; if (guardedValue == null) return null; return DomainValidationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

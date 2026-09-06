@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies eventGridAndResourceGraph related Scheduled Event related configurations.
 class EventGridAndResourceGraphResponse {
   /// Specifies if event grid and resource graph is enabled for Scheduled event related configurations.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Specifies the api-version to determine which Scheduled Events configuration schema version will be delivered.
-  final pulumi.Input<String>? scheduledEventsApiVersion;
+  final pulumi.Input<String?>? scheduledEventsApiVersion;
 
   /// Creates a new [EventGridAndResourceGraphResponse].
   /// [enable] Specifies if event grid and resource graph is enabled for Scheduled event related configurations.

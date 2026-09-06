@@ -9,7 +9,7 @@ import 'config_server_properties.dart';
 /// {@macro pulumi_appplatform_config_server_args_doc}
 class ConfigServerArgs {
   /// Properties of the Config Server resource
-  final pulumi.Input<ConfigServerProperties>? properties;
+  final pulumi.Input<ConfigServerProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

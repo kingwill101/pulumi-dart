@@ -7,11 +7,11 @@ import 'private_link_service_connection_state.dart';
 /// Private link service proxy details.
 class PrivateLinkServiceProxy {
   /// Group connectivity information.
-  final pulumi.Input<List<GroupConnectivityInformation>>? groupConnectivityInformation;
+  final pulumi.Input<List<GroupConnectivityInformation>?>? groupConnectivityInformation;
   /// NRP resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Remote private link service connection state
-  final pulumi.Input<PrivateLinkServiceConnectionState>? remotePrivateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? remotePrivateLinkServiceConnectionState;
 
   /// Creates a new [PrivateLinkServiceProxy].
   /// [groupConnectivityInformation] Group connectivity information.

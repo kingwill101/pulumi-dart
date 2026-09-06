@@ -8,15 +8,15 @@ class WorkloadNetworkDhcpRelayResponse {
   /// Expected value is 'RELAY'.
   final pulumi.Input<String> dhcpType;
   /// Display name of the DHCP entity.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The provisioning state
   final pulumi.Input<String> provisioningState;
   /// NSX revision number.
-  final pulumi.Input<double>? revision;
+  final pulumi.Input<double?>? revision;
   /// NSX Segments consuming DHCP.
   final pulumi.Input<List<String>> segments;
   /// DHCP Relay Addresses. Max 3.
-  final pulumi.Input<List<String>>? serverAddresses;
+  final pulumi.Input<List<String>?>? serverAddresses;
 
   /// Creates a new [WorkloadNetworkDhcpRelayResponse].
   /// [dhcpType] Type of DHCP: SERVER or RELAY.
@@ -50,7 +50,7 @@ class WorkloadNetworkDhcpRelayResponse {
       dhcpType: pulumi.Input.fromValue(map['dhcpType'] as String),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       segments: pulumi.Input.fromValue((map['segments'] as List).cast<String>()),
       serverAddresses: (() { final guardedValue = map['serverAddresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

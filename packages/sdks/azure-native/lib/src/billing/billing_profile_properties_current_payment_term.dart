@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The current payment term of the billing profile.
 class BillingProfilePropertiesCurrentPaymentTerm {
   /// The date on when the defined 'Payment Term' will end and is always in UTC.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The date on when the defined 'Payment Term' will be effective from and is always in UTC.
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// Represents duration in netXX format. Always in days.
-  final pulumi.Input<String>? term;
+  final pulumi.Input<String?>? term;
 
   /// Creates a new [BillingProfilePropertiesCurrentPaymentTerm].
   /// [endDate] The date on when the defined 'Payment Term' will end and is always in UTC.

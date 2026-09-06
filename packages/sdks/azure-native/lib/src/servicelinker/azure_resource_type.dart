@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The azure resource type.
-enum AzureResourceType {
+enum AzureResourceType implements pulumi.PulumiEnum<String> {
   valueKeyVault("KeyVault");
 
   const AzureResourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureResourceType fromValue(String value) {

@@ -9,19 +9,19 @@ import 'target_response.dart';
 /// The content of the event request message.
 class EventContentResponse {
   /// The action that encompasses the provided event.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The agent that initiated the event. For most situations, this could be from the authorization context of the request.
-  final pulumi.Input<ActorResponse>? actor;
+  final pulumi.Input<ActorResponse?>? actor;
   /// The event ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The request that generated the event.
-  final pulumi.Input<RequestResponse>? request;
+  final pulumi.Input<RequestResponse?>? request;
   /// The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it.
-  final pulumi.Input<SourceResponse>? source;
+  final pulumi.Input<SourceResponse?>? source;
   /// The target of the event.
-  final pulumi.Input<TargetResponse>? target;
+  final pulumi.Input<TargetResponse?>? target;
   /// The time at which the event occurred.
-  final pulumi.Input<String>? timestamp;
+  final pulumi.Input<String?>? timestamp;
 
   /// Creates a new [EventContentResponse].
   /// [action] The action that encompasses the provided event.

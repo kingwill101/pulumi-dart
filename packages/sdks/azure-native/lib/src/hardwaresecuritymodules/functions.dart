@@ -26,6 +26,17 @@ Future<GetCloudHsmClusterResult> getCloudHsmCluster(
   return GetCloudHsmClusterResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudHsmClusterResult> getCloudHsmClusterOutput(
+  GetCloudHsmClusterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hardwaresecuritymodules:getCloudHsmCluster',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudHsmClusterResult.fromMap);
+}
+
 /// Gets the private endpoint connection for the Cloud Hsm Cluster.
 ///
 /// Uses Azure REST API version 2024-06-30-preview.
@@ -46,6 +57,17 @@ Future<GetCloudHsmClusterPrivateEndpointConnectionResult> getCloudHsmClusterPriv
   return GetCloudHsmClusterPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetCloudHsmClusterPrivateEndpointConnectionResult> getCloudHsmClusterPrivateEndpointConnectionOutput(
+  GetCloudHsmClusterPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hardwaresecuritymodules:getCloudHsmClusterPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloudHsmClusterPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Gets the specified Azure dedicated HSM.
 ///
 /// Uses Azure REST API version 2024-06-30-preview.
@@ -64,4 +86,15 @@ Future<GetDedicatedHsmResult> getDedicatedHsm(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDedicatedHsmResult.fromMap(result);
+}
+
+pulumi.Output<GetDedicatedHsmResult> getDedicatedHsmOutput(
+  GetDedicatedHsmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:hardwaresecuritymodules:getDedicatedHsm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDedicatedHsmResult.fromMap);
 }

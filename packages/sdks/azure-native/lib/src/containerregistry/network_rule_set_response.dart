@@ -8,15 +8,15 @@ class NetworkRuleSetResponse {
   /// The default action of allow or deny when no other rules match.
   final pulumi.Input<String> defaultAction;
   /// The IP ACL rules.
-  final pulumi.Input<List<IPRuleResponse>>? ipRules;
+  final pulumi.Input<List<IPRuleResponse>?>? ipRules;
 
   /// Creates a new [NetworkRuleSetResponse].
   /// [defaultAction] The default action of allow or deny when no other rules match.
   /// [ipRules] The IP ACL rules.
-  const NetworkRuleSetResponse({
-    required this.defaultAction,
+  NetworkRuleSetResponse({
+    pulumi.Input<String>? defaultAction,
     this.ipRules,
-  });
+  }) : defaultAction = defaultAction ?? pulumi.Input.fromValue('Allow');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

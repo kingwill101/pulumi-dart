@@ -7,7 +7,7 @@ class SelfDependencyTumblingWindowTriggerReference {
   /// Timespan applied to the start time of a tumbling window when evaluating dependency.
   final pulumi.Input<String> offset;
   /// The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// The type of dependency reference.
   /// Expected value is 'SelfDependencyTumblingWindowTriggerReference'.
   final pulumi.Input<String> type;

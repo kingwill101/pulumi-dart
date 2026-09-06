@@ -6,14 +6,14 @@ import 'service_principal_datastore_secrets.dart';
 /// Service Principal datastore credentials configuration.
 class ServicePrincipalDatastoreCredentials {
   /// Authority URL used for authentication.
-  final pulumi.Input<String>? authorityUrl;
+  final pulumi.Input<String?>? authorityUrl;
   /// [Required] Service principal client ID.
   final pulumi.Input<String> clientId;
   /// Enum to determine the datastore credentials type.
   /// Expected value is 'ServicePrincipal'.
   final pulumi.Input<String> credentialsType;
   /// Resource the service principal has access to.
-  final pulumi.Input<String>? resourceUrl;
+  final pulumi.Input<String?>? resourceUrl;
   /// [Required] Service principal secrets.
   final pulumi.Input<ServicePrincipalDatastoreSecrets> secrets;
   /// [Required] ID of the tenant to which the service principal belongs.

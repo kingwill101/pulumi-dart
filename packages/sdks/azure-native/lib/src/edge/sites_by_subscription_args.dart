@@ -9,9 +9,9 @@ import 'site_properties.dart';
 /// {@macro pulumi_edge_sites_by_subscription_args_doc}
 class SitesBySubscriptionArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SiteProperties>? properties;
+  final pulumi.Input<SiteProperties?>? properties;
   /// The name of the Site
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
 
   /// Creates a new [SitesBySubscriptionArgs].
   /// [properties] The resource-specific properties for this resource.

@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The object that contains details of encryption used on the workspace.
 class EncryptionResponse {
   /// The name of KeyVault key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// The Uri of KeyVault.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// The version of KeyVault key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [EncryptionResponse].
   /// [keyName] The name of KeyVault key.
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Default, Microsoft.Keyvault
   /// [keyVaultUri] The Uri of KeyVault.
   /// [keyVersion] The version of KeyVault key.
-  const EncryptionResponse({
+  EncryptionResponse({
     this.keyName,
-    this.keySource,
+    pulumi.Input<String?>? keySource,
     this.keyVaultUri,
     this.keyVersion,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Default');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

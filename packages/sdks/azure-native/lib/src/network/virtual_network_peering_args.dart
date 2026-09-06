@@ -11,53 +11,53 @@ import 'virtual_network_bgp_communities.dart';
 /// {@macro pulumi_network_virtual_network_peering_args_doc}
 class VirtualNetworkPeeringArgs {
   /// Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
-  final pulumi.Input<bool>? allowForwardedTraffic;
+  final pulumi.Input<bool?>? allowForwardedTraffic;
   /// If gateway links can be used in remote virtual networking to link to this virtual network.
-  final pulumi.Input<bool>? allowGatewayTransit;
+  final pulumi.Input<bool?>? allowGatewayTransit;
   /// Whether the VMs in the local virtual network space would be able to access the VMs in remote virtual network space.
-  final pulumi.Input<bool>? allowVirtualNetworkAccess;
+  final pulumi.Input<bool?>? allowVirtualNetworkAccess;
   /// If we need to verify the provisioning state of the remote gateway.
-  final pulumi.Input<bool>? doNotVerifyRemoteGateways;
+  final pulumi.Input<bool?>? doNotVerifyRemoteGateways;
   /// Whether only Ipv6 address space is peered for subnet peering.
-  final pulumi.Input<bool>? enableOnlyIPv6Peering;
+  final pulumi.Input<bool?>? enableOnlyIPv6Peering;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The local address space of the local virtual network that is peered.
-  final pulumi.Input<AddressSpace>? localAddressSpace;
+  final pulumi.Input<AddressSpace?>? localAddressSpace;
   /// List of local subnet names that are subnet peered with remote virtual network.
-  final pulumi.Input<List<String>>? localSubnetNames;
+  final pulumi.Input<List<String>?>? localSubnetNames;
   /// The current local address space of the local virtual network that is peered.
-  final pulumi.Input<AddressSpace>? localVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpace?>? localVirtualNetworkAddressSpace;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Whether complete virtual network address space is peered.
-  final pulumi.Input<bool>? peerCompleteVnets;
+  final pulumi.Input<bool?>? peerCompleteVnets;
   /// The status of the virtual network peering.
-  final pulumi.Input<String>? peeringState;
+  final pulumi.Input<dynamic>? peeringState;
   /// The peering sync status of the virtual network peering.
-  final pulumi.Input<String>? peeringSyncLevel;
+  final pulumi.Input<dynamic>? peeringSyncLevel;
   /// The reference to the address space peered with the remote virtual network.
-  final pulumi.Input<AddressSpace>? remoteAddressSpace;
+  final pulumi.Input<AddressSpace?>? remoteAddressSpace;
   /// The reference to the remote virtual network's Bgp Communities.
-  final pulumi.Input<VirtualNetworkBgpCommunities>? remoteBgpCommunities;
+  final pulumi.Input<VirtualNetworkBgpCommunities?>? remoteBgpCommunities;
   /// List of remote subnet names from remote virtual network that are subnet peered.
-  final pulumi.Input<List<String>>? remoteSubnetNames;
+  final pulumi.Input<List<String>?>? remoteSubnetNames;
   /// The reference to the remote virtual network. The remote virtual network can be in the same or different region (preview). See here to register for the preview and learn more (https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-create-peering).
-  final pulumi.Input<SubResource>? remoteVirtualNetwork;
+  final pulumi.Input<SubResource?>? remoteVirtualNetwork;
   /// The reference to the current address space of the remote virtual network.
-  final pulumi.Input<AddressSpace>? remoteVirtualNetworkAddressSpace;
+  final pulumi.Input<AddressSpace?>? remoteVirtualNetworkAddressSpace;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Parameter indicates the intention to sync the peering with the current address space on the remote vNet after it's updated.
-  final pulumi.Input<String>? syncRemoteAddressSpace;
+  final pulumi.Input<String?>? syncRemoteAddressSpace;
   /// Resource type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// If remote gateways can be used on this virtual network. If the flag is set to true, and allowGatewayTransit on remote peering is also true, virtual network will use gateways of remote virtual network for transit. Only one peering can have this flag set to true. This flag cannot be set if virtual network already has a gateway.
-  final pulumi.Input<bool>? useRemoteGateways;
+  final pulumi.Input<bool?>? useRemoteGateways;
   /// The name of the virtual network.
   final pulumi.Input<String> virtualNetworkName;
   /// The name of the peering.
-  final pulumi.Input<String>? virtualNetworkPeeringName;
+  final pulumi.Input<String?>? virtualNetworkPeeringName;
 
   /// Creates a new [VirtualNetworkPeeringArgs].
   /// [allowForwardedTraffic] Whether the forwarded traffic from the VMs in the local virtual network will be allowed/disallowed in remote virtual network.
@@ -153,8 +153,8 @@ class VirtualNetworkPeeringArgs {
       localVirtualNetworkAddressSpace: (() { final guardedValue = map['localVirtualNetworkAddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddressSpace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerCompleteVnets: (() { final guardedValue = map['peerCompleteVnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      peeringState: (() { final guardedValue = map['peeringState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peeringSyncLevel: (() { final guardedValue = map['peeringSyncLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      peeringState: (() { final guardedValue = map['peeringState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      peeringSyncLevel: (() { final guardedValue = map['peeringSyncLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       remoteAddressSpace: (() { final guardedValue = map['remoteAddressSpace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AddressSpace.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteBgpCommunities: (() { final guardedValue = map['remoteBgpCommunities']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkBgpCommunities.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       remoteSubnetNames: (() { final guardedValue = map['remoteSubnetNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

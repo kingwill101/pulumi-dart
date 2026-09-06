@@ -5,9 +5,9 @@ import 'identity_selector_response.dart';
 
 class AnalyticsOutputSettingsResponse {
   /// The resource ID of the analytics workspace that is to be used by the specified identity.
-  final pulumi.Input<String>? analyticsWorkspaceId;
+  final pulumi.Input<String?>? analyticsWorkspaceId;
   /// The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
-  final pulumi.Input<IdentitySelectorResponse>? associatedIdentity;
+  final pulumi.Input<IdentitySelectorResponse?>? associatedIdentity;
 
   /// Creates a new [AnalyticsOutputSettingsResponse].
   /// [analyticsWorkspaceId] The resource ID of the analytics workspace that is to be used by the specified identity.

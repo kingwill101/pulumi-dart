@@ -8,27 +8,27 @@ class ListCatalogDeploymentsResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The Deployment items on this page
-  final List<DeploymentResponse> value;
+  final List<DeploymentResponse>? value;
 
   /// Creates a new [ListCatalogDeploymentsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Deployment items on this page
   const ListCatalogDeploymentsResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<DeploymentResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<DeploymentResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListCatalogDeploymentsResult.fromMap(Map<String, dynamic> map) {
     return ListCatalogDeploymentsResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<DeploymentResponse>(map['value']!, (value) => DeploymentResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentResponse>(guardedValue, (value) => DeploymentResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

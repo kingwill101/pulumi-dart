@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Library/package information of a Big Data pool powered by Apache Spark
 class LibraryInfoResponse {
   /// Storage blob container name.
-  final pulumi.Input<String>? containerName;
+  final pulumi.Input<String?>? containerName;
   /// Creator Id of the library/package.
   final pulumi.Input<String> creatorId;
   /// Name of the library.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Storage blob path of library.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Provisioning status of the library/package.
   final pulumi.Input<String> provisioningStatus;
   /// Type of the library.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The last update time of the library.
   final pulumi.Input<String> uploadedTimestamp;
 

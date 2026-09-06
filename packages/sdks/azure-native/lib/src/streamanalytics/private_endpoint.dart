@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'private_endpoint_args.dart';
+import 'private_link_service_connection_response.dart';
 
 /// Complete information about the private endpoint.
 ///
@@ -194,7 +195,7 @@ class PrivateEndpoint extends pulumi.CustomResource {
   /// Unique opaque string (generally a GUID) that represents the metadata state of the resource (private endpoint) and changes whenever the resource is updated. Required on PUT (CreateOrUpdate) requests.
   late final pulumi.Output<String> etag;
   /// A list of connections to the remote resource. Immutable after it is set.
-  late final pulumi.Output<List<Map<String, dynamic>>?> manualPrivateLinkServiceConnections;
+  late final pulumi.Output<List<PrivateLinkServiceConnectionResponse>?> manualPrivateLinkServiceConnections;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
@@ -217,7 +218,24 @@ class PrivateEndpoint extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdDate = registerOutput<String>('createdDate');
     etag = registerOutput<String>('etag');
-    manualPrivateLinkServiceConnections = registerOutput<List<Map<String, dynamic>>?>('manualPrivateLinkServiceConnections');
+    manualPrivateLinkServiceConnections = registerOutput<List<PrivateLinkServiceConnectionResponse>?>('manualPrivateLinkServiceConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(guardedValue, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrivateEndpoint] resource.
+  PrivateEndpoint.reference(String urn)
+    : super(
+        'azure-native:streamanalytics:PrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    etag = registerOutput<String>('etag');
+    manualPrivateLinkServiceConnections = registerOutput<List<PrivateLinkServiceConnectionResponse>?>('manualPrivateLinkServiceConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkServiceConnectionResponse>(guardedValue, (value) => PrivateLinkServiceConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

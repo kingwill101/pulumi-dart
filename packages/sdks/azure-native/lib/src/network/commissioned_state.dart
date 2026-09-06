@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The commissioned state of the Custom IP Prefix.
-enum CommissionedState {
+enum CommissionedState implements pulumi.PulumiEnum<String> {
   valueProvisioning("Provisioning"),
   valueProvisioned("Provisioned"),
   valueCommissioning("Commissioning"),
@@ -10,6 +12,7 @@ enum CommissionedState {
   valueDeprovisioned("Deprovisioned");
 
   const CommissionedState(this.wireValue);
+  @override
   final String wireValue;
 
   static CommissionedState fromValue(String value) {

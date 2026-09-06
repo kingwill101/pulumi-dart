@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum SourceType {
+enum SourceType implements pulumi.PulumiEnum<String> {
   aWSEC2Instance("AWS::EC2::Instance"),
   aWSIoTThing("AWS::IoT::Thing"),
   aWSSSMManagedInstance("AWS::SSM::ManagedInstance");
 
   const SourceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SourceType fromValue(String value) {

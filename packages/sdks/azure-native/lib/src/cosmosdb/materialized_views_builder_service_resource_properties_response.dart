@@ -8,9 +8,9 @@ class MaterializedViewsBuilderServiceResourcePropertiesResponse {
   /// Time of the last state change (ISO-8601 format).
   final pulumi.Input<String> creationTime;
   /// Instance count for the service.
-  final pulumi.Input<int>? instanceCount;
+  final pulumi.Input<int?>? instanceCount;
   /// Instance type for the service.
-  final pulumi.Input<String>? instanceSize;
+  final pulumi.Input<String?>? instanceSize;
   /// An array that contains all of the locations for the service.
   final pulumi.Input<List<MaterializedViewsBuilderRegionalServiceResourceResponse>> locations;
   /// ServiceType for the service.
@@ -49,7 +49,7 @@ class MaterializedViewsBuilderServiceResourcePropertiesResponse {
   factory MaterializedViewsBuilderServiceResourcePropertiesResponse.fromMap(Map<String, dynamic> map) {
     return MaterializedViewsBuilderServiceResourcePropertiesResponse(
       creationTime: pulumi.Input.fromValue(map['creationTime'] as String),
-      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instanceCount: (() { final guardedValue = map['instanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceSize: (() { final guardedValue = map['instanceSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       locations: pulumi.Input.fromValue(pulumi.Input.decodeList<MaterializedViewsBuilderRegionalServiceResourceResponse>(map['locations']!, (value) => MaterializedViewsBuilderRegionalServiceResourceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceType: pulumi.Input.fromValue(map['serviceType'] as String),

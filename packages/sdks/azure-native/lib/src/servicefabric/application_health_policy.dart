@@ -8,14 +8,14 @@ class ApplicationHealthPolicy {
   /// Indicates whether warnings are treated with the same severity as errors.
   final pulumi.Input<bool> considerWarningAsError;
   /// The health policy used by default to evaluate the health of a service type.
-  final pulumi.Input<ServiceTypeHealthPolicy>? defaultServiceTypeHealthPolicy;
+  final pulumi.Input<ServiceTypeHealthPolicy?>? defaultServiceTypeHealthPolicy;
   /// The maximum allowed percentage of unhealthy deployed applications. Allowed values are Byte values from zero to 100.
   /// The percentage represents the maximum tolerated percentage of deployed applications that can be unhealthy before the application is considered in error.
   /// This is calculated by dividing the number of unhealthy deployed applications over the number of nodes where the application is currently deployed on in the cluster.
   /// The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero.
   final pulumi.Input<int> maxPercentUnhealthyDeployedApplications;
   /// The map with service type health policy per service type name. The map is empty by default.
-  final pulumi.Input<Map<String, ServiceTypeHealthPolicy>>? serviceTypeHealthPolicyMap;
+  final pulumi.Input<Map<String, ServiceTypeHealthPolicy>?>? serviceTypeHealthPolicyMap;
 
   /// Creates a new [ApplicationHealthPolicy].
   /// [considerWarningAsError] Indicates whether warnings are treated with the same severity as errors.
@@ -42,7 +42,7 @@ class ApplicationHealthPolicy {
     return ApplicationHealthPolicy(
       considerWarningAsError: pulumi.Input.fromValue(map['considerWarningAsError'] as bool),
       defaultServiceTypeHealthPolicy: (() { final guardedValue = map['defaultServiceTypeHealthPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceTypeHealthPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxPercentUnhealthyDeployedApplications: pulumi.Input.fromValue(map['maxPercentUnhealthyDeployedApplications'] as int),
+      maxPercentUnhealthyDeployedApplications: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPercentUnhealthyDeployedApplications'])),
       serviceTypeHealthPolicyMap: (() { final guardedValue = map['serviceTypeHealthPolicyMap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ServiceTypeHealthPolicy>(guardedValue, (value) => ServiceTypeHealthPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

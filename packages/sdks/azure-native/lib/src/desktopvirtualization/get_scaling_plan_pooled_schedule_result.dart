@@ -6,13 +6,13 @@ import 'time_response.dart';
 /// Result data returned by getScalingPlanPooledSchedule.
 class GetScalingPlanPooledScheduleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Set of days of the week on which this schedule is active.
   final List<String>? daysOfWeek;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Load balancing algorithm for off-peak period.
   final String? offPeakLoadBalancingAlgorithm;
   /// Starting time for off-peak period.
@@ -46,9 +46,9 @@ class GetScalingPlanPooledScheduleResult {
   /// Starting time for ramp up period.
   final TimeResponse? rampUpStartTime;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetScalingPlanPooledScheduleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -74,10 +74,10 @@ class GetScalingPlanPooledScheduleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetScalingPlanPooledScheduleResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.daysOfWeek,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.offPeakLoadBalancingAlgorithm,
     this.offPeakStartTime,
     this.peakLoadBalancingAlgorithm,
@@ -94,16 +94,16 @@ class GetScalingPlanPooledScheduleResult {
     this.rampUpLoadBalancingAlgorithm,
     this.rampUpMinimumHostsPct,
     this.rampUpStartTime,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'daysOfWeek': ?daysOfWeek,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'offPeakLoadBalancingAlgorithm': ?offPeakLoadBalancingAlgorithm,
       'offPeakStartTime': ?offPeakStartTime?.toMap(),
       'peakLoadBalancingAlgorithm': ?peakLoadBalancingAlgorithm,
@@ -120,35 +120,35 @@ class GetScalingPlanPooledScheduleResult {
       'rampUpLoadBalancingAlgorithm': ?rampUpLoadBalancingAlgorithm,
       'rampUpMinimumHostsPct': ?rampUpMinimumHostsPct,
       'rampUpStartTime': ?rampUpStartTime?.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetScalingPlanPooledScheduleResult.fromMap(Map<String, dynamic> map) {
     return GetScalingPlanPooledScheduleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       daysOfWeek: (() { final guardedValue = map['daysOfWeek']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offPeakLoadBalancingAlgorithm: (() { final guardedValue = map['offPeakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offPeakStartTime: (() { final guardedValue = map['offPeakStartTime']; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       peakLoadBalancingAlgorithm: (() { final guardedValue = map['peakLoadBalancingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
       peakStartTime: (() { final guardedValue = map['peakStartTime']; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      rampDownCapacityThresholdPct: (() { final guardedValue = map['rampDownCapacityThresholdPct']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rampDownCapacityThresholdPct: (() { final guardedValue = map['rampDownCapacityThresholdPct']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rampDownForceLogoffUsers: (() { final guardedValue = map['rampDownForceLogoffUsers']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       rampDownLoadBalancingAlgorithm: (() { final guardedValue = map['rampDownLoadBalancingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rampDownMinimumHostsPct: (() { final guardedValue = map['rampDownMinimumHostsPct']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rampDownMinimumHostsPct: (() { final guardedValue = map['rampDownMinimumHostsPct']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rampDownNotificationMessage: (() { final guardedValue = map['rampDownNotificationMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rampDownStartTime: (() { final guardedValue = map['rampDownStartTime']; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       rampDownStopHostsWhen: (() { final guardedValue = map['rampDownStopHostsWhen']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rampDownWaitTimeMinutes: (() { final guardedValue = map['rampDownWaitTimeMinutes']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      rampUpCapacityThresholdPct: (() { final guardedValue = map['rampUpCapacityThresholdPct']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rampDownWaitTimeMinutes: (() { final guardedValue = map['rampDownWaitTimeMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      rampUpCapacityThresholdPct: (() { final guardedValue = map['rampUpCapacityThresholdPct']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rampUpLoadBalancingAlgorithm: (() { final guardedValue = map['rampUpLoadBalancingAlgorithm']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      rampUpMinimumHostsPct: (() { final guardedValue = map['rampUpMinimumHostsPct']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      rampUpMinimumHostsPct: (() { final guardedValue = map['rampUpMinimumHostsPct']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       rampUpStartTime: (() { final guardedValue = map['rampUpStartTime']; if (guardedValue == null) return null; return TimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -10,21 +10,21 @@ class ListConnectionKeysArgs {
   /// The connection name.
   final pulumi.Input<String> connectionName;
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Kind of resource
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource Location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// time span for how long the keys will be valid
-  final pulumi.Input<String>? validityTimeSpan;
+  final pulumi.Input<String?>? validityTimeSpan;
 
   /// Creates a new [ListConnectionKeysArgs].
   /// [connectionName] The connection name.

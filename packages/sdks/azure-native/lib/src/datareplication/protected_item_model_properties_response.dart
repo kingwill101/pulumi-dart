@@ -2,7 +2,6 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'health_error_model_response.dart';
-import 'hyper_vto_az_stack_hciprotected_item_model_custom_properties_response.dart';
 import 'protected_item_model_properties_response_current_job.dart';
 import 'protected_item_model_properties_response_last_failed_enable_protection_job.dart';
 import 'protected_item_model_properties_response_last_failed_planned_failover_job.dart';
@@ -16,7 +15,7 @@ class ProtectedItemModelPropertiesResponse {
   final pulumi.Input<String> correlationId;
   final pulumi.Input<ProtectedItemModelPropertiesResponseCurrentJob> currentJob;
   /// Protected item model custom properties.
-  final pulumi.Input<HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse> customProperties;
+  final pulumi.Input<dynamic> customProperties;
   /// Gets or sets the DRA Id.
   final pulumi.Input<String> draId;
   /// Gets or sets the fabric Id.
@@ -132,7 +131,7 @@ class ProtectedItemModelPropertiesResponse {
       'allowedJobs': allowedJobs,
       'correlationId': correlationId,
       'currentJob': pulumi.Input.mapInputValue<ProtectedItemModelPropertiesResponseCurrentJob, Map<String, dynamic>>(currentJob, (value) => value.toMap()),
-      'customProperties': pulumi.Input.mapInputValue<HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse, Map<String, dynamic>>(customProperties, (value) => value.toMap()),
+      'customProperties': customProperties,
       'draId': draId,
       'fabricId': fabricId,
       'fabricObjectId': fabricObjectId,
@@ -166,7 +165,7 @@ class ProtectedItemModelPropertiesResponse {
       allowedJobs: pulumi.Input.fromValue((map['allowedJobs'] as List).cast<String>()),
       correlationId: pulumi.Input.fromValue(map['correlationId'] as String),
       currentJob: pulumi.Input.fromValue(ProtectedItemModelPropertiesResponseCurrentJob.fromMap((map['currentJob']! as Map).cast<String, dynamic>())),
-      customProperties: pulumi.Input.fromValue(HyperVToAzStackHCIProtectedItemModelCustomPropertiesResponse.fromMap((map['customProperties']! as Map).cast<String, dynamic>())),
+      customProperties: pulumi.Input.fromValue(map['customProperties']),
       draId: pulumi.Input.fromValue(map['draId'] as String),
       fabricId: pulumi.Input.fromValue(map['fabricId'] as String),
       fabricObjectId: pulumi.Input.fromValue(map['fabricObjectId'] as String),

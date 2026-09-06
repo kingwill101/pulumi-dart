@@ -9,15 +9,15 @@ import 'azure_resource_manager_common_types_extended_location.dart';
 /// {@macro pulumi_edge_diagnostic_args_doc}
 class DiagnosticArgs {
   /// Name of Diagnostic.
-  final pulumi.Input<String>? diagnosticName;
+  final pulumi.Input<String?>? diagnosticName;
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DiagnosticArgs].
   /// [diagnosticName] Name of Diagnostic.

@@ -12,19 +12,19 @@ class PredictionArgs {
   /// Whether do auto analyze.
   final pulumi.Input<bool> autoAnalyze;
   /// Description of the prediction.
-  final pulumi.Input<Map<String, String>>? description;
+  final pulumi.Input<Map<String, String>?>? description;
   /// Display name of the prediction.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The prediction grades.
-  final pulumi.Input<List<PredictionGrades>>? grades;
+  final pulumi.Input<List<PredictionGrades>?>? grades;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// Interaction types involved in the prediction.
-  final pulumi.Input<List<String>>? involvedInteractionTypes;
+  final pulumi.Input<List<String>?>? involvedInteractionTypes;
   /// KPI types involved in the prediction.
-  final pulumi.Input<List<String>>? involvedKpiTypes;
+  final pulumi.Input<List<String>?>? involvedKpiTypes;
   /// Relationships involved in the prediction.
-  final pulumi.Input<List<String>>? involvedRelationships;
+  final pulumi.Input<List<String>?>? involvedRelationships;
   /// Definition of the link mapping of prediction.
   final pulumi.Input<PredictionMappings> mappings;
   /// Negative outcome expression.
@@ -32,7 +32,7 @@ class PredictionArgs {
   /// Positive outcome expression.
   final pulumi.Input<String> positiveOutcomeExpression;
   /// Name of the prediction.
-  final pulumi.Input<String>? predictionName;
+  final pulumi.Input<String?>? predictionName;
   /// Primary profile type.
   final pulumi.Input<String> primaryProfileType;
   /// The name of the resource group.

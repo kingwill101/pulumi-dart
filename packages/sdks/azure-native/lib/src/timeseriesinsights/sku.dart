@@ -7,7 +7,7 @@ class Sku {
   /// The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
   final pulumi.Input<int> capacity;
   /// The name of this SKU.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
 
   /// Creates a new [Sku].
   /// [capacity] The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
@@ -26,8 +26,8 @@ class Sku {
 
   factory Sku.fromMap(Map<String, dynamic> map) {
     return Sku(
-      capacity: pulumi.Input.fromValue(map['capacity'] as int),
-      name: pulumi.Input.fromValue(map['name'] as String),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
+      name: pulumi.Input.fromValue(map['name']),
     );
   }
 }

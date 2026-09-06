@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'express_route_link_response.dart';
 import 'express_route_port_args.dart';
 import 'managed_service_identity_response.dart';
+import 'sub_resource_response.dart';
 
 /// ExpressRoutePort resource definition.
 ///
@@ -379,7 +381,7 @@ class ExpressRoutePort extends pulumi.CustomResource {
   /// The billing type of the ExpressRoutePort resource.
   late final pulumi.Output<String?> billingType;
   /// Reference the ExpressRoute circuit(s) that are provisioned on this ExpressRoutePort resource.
-  late final pulumi.Output<List<Map<String, dynamic>>> circuits;
+  late final pulumi.Output<List<SubResourceResponse>> circuits;
   /// Encapsulation method on physical ports.
   late final pulumi.Output<String?> encapsulation;
   /// A unique read-only string that changes whenever the resource is updated.
@@ -389,7 +391,7 @@ class ExpressRoutePort extends pulumi.CustomResource {
   /// The identity of ExpressRoutePort, if configured.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// The set of physical links of the ExpressRoutePort resource.
-  late final pulumi.Output<List<Map<String, dynamic>>?> links;
+  late final pulumi.Output<List<ExpressRouteLinkResponse>?> links;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// Maximum transmission unit of the physical port pair(s).
@@ -427,12 +429,12 @@ class ExpressRoutePort extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     bandwidthInGbps = registerOutput<int?>('bandwidthInGbps');
     billingType = registerOutput<String?>('billingType');
-    circuits = registerOutput<List<Map<String, dynamic>>>('circuits');
+    circuits = registerOutput<List<SubResourceResponse>>('circuits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     encapsulation = registerOutput<String?>('encapsulation');
     etag = registerOutput<String>('etag');
     etherType = registerOutput<String>('etherType');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    links = registerOutput<List<Map<String, dynamic>>?>('links');
+    links = registerOutput<List<ExpressRouteLinkResponse>?>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteLinkResponse>(guardedValue, (value) => ExpressRouteLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     mtu = registerOutput<String>('mtu');
     this.name = registerOutput<String>('name');
@@ -440,7 +442,37 @@ class ExpressRoutePort extends pulumi.CustomResource {
     provisionedBandwidthInGbps = registerOutput<double>('provisionedBandwidthInGbps');
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ExpressRoutePort] resource.
+  ExpressRoutePort.reference(String urn)
+    : super(
+        'azure-native:network:ExpressRoutePort',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationDate = registerOutput<String>('allocationDate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    bandwidthInGbps = registerOutput<int?>('bandwidthInGbps');
+    billingType = registerOutput<String?>('billingType');
+    circuits = registerOutput<List<SubResourceResponse>>('circuits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    encapsulation = registerOutput<String?>('encapsulation');
+    etag = registerOutput<String>('etag');
+    etherType = registerOutput<String>('etherType');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    links = registerOutput<List<ExpressRouteLinkResponse>?>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteLinkResponse>(guardedValue, (value) => ExpressRouteLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    mtu = registerOutput<String>('mtu');
+    this.name = registerOutput<String>('name');
+    peeringLocation = registerOutput<String?>('peeringLocation');
+    provisionedBandwidthInGbps = registerOutput<double>('provisionedBandwidthInGbps');
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

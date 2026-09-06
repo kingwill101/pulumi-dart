@@ -328,7 +328,34 @@ class SourceControl extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    contentTypes = registerOutput<List<String>>('contentTypes');
+    contentTypes = registerOutput<List<String>>('contentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    lastDeploymentInfo = registerOutput<DeploymentInfoResponse>('lastDeploymentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pullRequest = registerOutput<PullRequestResponse>('pullRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PullRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repoType = registerOutput<String>('repoType');
+    repository = registerOutput<RepositoryResponse>('repository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    repositoryResourceInfo = registerOutput<RepositoryResourceInfoResponse?>('repositoryResourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RepositoryResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    servicePrincipal = registerOutput<ServicePrincipalResponse?>('servicePrincipal', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePrincipalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String>('version');
+    workloadIdentityFederation = registerOutput<WorkloadIdentityFederationResponse>('workloadIdentityFederation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WorkloadIdentityFederationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [SourceControl] resource.
+  SourceControl.reference(String urn)
+    : super(
+        'azure-native:securityinsights:SourceControl',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    contentTypes = registerOutput<List<String>>('contentTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String?>('etag');

@@ -9,7 +9,7 @@ import 'table_level_sharing_properties.dart';
 /// {@macro pulumi_kusto_attached_database_configuration_args_doc}
 class AttachedDatabaseConfigurationArgs {
   /// The name of the attached database configuration.
-  final pulumi.Input<String>? attachedDatabaseConfigurationName;
+  final pulumi.Input<String?>? attachedDatabaseConfigurationName;
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The resource id of the cluster where the databases you would like to attach reside.
@@ -17,17 +17,17 @@ class AttachedDatabaseConfigurationArgs {
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
   final pulumi.Input<String> databaseName;
   /// Overrides the original database name. Relevant only when attaching to a specific database.
-  final pulumi.Input<String>? databaseNameOverride;
+  final pulumi.Input<String?>? databaseNameOverride;
   /// Adds a prefix to the attached databases name. When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
-  final pulumi.Input<String>? databaseNamePrefix;
+  final pulumi.Input<String?>? databaseNamePrefix;
   /// The default principals modification kind
-  final pulumi.Input<String> defaultPrincipalsModificationKind;
+  final pulumi.Input<dynamic> defaultPrincipalsModificationKind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Table level sharing specifications
-  final pulumi.Input<TableLevelSharingProperties>? tableLevelSharingProperties;
+  final pulumi.Input<TableLevelSharingProperties?>? tableLevelSharingProperties;
 
   /// Creates a new [AttachedDatabaseConfigurationArgs].
   /// [attachedDatabaseConfigurationName] The name of the attached database configuration.
@@ -76,7 +76,7 @@ class AttachedDatabaseConfigurationArgs {
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
       databaseNameOverride: (() { final guardedValue = map['databaseNameOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       databaseNamePrefix: (() { final guardedValue = map['databaseNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultPrincipalsModificationKind: pulumi.Input.fromValue(map['defaultPrincipalsModificationKind'] as String),
+      defaultPrincipalsModificationKind: pulumi.Input.fromValue(map['defaultPrincipalsModificationKind']),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tableLevelSharingProperties: (() { final guardedValue = map['tableLevelSharingProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TableLevelSharingProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

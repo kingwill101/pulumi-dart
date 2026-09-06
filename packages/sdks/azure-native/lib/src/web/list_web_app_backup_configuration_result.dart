@@ -15,15 +15,15 @@ class ListWebAppBackupConfigurationResult {
   /// True if the backup schedule is enabled (must be included in that case), false if the backup schedule should be disabled.
   final bool? enabled;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// SAS URL to the container.
-  final String storageAccountUrl;
+  final String? storageAccountUrl;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListWebAppBackupConfigurationResult].
   /// [backupName] Name of the backup.
@@ -40,11 +40,11 @@ class ListWebAppBackupConfigurationResult {
     this.backupSchedule,
     this.databases,
     this.enabled,
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
-    required this.storageAccountUrl,
-    required this.type,
+    this.name,
+    this.storageAccountUrl,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
@@ -53,11 +53,11 @@ class ListWebAppBackupConfigurationResult {
       'backupSchedule': ?backupSchedule?.toMap(),
       'databases': ?(() { final guardedValue = databases; if (guardedValue == null) return null; return pulumi.Input.encodeList<DatabaseBackupSettingResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'enabled': ?enabled,
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
-      'storageAccountUrl': storageAccountUrl,
-      'type': type,
+      'name': ?name,
+      'storageAccountUrl': ?storageAccountUrl,
+      'type': ?type,
     };
   }
 
@@ -67,11 +67,11 @@ class ListWebAppBackupConfigurationResult {
       backupSchedule: (() { final guardedValue = map['backupSchedule']; if (guardedValue == null) return null; return BackupScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       databases: (() { final guardedValue = map['databases']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseBackupSettingResponse>(guardedValue, (value) => DatabaseBackupSettingResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      storageAccountUrl: map['storageAccountUrl'] as String,
-      type: map['type'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageAccountUrl: (() { final guardedValue = map['storageAccountUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

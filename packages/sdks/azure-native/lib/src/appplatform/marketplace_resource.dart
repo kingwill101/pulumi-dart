@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Purchasing 3rd Party product for one Azure Spring Apps instance
 class MarketplaceResource {
   /// The plan id of the 3rd Party Artifact that is being procured.
-  final pulumi.Input<String>? plan;
+  final pulumi.Input<String?>? plan;
   /// The 3rd Party artifact that is being procured.
-  final pulumi.Input<String>? product;
+  final pulumi.Input<String?>? product;
   /// The publisher id of the 3rd Party Artifact that is being bought.
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
 
   /// Creates a new [MarketplaceResource].
   /// [plan] The plan id of the 3rd Party Artifact that is being procured.

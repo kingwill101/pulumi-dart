@@ -11,21 +11,21 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_devcenter_dev_center_args_doc}
 class DevCenterArgs {
   /// The name of the devcenter.
-  final pulumi.Input<String>? devCenterName;
+  final pulumi.Input<String?>? devCenterName;
   /// The display name of the devcenter.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Encryption settings to be used for server-side encryption for proprietary content (such as catalogs, logs, customizations).
-  final pulumi.Input<Encryption>? encryption;
+  final pulumi.Input<Encryption?>? encryption;
   /// Managed identity properties
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Dev Center settings to be used when associating a project with a catalog.
-  final pulumi.Input<DevCenterProjectCatalogSettings>? projectCatalogSettings;
+  final pulumi.Input<DevCenterProjectCatalogSettings?>? projectCatalogSettings;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DevCenterArgs].
   /// [devCenterName] The name of the devcenter.

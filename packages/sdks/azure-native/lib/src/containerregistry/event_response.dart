@@ -7,11 +7,11 @@ import 'event_response_message_response.dart';
 /// The event for a webhook.
 class EventResponse {
   /// The event request message sent to the service URI.
-  final pulumi.Input<EventRequestMessageResponse>? eventRequestMessage;
+  final pulumi.Input<EventRequestMessageResponse?>? eventRequestMessage;
   /// The event response message received from the service URI.
-  final pulumi.Input<EventResponseMessageResponse>? eventResponseMessage;
+  final pulumi.Input<EventResponseMessageResponse?>? eventResponseMessage;
   /// The event ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [EventResponse].
   /// [eventRequestMessage] The event request message sent to the service URI.

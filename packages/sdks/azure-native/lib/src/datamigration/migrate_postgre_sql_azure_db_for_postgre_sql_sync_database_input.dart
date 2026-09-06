@@ -8,15 +8,15 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
   /// Migration settings which tune the migration behavior
   final pulumi.Input<dynamic>? migrationSetting;
   /// Name of the database
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Tables selected for migration
-  final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput>>? selectedTables;
+  final pulumi.Input<List<MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseTableInput>?>? selectedTables;
   /// Source settings to tune source endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? sourceSetting;
+  final pulumi.Input<Map<String, String>?>? sourceSetting;
   /// Name of target database. Note: Target database will be truncated before starting migration.
-  final pulumi.Input<String>? targetDatabaseName;
+  final pulumi.Input<String?>? targetDatabaseName;
   /// Target settings to tune target endpoint migration behavior
-  final pulumi.Input<Map<String, String>>? targetSetting;
+  final pulumi.Input<Map<String, String>?>? targetSetting;
 
   /// Creates a new [MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput].
   /// [migrationSetting] Migration settings which tune the migration behavior

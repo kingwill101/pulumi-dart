@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network ACL
 class NetworkACL {
   /// Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? allow;
+  final pulumi.Input<List<dynamic>?>? allow;
   /// Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  final pulumi.Input<List<String>>? deny;
+  final pulumi.Input<List<dynamic>?>? deny;
 
   /// Creates a new [NetworkACL].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
@@ -26,8 +26,8 @@ class NetworkACL {
 
   factory NetworkACL.fromMap(Map<String, dynamic> map) {
     return NetworkACL(
-      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      deny: (() { final guardedValue = map['deny']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      allow: (() { final guardedValue = map['allow']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      deny: (() { final guardedValue = map['deny']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

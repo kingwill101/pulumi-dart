@@ -6,9 +6,9 @@ import 'field_mapping.dart';
 /// Single entity mapping for the alert rule
 class EntityMapping {
   /// The V3 type of the mapped entity
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<dynamic>? entityType;
   /// array of field mappings for the given entity mapping
-  final pulumi.Input<List<FieldMapping>>? fieldMappings;
+  final pulumi.Input<List<FieldMapping>?>? fieldMappings;
 
   /// Creates a new [EntityMapping].
   /// [entityType] The V3 type of the mapped entity
@@ -27,7 +27,7 @@ class EntityMapping {
 
   factory EntityMapping.fromMap(Map<String, dynamic> map) {
     return EntityMapping(
-      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      entityType: (() { final guardedValue = map['entityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       fieldMappings: (() { final guardedValue = map['fieldMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FieldMapping>(guardedValue, (value) => FieldMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

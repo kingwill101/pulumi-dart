@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the server supports Microsoft Entra authentication.
-enum MicrosoftEntraAuth {
+enum MicrosoftEntraAuth implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const MicrosoftEntraAuth(this.wireValue);
+  @override
   final String wireValue;
 
   static MicrosoftEntraAuth fromValue(String value) {

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of action.
-enum KeyRotationPolicyActionType {
+enum KeyRotationPolicyActionType implements pulumi.PulumiEnum<String> {
   valueRotate("rotate"),
   valueNotify("notify");
 
   const KeyRotationPolicyActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static KeyRotationPolicyActionType fromValue(String value) {

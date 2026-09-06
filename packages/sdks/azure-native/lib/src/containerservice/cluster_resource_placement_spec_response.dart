@@ -6,7 +6,7 @@ import 'placement_policy_response.dart';
 /// ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement.
 class ClusterResourcePlacementSpecResponse {
   /// Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
-  final pulumi.Input<PlacementPolicyResponse>? policy;
+  final pulumi.Input<PlacementPolicyResponse?>? policy;
 
   /// Creates a new [ClusterResourcePlacementSpecResponse].
   /// [policy] Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.

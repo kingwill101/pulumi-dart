@@ -6,17 +6,17 @@ import 'postgres_instance_sku_tier.dart';
 /// The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc
 class PostgresInstanceSku {
   /// If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Whether dev/test is enabled. When the dev field is set to true, the resource is used for dev/test purpose.
-  final pulumi.Input<bool>? dev;
+  final pulumi.Input<bool?>? dev;
   /// If the service has different generations of hardware, for the same SKU, then that can be captured here.
-  final pulumi.Input<String>? family;
+  final pulumi.Input<String?>? family;
   /// The name of the SKU.  It is typically a letter+number code
   final pulumi.Input<String> name;
   /// The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
-  final pulumi.Input<String>? size;
+  final pulumi.Input<String?>? size;
   /// This field is required to be implemented by the Resource Provider if the service has more than one tier.
-  final pulumi.Input<PostgresInstanceSkuTier>? tier;
+  final pulumi.Input<PostgresInstanceSkuTier?>? tier;
 
   /// Creates a new [PostgresInstanceSku].
   /// [capacity] If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted.
@@ -25,14 +25,14 @@ class PostgresInstanceSku {
   /// [name] The name of the SKU.  It is typically a letter+number code
   /// [size] The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
   /// [tier] This field is required to be implemented by the Resource Provider if the service has more than one tier.
-  const PostgresInstanceSku({
+  PostgresInstanceSku({
     this.capacity,
-    this.dev,
+    pulumi.Input<bool?>? dev,
     this.family,
     required this.name,
     this.size,
-    this.tier,
-  });
+    pulumi.Input<PostgresInstanceSkuTier?>? tier,
+  }) : dev = dev ?? pulumi.Input.fromValue(true), tier = tier ?? pulumi.Input.fromValue(PostgresInstanceSkuTier.fromValue('Hyperscale'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -47,7 +47,7 @@ class PostgresInstanceSku {
 
   factory PostgresInstanceSku.fromMap(Map<String, dynamic> map) {
     return PostgresInstanceSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dev: (() { final guardedValue = map['dev']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       family: (() { final guardedValue = map['family']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),

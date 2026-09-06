@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of the App Service plan scale options.
 class SkuCapacityResponse {
   /// Default number of workers for this App Service plan SKU.
-  final pulumi.Input<int>? default_;
+  final pulumi.Input<int?>? default_;
   /// Maximum number of Elastic workers for this App Service plan SKU.
-  final pulumi.Input<int>? elasticMaximum;
+  final pulumi.Input<int?>? elasticMaximum;
   /// Maximum number of workers for this App Service plan SKU.
-  final pulumi.Input<int>? maximum;
+  final pulumi.Input<int?>? maximum;
   /// Minimum number of workers for this App Service plan SKU.
-  final pulumi.Input<int>? minimum;
+  final pulumi.Input<int?>? minimum;
   /// Available scale configurations for an App Service plan.
-  final pulumi.Input<String>? scaleType;
+  final pulumi.Input<String?>? scaleType;
 
   /// Creates a new [SkuCapacityResponse].
   /// [default_] Default number of workers for this App Service plan SKU.
@@ -41,10 +41,10 @@ class SkuCapacityResponse {
 
   factory SkuCapacityResponse.fromMap(Map<String, dynamic> map) {
     return SkuCapacityResponse(
-      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      elasticMaximum: (() { final guardedValue = map['elasticMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      default_: (() { final guardedValue = map['default']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      elasticMaximum: (() { final guardedValue = map['elasticMaximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maximum: (() { final guardedValue = map['maximum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minimum: (() { final guardedValue = map['minimum']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaleType: (() { final guardedValue = map['scaleType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

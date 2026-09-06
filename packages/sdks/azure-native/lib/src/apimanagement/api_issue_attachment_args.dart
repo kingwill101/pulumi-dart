@@ -10,7 +10,7 @@ class ApiIssueAttachmentArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
   /// Attachment identifier within an Issue. Must be unique in the current Issue.
-  final pulumi.Input<String>? attachmentId;
+  final pulumi.Input<String?>? attachmentId;
   /// An HTTP link or Base64-encoded binary data.
   final pulumi.Input<String> content;
   /// Either 'link' if content is provided via an HTTP link or the MIME type of the Base64-encoded binary data provided in the 'content' property.

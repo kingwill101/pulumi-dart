@@ -18,18 +18,18 @@ class ThreeTierConfigurationResponse {
   /// The central server configuration.
   final pulumi.Input<CentralServerConfigurationResponse> centralServer;
   /// The set of custom names to be used for underlying azure resources that are part of the SAP system.
-  final pulumi.Input<ThreeTierFullResourceNamesResponse>? customResourceNames;
+  final pulumi.Input<ThreeTierFullResourceNamesResponse?>? customResourceNames;
   /// The database configuration.
   final pulumi.Input<DatabaseConfigurationResponse> databaseServer;
   /// The type of SAP deployment, single server or Three tier.
   /// Expected value is 'ThreeTier'.
   final pulumi.Input<String> deploymentType;
   /// The high availability configuration.
-  final pulumi.Input<HighAvailabilityConfigurationResponse>? highAvailabilityConfig;
+  final pulumi.Input<HighAvailabilityConfigurationResponse?>? highAvailabilityConfig;
   /// Network configuration common to all servers
-  final pulumi.Input<NetworkConfigurationResponse>? networkConfiguration;
+  final pulumi.Input<NetworkConfigurationResponse?>? networkConfiguration;
   /// The storage configuration.
-  final pulumi.Input<StorageConfigurationResponse>? storageConfiguration;
+  final pulumi.Input<StorageConfigurationResponse?>? storageConfiguration;
 
   /// Creates a new [ThreeTierConfigurationResponse].
   /// [appResourceGroup] The application resource group where SAP system resources will be deployed.

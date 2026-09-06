@@ -9,16 +9,16 @@ import 'yearly_retention_schedule.dart';
 /// Long term retention policy.
 class LongTermRetentionPolicy {
   /// Daily retention schedule of the protection policy.
-  final pulumi.Input<DailyRetentionSchedule>? dailySchedule;
+  final pulumi.Input<DailyRetentionSchedule?>? dailySchedule;
   /// Monthly retention schedule of the protection policy.
-  final pulumi.Input<MonthlyRetentionSchedule>? monthlySchedule;
+  final pulumi.Input<MonthlyRetentionSchedule?>? monthlySchedule;
   /// This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
   /// Expected value is 'LongTermRetentionPolicy'.
   final pulumi.Input<String> retentionPolicyType;
   /// Weekly retention schedule of the protection policy.
-  final pulumi.Input<WeeklyRetentionSchedule>? weeklySchedule;
+  final pulumi.Input<WeeklyRetentionSchedule?>? weeklySchedule;
   /// Yearly retention schedule of the protection policy.
-  final pulumi.Input<YearlyRetentionSchedule>? yearlySchedule;
+  final pulumi.Input<YearlyRetentionSchedule?>? yearlySchedule;
 
   /// Creates a new [LongTermRetentionPolicy].
   /// [dailySchedule] Daily retention schedule of the protection policy.

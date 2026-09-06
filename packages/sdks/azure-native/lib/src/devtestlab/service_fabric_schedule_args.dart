@@ -12,35 +12,35 @@ import 'week_details.dart';
 /// {@macro pulumi_devtestlab_service_fabric_schedule_args_doc}
 class ServiceFabricScheduleArgs {
   /// If the schedule will occur once each day of the week, specify the daily recurrence.
-  final pulumi.Input<DayDetails>? dailyRecurrence;
+  final pulumi.Input<DayDetails?>? dailyRecurrence;
   /// If the schedule will occur multiple times a day, specify the hourly recurrence.
-  final pulumi.Input<HourDetails>? hourlyRecurrence;
+  final pulumi.Input<HourDetails?>? hourlyRecurrence;
   /// labs
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Schedule
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Notification settings.
-  final pulumi.Input<NotificationSettings>? notificationSettings;
+  final pulumi.Input<NotificationSettings?>? notificationSettings;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// servicefabrics
   final pulumi.Input<String> serviceFabricName;
   /// The status of the schedule (i.e. Enabled, Disabled)
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The resource ID to which the schedule belongs
-  final pulumi.Input<String>? targetResourceId;
+  final pulumi.Input<String?>? targetResourceId;
   /// The task type of the schedule (e.g. LabVmsShutdownTask, LabVmAutoStart).
-  final pulumi.Input<String>? taskType;
+  final pulumi.Input<String?>? taskType;
   /// The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
-  final pulumi.Input<String>? timeZoneId;
+  final pulumi.Input<String?>? timeZoneId;
   /// users
   final pulumi.Input<String> userName;
   /// If the schedule will occur only some days of the week, specify the weekly recurrence.
-  final pulumi.Input<WeekDetails>? weeklyRecurrence;
+  final pulumi.Input<WeekDetails?>? weeklyRecurrence;
 
   /// Creates a new [ServiceFabricScheduleArgs].
   /// [dailyRecurrence] If the schedule will occur once each day of the week, specify the daily recurrence.
@@ -58,7 +58,7 @@ class ServiceFabricScheduleArgs {
   /// [timeZoneId] The time zone ID (e.g. China Standard Time, Greenland Standard Time, Pacific Standard time, etc.). The possible values for this property can be found in `IReadOnlyCollection&lt;string&gt; TimeZoneConverter.TZConvert.KnownWindowsTimeZoneIds` (https://github.com/mattjohnsonpint/TimeZoneConverter/blob/main/README.md)
   /// [userName] users
   /// [weeklyRecurrence] If the schedule will occur only some days of the week, specify the weekly recurrence.
-  const ServiceFabricScheduleArgs({
+  ServiceFabricScheduleArgs({
     this.dailyRecurrence,
     this.hourlyRecurrence,
     required this.labName,
@@ -67,14 +67,14 @@ class ServiceFabricScheduleArgs {
     this.notificationSettings,
     required this.resourceGroupName,
     required this.serviceFabricName,
-    this.status,
+    pulumi.Input<dynamic>? status,
     this.tags,
     this.targetResourceId,
     this.taskType,
     this.timeZoneId,
     required this.userName,
     this.weeklyRecurrence,
-  });
+  }) : status = status ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -106,7 +106,7 @@ class ServiceFabricScheduleArgs {
       notificationSettings: (() { final guardedValue = map['notificationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NotificationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceFabricName: pulumi.Input.fromValue(map['serviceFabricName'] as String),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       taskType: (() { final guardedValue = map['taskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Filter events by their name.
 class EventNameFilterResponse {
   /// Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.
-  final pulumi.Input<List<String>>? systemEvents;
+  final pulumi.Input<List<String>?>? systemEvents;
   /// Expected value is 'EventName'.
   final pulumi.Input<String> type;
   /// Gets or sets a matching pattern for event names.
@@ -13,7 +13,7 @@ class EventNameFilterResponse {
   /// 1. "*", it matches any event name
   /// 2. Combine multiple events with ",", for example "event1,event2", it matches events "event1" and "event2"
   /// 3. A single event name, for example, "event1", it matches "event1"
-  final pulumi.Input<String>? userEventPattern;
+  final pulumi.Input<String?>? userEventPattern;
 
   /// Creates a new [EventNameFilterResponse].
   /// [systemEvents] Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.

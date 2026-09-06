@@ -6,7 +6,7 @@ import 'batch_processor_response.dart';
 /// Processor Info.
 class ProcessorResponse {
   /// Batch processor configurations.
-  final pulumi.Input<BatchProcessorResponse>? batch;
+  final pulumi.Input<BatchProcessorResponse?>? batch;
   /// The name of processor.
   final pulumi.Input<String> name;
   /// The type of processor.

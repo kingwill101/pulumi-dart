@@ -6,7 +6,7 @@ import 'condition_response.dart';
 /// The rule criteria that defines the conditions of the scheduled query rule.
 class ScheduledQueryRuleCriteriaResponse {
   /// A list of conditions to evaluate against the specified scopes
-  final pulumi.Input<List<ConditionResponse>>? allOf;
+  final pulumi.Input<List<ConditionResponse>?>? allOf;
 
   /// Creates a new [ScheduledQueryRuleCriteriaResponse].
   /// [allOf] A list of conditions to evaluate against the specified scopes

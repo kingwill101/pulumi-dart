@@ -9,17 +9,17 @@ class IdentityDetailsResponse {
   /// Specifies the tenant id for the identity for the job.
   final pulumi.Input<String> tenantId;
   /// The type of identity
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityDetailsResponse].
   /// [principalId] Specifies the principal id for the identity for the job.
   /// [tenantId] Specifies the tenant id for the identity for the job.
   /// [type] The type of identity
-  const IdentityDetailsResponse({
+  IdentityDetailsResponse({
     required this.principalId,
     required this.tenantId,
-    this.type,
-  });
+    pulumi.Input<String?>? type,
+  }) : type = type ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -85,7 +85,7 @@ class ListWebAppAuthSettingsSlotResult {
   /// Google Sign-In documentation: https://developers.google.com/identity/sign-in/web/
   final List<String>? googleOAuthScopes;
   /// Resource Id.
-  final String id;
+  final String? id;
   /// "true" if the auth config settings should be read from a file,
   /// "false" otherwise
   final String? isAuthFromFile;
@@ -112,7 +112,7 @@ class ListWebAppAuthSettingsSlotResult {
   /// Microsoft Account Scopes and permissions documentation: https://msdn.microsoft.com/en-us/library/dn631845.aspx
   final List<String>? microsoftAccountOAuthScopes;
   /// Resource Name.
-  final String name;
+  final String? name;
   /// The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
   /// The setting in this value can control the behavior of certain features in the Authentication / Authorization module.
   final String? runtimeVersion;
@@ -134,7 +134,7 @@ class ListWebAppAuthSettingsSlotResult {
   /// application used for sign-in.
   final String? twitterConsumerSecretSettingName;
   /// Resource type.
-  final String type;
+  final String? type;
   /// The action to take when an unauthenticated client attempts to access the app.
   final String? unauthenticatedClientAction;
   /// Gets a value indicating whether the issuer should be a valid HTTPS url and be validated as such.
@@ -208,7 +208,7 @@ class ListWebAppAuthSettingsSlotResult {
     this.googleClientSecret,
     this.googleClientSecretSettingName,
     this.googleOAuthScopes,
-    required this.id,
+    this.id,
     this.isAuthFromFile,
     this.issuer,
     this.kind,
@@ -216,14 +216,14 @@ class ListWebAppAuthSettingsSlotResult {
     this.microsoftAccountClientSecret,
     this.microsoftAccountClientSecretSettingName,
     this.microsoftAccountOAuthScopes,
-    required this.name,
+    this.name,
     this.runtimeVersion,
     this.tokenRefreshExtensionHours,
     this.tokenStoreEnabled,
     this.twitterConsumerKey,
     this.twitterConsumerSecret,
     this.twitterConsumerSecretSettingName,
-    required this.type,
+    this.type,
     this.unauthenticatedClientAction,
     this.validateIssuer,
   });
@@ -254,7 +254,7 @@ class ListWebAppAuthSettingsSlotResult {
       'googleClientSecret': ?googleClientSecret,
       'googleClientSecretSettingName': ?googleClientSecretSettingName,
       'googleOAuthScopes': ?googleOAuthScopes,
-      'id': id,
+      'id': ?id,
       'isAuthFromFile': ?isAuthFromFile,
       'issuer': ?issuer,
       'kind': ?kind,
@@ -262,14 +262,14 @@ class ListWebAppAuthSettingsSlotResult {
       'microsoftAccountClientSecret': ?microsoftAccountClientSecret,
       'microsoftAccountClientSecretSettingName': ?microsoftAccountClientSecretSettingName,
       'microsoftAccountOAuthScopes': ?microsoftAccountOAuthScopes,
-      'name': name,
+      'name': ?name,
       'runtimeVersion': ?runtimeVersion,
       'tokenRefreshExtensionHours': ?tokenRefreshExtensionHours,
       'tokenStoreEnabled': ?tokenStoreEnabled,
       'twitterConsumerKey': ?twitterConsumerKey,
       'twitterConsumerSecret': ?twitterConsumerSecret,
       'twitterConsumerSecretSettingName': ?twitterConsumerSecretSettingName,
-      'type': type,
+      'type': ?type,
       'unauthenticatedClientAction': ?unauthenticatedClientAction,
       'validateIssuer': ?validateIssuer,
     };
@@ -301,7 +301,7 @@ class ListWebAppAuthSettingsSlotResult {
       googleClientSecret: (() { final guardedValue = map['googleClientSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
       googleClientSecretSettingName: (() { final guardedValue = map['googleClientSecretSettingName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       googleOAuthScopes: (() { final guardedValue = map['googleOAuthScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isAuthFromFile: (() { final guardedValue = map['isAuthFromFile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       issuer: (() { final guardedValue = map['issuer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -309,14 +309,14 @@ class ListWebAppAuthSettingsSlotResult {
       microsoftAccountClientSecret: (() { final guardedValue = map['microsoftAccountClientSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
       microsoftAccountClientSecretSettingName: (() { final guardedValue = map['microsoftAccountClientSecretSettingName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       microsoftAccountOAuthScopes: (() { final guardedValue = map['microsoftAccountOAuthScopes']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       runtimeVersion: (() { final guardedValue = map['runtimeVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      tokenRefreshExtensionHours: (() { final guardedValue = map['tokenRefreshExtensionHours']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       tokenStoreEnabled: (() { final guardedValue = map['tokenStoreEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       twitterConsumerKey: (() { final guardedValue = map['twitterConsumerKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       twitterConsumerSecret: (() { final guardedValue = map['twitterConsumerSecret']; if (guardedValue == null) return null; return guardedValue as String; })(),
       twitterConsumerSecretSettingName: (() { final guardedValue = map['twitterConsumerSecretSettingName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       unauthenticatedClientAction: (() { final guardedValue = map['unauthenticatedClientAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       validateIssuer: (() { final guardedValue = map['validateIssuer']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );

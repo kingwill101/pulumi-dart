@@ -10,7 +10,7 @@ class HdfsReadSettings {
   /// If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? disableMetricsCollection;
   /// Specifies Distcp-related settings.
-  final pulumi.Input<DistcpSettings>? distcpSettings;
+  final pulumi.Input<DistcpSettings?>? distcpSettings;
   /// Indicates whether to enable partition discovery. Type: boolean (or Expression with resultType boolean).
   final pulumi.Input<dynamic>? enablePartitionDiscovery;
   /// Point to a text file that lists each file (relative path to the path configured in the dataset) that you want to copy. Type: string (or Expression with resultType string).

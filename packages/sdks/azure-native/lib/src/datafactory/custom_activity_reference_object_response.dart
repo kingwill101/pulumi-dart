@@ -7,9 +7,9 @@ import 'linked_service_reference_response.dart';
 /// Reference objects for custom activity
 class CustomActivityReferenceObjectResponse {
   /// Dataset references.
-  final pulumi.Input<List<DatasetReferenceResponse>>? datasets;
+  final pulumi.Input<List<DatasetReferenceResponse>?>? datasets;
   /// Linked service references.
-  final pulumi.Input<List<LinkedServiceReferenceResponse>>? linkedServices;
+  final pulumi.Input<List<LinkedServiceReferenceResponse>?>? linkedServices;
 
   /// Creates a new [CustomActivityReferenceObjectResponse].
   /// [datasets] Dataset references.

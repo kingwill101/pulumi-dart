@@ -10,7 +10,7 @@ class DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
   /// The predicted value before the deployment is executed.
   final pulumi.Input<dynamic>? before;
   /// The predicted changes to the properties."
-  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>>? delta;
+  final pulumi.Input<List<DeploymentStacksWhatIfPropertyChangeResponse>?>? delta;
 
   /// Creates a new [DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges].
   /// [after] The predicted value after the deployment is executed.

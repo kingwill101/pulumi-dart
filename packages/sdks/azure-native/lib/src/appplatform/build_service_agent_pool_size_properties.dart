@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Build service agent pool size properties
 class BuildServiceAgentPoolSizeProperties {
   /// The name of build service agent pool size
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [BuildServiceAgentPoolSizeProperties].
   /// [name] The name of build service agent pool size

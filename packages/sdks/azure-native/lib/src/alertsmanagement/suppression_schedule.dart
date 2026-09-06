@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schedule for a given suppression configuration.
 class SuppressionSchedule {
   /// End date for suppression
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// End date for suppression
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Specifies the values for recurrence pattern
-  final pulumi.Input<List<int>>? recurrenceValues;
+  final pulumi.Input<List<int>?>? recurrenceValues;
   /// Start date for suppression
-  final pulumi.Input<String>? startDate;
+  final pulumi.Input<String?>? startDate;
   /// Start time for suppression
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [SuppressionSchedule].
   /// [endDate] End date for suppression

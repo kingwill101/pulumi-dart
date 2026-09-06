@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_apimanagement_documentation_args_doc}
 class DocumentationArgs {
   /// Markdown documentation content.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// Documentation identifier. Must be unique in the current API Management service instance.
-  final pulumi.Input<String>? documentationId;
+  final pulumi.Input<String?>? documentationId;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.
   final pulumi.Input<String> serviceName;
   /// documentation title.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [DocumentationArgs].
   /// [content] Markdown documentation content.

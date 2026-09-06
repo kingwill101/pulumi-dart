@@ -1,9 +1,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_type_versions_cleanup_policy_response.dart';
 import 'azure_active_directory_response.dart';
+import 'client_certificate_response.dart';
 import 'cluster_upgrade_policy_response.dart';
+import 'ip_tag_response.dart';
+import 'load_balancing_rule_response.dart';
 import 'managed_cluster_args.dart';
+import 'network_security_rule_response.dart';
+import 'service_endpoint_response.dart';
+import 'settings_section_description_response.dart';
 import 'sku_response.dart';
+import 'subnet_response.dart';
 import 'system_data_response.dart';
 
 /// The managed cluster resource
@@ -1316,7 +1323,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// The policy used to clean up unused versions.
   late final pulumi.Output<ApplicationTypeVersionsCleanupPolicyResponse?> applicationTypeVersionsCleanupPolicy;
   /// Auxiliary subnets for the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> auxiliarySubnets;
+  late final pulumi.Output<List<SubnetResponse>?> auxiliarySubnets;
   /// The AAD authentication settings of the cluster.
   late final pulumi.Output<AzureActiveDirectoryResponse?> azureActiveDirectory;
   /// The Azure API version of the resource.
@@ -1324,7 +1331,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// The port used for client connections to the cluster.
   late final pulumi.Output<int?> clientConnectionPort;
   /// Client certificates that are allowed to manage the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> clients;
+  late final pulumi.Output<List<ClientCertificateResponse>?> clients;
   /// List of thumbprints of the cluster certificates.
   late final pulumi.Output<List<String>> clusterCertificateThumbprints;
   /// The Service Fabric runtime version of the cluster. This property is required when **clusterUpgradeMode** is set to 'Manual'. To get list of available Service Fabric versions for new clusters use [ClusterVersion API](./ClusterVersion.md). To get the list of available version for existing clusters use **availableClusterVersions**.
@@ -1352,7 +1359,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// Azure resource etag.
   late final pulumi.Output<String> etag;
   /// The list of custom fabric settings to configure the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> fabricSettings;
+  late final pulumi.Output<List<SettingsSectionDescriptionResponse>?> fabricSettings;
   /// The fully qualified domain name associated with the public load balancer of the cluster.
   late final pulumi.Output<String> fqdn;
   /// The port used for HTTP connections to the cluster.
@@ -1360,19 +1367,19 @@ class ManagedCluster extends pulumi.CustomResource {
   /// The port used for token-auth based HTTPS connections to the cluster. Cannot be set to the same port as HttpGatewayEndpoint.
   late final pulumi.Output<int?> httpGatewayTokenAuthConnectionPort;
   /// The list of IP tags associated with the default public IP address of the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipTags;
+  late final pulumi.Output<List<IpTagResponse>?> ipTags;
   /// The IPv4 address associated with the public load balancer of the cluster.
   late final pulumi.Output<String> ipv4Address;
   /// IPv6 address for the cluster if IPv6 is enabled.
   late final pulumi.Output<String> ipv6Address;
   /// Load balancing rules that are applied to the public load balancer of the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> loadBalancingRules;
+  late final pulumi.Output<List<LoadBalancingRuleResponse>?> loadBalancingRules;
   /// Azure resource location.
   late final pulumi.Output<String> location;
   /// Azure resource name.
   late final pulumi.Output<String> name;
   /// Custom Network Security Rules that are applied to the Virtual Network of the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> networkSecurityRules;
+  late final pulumi.Output<List<NetworkSecurityRuleResponse>?> networkSecurityRules;
   /// The provisioning state of the managed cluster resource.
   late final pulumi.Output<String> provisioningState;
   /// Specify the resource id of a public IPv4 prefix that the load balancer will allocate a public IPv4 address from. This setting cannot be changed once the cluster is created.
@@ -1380,7 +1387,7 @@ class ManagedCluster extends pulumi.CustomResource {
   /// Specify the resource id of a public IPv6 prefix that the load balancer will allocate a public IPv6 address from. This setting cannot be changed once the cluster is created.
   late final pulumi.Output<String?> publicIPv6PrefixId;
   /// Service endpoints for subnets in the cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>?> serviceEndpoints;
+  late final pulumi.Output<List<ServiceEndpointResponse>?> serviceEndpoints;
   /// The sku of the managed cluster
   late final pulumi.Output<SkuResponse> sku;
   /// If specified, the node types for the cluster are created in this subnet instead of the default VNet. The **networkSecurityRules** specified for the cluster are also applied to this subnet. This setting cannot be changed once the cluster is created.
@@ -1414,17 +1421,17 @@ class ManagedCluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    addonFeatures = registerOutput<List<String>?>('addonFeatures');
+    addonFeatures = registerOutput<List<String>?>('addonFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     adminPassword = registerOutput<String?>('adminPassword');
     adminUserName = registerOutput<String>('adminUserName');
     allowRdpAccess = registerOutput<bool?>('allowRdpAccess');
     applicationTypeVersionsCleanupPolicy = registerOutput<ApplicationTypeVersionsCleanupPolicyResponse?>('applicationTypeVersionsCleanupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTypeVersionsCleanupPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    auxiliarySubnets = registerOutput<List<Map<String, dynamic>>?>('auxiliarySubnets');
+    auxiliarySubnets = registerOutput<List<SubnetResponse>?>('auxiliarySubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureActiveDirectory = registerOutput<AzureActiveDirectoryResponse?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureActiveDirectoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     clientConnectionPort = registerOutput<int?>('clientConnectionPort');
-    clients = registerOutput<List<Map<String, dynamic>>?>('clients');
-    clusterCertificateThumbprints = registerOutput<List<String>>('clusterCertificateThumbprints');
+    clients = registerOutput<List<ClientCertificateResponse>?>('clients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientCertificateResponse>(guardedValue, (value) => ClientCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterCertificateThumbprints = registerOutput<List<String>>('clusterCertificateThumbprints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clusterCodeVersion = registerOutput<String?>('clusterCodeVersion');
     clusterId = registerOutput<String>('clusterId');
     clusterState = registerOutput<String>('clusterState');
@@ -1437,25 +1444,83 @@ class ManagedCluster extends pulumi.CustomResource {
     enableIpv6 = registerOutput<bool?>('enableIpv6');
     enableServicePublicIP = registerOutput<bool?>('enableServicePublicIP');
     etag = registerOutput<String>('etag');
-    fabricSettings = registerOutput<List<Map<String, dynamic>>?>('fabricSettings');
+    fabricSettings = registerOutput<List<SettingsSectionDescriptionResponse>?>('fabricSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SettingsSectionDescriptionResponse>(guardedValue, (value) => SettingsSectionDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     fqdn = registerOutput<String>('fqdn');
     httpGatewayConnectionPort = registerOutput<int?>('httpGatewayConnectionPort');
     httpGatewayTokenAuthConnectionPort = registerOutput<int?>('httpGatewayTokenAuthConnectionPort');
-    ipTags = registerOutput<List<Map<String, dynamic>>?>('ipTags');
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ipv4Address = registerOutput<String>('ipv4Address');
     ipv6Address = registerOutput<String>('ipv6Address');
-    loadBalancingRules = registerOutput<List<Map<String, dynamic>>?>('loadBalancingRules');
+    loadBalancingRules = registerOutput<List<LoadBalancingRuleResponse>?>('loadBalancingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancingRuleResponse>(guardedValue, (value) => LoadBalancingRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networkSecurityRules = registerOutput<List<Map<String, dynamic>>?>('networkSecurityRules');
+    networkSecurityRules = registerOutput<List<NetworkSecurityRuleResponse>?>('networkSecurityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkSecurityRuleResponse>(guardedValue, (value) => NetworkSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicIPPrefixId = registerOutput<String?>('publicIPPrefixId');
     publicIPv6PrefixId = registerOutput<String?>('publicIPv6PrefixId');
-    serviceEndpoints = registerOutput<List<Map<String, dynamic>>?>('serviceEndpoints');
+    serviceEndpoints = registerOutput<List<ServiceEndpointResponse>?>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceEndpointResponse>(guardedValue, (value) => ServiceEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subnetId = registerOutput<String?>('subnetId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    upgradeDescription = registerOutput<ClusterUpgradePolicyResponse?>('upgradeDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    useCustomVnet = registerOutput<bool?>('useCustomVnet');
+    zonalResiliency = registerOutput<bool?>('zonalResiliency');
+    zonalUpdateMode = registerOutput<String?>('zonalUpdateMode');
+  }
+
+  /// Creates a typed reference to an existing [ManagedCluster] resource.
+  ManagedCluster.reference(String urn)
+    : super(
+        'azure-native:servicefabric:ManagedCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    addonFeatures = registerOutput<List<String>?>('addonFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    adminPassword = registerOutput<String?>('adminPassword');
+    adminUserName = registerOutput<String>('adminUserName');
+    allowRdpAccess = registerOutput<bool?>('allowRdpAccess');
+    applicationTypeVersionsCleanupPolicy = registerOutput<ApplicationTypeVersionsCleanupPolicyResponse?>('applicationTypeVersionsCleanupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationTypeVersionsCleanupPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    auxiliarySubnets = registerOutput<List<SubnetResponse>?>('auxiliarySubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureActiveDirectory = registerOutput<AzureActiveDirectoryResponse?>('azureActiveDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureActiveDirectoryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientConnectionPort = registerOutput<int?>('clientConnectionPort');
+    clients = registerOutput<List<ClientCertificateResponse>?>('clients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientCertificateResponse>(guardedValue, (value) => ClientCertificateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    clusterCertificateThumbprints = registerOutput<List<String>>('clusterCertificateThumbprints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    clusterCodeVersion = registerOutput<String?>('clusterCodeVersion');
+    clusterId = registerOutput<String>('clusterId');
+    clusterState = registerOutput<String>('clusterState');
+    clusterUpgradeCadence = registerOutput<String?>('clusterUpgradeCadence');
+    clusterUpgradeMode = registerOutput<String?>('clusterUpgradeMode');
+    ddosProtectionPlanId = registerOutput<String?>('ddosProtectionPlanId');
+    dnsName = registerOutput<String>('dnsName');
+    enableAutoOSUpgrade = registerOutput<bool?>('enableAutoOSUpgrade');
+    enableHttpGatewayExclusiveAuthMode = registerOutput<bool?>('enableHttpGatewayExclusiveAuthMode');
+    enableIpv6 = registerOutput<bool?>('enableIpv6');
+    enableServicePublicIP = registerOutput<bool?>('enableServicePublicIP');
+    etag = registerOutput<String>('etag');
+    fabricSettings = registerOutput<List<SettingsSectionDescriptionResponse>?>('fabricSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SettingsSectionDescriptionResponse>(guardedValue, (value) => SettingsSectionDescriptionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    fqdn = registerOutput<String>('fqdn');
+    httpGatewayConnectionPort = registerOutput<int?>('httpGatewayConnectionPort');
+    httpGatewayTokenAuthConnectionPort = registerOutput<int?>('httpGatewayTokenAuthConnectionPort');
+    ipTags = registerOutput<List<IpTagResponse>?>('ipTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipv4Address = registerOutput<String>('ipv4Address');
+    ipv6Address = registerOutput<String>('ipv6Address');
+    loadBalancingRules = registerOutput<List<LoadBalancingRuleResponse>?>('loadBalancingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancingRuleResponse>(guardedValue, (value) => LoadBalancingRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkSecurityRules = registerOutput<List<NetworkSecurityRuleResponse>?>('networkSecurityRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkSecurityRuleResponse>(guardedValue, (value) => NetworkSecurityRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPPrefixId = registerOutput<String?>('publicIPPrefixId');
+    publicIPv6PrefixId = registerOutput<String?>('publicIPv6PrefixId');
+    serviceEndpoints = registerOutput<List<ServiceEndpointResponse>?>('serviceEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceEndpointResponse>(guardedValue, (value) => ServiceEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sku = registerOutput<SkuResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subnetId = registerOutput<String?>('subnetId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     upgradeDescription = registerOutput<ClusterUpgradePolicyResponse?>('upgradeDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     useCustomVnet = registerOutput<bool?>('useCustomVnet');

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Project summary.
 class ProjectSummaryResponse {
   /// Extended summary.
-  final pulumi.Input<Map<String, String>>? extendedSummary;
+  final pulumi.Input<Map<String, String>?>? extendedSummary;
   /// Instance type.
   final pulumi.Input<String> instanceType;
   /// Last summary refresh time.
-  final pulumi.Input<String>? lastSummaryRefreshedTime;
+  final pulumi.Input<String?>? lastSummaryRefreshedTime;
   /// Refresh summary state.
-  final pulumi.Input<String>? refreshSummaryState;
+  final pulumi.Input<String?>? refreshSummaryState;
 
   /// Creates a new [ProjectSummaryResponse].
   /// [extendedSummary] Extended summary.

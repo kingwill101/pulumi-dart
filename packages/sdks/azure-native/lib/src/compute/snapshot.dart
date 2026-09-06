@@ -1104,7 +1104,50 @@ class Snapshot extends pulumi.CustomResource {
     supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     supportsHibernation = registerOutput<bool?>('supportsHibernation');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'azure-native:compute:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    completionPercent = registerOutput<double?>('completionPercent');
+    copyCompletionError = registerOutput<CopyCompletionErrorResponse?>('copyCompletionError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CopyCompletionErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationData = registerOutput<CreationDataResponse>('creationData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataAccessAuthMode = registerOutput<String?>('dataAccessAuthMode');
+    diskAccessId = registerOutput<String?>('diskAccessId');
+    diskSizeBytes = registerOutput<double>('diskSizeBytes');
+    diskSizeGB = registerOutput<int?>('diskSizeGB');
+    diskState = registerOutput<String>('diskState');
+    encryption = registerOutput<EncryptionResponse?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionSettingsCollection = registerOutput<EncryptionSettingsCollectionResponse?>('encryptionSettingsCollection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionSettingsCollectionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hyperVGeneration = registerOutput<String?>('hyperVGeneration');
+    incremental = registerOutput<bool?>('incremental');
+    incrementalSnapshotFamilyId = registerOutput<String>('incrementalSnapshotFamilyId');
+    location = registerOutput<String>('location');
+    managedBy = registerOutput<String>('managedBy');
+    this.name = registerOutput<String>('name');
+    networkAccessPolicy = registerOutput<String?>('networkAccessPolicy');
+    osType = registerOutput<String?>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    purchasePlan = registerOutput<DiskPurchasePlanResponse?>('purchasePlan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskPurchasePlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    securityProfile = registerOutput<DiskSecurityProfileResponse?>('securityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sku = registerOutput<SnapshotSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SnapshotSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportedCapabilities = registerOutput<SupportedCapabilitiesResponse?>('supportedCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SupportedCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    supportsHibernation = registerOutput<bool?>('supportsHibernation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
     uniqueId = registerOutput<String>('uniqueId');

@@ -399,4 +399,24 @@ class SqlPoolWorkloadClassifier extends pulumi.CustomResource {
     startTime = registerOutput<String?>('startTime');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SqlPoolWorkloadClassifier] resource.
+  SqlPoolWorkloadClassifier.reference(String urn)
+    : super(
+        'azure-native:synapse:SqlPoolWorkloadClassifier',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    context = registerOutput<String?>('context');
+    endTime = registerOutput<String?>('endTime');
+    importance = registerOutput<String?>('importance');
+    label = registerOutput<String?>('label');
+    memberName = registerOutput<String>('memberName');
+    this.name = registerOutput<String>('name');
+    startTime = registerOutput<String?>('startTime');
+    type = registerOutput<String>('type');
+  }
 }

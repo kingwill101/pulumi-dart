@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'environment_variable_response.dart';
 import 'system_data_response.dart';
+import 'volume_mount_response.dart';
 import 'web_app_site_container_args.dart';
 
 /// Container of a site
@@ -22,7 +24,7 @@ class WebAppSiteContainer extends pulumi.CustomResource {
   /// Created Time
   late final pulumi.Output<String> createdTime;
   /// List of environment variables
-  late final pulumi.Output<List<Map<String, dynamic>>?> environmentVariables;
+  late final pulumi.Output<List<EnvironmentVariableResponse>?> environmentVariables;
   /// Image Name
   late final pulumi.Output<String> image;
   /// &lt;code&gt;true&lt;/code&gt; if all AppSettings and ConnectionStrings have to be passed to the container as environment variables; &lt;code&gt;false&lt;/code&gt; otherwise.
@@ -50,7 +52,7 @@ class WebAppSiteContainer extends pulumi.CustomResource {
   /// User Name
   late final pulumi.Output<String?> userName;
   /// List of volume mounts
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumeMounts;
+  late final pulumi.Output<List<VolumeMountResponse>?> volumeMounts;
 
   /// Creates a new [WebAppSiteContainer].
   /// [name] The Pulumi resource name.
@@ -69,7 +71,7 @@ class WebAppSiteContainer extends pulumi.CustomResource {
     authType = registerOutput<String?>('authType');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTime = registerOutput<String>('createdTime');
-    environmentVariables = registerOutput<List<Map<String, dynamic>>?>('environmentVariables');
+    environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentVariableResponse>(guardedValue, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
     image = registerOutput<String>('image');
     inheritAppSettingsAndConnectionStrings = registerOutput<bool?>('inheritAppSettingsAndConnectionStrings');
     isMain = registerOutput<bool>('isMain');
@@ -83,6 +85,35 @@ class WebAppSiteContainer extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     userManagedIdentityClientId = registerOutput<String?>('userManagedIdentityClientId');
     userName = registerOutput<String?>('userName');
-    volumeMounts = registerOutput<List<Map<String, dynamic>>?>('volumeMounts');
+    volumeMounts = registerOutput<List<VolumeMountResponse>?>('volumeMounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeMountResponse>(guardedValue, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [WebAppSiteContainer] resource.
+  WebAppSiteContainer.reference(String urn)
+    : super(
+        'azure-native:web:WebAppSiteContainer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authType = registerOutput<String?>('authType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTime = registerOutput<String>('createdTime');
+    environmentVariables = registerOutput<List<EnvironmentVariableResponse>?>('environmentVariables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentVariableResponse>(guardedValue, (value) => EnvironmentVariableResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    image = registerOutput<String>('image');
+    inheritAppSettingsAndConnectionStrings = registerOutput<bool?>('inheritAppSettingsAndConnectionStrings');
+    isMain = registerOutput<bool>('isMain');
+    kind = registerOutput<String?>('kind');
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    passwordSecret = registerOutput<String?>('passwordSecret');
+    startUpCommand = registerOutput<String?>('startUpCommand');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetPort = registerOutput<String?>('targetPort');
+    type = registerOutput<String>('type');
+    userManagedIdentityClientId = registerOutput<String?>('userManagedIdentityClientId');
+    userName = registerOutput<String?>('userName');
+    volumeMounts = registerOutput<List<VolumeMountResponse>?>('volumeMounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeMountResponse>(guardedValue, (value) => VolumeMountResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The partner connector type.
-enum PartnerConnectorType {
+enum PartnerConnectorType implements pulumi.PulumiEnum<String> {
   kafkaAzureBlobStorageSource("KafkaAzureBlobStorageSource"),
   kafkaAzureBlobStorageSink("KafkaAzureBlobStorageSink"),
   kafkaAzureCosmosDBSource("KafkaAzureCosmosDBSource"),
@@ -7,6 +9,7 @@ enum PartnerConnectorType {
   kafkaAzureSynapseAnalyticsSink("KafkaAzureSynapseAnalyticsSink");
 
   const PartnerConnectorType(this.wireValue);
+  @override
   final String wireValue;
 
   static PartnerConnectorType fromValue(String value) {

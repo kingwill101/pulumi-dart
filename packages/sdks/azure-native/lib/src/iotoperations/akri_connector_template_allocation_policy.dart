@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The allocation policy type.
-enum AkriConnectorTemplateAllocationPolicy {
+enum AkriConnectorTemplateAllocationPolicy implements pulumi.PulumiEnum<String> {
   bucketized("Bucketized");
 
   const AkriConnectorTemplateAllocationPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static AkriConnectorTemplateAllocationPolicy fromValue(String value) {

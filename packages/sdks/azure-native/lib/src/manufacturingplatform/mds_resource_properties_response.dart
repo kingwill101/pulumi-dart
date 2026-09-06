@@ -24,23 +24,23 @@ class MdsResourcePropertiesResponse {
   /// Profile of Adx Created.
   final pulumi.Input<AdxProfileResponse> adxProfile;
   /// AKS Admin Group Id.
-  final pulumi.Input<String>? aksAdminGroupId;
+  final pulumi.Input<String?>? aksAdminGroupId;
   /// Profile of AKS Created.
   final pulumi.Input<AksProfileResponse> aksProfile;
   /// Profile of CMK Settings.
-  final pulumi.Input<CmkProfileResponse>? cmkProfile;
+  final pulumi.Input<CmkProfileResponse?>? cmkProfile;
   /// Profile of Database Created.
   final pulumi.Input<DatabaseProfileResponse> databaseProfile;
   /// Deny Assignments exclusion list.
-  final pulumi.Input<List<DenyAssignmentExclusionResponse>>? denyAssignmentExclusions;
+  final pulumi.Input<List<DenyAssignmentExclusionResponse>?>? denyAssignmentExclusions;
   /// Enable Copilot.
-  final pulumi.Input<bool>? enableCopilot;
+  final pulumi.Input<bool?>? enableCopilot;
   /// Enable Diagnostic Settings.
-  final pulumi.Input<bool>? enableDiagnosticSettings;
+  final pulumi.Input<bool?>? enableDiagnosticSettings;
   /// Profile of EventHub Resource.
   final pulumi.Input<EventHubProfileResponse> eventHubProfile;
   /// Profile of Fabric resources.
-  final pulumi.Input<FabricProfileResponse>? fabricProfile;
+  final pulumi.Input<FabricProfileResponse?>? fabricProfile;
   /// Profile of Function App Resource.
   final pulumi.Input<FunctionAppProfileResponse> functionAppProfile;
   /// Managed On Behalf Of Configuration.
@@ -50,23 +50,23 @@ class MdsResourcePropertiesResponse {
   /// Profile of Monitoring Resource Created.
   final pulumi.Input<MonitoringProfileResponse> monitoringProfile;
   /// Profile of OpenAI Resource.
-  final pulumi.Input<OpenAIProfileResponse>? openAIProfile;
+  final pulumi.Input<OpenAIProfileResponse?>? openAIProfile;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Profile of Azure Redis Created.
   final pulumi.Input<RedisProfileResponse> redisProfile;
   /// Zone redundancy state for resources
-  final pulumi.Input<String>? redundancyState;
+  final pulumi.Input<String?>? redundancyState;
   /// State of the resource
-  final pulumi.Input<String>? resourceState;
+  final pulumi.Input<String?>? resourceState;
   /// Service Url
   final pulumi.Input<String> serviceUrl;
   /// Profile of Storage Created.
   final pulumi.Input<StorageProfileResponse> storageProfile;
   /// Profile of User Managed OpenAI Resource.
-  final pulumi.Input<UserManagedOpenAIProfileResponse>? userManagedOpenAIProfile;
+  final pulumi.Input<UserManagedOpenAIProfileResponse?>? userManagedOpenAIProfile;
   /// Mds Resource Version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MdsResourcePropertiesResponse].
   /// [aadApplicationId] AAD Application Id.
@@ -93,10 +93,10 @@ class MdsResourcePropertiesResponse {
   /// [storageProfile] Profile of Storage Created.
   /// [userManagedOpenAIProfile] Profile of User Managed OpenAI Resource.
   /// [version] Mds Resource Version.
-  const MdsResourcePropertiesResponse({
+  MdsResourcePropertiesResponse({
     required this.aadApplicationId,
     required this.adxProfile,
-    this.aksAdminGroupId,
+    pulumi.Input<String?>? aksAdminGroupId,
     required this.aksProfile,
     this.cmkProfile,
     required this.databaseProfile,
@@ -118,7 +118,7 @@ class MdsResourcePropertiesResponse {
     required this.storageProfile,
     this.userManagedOpenAIProfile,
     this.version,
-  });
+  }) : aksAdminGroupId = aksAdminGroupId ?? pulumi.Input.fromValue('00000000-0000-0000-0000-000000000000');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

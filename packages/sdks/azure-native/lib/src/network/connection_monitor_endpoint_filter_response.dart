@@ -6,9 +6,9 @@ import 'connection_monitor_endpoint_filter_item_response.dart';
 /// Describes the connection monitor endpoint filter.
 class ConnectionMonitorEndpointFilterResponse {
   /// List of items in the filter.
-  final pulumi.Input<List<ConnectionMonitorEndpointFilterItemResponse>>? items;
+  final pulumi.Input<List<ConnectionMonitorEndpointFilterItemResponse>?>? items;
   /// The behavior of the endpoint filter. Currently only 'Include' is supported.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ConnectionMonitorEndpointFilterResponse].
   /// [items] List of items in the filter.

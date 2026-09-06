@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gallery regional sharing status
 class RegionalSharingStatusResponse {
   /// Details of gallery regional sharing failure.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// Region name
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// Gallery sharing state in current region
   final pulumi.Input<String> state;
 

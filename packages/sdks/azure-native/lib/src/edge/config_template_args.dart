@@ -9,15 +9,15 @@ import 'config_template_properties.dart';
 /// {@macro pulumi_edge_config_template_args_doc}
 class ConfigTemplateArgs {
   /// The name of the ConfigTemplate
-  final pulumi.Input<String>? configTemplateName;
+  final pulumi.Input<String?>? configTemplateName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ConfigTemplateProperties>? properties;
+  final pulumi.Input<ConfigTemplateProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ConfigTemplateArgs].
   /// [configTemplateName] The name of the ConfigTemplate

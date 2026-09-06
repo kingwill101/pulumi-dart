@@ -6,9 +6,9 @@ import 'key_vault_certificate_properties_response.dart';
 /// MqttBridge RemoteBroker X509 Authentication properties.
 class MqttBridgeRemoteBrokerX509AuthenticationResponse {
   /// Keyvault X509 secret properties.
-  final pulumi.Input<KeyVaultCertificatePropertiesResponse>? keyVault;
+  final pulumi.Input<KeyVaultCertificatePropertiesResponse?>? keyVault;
   /// Secret where cert details are stored.
-  final pulumi.Input<String>? secretName;
+  final pulumi.Input<String?>? secretName;
 
   /// Creates a new [MqttBridgeRemoteBrokerX509AuthenticationResponse].
   /// [keyVault] Keyvault X509 secret properties.

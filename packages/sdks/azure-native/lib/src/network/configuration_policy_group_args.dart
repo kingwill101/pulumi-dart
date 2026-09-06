@@ -9,17 +9,17 @@ import 'vpn_server_configuration_policy_group_member.dart';
 /// {@macro pulumi_network_configuration_policy_group_args_doc}
 class ConfigurationPolicyGroupArgs {
   /// The name of the ConfigurationPolicyGroup.
-  final pulumi.Input<String>? configurationPolicyGroupName;
+  final pulumi.Input<String?>? configurationPolicyGroupName;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Shows if this is a Default VpnServerConfigurationPolicyGroup or not.
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Multiple PolicyMembers for VpnServerConfigurationPolicyGroup.
-  final pulumi.Input<List<VpnServerConfigurationPolicyGroupMember>>? policyMembers;
+  final pulumi.Input<List<VpnServerConfigurationPolicyGroupMember>?>? policyMembers;
   /// Priority for VpnServerConfigurationPolicyGroup.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The resource group name of the ConfigurationPolicyGroup.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the VpnServerConfiguration.
@@ -65,7 +65,7 @@ class ConfigurationPolicyGroupArgs {
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyMembers: (() { final guardedValue = map['policyMembers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VpnServerConfigurationPolicyGroupMember>(guardedValue, (value) => VpnServerConfigurationPolicyGroupMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       vpnServerConfigurationName: pulumi.Input.fromValue(map['vpnServerConfigurationName'] as String),
     );

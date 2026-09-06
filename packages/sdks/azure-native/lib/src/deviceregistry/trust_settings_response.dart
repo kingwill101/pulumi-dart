@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines server trust settings for an endpoint.
 class TrustSettingsResponse {
   /// Defines a secret reference for certificates to trust.
-  final pulumi.Input<String>? trustList;
+  final pulumi.Input<String?>? trustList;
 
   /// Creates a new [TrustSettingsResponse].
   /// [trustList] Defines a secret reference for certificates to trust.

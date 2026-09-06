@@ -4,10 +4,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'user_assigned_identity_response.dart';
 
 class ResourceIdentityResponse {
-  final pulumi.Input<String>? principalId;
-  final pulumi.Input<String>? tenantId;
-  final pulumi.Input<String>? type;
-  final pulumi.Input<Map<String, UserAssignedIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<String?>? principalId;
+  final pulumi.Input<String?>? tenantId;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<Map<String, UserAssignedIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ResourceIdentityResponse].
   /// [principalId] Optional.

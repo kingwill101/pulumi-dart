@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The compute power action.
-enum ComputePowerAction {
+enum ComputePowerAction implements pulumi.PulumiEnum<String> {
   start("Start"),
   stop("Stop");
 
   const ComputePowerAction(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputePowerAction fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Response for Private Link Service Connection state
 class PrivateLinkServiceConnectionStateResponse {
   /// A message indicating if changes on the service provider require any updates on the consumer.
-  final pulumi.Input<String>? actionsRequired;
+  final pulumi.Input<String?>? actionsRequired;
   /// The reason for approval/rejection of the connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateResponse].
   /// [actionsRequired] A message indicating if changes on the service provider require any updates on the consumer.

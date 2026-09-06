@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'sku_recommendation_results_azure_sql_virtual_machine_response_category.dart';
 
 class SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku {
-  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory>? category;
+  final pulumi.Input<SkuRecommendationResultsAzureSqlVirtualMachineResponseCategory?>? category;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlVirtualMachineResponseTargetSku].
   /// [category] Optional.

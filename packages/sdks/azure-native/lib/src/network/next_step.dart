@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Next step after rule is evaluated. Current supported behaviors are 'Continue'(to next rule) and 'Terminate'.
-enum NextStep {
+enum NextStep implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueContinue("Continue"),
   valueTerminate("Terminate");
 
   const NextStep(this.wireValue);
+  @override
   final String wireValue;
 
   static NextStep fromValue(String value) {

@@ -8,7 +8,7 @@ class PatchSettingsResponseStatus {
   /// The errors that were encountered during the hotpatch capability enrollment or disenrollment.
   final pulumi.Input<ErrorDetailResponse> error;
   /// Indicates the current status of the hotpatch being enabled or disabled.
-  final pulumi.Input<String>? hotpatchEnablementStatus;
+  final pulumi.Input<String?>? hotpatchEnablementStatus;
 
   /// Creates a new [PatchSettingsResponseStatus].
   /// [error] The errors that were encountered during the hotpatch capability enrollment or disenrollment.

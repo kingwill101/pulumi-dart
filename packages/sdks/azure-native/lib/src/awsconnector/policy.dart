@@ -7,7 +7,7 @@ class Policy {
   /// The entire contents of the policy that defines permissions. For more information, see [Overview of JSON policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
   final pulumi.Input<dynamic>? policyDocument;
   /// The friendly name (not ARN) identifying the policy.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
 
   /// Creates a new [Policy].
   /// [policyDocument] The entire contents of the policy that defines permissions. For more information, see [Overview of JSON policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).

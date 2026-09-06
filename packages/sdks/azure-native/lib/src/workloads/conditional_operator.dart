@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The threshold operator of the alert.
-enum ConditionalOperator {
+enum ConditionalOperator implements pulumi.PulumiEnum<String> {
   lessThan("LessThan"),
   greaterThan("GreaterThan"),
   equal("Equal"),
@@ -7,6 +9,7 @@ enum ConditionalOperator {
   lessThanOrEqual("LessThanOrEqual");
 
   const ConditionalOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionalOperator fromValue(String value) {

@@ -7,27 +7,27 @@ class GetGatewayResult {
   /// Specifies the list of features that are enabled for this Gateway.
   final List<String>? allowedFeatures;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The endpoint fqdn for the Gateway.
-  final String gatewayEndpoint;
+  final String? gatewayEndpoint;
   /// A unique, immutable, identifier for the Gateway.
-  final String gatewayId;
+  final String? gatewayId;
   /// The type of the Gateway resource.
   final String? gatewayType;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state, which only appears in the response.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetGatewayResult].
   /// [allowedFeatures] Specifies the list of features that are enabled for this Gateway.
@@ -44,50 +44,50 @@ class GetGatewayResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetGatewayResult({
     this.allowedFeatures,
-    required this.azureApiVersion,
-    required this.gatewayEndpoint,
-    required this.gatewayId,
+    this.azureApiVersion,
+    this.gatewayEndpoint,
+    this.gatewayId,
     this.gatewayType,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'allowedFeatures': ?allowedFeatures,
-      'azureApiVersion': azureApiVersion,
-      'gatewayEndpoint': gatewayEndpoint,
-      'gatewayId': gatewayId,
+      'azureApiVersion': ?azureApiVersion,
+      'gatewayEndpoint': ?gatewayEndpoint,
+      'gatewayId': ?gatewayId,
       'gatewayType': ?gatewayType,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetGatewayResult(
       allowedFeatures: (() { final guardedValue = map['allowedFeatures']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      gatewayEndpoint: map['gatewayEndpoint'] as String,
-      gatewayId: map['gatewayId'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewayEndpoint: (() { final guardedValue = map['gatewayEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      gatewayId: (() { final guardedValue = map['gatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gatewayType: (() { final guardedValue = map['gatewayType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

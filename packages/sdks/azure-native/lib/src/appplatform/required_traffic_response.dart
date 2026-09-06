@@ -44,7 +44,7 @@ class RequiredTrafficResponse {
       direction: pulumi.Input.fromValue(map['direction'] as String),
       fqdns: pulumi.Input.fromValue((map['fqdns'] as List).cast<String>()),
       ips: pulumi.Input.fromValue((map['ips'] as List).cast<String>()),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }

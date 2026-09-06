@@ -21,3 +21,14 @@ Future<GetGraphQueryResult> getGraphQuery(
   );
   return GetGraphQueryResult.fromMap(result);
 }
+
+pulumi.Output<GetGraphQueryResult> getGraphQueryOutput(
+  GetGraphQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:resourcegraph:getGraphQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGraphQueryResult.fromMap);
+}

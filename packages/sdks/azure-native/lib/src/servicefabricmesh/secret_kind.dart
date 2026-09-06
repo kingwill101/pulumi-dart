@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the kind of secret.
-enum SecretKind {
+enum SecretKind implements pulumi.PulumiEnum<String> {
   valueInlinedValue("inlinedValue");
 
   const SecretKind(this.wireValue);
+  @override
   final String wireValue;
 
   static SecretKind fromValue(String value) {

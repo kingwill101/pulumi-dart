@@ -6,9 +6,9 @@ import 'arc_auto_provisioning_configuration_response.dart';
 /// The ARC autoprovisioning configuration
 class DefenderForDatabasesGcpOfferingArcAutoProvisioningResponse {
   /// Configuration for servers Arc auto provisioning for a given environment
-  final pulumi.Input<ArcAutoProvisioningConfigurationResponse>? configuration;
+  final pulumi.Input<ArcAutoProvisioningConfigurationResponse?>? configuration;
   /// Is arc auto provisioning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderForDatabasesGcpOfferingArcAutoProvisioningResponse].
   /// [configuration] Configuration for servers Arc auto provisioning for a given environment

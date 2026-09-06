@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of rule
-enum ApprovalMode {
+enum ApprovalMode implements pulumi.PulumiEnum<String> {
   singleStage("SingleStage"),
   serial("Serial"),
   parallel("Parallel"),
   noApproval("NoApproval");
 
   const ApprovalMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ApprovalMode fromValue(String value) {

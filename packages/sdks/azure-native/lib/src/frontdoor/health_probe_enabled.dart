@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
-enum HealthProbeEnabled {
+enum HealthProbeEnabled implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const HealthProbeEnabled(this.wireValue);
+  @override
   final String wireValue;
 
   static HealthProbeEnabled fromValue(String value) {

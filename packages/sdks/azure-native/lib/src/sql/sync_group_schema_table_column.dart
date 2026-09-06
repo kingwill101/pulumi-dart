@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of column in sync group table.
 class SyncGroupSchemaTableColumn {
   /// Data size of the column.
-  final pulumi.Input<String>? dataSize;
+  final pulumi.Input<String?>? dataSize;
   /// Data type of the column.
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// Quoted name of sync group table column.
-  final pulumi.Input<String>? quotedName;
+  final pulumi.Input<String?>? quotedName;
 
   /// Creates a new [SyncGroupSchemaTableColumn].
   /// [dataSize] Data size of the column.

@@ -6,9 +6,9 @@ import 'install_script_source.dart';
 /// Server farm install script configuration.
 class InstallScript {
   /// Name of the install script.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Source of the install script.
-  final pulumi.Input<InstallScriptSource>? source;
+  final pulumi.Input<InstallScriptSource?>? source;
 
   /// Creates a new [InstallScript].
   /// [name] Name of the install script.

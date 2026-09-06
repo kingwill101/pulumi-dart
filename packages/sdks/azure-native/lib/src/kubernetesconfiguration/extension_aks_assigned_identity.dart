@@ -6,7 +6,7 @@ import 'aksidentity_type.dart';
 /// Identity of the Extension resource in an AKS cluster
 class ExtensionAksAssignedIdentity {
   /// The identity type.
-  final pulumi.Input<AKSIdentityType>? type;
+  final pulumi.Input<AKSIdentityType?>? type;
 
   /// Creates a new [ExtensionAksAssignedIdentity].
   /// [type] The identity type.

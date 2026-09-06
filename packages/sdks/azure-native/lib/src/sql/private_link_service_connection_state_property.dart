@@ -6,7 +6,7 @@ class PrivateLinkServiceConnectionStateProperty {
   /// The private link service connection description.
   final pulumi.Input<String> description;
   /// The private link service connection status.
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
 
   /// Creates a new [PrivateLinkServiceConnectionStateProperty].
   /// [description] The private link service connection description.
@@ -26,7 +26,7 @@ class PrivateLinkServiceConnectionStateProperty {
   factory PrivateLinkServiceConnectionStateProperty.fromMap(Map<String, dynamic> map) {
     return PrivateLinkServiceConnectionStateProperty(
       description: pulumi.Input.fromValue(map['description'] as String),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
     );
   }
 }

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// File share information with Path, Username, and Password.
 class FileShare {
   /// Password credential used to connect to the share location.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The folder path for this share.
   final pulumi.Input<String> path;
   /// User name credential to connect to the share location
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [FileShare].
   /// [password] Password credential used to connect to the share location.

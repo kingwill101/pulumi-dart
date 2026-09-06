@@ -6,19 +6,19 @@ import 'commitment.dart';
 /// MACC shortfall
 class Shortfall {
   /// Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
-  final pulumi.Input<double>? balanceVersion;
+  final pulumi.Input<double?>? balanceVersion;
   /// Shortfall amount with grain.
-  final pulumi.Input<Commitment>? charge;
+  final pulumi.Input<Commitment?>? charge;
   /// End DateTime in UTC.
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Represents catalog UPN.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// Fully-qualified resource identifier of the credits associated with the shortfall.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Start DateTime.
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// This is an identifier of the shortfall which will not change for its lifetime.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [Shortfall].
   /// [balanceVersion] Points to BalanceVersion document that indicates the remaining commitment balance when the credit was created.
@@ -52,7 +52,7 @@ class Shortfall {
 
   factory Shortfall.fromMap(Map<String, dynamic> map) {
     return Shortfall(
-      balanceVersion: (() { final guardedValue = map['balanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      balanceVersion: (() { final guardedValue = map['balanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       charge: (() { final guardedValue = map['charge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Commitment.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       endAt: (() { final guardedValue = map['endAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       productCode: (() { final guardedValue = map['productCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsOrganizationsOrganization
 class AwsOrganizationsOrganizationPropertiesResponse {
   /// The Amazon Resource Name (ARN) of an organization.
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.
-  final pulumi.Input<String>? featureSet;
+  final pulumi.Input<String?>? featureSet;
   /// The unique identifier (ID) of an organization.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The Amazon Resource Name (ARN) of the account that is designated as the management account for the organization.
-  final pulumi.Input<String>? managementAccountArn;
+  final pulumi.Input<String?>? managementAccountArn;
   /// The email address that is associated with the AWS account that is designated as the management account for the organization.
-  final pulumi.Input<String>? managementAccountEmail;
+  final pulumi.Input<String?>? managementAccountEmail;
   /// The unique identifier (ID) of the management account of an organization.
-  final pulumi.Input<String>? managementAccountId;
+  final pulumi.Input<String?>? managementAccountId;
   /// The unique identifier (ID) for the root.
-  final pulumi.Input<String>? rootId;
+  final pulumi.Input<String?>? rootId;
 
   /// Creates a new [AwsOrganizationsOrganizationPropertiesResponse].
   /// [arn] The Amazon Resource Name (ARN) of an organization.
@@ -27,15 +27,15 @@ class AwsOrganizationsOrganizationPropertiesResponse {
   /// [managementAccountEmail] The email address that is associated with the AWS account that is designated as the management account for the organization.
   /// [managementAccountId] The unique identifier (ID) of the management account of an organization.
   /// [rootId] The unique identifier (ID) for the root.
-  const AwsOrganizationsOrganizationPropertiesResponse({
+  AwsOrganizationsOrganizationPropertiesResponse({
     this.arn,
-    this.featureSet,
+    pulumi.Input<String?>? featureSet,
     this.id,
     this.managementAccountArn,
     this.managementAccountEmail,
     this.managementAccountId,
     this.rootId,
-  });
+  }) : featureSet = featureSet ?? pulumi.Input.fromValue('ALL');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

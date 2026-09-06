@@ -8,16 +8,16 @@ import 'depends_on_profile.dart';
 /// Azure arc kubernetes helm application configurations.
 class AzureArcKubernetesHelmApplication {
   /// Azure arc kubernetes artifact profile.
-  final pulumi.Input<AzureArcKubernetesArtifactProfile>? artifactProfile;
+  final pulumi.Input<AzureArcKubernetesArtifactProfile?>? artifactProfile;
   /// The artifact type.
   /// Expected value is 'HelmPackage'.
   final pulumi.Input<String> artifactType;
   /// Depends on profile definition.
-  final pulumi.Input<DependsOnProfile>? dependsOnProfile;
+  final pulumi.Input<DependsOnProfile?>? dependsOnProfile;
   /// Deploy mapping rule profile.
-  final pulumi.Input<AzureArcKubernetesDeployMappingRuleProfile>? deployParametersMappingRuleProfile;
+  final pulumi.Input<AzureArcKubernetesDeployMappingRuleProfile?>? deployParametersMappingRuleProfile;
   /// The name of the network function application.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [AzureArcKubernetesHelmApplication].
   /// [artifactProfile] Azure arc kubernetes artifact profile.

@@ -6,9 +6,9 @@ import 'network_interface_reference_properties.dart';
 /// Describes a network interface reference.
 class NetworkInterfaceReference {
   /// The ID of the sub-resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Describes a network interface reference properties.
-  final pulumi.Input<NetworkInterfaceReferenceProperties>? properties;
+  final pulumi.Input<NetworkInterfaceReferenceProperties?>? properties;
 
   /// Creates a new [NetworkInterfaceReference].
   /// [id] The ID of the sub-resource.

@@ -7,21 +7,21 @@ import 'system_data_response.dart';
 /// Result data returned by getManagementLockAtResourceGroupLevel.
 class GetManagementLockAtResourceGroupLevelResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The resource ID of the lock.
-  final String id;
+  final String? id;
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
-  final String level;
+  final String? level;
   /// The name of the lock.
-  final String name;
+  final String? name;
   /// Notes about the lock. Maximum of 512 characters.
   final String? notes;
   /// The owners of the lock.
   final List<ManagementLockOwnerResponse>? owners;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The resource type of the lock - Microsoft.Authorization/locks.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetManagementLockAtResourceGroupLevelResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -33,39 +33,39 @@ class GetManagementLockAtResourceGroupLevelResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type of the lock - Microsoft.Authorization/locks.
   const GetManagementLockAtResourceGroupLevelResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.level,
-    required this.name,
+    this.azureApiVersion,
+    this.id,
+    this.level,
+    this.name,
     this.notes,
     this.owners,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'level': level,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'level': ?level,
+      'name': ?name,
       'notes': ?notes,
       'owners': ?(() { final guardedValue = owners; if (guardedValue == null) return null; return pulumi.Input.encodeList<ManagementLockOwnerResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetManagementLockAtResourceGroupLevelResult.fromMap(Map<String, dynamic> map) {
     return GetManagementLockAtResourceGroupLevelResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      level: map['level'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return guardedValue as String; })(),
       owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ManagementLockOwnerResponse>(guardedValue, (value) => ManagementLockOwnerResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

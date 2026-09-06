@@ -216,7 +216,21 @@ class ComponentCurrentBillingFeature extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    currentBillingFeatures = registerOutput<List<String>?>('currentBillingFeatures');
+    currentBillingFeatures = registerOutput<List<String>?>('currentBillingFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dataVolumeCap = registerOutput<ApplicationInsightsComponentDataVolumeCapResponse?>('dataVolumeCap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInsightsComponentDataVolumeCapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ComponentCurrentBillingFeature] resource.
+  ComponentCurrentBillingFeature.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:ComponentCurrentBillingFeature',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentBillingFeatures = registerOutput<List<String>?>('currentBillingFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataVolumeCap = registerOutput<ApplicationInsightsComponentDataVolumeCapResponse?>('dataVolumeCap', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationInsightsComponentDataVolumeCapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

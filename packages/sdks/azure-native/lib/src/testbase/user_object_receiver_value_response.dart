@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The user object receiver value.
 class UserObjectReceiverValueResponse {
   /// user object ids.
-  final pulumi.Input<List<String>>? userObjectIds;
+  final pulumi.Input<List<String>?>? userObjectIds;
 
   /// Creates a new [UserObjectReceiverValueResponse].
   /// [userObjectIds] user object ids.

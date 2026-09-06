@@ -12,7 +12,7 @@ class AuthorizationRule {
   /// Give access to clients based on the following properties.
   final pulumi.Input<PrincipalDefinition> principals;
   /// Give access to state store resources.
-  final pulumi.Input<List<StateStoreResourceRule>>? stateStoreResources;
+  final pulumi.Input<List<StateStoreResourceRule>?>? stateStoreResources;
 
   /// Creates a new [AuthorizationRule].
   /// [brokerResources] Give access to Broker methods and topics.

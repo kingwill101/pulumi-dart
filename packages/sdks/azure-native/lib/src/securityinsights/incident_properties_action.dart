@@ -6,19 +6,19 @@ import 'incident_owner_info.dart';
 
 class IncidentPropertiesAction {
   /// The reason the incident was closed
-  final pulumi.Input<String>? classification;
+  final pulumi.Input<dynamic>? classification;
   /// Describes the reason the incident was closed.
-  final pulumi.Input<String>? classificationComment;
+  final pulumi.Input<String?>? classificationComment;
   /// The classification reason the incident was closed with
-  final pulumi.Input<String>? classificationReason;
+  final pulumi.Input<dynamic>? classificationReason;
   /// List of labels to add to the incident.
-  final pulumi.Input<List<IncidentLabel>>? labels;
+  final pulumi.Input<List<IncidentLabel>?>? labels;
   /// Information on the user an incident is assigned to
-  final pulumi.Input<IncidentOwnerInfo>? owner;
+  final pulumi.Input<IncidentOwnerInfo?>? owner;
   /// The severity of the incident
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<dynamic>? severity;
   /// The status of the incident
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
 
   /// Creates a new [IncidentPropertiesAction].
   /// [classification] The reason the incident was closed
@@ -52,13 +52,13 @@ class IncidentPropertiesAction {
 
   factory IncidentPropertiesAction.fromMap(Map<String, dynamic> map) {
     return IncidentPropertiesAction(
-      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      classification: (() { final guardedValue = map['classification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       classificationComment: (() { final guardedValue = map['classificationComment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      classificationReason: (() { final guardedValue = map['classificationReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IncidentLabel>(guardedValue, (value) => IncidentLabel.fromMap((value as Map).cast<String, dynamic>()))); })(),
       owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IncidentOwnerInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

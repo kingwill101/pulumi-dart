@@ -10,9 +10,9 @@ class ManagedIdentityResponse {
   /// The Azure Active Directory tenant id.
   final pulumi.Input<String> tenantId;
   /// The identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The resource ids of the user assigned identities to use
-  final pulumi.Input<Map<String, UserIdentityResponse>>? userAssignedIdentities;
+  final pulumi.Input<Map<String, UserIdentityResponse>?>? userAssignedIdentities;
 
   /// Creates a new [ManagedIdentityResponse].
   /// [principalId] System Assigned Identity ObjectId.

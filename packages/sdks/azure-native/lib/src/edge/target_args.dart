@@ -10,17 +10,17 @@ import 'target_properties.dart';
 /// {@macro pulumi_edge_target_args_doc}
 class TargetArgs {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<TargetProperties>? properties;
+  final pulumi.Input<TargetProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the target
-  final pulumi.Input<String>? targetName;
+  final pulumi.Input<String?>? targetName;
 
   /// Creates a new [TargetArgs].
   /// [extendedLocation] The complex type of the extended location.

@@ -5,9 +5,9 @@ import 'identity_selector.dart';
 
 class SecretArchiveSettings {
   /// The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
-  final pulumi.Input<IdentitySelector>? associatedIdentity;
+  final pulumi.Input<IdentitySelector?>? associatedIdentity;
   /// The URI for the key vault used as the secret archive.
-  final pulumi.Input<String>? vaultUri;
+  final pulumi.Input<String?>? vaultUri;
 
   /// Creates a new [SecretArchiveSettings].
   /// [associatedIdentity] The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.

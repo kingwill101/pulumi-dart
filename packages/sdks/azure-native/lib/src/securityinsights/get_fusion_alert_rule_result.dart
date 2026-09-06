@@ -5,36 +5,36 @@ import 'system_data_response.dart';
 /// Result data returned by getFusionAlertRule.
 class GetFusionAlertRuleResult {
   /// The Name of the alert rule template used to create this rule.
-  final String alertRuleTemplateName;
+  final String? alertRuleTemplateName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The description of the alert rule.
-  final String description;
+  final String? description;
   /// The display name for alerts created by this alert rule.
-  final String displayName;
+  final String? displayName;
   /// Determines whether this alert rule is enabled or disabled.
-  final bool enabled;
+  final bool? enabled;
   /// Etag of the azure resource
   final String? etag;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The kind of the alert rule
   /// Expected value is 'Fusion'.
-  final String kind;
+  final String? kind;
   /// The last time that this alert has been modified.
-  final String lastModifiedUtc;
+  final String? lastModifiedUtc;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The severity for alerts created by this alert rule.
-  final String severity;
+  final String? severity;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tactics of the alert rule
-  final List<String> tactics;
+  final List<String>? tactics;
   /// The techniques of the alert rule
-  final List<String> techniques;
+  final List<String>? techniques;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetFusionAlertRuleResult].
   /// [alertRuleTemplateName] The Name of the alert rule template used to create this rule.
@@ -53,60 +53,60 @@ class GetFusionAlertRuleResult {
   /// [techniques] The techniques of the alert rule
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetFusionAlertRuleResult({
-    required this.alertRuleTemplateName,
-    required this.azureApiVersion,
-    required this.description,
-    required this.displayName,
-    required this.enabled,
+    this.alertRuleTemplateName,
+    this.azureApiVersion,
+    this.description,
+    this.displayName,
+    this.enabled,
     this.etag,
-    required this.id,
-    required this.kind,
-    required this.lastModifiedUtc,
-    required this.name,
-    required this.severity,
-    required this.systemData,
-    required this.tactics,
-    required this.techniques,
-    required this.type,
+    this.id,
+    this.kind,
+    this.lastModifiedUtc,
+    this.name,
+    this.severity,
+    this.systemData,
+    this.tactics,
+    this.techniques,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'alertRuleTemplateName': alertRuleTemplateName,
-      'azureApiVersion': azureApiVersion,
-      'description': description,
-      'displayName': displayName,
-      'enabled': enabled,
+      'alertRuleTemplateName': ?alertRuleTemplateName,
+      'azureApiVersion': ?azureApiVersion,
+      'description': ?description,
+      'displayName': ?displayName,
+      'enabled': ?enabled,
       'etag': ?etag,
-      'id': id,
-      'kind': kind,
-      'lastModifiedUtc': lastModifiedUtc,
-      'name': name,
-      'severity': severity,
-      'systemData': systemData.toMap(),
-      'tactics': tactics,
-      'techniques': techniques,
-      'type': type,
+      'id': ?id,
+      'kind': ?kind,
+      'lastModifiedUtc': ?lastModifiedUtc,
+      'name': ?name,
+      'severity': ?severity,
+      'systemData': ?systemData?.toMap(),
+      'tactics': ?tactics,
+      'techniques': ?techniques,
+      'type': ?type,
     };
   }
 
   factory GetFusionAlertRuleResult.fromMap(Map<String, dynamic> map) {
     return GetFusionAlertRuleResult(
-      alertRuleTemplateName: map['alertRuleTemplateName'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      enabled: map['enabled'] as bool,
+      alertRuleTemplateName: (() { final guardedValue = map['alertRuleTemplateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      lastModifiedUtc: map['lastModifiedUtc'] as String,
-      name: map['name'] as String,
-      severity: map['severity'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tactics: (map['tactics'] as List).cast<String>(),
-      techniques: (map['techniques'] as List).cast<String>(),
-      type: map['type'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedUtc: (() { final guardedValue = map['lastModifiedUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      severity: (() { final guardedValue = map['severity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tactics: (() { final guardedValue = map['tactics']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      techniques: (() { final guardedValue = map['techniques']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

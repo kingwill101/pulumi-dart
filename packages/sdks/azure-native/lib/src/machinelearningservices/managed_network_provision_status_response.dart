@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Status of the Provisioning for the managed network of a machine learning workspace.
 class ManagedNetworkProvisionStatusResponse {
-  final pulumi.Input<bool>? sparkReady;
+  final pulumi.Input<bool?>? sparkReady;
   /// Status for the managed network of a machine learning workspace.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ManagedNetworkProvisionStatusResponse].
   /// [sparkReady] Optional.

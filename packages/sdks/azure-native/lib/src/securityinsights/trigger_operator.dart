@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The operation against the threshold that triggers alert rule.
-enum TriggerOperator {
+enum TriggerOperator implements pulumi.PulumiEnum<String> {
   valueGreaterThan("GreaterThan"),
   valueLessThan("LessThan"),
   valueEqual("Equal"),
   valueNotEqual("NotEqual");
 
   const TriggerOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerOperator fromValue(String value) {

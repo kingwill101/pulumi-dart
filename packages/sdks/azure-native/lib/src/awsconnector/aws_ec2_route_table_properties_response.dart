@@ -6,11 +6,11 @@ import 'tag_response.dart';
 /// Definition of awsEc2RouteTable
 class AwsEc2RouteTablePropertiesResponse {
   /// Property routeTableId
-  final pulumi.Input<String>? routeTableId;
+  final pulumi.Input<String?>? routeTableId;
   /// Any tags assigned to the route table.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// The ID of the VPC.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [AwsEc2RouteTablePropertiesResponse].
   /// [routeTableId] Property routeTableId

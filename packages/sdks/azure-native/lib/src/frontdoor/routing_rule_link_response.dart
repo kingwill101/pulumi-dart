@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the Resource ID for a Routing Rule.
 class RoutingRuleLinkResponse {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [RoutingRuleLinkResponse].
   /// [id] Resource ID.

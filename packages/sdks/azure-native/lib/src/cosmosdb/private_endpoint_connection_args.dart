@@ -12,15 +12,15 @@ class PrivateEndpointConnectionArgs {
   /// Cosmos DB database account name.
   final pulumi.Input<String> accountName;
   /// Group id of the private endpoint.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// Private endpoint which the connection belongs to.
-  final pulumi.Input<PrivateEndpointProperty>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointProperty?>? privateEndpoint;
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Connection State of the Private Endpoint Connection.
-  final pulumi.Input<PrivateLinkServiceConnectionStateProperty>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateProperty?>? privateLinkServiceConnectionState;
   /// Provisioning state of the private endpoint.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

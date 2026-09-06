@@ -6,11 +6,11 @@ import 'tag_filter.dart';
 /// Filters limit rule actions to a subset of blobs within the storage account. If multiple filters are defined, a logical AND is performed on all filters.
 class ManagementPolicyFilter {
   /// An array of blob index tag based filters, there can be at most 10 tag filters
-  final pulumi.Input<List<TagFilter>>? blobIndexMatch;
+  final pulumi.Input<List<TagFilter>?>? blobIndexMatch;
   /// An array of predefined enum values. Currently blockBlob supports all tiering and delete actions. Only delete actions are supported for appendBlob.
   final pulumi.Input<List<String>> blobTypes;
   /// An array of strings for prefixes to be match.
-  final pulumi.Input<List<String>>? prefixMatch;
+  final pulumi.Input<List<String>?>? prefixMatch;
 
   /// Creates a new [ManagementPolicyFilter].
   /// [blobIndexMatch] An array of blob index tag based filters, there can be at most 10 tag filters

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties to configure retention settings for the  eventhub
 class RetentionDescription {
   /// Enumerates the possible values for cleanup policy
-  final pulumi.Input<String>? cleanupPolicy;
+  final pulumi.Input<dynamic>? cleanupPolicy;
   /// Number of hours to retain the events for this Event Hub. This value is only used when cleanupPolicy is Delete. If cleanupPolicy is Compact the returned value of this property is Long.MaxValue
-  final pulumi.Input<double>? retentionTimeInHours;
+  final pulumi.Input<double?>? retentionTimeInHours;
   /// Number of hours to retain the tombstone markers of a compacted Event Hub. This value is only used when cleanupPolicy is Compact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
-  final pulumi.Input<int>? tombstoneRetentionTimeInHours;
+  final pulumi.Input<int?>? tombstoneRetentionTimeInHours;
 
   /// Creates a new [RetentionDescription].
   /// [cleanupPolicy] Enumerates the possible values for cleanup policy
@@ -31,9 +31,9 @@ class RetentionDescription {
 
   factory RetentionDescription.fromMap(Map<String, dynamic> map) {
     return RetentionDescription(
-      cleanupPolicy: (() { final guardedValue = map['cleanupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionTimeInHours: (() { final guardedValue = map['retentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      tombstoneRetentionTimeInHours: (() { final guardedValue = map['tombstoneRetentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cleanupPolicy: (() { final guardedValue = map['cleanupPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      retentionTimeInHours: (() { final guardedValue = map['retentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      tombstoneRetentionTimeInHours: (() { final guardedValue = map['tombstoneRetentionTimeInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

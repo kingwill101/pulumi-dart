@@ -8,13 +8,13 @@ import 'mapper_table.dart';
 /// A object which contains list of tables and connection details for a target connection.
 class MapperTargetConnectionsInfo {
   /// Source connection details.
-  final pulumi.Input<MapperConnection>? connection;
+  final pulumi.Input<MapperConnection?>? connection;
   /// List of table mappings.
-  final pulumi.Input<List<DataMapperMapping>>? dataMapperMappings;
+  final pulumi.Input<List<DataMapperMapping>?>? dataMapperMappings;
   /// List of relationship info among the tables.
-  final pulumi.Input<List<dynamic>>? relationships;
+  final pulumi.Input<List<dynamic>?>? relationships;
   /// List of source tables for a target connection.
-  final pulumi.Input<List<MapperTable>>? targetEntities;
+  final pulumi.Input<List<MapperTable>?>? targetEntities;
 
   /// Creates a new [MapperTargetConnectionsInfo].
   /// [connection] Source connection details.

@@ -6,9 +6,9 @@ import 'certificate_key_vault_properties_response.dart';
 /// Certificate resource specific properties
 class CertificateResponseProperties {
   /// Properties for a certificate stored in a Key Vault.
-  final pulumi.Input<CertificateKeyVaultPropertiesResponse>? certificateKeyVaultProperties;
+  final pulumi.Input<CertificateKeyVaultPropertiesResponse?>? certificateKeyVaultProperties;
   /// The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
-  final pulumi.Input<String>? certificateType;
+  final pulumi.Input<String?>? certificateType;
   /// Any errors that occurred during deployment or deployment validation
   final pulumi.Input<String> deploymentErrors;
   /// Certificate expiration date.

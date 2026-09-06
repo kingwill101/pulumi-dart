@@ -12,27 +12,27 @@ import 'storage_properties.dart';
 /// The properties of a mongo cluster.
 class MongoClusterProperties {
   /// The local administrator properties for the mongo cluster.
-  final pulumi.Input<AdministratorProperties>? administrator;
+  final pulumi.Input<AdministratorProperties?>? administrator;
   /// The compute properties of the mongo cluster.
-  final pulumi.Input<ComputeProperties>? compute;
+  final pulumi.Input<ComputeProperties?>? compute;
   /// The mode to create a mongo cluster.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// The high availability properties of the mongo cluster.
-  final pulumi.Input<HighAvailabilityProperties>? highAvailability;
+  final pulumi.Input<HighAvailabilityProperties?>? highAvailability;
   /// List of private endpoint connections.
-  final pulumi.Input<List<String>>? previewFeatures;
+  final pulumi.Input<List<dynamic>?>? previewFeatures;
   /// Whether or not public endpoint access is allowed for this mongo cluster.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The parameters to create a replica mongo cluster.
-  final pulumi.Input<MongoClusterReplicaParameters>? replicaParameters;
+  final pulumi.Input<MongoClusterReplicaParameters?>? replicaParameters;
   /// The parameters to create a point-in-time restore mongo cluster.
-  final pulumi.Input<MongoClusterRestoreParameters>? restoreParameters;
+  final pulumi.Input<MongoClusterRestoreParameters?>? restoreParameters;
   /// The Mongo DB server version. Defaults to the latest available version if not specified.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// The sharding properties of the mongo cluster.
-  final pulumi.Input<ShardingProperties>? sharding;
+  final pulumi.Input<ShardingProperties?>? sharding;
   /// The storage properties of the mongo cluster.
-  final pulumi.Input<StorageProperties>? storage;
+  final pulumi.Input<StorageProperties?>? storage;
 
   /// Creates a new [MongoClusterProperties].
   /// [administrator] The local administrator properties for the mongo cluster.
@@ -80,10 +80,10 @@ class MongoClusterProperties {
     return MongoClusterProperties(
       administrator: (() { final guardedValue = map['administrator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AdministratorProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       compute: (() { final guardedValue = map['compute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComputeProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       highAvailability: (() { final guardedValue = map['highAvailability']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HighAvailabilityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      previewFeatures: (() { final guardedValue = map['previewFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      previewFeatures: (() { final guardedValue = map['previewFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       replicaParameters: (() { final guardedValue = map['replicaParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoClusterReplicaParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       restoreParameters: (() { final guardedValue = map['restoreParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MongoClusterRestoreParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

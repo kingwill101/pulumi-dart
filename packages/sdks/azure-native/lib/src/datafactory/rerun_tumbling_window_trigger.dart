@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Trigger that schedules pipeline reruns for all fixed time interval windows from a requested start time to requested end time.
 class RerunTumblingWindowTrigger {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The parent trigger reference.
   final pulumi.Input<dynamic> parentTrigger;
   /// The end time for the time period for which restatement is initiated. Only UTC time is currently supported.
@@ -57,7 +57,7 @@ class RerunTumblingWindowTrigger {
       parentTrigger: pulumi.Input.fromValue(map['parentTrigger']),
       requestedEndTime: pulumi.Input.fromValue(map['requestedEndTime'] as String),
       requestedStartTime: pulumi.Input.fromValue(map['requestedStartTime'] as String),
-      rerunConcurrency: pulumi.Input.fromValue(map['rerunConcurrency'] as int),
+      rerunConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rerunConcurrency'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

@@ -702,4 +702,21 @@ class AuthorizationProvider extends pulumi.CustomResource {
     oauth2 = registerOutput<AuthorizationProviderOAuth2SettingsResponse?>('oauth2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationProviderOAuth2SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AuthorizationProvider] resource.
+  AuthorizationProvider.reference(String urn)
+    : super(
+        'azure-native:apimanagement:AuthorizationProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    identityProvider = registerOutput<String?>('identityProvider');
+    this.name = registerOutput<String>('name');
+    oauth2 = registerOutput<AuthorizationProviderOAuth2SettingsResponse?>('oauth2', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthorizationProviderOAuth2SettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

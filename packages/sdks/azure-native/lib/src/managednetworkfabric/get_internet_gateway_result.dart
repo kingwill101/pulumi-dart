@@ -7,29 +7,29 @@ class GetInternetGatewayResult {
   /// Switch configuration description.
   final String? annotation;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// ARM Resource ID of the Internet Gateway Rule.
   final String? internetGatewayRuleId;
   /// IPv4 Address of Internet Gateway.
-  final String ipv4Address;
+  final String? ipv4Address;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// ARM Resource ID of the Network Fabric Controller.
-  final String networkFabricControllerId;
+  final String? networkFabricControllerId;
   /// Port number of Internet Gateway.
-  final int port;
+  final int? port;
   /// Provisioning state of resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetInternetGatewayResult].
   /// [annotation] Switch configuration description.
@@ -47,53 +47,53 @@ class GetInternetGatewayResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetInternetGatewayResult({
     this.annotation,
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.internetGatewayRuleId,
-    required this.ipv4Address,
-    required this.location,
-    required this.name,
-    required this.networkFabricControllerId,
-    required this.port,
-    required this.provisioningState,
-    required this.systemData,
+    this.ipv4Address,
+    this.location,
+    this.name,
+    this.networkFabricControllerId,
+    this.port,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'annotation': ?annotation,
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'internetGatewayRuleId': ?internetGatewayRuleId,
-      'ipv4Address': ipv4Address,
-      'location': location,
-      'name': name,
-      'networkFabricControllerId': networkFabricControllerId,
-      'port': port,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'ipv4Address': ?ipv4Address,
+      'location': ?location,
+      'name': ?name,
+      'networkFabricControllerId': ?networkFabricControllerId,
+      'port': ?port,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetInternetGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetInternetGatewayResult(
       annotation: (() { final guardedValue = map['annotation']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       internetGatewayRuleId: (() { final guardedValue = map['internetGatewayRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ipv4Address: map['ipv4Address'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networkFabricControllerId: map['networkFabricControllerId'] as String,
-      port: map['port'] as int,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      ipv4Address: (() { final guardedValue = map['ipv4Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkFabricControllerId: (() { final guardedValue = map['networkFabricControllerId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

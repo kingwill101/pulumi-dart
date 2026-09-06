@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The lab user list management profile.
 class RosterProfileResponse {
   /// The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.
-  final pulumi.Input<String>? activeDirectoryGroupId;
+  final pulumi.Input<String?>? activeDirectoryGroupId;
   /// The base URI identifying the lms instance.
-  final pulumi.Input<String>? lmsInstance;
+  final pulumi.Input<String?>? lmsInstance;
   /// The unique id of the azure lab services tool in the lms.
-  final pulumi.Input<String>? ltiClientId;
+  final pulumi.Input<String?>? ltiClientId;
   /// The unique context identifier for the lab in the lms.
-  final pulumi.Input<String>? ltiContextId;
+  final pulumi.Input<String?>? ltiContextId;
   /// The uri of the names and roles service endpoint on the lms for the class attached to this lab.
-  final pulumi.Input<String>? ltiRosterEndpoint;
+  final pulumi.Input<String?>? ltiRosterEndpoint;
 
   /// Creates a new [RosterProfileResponse].
   /// [activeDirectoryGroupId] The AAD group ID which this lab roster is populated from. Having this set enables AAD sync mode.

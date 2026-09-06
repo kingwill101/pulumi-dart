@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the storage provider type on the target.
 /// Applicable when StorageProjectionType is not ContainerFileSystem.
-enum TargetHydrationStorageProviderType {
+enum TargetHydrationStorageProviderType implements pulumi.PulumiEnum<String> {
   valueAzureFileShare("AzureFileShare");
 
   const TargetHydrationStorageProviderType(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetHydrationStorageProviderType fromValue(String value) {

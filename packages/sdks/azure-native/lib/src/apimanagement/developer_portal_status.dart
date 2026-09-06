@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Status of developer portal in this API Management service.
-enum DeveloperPortalStatus {
+enum DeveloperPortalStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const DeveloperPortalStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static DeveloperPortalStatus fromValue(String value) {

@@ -11,13 +11,13 @@ import 'pipeline_trigger_properties.dart';
 /// {@macro pulumi_containerregistry_import_pipeline_args_doc}
 class ImportPipelineArgs {
   /// The identity of the import pipeline.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The name of the import pipeline.
-  final pulumi.Input<String>? importPipelineName;
+  final pulumi.Input<String?>? importPipelineName;
   /// The location of the import pipeline.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The list of all options configured for the pipeline.
-  final pulumi.Input<List<String>>? options;
+  final pulumi.Input<List<dynamic>?>? options;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.
@@ -25,7 +25,7 @@ class ImportPipelineArgs {
   /// The source properties of the import pipeline.
   final pulumi.Input<ImportPipelineSourceProperties> source;
   /// The properties that describe the trigger of the import pipeline.
-  final pulumi.Input<PipelineTriggerProperties>? trigger;
+  final pulumi.Input<PipelineTriggerProperties?>? trigger;
 
   /// Creates a new [ImportPipelineArgs].
   /// [identity] The identity of the import pipeline.
@@ -65,7 +65,7 @@ class ImportPipelineArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IdentityProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       importPipelineName: (() { final guardedValue = map['importPipelineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       registryName: pulumi.Input.fromValue(map['registryName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       source: pulumi.Input.fromValue(ImportPipelineSourceProperties.fromMap((map['source']! as Map).cast<String, dynamic>())),

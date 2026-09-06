@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The publisher scope.
-enum PublisherScope {
+enum PublisherScope implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valuePrivate("Private");
 
   const PublisherScope(this.wireValue);
+  @override
   final String wireValue;
 
   static PublisherScope fromValue(String value) {

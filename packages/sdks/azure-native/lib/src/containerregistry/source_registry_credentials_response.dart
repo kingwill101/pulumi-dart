@@ -7,7 +7,7 @@ class SourceRegistryCredentialsResponse {
   /// The authentication mode which determines the source registry login scope. The credentials for the source registry
   /// will be generated using the given scope. These credentials will be used to login to
   /// the source registry during the run.
-  final pulumi.Input<String>? loginMode;
+  final pulumi.Input<String?>? loginMode;
 
   /// Creates a new [SourceRegistryCredentialsResponse].
   /// [loginMode] The authentication mode which determines the source registry login scope. The credentials for the source registry

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// AAD Join type.
-enum DomainJoinType {
+enum DomainJoinType implements pulumi.PulumiEnum<String> {
   valueHybridAzureADJoin("HybridAzureADJoin"),
   valueAzureADJoin("AzureADJoin");
 
   const DomainJoinType(this.wireValue);
+  @override
   final String wireValue;
 
   static DomainJoinType fromValue(String value) {

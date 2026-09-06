@@ -6,7 +6,7 @@ import 'customer_managed_key_encryption.dart';
 /// The encryption configuration for the online experimentation workspace resource.
 class ResourceEncryptionConfiguration {
   /// All Customer-managed key encryption properties for the resource.
-  final pulumi.Input<CustomerManagedKeyEncryption>? customerManagedKeyEncryption;
+  final pulumi.Input<CustomerManagedKeyEncryption?>? customerManagedKeyEncryption;
 
   /// Creates a new [ResourceEncryptionConfiguration].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.

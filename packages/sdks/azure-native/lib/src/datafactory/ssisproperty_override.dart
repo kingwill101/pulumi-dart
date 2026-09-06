@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SSIS property override.
 class SSISPropertyOverride {
   /// Whether SSIS package property override value is sensitive data. Value will be encrypted in SSISDB if it is true
-  final pulumi.Input<bool>? isSensitive;
+  final pulumi.Input<bool?>? isSensitive;
   /// SSIS package property override value. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> value;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type.
-enum IdentityManagementTypes {
+enum IdentityManagementTypes implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   systemAssigned("SystemAssigned"),
   userAssigned("UserAssigned"),
@@ -7,6 +9,7 @@ enum IdentityManagementTypes {
   delegatedResourceIdentity("DelegatedResourceIdentity");
 
   const IdentityManagementTypes(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityManagementTypes fromValue(String value) {

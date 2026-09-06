@@ -13,32 +13,32 @@ class HDInsightPigActivityResponse {
   /// Allows user to specify defines for Pig job request.
   final pulumi.Input<dynamic>? defines;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Debug info option.
-  final pulumi.Input<String>? getDebugInfo;
+  final pulumi.Input<String?>? getDebugInfo;
   /// Linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? linkedServiceName;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? linkedServiceName;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<ActivityPolicyResponse>? policy;
+  final pulumi.Input<ActivityPolicyResponse?>? policy;
   /// Script linked service reference.
-  final pulumi.Input<LinkedServiceReferenceResponse>? scriptLinkedService;
+  final pulumi.Input<LinkedServiceReferenceResponse?>? scriptLinkedService;
   /// Script path. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? scriptPath;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Storage linked service references.
-  final pulumi.Input<List<LinkedServiceReferenceResponse>>? storageLinkedServices;
+  final pulumi.Input<List<LinkedServiceReferenceResponse>?>? storageLinkedServices;
   /// Type of activity.
   /// Expected value is 'HDInsightPig'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [HDInsightPigActivityResponse].
   /// [arguments] User specified arguments to HDInsightActivity. Type: array (or Expression with resultType array).

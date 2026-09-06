@@ -7,9 +7,9 @@ import 'cert_based_security_principal_response.dart';
 /// Additional Confidential Ledger properties.
 class LedgerPropertiesResponse {
   /// Array of all AAD based Security Principals.
-  final pulumi.Input<List<AADBasedSecurityPrincipalResponse>>? aadBasedSecurityPrincipals;
+  final pulumi.Input<List<AADBasedSecurityPrincipalResponse>?>? aadBasedSecurityPrincipals;
   /// Array of all cert based Security Principals.
-  final pulumi.Input<List<CertBasedSecurityPrincipalResponse>>? certBasedSecurityPrincipals;
+  final pulumi.Input<List<CertBasedSecurityPrincipalResponse>?>? certBasedSecurityPrincipals;
   /// Endpoint for accessing network identity.
   final pulumi.Input<String> identityServiceUri;
   /// Internal namespace for the Ledger
@@ -17,15 +17,15 @@ class LedgerPropertiesResponse {
   /// Unique name for the Confidential Ledger.
   final pulumi.Input<String> ledgerName;
   /// SKU associated with the ledger
-  final pulumi.Input<String>? ledgerSku;
+  final pulumi.Input<String?>? ledgerSku;
   /// Type of Confidential Ledger
-  final pulumi.Input<String>? ledgerType;
+  final pulumi.Input<String?>? ledgerType;
   /// Endpoint for calling Ledger Service.
   final pulumi.Input<String> ledgerUri;
   /// Provisioning state of Ledger Resource
   final pulumi.Input<String> provisioningState;
   /// Object representing RunningState for Ledger.
-  final pulumi.Input<String>? runningState;
+  final pulumi.Input<String?>? runningState;
 
   /// Creates a new [LedgerPropertiesResponse].
   /// [aadBasedSecurityPrincipals] Array of all AAD based Security Principals.

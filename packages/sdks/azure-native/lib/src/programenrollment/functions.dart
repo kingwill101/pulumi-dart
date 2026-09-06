@@ -19,3 +19,14 @@ Future<GetEduEnrollmentResult> getEduEnrollment(
   );
   return GetEduEnrollmentResult.fromMap(result);
 }
+
+pulumi.Output<GetEduEnrollmentResult> getEduEnrollmentOutput(
+  GetEduEnrollmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:programenrollment:getEduEnrollment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEduEnrollmentResult.fromMap);
+}

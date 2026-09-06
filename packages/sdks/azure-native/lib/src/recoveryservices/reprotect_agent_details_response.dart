@@ -92,7 +92,7 @@ class ReprotectAgentDetailsResponse {
       lastDiscoveryInUtc: pulumi.Input.fromValue(map['lastDiscoveryInUtc'] as String),
       lastHeartbeatUtc: pulumi.Input.fromValue(map['lastHeartbeatUtc'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      protectedItemCount: pulumi.Input.fromValue(map['protectedItemCount'] as int),
+      protectedItemCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['protectedItemCount'])),
       vcenterId: pulumi.Input.fromValue(map['vcenterId'] as String),
       version: pulumi.Input.fromValue(map['version'] as String),
     );

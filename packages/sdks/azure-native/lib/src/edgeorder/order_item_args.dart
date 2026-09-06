@@ -11,21 +11,21 @@ import 'resource_identity.dart';
 /// {@macro pulumi_edgeorder_order_item_args_doc}
 class OrderItemArgs {
   /// Represents shipping and return address for order item.
-  final pulumi.Input<AddressDetails>? addressDetails;
+  final pulumi.Input<AddressDetails?>? addressDetails;
   /// Msi identity of the resource
-  final pulumi.Input<ResourceIdentity>? identity;
+  final pulumi.Input<ResourceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Id of the order to which order item belongs to.
   final pulumi.Input<String> orderId;
   /// Represents order item details.
   final pulumi.Input<OrderItemDetails> orderItemDetails;
   /// The name of the order item.
-  final pulumi.Input<String>? orderItemName;
+  final pulumi.Input<String?>? orderItemName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OrderItemArgs].
   /// [addressDetails] Represents shipping and return address for order item.

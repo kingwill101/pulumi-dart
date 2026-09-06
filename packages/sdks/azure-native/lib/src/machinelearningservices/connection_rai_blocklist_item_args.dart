@@ -13,9 +13,9 @@ class ConnectionRaiBlocklistItemArgs {
   /// RAI Custom Blocklist Item properties.
   final pulumi.Input<RaiBlocklistItemProperties> properties;
   /// Api version used by proxy call
-  final pulumi.Input<String>? proxyApiVersion;
+  final pulumi.Input<String?>? proxyApiVersion;
   /// Name of the RaiBlocklist Item
-  final pulumi.Input<String>? raiBlocklistItemName;
+  final pulumi.Input<String?>? raiBlocklistItemName;
   /// The name of the RaiBlocklist.
   final pulumi.Input<String> raiBlocklistName;
   /// The name of the resource group. The name is case insensitive.

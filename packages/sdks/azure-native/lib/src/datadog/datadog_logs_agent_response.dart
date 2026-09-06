@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DatadogLogsAgentResponse {
   /// The transport.
-  final pulumi.Input<String>? transport;
+  final pulumi.Input<String?>? transport;
 
   /// Creates a new [DatadogLogsAgentResponse].
   /// [transport] The transport.

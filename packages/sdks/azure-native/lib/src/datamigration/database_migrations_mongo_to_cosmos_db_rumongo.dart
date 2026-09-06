@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_migrations_mongo_to_cosmos_db_rumongo_args.dart';
 import 'error_info_response.dart';
 import 'mongo_connection_information_response.dart';
+import 'mongo_migration_collection_response.dart';
 import 'system_data_response.dart';
 
 /// Database Migration Resource for Mongo to CosmosDb.
@@ -671,7 +672,7 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of Mongo Collections to be migrated.
-  late final pulumi.Output<List<Map<String, dynamic>>?> collectionList;
+  late final pulumi.Output<List<MongoMigrationCollectionResponse>?> collectionList;
   /// Database migration end time.
   late final pulumi.Output<String> endedOn;
   /// Expected value is 'MongoToCosmosDbMongo'.
@@ -718,7 +719,35 @@ class DatabaseMigrationsMongoToCosmosDbRUMongo extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    collectionList = registerOutput<List<Map<String, dynamic>>?>('collectionList');
+    collectionList = registerOutput<List<MongoMigrationCollectionResponse>?>('collectionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoMigrationCollectionResponse>(guardedValue, (value) => MongoMigrationCollectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    endedOn = registerOutput<String>('endedOn');
+    kind = registerOutput<String>('kind');
+    migrationFailureError = registerOutput<ErrorInfoResponse>('migrationFailureError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    migrationOperationId = registerOutput<String?>('migrationOperationId');
+    migrationService = registerOutput<String?>('migrationService');
+    migrationStatus = registerOutput<String>('migrationStatus');
+    this.name = registerOutput<String>('name');
+    provisioningError = registerOutput<String?>('provisioningError');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<String?>('scope');
+    sourceMongoConnection = registerOutput<MongoConnectionInformationResponse?>('sourceMongoConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoConnectionInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startedOn = registerOutput<String>('startedOn');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetMongoConnection = registerOutput<MongoConnectionInformationResponse?>('targetMongoConnection', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MongoConnectionInformationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseMigrationsMongoToCosmosDbRUMongo] resource.
+  DatabaseMigrationsMongoToCosmosDbRUMongo.reference(String urn)
+    : super(
+        'azure-native:datamigration:DatabaseMigrationsMongoToCosmosDbRUMongo',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    collectionList = registerOutput<List<MongoMigrationCollectionResponse>?>('collectionList', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoMigrationCollectionResponse>(guardedValue, (value) => MongoMigrationCollectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     endedOn = registerOutput<String>('endedOn');
     kind = registerOutput<String>('kind');
     migrationFailureError = registerOutput<ErrorInfoResponse>('migrationFailureError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ErrorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

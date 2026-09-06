@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// configuration for the servers offering subPlan
 class DefenderForServersGcpOfferingSubPlan {
   /// The available sub plans
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [DefenderForServersGcpOfferingSubPlan].
   /// [type] The available sub plans
@@ -21,7 +21,7 @@ class DefenderForServersGcpOfferingSubPlan {
 
   factory DefenderForServersGcpOfferingSubPlan.fromMap(Map<String, dynamic> map) {
     return DefenderForServersGcpOfferingSubPlan(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

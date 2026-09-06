@@ -11,15 +11,15 @@ class ClusterResourcePropertiesResponse {
   /// Fully qualified dns name of the service instance
   final pulumi.Input<String> fqdn;
   /// The name of the resource group that contains the infrastructure resources
-  final pulumi.Input<String>? infraResourceGroup;
+  final pulumi.Input<String?>? infraResourceGroup;
   /// Additional Service settings for planned maintenance
-  final pulumi.Input<WeeklyMaintenanceScheduleConfigurationResponse>? maintenanceScheduleConfiguration;
+  final pulumi.Input<WeeklyMaintenanceScheduleConfigurationResponse?>? maintenanceScheduleConfiguration;
   /// The resource Id of the Managed Environment that the Spring Apps instance builds on
-  final pulumi.Input<String>? managedEnvironmentId;
+  final pulumi.Input<String?>? managedEnvironmentId;
   /// Purchasing 3rd party product of the Service resource.
-  final pulumi.Input<MarketplaceResourceResponse>? marketplaceResource;
+  final pulumi.Input<MarketplaceResourceResponse?>? marketplaceResource;
   /// Network profile of the Service
-  final pulumi.Input<NetworkProfileResponse>? networkProfile;
+  final pulumi.Input<NetworkProfileResponse?>? networkProfile;
   /// Power state of the Service
   final pulumi.Input<String> powerState;
   /// Provisioning state of the Service
@@ -29,8 +29,8 @@ class ClusterResourcePropertiesResponse {
   /// Version of the Service
   final pulumi.Input<int> version;
   /// Additional Service settings in vnet injection instance
-  final pulumi.Input<ServiceVNetAddonsResponse>? vnetAddons;
-  final pulumi.Input<bool>? zoneRedundant;
+  final pulumi.Input<ServiceVNetAddonsResponse?>? vnetAddons;
+  final pulumi.Input<bool?>? zoneRedundant;
 
   /// Creates a new [ClusterResourcePropertiesResponse].
   /// [fqdn] Fully qualified dns name of the service instance
@@ -45,7 +45,7 @@ class ClusterResourcePropertiesResponse {
   /// [version] Version of the Service
   /// [vnetAddons] Additional Service settings in vnet injection instance
   /// [zoneRedundant] Optional.
-  const ClusterResourcePropertiesResponse({
+  ClusterResourcePropertiesResponse({
     required this.fqdn,
     this.infraResourceGroup,
     this.maintenanceScheduleConfiguration,
@@ -57,8 +57,8 @@ class ClusterResourcePropertiesResponse {
     required this.serviceId,
     required this.version,
     this.vnetAddons,
-    this.zoneRedundant,
-  });
+    pulumi.Input<bool?>? zoneRedundant,
+  }) : zoneRedundant = zoneRedundant ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,7 +88,7 @@ class ClusterResourcePropertiesResponse {
       powerState: pulumi.Input.fromValue(map['powerState'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       serviceId: pulumi.Input.fromValue(map['serviceId'] as String),
-      version: pulumi.Input.fromValue(map['version'] as int),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
       vnetAddons: (() { final guardedValue = map['vnetAddons']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceVNetAddonsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

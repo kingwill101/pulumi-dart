@@ -14,26 +14,26 @@ class WebAppAssessmentSettingsResponse {
   /// App Service native settings.
   final pulumi.Input<AppSvcNativeSettingsResponse> appSvcNativeSettings;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Azure security offering type.
   final pulumi.Input<String> azureSecurityOfferingType;
   /// Gets or sets the billing settings.
-  final pulumi.Input<BillingSettingsResponse>? billingSettings;
+  final pulumi.Input<BillingSettingsResponse?>? billingSettings;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets user configurable setting to display the environment type.
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<String?>? environmentType;
   /// Gets or sets the performance data.
-  final pulumi.Input<PerformanceDataResponse>? performanceData;
+  final pulumi.Input<PerformanceDataResponse?>? performanceData;
   /// Gets or sets the savings settings.
-  final pulumi.Input<SavingsSettingsResponse>? savingsSettings;
+  final pulumi.Input<SavingsSettingsResponse?>? savingsSettings;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<String?>? sizingCriterion;
 
   /// Creates a new [WebAppAssessmentSettingsResponse].
   /// [appSvcContainerSettings] App Service container settings.
@@ -88,11 +88,11 @@ class WebAppAssessmentSettingsResponse {
       azureSecurityOfferingType: pulumi.Input.fromValue(map['azureSecurityOfferingType'] as String),
       billingSettings: (() { final guardedValue = map['billingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceData: (() { final guardedValue = map['performanceData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PerformanceDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       savingsSettings: (() { final guardedValue = map['savingsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

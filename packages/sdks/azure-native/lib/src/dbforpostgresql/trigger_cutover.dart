@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if cutover must be triggered for the entire migration.
-enum TriggerCutover {
+enum TriggerCutover implements pulumi.PulumiEnum<String> {
   true_("True"),
   false_("False");
 
   const TriggerCutover(this.wireValue);
+  @override
   final String wireValue;
 
   static TriggerCutover fromValue(String value) {

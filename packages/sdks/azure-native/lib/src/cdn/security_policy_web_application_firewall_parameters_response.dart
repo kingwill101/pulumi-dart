@@ -7,12 +7,12 @@ import 'security_policy_web_application_firewall_association_response.dart';
 /// The json object containing security policy waf parameters
 class SecurityPolicyWebApplicationFirewallParametersResponse {
   /// Waf associations
-  final pulumi.Input<List<SecurityPolicyWebApplicationFirewallAssociationResponse>>? associations;
+  final pulumi.Input<List<SecurityPolicyWebApplicationFirewallAssociationResponse>?>? associations;
   /// The type of the Security policy to create.
   /// Expected value is 'WebApplicationFirewall'.
   final pulumi.Input<String> type;
   /// Resource ID.
-  final pulumi.Input<ResourceReferenceResponse>? wafPolicy;
+  final pulumi.Input<ResourceReferenceResponse?>? wafPolicy;
 
   /// Creates a new [SecurityPolicyWebApplicationFirewallParametersResponse].
   /// [associations] Waf associations

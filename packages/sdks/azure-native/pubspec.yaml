@@ -1,6 +1,6 @@
 name: pulumi_azure_native
 description: A native Pulumi package for creating and managing Azure resources.
-version: 3.26.0+1
+version: 3.27.0+1
 license: Apache-2.0
 homepage: https://www.pulumi.com
 repository: https://github.com/pulumi/pulumi-azure-native

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Endpoint
 class RdsDbInstanceEndpoint {
   /// Specifies the DNS address of the DB instance.
-  final pulumi.Input<String>? address;
+  final pulumi.Input<String?>? address;
   /// Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
-  final pulumi.Input<String>? hostedZoneId;
+  final pulumi.Input<String?>? hostedZoneId;
   /// Specifies the port that the database engine is listening on.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
 
   /// Creates a new [RdsDbInstanceEndpoint].
   /// [address] Specifies the DNS address of the DB instance.

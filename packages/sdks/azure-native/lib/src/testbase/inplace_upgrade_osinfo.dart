@@ -6,9 +6,9 @@ import 'os_properties.dart';
 /// Specifies the baseline os and target os for in-place upgrade tests.
 class InplaceUpgradeOSInfo {
   /// Specifies the baseline os for in-place upgrade tests.
-  final pulumi.Input<OsProperties>? baselineOS;
+  final pulumi.Input<OsProperties?>? baselineOS;
   /// Specifies the target os for in-place upgrade tests.
-  final pulumi.Input<String>? targetOS;
+  final pulumi.Input<String?>? targetOS;
 
   /// Creates a new [InplaceUpgradeOSInfo].
   /// [baselineOS] Specifies the baseline os for in-place upgrade tests.

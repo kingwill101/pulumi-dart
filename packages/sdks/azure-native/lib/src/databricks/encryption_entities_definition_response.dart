@@ -7,9 +7,9 @@ import 'managed_disk_encryption_response.dart';
 /// Encryption entities for databricks workspace resource.
 class EncryptionEntitiesDefinitionResponse {
   /// Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.
-  final pulumi.Input<ManagedDiskEncryptionResponse>? managedDisk;
+  final pulumi.Input<ManagedDiskEncryptionResponse?>? managedDisk;
   /// Encryption properties for the databricks managed services. Supported in both Serverless and Hybrid ComputeMode.
-  final pulumi.Input<EncryptionV2Response>? managedServices;
+  final pulumi.Input<EncryptionV2Response?>? managedServices;
 
   /// Creates a new [EncryptionEntitiesDefinitionResponse].
   /// [managedDisk] Encryption properties for the databricks managed disks. Not allowed in Serverless ComputeMode workspace.

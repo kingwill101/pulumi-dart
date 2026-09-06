@@ -9,17 +9,17 @@ class RemotePrivateEndpointConnectionWrapperResponse {
   /// All the Group ids.
   final pulumi.Input<List<String>> groupIds;
   /// Private Endpoint connection resource id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Private Endpoint Connection Name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource of private end point.
-  final pulumi.Input<ArmIdWrapperResponse>? privateEndpoint;
+  final pulumi.Input<ArmIdWrapperResponse?>? privateEndpoint;
   /// A collection of information about the state of the connection between service consumer and provider.
   final pulumi.Input<PrivateLinkServiceConnectionStateResponse> privateLinkServiceConnectionState;
   /// The provisioning state of the private endpoint connection resource.
   final pulumi.Input<String> provisioningState;
   /// Private Endpoint Connection Resource Type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [RemotePrivateEndpointConnectionWrapperResponse].
   /// [groupIds] All the Group ids.

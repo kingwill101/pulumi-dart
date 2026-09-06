@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// CorsRuleAllowedMethods enum
-enum CorsRuleAllowedMethods {
+enum CorsRuleAllowedMethods implements pulumi.PulumiEnum<String> {
   dELETE("DELETE"),
   gET("GET"),
   hEAD("HEAD"),
@@ -7,6 +9,7 @@ enum CorsRuleAllowedMethods {
   pUT("PUT");
 
   const CorsRuleAllowedMethods(this.wireValue);
+  @override
   final String wireValue;
 
   static CorsRuleAllowedMethods fromValue(String value) {

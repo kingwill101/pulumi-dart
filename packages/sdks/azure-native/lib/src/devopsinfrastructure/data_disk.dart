@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The data disk of the VMSS.
 class DataDisk {
   /// The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
-  final pulumi.Input<String>? caching;
+  final pulumi.Input<dynamic>? caching;
   /// The initial disk size in gigabytes.
-  final pulumi.Input<int>? diskSizeGiB;
+  final pulumi.Input<int?>? diskSizeGiB;
   /// The drive letter for the empty data disk. If not specified, it will be the first available letter.
-  final pulumi.Input<String>? driveLetter;
+  final pulumi.Input<String?>? driveLetter;
   /// The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-  final pulumi.Input<String>? storageAccountType;
+  final pulumi.Input<dynamic>? storageAccountType;
 
   /// Creates a new [DataDisk].
   /// [caching] The type of caching to be enabled for the data disks. The default value for caching is readwrite. For information about the caching options see: https://blogs.msdn.microsoft.com/windowsazurestorage/2012/06/27/exploring-windows-azure-drives-disks-and-images/.
@@ -36,10 +36,10 @@ class DataDisk {
 
   factory DataDisk.fromMap(Map<String, dynamic> map) {
     return DataDisk(
-      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGiB: (() { final guardedValue = map['diskSizeGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      caching: (() { final guardedValue = map['caching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      diskSizeGiB: (() { final guardedValue = map['diskSizeGiB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       driveLetter: (() { final guardedValue = map['driveLetter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

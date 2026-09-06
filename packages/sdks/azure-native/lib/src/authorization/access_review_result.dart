@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Represents a reviewer's decision for a given review
-enum AccessReviewResult {
+enum AccessReviewResult implements pulumi.PulumiEnum<String> {
   approve("Approve"),
   deny("Deny"),
   notReviewed("NotReviewed"),
@@ -7,6 +9,7 @@ enum AccessReviewResult {
   notNotified("NotNotified");
 
   const AccessReviewResult(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessReviewResult fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Management resource preference to link device.
 class ManagementResourcePreferencesResponse {
   /// Customer preferred Management resource ARM ID.
-  final pulumi.Input<String>? preferredManagementResourceId;
+  final pulumi.Input<String?>? preferredManagementResourceId;
 
   /// Creates a new [ManagementResourcePreferencesResponse].
   /// [preferredManagementResourceId] Customer preferred Management resource ARM ID.

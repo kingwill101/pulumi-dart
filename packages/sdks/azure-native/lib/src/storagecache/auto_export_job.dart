@@ -253,7 +253,7 @@ class AutoExportJob extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     adminStatus = registerOutput<String?>('adminStatus');
-    autoExportPrefixes = registerOutput<List<String>?>('autoExportPrefixes');
+    autoExportPrefixes = registerOutput<List<String>?>('autoExportPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     currentIterationFilesDiscovered = registerOutput<double>('currentIterationFilesDiscovered');
     currentIterationFilesExported = registerOutput<double>('currentIterationFilesExported');
@@ -271,7 +271,42 @@ class AutoExportJob extends pulumi.CustomResource {
     statusCode = registerOutput<String>('statusCode');
     statusMessage = registerOutput<String>('statusMessage');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    totalFilesExported = registerOutput<double>('totalFilesExported');
+    totalFilesFailed = registerOutput<double>('totalFilesFailed');
+    totalMiBExported = registerOutput<double>('totalMiBExported');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AutoExportJob] resource.
+  AutoExportJob.reference(String urn)
+    : super(
+        'azure-native:storagecache:AutoExportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminStatus = registerOutput<String?>('adminStatus');
+    autoExportPrefixes = registerOutput<List<String>?>('autoExportPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentIterationFilesDiscovered = registerOutput<double>('currentIterationFilesDiscovered');
+    currentIterationFilesExported = registerOutput<double>('currentIterationFilesExported');
+    currentIterationFilesFailed = registerOutput<double>('currentIterationFilesFailed');
+    currentIterationMiBDiscovered = registerOutput<double>('currentIterationMiBDiscovered');
+    currentIterationMiBExported = registerOutput<double>('currentIterationMiBExported');
+    exportIterationCount = registerOutput<int>('exportIterationCount');
+    lastCompletionTimeUTC = registerOutput<String>('lastCompletionTimeUTC');
+    lastStartedTimeUTC = registerOutput<String>('lastStartedTimeUTC');
+    lastSuccessfulIterationCompletionTimeUTC = registerOutput<String>('lastSuccessfulIterationCompletionTimeUTC');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    state = registerOutput<String?>('state');
+    statusCode = registerOutput<String>('statusCode');
+    statusMessage = registerOutput<String>('statusMessage');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     totalFilesExported = registerOutput<double>('totalFilesExported');
     totalFilesFailed = registerOutput<double>('totalFilesFailed');
     totalMiBExported = registerOutput<double>('totalMiBExported');

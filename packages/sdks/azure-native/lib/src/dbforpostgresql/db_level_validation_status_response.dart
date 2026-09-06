@@ -6,13 +6,13 @@ import 'validation_summary_item_response.dart';
 /// Validation status summary for a database.
 class DbLevelValidationStatusResponse {
   /// Name of database.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// End time of a database level validation.
-  final pulumi.Input<String>? endedOn;
+  final pulumi.Input<String?>? endedOn;
   /// Start time of a database level validation.
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? startedOn;
   /// Summary of database level validations.
-  final pulumi.Input<List<ValidationSummaryItemResponse>>? summary;
+  final pulumi.Input<List<ValidationSummaryItemResponse>?>? summary;
 
   /// Creates a new [DbLevelValidationStatusResponse].
   /// [databaseName] Name of database.

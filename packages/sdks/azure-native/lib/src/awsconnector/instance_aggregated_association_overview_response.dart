@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceAggregatedAssociationOverview
 class InstanceAggregatedAssociationOverviewResponse {
   /// &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;
-  final pulumi.Input<String>? detailedStatus;
+  final pulumi.Input<String?>? detailedStatus;
   /// &lt;p&gt;The number of associations for the managed nodes.&lt;/p&gt;
-  final pulumi.Input<Map<String, int>>? instanceAssociationStatusAggregatedCount;
+  final pulumi.Input<Map<String, int>?>? instanceAssociationStatusAggregatedCount;
 
   /// Creates a new [InstanceAggregatedAssociationOverviewResponse].
   /// [detailedStatus] &lt;p&gt;Detailed status information about the aggregated associations.&lt;/p&gt;

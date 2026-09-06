@@ -12,13 +12,13 @@ class GoalTemplatePropertiesResponse {
   /// Provisioning state
   final pulumi.Input<String> provisioningState;
   /// Regional recovery point objective specified by customer. eg, PT15M for 15 minutes
-  final pulumi.Input<String>? regionalRecoveryPointObjective;
+  final pulumi.Input<String?>? regionalRecoveryPointObjective;
   /// Regional recovery time objective specified by customer. eg, PT15M for 15 minutes
-  final pulumi.Input<String>? regionalRecoveryTimeObjective;
+  final pulumi.Input<String?>? regionalRecoveryTimeObjective;
   /// Option specified by customer under disaster recovery section of goal template
-  final pulumi.Input<String>? requireDisasterRecovery;
+  final pulumi.Input<String?>? requireDisasterRecovery;
   /// Option specified by customer under high availability section of goal template
-  final pulumi.Input<String>? requireHighAvailability;
+  final pulumi.Input<String?>? requireHighAvailability;
 
   /// Creates a new [GoalTemplatePropertiesResponse].
   /// [errorDetails] Details of any errors encountered during the operation.

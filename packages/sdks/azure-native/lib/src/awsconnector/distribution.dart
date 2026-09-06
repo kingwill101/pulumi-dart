@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The method used to distribute log data to the destination, which can be either random or grouped by log stream.
-enum Distribution {
+enum Distribution implements pulumi.PulumiEnum<String> {
   byLogStream("ByLogStream"),
   random("Random");
 
   const Distribution(this.wireValue);
+  @override
   final String wireValue;
 
   static Distribution fromValue(String value) {

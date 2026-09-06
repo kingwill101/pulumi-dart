@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Auto Provisioning Details.
-enum AutoProvisioningStatus {
+enum AutoProvisioningStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const AutoProvisioningStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoProvisioningStatus fromValue(String value) {

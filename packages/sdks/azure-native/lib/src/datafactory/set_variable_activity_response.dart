@@ -8,28 +8,28 @@ import 'user_property_response.dart';
 /// Set value for a Variable.
 class SetVariableActivityResponse {
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity policy.
-  final pulumi.Input<SecureInputOutputPolicyResponse>? policy;
+  final pulumi.Input<SecureInputOutputPolicyResponse?>? policy;
   /// If set to true, it sets the pipeline run return value.
-  final pulumi.Input<bool>? setSystemVariable;
+  final pulumi.Input<bool?>? setSystemVariable;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'SetVariable'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
   /// Value to be set. Could be a static value or Expression.
   final pulumi.Input<dynamic>? value;
   /// Name of the variable whose value needs to be set.
-  final pulumi.Input<String>? variableName;
+  final pulumi.Input<String?>? variableName;
 
   /// Creates a new [SetVariableActivityResponse].
   /// [dependsOn] Activity depends on condition.

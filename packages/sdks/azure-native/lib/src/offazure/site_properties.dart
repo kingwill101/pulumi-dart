@@ -7,13 +7,13 @@ import 'site_spn_properties.dart';
 /// Class for site properties.
 class SiteProperties {
   /// On-premises agent details.
-  final pulumi.Input<SiteAgentProperties>? agentDetails;
+  final pulumi.Input<SiteAgentProperties?>? agentDetails;
   /// Appliance Name.
-  final pulumi.Input<String>? applianceName;
+  final pulumi.Input<String?>? applianceName;
   /// ARM ID of migration hub solution for SDS.
-  final pulumi.Input<String>? discoverySolutionId;
+  final pulumi.Input<String?>? discoverySolutionId;
   /// Service principal identity details used by agent for communication to the service.
-  final pulumi.Input<SiteSpnProperties>? servicePrincipalIdentityDetails;
+  final pulumi.Input<SiteSpnProperties?>? servicePrincipalIdentityDetails;
 
   /// Creates a new [SiteProperties].
   /// [agentDetails] On-premises agent details.

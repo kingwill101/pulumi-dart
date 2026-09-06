@@ -6,9 +6,9 @@ import 'origin_group_response.dart';
 /// Definition of OriginGroups
 class OriginGroupsResponse {
   /// The items (origin groups) in a distribution.
-  final pulumi.Input<List<OriginGroupResponse>>? items;
+  final pulumi.Input<List<OriginGroupResponse>?>? items;
   /// The number of origin groups.
-  final pulumi.Input<int>? quantity;
+  final pulumi.Input<int?>? quantity;
 
   /// Creates a new [OriginGroupsResponse].
   /// [items] The items (origin groups) in a distribution.
@@ -28,7 +28,7 @@ class OriginGroupsResponse {
   factory OriginGroupsResponse.fromMap(Map<String, dynamic> map) {
     return OriginGroupsResponse(
       items: (() { final guardedValue = map['items']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<OriginGroupResponse>(guardedValue, (value) => OriginGroupResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      quantity: (() { final guardedValue = map['quantity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

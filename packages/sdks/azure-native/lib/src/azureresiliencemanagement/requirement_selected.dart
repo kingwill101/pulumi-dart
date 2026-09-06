@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Option specified by customer under high availability section of goal template
-enum RequirementSelected {
+enum RequirementSelected implements pulumi.PulumiEnum<String> {
   notRequired("NotRequired"),
   required("Required");
 
   const RequirementSelected(this.wireValue);
+  @override
   final String wireValue;
 
   static RequirementSelected fromValue(String value) {

@@ -7,15 +7,15 @@ import 'pre_build_step.dart';
 /// Configuration of the build.
 class BuildConfiguration {
   /// Base OS used to build and run the app.
-  final pulumi.Input<String>? baseOs;
+  final pulumi.Input<String?>? baseOs;
   /// List of environment variables to be passed to the build, secrets should not be used in environment variable.
-  final pulumi.Input<List<EnvironmentVariable>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariable>?>? environmentVariables;
   /// Platform to be used to build and run the app.
-  final pulumi.Input<String>? platform;
+  final pulumi.Input<String?>? platform;
   /// Platform version to be used to build and run the app.
-  final pulumi.Input<String>? platformVersion;
+  final pulumi.Input<String?>? platformVersion;
   /// List of steps to perform before the build.
-  final pulumi.Input<List<PreBuildStep>>? preBuildSteps;
+  final pulumi.Input<List<PreBuildStep>?>? preBuildSteps;
 
   /// Creates a new [BuildConfiguration].
   /// [baseOs] Base OS used to build and run the app.

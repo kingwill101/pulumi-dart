@@ -1,21 +1,20 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'accelerator_basic_auth_setting.dart';
 
 class AcceleratorGitRepository {
   /// Properties of the auth setting payload.
-  final pulumi.Input<AcceleratorBasicAuthSetting> authSetting;
+  final pulumi.Input<dynamic> authSetting;
   /// Git repository branch to be used.
-  final pulumi.Input<String>? branch;
+  final pulumi.Input<String?>? branch;
   /// Git repository commit to be used.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<String?>? commit;
   /// Git repository tag to be used.
-  final pulumi.Input<String>? gitTag;
+  final pulumi.Input<String?>? gitTag;
   /// Interval for checking for updates to Git or image repository.
-  final pulumi.Input<int>? intervalInSeconds;
+  final pulumi.Input<int?>? intervalInSeconds;
   /// Folder path inside the git repository to consider as the root of the accelerator or fragment.
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
   /// Git repository URL for the accelerator.
   final pulumi.Input<String> url;
 
@@ -39,7 +38,7 @@ class AcceleratorGitRepository {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'authSetting': pulumi.Input.mapInputValue<AcceleratorBasicAuthSetting, Map<String, dynamic>>(authSetting, (value) => value.toMap()),
+      'authSetting': authSetting,
       'branch': ?branch,
       'commit': ?commit,
       'gitTag': ?gitTag,
@@ -51,11 +50,11 @@ class AcceleratorGitRepository {
 
   factory AcceleratorGitRepository.fromMap(Map<String, dynamic> map) {
     return AcceleratorGitRepository(
-      authSetting: pulumi.Input.fromValue(AcceleratorBasicAuthSetting.fromMap((map['authSetting']! as Map).cast<String, dynamic>())),
+      authSetting: pulumi.Input.fromValue(map['authSetting']),
       branch: (() { final guardedValue = map['branch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gitTag: (() { final guardedValue = map['gitTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subPath: (() { final guardedValue = map['subPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

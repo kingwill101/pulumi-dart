@@ -10,7 +10,7 @@ class SliResource {
   /// Defines the SLO baseline associated with the SLI.
   final pulumi.Input<BaselineProperties> baselineProperties;
   /// Specifies the category of the SLI, used to classify signals such as Availability and Latency.
-  final pulumi.Input<String> category;
+  final pulumi.Input<dynamic> category;
   /// A user-provided description of the SLI, with a maximum length of 1000 characters.
   final pulumi.Input<String> description;
   /// Destination AMW accounts.
@@ -18,7 +18,7 @@ class SliResource {
   /// A flag to determine whether alert is enabled.
   final pulumi.Input<bool> enableAlert;
   /// Determines how the SLI is evaluated—either based on request counts or time windows.
-  final pulumi.Input<String> evaluationType;
+  final pulumi.Input<dynamic> evaluationType;
   /// Defines the SLI properties associated with the SLI.
   final pulumi.Input<SliProperties> sliProperties;
 
@@ -55,11 +55,11 @@ class SliResource {
   factory SliResource.fromMap(Map<String, dynamic> map) {
     return SliResource(
       baselineProperties: pulumi.Input.fromValue(BaselineProperties.fromMap((map['baselineProperties']! as Map).cast<String, dynamic>())),
-      category: pulumi.Input.fromValue(map['category'] as String),
+      category: pulumi.Input.fromValue(map['category']),
       description: pulumi.Input.fromValue(map['description'] as String),
       destinationAmwAccounts: pulumi.Input.fromValue(pulumi.Input.decodeList<AmwAccount>(map['destinationAmwAccounts']!, (value) => AmwAccount.fromMap((value as Map).cast<String, dynamic>()))),
       enableAlert: pulumi.Input.fromValue(map['enableAlert'] as bool),
-      evaluationType: pulumi.Input.fromValue(map['evaluationType'] as String),
+      evaluationType: pulumi.Input.fromValue(map['evaluationType']),
       sliProperties: pulumi.Input.fromValue(SliProperties.fromMap((map['sliProperties']! as Map).cast<String, dynamic>())),
     );
   }

@@ -63,8 +63,8 @@ class DataItemMigrationSummaryResultResponse {
     return DataItemMigrationSummaryResultResponse(
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       errorPrefix: pulumi.Input.fromValue(map['errorPrefix'] as String),
-      itemsCompletedCount: pulumi.Input.fromValue(map['itemsCompletedCount'] as double),
-      itemsCount: pulumi.Input.fromValue(map['itemsCount'] as double),
+      itemsCompletedCount: pulumi.Input.fromValue((map['itemsCompletedCount'] as num).toDouble()),
+      itemsCount: pulumi.Input.fromValue((map['itemsCount'] as num).toDouble()),
       name: pulumi.Input.fromValue(map['name'] as String),
       resultPrefix: pulumi.Input.fromValue(map['resultPrefix'] as String),
       startedOn: pulumi.Input.fromValue(map['startedOn'] as String),

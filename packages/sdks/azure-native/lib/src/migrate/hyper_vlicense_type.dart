@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// HyperV licence type.
-enum HyperVLicenseType {
+enum HyperVLicenseType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   datacentre("Datacentre"),
   standard("Standard");
 
   const HyperVLicenseType(this.wireValue);
+  @override
   final String wireValue;
 
   static HyperVLicenseType fromValue(String value) {

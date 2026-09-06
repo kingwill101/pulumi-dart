@@ -6,22 +6,22 @@ import 'role_management_policy_rule_target_response.dart';
 /// The role management policy notification rule.
 class RoleManagementPolicyNotificationRuleResponse {
   /// The id of the rule.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Determines if the notification will be sent to the recipient type specified in the policy rule.
-  final pulumi.Input<bool>? isDefaultRecipientsEnabled;
+  final pulumi.Input<bool?>? isDefaultRecipientsEnabled;
   /// The notification level.
-  final pulumi.Input<String>? notificationLevel;
+  final pulumi.Input<String?>? notificationLevel;
   /// The list of notification recipients.
-  final pulumi.Input<List<String>>? notificationRecipients;
+  final pulumi.Input<List<String>?>? notificationRecipients;
   /// The type of notification.
-  final pulumi.Input<String>? notificationType;
+  final pulumi.Input<String?>? notificationType;
   /// The recipient type.
-  final pulumi.Input<String>? recipientType;
+  final pulumi.Input<String?>? recipientType;
   /// The type of rule
   /// Expected value is 'RoleManagementPolicyNotificationRule'.
   final pulumi.Input<String> ruleType;
   /// The target of the current rule.
-  final pulumi.Input<RoleManagementPolicyRuleTargetResponse>? target;
+  final pulumi.Input<RoleManagementPolicyRuleTargetResponse?>? target;
 
   /// Creates a new [RoleManagementPolicyNotificationRuleResponse].
   /// [id] The id of the rule.

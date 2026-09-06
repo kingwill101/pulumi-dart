@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Geo-physical location to run a WebTest from. You must specify one or more locations for the test to run from.
 class WebTestGeolocationResponse {
   /// Location ID for the WebTest to run from.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [WebTestGeolocationResponse].
   /// [location] Location ID for the WebTest to run from.

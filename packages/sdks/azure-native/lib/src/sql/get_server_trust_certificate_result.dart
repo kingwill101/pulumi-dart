@@ -4,19 +4,19 @@
 /// Result data returned by getServerTrustCertificate.
 class GetServerTrustCertificateResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The certificate name
-  final String certificateName;
+  final String? certificateName;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The certificate public blob
   final String? publicBlob;
   /// The certificate thumbprint
-  final String thumbprint;
+  final String? thumbprint;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetServerTrustCertificateResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -27,36 +27,36 @@ class GetServerTrustCertificateResult {
   /// [thumbprint] The certificate thumbprint
   /// [type] Resource type.
   const GetServerTrustCertificateResult({
-    required this.azureApiVersion,
-    required this.certificateName,
-    required this.id,
-    required this.name,
+    this.azureApiVersion,
+    this.certificateName,
+    this.id,
+    this.name,
     this.publicBlob,
-    required this.thumbprint,
-    required this.type,
+    this.thumbprint,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'certificateName': certificateName,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'certificateName': ?certificateName,
+      'id': ?id,
+      'name': ?name,
       'publicBlob': ?publicBlob,
-      'thumbprint': thumbprint,
-      'type': type,
+      'thumbprint': ?thumbprint,
+      'type': ?type,
     };
   }
 
   factory GetServerTrustCertificateResult.fromMap(Map<String, dynamic> map) {
     return GetServerTrustCertificateResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      certificateName: map['certificateName'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      certificateName: (() { final guardedValue = map['certificateName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicBlob: (() { final guardedValue = map['publicBlob']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      thumbprint: map['thumbprint'] as String,
-      type: map['type'] as String,
+      thumbprint: (() { final guardedValue = map['thumbprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

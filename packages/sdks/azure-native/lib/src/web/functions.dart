@@ -238,6 +238,17 @@ Future<GetAiGatewayResult> getAiGateway(
   return GetAiGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetAiGatewayResult> getAiGatewayOutput(
+  GetAiGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAiGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAiGatewayResult.fromMap);
+}
+
 /// Description for Get the properties of an App Service Environment.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -256,6 +267,17 @@ Future<GetAppServiceEnvironmentResult> getAppServiceEnvironment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppServiceEnvironmentResult.fromMap(result);
+}
+
+pulumi.Output<GetAppServiceEnvironmentResult> getAppServiceEnvironmentOutput(
+  GetAppServiceEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAppServiceEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceEnvironmentResult.fromMap);
 }
 
 /// Get Custom Dns Suffix configuration of an App Service Environment
@@ -278,6 +300,17 @@ Future<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> getAppServ
   return GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult> getAppServiceEnvironmentAseCustomDnsSuffixConfigurationOutput(
+  GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAppServiceEnvironmentAseCustomDnsSuffixConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceEnvironmentAseCustomDnsSuffixConfigurationResult.fromMap);
+}
+
 /// Description for Gets a private endpoint connection
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -296,6 +329,17 @@ Future<GetAppServiceEnvironmentPrivateEndpointConnectionResult> getAppServiceEnv
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetAppServiceEnvironmentPrivateEndpointConnectionResult> getAppServiceEnvironmentPrivateEndpointConnectionOutput(
+  GetAppServiceEnvironmentPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAppServiceEnvironmentPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServiceEnvironmentPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Description for Get an App Service plan.
@@ -318,6 +362,17 @@ Future<GetAppServicePlanResult> getAppServicePlan(
   return GetAppServicePlanResult.fromMap(result);
 }
 
+pulumi.Output<GetAppServicePlanResult> getAppServicePlanOutput(
+  GetAppServicePlanArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAppServicePlan',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServicePlanResult.fromMap);
+}
+
 /// Description for Get the RDP password for an IsCustomMode ServerFarm.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -336,6 +391,17 @@ Future<GetAppServicePlanServerFarmRdpPasswordResult> getAppServicePlanServerFarm
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAppServicePlanServerFarmRdpPasswordResult.fromMap(result);
+}
+
+pulumi.Output<GetAppServicePlanServerFarmRdpPasswordResult> getAppServicePlanServerFarmRdpPasswordOutput(
+  GetAppServicePlanServerFarmRdpPasswordArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getAppServicePlanServerFarmRdpPassword',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAppServicePlanServerFarmRdpPasswordResult.fromMap);
 }
 
 /// Description for Get a certificate.
@@ -358,6 +424,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Get a specific connection
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -378,6 +455,17 @@ Future<GetConnectionResult> getConnection(
   return GetConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionResult> getConnectionOutput(
+  GetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionResult.fromMap);
+}
+
 /// Gets a specific gateway under a subscription and in a specific resource group
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -396,6 +484,17 @@ Future<GetConnectionGatewayResult> getConnectionGateway(
   return GetConnectionGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionGatewayResult> getConnectionGatewayOutput(
+  GetConnectionGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getConnectionGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionGatewayResult.fromMap);
+}
+
 /// Gets a custom API by name for a specific subscription and resource group
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -412,6 +511,17 @@ Future<GetCustomApiResult> getCustomApi(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomApiResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomApiResult> getCustomApiOutput(
+  GetCustomApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getCustomApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomApiResult.fromMap);
 }
 
 /// Description for Get the properties of a Kubernetes Environment.
@@ -434,6 +544,17 @@ Future<GetKubeEnvironmentResult> getKubeEnvironment(
   return GetKubeEnvironmentResult.fromMap(result);
 }
 
+pulumi.Output<GetKubeEnvironmentResult> getKubeEnvironmentOutput(
+  GetKubeEnvironmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getKubeEnvironment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetKubeEnvironmentResult.fromMap);
+}
+
 /// Get a certificate belonging to a given site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -452,6 +573,17 @@ Future<GetSiteCertificateResult> getSiteCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSiteCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetSiteCertificateResult> getSiteCertificateOutput(
+  GetSiteCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getSiteCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteCertificateResult.fromMap);
 }
 
 /// Get a certificate for a given site and deployment slot.
@@ -474,6 +606,17 @@ Future<GetSiteCertificateSlotResult> getSiteCertificateSlot(
   return GetSiteCertificateSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetSiteCertificateSlotResult> getSiteCertificateSlotOutput(
+  GetSiteCertificateSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getSiteCertificateSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSiteCertificateSlotResult.fromMap);
+}
+
 /// Description for Gets the details of a static site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -492,6 +635,17 @@ Future<GetStaticSiteResult> getStaticSite(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticSiteResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticSiteResult> getStaticSiteOutput(
+  GetStaticSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteResult.fromMap);
 }
 
 /// Returns overview of a database connection for a static site build by name
@@ -514,6 +668,17 @@ Future<GetStaticSiteBuildDatabaseConnectionResult> getStaticSiteBuildDatabaseCon
   return GetStaticSiteBuildDatabaseConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetStaticSiteBuildDatabaseConnectionResult> getStaticSiteBuildDatabaseConnectionOutput(
+  GetStaticSiteBuildDatabaseConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteBuildDatabaseConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteBuildDatabaseConnectionResult.fromMap);
+}
+
 /// Description for Gets an existing custom domain for a particular static site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -532,6 +697,17 @@ Future<GetStaticSiteCustomDomainResult> getStaticSiteCustomDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticSiteCustomDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticSiteCustomDomainResult> getStaticSiteCustomDomainOutput(
+  GetStaticSiteCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteCustomDomainResult.fromMap);
 }
 
 /// Returns overview of a database connection for a static site by name
@@ -554,6 +730,17 @@ Future<GetStaticSiteDatabaseConnectionResult> getStaticSiteDatabaseConnection(
   return GetStaticSiteDatabaseConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetStaticSiteDatabaseConnectionResult> getStaticSiteDatabaseConnectionOutput(
+  GetStaticSiteDatabaseConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteDatabaseConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteDatabaseConnectionResult.fromMap);
+}
+
 /// Returns the details of a linked backend linked to a static site by name
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -572,6 +759,17 @@ Future<GetStaticSiteLinkedBackendResult> getStaticSiteLinkedBackend(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticSiteLinkedBackendResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticSiteLinkedBackendResult> getStaticSiteLinkedBackendOutput(
+  GetStaticSiteLinkedBackendArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteLinkedBackend',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteLinkedBackendResult.fromMap);
 }
 
 /// Returns the details of a linked backend linked to a static site build by name
@@ -594,6 +792,17 @@ Future<GetStaticSiteLinkedBackendForBuildResult> getStaticSiteLinkedBackendForBu
   return GetStaticSiteLinkedBackendForBuildResult.fromMap(result);
 }
 
+pulumi.Output<GetStaticSiteLinkedBackendForBuildResult> getStaticSiteLinkedBackendForBuildOutput(
+  GetStaticSiteLinkedBackendForBuildArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteLinkedBackendForBuild',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteLinkedBackendForBuildResult.fromMap);
+}
+
 /// Description for Gets a private endpoint connection
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -612,6 +821,17 @@ Future<GetStaticSitePrivateEndpointConnectionResult> getStaticSitePrivateEndpoin
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticSitePrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticSitePrivateEndpointConnectionResult> getStaticSitePrivateEndpointConnectionOutput(
+  GetStaticSitePrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSitePrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSitePrivateEndpointConnectionResult.fromMap);
 }
 
 /// Description for Gets the details of the user provided function app registered with a static site
@@ -634,6 +854,17 @@ Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult> getStaticSiteUse
   return GetStaticSiteUserProvidedFunctionAppForStaticSiteResult.fromMap(result);
 }
 
+pulumi.Output<GetStaticSiteUserProvidedFunctionAppForStaticSiteResult> getStaticSiteUserProvidedFunctionAppForStaticSiteOutput(
+  GetStaticSiteUserProvidedFunctionAppForStaticSiteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteUserProvidedFunctionAppForStaticSite',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteUserProvidedFunctionAppForStaticSiteResult.fromMap);
+}
+
 /// Description for Gets the details of the user provided function app registered with a static site build
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -652,6 +883,17 @@ Future<GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult> getStaticSi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult.fromMap(result);
+}
+
+pulumi.Output<GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult> getStaticSiteUserProvidedFunctionAppForStaticSiteBuildOutput(
+  GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getStaticSiteUserProvidedFunctionAppForStaticSiteBuild',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStaticSiteUserProvidedFunctionAppForStaticSiteBuildResult.fromMap);
 }
 
 /// Description for Gets the details of a web, mobile, or API app.
@@ -674,6 +916,17 @@ Future<GetWebAppResult> getWebApp(
   return GetWebAppResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppResult> getWebAppOutput(
+  GetWebAppArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebApp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppResult.fromMap);
+}
+
 /// Description for Gets site's Authentication / Authorization settings for apps via the V2 format
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -692,6 +945,17 @@ Future<GetWebAppAuthSettingsV2WithoutSecretsResult> getWebAppAuthSettingsV2Witho
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppAuthSettingsV2WithoutSecretsResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppAuthSettingsV2WithoutSecretsResult> getWebAppAuthSettingsV2WithoutSecretsOutput(
+  GetWebAppAuthSettingsV2WithoutSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppAuthSettingsV2WithoutSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppAuthSettingsV2WithoutSecretsResult.fromMap);
 }
 
 /// Gets site's Authentication / Authorization settings for apps via the V2 format
@@ -714,6 +978,17 @@ Future<GetWebAppAuthSettingsV2WithoutSecretsSlotResult> getWebAppAuthSettingsV2W
   return GetWebAppAuthSettingsV2WithoutSecretsSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppAuthSettingsV2WithoutSecretsSlotResult> getWebAppAuthSettingsV2WithoutSecretsSlotOutput(
+  GetWebAppAuthSettingsV2WithoutSecretsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppAuthSettingsV2WithoutSecretsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppAuthSettingsV2WithoutSecretsSlotResult.fromMap);
+}
+
 /// Description for Get a deployment by its ID for an app, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -732,6 +1007,17 @@ Future<GetWebAppDeploymentResult> getWebAppDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppDeploymentResult> getWebAppDeploymentOutput(
+  GetWebAppDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDeploymentResult.fromMap);
 }
 
 /// Description for Get a deployment by its ID for an app, or a deployment slot.
@@ -754,6 +1040,17 @@ Future<GetWebAppDeploymentSlotResult> getWebAppDeploymentSlot(
   return GetWebAppDeploymentSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppDeploymentSlotResult> getWebAppDeploymentSlotOutput(
+  GetWebAppDeploymentSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDeploymentSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDeploymentSlotResult.fromMap);
+}
+
 /// Description for Gets the logging configuration of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -772,6 +1069,17 @@ Future<GetWebAppDiagnosticLogsConfigurationResult> getWebAppDiagnosticLogsConfig
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppDiagnosticLogsConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppDiagnosticLogsConfigurationResult> getWebAppDiagnosticLogsConfigurationOutput(
+  GetWebAppDiagnosticLogsConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDiagnosticLogsConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDiagnosticLogsConfigurationResult.fromMap);
 }
 
 /// Description for Gets the logging configuration of an app.
@@ -794,6 +1102,17 @@ Future<GetWebAppDiagnosticLogsConfigurationSlotResult> getWebAppDiagnosticLogsCo
   return GetWebAppDiagnosticLogsConfigurationSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppDiagnosticLogsConfigurationSlotResult> getWebAppDiagnosticLogsConfigurationSlotOutput(
+  GetWebAppDiagnosticLogsConfigurationSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDiagnosticLogsConfigurationSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDiagnosticLogsConfigurationSlotResult.fromMap);
+}
+
 /// Description for Get domain ownership identifier for web app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -812,6 +1131,17 @@ Future<GetWebAppDomainOwnershipIdentifierResult> getWebAppDomainOwnershipIdentif
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppDomainOwnershipIdentifierResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppDomainOwnershipIdentifierResult> getWebAppDomainOwnershipIdentifierOutput(
+  GetWebAppDomainOwnershipIdentifierArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDomainOwnershipIdentifier',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDomainOwnershipIdentifierResult.fromMap);
 }
 
 /// Description for Get domain ownership identifier for web app.
@@ -834,6 +1164,17 @@ Future<GetWebAppDomainOwnershipIdentifierSlotResult> getWebAppDomainOwnershipIde
   return GetWebAppDomainOwnershipIdentifierSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppDomainOwnershipIdentifierSlotResult> getWebAppDomainOwnershipIdentifierSlotOutput(
+  GetWebAppDomainOwnershipIdentifierSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppDomainOwnershipIdentifierSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppDomainOwnershipIdentifierSlotResult.fromMap);
+}
+
 /// Description for Returns whether FTP is allowed on the site or not.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -852,6 +1193,17 @@ Future<GetWebAppFtpAllowedResult> getWebAppFtpAllowed(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppFtpAllowedResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppFtpAllowedResult> getWebAppFtpAllowedOutput(
+  GetWebAppFtpAllowedArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppFtpAllowed',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppFtpAllowedResult.fromMap);
 }
 
 /// Description for Returns whether FTP is allowed on the site or not.
@@ -874,6 +1226,17 @@ Future<GetWebAppFtpAllowedSlotResult> getWebAppFtpAllowedSlot(
   return GetWebAppFtpAllowedSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppFtpAllowedSlotResult> getWebAppFtpAllowedSlotOutput(
+  GetWebAppFtpAllowedSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppFtpAllowedSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppFtpAllowedSlotResult.fromMap);
+}
+
 /// Description for Get function information by its ID for web site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -892,6 +1255,17 @@ Future<GetWebAppFunctionResult> getWebAppFunction(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppFunctionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppFunctionResult> getWebAppFunctionOutput(
+  GetWebAppFunctionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppFunction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppFunctionResult.fromMap);
 }
 
 /// Description for Get the named hostname binding for an app (or deployment slot, if specified).
@@ -914,6 +1288,17 @@ Future<GetWebAppHostNameBindingResult> getWebAppHostNameBinding(
   return GetWebAppHostNameBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppHostNameBindingResult> getWebAppHostNameBindingOutput(
+  GetWebAppHostNameBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppHostNameBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppHostNameBindingResult.fromMap);
+}
+
 /// Description for Get the named hostname binding for an app (or deployment slot, if specified).
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -932,6 +1317,17 @@ Future<GetWebAppHostNameBindingSlotResult> getWebAppHostNameBindingSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppHostNameBindingSlotResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppHostNameBindingSlotResult> getWebAppHostNameBindingSlotOutput(
+  GetWebAppHostNameBindingSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppHostNameBindingSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppHostNameBindingSlotResult.fromMap);
 }
 
 /// Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
@@ -954,6 +1350,17 @@ Future<GetWebAppHybridConnectionResult> getWebAppHybridConnection(
   return GetWebAppHybridConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppHybridConnectionResult> getWebAppHybridConnectionOutput(
+  GetWebAppHybridConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppHybridConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppHybridConnectionResult.fromMap);
+}
+
 /// Description for Retrieves a specific Service Bus Hybrid Connection used by this Web App.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -972,6 +1379,17 @@ Future<GetWebAppHybridConnectionSlotResult> getWebAppHybridConnectionSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppHybridConnectionSlotResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppHybridConnectionSlotResult> getWebAppHybridConnectionSlotOutput(
+  GetWebAppHybridConnectionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppHybridConnectionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppHybridConnectionSlotResult.fromMap);
 }
 
 /// Description for Get function information by its ID for web site, or a deployment slot.
@@ -994,6 +1412,17 @@ Future<GetWebAppInstanceFunctionSlotResult> getWebAppInstanceFunctionSlot(
   return GetWebAppInstanceFunctionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppInstanceFunctionSlotResult> getWebAppInstanceFunctionSlotOutput(
+  GetWebAppInstanceFunctionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppInstanceFunctionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppInstanceFunctionSlotResult.fromMap);
+}
+
 /// Description for Gets a named add-on of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1012,6 +1441,17 @@ Future<GetWebAppPremierAddOnResult> getWebAppPremierAddOn(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppPremierAddOnResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppPremierAddOnResult> getWebAppPremierAddOnOutput(
+  GetWebAppPremierAddOnArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPremierAddOn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPremierAddOnResult.fromMap);
 }
 
 /// Description for Gets a named add-on of an app.
@@ -1034,6 +1474,17 @@ Future<GetWebAppPremierAddOnSlotResult> getWebAppPremierAddOnSlot(
   return GetWebAppPremierAddOnSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppPremierAddOnSlotResult> getWebAppPremierAddOnSlotOutput(
+  GetWebAppPremierAddOnSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPremierAddOnSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPremierAddOnSlotResult.fromMap);
+}
+
 /// Description for Gets a private endpoint connection
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1052,6 +1503,17 @@ Future<GetWebAppPrivateEndpointConnectionResult> getWebAppPrivateEndpointConnect
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppPrivateEndpointConnectionResult> getWebAppPrivateEndpointConnectionOutput(
+  GetWebAppPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Description for Gets a private endpoint connection
@@ -1074,6 +1536,17 @@ Future<GetWebAppPrivateEndpointConnectionSlotResult> getWebAppPrivateEndpointCon
   return GetWebAppPrivateEndpointConnectionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppPrivateEndpointConnectionSlotResult> getWebAppPrivateEndpointConnectionSlotOutput(
+  GetWebAppPrivateEndpointConnectionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPrivateEndpointConnectionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPrivateEndpointConnectionSlotResult.fromMap);
+}
+
 /// Description for Get the named public certificate for an app (or deployment slot, if specified).
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1092,6 +1565,17 @@ Future<GetWebAppPublicCertificateResult> getWebAppPublicCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppPublicCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppPublicCertificateResult> getWebAppPublicCertificateOutput(
+  GetWebAppPublicCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPublicCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPublicCertificateResult.fromMap);
 }
 
 /// Description for Get the named public certificate for an app (or deployment slot, if specified).
@@ -1114,6 +1598,17 @@ Future<GetWebAppPublicCertificateSlotResult> getWebAppPublicCertificateSlot(
   return GetWebAppPublicCertificateSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppPublicCertificateSlotResult> getWebAppPublicCertificateSlotOutput(
+  GetWebAppPublicCertificateSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppPublicCertificateSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppPublicCertificateSlotResult.fromMap);
+}
+
 /// Description for Gets a hybrid connection configuration by its name.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1132,6 +1627,17 @@ Future<GetWebAppRelayServiceConnectionResult> getWebAppRelayServiceConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppRelayServiceConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppRelayServiceConnectionResult> getWebAppRelayServiceConnectionOutput(
+  GetWebAppRelayServiceConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppRelayServiceConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppRelayServiceConnectionResult.fromMap);
 }
 
 /// Description for Gets a hybrid connection configuration by its name.
@@ -1154,6 +1660,17 @@ Future<GetWebAppRelayServiceConnectionSlotResult> getWebAppRelayServiceConnectio
   return GetWebAppRelayServiceConnectionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppRelayServiceConnectionSlotResult> getWebAppRelayServiceConnectionSlotOutput(
+  GetWebAppRelayServiceConnectionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppRelayServiceConnectionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppRelayServiceConnectionSlotResult.fromMap);
+}
+
 /// Description for Returns whether Scm basic auth is allowed on the site or not.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1172,6 +1689,17 @@ Future<GetWebAppScmAllowedResult> getWebAppScmAllowed(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppScmAllowedResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppScmAllowedResult> getWebAppScmAllowedOutput(
+  GetWebAppScmAllowedArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppScmAllowed',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppScmAllowedResult.fromMap);
 }
 
 /// Description for Returns whether Scm basic auth is allowed on the site or not.
@@ -1194,6 +1722,17 @@ Future<GetWebAppScmAllowedSlotResult> getWebAppScmAllowedSlot(
   return GetWebAppScmAllowedSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppScmAllowedSlotResult> getWebAppScmAllowedSlotOutput(
+  GetWebAppScmAllowedSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppScmAllowedSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppScmAllowedSlotResult.fromMap);
+}
+
 /// Gets a site container of a site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1212,6 +1751,17 @@ Future<GetWebAppSiteContainerResult> getWebAppSiteContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSiteContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSiteContainerResult> getWebAppSiteContainerOutput(
+  GetWebAppSiteContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSiteContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSiteContainerResult.fromMap);
 }
 
 /// Gets a site container of a site, or a deployment slot.
@@ -1234,6 +1784,17 @@ Future<GetWebAppSiteContainerSlotResult> getWebAppSiteContainerSlot(
   return GetWebAppSiteContainerSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppSiteContainerSlotResult> getWebAppSiteContainerSlotOutput(
+  GetWebAppSiteContainerSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSiteContainerSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSiteContainerSlotResult.fromMap);
+}
+
 /// Description for Get site extension information by its ID for a web site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1252,6 +1813,17 @@ Future<GetWebAppSiteExtensionResult> getWebAppSiteExtension(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSiteExtensionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSiteExtensionResult> getWebAppSiteExtensionOutput(
+  GetWebAppSiteExtensionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSiteExtension',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSiteExtensionResult.fromMap);
 }
 
 /// Description for Get site extension information by its ID for a web site, or a deployment slot.
@@ -1274,6 +1846,17 @@ Future<GetWebAppSiteExtensionSlotResult> getWebAppSiteExtensionSlot(
   return GetWebAppSiteExtensionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppSiteExtensionSlotResult> getWebAppSiteExtensionSlotOutput(
+  GetWebAppSiteExtensionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSiteExtensionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSiteExtensionSlotResult.fromMap);
+}
+
 /// Description for Gets the details of a web, mobile, or API app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1292,6 +1875,17 @@ Future<GetWebAppSlotResult> getWebAppSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSlotResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSlotResult> getWebAppSlotOutput(
+  GetWebAppSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSlotResult.fromMap);
 }
 
 /// Description for Gets the names of app settings and connection strings that stick to the slot (not swapped).
@@ -1314,6 +1908,17 @@ Future<GetWebAppSlotConfigurationNamesResult> getWebAppSlotConfigurationNames(
   return GetWebAppSlotConfigurationNamesResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppSlotConfigurationNamesResult> getWebAppSlotConfigurationNamesOutput(
+  GetWebAppSlotConfigurationNamesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSlotConfigurationNames',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSlotConfigurationNamesResult.fromMap);
+}
+
 /// Description for Gets the source control configuration of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1332,6 +1937,17 @@ Future<GetWebAppSourceControlResult> getWebAppSourceControl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSourceControlResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSourceControlResult> getWebAppSourceControlOutput(
+  GetWebAppSourceControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSourceControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSourceControlResult.fromMap);
 }
 
 /// Description for Gets the source control configuration of an app.
@@ -1354,6 +1970,17 @@ Future<GetWebAppSourceControlSlotResult> getWebAppSourceControlSlot(
   return GetWebAppSourceControlSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppSourceControlSlotResult> getWebAppSourceControlSlotOutput(
+  GetWebAppSourceControlSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSourceControlSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSourceControlSlotResult.fromMap);
+}
+
 /// Description for Gets a Swift Virtual Network connection.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1372,6 +1999,17 @@ Future<GetWebAppSwiftVirtualNetworkConnectionResult> getWebAppSwiftVirtualNetwor
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppSwiftVirtualNetworkConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppSwiftVirtualNetworkConnectionResult> getWebAppSwiftVirtualNetworkConnectionOutput(
+  GetWebAppSwiftVirtualNetworkConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSwiftVirtualNetworkConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSwiftVirtualNetworkConnectionResult.fromMap);
 }
 
 /// Description for Gets a Swift Virtual Network connection.
@@ -1394,6 +2032,17 @@ Future<GetWebAppSwiftVirtualNetworkConnectionSlotResult> getWebAppSwiftVirtualNe
   return GetWebAppSwiftVirtualNetworkConnectionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppSwiftVirtualNetworkConnectionSlotResult> getWebAppSwiftVirtualNetworkConnectionSlotOutput(
+  GetWebAppSwiftVirtualNetworkConnectionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppSwiftVirtualNetworkConnectionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppSwiftVirtualNetworkConnectionSlotResult.fromMap);
+}
+
 /// Description for Gets a virtual network the app (or deployment slot) is connected to by name.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1412,6 +2061,17 @@ Future<GetWebAppVnetConnectionResult> getWebAppVnetConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebAppVnetConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWebAppVnetConnectionResult> getWebAppVnetConnectionOutput(
+  GetWebAppVnetConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppVnetConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppVnetConnectionResult.fromMap);
 }
 
 /// Description for Gets a virtual network the app (or deployment slot) is connected to by name.
@@ -1434,6 +2094,17 @@ Future<GetWebAppVnetConnectionSlotResult> getWebAppVnetConnectionSlot(
   return GetWebAppVnetConnectionSlotResult.fromMap(result);
 }
 
+pulumi.Output<GetWebAppVnetConnectionSlotResult> getWebAppVnetConnectionSlotOutput(
+  GetWebAppVnetConnectionSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:getWebAppVnetConnectionSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebAppVnetConnectionSlotResult.fromMap);
+}
+
 /// Description for Get the send key name and value of a Hybrid Connection.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1452,6 +2123,17 @@ Future<ListAppServicePlanHybridConnectionKeysResult> listAppServicePlanHybridCon
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAppServicePlanHybridConnectionKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListAppServicePlanHybridConnectionKeysResult> listAppServicePlanHybridConnectionKeysOutput(
+  ListAppServicePlanHybridConnectionKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listAppServicePlanHybridConnectionKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAppServicePlanHybridConnectionKeysResult.fromMap);
 }
 
 /// Description for Get the instance details for an app service plan.
@@ -1474,6 +2156,17 @@ Future<ListAppServicePlanServerFarmInstanceDetailsResult> listAppServicePlanServ
   return ListAppServicePlanServerFarmInstanceDetailsResult.fromMap(result);
 }
 
+pulumi.Output<ListAppServicePlanServerFarmInstanceDetailsResult> listAppServicePlanServerFarmInstanceDetailsOutput(
+  ListAppServicePlanServerFarmInstanceDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listAppServicePlanServerFarmInstanceDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAppServicePlanServerFarmInstanceDetailsResult.fromMap);
+}
+
 /// Lists the consent links of a connection
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -1494,6 +2187,17 @@ Future<ListConnectionConsentLinksResult> listConnectionConsentLinks(
   return ListConnectionConsentLinksResult.fromMap(result);
 }
 
+pulumi.Output<ListConnectionConsentLinksResult> listConnectionConsentLinksOutput(
+  ListConnectionConsentLinksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listConnectionConsentLinks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectionConsentLinksResult.fromMap);
+}
+
 /// Lists connection keys.
 ///
 /// Uses Azure REST API version 2015-08-01-preview.
@@ -1512,6 +2216,17 @@ Future<ListConnectionKeysResult> listConnectionKeys(
   return ListConnectionKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListConnectionKeysResult> listConnectionKeysOutput(
+  ListConnectionKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listConnectionKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectionKeysResult.fromMap);
+}
+
 /// This returns the list of interfaces in the WSDL
 ///
 /// Uses Azure REST API version 2016-06-01.
@@ -1528,6 +2243,17 @@ Future<ListCustomApiWsdlInterfacesResult> listCustomApiWsdlInterfaces(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListCustomApiWsdlInterfacesResult.fromMap(result);
+}
+
+pulumi.Output<ListCustomApiWsdlInterfacesResult> listCustomApiWsdlInterfacesOutput(
+  ListCustomApiWsdlInterfacesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listCustomApiWsdlInterfaces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListCustomApiWsdlInterfacesResult.fromMap);
 }
 
 /// Description for List all apps that are assigned to a hostname.
@@ -1550,6 +2276,17 @@ Future<ListSiteIdentifiersAssignedToHostNameResult> listSiteIdentifiersAssignedT
   return ListSiteIdentifiersAssignedToHostNameResult.fromMap(result);
 }
 
+pulumi.Output<ListSiteIdentifiersAssignedToHostNameResult> listSiteIdentifiersAssignedToHostNameOutput(
+  ListSiteIdentifiersAssignedToHostNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listSiteIdentifiersAssignedToHostName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSiteIdentifiersAssignedToHostNameResult.fromMap);
+}
+
 /// Description for Gets the application settings of a static site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1568,6 +2305,17 @@ Future<ListStaticSiteAppSettingsResult> listStaticSiteAppSettings(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStaticSiteAppSettingsResult.fromMap(result);
+}
+
+pulumi.Output<ListStaticSiteAppSettingsResult> listStaticSiteAppSettingsOutput(
+  ListStaticSiteAppSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteAppSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteAppSettingsResult.fromMap);
 }
 
 /// Description for Gets the application settings of a static site build.
@@ -1590,6 +2338,17 @@ Future<ListStaticSiteBuildAppSettingsResult> listStaticSiteBuildAppSettings(
   return ListStaticSiteBuildAppSettingsResult.fromMap(result);
 }
 
+pulumi.Output<ListStaticSiteBuildAppSettingsResult> listStaticSiteBuildAppSettingsOutput(
+  ListStaticSiteBuildAppSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteBuildAppSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteBuildAppSettingsResult.fromMap);
+}
+
 /// Description for Gets the application settings of a static site build.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1608,6 +2367,17 @@ Future<ListStaticSiteBuildFunctionAppSettingsResult> listStaticSiteBuildFunction
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStaticSiteBuildFunctionAppSettingsResult.fromMap(result);
+}
+
+pulumi.Output<ListStaticSiteBuildFunctionAppSettingsResult> listStaticSiteBuildFunctionAppSettingsOutput(
+  ListStaticSiteBuildFunctionAppSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteBuildFunctionAppSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteBuildFunctionAppSettingsResult.fromMap);
 }
 
 /// Description for Lists the roles configured for the static site.
@@ -1630,6 +2400,17 @@ Future<ListStaticSiteConfiguredRolesResult> listStaticSiteConfiguredRoles(
   return ListStaticSiteConfiguredRolesResult.fromMap(result);
 }
 
+pulumi.Output<ListStaticSiteConfiguredRolesResult> listStaticSiteConfiguredRolesOutput(
+  ListStaticSiteConfiguredRolesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteConfiguredRoles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteConfiguredRolesResult.fromMap);
+}
+
 /// Description for Gets the application settings of a static site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1648,6 +2429,17 @@ Future<ListStaticSiteFunctionAppSettingsResult> listStaticSiteFunctionAppSetting
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStaticSiteFunctionAppSettingsResult.fromMap(result);
+}
+
+pulumi.Output<ListStaticSiteFunctionAppSettingsResult> listStaticSiteFunctionAppSettingsOutput(
+  ListStaticSiteFunctionAppSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteFunctionAppSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteFunctionAppSettingsResult.fromMap);
 }
 
 /// Description for Lists the secrets for an existing static site.
@@ -1670,6 +2462,17 @@ Future<ListStaticSiteSecretsResult> listStaticSiteSecrets(
   return ListStaticSiteSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListStaticSiteSecretsResult> listStaticSiteSecretsOutput(
+  ListStaticSiteSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteSecretsResult.fromMap);
+}
+
 /// Description for Gets the list of users of a static site.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1688,6 +2491,17 @@ Future<ListStaticSiteUsersResult> listStaticSiteUsers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListStaticSiteUsersResult.fromMap(result);
+}
+
+pulumi.Output<ListStaticSiteUsersResult> listStaticSiteUsersOutput(
+  ListStaticSiteUsersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listStaticSiteUsers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListStaticSiteUsersResult.fromMap);
 }
 
 /// Description for Gets the application settings of an app.
@@ -1710,6 +2524,17 @@ Future<ListWebAppApplicationSettingsResult> listWebAppApplicationSettings(
   return ListWebAppApplicationSettingsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppApplicationSettingsResult> listWebAppApplicationSettingsOutput(
+  ListWebAppApplicationSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppApplicationSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppApplicationSettingsResult.fromMap);
+}
+
 /// Description for Gets the application settings of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1728,6 +2553,17 @@ Future<ListWebAppApplicationSettingsSlotResult> listWebAppApplicationSettingsSlo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppApplicationSettingsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppApplicationSettingsSlotResult> listWebAppApplicationSettingsSlotOutput(
+  ListWebAppApplicationSettingsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppApplicationSettingsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppApplicationSettingsSlotResult.fromMap);
 }
 
 /// Description for Gets the Authentication/Authorization settings of an app.
@@ -1750,6 +2586,17 @@ Future<ListWebAppAuthSettingsResult> listWebAppAuthSettings(
   return ListWebAppAuthSettingsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppAuthSettingsResult> listWebAppAuthSettingsOutput(
+  ListWebAppAuthSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppAuthSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppAuthSettingsResult.fromMap);
+}
+
 /// Description for Gets the Authentication/Authorization settings of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1768,6 +2615,17 @@ Future<ListWebAppAuthSettingsSlotResult> listWebAppAuthSettingsSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppAuthSettingsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppAuthSettingsSlotResult> listWebAppAuthSettingsSlotOutput(
+  ListWebAppAuthSettingsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppAuthSettingsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppAuthSettingsSlotResult.fromMap);
 }
 
 /// Description for Gets the Azure storage account configurations of an app.
@@ -1790,6 +2648,17 @@ Future<ListWebAppAzureStorageAccountsResult> listWebAppAzureStorageAccounts(
   return ListWebAppAzureStorageAccountsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppAzureStorageAccountsResult> listWebAppAzureStorageAccountsOutput(
+  ListWebAppAzureStorageAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppAzureStorageAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppAzureStorageAccountsResult.fromMap);
+}
+
 /// Description for Gets the Azure storage account configurations of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1808,6 +2677,17 @@ Future<ListWebAppAzureStorageAccountsSlotResult> listWebAppAzureStorageAccountsS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppAzureStorageAccountsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppAzureStorageAccountsSlotResult> listWebAppAzureStorageAccountsSlotOutput(
+  ListWebAppAzureStorageAccountsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppAzureStorageAccountsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppAzureStorageAccountsSlotResult.fromMap);
 }
 
 /// Description for Gets the backup configuration of an app.
@@ -1830,6 +2710,17 @@ Future<ListWebAppBackupConfigurationResult> listWebAppBackupConfiguration(
   return ListWebAppBackupConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppBackupConfigurationResult> listWebAppBackupConfigurationOutput(
+  ListWebAppBackupConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppBackupConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppBackupConfigurationResult.fromMap);
+}
+
 /// Description for Gets the backup configuration of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1848,6 +2739,17 @@ Future<ListWebAppBackupConfigurationSlotResult> listWebAppBackupConfigurationSlo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppBackupConfigurationSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppBackupConfigurationSlotResult> listWebAppBackupConfigurationSlotOutput(
+  ListWebAppBackupConfigurationSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppBackupConfigurationSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppBackupConfigurationSlotResult.fromMap);
 }
 
 /// Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
@@ -1870,6 +2772,17 @@ Future<ListWebAppBackupStatusSecretsResult> listWebAppBackupStatusSecrets(
   return ListWebAppBackupStatusSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppBackupStatusSecretsResult> listWebAppBackupStatusSecretsOutput(
+  ListWebAppBackupStatusSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppBackupStatusSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppBackupStatusSecretsResult.fromMap);
+}
+
 /// Description for Gets status of a web app backup that may be in progress, including secrets associated with the backup, such as the Azure Storage SAS URL. Also can be used to update the SAS URL for the backup if a new URL is passed in the request body.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1888,6 +2801,17 @@ Future<ListWebAppBackupStatusSecretsSlotResult> listWebAppBackupStatusSecretsSlo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppBackupStatusSecretsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppBackupStatusSecretsSlotResult> listWebAppBackupStatusSecretsSlotOutput(
+  ListWebAppBackupStatusSecretsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppBackupStatusSecretsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppBackupStatusSecretsSlotResult.fromMap);
 }
 
 /// Description for Gets the connection strings of an app.
@@ -1910,6 +2834,17 @@ Future<ListWebAppConnectionStringsResult> listWebAppConnectionStrings(
   return ListWebAppConnectionStringsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppConnectionStringsResult> listWebAppConnectionStringsOutput(
+  ListWebAppConnectionStringsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppConnectionStrings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppConnectionStringsResult.fromMap);
+}
+
 /// Description for Gets the connection strings of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1928,6 +2863,17 @@ Future<ListWebAppConnectionStringsSlotResult> listWebAppConnectionStringsSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppConnectionStringsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppConnectionStringsSlotResult> listWebAppConnectionStringsSlotOutput(
+  ListWebAppConnectionStringsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppConnectionStringsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppConnectionStringsSlotResult.fromMap);
 }
 
 /// Description for Get function keys for a function in a web site, or a deployment slot.
@@ -1950,6 +2896,17 @@ Future<ListWebAppFunctionKeysResult> listWebAppFunctionKeys(
   return ListWebAppFunctionKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppFunctionKeysResult> listWebAppFunctionKeysOutput(
+  ListWebAppFunctionKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppFunctionKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppFunctionKeysResult.fromMap);
+}
+
 /// Description for Get function keys for a function in a web site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -1968,6 +2925,17 @@ Future<ListWebAppFunctionKeysSlotResult> listWebAppFunctionKeysSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppFunctionKeysSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppFunctionKeysSlotResult> listWebAppFunctionKeysSlotOutput(
+  ListWebAppFunctionKeysSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppFunctionKeysSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppFunctionKeysSlotResult.fromMap);
 }
 
 /// Description for Get function secrets for a function in a web site, or a deployment slot.
@@ -1990,6 +2958,17 @@ Future<ListWebAppFunctionSecretsResult> listWebAppFunctionSecrets(
   return ListWebAppFunctionSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppFunctionSecretsResult> listWebAppFunctionSecretsOutput(
+  ListWebAppFunctionSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppFunctionSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppFunctionSecretsResult.fromMap);
+}
+
 /// Description for Get function secrets for a function in a web site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2008,6 +2987,17 @@ Future<ListWebAppFunctionSecretsSlotResult> listWebAppFunctionSecretsSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppFunctionSecretsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppFunctionSecretsSlotResult> listWebAppFunctionSecretsSlotOutput(
+  ListWebAppFunctionSecretsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppFunctionSecretsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppFunctionSecretsSlotResult.fromMap);
 }
 
 /// Description for Get host secrets for a function app.
@@ -2030,6 +3020,17 @@ Future<ListWebAppHostKeysResult> listWebAppHostKeys(
   return ListWebAppHostKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppHostKeysResult> listWebAppHostKeysOutput(
+  ListWebAppHostKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppHostKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppHostKeysResult.fromMap);
+}
+
 /// Description for Get host secrets for a function app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2048,6 +3049,17 @@ Future<ListWebAppHostKeysSlotResult> listWebAppHostKeysSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppHostKeysSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppHostKeysSlotResult> listWebAppHostKeysSlotOutput(
+  ListWebAppHostKeysSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppHostKeysSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppHostKeysSlotResult.fromMap);
 }
 
 /// Gets the send key name and value for a Hybrid Connection.
@@ -2070,6 +3082,17 @@ Future<ListWebAppHybridConnectionKeysResult> listWebAppHybridConnectionKeys(
   return ListWebAppHybridConnectionKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppHybridConnectionKeysResult> listWebAppHybridConnectionKeysOutput(
+  ListWebAppHybridConnectionKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppHybridConnectionKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppHybridConnectionKeysResult.fromMap);
+}
+
 /// Gets the send key name and value for a Hybrid Connection.
 ///
 /// Uses Azure REST API version 2018-11-01.
@@ -2088,6 +3111,17 @@ Future<ListWebAppHybridConnectionKeysSlotResult> listWebAppHybridConnectionKeysS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppHybridConnectionKeysSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppHybridConnectionKeysSlotResult> listWebAppHybridConnectionKeysSlotOutput(
+  ListWebAppHybridConnectionKeysSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppHybridConnectionKeysSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppHybridConnectionKeysSlotResult.fromMap);
 }
 
 /// Description for Gets the metadata of an app.
@@ -2110,6 +3144,17 @@ Future<ListWebAppMetadataResult> listWebAppMetadata(
   return ListWebAppMetadataResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppMetadataResult> listWebAppMetadataOutput(
+  ListWebAppMetadataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppMetadata',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppMetadataResult.fromMap);
+}
+
 /// Description for Gets the metadata of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2128,6 +3173,17 @@ Future<ListWebAppMetadataSlotResult> listWebAppMetadataSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppMetadataSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppMetadataSlotResult> listWebAppMetadataSlotOutput(
+  ListWebAppMetadataSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppMetadataSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppMetadataSlotResult.fromMap);
 }
 
 /// Description for Gets the Git/FTP publishing credentials of an app.
@@ -2150,6 +3206,17 @@ Future<ListWebAppPublishingCredentialsResult> listWebAppPublishingCredentials(
   return ListWebAppPublishingCredentialsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppPublishingCredentialsResult> listWebAppPublishingCredentialsOutput(
+  ListWebAppPublishingCredentialsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppPublishingCredentials',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppPublishingCredentialsResult.fromMap);
+}
+
 /// Description for Gets the Git/FTP publishing credentials of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2168,6 +3235,17 @@ Future<ListWebAppPublishingCredentialsSlotResult> listWebAppPublishingCredential
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppPublishingCredentialsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppPublishingCredentialsSlotResult> listWebAppPublishingCredentialsSlotOutput(
+  ListWebAppPublishingCredentialsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppPublishingCredentialsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppPublishingCredentialsSlotResult.fromMap);
 }
 
 /// Description for Gets existing backups of an app.
@@ -2190,6 +3268,17 @@ Future<ListWebAppSiteBackupsResult> listWebAppSiteBackups(
   return ListWebAppSiteBackupsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppSiteBackupsResult> listWebAppSiteBackupsOutput(
+  ListWebAppSiteBackupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSiteBackups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSiteBackupsResult.fromMap);
+}
+
 /// Description for Gets existing backups of an app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2208,6 +3297,17 @@ Future<ListWebAppSiteBackupsSlotResult> listWebAppSiteBackupsSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppSiteBackupsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppSiteBackupsSlotResult> listWebAppSiteBackupsSlotOutput(
+  ListWebAppSiteBackupsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSiteBackupsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSiteBackupsSlotResult.fromMap);
 }
 
 /// Description for Gets the Push settings associated with web app.
@@ -2230,6 +3330,17 @@ Future<ListWebAppSitePushSettingsResult> listWebAppSitePushSettings(
   return ListWebAppSitePushSettingsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppSitePushSettingsResult> listWebAppSitePushSettingsOutput(
+  ListWebAppSitePushSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSitePushSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSitePushSettingsResult.fromMap);
+}
+
 /// Description for Gets the Push settings associated with web app.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2248,6 +3359,17 @@ Future<ListWebAppSitePushSettingsSlotResult> listWebAppSitePushSettingsSlot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppSitePushSettingsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppSitePushSettingsSlotResult> listWebAppSitePushSettingsSlotOutput(
+  ListWebAppSitePushSettingsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSitePushSettingsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSitePushSettingsSlotResult.fromMap);
 }
 
 /// Description for This is to allow calling via powershell and ARM template.
@@ -2270,6 +3392,17 @@ Future<ListWebAppSyncFunctionTriggersResult> listWebAppSyncFunctionTriggers(
   return ListWebAppSyncFunctionTriggersResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppSyncFunctionTriggersResult> listWebAppSyncFunctionTriggersOutput(
+  ListWebAppSyncFunctionTriggersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSyncFunctionTriggers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSyncFunctionTriggersResult.fromMap);
+}
+
 /// Description for This is to allow calling via powershell and ARM template.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2288,6 +3421,17 @@ Future<ListWebAppSyncFunctionTriggersSlotResult> listWebAppSyncFunctionTriggersS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppSyncFunctionTriggersSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppSyncFunctionTriggersSlotResult> listWebAppSyncFunctionTriggersSlotOutput(
+  ListWebAppSyncFunctionTriggersSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppSyncFunctionTriggersSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppSyncFunctionTriggersSlotResult.fromMap);
 }
 
 /// Lists logic app's connections for web site, or a deployment slot.
@@ -2310,6 +3454,17 @@ Future<ListWebAppWorkflowsConnectionsResult> listWebAppWorkflowsConnections(
   return ListWebAppWorkflowsConnectionsResult.fromMap(result);
 }
 
+pulumi.Output<ListWebAppWorkflowsConnectionsResult> listWebAppWorkflowsConnectionsOutput(
+  ListWebAppWorkflowsConnectionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppWorkflowsConnections',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppWorkflowsConnectionsResult.fromMap);
+}
+
 /// Lists logic app's connections for web site, or a deployment slot.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2328,6 +3483,17 @@ Future<ListWebAppWorkflowsConnectionsSlotResult> listWebAppWorkflowsConnectionsS
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebAppWorkflowsConnectionsSlotResult.fromMap(result);
+}
+
+pulumi.Output<ListWebAppWorkflowsConnectionsSlotResult> listWebAppWorkflowsConnectionsSlotOutput(
+  ListWebAppWorkflowsConnectionsSlotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWebAppWorkflowsConnectionsSlot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebAppWorkflowsConnectionsSlotResult.fromMap);
 }
 
 /// Lists a workflow run expression trace.
@@ -2350,6 +3516,17 @@ Future<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpress
   return ListWorkflowRunActionExpressionTracesResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkflowRunActionExpressionTracesResult> listWorkflowRunActionExpressionTracesOutput(
+  ListWorkflowRunActionExpressionTracesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWorkflowRunActionExpressionTraces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowRunActionExpressionTracesResult.fromMap);
+}
+
 /// Lists a workflow run expression trace.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2370,6 +3547,17 @@ Future<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunAct
   return ListWorkflowRunActionRepetitionExpressionTracesResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkflowRunActionRepetitionExpressionTracesResult> listWorkflowRunActionRepetitionExpressionTracesOutput(
+  ListWorkflowRunActionRepetitionExpressionTracesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWorkflowRunActionRepetitionExpressionTraces',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowRunActionRepetitionExpressionTracesResult.fromMap);
+}
+
 /// Get the callback URL for a workflow trigger.
 ///
 /// Uses Azure REST API version 2025-05-01.
@@ -2388,4 +3576,15 @@ Future<ListWorkflowTriggerCallbackUrlResult> listWorkflowTriggerCallbackUrl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkflowTriggerCallbackUrlResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkflowTriggerCallbackUrlResult> listWorkflowTriggerCallbackUrlOutput(
+  ListWorkflowTriggerCallbackUrlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:web:listWorkflowTriggerCallbackUrl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkflowTriggerCallbackUrlResult.fromMap);
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Azure Resource ID for a Network Security Group.
 class NetworkSecurityGroupArmReferenceResponse {
   /// The Azure Resource ID for a Network Security Group.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [NetworkSecurityGroupArmReferenceResponse].
   /// [id] The Azure Resource ID for a Network Security Group.

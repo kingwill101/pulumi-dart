@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Preferences related to the shipment logistics of the sku.
 class TransportPreferences {
   /// Indicates Shipment Logistics type that the customer preferred.
-  final pulumi.Input<String> preferredShipmentType;
+  final pulumi.Input<dynamic> preferredShipmentType;
 
   /// Creates a new [TransportPreferences].
   /// [preferredShipmentType] Indicates Shipment Logistics type that the customer preferred.
@@ -21,7 +21,7 @@ class TransportPreferences {
 
   factory TransportPreferences.fromMap(Map<String, dynamic> map) {
     return TransportPreferences(
-      preferredShipmentType: pulumi.Input.fromValue(map['preferredShipmentType'] as String),
+      preferredShipmentType: pulumi.Input.fromValue(map['preferredShipmentType']),
     );
   }
 }

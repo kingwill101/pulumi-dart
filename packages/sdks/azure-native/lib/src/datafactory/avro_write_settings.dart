@@ -9,9 +9,9 @@ class AvroWriteSettings {
   /// Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
   final pulumi.Input<dynamic>? maxRowsPerFile;
   /// Top level record name in write result, which is required in AVRO spec.
-  final pulumi.Input<String>? recordName;
+  final pulumi.Input<String?>? recordName;
   /// Record namespace in the write result.
-  final pulumi.Input<String>? recordNamespace;
+  final pulumi.Input<String?>? recordNamespace;
   /// The write setting type.
   /// Expected value is 'AvroWriteSettings'.
   final pulumi.Input<String> type;

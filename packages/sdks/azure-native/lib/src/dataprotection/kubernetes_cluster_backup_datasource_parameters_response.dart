@@ -6,21 +6,21 @@ import 'namespaced_name_resource_response.dart';
 /// Parameters for Kubernetes Cluster Backup Datasource
 class KubernetesClusterBackupDatasourceParametersResponse {
   /// Gets or sets the backup hook references. This property sets the hook reference to be executed during backup.
-  final pulumi.Input<List<NamespacedNameResourceResponse>>? backupHookReferences;
+  final pulumi.Input<List<NamespacedNameResourceResponse>?>? backupHookReferences;
   /// Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during backup.
-  final pulumi.Input<List<String>>? excludedNamespaces;
+  final pulumi.Input<List<String>?>? excludedNamespaces;
   /// Gets or sets the exclude resource types property. This property sets the resource types to be excluded during backup.
-  final pulumi.Input<List<String>>? excludedResourceTypes;
+  final pulumi.Input<List<String>?>? excludedResourceTypes;
   /// Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during backup.
   final pulumi.Input<bool> includeClusterScopeResources;
   /// Gets or sets the include namespaces property. This property sets the namespaces to be included during backup.
-  final pulumi.Input<List<String>>? includedNamespaces;
+  final pulumi.Input<List<String>?>? includedNamespaces;
   /// Gets or sets the include resource types property. This property sets the resource types to be included during backup.
-  final pulumi.Input<List<String>>? includedResourceTypes;
+  final pulumi.Input<List<String>?>? includedResourceTypes;
   /// Gets or sets the include volume types property. This property sets the volume types to be included during backup.
-  final pulumi.Input<List<String>>? includedVolumeTypes;
+  final pulumi.Input<List<String>?>? includedVolumeTypes;
   /// Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during backup.
-  final pulumi.Input<List<String>>? labelSelectors;
+  final pulumi.Input<List<String>?>? labelSelectors;
   /// Type of the specific object - used for deserializing
   /// Expected value is 'KubernetesClusterBackupDatasourceParameters'.
   final pulumi.Input<String> objectType;

@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// NumberIn Advanced Filter.
 class NumberInAdvancedFilterResponse {
   /// The field/property in the event based on which you want to filter.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
   /// Expected value is 'NumberIn'.
   final pulumi.Input<String> operatorType;
   /// The set of filter values.
-  final pulumi.Input<List<double>>? values;
+  final pulumi.Input<List<double>?>? values;
 
   /// Creates a new [NumberInAdvancedFilterResponse].
   /// [key] The field/property in the event based on which you want to filter.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an APM
 class ApmPropertiesResponse {
   /// Non-sensitive properties for the APM
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// State of the APM.
   final pulumi.Input<String> provisioningState;
   /// APM Type

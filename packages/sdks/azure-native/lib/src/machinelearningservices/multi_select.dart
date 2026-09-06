@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether it is allowed to select multiple classes in this category.
-enum MultiSelect {
+enum MultiSelect implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const MultiSelect(this.wireValue);
+  @override
   final String wireValue;
 
   static MultiSelect fromValue(String value) {

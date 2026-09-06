@@ -21,3 +21,14 @@ Future<GetFleetResult> getFleet(
   );
   return GetFleetResult.fromMap(result);
 }
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:azurefleet:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
+}

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Data Actions that can be enabled for a Smart Identity Provider Application.
-enum SmartDataActions {
+enum SmartDataActions implements pulumi.PulumiEnum<String> {
   valueRead("Read");
 
   const SmartDataActions(this.wireValue);
+  @override
   final String wireValue;
 
   static SmartDataActions fromValue(String value) {

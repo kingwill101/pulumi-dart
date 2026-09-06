@@ -11,14 +11,14 @@ class StorageConnectorPropertiesResponse {
   /// The type of backing data source for this Storage Connector.
   final pulumi.Input<String> dataSourceType;
   /// Arbitrary description of this Storage Connector. Max 250 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Represents the provisioning state of the storage connector.
   final pulumi.Input<String> provisioningState;
   /// Information about how to communicate with and authenticate to the backing data store.
   final pulumi.Input<DataShareSourceResponse> source;
   /// State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
   /// (While set to false on the Storage Connector, all data plane requests using this Storage Connector fail, and this Storage Connector is not billed if it would be otherwise.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// System-generated GUID identifier for the Storage Connector. Not a valid input parameter when creating.
   final pulumi.Input<String> uniqueId;
 
@@ -30,15 +30,15 @@ class StorageConnectorPropertiesResponse {
   /// [source] Information about how to communicate with and authenticate to the backing data store.
   /// [state] State - Active or Inactive. Whether or not the Storage Connector should start as active (default: Active)
   /// [uniqueId] System-generated GUID identifier for the Storage Connector. Not a valid input parameter when creating.
-  const StorageConnectorPropertiesResponse({
+  StorageConnectorPropertiesResponse({
     required this.creationTime,
     required this.dataSourceType,
     this.description,
     required this.provisioningState,
     required this.source,
-    this.state,
+    pulumi.Input<String?>? state,
     required this.uniqueId,
-  });
+  }) : state = state ?? pulumi.Input.fromValue('Active');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

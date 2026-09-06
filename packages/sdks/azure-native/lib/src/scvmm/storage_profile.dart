@@ -6,7 +6,7 @@ import 'virtual_disk.dart';
 /// Defines the resource properties.
 class StorageProfile {
   /// Gets or sets the list of virtual disks associated with the virtual machine.
-  final pulumi.Input<List<VirtualDisk>>? disks;
+  final pulumi.Input<List<VirtualDisk>?>? disks;
 
   /// Creates a new [StorageProfile].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.

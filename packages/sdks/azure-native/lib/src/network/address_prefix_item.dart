@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Address prefix item.
 class AddressPrefixItem {
   /// Address prefix.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// Address prefix type.
-  final pulumi.Input<String>? addressPrefixType;
+  final pulumi.Input<dynamic>? addressPrefixType;
 
   /// Creates a new [AddressPrefixItem].
   /// [addressPrefix] Address prefix.
@@ -27,7 +27,7 @@ class AddressPrefixItem {
   factory AddressPrefixItem.fromMap(Map<String, dynamic> map) {
     return AddressPrefixItem(
       addressPrefix: (() { final guardedValue = map['addressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      addressPrefixType: (() { final guardedValue = map['addressPrefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      addressPrefixType: (() { final guardedValue = map['addressPrefixType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

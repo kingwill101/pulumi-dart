@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines contents of a web application firewall global configuration
 class PolicySettingsResponse {
   /// If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
-  final pulumi.Input<String>? defaultCustomBlockResponseBody;
+  final pulumi.Input<String?>? defaultCustomBlockResponseBody;
   /// If the action type is block, this field defines the default customer overridable http response status code.
-  final pulumi.Input<double>? defaultCustomBlockResponseStatusCode;
+  final pulumi.Input<double?>? defaultCustomBlockResponseStatusCode;
   /// If action type is redirect, this field represents the default redirect URL for the client.
-  final pulumi.Input<String>? defaultRedirectUrl;
+  final pulumi.Input<String?>? defaultRedirectUrl;
   /// describes if the policy is in enabled state or disabled state
-  final pulumi.Input<String>? enabledState;
+  final pulumi.Input<String?>? enabledState;
   /// Describes if it is in detection mode or prevention mode at policy level.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [PolicySettingsResponse].
   /// [defaultCustomBlockResponseBody] If the action type is block, customer can override the response body. The body must be specified in base64 encoding.
@@ -42,7 +42,7 @@ class PolicySettingsResponse {
   factory PolicySettingsResponse.fromMap(Map<String, dynamic> map) {
     return PolicySettingsResponse(
       defaultCustomBlockResponseBody: (() { final guardedValue = map['defaultCustomBlockResponseBody']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultCustomBlockResponseStatusCode: (() { final guardedValue = map['defaultCustomBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      defaultCustomBlockResponseStatusCode: (() { final guardedValue = map['defaultCustomBlockResponseStatusCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       defaultRedirectUrl: (() { final guardedValue = map['defaultRedirectUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enabledState: (() { final guardedValue = map['enabledState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The manifest checkin status.
 class DefaultRolloutStatusManifestCheckinStatusResponse {
   /// The commit id.
-  final pulumi.Input<String>? commitId;
+  final pulumi.Input<String?>? commitId;
   /// Whether the manifest is checked in.
   final pulumi.Input<bool> isCheckedIn;
   /// The pull request.
-  final pulumi.Input<String>? pullRequest;
+  final pulumi.Input<String?>? pullRequest;
   /// The status message.
   final pulumi.Input<String> statusMessage;
 

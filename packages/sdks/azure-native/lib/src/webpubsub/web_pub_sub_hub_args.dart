@@ -9,7 +9,7 @@ import 'web_pub_sub_hub_properties.dart';
 /// {@macro pulumi_webpubsub_web_pub_sub_hub_args_doc}
 class WebPubSubHubArgs {
   /// The hub name.
-  final pulumi.Input<String>? hubName;
+  final pulumi.Input<String?>? hubName;
   /// Properties of a hub.
   final pulumi.Input<WebPubSubHubProperties> properties;
   /// The name of the resource group. The name is case insensitive.

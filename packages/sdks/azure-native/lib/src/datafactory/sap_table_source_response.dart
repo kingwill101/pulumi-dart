@@ -18,7 +18,7 @@ class SapTableSourceResponse {
   /// The partition mechanism that will be used for SAP table read in parallel. Possible values include: "None", "PartitionOnInt", "PartitionOnCalendarYear", "PartitionOnCalendarMonth", "PartitionOnCalendarDate", "PartitionOnTime".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for SAP table source partitioning.
-  final pulumi.Input<SapTablePartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<SapTablePartitionSettingsResponse?>? partitionSettings;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? queryTimeout;
   /// The fields of the SAP table that will be retrieved. For example, column0, column1. Type: string (or Expression with resultType string).

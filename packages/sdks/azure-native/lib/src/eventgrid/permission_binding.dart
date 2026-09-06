@@ -216,4 +216,24 @@ class PermissionBinding extends pulumi.CustomResource {
     topicSpaceName = registerOutput<String?>('topicSpaceName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [PermissionBinding] resource.
+  PermissionBinding.reference(String urn)
+    : super(
+        'azure-native:eventgrid:PermissionBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    clientGroupName = registerOutput<String?>('clientGroupName');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    permission = registerOutput<String?>('permission');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicSpaceName = registerOutput<String?>('topicSpaceName');
+    type = registerOutput<String>('type');
+  }
 }

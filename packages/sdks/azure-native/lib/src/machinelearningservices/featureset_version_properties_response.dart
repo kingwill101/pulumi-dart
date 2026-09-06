@@ -7,25 +7,25 @@ import 'materialization_settings_response.dart';
 /// DTO object representing feature set version
 class FeaturesetVersionPropertiesResponse {
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Specifies list of entities
-  final pulumi.Input<List<String>>? entities;
+  final pulumi.Input<List<String>?>? entities;
   /// If the name version are system generated (anonymous registration).
-  final pulumi.Input<bool>? isAnonymous;
+  final pulumi.Input<bool?>? isAnonymous;
   /// Is the asset archived?
-  final pulumi.Input<bool>? isArchived;
+  final pulumi.Input<bool?>? isArchived;
   /// Specifies the materialization settings
-  final pulumi.Input<MaterializationSettingsResponse>? materializationSettings;
+  final pulumi.Input<MaterializationSettingsResponse?>? materializationSettings;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the featureset version container.
   final pulumi.Input<String> provisioningState;
   /// Specifies the feature spec details
-  final pulumi.Input<FeaturesetSpecificationResponse>? specification;
+  final pulumi.Input<FeaturesetSpecificationResponse?>? specification;
   /// Specifies the asset stage
-  final pulumi.Input<String>? stage;
+  final pulumi.Input<String?>? stage;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FeaturesetVersionPropertiesResponse].
   /// [description] The asset description text.
@@ -38,18 +38,18 @@ class FeaturesetVersionPropertiesResponse {
   /// [specification] Specifies the feature spec details
   /// [stage] Specifies the asset stage
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  const FeaturesetVersionPropertiesResponse({
+  FeaturesetVersionPropertiesResponse({
     this.description,
     this.entities,
-    this.isAnonymous,
-    this.isArchived,
+    pulumi.Input<bool?>? isAnonymous,
+    pulumi.Input<bool?>? isArchived,
     this.materializationSettings,
     this.properties,
     required this.provisioningState,
     this.specification,
     this.stage,
     this.tags,
-  });
+  }) : isAnonymous = isAnonymous ?? pulumi.Input.fromValue(false), isArchived = isArchived ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

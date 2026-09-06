@@ -8,11 +8,11 @@ import 'data_lake_service_storage_response.dart';
 /// Target storage for the DataLake. NOTE - Enum only storage is supported at a time.
 class DataLakeTargetStorageResponse {
   /// DataLake service storage details.
-  final pulumi.Input<DataLakeServiceStorageResponse>? datalakeStorage;
+  final pulumi.Input<DataLakeServiceStorageResponse?>? datalakeStorage;
   /// Fabric one lake storage details.
-  final pulumi.Input<DataLakeFabricStorageResponse>? fabricOneLake;
+  final pulumi.Input<DataLakeFabricStorageResponse?>? fabricOneLake;
   /// Local storage details.
-  final pulumi.Input<DataLakeLocalStorageResponse>? localStorage;
+  final pulumi.Input<DataLakeLocalStorageResponse?>? localStorage;
 
   /// Creates a new [DataLakeTargetStorageResponse].
   /// [datalakeStorage] DataLake service storage details.

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies an object ownership rule.
-enum OwnershipControlsRuleObjectOwnership {
+enum OwnershipControlsRuleObjectOwnership implements pulumi.PulumiEnum<String> {
   bucketOwnerEnforced("BucketOwnerEnforced"),
   bucketOwnerPreferred("BucketOwnerPreferred"),
   objectWriter("ObjectWriter");
 
   const OwnershipControlsRuleObjectOwnership(this.wireValue);
+  @override
   final String wireValue;
 
   static OwnershipControlsRuleObjectOwnership fromValue(String value) {

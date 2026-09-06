@@ -5,15 +5,15 @@ import 'subscription_list_response.dart';
 /// Result data returned by getMonitoredSubscription.
 class GetMonitoredSubscriptionResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The id of the monitored subscription resource.
-  final String id;
+  final String? id;
   /// Name of the monitored subscription resource.
-  final String name;
+  final String? name;
   /// The request to update subscriptions needed to be monitored by the Datadog monitor resource.
-  final SubscriptionListResponse properties;
+  final SubscriptionListResponse? properties;
   /// The type of the monitored subscription resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMonitoredSubscriptionResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -22,30 +22,30 @@ class GetMonitoredSubscriptionResult {
   /// [properties] The request to update subscriptions needed to be monitored by the Datadog monitor resource.
   /// [type] The type of the monitored subscription resource.
   const GetMonitoredSubscriptionResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetMonitoredSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetMonitoredSubscriptionResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: SubscriptionListResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return SubscriptionListResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

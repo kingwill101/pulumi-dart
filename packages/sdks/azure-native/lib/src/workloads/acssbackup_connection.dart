@@ -1,7 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'acssbackup_connection_args.dart';
 import 'connector_error_definition_response.dart';
-import 'hana_backup_data_response.dart';
 import 'system_data_response.dart';
 
 /// Define the backup connection resource of virtual instance for SAP..
@@ -4313,7 +4312,7 @@ class ACSSBackupConnection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Information about the recovery services vault and backup policy used for backup.
-  late final pulumi.Output<HanaBackupDataResponse?> backupData;
+  late final pulumi.Output<dynamic> backupData;
   /// Defines the errors related to backup connection resource of virtual instance for SAP.
   late final pulumi.Output<ConnectorErrorDefinitionResponse> errors;
   /// The geo-location where the resource lives
@@ -4344,13 +4343,33 @@ class ACSSBackupConnection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backupData = registerOutput<HanaBackupDataResponse?>('backupData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HanaBackupDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    backupData = registerOutput<dynamic>('backupData');
     errors = registerOutput<ConnectorErrorDefinitionResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorErrorDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ACSSBackupConnection] resource.
+  ACSSBackupConnection.reference(String urn)
+    : super(
+        'azure-native:workloads:ACSSBackupConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupData = registerOutput<dynamic>('backupData');
+    errors = registerOutput<ConnectorErrorDefinitionResponse>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorErrorDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

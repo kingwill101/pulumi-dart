@@ -11,19 +11,19 @@ class TrunkedNetworkArgs {
   /// The extended location of the cluster associated with the resource.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Field Deprecated. The field was previously optional, now it will have no defined behavior and will be ignored. The network plugin type for Hybrid AKS.
-  final pulumi.Input<String>? hybridAksPluginType;
+  final pulumi.Input<dynamic>? hybridAksPluginType;
   /// The default interface name for this trunked network in the virtual machine. This name can be overridden by the name supplied in the network attachment configuration of that virtual machine.
-  final pulumi.Input<String>? interfaceName;
+  final pulumi.Input<String?>? interfaceName;
   /// The list of resource IDs representing the Network Fabric isolation domains. It can be any combination of l2IsolationDomain and l3IsolationDomain resources.
   final pulumi.Input<List<String>> isolationDomainIds;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the trunked network.
-  final pulumi.Input<String>? trunkedNetworkName;
+  final pulumi.Input<String?>? trunkedNetworkName;
   /// The list of vlans that are selected from the isolation domains for trunking.
   final pulumi.Input<List<double>> vlans;
 
@@ -37,9 +37,9 @@ class TrunkedNetworkArgs {
   /// [tags] Resource tags.
   /// [trunkedNetworkName] The name of the trunked network.
   /// [vlans] The list of vlans that are selected from the isolation domains for trunking.
-  const TrunkedNetworkArgs({
+  TrunkedNetworkArgs({
     required this.extendedLocation,
-    this.hybridAksPluginType,
+    pulumi.Input<dynamic>? hybridAksPluginType,
     this.interfaceName,
     required this.isolationDomainIds,
     this.location,
@@ -47,7 +47,7 @@ class TrunkedNetworkArgs {
     this.tags,
     this.trunkedNetworkName,
     required this.vlans,
-  });
+  }) : hybridAksPluginType = hybridAksPluginType ?? pulumi.Input.fromValue('SRIOV');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,7 +66,7 @@ class TrunkedNetworkArgs {
   factory TrunkedNetworkArgs.fromMap(Map<String, dynamic> map) {
     return TrunkedNetworkArgs(
       extendedLocation: pulumi.Input.fromValue(ExtendedLocation.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>())),
-      hybridAksPluginType: (() { final guardedValue = map['hybridAksPluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hybridAksPluginType: (() { final guardedValue = map['hybridAksPluginType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       interfaceName: (() { final guardedValue = map['interfaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isolationDomainIds: pulumi.Input.fromValue((map['isolationDomainIds'] as List).cast<String>()),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

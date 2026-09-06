@@ -17,15 +17,15 @@ class L2ConnectionArgs {
   /// The name of the partner router to establish a connection to within the ground station.
   final pulumi.Input<L2ConnectionsPropertiesGroundStationPartnerRouter> groundStationPartnerRouter;
   /// L2 Connection name.
-  final pulumi.Input<String>? l2ConnectionName;
+  final pulumi.Input<String?>? l2ConnectionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The unique name of the partner router that cross-connects with the Orbital Edge Router at the edge site.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The VLAN ID for the L2 connection.
   final pulumi.Input<int> vlanId;
 
@@ -75,7 +75,7 @@ class L2ConnectionArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
+      vlanId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanId'])),
     );
   }
 }

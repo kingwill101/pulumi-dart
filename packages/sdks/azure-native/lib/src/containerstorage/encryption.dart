@@ -6,7 +6,7 @@ import 'managed_service_identity.dart';
 /// Encryption key properties for the pool.
 class Encryption {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The name of the key vault key.
   final pulumi.Input<String> keyName;
   /// The URI of the key vault.

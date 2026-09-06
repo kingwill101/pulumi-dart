@@ -22,6 +22,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scheduler:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Gets a job collection.
 ///
 /// Uses Azure REST API version 2016-03-01.
@@ -38,4 +49,15 @@ Future<GetJobCollectionResult> getJobCollection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetJobCollectionResult.fromMap(result);
+}
+
+pulumi.Output<GetJobCollectionResult> getJobCollectionOutput(
+  GetJobCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:scheduler:getJobCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobCollectionResult.fromMap);
 }

@@ -10,7 +10,7 @@ class AssignmentReportResourceResponse {
   /// Properties of a guest configuration assignment resource.
   final pulumi.Input<dynamic> properties;
   /// Compliance reason and reason code for a resource.
-  final pulumi.Input<List<AssignmentReportResourceComplianceReasonResponse>>? reasons;
+  final pulumi.Input<List<AssignmentReportResourceComplianceReasonResponse>?>? reasons;
   /// Name of the guest configuration assignment resource setting.
   final pulumi.Input<String> resourceId;
 

@@ -118,6 +118,17 @@ Future<GetAADDataConnectorResult> getAADDataConnector(
   return GetAADDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAADDataConnectorResult> getAADDataConnectorOutput(
+  GetAADDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAADDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAADDataConnectorResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -136,6 +147,17 @@ Future<GetAATPDataConnectorResult> getAATPDataConnector(
   return GetAATPDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetAATPDataConnectorResult> getAATPDataConnectorOutput(
+  GetAATPDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAATPDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAATPDataConnectorResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -152,6 +174,17 @@ Future<GetASCDataConnectorResult> getASCDataConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetASCDataConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetASCDataConnectorResult> getASCDataConnectorOutput(
+  GetASCDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getASCDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetASCDataConnectorResult.fromMap);
 }
 
 /// Gets the action of alert rule.
@@ -174,6 +207,17 @@ Future<GetActionResult> getAction(
   return GetActionResult.fromMap(result);
 }
 
+pulumi.Output<GetActionResult> getActionOutput(
+  GetActionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAction',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActionResult.fromMap);
+}
+
 /// Gets an entity query.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -190,6 +234,17 @@ Future<GetActivityCustomEntityQueryResult> getActivityCustomEntityQuery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetActivityCustomEntityQueryResult.fromMap(result);
+}
+
+pulumi.Output<GetActivityCustomEntityQueryResult> getActivityCustomEntityQueryOutput(
+  GetActivityCustomEntityQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getActivityCustomEntityQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetActivityCustomEntityQueryResult.fromMap);
 }
 
 /// Gets a setting.
@@ -210,6 +265,17 @@ Future<GetAnomaliesResult> getAnomalies(
   return GetAnomaliesResult.fromMap(result);
 }
 
+pulumi.Output<GetAnomaliesResult> getAnomaliesOutput(
+  GetAnomaliesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAnomalies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnomaliesResult.fromMap);
+}
+
 /// Gets the Security ML Analytics Settings.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -226,6 +292,17 @@ Future<GetAnomalySecurityMLAnalyticsSettingsResult> getAnomalySecurityMLAnalytic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAnomalySecurityMLAnalyticsSettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetAnomalySecurityMLAnalyticsSettingsResult> getAnomalySecurityMLAnalyticsSettingsOutput(
+  GetAnomalySecurityMLAnalyticsSettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAnomalySecurityMLAnalyticsSettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAnomalySecurityMLAnalyticsSettingsResult.fromMap);
 }
 
 /// Gets the automation rule.
@@ -248,6 +325,17 @@ Future<GetAutomationRuleResult> getAutomationRule(
   return GetAutomationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetAutomationRuleResult> getAutomationRuleOutput(
+  GetAutomationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAutomationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutomationRuleResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -264,6 +352,17 @@ Future<GetAwsCloudTrailDataConnectorResult> getAwsCloudTrailDataConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAwsCloudTrailDataConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetAwsCloudTrailDataConnectorResult> getAwsCloudTrailDataConnectorOutput(
+  GetAwsCloudTrailDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getAwsCloudTrailDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAwsCloudTrailDataConnectorResult.fromMap);
 }
 
 /// Gets a bookmark.
@@ -286,6 +385,17 @@ Future<GetBookmarkResult> getBookmark(
   return GetBookmarkResult.fromMap(result);
 }
 
+pulumi.Output<GetBookmarkResult> getBookmarkOutput(
+  GetBookmarkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getBookmark',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBookmarkResult.fromMap);
+}
+
 /// Gets a bookmark relation.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -306,6 +416,17 @@ Future<GetBookmarkRelationResult> getBookmarkRelation(
   return GetBookmarkRelationResult.fromMap(result);
 }
 
+pulumi.Output<GetBookmarkRelationResult> getBookmarkRelationOutput(
+  GetBookmarkRelationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getBookmarkRelation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBookmarkRelationResult.fromMap);
+}
+
 /// Gets an installed packages by its id.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -324,6 +445,17 @@ Future<GetContentPackageResult> getContentPackage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetContentPackageResult.fromMap(result);
+}
+
+pulumi.Output<GetContentPackageResult> getContentPackageOutput(
+  GetContentPackageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getContentPackage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContentPackageResult.fromMap);
 }
 
 /// Gets a template byt its identifier.
@@ -349,6 +481,17 @@ Future<GetContentTemplateResult> getContentTemplate(
   return GetContentTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetContentTemplateResult> getContentTemplateOutput(
+  GetContentTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getContentTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContentTemplateResult.fromMap);
+}
+
 /// Gets a data connector definition.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -365,6 +508,17 @@ Future<GetCustomizableConnectorDefinitionResult> getCustomizableConnectorDefinit
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCustomizableConnectorDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetCustomizableConnectorDefinitionResult> getCustomizableConnectorDefinitionOutput(
+  GetCustomizableConnectorDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getCustomizableConnectorDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCustomizableConnectorDefinitionResult.fromMap);
 }
 
 /// Timeline for an entity.
@@ -387,6 +541,17 @@ Future<GetEntitiesGetTimelineResult> getEntitiesGetTimeline(
   return GetEntitiesGetTimelineResult.fromMap(result);
 }
 
+pulumi.Output<GetEntitiesGetTimelineResult> getEntitiesGetTimelineOutput(
+  GetEntitiesGetTimelineArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getEntitiesGetTimeline',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntitiesGetTimelineResult.fromMap);
+}
+
 /// Gets a setting.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -403,6 +568,17 @@ Future<GetEntityAnalyticsResult> getEntityAnalytics(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEntityAnalyticsResult.fromMap(result);
+}
+
+pulumi.Output<GetEntityAnalyticsResult> getEntityAnalyticsOutput(
+  GetEntityAnalyticsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getEntityAnalytics',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityAnalyticsResult.fromMap);
 }
 
 /// Execute Insights for an entity.
@@ -425,6 +601,17 @@ Future<GetEntityInsightsResult> getEntityInsights(
   return GetEntityInsightsResult.fromMap(result);
 }
 
+pulumi.Output<GetEntityInsightsResult> getEntityInsightsOutput(
+  GetEntityInsightsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getEntityInsights',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEntityInsightsResult.fromMap);
+}
+
 /// Gets a setting.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -441,6 +628,17 @@ Future<GetEyesOnResult> getEyesOn(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEyesOnResult.fromMap(result);
+}
+
+pulumi.Output<GetEyesOnResult> getEyesOnOutput(
+  GetEyesOnArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getEyesOn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEyesOnResult.fromMap);
 }
 
 /// Gets a file import.
@@ -463,6 +661,17 @@ Future<GetFileImportResult> getFileImport(
   return GetFileImportResult.fromMap(result);
 }
 
+pulumi.Output<GetFileImportResult> getFileImportOutput(
+  GetFileImportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getFileImport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFileImportResult.fromMap);
+}
+
 /// Gets the alert rule.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -479,6 +688,17 @@ Future<GetFusionAlertRuleResult> getFusionAlertRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFusionAlertRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetFusionAlertRuleResult> getFusionAlertRuleOutput(
+  GetFusionAlertRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getFusionAlertRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFusionAlertRuleResult.fromMap);
 }
 
 /// Gets a hunt, without relations and comments.
@@ -501,6 +721,17 @@ Future<GetHuntResult> getHunt(
   return GetHuntResult.fromMap(result);
 }
 
+pulumi.Output<GetHuntResult> getHuntOutput(
+  GetHuntArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getHunt',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHuntResult.fromMap);
+}
+
 /// Gets a hunt comment
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -519,6 +750,17 @@ Future<GetHuntCommentResult> getHuntComment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHuntCommentResult.fromMap(result);
+}
+
+pulumi.Output<GetHuntCommentResult> getHuntCommentOutput(
+  GetHuntCommentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getHuntComment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHuntCommentResult.fromMap);
 }
 
 /// Gets a hunt relation
@@ -541,6 +783,17 @@ Future<GetHuntRelationResult> getHuntRelation(
   return GetHuntRelationResult.fromMap(result);
 }
 
+pulumi.Output<GetHuntRelationResult> getHuntRelationOutput(
+  GetHuntRelationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getHuntRelation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHuntRelationResult.fromMap);
+}
+
 /// Gets a given incident.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -559,6 +812,17 @@ Future<GetIncidentResult> getIncident(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIncidentResult.fromMap(result);
+}
+
+pulumi.Output<GetIncidentResult> getIncidentOutput(
+  GetIncidentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getIncident',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIncidentResult.fromMap);
 }
 
 /// Gets a comment for a given incident.
@@ -581,6 +845,17 @@ Future<GetIncidentCommentResult> getIncidentComment(
   return GetIncidentCommentResult.fromMap(result);
 }
 
+pulumi.Output<GetIncidentCommentResult> getIncidentCommentOutput(
+  GetIncidentCommentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getIncidentComment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIncidentCommentResult.fromMap);
+}
+
 /// Gets a relation for a given incident.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -599,6 +874,17 @@ Future<GetIncidentRelationResult> getIncidentRelation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIncidentRelationResult.fromMap(result);
+}
+
+pulumi.Output<GetIncidentRelationResult> getIncidentRelationOutput(
+  GetIncidentRelationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getIncidentRelation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIncidentRelationResult.fromMap);
 }
 
 /// Gets an incident task.
@@ -621,6 +907,17 @@ Future<GetIncidentTaskResult> getIncidentTask(
   return GetIncidentTaskResult.fromMap(result);
 }
 
+pulumi.Output<GetIncidentTaskResult> getIncidentTaskOutput(
+  GetIncidentTaskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getIncidentTask',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIncidentTaskResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -637,6 +934,17 @@ Future<GetMCASDataConnectorResult> getMCASDataConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMCASDataConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetMCASDataConnectorResult> getMCASDataConnectorOutput(
+  GetMCASDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getMCASDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMCASDataConnectorResult.fromMap);
 }
 
 /// Gets a data connector.
@@ -657,6 +965,17 @@ Future<GetMDATPDataConnectorResult> getMDATPDataConnector(
   return GetMDATPDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetMDATPDataConnectorResult> getMDATPDataConnectorOutput(
+  GetMDATPDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getMDATPDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMDATPDataConnectorResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -673,6 +992,17 @@ Future<GetMSTIDataConnectorResult> getMSTIDataConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMSTIDataConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetMSTIDataConnectorResult> getMSTIDataConnectorOutput(
+  GetMSTIDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getMSTIDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMSTIDataConnectorResult.fromMap);
 }
 
 /// Get a Metadata.
@@ -695,6 +1025,17 @@ Future<GetMetadataResult> getMetadata(
   return GetMetadataResult.fromMap(result);
 }
 
+pulumi.Output<GetMetadataResult> getMetadataOutput(
+  GetMetadataArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getMetadata',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetadataResult.fromMap);
+}
+
 /// Gets the alert rule.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -711,6 +1052,17 @@ Future<GetMicrosoftSecurityIncidentCreationAlertRuleResult> getMicrosoftSecurity
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMicrosoftSecurityIncidentCreationAlertRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetMicrosoftSecurityIncidentCreationAlertRuleResult> getMicrosoftSecurityIncidentCreationAlertRuleOutput(
+  GetMicrosoftSecurityIncidentCreationAlertRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getMicrosoftSecurityIncidentCreationAlertRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMicrosoftSecurityIncidentCreationAlertRuleResult.fromMap);
 }
 
 /// Gets a data connector.
@@ -731,6 +1083,17 @@ Future<GetOfficeDataConnectorResult> getOfficeDataConnector(
   return GetOfficeDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetOfficeDataConnectorResult> getOfficeDataConnectorOutput(
+  GetOfficeDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getOfficeDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOfficeDataConnectorResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -747,6 +1110,17 @@ Future<GetPremiumMicrosoftDefenderForThreatIntelligenceResult> getPremiumMicroso
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPremiumMicrosoftDefenderForThreatIntelligenceResult.fromMap(result);
+}
+
+pulumi.Output<GetPremiumMicrosoftDefenderForThreatIntelligenceResult> getPremiumMicrosoftDefenderForThreatIntelligenceOutput(
+  GetPremiumMicrosoftDefenderForThreatIntelligenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getPremiumMicrosoftDefenderForThreatIntelligence',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPremiumMicrosoftDefenderForThreatIntelligenceResult.fromMap);
 }
 
 /// Gets a data connector.
@@ -767,6 +1141,17 @@ Future<GetRestApiPollerDataConnectorResult> getRestApiPollerDataConnector(
   return GetRestApiPollerDataConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetRestApiPollerDataConnectorResult> getRestApiPollerDataConnectorOutput(
+  GetRestApiPollerDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getRestApiPollerDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRestApiPollerDataConnectorResult.fromMap);
+}
+
 /// Gets the alert rule.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -783,6 +1168,17 @@ Future<GetScheduledAlertRuleResult> getScheduledAlertRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduledAlertRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduledAlertRuleResult> getScheduledAlertRuleOutput(
+  GetScheduledAlertRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getScheduledAlertRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduledAlertRuleResult.fromMap);
 }
 
 /// Get Sentinel onboarding state
@@ -805,6 +1201,17 @@ Future<GetSentinelOnboardingStateResult> getSentinelOnboardingState(
   return GetSentinelOnboardingStateResult.fromMap(result);
 }
 
+pulumi.Output<GetSentinelOnboardingStateResult> getSentinelOnboardingStateOutput(
+  GetSentinelOnboardingStateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getSentinelOnboardingState',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSentinelOnboardingStateResult.fromMap);
+}
+
 /// Gets a source control byt its identifier.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -825,6 +1232,17 @@ Future<GetSourceControlResult> getSourceControl(
   return GetSourceControlResult.fromMap(result);
 }
 
+pulumi.Output<GetSourceControlResult> getSourceControlOutput(
+  GetSourceControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getSourceControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceControlResult.fromMap);
+}
+
 /// Gets a data connector.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -841,6 +1259,17 @@ Future<GetTIDataConnectorResult> getTIDataConnector(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTIDataConnectorResult.fromMap(result);
+}
+
+pulumi.Output<GetTIDataConnectorResult> getTIDataConnectorOutput(
+  GetTIDataConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getTIDataConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTIDataConnectorResult.fromMap);
 }
 
 /// View a threat intelligence indicator by name.
@@ -863,6 +1292,17 @@ Future<GetThreatIntelligenceIndicatorResult> getThreatIntelligenceIndicator(
   return GetThreatIntelligenceIndicatorResult.fromMap(result);
 }
 
+pulumi.Output<GetThreatIntelligenceIndicatorResult> getThreatIntelligenceIndicatorOutput(
+  GetThreatIntelligenceIndicatorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getThreatIntelligenceIndicator',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetThreatIntelligenceIndicatorResult.fromMap);
+}
+
 /// Gets a setting.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -879,6 +1319,17 @@ Future<GetUebaResult> getUeba(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUebaResult.fromMap(result);
+}
+
+pulumi.Output<GetUebaResult> getUebaOutput(
+  GetUebaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getUeba',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUebaResult.fromMap);
 }
 
 /// Get a watchlist, without its watchlist items.
@@ -901,6 +1352,17 @@ Future<GetWatchlistResult> getWatchlist(
   return GetWatchlistResult.fromMap(result);
 }
 
+pulumi.Output<GetWatchlistResult> getWatchlistOutput(
+  GetWatchlistArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWatchlist',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWatchlistResult.fromMap);
+}
+
 /// Get a watchlist item.
 ///
 /// Uses Azure REST API version 2024-09-01.
@@ -919,6 +1381,17 @@ Future<GetWatchlistItemResult> getWatchlistItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWatchlistItemResult.fromMap(result);
+}
+
+pulumi.Output<GetWatchlistItemResult> getWatchlistItemOutput(
+  GetWatchlistItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWatchlistItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWatchlistItemResult.fromMap);
 }
 
 /// Gets a workspace manager assignment
@@ -941,6 +1414,17 @@ Future<GetWorkspaceManagerAssignmentResult> getWorkspaceManagerAssignment(
   return GetWorkspaceManagerAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceManagerAssignmentResult> getWorkspaceManagerAssignmentOutput(
+  GetWorkspaceManagerAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWorkspaceManagerAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceManagerAssignmentResult.fromMap);
+}
+
 /// Gets a workspace manager configuration
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -959,6 +1443,17 @@ Future<GetWorkspaceManagerConfigurationResult> getWorkspaceManagerConfiguration(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceManagerConfigurationResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceManagerConfigurationResult> getWorkspaceManagerConfigurationOutput(
+  GetWorkspaceManagerConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWorkspaceManagerConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceManagerConfigurationResult.fromMap);
 }
 
 /// Gets a workspace manager group
@@ -981,6 +1476,17 @@ Future<GetWorkspaceManagerGroupResult> getWorkspaceManagerGroup(
   return GetWorkspaceManagerGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceManagerGroupResult> getWorkspaceManagerGroupOutput(
+  GetWorkspaceManagerGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWorkspaceManagerGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceManagerGroupResult.fromMap);
+}
+
 /// Gets a workspace manager member
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -999,6 +1505,17 @@ Future<GetWorkspaceManagerMemberResult> getWorkspaceManagerMember(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceManagerMemberResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceManagerMemberResult> getWorkspaceManagerMemberOutput(
+  GetWorkspaceManagerMemberArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:getWorkspaceManagerMember',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceManagerMemberResult.fromMap);
 }
 
 /// Get geodata for a single IP address
@@ -1021,6 +1538,17 @@ Future<ListGeodataByIpResult> listGeodataByIp(
   return ListGeodataByIpResult.fromMap(result);
 }
 
+pulumi.Output<ListGeodataByIpResult> listGeodataByIpOutput(
+  ListGeodataByIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:listGeodataByIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListGeodataByIpResult.fromMap);
+}
+
 /// Gets a list of repositories metadata.
 ///
 /// Uses Azure REST API version 2025-09-01.
@@ -1041,6 +1569,17 @@ Future<ListSourceControlRepositoriesResult> listSourceControlRepositories(
   return ListSourceControlRepositoriesResult.fromMap(result);
 }
 
+pulumi.Output<ListSourceControlRepositoriesResult> listSourceControlRepositoriesOutput(
+  ListSourceControlRepositoriesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:listSourceControlRepositories',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSourceControlRepositoriesResult.fromMap);
+}
+
 /// Get whois information for a single domain name
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -1059,4 +1598,15 @@ Future<ListWhoisByDomainResult> listWhoisByDomain(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWhoisByDomainResult.fromMap(result);
+}
+
+pulumi.Output<ListWhoisByDomainResult> listWhoisByDomainOutput(
+  ListWhoisByDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:securityinsights:listWhoisByDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWhoisByDomainResult.fromMap);
 }

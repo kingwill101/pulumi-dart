@@ -1,6 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'allowlist_custom_alert_rule_response.dart';
+import 'denylist_custom_alert_rule_response.dart';
 import 'device_security_group_args.dart';
 import 'system_data_response.dart';
+import 'threshold_custom_alert_rule_response.dart';
+import 'time_window_custom_alert_rule_response.dart';
 
 /// The device security group resource
 ///
@@ -160,19 +164,19 @@ import 'system_data_response.dart';
 /// ```
 class DeviceSecurityGroup extends pulumi.CustomResource {
   /// The allow-list custom alert rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> allowlistRules;
+  late final pulumi.Output<List<AllowlistCustomAlertRuleResponse>?> allowlistRules;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The deny-list custom alert rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> denylistRules;
+  late final pulumi.Output<List<DenylistCustomAlertRuleResponse>?> denylistRules;
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The list of custom alert threshold rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> thresholdRules;
+  late final pulumi.Output<List<ThresholdCustomAlertRuleResponse>?> thresholdRules;
   /// The list of custom alert time-window rules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> timeWindowRules;
+  late final pulumi.Output<List<TimeWindowCustomAlertRuleResponse>?> timeWindowRules;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
 
@@ -190,13 +194,32 @@ class DeviceSecurityGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowlistRules = registerOutput<List<Map<String, dynamic>>?>('allowlistRules');
+    allowlistRules = registerOutput<List<AllowlistCustomAlertRuleResponse>?>('allowlistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowlistCustomAlertRuleResponse>(guardedValue, (value) => AllowlistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    denylistRules = registerOutput<List<Map<String, dynamic>>?>('denylistRules');
+    denylistRules = registerOutput<List<DenylistCustomAlertRuleResponse>?>('denylistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenylistCustomAlertRuleResponse>(guardedValue, (value) => DenylistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    thresholdRules = registerOutput<List<Map<String, dynamic>>?>('thresholdRules');
-    timeWindowRules = registerOutput<List<Map<String, dynamic>>?>('timeWindowRules');
+    thresholdRules = registerOutput<List<ThresholdCustomAlertRuleResponse>?>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThresholdCustomAlertRuleResponse>(guardedValue, (value) => ThresholdCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    timeWindowRules = registerOutput<List<TimeWindowCustomAlertRuleResponse>?>('timeWindowRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeWindowCustomAlertRuleResponse>(guardedValue, (value) => TimeWindowCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DeviceSecurityGroup] resource.
+  DeviceSecurityGroup.reference(String urn)
+    : super(
+        'azure-native:security:DeviceSecurityGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowlistRules = registerOutput<List<AllowlistCustomAlertRuleResponse>?>('allowlistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllowlistCustomAlertRuleResponse>(guardedValue, (value) => AllowlistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    denylistRules = registerOutput<List<DenylistCustomAlertRuleResponse>?>('denylistRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DenylistCustomAlertRuleResponse>(guardedValue, (value) => DenylistCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    thresholdRules = registerOutput<List<ThresholdCustomAlertRuleResponse>?>('thresholdRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ThresholdCustomAlertRuleResponse>(guardedValue, (value) => ThresholdCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    timeWindowRules = registerOutput<List<TimeWindowCustomAlertRuleResponse>?>('timeWindowRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TimeWindowCustomAlertRuleResponse>(guardedValue, (value) => TimeWindowCustomAlertRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

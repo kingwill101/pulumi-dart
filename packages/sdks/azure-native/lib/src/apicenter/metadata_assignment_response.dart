@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Assignment metadata
 class MetadataAssignmentResponse {
   /// Deprecated assignment
-  final pulumi.Input<bool>? deprecated;
+  final pulumi.Input<bool?>? deprecated;
   /// The entities this metadata schema component gets applied to.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   /// Required assignment
-  final pulumi.Input<bool>? required;
+  final pulumi.Input<bool?>? required;
 
   /// Creates a new [MetadataAssignmentResponse].
   /// [deprecated] Deprecated assignment

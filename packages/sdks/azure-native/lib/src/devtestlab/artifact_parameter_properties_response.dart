@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an artifact parameter.
 class ArtifactParameterPropertiesResponse {
   /// The name of the artifact parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The value of the artifact parameter.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [ArtifactParameterPropertiesResponse].
   /// [name] The name of the artifact parameter.

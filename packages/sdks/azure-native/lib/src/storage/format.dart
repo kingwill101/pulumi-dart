@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This is a required field, it specifies the format for the inventory files.
-enum Format {
+enum Format implements pulumi.PulumiEnum<String> {
   valueCsv("Csv"),
   valueParquet("Parquet");
 
   const Format(this.wireValue);
+  @override
   final String wireValue;
 
   static Format fromValue(String value) {

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An Application Insights component daily data volume cap
 class ApplicationInsightsComponentDataVolumeCap {
   /// Daily data volume cap in GB.
-  final pulumi.Input<double>? cap;
+  final pulumi.Input<double?>? cap;
   /// Do not send a notification email when the daily data volume cap is met.
-  final pulumi.Input<bool>? stopSendNotificationWhenHitCap;
+  final pulumi.Input<bool?>? stopSendNotificationWhenHitCap;
   /// Reserved, not used for now.
-  final pulumi.Input<bool>? stopSendNotificationWhenHitThreshold;
+  final pulumi.Input<bool?>? stopSendNotificationWhenHitThreshold;
   /// Reserved, not used for now.
-  final pulumi.Input<int>? warningThreshold;
+  final pulumi.Input<int?>? warningThreshold;
 
   /// Creates a new [ApplicationInsightsComponentDataVolumeCap].
   /// [cap] Daily data volume cap in GB.
@@ -36,10 +36,10 @@ class ApplicationInsightsComponentDataVolumeCap {
 
   factory ApplicationInsightsComponentDataVolumeCap.fromMap(Map<String, dynamic> map) {
     return ApplicationInsightsComponentDataVolumeCap(
-      cap: (() { final guardedValue = map['cap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      cap: (() { final guardedValue = map['cap']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       stopSendNotificationWhenHitCap: (() { final guardedValue = map['stopSendNotificationWhenHitCap']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stopSendNotificationWhenHitThreshold: (() { final guardedValue = map['stopSendNotificationWhenHitThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      warningThreshold: (() { final guardedValue = map['warningThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      warningThreshold: (() { final guardedValue = map['warningThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

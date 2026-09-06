@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents an Azure resource group in a blueprint definition.
 class ResourceGroupDefinitionResponse {
   /// Artifacts which need to be deployed before this resource group.
-  final pulumi.Input<List<String>>? dependsOn;
+  final pulumi.Input<List<String>?>? dependsOn;
   /// Description of this parameter/resourceGroup.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// DisplayName of this parameter/resourceGroup.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Location of this resourceGroup. Leave empty if the resource group location will be specified during the blueprint assignment.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
-  final pulumi.Input<String>? strongType;
+  final pulumi.Input<String?>? strongType;
   /// Tags to be assigned to this resource group.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceGroupDefinitionResponse].
   /// [dependsOn] Artifacts which need to be deployed before this resource group.

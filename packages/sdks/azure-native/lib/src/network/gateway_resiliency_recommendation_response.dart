@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Resiliency Recommendation details
 class GatewayResiliencyRecommendationResponse {
   /// Link to the public documentation for the associated recommendation
-  final pulumi.Input<String>? callToActionLink;
+  final pulumi.Input<String?>? callToActionLink;
   /// Acton items to apply the recommendation
-  final pulumi.Input<String>? callToActionText;
+  final pulumi.Input<String?>? callToActionText;
   /// Recommendation Id
-  final pulumi.Input<String>? recommendationId;
+  final pulumi.Input<String?>? recommendationId;
   /// Recommendation details
-  final pulumi.Input<String>? recommendationText;
+  final pulumi.Input<String?>? recommendationText;
   /// Recommendation Title
-  final pulumi.Input<String>? recommendationTitle;
+  final pulumi.Input<String?>? recommendationTitle;
   /// Impact associated with the recommendation
-  final pulumi.Input<String>? severity;
+  final pulumi.Input<String?>? severity;
 
   /// Creates a new [GatewayResiliencyRecommendationResponse].
   /// [callToActionLink] Link to the public documentation for the associated recommendation

@@ -10,17 +10,17 @@ import 'move_collection_properties.dart';
 /// {@macro pulumi_migrate_move_collection_args_doc}
 class MoveCollectionArgs {
   /// Defines the MSI properties of the Move Collection.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The Move Collection Name.
-  final pulumi.Input<String>? moveCollectionName;
+  final pulumi.Input<String?>? moveCollectionName;
   /// Defines the move collection properties.
-  final pulumi.Input<MoveCollectionProperties>? properties;
+  final pulumi.Input<MoveCollectionProperties?>? properties;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MoveCollectionArgs].
   /// [identity] Defines the MSI properties of the Move Collection.

@@ -8,18 +8,18 @@ import 'virtual_network_properties_vmip_pool.dart';
 /// Properties of the virtual network resource
 class VirtualNetworkProperties {
   /// List of DNS server IP Addresses associated with the network
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// IP Address of the Gateway associated with the network
-  final pulumi.Input<String>? gateway;
-  final pulumi.Input<VirtualNetworkPropertiesInfraVnetProfile>? infraVnetProfile;
+  final pulumi.Input<String?>? gateway;
+  final pulumi.Input<VirtualNetworkPropertiesInfraVnetProfile?>? infraVnetProfile;
   /// IP Address Prefix of the network
-  final pulumi.Input<String>? ipAddressPrefix;
+  final pulumi.Input<String?>? ipAddressPrefix;
   /// Range of IP Addresses for Kubernetes API Server and services if using HA Proxy load balancer
-  final pulumi.Input<List<VirtualNetworkPropertiesVipPool>>? vipPool;
+  final pulumi.Input<List<VirtualNetworkPropertiesVipPool>?>? vipPool;
   /// VLAN Id used by the network
-  final pulumi.Input<int>? vlanID;
+  final pulumi.Input<int?>? vlanID;
   /// Range of IP Addresses for Kubernetes node VMs
-  final pulumi.Input<List<VirtualNetworkPropertiesVmipPool>>? vmipPool;
+  final pulumi.Input<List<VirtualNetworkPropertiesVmipPool>?>? vmipPool;
 
   /// Creates a new [VirtualNetworkProperties].
   /// [dnsServers] List of DNS server IP Addresses associated with the network
@@ -58,7 +58,7 @@ class VirtualNetworkProperties {
       infraVnetProfile: (() { final guardedValue = map['infraVnetProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualNetworkPropertiesInfraVnetProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ipAddressPrefix: (() { final guardedValue = map['ipAddressPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vipPool: (() { final guardedValue = map['vipPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkPropertiesVipPool>(guardedValue, (value) => VirtualNetworkPropertiesVipPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      vlanID: (() { final guardedValue = map['vlanID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vlanID: (() { final guardedValue = map['vlanID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vmipPool: (() { final guardedValue = map['vmipPool']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualNetworkPropertiesVmipPool>(guardedValue, (value) => VirtualNetworkPropertiesVmipPool.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

@@ -6,13 +6,13 @@ import 'enrichment_domain_whois_contact_response.dart';
 /// The set of contacts associated with this domain
 class EnrichmentDomainWhoisContactsResponse {
   /// The admin contact for this whois record
-  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? admin;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse?>? admin;
   /// The billing contact for this whois record
-  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? billing;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse?>? billing;
   /// The registrant contact for this whois record
-  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? registrant;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse?>? registrant;
   /// The technical contact for this whois record
-  final pulumi.Input<EnrichmentDomainWhoisContactResponse>? tech;
+  final pulumi.Input<EnrichmentDomainWhoisContactResponse?>? tech;
 
   /// Creates a new [EnrichmentDomainWhoisContactsResponse].
   /// [admin] The admin contact for this whois record

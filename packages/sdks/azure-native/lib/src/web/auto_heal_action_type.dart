@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Predefined action to be taken.
-enum AutoHealActionType {
+enum AutoHealActionType implements pulumi.PulumiEnum<String> {
   valueRecycle("Recycle"),
   valueLogEvent("LogEvent"),
   valueCustomAction("CustomAction");
 
   const AutoHealActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static AutoHealActionType fromValue(String value) {

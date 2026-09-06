@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single alert property mapping to override
 class AlertPropertyMappingResponse {
   /// The V3 alert property
-  final pulumi.Input<String>? alertProperty;
+  final pulumi.Input<String?>? alertProperty;
   /// the column name to use to override this property
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [AlertPropertyMappingResponse].
   /// [alertProperty] The V3 alert property

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
-enum AfdQueryStringCachingBehavior {
+enum AfdQueryStringCachingBehavior implements pulumi.PulumiEnum<String> {
   ignoreQueryString("IgnoreQueryString"),
   useQueryString("UseQueryString"),
   ignoreSpecifiedQueryStrings("IgnoreSpecifiedQueryStrings"),
   includeSpecifiedQueryStrings("IncludeSpecifiedQueryStrings");
 
   const AfdQueryStringCachingBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static AfdQueryStringCachingBehavior fromValue(String value) {

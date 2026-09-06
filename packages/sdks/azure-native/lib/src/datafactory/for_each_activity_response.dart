@@ -2,35 +2,34 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'activity_dependency_response.dart';
-import 'append_variable_activity_response.dart';
 import 'expression_response.dart';
 import 'user_property_response.dart';
 
 /// This activity is used for iterating over a collection and execute given activities.
 class ForEachActivityResponse {
   /// List of activities to execute .
-  final pulumi.Input<List<AppendVariableActivityResponse>> activities;
+  final pulumi.Input<List<dynamic>> activities;
   /// Batch count to be used for controlling the number of parallel execution (when isSequential is set to false).
-  final pulumi.Input<int>? batchCount;
+  final pulumi.Input<int?>? batchCount;
   /// Activity depends on condition.
-  final pulumi.Input<List<ActivityDependencyResponse>>? dependsOn;
+  final pulumi.Input<List<ActivityDependencyResponse>?>? dependsOn;
   /// Activity description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Should the loop be executed in sequence or in parallel (max 50)
-  final pulumi.Input<bool>? isSequential;
+  final pulumi.Input<bool?>? isSequential;
   /// Collection to iterate.
   final pulumi.Input<ExpressionResponse> items;
   /// Activity name.
   final pulumi.Input<String> name;
   /// Status result of the activity when the state is set to Inactive. This is an optional property and if not provided when the activity is inactive, the status will be Succeeded by default.
-  final pulumi.Input<String>? onInactiveMarkAs;
+  final pulumi.Input<String?>? onInactiveMarkAs;
   /// Activity state. This is an optional property and if not provided, the state will be Active by default.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Type of activity.
   /// Expected value is 'ForEach'.
   final pulumi.Input<String> type;
   /// Activity user properties.
-  final pulumi.Input<List<UserPropertyResponse>>? userProperties;
+  final pulumi.Input<List<UserPropertyResponse>?>? userProperties;
 
   /// Creates a new [ForEachActivityResponse].
   /// [activities] List of activities to execute .
@@ -60,7 +59,7 @@ class ForEachActivityResponse {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'activities': pulumi.Input.mapInputValue<List<AppendVariableActivityResponse>, List<Map<String, dynamic>>>(activities, (value) => pulumi.Input.encodeList<AppendVariableActivityResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'activities': activities,
       'batchCount': ?batchCount,
       'dependsOn': ?pulumi.Input.mapOptionalInputValue<List<ActivityDependencyResponse>, List<Map<String, dynamic>>>(dependsOn, (value) => pulumi.Input.encodeList<ActivityDependencyResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'description': ?description,
@@ -76,8 +75,8 @@ class ForEachActivityResponse {
 
   factory ForEachActivityResponse.fromMap(Map<String, dynamic> map) {
     return ForEachActivityResponse(
-      activities: pulumi.Input.fromValue(pulumi.Input.decodeList<AppendVariableActivityResponse>(map['activities']!, (value) => AppendVariableActivityResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      batchCount: (() { final guardedValue = map['batchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      activities: pulumi.Input.fromValue((map['activities'] as List).cast<dynamic>()),
+      batchCount: (() { final guardedValue = map['batchCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       dependsOn: (() { final guardedValue = map['dependsOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ActivityDependencyResponse>(guardedValue, (value) => ActivityDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isSequential: (() { final guardedValue = map['isSequential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

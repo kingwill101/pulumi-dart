@@ -8,11 +8,11 @@ class AuthCredentialResponse {
   /// This provides data pertaining to the health of the auth credential.
   final pulumi.Input<CredentialHealthResponse> credentialHealth;
   /// The name of the credential.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// KeyVault Secret URI for accessing the password.
-  final pulumi.Input<String>? passwordSecretIdentifier;
+  final pulumi.Input<String?>? passwordSecretIdentifier;
   /// KeyVault Secret URI for accessing the username.
-  final pulumi.Input<String>? usernameSecretIdentifier;
+  final pulumi.Input<String?>? usernameSecretIdentifier;
 
   /// Creates a new [AuthCredentialResponse].
   /// [credentialHealth] This provides data pertaining to the health of the auth credential.

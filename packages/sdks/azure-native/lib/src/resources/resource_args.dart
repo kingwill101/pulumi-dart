@@ -14,33 +14,33 @@ class ResourceArgs {
   /// The API version to use for the operation.
   final pulumi.Input<String> apiVersion;
   /// Resource extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The kind of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// ID of the resource that manages this resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// The parent resource identity.
   final pulumi.Input<String> parentResourcePath;
   /// The plan of the resource.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// The resource properties.
   final pulumi.Input<dynamic>? properties;
   /// The name of the resource group for the resource. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the resource to create.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// The namespace of the resource provider.
   final pulumi.Input<String> resourceProviderNamespace;
   /// The resource type of the resource to create.
   final pulumi.Input<String> resourceType;
   /// The SKU of the resource.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ResourceArgs].
   /// [apiVersion] The API version to use for the operation.

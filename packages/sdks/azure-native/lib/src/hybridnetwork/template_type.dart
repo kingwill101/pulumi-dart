@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The template type.
-enum TemplateType {
+enum TemplateType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueArmTemplate("ArmTemplate");
 
   const TemplateType(this.wireValue);
+  @override
   final String wireValue;
 
   static TemplateType fromValue(String value) {

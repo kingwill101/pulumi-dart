@@ -6,26 +6,26 @@ import 'system_data_response.dart';
 /// Result data returned by getSecurityPolicy.
 class GetSecurityPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
-  final String deploymentStatus;
+  final String? azureApiVersion;
+  final String? deploymentStatus;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// object which contains security policy parameters
   final SecurityPolicyWebApplicationFirewallParametersResponse? parameters;
   /// The name of the profile which holds the security policy.
-  final String profileName;
+  final String? profileName;
   /// Provisioning status
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetSecurityPolicyResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [deploymentStatus] Required.
+  /// [deploymentStatus] Optional.
   /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [name] The name of the resource
   /// [parameters] object which contains security policy parameters
@@ -34,42 +34,42 @@ class GetSecurityPolicyResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetSecurityPolicyResult({
-    required this.azureApiVersion,
-    required this.deploymentStatus,
-    required this.id,
-    required this.name,
+    this.azureApiVersion,
+    this.deploymentStatus,
+    this.id,
+    this.name,
     this.parameters,
-    required this.profileName,
-    required this.provisioningState,
-    required this.systemData,
-    required this.type,
+    this.profileName,
+    this.provisioningState,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'deploymentStatus': deploymentStatus,
-      'id': id,
-      'name': name,
+      'azureApiVersion': ?azureApiVersion,
+      'deploymentStatus': ?deploymentStatus,
+      'id': ?id,
+      'name': ?name,
       'parameters': ?parameters?.toMap(),
-      'profileName': profileName,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'profileName': ?profileName,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetSecurityPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      deploymentStatus: map['deploymentStatus'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return SecurityPolicyWebApplicationFirewallParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      profileName: map['profileName'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

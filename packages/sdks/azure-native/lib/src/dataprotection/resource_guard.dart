@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGuard {
   /// List of critical operations which are not protected by this resourceGuard
-  final pulumi.Input<List<String>>? vaultCriticalOperationExclusionList;
+  final pulumi.Input<List<String>?>? vaultCriticalOperationExclusionList;
 
   /// Creates a new [ResourceGuard].
   /// [vaultCriticalOperationExclusionList] List of critical operations which are not protected by this resourceGuard

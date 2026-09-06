@@ -7,11 +7,11 @@ import 'sub_resource_response.dart';
 /// The properties that define a direct peering.
 class PeeringPropertiesDirectResponse {
   /// The set of connections that constitute a direct peering.
-  final pulumi.Input<List<DirectConnectionResponse>>? connections;
+  final pulumi.Input<List<DirectConnectionResponse>?>? connections;
   /// The type of direct peering.
-  final pulumi.Input<String>? directPeeringType;
+  final pulumi.Input<String?>? directPeeringType;
   /// The reference of the peer ASN.
-  final pulumi.Input<SubResourceResponse>? peerAsn;
+  final pulumi.Input<SubResourceResponse?>? peerAsn;
   /// The flag that indicates whether or not the peering is used for peering service.
   final pulumi.Input<bool> useForPeeringService;
 

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the type of discount. Supported values are ProductFamily, Product, Sku, CustomPrice, and CustomPriceMultiCurrency.
-enum DiscountType {
+enum DiscountType implements pulumi.PulumiEnum<String> {
   productFamily("ProductFamily"),
   product("Product"),
   sku("Sku"),
@@ -7,6 +9,7 @@ enum DiscountType {
   customPriceMultiCurrency("CustomPriceMultiCurrency");
 
   const DiscountType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscountType fromValue(String value) {

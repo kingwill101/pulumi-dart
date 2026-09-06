@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Server information of the environment.
 class EnvironmentServerResponse {
   /// The location of the management portal
-  final pulumi.Input<List<String>>? managementPortalUri;
+  final pulumi.Input<List<String>?>? managementPortalUri;
   /// Type of the server that represents the environment.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EnvironmentServerResponse].
   /// [managementPortalUri] The location of the management portal

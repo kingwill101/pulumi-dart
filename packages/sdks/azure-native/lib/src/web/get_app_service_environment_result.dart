@@ -10,7 +10,7 @@ import 'virtual_network_profile_response.dart';
 /// Result data returned by getAppServiceEnvironment.
 class GetAppServiceEnvironmentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Custom settings for changing the behavior of the App Service Environment.
   final List<NameValuePairResponse>? clusterSettings;
   /// Full view of the custom domain suffix configuration for ASEv3.
@@ -22,9 +22,9 @@ class GetAppServiceEnvironmentResult {
   /// Scale factor for front-ends.
   final int? frontEndScaleFactor;
   /// Flag that displays whether an ASE has linux workers or not
-  final bool hasLinuxWorkers;
+  final bool? hasLinuxWorkers;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Specifies which endpoints to serve internally in the Virtual Network for the App Service Environment.
   final String? internalLoadBalancingMode;
   /// Number of IP SSL addresses reserved for the App Service Environment.
@@ -32,38 +32,38 @@ class GetAppServiceEnvironmentResult {
   /// Kind of resource. If the resource is an app, you can refer to https://github.com/Azure/app-service-linux-docs/blob/master/Things_You_Should_Know/kind_property.md#app-service-resource-kind-reference for details supported values for kind.
   final String? kind;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Maximum number of VMs in the App Service Environment.
-  final int maximumNumberOfMachines;
+  final int? maximumNumberOfMachines;
   /// Number of front-end instances.
-  final int multiRoleCount;
+  final int? multiRoleCount;
   /// Front-end VM size, e.g. "Medium", "Large".
   final String? multiSize;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Full view of networking configuration for an ASE.
   final AseV3NetworkingConfigurationResponse? networkingConfiguration;
   /// Provisioning state of the App Service Environment.
-  final String provisioningState;
+  final String? provisioningState;
   /// Current status of the App Service Environment.
-  final String status;
+  final String? status;
   /// &lt;code&gt;true&lt;/code&gt; if the App Service Environment is suspended; otherwise, &lt;code&gt;false&lt;/code&gt;. The environment can be suspended, e.g. when the management endpoint is no longer available
   /// (most likely because NSG blocked the incoming traffic).
-  final bool suspended;
+  final bool? suspended;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Whether an upgrade is available for this App Service Environment.
-  final String upgradeAvailability;
+  final String? upgradeAvailability;
   /// Upgrade Preference
   final String? upgradePreference;
   /// User added ip ranges to whitelist on ASE db
   final List<String>? userWhitelistedIpRanges;
   /// Description of the Virtual Network.
-  final VirtualNetworkProfileResponse virtualNetwork;
+  final VirtualNetworkProfileResponse? virtualNetwork;
   /// Whether or not this App Service Environment is zone-redundant.
   final bool? zoneRedundant;
 
@@ -96,99 +96,99 @@ class GetAppServiceEnvironmentResult {
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
   /// [virtualNetwork] Description of the Virtual Network.
   /// [zoneRedundant] Whether or not this App Service Environment is zone-redundant.
-  const GetAppServiceEnvironmentResult({
-    required this.azureApiVersion,
+  GetAppServiceEnvironmentResult({
+    this.azureApiVersion,
     this.clusterSettings,
     this.customDnsSuffixConfiguration,
     this.dedicatedHostCount,
     this.dnsSuffix,
     this.frontEndScaleFactor,
-    required this.hasLinuxWorkers,
-    required this.id,
+    this.hasLinuxWorkers,
+    this.id,
     this.internalLoadBalancingMode,
     this.ipsslAddressCount,
     this.kind,
-    required this.location,
-    required this.maximumNumberOfMachines,
-    required this.multiRoleCount,
+    this.location,
+    this.maximumNumberOfMachines,
+    this.multiRoleCount,
     this.multiSize,
-    required this.name,
+    this.name,
     this.networkingConfiguration,
-    required this.provisioningState,
-    required this.status,
-    required this.suspended,
-    required this.systemData,
+    this.provisioningState,
+    this.status,
+    this.suspended,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.upgradeAvailability,
-    this.upgradePreference,
+    this.type,
+    this.upgradeAvailability,
+    String? upgradePreference,
     this.userWhitelistedIpRanges,
-    required this.virtualNetwork,
+    this.virtualNetwork,
     this.zoneRedundant,
-  });
+  }) : upgradePreference = upgradePreference ?? 'None';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clusterSettings': ?(() { final guardedValue = clusterSettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<NameValuePairResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'customDnsSuffixConfiguration': ?customDnsSuffixConfiguration?.toMap(),
       'dedicatedHostCount': ?dedicatedHostCount,
       'dnsSuffix': ?dnsSuffix,
       'frontEndScaleFactor': ?frontEndScaleFactor,
-      'hasLinuxWorkers': hasLinuxWorkers,
-      'id': id,
+      'hasLinuxWorkers': ?hasLinuxWorkers,
+      'id': ?id,
       'internalLoadBalancingMode': ?internalLoadBalancingMode,
       'ipsslAddressCount': ?ipsslAddressCount,
       'kind': ?kind,
-      'location': location,
-      'maximumNumberOfMachines': maximumNumberOfMachines,
-      'multiRoleCount': multiRoleCount,
+      'location': ?location,
+      'maximumNumberOfMachines': ?maximumNumberOfMachines,
+      'multiRoleCount': ?multiRoleCount,
       'multiSize': ?multiSize,
-      'name': name,
+      'name': ?name,
       'networkingConfiguration': ?networkingConfiguration?.toMap(),
-      'provisioningState': provisioningState,
-      'status': status,
-      'suspended': suspended,
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'status': ?status,
+      'suspended': ?suspended,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'upgradeAvailability': upgradeAvailability,
+      'type': ?type,
+      'upgradeAvailability': ?upgradeAvailability,
       'upgradePreference': ?upgradePreference,
       'userWhitelistedIpRanges': ?userWhitelistedIpRanges,
-      'virtualNetwork': virtualNetwork.toMap(),
+      'virtualNetwork': ?virtualNetwork?.toMap(),
       'zoneRedundant': ?zoneRedundant,
     };
   }
 
   factory GetAppServiceEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetAppServiceEnvironmentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clusterSettings: (() { final guardedValue = map['clusterSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NameValuePairResponse>(guardedValue, (value) => NameValuePairResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       customDnsSuffixConfiguration: (() { final guardedValue = map['customDnsSuffixConfiguration']; if (guardedValue == null) return null; return CustomDnsSuffixConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      dedicatedHostCount: (() { final guardedValue = map['dedicatedHostCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       dnsSuffix: (() { final guardedValue = map['dnsSuffix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      frontEndScaleFactor: (() { final guardedValue = map['frontEndScaleFactor']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      hasLinuxWorkers: map['hasLinuxWorkers'] as bool,
-      id: map['id'] as String,
+      frontEndScaleFactor: (() { final guardedValue = map['frontEndScaleFactor']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      hasLinuxWorkers: (() { final guardedValue = map['hasLinuxWorkers']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       internalLoadBalancingMode: (() { final guardedValue = map['internalLoadBalancingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      ipsslAddressCount: (() { final guardedValue = map['ipsslAddressCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      ipsslAddressCount: (() { final guardedValue = map['ipsslAddressCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      maximumNumberOfMachines: map['maximumNumberOfMachines'] as int,
-      multiRoleCount: map['multiRoleCount'] as int,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maximumNumberOfMachines: (() { final guardedValue = map['maximumNumberOfMachines']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      multiRoleCount: (() { final guardedValue = map['multiRoleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       multiSize: (() { final guardedValue = map['multiSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkingConfiguration: (() { final guardedValue = map['networkingConfiguration']; if (guardedValue == null) return null; return AseV3NetworkingConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      suspended: map['suspended'] as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      suspended: (() { final guardedValue = map['suspended']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      upgradeAvailability: map['upgradeAvailability'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgradeAvailability: (() { final guardedValue = map['upgradeAvailability']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradePreference: (() { final guardedValue = map['upgradePreference']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userWhitelistedIpRanges: (() { final guardedValue = map['userWhitelistedIpRanges']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      virtualNetwork: VirtualNetworkProfileResponse.fromMap((map['virtualNetwork']! as Map).cast<String, dynamic>()),
+      virtualNetwork: (() { final guardedValue = map['virtualNetwork']; if (guardedValue == null) return null; return VirtualNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       zoneRedundant: (() { final guardedValue = map['zoneRedundant']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

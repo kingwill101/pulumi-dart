@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The entity provider that is synced.
-enum EntityProviders {
+enum EntityProviders implements pulumi.PulumiEnum<String> {
   valueActiveDirectory("ActiveDirectory"),
   valueAzureActiveDirectory("AzureActiveDirectory");
 
   const EntityProviders(this.wireValue);
+  @override
   final String wireValue;
 
   static EntityProviders fromValue(String value) {

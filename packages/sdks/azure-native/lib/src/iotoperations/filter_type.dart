@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of dataflow operation.
-enum FilterType {
+enum FilterType implements pulumi.PulumiEnum<String> {
   filter("Filter");
 
   const FilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static FilterType fromValue(String value) {

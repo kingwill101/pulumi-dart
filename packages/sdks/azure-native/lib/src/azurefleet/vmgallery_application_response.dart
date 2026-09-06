@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VMGalleryApplicationResponse {
   /// Optional, Specifies the uri to an azure blob that will replace the default
   /// configuration for the package if provided
-  final pulumi.Input<String>? configurationReference;
+  final pulumi.Input<String?>? configurationReference;
   /// If set to true, when a new Gallery Application version is available in PIR/SIG,
   /// it will be automatically updated for the VM/VMSS
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// Optional, Specifies the order in which the packages have to be installed
-  final pulumi.Input<int>? order;
+  final pulumi.Input<int?>? order;
   /// Specifies the GalleryApplicationVersion resource id on the form of
   /// /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{application}/versions/{version}
   final pulumi.Input<String> packageReferenceId;
   /// Optional, Specifies a passthrough value for more generic context.
-  final pulumi.Input<String>? tags;
+  final pulumi.Input<String?>? tags;
   /// Optional, If true, any failure for any operation in the VmApplication will fail
   /// the deployment
-  final pulumi.Input<bool>? treatFailureAsDeploymentFailure;
+  final pulumi.Input<bool?>? treatFailureAsDeploymentFailure;
 
   /// Creates a new [VMGalleryApplicationResponse].
   /// [configurationReference] Optional, Specifies the uri to an azure blob that will replace the default
@@ -53,7 +53,7 @@ class VMGalleryApplicationResponse {
     return VMGalleryApplicationResponse(
       configurationReference: (() { final guardedValue = map['configurationReference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableAutomaticUpgrade: (() { final guardedValue = map['enableAutomaticUpgrade']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       packageReferenceId: pulumi.Input.fromValue(map['packageReferenceId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       treatFailureAsDeploymentFailure: (() { final guardedValue = map['treatFailureAsDeploymentFailure']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

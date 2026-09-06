@@ -6,7 +6,7 @@ import 'text_match_response.dart';
 /// Rules for detecting and blocking specific text patterns. If a file contains a text pattern that is part of the configured deny list, the file will be denied.
 class TextMatchingRulesetResponse {
   /// A list of text patterns to block, each with matching rules and case sensitivity options.
-  final pulumi.Input<List<TextMatchResponse>>? deny;
+  final pulumi.Input<List<TextMatchResponse>?>? deny;
 
   /// Creates a new [TextMatchingRulesetResponse].
   /// [deny] A list of text patterns to block, each with matching rules and case sensitivity options.

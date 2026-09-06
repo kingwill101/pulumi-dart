@@ -6,7 +6,7 @@ import 'break_out_category_policies.dart';
 /// Network Virtual Appliance Sku Properties.
 class Office365PolicyProperties {
   /// Office 365 breakout categories.
-  final pulumi.Input<BreakOutCategoryPolicies>? breakOutCategories;
+  final pulumi.Input<BreakOutCategoryPolicies?>? breakOutCategories;
 
   /// Creates a new [Office365PolicyProperties].
   /// [breakOutCategories] Office 365 breakout categories.

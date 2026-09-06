@@ -6,50 +6,50 @@ import 'system_data_response.dart';
 /// Result data returned by getDatabaseMigrationsSqlDb.
 class GetDatabaseMigrationsSqlDbResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
-  final String id;
-  final String name;
+  final String? azureApiVersion;
+  final String? id;
+  final String? name;
   /// Database Migration Resource properties for SQL database.
-  final DatabaseMigrationPropertiesSqlDbResponse properties;
+  final DatabaseMigrationPropertiesSqlDbResponse? properties;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
-  final String type;
+  final SystemDataResponse? systemData;
+  final String? type;
 
   /// Creates a new [GetDatabaseMigrationsSqlDbResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [id] Required.
-  /// [name] Required.
+  /// [id] Optional.
+  /// [name] Optional.
   /// [properties] Database Migration Resource properties for SQL database.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
-  /// [type] Required.
+  /// [type] Optional.
   const GetDatabaseMigrationsSqlDbResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.systemData,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'systemData': systemData.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetDatabaseMigrationsSqlDbResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseMigrationsSqlDbResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: DatabaseMigrationPropertiesSqlDbResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return DatabaseMigrationPropertiesSqlDbResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

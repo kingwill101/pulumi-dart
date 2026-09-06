@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'adccatalog_args.dart';
+import 'principals_response.dart';
 
 /// Azure Data Catalog.
 ///
@@ -264,7 +265,7 @@ import 'adccatalog_args.dart';
 /// ```
 class ADCCatalog extends pulumi.CustomResource {
   /// Azure data catalog admin list.
-  late final pulumi.Output<List<Map<String, dynamic>>?> admins;
+  late final pulumi.Output<List<PrincipalsResponse>?> admins;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Automatic unit adjustment enabled or not.
@@ -286,7 +287,7 @@ class ADCCatalog extends pulumi.CustomResource {
   /// Azure data catalog units.
   late final pulumi.Output<int?> units;
   /// Azure data catalog user list.
-  late final pulumi.Output<List<Map<String, dynamic>>?> users;
+  late final pulumi.Output<List<PrincipalsResponse>?> users;
 
   /// Creates a new [ADCCatalog].
   /// [name] The Pulumi resource name.
@@ -302,7 +303,7 @@ class ADCCatalog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    admins = registerOutput<List<Map<String, dynamic>>?>('admins');
+    admins = registerOutput<List<PrincipalsResponse>?>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     enableAutomaticUnitAdjustment = registerOutput<bool?>('enableAutomaticUnitAdjustment');
     etag = registerOutput<String?>('etag');
@@ -310,9 +311,32 @@ class ADCCatalog extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     sku = registerOutput<String?>('sku');
     successfullyProvisioned = registerOutput<bool?>('successfullyProvisioned');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     units = registerOutput<int?>('units');
-    users = registerOutput<List<Map<String, dynamic>>?>('users');
+    users = registerOutput<List<PrincipalsResponse>?>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [ADCCatalog] resource.
+  ADCCatalog.reference(String urn)
+    : super(
+        'azure-native:datacatalog:ADCCatalog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    admins = registerOutput<List<PrincipalsResponse>?>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUnitAdjustment = registerOutput<bool?>('enableAutomaticUnitAdjustment');
+    etag = registerOutput<String?>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    sku = registerOutput<String?>('sku');
+    successfullyProvisioned = registerOutput<bool?>('successfullyProvisioned');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    units = registerOutput<int?>('units');
+    users = registerOutput<List<PrincipalsResponse>?>('users', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrincipalsResponse>(guardedValue, (value) => PrincipalsResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

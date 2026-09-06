@@ -11,7 +11,7 @@ import 'virtual_machine_additional_capabilities.dart';
 /// The base virtual machine configuration for a lab.
 class VirtualMachineProfile {
   /// Additional VM capabilities.
-  final pulumi.Input<VirtualMachineAdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<VirtualMachineAdditionalCapabilities?>? additionalCapabilities;
   /// Credentials for the admin user on the VM.
   final pulumi.Input<Credentials> adminUser;
   /// Indicates what lab virtual machines are created from.
@@ -19,13 +19,13 @@ class VirtualMachineProfile {
   /// The image configuration for lab virtual machines.
   final pulumi.Input<ImageReference> imageReference;
   /// Credentials for the non-admin user on the VM, if one exists.
-  final pulumi.Input<Credentials>? nonAdminUser;
+  final pulumi.Input<Credentials?>? nonAdminUser;
   /// The SKU for the lab. Defines the type of virtual machines used in the lab.
   final pulumi.Input<Sku> sku;
   /// The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
   final pulumi.Input<String> usageQuota;
   /// Enabling this option will use the same password for all user VMs.
-  final pulumi.Input<EnableState>? useSharedPassword;
+  final pulumi.Input<EnableState?>? useSharedPassword;
 
   /// Creates a new [VirtualMachineProfile].
   /// [additionalCapabilities] Additional VM capabilities.
@@ -36,7 +36,7 @@ class VirtualMachineProfile {
   /// [sku] The SKU for the lab. Defines the type of virtual machines used in the lab.
   /// [usageQuota] The initial quota alloted to each lab user. Must be a time span between 0 and 9999 hours.
   /// [useSharedPassword] Enabling this option will use the same password for all user VMs.
-  const VirtualMachineProfile({
+  VirtualMachineProfile({
     this.additionalCapabilities,
     required this.adminUser,
     required this.createOption,
@@ -44,8 +44,8 @@ class VirtualMachineProfile {
     this.nonAdminUser,
     required this.sku,
     required this.usageQuota,
-    this.useSharedPassword,
-  });
+    pulumi.Input<EnableState?>? useSharedPassword,
+  }) : useSharedPassword = useSharedPassword ?? pulumi.Input.fromValue(EnableState.fromValue('Disabled'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -8,7 +8,7 @@ class HealthModelPropertiesResponse {
   /// The data plane endpoint for interacting with health data
   final pulumi.Input<String> dataplaneEndpoint;
   /// Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
-  final pulumi.Input<ModelDiscoverySettingsResponse>? discovery;
+  final pulumi.Input<ModelDiscoverySettingsResponse?>? discovery;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
 

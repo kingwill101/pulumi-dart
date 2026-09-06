@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePropertiesResponseDataDisks {
   /// Resource ID of the data disk
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualMachinePropertiesResponseDataDisks].
   /// [id] Resource ID of the data disk

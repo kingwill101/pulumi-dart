@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Port
 class PortResponse {
   /// Access Direction for Protocol of the Instance(inbound/outbound).
-  final pulumi.Input<String>? accessDirection;
+  final pulumi.Input<String?>? accessDirection;
   /// Access From Protocol of the Instance.
-  final pulumi.Input<String>? accessFrom;
+  final pulumi.Input<String?>? accessFrom;
   /// Access Type Protocol of the Instance.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// cidr List Aliases
-  final pulumi.Input<List<String>>? cidrListAliases;
+  final pulumi.Input<List<String>?>? cidrListAliases;
   /// Property cidrs
-  final pulumi.Input<List<String>>? cidrs;
+  final pulumi.Input<List<String>?>? cidrs;
   /// CommonName for Protocol of the Instance.
-  final pulumi.Input<String>? commonName;
+  final pulumi.Input<String?>? commonName;
   /// From Port of the Instance.
-  final pulumi.Input<int>? fromPort;
+  final pulumi.Input<int?>? fromPort;
   /// IPv6 Cidrs
-  final pulumi.Input<List<String>>? ipv6Cidrs;
+  final pulumi.Input<List<String>?>? ipv6Cidrs;
   /// Port Protocol of the Instance.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
   /// To Port of the Instance.
-  final pulumi.Input<int>? toPort;
+  final pulumi.Input<int?>? toPort;
 
   /// Creates a new [PortResponse].
   /// [accessDirection] Access Direction for Protocol of the Instance(inbound/outbound).
@@ -72,10 +72,10 @@ class PortResponse {
       cidrListAliases: (() { final guardedValue = map['cidrListAliases']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       cidrs: (() { final guardedValue = map['cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       commonName: (() { final guardedValue = map['commonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6Cidrs: (() { final guardedValue = map['ipv6Cidrs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

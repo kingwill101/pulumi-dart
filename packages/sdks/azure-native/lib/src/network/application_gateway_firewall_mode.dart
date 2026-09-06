@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Web application firewall mode.
-enum ApplicationGatewayFirewallMode {
+enum ApplicationGatewayFirewallMode implements pulumi.PulumiEnum<String> {
   valueDetection("Detection"),
   valuePrevention("Prevention");
 
   const ApplicationGatewayFirewallMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ApplicationGatewayFirewallMode fromValue(String value) {

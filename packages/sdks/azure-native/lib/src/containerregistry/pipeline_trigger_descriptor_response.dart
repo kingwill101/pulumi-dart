@@ -5,7 +5,7 @@ import 'pipeline_source_trigger_descriptor_response.dart';
 
 class PipelineTriggerDescriptorResponse {
   /// The source trigger that caused the pipeline run.
-  final pulumi.Input<PipelineSourceTriggerDescriptorResponse>? sourceTrigger;
+  final pulumi.Input<PipelineSourceTriggerDescriptorResponse?>? sourceTrigger;
 
   /// Creates a new [PipelineTriggerDescriptorResponse].
   /// [sourceTrigger] The source trigger that caused the pipeline run.

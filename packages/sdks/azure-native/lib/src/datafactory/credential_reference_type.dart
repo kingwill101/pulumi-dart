@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Credential reference type.
-enum CredentialReferenceType {
+enum CredentialReferenceType implements pulumi.PulumiEnum<String> {
   credentialReference("CredentialReference");
 
   const CredentialReferenceType(this.wireValue);
+  @override
   final String wireValue;
 
   static CredentialReferenceType fromValue(String value) {

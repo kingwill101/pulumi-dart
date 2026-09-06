@@ -13,23 +13,23 @@ class BusinessProcessArgs {
   /// The name of the Application
   final pulumi.Input<String> applicationName;
   /// The business process mapping.
-  final pulumi.Input<Map<String, BusinessProcessMappingItem>>? businessProcessMapping;
+  final pulumi.Input<Map<String, BusinessProcessMappingItem>?>? businessProcessMapping;
   /// The name of the business process
-  final pulumi.Input<String>? businessProcessName;
+  final pulumi.Input<String?>? businessProcessName;
   /// The business process stages.
-  final pulumi.Input<Map<String, BusinessProcessStage>>? businessProcessStages;
+  final pulumi.Input<Map<String, BusinessProcessStage>?>? businessProcessStages;
   /// The description of the business process.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The business process identifier.
-  final pulumi.Input<BusinessProcessIdentifier>? identifier;
+  final pulumi.Input<BusinessProcessIdentifier?>? identifier;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the space
   final pulumi.Input<String> spaceName;
   /// The table name of the business process.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
   /// The tracking data store reference name.
-  final pulumi.Input<String>? trackingDataStoreReferenceName;
+  final pulumi.Input<String?>? trackingDataStoreReferenceName;
 
   /// Creates a new [BusinessProcessArgs].
   /// [applicationName] The name of the Application

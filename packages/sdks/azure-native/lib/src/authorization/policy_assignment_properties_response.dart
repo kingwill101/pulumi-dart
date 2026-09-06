@@ -8,11 +8,11 @@ import 'policy_assignment_properties_scope_response.dart';
 /// Expanded info of resource scope, role definition and policy
 class PolicyAssignmentPropertiesResponse {
   /// Details of the policy
-  final pulumi.Input<PolicyAssignmentPropertiesPolicyResponse>? policy;
+  final pulumi.Input<PolicyAssignmentPropertiesPolicyResponse?>? policy;
   /// Details of role definition
-  final pulumi.Input<PolicyAssignmentPropertiesRoleDefinitionResponse>? roleDefinition;
+  final pulumi.Input<PolicyAssignmentPropertiesRoleDefinitionResponse?>? roleDefinition;
   /// Details of the resource scope
-  final pulumi.Input<PolicyAssignmentPropertiesScopeResponse>? scope;
+  final pulumi.Input<PolicyAssignmentPropertiesScopeResponse?>? scope;
 
   /// Creates a new [PolicyAssignmentPropertiesResponse].
   /// [policy] Details of the policy

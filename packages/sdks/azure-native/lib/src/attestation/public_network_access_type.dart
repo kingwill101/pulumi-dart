@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Controls whether traffic from the public network is allowed to access the Attestation Provider APIs.
-enum PublicNetworkAccessType {
+enum PublicNetworkAccessType implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const PublicNetworkAccessType(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicNetworkAccessType fromValue(String value) {

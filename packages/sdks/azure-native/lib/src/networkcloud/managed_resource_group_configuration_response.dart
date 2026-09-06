@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ManagedResourceGroupConfigurationResponse {
   /// The location of the managed resource group. If not specified, the location of the parent resource is chosen.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name for the managed resource group. If not specified, the unique name is automatically generated.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] The location of the managed resource group. If not specified, the location of the parent resource is chosen.

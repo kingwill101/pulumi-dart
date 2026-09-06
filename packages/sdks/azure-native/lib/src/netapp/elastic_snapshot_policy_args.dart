@@ -11,15 +11,15 @@ class ElasticSnapshotPolicyArgs {
   /// The name of the ElasticAccount
   final pulumi.Input<String> accountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<ElasticSnapshotPolicyProperties>? properties;
+  final pulumi.Input<ElasticSnapshotPolicyProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the ElasticSnapshotPolicy
-  final pulumi.Input<String>? snapshotPolicyName;
+  final pulumi.Input<String?>? snapshotPolicyName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ElasticSnapshotPolicyArgs].
   /// [accountName] The name of the ElasticAccount

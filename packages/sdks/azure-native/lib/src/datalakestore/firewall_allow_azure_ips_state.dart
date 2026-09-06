@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
-enum FirewallAllowAzureIpsState {
+enum FirewallAllowAzureIpsState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const FirewallAllowAzureIpsState(this.wireValue);
+  @override
   final String wireValue;
 
   static FirewallAllowAzureIpsState fromValue(String value) {

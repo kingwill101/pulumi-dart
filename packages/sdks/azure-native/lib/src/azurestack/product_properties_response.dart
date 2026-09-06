@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Additional properties of the product
 class ProductPropertiesResponse {
   /// The version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ProductPropertiesResponse].
   /// [version] The version.

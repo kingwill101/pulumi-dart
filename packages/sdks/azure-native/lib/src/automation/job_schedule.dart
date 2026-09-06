@@ -260,7 +260,27 @@ class JobSchedule extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     jobScheduleId = registerOutput<String?>('jobScheduleId');
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<Map<String, String>?>('parameters');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    runOn = registerOutput<String?>('runOn');
+    runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [JobSchedule] resource.
+  JobSchedule.reference(String urn)
+    : super(
+        'azure-native:automation:JobSchedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    jobScheduleId = registerOutput<String?>('jobScheduleId');
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<Map<String, String>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     runOn = registerOutput<String?>('runOn');
     runbook = registerOutput<RunbookAssociationPropertyResponse?>('runbook', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     schedule = registerOutput<ScheduleAssociationPropertyResponse?>('schedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

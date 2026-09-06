@@ -11,7 +11,7 @@ class SharedPrivateLinkResourceResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// Describes the properties of a shared private link resource managed by the Azure AI Search service.
-  final pulumi.Input<SharedPrivateLinkResourcePropertiesResponse>? properties;
+  final pulumi.Input<SharedPrivateLinkResourcePropertiesResponse?>? properties;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"

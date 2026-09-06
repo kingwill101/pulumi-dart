@@ -6,11 +6,11 @@ import 'attach_new_data_disk_options.dart';
 /// Request body for adding a new or existing data disk to a virtual machine.
 class DataDiskProperties {
   /// Specifies options to attach a new disk to the virtual machine.
-  final pulumi.Input<AttachNewDataDiskOptions>? attachNewDataDiskOptions;
+  final pulumi.Input<AttachNewDataDiskOptions?>? attachNewDataDiskOptions;
   /// Specifies the existing lab disk id to attach to virtual machine.
-  final pulumi.Input<String>? existingLabDiskId;
+  final pulumi.Input<String?>? existingLabDiskId;
   /// Caching option for a data disk (i.e. None, ReadOnly, ReadWrite).
-  final pulumi.Input<String>? hostCaching;
+  final pulumi.Input<dynamic>? hostCaching;
 
   /// Creates a new [DataDiskProperties].
   /// [attachNewDataDiskOptions] Specifies options to attach a new disk to the virtual machine.
@@ -34,7 +34,7 @@ class DataDiskProperties {
     return DataDiskProperties(
       attachNewDataDiskOptions: (() { final guardedValue = map['attachNewDataDiskOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AttachNewDataDiskOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       existingLabDiskId: (() { final guardedValue = map['existingLabDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

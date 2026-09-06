@@ -9,19 +9,19 @@ class AuthenticationResponse {
   /// Defines the method to authenticate the user of the client at the server.
   final pulumi.Input<String> method;
   /// Defines the username and password references when UsernamePassword user authentication mode is selected.
-  final pulumi.Input<UsernamePasswordCredentialsResponse>? usernamePasswordCredentials;
+  final pulumi.Input<UsernamePasswordCredentialsResponse?>? usernamePasswordCredentials;
   /// Defines the certificate reference when Certificate user authentication mode is selected.
-  final pulumi.Input<X509CredentialsResponse>? x509Credentials;
+  final pulumi.Input<X509CredentialsResponse?>? x509Credentials;
 
   /// Creates a new [AuthenticationResponse].
   /// [method] Defines the method to authenticate the user of the client at the server.
   /// [usernamePasswordCredentials] Defines the username and password references when UsernamePassword user authentication mode is selected.
   /// [x509Credentials] Defines the certificate reference when Certificate user authentication mode is selected.
-  const AuthenticationResponse({
-    required this.method,
+  AuthenticationResponse({
+    pulumi.Input<String>? method,
     this.usernamePasswordCredentials,
     this.x509Credentials,
-  });
+  }) : method = method ?? pulumi.Input.fromValue('Certificate');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

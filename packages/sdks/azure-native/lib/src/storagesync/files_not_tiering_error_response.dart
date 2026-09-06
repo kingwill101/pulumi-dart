@@ -26,8 +26,8 @@ class FilesNotTieringErrorResponse {
 
   factory FilesNotTieringErrorResponse.fromMap(Map<String, dynamic> map) {
     return FilesNotTieringErrorResponse(
-      errorCode: pulumi.Input.fromValue(map['errorCode'] as int),
-      fileCount: pulumi.Input.fromValue(map['fileCount'] as double),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
+      fileCount: pulumi.Input.fromValue((map['fileCount'] as num).toDouble()),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Migration Strategy.
-enum MigrationStrategy {
+enum MigrationStrategy implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   optimizeForCost("OptimizeForCost"),
   iaaSOnly("IaaSOnly"),
@@ -7,6 +9,7 @@ enum MigrationStrategy {
   aVSOnly("AVSOnly");
 
   const MigrationStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static MigrationStrategy fromValue(String value) {

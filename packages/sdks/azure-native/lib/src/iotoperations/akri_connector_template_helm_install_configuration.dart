@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AkriConnectorTemplateHelmInstallConfiguration properties.
 class AkriConnectorTemplateHelmInstallConfiguration {
   /// If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
-  final pulumi.Input<bool>? atomic;
+  final pulumi.Input<bool?>? atomic;
   /// Disable pre/post upgrade hooks for the operation.
-  final pulumi.Input<bool>? disableHooks;
+  final pulumi.Input<bool?>? disableHooks;
   /// Time to wait for any individual Kubernetes operation (like `Jobs` for hooks).
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
   /// If set, the operation will wait until all Pods, PVCs, Services, and minimum number of Pods of a `Deployment`, `StatefulSet`, or `ReplicaSet` are in a ready state before marking the release as successful.
-  final pulumi.Input<bool>? wait;
+  final pulumi.Input<bool?>? wait;
   /// If set, the operation will wait for jobs to complete before marking the release as successful.
-  final pulumi.Input<bool>? waitForJobs;
+  final pulumi.Input<bool?>? waitForJobs;
 
   /// Creates a new [AkriConnectorTemplateHelmInstallConfiguration].
   /// [atomic] If set, the operation will be atomic. If the operation fails, all changes will be rolled back.
@@ -43,7 +43,7 @@ class AkriConnectorTemplateHelmInstallConfiguration {
     return AkriConnectorTemplateHelmInstallConfiguration(
       atomic: (() { final guardedValue = map['atomic']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       disableHooks: (() { final guardedValue = map['disableHooks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       wait: (() { final guardedValue = map['wait']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       waitForJobs: (() { final guardedValue = map['waitForJobs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

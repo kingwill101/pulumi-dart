@@ -11,13 +11,13 @@ class ConnectionArgs {
   /// The name of the automation account.
   final pulumi.Input<String> automationAccountName;
   /// The name of connection.
-  final pulumi.Input<String>? connectionName;
+  final pulumi.Input<String?>? connectionName;
   /// Gets or sets the connectionType of the connection.
   final pulumi.Input<ConnectionTypeAssociationProperty> connectionType;
   /// Gets or sets the description of the connection.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Gets or sets the field definition properties of the connection.
-  final pulumi.Input<Map<String, String>>? fieldDefinitionValues;
+  final pulumi.Input<Map<String, String>?>? fieldDefinitionValues;
   /// Gets or sets the name of the connection.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

@@ -9,7 +9,7 @@ import 'user_role_assignment_response.dart';
 /// Result data returned by getProjectEnvironmentType.
 class GetProjectEnvironmentTypeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The role definition assigned to the environment creator on backing resources.
   final ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment? creatorRoleAssignment;
   /// Id of a subscription that the environment type will be mapped to. The environment's resources will be deployed into this subscription.
@@ -17,25 +17,25 @@ class GetProjectEnvironmentTypeResult {
   /// The display name of the project environment type.
   final String? displayName;
   /// The number of environments of this type.
-  final int environmentCount;
+  final int? environmentCount;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Managed identity properties
   final ManagedServiceIdentityResponse? identity;
   /// The geo-location for the environment type
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Defines whether this Environment Type can be used in this Project.
   final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
   final Map<String, UserRoleAssignmentResponse>? userRoleAssignments;
 
@@ -56,59 +56,59 @@ class GetProjectEnvironmentTypeResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userRoleAssignments] Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
   const GetProjectEnvironmentTypeResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.creatorRoleAssignment,
     this.deploymentTargetId,
     this.displayName,
-    required this.environmentCount,
-    required this.id,
+    this.environmentCount,
+    this.id,
     this.identity,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.status,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
     this.userRoleAssignments,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'creatorRoleAssignment': ?creatorRoleAssignment?.toMap(),
       'deploymentTargetId': ?deploymentTargetId,
       'displayName': ?displayName,
-      'environmentCount': environmentCount,
-      'id': id,
+      'environmentCount': ?environmentCount,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'status': ?status,
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'userRoleAssignments': ?(() { final guardedValue = userRoleAssignments; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<UserRoleAssignmentResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetProjectEnvironmentTypeResult.fromMap(Map<String, dynamic> map) {
     return GetProjectEnvironmentTypeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       creatorRoleAssignment: (() { final guardedValue = map['creatorRoleAssignment']; if (guardedValue == null) return null; return ProjectEnvironmentTypeUpdatePropertiesResponseCreatorRoleAssignment.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       deploymentTargetId: (() { final guardedValue = map['deploymentTargetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      environmentCount: map['environmentCount'] as int,
-      id: map['id'] as String,
+      environmentCount: (() { final guardedValue = map['environmentCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       userRoleAssignments: (() { final guardedValue = map['userRoleAssignments']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<UserRoleAssignmentResponse>(guardedValue, (value) => UserRoleAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

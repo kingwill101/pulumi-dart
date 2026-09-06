@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DTO object representing compute resource
 class MaterializationComputeResource {
   /// Specifies the instance type
-  final pulumi.Input<String>? instanceType;
+  final pulumi.Input<String?>? instanceType;
 
   /// Creates a new [MaterializationComputeResource].
   /// [instanceType] Specifies the instance type

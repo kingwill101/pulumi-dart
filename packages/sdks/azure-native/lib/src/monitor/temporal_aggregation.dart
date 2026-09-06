@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents temporal aggregation settings.
 class TemporalAggregation {
   /// Type of temporal aggregation.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// Time window size for aggregation, in minutes.
-  final pulumi.Input<int>? windowSizeMinutes;
+  final pulumi.Input<int?>? windowSizeMinutes;
 
   /// Creates a new [TemporalAggregation].
   /// [type] Type of temporal aggregation.
@@ -26,8 +26,8 @@ class TemporalAggregation {
 
   factory TemporalAggregation.fromMap(Map<String, dynamic> map) {
     return TemporalAggregation(
-      type: pulumi.Input.fromValue(map['type'] as String),
-      windowSizeMinutes: (() { final guardedValue = map['windowSizeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      type: pulumi.Input.fromValue(map['type']),
+      windowSizeMinutes: (() { final guardedValue = map['windowSizeMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

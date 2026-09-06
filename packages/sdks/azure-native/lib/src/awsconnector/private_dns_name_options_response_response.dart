@@ -6,11 +6,11 @@ import 'hostname_type_enum_value_response.dart';
 /// Definition of PrivateDnsNameOptionsResponse
 class PrivateDnsNameOptionsResponseResponse {
   /// &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.&lt;/p&gt;
-  final pulumi.Input<bool>? enableResourceNameDnsAAAARecord;
+  final pulumi.Input<bool?>? enableResourceNameDnsAAAARecord;
   /// &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS A records.&lt;/p&gt;
-  final pulumi.Input<bool>? enableResourceNameDnsARecord;
+  final pulumi.Input<bool?>? enableResourceNameDnsARecord;
   /// &lt;p&gt;The type of hostname to assign to an instance.&lt;/p&gt;
-  final pulumi.Input<HostnameTypeEnumValueResponse>? hostnameType;
+  final pulumi.Input<HostnameTypeEnumValueResponse?>? hostnameType;
 
   /// Creates a new [PrivateDnsNameOptionsResponseResponse].
   /// [enableResourceNameDnsAAAARecord] &lt;p&gt;Indicates whether to respond to DNS queries for instance hostnames with DNS AAAA records.&lt;/p&gt;

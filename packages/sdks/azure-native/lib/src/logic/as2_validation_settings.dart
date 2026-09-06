@@ -15,7 +15,7 @@ class AS2ValidationSettings {
   /// The value indicating whether the message has to be encrypted.
   final pulumi.Input<bool> encryptMessage;
   /// The encryption algorithm.
-  final pulumi.Input<String> encryptionAlgorithm;
+  final pulumi.Input<dynamic> encryptionAlgorithm;
   /// The number of days to look back for duplicate interchange.
   final pulumi.Input<int> interchangeDuplicatesValidityDays;
   /// The value indicating whether to override incoming message properties with those in agreement.
@@ -23,7 +23,7 @@ class AS2ValidationSettings {
   /// The value indicating whether the message has to be signed.
   final pulumi.Input<bool> signMessage;
   /// The signing algorithm.
-  final pulumi.Input<String>? signingAlgorithm;
+  final pulumi.Input<dynamic>? signingAlgorithm;
 
   /// Creates a new [AS2ValidationSettings].
   /// [checkCertificateRevocationListOnReceive] The value indicating whether to check for certificate revocation list on receive.
@@ -71,11 +71,11 @@ class AS2ValidationSettings {
       checkDuplicateMessage: pulumi.Input.fromValue(map['checkDuplicateMessage'] as bool),
       compressMessage: pulumi.Input.fromValue(map['compressMessage'] as bool),
       encryptMessage: pulumi.Input.fromValue(map['encryptMessage'] as bool),
-      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm'] as String),
-      interchangeDuplicatesValidityDays: pulumi.Input.fromValue(map['interchangeDuplicatesValidityDays'] as int),
+      encryptionAlgorithm: pulumi.Input.fromValue(map['encryptionAlgorithm']),
+      interchangeDuplicatesValidityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interchangeDuplicatesValidityDays'])),
       overrideMessageProperties: pulumi.Input.fromValue(map['overrideMessageProperties'] as bool),
       signMessage: pulumi.Input.fromValue(map['signMessage'] as bool),
-      signingAlgorithm: (() { final guardedValue = map['signingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      signingAlgorithm: (() { final guardedValue = map['signingAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

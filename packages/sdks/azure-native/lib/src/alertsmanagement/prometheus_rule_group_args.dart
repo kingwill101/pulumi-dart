@@ -9,25 +9,25 @@ import 'prometheus_rule.dart';
 /// {@macro pulumi_alertsmanagement_prometheus_rule_group_args_doc}
 class PrometheusRuleGroupArgs {
   /// Apply rule to data from a specific cluster.
-  final pulumi.Input<String>? clusterName;
+  final pulumi.Input<String?>? clusterName;
   /// Rule group description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Enable/disable rule group.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The interval in which to run the Prometheus rule group represented in ISO 8601 duration format. Should be between 1 and 15 minutes
-  final pulumi.Input<String>? interval;
+  final pulumi.Input<String?>? interval;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the rule group.
-  final pulumi.Input<String>? ruleGroupName;
+  final pulumi.Input<String?>? ruleGroupName;
   /// Defines the rules in the Prometheus rule group.
   final pulumi.Input<List<PrometheusRule>> rules;
   /// Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
   final pulumi.Input<List<String>> scopes;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PrometheusRuleGroupArgs].
   /// [clusterName] Apply rule to data from a specific cluster.

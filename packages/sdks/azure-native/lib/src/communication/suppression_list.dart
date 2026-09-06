@@ -4,9 +4,9 @@ import 'system_data_response.dart';
 
 /// A class representing a SuppressionList resource.
 ///
-/// Uses Azure REST API version 2023-06-01-preview. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
+/// Uses Azure REST API version 2026-03-18. In version 2.x of the Azure Native provider, it used API version 2023-06-01-preview.
 ///
-/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2023-06-01-preview, 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -172,7 +172,7 @@ class SuppressionList extends pulumi.CustomResource {
   late final pulumi.Output<String> dataLocation;
   /// The date the resource was last updated.
   late final pulumi.Output<String> lastUpdatedTimeStamp;
-  /// The the name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
+  /// The name of the suppression list. This value must match one of the valid sender usernames of the sending domain.
   late final pulumi.Output<String?> listName;
   /// The name of the resource
   late final pulumi.Output<String> name;
@@ -195,6 +195,25 @@ class SuppressionList extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdTimeStamp = registerOutput<String>('createdTimeStamp');
+    dataLocation = registerOutput<String>('dataLocation');
+    lastUpdatedTimeStamp = registerOutput<String>('lastUpdatedTimeStamp');
+    listName = registerOutput<String?>('listName');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SuppressionList] resource.
+  SuppressionList.reference(String urn)
+    : super(
+        'azure-native:communication:SuppressionList',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     createdTimeStamp = registerOutput<String>('createdTimeStamp');
     dataLocation = registerOutput<String>('dataLocation');

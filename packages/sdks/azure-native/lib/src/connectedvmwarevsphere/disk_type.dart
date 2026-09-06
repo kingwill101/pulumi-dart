@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the disk backing type.
-enum DiskType {
+enum DiskType implements pulumi.PulumiEnum<String> {
   valueFlat("flat"),
   valuePmem("pmem"),
   valueRawphysical("rawphysical"),
@@ -9,6 +11,7 @@ enum DiskType {
   valueUnknown("unknown");
 
   const DiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskType fromValue(String value) {

@@ -6,7 +6,7 @@ import 'automation_rule_property_array_values_condition.dart';
 /// Describes an automation rule condition that evaluates an array property's value
 class PropertyArrayConditionProperties {
   /// Describes an automation rule condition on array properties.
-  final pulumi.Input<AutomationRulePropertyArrayValuesCondition>? conditionProperties;
+  final pulumi.Input<AutomationRulePropertyArrayValuesCondition?>? conditionProperties;
   /// Expected value is 'PropertyArray'.
   final pulumi.Input<String> conditionType;
 

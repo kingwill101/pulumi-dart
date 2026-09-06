@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Strategy of translating required query parameters to template ones. By default has value 'template'. Possible values: 'template', 'query'
-enum TranslateRequiredQueryParametersConduct {
+enum TranslateRequiredQueryParametersConduct implements pulumi.PulumiEnum<String> {
   template("template"),
   query("query");
 
   const TranslateRequiredQueryParametersConduct(this.wireValue);
+  @override
   final String wireValue;
 
   static TranslateRequiredQueryParametersConduct fromValue(String value) {

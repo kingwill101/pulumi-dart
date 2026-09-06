@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A PTR record.
 class PtrRecordResponse {
   /// The PTR target domain name for this PTR record.
-  final pulumi.Input<String>? ptrdname;
+  final pulumi.Input<String?>? ptrdname;
 
   /// Creates a new [PtrRecordResponse].
   /// [ptrdname] The PTR target domain name for this PTR record.

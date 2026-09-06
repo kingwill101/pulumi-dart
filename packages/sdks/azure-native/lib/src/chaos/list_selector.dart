@@ -7,7 +7,7 @@ import 'target_reference.dart';
 /// Model that represents a list selector.
 class ListSelector {
   /// Model that represents available filter types that can be applied to a targets list.
-  final pulumi.Input<SimpleFilter>? filter;
+  final pulumi.Input<SimpleFilter?>? filter;
   /// String of the selector ID.
   final pulumi.Input<String> id;
   /// List of Target references.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The datatype for which the indexing behavior is applied to.
-enum DataType {
+enum DataType implements pulumi.PulumiEnum<String> {
   valueString("String"),
   valueNumber("Number"),
   valuePoint("Point"),
@@ -8,6 +10,7 @@ enum DataType {
   valueMultiPolygon("MultiPolygon");
 
   const DataType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataType fromValue(String value) {

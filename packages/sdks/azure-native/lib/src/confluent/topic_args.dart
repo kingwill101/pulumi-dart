@@ -13,31 +13,31 @@ class TopicArgs {
   /// Confluent kafka or schema registry cluster id
   final pulumi.Input<String> clusterId;
   /// Config Specification of the topic
-  final pulumi.Input<TopicsRelatedLink>? configs;
+  final pulumi.Input<TopicsRelatedLink?>? configs;
   /// Confluent environment id
   final pulumi.Input<String> environmentId;
   /// Input Config Specification of the topic
-  final pulumi.Input<List<TopicsInputConfig>>? inputConfigs;
+  final pulumi.Input<List<TopicsInputConfig>?>? inputConfigs;
   /// Type of topic
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<TopicMetadataEntity>? metadata;
+  final pulumi.Input<TopicMetadataEntity?>? metadata;
   /// Organization resource name
   final pulumi.Input<String> organizationName;
   /// Partition Specification of the topic
-  final pulumi.Input<TopicsRelatedLink>? partitions;
+  final pulumi.Input<TopicsRelatedLink?>? partitions;
   /// Partition count of the topic
-  final pulumi.Input<String>? partitionsCount;
+  final pulumi.Input<String?>? partitionsCount;
   /// Partition Reassignment Specification of the topic
-  final pulumi.Input<TopicsRelatedLink>? partitionsReassignments;
+  final pulumi.Input<TopicsRelatedLink?>? partitionsReassignments;
   /// Replication factor of the topic
-  final pulumi.Input<String>? replicationFactor;
+  final pulumi.Input<String?>? replicationFactor;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Topic Id returned by Confluent
-  final pulumi.Input<String>? topicId;
+  final pulumi.Input<String?>? topicId;
   /// Confluent kafka or schema registry topic name
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
 
   /// Creates a new [TopicArgs].
   /// [clusterId] Confluent kafka or schema registry cluster id

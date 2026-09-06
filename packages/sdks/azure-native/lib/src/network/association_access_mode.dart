@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Access mode on the association.
-enum AssociationAccessMode {
+enum AssociationAccessMode implements pulumi.PulumiEnum<String> {
   valueLearning("Learning"),
   valueEnforced("Enforced"),
   valueAudit("Audit");
 
   const AssociationAccessMode(this.wireValue);
+  @override
   final String wireValue;
 
   static AssociationAccessMode fromValue(String value) {

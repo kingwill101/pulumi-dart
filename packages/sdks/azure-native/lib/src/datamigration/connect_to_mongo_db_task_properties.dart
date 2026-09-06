@@ -6,9 +6,9 @@ import 'mongo_db_connection_info.dart';
 /// Properties for the task that validates the connection to and provides information about a MongoDB server
 class ConnectToMongoDbTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Describes a connection to a MongoDB data source
-  final pulumi.Input<MongoDbConnectionInfo>? input;
+  final pulumi.Input<MongoDbConnectionInfo?>? input;
   /// Task type.
   /// Expected value is 'Connect.MongoDb'.
   final pulumi.Input<String> taskType;

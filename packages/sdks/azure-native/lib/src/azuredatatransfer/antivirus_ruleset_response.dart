@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Antivirus scanning rules for replicating data. By default, all antivirus scanning solutions are disabled.
 class AntivirusRulesetResponse {
   /// Optional. The list of antiviruses to be used as a scanning solution for replicating data.
-  final pulumi.Input<List<String>>? avSolutions;
+  final pulumi.Input<List<String>?>? avSolutions;
 
   /// Creates a new [AntivirusRulesetResponse].
   /// [avSolutions] Optional. The list of antiviruses to be used as a scanning solution for replicating data.

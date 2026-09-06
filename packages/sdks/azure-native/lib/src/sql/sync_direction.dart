@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sync direction of the sync member.
-enum SyncDirection {
+enum SyncDirection implements pulumi.PulumiEnum<String> {
   valueBidirectional("Bidirectional"),
   valueOneWayMemberToHub("OneWayMemberToHub"),
   valueOneWayHubToMember("OneWayHubToMember");
 
   const SyncDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static SyncDirection fromValue(String value) {

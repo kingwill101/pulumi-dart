@@ -7,27 +7,27 @@ import 'sql_managed_instance_k8s_raw_response.dart';
 /// Properties of sqlManagedInstance.
 class SqlManagedInstancePropertiesResponse {
   /// The instance admin user
-  final pulumi.Input<String>? admin;
+  final pulumi.Input<String?>? admin;
   /// Username and password for basic authentication.
-  final pulumi.Input<BasicLoginInformationResponse>? basicLoginInformation;
+  final pulumi.Input<BasicLoginInformationResponse?>? basicLoginInformation;
   /// If a CustomLocation is provided, this contains the ARM id of the connected cluster the custom location belongs to.
-  final pulumi.Input<String>? clusterId;
+  final pulumi.Input<String?>? clusterId;
   /// null
-  final pulumi.Input<String>? dataControllerId;
+  final pulumi.Input<String?>? dataControllerId;
   /// The instance end time
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to.
-  final pulumi.Input<String>? extensionId;
+  final pulumi.Input<String?>? extensionId;
   /// The raw kubernetes information
-  final pulumi.Input<SqlManagedInstanceK8sRawResponse>? k8sRaw;
+  final pulumi.Input<SqlManagedInstanceK8sRawResponse?>? k8sRaw;
   /// Last uploaded date from Kubernetes cluster. Defaults to current date time
-  final pulumi.Input<String>? lastUploadedDate;
+  final pulumi.Input<String?>? lastUploadedDate;
   /// The license type to apply for this managed instance.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The provisioning state of the Arc-enabled SQL Managed Instance resource.
   final pulumi.Input<String> provisioningState;
   /// The instance start time
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [SqlManagedInstancePropertiesResponse].
   /// [admin] The instance admin user
@@ -41,7 +41,7 @@ class SqlManagedInstancePropertiesResponse {
   /// [licenseType] The license type to apply for this managed instance.
   /// [provisioningState] The provisioning state of the Arc-enabled SQL Managed Instance resource.
   /// [startTime] The instance start time
-  const SqlManagedInstancePropertiesResponse({
+  SqlManagedInstancePropertiesResponse({
     this.admin,
     this.basicLoginInformation,
     this.clusterId,
@@ -50,10 +50,10 @@ class SqlManagedInstancePropertiesResponse {
     this.extensionId,
     this.k8sRaw,
     this.lastUploadedDate,
-    this.licenseType,
+    pulumi.Input<String?>? licenseType,
     required this.provisioningState,
     this.startTime,
-  });
+  }) : licenseType = licenseType ?? pulumi.Input.fromValue('BasePrice');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

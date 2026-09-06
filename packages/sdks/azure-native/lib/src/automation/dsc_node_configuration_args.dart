@@ -14,17 +14,17 @@ class DscNodeConfigurationArgs {
   /// Gets or sets the configuration of the node.
   final pulumi.Input<DscConfigurationAssociationProperty> configuration;
   /// If a new build version of NodeConfiguration is required.
-  final pulumi.Input<bool>? incrementNodeConfigurationBuild;
+  final pulumi.Input<bool?>? incrementNodeConfigurationBuild;
   /// Name of the node configuration.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Dsc node configuration name.
-  final pulumi.Input<String>? nodeConfigurationName;
+  final pulumi.Input<String?>? nodeConfigurationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the source.
   final pulumi.Input<ContentSource> source;
   /// Gets or sets the tags attached to the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DscNodeConfigurationArgs].
   /// [automationAccountName] The name of the automation account.

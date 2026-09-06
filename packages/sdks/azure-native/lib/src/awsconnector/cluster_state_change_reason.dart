@@ -6,9 +6,9 @@ import 'cluster_state_change_reason_code_enum_value.dart';
 /// Definition of ClusterStateChangeReason
 class ClusterStateChangeReason {
   /// &lt;p&gt;The programmatic code for the state change reason.&lt;/p&gt;
-  final pulumi.Input<ClusterStateChangeReasonCodeEnumValue>? code;
+  final pulumi.Input<ClusterStateChangeReasonCodeEnumValue?>? code;
   /// &lt;p&gt;The descriptive message for the state change reason.&lt;/p&gt;
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
 
   /// Creates a new [ClusterStateChangeReason].
   /// [code] &lt;p&gt;The programmatic code for the state change reason.&lt;/p&gt;

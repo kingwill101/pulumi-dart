@@ -12,7 +12,7 @@ class WorkspaceSettingArgs {
   /// The full Azure ID of the workspace to save the data in
   final pulumi.Input<String> workspaceId;
   /// Name of the security setting
-  final pulumi.Input<String>? workspaceSettingName;
+  final pulumi.Input<String?>? workspaceSettingName;
 
   /// Creates a new [WorkspaceSettingArgs].
   /// [scope] All the VMs in this scope will send their security data to the mentioned workspace unless overridden by a setting with more specific scope

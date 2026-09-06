@@ -26,7 +26,7 @@ class MqttBridgeRouteSharedSubscriptionResponse {
 
   factory MqttBridgeRouteSharedSubscriptionResponse.fromMap(Map<String, dynamic> map) {
     return MqttBridgeRouteSharedSubscriptionResponse(
-      groupMinimumShareNumber: pulumi.Input.fromValue(map['groupMinimumShareNumber'] as int),
+      groupMinimumShareNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['groupMinimumShareNumber'])),
       groupName: pulumi.Input.fromValue(map['groupName'] as String),
     );
   }

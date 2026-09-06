@@ -7,7 +7,7 @@ class DeviceMessagingEndpointResponse {
   /// The endpoint address to connect to.
   final pulumi.Input<String> address;
   /// Type of connection used for the messaging endpoint.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<String?>? endpointType;
 
   /// Creates a new [DeviceMessagingEndpointResponse].
   /// [address] The endpoint address to connect to.

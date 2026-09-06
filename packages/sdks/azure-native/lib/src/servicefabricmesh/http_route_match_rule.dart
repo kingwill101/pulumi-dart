@@ -7,7 +7,7 @@ import 'http_route_match_path.dart';
 /// Describes a rule for http route matching.
 class HttpRouteMatchRule {
   /// headers and their values to match in request.
-  final pulumi.Input<List<HttpRouteMatchHeader>>? headers;
+  final pulumi.Input<List<HttpRouteMatchHeader>?>? headers;
   /// Path to match for routing.
   final pulumi.Input<HttpRouteMatchPath> path;
 

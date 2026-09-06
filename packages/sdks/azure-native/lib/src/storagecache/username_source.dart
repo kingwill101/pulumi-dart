@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This setting determines how the cache gets username and group names for clients.
-enum UsernameSource {
+enum UsernameSource implements pulumi.PulumiEnum<String> {
   valueAD("AD"),
   valueLDAP("LDAP"),
   valueFile("File"),
   valueNone("None");
 
   const UsernameSource(this.wireValue);
+  @override
   final String wireValue;
 
   static UsernameSource fromValue(String value) {

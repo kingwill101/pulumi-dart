@@ -14,19 +14,19 @@ class AKSAssessmentSettingsResponse {
   /// Gets or sets currency.
   final pulumi.Input<String> currency;
   /// Gets or sets discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets environment type.
   final pulumi.Input<String> environmentType;
   /// Gets or sets licensing program.
   final pulumi.Input<String> licensingProgram;
   /// Gets or sets performance data settings.
-  final pulumi.Input<PerfDataSettingsResponse>? performanceData;
+  final pulumi.Input<PerfDataSettingsResponse?>? performanceData;
   /// Gets or sets pricing tier.
   final pulumi.Input<String> pricingTier;
   /// Gets or sets savings options.
   final pulumi.Input<String> savingsOptions;
   /// Gets or sets scaling factor.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Gets or sets sizing criteria.
   final pulumi.Input<String> sizingCriteria;
 
@@ -81,13 +81,13 @@ class AKSAssessmentSettingsResponse {
       category: pulumi.Input.fromValue(map['category'] as String),
       consolidation: pulumi.Input.fromValue(map['consolidation'] as String),
       currency: pulumi.Input.fromValue(map['currency'] as String),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       environmentType: pulumi.Input.fromValue(map['environmentType'] as String),
       licensingProgram: pulumi.Input.fromValue(map['licensingProgram'] as String),
       performanceData: (() { final guardedValue = map['performanceData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PerfDataSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pricingTier: pulumi.Input.fromValue(map['pricingTier'] as String),
       savingsOptions: pulumi.Input.fromValue(map['savingsOptions'] as String),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       sizingCriteria: pulumi.Input.fromValue(map['sizingCriteria'] as String),
     );
   }

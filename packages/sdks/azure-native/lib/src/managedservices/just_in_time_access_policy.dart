@@ -6,21 +6,21 @@ import 'eligible_approver.dart';
 /// Just-in-time access policy setting.
 class JustInTimeAccessPolicy {
   /// The list of managedByTenant approvers for the eligible authorization.
-  final pulumi.Input<List<EligibleApprover>>? managedByTenantApprovers;
+  final pulumi.Input<List<EligibleApprover>?>? managedByTenantApprovers;
   /// The maximum access duration in ISO 8601 format for just-in-time access requests.
-  final pulumi.Input<String>? maximumActivationDuration;
+  final pulumi.Input<String?>? maximumActivationDuration;
   /// The multi-factor authorization provider to be used for just-in-time access requests.
-  final pulumi.Input<String> multiFactorAuthProvider;
+  final pulumi.Input<dynamic> multiFactorAuthProvider;
 
   /// Creates a new [JustInTimeAccessPolicy].
   /// [managedByTenantApprovers] The list of managedByTenant approvers for the eligible authorization.
   /// [maximumActivationDuration] The maximum access duration in ISO 8601 format for just-in-time access requests.
   /// [multiFactorAuthProvider] The multi-factor authorization provider to be used for just-in-time access requests.
-  const JustInTimeAccessPolicy({
+  JustInTimeAccessPolicy({
     this.managedByTenantApprovers,
-    this.maximumActivationDuration,
-    required this.multiFactorAuthProvider,
-  });
+    pulumi.Input<String?>? maximumActivationDuration,
+    pulumi.Input<dynamic>? multiFactorAuthProvider,
+  }) : maximumActivationDuration = maximumActivationDuration ?? pulumi.Input.fromValue('PT8H'), multiFactorAuthProvider = multiFactorAuthProvider ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -34,7 +34,7 @@ class JustInTimeAccessPolicy {
     return JustInTimeAccessPolicy(
       managedByTenantApprovers: (() { final guardedValue = map['managedByTenantApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EligibleApprover>(guardedValue, (value) => EligibleApprover.fromMap((value as Map).cast<String, dynamic>()))); })(),
       maximumActivationDuration: (() { final guardedValue = map['maximumActivationDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      multiFactorAuthProvider: pulumi.Input.fromValue(map['multiFactorAuthProvider'] as String),
+      multiFactorAuthProvider: pulumi.Input.fromValue(map['multiFactorAuthProvider']),
     );
   }
 }

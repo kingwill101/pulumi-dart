@@ -5,8 +5,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Routing identity info for topic spaces configuration.
 class RoutingIdentityInfoResponse {
   /// Routing identity type for topic spaces configuration.
-  final pulumi.Input<String>? type;
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? type;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [RoutingIdentityInfoResponse].
   /// [type] Routing identity type for topic spaces configuration.

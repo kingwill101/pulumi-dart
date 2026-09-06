@@ -9,9 +9,9 @@ import 'system_data_response.dart';
 /// Restore Point details.
 class RestorePointResponse {
   /// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
-  final pulumi.Input<String>? consistencyMode;
+  final pulumi.Input<String?>? consistencyMode;
   /// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
-  final pulumi.Input<List<ApiEntityReferenceResponse>>? excludeDisks;
+  final pulumi.Input<List<ApiEntityReferenceResponse>?>? excludeDisks;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   final pulumi.Input<String> id;
   /// The restore point instance view.
@@ -21,13 +21,13 @@ class RestorePointResponse {
   /// Gets the provisioning state of the restore point.
   final pulumi.Input<String> provisioningState;
   /// Gets the details of the VM captured at the time of the restore point creation.
-  final pulumi.Input<RestorePointSourceMetadataResponse>? sourceMetadata;
+  final pulumi.Input<RestorePointSourceMetadataResponse?>? sourceMetadata;
   /// Resource Id of the source restore point from which a copy needs to be created.
-  final pulumi.Input<ApiEntityReferenceResponse>? sourceRestorePoint;
+  final pulumi.Input<ApiEntityReferenceResponse?>? sourceRestorePoint;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
   /// Gets the creation time of the restore point.
-  final pulumi.Input<String>? timeCreated;
+  final pulumi.Input<String?>? timeCreated;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 

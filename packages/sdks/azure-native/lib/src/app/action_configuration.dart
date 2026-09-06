@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for action
 class ActionConfiguration {
   /// The access level of the action
-  final pulumi.Input<String>? accessLevel;
+  final pulumi.Input<dynamic>? accessLevel;
   /// The identity used by the action
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The mode of the action
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [ActionConfiguration].
   /// [accessLevel] The access level of the action
@@ -31,9 +31,9 @@ class ActionConfiguration {
 
   factory ActionConfiguration.fromMap(Map<String, dynamic> map) {
     return ActionConfiguration(
-      accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

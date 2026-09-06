@@ -19,14 +19,14 @@ class RegionalDrillPropertiesResponse {
   /// Attention reason if the ReadinessState is 'NeedsAttention'.
   final pulumi.Input<AttentionReasonResponse> attentionReason;
   /// Chaos Experiment properties.
-  final pulumi.Input<ChaosExperimentPropertiesOfDrillResponse>? chaosExperimentProperties;
+  final pulumi.Input<ChaosExperimentPropertiesOfDrillResponse?>? chaosExperimentProperties;
   /// Chaos Resource properties.
-  final pulumi.Input<ChaosResourcePropertiesOfDrillResponse>? chaosResourceProperties;
+  final pulumi.Input<ChaosResourcePropertiesOfDrillResponse?>? chaosResourceProperties;
   /// Properties for internal resources that are created for the Drill.
-  final pulumi.Input<AssetPropertiesOfDrillResponse>? drillAssetProperties;
+  final pulumi.Input<AssetPropertiesOfDrillResponse?>? drillAssetProperties;
   /// Enum for Drill type object hierarchy.
   /// Expected value is 'Regional'.
-  final pulumi.Input<String>? drillType;
+  final pulumi.Input<String?>? drillType;
   /// Error details associated with the resource.
   final pulumi.Input<ErrorDetailResponse> errorDetails;
   /// Readiness state of the Drill.
@@ -34,7 +34,7 @@ class RegionalDrillPropertiesResponse {
   /// Execution state of the Drill. Whether it is currently running or not.
   final pulumi.Input<String> executionState;
   /// HealthModel properties.
-  final pulumi.Input<HealthModelPropertiesOfDrillResponse>? healthModelProperties;
+  final pulumi.Input<HealthModelPropertiesOfDrillResponse?>? healthModelProperties;
   /// Last resync and readiness check time.
   final pulumi.Input<String> lastResyncReadinessCheckTime;
   /// Last run properties.
@@ -44,15 +44,15 @@ class RegionalDrillPropertiesResponse {
   /// Managed RG v2 properties.
   final pulumi.Input<ManagedOnBehalfOfConfigurationResponse> managedOnBehalfOfConfiguration;
   /// Metric properties.
-  final pulumi.Input<MetricsPropertiesOfDrillResponse>? metricsProperties;
+  final pulumi.Input<MetricsPropertiesOfDrillResponse?>? metricsProperties;
   /// Monitoring properties of the Drill.
-  final pulumi.Input<MonitoringPropertiesOfDrillResponse>? monitoringProperties;
+  final pulumi.Input<MonitoringPropertiesOfDrillResponse?>? monitoringProperties;
   /// Status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// RBAC setup mode.
-  final pulumi.Input<String>? rbacSetupMode;
+  final pulumi.Input<String?>? rbacSetupMode;
   /// ROPlan properties.
-  final pulumi.Input<RecoveryPlanPropertiesOfDrillResponse>? recoveryPlanProperties;
+  final pulumi.Input<RecoveryPlanPropertiesOfDrillResponse?>? recoveryPlanProperties;
   /// Parent SG resource.
   final pulumi.Input<String> serviceGroupId;
   /// Internal System Metadata, to be used by internal components only.

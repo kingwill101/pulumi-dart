@@ -8,27 +8,27 @@ class ListListTenantConfigurationViolationResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The Violation items on this page
-  final List<ViolationResponse> value;
+  final List<ViolationResponse>? value;
 
   /// Creates a new [ListListTenantConfigurationViolationResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Violation items on this page
   const ListListTenantConfigurationViolationResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<ViolationResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<ViolationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListListTenantConfigurationViolationResult.fromMap(Map<String, dynamic> map) {
     return ListListTenantConfigurationViolationResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<ViolationResponse>(map['value']!, (value) => ViolationResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ViolationResponse>(guardedValue, (value) => ViolationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

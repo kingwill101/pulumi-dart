@@ -6,9 +6,9 @@ import 'key_vault_key_response_attributes.dart';
 /// The key vault key.
 class KeyVaultKeyResponse {
   /// The key attributes.
-  final pulumi.Input<KeyVaultKeyResponseAttributes>? attributes;
+  final pulumi.Input<KeyVaultKeyResponseAttributes?>? attributes;
   /// The key id.
-  final pulumi.Input<String>? kid;
+  final pulumi.Input<String?>? kid;
 
   /// Creates a new [KeyVaultKeyResponse].
   /// [attributes] The key attributes.

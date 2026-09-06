@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of OwnershipControlsRule
 class OwnershipControlsRule {
   /// Specifies an object ownership rule.
-  final pulumi.Input<String>? objectOwnership;
+  final pulumi.Input<dynamic>? objectOwnership;
 
   /// Creates a new [OwnershipControlsRule].
   /// [objectOwnership] Specifies an object ownership rule.
@@ -21,7 +21,7 @@ class OwnershipControlsRule {
 
   factory OwnershipControlsRule.fromMap(Map<String, dynamic> map) {
     return OwnershipControlsRule(
-      objectOwnership: (() { final guardedValue = map['objectOwnership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      objectOwnership: (() { final guardedValue = map['objectOwnership']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

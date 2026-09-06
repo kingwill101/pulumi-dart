@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum IPAddressType {
+enum IPAddressType implements pulumi.PulumiEnum<String> {
   dualstack("dualstack"),
   ipv4("ipv4");
 
   const IPAddressType(this.wireValue);
+  @override
   final String wireValue;
 
   static IPAddressType fromValue(String value) {

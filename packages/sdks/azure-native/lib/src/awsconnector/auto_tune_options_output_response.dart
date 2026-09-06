@@ -6,11 +6,11 @@ import 'auto_tune_state_enum_value_response.dart';
 /// Definition of AutoTuneOptionsOutput
 class AutoTuneOptionsOutputResponse {
   /// &lt;p&gt;Any errors that occurred while enabling or disabling Auto-Tune.&lt;/p&gt;
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// &lt;p&gt;The current state of Auto-Tune on the domain.&lt;/p&gt;
-  final pulumi.Input<AutoTuneStateEnumValueResponse>? state;
+  final pulumi.Input<AutoTuneStateEnumValueResponse?>? state;
   /// &lt;p&gt;Whether the domain's off-peak window will be used to deploy Auto-Tune changes rather than a maintenance schedule.&lt;/p&gt;
-  final pulumi.Input<bool>? useOffPeakWindow;
+  final pulumi.Input<bool?>? useOffPeakWindow;
 
   /// Creates a new [AutoTuneOptionsOutputResponse].
   /// [errorMessage] &lt;p&gt;Any errors that occurred while enabling or disabling Auto-Tune.&lt;/p&gt;

@@ -7,9 +7,9 @@ import 'rai_tool_label_properties_project_scopes_item_response.dart';
 /// RAI Tool Label properties.
 class RaiToolLabelPropertiesResponse {
   /// Account-level tool label definition.
-  final pulumi.Input<RaiToolLabelPropertiesAccountScopeResponse>? accountScope;
+  final pulumi.Input<RaiToolLabelPropertiesAccountScopeResponse?>? accountScope;
   /// List of project-level tool label definitions.
-  final pulumi.Input<List<RaiToolLabelPropertiesProjectScopesItemResponse>>? projectScopes;
+  final pulumi.Input<List<RaiToolLabelPropertiesProjectScopesItemResponse>?>? projectScopes;
   /// The unique tool connection name, e.g., 'Web_Search'.
   final pulumi.Input<String> toolConnectionName;
 

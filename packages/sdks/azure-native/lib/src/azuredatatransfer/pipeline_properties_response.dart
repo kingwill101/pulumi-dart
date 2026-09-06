@@ -9,17 +9,17 @@ class PipelinePropertiesResponse {
   /// Connections associated with pipeline
   final pulumi.Input<List<PipelineConnectionResponse>> connections;
   /// Display name of this pipeline
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The flow types allowed for this pipeline
-  final pulumi.Input<List<String>>? flowTypes;
+  final pulumi.Input<List<String>?>? flowTypes;
   /// The policies for this pipeline
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// Provisioning state of the pipeline
   final pulumi.Input<String> provisioningState;
   /// Remote cloud of the data to be transferred or received
   final pulumi.Input<String> remoteCloud;
   /// Subscribers of this resource
-  final pulumi.Input<List<SubscriberResponse>>? subscribers;
+  final pulumi.Input<List<SubscriberResponse>?>? subscribers;
 
   /// Creates a new [PipelinePropertiesResponse].
   /// [connections] Connections associated with pipeline

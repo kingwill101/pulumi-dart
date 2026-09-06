@@ -9,11 +9,11 @@ class VpnConfigurationPropertiesResponse {
   /// Administrative state of the resource.
   final pulumi.Input<String> administrativeState;
   /// ARM Resource ID of the Network To Network Interconnect.
-  final pulumi.Input<String>? networkToNetworkInterconnectId;
+  final pulumi.Input<String?>? networkToNetworkInterconnectId;
   /// option A properties
-  final pulumi.Input<VpnConfigurationPropertiesResponseOptionAProperties>? optionAProperties;
+  final pulumi.Input<VpnConfigurationPropertiesResponseOptionAProperties?>? optionAProperties;
   /// option B properties
-  final pulumi.Input<FabricOptionBPropertiesResponse>? optionBProperties;
+  final pulumi.Input<FabricOptionBPropertiesResponse?>? optionBProperties;
   /// Peering option list.
   final pulumi.Input<String> peeringOption;
 

@@ -23,13 +23,13 @@ class GetProductResult {
   /// Additional links available for this product.
   final IconUrisResponse? iconUris;
   /// ID of the resource.
-  final String id;
+  final String? id;
   /// The legal terms.
   final String? legalTerms;
   /// Additional links available for this product.
   final List<ProductLinkResponse>? links;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// The offer representing the product.
   final String? offer;
   /// The version of the product offer.
@@ -49,7 +49,7 @@ class GetProductResult {
   /// The product SKU.
   final String? sku;
   /// Type of Resource.
-  final String type;
+  final String? type;
   /// The type of the Virtual Machine Extension.
   final String? vmExtensionType;
 
@@ -84,10 +84,10 @@ class GetProductResult {
     this.etag,
     this.galleryItemIdentity,
     this.iconUris,
-    required this.id,
+    this.id,
     this.legalTerms,
     this.links,
-    required this.name,
+    this.name,
     this.offer,
     this.offerVersion,
     this.payloadLength,
@@ -97,7 +97,7 @@ class GetProductResult {
     this.publisherDisplayName,
     this.publisherIdentifier,
     this.sku,
-    required this.type,
+    this.type,
     this.vmExtensionType,
   });
 
@@ -110,10 +110,10 @@ class GetProductResult {
       'etag': ?etag,
       'galleryItemIdentity': ?galleryItemIdentity,
       'iconUris': ?iconUris?.toMap(),
-      'id': id,
+      'id': ?id,
       'legalTerms': ?legalTerms,
       'links': ?(() { final guardedValue = links; if (guardedValue == null) return null; return pulumi.Input.encodeList<ProductLinkResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'name': name,
+      'name': ?name,
       'offer': ?offer,
       'offerVersion': ?offerVersion,
       'payloadLength': ?payloadLength,
@@ -123,7 +123,7 @@ class GetProductResult {
       'publisherDisplayName': ?publisherDisplayName,
       'publisherIdentifier': ?publisherIdentifier,
       'sku': ?sku,
-      'type': type,
+      'type': ?type,
       'vmExtensionType': ?vmExtensionType,
     };
   }
@@ -137,20 +137,20 @@ class GetProductResult {
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       galleryItemIdentity: (() { final guardedValue = map['galleryItemIdentity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       iconUris: (() { final guardedValue = map['iconUris']; if (guardedValue == null) return null; return IconUrisResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       legalTerms: (() { final guardedValue = map['legalTerms']; if (guardedValue == null) return null; return guardedValue as String; })(),
       links: (() { final guardedValue = map['links']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ProductLinkResponse>(guardedValue, (value) => ProductLinkResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offer: (() { final guardedValue = map['offer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offerVersion: (() { final guardedValue = map['offerVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      payloadLength: (() { final guardedValue = map['payloadLength']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      payloadLength: (() { final guardedValue = map['payloadLength']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       privacyPolicy: (() { final guardedValue = map['privacyPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       productKind: (() { final guardedValue = map['productKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       productProperties: (() { final guardedValue = map['productProperties']; if (guardedValue == null) return null; return ProductPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       publisherDisplayName: (() { final guardedValue = map['publisherDisplayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publisherIdentifier: (() { final guardedValue = map['publisherIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       vmExtensionType: (() { final guardedValue = map['vmExtensionType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

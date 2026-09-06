@@ -5,6 +5,7 @@ import 'agent_pool_args.dart';
 import 'agent_pool_upgrade_settings_response.dart';
 import 'attached_network_configuration_response.dart';
 import 'extended_location_response.dart';
+import 'kubernetes_label_response.dart';
 import 'system_data_response.dart';
 
 /// Uses Azure REST API version 2025-02-01. In version 2.x of the Azure Native provider, it used API version 2023-10-01-preview.
@@ -578,7 +579,7 @@ class AgentPool extends pulumi.CustomResource {
   /// The Kubernetes version running in this agent pool.
   late final pulumi.Output<String> kubernetesVersion;
   /// The labels applied to the nodes in this agent pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> labels;
+  late final pulumi.Output<List<KubernetesLabelResponse>?> labels;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The selection of how this agent pool is utilized, either as a system pool or a user pool. System pools run the features and critical services for the Kubernetes Cluster, while user pools are dedicated to user workloads. Every Kubernetes cluster must contain at least one system node pool with at least one node.
@@ -592,7 +593,7 @@ class AgentPool extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// The taints applied to the nodes in this agent pool.
-  late final pulumi.Output<List<Map<String, dynamic>>?> taints;
+  late final pulumi.Output<List<KubernetesLabelResponse>?> taints;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   late final pulumi.Output<String> type;
   /// The configuration of the agent pool.
@@ -617,7 +618,7 @@ class AgentPool extends pulumi.CustomResource {
     administratorConfiguration = registerOutput<AdministratorConfigurationResponse?>('administratorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministratorConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     agentOptions = registerOutput<AgentOptionsResponse?>('agentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attachedNetworkConfiguration = registerOutput<AttachedNetworkConfigurationResponse?>('attachedNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    availabilityZones = registerOutput<List<String>?>('availabilityZones');
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     count = registerOutput<double>('count');
     detailedStatus = registerOutput<String>('detailedStatus');
@@ -625,14 +626,47 @@ class AgentPool extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kubernetesVersion = registerOutput<String>('kubernetesVersion');
-    labels = registerOutput<List<Map<String, dynamic>>?>('labels');
+    labels = registerOutput<List<KubernetesLabelResponse>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    taints = registerOutput<List<Map<String, dynamic>>?>('taints');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taints = registerOutput<List<KubernetesLabelResponse>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmSkuName = registerOutput<String>('vmSkuName');
+  }
+
+  /// Creates a typed reference to an existing [AgentPool] resource.
+  AgentPool.reference(String urn)
+    : super(
+        'azure-native:networkcloud:AgentPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administratorConfiguration = registerOutput<AdministratorConfigurationResponse?>('administratorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdministratorConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentOptions = registerOutput<AgentOptionsResponse?>('agentOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    attachedNetworkConfiguration = registerOutput<AttachedNetworkConfigurationResponse?>('attachedNetworkConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttachedNetworkConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availabilityZones = registerOutput<List<String>?>('availabilityZones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    count = registerOutput<double>('count');
+    detailedStatus = registerOutput<String>('detailedStatus');
+    detailedStatusMessage = registerOutput<String>('detailedStatusMessage');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kubernetesVersion = registerOutput<String>('kubernetesVersion');
+    labels = registerOutput<List<KubernetesLabelResponse>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    taints = registerOutput<List<KubernetesLabelResponse>?>('taints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<KubernetesLabelResponse>(guardedValue, (value) => KubernetesLabelResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     upgradeSettings = registerOutput<AgentPoolUpgradeSettingsResponse?>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentPoolUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmSkuName = registerOutput<String>('vmSkuName');

@@ -6,7 +6,7 @@ import 'managed_rule_group_override.dart';
 /// Defines a managed rule set.
 class ManagedRuleSet {
   /// Defines the rule group overrides to apply to the rule set.
-  final pulumi.Input<List<ManagedRuleGroupOverride>>? ruleGroupOverrides;
+  final pulumi.Input<List<ManagedRuleGroupOverride>?>? ruleGroupOverrides;
   /// Defines the rule set type to use.
   final pulumi.Input<String> ruleSetType;
   /// Defines the version of the rule set to use.

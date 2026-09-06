@@ -268,7 +268,7 @@ class SecurityContact extends pulumi.CustomResource {
   /// Defines whether to send email notifications from Microsoft Defender for Cloud to persons with specific RBAC roles on the subscription.
   late final pulumi.Output<SecurityContactPropertiesNotificationsByRoleResponse?> notificationsByRole;
   /// A collection of sources types which evaluate the email notification.
-  late final pulumi.Output<List<Map<String, dynamic>>?> notificationsSources;
+  late final pulumi.Output<List<dynamic>?> notificationsSources;
   /// The security contact's phone number
   late final pulumi.Output<String?> phone;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -295,7 +295,27 @@ class SecurityContact extends pulumi.CustomResource {
     isEnabled = registerOutput<bool?>('isEnabled');
     this.name = registerOutput<String>('name');
     notificationsByRole = registerOutput<SecurityContactPropertiesNotificationsByRoleResponse?>('notificationsByRole', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContactPropertiesNotificationsByRoleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    notificationsSources = registerOutput<List<Map<String, dynamic>>?>('notificationsSources');
+    notificationsSources = registerOutput<List<dynamic>?>('notificationsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    phone = registerOutput<String?>('phone');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SecurityContact] resource.
+  SecurityContact.reference(String urn)
+    : super(
+        'azure-native:security:SecurityContact',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    emails = registerOutput<String?>('emails');
+    isEnabled = registerOutput<bool?>('isEnabled');
+    this.name = registerOutput<String>('name');
+    notificationsByRole = registerOutput<SecurityContactPropertiesNotificationsByRoleResponse?>('notificationsByRole', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContactPropertiesNotificationsByRoleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationsSources = registerOutput<List<dynamic>?>('notificationsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     phone = registerOutput<String?>('phone');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

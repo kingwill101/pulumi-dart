@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of StatefulRuleGroupOverride
 class StatefulRuleGroupOverride {
   /// Property action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
 
   /// Creates a new [StatefulRuleGroupOverride].
   /// [action] Property action
@@ -21,7 +21,7 @@ class StatefulRuleGroupOverride {
 
   factory StatefulRuleGroupOverride.fromMap(Map<String, dynamic> map) {
     return StatefulRuleGroupOverride(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

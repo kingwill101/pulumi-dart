@@ -7,29 +7,29 @@ import 'subnet_response.dart';
 /// Result data returned by getRouteTable.
 class GetRouteTableResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Whether to disable the routes learned by BGP on that route table. True means disable.
   final bool? disableBgpRoutePropagation;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// Resource ID.
   final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// The provisioning state of the route table resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource GUID property of the route table.
-  final String resourceGuid;
+  final String? resourceGuid;
   /// Collection of routes contained within a route table.
   final List<RouteResponse>? routes;
   /// A collection of references to subnets.
-  final List<SubnetResponse> subnets;
+  final List<SubnetResponse>? subnets;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetRouteTableResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -45,51 +45,51 @@ class GetRouteTableResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetRouteTableResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.disableBgpRoutePropagation,
-    required this.etag,
+    this.etag,
     this.id,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.resourceGuid,
+    this.name,
+    this.provisioningState,
+    this.resourceGuid,
     this.routes,
-    required this.subnets,
+    this.subnets,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'disableBgpRoutePropagation': ?disableBgpRoutePropagation,
-      'etag': etag,
+      'etag': ?etag,
       'id': ?id,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'resourceGuid': resourceGuid,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'resourceGuid': ?resourceGuid,
       'routes': ?(() { final guardedValue = routes; if (guardedValue == null) return null; return pulumi.Input.encodeList<RouteResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'subnets': pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(subnets, (value) => value.toMap()),
+      'subnets': ?(() { final guardedValue = subnets; if (guardedValue == null) return null; return pulumi.Input.encodeList<SubnetResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetRouteTableResult.fromMap(Map<String, dynamic> map) {
     return GetRouteTableResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableBgpRoutePropagation: (() { final guardedValue = map['disableBgpRoutePropagation']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      resourceGuid: map['resourceGuid'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      resourceGuid: (() { final guardedValue = map['resourceGuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routes: (() { final guardedValue = map['routes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteResponse>(guardedValue, (value) => RouteResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      subnets: pulumi.Input.decodeList<SubnetResponse>(map['subnets']!, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())),
+      subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetResponse>(guardedValue, (value) => SubnetResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

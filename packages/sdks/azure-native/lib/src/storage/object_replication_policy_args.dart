@@ -14,13 +14,13 @@ class ObjectReplicationPolicyArgs {
   /// Required. Destination account name. It should be full resource id if allowCrossTenantReplication set to false.
   final pulumi.Input<String> destinationAccount;
   /// Optional. The object replication policy metrics feature options.
-  final pulumi.Input<ObjectReplicationPolicyPropertiesMetrics>? metrics;
+  final pulumi.Input<ObjectReplicationPolicyPropertiesMetrics?>? metrics;
   /// For the destination account, provide the value 'default'. Configure the policy on the destination account first. For the source account, provide the value of the policy ID that is returned when you download the policy that was defined on the destination account. The policy is downloaded as a JSON file.
-  final pulumi.Input<String>? objectReplicationPolicyId;
+  final pulumi.Input<String?>? objectReplicationPolicyId;
   /// The name of the resource group within the user's subscription. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The storage account object replication rules.
-  final pulumi.Input<List<ObjectReplicationPolicyRule>>? rules;
+  final pulumi.Input<List<ObjectReplicationPolicyRule>?>? rules;
   /// Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
   final pulumi.Input<String> sourceAccount;
 

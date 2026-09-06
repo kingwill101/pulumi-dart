@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'interface_dnssettings_response.dart';
+import 'ipconfiguration_response.dart';
 import 'network_interface_args.dart';
 import 'network_interface_status_response.dart';
 import 'network_security_group_arm_reference_response.dart';
@@ -486,7 +487,7 @@ class NetworkInterface extends pulumi.CustomResource {
   /// The extendedLocation of the resource.
   late final pulumi.Output<ExtendedLocationResponse?> extendedLocation;
   /// IPConfigurations - A list of IPConfigurations of the network interface.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+  late final pulumi.Output<List<IPConfigurationResponse>?> ipConfigurations;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// MacAddress - The MAC address of the network interface.
@@ -524,7 +525,7 @@ class NetworkInterface extends pulumi.CustomResource {
     createFromLocal = registerOutput<bool?>('createFromLocal');
     dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceDNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
+    ipConfigurations = registerOutput<List<IPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IPConfigurationResponse>(guardedValue, (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     macAddress = registerOutput<String?>('macAddress');
     this.name = registerOutput<String>('name');
@@ -532,7 +533,32 @@ class NetworkInterface extends pulumi.CustomResource {
     provisioningState = registerOutput<String>('provisioningState');
     status = registerOutput<NetworkInterfaceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterface] resource.
+  NetworkInterface.reference(String urn)
+    : super(
+        'azure-native:azurestackhci:NetworkInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createFromLocal = registerOutput<bool?>('createFromLocal');
+    dnsSettings = registerOutput<InterfaceDNSSettingsResponse?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterfaceDNSSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ipConfigurations = registerOutput<List<IPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IPConfigurationResponse>(guardedValue, (value) => IPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    macAddress = registerOutput<String?>('macAddress');
+    this.name = registerOutput<String>('name');
+    networkSecurityGroup = registerOutput<NetworkSecurityGroupArmReferenceResponse?>('networkSecurityGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkSecurityGroupArmReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<NetworkInterfaceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

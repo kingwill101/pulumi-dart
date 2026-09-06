@@ -7,7 +7,7 @@ class TriggerReference {
   /// Reference trigger name.
   final pulumi.Input<String> referenceName;
   /// Trigger reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [TriggerReference].
   /// [referenceName] Reference trigger name.
@@ -27,7 +27,7 @@ class TriggerReference {
   factory TriggerReference.fromMap(Map<String, dynamic> map) {
     return TriggerReference(
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// https://aka.ms/mdssewithcmkoverview for more details.
 class DiskEncryptionSetParametersResponse {
   /// Resource Id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [DiskEncryptionSetParametersResponse].
   /// [id] Resource Id

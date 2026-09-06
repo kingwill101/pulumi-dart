@@ -15,7 +15,7 @@ class FleetUpdateStrategyArgs {
   /// Defines the update sequence of the clusters.
   final pulumi.Input<UpdateRunStrategy> strategy;
   /// The name of the UpdateStrategy resource.
-  final pulumi.Input<String>? updateStrategyName;
+  final pulumi.Input<String?>? updateStrategyName;
 
   /// Creates a new [FleetUpdateStrategyArgs].
   /// [fleetName] The name of the Fleet resource.

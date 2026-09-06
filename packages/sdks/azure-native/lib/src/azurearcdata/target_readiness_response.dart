@@ -6,11 +6,11 @@ import 'sku_recommendation_summary_response.dart';
 /// The target readiness for migration for this database.
 class TargetReadinessResponse {
   /// The SKU recommendation summary.
-  final pulumi.Input<SkuRecommendationSummaryResponse>? azureSqlDatabase;
+  final pulumi.Input<SkuRecommendationSummaryResponse?>? azureSqlDatabase;
   /// The SKU recommendation summary.
-  final pulumi.Input<SkuRecommendationSummaryResponse>? azureSqlManagedInstance;
+  final pulumi.Input<SkuRecommendationSummaryResponse?>? azureSqlManagedInstance;
   /// The SKU recommendation summary.
-  final pulumi.Input<SkuRecommendationSummaryResponse>? azureSqlVirtualMachine;
+  final pulumi.Input<SkuRecommendationSummaryResponse?>? azureSqlVirtualMachine;
 
   /// Creates a new [TargetReadinessResponse].
   /// [azureSqlDatabase] The SKU recommendation summary.

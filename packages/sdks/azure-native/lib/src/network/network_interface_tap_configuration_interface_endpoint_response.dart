@@ -6,17 +6,17 @@ import 'virtual_network_tap_response.dart';
 /// Tap configuration in a Network Interface
 class NetworkInterfaceTapConfigurationInterfaceEndpointResponse {
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the network interface tap configuration. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   final pulumi.Input<String> provisioningState;
   /// Sub Resource type.
   final pulumi.Input<String> type;
   /// The reference of the Virtual Network Tap resource.
-  final pulumi.Input<VirtualNetworkTapResponse>? virtualNetworkTap;
+  final pulumi.Input<VirtualNetworkTapResponse?>? virtualNetworkTap;
 
   /// Creates a new [NetworkInterfaceTapConfigurationInterfaceEndpointResponse].
   /// [etag] A unique read-only string that changes whenever the resource is updated.

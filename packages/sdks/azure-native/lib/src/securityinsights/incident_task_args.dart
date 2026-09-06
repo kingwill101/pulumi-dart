@@ -9,19 +9,19 @@ import 'client_info.dart';
 /// {@macro pulumi_securityinsights_incident_task_args_doc}
 class IncidentTaskArgs {
   /// Information on the client (user or application) that made some action
-  final pulumi.Input<ClientInfo>? createdBy;
+  final pulumi.Input<ClientInfo?>? createdBy;
   /// The description of the task
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Incident ID
   final pulumi.Input<String> incidentId;
   /// Incident task ID
-  final pulumi.Input<String>? incidentTaskId;
+  final pulumi.Input<String?>? incidentTaskId;
   /// Information on the client (user or application) that made some action
-  final pulumi.Input<ClientInfo>? lastModifiedBy;
+  final pulumi.Input<ClientInfo?>? lastModifiedBy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The status of the task
-  final pulumi.Input<String> status;
+  final pulumi.Input<dynamic> status;
   /// The title of the task
   final pulumi.Input<String> title;
   /// The name of the workspace.
@@ -71,7 +71,7 @@ class IncidentTaskArgs {
       incidentTaskId: (() { final guardedValue = map['incidentTaskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      status: pulumi.Input.fromValue(map['status'] as String),
+      status: pulumi.Input.fromValue(map['status']),
       title: pulumi.Input.fromValue(map['title'] as String),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );

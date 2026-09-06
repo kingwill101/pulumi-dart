@@ -2342,12 +2342,51 @@ class ScheduledQueryRule extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
     resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>('resolveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    scopes = registerOutput<List<String>?>('scopes');
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     severity = registerOutput<double?>('severity');
     skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
-    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    windowSize = registerOutput<String?>('windowSize');
+  }
+
+  /// Creates a typed reference to an existing [ScheduledQueryRule] resource.
+  ScheduledQueryRule.reference(String urn)
+    : super(
+        'azure-native:monitor:ScheduledQueryRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    actions = registerOutput<ActionsResponse?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoMitigate = registerOutput<bool?>('autoMitigate');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    checkWorkspaceAlertsStorageConfigured = registerOutput<bool?>('checkWorkspaceAlertsStorageConfigured');
+    createdWithApiVersion = registerOutput<String>('createdWithApiVersion');
+    criteria = registerOutput<ScheduledQueryRuleCriteriaResponse?>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRuleCriteriaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String?>('displayName');
+    enabled = registerOutput<bool?>('enabled');
+    etag = registerOutput<String>('etag');
+    evaluationFrequency = registerOutput<String?>('evaluationFrequency');
+    identity = registerOutput<IdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    isLegacyLogAnalyticsRule = registerOutput<bool>('isLegacyLogAnalyticsRule');
+    isWorkspaceAlertsStorageConfigured = registerOutput<bool>('isWorkspaceAlertsStorageConfigured');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    muteActionsDuration = registerOutput<String?>('muteActionsDuration');
+    this.name = registerOutput<String>('name');
+    overrideQueryTimeRange = registerOutput<String?>('overrideQueryTimeRange');
+    resolveConfiguration = registerOutput<RuleResolveConfigurationResponse?>('resolveConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuleResolveConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopes = registerOutput<List<String>?>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    severity = registerOutput<double?>('severity');
+    skipQueryValidation = registerOutput<bool?>('skipQueryValidation');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    targetResourceTypes = registerOutput<List<String>?>('targetResourceTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     windowSize = registerOutput<String?>('windowSize');
   }

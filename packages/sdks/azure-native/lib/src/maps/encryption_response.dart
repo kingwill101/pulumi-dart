@@ -6,9 +6,9 @@ import 'encryption_response_customer_managed_key_encryption.dart';
 /// All encryption configuration for a resource.
 class EncryptionResponse {
   /// All Customer-managed key encryption properties for the resource.
-  final pulumi.Input<EncryptionResponseCustomerManagedKeyEncryption>? customerManagedKeyEncryption;
+  final pulumi.Input<EncryptionResponseCustomerManagedKeyEncryption?>? customerManagedKeyEncryption;
   /// (Optional) Discouraged to include in resource definition. Only needed where it is possible to disable platform (AKA infrastructure) encryption. Azure SQL TDE is an example of this. Values are enabled and disabled.
-  final pulumi.Input<String>? infrastructureEncryption;
+  final pulumi.Input<String?>? infrastructureEncryption;
 
   /// Creates a new [EncryptionResponse].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.

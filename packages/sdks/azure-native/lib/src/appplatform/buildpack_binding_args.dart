@@ -13,9 +13,9 @@ class BuildpackBindingArgs {
   /// The name of the builder resource.
   final pulumi.Input<String> builderName;
   /// The name of the Buildpack Binding Name
-  final pulumi.Input<String>? buildpackBindingName;
+  final pulumi.Input<String?>? buildpackBindingName;
   /// Properties of a buildpack binding
-  final pulumi.Input<BuildpackBindingProperties>? properties;
+  final pulumi.Input<BuildpackBindingProperties?>? properties;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the Service resource.

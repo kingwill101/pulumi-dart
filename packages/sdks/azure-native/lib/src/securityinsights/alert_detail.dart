@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Alert detail
-enum AlertDetail {
+enum AlertDetail implements pulumi.PulumiEnum<String> {
   valueDisplayName("DisplayName"),
   valueSeverity("Severity");
 
   const AlertDetail(this.wireValue);
+  @override
   final String wireValue;
 
   static AlertDetail fromValue(String value) {

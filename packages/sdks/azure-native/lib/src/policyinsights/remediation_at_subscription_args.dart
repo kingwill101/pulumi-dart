@@ -10,21 +10,21 @@ import 'remediation_properties_failure_threshold.dart';
 /// {@macro pulumi_policyinsights_remediation_at_subscription_args_doc}
 class RemediationAtSubscriptionArgs {
   /// The remediation failure threshold settings
-  final pulumi.Input<RemediationPropertiesFailureThreshold>? failureThreshold;
+  final pulumi.Input<RemediationPropertiesFailureThreshold?>? failureThreshold;
   /// The filters that will be applied to determine which resources to remediate.
-  final pulumi.Input<RemediationFilters>? filters;
+  final pulumi.Input<RemediationFilters?>? filters;
   /// Determines how many resources to remediate at any given time. Can be used to increase or reduce the pace of the remediation. If not provided, the default parallel deployments value is used.
-  final pulumi.Input<int>? parallelDeployments;
+  final pulumi.Input<int?>? parallelDeployments;
   /// The resource ID of the policy assignment that should be remediated.
-  final pulumi.Input<String>? policyAssignmentId;
+  final pulumi.Input<String?>? policyAssignmentId;
   /// The policy definition reference ID of the individual definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
-  final pulumi.Input<String>? policyDefinitionReferenceId;
+  final pulumi.Input<String?>? policyDefinitionReferenceId;
   /// The name of the remediation.
-  final pulumi.Input<String>? remediationName;
+  final pulumi.Input<String?>? remediationName;
   /// Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
-  final pulumi.Input<int>? resourceCount;
+  final pulumi.Input<int?>? resourceCount;
   /// The way resources to remediate are discovered. Defaults to ExistingNonCompliant if not specified.
-  final pulumi.Input<String>? resourceDiscoveryMode;
+  final pulumi.Input<dynamic>? resourceDiscoveryMode;
 
   /// Creates a new [RemediationAtSubscriptionArgs].
   /// [failureThreshold] The remediation failure threshold settings
@@ -63,12 +63,12 @@ class RemediationAtSubscriptionArgs {
     return RemediationAtSubscriptionArgs(
       failureThreshold: (() { final guardedValue = map['failureThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemediationPropertiesFailureThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RemediationFilters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      parallelDeployments: (() { final guardedValue = map['parallelDeployments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      parallelDeployments: (() { final guardedValue = map['parallelDeployments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       policyAssignmentId: (() { final guardedValue = map['policyAssignmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyDefinitionReferenceId: (() { final guardedValue = map['policyDefinitionReferenceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       remediationName: (() { final guardedValue = map['remediationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      resourceCount: (() { final guardedValue = map['resourceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      resourceDiscoveryMode: (() { final guardedValue = map['resourceDiscoveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      resourceCount: (() { final guardedValue = map['resourceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      resourceDiscoveryMode: (() { final guardedValue = map['resourceDiscoveryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

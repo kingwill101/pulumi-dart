@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'component_args.dart';
+import 'private_link_scoped_resource_response.dart';
 
 /// An Application Insights component definition.
 ///
@@ -390,7 +391,7 @@ class Component extends pulumi.CustomResource {
   /// Azure resource name
   late final pulumi.Output<String> name;
   /// List of linked private link scope resources.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateLinkScopedResources;
+  late final pulumi.Output<List<PrivateLinkScopedResourceResponse>> privateLinkScopedResources;
   /// Current state of this component: whether or not is has been provisioned within the resource group it is defined. Users cannot change this value but are able to read from it. Values will include Succeeded, Deploying, Canceled, and Failed.
   late final pulumi.Output<String> provisioningState;
   /// The network access type for accessing Application Insights ingestion.
@@ -446,14 +447,56 @@ class Component extends pulumi.CustomResource {
     laMigrationDate = registerOutput<String>('laMigrationDate');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    privateLinkScopedResources = registerOutput<List<Map<String, dynamic>>>('privateLinkScopedResources');
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
     publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
     requestSource = registerOutput<String?>('requestSource');
     retentionInDays = registerOutput<int?>('retentionInDays');
     samplingPercentage = registerOutput<double?>('samplingPercentage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    workspaceResourceId = registerOutput<String?>('workspaceResourceId');
+  }
+
+  /// Creates a typed reference to an existing [Component] resource.
+  Component.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:Component',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    applicationId = registerOutput<String>('applicationId');
+    applicationType = registerOutput<String>('applicationType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionString = registerOutput<String>('connectionString');
+    creationDate = registerOutput<String>('creationDate');
+    disableIpMasking = registerOutput<bool?>('disableIpMasking');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    etag = registerOutput<String?>('etag');
+    flowType = registerOutput<String?>('flowType');
+    forceCustomerStorageForProfiler = registerOutput<bool?>('forceCustomerStorageForProfiler');
+    hockeyAppId = registerOutput<String?>('hockeyAppId');
+    hockeyAppToken = registerOutput<String>('hockeyAppToken');
+    immediatePurgeDataOn30Days = registerOutput<bool?>('immediatePurgeDataOn30Days');
+    ingestionMode = registerOutput<String?>('ingestionMode');
+    instrumentationKey = registerOutput<String>('instrumentationKey');
+    kind = registerOutput<String>('kind');
+    laMigrationDate = registerOutput<String>('laMigrationDate');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateLinkScopedResources = registerOutput<List<PrivateLinkScopedResourceResponse>>('privateLinkScopedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateLinkScopedResourceResponse>(guardedValue, (value) => PrivateLinkScopedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccessForIngestion = registerOutput<String?>('publicNetworkAccessForIngestion');
+    publicNetworkAccessForQuery = registerOutput<String?>('publicNetworkAccessForQuery');
+    requestSource = registerOutput<String?>('requestSource');
+    retentionInDays = registerOutput<int?>('retentionInDays');
+    samplingPercentage = registerOutput<double?>('samplingPercentage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tenantId = registerOutput<String>('tenantId');
     type = registerOutput<String>('type');
     workspaceResourceId = registerOutput<String?>('workspaceResourceId');

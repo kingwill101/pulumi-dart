@@ -7,13 +7,13 @@ import 'private_endpoint_connection_properties_private_link_service_connection_s
 /// Describes the properties of an existing private endpoint connection to the search service.
 class PrivateEndpointConnectionPropertiesResponse {
   /// The group ID of the Azure resource for which the private link service is for.
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The private endpoint resource from Microsoft.Network provider.
-  final pulumi.Input<PrivateEndpointConnectionPropertiesPrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesPrivateEndpointResponse?>? privateEndpoint;
   /// Describes the current state of an existing Azure Private Link service connection to the private endpoint.
-  final pulumi.Input<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [PrivateEndpointConnectionPropertiesResponse].
   /// [groupId] The group ID of the Azure resource for which the private link service is for.

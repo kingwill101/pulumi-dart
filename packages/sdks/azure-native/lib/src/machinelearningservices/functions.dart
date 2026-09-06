@@ -184,6 +184,17 @@ Future<GetBatchDeploymentResult> getBatchDeployment(
   return GetBatchDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetBatchDeploymentResult> getBatchDeploymentOutput(
+  GetBatchDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getBatchDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBatchDeploymentResult.fromMap);
+}
+
 /// Gets a batch inference endpoint by name.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -202,6 +213,17 @@ Future<GetBatchEndpointResult> getBatchEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBatchEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetBatchEndpointResult> getBatchEndpointOutput(
+  GetBatchEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getBatchEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBatchEndpointResult.fromMap);
 }
 
 /// Get capabilityHost.
@@ -224,6 +246,17 @@ Future<GetCapabilityHostResult> getCapabilityHost(
   return GetCapabilityHostResult.fromMap(result);
 }
 
+pulumi.Output<GetCapabilityHostResult> getCapabilityHostOutput(
+  GetCapabilityHostArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getCapabilityHost',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapabilityHostResult.fromMap);
+}
+
 /// Uses Azure REST API version 2024-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -240,6 +273,17 @@ Future<GetCapacityReservationGroupResult> getCapacityReservationGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCapacityReservationGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetCapacityReservationGroupResult> getCapacityReservationGroupOutput(
+  GetCapacityReservationGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getCapacityReservationGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCapacityReservationGroupResult.fromMap);
 }
 
 /// Get container.
@@ -262,6 +306,17 @@ Future<GetCodeContainerResult> getCodeContainer(
   return GetCodeContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetCodeContainerResult> getCodeContainerOutput(
+  GetCodeContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getCodeContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeContainerResult.fromMap);
+}
+
 /// Get version.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -280,6 +335,17 @@ Future<GetCodeVersionResult> getCodeVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCodeVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetCodeVersionResult> getCodeVersionOutput(
+  GetCodeVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getCodeVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCodeVersionResult.fromMap);
 }
 
 /// Get container.
@@ -302,6 +368,17 @@ Future<GetComponentContainerResult> getComponentContainer(
   return GetComponentContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetComponentContainerResult> getComponentContainerOutput(
+  GetComponentContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getComponentContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentContainerResult.fromMap);
+}
+
 /// Get version.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -320,6 +397,17 @@ Future<GetComponentVersionResult> getComponentVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetComponentVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetComponentVersionResult> getComponentVersionOutput(
+  GetComponentVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getComponentVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComponentVersionResult.fromMap);
 }
 
 /// Gets compute definition by its name. Any secrets (storage keys, service credentials, etc) are not returned - use 'keys' nested resource to get them.
@@ -342,6 +430,17 @@ Future<GetComputeResult> getCompute(
   return GetComputeResult.fromMap(result);
 }
 
+pulumi.Output<GetComputeResult> getComputeOutput(
+  GetComputeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getCompute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComputeResult.fromMap);
+}
+
 /// Returns supported virtual machine sizes for resize
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -362,6 +461,17 @@ Future<GetComputeAllowedResizeSizesResult> getComputeAllowedResizeSizes(
   return GetComputeAllowedResizeSizesResult.fromMap(result);
 }
 
+pulumi.Output<GetComputeAllowedResizeSizesResult> getComputeAllowedResizeSizesOutput(
+  GetComputeAllowedResizeSizesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getComputeAllowedResizeSizes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetComputeAllowedResizeSizesResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2024-04-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -378,6 +488,17 @@ Future<GetConnectionDeploymentResult> getConnectionDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionDeploymentResult> getConnectionDeploymentOutput(
+  GetConnectionDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getConnectionDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionDeploymentResult.fromMap);
 }
 
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -398,6 +519,17 @@ Future<GetConnectionRaiBlocklistResult> getConnectionRaiBlocklist(
   return GetConnectionRaiBlocklistResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionRaiBlocklistResult> getConnectionRaiBlocklistOutput(
+  GetConnectionRaiBlocklistArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getConnectionRaiBlocklist',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionRaiBlocklistResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -414,6 +546,17 @@ Future<GetConnectionRaiBlocklistItemResult> getConnectionRaiBlocklistItem(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConnectionRaiBlocklistItemResult.fromMap(result);
+}
+
+pulumi.Output<GetConnectionRaiBlocklistItemResult> getConnectionRaiBlocklistItemOutput(
+  GetConnectionRaiBlocklistItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getConnectionRaiBlocklistItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionRaiBlocklistItemResult.fromMap);
 }
 
 /// Azure OpenAI Content Filters resource.
@@ -436,6 +579,17 @@ Future<GetConnectionRaiPolicyResult> getConnectionRaiPolicy(
   return GetConnectionRaiPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionRaiPolicyResult> getConnectionRaiPolicyOutput(
+  GetConnectionRaiPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getConnectionRaiPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionRaiPolicyResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -454,6 +608,17 @@ Future<GetDataContainerResult> getDataContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDataContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetDataContainerResult> getDataContainerOutput(
+  GetDataContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getDataContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataContainerResult.fromMap);
 }
 
 /// Get version.
@@ -476,6 +641,17 @@ Future<GetDataVersionResult> getDataVersion(
   return GetDataVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetDataVersionResult> getDataVersionOutput(
+  GetDataVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getDataVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDataVersionResult.fromMap);
+}
+
 /// Get datastore.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -496,6 +672,17 @@ Future<GetDatastoreResult> getDatastore(
   return GetDatastoreResult.fromMap(result);
 }
 
+pulumi.Output<GetDatastoreResult> getDatastoreOutput(
+  GetDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatastoreResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2024-01-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -512,6 +699,17 @@ Future<GetEndpointDeploymentResult> getEndpointDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEndpointDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetEndpointDeploymentResult> getEndpointDeploymentOutput(
+  GetEndpointDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getEndpointDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointDeploymentResult.fromMap);
 }
 
 /// Get container.
@@ -534,6 +732,17 @@ Future<GetEnvironmentContainerResult> getEnvironmentContainer(
   return GetEnvironmentContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentContainerResult> getEnvironmentContainerOutput(
+  GetEnvironmentContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getEnvironmentContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentContainerResult.fromMap);
+}
+
 /// Azure Resource Manager resource envelope.
 ///
 /// Uses Azure REST API version 2021-03-01-preview.
@@ -550,6 +759,17 @@ Future<GetEnvironmentSpecificationVersionResult> getEnvironmentSpecificationVers
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEnvironmentSpecificationVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetEnvironmentSpecificationVersionResult> getEnvironmentSpecificationVersionOutput(
+  GetEnvironmentSpecificationVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getEnvironmentSpecificationVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentSpecificationVersionResult.fromMap);
 }
 
 /// Get version.
@@ -572,6 +792,17 @@ Future<GetEnvironmentVersionResult> getEnvironmentVersion(
   return GetEnvironmentVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetEnvironmentVersionResult> getEnvironmentVersionOutput(
+  GetEnvironmentVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getEnvironmentVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEnvironmentVersionResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -590,6 +821,17 @@ Future<GetFeaturesetContainerEntityResult> getFeaturesetContainerEntity(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFeaturesetContainerEntityResult.fromMap(result);
+}
+
+pulumi.Output<GetFeaturesetContainerEntityResult> getFeaturesetContainerEntityOutput(
+  GetFeaturesetContainerEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getFeaturesetContainerEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeaturesetContainerEntityResult.fromMap);
 }
 
 /// Get version.
@@ -612,6 +854,17 @@ Future<GetFeaturesetVersionResult> getFeaturesetVersion(
   return GetFeaturesetVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetFeaturesetVersionResult> getFeaturesetVersionOutput(
+  GetFeaturesetVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getFeaturesetVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeaturesetVersionResult.fromMap);
+}
+
 /// Dto object representing feature
 ///
 /// Uses Azure REST API version 2023-02-01-preview.
@@ -628,6 +881,17 @@ Future<GetFeaturesetVersionFeatureResult> getFeaturesetVersionFeature(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFeaturesetVersionFeatureResult.fromMap(result);
+}
+
+pulumi.Output<GetFeaturesetVersionFeatureResult> getFeaturesetVersionFeatureOutput(
+  GetFeaturesetVersionFeatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getFeaturesetVersionFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeaturesetVersionFeatureResult.fromMap);
 }
 
 /// Get container.
@@ -650,6 +914,17 @@ Future<GetFeaturestoreEntityContainerEntityResult> getFeaturestoreEntityContaine
   return GetFeaturestoreEntityContainerEntityResult.fromMap(result);
 }
 
+pulumi.Output<GetFeaturestoreEntityContainerEntityResult> getFeaturestoreEntityContainerEntityOutput(
+  GetFeaturestoreEntityContainerEntityArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getFeaturestoreEntityContainerEntity',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeaturestoreEntityContainerEntityResult.fromMap);
+}
+
 /// Get version.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -670,6 +945,17 @@ Future<GetFeaturestoreEntityVersionResult> getFeaturestoreEntityVersion(
   return GetFeaturestoreEntityVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetFeaturestoreEntityVersionResult> getFeaturestoreEntityVersionOutput(
+  GetFeaturestoreEntityVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getFeaturestoreEntityVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeaturestoreEntityVersionResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -688,6 +974,17 @@ Future<GetInferenceEndpointResult> getInferenceEndpoint(
   return GetInferenceEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetInferenceEndpointResult> getInferenceEndpointOutput(
+  GetInferenceEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferenceEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceEndpointResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -704,6 +1001,17 @@ Future<GetInferenceGroupResult> getInferenceGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInferenceGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetInferenceGroupResult> getInferenceGroupOutput(
+  GetInferenceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferenceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceGroupResult.fromMap);
 }
 
 /// Contract returning to user the delta models.
@@ -726,6 +1034,17 @@ Future<GetInferenceGroupDeltaModelsStatusAsyncResult> getInferenceGroupDeltaMode
   return GetInferenceGroupDeltaModelsStatusAsyncResult.fromMap(result);
 }
 
+pulumi.Output<GetInferenceGroupDeltaModelsStatusAsyncResult> getInferenceGroupDeltaModelsStatusAsyncOutput(
+  GetInferenceGroupDeltaModelsStatusAsyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferenceGroupDeltaModelsStatusAsync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceGroupDeltaModelsStatusAsyncResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview, 2024-01-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -742,6 +1061,17 @@ Future<GetInferenceGroupStatusResult> getInferenceGroupStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInferenceGroupStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetInferenceGroupStatusResult> getInferenceGroupStatusOutput(
+  GetInferenceGroupStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferenceGroupStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferenceGroupStatusResult.fromMap);
 }
 
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -762,6 +1092,17 @@ Future<GetInferencePoolResult> getInferencePool(
   return GetInferencePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetInferencePoolResult> getInferencePoolOutput(
+  GetInferencePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferencePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferencePoolResult.fromMap);
+}
+
 /// Uses Azure REST API version 2024-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -778,6 +1119,17 @@ Future<GetInferencePoolStatusResult> getInferencePoolStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInferencePoolStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetInferencePoolStatusResult> getInferencePoolStatusOutput(
+  GetInferencePoolStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getInferencePoolStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInferencePoolStatusResult.fromMap);
 }
 
 /// Gets a Job by name/id.
@@ -800,6 +1152,17 @@ Future<GetJobResult> getJob(
   return GetJobResult.fromMap(result);
 }
 
+pulumi.Output<GetJobResult> getJobOutput(
+  GetJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetJobResult.fromMap);
+}
+
 /// Azure Resource Manager resource envelope.
 ///
 /// Uses Azure REST API version 2024-01-01-preview.
@@ -820,6 +1183,17 @@ Future<GetLabelingJobResult> getLabelingJob(
   return GetLabelingJobResult.fromMap(result);
 }
 
+pulumi.Output<GetLabelingJobResult> getLabelingJobOutput(
+  GetLabelingJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getLabelingJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLabelingJobResult.fromMap);
+}
+
 /// Get the detail of a linked service.
 ///
 /// Uses Azure REST API version 2020-09-01-preview.
@@ -836,6 +1210,17 @@ Future<GetLinkedServiceResult> getLinkedService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLinkedServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetLinkedServiceResult> getLinkedServiceOutput(
+  GetLinkedServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getLinkedService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedServiceResult.fromMap);
 }
 
 /// Get the detail of a linked workspace.
@@ -858,6 +1243,17 @@ Future<GetLinkedWorkspaceResult> getLinkedWorkspace(
   return GetLinkedWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetLinkedWorkspaceResult> getLinkedWorkspaceOutput(
+  GetLinkedWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getLinkedWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLinkedWorkspaceResult.fromMap);
+}
+
 /// Get a Dataset by name.
 ///
 /// Uses Azure REST API version 2020-05-01-preview.
@@ -876,6 +1272,17 @@ Future<GetMachineLearningDatasetResult> getMachineLearningDataset(
   return GetMachineLearningDatasetResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineLearningDatasetResult> getMachineLearningDatasetOutput(
+  GetMachineLearningDatasetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getMachineLearningDataset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineLearningDatasetResult.fromMap);
+}
+
 /// Get a Datastore by name.
 ///
 /// Uses Azure REST API version 2020-05-01-preview.
@@ -892,6 +1299,17 @@ Future<GetMachineLearningDatastoreResult> getMachineLearningDatastore(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineLearningDatastoreResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineLearningDatastoreResult> getMachineLearningDatastoreOutput(
+  GetMachineLearningDatastoreArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getMachineLearningDatastore',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineLearningDatastoreResult.fromMap);
 }
 
 /// Gets an outbound rule from the managed network of a machine learning workspace.
@@ -914,6 +1332,17 @@ Future<GetManagedNetworkSettingsRuleResult> getManagedNetworkSettingsRule(
   return GetManagedNetworkSettingsRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedNetworkSettingsRuleResult> getManagedNetworkSettingsRuleOutput(
+  GetManagedNetworkSettingsRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getManagedNetworkSettingsRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedNetworkSettingsRuleResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -932,6 +1361,17 @@ Future<GetMarketplaceSubscriptionResult> getMarketplaceSubscription(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMarketplaceSubscriptionResult.fromMap(result);
+}
+
+pulumi.Output<GetMarketplaceSubscriptionResult> getMarketplaceSubscriptionOutput(
+  GetMarketplaceSubscriptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getMarketplaceSubscription',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMarketplaceSubscriptionResult.fromMap);
 }
 
 /// Get container.
@@ -954,6 +1394,17 @@ Future<GetModelContainerResult> getModelContainer(
   return GetModelContainerResult.fromMap(result);
 }
 
+pulumi.Output<GetModelContainerResult> getModelContainerOutput(
+  GetModelContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getModelContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelContainerResult.fromMap);
+}
+
 /// Get version.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -972,6 +1423,17 @@ Future<GetModelVersionResult> getModelVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetModelVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetModelVersionResult> getModelVersionOutput(
+  GetModelVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getModelVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelVersionResult.fromMap);
 }
 
 /// Get Inference Deployment Deployment.
@@ -994,6 +1456,17 @@ Future<GetOnlineDeploymentResult> getOnlineDeployment(
   return GetOnlineDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetOnlineDeploymentResult> getOnlineDeploymentOutput(
+  GetOnlineDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getOnlineDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOnlineDeploymentResult.fromMap);
+}
+
 /// Polls an Endpoint operation.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1012,6 +1485,17 @@ Future<GetOnlineDeploymentLogsResult> getOnlineDeploymentLogs(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOnlineDeploymentLogsResult.fromMap(result);
+}
+
+pulumi.Output<GetOnlineDeploymentLogsResult> getOnlineDeploymentLogsOutput(
+  GetOnlineDeploymentLogsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getOnlineDeploymentLogs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOnlineDeploymentLogsResult.fromMap);
 }
 
 /// Get Online Endpoint.
@@ -1034,6 +1518,17 @@ Future<GetOnlineEndpointResult> getOnlineEndpoint(
   return GetOnlineEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetOnlineEndpointResult> getOnlineEndpointOutput(
+  GetOnlineEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getOnlineEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOnlineEndpointResult.fromMap);
+}
+
 /// Retrieve a valid AML token for an Endpoint using AMLToken-based authentication.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1054,6 +1549,17 @@ Future<GetOnlineEndpointTokenResult> getOnlineEndpointToken(
   return GetOnlineEndpointTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetOnlineEndpointTokenResult> getOnlineEndpointTokenOutput(
+  GetOnlineEndpointTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getOnlineEndpointToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOnlineEndpointTokenResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-04-01-preview.
 ///
 /// Other available API versions: 2024-10-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -1070,6 +1576,17 @@ Future<GetOutboundRuleResult> getOutboundRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOutboundRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetOutboundRuleResult> getOutboundRuleOutput(
+  GetOutboundRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getOutboundRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOutboundRuleResult.fromMap);
 }
 
 /// Called by end-users to get a PE connection.
@@ -1092,6 +1609,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Azure OpenAI Content Filters resource.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -1110,6 +1638,17 @@ Future<GetRaiPolicyResult> getRaiPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRaiPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRaiPolicyResult> getRaiPolicyOutput(
+  GetRaiPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRaiPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRaiPolicyResult.fromMap);
 }
 
 /// Get registry
@@ -1132,6 +1671,17 @@ Future<GetRegistryResult> getRegistry(
   return GetRegistryResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryResult> getRegistryOutput(
+  GetRegistryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistry',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryResult.fromMap);
+}
+
 /// Get Code container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1150,6 +1700,17 @@ Future<GetRegistryCodeContainerResult> getRegistryCodeContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryCodeContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryCodeContainerResult> getRegistryCodeContainerOutput(
+  GetRegistryCodeContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryCodeContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryCodeContainerResult.fromMap);
 }
 
 /// Get version.
@@ -1172,6 +1733,17 @@ Future<GetRegistryCodeVersionResult> getRegistryCodeVersion(
   return GetRegistryCodeVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryCodeVersionResult> getRegistryCodeVersionOutput(
+  GetRegistryCodeVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryCodeVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryCodeVersionResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1190,6 +1762,17 @@ Future<GetRegistryComponentContainerResult> getRegistryComponentContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryComponentContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryComponentContainerResult> getRegistryComponentContainerOutput(
+  GetRegistryComponentContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryComponentContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryComponentContainerResult.fromMap);
 }
 
 /// Get version.
@@ -1212,6 +1795,17 @@ Future<GetRegistryComponentVersionResult> getRegistryComponentVersion(
   return GetRegistryComponentVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryComponentVersionResult> getRegistryComponentVersionOutput(
+  GetRegistryComponentVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryComponentVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryComponentVersionResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1230,6 +1824,17 @@ Future<GetRegistryDataContainerResult> getRegistryDataContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryDataContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryDataContainerResult> getRegistryDataContainerOutput(
+  GetRegistryDataContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryDataContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryDataContainerResult.fromMap);
 }
 
 /// Get version.
@@ -1252,6 +1857,17 @@ Future<GetRegistryDataVersionResult> getRegistryDataVersion(
   return GetRegistryDataVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryDataVersionResult> getRegistryDataVersionOutput(
+  GetRegistryDataVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryDataVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryDataVersionResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1270,6 +1886,17 @@ Future<GetRegistryEnvironmentContainerResult> getRegistryEnvironmentContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryEnvironmentContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryEnvironmentContainerResult> getRegistryEnvironmentContainerOutput(
+  GetRegistryEnvironmentContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryEnvironmentContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryEnvironmentContainerResult.fromMap);
 }
 
 /// Get version.
@@ -1292,6 +1919,17 @@ Future<GetRegistryEnvironmentVersionResult> getRegistryEnvironmentVersion(
   return GetRegistryEnvironmentVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryEnvironmentVersionResult> getRegistryEnvironmentVersionOutput(
+  GetRegistryEnvironmentVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryEnvironmentVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryEnvironmentVersionResult.fromMap);
+}
+
 /// Get container.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1310,6 +1948,17 @@ Future<GetRegistryModelContainerResult> getRegistryModelContainer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistryModelContainerResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistryModelContainerResult> getRegistryModelContainerOutput(
+  GetRegistryModelContainerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryModelContainer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryModelContainerResult.fromMap);
 }
 
 /// Get version.
@@ -1332,6 +1981,17 @@ Future<GetRegistryModelVersionResult> getRegistryModelVersion(
   return GetRegistryModelVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistryModelVersionResult> getRegistryModelVersionOutput(
+  GetRegistryModelVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getRegistryModelVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistryModelVersionResult.fromMap);
+}
+
 /// Get schedule.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1350,6 +2010,17 @@ Future<GetScheduleResult> getSchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetScheduleResult> getScheduleOutput(
+  GetScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getSchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScheduleResult.fromMap);
 }
 
 /// Get Serverless Endpoint.
@@ -1372,6 +2043,17 @@ Future<GetServerlessEndpointResult> getServerlessEndpoint(
   return GetServerlessEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetServerlessEndpointResult> getServerlessEndpointOutput(
+  GetServerlessEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getServerlessEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessEndpointResult.fromMap);
+}
+
 /// Uses Azure REST API version 2024-01-01-preview.
 ///
 /// Other available API versions: 2023-08-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -1388,6 +2070,17 @@ Future<GetServerlessEndpointStatusResult> getServerlessEndpointStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerlessEndpointStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetServerlessEndpointStatusResult> getServerlessEndpointStatusOutput(
+  GetServerlessEndpointStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getServerlessEndpointStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerlessEndpointStatusResult.fromMap);
 }
 
 /// Gets the properties of the specified machine learning workspace.
@@ -1410,6 +2103,17 @@ Future<GetWorkspaceResult> getWorkspace(
   return GetWorkspaceResult.fromMap(result);
 }
 
+pulumi.Output<GetWorkspaceResult> getWorkspaceOutput(
+  GetWorkspaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getWorkspace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceResult.fromMap);
+}
+
 /// Lists machine learning workspaces connections by name.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1428,6 +2132,17 @@ Future<GetWorkspaceConnectionResult> getWorkspaceConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWorkspaceConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkspaceConnectionResult> getWorkspaceConnectionOutput(
+  GetWorkspaceConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:getWorkspaceConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkspaceConnectionResult.fromMap);
 }
 
 /// Lists batch Inference Endpoint keys.
@@ -1450,6 +2165,17 @@ Future<ListBatchEndpointKeysResult> listBatchEndpointKeys(
   return ListBatchEndpointKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListBatchEndpointKeysResult> listBatchEndpointKeysOutput(
+  ListBatchEndpointKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listBatchEndpointKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListBatchEndpointKeysResult.fromMap);
+}
+
 /// Gets secrets related to Machine Learning compute (storage keys, service credentials, etc).
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1468,6 +2194,17 @@ Future<ListComputeKeysResult> listComputeKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListComputeKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListComputeKeysResult> listComputeKeysOutput(
+  ListComputeKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listComputeKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListComputeKeysResult.fromMap);
 }
 
 /// Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
@@ -1490,6 +2227,17 @@ Future<ListComputeNodesResult> listComputeNodes(
   return ListComputeNodesResult.fromMap(result);
 }
 
+pulumi.Output<ListComputeNodesResult> listComputeNodesOutput(
+  ListComputeNodesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listComputeNodes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListComputeNodesResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -1508,6 +2256,17 @@ Future<ListConnectionAllModelsResult> listConnectionAllModels(
   return ListConnectionAllModelsResult.fromMap(result);
 }
 
+pulumi.Output<ListConnectionAllModelsResult> listConnectionAllModelsOutput(
+  ListConnectionAllModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listConnectionAllModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectionAllModelsResult.fromMap);
+}
+
 /// Uses Azure REST API version 2024-07-01-preview.
 /// [args] Arguments passed to this invoke. {@macro pulumi_machinelearningservices_list_connection_models_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1522,6 +2281,17 @@ Future<ListConnectionModelsResult> listConnectionModels(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListConnectionModelsResult.fromMap(result);
+}
+
+pulumi.Output<ListConnectionModelsResult> listConnectionModelsOutput(
+  ListConnectionModelsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listConnectionModels',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListConnectionModelsResult.fromMap);
 }
 
 /// Get datastore secrets.
@@ -1544,6 +2314,17 @@ Future<ListDatastoreSecretsResult> listDatastoreSecrets(
   return ListDatastoreSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListDatastoreSecretsResult> listDatastoreSecretsOutput(
+  ListDatastoreSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listDatastoreSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListDatastoreSecretsResult.fromMap);
+}
+
 /// Uses Azure REST API version 2025-01-01-preview.
 ///
 /// Other available API versions: 2024-01-01-preview, 2024-07-01-preview, 2024-10-01-preview, 2025-04-01-preview, 2025-07-01-preview, 2025-10-01-preview, 2026-01-15-preview, 2026-03-15-preview, 2026-05-15-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native machinelearningservices [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
@@ -1562,6 +2343,17 @@ Future<ListEndpointKeysResult> listEndpointKeys(
   return ListEndpointKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListEndpointKeysResult> listEndpointKeysOutput(
+  ListEndpointKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listEndpointKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListEndpointKeysResult.fromMap);
+}
+
 /// A paginated list of Feature entities.
 ///
 /// Uses Azure REST API version 2023-02-01-preview.
@@ -1578,6 +2370,17 @@ Future<ListFeaturesetVersionFeaturesResult> listFeaturesetVersionFeatures(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListFeaturesetVersionFeaturesResult.fromMap(result);
+}
+
+pulumi.Output<ListFeaturesetVersionFeaturesResult> listFeaturesetVersionFeaturesOutput(
+  ListFeaturesetVersionFeaturesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listFeaturesetVersionFeatures',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFeaturesetVersionFeaturesResult.fromMap);
 }
 
 /// A paginated list of FeaturesetJob entities.
@@ -1600,6 +2403,17 @@ Future<ListFeaturesetVersionMaterializationJobsResult> listFeaturesetVersionMate
   return ListFeaturesetVersionMaterializationJobsResult.fromMap(result);
 }
 
+pulumi.Output<ListFeaturesetVersionMaterializationJobsResult> listFeaturesetVersionMaterializationJobsOutput(
+  ListFeaturesetVersionMaterializationJobsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listFeaturesetVersionMaterializationJobs',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListFeaturesetVersionMaterializationJobsResult.fromMap);
+}
+
 /// A paginated list of String entities.
 ///
 /// Uses Azure REST API version 2025-01-01-preview.
@@ -1618,6 +2432,17 @@ Future<ListInferenceGroupDeltaModelsAsyncResult> listInferenceGroupDeltaModelsAs
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListInferenceGroupDeltaModelsAsyncResult.fromMap(result);
+}
+
+pulumi.Output<ListInferenceGroupDeltaModelsAsyncResult> listInferenceGroupDeltaModelsAsyncOutput(
+  ListInferenceGroupDeltaModelsAsyncArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listInferenceGroupDeltaModelsAsync',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListInferenceGroupDeltaModelsAsyncResult.fromMap);
 }
 
 /// List EndpointAuthKeys for an Endpoint using Key-based authentication.
@@ -1640,6 +2465,17 @@ Future<ListOnlineEndpointKeysResult> listOnlineEndpointKeys(
   return ListOnlineEndpointKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListOnlineEndpointKeysResult> listOnlineEndpointKeysOutput(
+  ListOnlineEndpointKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listOnlineEndpointKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListOnlineEndpointKeysResult.fromMap);
+}
+
 /// List EndpointAuthKeys for an Endpoint using Key-based authentication.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1658,6 +2494,17 @@ Future<ListServerlessEndpointKeysResult> listServerlessEndpointKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListServerlessEndpointKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListServerlessEndpointKeysResult> listServerlessEndpointKeysOutput(
+  ListServerlessEndpointKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listServerlessEndpointKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListServerlessEndpointKeysResult.fromMap);
 }
 
 /// List all the secrets of a machine learning workspaces connections.
@@ -1680,6 +2527,17 @@ Future<ListWorkspaceConnectionSecretsResult> listWorkspaceConnectionSecrets(
   return ListWorkspaceConnectionSecretsResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkspaceConnectionSecretsResult> listWorkspaceConnectionSecretsOutput(
+  ListWorkspaceConnectionSecretsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listWorkspaceConnectionSecrets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceConnectionSecretsResult.fromMap);
+}
+
 /// Lists all the keys associated with this workspace. This includes keys for the storage account, app insights and password for container registry.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1698,6 +2556,17 @@ Future<ListWorkspaceKeysResult> listWorkspaceKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkspaceKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkspaceKeysResult> listWorkspaceKeysOutput(
+  ListWorkspaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listWorkspaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceKeysResult.fromMap);
 }
 
 /// Get Azure Machine Learning Workspace notebook access token
@@ -1720,6 +2589,17 @@ Future<ListWorkspaceNotebookAccessTokenResult> listWorkspaceNotebookAccessToken(
   return ListWorkspaceNotebookAccessTokenResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkspaceNotebookAccessTokenResult> listWorkspaceNotebookAccessTokenOutput(
+  ListWorkspaceNotebookAccessTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listWorkspaceNotebookAccessToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceNotebookAccessTokenResult.fromMap);
+}
+
 /// Lists keys of Azure Machine Learning Workspaces notebook.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1740,6 +2620,17 @@ Future<ListWorkspaceNotebookKeysResult> listWorkspaceNotebookKeys(
   return ListWorkspaceNotebookKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListWorkspaceNotebookKeysResult> listWorkspaceNotebookKeysOutput(
+  ListWorkspaceNotebookKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listWorkspaceNotebookKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceNotebookKeysResult.fromMap);
+}
+
 /// Lists keys of Azure Machine Learning Workspace's storage account.
 ///
 /// Uses Azure REST API version 2025-12-01.
@@ -1758,4 +2649,15 @@ Future<ListWorkspaceStorageAccountKeysResult> listWorkspaceStorageAccountKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWorkspaceStorageAccountKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWorkspaceStorageAccountKeysResult> listWorkspaceStorageAccountKeysOutput(
+  ListWorkspaceStorageAccountKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:machinelearningservices:listWorkspaceStorageAccountKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWorkspaceStorageAccountKeysResult.fromMap);
 }

@@ -13,10 +13,10 @@ class StorageAccountDetailsResponse {
   /// Creates a new [StorageAccountDetailsResponse].
   /// [dataAccountType] Account Type of the data to be transferred.
   /// [storageAccountId] Storage Account Resource Id.
-  const StorageAccountDetailsResponse({
-    required this.dataAccountType,
+  StorageAccountDetailsResponse({
+    pulumi.Input<String>? dataAccountType,
     required this.storageAccountId,
-  });
+  }) : dataAccountType = dataAccountType ?? pulumi.Input.fromValue('StorageAccount');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -46,12 +46,12 @@ class CloudTieringSpaceSavingsResponse {
 
   factory CloudTieringSpaceSavingsResponse.fromMap(Map<String, dynamic> map) {
     return CloudTieringSpaceSavingsResponse(
-      cachedSizeBytes: pulumi.Input.fromValue(map['cachedSizeBytes'] as double),
+      cachedSizeBytes: pulumi.Input.fromValue((map['cachedSizeBytes'] as num).toDouble()),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
-      spaceSavingsBytes: pulumi.Input.fromValue(map['spaceSavingsBytes'] as double),
-      spaceSavingsPercent: pulumi.Input.fromValue(map['spaceSavingsPercent'] as int),
-      totalSizeCloudBytes: pulumi.Input.fromValue(map['totalSizeCloudBytes'] as double),
-      volumeSizeBytes: pulumi.Input.fromValue(map['volumeSizeBytes'] as double),
+      spaceSavingsBytes: pulumi.Input.fromValue((map['spaceSavingsBytes'] as num).toDouble()),
+      spaceSavingsPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spaceSavingsPercent'])),
+      totalSizeCloudBytes: pulumi.Input.fromValue((map['totalSizeCloudBytes'] as num).toDouble()),
+      volumeSizeBytes: pulumi.Input.fromValue((map['volumeSizeBytes'] as num).toDouble()),
     );
   }
 }

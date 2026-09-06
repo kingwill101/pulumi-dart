@@ -7,9 +7,9 @@ import 'private_link_connection_state_response.dart';
 /// A remote private endpoint connection
 class RemotePrivateEndpointConnectionResponse {
   /// PrivateEndpoint of a remote private endpoint connection
-  final pulumi.Input<ArmIdWrapperResponse>? privateEndpoint;
+  final pulumi.Input<ArmIdWrapperResponse?>? privateEndpoint;
   /// The state of a private link connection
-  final pulumi.Input<PrivateLinkConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkConnectionStateResponse?>? privateLinkServiceConnectionState;
   final pulumi.Input<String> provisioningState;
 
   /// Creates a new [RemotePrivateEndpointConnectionResponse].

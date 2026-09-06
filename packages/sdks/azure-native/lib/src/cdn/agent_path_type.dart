@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the path.
-enum AgentPathType {
+enum AgentPathType implements pulumi.PulumiEnum<String> {
   chat("Chat"),
   mcpServer("McpServer");
 
   const AgentPathType(this.wireValue);
+  @override
   final String wireValue;
 
   static AgentPathType fromValue(String value) {

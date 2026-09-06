@@ -11,11 +11,11 @@ class ListConnectionConsentLinksArgs {
   /// Connection name
   final pulumi.Input<String> connectionName;
   /// Collection of resources
-  final pulumi.Input<List<ConsentLinkParameterDefinition>>? parameters;
+  final pulumi.Input<List<ConsentLinkParameterDefinition>?>? parameters;
   /// The resource group
   final pulumi.Input<String> resourceGroupName;
   /// Subscription Id
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [ListConnectionConsentLinksArgs].
   /// [connectionName] Connection name

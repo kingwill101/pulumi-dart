@@ -9,7 +9,7 @@ class Plan {
   /// The product code.
   final pulumi.Input<String> product;
   /// The promotion code.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher ID.
   final pulumi.Input<String> publisher;
   /// The plan's version.

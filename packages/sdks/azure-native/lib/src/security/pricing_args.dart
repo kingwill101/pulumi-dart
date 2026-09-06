@@ -9,17 +9,17 @@ import 'extension.dart';
 /// {@macro pulumi_security_pricing_args_doc}
 class PricingArgs {
   /// If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
-  final pulumi.Input<String>? enforce;
+  final pulumi.Input<dynamic>? enforce;
   /// Optional. List of extensions offered under a plan.
-  final pulumi.Input<List<Extension>>? extensions;
+  final pulumi.Input<List<Extension>?>? extensions;
   /// name of the pricing configuration
-  final pulumi.Input<String>? pricingName;
+  final pulumi.Input<String?>? pricingName;
   /// Indicates whether the Defender plan is enabled on the selected scope. Microsoft Defender for Cloud is provided in two pricing tiers: free and standard. The standard tier offers advanced security capabilities, while the free tier offers basic security features.
-  final pulumi.Input<String> pricingTier;
+  final pulumi.Input<dynamic> pricingTier;
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> scopeId;
   /// The sub-plan selected for a Standard pricing configuration, when more than one sub-plan is available. Each sub-plan enables a set of security features. When not specified, full plan is applied. For VirtualMachines plan, available sub plans are 'P1' & 'P2', where for resource level only 'P1' sub plan is supported.
-  final pulumi.Input<String>? subPlan;
+  final pulumi.Input<String?>? subPlan;
 
   /// Creates a new [PricingArgs].
   /// [enforce] If set to "False", it allows the descendants of this scope to override the pricing configuration set on this scope (allows setting inherited="False"). If set to "True", it prevents overrides and forces this pricing configuration on all the descendants of this scope. This field is only available for subscription-level pricing.
@@ -50,10 +50,10 @@ class PricingArgs {
 
   factory PricingArgs.fromMap(Map<String, dynamic> map) {
     return PricingArgs(
-      enforce: (() { final guardedValue = map['enforce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      enforce: (() { final guardedValue = map['enforce']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Extension>(guardedValue, (value) => Extension.fromMap((value as Map).cast<String, dynamic>()))); })(),
       pricingName: (() { final guardedValue = map['pricingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pricingTier: pulumi.Input.fromValue(map['pricingTier'] as String),
+      pricingTier: pulumi.Input.fromValue(map['pricingTier']),
       scopeId: pulumi.Input.fromValue(map['scopeId'] as String),
       subPlan: (() { final guardedValue = map['subPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

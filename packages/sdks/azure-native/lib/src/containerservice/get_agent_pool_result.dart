@@ -21,7 +21,7 @@ class GetAgentPoolResult {
   /// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
   final List<String>? availabilityZones;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// AKS will associate the specified agent pool with the Capacity Reservation Group.
   final String? capacityReservationGroupID;
   /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
@@ -29,9 +29,9 @@ class GetAgentPoolResult {
   /// CreationData to be used to specify the source Snapshot ID if the node pool will be created/upgraded using a snapshot.
   final CreationDataResponse? creationData;
   /// The version of Kubernetes the Agent Pool is running. If orchestratorVersion is a fully specified version &lt;major.minor.patch&gt;, this field will be exactly equal to it. If orchestratorVersion is &lt;major.minor&gt;, this field will contain the full &lt;major.minor.patch&gt; version being used.
-  final String currentOrchestratorVersion;
+  final String? currentOrchestratorVersion;
   /// Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention.
-  final String eTag;
+  final String? eTag;
   /// Whether to enable auto-scaler
   final bool? enableAutoScaling;
   /// Whether to enable host based OS and data drive encryption. This is only supported on certain VM sizes and in certain Azure regions. For more information, see: https://docs.microsoft.com/azure/aks/enable-host-encryption
@@ -51,7 +51,7 @@ class GetAgentPoolResult {
   /// The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}. For more information see [Azure dedicated hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
   final String? hostGroupID;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// The Kubelet configuration on the agent pool nodes.
   final KubeletConfigResponse? kubeletConfig;
   /// Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
@@ -71,11 +71,11 @@ class GetAgentPoolResult {
   /// The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
   final String? mode;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final String name;
+  final String? name;
   /// Network-related settings of an agent pool.
   final AgentPoolNetworkProfileResponse? networkProfile;
   /// The version of node image
-  final String nodeImageVersion;
+  final String? nodeImageVersion;
   /// The node labels to be persisted across all nodes in agent pool.
   final Map<String, String>? nodeLabels;
   /// The public IP prefix ID which VM nodes should use IPs from. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
@@ -99,7 +99,7 @@ class GetAgentPoolResult {
   /// Whether the Agent Pool is running or stopped. When an Agent Pool is first created it is initially Running. The Agent Pool can be stopped by setting this field to Stopped. A stopped Agent Pool stops all of its VMs and does not accrue billing charges. An Agent Pool can only be stopped if it is Running and provisioning state is Succeeded
   final PowerStateResponse? powerState;
   /// The current deployment or provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The ID for Proximity Placement Group.
   final String? proximityPlacementGroupID;
   /// The scale down mode to use when scaling the Agent Pool. This also effects the cluster autoscaler behavior. If not specified, it defaults to Delete.
@@ -117,7 +117,7 @@ class GetAgentPoolResult {
   /// The tags to be persisted on the agent pool virtual machine scale set.
   final Map<String, String>? tags;
   /// Resource type
-  final String type;
+  final String? type;
   /// Settings for upgrading the agentpool
   final AgentPoolUpgradeSettingsResponse? upgradeSettings;
   /// The status of nodes in a VirtualMachines agent pool.
@@ -193,12 +193,12 @@ class GetAgentPoolResult {
   /// [workloadRuntime] Determines the type of workload a node can run.
   const GetAgentPoolResult({
     this.availabilityZones,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.capacityReservationGroupID,
     this.count,
     this.creationData,
-    required this.currentOrchestratorVersion,
-    required this.eTag,
+    this.currentOrchestratorVersion,
+    this.eTag,
     this.enableAutoScaling,
     this.enableEncryptionAtHost,
     this.enableFIPS,
@@ -208,7 +208,7 @@ class GetAgentPoolResult {
     this.gpuInstanceProfile,
     this.gpuProfile,
     this.hostGroupID,
-    required this.id,
+    this.id,
     this.kubeletConfig,
     this.kubeletDiskType,
     this.linuxOSConfig,
@@ -218,9 +218,9 @@ class GetAgentPoolResult {
     this.messageOfTheDay,
     this.minCount,
     this.mode,
-    required this.name,
+    this.name,
     this.networkProfile,
-    required this.nodeImageVersion,
+    this.nodeImageVersion,
     this.nodeLabels,
     this.nodePublicIPPrefixID,
     this.nodeTaints,
@@ -232,7 +232,7 @@ class GetAgentPoolResult {
     this.podIPAllocationMode,
     this.podSubnetID,
     this.powerState,
-    required this.provisioningState,
+    this.provisioningState,
     this.proximityPlacementGroupID,
     this.scaleDownMode,
     this.scaleSetEvictionPolicy,
@@ -241,7 +241,7 @@ class GetAgentPoolResult {
     this.spotMaxPrice,
     this.status,
     this.tags,
-    required this.type,
+    this.type,
     this.upgradeSettings,
     this.virtualMachineNodesStatus,
     this.virtualMachinesProfile,
@@ -254,12 +254,12 @@ class GetAgentPoolResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'availabilityZones': ?availabilityZones,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'capacityReservationGroupID': ?capacityReservationGroupID,
       'count': ?count,
       'creationData': ?creationData?.toMap(),
-      'currentOrchestratorVersion': currentOrchestratorVersion,
-      'eTag': eTag,
+      'currentOrchestratorVersion': ?currentOrchestratorVersion,
+      'eTag': ?eTag,
       'enableAutoScaling': ?enableAutoScaling,
       'enableEncryptionAtHost': ?enableEncryptionAtHost,
       'enableFIPS': ?enableFIPS,
@@ -269,7 +269,7 @@ class GetAgentPoolResult {
       'gpuInstanceProfile': ?gpuInstanceProfile,
       'gpuProfile': ?gpuProfile?.toMap(),
       'hostGroupID': ?hostGroupID,
-      'id': id,
+      'id': ?id,
       'kubeletConfig': ?kubeletConfig?.toMap(),
       'kubeletDiskType': ?kubeletDiskType,
       'linuxOSConfig': ?linuxOSConfig?.toMap(),
@@ -279,9 +279,9 @@ class GetAgentPoolResult {
       'messageOfTheDay': ?messageOfTheDay,
       'minCount': ?minCount,
       'mode': ?mode,
-      'name': name,
+      'name': ?name,
       'networkProfile': ?networkProfile?.toMap(),
-      'nodeImageVersion': nodeImageVersion,
+      'nodeImageVersion': ?nodeImageVersion,
       'nodeLabels': ?nodeLabels,
       'nodePublicIPPrefixID': ?nodePublicIPPrefixID,
       'nodeTaints': ?nodeTaints,
@@ -293,7 +293,7 @@ class GetAgentPoolResult {
       'podIPAllocationMode': ?podIPAllocationMode,
       'podSubnetID': ?podSubnetID,
       'powerState': ?powerState?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'proximityPlacementGroupID': ?proximityPlacementGroupID,
       'scaleDownMode': ?scaleDownMode,
       'scaleSetEvictionPolicy': ?scaleSetEvictionPolicy,
@@ -302,7 +302,7 @@ class GetAgentPoolResult {
       'spotMaxPrice': ?spotMaxPrice,
       'status': ?status?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
       'upgradeSettings': ?upgradeSettings?.toMap(),
       'virtualMachineNodesStatus': ?(() { final guardedValue = virtualMachineNodesStatus; if (guardedValue == null) return null; return pulumi.Input.encodeList<VirtualMachineNodesResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'virtualMachinesProfile': ?virtualMachinesProfile?.toMap(),
@@ -316,12 +316,12 @@ class GetAgentPoolResult {
   factory GetAgentPoolResult.fromMap(Map<String, dynamic> map) {
     return GetAgentPoolResult(
       availabilityZones: (() { final guardedValue = map['availabilityZones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       capacityReservationGroupID: (() { final guardedValue = map['capacityReservationGroupID']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       creationData: (() { final guardedValue = map['creationData']; if (guardedValue == null) return null; return CreationDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      currentOrchestratorVersion: map['currentOrchestratorVersion'] as String,
-      eTag: map['eTag'] as String,
+      currentOrchestratorVersion: (() { final guardedValue = map['currentOrchestratorVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableAutoScaling: (() { final guardedValue = map['enableAutoScaling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableEncryptionAtHost: (() { final guardedValue = map['enableEncryptionAtHost']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       enableFIPS: (() { final guardedValue = map['enableFIPS']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -331,40 +331,40 @@ class GetAgentPoolResult {
       gpuInstanceProfile: (() { final guardedValue = map['gpuInstanceProfile']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gpuProfile: (() { final guardedValue = map['gpuProfile']; if (guardedValue == null) return null; return GPUProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hostGroupID: (() { final guardedValue = map['hostGroupID']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kubeletConfig: (() { final guardedValue = map['kubeletConfig']; if (guardedValue == null) return null; return KubeletConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kubeletDiskType: (() { final guardedValue = map['kubeletDiskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       linuxOSConfig: (() { final guardedValue = map['linuxOSConfig']; if (guardedValue == null) return null; return LinuxOSConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       localDNSProfile: (() { final guardedValue = map['localDNSProfile']; if (guardedValue == null) return null; return LocalDNSProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      maxCount: (() { final guardedValue = map['maxCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      maxPods: (() { final guardedValue = map['maxPods']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      maxCount: (() { final guardedValue = map['maxCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxPods: (() { final guardedValue = map['maxPods']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       messageOfTheDay: (() { final guardedValue = map['messageOfTheDay']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      minCount: (() { final guardedValue = map['minCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      minCount: (() { final guardedValue = map['minCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkProfile: (() { final guardedValue = map['networkProfile']; if (guardedValue == null) return null; return AgentPoolNetworkProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      nodeImageVersion: map['nodeImageVersion'] as String,
+      nodeImageVersion: (() { final guardedValue = map['nodeImageVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeLabels: (() { final guardedValue = map['nodeLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       nodePublicIPPrefixID: (() { final guardedValue = map['nodePublicIPPrefixID']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeTaints: (() { final guardedValue = map['nodeTaints']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       orchestratorVersion: (() { final guardedValue = map['orchestratorVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      osDiskSizeGB: (() { final guardedValue = map['osDiskSizeGB']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      osDiskSizeGB: (() { final guardedValue = map['osDiskSizeGB']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       osDiskType: (() { final guardedValue = map['osDiskType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       osSKU: (() { final guardedValue = map['osSKU']; if (guardedValue == null) return null; return guardedValue as String; })(),
       osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       podIPAllocationMode: (() { final guardedValue = map['podIPAllocationMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       podSubnetID: (() { final guardedValue = map['podSubnetID']; if (guardedValue == null) return null; return guardedValue as String; })(),
       powerState: (() { final guardedValue = map['powerState']; if (guardedValue == null) return null; return PowerStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       proximityPlacementGroupID: (() { final guardedValue = map['proximityPlacementGroupID']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scaleDownMode: (() { final guardedValue = map['scaleDownMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scaleSetEvictionPolicy: (() { final guardedValue = map['scaleSetEvictionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       scaleSetPriority: (() { final guardedValue = map['scaleSetPriority']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return AgentPoolSecurityProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      spotMaxPrice: (() { final guardedValue = map['spotMaxPrice']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      spotMaxPrice: (() { final guardedValue = map['spotMaxPrice']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return AgentPoolStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upgradeSettings: (() { final guardedValue = map['upgradeSettings']; if (guardedValue == null) return null; return AgentPoolUpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       virtualMachineNodesStatus: (() { final guardedValue = map['virtualMachineNodesStatus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualMachineNodesResponse>(guardedValue, (value) => VirtualMachineNodesResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       virtualMachinesProfile: (() { final guardedValue = map['virtualMachinesProfile']; if (guardedValue == null) return null; return VirtualMachinesProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

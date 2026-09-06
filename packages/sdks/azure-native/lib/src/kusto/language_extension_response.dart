@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The language extension object.
 class LanguageExtensionResponse {
   /// The language extension custom image name.
-  final pulumi.Input<String>? languageExtensionCustomImageName;
+  final pulumi.Input<String?>? languageExtensionCustomImageName;
   /// The language extension image name.
-  final pulumi.Input<String>? languageExtensionImageName;
+  final pulumi.Input<String?>? languageExtensionImageName;
   /// The language extension name.
-  final pulumi.Input<String>? languageExtensionName;
+  final pulumi.Input<String?>? languageExtensionName;
 
   /// Creates a new [LanguageExtensionResponse].
   /// [languageExtensionCustomImageName] The language extension custom image name.

@@ -7,32 +7,32 @@ import 'system_data_response.dart';
 
 /// Properties of the PrivateEndpointConnection.
 class PrivateEndpointConnectionResponse {
-  /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   final pulumi.Input<String> id;
   /// The geo-location where the resource lives
   final pulumi.Input<String> location;
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The Private Endpoint resource for this Connection.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// Details about the state of the connection.
-  final pulumi.Input<ConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
-  /// The system meta data relating to this resource.
+  final pulumi.Input<String?>? provisioningState;
+  /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
   final pulumi.Input<SystemDataResponse> systemData;
-  /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+  /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   final pulumi.Input<String> type;
 
   /// Creates a new [PrivateEndpointConnectionResponse].
-  /// [id] Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+  /// [id] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
   /// [location] The geo-location where the resource lives
   /// [name] The name of the resource
   /// [privateEndpoint] The Private Endpoint resource for this Connection.
   /// [privateLinkServiceConnectionState] Details about the state of the connection.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
-  /// [systemData] The system meta data relating to this resource.
-  /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
+  /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
+  /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const PrivateEndpointConnectionResponse({
     required this.id,
     required this.location,

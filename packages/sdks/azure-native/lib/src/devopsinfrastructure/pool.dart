@@ -1,8 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_dev_ops_organization_profile_response.dart';
 import 'managed_service_identity_response.dart';
 import 'pool_args.dart';
-import 'stateful_response.dart';
 import 'system_data_response.dart';
 import 'vmss_fabric_profile_response.dart';
 
@@ -385,7 +383,7 @@ import 'vmss_fabric_profile_response.dart';
 /// ```
 class Pool extends pulumi.CustomResource {
   /// Defines how the machine will be handled once it executed a job.
-  late final pulumi.Output<StatefulResponse> agentProfile;
+  late final pulumi.Output<dynamic> agentProfile;
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The resource id of the DevCenter Project the pool belongs to.
@@ -401,7 +399,7 @@ class Pool extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// Defines the organization in which the pool will be used.
-  late final pulumi.Output<AzureDevOpsOrganizationProfileResponse> organizationProfile;
+  late final pulumi.Output<dynamic> organizationProfile;
   /// The status of the current operation.
   late final pulumi.Output<String?> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -425,7 +423,7 @@ class Pool extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    agentProfile = registerOutput<StatefulResponse>('agentProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatefulResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    agentProfile = registerOutput<dynamic>('agentProfile');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     devCenterProjectResourceId = registerOutput<String>('devCenterProjectResourceId');
     fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmssFabricProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -433,10 +431,34 @@ class Pool extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     maximumConcurrency = registerOutput<int>('maximumConcurrency');
     this.name = registerOutput<String>('name');
-    organizationProfile = registerOutput<AzureDevOpsOrganizationProfileResponse>('organizationProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureDevOpsOrganizationProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    organizationProfile = registerOutput<dynamic>('organizationProfile');
     provisioningState = registerOutput<String?>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Pool] resource.
+  Pool.reference(String urn)
+    : super(
+        'azure-native:devopsinfrastructure:Pool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentProfile = registerOutput<dynamic>('agentProfile');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    devCenterProjectResourceId = registerOutput<String>('devCenterProjectResourceId');
+    fabricProfile = registerOutput<VmssFabricProfileResponse>('fabricProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmssFabricProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maximumConcurrency = registerOutput<int>('maximumConcurrency');
+    this.name = registerOutput<String>('name');
+    organizationProfile = registerOutput<dynamic>('organizationProfile');
+    provisioningState = registerOutput<String?>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

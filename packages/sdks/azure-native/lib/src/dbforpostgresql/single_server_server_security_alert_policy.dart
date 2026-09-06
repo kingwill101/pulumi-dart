@@ -399,9 +399,30 @@ class SingleServerServerSecurityAlertPolicy extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    disabledAlerts = registerOutput<List<String>?>('disabledAlerts');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
-    emailAddresses = registerOutput<List<String>?>('emailAddresses');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    retentionDays = registerOutput<int?>('retentionDays');
+    state = registerOutput<String>('state');
+    storageAccountAccessKey = registerOutput<String?>('storageAccountAccessKey');
+    storageEndpoint = registerOutput<String?>('storageEndpoint');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SingleServerServerSecurityAlertPolicy] resource.
+  SingleServerServerSecurityAlertPolicy.reference(String urn)
+    : super(
+        'azure-native:dbforpostgresql:SingleServerServerSecurityAlertPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    emailAccountAdmins = registerOutput<bool?>('emailAccountAdmins');
+    emailAddresses = registerOutput<List<String>?>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     retentionDays = registerOutput<int?>('retentionDays');
     state = registerOutput<String>('state');

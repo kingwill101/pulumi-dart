@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Databases secondary type on partner server.
-enum FailoverGroupDatabasesSecondaryType {
+enum FailoverGroupDatabasesSecondaryType implements pulumi.PulumiEnum<String> {
   valueGeo("Geo"),
   valueStandby("Standby");
 
   const FailoverGroupDatabasesSecondaryType(this.wireValue);
+  @override
   final String wireValue;
 
   static FailoverGroupDatabasesSecondaryType fromValue(String value) {

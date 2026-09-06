@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_virtual_network_gateway_bgp_peer_status_args_doc}
 class GetVirtualNetworkGatewayBgpPeerStatusArgs {
   /// The IP address of the peer to retrieve the status of.
-  final pulumi.Input<String>? peer;
+  final pulumi.Input<String?>? peer;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the virtual network gateway.

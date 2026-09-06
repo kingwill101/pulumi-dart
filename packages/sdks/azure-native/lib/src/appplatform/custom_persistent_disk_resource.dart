@@ -6,7 +6,7 @@ import 'azure_file_volume.dart';
 /// Custom persistent disk resource payload.
 class CustomPersistentDiskResource {
   /// Properties of the custom persistent disk resource payload.
-  final pulumi.Input<AzureFileVolume>? customPersistentDiskProperties;
+  final pulumi.Input<AzureFileVolume?>? customPersistentDiskProperties;
   /// The resource id of Azure Spring Apps Storage resource.
   final pulumi.Input<String> storageId;
 

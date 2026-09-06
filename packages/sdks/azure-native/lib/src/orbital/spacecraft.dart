@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'spacecraft_args.dart';
+import 'spacecraft_link_response.dart';
 import 'system_data_response.dart';
 
 /// Customer creates a spacecraft resource to schedule a contact.
@@ -287,7 +288,7 @@ class Spacecraft extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// Immutable list of Spacecraft links.
-  late final pulumi.Output<List<Map<String, dynamic>>> links;
+  late final pulumi.Output<List<SpacecraftLinkResponse>> links;
   /// The geo-location where the resource lives
   late final pulumi.Output<String> location;
   /// The name of the resource
@@ -322,12 +323,34 @@ class Spacecraft extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    links = registerOutput<List<Map<String, dynamic>>>('links');
+    links = registerOutput<List<SpacecraftLinkResponse>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLinkResponse>(guardedValue, (value) => SpacecraftLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     noradId = registerOutput<String?>('noradId');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    titleLine = registerOutput<String>('titleLine');
+    tleLine1 = registerOutput<String>('tleLine1');
+    tleLine2 = registerOutput<String>('tleLine2');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Spacecraft] resource.
+  Spacecraft.reference(String urn)
+    : super(
+        'azure-native:orbital:Spacecraft',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    links = registerOutput<List<SpacecraftLinkResponse>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLinkResponse>(guardedValue, (value) => SpacecraftLinkResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    noradId = registerOutput<String?>('noradId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     titleLine = registerOutput<String>('titleLine');
     tleLine1 = registerOutput<String>('tleLine1');
     tleLine2 = registerOutput<String>('tleLine2');

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of S3BucketDefinitionForJob
 class S3BucketDefinitionForJobResponse {
   /// &lt;p&gt;The unique identifier for the Amazon Web Services account that owns the buckets.&lt;/p&gt;
-  final pulumi.Input<String>? accountId;
+  final pulumi.Input<String?>? accountId;
   /// &lt;p&gt;An array that lists the names of the buckets.&lt;/p&gt;
-  final pulumi.Input<List<String>>? buckets;
+  final pulumi.Input<List<String>?>? buckets;
 
   /// Creates a new [S3BucketDefinitionForJobResponse].
   /// [accountId] &lt;p&gt;The unique identifier for the Amazon Web Services account that owns the buckets.&lt;/p&gt;

@@ -6,7 +6,7 @@ import 'auto_run_state.dart';
 /// Indicates if the image template needs to be built on create/update
 class ImageTemplateAutoRun {
   /// Enabling this field will trigger an automatic build on image template creation or update.
-  final pulumi.Input<AutoRunState>? state;
+  final pulumi.Input<AutoRunState?>? state;
 
   /// Creates a new [ImageTemplateAutoRun].
   /// [state] Enabling this field will trigger an automatic build on image template creation or update.

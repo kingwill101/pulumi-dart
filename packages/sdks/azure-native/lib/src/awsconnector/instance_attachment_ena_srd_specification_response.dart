@@ -6,9 +6,9 @@ import 'instance_attachment_ena_srd_udp_specification_response.dart';
 /// Definition of InstanceAttachmentEnaSrdSpecification
 class InstanceAttachmentEnaSrdSpecificationResponse {
   /// &lt;p&gt;Indicates whether ENA Express is enabled for the network interface.&lt;/p&gt;
-  final pulumi.Input<bool>? enaSrdEnabled;
+  final pulumi.Input<bool?>? enaSrdEnabled;
   /// &lt;p&gt;Configures ENA Express for UDP network traffic.&lt;/p&gt;
-  final pulumi.Input<InstanceAttachmentEnaSrdUdpSpecificationResponse>? enaSrdUdpSpecification;
+  final pulumi.Input<InstanceAttachmentEnaSrdUdpSpecificationResponse?>? enaSrdUdpSpecification;
 
   /// Creates a new [InstanceAttachmentEnaSrdSpecificationResponse].
   /// [enaSrdEnabled] &lt;p&gt;Indicates whether ENA Express is enabled for the network interface.&lt;/p&gt;

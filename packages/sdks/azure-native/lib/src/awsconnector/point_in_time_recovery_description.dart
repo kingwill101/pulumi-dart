@@ -6,11 +6,11 @@ import 'point_in_time_recovery_status_enum_value.dart';
 /// Definition of PointInTimeRecoveryDescription
 class PointInTimeRecoveryDescription {
   /// &lt;p&gt;Specifies the earliest point in time you can restore your table to. You can restore your table to any point in time during the last 35 days. &lt;/p&gt;
-  final pulumi.Input<String>? earliestRestorableDateTime;
+  final pulumi.Input<String?>? earliestRestorableDateTime;
   /// &lt;p&gt; &lt;code&gt;LatestRestorableDateTime&lt;/code&gt; is typically 5 minutes before the current time. &lt;/p&gt;
-  final pulumi.Input<String>? latestRestorableDateTime;
+  final pulumi.Input<String?>? latestRestorableDateTime;
   /// &lt;p&gt;The current state of point in time recovery:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt; - Point in time recovery is enabled.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt; - Point in time recovery is disabled.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<PointInTimeRecoveryStatusEnumValue>? pointInTimeRecoveryStatus;
+  final pulumi.Input<PointInTimeRecoveryStatusEnumValue?>? pointInTimeRecoveryStatus;
 
   /// Creates a new [PointInTimeRecoveryDescription].
   /// [earliestRestorableDateTime] &lt;p&gt;Specifies the earliest point in time you can restore your table to. You can restore your table to any point in time during the last 35 days. &lt;/p&gt;

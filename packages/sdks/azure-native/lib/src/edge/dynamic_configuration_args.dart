@@ -11,9 +11,9 @@ class DynamicConfigurationArgs {
   /// Name of the Configuration
   final pulumi.Input<String> configurationName;
   /// Name of the dynamic configuration
-  final pulumi.Input<String>? dynamicConfigurationName;
+  final pulumi.Input<String?>? dynamicConfigurationName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<DynamicConfigurationProperties>? properties;
+  final pulumi.Input<DynamicConfigurationProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

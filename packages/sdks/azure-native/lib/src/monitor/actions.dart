@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Actions to invoke when the alert fires.
 class Actions {
   /// Action Group resource Ids to invoke when the alert fires.
-  final pulumi.Input<List<String>>? actionGroups;
+  final pulumi.Input<List<String>?>? actionGroups;
   /// The properties of an action properties.
-  final pulumi.Input<Map<String, String>>? actionProperties;
+  final pulumi.Input<Map<String, String>?>? actionProperties;
   /// The properties of an alert payload.
-  final pulumi.Input<Map<String, String>>? customProperties;
+  final pulumi.Input<Map<String, String>?>? customProperties;
 
   /// Creates a new [Actions].
   /// [actionGroups] Action Group resource Ids to invoke when the alert fires.

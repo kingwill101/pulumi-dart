@@ -9,7 +9,7 @@ class GetEndpointResult {
   /// If Always Serve is enabled, probing for endpoint health will be disabled and endpoints will be included in the traffic routing method.
   final String? alwaysServe;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// List of custom headers.
   final List<EndpointPropertiesCustomHeadersItemResponse>? customHeaders;
   /// Specifies the location of the external or nested endpoints when using the 'Performance' traffic routing method.
@@ -64,7 +64,7 @@ class GetEndpointResult {
   /// [weight] The weight of this endpoint when using the 'Weighted' traffic routing method. Possible values are from 1 to 1000.
   const GetEndpointResult({
     this.alwaysServe,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.customHeaders,
     this.endpointLocation,
     this.endpointMonitorStatus,
@@ -86,7 +86,7 @@ class GetEndpointResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'alwaysServe': ?alwaysServe,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'customHeaders': ?(() { final guardedValue = customHeaders; if (guardedValue == null) return null; return pulumi.Input.encodeList<EndpointPropertiesCustomHeadersItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'endpointLocation': ?endpointLocation,
       'endpointMonitorStatus': ?endpointMonitorStatus,
@@ -109,23 +109,23 @@ class GetEndpointResult {
   factory GetEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetEndpointResult(
       alwaysServe: (() { final guardedValue = map['alwaysServe']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customHeaders: (() { final guardedValue = map['customHeaders']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesCustomHeadersItemResponse>(guardedValue, (value) => EndpointPropertiesCustomHeadersItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       endpointLocation: (() { final guardedValue = map['endpointLocation']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointMonitorStatus: (() { final guardedValue = map['endpointMonitorStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endpointStatus: (() { final guardedValue = map['endpointStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       geoMapping: (() { final guardedValue = map['geoMapping']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      minChildEndpoints: (() { final guardedValue = map['minChildEndpoints']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      minChildEndpointsIPv4: (() { final guardedValue = map['minChildEndpointsIPv4']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      minChildEndpointsIPv6: (() { final guardedValue = map['minChildEndpointsIPv6']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      minChildEndpoints: (() { final guardedValue = map['minChildEndpoints']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      minChildEndpointsIPv4: (() { final guardedValue = map['minChildEndpointsIPv4']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      minChildEndpointsIPv6: (() { final guardedValue = map['minChildEndpointsIPv6']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       subnets: (() { final guardedValue = map['subnets']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointPropertiesSubnetsItemResponse>(guardedValue, (value) => EndpointPropertiesSubnetsItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return guardedValue as String; })(),
       targetResourceId: (() { final guardedValue = map['targetResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      weight: (() { final guardedValue = map['weight']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

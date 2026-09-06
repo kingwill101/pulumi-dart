@@ -6,9 +6,9 @@ import 'profile_scrubbing_rules.dart';
 /// Defines rules that scrub sensitive fields in the Azure Front Door profile logs.
 class ProfileLogScrubbing {
   /// List of log scrubbing rules applied to the Azure Front Door profile logs.
-  final pulumi.Input<List<ProfileScrubbingRules>>? scrubbingRules;
+  final pulumi.Input<List<ProfileScrubbingRules>?>? scrubbingRules;
   /// State of the log scrubbing config. Default value is Enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<dynamic>? state;
 
   /// Creates a new [ProfileLogScrubbing].
   /// [scrubbingRules] List of log scrubbing rules applied to the Azure Front Door profile logs.
@@ -28,7 +28,7 @@ class ProfileLogScrubbing {
   factory ProfileLogScrubbing.fromMap(Map<String, dynamic> map) {
     return ProfileLogScrubbing(
       scrubbingRules: (() { final guardedValue = map['scrubbingRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ProfileScrubbingRules>(guardedValue, (value) => ProfileScrubbingRules.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

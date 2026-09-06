@@ -8,9 +8,9 @@ import 'hierarchy_information.dart';
 /// Configuration filters.
 class ConfigurationFilter {
   /// Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
-  final pulumi.Input<ChildConfigurationFilter>? childConfigurationFilter;
+  final pulumi.Input<ChildConfigurationFilter?>? childConfigurationFilter;
   /// Filters specific to product.
-  final pulumi.Input<List<FilterableProperty>>? filterableProperty;
+  final pulumi.Input<List<FilterableProperty>?>? filterableProperty;
   /// Product hierarchy information.
   final pulumi.Input<HierarchyInformation> hierarchyInformation;
 

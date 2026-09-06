@@ -5,16 +5,16 @@ import 'endpoint_model_sku_capacity_properties_response.dart';
 import 'endpoint_model_sku_rate_limit_properties_response.dart';
 
 class EndpointModelSkuPropertiesResponse {
-  final pulumi.Input<EndpointModelSkuCapacityPropertiesResponse>? capacity;
+  final pulumi.Input<EndpointModelSkuCapacityPropertiesResponse?>? capacity;
   /// The list of ARM id for the connection support this SKU.
-  final pulumi.Input<List<String>>? connectionIds;
+  final pulumi.Input<List<String>?>? connectionIds;
   /// The datetime of deprecation of the model SKU.
-  final pulumi.Input<String>? deprecationDate;
+  final pulumi.Input<String?>? deprecationDate;
   /// The name of the model SKU.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<List<EndpointModelSkuRateLimitPropertiesResponse>>? rateLimits;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<List<EndpointModelSkuRateLimitPropertiesResponse>?>? rateLimits;
   /// The usage name of the model SKU.
-  final pulumi.Input<String>? usageName;
+  final pulumi.Input<String?>? usageName;
 
   /// Creates a new [EndpointModelSkuPropertiesResponse].
   /// [capacity] Optional.

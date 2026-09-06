@@ -11,21 +11,21 @@ import 'search_results.dart';
 /// {@macro pulumi_operationalinsights_table_args_doc}
 class TableArgs {
   /// Instruct the system how to handle and charge the logs ingested to this table.
-  final pulumi.Input<String>? plan;
+  final pulumi.Input<dynamic>? plan;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Parameters of the restore operation that initiated this table.
-  final pulumi.Input<RestoredLogs>? restoredLogs;
+  final pulumi.Input<RestoredLogs?>? restoredLogs;
   /// The table retention in days, between 4 and 730. Setting this property to -1 will default to the workspace retention.
-  final pulumi.Input<int>? retentionInDays;
+  final pulumi.Input<int?>? retentionInDays;
   /// Table schema.
-  final pulumi.Input<Schema>? schema;
+  final pulumi.Input<Schema?>? schema;
   /// Parameters of the search job that initiated this table.
-  final pulumi.Input<SearchResults>? searchResults;
+  final pulumi.Input<SearchResults?>? searchResults;
   /// The name of the table.
-  final pulumi.Input<String>? tableName;
+  final pulumi.Input<String?>? tableName;
   /// The table total retention in days, between 4 and 4383. Setting this property to -1 will default to table retention.
-  final pulumi.Input<int>? totalRetentionInDays;
+  final pulumi.Input<int?>? totalRetentionInDays;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 
@@ -67,14 +67,14 @@ class TableArgs {
 
   factory TableArgs.fromMap(Map<String, dynamic> map) {
     return TableArgs(
-      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       restoredLogs: (() { final guardedValue = map['restoredLogs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RestoredLogs.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Schema.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       searchResults: (() { final guardedValue = map['searchResults']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SearchResults.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tableName: (() { final guardedValue = map['tableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      totalRetentionInDays: (() { final guardedValue = map['totalRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      totalRetentionInDays: (() { final guardedValue = map['totalRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),
     );
   }

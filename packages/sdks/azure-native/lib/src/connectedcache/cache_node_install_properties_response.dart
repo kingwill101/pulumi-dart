@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Mcc cache node resource install script properties.
 class CacheNodeInstallPropertiesResponse {
   /// Mcc cache node resource Id.
-  final pulumi.Input<String>? cacheNodeId;
+  final pulumi.Input<String?>? cacheNodeId;
   /// Mcc customer resource Id.
-  final pulumi.Input<String>? customerId;
+  final pulumi.Input<String?>? customerId;
   /// Mcc primary account key. Internal to Mcc.
   final pulumi.Input<String> primaryAccountKey;
   /// Mcc Iot Central temporary device registration key, used once.

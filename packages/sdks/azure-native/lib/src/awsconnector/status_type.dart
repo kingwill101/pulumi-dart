@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum StatusType {
+enum StatusType implements pulumi.PulumiEnum<String> {
   active("Active"),
   inactive("Inactive");
 
   const StatusType(this.wireValue);
+  @override
   final String wireValue;
 
   static StatusType fromValue(String value) {

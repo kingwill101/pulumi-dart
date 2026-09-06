@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VMwareCbt security profile input.
 class VMwareCbtSecurityProfileProperties {
   /// A value indicating whether confidential compute encryption to be enabled.
-  final pulumi.Input<String>? isTargetVmConfidentialEncryptionEnabled;
+  final pulumi.Input<String?>? isTargetVmConfidentialEncryptionEnabled;
   /// A value indicating whether integrity monitoring to be enabled.
-  final pulumi.Input<String>? isTargetVmIntegrityMonitoringEnabled;
+  final pulumi.Input<String?>? isTargetVmIntegrityMonitoringEnabled;
   /// A value indicating whether secure boot to be enabled.
-  final pulumi.Input<String>? isTargetVmSecureBootEnabled;
+  final pulumi.Input<String?>? isTargetVmSecureBootEnabled;
   /// A value indicating whether trusted platform module to be enabled.
-  final pulumi.Input<String>? isTargetVmTpmEnabled;
+  final pulumi.Input<String?>? isTargetVmTpmEnabled;
   /// The target VM security type.
-  final pulumi.Input<String>? targetVmSecurityType;
+  final pulumi.Input<dynamic>? targetVmSecurityType;
 
   /// Creates a new [VMwareCbtSecurityProfileProperties].
   /// [isTargetVmConfidentialEncryptionEnabled] A value indicating whether confidential compute encryption to be enabled.
@@ -45,7 +45,7 @@ class VMwareCbtSecurityProfileProperties {
       isTargetVmIntegrityMonitoringEnabled: (() { final guardedValue = map['isTargetVmIntegrityMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isTargetVmSecureBootEnabled: (() { final guardedValue = map['isTargetVmSecureBootEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isTargetVmTpmEnabled: (() { final guardedValue = map['isTargetVmTpmEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetVmSecurityType: (() { final guardedValue = map['targetVmSecurityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetVmSecurityType: (() { final guardedValue = map['targetVmSecurityType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

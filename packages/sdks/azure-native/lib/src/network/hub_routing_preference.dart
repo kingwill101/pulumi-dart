@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The hubRoutingPreference of this VirtualHub.
-enum HubRoutingPreference {
+enum HubRoutingPreference implements pulumi.PulumiEnum<String> {
   valueExpressRoute("ExpressRoute"),
   valueVpnGateway("VpnGateway"),
   valueASPath("ASPath");
 
   const HubRoutingPreference(this.wireValue);
+  @override
   final String wireValue;
 
   static HubRoutingPreference fromValue(String value) {

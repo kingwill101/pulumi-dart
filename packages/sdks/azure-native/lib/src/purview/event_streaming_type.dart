@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The event streaming service type
-enum EventStreamingType {
+enum EventStreamingType implements pulumi.PulumiEnum<String> {
   none("None"),
   managed("Managed"),
   azure("Azure");
 
   const EventStreamingType(this.wireValue);
+  @override
   final String wireValue;
 
   static EventStreamingType fromValue(String value) {

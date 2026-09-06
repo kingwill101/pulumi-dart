@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class WorkspaceConnectionAccessKeyResponse {
-  final pulumi.Input<String>? accessKeyId;
-  final pulumi.Input<String>? secretAccessKey;
+  final pulumi.Input<String?>? accessKeyId;
+  final pulumi.Input<String?>? secretAccessKey;
 
   /// Creates a new [WorkspaceConnectionAccessKeyResponse].
   /// [accessKeyId] Optional.

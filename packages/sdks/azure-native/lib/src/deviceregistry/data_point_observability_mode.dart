@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// An indication of how the data point should be mapped to OpenTelemetry.
-enum DataPointObservabilityMode {
+enum DataPointObservabilityMode implements pulumi.PulumiEnum<String> {
   none("None"),
   counter("Counter"),
   gauge("Gauge"),
@@ -7,6 +9,7 @@ enum DataPointObservabilityMode {
   log("Log");
 
   const DataPointObservabilityMode(this.wireValue);
+  @override
   final String wireValue;
 
   static DataPointObservabilityMode fromValue(String value) {

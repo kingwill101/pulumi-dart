@@ -10,15 +10,15 @@ import 'filters_configuration.dart';
 /// {@macro pulumi_eventgrid_namespace_topic_event_subscription_args_doc}
 class NamespaceTopicEventSubscriptionArgs {
   /// Information about the delivery configuration of the event subscription.
-  final pulumi.Input<DeliveryConfiguration>? deliveryConfiguration;
+  final pulumi.Input<DeliveryConfiguration?>? deliveryConfiguration;
   /// The event delivery schema for the event subscription.
-  final pulumi.Input<String>? eventDeliverySchema;
+  final pulumi.Input<dynamic>? eventDeliverySchema;
   /// Name of the event subscription to be created. Event subscription names must be between 3 and 50 characters in length and use alphanumeric letters only.
-  final pulumi.Input<String>? eventSubscriptionName;
+  final pulumi.Input<String?>? eventSubscriptionName;
   /// Expiration time of the event subscription.
-  final pulumi.Input<String>? expirationTimeUtc;
+  final pulumi.Input<String?>? expirationTimeUtc;
   /// Information about the filter for the event subscription.
-  final pulumi.Input<FiltersConfiguration>? filtersConfiguration;
+  final pulumi.Input<FiltersConfiguration?>? filtersConfiguration;
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// The name of the resource group within the user's subscription.
@@ -62,7 +62,7 @@ class NamespaceTopicEventSubscriptionArgs {
   factory NamespaceTopicEventSubscriptionArgs.fromMap(Map<String, dynamic> map) {
     return NamespaceTopicEventSubscriptionArgs(
       deliveryConfiguration: (() { final guardedValue = map['deliveryConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DeliveryConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      eventDeliverySchema: (() { final guardedValue = map['eventDeliverySchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventDeliverySchema: (() { final guardedValue = map['eventDeliverySchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       eventSubscriptionName: (() { final guardedValue = map['eventSubscriptionName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       expirationTimeUtc: (() { final guardedValue = map['expirationTimeUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filtersConfiguration: (() { final guardedValue = map['filtersConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FiltersConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

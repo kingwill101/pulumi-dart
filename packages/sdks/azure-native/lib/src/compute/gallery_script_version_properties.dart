@@ -9,7 +9,7 @@ class GalleryScriptVersionProperties {
   /// The publishing profile of a gallery image version.
   final pulumi.Input<GalleryScriptVersionPublishingProfile> publishingProfile;
   /// The safety profile of the Gallery Script Version.
-  final pulumi.Input<GalleryScriptVersionSafetyProfile>? safetyProfile;
+  final pulumi.Input<GalleryScriptVersionSafetyProfile?>? safetyProfile;
 
   /// Creates a new [GalleryScriptVersionProperties].
   /// [publishingProfile] The publishing profile of a gallery image version.

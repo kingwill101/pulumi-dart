@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionStateRuleResponse {
   /// The allowed actions.
-  final pulumi.Input<List<String>>? allowedActions;
+  final pulumi.Input<List<String>?>? allowedActions;
   /// The subscription state.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [SubscriptionStateRuleResponse].
   /// [allowedActions] The allowed actions.

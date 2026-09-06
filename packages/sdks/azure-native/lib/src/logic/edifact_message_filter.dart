@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Edifact message filter for odata query.
 class EdifactMessageFilter {
   /// The message filter type.
-  final pulumi.Input<String> messageFilterType;
+  final pulumi.Input<dynamic> messageFilterType;
 
   /// Creates a new [EdifactMessageFilter].
   /// [messageFilterType] The message filter type.
@@ -21,7 +21,7 @@ class EdifactMessageFilter {
 
   factory EdifactMessageFilter.fromMap(Map<String, dynamic> map) {
     return EdifactMessageFilter(
-      messageFilterType: pulumi.Input.fromValue(map['messageFilterType'] as String),
+      messageFilterType: pulumi.Input.fromValue(map['messageFilterType']),
     );
   }
 }

@@ -13,7 +13,7 @@ class AnomaliesArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  final pulumi.Input<String>? settingsName;
+  final pulumi.Input<String?>? settingsName;
   /// The name of the workspace.
   final pulumi.Input<String> workspaceName;
 

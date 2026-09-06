@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'recommended_action_response.dart';
 import 'server_advisor_args.dart';
 
 /// Database, Server or Elastic Pool Advisor.
@@ -175,7 +176,7 @@ class ServerAdvisor extends pulumi.CustomResource {
   /// Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available),LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
   late final pulumi.Output<String> recommendationsStatus;
   /// Gets the recommended actions for this advisor.
-  late final pulumi.Output<List<Map<String, dynamic>>> recommendedActions;
+  late final pulumi.Output<List<RecommendedActionResponse>> recommendedActions;
   /// Resource type.
   late final pulumi.Output<String> type;
 
@@ -202,7 +203,29 @@ class ServerAdvisor extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     recommendationsStatus = registerOutput<String>('recommendationsStatus');
-    recommendedActions = registerOutput<List<Map<String, dynamic>>>('recommendedActions');
+    recommendedActions = registerOutput<List<RecommendedActionResponse>>('recommendedActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendedActionResponse>(guardedValue, (value) => RecommendedActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerAdvisor] resource.
+  ServerAdvisor.reference(String urn)
+    : super(
+        'azure-native:sql:ServerAdvisor',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    advisorStatus = registerOutput<String>('advisorStatus');
+    autoExecuteStatus = registerOutput<String>('autoExecuteStatus');
+    autoExecuteStatusInheritedFrom = registerOutput<String>('autoExecuteStatusInheritedFrom');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String>('kind');
+    lastChecked = registerOutput<String>('lastChecked');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    recommendationsStatus = registerOutput<String>('recommendationsStatus');
+    recommendedActions = registerOutput<List<RecommendedActionResponse>>('recommendedActions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecommendedActionResponse>(guardedValue, (value) => RecommendedActionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
   }
 }

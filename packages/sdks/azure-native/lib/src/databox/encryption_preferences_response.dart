@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Preferences related to the Encryption.
 class EncryptionPreferencesResponse {
   /// Defines secondary layer of software-based encryption enablement.
-  final pulumi.Input<String>? doubleEncryption;
+  final pulumi.Input<String?>? doubleEncryption;
   /// Defines Hardware level encryption (Only for disk)
-  final pulumi.Input<String>? hardwareEncryption;
+  final pulumi.Input<String?>? hardwareEncryption;
 
   /// Creates a new [EncryptionPreferencesResponse].
   /// [doubleEncryption] Defines secondary layer of software-based encryption enablement.
   /// [hardwareEncryption] Defines Hardware level encryption (Only for disk)
-  const EncryptionPreferencesResponse({
-    this.doubleEncryption,
+  EncryptionPreferencesResponse({
+    pulumi.Input<String?>? doubleEncryption,
     this.hardwareEncryption,
-  });
+  }) : doubleEncryption = doubleEncryption ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

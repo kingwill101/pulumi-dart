@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Volume mount for the Container App.
 class VolumeMount {
   /// Path within the container at which the volume should be mounted.Must not contain ':'.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
-  final pulumi.Input<String>? subPath;
+  final pulumi.Input<String?>? subPath;
   /// This must match the Name of a Volume.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [VolumeMount].
   /// [mountPath] Path within the container at which the volume should be mounted.Must not contain ':'.

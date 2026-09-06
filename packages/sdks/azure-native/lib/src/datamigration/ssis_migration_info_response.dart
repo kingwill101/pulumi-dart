@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SSIS migration info with SSIS store type, overwrite policy.
 class SsisMigrationInfoResponse {
   /// The overwrite option for the SSIS environment migration
-  final pulumi.Input<String>? environmentOverwriteOption;
+  final pulumi.Input<String?>? environmentOverwriteOption;
   /// The overwrite option for the SSIS project migration
-  final pulumi.Input<String>? projectOverwriteOption;
+  final pulumi.Input<String?>? projectOverwriteOption;
   /// The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
-  final pulumi.Input<String>? ssisStoreType;
+  final pulumi.Input<String?>? ssisStoreType;
 
   /// Creates a new [SsisMigrationInfoResponse].
   /// [environmentOverwriteOption] The overwrite option for the SSIS environment migration

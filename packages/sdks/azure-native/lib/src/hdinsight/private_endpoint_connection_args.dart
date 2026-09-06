@@ -11,7 +11,7 @@ class PrivateEndpointConnectionArgs {
   /// The name of the cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the private endpoint connection.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The private link service connection state.
   final pulumi.Input<PrivateLinkServiceConnectionState> privateLinkServiceConnectionState;
   /// The name of the resource group.

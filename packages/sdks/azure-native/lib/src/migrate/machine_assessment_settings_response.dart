@@ -9,45 +9,45 @@ import 'vm_uptime_machine_assessments_v2_operation_response.dart';
 /// Properties of an assessment.
 class MachineAssessmentSettingsResponse {
   /// The disk type for the assessment.
-  final pulumi.Input<List<String>>? azureDiskTypes;
+  final pulumi.Input<List<String>?>? azureDiskTypes;
   /// Gets or sets the user configurable setting to display the azure hybrid use
   /// benefit.
-  final pulumi.Input<String>? azureHybridUseBenefit;
+  final pulumi.Input<String?>? azureHybridUseBenefit;
   /// Azure Location or Azure region where to which the machines will be migrated.
-  final pulumi.Input<String>? azureLocation;
+  final pulumi.Input<String?>? azureLocation;
   /// Gets or sets Azure Pricing Tier - Free, Basic, etc.
-  final pulumi.Input<String>? azurePricingTier;
+  final pulumi.Input<String?>? azurePricingTier;
   /// The azure security offering type.
-  final pulumi.Input<String>? azureSecurityOfferingType;
+  final pulumi.Input<String?>? azureSecurityOfferingType;
   /// Gets or sets the Azure Storage Redundancy. Example: Locally Redundant Storage.
-  final pulumi.Input<String>? azureStorageRedundancy;
+  final pulumi.Input<String?>? azureStorageRedundancy;
   /// Gets or sets the Azure VM families.
-  final pulumi.Input<List<String>>? azureVmFamilies;
+  final pulumi.Input<List<String>?>? azureVmFamilies;
   /// Gets or sets the Azure VM security options.
-  final pulumi.Input<List<String>>? azureVmSecurityOptions;
+  final pulumi.Input<List<String>?>? azureVmSecurityOptions;
   /// Gets or sets the billing settings.
-  final pulumi.Input<BillingSettingsResponse>? billingSettings;
+  final pulumi.Input<BillingSettingsResponse?>? billingSettings;
   /// Currency in which prices should be reported.
-  final pulumi.Input<String>? currency;
+  final pulumi.Input<String?>? currency;
   /// Custom discount percentage.
-  final pulumi.Input<double>? discountPercentage;
+  final pulumi.Input<double?>? discountPercentage;
   /// Gets or sets user configurable setting to display the environment type.
-  final pulumi.Input<String>? environmentType;
+  final pulumi.Input<String?>? environmentType;
   /// Gets or sets the user configurable setting to display the linux azure hybrid use
   /// benefit.
-  final pulumi.Input<String>? linuxAzureHybridUseBenefit;
+  final pulumi.Input<String?>? linuxAzureHybridUseBenefit;
   /// Gets or sets the performance data.
-  final pulumi.Input<PerformanceDataResponse>? performanceData;
+  final pulumi.Input<PerformanceDataResponse?>? performanceData;
   /// Gets or sets the savings settings.
-  final pulumi.Input<SavingsSettingsResponse>? savingsSettings;
+  final pulumi.Input<SavingsSettingsResponse?>? savingsSettings;
   /// Percentage of buffer that user wants on performance metrics when recommending
   /// Azure sizes.
-  final pulumi.Input<double>? scalingFactor;
+  final pulumi.Input<double?>? scalingFactor;
   /// Assessment sizing criterion.
-  final pulumi.Input<String>? sizingCriterion;
+  final pulumi.Input<String?>? sizingCriterion;
   /// Gets or sets the duration for which the VMs are up in the on-premises
   /// environment.
-  final pulumi.Input<VmUptimeMachineAssessmentsV2OperationResponse>? vmUptime;
+  final pulumi.Input<VmUptimeMachineAssessmentsV2OperationResponse?>? vmUptime;
 
   /// Creates a new [MachineAssessmentSettingsResponse].
   /// [azureDiskTypes] The disk type for the assessment.
@@ -124,12 +124,12 @@ class MachineAssessmentSettingsResponse {
       azureVmSecurityOptions: (() { final guardedValue = map['azureVmSecurityOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       billingSettings: (() { final guardedValue = map['billingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BillingSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      discountPercentage: (() { final guardedValue = map['discountPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       environmentType: (() { final guardedValue = map['environmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linuxAzureHybridUseBenefit: (() { final guardedValue = map['linuxAzureHybridUseBenefit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceData: (() { final guardedValue = map['performanceData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PerformanceDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       savingsSettings: (() { final guardedValue = map['savingsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SavingsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      scalingFactor: (() { final guardedValue = map['scalingFactor']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       sizingCriterion: (() { final guardedValue = map['sizingCriterion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmUptime: (() { final guardedValue = map['vmUptime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VmUptimeMachineAssessmentsV2OperationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

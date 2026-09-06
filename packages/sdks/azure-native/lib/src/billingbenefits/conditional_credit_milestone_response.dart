@@ -7,17 +7,17 @@ import 'price_response.dart';
 /// Milestone definition within a conditional credit
 class ConditionalCreditMilestoneResponse {
   /// Award details for this milestone (only present for primary conditional credits)
-  final pulumi.Input<AwardResponse>? award;
+  final pulumi.Input<AwardResponse?>? award;
   /// End date for this milestone
-  final pulumi.Input<String>? endAt;
+  final pulumi.Input<String?>? endAt;
   /// Unique identifier for the milestone
-  final pulumi.Input<String>? milestoneId;
+  final pulumi.Input<String?>? milestoneId;
   /// Display name for the milestone
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Spend target for this milestone
-  final pulumi.Input<PriceResponse>? spendTarget;
+  final pulumi.Input<PriceResponse?>? spendTarget;
   /// Current status of the milestone
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [ConditionalCreditMilestoneResponse].
   /// [award] Award details for this milestone (only present for primary conditional credits)

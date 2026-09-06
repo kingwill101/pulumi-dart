@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Load balancing algorithm for ramp up period.
-enum SessionHostLoadBalancingAlgorithm {
+enum SessionHostLoadBalancingAlgorithm implements pulumi.PulumiEnum<String> {
   valueBreadthFirst("BreadthFirst"),
   valueDepthFirst("DepthFirst");
 
   const SessionHostLoadBalancingAlgorithm(this.wireValue);
+  @override
   final String wireValue;
 
   static SessionHostLoadBalancingAlgorithm fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Selected type of domain control validation for managed certificates.
-enum ManagedCertificateDomainControlValidation {
+enum ManagedCertificateDomainControlValidation implements pulumi.PulumiEnum<String> {
   valueCNAME("CNAME"),
   valueHTTP("HTTP"),
   valueTXT("TXT");
 
   const ManagedCertificateDomainControlValidation(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedCertificateDomainControlValidation fromValue(String value) {

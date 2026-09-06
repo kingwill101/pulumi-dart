@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// User-assigned managed identity.
 class UserAssignedIdentityResponse {
   /// Client App Id associated with this identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Azure Active Directory principal ID associated with this Identity.
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Client App Id associated with this identity.

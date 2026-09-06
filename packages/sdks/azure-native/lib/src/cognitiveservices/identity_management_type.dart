@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enumeration of identity types, from the perspective of management.
-enum IdentityManagementType {
+enum IdentityManagementType implements pulumi.PulumiEnum<String> {
   system("System"),
   user("User"),
   none("None");
 
   const IdentityManagementType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityManagementType fromValue(String value) {

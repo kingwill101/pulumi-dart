@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines parameters for tcp connection pooling
 class TcpConnectionPool {
   /// Maximum number of tcp connections allowed
-  final pulumi.Input<int>? maxConnections;
+  final pulumi.Input<int?>? maxConnections;
 
   /// Creates a new [TcpConnectionPool].
   /// [maxConnections] Maximum number of tcp connections allowed
@@ -21,7 +21,7 @@ class TcpConnectionPool {
 
   factory TcpConnectionPool.fromMap(Map<String, dynamic> map) {
     return TcpConnectionPool(
-      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConnections: (() { final guardedValue = map['maxConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

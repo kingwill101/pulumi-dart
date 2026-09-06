@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Image reference information. Used in the virtual machine profile.
 class ImageReference {
   /// Image resource ID
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The image offer if applicable.
-  final pulumi.Input<String>? offer;
+  final pulumi.Input<String?>? offer;
   /// The image publisher
-  final pulumi.Input<String>? publisher;
+  final pulumi.Input<String?>? publisher;
   /// The image SKU
-  final pulumi.Input<String>? sku;
+  final pulumi.Input<String?>? sku;
   /// The image version specified on creation.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImageReference].
   /// [id] Image resource ID

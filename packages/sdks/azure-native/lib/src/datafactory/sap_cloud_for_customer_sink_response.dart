@@ -22,7 +22,7 @@ class SapCloudForCustomerSinkResponse {
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
   /// The write behavior for the operation. Default is 'Insert'.
-  final pulumi.Input<String>? writeBehavior;
+  final pulumi.Input<String?>? writeBehavior;
 
   /// Creates a new [SapCloudForCustomerSinkResponse].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The specification of whether this hint supports affinity or anti-affinity with the referenced resources.
-enum VirtualMachinePlacementHintType {
+enum VirtualMachinePlacementHintType implements pulumi.PulumiEnum<String> {
   valueAffinity("Affinity"),
   valueAntiAffinity("AntiAffinity");
 
   const VirtualMachinePlacementHintType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachinePlacementHintType fromValue(String value) {

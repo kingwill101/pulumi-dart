@@ -20,7 +20,7 @@ class OracleSourceResponse {
   /// The partition mechanism that will be used for Oracle read in parallel. Possible values include: "None", "PhysicalPartitionsOfTable", "DynamicRange".
   final pulumi.Input<dynamic>? partitionOption;
   /// The settings that will be leveraged for Oracle source partitioning.
-  final pulumi.Input<OraclePartitionSettingsResponse>? partitionSettings;
+  final pulumi.Input<OraclePartitionSettingsResponse?>? partitionSettings;
   /// Query timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? queryTimeout;
   /// Source retry count. Type: integer (or Expression with resultType integer).

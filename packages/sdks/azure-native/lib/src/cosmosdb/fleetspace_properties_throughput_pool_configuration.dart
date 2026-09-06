@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for throughput pool in the fleetspace.
 class FleetspacePropertiesThroughputPoolConfiguration {
   /// Maximum throughput for the pool.
-  final pulumi.Input<int>? maxThroughput;
+  final pulumi.Input<int?>? maxThroughput;
   /// Minimum throughput for the pool.
-  final pulumi.Input<int>? minThroughput;
+  final pulumi.Input<int?>? minThroughput;
 
   /// Creates a new [FleetspacePropertiesThroughputPoolConfiguration].
   /// [maxThroughput] Maximum throughput for the pool.
@@ -26,8 +26,8 @@ class FleetspacePropertiesThroughputPoolConfiguration {
 
   factory FleetspacePropertiesThroughputPoolConfiguration.fromMap(Map<String, dynamic> map) {
     return FleetspacePropertiesThroughputPoolConfiguration(
-      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minThroughput: (() { final guardedValue = map['minThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minThroughput: (() { final guardedValue = map['minThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

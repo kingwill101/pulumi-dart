@@ -6,7 +6,7 @@ import 'win_rmlistener_response.dart';
 /// Describes Windows Remote Management configuration of the VM
 class WinRMConfigurationResponse {
   /// The list of Windows Remote Management listeners
-  final pulumi.Input<List<WinRMListenerResponse>>? listeners;
+  final pulumi.Input<List<WinRMListenerResponse>?>? listeners;
 
   /// Creates a new [WinRMConfigurationResponse].
   /// [listeners] The list of Windows Remote Management listeners

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the server is configured to create geographically redundant backups.
-enum GeographicallyRedundantBackup {
+enum GeographicallyRedundantBackup implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const GeographicallyRedundantBackup(this.wireValue);
+  @override
   final String wireValue;
 
   static GeographicallyRedundantBackup fromValue(String value) {

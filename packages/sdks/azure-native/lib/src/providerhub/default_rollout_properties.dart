@@ -6,9 +6,9 @@ import 'default_rollout_properties_status.dart';
 
 class DefaultRolloutProperties {
   /// The default rollout specification.
-  final pulumi.Input<DefaultRolloutPropertiesSpecification>? specification;
+  final pulumi.Input<DefaultRolloutPropertiesSpecification?>? specification;
   /// The default rollout status.
-  final pulumi.Input<DefaultRolloutPropertiesStatus>? status;
+  final pulumi.Input<DefaultRolloutPropertiesStatus?>? status;
 
   /// Creates a new [DefaultRolloutProperties].
   /// [specification] The default rollout specification.

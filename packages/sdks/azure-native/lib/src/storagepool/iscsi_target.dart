@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'acl_response.dart';
+import 'iscsi_lun_response.dart';
 import 'iscsi_target_args.dart';
 import 'system_metadata_response.dart';
 
@@ -203,7 +205,7 @@ class IscsiTarget extends pulumi.CustomResource {
   /// List of private IPv4 addresses to connect to the iSCSI Target.
   late final pulumi.Output<List<String>?> endpoints;
   /// List of LUNs to be exposed through iSCSI Target.
-  late final pulumi.Output<List<Map<String, dynamic>>?> luns;
+  late final pulumi.Output<List<IscsiLunResponse>?> luns;
   /// Azure resource id. Indicates if this resource is managed by another Azure resource.
   late final pulumi.Output<String> managedBy;
   /// List of Azure resource ids that manage this resource.
@@ -217,7 +219,7 @@ class IscsiTarget extends pulumi.CustomResource {
   /// List of identifiers for active sessions on the iSCSI target
   late final pulumi.Output<List<String>> sessions;
   /// Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
-  late final pulumi.Output<List<Map<String, dynamic>>?> staticAcls;
+  late final pulumi.Output<List<AclResponse>?> staticAcls;
   /// Operational status of the iSCSI Target.
   late final pulumi.Output<String> status;
   /// Resource metadata required by ARM RPC
@@ -243,15 +245,41 @@ class IscsiTarget extends pulumi.CustomResource {
         ) {
     aclMode = registerOutput<String>('aclMode');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    endpoints = registerOutput<List<String>?>('endpoints');
-    luns = registerOutput<List<Map<String, dynamic>>?>('luns');
+    endpoints = registerOutput<List<String>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luns = registerOutput<List<IscsiLunResponse>?>('luns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IscsiLunResponse>(guardedValue, (value) => IscsiLunResponse.fromMap((value as Map).cast<String, dynamic>())); });
     managedBy = registerOutput<String>('managedBy');
-    managedByExtended = registerOutput<List<String>>('managedByExtended');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     port = registerOutput<int?>('port');
     provisioningState = registerOutput<String>('provisioningState');
-    sessions = registerOutput<List<String>>('sessions');
-    staticAcls = registerOutput<List<Map<String, dynamic>>?>('staticAcls');
+    sessions = registerOutput<List<String>>('sessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticAcls = registerOutput<List<AclResponse>?>('staticAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AclResponse>(guardedValue, (value) => AclResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemMetadataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    targetIqn = registerOutput<String>('targetIqn');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IscsiTarget] resource.
+  IscsiTarget.reference(String urn)
+    : super(
+        'azure-native:storagepool:IscsiTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aclMode = registerOutput<String>('aclMode');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    endpoints = registerOutput<List<String>?>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    luns = registerOutput<List<IscsiLunResponse>?>('luns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IscsiLunResponse>(guardedValue, (value) => IscsiLunResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    managedBy = registerOutput<String>('managedBy');
+    managedByExtended = registerOutput<List<String>>('managedByExtended', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int?>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    sessions = registerOutput<List<String>>('sessions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    staticAcls = registerOutput<List<AclResponse>?>('staticAcls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AclResponse>(guardedValue, (value) => AclResponse.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
     systemData = registerOutput<SystemMetadataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     targetIqn = registerOutput<String>('targetIqn');

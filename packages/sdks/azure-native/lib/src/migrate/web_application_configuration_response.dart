@@ -6,26 +6,26 @@ import 'secret_store_details_response.dart';
 /// Class for web application configurations.
 class WebApplicationConfigurationResponse {
   /// Gets or sets the configuration file path.
-  final pulumi.Input<String>? filePath;
+  final pulumi.Input<String?>? filePath;
   /// Gets the ID.
   final pulumi.Input<String> id;
   /// Gets or sets the identifier for the configuration.
-  final pulumi.Input<String>? identifier;
+  final pulumi.Input<String?>? identifier;
   /// Gets or sets a value indicating whether the configuration is edited or not by the user.
-  final pulumi.Input<bool>? isDeploymentTimeEditable;
+  final pulumi.Input<bool?>? isDeploymentTimeEditable;
   /// Gets or sets the configuration local file path.
-  final pulumi.Input<String>? localFilePath;
+  final pulumi.Input<String?>? localFilePath;
   /// Gets or sets the configuration name.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<SecretStoreDetailsResponse>? secretStoreDetails;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<SecretStoreDetailsResponse?>? secretStoreDetails;
   /// Gets or sets the configuration section in the file.
-  final pulumi.Input<String>? section;
+  final pulumi.Input<String?>? section;
   /// Gets or sets the configuration target file path.
-  final pulumi.Input<String>? targetFilePath;
+  final pulumi.Input<String?>? targetFilePath;
   /// Gets or sets the configuration type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Gets or sets the configuration value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [WebApplicationConfigurationResponse].
   /// [filePath] Gets or sets the configuration file path.

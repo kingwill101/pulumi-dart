@@ -8,11 +8,11 @@ class ResourceModelWithAllowedPropertySetResponsePlan {
   /// The 3rd Party artifact that is being procured. E.g. NewRelic. Product maps to the OfferID specified for the artifact at the time of Data Market onboarding.
   final pulumi.Input<String> product;
   /// A publisher provided promotion code as provisioned in Data Market for the said product/artifact.
-  final pulumi.Input<String>? promotionCode;
+  final pulumi.Input<String?>? promotionCode;
   /// The publisher of the 3rd Party Artifact that is being bought. E.g. NewRelic
   final pulumi.Input<String> publisher;
   /// The version of the desired product/artifact.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ResourceModelWithAllowedPropertySetResponsePlan].
   /// [name] A user defined name of the 3rd Party Artifact that is being procured.

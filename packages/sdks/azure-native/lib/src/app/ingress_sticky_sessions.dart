@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sticky Sessions for Single Revision Mode
 class IngressStickySessions {
   /// Sticky Session Affinity
-  final pulumi.Input<String>? affinity;
+  final pulumi.Input<dynamic>? affinity;
 
   /// Creates a new [IngressStickySessions].
   /// [affinity] Sticky Session Affinity
@@ -21,7 +21,7 @@ class IngressStickySessions {
 
   factory IngressStickySessions.fromMap(Map<String, dynamic> map) {
     return IngressStickySessions(
-      affinity: (() { final guardedValue = map['affinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      affinity: (() { final guardedValue = map['affinity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

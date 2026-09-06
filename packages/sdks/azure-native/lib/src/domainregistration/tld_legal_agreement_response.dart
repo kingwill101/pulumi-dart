@@ -11,7 +11,7 @@ class TldLegalAgreementResponse {
   /// Agreement title.
   final pulumi.Input<String> title;
   /// URL where a copy of the agreement details is hosted.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [TldLegalAgreementResponse].
   /// [agreementKey] Unique identifier for the agreement.

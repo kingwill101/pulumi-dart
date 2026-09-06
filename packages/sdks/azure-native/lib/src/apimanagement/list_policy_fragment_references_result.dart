@@ -32,7 +32,7 @@ class ListPolicyFragmentReferencesResult {
 
   factory ListPolicyFragmentReferencesResult.fromMap(Map<String, dynamic> map) {
     return ListPolicyFragmentReferencesResult(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceCollectionResponseValue>(guardedValue, (value) => ResourceCollectionResponseValue.fromMap((value as Map).cast<String, dynamic>())); })(),
     );

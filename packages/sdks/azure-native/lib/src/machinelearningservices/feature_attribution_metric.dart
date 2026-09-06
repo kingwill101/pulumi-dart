@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// [Required] The feature attribution metric to calculate.
-enum FeatureAttributionMetric {
+enum FeatureAttributionMetric implements pulumi.PulumiEnum<String> {
   normalizedDiscountedCumulativeGain("NormalizedDiscountedCumulativeGain");
 
   const FeatureAttributionMetric(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureAttributionMetric fromValue(String value) {

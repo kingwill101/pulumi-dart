@@ -6,11 +6,11 @@ import 'azure_dev_ops_webhook_response.dart';
 /// Configuration for notification.
 class NotificationSettingResponse {
   /// Send email notification to user on specified notification type
-  final pulumi.Input<List<String>>? emailOn;
+  final pulumi.Input<List<String>?>? emailOn;
   /// This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
-  final pulumi.Input<List<String>>? emails;
+  final pulumi.Input<List<String>?>? emails;
   /// Send webhook callback to a service. Key is a user-provided name for the webhook.
-  final pulumi.Input<Map<String, AzureDevOpsWebhookResponse>>? webhooks;
+  final pulumi.Input<Map<String, AzureDevOpsWebhookResponse>?>? webhooks;
 
   /// Creates a new [NotificationSettingResponse].
   /// [emailOn] Send email notification to user on specified notification type

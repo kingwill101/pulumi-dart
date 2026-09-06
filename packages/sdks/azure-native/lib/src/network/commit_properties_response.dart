@@ -9,11 +9,11 @@ class CommitPropertiesResponse {
   /// Commit Type.
   final pulumi.Input<String> commitType;
   /// List of configuration IDs.
-  final pulumi.Input<List<String>>? configurationIds;
+  final pulumi.Input<List<String>?>? configurationIds;
   /// A description of the commit.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A value that, when changed, forces the commit to be re-evaluated and redeployed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// The provisioning state of the resource.
   final pulumi.Input<String> provisioningState;
   /// Unique identifier for this resource.

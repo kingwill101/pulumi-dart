@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An Encryption Key
 class EncryptionKeyVaultProperties {
   /// The name of the key.
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The URL of the vault.
-  final pulumi.Input<String>? keyVaultUrl;
+  final pulumi.Input<String?>? keyVaultUrl;
   /// The version of the key.
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [EncryptionKeyVaultProperties].
   /// [keyName] The name of the key.

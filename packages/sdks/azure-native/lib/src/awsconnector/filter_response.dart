@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Filter
 class FilterResponse {
   /// Property contains
-  final pulumi.Input<List<String>>? contains;
+  final pulumi.Input<List<String>?>? contains;
   /// Property eq
-  final pulumi.Input<List<String>>? eq;
+  final pulumi.Input<List<String>?>? eq;
   /// Property exists
-  final pulumi.Input<bool>? exists;
+  final pulumi.Input<bool?>? exists;
   /// Property neq
-  final pulumi.Input<List<String>>? neq;
+  final pulumi.Input<List<String>?>? neq;
   /// Property property
-  final pulumi.Input<String>? property;
+  final pulumi.Input<String?>? property;
 
   /// Creates a new [FilterResponse].
   /// [contains] Property contains

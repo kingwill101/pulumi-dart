@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Control Plane Apis version constraint for the API Management service.
 class ApiVersionConstraintResponse {
   /// Limit control plane API calls to API Management service with version equal to or newer than this value.
-  final pulumi.Input<String>? minApiVersion;
+  final pulumi.Input<String?>? minApiVersion;
 
   /// Creates a new [ApiVersionConstraintResponse].
   /// [minApiVersion] Limit control plane API calls to API Management service with version equal to or newer than this value.

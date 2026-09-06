@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Give access for a Broker method (i.e., Connect, Subscribe, or Publish).
-enum BrokerResourceDefinitionMethods {
+enum BrokerResourceDefinitionMethods implements pulumi.PulumiEnum<String> {
   connect("Connect"),
   publish("Publish"),
   subscribe("Subscribe");
 
   const BrokerResourceDefinitionMethods(this.wireValue);
+  @override
   final String wireValue;
 
   static BrokerResourceDefinitionMethods fromValue(String value) {

@@ -1,12 +1,15 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Frequency of a notification. Represents how long the notification will be silent after triggering an alert for a threshold breach. If not specified, the frequency will be set by default based on the timeGrain (Weekly when timeGrain: Last7Days, Monthly when timeGrain: Last30Days).
 ///
 /// Supported for CategoryType(s): ReservationUtilization.
-enum Frequency {
+enum Frequency implements pulumi.PulumiEnum<String> {
   daily("Daily"),
   weekly("Weekly"),
   monthly("Monthly");
 
   const Frequency(this.wireValue);
+  @override
   final String wireValue;
 
   static Frequency fromValue(String value) {

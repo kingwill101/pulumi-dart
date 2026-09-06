@@ -11,11 +11,11 @@ class HorizonDbFirewallRuleArgs {
   /// The name of the HorizonDB cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the HorizonDB firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the HorizonDB pool.
   final pulumi.Input<String> poolName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<HorizonDbFirewallRuleProperties>? properties;
+  final pulumi.Input<HorizonDbFirewallRuleProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

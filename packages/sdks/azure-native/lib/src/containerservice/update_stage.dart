@@ -6,9 +6,9 @@ import 'update_group.dart';
 /// Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage.
 class UpdateStage {
   /// The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
-  final pulumi.Input<int>? afterStageWaitInSeconds;
+  final pulumi.Input<int?>? afterStageWaitInSeconds;
   /// Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
-  final pulumi.Input<List<UpdateGroup>>? groups;
+  final pulumi.Input<List<UpdateGroup>?>? groups;
   /// The name of the stage. Must be unique within the UpdateRun.
   final pulumi.Input<String> name;
 
@@ -32,7 +32,7 @@ class UpdateStage {
 
   factory UpdateStage.fromMap(Map<String, dynamic> map) {
     return UpdateStage(
-      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       groups: (() { final guardedValue = map['groups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<UpdateGroup>(guardedValue, (value) => UpdateGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

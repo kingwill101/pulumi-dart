@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Deployment scale type.
-enum DeploymentScaleType {
+enum DeploymentScaleType implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valueManual("Manual");
 
   const DeploymentScaleType(this.wireValue);
+  @override
   final String wireValue;
 
   static DeploymentScaleType fromValue(String value) {

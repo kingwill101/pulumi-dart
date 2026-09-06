@@ -2,7 +2,6 @@
 
 import 'agent_properties_response.dart';
 import 'credentials_response.dart';
-import 'docker_build_step_response.dart';
 import 'identity_properties_response.dart';
 import 'platform_properties_response.dart';
 import 'system_data_response.dart';
@@ -15,31 +14,31 @@ class ListTaskDetailsResult {
   /// The dedicated agent pool for the task.
   final String? agentPoolName;
   /// The creation date of task.
-  final String creationDate;
+  final String? creationDate;
   /// The properties that describes a set of credentials that will be used when this run is invoked.
   final CredentialsResponse? credentials;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// Identity for the resource.
   final IdentityPropertiesResponse? identity;
   /// The value of this property indicates whether the task resource is system task or not.
   final bool? isSystemTask;
   /// The location of the resource. This cannot be changed after the resource is created.
-  final String location;
+  final String? location;
   /// The template that describes the repository and tag information for run log artifact.
   final String? logTemplate;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The platform properties against which the run has to happen.
   final PlatformPropertiesResponse? platform;
   /// The provisioning state of the task.
-  final String provisioningState;
+  final String? provisioningState;
   /// The current status of task.
   final String? status;
   /// The properties of a task step.
-  final DockerBuildStepResponse? step;
+  final dynamic step;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The tags of the resource.
   final Map<String, String>? tags;
   /// Run timeout in seconds.
@@ -47,7 +46,7 @@ class ListTaskDetailsResult {
   /// The properties that describe all triggers for the task.
   final TriggerPropertiesResponse? trigger;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [ListTaskDetailsResult].
   /// [agentConfiguration] The machine configuration of the run agent.
@@ -69,49 +68,49 @@ class ListTaskDetailsResult {
   /// [timeout] Run timeout in seconds.
   /// [trigger] The properties that describe all triggers for the task.
   /// [type] The type of the resource.
-  const ListTaskDetailsResult({
+  ListTaskDetailsResult({
     this.agentConfiguration,
     this.agentPoolName,
-    required this.creationDate,
+    this.creationDate,
     this.credentials,
-    required this.id,
+    this.id,
     this.identity,
-    this.isSystemTask,
-    required this.location,
+    bool? isSystemTask,
+    this.location,
     this.logTemplate,
-    required this.name,
+    this.name,
     this.platform,
-    required this.provisioningState,
+    this.provisioningState,
     this.status,
     this.step,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    this.timeout,
+    int? timeout,
     this.trigger,
-    required this.type,
-  });
+    this.type,
+  }) : isSystemTask = isSystemTask ?? false, timeout = timeout ?? 3600;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'agentConfiguration': ?agentConfiguration?.toMap(),
       'agentPoolName': ?agentPoolName,
-      'creationDate': creationDate,
+      'creationDate': ?creationDate,
       'credentials': ?credentials?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'isSystemTask': ?isSystemTask,
-      'location': location,
+      'location': ?location,
       'logTemplate': ?logTemplate,
-      'name': name,
+      'name': ?name,
       'platform': ?platform?.toMap(),
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'status': ?status,
-      'step': ?step?.toMap(),
-      'systemData': systemData.toMap(),
+      'step': ?step,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'timeout': ?timeout,
       'trigger': ?trigger?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -119,23 +118,23 @@ class ListTaskDetailsResult {
     return ListTaskDetailsResult(
       agentConfiguration: (() { final guardedValue = map['agentConfiguration']; if (guardedValue == null) return null; return AgentPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       agentPoolName: (() { final guardedValue = map['agentPoolName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      creationDate: map['creationDate'] as String,
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return CredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       isSystemTask: (() { final guardedValue = map['isSystemTask']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      location: map['location'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       logTemplate: (() { final guardedValue = map['logTemplate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       platform: (() { final guardedValue = map['platform']; if (guardedValue == null) return null; return PlatformPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return DockerBuildStepResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      step: (() { final guardedValue = map['step']; if (guardedValue == null) return null; return guardedValue; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       trigger: (() { final guardedValue = map['trigger']; if (guardedValue == null) return null; return TriggerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

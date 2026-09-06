@@ -9,17 +9,17 @@ import 'storage_queue_message_response.dart';
 
 class JobErrorActionResponse {
   /// Gets or sets the storage queue message.
-  final pulumi.Input<StorageQueueMessageResponse>? queueMessage;
+  final pulumi.Input<StorageQueueMessageResponse?>? queueMessage;
   /// Gets or sets the http requests.
-  final pulumi.Input<HttpRequestResponse>? request;
+  final pulumi.Input<HttpRequestResponse?>? request;
   /// Gets or sets the retry policy.
-  final pulumi.Input<RetryPolicyResponse>? retryPolicy;
+  final pulumi.Input<RetryPolicyResponse?>? retryPolicy;
   /// Gets or sets the service bus queue message.
-  final pulumi.Input<ServiceBusQueueMessageResponse>? serviceBusQueueMessage;
+  final pulumi.Input<ServiceBusQueueMessageResponse?>? serviceBusQueueMessage;
   /// Gets or sets the service bus topic message.
-  final pulumi.Input<ServiceBusTopicMessageResponse>? serviceBusTopicMessage;
+  final pulumi.Input<ServiceBusTopicMessageResponse?>? serviceBusTopicMessage;
   /// Gets or sets the job error action type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [JobErrorActionResponse].
   /// [queueMessage] Gets or sets the storage queue message.

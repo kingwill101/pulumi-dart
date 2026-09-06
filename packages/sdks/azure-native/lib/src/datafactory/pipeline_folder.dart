@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The folder that this Pipeline is in. If not specified, Pipeline will appear at the root level.
 class PipelineFolder {
   /// The name of the folder that this Pipeline is in.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PipelineFolder].
   /// [name] The name of the folder that this Pipeline is in.

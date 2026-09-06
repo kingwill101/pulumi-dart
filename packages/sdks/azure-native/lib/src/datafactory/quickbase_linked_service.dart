@@ -1,31 +1,30 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'parameter_specification.dart';
 
 /// Linked service for Quickbase.
 class QuickbaseLinkedService {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Type of linked service.
   /// Expected value is 'Quickbase'.
   final pulumi.Input<String> type;
   /// The url to connect Quickbase source. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
   /// The user token for the Quickbase source.
-  final pulumi.Input<AzureKeyVaultSecretReference> userToken;
+  final pulumi.Input<dynamic> userToken;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [QuickbaseLinkedService].
   /// [annotations] List of tags that can be used for describing the linked service.
@@ -58,7 +57,7 @@ class QuickbaseLinkedService {
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'type': type,
       'url': url,
-      'userToken': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(userToken, (value) => value.toMap()),
+      'userToken': userToken,
       'version': ?version,
     };
   }
@@ -72,7 +71,7 @@ class QuickbaseLinkedService {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),
-      userToken: pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((map['userToken']! as Map).cast<String, dynamic>())),
+      userToken: pulumi.Input.fromValue(map['userToken']),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

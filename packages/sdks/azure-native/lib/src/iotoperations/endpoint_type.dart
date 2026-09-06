@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Endpoint Type.
-enum EndpointType {
+enum EndpointType implements pulumi.PulumiEnum<String> {
   dataExplorer("DataExplorer"),
   dataLakeStorage("DataLakeStorage"),
   fabricOneLake("FabricOneLake"),
@@ -8,6 +10,7 @@ enum EndpointType {
   mqtt("Mqtt");
 
   const EndpointType(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointType fromValue(String value) {

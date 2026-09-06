@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ExecuteCommandLogConfiguration
 class ExecuteCommandLogConfigurationResponse {
   /// Determines whether to use encryption on the CloudWatch logs. If not specified, encryption will be off.
-  final pulumi.Input<bool>? cloudWatchEncryptionEnabled;
+  final pulumi.Input<bool?>? cloudWatchEncryptionEnabled;
   /// The name of the CloudWatch log group to send logs to.  The CloudWatch log group must already be created.
-  final pulumi.Input<String>? cloudWatchLogGroupName;
+  final pulumi.Input<String?>? cloudWatchLogGroupName;
   /// The name of the S3 bucket to send logs to.  The S3 bucket must already be created.
-  final pulumi.Input<String>? s3BucketName;
+  final pulumi.Input<String?>? s3BucketName;
   /// Determines whether to use encryption on the S3 logs. If not specified, encryption is not used.
-  final pulumi.Input<bool>? s3EncryptionEnabled;
+  final pulumi.Input<bool?>? s3EncryptionEnabled;
   /// An optional folder in the S3 bucket to place logs in.
-  final pulumi.Input<String>? s3KeyPrefix;
+  final pulumi.Input<String?>? s3KeyPrefix;
 
   /// Creates a new [ExecuteCommandLogConfigurationResponse].
   /// [cloudWatchEncryptionEnabled] Determines whether to use encryption on the CloudWatch logs. If not specified, encryption will be off.

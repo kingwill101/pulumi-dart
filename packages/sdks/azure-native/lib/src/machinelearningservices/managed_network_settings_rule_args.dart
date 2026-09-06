@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'fqdn_outbound_rule.dart';
 
 /// {@template pulumi_machinelearningservices_managed_network_settings_rule_args_doc}
 /// The set of arguments for ManagedNetworkSettingsRule.
@@ -9,11 +8,11 @@ import 'fqdn_outbound_rule.dart';
 /// {@macro pulumi_machinelearningservices_managed_network_settings_rule_args_doc}
 class ManagedNetworkSettingsRuleArgs {
   /// Outbound Rule for the managed network of a machine learning workspace.
-  final pulumi.Input<FqdnOutboundRule> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the workspace managed network outbound rule
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
   /// Azure Machine Learning Workspace Name
   final pulumi.Input<String> workspaceName;
 
@@ -31,7 +30,7 @@ class ManagedNetworkSettingsRuleArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'properties': pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
       'workspaceName': workspaceName,
@@ -40,7 +39,7 @@ class ManagedNetworkSettingsRuleArgs {
 
   factory ManagedNetworkSettingsRuleArgs.fromMap(Map<String, dynamic> map) {
     return ManagedNetworkSettingsRuleArgs(
-      properties: pulumi.Input.fromValue(FqdnOutboundRule.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       workspaceName: pulumi.Input.fromValue(map['workspaceName'] as String),

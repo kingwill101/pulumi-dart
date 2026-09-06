@@ -38,7 +38,7 @@ class WebtestLocationAvailabilityCriteriaResponse {
   factory WebtestLocationAvailabilityCriteriaResponse.fromMap(Map<String, dynamic> map) {
     return WebtestLocationAvailabilityCriteriaResponse(
       componentId: pulumi.Input.fromValue(map['componentId'] as String),
-      failedLocationCount: pulumi.Input.fromValue(map['failedLocationCount'] as double),
+      failedLocationCount: pulumi.Input.fromValue((map['failedLocationCount'] as num).toDouble()),
       odataType: pulumi.Input.fromValue(map['odataType'] as String),
       webTestId: pulumi.Input.fromValue(map['webTestId'] as String),
     );

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SAP supported SKU.
 class SAPSupportedSkuResponse {
   /// True if the Sku is certified for App server in the SAP system.
-  final pulumi.Input<bool>? isAppServerCertified;
+  final pulumi.Input<bool?>? isAppServerCertified;
   /// True if the Sku is certified for Database server in the SAP system.
-  final pulumi.Input<bool>? isDatabaseCertified;
+  final pulumi.Input<bool?>? isDatabaseCertified;
   /// The VM Sku.
-  final pulumi.Input<String>? vmSku;
+  final pulumi.Input<String?>? vmSku;
 
   /// Creates a new [SAPSupportedSkuResponse].
   /// [isAppServerCertified] True if the Sku is certified for App server in the SAP system.

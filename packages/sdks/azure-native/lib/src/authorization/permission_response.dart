@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Role definition permissions.
 class PermissionResponse {
   /// Allowed actions.
-  final pulumi.Input<List<String>>? actions;
+  final pulumi.Input<List<String>?>? actions;
   /// The conditions on the role definition. This limits the resources it can be assigned to. e.g.: @Resource[Microsoft.Storage/storageAccounts/blobServices/containers:ContainerName] StringEqualsIgnoreCase 'foo_storage_container'
   final pulumi.Input<String> condition;
   /// Version of the condition. Currently the only accepted value is '2.0'
   final pulumi.Input<String> conditionVersion;
   /// Allowed Data actions.
-  final pulumi.Input<List<String>>? dataActions;
+  final pulumi.Input<List<String>?>? dataActions;
   /// Denied actions.
-  final pulumi.Input<List<String>>? notActions;
+  final pulumi.Input<List<String>?>? notActions;
   /// Denied Data actions.
-  final pulumi.Input<List<String>>? notDataActions;
+  final pulumi.Input<List<String>?>? notDataActions;
 
   /// Creates a new [PermissionResponse].
   /// [actions] Allowed actions.

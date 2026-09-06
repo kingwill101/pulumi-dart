@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of UserPausedDetails
 class UserPausedDetails {
   /// &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.&lt;/p&gt;
-  final pulumi.Input<String>? jobExpiresAt;
+  final pulumi.Input<String?>? jobExpiresAt;
   /// &lt;p&gt;The Amazon Resource Name (ARN) of the Health event that Amazon Macie sent to notify you of the job or job run's pending expiration and cancellation. This value is null if a job has been paused for less than 23 days.&lt;/p&gt;
-  final pulumi.Input<String>? jobImminentExpirationHealthEventArn;
+  final pulumi.Input<String?>? jobImminentExpirationHealthEventArn;
   /// &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when you paused the job.&lt;/p&gt;
-  final pulumi.Input<String>? jobPausedAt;
+  final pulumi.Input<String?>? jobPausedAt;
 
   /// Creates a new [UserPausedDetails].
   /// [jobExpiresAt] &lt;p&gt;The date and time, in UTC and extended ISO 8601 format, when the job or job run will expire and be cancelled if you don't resume it first.&lt;/p&gt;

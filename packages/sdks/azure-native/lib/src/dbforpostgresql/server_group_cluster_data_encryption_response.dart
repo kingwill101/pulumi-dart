@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The data encryption properties of a cluster.
 class ServerGroupClusterDataEncryptionResponse {
   /// URI for the key in keyvault for data encryption of the primary server.
-  final pulumi.Input<String>? primaryKeyUri;
+  final pulumi.Input<String?>? primaryKeyUri;
   /// Resource Id for the User assigned identity to be used for data encryption of the primary server.
-  final pulumi.Input<String>? primaryUserAssignedIdentityId;
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? primaryUserAssignedIdentityId;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ServerGroupClusterDataEncryptionResponse].
   /// [primaryKeyUri] URI for the key in keyvault for data encryption of the primary server.

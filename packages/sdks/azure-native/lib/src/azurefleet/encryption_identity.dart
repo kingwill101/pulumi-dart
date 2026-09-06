@@ -6,7 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// operations.
 class EncryptionIdentity {
   /// Specifies ARM Resource ID of one of the user identities associated with the VM.
-  final pulumi.Input<String>? userAssignedIdentityResourceId;
+  final pulumi.Input<String?>? userAssignedIdentityResourceId;
 
   /// Creates a new [EncryptionIdentity].
   /// [userAssignedIdentityResourceId] Specifies ARM Resource ID of one of the user identities associated with the VM.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of kek encryption key
-enum EncryptionKekType {
+enum EncryptionKekType implements pulumi.PulumiEnum<String> {
   valueMicrosoftManaged("MicrosoftManaged"),
   valueCustomerManaged("CustomerManaged");
 
   const EncryptionKekType(this.wireValue);
+  @override
   final String wireValue;
 
   static EncryptionKekType fromValue(String value) {

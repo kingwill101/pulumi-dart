@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of storage assigned to a server. Allowed values are Premium_LRS, PremiumV2_LRS, or UltraSSD_LRS. If not specified, it defaults to Premium_LRS.
-enum StorageType {
+enum StorageType implements pulumi.PulumiEnum<String> {
   premiumLRS("Premium_LRS"),
   premiumV2LRS("PremiumV2_LRS"),
   ultraSSDLRS("UltraSSD_LRS");
 
   const StorageType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageType fromValue(String value) {

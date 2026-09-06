@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference_response.dart';
 import 'integration_runtime_reference_response.dart';
 import 'parameter_specification_response.dart';
 
@@ -10,19 +9,19 @@ class DynamicsAXLinkedServiceResponse {
   /// Specify the resource you are requesting authorization. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> aadResourceId;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Specify the application's client ID. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> servicePrincipalId;
   /// Specify the application's key. Mark this field as a SecureString to store it securely in Data Factory, or reference a secret stored in Azure Key Vault. Type: string (or Expression with resultType string).
-  final pulumi.Input<AzureKeyVaultSecretReferenceResponse> servicePrincipalKey;
+  final pulumi.Input<dynamic> servicePrincipalKey;
   /// Specify the tenant information (domain name or tenant ID) under which your application resides. Retrieve it by hovering the mouse in the top-right corner of the Azure portal. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> tenant;
   /// Type of linked service.
@@ -31,7 +30,7 @@ class DynamicsAXLinkedServiceResponse {
   /// The Dynamics AX (or Dynamics 365 Finance and Operations) instance OData endpoint.
   final pulumi.Input<dynamic> url;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DynamicsAXLinkedServiceResponse].
   /// [aadResourceId] Specify the resource you are requesting authorization. Type: string (or Expression with resultType string).
@@ -70,7 +69,7 @@ class DynamicsAXLinkedServiceResponse {
       'encryptedCredential': ?encryptedCredential,
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecificationResponse>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecificationResponse, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalId': servicePrincipalId,
-      'servicePrincipalKey': pulumi.Input.mapInputValue<AzureKeyVaultSecretReferenceResponse, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': servicePrincipalKey,
       'tenant': tenant,
       'type': type,
       'url': url,
@@ -87,7 +86,7 @@ class DynamicsAXLinkedServiceResponse {
       encryptedCredential: (() { final guardedValue = map['encryptedCredential']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecificationResponse>(guardedValue, (value) => ParameterSpecificationResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       servicePrincipalId: pulumi.Input.fromValue(map['servicePrincipalId']),
-      servicePrincipalKey: pulumi.Input.fromValue(AzureKeyVaultSecretReferenceResponse.fromMap((map['servicePrincipalKey']! as Map).cast<String, dynamic>())),
+      servicePrincipalKey: pulumi.Input.fromValue(map['servicePrincipalKey']),
       tenant: pulumi.Input.fromValue(map['tenant']),
       type: pulumi.Input.fromValue(map['type'] as String),
       url: pulumi.Input.fromValue(map['url']),

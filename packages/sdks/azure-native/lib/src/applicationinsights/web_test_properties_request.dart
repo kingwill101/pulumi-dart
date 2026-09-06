@@ -6,17 +6,17 @@ import 'header_field.dart';
 /// The collection of request properties
 class WebTestPropertiesRequest {
   /// Follow redirects for this web test.
-  final pulumi.Input<bool>? followRedirects;
+  final pulumi.Input<bool?>? followRedirects;
   /// List of headers and their values to add to the WebTest call.
-  final pulumi.Input<List<HeaderField>>? headers;
+  final pulumi.Input<List<HeaderField>?>? headers;
   /// Http verb to use for this web test.
-  final pulumi.Input<String>? httpVerb;
+  final pulumi.Input<String?>? httpVerb;
   /// Parse Dependent request for this WebTest.
-  final pulumi.Input<bool>? parseDependentRequests;
+  final pulumi.Input<bool?>? parseDependentRequests;
   /// Base64 encoded string body to send with this web test.
-  final pulumi.Input<String>? requestBody;
+  final pulumi.Input<String?>? requestBody;
   /// Url location to test.
-  final pulumi.Input<String>? requestUrl;
+  final pulumi.Input<String?>? requestUrl;
 
   /// Creates a new [WebTestPropertiesRequest].
   /// [followRedirects] Follow redirects for this web test.

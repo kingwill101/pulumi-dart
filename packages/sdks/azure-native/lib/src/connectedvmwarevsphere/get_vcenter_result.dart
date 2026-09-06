@@ -9,43 +9,43 @@ import 'vicredential_response.dart';
 /// Result data returned by getVCenter.
 class GetVCenterResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Gets or sets the connection status to the vCenter.
-  final String connectionStatus;
+  final String? connectionStatus;
   /// Username / Password Credentials to connect to vcenter.
   final VICredentialResponse? credentials;
   /// Gets the name of the corresponding resource in Kubernetes.
-  final String customResourceName;
+  final String? customResourceName;
   /// Gets or sets the extended location.
   final ExtendedLocationResponse? extendedLocation;
   /// Gets or sets the FQDN/IPAddress of the vCenter.
-  final String fqdn;
+  final String? fqdn;
   /// Gets or sets the Id.
-  final String id;
+  final String? id;
   /// Gets or sets the instance UUID of the vCenter.
-  final String instanceUuid;
+  final String? instanceUuid;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
   final String? kind;
   /// Gets or sets the location.
-  final String location;
+  final String? location;
   /// Gets or sets the name.
-  final String name;
+  final String? name;
   /// Gets or sets the port of the vCenter.
   final int? port;
   /// Gets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource status information.
-  final List<ResourceStatusResponse> statuses;
+  final List<ResourceStatusResponse>? statuses;
   /// The system data.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Gets or sets the Resource tags.
   final Map<String, String>? tags;
   /// Gets or sets the type of the resource.
-  final String type;
+  final String? type;
   /// Gets or sets a unique identifier for this resource.
-  final String uuid;
+  final String? uuid;
   /// Gets or sets the version of the vCenter.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetVCenterResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -68,72 +68,72 @@ class GetVCenterResult {
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [version] Gets or sets the version of the vCenter.
   const GetVCenterResult({
-    required this.azureApiVersion,
-    required this.connectionStatus,
+    this.azureApiVersion,
+    this.connectionStatus,
     this.credentials,
-    required this.customResourceName,
+    this.customResourceName,
     this.extendedLocation,
-    required this.fqdn,
-    required this.id,
-    required this.instanceUuid,
+    this.fqdn,
+    this.id,
+    this.instanceUuid,
     this.kind,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.port,
-    required this.provisioningState,
-    required this.statuses,
-    required this.systemData,
+    this.provisioningState,
+    this.statuses,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.uuid,
-    required this.version,
+    this.type,
+    this.uuid,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'connectionStatus': connectionStatus,
+      'azureApiVersion': ?azureApiVersion,
+      'connectionStatus': ?connectionStatus,
       'credentials': ?credentials?.toMap(),
-      'customResourceName': customResourceName,
+      'customResourceName': ?customResourceName,
       'extendedLocation': ?extendedLocation?.toMap(),
-      'fqdn': fqdn,
-      'id': id,
-      'instanceUuid': instanceUuid,
+      'fqdn': ?fqdn,
+      'id': ?id,
+      'instanceUuid': ?instanceUuid,
       'kind': ?kind,
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'port': ?port,
-      'provisioningState': provisioningState,
-      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'statuses': ?(() { final guardedValue = statuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'uuid': uuid,
-      'version': version,
+      'type': ?type,
+      'uuid': ?uuid,
+      'version': ?version,
     };
   }
 
   factory GetVCenterResult.fromMap(Map<String, dynamic> map) {
     return GetVCenterResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectionStatus: map['connectionStatus'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectionStatus: (() { final guardedValue = map['connectionStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return VICredentialResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      customResourceName: map['customResourceName'] as String,
+      customResourceName: (() { final guardedValue = map['customResourceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      fqdn: map['fqdn'] as String,
-      id: map['id'] as String,
-      instanceUuid: map['instanceUuid'] as String,
+      fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instanceUuid: (() { final guardedValue = map['instanceUuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      provisioningState: map['provisioningState'] as String,
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses']!, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

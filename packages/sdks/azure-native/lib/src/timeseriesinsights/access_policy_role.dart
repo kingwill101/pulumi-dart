@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A role defining the data plane operations that a principal can perform on a Time Series Insights client.
-enum AccessPolicyRole {
+enum AccessPolicyRole implements pulumi.PulumiEnum<String> {
   valueReader("Reader"),
   valueContributor("Contributor");
 
   const AccessPolicyRole(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessPolicyRole fromValue(String value) {

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a Service Bus Topic output data source.
 class ServiceBusTopicOutputDataSourceResponse {
   /// Authentication Mode.
-  final pulumi.Input<String>? authenticationMode;
+  final pulumi.Input<String?>? authenticationMode;
   /// A string array of the names of output columns to be attached to Service Bus messages as custom properties.
-  final pulumi.Input<List<String>>? propertyColumns;
+  final pulumi.Input<List<String>?>? propertyColumns;
   /// The namespace that is associated with the desired Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? serviceBusNamespace;
+  final pulumi.Input<String?>? serviceBusNamespace;
   /// The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyKey;
+  final pulumi.Input<String?>? sharedAccessPolicyKey;
   /// The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? sharedAccessPolicyName;
+  final pulumi.Input<String?>? sharedAccessPolicyName;
   /// The system properties associated with the Service Bus Topic Output. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
-  final pulumi.Input<Map<String, String>>? systemPropertyColumns;
+  final pulumi.Input<Map<String, String>?>? systemPropertyColumns;
   /// The name of the Service Bus Topic. Required on PUT (CreateOrReplace) requests.
-  final pulumi.Input<String>? topicName;
+  final pulumi.Input<String?>? topicName;
   /// Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'Microsoft.ServiceBus/Topic'.
   final pulumi.Input<String> type;

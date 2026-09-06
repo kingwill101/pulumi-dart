@@ -7,25 +7,25 @@ import 'wsdl_service_response.dart';
 /// The api resource metadata.
 class ApiResourceMetadataResponse {
   /// The api type.
-  final pulumi.Input<String>? apiType;
+  final pulumi.Input<String?>? apiType;
   /// The brand color.
-  final pulumi.Input<String>? brandColor;
+  final pulumi.Input<String?>? brandColor;
   /// The connection type.
-  final pulumi.Input<String>? connectionType;
+  final pulumi.Input<String?>? connectionType;
   /// The connector deployment parameters metadata.
-  final pulumi.Input<ApiDeploymentParameterMetadataSetResponse>? deploymentParameters;
+  final pulumi.Input<ApiDeploymentParameterMetadataSetResponse?>? deploymentParameters;
   /// The hide key.
-  final pulumi.Input<String>? hideKey;
+  final pulumi.Input<String?>? hideKey;
   /// The provisioning state.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The source.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
   /// The tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The WSDL import method.
-  final pulumi.Input<String>? wsdlImportMethod;
+  final pulumi.Input<String?>? wsdlImportMethod;
   /// The WSDL service.
-  final pulumi.Input<WsdlServiceResponse>? wsdlService;
+  final pulumi.Input<WsdlServiceResponse?>? wsdlService;
 
   /// Creates a new [ApiResourceMetadataResponse].
   /// [apiType] The api type.

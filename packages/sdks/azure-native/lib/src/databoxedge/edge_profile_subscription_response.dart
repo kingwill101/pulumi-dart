@@ -6,17 +6,17 @@ import 'subscription_registered_features_response.dart';
 /// Subscription details for the Edge Profile
 class EdgeProfileSubscriptionResponse {
   /// ARM ID of the subscription
-  final pulumi.Input<String>? id;
-  final pulumi.Input<String>? locationPlacementId;
-  final pulumi.Input<String>? quotaId;
-  final pulumi.Input<List<SubscriptionRegisteredFeaturesResponse>>? registeredFeatures;
-  final pulumi.Input<String>? registrationDate;
+  final pulumi.Input<String?>? id;
+  final pulumi.Input<String?>? locationPlacementId;
+  final pulumi.Input<String?>? quotaId;
+  final pulumi.Input<List<SubscriptionRegisteredFeaturesResponse>?>? registeredFeatures;
+  final pulumi.Input<String?>? registrationDate;
   /// Edge Subscription Registration ID
-  final pulumi.Input<String>? registrationId;
-  final pulumi.Input<String>? serializedDetails;
-  final pulumi.Input<String>? state;
-  final pulumi.Input<String>? subscriptionId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? registrationId;
+  final pulumi.Input<String?>? serializedDetails;
+  final pulumi.Input<String?>? state;
+  final pulumi.Input<String?>? subscriptionId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [EdgeProfileSubscriptionResponse].
   /// [id] ARM ID of the subscription

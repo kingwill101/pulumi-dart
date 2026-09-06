@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allowed replication region
-enum ReplicationRegion {
+enum ReplicationRegion implements pulumi.PulumiEnum<String> {
   default_("Default"),
   westUs2("WestUs2"),
   northEurope("NorthEurope"),
@@ -10,6 +12,7 @@ enum ReplicationRegion {
   none("None");
 
   const ReplicationRegion(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationRegion fromValue(String value) {

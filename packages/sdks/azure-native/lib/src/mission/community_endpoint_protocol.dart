@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Community Endpoint Protocol Enum
-enum CommunityEndpointProtocol {
+enum CommunityEndpointProtocol implements pulumi.PulumiEnum<String> {
   aNY("ANY"),
   tCP("TCP"),
   uDP("UDP"),
@@ -10,6 +12,7 @@ enum CommunityEndpointProtocol {
   hTTP("HTTP");
 
   const CommunityEndpointProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static CommunityEndpointProtocol fromValue(String value) {

@@ -8,27 +8,27 @@ class ListLocalRulestackPredefinedUrlCategoriesResult {
   /// next link
   final String? nextLink;
   /// predefined url categories
-  final List<PredefinedUrlCategoryResponse> value;
+  final List<PredefinedUrlCategoryResponse>? value;
 
   /// Creates a new [ListLocalRulestackPredefinedUrlCategoriesResult].
   /// [nextLink] next link
   /// [value] predefined url categories
   const ListLocalRulestackPredefinedUrlCategoriesResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<PredefinedUrlCategoryResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<PredefinedUrlCategoryResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListLocalRulestackPredefinedUrlCategoriesResult.fromMap(Map<String, dynamic> map) {
     return ListLocalRulestackPredefinedUrlCategoriesResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<PredefinedUrlCategoryResponse>(map['value']!, (value) => PredefinedUrlCategoryResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PredefinedUrlCategoryResponse>(guardedValue, (value) => PredefinedUrlCategoryResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sql_server_azure_adadministrator_args_doc}
 class ServerAzureADAdministratorArgs {
   /// The name of server active directory administrator.
-  final pulumi.Input<String>? administratorName;
+  final pulumi.Input<String?>? administratorName;
   /// Type of the sever administrator.
-  final pulumi.Input<String>? administratorType;
+  final pulumi.Input<dynamic>? administratorType;
   /// Login name of the server administrator.
   final pulumi.Input<String> login;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
@@ -20,7 +20,7 @@ class ServerAzureADAdministratorArgs {
   /// SID (object ID) of the server administrator.
   final pulumi.Input<String> sid;
   /// Tenant ID of the administrator.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ServerAzureADAdministratorArgs].
   /// [administratorName] The name of server active directory administrator.
@@ -55,7 +55,7 @@ class ServerAzureADAdministratorArgs {
   factory ServerAzureADAdministratorArgs.fromMap(Map<String, dynamic> map) {
     return ServerAzureADAdministratorArgs(
       administratorName: (() { final guardedValue = map['administratorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      administratorType: (() { final guardedValue = map['administratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      administratorType: (() { final guardedValue = map['administratorType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       login: pulumi.Input.fromValue(map['login'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),

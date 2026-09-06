@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of Taint
 class Taint {
   /// Property effect
-  final pulumi.Input<String>? effect;
+  final pulumi.Input<String?>? effect;
   /// Property key
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [Taint].
   /// [effect] Property effect

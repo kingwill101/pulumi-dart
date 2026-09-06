@@ -1,14 +1,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytical_storage_configuration_response.dart';
 import 'api_properties_response.dart';
+import 'capability_response.dart';
 import 'capacity_response.dart';
 import 'consistency_policy_response.dart';
-import 'continuous_mode_backup_policy_response.dart';
+import 'cors_policy_response.dart';
 import 'database_account_args.dart';
 import 'database_account_keys_metadata_response.dart';
+import 'failover_policy_response.dart';
+import 'ip_address_or_range_response.dart';
+import 'location_response.dart';
 import 'managed_service_identity_response.dart';
+import 'private_endpoint_connection_response.dart';
 import 'restore_parameters_response.dart';
 import 'system_data_response.dart';
+import 'virtual_network_rule_response.dart';
 
 /// An Azure Cosmos DB database account.
 ///
@@ -696,9 +702,9 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The object representing the policy for taking backups on an account.
-  late final pulumi.Output<ContinuousModeBackupPolicyResponse?> backupPolicy;
+  late final pulumi.Output<dynamic> backupPolicy;
   /// List of Cosmos DB capabilities for the account
-  late final pulumi.Output<List<Map<String, dynamic>>?> capabilities;
+  late final pulumi.Output<List<CapabilityResponse>?> capabilities;
   /// The object that represents all properties related to capacity enforcement on an account.
   late final pulumi.Output<CapacityResponse?> capacity;
   /// The cassandra connector offer type for the Cosmos DB database C* account.
@@ -706,7 +712,7 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// The consistency policy for the Cosmos DB database account.
   late final pulumi.Output<ConsistencyPolicyResponse?> consistencyPolicy;
   /// The CORS policy for the Cosmos DB database account.
-  late final pulumi.Output<List<Map<String, dynamic>>?> cors;
+  late final pulumi.Output<List<CorsPolicyResponse>?> cors;
   /// Enum to indicate the mode of account creation.
   late final pulumi.Output<String?> createMode;
   /// Indicates the status of the Customer Managed Key feature on the account. In case there are errors, the property provides troubleshooting guidance.
@@ -742,13 +748,13 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// Flag to indicate enabling/disabling of Priority Based Execution Preview feature on the account
   late final pulumi.Output<bool?> enablePriorityBasedExecution;
   /// An array that contains the regions ordered by their failover priorities.
-  late final pulumi.Output<List<Map<String, dynamic>>> failoverPolicies;
+  late final pulumi.Output<List<FailoverPolicyResponse>> failoverPolicies;
   /// Identity for the resource.
   late final pulumi.Output<ManagedServiceIdentityResponse?> identity;
   /// A unique identifier assigned to the database account
   late final pulumi.Output<String> instanceId;
   /// List of IpRules.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipRules;
+  late final pulumi.Output<List<IpAddressOrRangeResponse>?> ipRules;
   /// Flag to indicate whether to enable/disable Virtual Network ACL rules.
   late final pulumi.Output<bool?> isVirtualNetworkFilterEnabled;
   /// The URI of the key vault
@@ -762,7 +768,7 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
   /// An array that contains all of the locations enabled for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>> locations;
+  late final pulumi.Output<List<LocationResponse>> locations;
   /// Indicates the minimum allowed Tls version. The default value is Tls 1.2. Cassandra and Mongo APIs only work with Tls 1.2.
   late final pulumi.Output<String?> minimalTlsVersion;
   /// The name of the ARM resource.
@@ -772,13 +778,13 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// An array that contains the Resource Ids for Network Acl Bypass for the Cosmos DB account.
   late final pulumi.Output<List<String>?> networkAclBypassResourceIds;
   /// List of Private Endpoint Connections configured for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<PrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// The status of the Cosmos DB account at the time the operation was called. The status can be one of following. 'Creating' – the Cosmos DB account is being created. When an account is in Creating state, only properties that are specified as input for the Create Cosmos DB account operation are returned. 'Succeeded' – the Cosmos DB account is active for use. 'Updating' – the Cosmos DB account is being updated. 'Deleting' – the Cosmos DB account is being deleted. 'Failed' – the Cosmos DB account failed creation. 'DeletionFailed' – the Cosmos DB account deletion failed.
   late final pulumi.Output<String> provisioningState;
   /// Whether requests from Public Network are allowed
   late final pulumi.Output<String?> publicNetworkAccess;
   /// An array that contains of the read locations enabled for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>> readLocations;
+  late final pulumi.Output<List<LocationResponse>> readLocations;
   /// Parameters to indicate the information about the restore.
   late final pulumi.Output<RestoreParametersResponse?> restoreParameters;
   /// The system meta data relating to this resource.
@@ -788,9 +794,9 @@ class DatabaseAccount extends pulumi.CustomResource {
   /// The type of Azure resource.
   late final pulumi.Output<String> type;
   /// List of Virtual Network ACL rules configured for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>?> virtualNetworkRules;
+  late final pulumi.Output<List<VirtualNetworkRuleResponse>?> virtualNetworkRules;
   /// An array that contains the write location for the Cosmos DB account.
-  late final pulumi.Output<List<Map<String, dynamic>>> writeLocations;
+  late final pulumi.Output<List<LocationResponse>> writeLocations;
 
   /// Creates a new [DatabaseAccount].
   /// [name] The Pulumi resource name.
@@ -809,12 +815,12 @@ class DatabaseAccount extends pulumi.CustomResource {
     analyticalStorageConfiguration = registerOutput<AnalyticalStorageConfigurationResponse?>('analyticalStorageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticalStorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    backupPolicy = registerOutput<ContinuousModeBackupPolicyResponse?>('backupPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContinuousModeBackupPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    capabilities = registerOutput<List<Map<String, dynamic>>?>('capabilities');
+    backupPolicy = registerOutput<dynamic>('backupPolicy');
+    capabilities = registerOutput<List<CapabilityResponse>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapabilityResponse>(guardedValue, (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>())); });
     capacity = registerOutput<CapacityResponse?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     connectorOffer = registerOutput<String?>('connectorOffer');
     consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistencyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    cors = registerOutput<List<Map<String, dynamic>>?>('cors');
+    cors = registerOutput<List<CorsPolicyResponse>?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CorsPolicyResponse>(guardedValue, (value) => CorsPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createMode = registerOutput<String?>('createMode');
     customerManagedKeyStatus = registerOutput<String?>('customerManagedKeyStatus');
     databaseAccountOfferType = registerOutput<String>('databaseAccountOfferType');
@@ -832,30 +838,92 @@ class DatabaseAccount extends pulumi.CustomResource {
     enablePartitionMerge = registerOutput<bool?>('enablePartitionMerge');
     enablePerRegionPerPartitionAutoscale = registerOutput<bool?>('enablePerRegionPerPartitionAutoscale');
     enablePriorityBasedExecution = registerOutput<bool?>('enablePriorityBasedExecution');
-    failoverPolicies = registerOutput<List<Map<String, dynamic>>>('failoverPolicies');
+    failoverPolicies = registerOutput<List<FailoverPolicyResponse>>('failoverPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FailoverPolicyResponse>(guardedValue, (value) => FailoverPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceId = registerOutput<String>('instanceId');
-    ipRules = registerOutput<List<Map<String, dynamic>>?>('ipRules');
+    ipRules = registerOutput<List<IpAddressOrRangeResponse>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAddressOrRangeResponse>(guardedValue, (value) => IpAddressOrRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
     keyVaultKeyUri = registerOutput<String?>('keyVaultKeyUri');
     keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
     keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>('keysMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAccountKeysMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String?>('kind');
     location = registerOutput<String?>('location');
-    locations = registerOutput<List<Map<String, dynamic>>>('locations');
+    locations = registerOutput<List<LocationResponse>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
     this.name = registerOutput<String>('name');
     networkAclBypass = registerOutput<String?>('networkAclBypass');
-    networkAclBypassResourceIds = registerOutput<List<String>?>('networkAclBypassResourceIds');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    networkAclBypassResourceIds = registerOutput<List<String>?>('networkAclBypassResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
-    readLocations = registerOutput<List<Map<String, dynamic>>>('readLocations');
+    readLocations = registerOutput<List<LocationResponse>>('readLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     restoreParameters = registerOutput<RestoreParametersResponse?>('restoreParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>?>('virtualNetworkRules');
-    writeLocations = registerOutput<List<Map<String, dynamic>>>('writeLocations');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    writeLocations = registerOutput<List<LocationResponse>>('writeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseAccount] resource.
+  DatabaseAccount.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:DatabaseAccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    analyticalStorageConfiguration = registerOutput<AnalyticalStorageConfigurationResponse?>('analyticalStorageConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AnalyticalStorageConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    apiProperties = registerOutput<ApiPropertiesResponse?>('apiProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    backupPolicy = registerOutput<dynamic>('backupPolicy');
+    capabilities = registerOutput<List<CapabilityResponse>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CapabilityResponse>(guardedValue, (value) => CapabilityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    capacity = registerOutput<CapacityResponse?>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    connectorOffer = registerOutput<String?>('connectorOffer');
+    consistencyPolicy = registerOutput<ConsistencyPolicyResponse?>('consistencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsistencyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cors = registerOutput<List<CorsPolicyResponse>?>('cors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CorsPolicyResponse>(guardedValue, (value) => CorsPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createMode = registerOutput<String?>('createMode');
+    customerManagedKeyStatus = registerOutput<String?>('customerManagedKeyStatus');
+    databaseAccountOfferType = registerOutput<String>('databaseAccountOfferType');
+    defaultIdentity = registerOutput<String?>('defaultIdentity');
+    defaultPriorityLevel = registerOutput<String?>('defaultPriorityLevel');
+    disableKeyBasedMetadataWriteAccess = registerOutput<bool?>('disableKeyBasedMetadataWriteAccess');
+    disableLocalAuth = registerOutput<bool?>('disableLocalAuth');
+    documentEndpoint = registerOutput<String>('documentEndpoint');
+    enableAnalyticalStorage = registerOutput<bool?>('enableAnalyticalStorage');
+    enableAutomaticFailover = registerOutput<bool?>('enableAutomaticFailover');
+    enableBurstCapacity = registerOutput<bool?>('enableBurstCapacity');
+    enableCassandraConnector = registerOutput<bool?>('enableCassandraConnector');
+    enableFreeTier = registerOutput<bool?>('enableFreeTier');
+    enableMultipleWriteLocations = registerOutput<bool?>('enableMultipleWriteLocations');
+    enablePartitionMerge = registerOutput<bool?>('enablePartitionMerge');
+    enablePerRegionPerPartitionAutoscale = registerOutput<bool?>('enablePerRegionPerPartitionAutoscale');
+    enablePriorityBasedExecution = registerOutput<bool?>('enablePriorityBasedExecution');
+    failoverPolicies = registerOutput<List<FailoverPolicyResponse>>('failoverPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FailoverPolicyResponse>(guardedValue, (value) => FailoverPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceId = registerOutput<String>('instanceId');
+    ipRules = registerOutput<List<IpAddressOrRangeResponse>?>('ipRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IpAddressOrRangeResponse>(guardedValue, (value) => IpAddressOrRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    isVirtualNetworkFilterEnabled = registerOutput<bool?>('isVirtualNetworkFilterEnabled');
+    keyVaultKeyUri = registerOutput<String?>('keyVaultKeyUri');
+    keyVaultKeyUriVersion = registerOutput<String>('keyVaultKeyUriVersion');
+    keysMetadata = registerOutput<DatabaseAccountKeysMetadataResponse>('keysMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseAccountKeysMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String?>('location');
+    locations = registerOutput<List<LocationResponse>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    minimalTlsVersion = registerOutput<String?>('minimalTlsVersion');
+    this.name = registerOutput<String>('name');
+    networkAclBypass = registerOutput<String?>('networkAclBypass');
+    networkAclBypassResourceIds = registerOutput<List<String>?>('networkAclBypassResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privateEndpointConnections = registerOutput<List<PrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    publicNetworkAccess = registerOutput<String?>('publicNetworkAccess');
+    readLocations = registerOutput<List<LocationResponse>>('readLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    restoreParameters = registerOutput<RestoreParametersResponse?>('restoreParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RestoreParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>?>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    writeLocations = registerOutput<List<LocationResponse>>('writeLocations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LocationResponse>(guardedValue, (value) => LocationResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

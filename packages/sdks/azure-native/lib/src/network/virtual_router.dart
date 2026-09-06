@@ -204,7 +204,7 @@ class VirtualRouter extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// List of references to VirtualRouterPeerings.
-  late final pulumi.Output<List<Map<String, dynamic>>> peerings;
+  late final pulumi.Output<List<SubResourceResponse>> peerings;
   /// The provisioning state of the resource.
   late final pulumi.Output<String> provisioningState;
   /// Resource tags.
@@ -236,11 +236,34 @@ class VirtualRouter extends pulumi.CustomResource {
     hostedSubnet = registerOutput<SubResourceResponse?>('hostedSubnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    peerings = registerOutput<List<Map<String, dynamic>>>('peerings');
+    peerings = registerOutput<List<SubResourceResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     virtualRouterAsn = registerOutput<double?>('virtualRouterAsn');
-    virtualRouterIps = registerOutput<List<String>?>('virtualRouterIps');
+    virtualRouterIps = registerOutput<List<String>?>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualRouter] resource.
+  VirtualRouter.reference(String urn)
+    : super(
+        'azure-native:network:VirtualRouter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    hostedGateway = registerOutput<SubResourceResponse?>('hostedGateway', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostedSubnet = registerOutput<SubResourceResponse?>('hostedSubnet', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    peerings = registerOutput<List<SubResourceResponse>>('peerings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualRouterAsn = registerOutput<double?>('virtualRouterAsn');
+    virtualRouterIps = registerOutput<List<String>?>('virtualRouterIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

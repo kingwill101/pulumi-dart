@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AML file system squash settings.
 class AmlFilesystemRootSquashSettings {
   /// Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
   /// Semicolon separated NID IP Address list(s) to be added to the TrustedSystems.
-  final pulumi.Input<String>? noSquashNidLists;
+  final pulumi.Input<String?>? noSquashNidLists;
   /// Group ID to squash to.
-  final pulumi.Input<double>? squashGID;
+  final pulumi.Input<double?>? squashGID;
   /// User ID to squash to.
-  final pulumi.Input<double>? squashUID;
+  final pulumi.Input<double?>? squashUID;
 
   /// Creates a new [AmlFilesystemRootSquashSettings].
   /// [mode] Squash mode of the AML file system. 'All': User and Group IDs on files will be squashed to the provided values for all users on non-trusted systems. 'RootOnly': User and Group IDs on files will be squashed to provided values for solely the root user on non-trusted systems. 'None': No squashing of User and Group IDs is performed for any users on any systems.
@@ -36,10 +36,10 @@ class AmlFilesystemRootSquashSettings {
 
   factory AmlFilesystemRootSquashSettings.fromMap(Map<String, dynamic> map) {
     return AmlFilesystemRootSquashSettings(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       noSquashNidLists: (() { final guardedValue = map['noSquashNidLists']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      squashGID: (() { final guardedValue = map['squashGID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      squashUID: (() { final guardedValue = map['squashUID']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      squashGID: (() { final guardedValue = map['squashGID']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      squashUID: (() { final guardedValue = map['squashUID']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

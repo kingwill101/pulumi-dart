@@ -6,9 +6,9 @@ import 'managed_service_identity_type.dart';
 /// Properties to configure User Assigned Identities for Bring your Own Keys
 class Identity {
   /// Type of managed service identity.
-  final pulumi.Input<ManagedServiceIdentityType>? type;
+  final pulumi.Input<ManagedServiceIdentityType?>? type;
   /// Properties for User Assigned Identities
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [Identity].
   /// [type] Type of managed service identity.

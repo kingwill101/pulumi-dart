@@ -15,33 +15,33 @@ import 'storage.dart';
 /// The Deployment data of AzureStackHCI Cluster.
 class DeploymentData {
   /// The path to the Active Directory Organizational Unit container object prepared for the deployment.
-  final pulumi.Input<String>? adouPath;
+  final pulumi.Input<String?>? adouPath;
   /// Observability config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<DeploymentCluster>? cluster;
+  final pulumi.Input<DeploymentCluster?>? cluster;
   /// FQDN to deploy cluster
-  final pulumi.Input<String>? domainFqdn;
+  final pulumi.Input<String?>? domainFqdn;
   /// HostNetwork config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<HostNetwork>? hostNetwork;
+  final pulumi.Input<HostNetwork?>? hostNetwork;
   /// InfrastructureNetwork config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<InfrastructureNetwork>>? infrastructureNetwork;
+  final pulumi.Input<List<InfrastructureNetwork>?>? infrastructureNetwork;
   /// naming prefix to deploy cluster.
-  final pulumi.Input<String>? namingPrefix;
+  final pulumi.Input<String?>? namingPrefix;
   /// Observability config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<Observability>? observability;
+  final pulumi.Input<Observability?>? observability;
   /// OptionalServices config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<OptionalServices>? optionalServices;
+  final pulumi.Input<OptionalServices?>? optionalServices;
   /// list of physical nodes config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<List<PhysicalNodes>>? physicalNodes;
+  final pulumi.Input<List<PhysicalNodes>?>? physicalNodes;
   /// SDN Integration config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<SdnIntegration>? sdnIntegration;
+  final pulumi.Input<SdnIntegration?>? sdnIntegration;
   /// secrets used for cloud deployment.
-  final pulumi.Input<List<EceDeploymentSecrets>>? secrets;
+  final pulumi.Input<List<EceDeploymentSecrets>?>? secrets;
   /// Azure keyvault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead.
-  final pulumi.Input<String>? secretsLocation;
+  final pulumi.Input<String?>? secretsLocation;
   /// SecuritySettings to deploy AzureStackHCI Cluster.
-  final pulumi.Input<DeploymentSecuritySettings>? securitySettings;
+  final pulumi.Input<DeploymentSecuritySettings?>? securitySettings;
   /// Storage config to deploy AzureStackHCI Cluster.
-  final pulumi.Input<Storage>? storage;
+  final pulumi.Input<Storage?>? storage;
 
   /// Creates a new [DeploymentData].
   /// [adouPath] The path to the Active Directory Organizational Unit container object prepared for the deployment.

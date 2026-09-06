@@ -45,7 +45,7 @@ class InMageRcmFabricSpecificDetailsResponse {
   /// The service resource Id.
   final pulumi.Input<String> serviceResourceId;
   /// The source agent identity details.
-  final pulumi.Input<IdentityProviderDetailsResponse>? sourceAgentIdentityDetails;
+  final pulumi.Input<IdentityProviderDetailsResponse?>? sourceAgentIdentityDetails;
   /// The ARM Id of the VMware site.
   final pulumi.Input<String> vmwareSiteId;
 

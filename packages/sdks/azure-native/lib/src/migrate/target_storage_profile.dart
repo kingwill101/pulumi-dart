@@ -7,24 +7,24 @@ import 'azure_file_share_hydration_profile.dart';
 class TargetStorageProfile {
   /// Azure file share profile for hydration of application folders not mounted on
   /// the container file system.
-  final pulumi.Input<AzureFileShareHydrationProfile>? azureFileShareProfile;
+  final pulumi.Input<AzureFileShareHydrationProfile?>? azureFileShareProfile;
   /// Gets or sets the storage provider type on the target.
   /// Applicable when StorageProjectionType is not ContainerFileSystem.
-  final pulumi.Input<String>? hydrationStorageProviderType;
+  final pulumi.Input<dynamic>? hydrationStorageProviderType;
   /// Gets or sets the target persistent volume id.
   /// Applicable when StorageProjectionType is PersistentVolume and on using an
   /// existing PersistentVolume.
-  final pulumi.Input<String>? persistentVolumeId;
+  final pulumi.Input<String?>? persistentVolumeId;
   /// Gets or sets the target storage access type.
-  final pulumi.Input<String>? storageAccessType;
+  final pulumi.Input<dynamic>? storageAccessType;
   /// Gets or sets the target projection type.
-  final pulumi.Input<String>? storageProjectionType;
+  final pulumi.Input<dynamic>? storageProjectionType;
   /// Gets or sets the name of the projected volume on the target environment.
-  final pulumi.Input<String>? targetName;
+  final pulumi.Input<String?>? targetName;
   /// Gets or sets the storage size on the target.
   /// Applicable when StorageProjectionType is PersistentVolume and on creating a new
   /// PersistentVolume.
-  final pulumi.Input<String>? targetSize;
+  final pulumi.Input<String?>? targetSize;
 
   /// Creates a new [TargetStorageProfile].
   /// [azureFileShareProfile] Azure file share profile for hydration of application folders not mounted on
@@ -59,10 +59,10 @@ class TargetStorageProfile {
   factory TargetStorageProfile.fromMap(Map<String, dynamic> map) {
     return TargetStorageProfile(
       azureFileShareProfile: (() { final guardedValue = map['azureFileShareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFileShareHydrationProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hydrationStorageProviderType: (() { final guardedValue = map['hydrationStorageProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      hydrationStorageProviderType: (() { final guardedValue = map['hydrationStorageProviderType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       persistentVolumeId: (() { final guardedValue = map['persistentVolumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageAccessType: (() { final guardedValue = map['storageAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageProjectionType: (() { final guardedValue = map['storageProjectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageAccessType: (() { final guardedValue = map['storageAccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      storageProjectionType: (() { final guardedValue = map['storageProjectionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       targetName: (() { final guardedValue = map['targetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetSize: (() { final guardedValue = map['targetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

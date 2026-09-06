@@ -10,7 +10,7 @@ class LogicAppArgs {
   /// Name of the Container App.
   final pulumi.Input<String> containerAppName;
   /// Name of the Logic App, the extension resource.
-  final pulumi.Input<String>? logicAppName;
+  final pulumi.Input<String?>? logicAppName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

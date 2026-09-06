@@ -26,8 +26,8 @@ class AzureArcMonitoringSettingsResponse {
 
   factory AzureArcMonitoringSettingsResponse.fromMap(Map<String, dynamic> map) {
     return AzureArcMonitoringSettingsResponse(
-      alertRulesCount: pulumi.Input.fromValue(map['alertRulesCount'] as int),
-      logsVolumeInGB: pulumi.Input.fromValue(map['logsVolumeInGB'] as double),
+      alertRulesCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['alertRulesCount'])),
+      logsVolumeInGB: pulumi.Input.fromValue((map['logsVolumeInGB'] as num).toDouble()),
     );
   }
 }

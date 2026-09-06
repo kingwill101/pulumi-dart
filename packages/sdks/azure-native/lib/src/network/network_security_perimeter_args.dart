@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_security_perimeter_args_doc}
 class NetworkSecurityPerimeterArgs {
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network security perimeter.
-  final pulumi.Input<String>? networkSecurityPerimeterName;
+  final pulumi.Input<String?>? networkSecurityPerimeterName;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NetworkSecurityPerimeterArgs].
   /// [id] Resource ID.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A valid event source type.
-enum EventSource {
+enum EventSource implements pulumi.PulumiEnum<String> {
   assessments("Assessments"),
   assessmentsSnapshot("AssessmentsSnapshot"),
   subAssessments("SubAssessments"),
@@ -15,6 +17,7 @@ enum EventSource {
   attackPathsSnapshot("AttackPathsSnapshot");
 
   const EventSource(this.wireValue);
+  @override
   final String wireValue;
 
   static EventSource fromValue(String value) {

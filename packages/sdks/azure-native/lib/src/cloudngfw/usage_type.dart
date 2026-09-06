@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// different usage type like PAYG/COMMITTED
-enum UsageType {
+enum UsageType implements pulumi.PulumiEnum<String> {
   valuePAYG("PAYG"),
   valueCOMMITTED("COMMITTED");
 
   const UsageType(this.wireValue);
+  @override
   final String wireValue;
 
   static UsageType fromValue(String value) {

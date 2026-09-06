@@ -6,28 +6,28 @@ import 'nic_ipsettings_response.dart';
 /// Network Interface model
 class NetworkInterfaceResponse {
   /// Gets or sets the device key value.
-  final pulumi.Input<int>? deviceKey;
+  final pulumi.Input<int?>? deviceKey;
   /// Gets or sets the nic ip addresses.
   final pulumi.Input<List<String>> ipAddresses;
   /// Gets or sets the ipsettings.
-  final pulumi.Input<NicIPSettingsResponse>? ipSettings;
+  final pulumi.Input<NicIPSettingsResponse?>? ipSettings;
   /// Gets or sets the label of the virtual network in vCenter that the nic is connected to.
   final pulumi.Input<String> label;
   /// Gets or sets the NIC MAC address.
   final pulumi.Input<String> macAddress;
   /// Gets or sets the name of the network interface.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the ARM Id of the network resource to connect the virtual machine.
-  final pulumi.Input<String>? networkId;
+  final pulumi.Input<String?>? networkId;
   /// Gets or sets the name of the virtual network in vCenter that the nic is connected to.
   final pulumi.Input<String> networkMoName;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID of the virtual network
   /// that the nic is connected to.
   final pulumi.Input<String> networkMoRefId;
   /// NIC type
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Gets or sets the power on boot.
-  final pulumi.Input<String>? powerOnBoot;
+  final pulumi.Input<String?>? powerOnBoot;
 
   /// Creates a new [NetworkInterfaceResponse].
   /// [deviceKey] Gets or sets the device key value.
@@ -73,7 +73,7 @@ class NetworkInterfaceResponse {
 
   factory NetworkInterfaceResponse.fromMap(Map<String, dynamic> map) {
     return NetworkInterfaceResponse(
-      deviceKey: (() { final guardedValue = map['deviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      deviceKey: (() { final guardedValue = map['deviceKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddresses: pulumi.Input.fromValue((map['ipAddresses'] as List).cast<String>()),
       ipSettings: (() { final guardedValue = map['ipSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NicIPSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       label: pulumi.Input.fromValue(map['label'] as String),

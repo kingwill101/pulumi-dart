@@ -8,13 +8,13 @@ import 'scope_response.dart';
 /// Assessment properties class.
 class MachineAssessmentV2PropertiesResponse {
   /// Gets or sets the details of the assessment.
-  final pulumi.Input<AssessmentDetailsResponse>? details;
+  final pulumi.Input<AssessmentDetailsResponse?>? details;
   /// The status of the last operation.
   final pulumi.Input<String> provisioningState;
   /// Gets or sets the scope of assessment.
-  final pulumi.Input<ScopeResponse>? scope;
+  final pulumi.Input<ScopeResponse?>? scope;
   /// Gets or sets the settings for the assessment.
-  final pulumi.Input<MachineAssessmentSettingsResponse>? settings;
+  final pulumi.Input<MachineAssessmentSettingsResponse?>? settings;
 
   /// Creates a new [MachineAssessmentV2PropertiesResponse].
   /// [details] Gets or sets the details of the assessment.

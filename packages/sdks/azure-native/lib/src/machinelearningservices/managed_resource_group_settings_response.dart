@@ -6,7 +6,7 @@ import 'managed_resource_group_assigned_identities_response.dart';
 /// Managed resource group settings
 class ManagedResourceGroupSettingsResponse {
   /// List of assigned identities for the managed resource group
-  final pulumi.Input<List<ManagedResourceGroupAssignedIdentitiesResponse>>? assignedIdentities;
+  final pulumi.Input<List<ManagedResourceGroupAssignedIdentitiesResponse>?>? assignedIdentities;
 
   /// Creates a new [ManagedResourceGroupSettingsResponse].
   /// [assignedIdentities] List of assigned identities for the managed resource group

@@ -7,24 +7,24 @@ import 'target_endpoint_response.dart';
 /// Result data returned by getAFDTargetGroup.
 class GetAFDTargetGroupResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
-  final String deploymentStatus;
+  final String? azureApiVersion;
+  final String? deploymentStatus;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Provisioning status
-  final String provisioningState;
+  final String? provisioningState;
   /// Read only system data
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// TargetEndpoint list referenced by this target group.
-  final List<TargetEndpointResponse> targetEndpoints;
+  final List<TargetEndpointResponse>? targetEndpoints;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetAFDTargetGroupResult].
   /// [azureApiVersion] The Azure API version of the resource.
-  /// [deploymentStatus] Required.
+  /// [deploymentStatus] Optional.
   /// [id] Resource ID.
   /// [name] Resource name.
   /// [provisioningState] Provisioning status
@@ -32,39 +32,39 @@ class GetAFDTargetGroupResult {
   /// [targetEndpoints] TargetEndpoint list referenced by this target group.
   /// [type] Resource type.
   const GetAFDTargetGroupResult({
-    required this.azureApiVersion,
-    required this.deploymentStatus,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
-    required this.targetEndpoints,
-    required this.type,
+    this.azureApiVersion,
+    this.deploymentStatus,
+    this.id,
+    this.name,
+    this.provisioningState,
+    this.systemData,
+    this.targetEndpoints,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'deploymentStatus': deploymentStatus,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
-      'targetEndpoints': pulumi.Input.encodeList<TargetEndpointResponse, Map<String, dynamic>>(targetEndpoints, (value) => value.toMap()),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'deploymentStatus': ?deploymentStatus,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
+      'targetEndpoints': ?(() { final guardedValue = targetEndpoints; if (guardedValue == null) return null; return pulumi.Input.encodeList<TargetEndpointResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'type': ?type,
     };
   }
 
   factory GetAFDTargetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetAFDTargetGroupResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      deploymentStatus: map['deploymentStatus'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      targetEndpoints: pulumi.Input.decodeList<TargetEndpointResponse>(map['targetEndpoints']!, (value) => TargetEndpointResponse.fromMap((value as Map).cast<String, dynamic>())),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deploymentStatus: (() { final guardedValue = map['deploymentStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      targetEndpoints: (() { final guardedValue = map['targetEndpoints']; if (guardedValue == null) return null; return pulumi.Input.decodeList<TargetEndpointResponse>(guardedValue, (value) => TargetEndpointResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

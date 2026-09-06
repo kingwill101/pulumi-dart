@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network Fabric Controller services.
 class ControllerServicesResponse {
   /// The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
-  final pulumi.Input<List<String>>? ipv4AddressSpaces;
+  final pulumi.Input<List<String>?>? ipv4AddressSpaces;
   /// The IPv6 is not supported right now.
-  final pulumi.Input<List<String>>? ipv6AddressSpaces;
+  final pulumi.Input<List<String>?>? ipv6AddressSpaces;
 
   /// Creates a new [ControllerServicesResponse].
   /// [ipv4AddressSpaces] The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.

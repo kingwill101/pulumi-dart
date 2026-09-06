@@ -13,9 +13,9 @@ class RaiPolicyArgs {
   /// Azure OpenAI Content Filters properties.
   final pulumi.Input<RaiPolicyProperties> properties;
   /// Api version used by proxy call
-  final pulumi.Input<String>? proxyApiVersion;
+  final pulumi.Input<String?>? proxyApiVersion;
   /// Name of the Rai Policy.
-  final pulumi.Input<String>? raiPolicyName;
+  final pulumi.Input<String?>? raiPolicyName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Azure Machine Learning Workspace Name

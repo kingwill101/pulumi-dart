@@ -1,8 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'azure_container_info_response.dart';
+import 'client_access_right_response.dart';
+import 'mount_point_map_response.dart';
 import 'refresh_details_response.dart';
 import 'share_args.dart';
 import 'system_data_response.dart';
+import 'user_access_right_response.dart';
 
 /// Represents a share on the  Data Box Edge/Gateway device.
 ///
@@ -264,7 +267,7 @@ class Share extends pulumi.CustomResource {
   /// Azure container mapping for the share.
   late final pulumi.Output<AzureContainerInfoResponse?> azureContainerInfo;
   /// List of IP addresses and corresponding access rights on the share(required for NFS protocol).
-  late final pulumi.Output<List<Map<String, dynamic>>?> clientAccessRights;
+  late final pulumi.Output<List<ClientAccessRightResponse>?> clientAccessRights;
   /// Data policy of the share.
   late final pulumi.Output<String?> dataPolicy;
   /// Description for the share.
@@ -276,7 +279,7 @@ class Share extends pulumi.CustomResource {
   /// Details of the refresh job on this share.
   late final pulumi.Output<RefreshDetailsResponse?> refreshDetails;
   /// Share mount point to the role.
-  late final pulumi.Output<List<Map<String, dynamic>>> shareMappings;
+  late final pulumi.Output<List<MountPointMapResponse>> shareMappings;
   /// Current status of the share.
   late final pulumi.Output<String> shareStatus;
   /// Metadata pertaining to creation and last modification of Share
@@ -284,7 +287,7 @@ class Share extends pulumi.CustomResource {
   /// The hierarchical type of the object.
   late final pulumi.Output<String> type;
   /// Mapping of users and corresponding access rights on the share (required for SMB protocol).
-  late final pulumi.Output<List<Map<String, dynamic>>?> userAccessRights;
+  late final pulumi.Output<List<UserAccessRightResponse>?> userAccessRights;
 
   /// Creates a new [Share].
   /// [name] The Pulumi resource name.
@@ -303,16 +306,41 @@ class Share extends pulumi.CustomResource {
     accessProtocol = registerOutput<String>('accessProtocol');
     azureApiVersion = registerOutput<String>('azureApiVersion');
     azureContainerInfo = registerOutput<AzureContainerInfoResponse?>('azureContainerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureContainerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    clientAccessRights = registerOutput<List<Map<String, dynamic>>?>('clientAccessRights');
+    clientAccessRights = registerOutput<List<ClientAccessRightResponse>?>('clientAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientAccessRightResponse>(guardedValue, (value) => ClientAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dataPolicy = registerOutput<String?>('dataPolicy');
     description = registerOutput<String?>('description');
     monitoringStatus = registerOutput<String>('monitoringStatus');
     this.name = registerOutput<String>('name');
     refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RefreshDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    shareMappings = registerOutput<List<Map<String, dynamic>>>('shareMappings');
+    shareMappings = registerOutput<List<MountPointMapResponse>>('shareMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountPointMapResponse>(guardedValue, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())); });
     shareStatus = registerOutput<String>('shareStatus');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
-    userAccessRights = registerOutput<List<Map<String, dynamic>>?>('userAccessRights');
+    userAccessRights = registerOutput<List<UserAccessRightResponse>?>('userAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserAccessRightResponse>(guardedValue, (value) => UserAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Share] resource.
+  Share.reference(String urn)
+    : super(
+        'azure-native:databoxedge:Share',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessProtocol = registerOutput<String>('accessProtocol');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureContainerInfo = registerOutput<AzureContainerInfoResponse?>('azureContainerInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureContainerInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientAccessRights = registerOutput<List<ClientAccessRightResponse>?>('clientAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClientAccessRightResponse>(guardedValue, (value) => ClientAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dataPolicy = registerOutput<String?>('dataPolicy');
+    description = registerOutput<String?>('description');
+    monitoringStatus = registerOutput<String>('monitoringStatus');
+    this.name = registerOutput<String>('name');
+    refreshDetails = registerOutput<RefreshDetailsResponse?>('refreshDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RefreshDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shareMappings = registerOutput<List<MountPointMapResponse>>('shareMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountPointMapResponse>(guardedValue, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    shareStatus = registerOutput<String>('shareStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    userAccessRights = registerOutput<List<UserAccessRightResponse>?>('userAccessRights', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserAccessRightResponse>(guardedValue, (value) => UserAccessRightResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

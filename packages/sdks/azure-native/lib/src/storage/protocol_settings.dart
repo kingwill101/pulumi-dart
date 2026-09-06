@@ -6,7 +6,7 @@ import 'smb_setting.dart';
 /// Protocol settings for file service
 class ProtocolSettings {
   /// Setting for SMB protocol
-  final pulumi.Input<SmbSetting>? smb;
+  final pulumi.Input<SmbSetting?>? smb;
 
   /// Creates a new [ProtocolSettings].
   /// [smb] Setting for SMB protocol

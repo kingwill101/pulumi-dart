@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SQL Server version.
-enum SqlVersion {
+enum SqlVersion implements pulumi.PulumiEnum<String> {
   valueSQLServer2012("SQL Server 2012"),
   valueSQLServer2014("SQL Server 2014"),
   valueSQLServer2016("SQL Server 2016"),
@@ -9,6 +11,7 @@ enum SqlVersion {
   valueUnknown("Unknown");
 
   const SqlVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static SqlVersion fromValue(String value) {

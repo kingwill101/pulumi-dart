@@ -6,15 +6,15 @@ import 'event_content_response.dart';
 /// The event request message sent to the service URI.
 class EventRequestMessageResponse {
   /// The content of the event request message.
-  final pulumi.Input<EventContentResponse>? content;
+  final pulumi.Input<EventContentResponse?>? content;
   /// The headers of the event request message.
-  final pulumi.Input<Map<String, String>>? headers;
+  final pulumi.Input<Map<String, String>?>? headers;
   /// The HTTP method used to send the event request message.
-  final pulumi.Input<String>? method;
+  final pulumi.Input<String?>? method;
   /// The URI used to send the event request message.
-  final pulumi.Input<String>? requestUri;
+  final pulumi.Input<String?>? requestUri;
   /// The HTTP message version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [EventRequestMessageResponse].
   /// [content] The content of the event request message.

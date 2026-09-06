@@ -7,7 +7,7 @@ class CountryResponse {
   /// country code
   final pulumi.Input<String> code;
   /// code description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [CountryResponse].
   /// [code] country code

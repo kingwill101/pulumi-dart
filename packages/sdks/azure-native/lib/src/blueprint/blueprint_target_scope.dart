@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scope where this blueprint definition can be assigned.
-enum BlueprintTargetScope {
+enum BlueprintTargetScope implements pulumi.PulumiEnum<String> {
   valueSubscription("subscription"),
   valueManagementGroup("managementGroup");
 
   const BlueprintTargetScope(this.wireValue);
+  @override
   final String wireValue;
 
   static BlueprintTargetScope fromValue(String value) {

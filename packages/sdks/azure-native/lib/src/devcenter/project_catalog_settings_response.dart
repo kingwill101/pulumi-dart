@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings to be used when associating a project with a catalog.
 class ProjectCatalogSettingsResponse {
   /// Indicates catalog item types that can be synced.
-  final pulumi.Input<List<String>>? catalogItemSyncTypes;
+  final pulumi.Input<List<String>?>? catalogItemSyncTypes;
 
   /// Creates a new [ProjectCatalogSettingsResponse].
   /// [catalogItemSyncTypes] Indicates catalog item types that can be synced.

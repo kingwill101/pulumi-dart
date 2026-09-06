@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage.
-enum KubeletDiskType {
+enum KubeletDiskType implements pulumi.PulumiEnum<String> {
   valueOS("OS"),
   valueTemporary("Temporary");
 
   const KubeletDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static KubeletDiskType fromValue(String value) {

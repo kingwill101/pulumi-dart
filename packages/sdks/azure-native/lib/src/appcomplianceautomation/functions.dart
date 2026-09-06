@@ -34,6 +34,17 @@ Future<GetEvidenceResult> getEvidence(
   return GetEvidenceResult.fromMap(result);
 }
 
+pulumi.Output<GetEvidenceResult> getEvidenceOutput(
+  GetEvidenceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getEvidence',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEvidenceResult.fromMap);
+}
+
 /// Get the count of reports.
 ///
 /// Uses Azure REST API version 2024-06-27.
@@ -52,6 +63,17 @@ Future<GetProviderActionCollectionCountResult> getProviderActionCollectionCount(
   return GetProviderActionCollectionCountResult.fromMap(result);
 }
 
+pulumi.Output<GetProviderActionCollectionCountResult> getProviderActionCollectionCountOutput(
+  GetProviderActionCollectionCountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getProviderActionCollectionCount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderActionCollectionCountResult.fromMap);
+}
+
 /// Get the resource overview status.
 ///
 /// Uses Azure REST API version 2024-06-27.
@@ -68,6 +90,17 @@ Future<GetProviderActionOverviewStatusResult> getProviderActionOverviewStatus(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetProviderActionOverviewStatusResult.fromMap(result);
+}
+
+pulumi.Output<GetProviderActionOverviewStatusResult> getProviderActionOverviewStatusOutput(
+  GetProviderActionOverviewStatusArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getProviderActionOverviewStatus',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetProviderActionOverviewStatusResult.fromMap);
 }
 
 /// Get the AppComplianceAutomation report and its properties.
@@ -90,6 +123,17 @@ Future<GetReportResult> getReport(
   return GetReportResult.fromMap(result);
 }
 
+pulumi.Output<GetReportResult> getReportOutput(
+  GetReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportResult.fromMap);
+}
+
 /// Fix the AppComplianceAutomation report error. e.g: App Compliance Automation Tool service unregistered, automation removed.
 ///
 /// Uses Azure REST API version 2024-06-27.
@@ -106,6 +150,17 @@ Future<GetReportScopingQuestionsResult> getReportScopingQuestions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReportScopingQuestionsResult.fromMap(result);
+}
+
+pulumi.Output<GetReportScopingQuestionsResult> getReportScopingQuestionsOutput(
+  GetReportScopingQuestionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getReportScopingQuestions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReportScopingQuestionsResult.fromMap);
 }
 
 /// Get the AppComplianceAutomation scoping configuration of the specific report.
@@ -126,6 +181,17 @@ Future<GetScopingConfigurationResult> getScopingConfiguration(
   return GetScopingConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetScopingConfigurationResult> getScopingConfigurationOutput(
+  GetScopingConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getScopingConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopingConfigurationResult.fromMap);
+}
+
 /// Get the AppComplianceAutomation webhook and its properties.
 ///
 /// Uses Azure REST API version 2024-06-27.
@@ -144,6 +210,17 @@ Future<GetWebhookResult> getWebhook(
   return GetWebhookResult.fromMap(result);
 }
 
+pulumi.Output<GetWebhookResult> getWebhookOutput(
+  GetWebhookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:getWebhook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebhookResult.fromMap);
+}
+
 /// List the storage accounts which are in use by related reports
 ///
 /// Uses Azure REST API version 2024-06-27.
@@ -160,4 +237,15 @@ Future<ListProviderActionInUseStorageAccountsResult> listProviderActionInUseStor
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListProviderActionInUseStorageAccountsResult.fromMap(result);
+}
+
+pulumi.Output<ListProviderActionInUseStorageAccountsResult> listProviderActionInUseStorageAccountsOutput(
+  ListProviderActionInUseStorageAccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:appcomplianceautomation:listProviderActionInUseStorageAccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListProviderActionInUseStorageAccountsResult.fromMap);
 }

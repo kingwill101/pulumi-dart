@@ -49,7 +49,7 @@ class PrimingJobResponse {
       primingJobDetails: pulumi.Input.fromValue(map['primingJobDetails'] as String),
       primingJobId: pulumi.Input.fromValue(map['primingJobId'] as String),
       primingJobName: pulumi.Input.fromValue(map['primingJobName'] as String),
-      primingJobPercentComplete: pulumi.Input.fromValue(map['primingJobPercentComplete'] as double),
+      primingJobPercentComplete: pulumi.Input.fromValue((map['primingJobPercentComplete'] as num).toDouble()),
       primingJobState: pulumi.Input.fromValue(map['primingJobState'] as String),
       primingJobStatus: pulumi.Input.fromValue(map['primingJobStatus'] as String),
     );

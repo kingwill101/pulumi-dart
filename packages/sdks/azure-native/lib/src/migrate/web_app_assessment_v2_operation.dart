@@ -505,4 +505,47 @@ class WebAppAssessmentV2Operation extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updatedTimestamp = registerOutput<String>('updatedTimestamp');
   }
+
+  /// Creates a typed reference to an existing [WebAppAssessmentV2Operation] resource.
+  WebAppAssessmentV2Operation.reference(String urn)
+    : super(
+        'azure-native:migrate:WebAppAssessmentV2Operation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appSvcContainerSettings = registerOutput<AppSvcContainerSettingsResponse?>('appSvcContainerSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSvcContainerSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    appSvcNativeSettings = registerOutput<AppSvcNativeSettingsResponse?>('appSvcNativeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppSvcNativeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assessmentType = registerOutput<String?>('assessmentType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureLocation = registerOutput<String?>('azureLocation');
+    azureOfferCode = registerOutput<String?>('azureOfferCode');
+    azureSecurityOfferingType = registerOutput<String?>('azureSecurityOfferingType');
+    confidenceRatingInPercentage = registerOutput<double?>('confidenceRatingInPercentage');
+    createdTimestamp = registerOutput<String>('createdTimestamp');
+    currency = registerOutput<String?>('currency');
+    discountPercentage = registerOutput<double?>('discountPercentage');
+    discoveredEntityLightSummary = registerOutput<DiscoveredEntityLightSummaryResponse?>('discoveredEntityLightSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiscoveredEntityLightSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eaSubscriptionId = registerOutput<String?>('eaSubscriptionId');
+    entityUptime = registerOutput<EntityUptimeResponse?>('entityUptime', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntityUptimeResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentType = registerOutput<String?>('environmentType');
+    groupType = registerOutput<String?>('groupType');
+    this.name = registerOutput<String>('name');
+    percentile = registerOutput<String?>('percentile');
+    perfDataEndTime = registerOutput<String?>('perfDataEndTime');
+    perfDataStartTime = registerOutput<String?>('perfDataStartTime');
+    pricesTimestamp = registerOutput<String>('pricesTimestamp');
+    provisioningState = registerOutput<String>('provisioningState');
+    reservedInstance = registerOutput<String?>('reservedInstance');
+    scalingFactor = registerOutput<double?>('scalingFactor');
+    schemaVersion = registerOutput<String>('schemaVersion');
+    sizingCriterion = registerOutput<String?>('sizingCriterion');
+    stage = registerOutput<String>('stage');
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeRange = registerOutput<String?>('timeRange');
+    type = registerOutput<String>('type');
+    updatedTimestamp = registerOutput<String>('updatedTimestamp');
+  }
 }

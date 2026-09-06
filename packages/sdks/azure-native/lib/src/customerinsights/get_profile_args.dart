@@ -10,7 +10,7 @@ class GetProfileArgs {
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// Locale of profile to retrieve, default is en-us.
-  final pulumi.Input<String>? localeCode;
+  final pulumi.Input<String?>? localeCode;
   /// The name of the profile.
   final pulumi.Input<String> profileName;
   /// The name of the resource group.

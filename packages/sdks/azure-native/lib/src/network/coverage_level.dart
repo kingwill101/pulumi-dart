@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Test coverage for the endpoint.
-enum CoverageLevel {
+enum CoverageLevel implements pulumi.PulumiEnum<String> {
   valueDefault("Default"),
   valueLow("Low"),
   valueBelowAverage("BelowAverage"),
@@ -8,6 +10,7 @@ enum CoverageLevel {
   valueFull("Full");
 
   const CoverageLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static CoverageLevel fromValue(String value) {

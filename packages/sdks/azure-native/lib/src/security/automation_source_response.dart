@@ -6,9 +6,9 @@ import 'automation_rule_set_response.dart';
 /// The source event types which evaluate the security automation set of rules. For example - security alerts and security assessments. To learn more about the supported security events data models schemas - please visit https://aka.ms/ASCAutomationSchemas.
 class AutomationSourceResponse {
   /// A valid event source type.
-  final pulumi.Input<String>? eventSource;
+  final pulumi.Input<String?>? eventSource;
   /// A set of rules which evaluate upon event interception. A logical disjunction is applied between defined rule sets (logical 'or').
-  final pulumi.Input<List<AutomationRuleSetResponse>>? ruleSets;
+  final pulumi.Input<List<AutomationRuleSetResponse>?>? ruleSets;
 
   /// Creates a new [AutomationSourceResponse].
   /// [eventSource] A valid event source type.

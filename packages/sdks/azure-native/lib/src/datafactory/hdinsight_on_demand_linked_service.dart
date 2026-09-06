@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 import 'credential_reference.dart';
 import 'integration_runtime_reference.dart';
 import 'linked_service_reference.dart';
@@ -11,21 +10,21 @@ import 'script_action.dart';
 /// HDInsight ondemand linked service.
 class HDInsightOnDemandLinkedService {
   /// Specifies additional storage accounts for the HDInsight linked service so that the Data Factory service can register them on your behalf.
-  final pulumi.Input<List<LinkedServiceReference>>? additionalLinkedServiceNames;
+  final pulumi.Input<List<LinkedServiceReference>?>? additionalLinkedServiceNames;
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The prefix of cluster name, postfix will be distinct with timestamp. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? clusterNamePrefix;
   /// The password to access the cluster.
-  final pulumi.Input<AzureKeyVaultSecretReference>? clusterPassword;
+  final pulumi.Input<dynamic>? clusterPassword;
   /// The resource group where the cluster belongs. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> clusterResourceGroup;
   /// HDInsight On-demand cluster resource group authentication type.
-  final pulumi.Input<String>? clusterResourceGroupAuthType;
+  final pulumi.Input<dynamic>? clusterResourceGroupAuthType;
   /// Number of worker/data nodes in the cluster. Suggestion value: 4. Type: int (or Expression with resultType int).
   final pulumi.Input<dynamic> clusterSize;
   /// The password to SSH remotely connect cluster’s node (for Linux).
-  final pulumi.Input<AzureKeyVaultSecretReference>? clusterSshPassword;
+  final pulumi.Input<dynamic>? clusterSshPassword;
   /// The username to SSH remotely connect to cluster’s node (for Linux). Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? clusterSshUserName;
   /// The cluster type. Type: string (or Expression with resultType string).
@@ -33,21 +32,21 @@ class HDInsightOnDemandLinkedService {
   /// The username to access the cluster. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? clusterUserName;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReference>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReference?>? connectVia;
   /// Specifies the core configuration parameters (as in core-site.xml) for the HDInsight cluster to be created.
   final pulumi.Input<dynamic>? coreConfiguration;
   /// The credential reference containing authentication information.
-  final pulumi.Input<CredentialReference>? credential;
+  final pulumi.Input<CredentialReference?>? credential;
   /// Specifies the size of the data node for the HDInsight cluster.
   final pulumi.Input<dynamic>? dataNodeSize;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The encrypted credential used for authentication. Credentials are encrypted using the integration runtime credential manager. Type: string.
-  final pulumi.Input<String>? encryptedCredential;
+  final pulumi.Input<String?>? encryptedCredential;
   /// Specifies the HBase configuration parameters (hbase-site.xml) for the HDInsight cluster.
   final pulumi.Input<dynamic>? hBaseConfiguration;
   /// The name of Azure SQL linked service that point to the HCatalog database. The on-demand HDInsight cluster is created by using the Azure SQL database as the metastore.
-  final pulumi.Input<LinkedServiceReference>? hcatalogLinkedServiceName;
+  final pulumi.Input<LinkedServiceReference?>? hcatalogLinkedServiceName;
   /// Specifies the HDFS configuration parameters (hdfs-site.xml) for the HDInsight cluster.
   final pulumi.Input<dynamic>? hdfsConfiguration;
   /// Specifies the size of the head node for the HDInsight cluster.
@@ -63,13 +62,13 @@ class HDInsightOnDemandLinkedService {
   /// Specifies the Oozie configuration parameters (oozie-site.xml) for the HDInsight cluster.
   final pulumi.Input<dynamic>? oozieConfiguration;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecification>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecification>?>? parameters;
   /// Custom script actions to run on HDI ondemand cluster once it's up. Please refer to https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fr-server%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json#understanding-script-actions.
-  final pulumi.Input<List<ScriptAction>>? scriptActions;
+  final pulumi.Input<List<ScriptAction>?>? scriptActions;
   /// The service principal id for the hostSubscriptionId. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? servicePrincipalId;
   /// The key for the service principal id.
-  final pulumi.Input<AzureKeyVaultSecretReference>? servicePrincipalKey;
+  final pulumi.Input<dynamic>? servicePrincipalKey;
   /// The version of spark if the cluster type is 'spark'. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic>? sparkVersion;
   /// Specifies the Storm configuration parameters (storm-site.xml) for the HDInsight cluster.
@@ -181,11 +180,11 @@ class HDInsightOnDemandLinkedService {
       'additionalLinkedServiceNames': ?pulumi.Input.mapOptionalInputValue<List<LinkedServiceReference>, List<Map<String, dynamic>>>(additionalLinkedServiceNames, (value) => pulumi.Input.encodeList<LinkedServiceReference, Map<String, dynamic>>(value, (value) => value.toMap())),
       'annotations': ?annotations,
       'clusterNamePrefix': ?clusterNamePrefix,
-      'clusterPassword': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clusterPassword, (value) => value.toMap()),
+      'clusterPassword': ?clusterPassword,
       'clusterResourceGroup': clusterResourceGroup,
       'clusterResourceGroupAuthType': ?clusterResourceGroupAuthType,
       'clusterSize': clusterSize,
-      'clusterSshPassword': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(clusterSshPassword, (value) => value.toMap()),
+      'clusterSshPassword': ?clusterSshPassword,
       'clusterSshUserName': ?clusterSshUserName,
       'clusterType': ?clusterType,
       'clusterUserName': ?clusterUserName,
@@ -207,7 +206,7 @@ class HDInsightOnDemandLinkedService {
       'parameters': ?pulumi.Input.mapOptionalInputValue<Map<String, ParameterSpecification>, Map<String, Map<String, dynamic>>>(parameters, (value) => pulumi.Input.encodeMapValues<ParameterSpecification, Map<String, dynamic>>(value, (value) => value.toMap())),
       'scriptActions': ?pulumi.Input.mapOptionalInputValue<List<ScriptAction>, List<Map<String, dynamic>>>(scriptActions, (value) => pulumi.Input.encodeList<ScriptAction, Map<String, dynamic>>(value, (value) => value.toMap())),
       'servicePrincipalId': ?servicePrincipalId,
-      'servicePrincipalKey': ?pulumi.Input.mapOptionalInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(servicePrincipalKey, (value) => value.toMap()),
+      'servicePrincipalKey': ?servicePrincipalKey,
       'sparkVersion': ?sparkVersion,
       'stormConfiguration': ?stormConfiguration,
       'subnetName': ?subnetName,
@@ -226,11 +225,11 @@ class HDInsightOnDemandLinkedService {
       additionalLinkedServiceNames: (() { final guardedValue = map['additionalLinkedServiceNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<LinkedServiceReference>(guardedValue, (value) => LinkedServiceReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       clusterNamePrefix: (() { final guardedValue = map['clusterNamePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      clusterPassword: (() { final guardedValue = map['clusterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterPassword: (() { final guardedValue = map['clusterPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterResourceGroup: pulumi.Input.fromValue(map['clusterResourceGroup']),
-      clusterResourceGroupAuthType: (() { final guardedValue = map['clusterResourceGroupAuthType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      clusterResourceGroupAuthType: (() { final guardedValue = map['clusterResourceGroupAuthType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterSize: pulumi.Input.fromValue(map['clusterSize']),
-      clusterSshPassword: (() { final guardedValue = map['clusterSshPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      clusterSshPassword: (() { final guardedValue = map['clusterSshPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterSshUserName: (() { final guardedValue = map['clusterSshUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterType: (() { final guardedValue = map['clusterType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       clusterUserName: (() { final guardedValue = map['clusterUserName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
@@ -252,7 +251,7 @@ class HDInsightOnDemandLinkedService {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<ParameterSpecification>(guardedValue, (value) => ParameterSpecification.fromMap((value as Map).cast<String, dynamic>()))); })(),
       scriptActions: (() { final guardedValue = map['scriptActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScriptAction>(guardedValue, (value) => ScriptAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       servicePrincipalId: (() { final guardedValue = map['servicePrincipalId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      servicePrincipalKey: (() { final guardedValue = map['servicePrincipalKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sparkVersion: (() { final guardedValue = map['sparkVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       stormConfiguration: (() { final guardedValue = map['stormConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       subnetName: (() { final guardedValue = map['subnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),

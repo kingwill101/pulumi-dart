@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TagCriterionPairForJob
 class TagCriterionPairForJobResponse {
   /// &lt;p&gt;The value for the tag key to use in the condition.&lt;/p&gt;
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// &lt;p&gt;The tag value to use in the condition.&lt;/p&gt;
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagCriterionPairForJobResponse].
   /// [key] &lt;p&gt;The value for the tag key to use in the condition.&lt;/p&gt;

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The discriminator for the Drill object hierarchy.
-enum DrillType {
+enum DrillType implements pulumi.PulumiEnum<String> {
   zonal("Zonal"),
   regional("Regional");
 
   const DrillType(this.wireValue);
+  @override
   final String wireValue;
 
   static DrillType fromValue(String value) {

@@ -234,9 +234,26 @@ class Channel extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    channelFunctions = registerOutput<List<String>?>('channelFunctions');
+    channelFunctions = registerOutput<List<String>?>('channelFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     channelType = registerOutput<String>('channelType');
-    credentials = registerOutput<Map<String, String>?>('credentials');
+    credentials = registerOutput<Map<String, String>?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Channel] resource.
+  Channel.reference(String urn)
+    : super(
+        'azure-native:engagementfabric:Channel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    channelFunctions = registerOutput<List<String>?>('channelFunctions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    channelType = registerOutput<String>('channelType');
+    credentials = registerOutput<Map<String, String>?>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
   }

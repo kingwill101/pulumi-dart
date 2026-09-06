@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The identity information with the event subscription.
 class EventSubscriptionIdentityResponse {
   /// The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The user identity associated with the resource.
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [EventSubscriptionIdentityResponse].
   /// [type] The type of managed identity used. Can be either 'SystemAssigned' or 'UserAssigned'.

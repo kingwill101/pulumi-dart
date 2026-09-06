@@ -10,23 +10,23 @@ import 'identity.dart';
 /// {@macro pulumi_resourceconnector_appliance_args_doc}
 class ApplianceArgs {
   /// Represents a supported Fabric/Infra. (AKSEdge etc...).
-  final pulumi.Input<String>? distro;
+  final pulumi.Input<dynamic>? distro;
   /// Identity for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Contains infrastructure information about the Appliance
-  final pulumi.Input<AppliancePropertiesInfrastructureConfig>? infrastructureConfig;
+  final pulumi.Input<AppliancePropertiesInfrastructureConfig?>? infrastructureConfig;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Certificates pair used to download MSI certificate from HIS. Can only be set once.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Appliances name.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Version of the Appliance
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ApplianceArgs].
   /// [distro] Represents a supported Fabric/Infra. (AKSEdge etc...).
@@ -38,8 +38,8 @@ class ApplianceArgs {
   /// [resourceName] Appliances name.
   /// [tags] Resource tags.
   /// [version] Version of the Appliance
-  const ApplianceArgs({
-    this.distro,
+  ApplianceArgs({
+    pulumi.Input<dynamic>? distro,
     this.identity,
     this.infrastructureConfig,
     this.location,
@@ -48,7 +48,7 @@ class ApplianceArgs {
     this.resourceName,
     this.tags,
     this.version,
-  });
+  }) : distro = distro ?? pulumi.Input.fromValue('AKSEdge');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -66,7 +66,7 @@ class ApplianceArgs {
 
   factory ApplianceArgs.fromMap(Map<String, dynamic> map) {
     return ApplianceArgs(
-      distro: (() { final guardedValue = map['distro']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      distro: (() { final guardedValue = map['distro']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       infrastructureConfig: (() { final guardedValue = map['infrastructureConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppliancePropertiesInfrastructureConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

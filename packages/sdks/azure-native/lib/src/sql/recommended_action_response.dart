@@ -184,7 +184,7 @@ class RecommendedActionResponse {
       revertActionInitiatedBy: pulumi.Input.fromValue(map['revertActionInitiatedBy'] as String),
       revertActionInitiatedTime: pulumi.Input.fromValue(map['revertActionInitiatedTime'] as String),
       revertActionStartTime: pulumi.Input.fromValue(map['revertActionStartTime'] as String),
-      score: pulumi.Input.fromValue(map['score'] as int),
+      score: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['score'])),
       state: pulumi.Input.fromValue(RecommendedActionStateInfoResponse.fromMap((map['state']! as Map).cast<String, dynamic>())),
       timeSeries: pulumi.Input.fromValue(pulumi.Input.decodeList<RecommendedActionMetricInfoResponse>(map['timeSeries']!, (value) => RecommendedActionMetricInfoResponse.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a HorizonDB replica.
 class HorizonDbReplicaProperties {
   /// The availability zone of the replica.
-  final pulumi.Input<String>? availabilityZone;
+  final pulumi.Input<String?>? availabilityZone;
   /// Role of the replica.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<dynamic>? role;
 
   /// Creates a new [HorizonDbReplicaProperties].
   /// [availabilityZone] The availability zone of the replica.
@@ -27,7 +27,7 @@ class HorizonDbReplicaProperties {
   factory HorizonDbReplicaProperties.fromMap(Map<String, dynamic> map) {
     return HorizonDbReplicaProperties(
       availabilityZone: (() { final guardedValue = map['availabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

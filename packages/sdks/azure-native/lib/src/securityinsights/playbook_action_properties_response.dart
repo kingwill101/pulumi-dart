@@ -6,7 +6,7 @@ class PlaybookActionPropertiesResponse {
   /// The resource id of the playbook resource.
   final pulumi.Input<String> logicAppResourceId;
   /// The tenant id of the playbook resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [PlaybookActionPropertiesResponse].
   /// [logicAppResourceId] The resource id of the playbook resource.

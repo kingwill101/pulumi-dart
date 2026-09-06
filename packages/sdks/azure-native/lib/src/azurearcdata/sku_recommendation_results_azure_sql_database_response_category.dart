@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SkuRecommendationResultsAzureSqlDatabaseResponseCategory {
   /// The compute tier of the target SKU.
-  final pulumi.Input<String>? computeTier;
+  final pulumi.Input<String?>? computeTier;
   /// The hardware type of the target SKU.
-  final pulumi.Input<String>? hardwareType;
+  final pulumi.Input<String?>? hardwareType;
   /// The SQL purchasing model of the target SKU.
-  final pulumi.Input<String>? sqlPurchasingModel;
+  final pulumi.Input<String?>? sqlPurchasingModel;
   /// The SQL service tier of the target SKU.
-  final pulumi.Input<String>? sqlServiceTier;
+  final pulumi.Input<String?>? sqlServiceTier;
   /// Indicates if zone redundancy is available for the target SKU.
-  final pulumi.Input<bool>? zoneRedundancyAvailable;
+  final pulumi.Input<bool?>? zoneRedundancyAvailable;
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponseCategory].
   /// [computeTier] The compute tier of the target SKU.

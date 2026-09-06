@@ -38,93 +38,93 @@ import 'user_assigned_identity.dart';
 /// {@macro pulumi_containerservice_managed_cluster_args_doc}
 class ManagedClusterArgs {
   /// The Azure Active Directory configuration.
-  final pulumi.Input<ManagedClusterAADProfile>? aadProfile;
+  final pulumi.Input<ManagedClusterAADProfile?>? aadProfile;
   /// The profile of managed cluster add-on.
-  final pulumi.Input<Map<String, ManagedClusterAddonProfile>>? addonProfiles;
+  final pulumi.Input<Map<String, ManagedClusterAddonProfile>?>? addonProfiles;
   /// The agent pool properties.
-  final pulumi.Input<List<ManagedClusterAgentPoolProfile>>? agentPoolProfiles;
+  final pulumi.Input<List<ManagedClusterAgentPoolProfile>?>? agentPoolProfiles;
   /// AI toolchain operator settings that apply to the whole cluster.
-  final pulumi.Input<ManagedClusterAIToolchainOperatorProfile>? aiToolchainOperatorProfile;
+  final pulumi.Input<ManagedClusterAIToolchainOperatorProfile?>? aiToolchainOperatorProfile;
   /// The access profile for managed cluster API server.
-  final pulumi.Input<ManagedClusterAPIServerAccessProfile>? apiServerAccessProfile;
+  final pulumi.Input<ManagedClusterAPIServerAccessProfile?>? apiServerAccessProfile;
   /// Parameters to be applied to the cluster-autoscaler when enabled
-  final pulumi.Input<ManagedClusterPropertiesAutoScalerProfile>? autoScalerProfile;
+  final pulumi.Input<ManagedClusterPropertiesAutoScalerProfile?>? autoScalerProfile;
   /// The auto upgrade configuration.
-  final pulumi.Input<ManagedClusterAutoUpgradeProfile>? autoUpgradeProfile;
+  final pulumi.Input<ManagedClusterAutoUpgradeProfile?>? autoUpgradeProfile;
   /// Azure Monitor addon profiles for monitoring the managed cluster.
-  final pulumi.Input<ManagedClusterAzureMonitorProfile>? azureMonitorProfile;
+  final pulumi.Input<ManagedClusterAzureMonitorProfile?>? azureMonitorProfile;
   /// Profile of the cluster bootstrap configuration.
-  final pulumi.Input<ManagedClusterBootstrapProfile>? bootstrapProfile;
+  final pulumi.Input<ManagedClusterBootstrapProfile?>? bootstrapProfile;
   /// If local accounts should be disabled on the Managed Cluster. If set to true, getting static credentials will be disabled for this cluster. This must only be used on Managed Clusters that are AAD enabled. For more details see [disable local accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
-  final pulumi.Input<bool>? disableLocalAccounts;
+  final pulumi.Input<bool?>? disableLocalAccounts;
   /// The Resource ID of the disk encryption set to use for enabling encryption at rest. This is of the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/diskEncryptionSets/{encryptionSetName}'
-  final pulumi.Input<String>? diskEncryptionSetID;
+  final pulumi.Input<String?>? diskEncryptionSetID;
   /// The DNS prefix of the Managed Cluster. This cannot be updated once the Managed Cluster has been created.
-  final pulumi.Input<String>? dnsPrefix;
+  final pulumi.Input<String?>? dnsPrefix;
   /// Whether to enable Kubernetes Role-Based Access Control.
-  final pulumi.Input<bool>? enableRBAC;
+  final pulumi.Input<bool?>? enableRBAC;
   /// The extended location of the Virtual Machine.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// The FQDN subdomain of the private cluster with custom private dns zone. This cannot be updated once the Managed Cluster has been created.
-  final pulumi.Input<String>? fqdnSubdomain;
+  final pulumi.Input<String?>? fqdnSubdomain;
   /// Configurations for provisioning the cluster with HTTP proxy servers.
-  final pulumi.Input<ManagedClusterHTTPProxyConfig>? httpProxyConfig;
+  final pulumi.Input<ManagedClusterHTTPProxyConfig?>? httpProxyConfig;
   /// The identity of the managed cluster, if configured.
-  final pulumi.Input<ManagedClusterIdentity>? identity;
+  final pulumi.Input<ManagedClusterIdentity?>? identity;
   /// The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}".
-  final pulumi.Input<Map<String, UserAssignedIdentity>>? identityProfile;
+  final pulumi.Input<Map<String, UserAssignedIdentity>?>? identityProfile;
   /// Ingress profile for the managed cluster.
-  final pulumi.Input<ManagedClusterIngressProfile>? ingressProfile;
+  final pulumi.Input<ManagedClusterIngressProfile?>? ingressProfile;
   /// This is primarily used to expose different UI experiences in the portal for different kinds
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The version of Kubernetes specified by the user. Both patch version &lt;major.minor.patch&gt; (e.g. 1.20.13) and &lt;major.minor&gt; (e.g. 1.20) are supported. When &lt;major.minor&gt; is specified, the latest supported GA patch version is chosen automatically. Updating the cluster with the same &lt;major.minor&gt; once it has been created (e.g. 1.14.x -&gt; 1.14) will not trigger an upgrade, even if a newer patch version is available. When you upgrade a supported AKS cluster, Kubernetes minor versions cannot be skipped. All upgrades must be performed sequentially by major version number. For example, upgrades between 1.14.x -&gt; 1.15.x or 1.15.x -&gt; 1.16.x are allowed, however 1.14.x -&gt; 1.16.x is not allowed. See [upgrading an AKS cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for more details.
-  final pulumi.Input<String>? kubernetesVersion;
+  final pulumi.Input<String?>? kubernetesVersion;
   /// The profile for Linux VMs in the Managed Cluster.
-  final pulumi.Input<ContainerServiceLinuxProfile>? linuxProfile;
+  final pulumi.Input<ContainerServiceLinuxProfile?>? linuxProfile;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Optional cluster metrics configuration.
-  final pulumi.Input<ManagedClusterMetricsProfile>? metricsProfile;
+  final pulumi.Input<ManagedClusterMetricsProfile?>? metricsProfile;
   /// The network configuration profile.
-  final pulumi.Input<ContainerServiceNetworkProfile>? networkProfile;
+  final pulumi.Input<ContainerServiceNetworkProfile?>? networkProfile;
   /// Node provisioning settings that apply to the whole cluster.
-  final pulumi.Input<ManagedClusterNodeProvisioningProfile>? nodeProvisioningProfile;
+  final pulumi.Input<ManagedClusterNodeProvisioningProfile?>? nodeProvisioningProfile;
   /// The name of the resource group containing agent pool nodes.
-  final pulumi.Input<String>? nodeResourceGroup;
+  final pulumi.Input<String?>? nodeResourceGroup;
   /// Profile of the node resource group configuration.
-  final pulumi.Input<ManagedClusterNodeResourceGroupProfile>? nodeResourceGroupProfile;
+  final pulumi.Input<ManagedClusterNodeResourceGroupProfile?>? nodeResourceGroupProfile;
   /// The OIDC issuer profile of the Managed Cluster.
-  final pulumi.Input<ManagedClusterOIDCIssuerProfile>? oidcIssuerProfile;
+  final pulumi.Input<ManagedClusterOIDCIssuerProfile?>? oidcIssuerProfile;
   /// The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on AAD pod identity integration.
-  final pulumi.Input<ManagedClusterPodIdentityProfile>? podIdentityProfile;
+  final pulumi.Input<ManagedClusterPodIdentityProfile?>? podIdentityProfile;
   /// Private link resources associated with the cluster.
-  final pulumi.Input<List<PrivateLinkResource>>? privateLinkResources;
+  final pulumi.Input<List<PrivateLinkResource>?>? privateLinkResources;
   /// PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Security profile for the managed cluster.
-  final pulumi.Input<ManagedClusterSecurityProfile>? securityProfile;
+  final pulumi.Input<ManagedClusterSecurityProfile?>? securityProfile;
   /// Service mesh profile for a managed cluster.
-  final pulumi.Input<ServiceMeshProfile>? serviceMeshProfile;
+  final pulumi.Input<ServiceMeshProfile?>? serviceMeshProfile;
   /// Information about a service principal identity for the cluster to use for manipulating Azure APIs.
-  final pulumi.Input<ManagedClusterServicePrincipalProfile>? servicePrincipalProfile;
+  final pulumi.Input<ManagedClusterServicePrincipalProfile?>? servicePrincipalProfile;
   /// The managed cluster SKU.
-  final pulumi.Input<ManagedClusterSKU>? sku;
+  final pulumi.Input<ManagedClusterSKU?>? sku;
   /// Storage profile for the managed cluster.
-  final pulumi.Input<ManagedClusterStorageProfile>? storageProfile;
+  final pulumi.Input<ManagedClusterStorageProfile?>? storageProfile;
   /// The support plan for the Managed Cluster. If unspecified, the default is 'KubernetesOfficial'.
-  final pulumi.Input<String>? supportPlan;
+  final pulumi.Input<dynamic>? supportPlan;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Settings for upgrading a cluster.
-  final pulumi.Input<ClusterUpgradeSettings>? upgradeSettings;
+  final pulumi.Input<ClusterUpgradeSettings?>? upgradeSettings;
   /// The profile for Windows VMs in the Managed Cluster.
-  final pulumi.Input<ManagedClusterWindowsProfile>? windowsProfile;
+  final pulumi.Input<ManagedClusterWindowsProfile?>? windowsProfile;
   /// Workload Auto-scaler profile for the managed cluster.
-  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfile>? workloadAutoScalerProfile;
+  final pulumi.Input<ManagedClusterWorkloadAutoScalerProfile?>? workloadAutoScalerProfile;
 
   /// Creates a new [ManagedClusterArgs].
   /// [aadProfile] The Azure Active Directory configuration.
@@ -300,7 +300,7 @@ class ManagedClusterArgs {
       oidcIssuerProfile: (() { final guardedValue = map['oidcIssuerProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterOIDCIssuerProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       podIdentityProfile: (() { final guardedValue = map['podIdentityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterPodIdentityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateLinkResources: (() { final guardedValue = map['privateLinkResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateLinkResource>(guardedValue, (value) => PrivateLinkResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterSecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -308,7 +308,7 @@ class ManagedClusterArgs {
       servicePrincipalProfile: (() { final guardedValue = map['servicePrincipalProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterServicePrincipalProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterSKU.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterStorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      supportPlan: (() { final guardedValue = map['supportPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      supportPlan: (() { final guardedValue = map['supportPlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       upgradeSettings: (() { final guardedValue = map['upgradeSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterUpgradeSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       windowsProfile: (() { final guardedValue = map['windowsProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedClusterWindowsProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

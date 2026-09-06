@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Log Analytics configuration, must only be provided when destination is configured as 'log-analytics'
 class LogAnalyticsConfiguration {
   /// Log analytics customer id
-  final pulumi.Input<String>? customerId;
+  final pulumi.Input<String?>? customerId;
   /// Boolean indicating whether to parse json string log into dynamic json columns
-  final pulumi.Input<bool>? dynamicJsonColumns;
+  final pulumi.Input<bool?>? dynamicJsonColumns;
   /// Log analytics customer key
-  final pulumi.Input<String>? sharedKey;
+  final pulumi.Input<String?>? sharedKey;
 
   /// Creates a new [LogAnalyticsConfiguration].
   /// [customerId] Log analytics customer id

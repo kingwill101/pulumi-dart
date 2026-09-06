@@ -11,21 +11,21 @@ import 'vector_index.dart';
 /// Cosmos DB indexing policy
 class IndexingPolicy {
   /// Indicates if the indexing policy is automatic
-  final pulumi.Input<bool>? automatic;
+  final pulumi.Input<bool?>? automatic;
   /// List of composite path list
-  final pulumi.Input<List<List<CompositePath>>>? compositeIndexes;
+  final pulumi.Input<List<List<CompositePath>>?>? compositeIndexes;
   /// List of paths to exclude from indexing
-  final pulumi.Input<List<ExcludedPath>>? excludedPaths;
+  final pulumi.Input<List<ExcludedPath>?>? excludedPaths;
   /// List of paths to include in the full text indexing
-  final pulumi.Input<List<FullTextIndexPath>>? fullTextIndexes;
+  final pulumi.Input<List<FullTextIndexPath>?>? fullTextIndexes;
   /// List of paths to include in the indexing
-  final pulumi.Input<List<IncludedPath>>? includedPaths;
+  final pulumi.Input<List<IncludedPath>?>? includedPaths;
   /// Indicates the indexing mode.
-  final pulumi.Input<String>? indexingMode;
+  final pulumi.Input<dynamic>? indexingMode;
   /// List of spatial specifics
-  final pulumi.Input<List<SpatialSpec>>? spatialIndexes;
+  final pulumi.Input<List<SpatialSpec>?>? spatialIndexes;
   /// List of paths to include in the vector indexing
-  final pulumi.Input<List<VectorIndex>>? vectorIndexes;
+  final pulumi.Input<List<VectorIndex>?>? vectorIndexes;
 
   /// Creates a new [IndexingPolicy].
   /// [automatic] Indicates if the indexing policy is automatic
@@ -36,16 +36,16 @@ class IndexingPolicy {
   /// [indexingMode] Indicates the indexing mode.
   /// [spatialIndexes] List of spatial specifics
   /// [vectorIndexes] List of paths to include in the vector indexing
-  const IndexingPolicy({
+  IndexingPolicy({
     this.automatic,
     this.compositeIndexes,
     this.excludedPaths,
     this.fullTextIndexes,
     this.includedPaths,
-    this.indexingMode,
+    pulumi.Input<dynamic>? indexingMode,
     this.spatialIndexes,
     this.vectorIndexes,
-  });
+  }) : indexingMode = indexingMode ?? pulumi.Input.fromValue('consistent');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -67,7 +67,7 @@ class IndexingPolicy {
       excludedPaths: (() { final guardedValue = map['excludedPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExcludedPath>(guardedValue, (value) => ExcludedPath.fromMap((value as Map).cast<String, dynamic>()))); })(),
       fullTextIndexes: (() { final guardedValue = map['fullTextIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FullTextIndexPath>(guardedValue, (value) => FullTextIndexPath.fromMap((value as Map).cast<String, dynamic>()))); })(),
       includedPaths: (() { final guardedValue = map['includedPaths']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IncludedPath>(guardedValue, (value) => IncludedPath.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      indexingMode: (() { final guardedValue = map['indexingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      indexingMode: (() { final guardedValue = map['indexingMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       spatialIndexes: (() { final guardedValue = map['spatialIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SpatialSpec>(guardedValue, (value) => SpatialSpec.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vectorIndexes: (() { final guardedValue = map['vectorIndexes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VectorIndex>(guardedValue, (value) => VectorIndex.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

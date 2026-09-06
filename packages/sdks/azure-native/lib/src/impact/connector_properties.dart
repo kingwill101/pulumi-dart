@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details of the Connector.
 class ConnectorProperties {
   /// connector type
-  final pulumi.Input<String> connectorType;
+  final pulumi.Input<dynamic> connectorType;
 
   /// Creates a new [ConnectorProperties].
   /// [connectorType] connector type
@@ -21,7 +21,7 @@ class ConnectorProperties {
 
   factory ConnectorProperties.fromMap(Map<String, dynamic> map) {
     return ConnectorProperties(
-      connectorType: pulumi.Input.fromValue(map['connectorType'] as String),
+      connectorType: pulumi.Input.fromValue(map['connectorType']),
     );
   }
 }

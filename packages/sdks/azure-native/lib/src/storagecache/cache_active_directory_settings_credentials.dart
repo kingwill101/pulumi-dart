@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Active Directory admin credentials used to join the HPC Cache to a domain.
 class CacheActiveDirectorySettingsCredentials {
   /// Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
   final pulumi.Input<String> username;
 

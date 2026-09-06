@@ -10,17 +10,17 @@ import 'system_assigned_service_identity.dart';
 /// {@macro pulumi_deviceregistry_namespace_args_doc}
 class NamespaceArgs {
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Assigned and unassigned messaging endpoints.
-  final pulumi.Input<Messaging>? messaging;
+  final pulumi.Input<Messaging?>? messaging;
   /// The name of the namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NamespaceArgs].
   /// [identity] The managed service identities assigned to this resource.

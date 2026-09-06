@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets environment type.
-enum AzureEnvironmentType {
+enum AzureEnvironmentType implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   devTest("DevTest"),
   production("Production");
 
   const AzureEnvironmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureEnvironmentType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Windows operating system settings to apply to the virtual machine.
 class WindowsConfigurationResponse {
   /// If omitted, the default value is true.
-  final pulumi.Input<bool>? enableAutomaticUpdates;
+  final pulumi.Input<bool?>? enableAutomaticUpdates;
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [enableAutomaticUpdates] If omitted, the default value is true.

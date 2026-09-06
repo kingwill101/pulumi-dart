@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information of user assigned identity used by this add-on.
 class ManagedClusterAddonProfileResponseIdentity {
   /// The client ID of the user assigned identity.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// The object ID of the user assigned identity.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The resource ID of the user assigned identity.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [ManagedClusterAddonProfileResponseIdentity].
   /// [clientId] The client ID of the user assigned identity.

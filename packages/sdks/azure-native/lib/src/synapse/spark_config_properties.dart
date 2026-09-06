@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SparkConfig Properties for a Big Data pool powered by Apache Spark
 class SparkConfigProperties {
   /// The type of the spark config properties file.
-  final pulumi.Input<String>? configurationType;
+  final pulumi.Input<dynamic>? configurationType;
   /// The spark config properties.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The filename of the spark config properties file.
-  final pulumi.Input<String>? filename;
+  final pulumi.Input<String?>? filename;
 
   /// Creates a new [SparkConfigProperties].
   /// [configurationType] The type of the spark config properties file.
@@ -31,7 +31,7 @@ class SparkConfigProperties {
 
   factory SparkConfigProperties.fromMap(Map<String, dynamic> map) {
     return SparkConfigProperties(
-      configurationType: (() { final guardedValue = map['configurationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      configurationType: (() { final guardedValue = map['configurationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filename: (() { final guardedValue = map['filename']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

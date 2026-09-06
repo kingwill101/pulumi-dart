@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_key_vault_secret_reference.dart';
 
 /// A WebLinkedService that uses client certificate based authentication to communicate with an HTTP endpoint. This scheme follows mutual authentication; the server must also provide valid credentials to the client.
 class WebClientCertificateAuthentication {
@@ -9,9 +8,9 @@ class WebClientCertificateAuthentication {
   /// Expected value is 'ClientCertificate'.
   final pulumi.Input<String> authenticationType;
   /// Password for the PFX file.
-  final pulumi.Input<AzureKeyVaultSecretReference> password;
+  final pulumi.Input<dynamic> password;
   /// Base64-encoded contents of a PFX file.
-  final pulumi.Input<AzureKeyVaultSecretReference> pfx;
+  final pulumi.Input<dynamic> pfx;
   /// The URL of the web service endpoint, e.g. https://www.microsoft.com . Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> url;
 
@@ -30,8 +29,8 @@ class WebClientCertificateAuthentication {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'authenticationType': authenticationType,
-      'password': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(password, (value) => value.toMap()),
-      'pfx': pulumi.Input.mapInputValue<AzureKeyVaultSecretReference, Map<String, dynamic>>(pfx, (value) => value.toMap()),
+      'password': password,
+      'pfx': pfx,
       'url': url,
     };
   }
@@ -39,8 +38,8 @@ class WebClientCertificateAuthentication {
   factory WebClientCertificateAuthentication.fromMap(Map<String, dynamic> map) {
     return WebClientCertificateAuthentication(
       authenticationType: pulumi.Input.fromValue(map['authenticationType'] as String),
-      password: pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((map['password']! as Map).cast<String, dynamic>())),
-      pfx: pulumi.Input.fromValue(AzureKeyVaultSecretReference.fromMap((map['pfx']! as Map).cast<String, dynamic>())),
+      password: pulumi.Input.fromValue(map['password']),
+      pfx: pulumi.Input.fromValue(map['pfx']),
       url: pulumi.Input.fromValue(map['url']),
     );
   }

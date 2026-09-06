@@ -22,7 +22,7 @@ class GetWorkspaceResult {
   final String? applicationInsights;
   final List<String>? associatedWorkspaces;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// ARM id of the container registry associated with this workspace.
   final String? containerRegistry;
   /// The description of this workspace.
@@ -40,7 +40,7 @@ class GetWorkspaceResult {
   final bool? hbiWorkspace;
   final String? hubResourceId;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The managed service identities assigned to this resource.
   final ManagedServiceIdentityResponse? identity;
   /// The compute name for image build
@@ -52,21 +52,21 @@ class GetWorkspaceResult {
   /// Managed Network settings for a machine learning workspace.
   final ManagedNetworkSettingsResponse? managedNetwork;
   /// The URI associated with this workspace that machine learning flow must point at to set up tracking.
-  final String mlFlowTrackingUri;
+  final String? mlFlowTrackingUri;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The notebook info of Azure ML workspace.
-  final NotebookResourceInfoResponse notebookInfo;
+  final NotebookResourceInfoResponse? notebookInfo;
   /// The user assigned identity resource id that represents the workspace identity.
   final String? primaryUserAssignedIdentity;
   /// The list of private endpoint connections in the workspace.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// Count of private connections in the workspace
-  final int privateLinkCount;
+  final int? privateLinkCount;
   /// Set to trigger the provisioning of the managed VNet with the default Options when creating a Workspace with the managed VNet enabled, or else it does nothing.
   final bool? provisionNetworkNow;
   /// The current deployment state of workspace resource. The provisioningState is to indicate states for resource provisioning.
-  final String provisioningState;
+  final String? provisioningState;
   /// Whether requests from Public Network are allowed.
   final String? publicNetworkAccess;
   /// Settings for serverless compute in a workspace
@@ -74,7 +74,7 @@ class GetWorkspaceResult {
   /// The service managed resource settings.
   final ServiceManagedResourcesSettingsResponse? serviceManagedResourcesSettings;
   /// The name of the managed resource group created by workspace RP in customer subscription if the workspace is CMK workspace
-  final String serviceProvisionedResourceGroup;
+  final String? serviceProvisionedResourceGroup;
   /// The list of shared private link resources in this workspace.
   final List<SharedPrivateLinkResourceResponse>? sharedPrivateLinkResources;
   /// Optional. This field is required to be implemented by the RP because AML is supporting more than one tier
@@ -82,22 +82,22 @@ class GetWorkspaceResult {
   /// ARM id of the storage account associated with this workspace. This cannot be changed once the workspace has been created
   final String? storageAccount;
   /// If the storage associated with the workspace has hierarchical namespace(HNS) enabled.
-  final bool storageHnsEnabled;
+  final bool? storageHnsEnabled;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The auth mode used for accessing the system datastores of the workspace.
   final String? systemDatastoresAuthMode;
   final Map<String, String>? tags;
   /// The tenant id associated with this workspace.
-  final String tenantId;
+  final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Enabling v1_legacy_mode may prevent you from using features provided by the v2 API.
   final bool? v1LegacyMode;
   /// WorkspaceHub's configuration object.
   final WorkspaceHubConfigResponse? workspaceHubConfig;
   /// The immutable id associated with this workspace.
-  final String workspaceId;
+  final String? workspaceId;
 
   /// Creates a new [GetWorkspaceResult].
   /// [allowPublicAccessWhenBehindVnet] The flag to indicate whether to allow public access when behind VNet.
@@ -149,7 +149,7 @@ class GetWorkspaceResult {
     this.allowPublicAccessWhenBehindVnet,
     this.applicationInsights,
     this.associatedWorkspaces,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.containerRegistry,
     this.description,
     this.discoveryUrl,
@@ -160,37 +160,37 @@ class GetWorkspaceResult {
     this.friendlyName,
     this.hbiWorkspace,
     this.hubResourceId,
-    required this.id,
+    this.id,
     this.identity,
     this.imageBuildCompute,
     this.keyVault,
     this.kind,
     this.location,
     this.managedNetwork,
-    required this.mlFlowTrackingUri,
-    required this.name,
-    required this.notebookInfo,
+    this.mlFlowTrackingUri,
+    this.name,
+    this.notebookInfo,
     this.primaryUserAssignedIdentity,
-    required this.privateEndpointConnections,
-    required this.privateLinkCount,
+    this.privateEndpointConnections,
+    this.privateLinkCount,
     this.provisionNetworkNow,
-    required this.provisioningState,
+    this.provisioningState,
     this.publicNetworkAccess,
     this.serverlessComputeSettings,
     this.serviceManagedResourcesSettings,
-    required this.serviceProvisionedResourceGroup,
+    this.serviceProvisionedResourceGroup,
     this.sharedPrivateLinkResources,
     this.sku,
     this.storageAccount,
-    required this.storageHnsEnabled,
-    required this.systemData,
+    this.storageHnsEnabled,
+    this.systemData,
     this.systemDatastoresAuthMode,
     this.tags,
-    required this.tenantId,
-    required this.type,
+    this.tenantId,
+    this.type,
     this.v1LegacyMode,
     this.workspaceHubConfig,
-    required this.workspaceId,
+    this.workspaceId,
   });
 
   Map<String, dynamic> toMap() {
@@ -198,7 +198,7 @@ class GetWorkspaceResult {
       'allowPublicAccessWhenBehindVnet': ?allowPublicAccessWhenBehindVnet,
       'applicationInsights': ?applicationInsights,
       'associatedWorkspaces': ?associatedWorkspaces,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'containerRegistry': ?containerRegistry,
       'description': ?description,
       'discoveryUrl': ?discoveryUrl,
@@ -209,37 +209,37 @@ class GetWorkspaceResult {
       'friendlyName': ?friendlyName,
       'hbiWorkspace': ?hbiWorkspace,
       'hubResourceId': ?hubResourceId,
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'imageBuildCompute': ?imageBuildCompute,
       'keyVault': ?keyVault,
       'kind': ?kind,
       'location': ?location,
       'managedNetwork': ?managedNetwork?.toMap(),
-      'mlFlowTrackingUri': mlFlowTrackingUri,
-      'name': name,
-      'notebookInfo': notebookInfo.toMap(),
+      'mlFlowTrackingUri': ?mlFlowTrackingUri,
+      'name': ?name,
+      'notebookInfo': ?notebookInfo?.toMap(),
       'primaryUserAssignedIdentity': ?primaryUserAssignedIdentity,
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'privateLinkCount': privateLinkCount,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'privateLinkCount': ?privateLinkCount,
       'provisionNetworkNow': ?provisionNetworkNow,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
       'serverlessComputeSettings': ?serverlessComputeSettings?.toMap(),
       'serviceManagedResourcesSettings': ?serviceManagedResourcesSettings?.toMap(),
-      'serviceProvisionedResourceGroup': serviceProvisionedResourceGroup,
+      'serviceProvisionedResourceGroup': ?serviceProvisionedResourceGroup,
       'sharedPrivateLinkResources': ?(() { final guardedValue = sharedPrivateLinkResources; if (guardedValue == null) return null; return pulumi.Input.encodeList<SharedPrivateLinkResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'sku': ?sku?.toMap(),
       'storageAccount': ?storageAccount,
-      'storageHnsEnabled': storageHnsEnabled,
-      'systemData': systemData.toMap(),
+      'storageHnsEnabled': ?storageHnsEnabled,
+      'systemData': ?systemData?.toMap(),
       'systemDatastoresAuthMode': ?systemDatastoresAuthMode,
       'tags': ?tags,
-      'tenantId': tenantId,
-      'type': type,
+      'tenantId': ?tenantId,
+      'type': ?type,
       'v1LegacyMode': ?v1LegacyMode,
       'workspaceHubConfig': ?workspaceHubConfig?.toMap(),
-      'workspaceId': workspaceId,
+      'workspaceId': ?workspaceId,
     };
   }
 
@@ -248,7 +248,7 @@ class GetWorkspaceResult {
       allowPublicAccessWhenBehindVnet: (() { final guardedValue = map['allowPublicAccessWhenBehindVnet']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       applicationInsights: (() { final guardedValue = map['applicationInsights']; if (guardedValue == null) return null; return guardedValue as String; })(),
       associatedWorkspaces: (() { final guardedValue = map['associatedWorkspaces']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       containerRegistry: (() { final guardedValue = map['containerRegistry']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       discoveryUrl: (() { final guardedValue = map['discoveryUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -259,37 +259,37 @@ class GetWorkspaceResult {
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hbiWorkspace: (() { final guardedValue = map['hbiWorkspace']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       hubResourceId: (() { final guardedValue = map['hubResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       imageBuildCompute: (() { final guardedValue = map['imageBuildCompute']; if (guardedValue == null) return null; return guardedValue as String; })(),
       keyVault: (() { final guardedValue = map['keyVault']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       managedNetwork: (() { final guardedValue = map['managedNetwork']; if (guardedValue == null) return null; return ManagedNetworkSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      mlFlowTrackingUri: map['mlFlowTrackingUri'] as String,
-      name: map['name'] as String,
-      notebookInfo: NotebookResourceInfoResponse.fromMap((map['notebookInfo']! as Map).cast<String, dynamic>()),
+      mlFlowTrackingUri: (() { final guardedValue = map['mlFlowTrackingUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      notebookInfo: (() { final guardedValue = map['notebookInfo']; if (guardedValue == null) return null; return NotebookResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       primaryUserAssignedIdentity: (() { final guardedValue = map['primaryUserAssignedIdentity']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      privateLinkCount: map['privateLinkCount'] as int,
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      privateLinkCount: (() { final guardedValue = map['privateLinkCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       provisionNetworkNow: (() { final guardedValue = map['provisionNetworkNow']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverlessComputeSettings: (() { final guardedValue = map['serverlessComputeSettings']; if (guardedValue == null) return null; return ServerlessComputeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       serviceManagedResourcesSettings: (() { final guardedValue = map['serviceManagedResourcesSettings']; if (guardedValue == null) return null; return ServiceManagedResourcesSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      serviceProvisionedResourceGroup: map['serviceProvisionedResourceGroup'] as String,
+      serviceProvisionedResourceGroup: (() { final guardedValue = map['serviceProvisionedResourceGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sharedPrivateLinkResources: (() { final guardedValue = map['sharedPrivateLinkResources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       storageAccount: (() { final guardedValue = map['storageAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      storageHnsEnabled: map['storageHnsEnabled'] as bool,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      storageHnsEnabled: (() { final guardedValue = map['storageHnsEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       systemDatastoresAuthMode: (() { final guardedValue = map['systemDatastoresAuthMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       v1LegacyMode: (() { final guardedValue = map['v1LegacyMode']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       workspaceHubConfig: (() { final guardedValue = map['workspaceHubConfig']; if (guardedValue == null) return null; return WorkspaceHubConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      workspaceId: map['workspaceId'] as String,
+      workspaceId: (() { final guardedValue = map['workspaceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -11,7 +11,7 @@ class BlobInventoryPolicyArgs {
   /// The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   final pulumi.Input<String> accountName;
   /// The name of the storage account blob inventory policy. It should always be 'default'
-  final pulumi.Input<String>? blobInventoryPolicyName;
+  final pulumi.Input<String?>? blobInventoryPolicyName;
   /// The storage account blob inventory policy object. It is composed of policy rules.
   final pulumi.Input<BlobInventoryPolicySchema> policy;
   /// The name of the resource group within the user's subscription. The name is case insensitive.

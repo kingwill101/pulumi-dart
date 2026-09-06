@@ -578,7 +578,7 @@ class Runbook extends pulumi.CustomResource {
     logProgress = registerOutput<bool?>('logProgress');
     logVerbose = registerOutput<bool?>('logVerbose');
     this.name = registerOutput<String>('name');
-    outputTypes = registerOutput<List<String>?>('outputTypes');
+    outputTypes = registerOutput<List<String>?>('outputTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     parameters = registerOutput<Map<String, RunbookParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RunbookParameterResponse>(guardedValue, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String?>('provisioningState');
     publishContentLink = registerOutput<ContentLinkResponse?>('publishContentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -586,7 +586,41 @@ class Runbook extends pulumi.CustomResource {
     runtimeEnvironment = registerOutput<String?>('runtimeEnvironment');
     state = registerOutput<String?>('state');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Runbook] resource.
+  Runbook.reference(String urn)
+    : super(
+        'azure-native:automation:Runbook',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    creationTime = registerOutput<String?>('creationTime');
+    description = registerOutput<String?>('description');
+    draft = registerOutput<RunbookDraftResponse?>('draft', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunbookDraftResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    jobCount = registerOutput<int?>('jobCount');
+    lastModifiedBy = registerOutput<String?>('lastModifiedBy');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    logActivityTrace = registerOutput<int?>('logActivityTrace');
+    logProgress = registerOutput<bool?>('logProgress');
+    logVerbose = registerOutput<bool?>('logVerbose');
+    this.name = registerOutput<String>('name');
+    outputTypes = registerOutput<List<String>?>('outputTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    parameters = registerOutput<Map<String, RunbookParameterResponse>?>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RunbookParameterResponse>(guardedValue, (value) => RunbookParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String?>('provisioningState');
+    publishContentLink = registerOutput<ContentLinkResponse?>('publishContentLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContentLinkResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runbookType = registerOutput<String?>('runbookType');
+    runtimeEnvironment = registerOutput<String?>('runtimeEnvironment');
+    state = registerOutput<String?>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

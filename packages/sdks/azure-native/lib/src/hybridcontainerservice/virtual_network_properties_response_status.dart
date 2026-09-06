@@ -6,7 +6,7 @@ import 'virtual_network_properties_response_operation_status.dart';
 /// Status of the virtual network resource
 class VirtualNetworkPropertiesResponseStatus {
   /// The detailed status of the long running operation.
-  final pulumi.Input<VirtualNetworkPropertiesResponseOperationStatus>? operationStatus;
+  final pulumi.Input<VirtualNetworkPropertiesResponseOperationStatus?>? operationStatus;
 
   /// Creates a new [VirtualNetworkPropertiesResponseStatus].
   /// [operationStatus] The detailed status of the long running operation.

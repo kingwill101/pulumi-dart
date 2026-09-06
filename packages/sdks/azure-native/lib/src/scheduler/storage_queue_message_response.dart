@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageQueueMessageResponse {
   /// Gets or sets the message.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Gets or sets the queue name.
-  final pulumi.Input<String>? queueName;
+  final pulumi.Input<String?>? queueName;
   /// Gets or sets the SAS key.
-  final pulumi.Input<String>? sasToken;
+  final pulumi.Input<String?>? sasToken;
   /// Gets or sets the storage account name.
-  final pulumi.Input<String>? storageAccount;
+  final pulumi.Input<String?>? storageAccount;
 
   /// Creates a new [StorageQueueMessageResponse].
   /// [message] Gets or sets the message.

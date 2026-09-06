@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Sku of the storage associated with the resource
-enum StorageSKU {
+enum StorageSKU implements pulumi.PulumiEnum<String> {
   valueStandard("standard"),
   valueBasic("basic");
 
   const StorageSKU(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageSKU fromValue(String value) {

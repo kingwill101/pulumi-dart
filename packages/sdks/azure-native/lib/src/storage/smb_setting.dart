@@ -6,15 +6,15 @@ import 'multichannel.dart';
 /// Setting for SMB protocol
 class SmbSetting {
   /// SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.
-  final pulumi.Input<String>? authenticationMethods;
+  final pulumi.Input<String?>? authenticationMethods;
   /// SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM. Should be passed as a string with delimiter ';'.
-  final pulumi.Input<String>? channelEncryption;
+  final pulumi.Input<String?>? channelEncryption;
   /// Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
-  final pulumi.Input<String>? kerberosTicketEncryption;
+  final pulumi.Input<String?>? kerberosTicketEncryption;
   /// Multichannel setting. Applies to Premium FileStorage only.
-  final pulumi.Input<Multichannel>? multichannel;
+  final pulumi.Input<Multichannel?>? multichannel;
   /// SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
-  final pulumi.Input<String>? versions;
+  final pulumi.Input<String?>? versions;
 
   /// Creates a new [SmbSetting].
   /// [authenticationMethods] SMB authentication methods supported by server. Valid values are NTLMv2, Kerberos. Should be passed as a string with delimiter ';'.

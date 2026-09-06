@@ -10,25 +10,25 @@ import 'blob_type.dart';
 /// {@macro pulumi_storage_blob_args_doc}
 class BlobArgs {
   /// The access tier of the storage blob. Only supported for standard storage accounts, not premium.
-  final pulumi.Input<BlobAccessTier>? accessTier;
+  final pulumi.Input<BlobAccessTier?>? accessTier;
   /// Specifies the storage account in which to create the storage container.
   final pulumi.Input<String> accountName;
   /// The name of the storage blob. Must be unique within the storage container the blob is located. If this property is not specified it will be set to the name of the resource.
-  final pulumi.Input<String>? blobName;
+  final pulumi.Input<String?>? blobName;
   /// The name of the storage container in which this blob should be created.
   final pulumi.Input<String> containerName;
   /// The MD5 sum of the blob contents, base64-encoded. Cannot be defined if blob type is Append.
-  final pulumi.Input<String>? contentMd5;
+  final pulumi.Input<String?>? contentMd5;
   /// The content type of the storage blob. Defaults to `application/octet-stream`.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// A map of custom blob metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// An asset to copy to the blob contents. This field cannot be specified for Append blobs.
   final pulumi.Input<dynamic>? source;
   /// The type of the storage blob to be created. Defaults to 'Block'.
-  final pulumi.Input<BlobType>? type;
+  final pulumi.Input<BlobType?>? type;
 
   /// Creates a new [BlobArgs].
   /// [accessTier] The access tier of the storage blob. Only supported for standard storage accounts, not premium.
@@ -41,7 +41,7 @@ class BlobArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [source] An asset to copy to the blob contents. This field cannot be specified for Append blobs.
   /// [type] The type of the storage blob to be created. Defaults to 'Block'.
-  const BlobArgs({
+  BlobArgs({
     this.accessTier,
     required this.accountName,
     this.blobName,
@@ -51,8 +51,8 @@ class BlobArgs {
     this.metadata,
     required this.resourceGroupName,
     this.source,
-    this.type,
-  });
+    pulumi.Input<BlobType?>? type,
+  }) : type = type ?? pulumi.Input.fromValue(BlobType.fromValue('Block'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

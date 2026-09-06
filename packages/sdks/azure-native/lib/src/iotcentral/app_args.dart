@@ -11,27 +11,27 @@ import 'system_assigned_service_identity.dart';
 /// {@macro pulumi_iotcentral_app_args_doc}
 class AppArgs {
   /// The display name of the application.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The managed identities for the IoT Central application.
-  final pulumi.Input<SystemAssignedServiceIdentity>? identity;
+  final pulumi.Input<SystemAssignedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Network Rule Set Properties of this IoT Central application.
-  final pulumi.Input<NetworkRuleSets>? networkRuleSets;
+  final pulumi.Input<NetworkRuleSets?>? networkRuleSets;
   /// Whether requests from the public network are allowed.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group that contains the IoT Central application.
   final pulumi.Input<String> resourceGroupName;
   /// The ARM resource name of the IoT Central application.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// A valid instance SKU.
   final pulumi.Input<AppSkuInfo> sku;
   /// The subdomain of the application.
-  final pulumi.Input<String>? subdomain;
+  final pulumi.Input<String?>? subdomain;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
-  final pulumi.Input<String>? template;
+  final pulumi.Input<String?>? template;
 
   /// Creates a new [AppArgs].
   /// [displayName] The display name of the application.
@@ -81,7 +81,7 @@ class AppArgs {
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SystemAssignedServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkRuleSets: (() { final guardedValue = map['networkRuleSets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkRuleSets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceName: (() { final guardedValue = map['resourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(AppSkuInfo.fromMap((map['sku']! as Map).cast<String, dynamic>())),

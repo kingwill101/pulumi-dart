@@ -7,7 +7,7 @@ import 'resource_requests_response.dart';
 /// The resource requirements.
 class ResourceRequirementsResponse {
   /// The resource limits of this container instance.
-  final pulumi.Input<ResourceLimitsResponse>? limits;
+  final pulumi.Input<ResourceLimitsResponse?>? limits;
   /// The resource requests of this container instance.
   final pulumi.Input<ResourceRequestsResponse> requests;
 

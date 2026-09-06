@@ -16,11 +16,11 @@ class ListAccountSasArgs {
   /// The principal Id also known as the object Id of a User Assigned Managed Identity currently assigned to the Maps Account. To assign a Managed Identity of the account, use operation Create or Update an assign a User Assigned Identity resource Id.
   final pulumi.Input<String> principalId;
   /// Optional, allows control of which region locations are permitted access to Azure Maps REST APIs with the SAS token. Example: "eastus", "westus2". Omitting this parameter will allow all region locations to be accessible.
-  final pulumi.Input<List<String>>? regions;
+  final pulumi.Input<List<String>?>? regions;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
-  final pulumi.Input<String> signingKey;
+  final pulumi.Input<dynamic> signingKey;
   /// The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
   final pulumi.Input<String> start;
 
@@ -33,16 +33,16 @@ class ListAccountSasArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signingKey] The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
   /// [start] The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
-  const ListAccountSasArgs({
+  ListAccountSasArgs({
     required this.accountName,
     required this.expiry,
-    required this.maxRatePerSecond,
+    pulumi.Input<int>? maxRatePerSecond,
     required this.principalId,
     this.regions,
     required this.resourceGroupName,
     required this.signingKey,
     required this.start,
-  });
+  }) : maxRatePerSecond = maxRatePerSecond ?? pulumi.Input.fromValue(500);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -61,11 +61,11 @@ class ListAccountSasArgs {
     return ListAccountSasArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       expiry: pulumi.Input.fromValue(map['expiry'] as String),
-      maxRatePerSecond: pulumi.Input.fromValue(map['maxRatePerSecond'] as int),
+      maxRatePerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRatePerSecond'])),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      signingKey: pulumi.Input.fromValue(map['signingKey'] as String),
+      signingKey: pulumi.Input.fromValue(map['signingKey']),
       start: pulumi.Input.fromValue(map['start'] as String),
     );
   }

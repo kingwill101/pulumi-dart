@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Failover policy of the read-write endpoint for the failover group. If failoverPolicy is Automatic then failoverWithDataLossGracePeriodMinutes is required.
-enum ReadWriteEndpointFailoverPolicy {
+enum ReadWriteEndpointFailoverPolicy implements pulumi.PulumiEnum<String> {
   valueManual("Manual"),
   valueAutomatic("Automatic");
 
   const ReadWriteEndpointFailoverPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static ReadWriteEndpointFailoverPolicy fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dapr component metadata.
 class DaprServiceBindMetadataResponse {
   /// Service bind metadata property name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Service bind metadata property value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DaprServiceBindMetadataResponse].
   /// [name] Service bind metadata property name.

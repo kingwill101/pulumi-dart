@@ -1,12 +1,11 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'akri_connector_template_runtime_image_configuration.dart';
 
 /// AkriConnectorTemplateManagedConfiguration properties.
 class AkriConnectorTemplateManagedConfiguration {
   /// The managed configuration settings.
-  final pulumi.Input<AkriConnectorTemplateRuntimeImageConfiguration> managedConfigurationSettings;
+  final pulumi.Input<dynamic> managedConfigurationSettings;
   /// Runtime configuration types.
   /// Expected value is 'ManagedConfiguration'.
   final pulumi.Input<String> runtimeConfigurationType;
@@ -21,14 +20,14 @@ class AkriConnectorTemplateManagedConfiguration {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'managedConfigurationSettings': pulumi.Input.mapInputValue<AkriConnectorTemplateRuntimeImageConfiguration, Map<String, dynamic>>(managedConfigurationSettings, (value) => value.toMap()),
+      'managedConfigurationSettings': managedConfigurationSettings,
       'runtimeConfigurationType': runtimeConfigurationType,
     };
   }
 
   factory AkriConnectorTemplateManagedConfiguration.fromMap(Map<String, dynamic> map) {
     return AkriConnectorTemplateManagedConfiguration(
-      managedConfigurationSettings: pulumi.Input.fromValue(AkriConnectorTemplateRuntimeImageConfiguration.fromMap((map['managedConfigurationSettings']! as Map).cast<String, dynamic>())),
+      managedConfigurationSettings: pulumi.Input.fromValue(map['managedConfigurationSettings']),
       runtimeConfigurationType: pulumi.Input.fromValue(map['runtimeConfigurationType'] as String),
     );
   }

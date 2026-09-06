@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
+import 'network_interfaces_response.dart';
 import 'system_data_response.dart';
+import 'virtual_disk_response.dart';
 import 'virtual_machine_template_args.dart';
 
 /// The VirtualMachineTemplates resource definition.
@@ -201,7 +203,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
   /// Gets or sets the desired number of vCPUs for the vm.
   late final pulumi.Output<int> cpuCount;
   /// Gets or sets the disks of the template.
-  late final pulumi.Output<List<Map<String, dynamic>>> disks;
+  late final pulumi.Output<List<VirtualDiskResponse>> disks;
   /// Gets or sets a value indicating whether to enable dynamic memory or not.
   late final pulumi.Output<String> dynamicMemoryEnabled;
   /// Gets or sets the max dynamic memory for the vm.
@@ -227,7 +229,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
   /// Resource Name
   late final pulumi.Output<String> name;
   /// Gets or sets the network interfaces of the template.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaces;
+  late final pulumi.Output<List<NetworkInterfacesResponse>> networkInterfaces;
   /// Gets or sets os name.
   late final pulumi.Output<String> osName;
   /// Gets or sets the type of the os.
@@ -262,7 +264,7 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     computerName = registerOutput<String>('computerName');
     cpuCount = registerOutput<int>('cpuCount');
-    disks = registerOutput<List<Map<String, dynamic>>>('disks');
+    disks = registerOutput<List<VirtualDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
     dynamicMemoryEnabled = registerOutput<String>('dynamicMemoryEnabled');
     dynamicMemoryMaxMB = registerOutput<int>('dynamicMemoryMaxMB');
     dynamicMemoryMinMB = registerOutput<int>('dynamicMemoryMinMB');
@@ -275,12 +277,48 @@ class VirtualMachineTemplate extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     memoryMB = registerOutput<int>('memoryMB');
     this.name = registerOutput<String>('name');
-    networkInterfaces = registerOutput<List<Map<String, dynamic>>>('networkInterfaces');
+    networkInterfaces = registerOutput<List<NetworkInterfacesResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfacesResponse>(guardedValue, (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>())); });
     osName = registerOutput<String>('osName');
     osType = registerOutput<String>('osType');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uuid = registerOutput<String?>('uuid');
+    vmmServerId = registerOutput<String?>('vmmServerId');
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineTemplate] resource.
+  VirtualMachineTemplate.reference(String urn)
+    : super(
+        'azure-native:scvmm:VirtualMachineTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computerName = registerOutput<String>('computerName');
+    cpuCount = registerOutput<int>('cpuCount');
+    disks = registerOutput<List<VirtualDiskResponse>>('disks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualDiskResponse>(guardedValue, (value) => VirtualDiskResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    dynamicMemoryEnabled = registerOutput<String>('dynamicMemoryEnabled');
+    dynamicMemoryMaxMB = registerOutput<int>('dynamicMemoryMaxMB');
+    dynamicMemoryMinMB = registerOutput<int>('dynamicMemoryMinMB');
+    extendedLocation = registerOutput<ExtendedLocationResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generation = registerOutput<int>('generation');
+    inventoryItemId = registerOutput<String?>('inventoryItemId');
+    isCustomizable = registerOutput<String>('isCustomizable');
+    isHighlyAvailable = registerOutput<String>('isHighlyAvailable');
+    limitCpuForMigration = registerOutput<String>('limitCpuForMigration');
+    location = registerOutput<String>('location');
+    memoryMB = registerOutput<int>('memoryMB');
+    this.name = registerOutput<String>('name');
+    networkInterfaces = registerOutput<List<NetworkInterfacesResponse>>('networkInterfaces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfacesResponse>(guardedValue, (value) => NetworkInterfacesResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    osName = registerOutput<String>('osName');
+    osType = registerOutput<String>('osType');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uuid = registerOutput<String?>('uuid');
     vmmServerId = registerOutput<String?>('vmmServerId');

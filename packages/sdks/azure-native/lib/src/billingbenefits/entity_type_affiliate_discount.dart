@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Entity type for affiliate discounts
 class EntityTypeAffiliateDiscount {
   /// List of applied scopes supported for discounts.
-  final pulumi.Input<String>? appliedScopeType;
+  final pulumi.Input<dynamic>? appliedScopeType;
   /// This defines a user friendly display name for the discount.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// This defines whether the entity being created is primary or affiliate. Supported values: primary, affiliate. Validation: Required, must match one of the 2 values.
   /// Expected value is 'Affiliate'.
   final pulumi.Input<String> entityType;
@@ -16,7 +16,7 @@ class EntityTypeAffiliateDiscount {
   /// Start date of the discount. Value is the date the discount started or will start in the future.
   final pulumi.Input<String> startAt;
   /// This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [EntityTypeAffiliateDiscount].
   /// [appliedScopeType] List of applied scopes supported for discounts.
@@ -47,7 +47,7 @@ class EntityTypeAffiliateDiscount {
 
   factory EntityTypeAffiliateDiscount.fromMap(Map<String, dynamic> map) {
     return EntityTypeAffiliateDiscount(
-      appliedScopeType: (() { final guardedValue = map['appliedScopeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      appliedScopeType: (() { final guardedValue = map['appliedScopeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       entityType: pulumi.Input.fromValue(map['entityType'] as String),
       productCode: pulumi.Input.fromValue(map['productCode'] as String),

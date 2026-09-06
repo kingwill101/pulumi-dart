@@ -6,7 +6,7 @@ import 'sql_managed_instance_k8s_spec.dart';
 /// The raw kubernetes information.
 class SqlManagedInstanceK8sRaw {
   /// The kubernetes spec information.
-  final pulumi.Input<SqlManagedInstanceK8sSpec>? spec;
+  final pulumi.Input<SqlManagedInstanceK8sSpec?>? spec;
 
   /// Creates a new [SqlManagedInstanceK8sRaw].
   /// [spec] The kubernetes spec information.

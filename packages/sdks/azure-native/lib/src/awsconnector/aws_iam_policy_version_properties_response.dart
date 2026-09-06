@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsIamPolicyVersion
 class AwsIamPolicyVersionPropertiesResponse {
   /// &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the policy version was created.&lt;/p&gt;
-  final pulumi.Input<String>? createDate;
+  final pulumi.Input<String?>? createDate;
   /// &lt;p&gt;The policy document.&lt;/p&gt; &lt;p&gt;The policy document is returned in the response to the &lt;a&gt;GetPolicyVersion&lt;/a&gt; and &lt;a&gt;GetAccountAuthorizationDetails&lt;/a&gt; operations. It is not returned in the response to the &lt;a&gt;CreatePolicyVersion&lt;/a&gt; or &lt;a&gt;ListPolicyVersions&lt;/a&gt; operations. &lt;/p&gt; &lt;p&gt;The policy document returned in this structure is URL-encoded compliant with &lt;a href='https://tools.ietf.org/html/rfc3986'&gt;RFC 3986&lt;/a&gt;. You can use a URL decoding method to convert the policy back to plain JSON text. For example, if you use Java, you can use the &lt;code&gt;decode&lt;/code&gt; method of the &lt;code&gt;java.net.URLDecoder&lt;/code&gt; utility class in the Java SDK. Other languages and SDKs provide similar functionality.&lt;/p&gt;
-  final pulumi.Input<String>? document;
+  final pulumi.Input<String?>? document;
   /// &lt;p&gt;Specifies whether the policy version is set as the policy's default version.&lt;/p&gt;
-  final pulumi.Input<bool>? isDefaultVersion;
+  final pulumi.Input<bool?>? isDefaultVersion;
   /// &lt;p&gt;The identifier for the policy version.&lt;/p&gt; &lt;p&gt;Policy version identifiers always begin with &lt;code&gt;v&lt;/code&gt; (always lowercase). When a policy is created, the first policy version is &lt;code&gt;v1&lt;/code&gt;. &lt;/p&gt;
-  final pulumi.Input<String>? versionId;
+  final pulumi.Input<String?>? versionId;
 
   /// Creates a new [AwsIamPolicyVersionPropertiesResponse].
   /// [createDate] &lt;p&gt;The date and time, in &lt;a href='http://www.iso.org/iso/iso8601'&gt;ISO 8601 date-time format&lt;/a&gt;, when the policy version was created.&lt;/p&gt;

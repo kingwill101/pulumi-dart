@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Primary metrics for Forecasting task.
-enum ForecastingPrimaryMetrics {
+enum ForecastingPrimaryMetrics implements pulumi.PulumiEnum<String> {
   spearmanCorrelation("SpearmanCorrelation"),
   normalizedRootMeanSquaredError("NormalizedRootMeanSquaredError"),
   r2Score("R2Score"),
   normalizedMeanAbsoluteError("NormalizedMeanAbsoluteError");
 
   const ForecastingPrimaryMetrics(this.wireValue);
+  @override
   final String wireValue;
 
   static ForecastingPrimaryMetrics fromValue(String value) {

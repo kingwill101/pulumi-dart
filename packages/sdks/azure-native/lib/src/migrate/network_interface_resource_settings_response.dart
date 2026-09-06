@@ -6,18 +6,18 @@ import 'nic_ip_configuration_resource_settings_response.dart';
 /// Defines the network interface resource settings.
 class NetworkInterfaceResourceSettingsResponse {
   /// Gets or sets a value indicating whether accelerated networking is enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Gets or sets the IP configurations of the NIC.
-  final pulumi.Input<List<NicIpConfigurationResourceSettingsResponse>>? ipConfigurations;
+  final pulumi.Input<List<NicIpConfigurationResourceSettingsResponse>?>? ipConfigurations;
   /// The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// Expected value is 'Microsoft.Network/networkInterfaces'.
   final pulumi.Input<String> resourceType;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the target resource group name.
-  final pulumi.Input<String>? targetResourceGroupName;
+  final pulumi.Input<String?>? targetResourceGroupName;
   /// Gets or sets the target Resource name.
-  final pulumi.Input<String>? targetResourceName;
+  final pulumi.Input<String?>? targetResourceName;
 
   /// Creates a new [NetworkInterfaceResourceSettingsResponse].
   /// [enableAcceleratedNetworking] Gets or sets a value indicating whether accelerated networking is enabled.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates what lab virtual machines are created from.
-enum CreateOption {
+enum CreateOption implements pulumi.PulumiEnum<String> {
   valueImage("Image"),
   valueTemplateVM("TemplateVM");
 
   const CreateOption(this.wireValue);
+  @override
   final String wireValue;
 
   static CreateOption fromValue(String value) {

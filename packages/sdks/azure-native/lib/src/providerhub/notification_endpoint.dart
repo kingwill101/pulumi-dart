@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class NotificationEndpoint {
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The notification destination.
-  final pulumi.Input<String>? notificationDestination;
+  final pulumi.Input<String?>? notificationDestination;
 
   /// Creates a new [NotificationEndpoint].
   /// [locations] The locations.

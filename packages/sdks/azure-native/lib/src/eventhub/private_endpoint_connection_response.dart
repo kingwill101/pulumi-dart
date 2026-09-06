@@ -14,11 +14,11 @@ class PrivateEndpointConnectionResponse {
   /// The name of the resource
   final pulumi.Input<String> name;
   /// The Private Endpoint resource for this Connection.
-  final pulumi.Input<PrivateEndpointResponse>? privateEndpoint;
+  final pulumi.Input<PrivateEndpointResponse?>? privateEndpoint;
   /// Details about the state of the connection.
-  final pulumi.Input<ConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<ConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// Provisioning state of the Private Endpoint Connection.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The system meta data relating to this resource.
   final pulumi.Input<SystemDataResponse> systemData;
   /// The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"

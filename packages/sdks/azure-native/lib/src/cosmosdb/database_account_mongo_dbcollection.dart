@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'database_account_mongo_dbcollection_args.dart';
+import 'mongo_index_response.dart';
 
 /// An Azure Cosmos DB MongoDB collection.
 ///
@@ -282,7 +283,7 @@ class DatabaseAccountMongoDBCollection extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of index keys
-  late final pulumi.Output<List<Map<String, dynamic>>?> indexes;
+  late final pulumi.Output<List<MongoIndexResponse>?> indexes;
   /// The location of the resource group to which the resource belongs.
   late final pulumi.Output<String?> location;
   /// The name of the database account.
@@ -309,11 +310,29 @@ class DatabaseAccountMongoDBCollection extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    indexes = registerOutput<List<Map<String, dynamic>>?>('indexes');
+    indexes = registerOutput<List<MongoIndexResponse>?>('indexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoIndexResponse>(guardedValue, (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    shardKey = registerOutput<Map<String, String>?>('shardKey');
-    tags = registerOutput<Map<String, String>?>('tags');
+    shardKey = registerOutput<Map<String, String>?>('shardKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseAccountMongoDBCollection] resource.
+  DatabaseAccountMongoDBCollection.reference(String urn)
+    : super(
+        'azure-native:cosmosdb:DatabaseAccountMongoDBCollection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    indexes = registerOutput<List<MongoIndexResponse>?>('indexes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MongoIndexResponse>(guardedValue, (value) => MongoIndexResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    shardKey = registerOutput<Map<String, String>?>('shardKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

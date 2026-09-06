@@ -4,23 +4,23 @@
 /// Result data returned by listWorkspaceStorageAccountKeys.
 class ListWorkspaceStorageAccountKeysResult {
   /// The access key of the storage
-  final String userStorageKey;
+  final String? userStorageKey;
 
   /// Creates a new [ListWorkspaceStorageAccountKeysResult].
   /// [userStorageKey] The access key of the storage
   const ListWorkspaceStorageAccountKeysResult({
-    required this.userStorageKey,
+    this.userStorageKey,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'userStorageKey': userStorageKey,
+      'userStorageKey': ?userStorageKey,
     };
   }
 
   factory ListWorkspaceStorageAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListWorkspaceStorageAccountKeysResult(
-      userStorageKey: map['userStorageKey'] as String,
+      userStorageKey: (() { final guardedValue = map['userStorageKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -6,7 +6,7 @@ import 'execute_command_configuration_response.dart';
 /// Definition of ClusterConfiguration
 class ClusterConfigurationResponse {
   /// The details of the execute command configuration. The details of the execute command configuration.
-  final pulumi.Input<ExecuteCommandConfigurationResponse>? executeCommandConfiguration;
+  final pulumi.Input<ExecuteCommandConfigurationResponse?>? executeCommandConfiguration;
 
   /// Creates a new [ClusterConfigurationResponse].
   /// [executeCommandConfiguration] The details of the execute command configuration. The details of the execute command configuration.

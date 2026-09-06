@@ -20,155 +20,155 @@ import 'virtual_application.dart';
 /// Configuration of an App Service app.
 class SiteConfig {
   /// Flag to use Managed Identity Creds for ACR pull
-  final pulumi.Input<bool>? acrUseManagedIdentityCreds;
+  final pulumi.Input<bool?>? acrUseManagedIdentityCreds;
   /// If using user managed identity, the user managed identity ClientId
-  final pulumi.Input<String>? acrUserManagedIdentityID;
+  final pulumi.Input<String?>? acrUserManagedIdentityID;
   /// &lt;code&gt;true&lt;/code&gt; if Always On is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? alwaysOn;
+  final pulumi.Input<bool?>? alwaysOn;
   /// Information about the formal API definition for the app.
-  final pulumi.Input<ApiDefinitionInfo>? apiDefinition;
+  final pulumi.Input<ApiDefinitionInfo?>? apiDefinition;
   /// Azure API management settings linked to the app.
-  final pulumi.Input<ApiManagementConfig>? apiManagementConfig;
+  final pulumi.Input<ApiManagementConfig?>? apiManagementConfig;
   /// App command line to launch.
-  final pulumi.Input<String>? appCommandLine;
+  final pulumi.Input<String?>? appCommandLine;
   /// Application settings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
-  final pulumi.Input<List<NameValuePair>>? appSettings;
+  final pulumi.Input<List<NameValuePair>?>? appSettings;
   /// &lt;code&gt;true&lt;/code&gt; if Auto Heal is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? autoHealEnabled;
+  final pulumi.Input<bool?>? autoHealEnabled;
   /// Auto Heal rules.
-  final pulumi.Input<AutoHealRules>? autoHealRules;
+  final pulumi.Input<AutoHealRules?>? autoHealRules;
   /// Auto-swap slot name.
-  final pulumi.Input<String>? autoSwapSlotName;
+  final pulumi.Input<String?>? autoSwapSlotName;
   /// List of Azure Storage Accounts.
-  final pulumi.Input<Map<String, AzureStorageInfoValue>>? azureStorageAccounts;
+  final pulumi.Input<Map<String, AzureStorageInfoValue>?>? azureStorageAccounts;
   /// Connection strings. This property is not returned in response to normal create and read requests since it may contain sensitive information.
-  final pulumi.Input<List<ConnStringInfo>>? connectionStrings;
+  final pulumi.Input<List<ConnStringInfo>?>? connectionStrings;
   /// Cross-Origin Resource Sharing (CORS) settings.
-  final pulumi.Input<CorsSettings>? cors;
+  final pulumi.Input<CorsSettings?>? cors;
   /// Default documents.
-  final pulumi.Input<List<String>>? defaultDocuments;
+  final pulumi.Input<List<String>?>? defaultDocuments;
   /// &lt;code&gt;true&lt;/code&gt; if detailed error logging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? detailedErrorLoggingEnabled;
+  final pulumi.Input<bool?>? detailedErrorLoggingEnabled;
   /// Document root.
-  final pulumi.Input<String>? documentRoot;
+  final pulumi.Input<String?>? documentRoot;
   /// Maximum number of workers that a site can scale out to.
   /// This setting only applies to apps in plans where ElasticScaleEnabled is &lt;code&gt;true&lt;/code&gt;
-  final pulumi.Input<int>? elasticWebAppScaleLimit;
+  final pulumi.Input<int?>? elasticWebAppScaleLimit;
   /// This is work around for polymorphic types.
-  final pulumi.Input<Experiments>? experiments;
+  final pulumi.Input<Experiments?>? experiments;
   /// State of FTP / FTPS service
-  final pulumi.Input<String>? ftpsState;
+  final pulumi.Input<dynamic>? ftpsState;
   /// Maximum number of workers that a site can scale out to.
   /// This setting only applies to the Consumption and Elastic Premium Plans
-  final pulumi.Input<int>? functionAppScaleLimit;
+  final pulumi.Input<int?>? functionAppScaleLimit;
   /// Gets or sets a value indicating whether functions runtime scale monitoring is enabled. When enabled,
   /// the ScaleController will not monitor event sources directly, but will instead call to the
   /// runtime to get scale status.
-  final pulumi.Input<bool>? functionsRuntimeScaleMonitoringEnabled;
+  final pulumi.Input<bool?>? functionsRuntimeScaleMonitoringEnabled;
   /// Handler mappings.
-  final pulumi.Input<List<HandlerMapping>>? handlerMappings;
+  final pulumi.Input<List<HandlerMapping>?>? handlerMappings;
   /// Health check path
-  final pulumi.Input<String>? healthCheckPath;
+  final pulumi.Input<String?>? healthCheckPath;
   /// Http20Enabled: configures a web site to allow clients to connect over http2.0
-  final pulumi.Input<bool>? http20Enabled;
+  final pulumi.Input<bool?>? http20Enabled;
   /// Http20ProxyFlag: Configures a website to allow http2.0 to pass be proxied all the way to the app. 0 = disabled, 1 = pass through all http2 traffic, 2 = pass through gRPC only.
-  final pulumi.Input<int>? http20ProxyFlag;
+  final pulumi.Input<int?>? http20ProxyFlag;
   /// &lt;code&gt;true&lt;/code&gt; if HTTP logging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? httpLoggingEnabled;
+  final pulumi.Input<bool?>? httpLoggingEnabled;
   /// IP security restrictions for main.
-  final pulumi.Input<List<IpSecurityRestriction>>? ipSecurityRestrictions;
+  final pulumi.Input<List<IpSecurityRestriction>?>? ipSecurityRestrictions;
   /// Default action for main access restriction if no rules are matched.
-  final pulumi.Input<String>? ipSecurityRestrictionsDefaultAction;
+  final pulumi.Input<dynamic>? ipSecurityRestrictionsDefaultAction;
   /// Java container.
-  final pulumi.Input<String>? javaContainer;
+  final pulumi.Input<String?>? javaContainer;
   /// Java container version.
-  final pulumi.Input<String>? javaContainerVersion;
+  final pulumi.Input<String?>? javaContainerVersion;
   /// Java version.
-  final pulumi.Input<String>? javaVersion;
+  final pulumi.Input<String?>? javaVersion;
   /// Identity to use for Key Vault Reference authentication.
-  final pulumi.Input<String>? keyVaultReferenceIdentity;
+  final pulumi.Input<String?>? keyVaultReferenceIdentity;
   /// Site limits.
-  final pulumi.Input<SiteLimits>? limits;
+  final pulumi.Input<SiteLimits?>? limits;
   /// Linux App Framework and version
-  final pulumi.Input<String>? linuxFxVersion;
+  final pulumi.Input<String?>? linuxFxVersion;
   /// Site load balancing.
-  final pulumi.Input<SiteLoadBalancing>? loadBalancing;
+  final pulumi.Input<SiteLoadBalancing?>? loadBalancing;
   /// &lt;code&gt;true&lt;/code&gt; to enable local MySQL; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? localMySqlEnabled;
+  final pulumi.Input<bool?>? localMySqlEnabled;
   /// HTTP logs directory size limit.
-  final pulumi.Input<int>? logsDirectorySizeLimit;
+  final pulumi.Input<int?>? logsDirectorySizeLimit;
   /// Managed pipeline mode.
-  final pulumi.Input<ManagedPipelineMode>? managedPipelineMode;
+  final pulumi.Input<ManagedPipelineMode?>? managedPipelineMode;
   /// Managed Service Identity Id
-  final pulumi.Input<int>? managedServiceIdentityId;
+  final pulumi.Input<int?>? managedServiceIdentityId;
   /// Application metadata. This property cannot be retrieved, since it may contain secrets.
-  final pulumi.Input<List<NameValuePair>>? metadata;
+  final pulumi.Input<List<NameValuePair>?>? metadata;
   /// The minimum strength TLS cipher suite allowed for an application
-  final pulumi.Input<String>? minTlsCipherSuite;
+  final pulumi.Input<dynamic>? minTlsCipherSuite;
   /// MinTlsVersion: configures the minimum version of TLS required for SSL requests
-  final pulumi.Input<String>? minTlsVersion;
+  final pulumi.Input<dynamic>? minTlsVersion;
   /// Number of minimum instance count for a site
   /// This setting only applies to the Elastic Plans
-  final pulumi.Input<int>? minimumElasticInstanceCount;
+  final pulumi.Input<int?>? minimumElasticInstanceCount;
   /// .NET Framework version.
-  final pulumi.Input<String>? netFrameworkVersion;
+  final pulumi.Input<String?>? netFrameworkVersion;
   /// Version of Node.js.
-  final pulumi.Input<String>? nodeVersion;
+  final pulumi.Input<String?>? nodeVersion;
   /// Number of workers.
-  final pulumi.Input<int>? numberOfWorkers;
+  final pulumi.Input<int?>? numberOfWorkers;
   /// Version of PHP.
-  final pulumi.Input<String>? phpVersion;
+  final pulumi.Input<String?>? phpVersion;
   /// Version of PowerShell.
-  final pulumi.Input<String>? powerShellVersion;
+  final pulumi.Input<String?>? powerShellVersion;
   /// Number of preWarmed instances.
   /// This setting only applies to the Consumption and Elastic Plans
-  final pulumi.Input<int>? preWarmedInstanceCount;
+  final pulumi.Input<int?>? preWarmedInstanceCount;
   /// Property to allow or block all public traffic.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<String?>? publicNetworkAccess;
   /// Publishing user name.
-  final pulumi.Input<String>? publishingUsername;
+  final pulumi.Input<String?>? publishingUsername;
   /// Push endpoint settings.
-  final pulumi.Input<PushSettings>? push;
+  final pulumi.Input<PushSettings?>? push;
   /// Version of Python.
-  final pulumi.Input<String>? pythonVersion;
+  final pulumi.Input<String?>? pythonVersion;
   /// &lt;code&gt;true&lt;/code&gt; if remote debugging is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? remoteDebuggingEnabled;
+  final pulumi.Input<bool?>? remoteDebuggingEnabled;
   /// Remote debugging version.
-  final pulumi.Input<String>? remoteDebuggingVersion;
+  final pulumi.Input<String?>? remoteDebuggingVersion;
   /// &lt;code&gt;true&lt;/code&gt; if request tracing is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? requestTracingEnabled;
+  final pulumi.Input<bool?>? requestTracingEnabled;
   /// Request tracing expiration time.
-  final pulumi.Input<String>? requestTracingExpirationTime;
+  final pulumi.Input<String?>? requestTracingExpirationTime;
   /// IP security restrictions for scm.
-  final pulumi.Input<List<IpSecurityRestriction>>? scmIpSecurityRestrictions;
+  final pulumi.Input<List<IpSecurityRestriction>?>? scmIpSecurityRestrictions;
   /// Default action for scm access restriction if no rules are matched.
-  final pulumi.Input<String>? scmIpSecurityRestrictionsDefaultAction;
+  final pulumi.Input<dynamic>? scmIpSecurityRestrictionsDefaultAction;
   /// IP security restrictions for scm to use main.
-  final pulumi.Input<bool>? scmIpSecurityRestrictionsUseMain;
+  final pulumi.Input<bool?>? scmIpSecurityRestrictionsUseMain;
   /// ScmMinTlsVersion: configures the minimum version of TLS required for SSL requests for SCM site
-  final pulumi.Input<String>? scmMinTlsVersion;
+  final pulumi.Input<dynamic>? scmMinTlsVersion;
   /// SCM type.
-  final pulumi.Input<String>? scmType;
+  final pulumi.Input<dynamic>? scmType;
   /// Tracing options.
-  final pulumi.Input<String>? tracingOptions;
+  final pulumi.Input<String?>? tracingOptions;
   /// &lt;code&gt;true&lt;/code&gt; to use 32-bit worker process; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? use32BitWorkerProcess;
+  final pulumi.Input<bool?>? use32BitWorkerProcess;
   /// Virtual applications.
-  final pulumi.Input<List<VirtualApplication>>? virtualApplications;
+  final pulumi.Input<List<VirtualApplication>?>? virtualApplications;
   /// Virtual Network name.
-  final pulumi.Input<String>? vnetName;
+  final pulumi.Input<String?>? vnetName;
   /// The number of private ports assigned to this app. These will be assigned dynamically on runtime.
-  final pulumi.Input<int>? vnetPrivatePortsCount;
+  final pulumi.Input<int?>? vnetPrivatePortsCount;
   /// Virtual Network Route All enabled. This causes all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied.
-  final pulumi.Input<bool>? vnetRouteAllEnabled;
+  final pulumi.Input<bool?>? vnetRouteAllEnabled;
   /// &lt;code&gt;true&lt;/code&gt; if WebSocket is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
-  final pulumi.Input<bool>? webSocketsEnabled;
+  final pulumi.Input<bool?>? webSocketsEnabled;
   /// Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
-  final pulumi.Input<String>? websiteTimeZone;
+  final pulumi.Input<String?>? websiteTimeZone;
   /// Xenon App Framework and version
-  final pulumi.Input<String>? windowsFxVersion;
+  final pulumi.Input<String?>? windowsFxVersion;
   /// Explicit Managed Service Identity Id
-  final pulumi.Input<int>? xManagedServiceIdentityId;
+  final pulumi.Input<int?>? xManagedServiceIdentityId;
 
   /// Creates a new [SiteConfig].
   /// [acrUseManagedIdentityCreds] Flag to use Managed Identity Creds for ACR pull
@@ -243,7 +243,7 @@ class SiteConfig {
   /// [websiteTimeZone] Sets the time zone a site uses for generating timestamps. Compatible with Linux and Windows App Service. Setting the WEBSITE_TIME_ZONE app setting takes precedence over this config. For Linux, expects tz database values https://www.iana.org/time-zones (for a quick reference see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). For Windows, expects one of the time zones listed under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones
   /// [windowsFxVersion] Xenon App Framework and version
   /// [xManagedServiceIdentityId] Explicit Managed Service Identity Id
-  const SiteConfig({
+  SiteConfig({
     this.acrUseManagedIdentityCreds,
     this.acrUserManagedIdentityID,
     this.alwaysOn,
@@ -267,7 +267,7 @@ class SiteConfig {
     this.functionsRuntimeScaleMonitoringEnabled,
     this.handlerMappings,
     this.healthCheckPath,
-    this.http20Enabled,
+    pulumi.Input<bool?>? http20Enabled,
     this.http20ProxyFlag,
     this.httpLoggingEnabled,
     this.ipSecurityRestrictions,
@@ -279,7 +279,7 @@ class SiteConfig {
     this.limits,
     this.linuxFxVersion,
     this.loadBalancing,
-    this.localMySqlEnabled,
+    pulumi.Input<bool?>? localMySqlEnabled,
     this.logsDirectorySizeLimit,
     this.managedPipelineMode,
     this.managedServiceIdentityId,
@@ -287,7 +287,7 @@ class SiteConfig {
     this.minTlsCipherSuite,
     this.minTlsVersion,
     this.minimumElasticInstanceCount,
-    this.netFrameworkVersion,
+    pulumi.Input<String?>? netFrameworkVersion,
     this.nodeVersion,
     this.numberOfWorkers,
     this.phpVersion,
@@ -316,7 +316,7 @@ class SiteConfig {
     this.websiteTimeZone,
     this.windowsFxVersion,
     this.xManagedServiceIdentityId,
-  });
+  }) : http20Enabled = http20Enabled ?? pulumi.Input.fromValue(true), localMySqlEnabled = localMySqlEnabled ?? pulumi.Input.fromValue(false), netFrameworkVersion = netFrameworkVersion ?? pulumi.Input.fromValue('v4.6');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -413,18 +413,18 @@ class SiteConfig {
       defaultDocuments: (() { final guardedValue = map['defaultDocuments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       detailedErrorLoggingEnabled: (() { final guardedValue = map['detailedErrorLoggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       documentRoot: (() { final guardedValue = map['documentRoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      elasticWebAppScaleLimit: (() { final guardedValue = map['elasticWebAppScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      elasticWebAppScaleLimit: (() { final guardedValue = map['elasticWebAppScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       experiments: (() { final guardedValue = map['experiments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Experiments.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      ftpsState: (() { final guardedValue = map['ftpsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      functionAppScaleLimit: (() { final guardedValue = map['functionAppScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ftpsState: (() { final guardedValue = map['ftpsState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      functionAppScaleLimit: (() { final guardedValue = map['functionAppScaleLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       functionsRuntimeScaleMonitoringEnabled: (() { final guardedValue = map['functionsRuntimeScaleMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       handlerMappings: (() { final guardedValue = map['handlerMappings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HandlerMapping>(guardedValue, (value) => HandlerMapping.fromMap((value as Map).cast<String, dynamic>()))); })(),
       healthCheckPath: (() { final guardedValue = map['healthCheckPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       http20Enabled: (() { final guardedValue = map['http20Enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      http20ProxyFlag: (() { final guardedValue = map['http20ProxyFlag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      http20ProxyFlag: (() { final guardedValue = map['http20ProxyFlag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       httpLoggingEnabled: (() { final guardedValue = map['httpLoggingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ipSecurityRestrictions: (() { final guardedValue = map['ipSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpSecurityRestriction>(guardedValue, (value) => IpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ipSecurityRestrictionsDefaultAction: (() { final guardedValue = map['ipSecurityRestrictionsDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ipSecurityRestrictionsDefaultAction: (() { final guardedValue = map['ipSecurityRestrictionsDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       javaContainer: (() { final guardedValue = map['javaContainer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       javaContainerVersion: (() { final guardedValue = map['javaContainerVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       javaVersion: (() { final guardedValue = map['javaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -433,19 +433,19 @@ class SiteConfig {
       linuxFxVersion: (() { final guardedValue = map['linuxFxVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadBalancing: (() { final guardedValue = map['loadBalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SiteLoadBalancing.fromValue(guardedValue as String)); })(),
       localMySqlEnabled: (() { final guardedValue = map['localMySqlEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      logsDirectorySizeLimit: (() { final guardedValue = map['logsDirectorySizeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      logsDirectorySizeLimit: (() { final guardedValue = map['logsDirectorySizeLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       managedPipelineMode: (() { final guardedValue = map['managedPipelineMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ManagedPipelineMode.fromValue(guardedValue as String)); })(),
-      managedServiceIdentityId: (() { final guardedValue = map['managedServiceIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      managedServiceIdentityId: (() { final guardedValue = map['managedServiceIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NameValuePair>(guardedValue, (value) => NameValuePair.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      minTlsCipherSuite: (() { final guardedValue = map['minTlsCipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minTlsVersion: (() { final guardedValue = map['minTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumElasticInstanceCount: (() { final guardedValue = map['minimumElasticInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      minTlsCipherSuite: (() { final guardedValue = map['minTlsCipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      minTlsVersion: (() { final guardedValue = map['minTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      minimumElasticInstanceCount: (() { final guardedValue = map['minimumElasticInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       netFrameworkVersion: (() { final guardedValue = map['netFrameworkVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeVersion: (() { final guardedValue = map['nodeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      numberOfWorkers: (() { final guardedValue = map['numberOfWorkers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       phpVersion: (() { final guardedValue = map['phpVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       powerShellVersion: (() { final guardedValue = map['powerShellVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      preWarmedInstanceCount: (() { final guardedValue = map['preWarmedInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      preWarmedInstanceCount: (() { final guardedValue = map['preWarmedInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       publishingUsername: (() { final guardedValue = map['publishingUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       push: (() { final guardedValue = map['push']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PushSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -455,20 +455,20 @@ class SiteConfig {
       requestTracingEnabled: (() { final guardedValue = map['requestTracingEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       requestTracingExpirationTime: (() { final guardedValue = map['requestTracingExpirationTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scmIpSecurityRestrictions: (() { final guardedValue = map['scmIpSecurityRestrictions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpSecurityRestriction>(guardedValue, (value) => IpSecurityRestriction.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      scmIpSecurityRestrictionsDefaultAction: (() { final guardedValue = map['scmIpSecurityRestrictionsDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scmIpSecurityRestrictionsDefaultAction: (() { final guardedValue = map['scmIpSecurityRestrictionsDefaultAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       scmIpSecurityRestrictionsUseMain: (() { final guardedValue = map['scmIpSecurityRestrictionsUseMain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scmMinTlsVersion: (() { final guardedValue = map['scmMinTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      scmType: (() { final guardedValue = map['scmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      scmMinTlsVersion: (() { final guardedValue = map['scmMinTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      scmType: (() { final guardedValue = map['scmType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tracingOptions: (() { final guardedValue = map['tracingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       use32BitWorkerProcess: (() { final guardedValue = map['use32BitWorkerProcess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       virtualApplications: (() { final guardedValue = map['virtualApplications']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<VirtualApplication>(guardedValue, (value) => VirtualApplication.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vnetName: (() { final guardedValue = map['vnetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vnetPrivatePortsCount: (() { final guardedValue = map['vnetPrivatePortsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      vnetPrivatePortsCount: (() { final guardedValue = map['vnetPrivatePortsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vnetRouteAllEnabled: (() { final guardedValue = map['vnetRouteAllEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       webSocketsEnabled: (() { final guardedValue = map['webSocketsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       websiteTimeZone: (() { final guardedValue = map['websiteTimeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       windowsFxVersion: (() { final guardedValue = map['windowsFxVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      xManagedServiceIdentityId: (() { final guardedValue = map['xManagedServiceIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      xManagedServiceIdentityId: (() { final guardedValue = map['xManagedServiceIdentityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

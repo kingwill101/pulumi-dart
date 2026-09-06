@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Validation state for the custom domain. This is a read only property and is initially set to 'Pending' and will be updated to 'Approved' by Event Grid only after ownership of the domain name has been successfully validated.
-enum CustomDomainValidationState {
+enum CustomDomainValidationState implements pulumi.PulumiEnum<String> {
   valuePending("Pending"),
   valueApproved("Approved"),
   valueErrorRetrievingDnsRecord("ErrorRetrievingDnsRecord");
 
   const CustomDomainValidationState(this.wireValue);
+  @override
   final String wireValue;
 
   static CustomDomainValidationState fromValue(String value) {

@@ -9,13 +9,13 @@ import 'stateful_rule_options.dart';
 /// Definition of RuleGroup
 class RuleGroup {
   /// Property referenceSets
-  final pulumi.Input<ReferenceSets>? referenceSets;
+  final pulumi.Input<ReferenceSets?>? referenceSets;
   /// Property ruleVariables
-  final pulumi.Input<RuleVariables>? ruleVariables;
+  final pulumi.Input<RuleVariables?>? ruleVariables;
   /// Property rulesSource
-  final pulumi.Input<RulesSource>? rulesSource;
+  final pulumi.Input<RulesSource?>? rulesSource;
   /// Property statefulRuleOptions
-  final pulumi.Input<StatefulRuleOptions>? statefulRuleOptions;
+  final pulumi.Input<StatefulRuleOptions?>? statefulRuleOptions;
 
   /// Creates a new [RuleGroup].
   /// [referenceSets] Property referenceSets

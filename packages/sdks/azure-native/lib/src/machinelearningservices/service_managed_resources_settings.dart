@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cosmos_db_settings.dart';
 
 class ServiceManagedResourcesSettings {
-  final pulumi.Input<CosmosDbSettings>? cosmosDb;
+  final pulumi.Input<CosmosDbSettings?>? cosmosDb;
 
   /// Creates a new [ServiceManagedResourcesSettings].
   /// [cosmosDb] Optional.

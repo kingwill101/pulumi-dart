@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state of the data masking policy.
-enum DataMaskingState {
+enum DataMaskingState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const DataMaskingState(this.wireValue);
+  @override
   final String wireValue;
 
   static DataMaskingState fromValue(String value) {

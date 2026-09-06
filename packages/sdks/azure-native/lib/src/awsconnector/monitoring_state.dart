@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum MonitoringState {
+enum MonitoringState implements pulumi.PulumiEnum<String> {
   disabled("disabled"),
   disabling("disabling"),
   enabled("enabled"),
   pending("pending");
 
   const MonitoringState(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringState fromValue(String value) {

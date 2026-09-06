@@ -6,11 +6,11 @@ import 'subnet_response_v1.dart';
 /// Properties of route target address
 class RouteTargetAddressPropertiesFormatResponse {
   /// The private IPv4 or IPv6 address of the service gateway route target address.
-  final pulumi.Input<String>? privateIPAddress;
+  final pulumi.Input<String?>? privateIPAddress;
   /// The Private IP allocation method.
-  final pulumi.Input<String>? privateIPAllocationMethod;
+  final pulumi.Input<String?>? privateIPAllocationMethod;
   /// The reference to the subnet resource.
-  final pulumi.Input<SubnetResponseV1>? subnet;
+  final pulumi.Input<SubnetResponseV1?>? subnet;
 
   /// Creates a new [RouteTargetAddressPropertiesFormatResponse].
   /// [privateIPAddress] The private IPv4 or IPv6 address of the service gateway route target address.

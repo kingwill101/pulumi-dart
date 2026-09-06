@@ -9,7 +9,7 @@ import 'private_link_service_connection_state.dart';
 /// {@macro pulumi_security_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// The name of the private endpoint connection associated with the Azure resource.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
   final pulumi.Input<String> privateLinkName;
   /// A collection of information about the state of the connection between service consumer and provider.

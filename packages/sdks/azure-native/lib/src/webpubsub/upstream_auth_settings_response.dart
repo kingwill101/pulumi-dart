@@ -6,9 +6,9 @@ import 'managed_identity_settings_response.dart';
 /// Upstream auth settings. If not set, no auth is used for upstream messages.
 class UpstreamAuthSettingsResponse {
   /// Managed identity settings for upstream.
-  final pulumi.Input<ManagedIdentitySettingsResponse>? managedIdentity;
+  final pulumi.Input<ManagedIdentitySettingsResponse?>? managedIdentity;
   /// Upstream auth type enum.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [UpstreamAuthSettingsResponse].
   /// [managedIdentity] Managed identity settings for upstream.

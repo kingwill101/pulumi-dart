@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Validation message object.
 class ValidationMessageResponse {
   /// Validation message string.
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Severity of validation message.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ValidationMessageResponse].
   /// [message] Validation message string.

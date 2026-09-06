@@ -1,15 +1,12 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'dataset_broker_state_store_destination.dart';
 import 'device_ref.dart';
-import 'event_mqtt_destination.dart';
 import 'extended_location.dart';
 import 'management_group.dart';
 import 'namespace_dataset.dart';
 import 'namespace_event.dart';
 import 'namespace_stream.dart';
-import 'stream_mqtt_destination.dart';
 
 /// {@template pulumi_deviceregistry_namespace_asset_args_doc}
 /// The set of arguments for NamespaceAsset.
@@ -17,71 +14,71 @@ import 'stream_mqtt_destination.dart';
 /// {@macro pulumi_deviceregistry_namespace_asset_args_doc}
 class NamespaceAssetArgs {
   /// The name of the asset.
-  final pulumi.Input<String>? assetName;
+  final pulumi.Input<String?>? assetName;
   /// URIs or type definition IDs.
-  final pulumi.Input<List<String>>? assetTypeRefs;
+  final pulumi.Input<List<String>?>? assetTypeRefs;
   /// A set of key-value pairs that contain custom attributes set by the customer.
   final pulumi.Input<dynamic>? attributes;
   /// Array of datasets that are part of the asset. Each dataset describes the data points that make up the set.
-  final pulumi.Input<List<NamespaceDataset>>? datasets;
+  final pulumi.Input<List<NamespaceDataset>?>? datasets;
   /// Stringified JSON that contains connector-specific default configuration for all datasets. Each dataset can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultDatasetsConfiguration;
+  final pulumi.Input<String?>? defaultDatasetsConfiguration;
   /// Default destinations for a dataset.
-  final pulumi.Input<List<DatasetBrokerStateStoreDestination>>? defaultDatasetsDestinations;
+  final pulumi.Input<List<dynamic>?>? defaultDatasetsDestinations;
   /// Stringified JSON that contains connector-specific default configuration for all events. Each event can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultEventsConfiguration;
+  final pulumi.Input<String?>? defaultEventsConfiguration;
   /// Default destinations for an event.
-  final pulumi.Input<List<EventMqttDestination>>? defaultEventsDestinations;
+  final pulumi.Input<List<dynamic>?>? defaultEventsDestinations;
   /// Stringified JSON that contains connector-specific default configuration for all management groups. Each management group can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultManagementGroupsConfiguration;
+  final pulumi.Input<String?>? defaultManagementGroupsConfiguration;
   /// Stringified JSON that contains connector-specific default configuration for all streams. Each stream can have its own configuration that overrides the default settings here.
-  final pulumi.Input<String>? defaultStreamsConfiguration;
+  final pulumi.Input<String?>? defaultStreamsConfiguration;
   /// Default destinations for a stream.
-  final pulumi.Input<List<StreamMqttDestination>>? defaultStreamsDestinations;
+  final pulumi.Input<List<dynamic>?>? defaultStreamsDestinations;
   /// Human-readable description of the asset.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Reference to the device that provides data for this asset. Must provide device name & endpoint on the device to use.
   final pulumi.Input<DeviceRef> deviceRef;
   /// Reference to a list of discovered assets. Populated only if the asset has been created from discovery flow. Discovered asset names must be provided.
-  final pulumi.Input<List<String>>? discoveredAssetRefs;
+  final pulumi.Input<List<String>?>? discoveredAssetRefs;
   /// Human-readable display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Asset documentation reference.
-  final pulumi.Input<String>? documentationUri;
+  final pulumi.Input<String?>? documentationUri;
   /// Enabled/disabled status of the asset.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Array of events that are part of the asset. Each event can have per-event configuration.
-  final pulumi.Input<List<NamespaceEvent>>? events;
+  final pulumi.Input<List<NamespaceEvent>?>? events;
   /// The extended location.
   final pulumi.Input<ExtendedLocation> extendedLocation;
   /// Asset ID provided by the customer.
-  final pulumi.Input<String>? externalAssetId;
+  final pulumi.Input<String?>? externalAssetId;
   /// Asset hardware revision number.
-  final pulumi.Input<String>? hardwareRevision;
+  final pulumi.Input<String?>? hardwareRevision;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Array of management groups that are part of the asset. Each management group can have a per-group configuration.
-  final pulumi.Input<List<ManagementGroup>>? managementGroups;
+  final pulumi.Input<List<ManagementGroup>?>? managementGroups;
   /// Asset manufacturer.
-  final pulumi.Input<String>? manufacturer;
+  final pulumi.Input<String?>? manufacturer;
   /// Asset manufacturer URI.
-  final pulumi.Input<String>? manufacturerUri;
+  final pulumi.Input<String?>? manufacturerUri;
   /// Asset model.
-  final pulumi.Input<String>? model;
+  final pulumi.Input<String?>? model;
   /// The name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// Asset product code.
-  final pulumi.Input<String>? productCode;
+  final pulumi.Input<String?>? productCode;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Asset serial number.
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Asset software revision number.
-  final pulumi.Input<String>? softwareRevision;
+  final pulumi.Input<String?>? softwareRevision;
   /// Array of streams that are part of the asset. Each stream can have a per-stream configuration.
-  final pulumi.Input<List<NamespaceStream>>? streams;
+  final pulumi.Input<List<NamespaceStream>?>? streams;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [NamespaceAssetArgs].
   /// [assetName] The name of the asset.
@@ -160,12 +157,12 @@ class NamespaceAssetArgs {
       'attributes': ?attributes,
       'datasets': ?pulumi.Input.mapOptionalInputValue<List<NamespaceDataset>, List<Map<String, dynamic>>>(datasets, (value) => pulumi.Input.encodeList<NamespaceDataset, Map<String, dynamic>>(value, (value) => value.toMap())),
       'defaultDatasetsConfiguration': ?defaultDatasetsConfiguration,
-      'defaultDatasetsDestinations': ?pulumi.Input.mapOptionalInputValue<List<DatasetBrokerStateStoreDestination>, List<Map<String, dynamic>>>(defaultDatasetsDestinations, (value) => pulumi.Input.encodeList<DatasetBrokerStateStoreDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultDatasetsDestinations': ?defaultDatasetsDestinations,
       'defaultEventsConfiguration': ?defaultEventsConfiguration,
-      'defaultEventsDestinations': ?pulumi.Input.mapOptionalInputValue<List<EventMqttDestination>, List<Map<String, dynamic>>>(defaultEventsDestinations, (value) => pulumi.Input.encodeList<EventMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultEventsDestinations': ?defaultEventsDestinations,
       'defaultManagementGroupsConfiguration': ?defaultManagementGroupsConfiguration,
       'defaultStreamsConfiguration': ?defaultStreamsConfiguration,
-      'defaultStreamsDestinations': ?pulumi.Input.mapOptionalInputValue<List<StreamMqttDestination>, List<Map<String, dynamic>>>(defaultStreamsDestinations, (value) => pulumi.Input.encodeList<StreamMqttDestination, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'defaultStreamsDestinations': ?defaultStreamsDestinations,
       'description': ?description,
       'deviceRef': pulumi.Input.mapInputValue<DeviceRef, Map<String, dynamic>>(deviceRef, (value) => value.toMap()),
       'discoveredAssetRefs': ?discoveredAssetRefs,
@@ -198,12 +195,12 @@ class NamespaceAssetArgs {
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       datasets: (() { final guardedValue = map['datasets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NamespaceDataset>(guardedValue, (value) => NamespaceDataset.fromMap((value as Map).cast<String, dynamic>()))); })(),
       defaultDatasetsConfiguration: (() { final guardedValue = map['defaultDatasetsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultDatasetsDestinations: (() { final guardedValue = map['defaultDatasetsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatasetBrokerStateStoreDestination>(guardedValue, (value) => DatasetBrokerStateStoreDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      defaultDatasetsDestinations: (() { final guardedValue = map['defaultDatasetsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       defaultEventsConfiguration: (() { final guardedValue = map['defaultEventsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultEventsDestinations: (() { final guardedValue = map['defaultEventsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EventMqttDestination>(guardedValue, (value) => EventMqttDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      defaultEventsDestinations: (() { final guardedValue = map['defaultEventsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       defaultManagementGroupsConfiguration: (() { final guardedValue = map['defaultManagementGroupsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defaultStreamsConfiguration: (() { final guardedValue = map['defaultStreamsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultStreamsDestinations: (() { final guardedValue = map['defaultStreamsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StreamMqttDestination>(guardedValue, (value) => StreamMqttDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      defaultStreamsDestinations: (() { final guardedValue = map['defaultStreamsDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deviceRef: pulumi.Input.fromValue(DeviceRef.fromMap((map['deviceRef']! as Map).cast<String, dynamic>())),
       discoveredAssetRefs: (() { final guardedValue = map['discoveredAssetRefs']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

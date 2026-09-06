@@ -361,4 +361,23 @@ class BlobContainerImmutabilityPolicy extends pulumi.CustomResource {
     state = registerOutput<String>('state');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [BlobContainerImmutabilityPolicy] resource.
+  BlobContainerImmutabilityPolicy.reference(String urn)
+    : super(
+        'azure-native:storage:BlobContainerImmutabilityPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowProtectedAppendWrites = registerOutput<bool?>('allowProtectedAppendWrites');
+    allowProtectedAppendWritesAll = registerOutput<bool?>('allowProtectedAppendWritesAll');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    immutabilityPeriodSinceCreationInDays = registerOutput<int?>('immutabilityPeriodSinceCreationInDays');
+    this.name = registerOutput<String>('name');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+  }
 }

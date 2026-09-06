@@ -7,11 +7,11 @@ import 'webhook_notification_response.dart';
 /// Autoscale notification.
 class AutoscaleNotificationResponse {
   /// the email notification.
-  final pulumi.Input<EmailNotificationResponse>? email;
+  final pulumi.Input<EmailNotificationResponse?>? email;
   /// the operation associated with the notification and its value must be "scale"
   final pulumi.Input<String> operation;
   /// the collection of webhook notifications.
-  final pulumi.Input<List<WebhookNotificationResponse>>? webhooks;
+  final pulumi.Input<List<WebhookNotificationResponse>?>? webhooks;
 
   /// Creates a new [AutoscaleNotificationResponse].
   /// [email] the email notification.

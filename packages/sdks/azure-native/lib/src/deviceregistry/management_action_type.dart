@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the action.
-enum ManagementActionType {
+enum ManagementActionType implements pulumi.PulumiEnum<String> {
   call("Call"),
   read("Read"),
   write("Write");
 
   const ManagementActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagementActionType fromValue(String value) {

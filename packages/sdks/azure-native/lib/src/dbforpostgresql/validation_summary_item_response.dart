@@ -6,11 +6,11 @@ import 'validation_message_response.dart';
 /// Validation summary object.
 class ValidationSummaryItemResponse {
   /// Validation messages.
-  final pulumi.Input<List<ValidationMessageResponse>>? messages;
+  final pulumi.Input<List<ValidationMessageResponse>?>? messages;
   /// Validation status for migration.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// Validation type.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ValidationSummaryItemResponse].
   /// [messages] Validation messages.

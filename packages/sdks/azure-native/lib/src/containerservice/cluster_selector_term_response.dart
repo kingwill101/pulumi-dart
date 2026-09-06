@@ -7,9 +7,9 @@ import 'property_selector_response.dart';
 /// ClusterSelectorTerm
 class ClusterSelectorTermResponse {
   /// LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd.
-  final pulumi.Input<LabelSelectorResponse>? labelSelector;
+  final pulumi.Input<LabelSelectorResponse?>? labelSelector;
   /// PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment.
-  final pulumi.Input<PropertySelectorResponse>? propertySelector;
+  final pulumi.Input<PropertySelectorResponse?>? propertySelector;
 
   /// Creates a new [ClusterSelectorTermResponse].
   /// [labelSelector] LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd.

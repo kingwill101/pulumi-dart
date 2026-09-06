@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Allows clients to access the volume with at least NFSv4.1 protocol.
-enum ElasticNfsv4Access {
+enum ElasticNfsv4Access implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const ElasticNfsv4Access(this.wireValue);
+  @override
   final String wireValue;
 
   static ElasticNfsv4Access fromValue(String value) {

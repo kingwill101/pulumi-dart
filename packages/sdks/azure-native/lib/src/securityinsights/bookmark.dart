@@ -319,7 +319,36 @@ class Bookmark extends pulumi.CustomResource {
     etag = registerOutput<String?>('etag');
     eventTime = registerOutput<String?>('eventTime');
     incidentInfo = registerOutput<IncidentInfoResponse?>('incidentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String?>('notes');
+    query = registerOutput<String>('query');
+    queryEndTime = registerOutput<String?>('queryEndTime');
+    queryResult = registerOutput<String?>('queryResult');
+    queryStartTime = registerOutput<String?>('queryStartTime');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updated = registerOutput<String?>('updated');
+    updatedBy = registerOutput<UserInfoResponse?>('updatedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Bookmark] resource.
+  Bookmark.reference(String urn)
+    : super(
+        'azure-native:securityinsights:Bookmark',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    created = registerOutput<String?>('created');
+    createdBy = registerOutput<UserInfoResponse?>('createdBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String?>('etag');
+    eventTime = registerOutput<String?>('eventTime');
+    incidentInfo = registerOutput<IncidentInfoResponse?>('incidentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IncidentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     notes = registerOutput<String?>('notes');
     query = registerOutput<String>('query');

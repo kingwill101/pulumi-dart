@@ -11,35 +11,35 @@ import 'sku.dart';
 /// {@macro pulumi_notificationhubs_namespace_args_doc}
 class NamespaceArgs {
   /// Deprecated.
-  final pulumi.Input<String>? dataCenter;
+  final pulumi.Input<String?>? dataCenter;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Namespace name
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// Defines values for NamespaceType.
-  final pulumi.Input<String>? namespaceType;
+  final pulumi.Input<dynamic>? namespaceType;
   /// A collection of network authorization rules.
-  final pulumi.Input<NetworkAcls>? networkAcls;
+  final pulumi.Input<NetworkAcls?>? networkAcls;
   /// Collection of Notification Hub or Notification Hub Namespace PNS credentials.
-  final pulumi.Input<PnsCredentials>? pnsCredentials;
+  final pulumi.Input<PnsCredentials?>? pnsCredentials;
   /// Defines values for OperationProvisioningState.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// Type of public network access.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// Allowed replication region
-  final pulumi.Input<String>? replicationRegion;
+  final pulumi.Input<dynamic>? replicationRegion;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets scaleUnit where the namespace gets created
-  final pulumi.Input<String>? scaleUnit;
+  final pulumi.Input<String?>? scaleUnit;
   /// The Sku description for a namespace
   final pulumi.Input<Sku> sku;
   /// Namespace status.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<dynamic>? status;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Namespace SKU name.
-  final pulumi.Input<String>? zoneRedundancy;
+  final pulumi.Input<dynamic>? zoneRedundancy;
 
   /// Creates a new [NamespaceArgs].
   /// [dataCenter] Deprecated.
@@ -57,7 +57,7 @@ class NamespaceArgs {
   /// [status] Namespace status.
   /// [tags] Resource tags.
   /// [zoneRedundancy] Namespace SKU name.
-  const NamespaceArgs({
+  NamespaceArgs({
     this.dataCenter,
     this.location,
     this.namespaceName,
@@ -65,15 +65,15 @@ class NamespaceArgs {
     this.networkAcls,
     this.pnsCredentials,
     this.provisioningState,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     this.replicationRegion,
     required this.resourceGroupName,
     this.scaleUnit,
     required this.sku,
     this.status,
     this.tags,
-    this.zoneRedundancy,
-  });
+    pulumi.Input<dynamic>? zoneRedundancy,
+  }) : publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), zoneRedundancy = zoneRedundancy ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -100,18 +100,18 @@ class NamespaceArgs {
       dataCenter: (() { final guardedValue = map['dataCenter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      namespaceType: (() { final guardedValue = map['namespaceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      namespaceType: (() { final guardedValue = map['namespaceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkAcls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       pnsCredentials: (() { final guardedValue = map['pnsCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PnsCredentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replicationRegion: (() { final guardedValue = map['replicationRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      replicationRegion: (() { final guardedValue = map['replicationRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scaleUnit: (() { final guardedValue = map['scaleUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(Sku.fromMap((map['sku']! as Map).cast<String, dynamic>())),
-      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zoneRedundancy: (() { final guardedValue = map['zoneRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

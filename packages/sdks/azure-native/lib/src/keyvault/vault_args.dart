@@ -9,15 +9,15 @@ import 'vault_properties.dart';
 /// {@macro pulumi_keyvault_vault_args_doc}
 class VaultArgs {
   /// The supported Azure location where the key vault should be created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of the vault
   final pulumi.Input<VaultProperties> properties;
   /// The name of the Resource Group to which the server belongs.
   final pulumi.Input<String> resourceGroupName;
   /// The tags that will be assigned to the key vault.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the vault
-  final pulumi.Input<String>? vaultName;
+  final pulumi.Input<String?>? vaultName;
 
   /// Creates a new [VaultArgs].
   /// [location] The supported Azure location where the key vault should be created.

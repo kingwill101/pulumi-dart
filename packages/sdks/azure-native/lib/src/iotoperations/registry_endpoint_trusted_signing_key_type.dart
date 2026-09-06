@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The trust type for the registry endpoint.
-enum RegistryEndpointTrustedSigningKeyType {
+enum RegistryEndpointTrustedSigningKeyType implements pulumi.PulumiEnum<String> {
   secret("Secret"),
   configMap("ConfigMap");
 
   const RegistryEndpointTrustedSigningKeyType(this.wireValue);
+  @override
   final String wireValue;
 
   static RegistryEndpointTrustedSigningKeyType fromValue(String value) {

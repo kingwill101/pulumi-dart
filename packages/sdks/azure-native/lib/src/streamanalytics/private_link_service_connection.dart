@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A grouping of information about the connection to the remote resource.
 class PrivateLinkServiceConnection {
   /// The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<String>?>? groupIds;
   /// The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
-  final pulumi.Input<String>? privateLinkServiceId;
+  final pulumi.Input<String?>? privateLinkServiceId;
 
   /// Creates a new [PrivateLinkServiceConnection].
   /// [groupIds] The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.

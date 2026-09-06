@@ -11,9 +11,9 @@ class BookshelfPrivateEndpointConnectionArgs {
   /// The name of the Bookshelf
   final pulumi.Input<String> bookshelfName;
   /// The name of the private endpoint connection associated with the Azure resource.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<PrivateEndpointConnectionProperties>? properties;
+  final pulumi.Input<PrivateEndpointConnectionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

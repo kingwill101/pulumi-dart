@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Tag filter information for the VM.
 class TagSettingsPropertiesResponse {
   /// Filter VMs by Any or All specified tags.
-  final pulumi.Input<String>? filterOperator;
+  final pulumi.Input<String?>? filterOperator;
   /// Dictionary of tags with its list of values.
-  final pulumi.Input<Map<String, List<String>>>? tags;
+  final pulumi.Input<Map<String, List<String>>?>? tags;
 
   /// Creates a new [TagSettingsPropertiesResponse].
   /// [filterOperator] Filter VMs by Any or All specified tags.
@@ -27,7 +27,7 @@ class TagSettingsPropertiesResponse {
   factory TagSettingsPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return TagSettingsPropertiesResponse(
       filterOperator: (() { final guardedValue = map['filterOperator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, List<String>>()); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<List<String>>(guardedValue, (value) => (value as List).cast<String>())); })(),
     );
   }
 }

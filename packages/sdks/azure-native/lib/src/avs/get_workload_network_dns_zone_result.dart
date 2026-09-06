@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 /// Result data returned by getWorkloadNetworkDnsZone.
 class GetWorkloadNetworkDnsZoneResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Display name of the DNS Zone.
   final String? displayName;
   /// DNS Server IP array of the DNS Zone.
@@ -15,19 +15,19 @@ class GetWorkloadNetworkDnsZoneResult {
   /// Domain names of the DNS Zone.
   final List<String>? domain;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state
-  final String provisioningState;
+  final String? provisioningState;
   /// NSX revision number.
   final double? revision;
   /// Source IP of the DNS Zone.
   final String? sourceIp;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWorkloadNetworkDnsZoneResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,51 +43,51 @@ class GetWorkloadNetworkDnsZoneResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWorkloadNetworkDnsZoneResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.displayName,
     this.dnsServerIps,
     this.dnsServices,
     this.domain,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
+    this.id,
+    this.name,
+    this.provisioningState,
     this.revision,
     this.sourceIp,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'displayName': ?displayName,
       'dnsServerIps': ?dnsServerIps,
       'dnsServices': ?dnsServices,
       'domain': ?domain,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'revision': ?revision,
       'sourceIp': ?sourceIp,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetWorkloadNetworkDnsZoneResult.fromMap(Map<String, dynamic> map) {
     return GetWorkloadNetworkDnsZoneResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dnsServerIps: (() { final guardedValue = map['dnsServerIps']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      dnsServices: (() { final guardedValue = map['dnsServices']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      dnsServices: (() { final guardedValue = map['dnsServices']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       domain: (() { final guardedValue = map['domain']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      revision: (() { final guardedValue = map['revision']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       sourceIp: (() { final guardedValue = map['sourceIp']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of an assessment.
 class HeterogeneousAssessmentProperties {
   /// Arm id of partner assessments.
-  final pulumi.Input<List<String>>? assessmentArmIds;
+  final pulumi.Input<List<String>?>? assessmentArmIds;
 
   /// Creates a new [HeterogeneousAssessmentProperties].
   /// [assessmentArmIds] Arm id of partner assessments.

@@ -10,63 +10,63 @@ import 'stream_source_addresses_response.dart';
 /// Properties of flow
 class FlowPropertieslistListFlowsByPipelineResponse {
   /// The API Flow configuration options for Azure Data Transfer API Flow type.
-  final pulumi.Input<ApiFlowOptionsResponse>? apiFlowOptions;
+  final pulumi.Input<ApiFlowOptionsResponse?>? apiFlowOptions;
   /// The connection associated with this flow
-  final pulumi.Input<SelectedResourceResponse>? connection;
+  final pulumi.Input<SelectedResourceResponse?>? connection;
   /// Event Hub Consumer Group
-  final pulumi.Input<String>? consumerGroup;
+  final pulumi.Input<String?>? consumerGroup;
   /// The URI to the customer managed key for this flow
-  final pulumi.Input<String>? customerManagedKeyVaultUri;
+  final pulumi.Input<String?>? customerManagedKeyVaultUri;
   /// Type of data to transfer via the flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final pulumi.Input<String>? dataType;
+  final pulumi.Input<String?>? dataType;
   /// The destination endpoint ports of the stream
-  final pulumi.Input<List<double>>? destinationEndpointPorts;
+  final pulumi.Input<List<double>?>? destinationEndpointPorts;
   /// The destination endpoints of the stream
-  final pulumi.Input<List<String>>? destinationEndpoints;
+  final pulumi.Input<List<String>?>? destinationEndpoints;
   /// Event Hub ID
-  final pulumi.Input<String>? eventHubId;
+  final pulumi.Input<String?>? eventHubId;
   /// Dataflow GUID associated with this flow
   final pulumi.Input<String> flowId;
   /// The flow type for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final pulumi.Input<String>? flowType;
+  final pulumi.Input<String?>? flowType;
   /// Force disablement status of the current flow
   final pulumi.Input<List<String>> forceDisabledStatus;
   /// URI to a Key Vault Secret containing a SAS token.
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Link status of the current flow
   final pulumi.Input<String> linkStatus;
   /// Resource ID of the linked flow
   final pulumi.Input<String> linkedFlowId;
   /// The messaging options for this flow
-  final pulumi.Input<MessagingOptionsResponse>? messagingOptions;
+  final pulumi.Input<MessagingOptionsResponse?>? messagingOptions;
   /// The passphrase used for SRT streams (non-secret)
-  final pulumi.Input<String>? passphrase;
+  final pulumi.Input<String?>? passphrase;
   /// The policies for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// Provisioning state of the flow
   final pulumi.Input<String> provisioningState;
   /// The selected schema for this flow. The property has reached end of life support starting version 2025-05-30-preview. Please create and use a FlowProfile resource instead.
-  final pulumi.Input<SchemaResponse>? schema;
+  final pulumi.Input<SchemaResponse?>? schema;
   /// Service Bus Queue ID
-  final pulumi.Input<String>? serviceBusQueueId;
+  final pulumi.Input<String?>? serviceBusQueueId;
   /// The source IP address and CIDR ranges of the stream
-  final pulumi.Input<StreamSourceAddressesResponse>? sourceAddresses;
+  final pulumi.Input<StreamSourceAddressesResponse?>? sourceAddresses;
   /// Status of the current flow
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Storage Account ID
-  final pulumi.Input<String>? storageAccountId;
+  final pulumi.Input<String?>? storageAccountId;
   /// Storage Account
-  final pulumi.Input<String>? storageAccountName;
+  final pulumi.Input<String?>? storageAccountName;
   /// Storage Container Name
-  final pulumi.Input<String>? storageContainerName;
+  final pulumi.Input<String?>? storageContainerName;
   /// Storage Table Name
-  final pulumi.Input<String>? storageTableName;
+  final pulumi.Input<String?>? storageTableName;
   /// The flow stream identifier
-  final pulumi.Input<String>? streamId;
+  final pulumi.Input<String?>? streamId;
   /// The latency of the stream in milliseconds
-  final pulumi.Input<double>? streamLatency;
+  final pulumi.Input<double?>? streamLatency;
   /// The protocol of the stream
-  final pulumi.Input<String>? streamProtocol;
+  final pulumi.Input<String?>? streamProtocol;
 
   /// Creates a new [FlowPropertieslistListFlowsByPipelineResponse].
   /// [apiFlowOptions] The API Flow configuration options for Azure Data Transfer API Flow type.
@@ -193,7 +193,7 @@ class FlowPropertieslistListFlowsByPipelineResponse {
       storageContainerName: (() { final guardedValue = map['storageContainerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageTableName: (() { final guardedValue = map['storageTableName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streamId: (() { final guardedValue = map['streamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      streamLatency: (() { final guardedValue = map['streamLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      streamLatency: (() { final guardedValue = map['streamLatency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       streamProtocol: (() { final guardedValue = map['streamProtocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

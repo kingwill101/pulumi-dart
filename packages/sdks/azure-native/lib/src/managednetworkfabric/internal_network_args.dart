@@ -13,39 +13,39 @@ import 'internal_network_properties_static_route_configuration.dart';
 /// {@macro pulumi_managednetworkfabric_internal_network_args_doc}
 class InternalNetworkArgs {
   /// Switch configuration description.
-  final pulumi.Input<String>? annotation;
+  final pulumi.Input<String?>? annotation;
   /// BGP configuration properties.
-  final pulumi.Input<InternalNetworkPropertiesBgpConfiguration>? bgpConfiguration;
+  final pulumi.Input<InternalNetworkPropertiesBgpConfiguration?>? bgpConfiguration;
   /// List of Connected IPv4 Subnets.
-  final pulumi.Input<List<ConnectedSubnet>>? connectedIPv4Subnets;
+  final pulumi.Input<List<ConnectedSubnet>?>? connectedIPv4Subnets;
   /// List of connected IPv6 Subnets.
-  final pulumi.Input<List<ConnectedSubnet>>? connectedIPv6Subnets;
+  final pulumi.Input<List<ConnectedSubnet>?>? connectedIPv6Subnets;
   /// Egress Acl. ARM resource ID of Access Control Lists.
-  final pulumi.Input<String>? egressAclId;
+  final pulumi.Input<String?>? egressAclId;
   /// Export Route Policy either IPv4 or IPv6.
-  final pulumi.Input<ExportRoutePolicy>? exportRoutePolicy;
+  final pulumi.Input<ExportRoutePolicy?>? exportRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-  final pulumi.Input<String>? exportRoutePolicyId;
+  final pulumi.Input<String?>? exportRoutePolicyId;
   /// Extension. Example: NoExtension | NPB.
-  final pulumi.Input<String>? extension;
+  final pulumi.Input<dynamic>? extension;
   /// Import Route Policy either IPv4 or IPv6.
-  final pulumi.Input<ImportRoutePolicy>? importRoutePolicy;
+  final pulumi.Input<ImportRoutePolicy?>? importRoutePolicy;
   /// ARM Resource ID of the RoutePolicy. This is used for the backward compatibility.
-  final pulumi.Input<String>? importRoutePolicyId;
+  final pulumi.Input<String?>? importRoutePolicyId;
   /// Ingress Acl. ARM resource ID of Access Control Lists.
-  final pulumi.Input<String>? ingressAclId;
+  final pulumi.Input<String?>? ingressAclId;
   /// Name of the Internal Network.
-  final pulumi.Input<String>? internalNetworkName;
+  final pulumi.Input<String?>? internalNetworkName;
   /// To check whether monitoring of internal network is enabled or not.
-  final pulumi.Input<String>? isMonitoringEnabled;
+  final pulumi.Input<dynamic>? isMonitoringEnabled;
   /// Name of the L3 Isolation Domain.
   final pulumi.Input<String> l3IsolationDomainName;
   /// Maximum transmission unit. Default value is 1500.
-  final pulumi.Input<int>? mtu;
+  final pulumi.Input<int?>? mtu;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Static Route Configuration properties.
-  final pulumi.Input<InternalNetworkPropertiesStaticRouteConfiguration>? staticRouteConfiguration;
+  final pulumi.Input<InternalNetworkPropertiesStaticRouteConfiguration?>? staticRouteConfiguration;
   /// Vlan identifier. Example: 1001.
   final pulumi.Input<int> vlanId;
 
@@ -68,7 +68,7 @@ class InternalNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staticRouteConfiguration] Static Route Configuration properties.
   /// [vlanId] Vlan identifier. Example: 1001.
-  const InternalNetworkArgs({
+  InternalNetworkArgs({
     this.annotation,
     this.bgpConfiguration,
     this.connectedIPv4Subnets,
@@ -76,18 +76,18 @@ class InternalNetworkArgs {
     this.egressAclId,
     this.exportRoutePolicy,
     this.exportRoutePolicyId,
-    this.extension,
+    pulumi.Input<dynamic>? extension,
     this.importRoutePolicy,
     this.importRoutePolicyId,
     this.ingressAclId,
     this.internalNetworkName,
-    this.isMonitoringEnabled,
+    pulumi.Input<dynamic>? isMonitoringEnabled,
     required this.l3IsolationDomainName,
-    this.mtu,
+    pulumi.Input<int?>? mtu,
     required this.resourceGroupName,
     this.staticRouteConfiguration,
     required this.vlanId,
-  });
+  }) : extension = extension ?? pulumi.Input.fromValue('NoExtension'), isMonitoringEnabled = isMonitoringEnabled ?? pulumi.Input.fromValue('False'), mtu = mtu ?? pulumi.Input.fromValue(1500);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -121,17 +121,17 @@ class InternalNetworkArgs {
       egressAclId: (() { final guardedValue = map['egressAclId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       exportRoutePolicy: (() { final guardedValue = map['exportRoutePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExportRoutePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exportRoutePolicyId: (() { final guardedValue = map['exportRoutePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      extension: (() { final guardedValue = map['extension']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       importRoutePolicy: (() { final guardedValue = map['importRoutePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ImportRoutePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       importRoutePolicyId: (() { final guardedValue = map['importRoutePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ingressAclId: (() { final guardedValue = map['ingressAclId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       internalNetworkName: (() { final guardedValue = map['internalNetworkName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      isMonitoringEnabled: (() { final guardedValue = map['isMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isMonitoringEnabled: (() { final guardedValue = map['isMonitoringEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       l3IsolationDomainName: pulumi.Input.fromValue(map['l3IsolationDomainName'] as String),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       staticRouteConfiguration: (() { final guardedValue = map['staticRouteConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InternalNetworkPropertiesStaticRouteConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlanId: pulumi.Input.fromValue(map['vlanId'] as int),
+      vlanId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanId'])),
     );
   }
 }

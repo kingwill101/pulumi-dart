@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The permitted JSON web key operations of the key. For more information, see JsonWebKeyOperation.
-enum JsonWebKeyOperation {
+enum JsonWebKeyOperation implements pulumi.PulumiEnum<String> {
   valueEncrypt("encrypt"),
   valueDecrypt("decrypt"),
   valueSign("sign"),
@@ -10,6 +12,7 @@ enum JsonWebKeyOperation {
   valueRelease("release");
 
   const JsonWebKeyOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static JsonWebKeyOperation fromValue(String value) {

@@ -6,11 +6,11 @@ import 'key_vault_last_access_status_contract_properties_response.dart';
 /// KeyVault contract details.
 class KeyVaultContractPropertiesResponse {
   /// Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
-  final pulumi.Input<String>? identityClientId;
+  final pulumi.Input<String?>? identityClientId;
   /// Last time sync and refresh status of secret from key vault.
-  final pulumi.Input<KeyVaultLastAccessStatusContractPropertiesResponse>? lastStatus;
+  final pulumi.Input<KeyVaultLastAccessStatusContractPropertiesResponse?>? lastStatus;
   /// Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
-  final pulumi.Input<String>? secretIdentifier;
+  final pulumi.Input<String?>? secretIdentifier;
 
   /// Creates a new [KeyVaultContractPropertiesResponse].
   /// [identityClientId] Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.

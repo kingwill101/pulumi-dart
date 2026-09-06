@@ -276,4 +276,33 @@ class Application extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [Application] resource.
+  Application.reference(String urn)
+    : super(
+        'azure-native:desktopvirtualization:Application',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationType = registerOutput<String?>('applicationType');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    commandLineArguments = registerOutput<String?>('commandLineArguments');
+    commandLineSetting = registerOutput<String>('commandLineSetting');
+    description = registerOutput<String?>('description');
+    filePath = registerOutput<String?>('filePath');
+    friendlyName = registerOutput<String?>('friendlyName');
+    iconContent = registerOutput<String>('iconContent');
+    iconHash = registerOutput<String>('iconHash');
+    iconIndex = registerOutput<int?>('iconIndex');
+    iconPath = registerOutput<String?>('iconPath');
+    msixPackageApplicationId = registerOutput<String?>('msixPackageApplicationId');
+    msixPackageFamilyName = registerOutput<String?>('msixPackageFamilyName');
+    this.name = registerOutput<String>('name');
+    objectId = registerOutput<String>('objectId');
+    showInPortal = registerOutput<bool?>('showInPortal');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

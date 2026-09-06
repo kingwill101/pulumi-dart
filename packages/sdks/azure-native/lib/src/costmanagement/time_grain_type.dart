@@ -1,3 +1,5 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The time covered by a budget. Tracking of the amount will be reset based on the time grain.
 ///
 /// Supported for CategoryType(s): Cost, ReservationUtilization.
@@ -18,7 +20,7 @@
 /// - Last30Days
 ///
 /// Required for CategoryType(s): Cost, ReservationUtilization.
-enum TimeGrainType {
+enum TimeGrainType implements pulumi.PulumiEnum<String> {
   monthly("Monthly"),
   quarterly("Quarterly"),
   annually("Annually"),
@@ -29,6 +31,7 @@ enum TimeGrainType {
   last30Days("Last30Days");
 
   const TimeGrainType(this.wireValue);
+  @override
   final String wireValue;
 
   static TimeGrainType fromValue(String value) {

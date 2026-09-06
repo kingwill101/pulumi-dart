@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rolling input data definition.
 class RollingInputDataResponse {
   /// Mapping of column names to special uses.
-  final pulumi.Input<Map<String, String>>? columns;
+  final pulumi.Input<Map<String, String>?>? columns;
   /// The context metadata of the data source.
-  final pulumi.Input<String>? dataContext;
+  final pulumi.Input<String?>? dataContext;
   /// Monitoring input data type enum.
   /// Expected value is 'Rolling'.
   final pulumi.Input<String> inputDataType;
   /// [Required] Specifies the type of job.
   final pulumi.Input<String> jobInputType;
   /// Reference to the component asset used to preprocess the data.
-  final pulumi.Input<String>? preprocessingComponentId;
+  final pulumi.Input<String?>? preprocessingComponentId;
   /// [Required] Input Asset URI.
   final pulumi.Input<String> uri;
   /// [Required] The time offset between the end of the data window and the monitor's current run time.

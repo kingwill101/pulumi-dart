@@ -11,9 +11,9 @@ class MoveResourceArgs {
   /// The Move Collection Name.
   final pulumi.Input<String> moveCollectionName;
   /// The Move Resource Name.
-  final pulumi.Input<String>? moveResourceName;
+  final pulumi.Input<String?>? moveResourceName;
   /// Defines the move resource properties.
-  final pulumi.Input<MoveResourceProperties>? properties;
+  final pulumi.Input<MoveResourceProperties?>? properties;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
 

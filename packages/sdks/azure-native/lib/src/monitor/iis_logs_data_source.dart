@@ -5,10 +5,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Enables IIS logs to be collected by this data collection rule.
 class IisLogsDataSource {
   /// Absolute paths file location
-  final pulumi.Input<List<String>>? logDirectories;
+  final pulumi.Input<List<String>?>? logDirectories;
   /// A friendly name for the data source.
   /// This name should be unique across all data sources (regardless of type) within the data collection rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// IIS streams
   final pulumi.Input<List<String>> streams;
 

@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class QueueSettingsResponse {
   /// Enum to determine the job tier.
-  final pulumi.Input<String>? jobTier;
+  final pulumi.Input<String?>? jobTier;
 
   /// Creates a new [QueueSettingsResponse].
   /// [jobTier] Enum to determine the job tier.
-  const QueueSettingsResponse({
-    this.jobTier,
-  });
+  QueueSettingsResponse({
+    pulumi.Input<String?>? jobTier,
+  }) : jobTier = jobTier ?? pulumi.Input.fromValue('Null');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for servers Arc auto provisioning for a given environment
 class ArcAutoProvisioningConfigurationResponse {
   /// Optional Arc private link scope resource id to link the Arc agent
-  final pulumi.Input<String>? privateLinkScope;
+  final pulumi.Input<String?>? privateLinkScope;
   /// Optional HTTP proxy endpoint to use for the Arc agent
-  final pulumi.Input<String>? proxy;
+  final pulumi.Input<String?>? proxy;
 
   /// Creates a new [ArcAutoProvisioningConfigurationResponse].
   /// [privateLinkScope] Optional Arc private link scope resource id to link the Arc agent

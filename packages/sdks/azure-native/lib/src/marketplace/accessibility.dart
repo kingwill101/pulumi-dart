@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Plan accessibility
-enum Accessibility {
+enum Accessibility implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valuePublic("Public"),
   valuePrivateTenantOnLevel("PrivateTenantOnLevel"),
   valuePrivateSubscriptionOnLevel("PrivateSubscriptionOnLevel");
 
   const Accessibility(this.wireValue);
+  @override
   final String wireValue;
 
   static Accessibility fromValue(String value) {

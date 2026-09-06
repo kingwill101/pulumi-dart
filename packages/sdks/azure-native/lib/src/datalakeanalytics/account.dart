@@ -1,5 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'account_args.dart';
+import 'compute_policy_response.dart';
+import 'data_lake_store_account_information_response.dart';
+import 'firewall_rule_response.dart';
+import 'hive_metastore_response.dart';
+import 'storage_account_information_response.dart';
+import 'virtual_network_rule_response.dart';
 
 /// A Data Lake Analytics account object, containing all information associated with the named Data Lake Analytics account.
 ///
@@ -405,13 +411,13 @@ class Account extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of compute policies associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> computePolicies;
+  late final pulumi.Output<List<ComputePolicyResponse>> computePolicies;
   /// The account creation time.
   late final pulumi.Output<String> creationTime;
   /// The commitment tier in use for the current month.
   late final pulumi.Output<String> currentTier;
   /// The list of Data Lake Store accounts associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> dataLakeStoreAccounts;
+  late final pulumi.Output<List<DataLakeStoreAccountInformationResponse>> dataLakeStoreAccounts;
   /// The current state of the DebugDataAccessLevel for this account.
   late final pulumi.Output<String> debugDataAccessLevel;
   /// The default Data Lake Store account associated with this account.
@@ -423,11 +429,11 @@ class Account extends pulumi.CustomResource {
   /// The current state of allowing or disallowing IPs originating within Azure through the firewall. If the firewall is disabled, this is not enforced.
   late final pulumi.Output<String?> firewallAllowAzureIps;
   /// The list of firewall rules associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> firewallRules;
+  late final pulumi.Output<List<FirewallRuleResponse>> firewallRules;
   /// The current state of the IP address firewall for this account.
   late final pulumi.Output<String?> firewallState;
   /// The list of hiveMetastores associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> hiveMetastores;
+  late final pulumi.Output<List<HiveMetastoreResponse>> hiveMetastores;
   /// The account last modified time.
   late final pulumi.Output<String> lastModifiedTime;
   /// The resource location.
@@ -453,13 +459,13 @@ class Account extends pulumi.CustomResource {
   /// The provisioning status of the Data Lake Analytics account.
   late final pulumi.Output<String> provisioningState;
   /// The list of Data Lake Store accounts associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>?> publicDataLakeStoreAccounts;
+  late final pulumi.Output<List<DataLakeStoreAccountInformationResponse>?> publicDataLakeStoreAccounts;
   /// The number of days that job metadata is retained.
   late final pulumi.Output<int?> queryStoreRetention;
   /// The state of the Data Lake Analytics account.
   late final pulumi.Output<String> state;
   /// The list of Azure Blob Storage accounts associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> storageAccounts;
+  late final pulumi.Output<List<StorageAccountInformationResponse>> storageAccounts;
   /// The system defined maximum supported degree of parallelism for this account, which restricts the maximum value of parallelism the user can set for the account.
   late final pulumi.Output<int> systemMaxDegreeOfParallelism;
   /// The system defined maximum supported jobs running under the account at the same time, which restricts the maximum number of running jobs the user can set for the account.
@@ -469,7 +475,7 @@ class Account extends pulumi.CustomResource {
   /// The resource type.
   late final pulumi.Output<String> type;
   /// The list of virtualNetwork rules associated with this account.
-  late final pulumi.Output<List<Map<String, dynamic>>> virtualNetworkRules;
+  late final pulumi.Output<List<VirtualNetworkRuleResponse>> virtualNetworkRules;
 
   /// Creates a new [Account].
   /// [name] The Pulumi resource name.
@@ -487,18 +493,18 @@ class Account extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    computePolicies = registerOutput<List<Map<String, dynamic>>>('computePolicies');
+    computePolicies = registerOutput<List<ComputePolicyResponse>>('computePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ComputePolicyResponse>(guardedValue, (value) => ComputePolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     currentTier = registerOutput<String>('currentTier');
-    dataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>>('dataLakeStoreAccounts');
+    dataLakeStoreAccounts = registerOutput<List<DataLakeStoreAccountInformationResponse>>('dataLakeStoreAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeStoreAccountInformationResponse>(guardedValue, (value) => DataLakeStoreAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     debugDataAccessLevel = registerOutput<String>('debugDataAccessLevel');
     defaultDataLakeStoreAccount = registerOutput<String>('defaultDataLakeStoreAccount');
     defaultDataLakeStoreAccountType = registerOutput<String>('defaultDataLakeStoreAccountType');
     endpoint = registerOutput<String>('endpoint');
     firewallAllowAzureIps = registerOutput<String?>('firewallAllowAzureIps');
-    firewallRules = registerOutput<List<Map<String, dynamic>>>('firewallRules');
+    firewallRules = registerOutput<List<FirewallRuleResponse>>('firewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRuleResponse>(guardedValue, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     firewallState = registerOutput<String?>('firewallState');
-    hiveMetastores = registerOutput<List<Map<String, dynamic>>>('hiveMetastores');
+    hiveMetastores = registerOutput<List<HiveMetastoreResponse>>('hiveMetastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveMetastoreResponse>(guardedValue, (value) => HiveMetastoreResponse.fromMap((value as Map).cast<String, dynamic>())); });
     lastModifiedTime = registerOutput<String>('lastModifiedTime');
     location = registerOutput<String>('location');
     maxActiveJobCountPerUser = registerOutput<int>('maxActiveJobCountPerUser');
@@ -511,14 +517,60 @@ class Account extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     newTier = registerOutput<String?>('newTier');
     provisioningState = registerOutput<String>('provisioningState');
-    publicDataLakeStoreAccounts = registerOutput<List<Map<String, dynamic>>?>('publicDataLakeStoreAccounts');
+    publicDataLakeStoreAccounts = registerOutput<List<DataLakeStoreAccountInformationResponse>?>('publicDataLakeStoreAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeStoreAccountInformationResponse>(guardedValue, (value) => DataLakeStoreAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     queryStoreRetention = registerOutput<int?>('queryStoreRetention');
     state = registerOutput<String>('state');
-    storageAccounts = registerOutput<List<Map<String, dynamic>>>('storageAccounts');
+    storageAccounts = registerOutput<List<StorageAccountInformationResponse>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageAccountInformationResponse>(guardedValue, (value) => StorageAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemMaxDegreeOfParallelism = registerOutput<int>('systemMaxDegreeOfParallelism');
     systemMaxJobCount = registerOutput<int>('systemMaxJobCount');
-    tags = registerOutput<Map<String, String>>('tags');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    virtualNetworkRules = registerOutput<List<Map<String, dynamic>>>('virtualNetworkRules');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Account] resource.
+  Account.reference(String urn)
+    : super(
+        'azure-native:datalakeanalytics:Account',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computePolicies = registerOutput<List<ComputePolicyResponse>>('computePolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ComputePolicyResponse>(guardedValue, (value) => ComputePolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTime = registerOutput<String>('creationTime');
+    currentTier = registerOutput<String>('currentTier');
+    dataLakeStoreAccounts = registerOutput<List<DataLakeStoreAccountInformationResponse>>('dataLakeStoreAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeStoreAccountInformationResponse>(guardedValue, (value) => DataLakeStoreAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    debugDataAccessLevel = registerOutput<String>('debugDataAccessLevel');
+    defaultDataLakeStoreAccount = registerOutput<String>('defaultDataLakeStoreAccount');
+    defaultDataLakeStoreAccountType = registerOutput<String>('defaultDataLakeStoreAccountType');
+    endpoint = registerOutput<String>('endpoint');
+    firewallAllowAzureIps = registerOutput<String?>('firewallAllowAzureIps');
+    firewallRules = registerOutput<List<FirewallRuleResponse>>('firewallRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallRuleResponse>(guardedValue, (value) => FirewallRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    firewallState = registerOutput<String?>('firewallState');
+    hiveMetastores = registerOutput<List<HiveMetastoreResponse>>('hiveMetastores', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HiveMetastoreResponse>(guardedValue, (value) => HiveMetastoreResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    lastModifiedTime = registerOutput<String>('lastModifiedTime');
+    location = registerOutput<String>('location');
+    maxActiveJobCountPerUser = registerOutput<int>('maxActiveJobCountPerUser');
+    maxDegreeOfParallelism = registerOutput<int?>('maxDegreeOfParallelism');
+    maxDegreeOfParallelismPerJob = registerOutput<int?>('maxDegreeOfParallelismPerJob');
+    maxJobCount = registerOutput<int?>('maxJobCount');
+    maxJobRunningTimeInMin = registerOutput<int>('maxJobRunningTimeInMin');
+    maxQueuedJobCountPerUser = registerOutput<int>('maxQueuedJobCountPerUser');
+    minPriorityPerJob = registerOutput<int>('minPriorityPerJob');
+    this.name = registerOutput<String>('name');
+    newTier = registerOutput<String?>('newTier');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicDataLakeStoreAccounts = registerOutput<List<DataLakeStoreAccountInformationResponse>?>('publicDataLakeStoreAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeStoreAccountInformationResponse>(guardedValue, (value) => DataLakeStoreAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    queryStoreRetention = registerOutput<int?>('queryStoreRetention');
+    state = registerOutput<String>('state');
+    storageAccounts = registerOutput<List<StorageAccountInformationResponse>>('storageAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StorageAccountInformationResponse>(guardedValue, (value) => StorageAccountInformationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemMaxDegreeOfParallelism = registerOutput<int>('systemMaxDegreeOfParallelism');
+    systemMaxJobCount = registerOutput<int>('systemMaxJobCount');
+    tags = registerOutput<Map<String, String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    virtualNetworkRules = registerOutput<List<VirtualNetworkRuleResponse>>('virtualNetworkRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkRuleResponse>(guardedValue, (value) => VirtualNetworkRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

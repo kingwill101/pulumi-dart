@@ -6,23 +6,23 @@ import 'application_version_response.dart';
 /// Result data returned by listManufacturingDataServiceAvailableVersions.
 class ListManufacturingDataServiceAvailableVersionsResult {
   /// The list of versions
-  final List<ApplicationVersionResponse> versions;
+  final List<ApplicationVersionResponse>? versions;
 
   /// Creates a new [ListManufacturingDataServiceAvailableVersionsResult].
   /// [versions] The list of versions
   const ListManufacturingDataServiceAvailableVersionsResult({
-    required this.versions,
+    this.versions,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'versions': pulumi.Input.encodeList<ApplicationVersionResponse, Map<String, dynamic>>(versions, (value) => value.toMap()),
+      'versions': ?(() { final guardedValue = versions; if (guardedValue == null) return null; return pulumi.Input.encodeList<ApplicationVersionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListManufacturingDataServiceAvailableVersionsResult.fromMap(Map<String, dynamic> map) {
     return ListManufacturingDataServiceAvailableVersionsResult(
-      versions: pulumi.Input.decodeList<ApplicationVersionResponse>(map['versions']!, (value) => ApplicationVersionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      versions: (() { final guardedValue = map['versions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationVersionResponse>(guardedValue, (value) => ApplicationVersionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

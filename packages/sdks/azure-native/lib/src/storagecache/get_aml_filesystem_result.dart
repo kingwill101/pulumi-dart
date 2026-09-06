@@ -13,43 +13,43 @@ import 'system_data_response.dart';
 /// Result data returned by getAmlFilesystem.
 class GetAmlFilesystemResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Client information for the AML file system.
-  final AmlFilesystemClientInfoResponse clientInfo;
+  final AmlFilesystemClientInfoResponse? clientInfo;
   /// Specifies encryption settings of the AML file system.
   final AmlFilesystemEncryptionSettingsResponse? encryptionSettings;
   /// Subnet used for managing the AML file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the VNET's address space.
-  final String filesystemSubnet;
+  final String? filesystemSubnet;
   /// Health of the AML file system.
-  final AmlFilesystemHealthResponse health;
+  final AmlFilesystemHealthResponse? health;
   /// Hydration and archive settings and status
   final AmlFilesystemResponseHsm? hsm;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The managed identity used by the AML file system, if configured.
   final AmlFilesystemIdentityResponse? identity;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// Start time of a 30-minute weekly maintenance window.
-  final AmlFilesystemResponseMaintenanceWindow maintenanceWindow;
+  final AmlFilesystemResponseMaintenanceWindow? maintenanceWindow;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// ARM provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Specifies root squash settings of the AML file system.
   final AmlFilesystemRootSquashSettingsResponse? rootSquashSettings;
   /// SKU for the resource.
   final SkuNameResponse? sku;
   /// The size of the AML file system, in TiB. This might be rounded up.
-  final double storageCapacityTiB;
+  final double? storageCapacityTiB;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Throughput provisioned in MB per sec, calculated as storageCapacityTiB * per-unit storage throughput
-  final int throughputProvisionedMBps;
+  final int? throughputProvisionedMBps;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Availability zones for resources. This field should only contain a single element in the array.
   final List<String>? zones;
 
@@ -75,74 +75,74 @@ class GetAmlFilesystemResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] Availability zones for resources. This field should only contain a single element in the array.
   const GetAmlFilesystemResult({
-    required this.azureApiVersion,
-    required this.clientInfo,
+    this.azureApiVersion,
+    this.clientInfo,
     this.encryptionSettings,
-    required this.filesystemSubnet,
-    required this.health,
+    this.filesystemSubnet,
+    this.health,
     this.hsm,
-    required this.id,
+    this.id,
     this.identity,
-    required this.location,
-    required this.maintenanceWindow,
-    required this.name,
-    required this.provisioningState,
+    this.location,
+    this.maintenanceWindow,
+    this.name,
+    this.provisioningState,
     this.rootSquashSettings,
     this.sku,
-    required this.storageCapacityTiB,
-    required this.systemData,
+    this.storageCapacityTiB,
+    this.systemData,
     this.tags,
-    required this.throughputProvisionedMBps,
-    required this.type,
+    this.throughputProvisionedMBps,
+    this.type,
     this.zones,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'clientInfo': clientInfo.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'clientInfo': ?clientInfo?.toMap(),
       'encryptionSettings': ?encryptionSettings?.toMap(),
-      'filesystemSubnet': filesystemSubnet,
-      'health': health.toMap(),
+      'filesystemSubnet': ?filesystemSubnet,
+      'health': ?health?.toMap(),
       'hsm': ?hsm?.toMap(),
-      'id': id,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'location': location,
-      'maintenanceWindow': maintenanceWindow.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
+      'location': ?location,
+      'maintenanceWindow': ?maintenanceWindow?.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'rootSquashSettings': ?rootSquashSettings?.toMap(),
       'sku': ?sku?.toMap(),
-      'storageCapacityTiB': storageCapacityTiB,
-      'systemData': systemData.toMap(),
+      'storageCapacityTiB': ?storageCapacityTiB,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'throughputProvisionedMBps': throughputProvisionedMBps,
-      'type': type,
+      'throughputProvisionedMBps': ?throughputProvisionedMBps,
+      'type': ?type,
       'zones': ?zones,
     };
   }
 
   factory GetAmlFilesystemResult.fromMap(Map<String, dynamic> map) {
     return GetAmlFilesystemResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      clientInfo: AmlFilesystemClientInfoResponse.fromMap((map['clientInfo']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      clientInfo: (() { final guardedValue = map['clientInfo']; if (guardedValue == null) return null; return AmlFilesystemClientInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return AmlFilesystemEncryptionSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      filesystemSubnet: map['filesystemSubnet'] as String,
-      health: AmlFilesystemHealthResponse.fromMap((map['health']! as Map).cast<String, dynamic>()),
+      filesystemSubnet: (() { final guardedValue = map['filesystemSubnet']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      health: (() { final guardedValue = map['health']; if (guardedValue == null) return null; return AmlFilesystemHealthResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       hsm: (() { final guardedValue = map['hsm']; if (guardedValue == null) return null; return AmlFilesystemResponseHsm.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return AmlFilesystemIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      maintenanceWindow: AmlFilesystemResponseMaintenanceWindow.fromMap((map['maintenanceWindow']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return AmlFilesystemResponseMaintenanceWindow.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       rootSquashSettings: (() { final guardedValue = map['rootSquashSettings']; if (guardedValue == null) return null; return AmlFilesystemRootSquashSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return SkuNameResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      storageCapacityTiB: map['storageCapacityTiB'] as double,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      storageCapacityTiB: (() { final guardedValue = map['storageCapacityTiB']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      throughputProvisionedMBps: map['throughputProvisionedMBps'] as int,
-      type: map['type'] as String,
+      throughputProvisionedMBps: (() { final guardedValue = map['throughputProvisionedMBps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

@@ -27,15 +27,15 @@ class OrderItemDetailsResponse {
   /// List of parent RP details supported for configuration.
   final pulumi.Input<List<ResourceProviderDetailsResponse>> managementRpDetailsList;
   /// Additional notification email list.
-  final pulumi.Input<List<String>>? notificationEmailList;
+  final pulumi.Input<List<String>?>? notificationEmailList;
   /// Defines the mode of the Order item.
-  final pulumi.Input<String>? orderItemMode;
+  final pulumi.Input<String?>? orderItemMode;
   /// Order item status history.
   final pulumi.Input<List<StageDetailsResponse>> orderItemStageHistory;
   /// Order item type.
   final pulumi.Input<String> orderItemType;
   /// Customer notification Preferences.
-  final pulumi.Input<PreferencesResponse>? preferences;
+  final pulumi.Input<PreferencesResponse?>? preferences;
   /// Represents product details.
   final pulumi.Input<ProductDetailsResponse> productDetails;
   /// Return reason.
@@ -45,7 +45,7 @@ class OrderItemDetailsResponse {
   /// Reverse Package Shipping details.
   final pulumi.Input<ReverseShippingDetailsResponse> reverseShippingDetails;
   /// Site Related Details.
-  final pulumi.Input<SiteDetailsResponse>? siteDetails;
+  final pulumi.Input<SiteDetailsResponse?>? siteDetails;
 
   /// Creates a new [OrderItemDetailsResponse].
   /// [cancellationReason] Cancellation reason.

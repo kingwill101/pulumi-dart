@@ -6,13 +6,13 @@ import 'metric_transformation.dart';
 /// Definition of awsLogsMetricFilter
 class AwsLogsMetricFilterProperties {
   /// The name of the metric filter.
-  final pulumi.Input<String>? filterName;
+  final pulumi.Input<String?>? filterName;
   /// A filter pattern for extracting metric data out of ingested log events. For more information, see [Filter and Pattern Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/FilterAndPatternSyntax.html).
-  final pulumi.Input<String>? filterPattern;
+  final pulumi.Input<String?>? filterPattern;
   /// The name of an existing log group that you want to associate with this metric filter.
-  final pulumi.Input<String>? logGroupName;
+  final pulumi.Input<String?>? logGroupName;
   /// The metric transformations.
-  final pulumi.Input<List<MetricTransformation>>? metricTransformations;
+  final pulumi.Input<List<MetricTransformation>?>? metricTransformations;
 
   /// Creates a new [AwsLogsMetricFilterProperties].
   /// [filterName] The name of the metric filter.

@@ -13,11 +13,11 @@ class CloudEdgeManagementRoleArgs {
   /// Expected value is 'CloudEdgeManagement'.
   final pulumi.Input<String> kind;
   /// The role name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Role status.
-  final pulumi.Input<String> roleStatus;
+  final pulumi.Input<dynamic> roleStatus;
 
   /// Creates a new [CloudEdgeManagementRoleArgs].
   /// [deviceName] The device name.
@@ -49,7 +49,7 @@ class CloudEdgeManagementRoleArgs {
       kind: pulumi.Input.fromValue(map['kind'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      roleStatus: pulumi.Input.fromValue(map['roleStatus'] as String),
+      roleStatus: pulumi.Input.fromValue(map['roleStatus']),
     );
   }
 }

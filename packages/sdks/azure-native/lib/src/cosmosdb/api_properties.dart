@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApiProperties {
   /// Describes the version of the MongoDB account.
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<dynamic>? serverVersion;
 
   /// Creates a new [ApiProperties].
   /// [serverVersion] Describes the version of the MongoDB account.
@@ -20,7 +20,7 @@ class ApiProperties {
 
   factory ApiProperties.fromMap(Map<String, dynamic> map) {
     return ApiProperties(
-      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

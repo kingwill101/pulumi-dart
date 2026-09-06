@@ -8,15 +8,15 @@ import 'key_vault_properties_response.dart';
 /// The encryption settings on the storage account.
 class EncryptionResponse {
   /// The identity to be used with service-side encryption at rest.
-  final pulumi.Input<EncryptionIdentityResponse>? encryptionIdentity;
+  final pulumi.Input<EncryptionIdentityResponse?>? encryptionIdentity;
   /// The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Storage, Microsoft.Keyvault
-  final pulumi.Input<String>? keySource;
+  final pulumi.Input<String?>? keySource;
   /// Properties provided by key vault.
-  final pulumi.Input<KeyVaultPropertiesResponse>? keyVaultProperties;
+  final pulumi.Input<KeyVaultPropertiesResponse?>? keyVaultProperties;
   /// A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
-  final pulumi.Input<bool>? requireInfrastructureEncryption;
+  final pulumi.Input<bool?>? requireInfrastructureEncryption;
   /// List of services which support encryption.
-  final pulumi.Input<EncryptionServicesResponse>? services;
+  final pulumi.Input<EncryptionServicesResponse?>? services;
 
   /// Creates a new [EncryptionResponse].
   /// [encryptionIdentity] The identity to be used with service-side encryption at rest.
@@ -24,13 +24,13 @@ class EncryptionResponse {
   /// [keyVaultProperties] Properties provided by key vault.
   /// [requireInfrastructureEncryption] A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
   /// [services] List of services which support encryption.
-  const EncryptionResponse({
+  EncryptionResponse({
     this.encryptionIdentity,
-    this.keySource,
+    pulumi.Input<String?>? keySource,
     this.keyVaultProperties,
     this.requireInfrastructureEncryption,
     this.services,
-  });
+  }) : keySource = keySource ?? pulumi.Input.fromValue('Microsoft.Storage');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

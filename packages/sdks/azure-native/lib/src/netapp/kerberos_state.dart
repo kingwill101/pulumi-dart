@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describe if a cache is Kerberos enabled.
-enum KerberosState {
+enum KerberosState implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const KerberosState(this.wireValue);
+  @override
   final String wireValue;
 
   static KerberosState fromValue(String value) {

@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specifies set of extensions that should be installed onto the virtual machines.
 class VMSSExtensionResponse {
   /// Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  final pulumi.Input<bool>? autoUpgradeMinorVersion;
+  final pulumi.Input<bool?>? autoUpgradeMinorVersion;
   /// Indicates whether the extension should be automatically upgraded by the platform if there is a newer version of the extension available.
-  final pulumi.Input<bool>? enableAutomaticUpgrade;
+  final pulumi.Input<bool?>? enableAutomaticUpgrade;
   /// If a value is provided and is different from the previous value, the extension handler will be forced to update even if the extension configuration has not changed.
-  final pulumi.Input<String>? forceUpdateTag;
+  final pulumi.Input<String?>? forceUpdateTag;
   /// The name of the extension.
   final pulumi.Input<String> name;
   /// The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
   final pulumi.Input<dynamic>? protectedSettings;
   /// Collection of extension names after which this extension needs to be provisioned.
-  final pulumi.Input<List<String>>? provisionAfterExtensions;
+  final pulumi.Input<List<String>?>? provisionAfterExtensions;
   /// The provisioning state, which only appears in the response.
   final pulumi.Input<String> provisioningState;
   /// The name of the extension handler publisher.
@@ -23,7 +23,7 @@ class VMSSExtensionResponse {
   /// Json formatted public settings for the extension.
   final pulumi.Input<dynamic>? settings;
   /// Indicates the setup order for the extension.
-  final pulumi.Input<List<String>>? setupOrder;
+  final pulumi.Input<List<String>?>? setupOrder;
   /// Specifies the type of the extension; an example is "CustomScriptExtension".
   final pulumi.Input<String> type;
   /// Specifies the version of the script handler.

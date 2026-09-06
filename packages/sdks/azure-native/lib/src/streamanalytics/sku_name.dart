@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The name of the SKU. Required on PUT (CreateOrReplace) requests.
-enum SkuName {
+enum SkuName implements pulumi.PulumiEnum<String> {
   valueStandard("Standard");
 
   const SkuName(this.wireValue);
+  @override
   final String wireValue;
 
   static SkuName fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The authentication info when authType is servicePrincipal certificate
 class ServicePrincipalCertificateAuthInfo {
   /// Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
-  final pulumi.Input<String>? authMode;
+  final pulumi.Input<dynamic>? authMode;
   /// The authentication type.
   /// Expected value is 'servicePrincipalCertificate'.
   final pulumi.Input<String> authType;
@@ -14,11 +14,11 @@ class ServicePrincipalCertificateAuthInfo {
   /// Application clientId for servicePrincipal auth.
   final pulumi.Input<String> clientId;
   /// Indicates whether to clean up previous operation when Linker is updating or deleting
-  final pulumi.Input<String>? deleteOrUpdateBehavior;
+  final pulumi.Input<dynamic>? deleteOrUpdateBehavior;
   /// Principal Id for servicePrincipal auth.
   final pulumi.Input<String> principalId;
   /// Optional, this value specifies the Azure roles to be assigned. Automatically
-  final pulumi.Input<List<String>>? roles;
+  final pulumi.Input<List<String>?>? roles;
 
   /// Creates a new [ServicePrincipalCertificateAuthInfo].
   /// [authMode] Optional. Indicates how to configure authentication. If optInAllAuth, service linker configures authentication such as enabling identity on source resource and granting RBAC roles. If optOutAllAuth, opt out authentication setup. Default is optInAllAuth.
@@ -52,11 +52,11 @@ class ServicePrincipalCertificateAuthInfo {
 
   factory ServicePrincipalCertificateAuthInfo.fromMap(Map<String, dynamic> map) {
     return ServicePrincipalCertificateAuthInfo(
-      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      authMode: (() { final guardedValue = map['authMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       authType: pulumi.Input.fromValue(map['authType'] as String),
       certificate: pulumi.Input.fromValue(map['certificate'] as String),
       clientId: pulumi.Input.fromValue(map['clientId'] as String),
-      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deleteOrUpdateBehavior: (() { final guardedValue = map['deleteOrUpdateBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       principalId: pulumi.Input.fromValue(map['principalId'] as String),
       roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

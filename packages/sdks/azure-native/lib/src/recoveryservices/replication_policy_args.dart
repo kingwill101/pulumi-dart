@@ -9,9 +9,9 @@ import 'create_policy_input_properties.dart';
 /// {@macro pulumi_recoveryservices_replication_policy_args_doc}
 class ReplicationPolicyArgs {
   /// Replication policy name.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// Policy creation properties.
-  final pulumi.Input<CreatePolicyInputProperties>? properties;
+  final pulumi.Input<CreatePolicyInputProperties?>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

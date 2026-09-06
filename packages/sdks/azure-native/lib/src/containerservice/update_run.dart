@@ -359,4 +359,25 @@ class UpdateRun extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     updateStrategyId = registerOutput<String?>('updateStrategyId');
   }
+
+  /// Creates a typed reference to an existing [UpdateRun] resource.
+  UpdateRun.reference(String urn)
+    : super(
+        'azure-native:containerservice:UpdateRun',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    eTag = registerOutput<String>('eTag');
+    managedClusterUpdate = registerOutput<ManagedClusterUpdateResponse>('managedClusterUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedClusterUpdateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    status = registerOutput<UpdateRunStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateRunStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    strategy = registerOutput<UpdateRunStrategyResponse?>('strategy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateRunStrategyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateStrategyId = registerOutput<String?>('updateStrategyId');
+  }
 }

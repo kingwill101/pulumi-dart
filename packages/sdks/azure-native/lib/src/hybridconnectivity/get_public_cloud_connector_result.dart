@@ -6,27 +6,27 @@ import 'system_data_response.dart';
 /// Result data returned by getPublicCloudConnector.
 class GetPublicCloudConnectorResult {
   /// Cloud profile for AWS.
-  final AwsCloudProfileResponse awsCloudProfile;
+  final AwsCloudProfileResponse? awsCloudProfile;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Connector primary identifier.
-  final String connectorPrimaryIdentifier;
+  final String? connectorPrimaryIdentifier;
   /// Host cloud the public cloud connector.
-  final String hostType;
+  final String? hostType;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetPublicCloudConnectorResult].
   /// [awsCloudProfile] Cloud profile for AWS.
@@ -41,48 +41,48 @@ class GetPublicCloudConnectorResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetPublicCloudConnectorResult({
-    required this.awsCloudProfile,
-    required this.azureApiVersion,
-    required this.connectorPrimaryIdentifier,
-    required this.hostType,
-    required this.id,
-    required this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.awsCloudProfile,
+    this.azureApiVersion,
+    this.connectorPrimaryIdentifier,
+    this.hostType,
+    this.id,
+    this.location,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'awsCloudProfile': awsCloudProfile.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'connectorPrimaryIdentifier': connectorPrimaryIdentifier,
-      'hostType': hostType,
-      'id': id,
-      'location': location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'awsCloudProfile': ?awsCloudProfile?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'connectorPrimaryIdentifier': ?connectorPrimaryIdentifier,
+      'hostType': ?hostType,
+      'id': ?id,
+      'location': ?location,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetPublicCloudConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetPublicCloudConnectorResult(
-      awsCloudProfile: AwsCloudProfileResponse.fromMap((map['awsCloudProfile']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
-      connectorPrimaryIdentifier: map['connectorPrimaryIdentifier'] as String,
-      hostType: map['hostType'] as String,
-      id: map['id'] as String,
-      location: map['location'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      awsCloudProfile: (() { final guardedValue = map['awsCloudProfile']; if (guardedValue == null) return null; return AwsCloudProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      connectorPrimaryIdentifier: (() { final guardedValue = map['connectorPrimaryIdentifier']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostType: (() { final guardedValue = map['hostType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,59 +9,59 @@ import 'system_data_response.dart';
 /// Result data returned by getStorageAppliance.
 class GetStorageApplianceResult {
   /// The credentials of the administrative interface on this storage appliance.
-  final AdministrativeCredentialsResponse administratorCredentials;
+  final AdministrativeCredentialsResponse? administratorCredentials;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The total capacity of the storage appliance. Measured in GiB.
-  final double capacity;
+  final double? capacity;
   /// The amount of storage consumed.
-  final double capacityUsed;
+  final double? capacityUsed;
   /// The resource ID of the cluster this storage appliance is associated with. Measured in GiB.
-  final String clusterId;
+  final String? clusterId;
   /// The detailed status of the storage appliance.
-  final String detailedStatus;
+  final String? detailedStatus;
   /// The descriptive message about the current detailed status.
-  final String detailedStatusMessage;
+  final String? detailedStatusMessage;
   /// Resource ETag.
-  final String etag;
+  final String? etag;
   /// The extended location of the cluster associated with the resource.
-  final ExtendedLocationResponse extendedLocation;
+  final ExtendedLocationResponse? extendedLocation;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The endpoint for the management interface of the storage appliance.
-  final String managementIpv4Address;
+  final String? managementIpv4Address;
   /// The manufacturer of the storage appliance.
-  final String manufacturer;
+  final String? manufacturer;
   /// The model of the storage appliance.
-  final String model;
+  final String? model;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioning state of the storage appliance.
-  final String provisioningState;
+  final String? provisioningState;
   /// The resource ID of the rack where this storage appliance resides.
-  final String rackId;
+  final String? rackId;
   /// The slot the storage appliance is in the rack based on the BOM configuration.
-  final double rackSlot;
+  final double? rackSlot;
   /// The indicator of whether the storage appliance supports remote vendor management.
-  final String remoteVendorManagementFeature;
+  final String? remoteVendorManagementFeature;
   /// The indicator of whether the remote vendor management feature is enabled or disabled, or unsupported if it is an unsupported feature.
-  final String remoteVendorManagementStatus;
+  final String? remoteVendorManagementStatus;
   /// The list of statuses that represent secret rotation activity.
-  final List<SecretRotationStatusResponse> secretRotationStatus;
+  final List<SecretRotationStatusResponse>? secretRotationStatus;
   /// The serial number for the storage appliance.
-  final String serialNumber;
+  final String? serialNumber;
   /// The SKU for the storage appliance.
-  final String storageApplianceSkuId;
+  final String? storageApplianceSkuId;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// The version of the storage appliance.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetStorageApplianceResult].
   /// [administratorCredentials] The credentials of the administrative interface on this storage appliance.
@@ -92,96 +92,96 @@ class GetStorageApplianceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the storage appliance.
   const GetStorageApplianceResult({
-    required this.administratorCredentials,
-    required this.azureApiVersion,
-    required this.capacity,
-    required this.capacityUsed,
-    required this.clusterId,
-    required this.detailedStatus,
-    required this.detailedStatusMessage,
-    required this.etag,
-    required this.extendedLocation,
-    required this.id,
-    required this.location,
-    required this.managementIpv4Address,
-    required this.manufacturer,
-    required this.model,
-    required this.name,
-    required this.provisioningState,
-    required this.rackId,
-    required this.rackSlot,
-    required this.remoteVendorManagementFeature,
-    required this.remoteVendorManagementStatus,
-    required this.secretRotationStatus,
-    required this.serialNumber,
-    required this.storageApplianceSkuId,
-    required this.systemData,
+    this.administratorCredentials,
+    this.azureApiVersion,
+    this.capacity,
+    this.capacityUsed,
+    this.clusterId,
+    this.detailedStatus,
+    this.detailedStatusMessage,
+    this.etag,
+    this.extendedLocation,
+    this.id,
+    this.location,
+    this.managementIpv4Address,
+    this.manufacturer,
+    this.model,
+    this.name,
+    this.provisioningState,
+    this.rackId,
+    this.rackSlot,
+    this.remoteVendorManagementFeature,
+    this.remoteVendorManagementStatus,
+    this.secretRotationStatus,
+    this.serialNumber,
+    this.storageApplianceSkuId,
+    this.systemData,
     this.tags,
-    required this.type,
-    required this.version,
+    this.type,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'administratorCredentials': administratorCredentials.toMap(),
-      'azureApiVersion': azureApiVersion,
-      'capacity': capacity,
-      'capacityUsed': capacityUsed,
-      'clusterId': clusterId,
-      'detailedStatus': detailedStatus,
-      'detailedStatusMessage': detailedStatusMessage,
-      'etag': etag,
-      'extendedLocation': extendedLocation.toMap(),
-      'id': id,
-      'location': location,
-      'managementIpv4Address': managementIpv4Address,
-      'manufacturer': manufacturer,
-      'model': model,
-      'name': name,
-      'provisioningState': provisioningState,
-      'rackId': rackId,
-      'rackSlot': rackSlot,
-      'remoteVendorManagementFeature': remoteVendorManagementFeature,
-      'remoteVendorManagementStatus': remoteVendorManagementStatus,
-      'secretRotationStatus': pulumi.Input.encodeList<SecretRotationStatusResponse, Map<String, dynamic>>(secretRotationStatus, (value) => value.toMap()),
-      'serialNumber': serialNumber,
-      'storageApplianceSkuId': storageApplianceSkuId,
-      'systemData': systemData.toMap(),
+      'administratorCredentials': ?administratorCredentials?.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'capacity': ?capacity,
+      'capacityUsed': ?capacityUsed,
+      'clusterId': ?clusterId,
+      'detailedStatus': ?detailedStatus,
+      'detailedStatusMessage': ?detailedStatusMessage,
+      'etag': ?etag,
+      'extendedLocation': ?extendedLocation?.toMap(),
+      'id': ?id,
+      'location': ?location,
+      'managementIpv4Address': ?managementIpv4Address,
+      'manufacturer': ?manufacturer,
+      'model': ?model,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'rackId': ?rackId,
+      'rackSlot': ?rackSlot,
+      'remoteVendorManagementFeature': ?remoteVendorManagementFeature,
+      'remoteVendorManagementStatus': ?remoteVendorManagementStatus,
+      'secretRotationStatus': ?(() { final guardedValue = secretRotationStatus; if (guardedValue == null) return null; return pulumi.Input.encodeList<SecretRotationStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'serialNumber': ?serialNumber,
+      'storageApplianceSkuId': ?storageApplianceSkuId,
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
-      'version': version,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetStorageApplianceResult.fromMap(Map<String, dynamic> map) {
     return GetStorageApplianceResult(
-      administratorCredentials: AdministrativeCredentialsResponse.fromMap((map['administratorCredentials']! as Map).cast<String, dynamic>()),
-      azureApiVersion: map['azureApiVersion'] as String,
-      capacity: map['capacity'] as double,
-      capacityUsed: map['capacityUsed'] as double,
-      clusterId: map['clusterId'] as String,
-      detailedStatus: map['detailedStatus'] as String,
-      detailedStatusMessage: map['detailedStatusMessage'] as String,
-      etag: map['etag'] as String,
-      extendedLocation: ExtendedLocationResponse.fromMap((map['extendedLocation']! as Map).cast<String, dynamic>()),
-      id: map['id'] as String,
-      location: map['location'] as String,
-      managementIpv4Address: map['managementIpv4Address'] as String,
-      manufacturer: map['manufacturer'] as String,
-      model: map['model'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      rackId: map['rackId'] as String,
-      rackSlot: map['rackSlot'] as double,
-      remoteVendorManagementFeature: map['remoteVendorManagementFeature'] as String,
-      remoteVendorManagementStatus: map['remoteVendorManagementStatus'] as String,
-      secretRotationStatus: pulumi.Input.decodeList<SecretRotationStatusResponse>(map['secretRotationStatus']!, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      serialNumber: map['serialNumber'] as String,
-      storageApplianceSkuId: map['storageApplianceSkuId'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      administratorCredentials: (() { final guardedValue = map['administratorCredentials']; if (guardedValue == null) return null; return AdministrativeCredentialsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      capacityUsed: (() { final guardedValue = map['capacityUsed']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      clusterId: (() { final guardedValue = map['clusterId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatus: (() { final guardedValue = map['detailedStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      detailedStatusMessage: (() { final guardedValue = map['detailedStatusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      managementIpv4Address: (() { final guardedValue = map['managementIpv4Address']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      manufacturer: (() { final guardedValue = map['manufacturer']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rackId: (() { final guardedValue = map['rackId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rackSlot: (() { final guardedValue = map['rackSlot']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      remoteVendorManagementFeature: (() { final guardedValue = map['remoteVendorManagementFeature']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      remoteVendorManagementStatus: (() { final guardedValue = map['remoteVendorManagementStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secretRotationStatus: (() { final guardedValue = map['secretRotationStatus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretRotationStatusResponse>(guardedValue, (value) => SecretRotationStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      serialNumber: (() { final guardedValue = map['serialNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      storageApplianceSkuId: (() { final guardedValue = map['storageApplianceSkuId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

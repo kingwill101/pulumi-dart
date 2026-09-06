@@ -633,7 +633,34 @@ class BrokerListener extends pulumi.CustomResource {
     serviceName = registerOutput<String?>('serviceName');
     serviceType = registerOutput<String?>('serviceType');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tls = registerOutput<TlsCertMethodResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsCertMethodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [BrokerListener] resource.
+  BrokerListener.reference(String urn)
+    : super(
+        'azure-native:iotoperationsmq:BrokerListener',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authenticationEnabled = registerOutput<bool?>('authenticationEnabled');
+    authorizationEnabled = registerOutput<bool?>('authorizationEnabled');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    brokerRef = registerOutput<String>('brokerRef');
+    extendedLocation = registerOutput<ExtendedLocationPropertyResponse>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodePort = registerOutput<int?>('nodePort');
+    port = registerOutput<int>('port');
+    provisioningState = registerOutput<String>('provisioningState');
+    serviceName = registerOutput<String?>('serviceName');
+    serviceType = registerOutput<String?>('serviceType');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     tls = registerOutput<TlsCertMethodResponse?>('tls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TlsCertMethodResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

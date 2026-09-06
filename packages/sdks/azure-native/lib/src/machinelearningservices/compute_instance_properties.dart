@@ -11,29 +11,29 @@ import 'setup_scripts.dart';
 /// Compute Instance properties
 class ComputeInstanceProperties {
   /// Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
-  final pulumi.Input<String>? applicationSharingPolicy;
+  final pulumi.Input<dynamic>? applicationSharingPolicy;
   /// The Compute Instance Authorization type. Available values are personal (default).
-  final pulumi.Input<String>? computeInstanceAuthorizationType;
+  final pulumi.Input<dynamic>? computeInstanceAuthorizationType;
   /// List of Custom Services added to the compute.
-  final pulumi.Input<List<CustomService>>? customServices;
+  final pulumi.Input<List<CustomService>?>? customServices;
   /// Enable or disable node public IP address provisioning. Possible values are: Possible values are: true - Indicates that the compute nodes will have public IPs provisioned. false - Indicates that the compute nodes will have a private endpoint and no public IPs.
-  final pulumi.Input<bool>? enableNodePublicIp;
+  final pulumi.Input<bool?>? enableNodePublicIp;
   /// Enable SSO (single sign on). Possible values are: true, false.
-  final pulumi.Input<bool>? enableSSO;
+  final pulumi.Input<bool?>? enableSSO;
   /// Stops compute instance after user defined period of inactivity. Time is defined in ISO8601 format. Minimum is 15 min, maximum is 3 days.
-  final pulumi.Input<String>? idleTimeBeforeShutdown;
+  final pulumi.Input<String?>? idleTimeBeforeShutdown;
   /// Settings for a personal compute instance.
-  final pulumi.Input<PersonalComputeInstanceSettings>? personalComputeInstanceSettings;
+  final pulumi.Input<PersonalComputeInstanceSettings?>? personalComputeInstanceSettings;
   /// The list of schedules to be applied on the computes.
-  final pulumi.Input<ComputeSchedules>? schedules;
+  final pulumi.Input<ComputeSchedules?>? schedules;
   /// Details of customized scripts to execute for setting up the cluster.
-  final pulumi.Input<SetupScripts>? setupScripts;
+  final pulumi.Input<SetupScripts?>? setupScripts;
   /// Specifies policy and settings for SSH access.
-  final pulumi.Input<ComputeInstanceSshSettings>? sshSettings;
+  final pulumi.Input<ComputeInstanceSshSettings?>? sshSettings;
   /// Virtual network subnet resource ID the compute nodes belong to.
-  final pulumi.Input<ResourceId>? subnet;
+  final pulumi.Input<ResourceId?>? subnet;
   /// Virtual Machine Size
-  final pulumi.Input<String>? vmSize;
+  final pulumi.Input<String?>? vmSize;
 
   /// Creates a new [ComputeInstanceProperties].
   /// [applicationSharingPolicy] Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.
@@ -48,12 +48,12 @@ class ComputeInstanceProperties {
   /// [sshSettings] Specifies policy and settings for SSH access.
   /// [subnet] Virtual network subnet resource ID the compute nodes belong to.
   /// [vmSize] Virtual Machine Size
-  const ComputeInstanceProperties({
-    this.applicationSharingPolicy,
-    this.computeInstanceAuthorizationType,
+  ComputeInstanceProperties({
+    pulumi.Input<dynamic>? applicationSharingPolicy,
+    pulumi.Input<dynamic>? computeInstanceAuthorizationType,
     this.customServices,
     this.enableNodePublicIp,
-    this.enableSSO,
+    pulumi.Input<bool?>? enableSSO,
     this.idleTimeBeforeShutdown,
     this.personalComputeInstanceSettings,
     this.schedules,
@@ -61,7 +61,7 @@ class ComputeInstanceProperties {
     this.sshSettings,
     this.subnet,
     this.vmSize,
-  });
+  }) : applicationSharingPolicy = applicationSharingPolicy ?? pulumi.Input.fromValue('Shared'), computeInstanceAuthorizationType = computeInstanceAuthorizationType ?? pulumi.Input.fromValue('personal'), enableSSO = enableSSO ?? pulumi.Input.fromValue(true);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -82,8 +82,8 @@ class ComputeInstanceProperties {
 
   factory ComputeInstanceProperties.fromMap(Map<String, dynamic> map) {
     return ComputeInstanceProperties(
-      applicationSharingPolicy: (() { final guardedValue = map['applicationSharingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      computeInstanceAuthorizationType: (() { final guardedValue = map['computeInstanceAuthorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      applicationSharingPolicy: (() { final guardedValue = map['applicationSharingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      computeInstanceAuthorizationType: (() { final guardedValue = map['computeInstanceAuthorizationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       customServices: (() { final guardedValue = map['customServices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CustomService>(guardedValue, (value) => CustomService.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableNodePublicIp: (() { final guardedValue = map['enableNodePublicIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableSSO: (() { final guardedValue = map['enableSSO']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

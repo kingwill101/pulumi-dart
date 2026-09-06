@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'fqdn_outbound_rule.dart';
 
 /// {@template pulumi_cognitiveservices_outbound_rule_args_doc}
 /// The set of arguments for OutboundRule.
@@ -13,11 +12,11 @@ class OutboundRuleArgs {
   /// Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
   final pulumi.Input<String> managedNetworkName;
   /// Outbound Rule for the managed network of a cognitive services account.
-  final pulumi.Input<FqdnOutboundRule> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the cognitive services account managed network outbound rule
-  final pulumi.Input<String>? ruleName;
+  final pulumi.Input<String?>? ruleName;
 
   /// Creates a new [OutboundRuleArgs].
   /// [accountName] The name of Cognitive Services account.
@@ -37,7 +36,7 @@ class OutboundRuleArgs {
     return <String, dynamic>{
       'accountName': accountName,
       'managedNetworkName': managedNetworkName,
-      'properties': pulumi.Input.mapInputValue<FqdnOutboundRule, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
       'ruleName': ?ruleName,
     };
@@ -47,7 +46,7 @@ class OutboundRuleArgs {
     return OutboundRuleArgs(
       accountName: pulumi.Input.fromValue(map['accountName'] as String),
       managedNetworkName: pulumi.Input.fromValue(map['managedNetworkName'] as String),
-      properties: pulumi.Input.fromValue(FqdnOutboundRule.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       ruleName: (() { final guardedValue = map['ruleName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

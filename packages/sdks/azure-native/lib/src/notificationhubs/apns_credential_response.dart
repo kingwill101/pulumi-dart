@@ -5,24 +5,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description of a NotificationHub ApnsCredential.
 class ApnsCredentialResponse {
   /// Gets or sets the APNS certificate.
-  final pulumi.Input<String>? apnsCertificate;
+  final pulumi.Input<String?>? apnsCertificate;
   /// Gets or sets the issuer (iss) registered claim key, whose value is
   /// your 10-character Team ID, obtained from your developer account
-  final pulumi.Input<String>? appId;
+  final pulumi.Input<String?>? appId;
   /// Gets or sets the name of the application
-  final pulumi.Input<String>? appName;
+  final pulumi.Input<String?>? appName;
   /// Gets or sets the certificate key.
-  final pulumi.Input<String>? certificateKey;
+  final pulumi.Input<String?>? certificateKey;
   /// Gets or sets the endpoint of this credential.
   final pulumi.Input<String> endpoint;
   /// Gets or sets a 10-character key identifier (kid) key, obtained from
   /// your developer account
-  final pulumi.Input<String>? keyId;
+  final pulumi.Input<String?>? keyId;
   /// Gets or sets the APNS certificate Thumbprint
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// Gets or sets provider Authentication Token, obtained through your
   /// developer account
-  final pulumi.Input<String>? token;
+  final pulumi.Input<String?>? token;
 
   /// Creates a new [ApnsCredentialResponse].
   /// [apnsCertificate] Gets or sets the APNS certificate.

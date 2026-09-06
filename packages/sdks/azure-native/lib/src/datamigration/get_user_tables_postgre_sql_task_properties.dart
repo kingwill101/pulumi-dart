@@ -6,9 +6,9 @@ import 'get_user_tables_postgre_sql_task_input.dart';
 /// Properties for the task that collects user tables for the given list of databases
 class GetUserTablesPostgreSqlTaskProperties {
   /// Key value pairs of client data to attach meta data information to task
-  final pulumi.Input<Map<String, String>>? clientData;
+  final pulumi.Input<Map<String, String>?>? clientData;
   /// Task input
-  final pulumi.Input<GetUserTablesPostgreSqlTaskInput>? input;
+  final pulumi.Input<GetUserTablesPostgreSqlTaskInput?>? input;
   /// Task type.
   /// Expected value is 'GetUserTablesPostgreSql'.
   final pulumi.Input<String> taskType;

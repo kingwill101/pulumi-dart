@@ -12,27 +12,27 @@ import 'terms_of_service.dart';
 /// {@macro pulumi_apicenter_api_args_doc}
 class ApiArgs {
   /// The name of the API.
-  final pulumi.Input<String>? apiName;
+  final pulumi.Input<String?>? apiName;
   /// The set of contacts
-  final pulumi.Input<List<Contact>>? contacts;
+  final pulumi.Input<List<Contact>?>? contacts;
   /// The custom metadata defined for API catalog entities.
   final pulumi.Input<dynamic>? customProperties;
   /// Description of the API.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The set of external documentation
-  final pulumi.Input<List<ExternalDocumentation>>? externalDocumentation;
+  final pulumi.Input<List<ExternalDocumentation>?>? externalDocumentation;
   /// Kind of API. For example, REST or GraphQL.
-  final pulumi.Input<String> kind;
+  final pulumi.Input<dynamic> kind;
   /// The license information for the API.
-  final pulumi.Input<License>? license;
+  final pulumi.Input<License?>? license;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of Azure API Center service.
   final pulumi.Input<String> serviceName;
   /// Short description of the API.
-  final pulumi.Input<String>? summary;
+  final pulumi.Input<String?>? summary;
   /// Terms of service for the API.
-  final pulumi.Input<TermsOfService>? termsOfService;
+  final pulumi.Input<TermsOfService?>? termsOfService;
   /// API title.
   final pulumi.Input<String> title;
   /// The name of the workspace.
@@ -93,7 +93,7 @@ class ApiArgs {
       customProperties: (() { final guardedValue = map['customProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       externalDocumentation: (() { final guardedValue = map['externalDocumentation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ExternalDocumentation>(guardedValue, (value) => ExternalDocumentation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      kind: pulumi.Input.fromValue(map['kind'] as String),
+      kind: pulumi.Input.fromValue(map['kind']),
       license: (() { final guardedValue = map['license']; if (guardedValue == null) return null; return pulumi.Input.fromValue(License.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       serviceName: pulumi.Input.fromValue(map['serviceName'] as String),

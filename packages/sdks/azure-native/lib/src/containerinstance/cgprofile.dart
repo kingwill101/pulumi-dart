@@ -2,10 +2,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cgprofile_args.dart';
 import 'confidential_compute_properties_response.dart';
 import 'container_group_diagnostics_response.dart';
+import 'container_response.dart';
+import 'deployment_extension_spec_response.dart';
 import 'encryption_properties_response.dart';
+import 'image_registry_credential_response.dart';
+import 'init_container_definition_response.dart';
 import 'ip_address_response.dart';
 import 'security_context_definition_response.dart';
 import 'system_data_response.dart';
+import 'volume_response.dart';
 
 /// A container group profile object
 ///
@@ -1954,17 +1959,17 @@ class CGProfile extends pulumi.CustomResource {
   /// The properties for confidential container group
   late final pulumi.Output<ConfidentialComputePropertiesResponse?> confidentialComputeProperties;
   /// The containers within the container group.
-  late final pulumi.Output<List<Map<String, dynamic>>> containers;
+  late final pulumi.Output<List<ContainerResponse>> containers;
   /// The diagnostic information for a container group.
   late final pulumi.Output<ContainerGroupDiagnosticsResponse?> diagnostics;
   /// The encryption properties for a container group.
   late final pulumi.Output<EncryptionPropertiesResponse?> encryptionProperties;
   /// extensions used by virtual kubelet
-  late final pulumi.Output<List<Map<String, dynamic>>?> extensions;
+  late final pulumi.Output<List<DeploymentExtensionSpecResponse>?> extensions;
   /// The image registry credentials by which the container group is created from.
-  late final pulumi.Output<List<Map<String, dynamic>>?> imageRegistryCredentials;
+  late final pulumi.Output<List<ImageRegistryCredentialResponse>?> imageRegistryCredentials;
   /// The init containers for a container group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> initContainers;
+  late final pulumi.Output<List<InitContainerDefinitionResponse>?> initContainers;
   /// The IP address type of the container group.
   late final pulumi.Output<IpAddressResponse?> ipAddress;
   /// The resource location.
@@ -2001,7 +2006,7 @@ class CGProfile extends pulumi.CustomResource {
   /// Gets or sets Krypton use property.
   late final pulumi.Output<bool?> useKrypton;
   /// The list of volumes that can be mounted by containers in this container group.
-  late final pulumi.Output<List<Map<String, dynamic>>?> volumes;
+  late final pulumi.Output<List<VolumeResponse>?> volumes;
   /// The zones for the container group.
   late final pulumi.Output<List<String>?> zones;
 
@@ -2021,29 +2026,66 @@ class CGProfile extends pulumi.CustomResource {
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     confidentialComputeProperties = registerOutput<ConfidentialComputePropertiesResponse?>('confidentialComputeProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    containers = registerOutput<List<Map<String, dynamic>>>('containers');
+    containers = registerOutput<List<ContainerResponse>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerResponse>(guardedValue, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>())); });
     diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    extensions = registerOutput<List<Map<String, dynamic>>?>('extensions');
-    imageRegistryCredentials = registerOutput<List<Map<String, dynamic>>?>('imageRegistryCredentials');
-    initContainers = registerOutput<List<Map<String, dynamic>>?>('initContainers');
+    extensions = registerOutput<List<DeploymentExtensionSpecResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    imageRegistryCredentials = registerOutput<List<ImageRegistryCredentialResponse>?>('imageRegistryCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialResponse>(guardedValue, (value) => ImageRegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    initContainers = registerOutput<List<InitContainerDefinitionResponse>?>('initContainers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionResponse>(guardedValue, (value) => InitContainerDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     ipAddress = registerOutput<IpAddressResponse?>('ipAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     osType = registerOutput<String>('osType');
     priority = registerOutput<String?>('priority');
-    registeredRevisions = registerOutput<List<int>>('registeredRevisions');
+    registeredRevisions = registerOutput<List<int>>('registeredRevisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     restartPolicy = registerOutput<String?>('restartPolicy');
     revision = registerOutput<int>('revision');
     securityContext = registerOutput<SecurityContextDefinitionResponse?>('securityContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContextDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shutdownGracePeriod = registerOutput<String?>('shutdownGracePeriod');
     sku = registerOutput<String?>('sku');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeToLive = registerOutput<String?>('timeToLive');
     type = registerOutput<String>('type');
     useKrypton = registerOutput<bool?>('useKrypton');
-    volumes = registerOutput<List<Map<String, dynamic>>?>('volumes');
-    zones = registerOutput<List<String>?>('zones');
+    volumes = registerOutput<List<VolumeResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CGProfile] resource.
+  CGProfile.reference(String urn)
+    : super(
+        'azure-native:containerinstance:CGProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    confidentialComputeProperties = registerOutput<ConfidentialComputePropertiesResponse?>('confidentialComputeProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfidentialComputePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    containers = registerOutput<List<ContainerResponse>>('containers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerResponse>(guardedValue, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    diagnostics = registerOutput<ContainerGroupDiagnosticsResponse?>('diagnostics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerGroupDiagnosticsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    encryptionProperties = registerOutput<EncryptionPropertiesResponse?>('encryptionProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EncryptionPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    extensions = registerOutput<List<DeploymentExtensionSpecResponse>?>('extensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeploymentExtensionSpecResponse>(guardedValue, (value) => DeploymentExtensionSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    imageRegistryCredentials = registerOutput<List<ImageRegistryCredentialResponse>?>('imageRegistryCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageRegistryCredentialResponse>(guardedValue, (value) => ImageRegistryCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    initContainers = registerOutput<List<InitContainerDefinitionResponse>?>('initContainers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InitContainerDefinitionResponse>(guardedValue, (value) => InitContainerDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    ipAddress = registerOutput<IpAddressResponse?>('ipAddress', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IpAddressResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    osType = registerOutput<String>('osType');
+    priority = registerOutput<String?>('priority');
+    registeredRevisions = registerOutput<List<int>>('registeredRevisions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    restartPolicy = registerOutput<String?>('restartPolicy');
+    revision = registerOutput<int>('revision');
+    securityContext = registerOutput<SecurityContextDefinitionResponse?>('securityContext', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityContextDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shutdownGracePeriod = registerOutput<String?>('shutdownGracePeriod');
+    sku = registerOutput<String?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeToLive = registerOutput<String?>('timeToLive');
+    type = registerOutput<String>('type');
+    useKrypton = registerOutput<bool?>('useKrypton');
+    volumes = registerOutput<List<VolumeResponse>?>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeResponse>(guardedValue, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

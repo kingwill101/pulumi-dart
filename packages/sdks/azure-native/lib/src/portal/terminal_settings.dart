@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings for terminal appearance.
 class TerminalSettings {
   /// Size of terminal font.
-  final pulumi.Input<String>? fontSize;
+  final pulumi.Input<dynamic>? fontSize;
   /// Style of terminal font.
-  final pulumi.Input<String>? fontStyle;
+  final pulumi.Input<dynamic>? fontStyle;
 
   /// Creates a new [TerminalSettings].
   /// [fontSize] Size of terminal font.
@@ -26,8 +26,8 @@ class TerminalSettings {
 
   factory TerminalSettings.fromMap(Map<String, dynamic> map) {
     return TerminalSettings(
-      fontSize: (() { final guardedValue = map['fontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fontStyle: (() { final guardedValue = map['fontStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      fontSize: (() { final guardedValue = map['fontSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      fontStyle: (() { final guardedValue = map['fontStyle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

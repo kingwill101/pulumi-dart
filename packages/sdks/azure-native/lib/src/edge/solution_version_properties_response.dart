@@ -100,7 +100,7 @@ class SolutionVersionPropertiesResponse {
       latestActionTrackingUri: pulumi.Input.fromValue(map['latestActionTrackingUri'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       reviewId: pulumi.Input.fromValue(map['reviewId'] as String),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
       solutionDependencies: pulumi.Input.fromValue(pulumi.Input.decodeList<SolutionDependencyResponse>(map['solutionDependencies']!, (value) => SolutionDependencyResponse.fromMap((value as Map).cast<String, dynamic>()))),
       solutionInstanceName: pulumi.Input.fromValue(map['solutionInstanceName'] as String),
       solutionTemplateVersionId: pulumi.Input.fromValue(map['solutionTemplateVersionId'] as String),

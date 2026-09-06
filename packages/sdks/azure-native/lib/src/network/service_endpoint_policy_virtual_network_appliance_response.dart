@@ -7,15 +7,15 @@ import 'subnet_response.dart';
 /// Service End point policy resource.
 class ServiceEndpointPolicyVirtualNetworkApplianceResponse {
   /// A collection of contextual service endpoint policy.
-  final pulumi.Input<List<String>>? contextualServiceEndpointPolicies;
+  final pulumi.Input<List<String>?>? contextualServiceEndpointPolicies;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Kind of service endpoint policy. This is metadata used for the Azure portal experience.
   final pulumi.Input<String> kind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the service endpoint policy resource.
@@ -23,13 +23,13 @@ class ServiceEndpointPolicyVirtualNetworkApplianceResponse {
   /// The resource GUID property of the service endpoint policy resource.
   final pulumi.Input<String> resourceGuid;
   /// The alias indicating if the policy belongs to a service
-  final pulumi.Input<String>? serviceAlias;
+  final pulumi.Input<String?>? serviceAlias;
   /// A collection of service endpoint policy definitions of the service endpoint policy.
-  final pulumi.Input<List<ServiceEndpointPolicyDefinitionVirtualNetworkApplianceResponse>>? serviceEndpointPolicyDefinitions;
+  final pulumi.Input<List<ServiceEndpointPolicyDefinitionVirtualNetworkApplianceResponse>?>? serviceEndpointPolicyDefinitions;
   /// A collection of references to subnets.
   final pulumi.Input<List<SubnetResponse>> subnets;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 

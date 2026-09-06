@@ -19,13 +19,13 @@ class AzurePostgreSqlSink {
   /// Expected value is 'AzurePostgreSqlSink'.
   final pulumi.Input<String> type;
   /// Azure Database for PostgreSQL upsert option settings
-  final pulumi.Input<AzurePostgreSqlSinkUpsertSettings>? upsertSettings;
+  final pulumi.Input<AzurePostgreSqlSinkUpsertSettings?>? upsertSettings;
   /// Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? writeBatchSize;
   /// Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   final pulumi.Input<dynamic>? writeBatchTimeout;
   /// The write behavior for the operation. Default is Bulk Insert.
-  final pulumi.Input<String>? writeMethod;
+  final pulumi.Input<dynamic>? writeMethod;
 
   /// Creates a new [AzurePostgreSqlSink].
   /// [disableMetricsCollection] If true, disable data store metrics collection. Default is false. Type: boolean (or Expression with resultType boolean).
@@ -77,7 +77,7 @@ class AzurePostgreSqlSink {
       upsertSettings: (() { final guardedValue = map['upsertSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzurePostgreSqlSinkUpsertSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       writeBatchSize: (() { final guardedValue = map['writeBatchSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       writeBatchTimeout: (() { final guardedValue = map['writeBatchTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      writeMethod: (() { final guardedValue = map['writeMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      writeMethod: (() { final guardedValue = map['writeMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

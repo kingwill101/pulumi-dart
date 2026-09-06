@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// API OAuth2 Authentication settings details.
 class OpenIdAuthenticationSettingsContract {
   /// How to send token to the server.
-  final pulumi.Input<List<String>>? bearerTokenSendingMethods;
+  final pulumi.Input<List<dynamic>?>? bearerTokenSendingMethods;
   /// OAuth authorization server identifier.
-  final pulumi.Input<String>? openidProviderId;
+  final pulumi.Input<String?>? openidProviderId;
 
   /// Creates a new [OpenIdAuthenticationSettingsContract].
   /// [bearerTokenSendingMethods] How to send token to the server.
@@ -26,7 +26,7 @@ class OpenIdAuthenticationSettingsContract {
 
   factory OpenIdAuthenticationSettingsContract.fromMap(Map<String, dynamic> map) {
     return OpenIdAuthenticationSettingsContract(
-      bearerTokenSendingMethods: (() { final guardedValue = map['bearerTokenSendingMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      bearerTokenSendingMethods: (() { final guardedValue = map['bearerTokenSendingMethods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       openidProviderId: (() { final guardedValue = map['openidProviderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

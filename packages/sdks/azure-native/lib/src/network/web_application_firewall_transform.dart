@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Transforms applied before matching.
-enum WebApplicationFirewallTransform {
+enum WebApplicationFirewallTransform implements pulumi.PulumiEnum<String> {
   valueUppercase("Uppercase"),
   valueLowercase("Lowercase"),
   valueTrim("Trim"),
@@ -9,6 +11,7 @@ enum WebApplicationFirewallTransform {
   valueHtmlEntityDecode("HtmlEntityDecode");
 
   const WebApplicationFirewallTransform(this.wireValue);
+  @override
   final String wireValue;
 
   static WebApplicationFirewallTransform fromValue(String value) {

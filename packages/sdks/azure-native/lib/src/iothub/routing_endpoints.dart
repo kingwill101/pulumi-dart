@@ -10,15 +10,15 @@ import 'routing_storage_container_properties.dart';
 /// The properties related to the custom endpoints to which your IoT hub routes messages based on the routing rules. A maximum of 10 custom endpoints are allowed across all endpoint types for paid hubs and only 1 custom endpoint is allowed across all endpoint types for free hubs.
 class RoutingEndpoints {
   /// The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingCosmosDBSqlApiProperties>>? cosmosDBSqlContainers;
+  final pulumi.Input<List<RoutingCosmosDBSqlApiProperties>?>? cosmosDBSqlContainers;
   /// The list of Event Hubs endpoints that IoT hub routes messages to, based on the routing rules. This list does not include the built-in Event Hubs endpoint.
-  final pulumi.Input<List<RoutingEventHubProperties>>? eventHubs;
+  final pulumi.Input<List<RoutingEventHubProperties>?>? eventHubs;
   /// The list of Service Bus queue endpoints that IoT hub routes the messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingServiceBusQueueEndpointProperties>>? serviceBusQueues;
+  final pulumi.Input<List<RoutingServiceBusQueueEndpointProperties>?>? serviceBusQueues;
   /// The list of Service Bus topic endpoints that the IoT hub routes the messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingServiceBusTopicEndpointProperties>>? serviceBusTopics;
+  final pulumi.Input<List<RoutingServiceBusTopicEndpointProperties>?>? serviceBusTopics;
   /// The list of storage container endpoints that IoT hub routes messages to, based on the routing rules.
-  final pulumi.Input<List<RoutingStorageContainerProperties>>? storageContainers;
+  final pulumi.Input<List<RoutingStorageContainerProperties>?>? storageContainers;
 
   /// Creates a new [RoutingEndpoints].
   /// [cosmosDBSqlContainers] The list of Cosmos DB container endpoints that IoT hub routes messages to, based on the routing rules.

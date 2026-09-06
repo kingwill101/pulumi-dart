@@ -6,21 +6,21 @@ import 'metadata_entity_response.dart';
 /// Record of the invitation
 class InvitationRecordResponse {
   /// Accepted date time of the invitation
-  final pulumi.Input<String>? acceptedAt;
+  final pulumi.Input<String?>? acceptedAt;
   /// Auth type of the user
-  final pulumi.Input<String>? authType;
+  final pulumi.Input<String?>? authType;
   /// Email of the user
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// Expiration date time of the invitation
-  final pulumi.Input<String>? expiresAt;
+  final pulumi.Input<String?>? expiresAt;
   /// Id of the invitation
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Type of account
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
   /// Status of the invitation
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InvitationRecordResponse].
   /// [acceptedAt] Accepted date time of the invitation

@@ -18,7 +18,7 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
   /// The disk Uuid (reported by vCenter).
   final pulumi.Input<String> diskUuid;
   /// The initial replication details.
-  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse>? irDetails;
+  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse?>? irDetails;
   /// A value indicating whether initial replication is complete or not.
   final pulumi.Input<String> isInitialReplicationComplete;
   /// A value indicating whether the disk is the OS disk.
@@ -26,7 +26,7 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
   /// The last sync time.
   final pulumi.Input<String> lastSyncTime;
   /// The resync details.
-  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse>? resyncDetails;
+  final pulumi.Input<InMageRcmFailbackSyncDetailsResponse?>? resyncDetails;
 
   /// Creates a new [InMageRcmFailbackProtectedDiskDetailsResponse].
   /// [capacityInBytes] The disk capacity in bytes.
@@ -72,9 +72,9 @@ class InMageRcmFailbackProtectedDiskDetailsResponse {
 
   factory InMageRcmFailbackProtectedDiskDetailsResponse.fromMap(Map<String, dynamic> map) {
     return InMageRcmFailbackProtectedDiskDetailsResponse(
-      capacityInBytes: pulumi.Input.fromValue(map['capacityInBytes'] as double),
-      dataPendingAtSourceAgentInMB: pulumi.Input.fromValue(map['dataPendingAtSourceAgentInMB'] as double),
-      dataPendingInLogDataStoreInMB: pulumi.Input.fromValue(map['dataPendingInLogDataStoreInMB'] as double),
+      capacityInBytes: pulumi.Input.fromValue((map['capacityInBytes'] as num).toDouble()),
+      dataPendingAtSourceAgentInMB: pulumi.Input.fromValue((map['dataPendingAtSourceAgentInMB'] as num).toDouble()),
+      dataPendingInLogDataStoreInMB: pulumi.Input.fromValue((map['dataPendingInLogDataStoreInMB'] as num).toDouble()),
       diskId: pulumi.Input.fromValue(map['diskId'] as String),
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
       diskUuid: pulumi.Input.fromValue(map['diskUuid'] as String),

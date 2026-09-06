@@ -16,35 +16,35 @@ import 'volume_reference_response.dart';
 /// Describes a container and its runtime properties.
 class ContainerCodePackagePropertiesResponse {
   /// Command array to execute within the container in exec form.
-  final pulumi.Input<List<String>>? commands;
+  final pulumi.Input<List<String>?>? commands;
   /// Reference to sinks in DiagnosticsDescription.
-  final pulumi.Input<DiagnosticsRefResponse>? diagnostics;
+  final pulumi.Input<DiagnosticsRefResponse?>? diagnostics;
   /// The endpoints exposed by this container.
-  final pulumi.Input<List<EndpointPropertiesResponse>>? endpoints;
+  final pulumi.Input<List<EndpointPropertiesResponse>?>? endpoints;
   /// Override for the default entry point in the container.
-  final pulumi.Input<String>? entrypoint;
+  final pulumi.Input<String?>? entrypoint;
   /// The environment variables to set in this container
-  final pulumi.Input<List<EnvironmentVariableResponse>>? environmentVariables;
+  final pulumi.Input<List<EnvironmentVariableResponse>?>? environmentVariables;
   /// The Container image to use.
   final pulumi.Input<String> image;
   /// Image registry credential.
-  final pulumi.Input<ImageRegistryCredentialResponse>? imageRegistryCredential;
+  final pulumi.Input<ImageRegistryCredentialResponse?>? imageRegistryCredential;
   /// Runtime information of a container instance.
   final pulumi.Input<ContainerInstanceViewResponse> instanceView;
   /// The labels to set in this container.
-  final pulumi.Input<List<ContainerLabelResponse>>? labels;
+  final pulumi.Input<List<ContainerLabelResponse>?>? labels;
   /// The name of the code package.
   final pulumi.Input<String> name;
   /// A list of ReliableCollection resources used by this particular code package. Please refer to ReliableCollectionsRef for more details.
-  final pulumi.Input<List<ReliableCollectionsRefResponse>>? reliableCollectionsRefs;
+  final pulumi.Input<List<ReliableCollectionsRefResponse>?>? reliableCollectionsRefs;
   /// The resources required by this container.
   final pulumi.Input<ResourceRequirementsResponse> resources;
   /// The settings to set in this container. The setting file path can be fetched from environment variable "Fabric_SettingPath". The path for Windows container is "C:\\secrets". The path for Linux container is "/var/secrets".
-  final pulumi.Input<List<SettingResponse>>? settings;
+  final pulumi.Input<List<SettingResponse>?>? settings;
   /// Volumes to be attached to the container. The lifetime of these volumes is independent of the application's lifetime.
-  final pulumi.Input<List<VolumeReferenceResponse>>? volumeRefs;
+  final pulumi.Input<List<VolumeReferenceResponse>?>? volumeRefs;
   /// Volumes to be attached to the container. The lifetime of these volumes is scoped to the application's lifetime.
-  final pulumi.Input<List<ApplicationScopedVolumeResponse>>? volumes;
+  final pulumi.Input<List<ApplicationScopedVolumeResponse>?>? volumes;
 
   /// Creates a new [ContainerCodePackagePropertiesResponse].
   /// [commands] Command array to execute within the container in exec form.

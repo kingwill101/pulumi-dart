@@ -9,55 +9,55 @@ import 'system_data_response.dart';
 /// Result data returned by getServerEndpoint.
 class GetServerEndpointResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Cloud Tiering.
   final String? cloudTiering;
   /// Cloud tiering status. Only populated if cloud tiering is enabled.
-  final ServerEndpointCloudTieringStatusResponse cloudTieringStatus;
+  final ServerEndpointCloudTieringStatusResponse? cloudTieringStatus;
   /// Friendly Name
   final String? friendlyName;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Policy for how namespace and files are recalled during FastDr.
   final String? initialDownloadPolicy;
   /// Policy for how the initial upload sync session is performed.
   final String? initialUploadPolicy;
   /// Resource Last Operation Name
-  final String lastOperationName;
+  final String? lastOperationName;
   /// ServerEndpoint lastWorkflowId
-  final String lastWorkflowId;
+  final String? lastWorkflowId;
   /// Policy for enabling follow-the-sun business models: link local cache to cloud behavior to pre-populate before local access.
   final String? localCacheMode;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Offline data transfer
   final String? offlineDataTransfer;
   /// Offline data transfer share name
   final String? offlineDataTransferShareName;
   /// Offline data transfer storage account resource ID
-  final String offlineDataTransferStorageAccountResourceId;
+  final String? offlineDataTransferStorageAccountResourceId;
   /// Offline data transfer storage account tenant ID
-  final String offlineDataTransferStorageAccountTenantId;
+  final String? offlineDataTransferStorageAccountTenantId;
   /// ServerEndpoint Provisioning State
-  final String provisioningState;
+  final String? provisioningState;
   /// Recall status. Only populated if cloud tiering is enabled.
-  final ServerEndpointRecallStatusResponse recallStatus;
+  final ServerEndpointRecallStatusResponse? recallStatus;
   /// Server Endpoint provisioning status
   final ServerEndpointProvisioningStatusResponse? serverEndpointProvisioningStatus;
   /// Server Local path.
   final String? serverLocalPath;
   /// Server name
-  final String serverName;
+  final String? serverName;
   /// Server Resource Id.
   final String? serverResourceId;
   /// Server Endpoint sync status
-  final ServerEndpointSyncStatusResponse syncStatus;
+  final ServerEndpointSyncStatusResponse? syncStatus;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tier files older than days.
   final int? tierFilesOlderThanDays;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Level of free space to be maintained by Cloud Tiering if it is enabled.
   final int? volumeFreeSpacePercent;
 
@@ -88,94 +88,94 @@ class GetServerEndpointResult {
   /// [tierFilesOlderThanDays] Tier files older than days.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [volumeFreeSpacePercent] Level of free space to be maintained by Cloud Tiering if it is enabled.
-  const GetServerEndpointResult({
-    required this.azureApiVersion,
+  GetServerEndpointResult({
+    this.azureApiVersion,
     this.cloudTiering,
-    required this.cloudTieringStatus,
+    this.cloudTieringStatus,
     this.friendlyName,
-    required this.id,
-    this.initialDownloadPolicy,
-    this.initialUploadPolicy,
-    required this.lastOperationName,
-    required this.lastWorkflowId,
-    this.localCacheMode,
-    required this.name,
+    this.id,
+    String? initialDownloadPolicy,
+    String? initialUploadPolicy,
+    this.lastOperationName,
+    this.lastWorkflowId,
+    String? localCacheMode,
+    this.name,
     this.offlineDataTransfer,
     this.offlineDataTransferShareName,
-    required this.offlineDataTransferStorageAccountResourceId,
-    required this.offlineDataTransferStorageAccountTenantId,
-    required this.provisioningState,
-    required this.recallStatus,
+    this.offlineDataTransferStorageAccountResourceId,
+    this.offlineDataTransferStorageAccountTenantId,
+    this.provisioningState,
+    this.recallStatus,
     this.serverEndpointProvisioningStatus,
     this.serverLocalPath,
-    required this.serverName,
+    this.serverName,
     this.serverResourceId,
-    required this.syncStatus,
-    required this.systemData,
+    this.syncStatus,
+    this.systemData,
     this.tierFilesOlderThanDays,
-    required this.type,
+    this.type,
     this.volumeFreeSpacePercent,
-  });
+  }) : initialDownloadPolicy = initialDownloadPolicy ?? 'NamespaceThenModifiedFiles', initialUploadPolicy = initialUploadPolicy ?? 'Merge', localCacheMode = localCacheMode ?? 'UpdateLocallyCachedFiles';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'cloudTiering': ?cloudTiering,
-      'cloudTieringStatus': cloudTieringStatus.toMap(),
+      'cloudTieringStatus': ?cloudTieringStatus?.toMap(),
       'friendlyName': ?friendlyName,
-      'id': id,
+      'id': ?id,
       'initialDownloadPolicy': ?initialDownloadPolicy,
       'initialUploadPolicy': ?initialUploadPolicy,
-      'lastOperationName': lastOperationName,
-      'lastWorkflowId': lastWorkflowId,
+      'lastOperationName': ?lastOperationName,
+      'lastWorkflowId': ?lastWorkflowId,
       'localCacheMode': ?localCacheMode,
-      'name': name,
+      'name': ?name,
       'offlineDataTransfer': ?offlineDataTransfer,
       'offlineDataTransferShareName': ?offlineDataTransferShareName,
-      'offlineDataTransferStorageAccountResourceId': offlineDataTransferStorageAccountResourceId,
-      'offlineDataTransferStorageAccountTenantId': offlineDataTransferStorageAccountTenantId,
-      'provisioningState': provisioningState,
-      'recallStatus': recallStatus.toMap(),
+      'offlineDataTransferStorageAccountResourceId': ?offlineDataTransferStorageAccountResourceId,
+      'offlineDataTransferStorageAccountTenantId': ?offlineDataTransferStorageAccountTenantId,
+      'provisioningState': ?provisioningState,
+      'recallStatus': ?recallStatus?.toMap(),
       'serverEndpointProvisioningStatus': ?serverEndpointProvisioningStatus?.toMap(),
       'serverLocalPath': ?serverLocalPath,
-      'serverName': serverName,
+      'serverName': ?serverName,
       'serverResourceId': ?serverResourceId,
-      'syncStatus': syncStatus.toMap(),
-      'systemData': systemData.toMap(),
+      'syncStatus': ?syncStatus?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tierFilesOlderThanDays': ?tierFilesOlderThanDays,
-      'type': type,
+      'type': ?type,
       'volumeFreeSpacePercent': ?volumeFreeSpacePercent,
     };
   }
 
   factory GetServerEndpointResult.fromMap(Map<String, dynamic> map) {
     return GetServerEndpointResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       cloudTiering: (() { final guardedValue = map['cloudTiering']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cloudTieringStatus: ServerEndpointCloudTieringStatusResponse.fromMap((map['cloudTieringStatus']! as Map).cast<String, dynamic>()),
+      cloudTieringStatus: (() { final guardedValue = map['cloudTieringStatus']; if (guardedValue == null) return null; return ServerEndpointCloudTieringStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       initialDownloadPolicy: (() { final guardedValue = map['initialDownloadPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       initialUploadPolicy: (() { final guardedValue = map['initialUploadPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      lastOperationName: map['lastOperationName'] as String,
-      lastWorkflowId: map['lastWorkflowId'] as String,
+      lastOperationName: (() { final guardedValue = map['lastOperationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastWorkflowId: (() { final guardedValue = map['lastWorkflowId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localCacheMode: (() { final guardedValue = map['localCacheMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offlineDataTransfer: (() { final guardedValue = map['offlineDataTransfer']; if (guardedValue == null) return null; return guardedValue as String; })(),
       offlineDataTransferShareName: (() { final guardedValue = map['offlineDataTransferShareName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      offlineDataTransferStorageAccountResourceId: map['offlineDataTransferStorageAccountResourceId'] as String,
-      offlineDataTransferStorageAccountTenantId: map['offlineDataTransferStorageAccountTenantId'] as String,
-      provisioningState: map['provisioningState'] as String,
-      recallStatus: ServerEndpointRecallStatusResponse.fromMap((map['recallStatus']! as Map).cast<String, dynamic>()),
+      offlineDataTransferStorageAccountResourceId: (() { final guardedValue = map['offlineDataTransferStorageAccountResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      offlineDataTransferStorageAccountTenantId: (() { final guardedValue = map['offlineDataTransferStorageAccountTenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      recallStatus: (() { final guardedValue = map['recallStatus']; if (guardedValue == null) return null; return ServerEndpointRecallStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       serverEndpointProvisioningStatus: (() { final guardedValue = map['serverEndpointProvisioningStatus']; if (guardedValue == null) return null; return ServerEndpointProvisioningStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       serverLocalPath: (() { final guardedValue = map['serverLocalPath']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serverName: map['serverName'] as String,
+      serverName: (() { final guardedValue = map['serverName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serverResourceId: (() { final guardedValue = map['serverResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      syncStatus: ServerEndpointSyncStatusResponse.fromMap((map['syncStatus']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tierFilesOlderThanDays: (() { final guardedValue = map['tierFilesOlderThanDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      type: map['type'] as String,
-      volumeFreeSpacePercent: (() { final guardedValue = map['volumeFreeSpacePercent']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      syncStatus: (() { final guardedValue = map['syncStatus']; if (guardedValue == null) return null; return ServerEndpointSyncStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tierFilesOlderThanDays: (() { final guardedValue = map['tierFilesOlderThanDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumeFreeSpacePercent: (() { final guardedValue = map['volumeFreeSpacePercent']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

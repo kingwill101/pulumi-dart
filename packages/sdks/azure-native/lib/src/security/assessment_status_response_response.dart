@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The result of the assessment
 class AssessmentStatusResponseResponse {
   /// Programmatic code for the cause of the assessment status
-  final pulumi.Input<String>? cause;
+  final pulumi.Input<String?>? cause;
   /// Programmatic code for the status of the assessment
   final pulumi.Input<String> code;
   /// Human readable description of the assessment status
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The time that the assessment was created and first evaluated. Returned as UTC time in ISO 8601 format
   final pulumi.Input<String> firstEvaluationDate;
   /// The time that the status of the assessment last changed. Returned as UTC time in ISO 8601 format

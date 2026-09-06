@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a lab's announcement banner
 class LabAnnouncementPropertiesResponse {
   /// Is the lab announcement active/enabled at this time?
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// The time at which the announcement expires (null for never)
-  final pulumi.Input<String>? expirationDate;
+  final pulumi.Input<String?>? expirationDate;
   /// Has this announcement expired?
-  final pulumi.Input<bool>? expired;
+  final pulumi.Input<bool?>? expired;
   /// The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  final pulumi.Input<String>? markdown;
+  final pulumi.Input<String?>? markdown;
   /// The provisioning status of the resource.
   final pulumi.Input<String> provisioningState;
   /// The plain text title for the lab announcement
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The unique immutable identifier of a resource (Guid).
   final pulumi.Input<String> uniqueIdentifier;
 

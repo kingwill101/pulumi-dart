@@ -8,27 +8,27 @@ import 'system_data_response.dart';
 /// Result data returned by getImportPipeline.
 class GetImportPipelineResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The resource ID.
-  final String id;
+  final String? id;
   /// The identity of the import pipeline.
   final IdentityPropertiesResponse? identity;
   /// The location of the import pipeline.
   final String? location;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The list of all options configured for the pipeline.
   final List<String>? options;
   /// The provisioning state of the pipeline at the time the operation was called.
-  final String provisioningState;
+  final String? provisioningState;
   /// The source properties of the import pipeline.
-  final ImportPipelineSourcePropertiesResponse source;
+  final ImportPipelineSourcePropertiesResponse? source;
   /// Metadata pertaining to creation and last modification of the resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The properties that describe the trigger of the import pipeline.
   final PipelineTriggerPropertiesResponse? trigger;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetImportPipelineResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -43,48 +43,48 @@ class GetImportPipelineResult {
   /// [trigger] The properties that describe the trigger of the import pipeline.
   /// [type] The type of the resource.
   const GetImportPipelineResult({
-    required this.azureApiVersion,
-    required this.id,
+    this.azureApiVersion,
+    this.id,
     this.identity,
     this.location,
-    required this.name,
+    this.name,
     this.options,
-    required this.provisioningState,
-    required this.source,
-    required this.systemData,
+    this.provisioningState,
+    this.source,
+    this.systemData,
     this.trigger,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'options': ?options,
-      'provisioningState': provisioningState,
-      'source': source.toMap(),
-      'systemData': systemData.toMap(),
+      'provisioningState': ?provisioningState,
+      'source': ?source?.toMap(),
+      'systemData': ?systemData?.toMap(),
       'trigger': ?trigger?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetImportPipelineResult.fromMap(Map<String, dynamic> map) {
     return GetImportPipelineResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      provisioningState: map['provisioningState'] as String,
-      source: ImportPipelineSourcePropertiesResponse.fromMap((map['source']! as Map).cast<String, dynamic>()),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return ImportPipelineSourcePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       trigger: (() { final guardedValue = map['trigger']; if (guardedValue == null) return null; return PipelineTriggerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -8,17 +8,17 @@ import 'network_interface_tap_configuration_response.dart';
 /// Virtual Network Tap resource.
 class VirtualNetworkTapServiceGatewayResponse {
   /// The reference to the private IP address on the internal Load Balancer that will receive the tap.
-  final pulumi.Input<FrontendIPConfigurationServiceGatewayResponse>? destinationLoadBalancerFrontEndIPConfiguration;
+  final pulumi.Input<FrontendIPConfigurationServiceGatewayResponse?>? destinationLoadBalancerFrontEndIPConfiguration;
   /// The reference to the private IP Address of the collector nic that will receive the tap.
-  final pulumi.Input<NetworkInterfaceIPConfigurationResponse>? destinationNetworkInterfaceIPConfiguration;
+  final pulumi.Input<NetworkInterfaceIPConfigurationResponse?>? destinationNetworkInterfaceIPConfiguration;
   /// The VXLAN destination port that will receive the tapped traffic.
-  final pulumi.Input<int>? destinationPort;
+  final pulumi.Input<int?>? destinationPort;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
@@ -28,7 +28,7 @@ class VirtualNetworkTapServiceGatewayResponse {
   /// The resource GUID property of the virtual network tap resource.
   final pulumi.Input<String> resourceGuid;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
 
@@ -81,7 +81,7 @@ class VirtualNetworkTapServiceGatewayResponse {
     return VirtualNetworkTapServiceGatewayResponse(
       destinationLoadBalancerFrontEndIPConfiguration: (() { final guardedValue = map['destinationLoadBalancerFrontEndIPConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FrontendIPConfigurationServiceGatewayResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destinationNetworkInterfaceIPConfiguration: (() { final guardedValue = map['destinationNetworkInterfaceIPConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      destinationPort: (() { final guardedValue = map['destinationPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       etag: pulumi.Input.fromValue(map['etag'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

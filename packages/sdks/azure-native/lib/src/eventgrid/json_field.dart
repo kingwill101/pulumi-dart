@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is used to express the source of an input schema mapping for a single target field in the Event Grid Event schema. This is currently used in the mappings for the 'id', 'topic' and 'eventtime' properties. This represents a field in the input event schema.
 class JsonField {
   /// Name of a field in the input event schema that's to be used as the source of a mapping.
-  final pulumi.Input<String>? sourceField;
+  final pulumi.Input<String?>? sourceField;
 
   /// Creates a new [JsonField].
   /// [sourceField] Name of a field in the input event schema that's to be used as the source of a mapping.

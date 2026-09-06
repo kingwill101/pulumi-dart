@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum ClusterStateChangeReasonCode {
+enum ClusterStateChangeReasonCode implements pulumi.PulumiEnum<String> {
   aLLSTEPSCOMPLETED("ALL_STEPS_COMPLETED"),
   bOOTSTRAPFAILURE("BOOTSTRAP_FAILURE"),
   iNSTANCEFAILURE("INSTANCE_FAILURE"),
@@ -10,6 +12,7 @@ enum ClusterStateChangeReasonCode {
   vALIDATIONERROR("VALIDATION_ERROR");
 
   const ClusterStateChangeReasonCode(this.wireValue);
+  @override
   final String wireValue;
 
   static ClusterStateChangeReasonCode fromValue(String value) {

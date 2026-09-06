@@ -6,35 +6,35 @@ import 'system_data_response.dart';
 /// Result data returned by getLab.
 class GetLabResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Default monetary cap for each student in this lab
-  final AmountResponse budgetPerStudent;
+  final AmountResponse? budgetPerStudent;
   /// The type of currency being used for the value.
   final String? currency;
   /// Detail description of this lab
-  final String description;
+  final String? description;
   /// Lab Display Name
-  final String displayName;
+  final String? displayName;
   /// Lab creation date
-  final String effectiveDate;
+  final String? effectiveDate;
   /// Default expiration date for each student in this lab
-  final String expirationDate;
+  final String? expirationDate;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// invitation code for redeemable lab
-  final String invitationCode;
+  final String? invitationCode;
   /// the total number of students that can be accepted to the lab.
-  final double maxStudentCount;
+  final double? maxStudentCount;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The status of this lab
-  final String status;
+  final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Total budget
-  final AmountResponse totalBudget;
+  final AmountResponse? totalBudget;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Amount value.
   final double? value;
 
@@ -56,63 +56,63 @@ class GetLabResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Amount value.
   const GetLabResult({
-    required this.azureApiVersion,
-    required this.budgetPerStudent,
+    this.azureApiVersion,
+    this.budgetPerStudent,
     this.currency,
-    required this.description,
-    required this.displayName,
-    required this.effectiveDate,
-    required this.expirationDate,
-    required this.id,
-    required this.invitationCode,
-    required this.maxStudentCount,
-    required this.name,
-    required this.status,
-    required this.systemData,
-    required this.totalBudget,
-    required this.type,
+    this.description,
+    this.displayName,
+    this.effectiveDate,
+    this.expirationDate,
+    this.id,
+    this.invitationCode,
+    this.maxStudentCount,
+    this.name,
+    this.status,
+    this.systemData,
+    this.totalBudget,
+    this.type,
     this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'budgetPerStudent': budgetPerStudent.toMap(),
+      'azureApiVersion': ?azureApiVersion,
+      'budgetPerStudent': ?budgetPerStudent?.toMap(),
       'currency': ?currency,
-      'description': description,
-      'displayName': displayName,
-      'effectiveDate': effectiveDate,
-      'expirationDate': expirationDate,
-      'id': id,
-      'invitationCode': invitationCode,
-      'maxStudentCount': maxStudentCount,
-      'name': name,
-      'status': status,
-      'systemData': systemData.toMap(),
-      'totalBudget': totalBudget.toMap(),
-      'type': type,
+      'description': ?description,
+      'displayName': ?displayName,
+      'effectiveDate': ?effectiveDate,
+      'expirationDate': ?expirationDate,
+      'id': ?id,
+      'invitationCode': ?invitationCode,
+      'maxStudentCount': ?maxStudentCount,
+      'name': ?name,
+      'status': ?status,
+      'systemData': ?systemData?.toMap(),
+      'totalBudget': ?totalBudget?.toMap(),
+      'type': ?type,
       'value': ?value,
     };
   }
 
   factory GetLabResult.fromMap(Map<String, dynamic> map) {
     return GetLabResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      budgetPerStudent: AmountResponse.fromMap((map['budgetPerStudent']! as Map).cast<String, dynamic>()),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      budgetPerStudent: (() { final guardedValue = map['budgetPerStudent']; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       currency: (() { final guardedValue = map['currency']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      effectiveDate: map['effectiveDate'] as String,
-      expirationDate: map['expirationDate'] as String,
-      id: map['id'] as String,
-      invitationCode: map['invitationCode'] as String,
-      maxStudentCount: map['maxStudentCount'] as double,
-      name: map['name'] as String,
-      status: map['status'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      totalBudget: AmountResponse.fromMap((map['totalBudget']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return guardedValue as double; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      effectiveDate: (() { final guardedValue = map['effectiveDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationDate: (() { final guardedValue = map['expirationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      invitationCode: (() { final guardedValue = map['invitationCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maxStudentCount: (() { final guardedValue = map['maxStudentCount']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      totalBudget: (() { final guardedValue = map['totalBudget']; if (guardedValue == null) return null; return AmountResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
     );
   }
 }

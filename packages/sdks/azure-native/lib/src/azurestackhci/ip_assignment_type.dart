@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of IP assignment.
-enum IpAssignmentType {
+enum IpAssignmentType implements pulumi.PulumiEnum<String> {
   automatic("Automatic"),
   manual("Manual");
 
   const IpAssignmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpAssignmentType fromValue(String value) {

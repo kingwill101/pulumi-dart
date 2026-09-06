@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Setting indicating whether the service has a managed identity associated with it.
 class ServiceManagedIdentityIdentity {
   /// Type of identity being specified, currently SystemAssigned and None are allowed.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
   /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [ServiceManagedIdentityIdentity].
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
@@ -26,7 +26,7 @@ class ServiceManagedIdentityIdentity {
 
   factory ServiceManagedIdentityIdentity.fromMap(Map<String, dynamic> map) {
     return ServiceManagedIdentityIdentity(
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
       userAssignedIdentities: (() { final guardedValue = map['userAssignedIdentities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

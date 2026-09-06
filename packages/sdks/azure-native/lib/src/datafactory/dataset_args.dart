@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'amazon_mwsobject_dataset.dart';
 
 /// {@template pulumi_datafactory_dataset_args_doc}
 /// The set of arguments for Dataset.
@@ -9,11 +8,11 @@ import 'amazon_mwsobject_dataset.dart';
 /// {@macro pulumi_datafactory_dataset_args_doc}
 class DatasetArgs {
   /// The dataset name.
-  final pulumi.Input<String>? datasetName;
+  final pulumi.Input<String?>? datasetName;
   /// The factory name.
   final pulumi.Input<String> factoryName;
   /// Dataset properties.
-  final pulumi.Input<AmazonMWSObjectDataset> properties;
+  final pulumi.Input<dynamic> properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -33,7 +32,7 @@ class DatasetArgs {
     return <String, dynamic>{
       'datasetName': ?datasetName,
       'factoryName': factoryName,
-      'properties': pulumi.Input.mapInputValue<AmazonMWSObjectDataset, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': properties,
       'resourceGroupName': resourceGroupName,
     };
   }
@@ -42,7 +41,7 @@ class DatasetArgs {
     return DatasetArgs(
       datasetName: (() { final guardedValue = map['datasetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       factoryName: pulumi.Input.fromValue(map['factoryName'] as String),
-      properties: pulumi.Input.fromValue(AmazonMWSObjectDataset.fromMap((map['properties']! as Map).cast<String, dynamic>())),
+      properties: pulumi.Input.fromValue(map['properties']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );
   }

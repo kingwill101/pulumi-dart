@@ -6,9 +6,9 @@ import 'log_rules_response.dart';
 /// Definition of the properties for a TagRules resource.
 class MonitoringTagRulesPropertiesTagRuleResponse {
   /// Rules for sending logs.
-  final pulumi.Input<LogRulesResponse>? logRules;
+  final pulumi.Input<LogRulesResponse?>? logRules;
   /// Provisioning state of the monitoring tag rules.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
 
   /// Creates a new [MonitoringTagRulesPropertiesTagRuleResponse].
   /// [logRules] Rules for sending logs.

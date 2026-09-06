@@ -10,17 +10,17 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_containerservice_fleet_args_doc}
 class FleetArgs {
   /// The name of the Fleet resource.
-  final pulumi.Input<String>? fleetName;
+  final pulumi.Input<String?>? fleetName;
   /// The FleetHubProfile configures the Fleet's hub.
-  final pulumi.Input<FleetHubProfile>? hubProfile;
+  final pulumi.Input<FleetHubProfile?>? hubProfile;
   /// Managed identity.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FleetArgs].
   /// [fleetName] The name of the Fleet resource.

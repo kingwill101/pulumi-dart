@@ -9,7 +9,7 @@ import 'active_directory_connector_properties.dart';
 /// {@macro pulumi_azurearcdata_active_directory_connector_args_doc}
 class ActiveDirectoryConnectorArgs {
   /// The name of the Active Directory connector instance
-  final pulumi.Input<String>? activeDirectoryConnectorName;
+  final pulumi.Input<String?>? activeDirectoryConnectorName;
   /// The name of the data controller
   final pulumi.Input<String> dataControllerName;
   /// null

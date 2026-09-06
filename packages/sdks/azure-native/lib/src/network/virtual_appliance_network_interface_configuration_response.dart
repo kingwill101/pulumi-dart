@@ -6,9 +6,9 @@ import 'virtual_appliance_network_interface_configuration_properties_response.da
 /// Represents a single NIC configuration.
 class VirtualApplianceNetworkInterfaceConfigurationResponse {
   /// NIC type. This should be either PublicNic or PrivateNic.
-  final pulumi.Input<String>? nicType;
+  final pulumi.Input<String?>? nicType;
   /// Represents a single NIC configuration properties.
-  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse>? properties;
+  final pulumi.Input<VirtualApplianceNetworkInterfaceConfigurationPropertiesResponse?>? properties;
 
   /// Creates a new [VirtualApplianceNetworkInterfaceConfigurationResponse].
   /// [nicType] NIC type. This should be either PublicNic or PrivateNic.

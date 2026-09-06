@@ -6,19 +6,19 @@ import 'tag_response.dart';
 /// Definition of awsEc2KeyPair
 class AwsEc2KeyPairPropertiesResponse {
   /// Property keyFingerprint
-  final pulumi.Input<String>? keyFingerprint;
+  final pulumi.Input<String?>? keyFingerprint;
   /// The format of the key pair. Default: ``pem``
-  final pulumi.Input<String>? keyFormat;
+  final pulumi.Input<String?>? keyFormat;
   /// A unique name for the key pair. Constraints: Up to 255 ASCII characters
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Property keyPairId
-  final pulumi.Input<String>? keyPairId;
+  final pulumi.Input<String?>? keyPairId;
   /// The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
-  final pulumi.Input<String>? keyType;
+  final pulumi.Input<String?>? keyType;
   /// The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
-  final pulumi.Input<String>? publicKeyMaterial;
+  final pulumi.Input<String?>? publicKeyMaterial;
   /// The tags to apply to the key pair.
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
 
   /// Creates a new [AwsEc2KeyPairPropertiesResponse].
   /// [keyFingerprint] Property keyFingerprint
@@ -28,15 +28,15 @@ class AwsEc2KeyPairPropertiesResponse {
   /// [keyType] The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
   /// [publicKeyMaterial] The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
   /// [tags] The tags to apply to the key pair.
-  const AwsEc2KeyPairPropertiesResponse({
+  AwsEc2KeyPairPropertiesResponse({
     this.keyFingerprint,
-    this.keyFormat,
+    pulumi.Input<String?>? keyFormat,
     this.keyName,
     this.keyPairId,
-    this.keyType,
+    pulumi.Input<String?>? keyType,
     this.publicKeyMaterial,
     this.tags,
-  });
+  }) : keyFormat = keyFormat ?? pulumi.Input.fromValue('pem'), keyType = keyType ?? pulumi.Input.fromValue('rsa');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

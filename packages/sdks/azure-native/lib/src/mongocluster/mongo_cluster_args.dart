@@ -9,15 +9,15 @@ import 'mongo_cluster_properties.dart';
 /// {@macro pulumi_mongocluster_mongo_cluster_args_doc}
 class MongoClusterArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the mongo cluster.
-  final pulumi.Input<String>? mongoClusterName;
+  final pulumi.Input<String?>? mongoClusterName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<MongoClusterProperties>? properties;
+  final pulumi.Input<MongoClusterProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MongoClusterArgs].
   /// [location] The geo-location where the resource lives

@@ -6,9 +6,9 @@ import 'suppression_schedule.dart';
 /// Suppression logic for a given action rule
 class SuppressionConfig {
   /// Specifies when the suppression should be applied
-  final pulumi.Input<String> recurrenceType;
+  final pulumi.Input<dynamic> recurrenceType;
   /// suppression schedule configuration
-  final pulumi.Input<SuppressionSchedule>? schedule;
+  final pulumi.Input<SuppressionSchedule?>? schedule;
 
   /// Creates a new [SuppressionConfig].
   /// [recurrenceType] Specifies when the suppression should be applied
@@ -27,7 +27,7 @@ class SuppressionConfig {
 
   factory SuppressionConfig.fromMap(Map<String, dynamic> map) {
     return SuppressionConfig(
-      recurrenceType: pulumi.Input.fromValue(map['recurrenceType'] as String),
+      recurrenceType: pulumi.Input.fromValue(map['recurrenceType']),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SuppressionSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

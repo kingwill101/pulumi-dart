@@ -13,7 +13,7 @@ class CustomRolloutArgs {
   /// The name of the resource provider hosted within ProviderHub.
   final pulumi.Input<String> providerNamespace;
   /// The rollout name.
-  final pulumi.Input<String>? rolloutName;
+  final pulumi.Input<String?>? rolloutName;
 
   /// Creates a new [CustomRolloutArgs].
   /// [properties] Properties of the rollout.

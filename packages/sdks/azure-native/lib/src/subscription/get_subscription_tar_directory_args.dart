@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_subscription_get_subscription_tar_directory_args_doc}
 class GetSubscriptionTarDirectoryArgs {
   /// Subscription Id.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
 
   /// Creates a new [GetSubscriptionTarDirectoryArgs].
   /// [subscriptionId] Subscription Id.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of receiver.
-enum ReceiverType {
+enum ReceiverType implements pulumi.PulumiEnum<String> {
   syslog("Syslog"),
   ama("Ama"),
   pipelineGroup("PipelineGroup"),
@@ -7,6 +9,7 @@ enum ReceiverType {
   uDP("UDP");
 
   const ReceiverType(this.wireValue);
+  @override
   final String wireValue;
 
   static ReceiverType fromValue(String value) {

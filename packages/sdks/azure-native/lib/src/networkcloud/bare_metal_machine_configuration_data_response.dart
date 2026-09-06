@@ -13,10 +13,10 @@ class BareMetalMachineConfigurationDataResponse {
   /// The MAC address associated with the PXE NIC card.
   final pulumi.Input<String> bootMacAddress;
   /// The free-form additional information about the machine, e.g. an asset tag.
-  final pulumi.Input<String>? machineDetails;
+  final pulumi.Input<String?>? machineDetails;
   /// The user-provided name for the bare metal machine created from this specification.
   /// If not provided, the machine name will be generated programmatically.
-  final pulumi.Input<String>? machineName;
+  final pulumi.Input<String?>? machineName;
   /// The slot the physical machine is in the rack based on the BOM configuration.
   final pulumi.Input<double> rackSlot;
   /// The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
@@ -63,7 +63,7 @@ class BareMetalMachineConfigurationDataResponse {
       bootMacAddress: pulumi.Input.fromValue(map['bootMacAddress'] as String),
       machineDetails: (() { final guardedValue = map['machineDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineName: (() { final guardedValue = map['machineName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rackSlot: pulumi.Input.fromValue(map['rackSlot'] as double),
+      rackSlot: pulumi.Input.fromValue((map['rackSlot'] as num).toDouble()),
       serialNumber: pulumi.Input.fromValue(map['serialNumber'] as String),
     );
   }

@@ -5,7 +5,7 @@ import 'managed_cluster_pod_identity_provisioning_error_response.dart';
 
 class ManagedClusterPodIdentityResponseProvisioningInfo {
   /// Pod identity assignment error (if any).
-  final pulumi.Input<ManagedClusterPodIdentityProvisioningErrorResponse>? error;
+  final pulumi.Input<ManagedClusterPodIdentityProvisioningErrorResponse?>? error;
 
   /// Creates a new [ManagedClusterPodIdentityResponseProvisioningInfo].
   /// [error] Pod identity assignment error (if any).

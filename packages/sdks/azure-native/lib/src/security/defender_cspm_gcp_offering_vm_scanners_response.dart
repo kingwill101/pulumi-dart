@@ -6,9 +6,9 @@ import 'vm_scanners_base_configuration_response.dart';
 /// The Microsoft Defender for CSPM VM scanning configuration
 class DefenderCspmGcpOfferingVmScannersResponse {
   /// Configuration for VM scanning
-  final pulumi.Input<VmScannersBaseConfigurationResponse>? configuration;
+  final pulumi.Input<VmScannersBaseConfigurationResponse?>? configuration;
   /// Is VM scanning enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderCspmGcpOfferingVmScannersResponse].
   /// [configuration] Configuration for VM scanning

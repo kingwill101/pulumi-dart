@@ -7,7 +7,7 @@ class CustomRPValidationsResponse {
   /// A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
   final pulumi.Input<String> specification;
   /// The type of validation to run against a matching request.
-  final pulumi.Input<String>? validationType;
+  final pulumi.Input<String?>? validationType;
 
   /// Creates a new [CustomRPValidationsResponse].
   /// [specification] A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.

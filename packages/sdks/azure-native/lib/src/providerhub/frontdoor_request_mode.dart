@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The frontdoor request mode.
-enum FrontdoorRequestMode {
+enum FrontdoorRequestMode implements pulumi.PulumiEnum<String> {
   notSpecified("NotSpecified"),
   useManifest("UseManifest");
 
   const FrontdoorRequestMode(this.wireValue);
+  @override
   final String wireValue;
 
   static FrontdoorRequestMode fromValue(String value) {

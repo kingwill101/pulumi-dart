@@ -3,15 +3,15 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PreReleaseAccessRequestSpec {
-  final pulumi.Input<String>? city;
-  final pulumi.Input<String>? companyWebsite;
-  final pulumi.Input<String>? countryAndRegion;
-  final pulumi.Input<String>? email;
-  final pulumi.Input<List<String>>? engagements;
-  final pulumi.Input<String>? organizationName;
-  final pulumi.Input<String>? stateOrProvince;
-  final pulumi.Input<String>? streetAddress;
-  final pulumi.Input<String>? zipCode;
+  final pulumi.Input<String?>? city;
+  final pulumi.Input<String?>? companyWebsite;
+  final pulumi.Input<String?>? countryAndRegion;
+  final pulumi.Input<String?>? email;
+  final pulumi.Input<List<dynamic>?>? engagements;
+  final pulumi.Input<String?>? organizationName;
+  final pulumi.Input<String?>? stateOrProvince;
+  final pulumi.Input<String?>? streetAddress;
+  final pulumi.Input<String?>? zipCode;
 
   /// Creates a new [PreReleaseAccessRequestSpec].
   /// [city] Optional.
@@ -55,7 +55,7 @@ class PreReleaseAccessRequestSpec {
       companyWebsite: (() { final guardedValue = map['companyWebsite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       countryAndRegion: (() { final guardedValue = map['countryAndRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      engagements: (() { final guardedValue = map['engagements']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      engagements: (() { final guardedValue = map['engagements']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       organizationName: (() { final guardedValue = map['organizationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stateOrProvince: (() { final guardedValue = map['stateOrProvince']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       streetAddress: (() { final guardedValue = map['streetAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

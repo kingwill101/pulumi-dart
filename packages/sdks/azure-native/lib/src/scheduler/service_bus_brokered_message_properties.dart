@@ -4,31 +4,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServiceBusBrokeredMessageProperties {
   /// Gets or sets the content type.
-  final pulumi.Input<String>? contentType;
+  final pulumi.Input<String?>? contentType;
   /// Gets or sets the correlation ID.
-  final pulumi.Input<String>? correlationId;
+  final pulumi.Input<String?>? correlationId;
   /// Gets or sets the force persistence.
-  final pulumi.Input<bool>? forcePersistence;
+  final pulumi.Input<bool?>? forcePersistence;
   /// Gets or sets the label.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// Gets or sets the message ID.
-  final pulumi.Input<String>? messageId;
+  final pulumi.Input<String?>? messageId;
   /// Gets or sets the partition key.
-  final pulumi.Input<String>? partitionKey;
+  final pulumi.Input<String?>? partitionKey;
   /// Gets or sets the reply to.
-  final pulumi.Input<String>? replyTo;
+  final pulumi.Input<String?>? replyTo;
   /// Gets or sets the reply to session ID.
-  final pulumi.Input<String>? replyToSessionId;
+  final pulumi.Input<String?>? replyToSessionId;
   /// Gets or sets the scheduled enqueue time UTC.
-  final pulumi.Input<String>? scheduledEnqueueTimeUtc;
+  final pulumi.Input<String?>? scheduledEnqueueTimeUtc;
   /// Gets or sets the session ID.
-  final pulumi.Input<String>? sessionId;
+  final pulumi.Input<String?>? sessionId;
   /// Gets or sets the time to live.
-  final pulumi.Input<String>? timeToLive;
+  final pulumi.Input<String?>? timeToLive;
   /// Gets or sets the to.
-  final pulumi.Input<String>? to;
+  final pulumi.Input<String?>? to;
   /// Gets or sets the via partition key.
-  final pulumi.Input<String>? viaPartitionKey;
+  final pulumi.Input<String?>? viaPartitionKey;
 
   /// Creates a new [ServiceBusBrokeredMessageProperties].
   /// [contentType] Gets or sets the content type.

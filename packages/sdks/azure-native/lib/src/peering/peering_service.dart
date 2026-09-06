@@ -228,7 +228,30 @@ class PeeringService extends pulumi.CustomResource {
     providerPrimaryPeeringLocation = registerOutput<String?>('providerPrimaryPeeringLocation');
     provisioningState = registerOutput<String>('provisioningState');
     sku = registerOutput<PeeringServiceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringServiceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PeeringService] resource.
+  PeeringService.reference(String urn)
+    : super(
+        'azure-native:peering:PeeringService',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    logAnalyticsWorkspaceProperties = registerOutput<LogAnalyticsWorkspacePropertiesResponse?>('logAnalyticsWorkspaceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogAnalyticsWorkspacePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    peeringServiceLocation = registerOutput<String?>('peeringServiceLocation');
+    peeringServiceProvider = registerOutput<String?>('peeringServiceProvider');
+    providerBackupPeeringLocation = registerOutput<String?>('providerBackupPeeringLocation');
+    providerPrimaryPeeringLocation = registerOutput<String?>('providerPrimaryPeeringLocation');
+    provisioningState = registerOutput<String>('provisioningState');
+    sku = registerOutput<PeeringServiceSkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PeeringServiceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

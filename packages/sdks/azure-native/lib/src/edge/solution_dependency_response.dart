@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Solution Dependency Context
 class SolutionDependencyResponse {
   /// Solution dependencies
-  final pulumi.Input<List<SolutionDependencyResponse>>? dependencies;
+  final pulumi.Input<List<SolutionDependencyResponse>?>? dependencies;
   /// Solution Instance Name
-  final pulumi.Input<String>? solutionInstanceName;
+  final pulumi.Input<String?>? solutionInstanceName;
   /// Solution Template Version Id
   final pulumi.Input<String> solutionTemplateVersionId;
   /// Solution Version Id

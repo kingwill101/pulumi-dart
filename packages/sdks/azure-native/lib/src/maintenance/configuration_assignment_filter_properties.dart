@@ -6,15 +6,15 @@ import 'tag_settings_properties.dart';
 /// Azure query for the update configuration.
 class ConfigurationAssignmentFilterProperties {
   /// List of locations to scope the query to.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// List of allowed operating systems.
-  final pulumi.Input<List<String>>? osTypes;
+  final pulumi.Input<List<String>?>? osTypes;
   /// List of allowed resource groups.
-  final pulumi.Input<List<String>>? resourceGroups;
+  final pulumi.Input<List<String>?>? resourceGroups;
   /// List of allowed resources.
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<String>?>? resourceTypes;
   /// Tag settings for the VM.
-  final pulumi.Input<TagSettingsProperties>? tagSettings;
+  final pulumi.Input<TagSettingsProperties?>? tagSettings;
 
   /// Creates a new [ConfigurationAssignmentFilterProperties].
   /// [locations] List of locations to scope the query to.

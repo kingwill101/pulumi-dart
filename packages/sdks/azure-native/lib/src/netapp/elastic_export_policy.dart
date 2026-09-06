@@ -6,7 +6,7 @@ import 'elastic_export_policy_rule.dart';
 /// Set of export policy rules
 class ElasticExportPolicy {
   /// Export policy rule
-  final pulumi.Input<List<ElasticExportPolicyRule>>? rules;
+  final pulumi.Input<List<ElasticExportPolicyRule>?>? rules;
 
   /// Creates a new [ElasticExportPolicy].
   /// [rules] Export policy rule

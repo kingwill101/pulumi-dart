@@ -12,7 +12,7 @@ class KeyVaultSigningKeyParameters {
   final pulumi.Input<String> secretVersion;
   /// Subscription Id of the user's Key Vault containing the secret
   final pulumi.Input<String> subscriptionId;
-  final pulumi.Input<String> typeName;
+  final pulumi.Input<dynamic> typeName;
   /// The name of the user's Key Vault containing the secret
   final pulumi.Input<String> vaultName;
 
@@ -49,7 +49,7 @@ class KeyVaultSigningKeyParameters {
       secretName: pulumi.Input.fromValue(map['secretName'] as String),
       secretVersion: pulumi.Input.fromValue(map['secretVersion'] as String),
       subscriptionId: pulumi.Input.fromValue(map['subscriptionId'] as String),
-      typeName: pulumi.Input.fromValue(map['typeName'] as String),
+      typeName: pulumi.Input.fromValue(map['typeName']),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),
     );
   }

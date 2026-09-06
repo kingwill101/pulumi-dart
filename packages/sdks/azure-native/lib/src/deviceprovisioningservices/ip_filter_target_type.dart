@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Target for requests captured by this rule.
-enum IpFilterTargetType {
+enum IpFilterTargetType implements pulumi.PulumiEnum<String> {
   valueAll("all"),
   valueServiceApi("serviceApi"),
   valueDeviceApi("deviceApi");
 
   const IpFilterTargetType(this.wireValue);
+  @override
   final String wireValue;
 
   static IpFilterTargetType fromValue(String value) {

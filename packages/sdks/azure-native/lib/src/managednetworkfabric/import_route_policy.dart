@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Import Route Policy either IPv4 or IPv6.
 class ImportRoutePolicy {
   /// ARM resource ID of RoutePolicy.
-  final pulumi.Input<String>? importIpv4RoutePolicyId;
+  final pulumi.Input<String?>? importIpv4RoutePolicyId;
   /// ARM resource ID of RoutePolicy.
-  final pulumi.Input<String>? importIpv6RoutePolicyId;
+  final pulumi.Input<String?>? importIpv6RoutePolicyId;
 
   /// Creates a new [ImportRoutePolicy].
   /// [importIpv4RoutePolicyId] ARM resource ID of RoutePolicy.

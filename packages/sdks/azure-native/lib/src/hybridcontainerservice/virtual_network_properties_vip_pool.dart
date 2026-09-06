@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualNetworkPropertiesVipPool {
   /// Ending IP address for the IP Pool
-  final pulumi.Input<String>? endIP;
+  final pulumi.Input<String?>? endIP;
   /// Starting IP address for the IP Pool
-  final pulumi.Input<String>? startIP;
+  final pulumi.Input<String?>? startIP;
 
   /// Creates a new [VirtualNetworkPropertiesVipPool].
   /// [endIP] Ending IP address for the IP Pool

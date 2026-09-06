@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network related properties of a server
 class Network {
   /// Delegated subnet resource id used to setup vnet for a server.
-  final pulumi.Input<String>? delegatedSubnetResourceId;
+  final pulumi.Input<String?>? delegatedSubnetResourceId;
   /// Private DNS zone resource id.
-  final pulumi.Input<String>? privateDnsZoneResourceId;
+  final pulumi.Input<String?>? privateDnsZoneResourceId;
   /// Whether or not public network access is allowed for this server. Value is 'Disabled' when server has VNet integration.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
 
   /// Creates a new [Network].
   /// [delegatedSubnetResourceId] Delegated subnet resource id used to setup vnet for a server.
@@ -33,7 +33,7 @@ class Network {
     return Network(
       delegatedSubnetResourceId: (() { final guardedValue = map['delegatedSubnetResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       privateDnsZoneResourceId: (() { final guardedValue = map['privateDnsZoneResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

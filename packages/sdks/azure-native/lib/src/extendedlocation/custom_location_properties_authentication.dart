@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This is optional input that contains the authentication that should be used to generate the namespace.
 class CustomLocationPropertiesAuthentication {
   /// The type of the Custom Locations authentication
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// The kubeconfig value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [CustomLocationPropertiesAuthentication].
   /// [type] The type of the Custom Locations authentication

@@ -9,15 +9,15 @@ import 'dfpinstance_administrators.dart';
 /// {@macro pulumi_dynamics365fraudprotection_instance_details_args_doc}
 class InstanceDetailsArgs {
   /// A collection of DFP instance administrators
-  final pulumi.Input<DFPInstanceAdministrators>? administration;
+  final pulumi.Input<DFPInstanceAdministrators?>? administration;
   /// The name of the DFP instances. It must be a minimum of 3 characters, and a maximum of 63.
-  final pulumi.Input<String>? instanceName;
+  final pulumi.Input<String?>? instanceName;
   /// Location of the DFP resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
   final pulumi.Input<String> resourceGroupName;
   /// Key-value pairs of additional resource provisioning properties.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [InstanceDetailsArgs].
   /// [administration] A collection of DFP instance administrators

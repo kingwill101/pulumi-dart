@@ -7,21 +7,21 @@ import 'tag_response.dart';
 /// Definition of awsNetworkFirewallRuleGroup
 class AwsNetworkFirewallRuleGroupPropertiesResponse {
   /// Property capacity
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// Property description
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Property ruleGroup
-  final pulumi.Input<RuleGroupResponse>? ruleGroup;
+  final pulumi.Input<RuleGroupResponse?>? ruleGroup;
   /// A resource ARN.
-  final pulumi.Input<String>? ruleGroupArn;
+  final pulumi.Input<String?>? ruleGroupArn;
   /// Property ruleGroupId
-  final pulumi.Input<String>? ruleGroupId;
+  final pulumi.Input<String?>? ruleGroupId;
   /// Property ruleGroupName
-  final pulumi.Input<String>? ruleGroupName;
+  final pulumi.Input<String?>? ruleGroupName;
   /// Property tags
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// Property type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AwsNetworkFirewallRuleGroupPropertiesResponse].
   /// [capacity] Property capacity
@@ -58,7 +58,7 @@ class AwsNetworkFirewallRuleGroupPropertiesResponse {
 
   factory AwsNetworkFirewallRuleGroupPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return AwsNetworkFirewallRuleGroupPropertiesResponse(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ruleGroup: (() { final guardedValue = map['ruleGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RuleGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ruleGroupArn: (() { final guardedValue = map['ruleGroupArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -37,7 +37,7 @@ class VectorEmbeddingResponse {
   factory VectorEmbeddingResponse.fromMap(Map<String, dynamic> map) {
     return VectorEmbeddingResponse(
       dataType: pulumi.Input.fromValue(map['dataType'] as String),
-      dimensions: pulumi.Input.fromValue(map['dimensions'] as int),
+      dimensions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dimensions'])),
       distanceFunction: pulumi.Input.fromValue(map['distanceFunction'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
     );

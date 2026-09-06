@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_customerinsights_get_image_upload_url_for_data_args_doc}
 class GetImageUploadUrlForDataArgs {
   /// Type of entity. Can be Profile or Interaction.
-  final pulumi.Input<String>? entityType;
+  final pulumi.Input<String?>? entityType;
   /// Name of the entity type.
-  final pulumi.Input<String>? entityTypeName;
+  final pulumi.Input<String?>? entityTypeName;
   /// The name of the hub.
   final pulumi.Input<String> hubName;
   /// Relative path of the image.
-  final pulumi.Input<String>? relativePath;
+  final pulumi.Input<String?>? relativePath;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

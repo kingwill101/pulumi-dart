@@ -28,7 +28,7 @@ class CurrentSpendResponse {
 
   factory CurrentSpendResponse.fromMap(Map<String, dynamic> map) {
     return CurrentSpendResponse(
-      amount: pulumi.Input.fromValue(map['amount'] as double),
+      amount: pulumi.Input.fromValue((map['amount'] as num).toDouble()),
       unit: pulumi.Input.fromValue(map['unit'] as String),
     );
   }

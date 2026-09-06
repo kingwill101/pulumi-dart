@@ -7,13 +7,13 @@ import 'insights_table_result_response.dart';
 /// Entity insight Item.
 class EntityInsightItemResponse {
   /// Query results for table insights query.
-  final pulumi.Input<List<InsightsTableResultResponse>>? chartQueryResults;
+  final pulumi.Input<List<InsightsTableResultResponse>?>? chartQueryResults;
   /// The query id of the insight
-  final pulumi.Input<String>? queryId;
+  final pulumi.Input<String?>? queryId;
   /// The Time interval that the query actually executed on.
-  final pulumi.Input<EntityInsightItemResponseQueryTimeInterval>? queryTimeInterval;
+  final pulumi.Input<EntityInsightItemResponseQueryTimeInterval?>? queryTimeInterval;
   /// Query results for table insights query.
-  final pulumi.Input<InsightsTableResultResponse>? tableQueryResults;
+  final pulumi.Input<InsightsTableResultResponse?>? tableQueryResults;
 
   /// Creates a new [EntityInsightItemResponse].
   /// [chartQueryResults] Query results for table insights query.

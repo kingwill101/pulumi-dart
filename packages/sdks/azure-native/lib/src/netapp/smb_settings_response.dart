@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SMB settings for the cache
 class SmbSettingsResponse {
   /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbAccessBasedEnumeration;
+  final pulumi.Input<String?>? smbAccessBasedEnumeration;
   /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
-  final pulumi.Input<String>? smbEncryption;
+  final pulumi.Input<String?>? smbEncryption;
   /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbNonBrowsable;
+  final pulumi.Input<String?>? smbNonBrowsable;
 
   /// Creates a new [SmbSettingsResponse].
   /// [smbAccessBasedEnumeration] Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume

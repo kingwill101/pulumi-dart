@@ -12,7 +12,7 @@ class BlobFolderDataSetArgs {
   /// Container that has the file path.
   final pulumi.Input<String> containerName;
   /// The name of the dataSet.
-  final pulumi.Input<String>? dataSetName;
+  final pulumi.Input<String?>? dataSetName;
   /// Kind of data set.
   /// Expected value is 'BlobFolder'.
   final pulumi.Input<String> kind;

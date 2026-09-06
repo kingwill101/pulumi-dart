@@ -5,49 +5,49 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Edifact agreement envelope settings.
 class EdifactEnvelopeSettings {
   /// The application reference id.
-  final pulumi.Input<String>? applicationReferenceId;
+  final pulumi.Input<String?>? applicationReferenceId;
   /// The value indicating whether to apply delimiter string advice.
   final pulumi.Input<bool> applyDelimiterStringAdvice;
   /// The communication agreement id.
-  final pulumi.Input<String>? communicationAgreementId;
+  final pulumi.Input<String?>? communicationAgreementId;
   /// The value indicating whether to create grouping segments.
   final pulumi.Input<bool> createGroupingSegments;
   /// The value indicating whether to enable default group headers.
   final pulumi.Input<bool> enableDefaultGroupHeaders;
   /// The functional group id.
-  final pulumi.Input<String>? functionalGroupId;
+  final pulumi.Input<String?>? functionalGroupId;
   /// The group application password.
-  final pulumi.Input<String>? groupApplicationPassword;
+  final pulumi.Input<String?>? groupApplicationPassword;
   /// The group application receiver id.
-  final pulumi.Input<String>? groupApplicationReceiverId;
+  final pulumi.Input<String?>? groupApplicationReceiverId;
   /// The group application receiver qualifier.
-  final pulumi.Input<String>? groupApplicationReceiverQualifier;
+  final pulumi.Input<String?>? groupApplicationReceiverQualifier;
   /// The group application sender id.
-  final pulumi.Input<String>? groupApplicationSenderId;
+  final pulumi.Input<String?>? groupApplicationSenderId;
   /// The group application sender qualifier.
-  final pulumi.Input<String>? groupApplicationSenderQualifier;
+  final pulumi.Input<String?>? groupApplicationSenderQualifier;
   /// The group association assigned code.
-  final pulumi.Input<String>? groupAssociationAssignedCode;
+  final pulumi.Input<String?>? groupAssociationAssignedCode;
   /// The group control number lower bound.
   final pulumi.Input<double> groupControlNumberLowerBound;
   /// The group control number prefix.
-  final pulumi.Input<String>? groupControlNumberPrefix;
+  final pulumi.Input<String?>? groupControlNumberPrefix;
   /// The group control number suffix.
-  final pulumi.Input<String>? groupControlNumberSuffix;
+  final pulumi.Input<String?>? groupControlNumberSuffix;
   /// The group control number upper bound.
   final pulumi.Input<double> groupControlNumberUpperBound;
   /// The group controlling agency code.
-  final pulumi.Input<String>? groupControllingAgencyCode;
+  final pulumi.Input<String?>? groupControllingAgencyCode;
   /// The group message release.
-  final pulumi.Input<String>? groupMessageRelease;
+  final pulumi.Input<String?>? groupMessageRelease;
   /// The group message version.
-  final pulumi.Input<String>? groupMessageVersion;
+  final pulumi.Input<String?>? groupMessageVersion;
   /// The interchange control number lower bound.
   final pulumi.Input<double> interchangeControlNumberLowerBound;
   /// The interchange control number prefix.
-  final pulumi.Input<String>? interchangeControlNumberPrefix;
+  final pulumi.Input<String?>? interchangeControlNumberPrefix;
   /// The interchange control number suffix.
-  final pulumi.Input<String>? interchangeControlNumberSuffix;
+  final pulumi.Input<String?>? interchangeControlNumberSuffix;
   /// The interchange control number upper bound.
   final pulumi.Input<double> interchangeControlNumberUpperBound;
   /// The value indicating whether the message is a test interchange.
@@ -55,17 +55,17 @@ class EdifactEnvelopeSettings {
   /// The value indicating whether to overwrite existing transaction set control number.
   final pulumi.Input<bool> overwriteExistingTransactionSetControlNumber;
   /// The processing priority code.
-  final pulumi.Input<String>? processingPriorityCode;
+  final pulumi.Input<String?>? processingPriorityCode;
   /// The receiver internal identification.
-  final pulumi.Input<String>? receiverInternalIdentification;
+  final pulumi.Input<String?>? receiverInternalIdentification;
   /// The receiver internal sub identification.
-  final pulumi.Input<String>? receiverInternalSubIdentification;
+  final pulumi.Input<String?>? receiverInternalSubIdentification;
   /// The receiver reverse routing address.
-  final pulumi.Input<String>? receiverReverseRoutingAddress;
+  final pulumi.Input<String?>? receiverReverseRoutingAddress;
   /// The recipient reference password qualifier.
-  final pulumi.Input<String>? recipientReferencePasswordQualifier;
+  final pulumi.Input<String?>? recipientReferencePasswordQualifier;
   /// The recipient reference password value.
-  final pulumi.Input<String>? recipientReferencePasswordValue;
+  final pulumi.Input<String?>? recipientReferencePasswordValue;
   /// The value indicating whether to rollover group control number.
   final pulumi.Input<bool> rolloverGroupControlNumber;
   /// The value indicating whether to rollover interchange control number.
@@ -73,17 +73,17 @@ class EdifactEnvelopeSettings {
   /// The value indicating whether to rollover transaction set control number.
   final pulumi.Input<bool> rolloverTransactionSetControlNumber;
   /// The sender internal identification.
-  final pulumi.Input<String>? senderInternalIdentification;
+  final pulumi.Input<String?>? senderInternalIdentification;
   /// The sender internal sub identification.
-  final pulumi.Input<String>? senderInternalSubIdentification;
+  final pulumi.Input<String?>? senderInternalSubIdentification;
   /// The sender reverse routing address.
-  final pulumi.Input<String>? senderReverseRoutingAddress;
+  final pulumi.Input<String?>? senderReverseRoutingAddress;
   /// The transaction set control number lower bound.
   final pulumi.Input<double> transactionSetControlNumberLowerBound;
   /// The transaction set control number prefix.
-  final pulumi.Input<String>? transactionSetControlNumberPrefix;
+  final pulumi.Input<String?>? transactionSetControlNumberPrefix;
   /// The transaction set control number suffix.
-  final pulumi.Input<String>? transactionSetControlNumberSuffix;
+  final pulumi.Input<String?>? transactionSetControlNumberSuffix;
   /// The transaction set control number upper bound.
   final pulumi.Input<double> transactionSetControlNumberUpperBound;
 
@@ -233,17 +233,17 @@ class EdifactEnvelopeSettings {
       groupApplicationSenderId: (() { final guardedValue = map['groupApplicationSenderId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupApplicationSenderQualifier: (() { final guardedValue = map['groupApplicationSenderQualifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupAssociationAssignedCode: (() { final guardedValue = map['groupAssociationAssignedCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupControlNumberLowerBound: pulumi.Input.fromValue(map['groupControlNumberLowerBound'] as double),
+      groupControlNumberLowerBound: pulumi.Input.fromValue((map['groupControlNumberLowerBound'] as num).toDouble()),
       groupControlNumberPrefix: (() { final guardedValue = map['groupControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupControlNumberSuffix: (() { final guardedValue = map['groupControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      groupControlNumberUpperBound: pulumi.Input.fromValue(map['groupControlNumberUpperBound'] as double),
+      groupControlNumberUpperBound: pulumi.Input.fromValue((map['groupControlNumberUpperBound'] as num).toDouble()),
       groupControllingAgencyCode: (() { final guardedValue = map['groupControllingAgencyCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupMessageRelease: (() { final guardedValue = map['groupMessageRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       groupMessageVersion: (() { final guardedValue = map['groupMessageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interchangeControlNumberLowerBound: pulumi.Input.fromValue(map['interchangeControlNumberLowerBound'] as double),
+      interchangeControlNumberLowerBound: pulumi.Input.fromValue((map['interchangeControlNumberLowerBound'] as num).toDouble()),
       interchangeControlNumberPrefix: (() { final guardedValue = map['interchangeControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       interchangeControlNumberSuffix: (() { final guardedValue = map['interchangeControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      interchangeControlNumberUpperBound: pulumi.Input.fromValue(map['interchangeControlNumberUpperBound'] as double),
+      interchangeControlNumberUpperBound: pulumi.Input.fromValue((map['interchangeControlNumberUpperBound'] as num).toDouble()),
       isTestInterchange: pulumi.Input.fromValue(map['isTestInterchange'] as bool),
       overwriteExistingTransactionSetControlNumber: pulumi.Input.fromValue(map['overwriteExistingTransactionSetControlNumber'] as bool),
       processingPriorityCode: (() { final guardedValue = map['processingPriorityCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -258,10 +258,10 @@ class EdifactEnvelopeSettings {
       senderInternalIdentification: (() { final guardedValue = map['senderInternalIdentification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       senderInternalSubIdentification: (() { final guardedValue = map['senderInternalSubIdentification']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       senderReverseRoutingAddress: (() { final guardedValue = map['senderReverseRoutingAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionSetControlNumberLowerBound: pulumi.Input.fromValue(map['transactionSetControlNumberLowerBound'] as double),
+      transactionSetControlNumberLowerBound: pulumi.Input.fromValue((map['transactionSetControlNumberLowerBound'] as num).toDouble()),
       transactionSetControlNumberPrefix: (() { final guardedValue = map['transactionSetControlNumberPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       transactionSetControlNumberSuffix: (() { final guardedValue = map['transactionSetControlNumberSuffix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionSetControlNumberUpperBound: pulumi.Input.fromValue(map['transactionSetControlNumberUpperBound'] as double),
+      transactionSetControlNumberUpperBound: pulumi.Input.fromValue((map['transactionSetControlNumberUpperBound'] as num).toDouble()),
     );
   }
 }

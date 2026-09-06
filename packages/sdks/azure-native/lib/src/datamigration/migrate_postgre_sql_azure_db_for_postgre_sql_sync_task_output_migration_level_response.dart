@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse {
   /// Number of databases to include
-  final pulumi.Input<double>? databaseCount;
+  final pulumi.Input<double?>? databaseCount;
   /// Migration end time
   final pulumi.Input<String> endedOn;
   /// Result identifier
@@ -76,7 +76,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse 
 
   factory MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse.fromMap(Map<String, dynamic> map) {
     return MigratePostgreSqlAzureDbForPostgreSqlSyncTaskOutputMigrationLevelResponse(
-      databaseCount: (() { final guardedValue = map['databaseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      databaseCount: (() { final guardedValue = map['databaseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       endedOn: pulumi.Input.fromValue(map['endedOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       resultType: pulumi.Input.fromValue(map['resultType'] as String),

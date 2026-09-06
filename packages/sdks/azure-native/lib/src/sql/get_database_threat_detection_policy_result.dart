@@ -4,7 +4,7 @@
 /// Result data returned by getDatabaseThreatDetectionPolicy.
 class GetDatabaseThreatDetectionPolicyResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Specifies the semicolon-separated list of alerts that are disabled, or empty string to disable no alerts. Possible values: Sql_Injection; Sql_Injection_Vulnerability; Access_Anomaly; Data_Exfiltration; Unsafe_Action.
   final String? disabledAlerts;
   /// Specifies that the alert is sent to the account administrators.
@@ -12,21 +12,21 @@ class GetDatabaseThreatDetectionPolicyResult {
   /// Specifies the semicolon-separated list of e-mail addresses to which the alert is sent.
   final String? emailAddresses;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource kind.
-  final String kind;
+  final String? kind;
   /// The geo-location where the resource lives
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Specifies the number of days to keep in the Threat Detection audit logs.
   final int? retentionDays;
   /// Specifies the state of the policy. If state is Enabled, storageEndpoint and storageAccountAccessKey are required.
-  final String state;
+  final String? state;
   /// Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. If state is Enabled, storageEndpoint is required.
   final String? storageEndpoint;
   /// Resource type.
-  final String type;
+  final String? type;
   /// Specifies whether to use the default server policy.
   final String? useServerDefault;
 
@@ -45,53 +45,53 @@ class GetDatabaseThreatDetectionPolicyResult {
   /// [type] Resource type.
   /// [useServerDefault] Specifies whether to use the default server policy.
   const GetDatabaseThreatDetectionPolicyResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.disabledAlerts,
     this.emailAccountAdmins,
     this.emailAddresses,
-    required this.id,
-    required this.kind,
+    this.id,
+    this.kind,
     this.location,
-    required this.name,
+    this.name,
     this.retentionDays,
-    required this.state,
+    this.state,
     this.storageEndpoint,
-    required this.type,
+    this.type,
     this.useServerDefault,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'disabledAlerts': ?disabledAlerts,
       'emailAccountAdmins': ?emailAccountAdmins,
       'emailAddresses': ?emailAddresses,
-      'id': id,
-      'kind': kind,
+      'id': ?id,
+      'kind': ?kind,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'retentionDays': ?retentionDays,
-      'state': state,
+      'state': ?state,
       'storageEndpoint': ?storageEndpoint,
-      'type': type,
+      'type': ?type,
       'useServerDefault': ?useServerDefault,
     };
   }
 
   factory GetDatabaseThreatDetectionPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetDatabaseThreatDetectionPolicyResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disabledAlerts: (() { final guardedValue = map['disabledAlerts']; if (guardedValue == null) return null; return guardedValue as String; })(),
       emailAccountAdmins: (() { final guardedValue = map['emailAccountAdmins']; if (guardedValue == null) return null; return guardedValue as String; })(),
       emailAddresses: (() { final guardedValue = map['emailAddresses']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      state: map['state'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      retentionDays: (() { final guardedValue = map['retentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageEndpoint: (() { final guardedValue = map['storageEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       useServerDefault: (() { final guardedValue = map['useServerDefault']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the nic allocation method.
-enum IPAddressAllocationMethod {
+enum IPAddressAllocationMethod implements pulumi.PulumiEnum<String> {
   valueUnset("unset"),
   valueDynamic("dynamic"),
   valueStatic("static"),
@@ -8,6 +10,7 @@ enum IPAddressAllocationMethod {
   valueOther("other");
 
   const IPAddressAllocationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static IPAddressAllocationMethod fromValue(String value) {

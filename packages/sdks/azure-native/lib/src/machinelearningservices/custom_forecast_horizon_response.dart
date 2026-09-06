@@ -28,7 +28,7 @@ class CustomForecastHorizonResponse {
   factory CustomForecastHorizonResponse.fromMap(Map<String, dynamic> map) {
     return CustomForecastHorizonResponse(
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      value: pulumi.Input.fromValue(map['value'] as int),
+      value: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['value'])),
     );
   }
 }

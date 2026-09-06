@@ -5,32 +5,32 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information for connecting to PostgreSQL server
 class PostgreSqlConnectionInfoResponse {
   /// Additional connection settings
-  final pulumi.Input<String>? additionalSettings;
+  final pulumi.Input<String?>? additionalSettings;
   /// Authentication type to use for connection
-  final pulumi.Input<String>? authentication;
+  final pulumi.Input<String?>? authentication;
   /// Data source
-  final pulumi.Input<String>? dataSource;
+  final pulumi.Input<String?>? dataSource;
   /// Name of the database
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Whether to encrypt the connection
-  final pulumi.Input<bool>? encryptConnection;
+  final pulumi.Input<bool?>? encryptConnection;
   /// Password credential.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// Port for Server
   final pulumi.Input<int> port;
   /// server brand version
-  final pulumi.Input<String>? serverBrandVersion;
+  final pulumi.Input<String?>? serverBrandVersion;
   /// Name of the server
   final pulumi.Input<String> serverName;
   /// server version
-  final pulumi.Input<String>? serverVersion;
+  final pulumi.Input<String?>? serverVersion;
   /// Whether to trust the server certificate
-  final pulumi.Input<bool>? trustServerCertificate;
+  final pulumi.Input<bool?>? trustServerCertificate;
   /// Type of connection info
   /// Expected value is 'PostgreSqlConnectionInfo'.
   final pulumi.Input<String> type;
   /// User name
-  final pulumi.Input<String>? userName;
+  final pulumi.Input<String?>? userName;
 
   /// Creates a new [PostgreSqlConnectionInfoResponse].
   /// [additionalSettings] Additional connection settings
@@ -46,21 +46,21 @@ class PostgreSqlConnectionInfoResponse {
   /// [trustServerCertificate] Whether to trust the server certificate
   /// [type] Type of connection info
   /// [userName] User name
-  const PostgreSqlConnectionInfoResponse({
+  PostgreSqlConnectionInfoResponse({
     this.additionalSettings,
     this.authentication,
     this.dataSource,
     this.databaseName,
-    this.encryptConnection,
+    pulumi.Input<bool?>? encryptConnection,
     this.password,
     required this.port,
     this.serverBrandVersion,
     required this.serverName,
     this.serverVersion,
-    this.trustServerCertificate,
+    pulumi.Input<bool?>? trustServerCertificate,
     required this.type,
     this.userName,
-  });
+  }) : encryptConnection = encryptConnection ?? pulumi.Input.fromValue(true), trustServerCertificate = trustServerCertificate ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -88,7 +88,7 @@ class PostgreSqlConnectionInfoResponse {
       databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encryptConnection: (() { final guardedValue = map['encryptConnection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       serverBrandVersion: (() { final guardedValue = map['serverBrandVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
       serverVersion: (() { final guardedValue = map['serverVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

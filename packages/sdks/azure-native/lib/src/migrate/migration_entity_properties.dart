@@ -6,29 +6,29 @@ import 'server_migration_specific_properties.dart';
 /// Migration Entity Properties class.
 class MigrationEntityProperties {
   /// Assessed Entity ARM Id
-  final pulumi.Input<String>? assessedEntityArmId;
+  final pulumi.Input<String?>? assessedEntityArmId;
   /// Associated Assessment Id
-  final pulumi.Input<String>? associatedAssessmentId;
+  final pulumi.Input<String?>? associatedAssessmentId;
   /// inventory resource id
   final pulumi.Input<String> associatedInventoryResourceId;
   /// associated Migration Entity Group Id
-  final pulumi.Input<List<String>>? associatedMigrationEntityGroupIds;
+  final pulumi.Input<List<String>?>? associatedMigrationEntityGroupIds;
   /// associated Wave Id
-  final pulumi.Input<String>? associatedWaveId;
+  final pulumi.Input<String?>? associatedWaveId;
   /// Display Name of the Workload.
   final pulumi.Input<String> inventoryDisplayName;
   /// Migration path
-  final pulumi.Input<String>? migrationPath;
+  final pulumi.Input<String?>? migrationPath;
   /// Migration specific properties for the entity.
-  final pulumi.Input<ServerMigrationSpecificProperties>? migrationSpecificProperties;
+  final pulumi.Input<ServerMigrationSpecificProperties?>? migrationSpecificProperties;
   /// Migration Tool of the Migration Entity.
-  final pulumi.Input<String>? migrationTool;
+  final pulumi.Input<String?>? migrationTool;
   /// ARM Resource Identifier for the partner resource.
-  final pulumi.Input<String>? partnerResourceArmId;
+  final pulumi.Input<String?>? partnerResourceArmId;
   /// Target of the Migration Entity.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// target Azure Resource ARM Id.
-  final pulumi.Input<String>? targetAzureResourceArmId;
+  final pulumi.Input<String?>? targetAzureResourceArmId;
 
   /// Creates a new [MigrationEntityProperties].
   /// [assessedEntityArmId] Assessed Entity ARM Id

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Microsoft Defender Container image assessment configuration
 class DefenderCspmJFrogOfferingMdcContainersImageAssessment {
   /// Is Microsoft Defender container image assessment enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderCspmJFrogOfferingMdcContainersImageAssessment].
   /// [enabled] Is Microsoft Defender container image assessment enabled

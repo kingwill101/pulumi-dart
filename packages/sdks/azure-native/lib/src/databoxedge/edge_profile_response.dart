@@ -6,7 +6,7 @@ import 'edge_profile_subscription_response.dart';
 /// Details about Edge Profile for the resource
 class EdgeProfileResponse {
   /// Edge Profile Subscription
-  final pulumi.Input<EdgeProfileSubscriptionResponse>? subscription;
+  final pulumi.Input<EdgeProfileSubscriptionResponse?>? subscription;
 
   /// Creates a new [EdgeProfileResponse].
   /// [subscription] Edge Profile Subscription

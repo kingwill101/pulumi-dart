@@ -14,14 +14,14 @@ class BlobDataSetMappingArgs {
   /// The id of the source data set.
   final pulumi.Input<String> dataSetId;
   /// The name of the data set mapping to be created.
-  final pulumi.Input<String>? dataSetMappingName;
+  final pulumi.Input<String?>? dataSetMappingName;
   /// File path within the source data set
   final pulumi.Input<String> filePath;
   /// Kind of data set mapping.
   /// Expected value is 'Blob'.
   final pulumi.Input<String> kind;
   /// File output type
-  final pulumi.Input<String>? outputType;
+  final pulumi.Input<dynamic>? outputType;
   /// Resource group of storage account.
   final pulumi.Input<String> resourceGroup;
   /// The resource group name.
@@ -86,7 +86,7 @@ class BlobDataSetMappingArgs {
       dataSetMappingName: (() { final guardedValue = map['dataSetMappingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filePath: pulumi.Input.fromValue(map['filePath'] as String),
       kind: pulumi.Input.fromValue(map['kind'] as String),
-      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputType: (() { final guardedValue = map['outputType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       shareSubscriptionName: pulumi.Input.fromValue(map['shareSubscriptionName'] as String),

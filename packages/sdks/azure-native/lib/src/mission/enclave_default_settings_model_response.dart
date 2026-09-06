@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Virtual Enclave Default Settings
 class EnclaveDefaultSettingsModelResponse {
   /// Diagnostic Destination.
-  final pulumi.Input<String>? diagnosticDestination;
+  final pulumi.Input<String?>? diagnosticDestination;
   /// Key Vault Resource Id.
   final pulumi.Input<String> keyVaultResourceId;
   /// Log Analytics Resource Ids.
@@ -18,12 +18,12 @@ class EnclaveDefaultSettingsModelResponse {
   /// [keyVaultResourceId] Key Vault Resource Id.
   /// [logAnalyticsResourceIdCollection] Log Analytics Resource Ids.
   /// [storageAccountResourceId] Storage Account Resource Id.
-  const EnclaveDefaultSettingsModelResponse({
-    this.diagnosticDestination,
+  EnclaveDefaultSettingsModelResponse({
+    pulumi.Input<String?>? diagnosticDestination,
     required this.keyVaultResourceId,
     required this.logAnalyticsResourceIdCollection,
     required this.storageAccountResourceId,
-  });
+  }) : diagnosticDestination = diagnosticDestination ?? pulumi.Input.fromValue('EnclaveOnly');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

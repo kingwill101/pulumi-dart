@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Action to perform
-enum HeaderAction {
+enum HeaderAction implements pulumi.PulumiEnum<String> {
   append("Append"),
   overwrite("Overwrite"),
   delete("Delete");
 
   const HeaderAction(this.wireValue);
+  @override
   final String wireValue;
 
   static HeaderAction fromValue(String value) {

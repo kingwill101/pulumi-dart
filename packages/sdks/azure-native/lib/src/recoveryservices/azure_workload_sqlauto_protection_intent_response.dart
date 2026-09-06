@@ -5,20 +5,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure Workload SQL Auto Protection intent item.
 class AzureWorkloadSQLAutoProtectionIntentResponse {
   /// Type of backup management for the backed up item.
-  final pulumi.Input<String>? backupManagementType;
+  final pulumi.Input<String?>? backupManagementType;
   /// ID of the item which is getting protected, In case of Azure Vm , it is ProtectedItemId
-  final pulumi.Input<String>? itemId;
+  final pulumi.Input<String?>? itemId;
   /// ID of the backup policy with which this item is backed up.
-  final pulumi.Input<String>? policyId;
+  final pulumi.Input<String?>? policyId;
   /// backup protectionIntent type.
   /// Expected value is 'AzureWorkloadSQLAutoProtectionIntent'.
   final pulumi.Input<String> protectionIntentItemType;
   /// Backup state of this backup item.
-  final pulumi.Input<String>? protectionState;
+  final pulumi.Input<String?>? protectionState;
   /// ARM ID of the resource to be backed up.
-  final pulumi.Input<String>? sourceResourceId;
+  final pulumi.Input<String?>? sourceResourceId;
   /// Workload item type of the item for which intent is to be set
-  final pulumi.Input<String>? workloadItemType;
+  final pulumi.Input<String?>? workloadItemType;
 
   /// Creates a new [AzureWorkloadSQLAutoProtectionIntentResponse].
   /// [backupManagementType] Type of backup management for the backed up item.

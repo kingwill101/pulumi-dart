@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'builder_args.dart';
+import 'container_registry_response.dart';
 import 'managed_service_identity_response.dart';
 import 'system_data_response.dart';
 
@@ -19,7 +20,7 @@ class Builder extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// List of mappings of container registries and the managed identity used to connect to it.
-  late final pulumi.Output<List<Map<String, dynamic>>?> containerRegistries;
+  late final pulumi.Output<List<ContainerRegistryResponse>?> containerRegistries;
   /// Resource ID of the container apps environment that the builder is associated with.
   late final pulumi.Output<String> environmentId;
   /// The managed service identities assigned to this resource.
@@ -52,14 +53,35 @@ class Builder extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    containerRegistries = registerOutput<List<Map<String, dynamic>>?>('containerRegistries');
+    containerRegistries = registerOutput<List<ContainerRegistryResponse>?>('containerRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRegistryResponse>(guardedValue, (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     environmentId = registerOutput<String>('environmentId');
     identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Builder] resource.
+  Builder.reference(String urn)
+    : super(
+        'azure-native:app:Builder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    containerRegistries = registerOutput<List<ContainerRegistryResponse>?>('containerRegistries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContainerRegistryResponse>(guardedValue, (value) => ContainerRegistryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    environmentId = registerOutput<String>('environmentId');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

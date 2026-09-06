@@ -7,13 +7,13 @@ import 'routing_rule_response.dart';
 /// Definition of WebsiteConfiguration
 class WebsiteConfigurationResponse {
   /// The name of the error document for the website.
-  final pulumi.Input<String>? errorDocument;
+  final pulumi.Input<String?>? errorDocument;
   /// The name of the index document for the website.
-  final pulumi.Input<String>? indexDocument;
+  final pulumi.Input<String?>? indexDocument;
   /// The redirect behavior for every request to this bucket's website endpoint.  If you specify this property, you can't specify any other property. Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
-  final pulumi.Input<RedirectAllRequestsToResponse>? redirectAllRequestsTo;
+  final pulumi.Input<RedirectAllRequestsToResponse?>? redirectAllRequestsTo;
   /// Rules that define when a redirect is applied and the redirect behavior.
-  final pulumi.Input<List<RoutingRuleResponse>>? routingRules;
+  final pulumi.Input<List<RoutingRuleResponse>?>? routingRules;
 
   /// Creates a new [WebsiteConfigurationResponse].
   /// [errorDocument] The name of the error document for the website.

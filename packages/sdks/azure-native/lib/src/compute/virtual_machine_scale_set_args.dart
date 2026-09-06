@@ -23,63 +23,63 @@ import 'virtual_machine_scale_set_vmprofile.dart';
 /// {@macro pulumi_compute_virtual_machine_scale_set_args_doc}
 class VirtualMachineScaleSetArgs {
   /// Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
-  final pulumi.Input<AdditionalCapabilities>? additionalCapabilities;
+  final pulumi.Input<AdditionalCapabilities?>? additionalCapabilities;
   /// Policy for automatic repairs.
-  final pulumi.Input<AutomaticRepairsPolicy>? automaticRepairsPolicy;
+  final pulumi.Input<AutomaticRepairsPolicy?>? automaticRepairsPolicy;
   /// Optional property which must either be set to True or omitted.
-  final pulumi.Input<bool>? constrainedMaximumCapacity;
+  final pulumi.Input<bool?>? constrainedMaximumCapacity;
   /// When Overprovision is enabled, extensions are launched only on the requested number of VMs which are finally kept. This property will hence ensure that the extensions do not run on the extra overprovisioned VMs.
-  final pulumi.Input<bool>? doNotRunExtensionsOnOverprovisionedVMs;
+  final pulumi.Input<bool?>? doNotRunExtensionsOnOverprovisionedVMs;
   /// The extended location of the Virtual Machine Scale Set.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Specifies information about the dedicated host group that the virtual machine scale set resides in. Minimum api-version: 2020-06-01.
-  final pulumi.Input<SubResource>? hostGroup;
+  final pulumi.Input<SubResource?>? hostGroup;
   /// The identity of the virtual machine scale set, if configured.
-  final pulumi.Input<VirtualMachineScaleSetIdentity>? identity;
+  final pulumi.Input<VirtualMachineScaleSetIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Specifies the orchestration mode for the virtual machine scale set.
-  final pulumi.Input<String>? orchestrationMode;
+  final pulumi.Input<dynamic>? orchestrationMode;
   /// Specifies whether the Virtual Machine Scale Set should be overprovisioned.
-  final pulumi.Input<bool>? overprovision;
+  final pulumi.Input<bool?>? overprovision;
   /// Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use.  In the Azure portal, find the marketplace image that you want to use and then click **Want to deploy programmatically, Get Started -&gt;**. Enter any required information and then click **Save**.
-  final pulumi.Input<Plan>? plan;
+  final pulumi.Input<Plan?>? plan;
   /// Fault Domain count for each placement group.
-  final pulumi.Input<int>? platformFaultDomainCount;
+  final pulumi.Input<int?>? platformFaultDomainCount;
   /// Specifies the desired targets for mixing Spot and Regular priority VMs within the same VMSS Flex instance.
-  final pulumi.Input<PriorityMixPolicy>? priorityMixPolicy;
+  final pulumi.Input<PriorityMixPolicy?>? priorityMixPolicy;
   /// Specifies information about the proximity placement group that the virtual machine scale set should be assigned to. Minimum api-version: 2018-04-01.
-  final pulumi.Input<SubResource>? proximityPlacementGroup;
+  final pulumi.Input<SubResource?>? proximityPlacementGroup;
   /// Policy for Resiliency
-  final pulumi.Input<ResiliencyPolicy>? resiliencyPolicy;
+  final pulumi.Input<ResiliencyPolicy?>? resiliencyPolicy;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Specifies the policies applied when scaling in Virtual Machines in the Virtual Machine Scale Set.
-  final pulumi.Input<ScaleInPolicy>? scaleInPolicy;
+  final pulumi.Input<ScaleInPolicy?>? scaleInPolicy;
   /// The ScheduledEventsPolicy.
-  final pulumi.Input<ScheduledEventsPolicy>? scheduledEventsPolicy;
+  final pulumi.Input<ScheduledEventsPolicy?>? scheduledEventsPolicy;
   /// When true this limits the scale set to a single placement group, of max size 100 virtual machines. NOTE: If singlePlacementGroup is true, it may be modified to false. However, if singlePlacementGroup is false, it may not be modified to true.
-  final pulumi.Input<bool>? singlePlacementGroup;
+  final pulumi.Input<bool?>? singlePlacementGroup;
   /// The virtual machine scale set sku.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Specifies the sku profile for the virtual machine scale set.
-  final pulumi.Input<SkuProfile>? skuProfile;
+  final pulumi.Input<SkuProfile?>? skuProfile;
   /// Specifies the Spot Restore properties for the virtual machine scale set.
-  final pulumi.Input<SpotRestorePolicy>? spotRestorePolicy;
+  final pulumi.Input<SpotRestorePolicy?>? spotRestorePolicy;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The upgrade policy.
-  final pulumi.Input<UpgradePolicy>? upgradePolicy;
+  final pulumi.Input<UpgradePolicy?>? upgradePolicy;
   /// The virtual machine profile.
-  final pulumi.Input<VirtualMachineScaleSetVMProfile>? virtualMachineProfile;
+  final pulumi.Input<VirtualMachineScaleSetVMProfile?>? virtualMachineProfile;
   /// The name of the VM scale set.
-  final pulumi.Input<String>? vmScaleSetName;
+  final pulumi.Input<String?>? vmScaleSetName;
   /// Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
-  final pulumi.Input<String>? zonalPlatformFaultDomainAlignMode;
+  final pulumi.Input<dynamic>? zonalPlatformFaultDomainAlignMode;
   /// Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
-  final pulumi.Input<bool>? zoneBalance;
+  final pulumi.Input<bool?>? zoneBalance;
   /// The availability zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [VirtualMachineScaleSetArgs].
   /// [additionalCapabilities] Specifies additional capabilities enabled or disabled on the Virtual Machines in the Virtual Machine Scale Set. For instance: whether the Virtual Machines have the capability to support attaching managed data disks with UltraSSD_LRS storage account type.
@@ -187,10 +187,10 @@ class VirtualMachineScaleSetArgs {
       hostGroup: (() { final guardedValue = map['hostGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      orchestrationMode: (() { final guardedValue = map['orchestrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      orchestrationMode: (() { final guardedValue = map['orchestrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       overprovision: (() { final guardedValue = map['overprovision']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       plan: (() { final guardedValue = map['plan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Plan.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      platformFaultDomainCount: (() { final guardedValue = map['platformFaultDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       priorityMixPolicy: (() { final guardedValue = map['priorityMixPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PriorityMixPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       proximityPlacementGroup: (() { final guardedValue = map['proximityPlacementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       resiliencyPolicy: (() { final guardedValue = map['resiliencyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResiliencyPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -205,7 +205,7 @@ class VirtualMachineScaleSetArgs {
       upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UpgradePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       virtualMachineProfile: (() { final guardedValue = map['virtualMachineProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineScaleSetVMProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vmScaleSetName: (() { final guardedValue = map['vmScaleSetName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      zonalPlatformFaultDomainAlignMode: (() { final guardedValue = map['zonalPlatformFaultDomainAlignMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      zonalPlatformFaultDomainAlignMode: (() { final guardedValue = map['zonalPlatformFaultDomainAlignMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       zoneBalance: (() { final guardedValue = map['zoneBalance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

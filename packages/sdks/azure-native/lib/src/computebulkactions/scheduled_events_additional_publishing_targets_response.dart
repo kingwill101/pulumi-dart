@@ -6,7 +6,7 @@ import 'event_grid_and_resource_graph_response.dart';
 /// Specifies additional publishing targets for scheduled events.
 class ScheduledEventsAdditionalPublishingTargetsResponse {
   /// The configuration parameters used while creating eventGridAndResourceGraph Scheduled Event setting.
-  final pulumi.Input<EventGridAndResourceGraphResponse>? eventGridAndResourceGraph;
+  final pulumi.Input<EventGridAndResourceGraphResponse?>? eventGridAndResourceGraph;
 
   /// Creates a new [ScheduledEventsAdditionalPublishingTargetsResponse].
   /// [eventGridAndResourceGraph] The configuration parameters used while creating eventGridAndResourceGraph Scheduled Event setting.

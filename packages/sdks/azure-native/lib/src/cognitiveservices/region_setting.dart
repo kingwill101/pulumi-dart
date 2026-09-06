@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The call rate limit Cognitive Services account.
 class RegionSetting {
   /// Maps the region to the regional custom subdomain.
-  final pulumi.Input<String>? customsubdomain;
+  final pulumi.Input<String?>? customsubdomain;
   /// Name of the region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A value for priority or weighted routing methods.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [RegionSetting].
   /// [customsubdomain] Maps the region to the regional custom subdomain.
@@ -33,7 +33,7 @@ class RegionSetting {
     return RegionSetting(
       customsubdomain: (() { final guardedValue = map['customsubdomain']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

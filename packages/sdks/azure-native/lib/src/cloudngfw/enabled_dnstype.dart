@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enabled DNS proxy type, disabled by default
-enum EnabledDNSType {
+enum EnabledDNSType implements pulumi.PulumiEnum<String> {
   valueCUSTOM("CUSTOM"),
   valueAZURE("AZURE");
 
   const EnabledDNSType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnabledDNSType fromValue(String value) {

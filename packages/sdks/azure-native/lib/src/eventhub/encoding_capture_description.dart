@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
-enum EncodingCaptureDescription {
+enum EncodingCaptureDescription implements pulumi.PulumiEnum<String> {
   valueAvro("Avro"),
   valueAvroDeflate("AvroDeflate");
 
   const EncodingCaptureDescription(this.wireValue);
+  @override
   final String wireValue;
 
   static EncodingCaptureDescription fromValue(String value) {

@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// PrincipalDefinition properties of Basic Rule
 class PrincipalDefinition {
   /// A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
-  final pulumi.Input<List<Map<String, String>>>? attributes;
+  final pulumi.Input<List<Map<String, String>>?>? attributes;
   /// A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
-  final pulumi.Input<List<String>>? clientids;
+  final pulumi.Input<List<String>?>? clientids;
   /// A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
-  final pulumi.Input<List<String>>? usernames;
+  final pulumi.Input<List<String>?>? usernames;
 
   /// Creates a new [PrincipalDefinition].
   /// [attributes] A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
@@ -31,7 +31,7 @@ class PrincipalDefinition {
 
   factory PrincipalDefinition.fromMap(Map<String, dynamic> map) {
     return PrincipalDefinition(
-      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<Map<String, String>>()); })(),
+      attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(guardedValue, (value) => (value as Map).cast<String, String>())); })(),
       clientids: (() { final guardedValue = map['clientids']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       usernames: (() { final guardedValue = map['usernames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

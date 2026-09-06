@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// notification event.
-enum NotificationEvent {
+enum NotificationEvent implements pulumi.PulumiEnum<String> {
   generateSnapshotSuccess("generate_snapshot_success"),
   generateSnapshotFailed("generate_snapshot_failed"),
   assessmentFailure("assessment_failure"),
@@ -7,6 +9,7 @@ enum NotificationEvent {
   reportDeletion("report_deletion");
 
   const NotificationEvent(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationEvent fromValue(String value) {

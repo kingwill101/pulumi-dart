@@ -214,4 +214,22 @@ class Cache extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     useFromLocation = registerOutput<String>('useFromLocation');
   }
+
+  /// Creates a typed reference to an existing [Cache] resource.
+  Cache.reference(String urn)
+    : super(
+        'azure-native:apimanagement:Cache',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    connectionString = registerOutput<String>('connectionString');
+    description = registerOutput<String?>('description');
+    this.name = registerOutput<String>('name');
+    resourceId = registerOutput<String?>('resourceId');
+    type = registerOutput<String>('type');
+    useFromLocation = registerOutput<String>('useFromLocation');
+  }
 }

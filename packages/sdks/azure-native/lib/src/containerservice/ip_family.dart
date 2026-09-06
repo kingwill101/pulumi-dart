@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP version to use for cluster networking and IP assignment.
-enum IpFamily {
+enum IpFamily implements pulumi.PulumiEnum<String> {
   valueIPv4("IPv4"),
   valueIPv6("IPv6");
 
   const IpFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static IpFamily fromValue(String value) {

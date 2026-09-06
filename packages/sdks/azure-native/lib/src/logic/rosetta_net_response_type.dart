@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The value indicating whether the RosettaNet PIP communication is synchronous.
-enum RosettaNetResponseType {
+enum RosettaNetResponseType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueSync("Sync"),
   valueAsync("Async");
 
   const RosettaNetResponseType(this.wireValue);
+  @override
   final String wireValue;
 
   static RosettaNetResponseType fromValue(String value) {

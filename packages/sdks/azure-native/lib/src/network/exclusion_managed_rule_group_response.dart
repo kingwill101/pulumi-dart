@@ -8,7 +8,7 @@ class ExclusionManagedRuleGroupResponse {
   /// The managed rule group for exclusion.
   final pulumi.Input<String> ruleGroupName;
   /// List of rules that will be excluded. If none specified, all rules in the group will be excluded.
-  final pulumi.Input<List<ExclusionManagedRuleResponse>>? rules;
+  final pulumi.Input<List<ExclusionManagedRuleResponse>?>? rules;
 
   /// Creates a new [ExclusionManagedRuleGroupResponse].
   /// [ruleGroupName] The managed rule group for exclusion.

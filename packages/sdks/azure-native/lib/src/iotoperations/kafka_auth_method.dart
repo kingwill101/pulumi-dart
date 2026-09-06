@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mode of Authentication.
-enum KafkaAuthMethod {
+enum KafkaAuthMethod implements pulumi.PulumiEnum<String> {
   systemAssignedManagedIdentity("SystemAssignedManagedIdentity"),
   userAssignedManagedIdentity("UserAssignedManagedIdentity"),
   sasl("Sasl"),
@@ -7,6 +9,7 @@ enum KafkaAuthMethod {
   anonymous("Anonymous");
 
   const KafkaAuthMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static KafkaAuthMethod fromValue(String value) {

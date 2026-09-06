@@ -63,7 +63,30 @@ class WebAppPremierAddOn extends pulumi.CustomResource {
     product = registerOutput<String?>('product');
     sku = registerOutput<String?>('sku');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    vendor = registerOutput<String?>('vendor');
+  }
+
+  /// Creates a typed reference to an existing [WebAppPremierAddOn] resource.
+  WebAppPremierAddOn.reference(String urn)
+    : super(
+        'azure-native:web:WebAppPremierAddOn',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    kind = registerOutput<String?>('kind');
+    location = registerOutput<String>('location');
+    marketplaceOffer = registerOutput<String?>('marketplaceOffer');
+    marketplacePublisher = registerOutput<String?>('marketplacePublisher');
+    this.name = registerOutput<String>('name');
+    product = registerOutput<String?>('product');
+    sku = registerOutput<String?>('sku');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     vendor = registerOutput<String?>('vendor');
   }

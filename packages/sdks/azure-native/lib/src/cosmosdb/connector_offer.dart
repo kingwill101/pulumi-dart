@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The cassandra connector offer type for the Cosmos DB database C* account.
-enum ConnectorOffer {
+enum ConnectorOffer implements pulumi.PulumiEnum<String> {
   valueSmall("Small");
 
   const ConnectorOffer(this.wireValue);
+  @override
   final String wireValue;
 
   static ConnectorOffer fromValue(String value) {

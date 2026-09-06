@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connected Partner Resource Properties
 class ConnectedPartnerResourcePropertiesResponse {
   /// The azure resource Id of the deployment.
-  final pulumi.Input<String>? azureResourceId;
+  final pulumi.Input<String?>? azureResourceId;
   /// The location of the deployment.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Elastic deployment name
-  final pulumi.Input<String>? partnerDeploymentName;
+  final pulumi.Input<String?>? partnerDeploymentName;
   /// Deployment URL of the elasticsearch in Elastic cloud deployment.
-  final pulumi.Input<String>? partnerDeploymentUri;
+  final pulumi.Input<String?>? partnerDeploymentUri;
 
   /// Creates a new [ConnectedPartnerResourcePropertiesResponse].
   /// [azureResourceId] The azure resource Id of the deployment.

@@ -6,9 +6,9 @@ import 'emission_policy_destination.dart';
 /// Emission policy properties.
 class EmissionPoliciesPropertiesFormat {
   /// Emission policy destinations.
-  final pulumi.Input<List<EmissionPolicyDestination>>? emissionDestinations;
+  final pulumi.Input<List<EmissionPolicyDestination>?>? emissionDestinations;
   /// Emission format type.
-  final pulumi.Input<String>? emissionType;
+  final pulumi.Input<dynamic>? emissionType;
 
   /// Creates a new [EmissionPoliciesPropertiesFormat].
   /// [emissionDestinations] Emission policy destinations.
@@ -28,7 +28,7 @@ class EmissionPoliciesPropertiesFormat {
   factory EmissionPoliciesPropertiesFormat.fromMap(Map<String, dynamic> map) {
     return EmissionPoliciesPropertiesFormat(
       emissionDestinations: (() { final guardedValue = map['emissionDestinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EmissionPolicyDestination>(guardedValue, (value) => EmissionPolicyDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      emissionType: (() { final guardedValue = map['emissionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      emissionType: (() { final guardedValue = map['emissionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

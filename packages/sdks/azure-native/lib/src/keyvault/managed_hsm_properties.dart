@@ -8,23 +8,23 @@ import 'mhsmnetwork_rule_set.dart';
 /// Properties of the managed HSM Pool
 class ManagedHsmProperties {
   /// The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
-  final pulumi.Input<CreateMode>? createMode;
+  final pulumi.Input<CreateMode?>? createMode;
   /// Property specifying whether protection against purge is enabled for this managed HSM pool. Setting this property to true activates protection against purge for this managed HSM pool and its content - only the Managed HSM service may initiate a hard, irrecoverable deletion. Enabling this functionality is irreversible.
-  final pulumi.Input<bool>? enablePurgeProtection;
+  final pulumi.Input<bool?>? enablePurgeProtection;
   /// Property to specify whether the 'soft delete' functionality is enabled for this managed HSM pool. Soft delete is enabled by default for all managed HSMs and is immutable.
-  final pulumi.Input<bool>? enableSoftDelete;
+  final pulumi.Input<bool?>? enableSoftDelete;
   /// Array of initial administrators object ids for this managed hsm pool.
-  final pulumi.Input<List<String>>? initialAdminObjectIds;
+  final pulumi.Input<List<String>?>? initialAdminObjectIds;
   /// Rules governing the accessibility of the key vault from specific network locations.
-  final pulumi.Input<MHSMNetworkRuleSet>? networkAcls;
+  final pulumi.Input<MHSMNetworkRuleSet?>? networkAcls;
   /// Control permission to the managed HSM from public networks.
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// List of all regions associated with the managed hsm pool.
-  final pulumi.Input<List<MHSMGeoReplicatedRegion>>? regions;
+  final pulumi.Input<List<MHSMGeoReplicatedRegion>?>? regions;
   /// Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
-  final pulumi.Input<int>? softDeleteRetentionInDays;
+  final pulumi.Input<int?>? softDeleteRetentionInDays;
   /// The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ManagedHsmProperties].
   /// [createMode] The create mode to indicate whether the resource is being created or is being recovered from a deleted resource.
@@ -36,17 +36,17 @@ class ManagedHsmProperties {
   /// [regions] List of all regions associated with the managed hsm pool.
   /// [softDeleteRetentionInDays] Soft deleted data retention days. When you delete an HSM or a key, it will remain recoverable for the configured retention period or for a default period of 90 days. It accepts values between 7 and 90.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool.
-  const ManagedHsmProperties({
+  ManagedHsmProperties({
     this.createMode,
-    this.enablePurgeProtection,
-    this.enableSoftDelete,
+    pulumi.Input<bool?>? enablePurgeProtection,
+    pulumi.Input<bool?>? enableSoftDelete,
     this.initialAdminObjectIds,
     this.networkAcls,
-    this.publicNetworkAccess,
+    pulumi.Input<dynamic>? publicNetworkAccess,
     this.regions,
-    this.softDeleteRetentionInDays,
+    pulumi.Input<int?>? softDeleteRetentionInDays,
     this.tenantId,
-  });
+  }) : enablePurgeProtection = enablePurgeProtection ?? pulumi.Input.fromValue(true), enableSoftDelete = enableSoftDelete ?? pulumi.Input.fromValue(true), publicNetworkAccess = publicNetworkAccess ?? pulumi.Input.fromValue('Enabled'), softDeleteRetentionInDays = softDeleteRetentionInDays ?? pulumi.Input.fromValue(90);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -69,9 +69,9 @@ class ManagedHsmProperties {
       enableSoftDelete: (() { final guardedValue = map['enableSoftDelete']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       initialAdminObjectIds: (() { final guardedValue = map['initialAdminObjectIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       networkAcls: (() { final guardedValue = map['networkAcls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MHSMNetworkRuleSet.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       regions: (() { final guardedValue = map['regions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MHSMGeoReplicatedRegion>(guardedValue, (value) => MHSMGeoReplicatedRegion.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      softDeleteRetentionInDays: (() { final guardedValue = map['softDeleteRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

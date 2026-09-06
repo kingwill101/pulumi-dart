@@ -427,4 +427,19 @@ class P2sVpnServerConfiguration extends pulumi.CustomResource {
     this.name = registerOutput<String?>('name');
     properties = registerOutput<P2SVpnServerConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return P2SVpnServerConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [P2sVpnServerConfiguration] resource.
+  P2sVpnServerConfiguration.reference(String urn)
+    : super(
+        'azure-native:network:P2sVpnServerConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String>('etag');
+    this.name = registerOutput<String?>('name');
+    properties = registerOutput<P2SVpnServerConfigurationPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return P2SVpnServerConfigurationPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

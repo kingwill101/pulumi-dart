@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The resource element template type.
-enum Type {
+enum Type implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueArmResourceDefinition("ArmResourceDefinition"),
   valueNetworkFunctionDefinition("NetworkFunctionDefinition");
 
   const Type(this.wireValue);
+  @override
   final String wireValue;
 
   static Type fromValue(String value) {

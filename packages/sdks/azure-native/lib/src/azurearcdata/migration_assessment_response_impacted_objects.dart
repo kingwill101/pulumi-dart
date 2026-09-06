@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MigrationAssessmentResponseImpactedObjects {
-  final pulumi.Input<String>? impactDetail;
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? objectType;
+  final pulumi.Input<String?>? impactDetail;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? objectType;
 
   /// Creates a new [MigrationAssessmentResponseImpactedObjects].
   /// [impactDetail] Optional.

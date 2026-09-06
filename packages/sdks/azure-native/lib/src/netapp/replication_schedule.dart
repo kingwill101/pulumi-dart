@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Schedule
-enum ReplicationSchedule {
+enum ReplicationSchedule implements pulumi.PulumiEnum<String> {
   value10minutely("_10minutely"),
   valueHourly("hourly"),
   valueDaily("daily");
 
   const ReplicationSchedule(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationSchedule fromValue(String value) {

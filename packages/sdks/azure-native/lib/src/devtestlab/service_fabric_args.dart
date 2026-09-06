@@ -8,19 +8,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_service_fabric_args_doc}
 class ServiceFabricArgs {
   /// The resource id of the environment under which the service fabric resource is present
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// The backing service fabric resource's id
-  final pulumi.Input<String>? externalServiceFabricId;
+  final pulumi.Input<String?>? externalServiceFabricId;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the service fabric.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the user profile.
   final pulumi.Input<String> userName;
 

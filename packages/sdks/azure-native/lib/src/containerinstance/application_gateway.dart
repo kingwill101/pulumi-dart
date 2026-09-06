@@ -6,9 +6,9 @@ import 'application_gateway_backend_address_pool.dart';
 /// Application Gateway the CG profile will use to interact with CGs in a backend pool
 class ApplicationGateway {
   /// List of Application Gateway Backend Address Pools.
-  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>>? backendAddressPools;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressPool>?>? backendAddressPools;
   /// The Application Gateway ARM resource Id.
-  final pulumi.Input<String>? resource;
+  final pulumi.Input<String?>? resource;
 
   /// Creates a new [ApplicationGateway].
   /// [backendAddressPools] List of Application Gateway Backend Address Pools.

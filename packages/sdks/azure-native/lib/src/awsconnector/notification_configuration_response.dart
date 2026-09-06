@@ -9,13 +9,13 @@ import 'topic_configuration_response.dart';
 /// Definition of NotificationConfiguration
 class NotificationConfigurationResponse {
   /// Enables delivery of events to Amazon EventBridge. Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your bucket, see [Using EventBridge](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) in the *Amazon S3 User Guide*. Unlike other destinations, delivery of events to EventBridge can be either enabled or disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use EventBridge rules to route events to additional targets. For more information, see [What Is Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) in the *Amazon EventBridge User Guide*
-  final pulumi.Input<EventBridgeConfigurationResponse>? eventBridgeConfiguration;
+  final pulumi.Input<EventBridgeConfigurationResponse?>? eventBridgeConfiguration;
   /// Describes the LAMlong functions to invoke and the events for which to invoke them.
-  final pulumi.Input<List<LambdaConfigurationResponse>>? lambdaConfigurations;
+  final pulumi.Input<List<LambdaConfigurationResponse>?>? lambdaConfigurations;
   /// The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
-  final pulumi.Input<List<QueueConfigurationResponse>>? queueConfigurations;
+  final pulumi.Input<List<QueueConfigurationResponse>?>? queueConfigurations;
   /// The topic to which notifications are sent and the events for which notifications are generated.
-  final pulumi.Input<List<TopicConfigurationResponse>>? topicConfigurations;
+  final pulumi.Input<List<TopicConfigurationResponse>?>? topicConfigurations;
 
   /// Creates a new [NotificationConfigurationResponse].
   /// [eventBridgeConfiguration] Enables delivery of events to Amazon EventBridge. Amazon S3 can send events to Amazon EventBridge whenever certain events happen in your bucket, see [Using EventBridge](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventBridge.html) in the *Amazon S3 User Guide*. Unlike other destinations, delivery of events to EventBridge can be either enabled or disabled for a bucket. If enabled, all events will be sent to EventBridge and you can use EventBridge rules to route events to additional targets. For more information, see [What Is Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-what-is.html) in the *Amazon EventBridge User Guide*

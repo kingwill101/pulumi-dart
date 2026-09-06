@@ -9,7 +9,7 @@ class IdentityResponse {
   /// The identity tenantId
   final pulumi.Input<String> tenantId;
   /// The identity type
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [IdentityResponse].
   /// [principalId] The identity principal ID

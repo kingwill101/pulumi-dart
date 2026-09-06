@@ -9,7 +9,7 @@ class KeyVaultPropertiesResponse {
   /// UUID v4 used to identify the Azure Key Vault configuration
   final pulumi.Input<String> keyVaultId;
   /// The resource ID of KeyVault.
-  final pulumi.Input<String>? keyVaultResourceId;
+  final pulumi.Input<String?>? keyVaultResourceId;
   /// The Uri of KeyVault.
   final pulumi.Input<String> keyVaultUri;
   /// Status of the KeyVault connection.

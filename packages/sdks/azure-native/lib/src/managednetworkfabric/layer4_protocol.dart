@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Layer4 protocol type that needs to be matched.
-enum Layer4Protocol {
+enum Layer4Protocol implements pulumi.PulumiEnum<String> {
   valueTCP("TCP"),
   valueUDP("UDP");
 
   const Layer4Protocol(this.wireValue);
+  @override
   final String wireValue;
 
   static Layer4Protocol fromValue(String value) {

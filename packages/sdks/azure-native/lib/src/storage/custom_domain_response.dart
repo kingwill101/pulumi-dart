@@ -7,7 +7,7 @@ class CustomDomainResponse {
   /// Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.
   final pulumi.Input<String> name;
   /// Indicates whether indirect CName validation is enabled. Default value is false. This should only be set on updates.
-  final pulumi.Input<bool>? useSubDomainName;
+  final pulumi.Input<bool?>? useSubDomainName;
 
   /// Creates a new [CustomDomainResponse].
   /// [name] Gets or sets the custom domain name assigned to the storage account. Name is the CNAME source.

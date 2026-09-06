@@ -270,7 +270,30 @@ class Experiment extends pulumi.CustomResource {
     resourceState = registerOutput<String>('resourceState');
     scriptFileUri = registerOutput<String>('scriptFileUri');
     status = registerOutput<String>('status');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Experiment] resource.
+  Experiment.reference(String urn)
+    : super(
+        'azure-native:frontdoor:Experiment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    description = registerOutput<String?>('description');
+    enabledState = registerOutput<String?>('enabledState');
+    endpointA = registerOutput<EndpointResponse?>('endpointA', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointB = registerOutput<EndpointResponse?>('endpointB', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    resourceState = registerOutput<String>('resourceState');
+    scriptFileUri = registerOutput<String>('scriptFileUri');
+    status = registerOutput<String>('status');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

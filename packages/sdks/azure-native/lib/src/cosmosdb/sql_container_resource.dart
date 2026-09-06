@@ -14,31 +14,31 @@ import 'vector_embedding_policy.dart';
 /// Cosmos DB SQL container resource object
 class SqlContainerResource {
   /// Analytical TTL.
-  final pulumi.Input<double>? analyticalStorageTtl;
+  final pulumi.Input<double?>? analyticalStorageTtl;
   /// The client encryption policy for the container.
-  final pulumi.Input<ClientEncryptionPolicy>? clientEncryptionPolicy;
+  final pulumi.Input<ClientEncryptionPolicy?>? clientEncryptionPolicy;
   /// List of computed properties
-  final pulumi.Input<List<ComputedProperty>>? computedProperties;
+  final pulumi.Input<List<ComputedProperty>?>? computedProperties;
   /// The conflict resolution policy for the container.
-  final pulumi.Input<ConflictResolutionPolicy>? conflictResolutionPolicy;
+  final pulumi.Input<ConflictResolutionPolicy?>? conflictResolutionPolicy;
   /// Enum to indicate the mode of resource creation.
-  final pulumi.Input<String>? createMode;
+  final pulumi.Input<dynamic>? createMode;
   /// Default time to live
-  final pulumi.Input<int>? defaultTtl;
+  final pulumi.Input<int?>? defaultTtl;
   /// The FullText policy for the container.
-  final pulumi.Input<FullTextPolicy>? fullTextPolicy;
+  final pulumi.Input<FullTextPolicy?>? fullTextPolicy;
   /// Name of the Cosmos DB SQL container
   final pulumi.Input<String> id;
   /// The configuration of the indexing policy. By default, the indexing is automatic for all document paths within the container
-  final pulumi.Input<IndexingPolicy>? indexingPolicy;
+  final pulumi.Input<IndexingPolicy?>? indexingPolicy;
   /// The configuration of the partition key to be used for partitioning data into multiple partitions
-  final pulumi.Input<ContainerPartitionKey>? partitionKey;
+  final pulumi.Input<ContainerPartitionKey?>? partitionKey;
   /// Parameters to indicate the information about the restore
-  final pulumi.Input<ResourceRestoreParameters>? restoreParameters;
+  final pulumi.Input<ResourceRestoreParameters?>? restoreParameters;
   /// The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  final pulumi.Input<UniqueKeyPolicy>? uniqueKeyPolicy;
+  final pulumi.Input<UniqueKeyPolicy?>? uniqueKeyPolicy;
   /// The vector embedding policy for the container.
-  final pulumi.Input<VectorEmbeddingPolicy>? vectorEmbeddingPolicy;
+  final pulumi.Input<VectorEmbeddingPolicy?>? vectorEmbeddingPolicy;
 
   /// Creates a new [SqlContainerResource].
   /// [analyticalStorageTtl] Analytical TTL.
@@ -90,12 +90,12 @@ class SqlContainerResource {
 
   factory SqlContainerResource.fromMap(Map<String, dynamic> map) {
     return SqlContainerResource(
-      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      analyticalStorageTtl: (() { final guardedValue = map['analyticalStorageTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       clientEncryptionPolicy: (() { final guardedValue = map['clientEncryptionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClientEncryptionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       computedProperties: (() { final guardedValue = map['computedProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ComputedProperty>(guardedValue, (value) => ComputedProperty.fromMap((value as Map).cast<String, dynamic>()))); })(),
       conflictResolutionPolicy: (() { final guardedValue = map['conflictResolutionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConflictResolutionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      createMode: (() { final guardedValue = map['createMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fullTextPolicy: (() { final guardedValue = map['fullTextPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FullTextPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       id: pulumi.Input.fromValue(map['id'] as String),
       indexingPolicy: (() { final guardedValue = map['indexingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IndexingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

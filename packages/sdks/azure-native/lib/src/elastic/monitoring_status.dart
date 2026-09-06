@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag specifying if the resource monitoring is enabled or disabled.
-enum MonitoringStatus {
+enum MonitoringStatus implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const MonitoringStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoringStatus fromValue(String value) {

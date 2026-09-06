@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum MaximumExecutionFrequency {
+enum MaximumExecutionFrequency implements pulumi.PulumiEnum<String> {
   oneHour("One_Hour"),
   sixHours("Six_Hours"),
   threeHours("Three_Hours"),
@@ -7,6 +9,7 @@ enum MaximumExecutionFrequency {
   twentyFourHours("TwentyFour_Hours");
 
   const MaximumExecutionFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static MaximumExecutionFrequency fromValue(String value) {

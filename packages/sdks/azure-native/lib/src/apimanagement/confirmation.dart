@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the type of confirmation e-mail that will be sent to the newly created user.
-enum Confirmation {
+enum Confirmation implements pulumi.PulumiEnum<String> {
   valueSignup("signup"),
   valueInvite("invite");
 
   const Confirmation(this.wireValue);
+  @override
   final String wireValue;
 
   static Confirmation fromValue(String value) {

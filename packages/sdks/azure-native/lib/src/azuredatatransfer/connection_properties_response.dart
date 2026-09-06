@@ -10,35 +10,35 @@ class ConnectionPropertiesResponse {
   /// The timestamp that this connection request was submitted at
   final pulumi.Input<String> dateSubmitted;
   /// Direction of data movement
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// The flow types being requested for this connection
-  final pulumi.Input<List<String>>? flowTypes;
+  final pulumi.Input<List<String>?>? flowTypes;
   /// Justification for the connection request
-  final pulumi.Input<String>? justification;
+  final pulumi.Input<String?>? justification;
   /// Link status of the current connection
   final pulumi.Input<String> linkStatus;
   /// Resource ID of the linked connection
   final pulumi.Input<String> linkedConnectionId;
   /// PIN to link requests together
-  final pulumi.Input<String>? pin;
+  final pulumi.Input<String?>? pin;
   /// Pipeline to use to transfer data
   final pulumi.Input<String> pipeline;
   /// The policies for this connection
-  final pulumi.Input<List<String>>? policies;
+  final pulumi.Input<List<String>?>? policies;
   /// The primary contact for this connection request
-  final pulumi.Input<String>? primaryContact;
+  final pulumi.Input<String?>? primaryContact;
   /// Provisioning state of the connection
   final pulumi.Input<String> provisioningState;
   /// Subscription ID to link cloud subscriptions together
-  final pulumi.Input<String>? remoteSubscriptionId;
+  final pulumi.Input<String?>? remoteSubscriptionId;
   /// Requirement ID of the connection
-  final pulumi.Input<String>? requirementId;
+  final pulumi.Input<String?>? requirementId;
   /// The schema URIs for this connection
-  final pulumi.Input<List<String>>? schemaUris;
+  final pulumi.Input<List<String>?>? schemaUris;
   /// The schemas for this connection
-  final pulumi.Input<List<SchemaResponse>>? schemas;
+  final pulumi.Input<List<SchemaResponse>?>? schemas;
   /// The secondary contacts for this connection request
-  final pulumi.Input<List<String>>? secondaryContacts;
+  final pulumi.Input<List<String>?>? secondaryContacts;
   /// Status of the connection
   final pulumi.Input<String> status;
   /// Reason for status

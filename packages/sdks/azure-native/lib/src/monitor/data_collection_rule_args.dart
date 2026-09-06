@@ -13,30 +13,30 @@ import 'stream_declaration.dart';
 /// {@macro pulumi_monitor_data_collection_rule_args_doc}
 class DataCollectionRuleArgs {
   /// The resource ID of the data collection endpoint that this rule can be used with.
-  final pulumi.Input<String>? dataCollectionEndpointId;
+  final pulumi.Input<String?>? dataCollectionEndpointId;
   /// The name of the data collection rule. The name is case insensitive.
-  final pulumi.Input<String>? dataCollectionRuleName;
+  final pulumi.Input<String?>? dataCollectionRuleName;
   /// The specification of data flows.
-  final pulumi.Input<List<DataFlow>>? dataFlows;
+  final pulumi.Input<List<DataFlow>?>? dataFlows;
   /// The specification of data sources.
   /// This property is optional and can be omitted if the rule is meant to be used via direct calls to the provisioned endpoint.
-  final pulumi.Input<DataCollectionRuleDataSources>? dataSources;
+  final pulumi.Input<DataCollectionRuleDataSources?>? dataSources;
   /// Description of the data collection rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The specification of destinations.
-  final pulumi.Input<DataCollectionRuleDestinations>? destinations;
+  final pulumi.Input<DataCollectionRuleDestinations?>? destinations;
   /// Managed service identity of the resource.
-  final pulumi.Input<DataCollectionRuleResourceIdentity>? identity;
+  final pulumi.Input<DataCollectionRuleResourceIdentity?>? identity;
   /// The kind of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The geo-location where the resource lives.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Declaration of custom streams used in this rule.
-  final pulumi.Input<Map<String, StreamDeclaration>>? streamDeclarations;
+  final pulumi.Input<Map<String, StreamDeclaration>?>? streamDeclarations;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [DataCollectionRuleArgs].
   /// [dataCollectionEndpointId] The resource ID of the data collection endpoint that this rule can be used with.
@@ -92,7 +92,7 @@ class DataCollectionRuleArgs {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCollectionRuleDestinations.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataCollectionRuleResourceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       streamDeclarations: (() { final guardedValue = map['streamDeclarations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeMapValues<StreamDeclaration>(guardedValue, (value) => StreamDeclaration.fromMap((value as Map).cast<String, dynamic>()))); })(),

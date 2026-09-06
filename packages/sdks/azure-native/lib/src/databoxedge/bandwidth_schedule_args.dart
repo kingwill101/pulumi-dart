@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_databoxedge_bandwidth_schedule_args_doc}
 class BandwidthScheduleArgs {
   /// The days of the week when this schedule is applicable.
-  final pulumi.Input<List<String>> days;
+  final pulumi.Input<List<dynamic>> days;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// The bandwidth schedule name which needs to be added/updated.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The bandwidth rate in Mbps.
   final pulumi.Input<int> rateInMbps;
   /// The resource group name.
@@ -54,10 +54,10 @@ class BandwidthScheduleArgs {
 
   factory BandwidthScheduleArgs.fromMap(Map<String, dynamic> map) {
     return BandwidthScheduleArgs(
-      days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
+      days: pulumi.Input.fromValue((map['days'] as List).cast<dynamic>()),
       deviceName: pulumi.Input.fromValue(map['deviceName'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rateInMbps: pulumi.Input.fromValue(map['rateInMbps'] as int),
+      rateInMbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rateInMbps'])),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       start: pulumi.Input.fromValue(map['start'] as String),
       stop: pulumi.Input.fromValue(map['stop'] as String),

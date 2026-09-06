@@ -6,21 +6,21 @@ import 'sub_resource.dart';
 /// Outbound rule of the load balancer.
 class OutboundRule {
   /// The number of outbound ports to be used for NAT.
-  final pulumi.Input<int>? allocatedOutboundPorts;
+  final pulumi.Input<int?>? allocatedOutboundPorts;
   /// A reference to a pool of DIPs. Outbound traffic is randomly load balanced across IPs in the backend IPs.
   final pulumi.Input<SubResource> backendAddressPool;
   /// Receive bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination. This element is only used when the protocol is set to TCP.
-  final pulumi.Input<bool>? enableTcpReset;
+  final pulumi.Input<bool?>? enableTcpReset;
   /// The Frontend IP addresses of the load balancer.
   final pulumi.Input<List<SubResource>> frontendIPConfigurations;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The timeout for the TCP idle connection.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// The name of the resource that is unique within the set of outbound rules used by the load balancer. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The protocol for the outbound rule in load balancer.
-  final pulumi.Input<String> protocol;
+  final pulumi.Input<dynamic> protocol;
 
   /// Creates a new [OutboundRule].
   /// [allocatedOutboundPorts] The number of outbound ports to be used for NAT.
@@ -57,14 +57,14 @@ class OutboundRule {
 
   factory OutboundRule.fromMap(Map<String, dynamic> map) {
     return OutboundRule(
-      allocatedOutboundPorts: (() { final guardedValue = map['allocatedOutboundPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      allocatedOutboundPorts: (() { final guardedValue = map['allocatedOutboundPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       backendAddressPool: pulumi.Input.fromValue(SubResource.fromMap((map['backendAddressPool']! as Map).cast<String, dynamic>())),
       enableTcpReset: (() { final guardedValue = map['enableTcpReset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frontendIPConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(map['frontendIPConfigurations']!, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protocol: pulumi.Input.fromValue(map['protocol'] as String),
+      protocol: pulumi.Input.fromValue(map['protocol']),
     );
   }
 }

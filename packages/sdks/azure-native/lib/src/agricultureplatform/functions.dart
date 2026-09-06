@@ -22,6 +22,17 @@ Future<GetAgriServiceResult> getAgriService(
   return GetAgriServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetAgriServiceResult> getAgriServiceOutput(
+  GetAgriServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agricultureplatform:getAgriService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAgriServiceResult.fromMap);
+}
+
 /// Returns the list of available agri solutions.
 ///
 /// Uses Azure REST API version 2024-06-01-preview.
@@ -38,4 +49,15 @@ Future<ListAgriServiceAvailableSolutionsResult> listAgriServiceAvailableSolution
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListAgriServiceAvailableSolutionsResult.fromMap(result);
+}
+
+pulumi.Output<ListAgriServiceAvailableSolutionsResult> listAgriServiceAvailableSolutionsOutput(
+  ListAgriServiceAvailableSolutionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:agricultureplatform:listAgriServiceAvailableSolutions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListAgriServiceAvailableSolutionsResult.fromMap);
 }

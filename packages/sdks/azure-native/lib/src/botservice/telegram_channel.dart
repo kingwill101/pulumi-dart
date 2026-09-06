@@ -9,23 +9,23 @@ class TelegramChannel {
   /// Expected value is 'TelegramChannel'.
   final pulumi.Input<String> channelName;
   /// Entity Tag of the resource
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Specifies the location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The set of properties specific to Telegram channel resource
-  final pulumi.Input<TelegramChannelProperties>? properties;
+  final pulumi.Input<TelegramChannelProperties?>? properties;
 
   /// Creates a new [TelegramChannel].
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Telegram channel resource
-  const TelegramChannel({
+  TelegramChannel({
     required this.channelName,
     this.etag,
-    this.location,
+    pulumi.Input<String?>? location,
     this.properties,
-  });
+  }) : location = location ?? pulumi.Input.fromValue('global');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

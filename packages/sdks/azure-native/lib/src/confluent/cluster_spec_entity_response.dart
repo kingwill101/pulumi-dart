@@ -9,29 +9,29 @@ import 'cluster_network_entity_response.dart';
 /// Spec of the cluster record
 class ClusterSpecEntityResponse {
   /// The Kafka API cluster endpoint
-  final pulumi.Input<String>? apiEndpoint;
+  final pulumi.Input<String?>? apiEndpoint;
   /// The availability zone configuration of the cluster
-  final pulumi.Input<String>? availability;
+  final pulumi.Input<String?>? availability;
   /// Specification of the cluster
-  final pulumi.Input<ClusterByokEntityResponse>? byok;
+  final pulumi.Input<ClusterByokEntityResponse?>? byok;
   /// The cloud service provider
-  final pulumi.Input<String>? cloud;
+  final pulumi.Input<String?>? cloud;
   /// Specification of the cluster
-  final pulumi.Input<ClusterConfigEntityResponse>? config;
+  final pulumi.Input<ClusterConfigEntityResponse?>? config;
   /// The name of the cluster
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Specification of the cluster
-  final pulumi.Input<ClusterEnvironmentEntityResponse>? environment;
+  final pulumi.Input<ClusterEnvironmentEntityResponse?>? environment;
   /// The cluster HTTP request URL.
-  final pulumi.Input<String>? httpEndpoint;
+  final pulumi.Input<String?>? httpEndpoint;
   /// The bootstrap endpoint used by Kafka clients to connect to the cluster
-  final pulumi.Input<String>? kafkaBootstrapEndpoint;
+  final pulumi.Input<String?>? kafkaBootstrapEndpoint;
   /// Specification of the cluster
-  final pulumi.Input<ClusterNetworkEntityResponse>? network;
+  final pulumi.Input<ClusterNetworkEntityResponse?>? network;
   /// The cloud service provider region
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// type of zone availability
-  final pulumi.Input<String>? zone;
+  final pulumi.Input<String?>? zone;
 
   /// Creates a new [ClusterSpecEntityResponse].
   /// [apiEndpoint] The Kafka API cluster endpoint

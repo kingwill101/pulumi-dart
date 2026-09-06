@@ -34,7 +34,7 @@ class CloudTieringFilesNotTieringResponse {
     return CloudTieringFilesNotTieringResponse(
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<FilesNotTieringErrorResponse>(map['errors']!, (value) => FilesNotTieringErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
       lastUpdatedTimestamp: pulumi.Input.fromValue(map['lastUpdatedTimestamp'] as String),
-      totalFileCount: pulumi.Input.fromValue(map['totalFileCount'] as double),
+      totalFileCount: pulumi.Input.fromValue((map['totalFileCount'] as num).toDouble()),
     );
   }
 }

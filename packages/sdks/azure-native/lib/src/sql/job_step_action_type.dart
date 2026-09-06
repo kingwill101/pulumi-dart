@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of action being executed by the job step.
-enum JobStepActionType {
+enum JobStepActionType implements pulumi.PulumiEnum<String> {
   valueTSql("TSql");
 
   const JobStepActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static JobStepActionType fromValue(String value) {

@@ -6,7 +6,7 @@ import 'sql_connection_info.dart';
 /// Input for the task that validates connection to SQL DB and target server requirements
 class ConnectToTargetSqlDbTaskInput {
   /// Boolean flag indicating whether to query object counts for each database on the target server
-  final pulumi.Input<bool>? queryObjectCounts;
+  final pulumi.Input<bool?>? queryObjectCounts;
   /// Connection information for target SQL DB
   final pulumi.Input<SqlConnectionInfo> targetConnectionInfo;
 

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of TagFilter
 class TagFilter {
   /// The tag key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The tag value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [TagFilter].
   /// [key] The tag key.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether the replication metrics are enabled.
-enum MetricsStatus {
+enum MetricsStatus implements pulumi.PulumiEnum<String> {
   disabled("Disabled"),
   enabled("Enabled");
 
   const MetricsStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static MetricsStatus fromValue(String value) {

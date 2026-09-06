@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FlavorData {
   /// Model flavor-specific data.
-  final pulumi.Input<Map<String, String>>? data;
+  final pulumi.Input<Map<String, String>?>? data;
 
   /// Creates a new [FlavorData].
   /// [data] Model flavor-specific data.

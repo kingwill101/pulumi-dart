@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_notification_channel_args_doc}
 class GetNotificationChannelArgs {
   /// Specify the $expand query. Example: 'properties($select=webHookUrl)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the lab.
   final pulumi.Input<String> labName;
   /// The name of the notification channel.

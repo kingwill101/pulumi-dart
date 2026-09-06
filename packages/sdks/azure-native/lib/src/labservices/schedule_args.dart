@@ -11,15 +11,15 @@ class ScheduleArgs {
   /// The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   final pulumi.Input<String> labName;
   /// Notes for this schedule.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The recurrence pattern of the scheduled actions.
-  final pulumi.Input<RecurrencePattern>? recurrencePattern;
+  final pulumi.Input<RecurrencePattern?>? recurrencePattern;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
-  final pulumi.Input<String>? scheduleName;
+  final pulumi.Input<String?>? scheduleName;
   /// When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
-  final pulumi.Input<String>? startAt;
+  final pulumi.Input<String?>? startAt;
   /// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
   final pulumi.Input<String> stopAt;
   /// The IANA timezone id for the schedule.

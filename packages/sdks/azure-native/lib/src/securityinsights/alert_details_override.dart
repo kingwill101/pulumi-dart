@@ -6,15 +6,15 @@ import 'alert_property_mapping.dart';
 /// Settings for how to dynamically override alert static details
 class AlertDetailsOverride {
   /// the format containing columns name(s) to override the alert description
-  final pulumi.Input<String>? alertDescriptionFormat;
+  final pulumi.Input<String?>? alertDescriptionFormat;
   /// the format containing columns name(s) to override the alert name
-  final pulumi.Input<String>? alertDisplayNameFormat;
+  final pulumi.Input<String?>? alertDisplayNameFormat;
   /// List of additional dynamic properties to override
-  final pulumi.Input<List<AlertPropertyMapping>>? alertDynamicProperties;
+  final pulumi.Input<List<AlertPropertyMapping>?>? alertDynamicProperties;
   /// the column name to take the alert severity from
-  final pulumi.Input<String>? alertSeverityColumnName;
+  final pulumi.Input<String?>? alertSeverityColumnName;
   /// the column name to take the alert tactics from
-  final pulumi.Input<String>? alertTacticsColumnName;
+  final pulumi.Input<String?>? alertTacticsColumnName;
 
   /// Creates a new [AlertDetailsOverride].
   /// [alertDescriptionFormat] the format containing columns name(s) to override the alert description

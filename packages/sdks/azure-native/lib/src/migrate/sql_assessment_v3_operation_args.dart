@@ -9,11 +9,11 @@ import 'sql_assessment_v3_properties.dart';
 /// {@macro pulumi_migrate_sql_assessment_v3_operation_args_doc}
 class SqlAssessmentV3OperationArgs {
   /// SQL Assessment arm name.
-  final pulumi.Input<String>? assessmentName;
+  final pulumi.Input<String?>? assessmentName;
   /// Assessment Project Name
   final pulumi.Input<String> projectName;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SqlAssessmentV3Properties>? properties;
+  final pulumi.Input<SqlAssessmentV3Properties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 

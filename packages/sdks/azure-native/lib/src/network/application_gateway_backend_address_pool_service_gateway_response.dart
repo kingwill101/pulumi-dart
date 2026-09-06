@@ -7,15 +7,15 @@ import 'network_interface_ipconfiguration_service_gateway_response.dart';
 /// Backend Address Pool of an application gateway.
 class ApplicationGatewayBackendAddressPoolServiceGatewayResponse {
   /// Backend addresses.
-  final pulumi.Input<List<ApplicationGatewayBackendAddressResponse>>? backendAddresses;
+  final pulumi.Input<List<ApplicationGatewayBackendAddressResponse>?>? backendAddresses;
   /// Collection of references to IPs defined in network interfaces.
   final pulumi.Input<List<NetworkInterfaceIPConfigurationServiceGatewayResponse>> backendIPConfigurations;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the backend address pool that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the backend address pool resource.
   final pulumi.Input<String> provisioningState;
   /// Type of the resource.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Flag to show if Cross Region Restore is enabled on the Vault or not
-enum CrossRegionRestore {
+enum CrossRegionRestore implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const CrossRegionRestore(this.wireValue);
+  @override
   final String wireValue;
 
   static CrossRegionRestore fromValue(String value) {

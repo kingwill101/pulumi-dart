@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the task
-enum IncidentTaskStatus {
+enum IncidentTaskStatus implements pulumi.PulumiEnum<String> {
   valueNew("New"),
   valueCompleted("Completed");
 
   const IncidentTaskStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static IncidentTaskStatus fromValue(String value) {

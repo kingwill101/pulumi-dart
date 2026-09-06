@@ -11,21 +11,21 @@ class KafkaConfigurationArgs {
   /// The name of the account.
   final pulumi.Input<String> accountName;
   /// Consumer group for hook event hub.
-  final pulumi.Input<String>? consumerGroup;
+  final pulumi.Input<String?>? consumerGroup;
   /// Credentials to access the event streaming service attached to the purview account.
-  final pulumi.Input<Credentials>? credentials;
+  final pulumi.Input<Credentials?>? credentials;
   /// Optional partition Id for notification event hub. If not set, all partitions will be leveraged.
-  final pulumi.Input<String>? eventHubPartitionId;
+  final pulumi.Input<String?>? eventHubPartitionId;
   /// A type definition that refers the id to an Azure Resource Manager resource.
-  final pulumi.Input<String>? eventHubResourceId;
+  final pulumi.Input<String?>? eventHubResourceId;
   /// The event hub type.
-  final pulumi.Input<String>? eventHubType;
+  final pulumi.Input<dynamic>? eventHubType;
   /// The state of the event streaming service
-  final pulumi.Input<String>? eventStreamingState;
+  final pulumi.Input<dynamic>? eventStreamingState;
   /// The event streaming service type
-  final pulumi.Input<String>? eventStreamingType;
+  final pulumi.Input<dynamic>? eventStreamingType;
   /// Name of kafka configuration.
-  final pulumi.Input<String>? kafkaConfigurationName;
+  final pulumi.Input<String?>? kafkaConfigurationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
 
@@ -40,18 +40,18 @@ class KafkaConfigurationArgs {
   /// [eventStreamingType] The event streaming service type
   /// [kafkaConfigurationName] Name of kafka configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  const KafkaConfigurationArgs({
+  KafkaConfigurationArgs({
     required this.accountName,
     this.consumerGroup,
     this.credentials,
     this.eventHubPartitionId,
     this.eventHubResourceId,
     this.eventHubType,
-    this.eventStreamingState,
-    this.eventStreamingType,
+    pulumi.Input<dynamic>? eventStreamingState,
+    pulumi.Input<dynamic>? eventStreamingType,
     this.kafkaConfigurationName,
     required this.resourceGroupName,
-  });
+  }) : eventStreamingState = eventStreamingState ?? pulumi.Input.fromValue('Enabled'), eventStreamingType = eventStreamingType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -75,9 +75,9 @@ class KafkaConfigurationArgs {
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Credentials.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       eventHubPartitionId: (() { final guardedValue = map['eventHubPartitionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       eventHubResourceId: (() { final guardedValue = map['eventHubResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventHubType: (() { final guardedValue = map['eventHubType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventStreamingState: (() { final guardedValue = map['eventStreamingState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      eventStreamingType: (() { final guardedValue = map['eventStreamingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      eventHubType: (() { final guardedValue = map['eventHubType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      eventStreamingState: (() { final guardedValue = map['eventStreamingState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      eventStreamingType: (() { final guardedValue = map['eventStreamingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       kafkaConfigurationName: (() { final guardedValue = map['kafkaConfigurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );

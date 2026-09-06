@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of the policy.
-enum PolicyStatus {
+enum PolicyStatus implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const PolicyStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyStatus fromValue(String value) {

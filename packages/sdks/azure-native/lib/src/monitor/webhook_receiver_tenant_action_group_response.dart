@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A webhook receiver.
 class WebhookReceiverTenantActionGroupResponse {
   /// Indicates the identifier uri for aad auth.
-  final pulumi.Input<String>? identifierUri;
+  final pulumi.Input<String?>? identifierUri;
   /// The name of the webhook receiver. Names must be unique across all receivers within a tenant action group.
   final pulumi.Input<String> name;
   /// Indicates the webhook app object Id for aad auth.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The URI where webhooks should be sent.
   final pulumi.Input<String> serviceUri;
   /// Indicates the tenant id for aad auth.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Indicates whether or not use AAD authentication.
-  final pulumi.Input<bool>? useAadAuth;
+  final pulumi.Input<bool?>? useAadAuth;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [WebhookReceiverTenantActionGroupResponse].
   /// [identifierUri] Indicates the identifier uri for aad auth.
@@ -27,15 +27,15 @@ class WebhookReceiverTenantActionGroupResponse {
   /// [tenantId] Indicates the tenant id for aad auth.
   /// [useAadAuth] Indicates whether or not use AAD authentication.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const WebhookReceiverTenantActionGroupResponse({
+  WebhookReceiverTenantActionGroupResponse({
     this.identifierUri,
     required this.name,
     this.objectId,
     required this.serviceUri,
     this.tenantId,
-    this.useAadAuth,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useAadAuth,
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useAadAuth = useAadAuth ?? pulumi.Input.fromValue(false), useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

@@ -353,4 +353,24 @@ class AksAssessmentOperation extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [AksAssessmentOperation] resource.
+  AksAssessmentOperation.reference(String urn)
+    : super(
+        'azure-native:migrate:AksAssessmentOperation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    details = registerOutput<AKSAssessmentDetailsResponse>('details', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AKSAssessmentDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    eTag = registerOutput<String>('eTag');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    scope = registerOutput<AssessmentScopeParametersResponse?>('scope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssessmentScopeParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    settings = registerOutput<AKSAssessmentSettingsResponse>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AKSAssessmentSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

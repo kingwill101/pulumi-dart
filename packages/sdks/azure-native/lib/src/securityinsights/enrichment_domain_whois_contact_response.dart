@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An individual contact associated with this domain
 class EnrichmentDomainWhoisContactResponse {
   /// The city for this contact
-  final pulumi.Input<String>? city;
+  final pulumi.Input<String?>? city;
   /// The country for this contact
-  final pulumi.Input<String>? country;
+  final pulumi.Input<String?>? country;
   /// The email address for this contact
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The fax number for this contact
-  final pulumi.Input<String>? fax;
+  final pulumi.Input<String?>? fax;
   /// The name of this contact
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The organization for this contact
-  final pulumi.Input<String>? org;
+  final pulumi.Input<String?>? org;
   /// The phone number for this contact
-  final pulumi.Input<String>? phone;
+  final pulumi.Input<String?>? phone;
   /// The postal code for this contact
-  final pulumi.Input<String>? postal;
+  final pulumi.Input<String?>? postal;
   /// The state for this contact
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
   /// A list describing the street address for this contact
-  final pulumi.Input<List<String>>? street;
+  final pulumi.Input<List<String>?>? street;
 
   /// Creates a new [EnrichmentDomainWhoisContactResponse].
   /// [city] The city for this contact

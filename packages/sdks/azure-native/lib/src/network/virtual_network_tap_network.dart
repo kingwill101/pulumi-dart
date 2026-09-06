@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'frontend_ipconfiguration_response.dart';
 import 'network_interface_ipconfiguration_response.dart';
+import 'network_interface_tap_configuration_response.dart';
 import 'virtual_network_tap_args.dart';
 
 /// Virtual Network Tap resource.
@@ -188,7 +189,7 @@ class VirtualNetworkTapNetwork extends pulumi.CustomResource {
   /// Resource name.
   late final pulumi.Output<String> name;
   /// Specifies the list of resource IDs for the network interface IP configuration that needs to be tapped.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkInterfaceTapConfigurations;
+  late final pulumi.Output<List<NetworkInterfaceTapConfigurationResponse>> networkInterfaceTapConfigurations;
   /// The provisioning state of the virtual network tap resource.
   late final pulumi.Output<String> provisioningState;
   /// The resource GUID property of the virtual network tap resource.
@@ -219,10 +220,33 @@ class VirtualNetworkTapNetwork extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
-    networkInterfaceTapConfigurations = registerOutput<List<Map<String, dynamic>>>('networkInterfaceTapConfigurations');
+    networkInterfaceTapConfigurations = registerOutput<List<NetworkInterfaceTapConfigurationResponse>>('networkInterfaceTapConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [VirtualNetworkTapNetwork] resource.
+  VirtualNetworkTapNetwork.reference(String urn)
+    : super(
+        'azure-native:network:VirtualNetworkTap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    destinationLoadBalancerFrontEndIPConfiguration = registerOutput<FrontendIPConfigurationResponse?>('destinationLoadBalancerFrontEndIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontendIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationNetworkInterfaceIPConfiguration = registerOutput<NetworkInterfaceIPConfigurationResponse?>('destinationNetworkInterfaceIPConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceIPConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationPort = registerOutput<int?>('destinationPort');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    networkInterfaceTapConfigurations = registerOutput<List<NetworkInterfaceTapConfigurationResponse>>('networkInterfaceTapConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

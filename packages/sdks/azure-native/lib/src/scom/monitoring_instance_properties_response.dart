@@ -13,15 +13,15 @@ import 'management_server_properties_response.dart';
 /// The properties of a SCOM instance resource
 class MonitoringInstancePropertiesResponse {
   /// The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.
-  final pulumi.Input<AzureHybridBenefitPropertiesResponse>? azureHybridBenefit;
+  final pulumi.Input<AzureHybridBenefitPropertiesResponse?>? azureHybridBenefit;
   /// The database instance where the SCOM Operational and Warehouse databases will be stored.
-  final pulumi.Input<DatabaseInstancePropertiesResponse>? databaseInstance;
+  final pulumi.Input<DatabaseInstancePropertiesResponse?>? databaseInstance;
   /// Domain controller details
-  final pulumi.Input<DomainControllerPropertiesResponse>? domainController;
+  final pulumi.Input<DomainControllerPropertiesResponse?>? domainController;
   /// Domain user which will be used to join VMs to domain and login to VMs.
-  final pulumi.Input<DomainUserCredentialsResponse>? domainUserCredentials;
+  final pulumi.Input<DomainUserCredentialsResponse?>? domainUserCredentials;
   /// Gmsa Details for load balancer and vmss
-  final pulumi.Input<GmsaDetailsResponse>? gmsaDetails;
+  final pulumi.Input<GmsaDetailsResponse?>? gmsaDetails;
   /// Details of Log Analytics workspace and data being ingested.
   final pulumi.Input<LogAnalyticsConfigurationResponse> logAnalyticsProperties;
   /// List of management server endpoints
@@ -33,7 +33,7 @@ class MonitoringInstancePropertiesResponse {
   /// Gets or sets the provisioning state.
   final pulumi.Input<String> provisioningState;
   /// Virtual Network subnet id on which Aquila instance will be provisioned
-  final pulumi.Input<String>? vNetSubnetId;
+  final pulumi.Input<String?>? vNetSubnetId;
 
   /// Creates a new [MonitoringInstancePropertiesResponse].
   /// [azureHybridBenefit] The properties to enable Azure Hybrid benefit for various SCOM infrastructure license.

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Project catalog settings for project catalogs under a project associated to this dev center.
 class DevCenterProjectCatalogSettingsResponse {
   /// Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
-  final pulumi.Input<String>? catalogItemSyncEnableStatus;
+  final pulumi.Input<String?>? catalogItemSyncEnableStatus;
 
   /// Creates a new [DevCenterProjectCatalogSettingsResponse].
   /// [catalogItemSyncEnableStatus] Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.

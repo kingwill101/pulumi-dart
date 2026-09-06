@@ -6,13 +6,13 @@ import 'http_header_response.dart';
 /// The container Http Get settings, for liveness or readiness probe
 class ContainerHttpGetResponse {
   /// The HTTP headers.
-  final pulumi.Input<List<HttpHeaderResponse>>? httpHeaders;
+  final pulumi.Input<List<HttpHeaderResponse>?>? httpHeaders;
   /// The path to probe.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The port number to probe.
   final pulumi.Input<int> port;
   /// The scheme.
-  final pulumi.Input<String>? scheme;
+  final pulumi.Input<String?>? scheme;
 
   /// Creates a new [ContainerHttpGetResponse].
   /// [httpHeaders] The HTTP headers.
@@ -39,7 +39,7 @@ class ContainerHttpGetResponse {
     return ContainerHttpGetResponse(
       httpHeaders: (() { final guardedValue = map['httpHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HttpHeaderResponse>(guardedValue, (value) => HttpHeaderResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       scheme: (() { final guardedValue = map['scheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

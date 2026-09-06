@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the PrometheusOS provider properties.
 class PrometheusOsProviderInstancePropertiesResponse {
   /// URL of the Node Exporter endpoint
-  final pulumi.Input<String>? prometheusUrl;
+  final pulumi.Input<String?>? prometheusUrl;
   /// The provider type. For example, the value can be SapHana.
   /// Expected value is 'PrometheusOS'.
   final pulumi.Input<String> providerType;
   /// Gets or sets the SAP System Identifier
-  final pulumi.Input<String>? sapSid;
+  final pulumi.Input<String?>? sapSid;
   /// Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
-  final pulumi.Input<String>? sslCertificateUri;
+  final pulumi.Input<String?>? sslCertificateUri;
   /// Gets or sets certificate preference if secure communication is enabled.
-  final pulumi.Input<String>? sslPreference;
+  final pulumi.Input<String?>? sslPreference;
 
   /// Creates a new [PrometheusOsProviderInstancePropertiesResponse].
   /// [prometheusUrl] URL of the Node Exporter endpoint

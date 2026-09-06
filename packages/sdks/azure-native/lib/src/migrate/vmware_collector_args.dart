@@ -8,14 +8,14 @@ import 'collector_properties.dart';
 /// {@endtemplate}
 /// {@macro pulumi_migrate_vmware_collector_args_doc}
 class VMwareCollectorArgs {
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
-  final pulumi.Input<CollectorProperties>? properties;
+  final pulumi.Input<CollectorProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Unique name of a VMware collector within a project.
-  final pulumi.Input<String>? vmWareCollectorName;
+  final pulumi.Input<String?>? vmWareCollectorName;
 
   /// Creates a new [VMwareCollectorArgs].
   /// [eTag] Optional.

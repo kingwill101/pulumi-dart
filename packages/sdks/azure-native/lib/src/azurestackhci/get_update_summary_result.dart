@@ -5,7 +5,7 @@ import 'system_data_response.dart';
 /// Result data returned by getUpdateSummary.
 class GetUpdateSummaryResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Current OEM Version.
   final String? currentOemVersion;
   /// Current Sbe version of the stamp.
@@ -17,7 +17,7 @@ class GetUpdateSummaryResult {
   /// Last time the package-specific checks were run.
   final String? healthCheckDate;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Last time the update service successfully checked for updates
   final String? lastChecked;
   /// Last time an update installation completed successfully.
@@ -25,17 +25,17 @@ class GetUpdateSummaryResult {
   /// The geo-location where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// OEM family name.
   final String? oemFamily;
   /// Provisioning state of the UpdateSummaries proxy resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Overall update state of the stamp.
   final String? state;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetUpdateSummaryResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -55,63 +55,63 @@ class GetUpdateSummaryResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetUpdateSummaryResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.currentOemVersion,
     this.currentSbeVersion,
     this.currentVersion,
     this.hardwareModel,
     this.healthCheckDate,
-    required this.id,
+    this.id,
     this.lastChecked,
     this.lastUpdated,
     this.location,
-    required this.name,
+    this.name,
     this.oemFamily,
-    required this.provisioningState,
+    this.provisioningState,
     this.state,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'currentOemVersion': ?currentOemVersion,
       'currentSbeVersion': ?currentSbeVersion,
       'currentVersion': ?currentVersion,
       'hardwareModel': ?hardwareModel,
       'healthCheckDate': ?healthCheckDate,
-      'id': id,
+      'id': ?id,
       'lastChecked': ?lastChecked,
       'lastUpdated': ?lastUpdated,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'oemFamily': ?oemFamily,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'state': ?state,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetUpdateSummaryResult.fromMap(Map<String, dynamic> map) {
     return GetUpdateSummaryResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currentOemVersion: (() { final guardedValue = map['currentOemVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currentSbeVersion: (() { final guardedValue = map['currentSbeVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       currentVersion: (() { final guardedValue = map['currentVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hardwareModel: (() { final guardedValue = map['hardwareModel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       healthCheckDate: (() { final guardedValue = map['healthCheckDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastChecked: (() { final guardedValue = map['lastChecked']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdated: (() { final guardedValue = map['lastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       oemFamily: (() { final guardedValue = map['oemFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

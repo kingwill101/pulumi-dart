@@ -16,7 +16,7 @@ class PrivateEndpointConnectionResponse {
   /// private endpoints
   final pulumi.Input<ResourceIdResponse> privateEndpoint;
   /// private endpoints connection state
-  final pulumi.Input<PrivateLinkServiceConnectionStateResponse>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionStateResponse?>? privateLinkServiceConnectionState;
   /// provisioning state enum
   final pulumi.Input<String> provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.

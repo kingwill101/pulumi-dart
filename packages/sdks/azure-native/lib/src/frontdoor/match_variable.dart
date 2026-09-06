@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Request variable to compare with.
-enum MatchVariable {
+enum MatchVariable implements pulumi.PulumiEnum<String> {
   remoteAddr("RemoteAddr"),
   requestMethod("RequestMethod"),
   queryString("QueryString"),
@@ -12,6 +14,7 @@ enum MatchVariable {
   jA4("JA4");
 
   const MatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static MatchVariable fromValue(String value) {

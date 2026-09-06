@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The Database Fleet properties.
 class FleetPropertiesResponse {
   /// Fleet description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Provisioning state.
   final pulumi.Input<String> provisioningState;
 

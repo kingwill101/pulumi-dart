@@ -6,33 +6,33 @@ import 'sub_resource_response.dart';
 /// Request routing rule of an application gateway.
 class ApplicationGatewayRequestRoutingRuleResponse {
   /// Backend address pool resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? backendAddressPool;
+  final pulumi.Input<SubResourceResponse?>? backendAddressPool;
   /// Backend http settings resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? backendHttpSettings;
+  final pulumi.Input<SubResourceResponse?>? backendHttpSettings;
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Http listener resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? httpListener;
+  final pulumi.Input<SubResourceResponse?>? httpListener;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Load Distribution Policy resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? loadDistributionPolicy;
+  final pulumi.Input<SubResourceResponse?>? loadDistributionPolicy;
   /// Name of the request routing rule that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Priority of the request routing rule.
-  final pulumi.Input<int>? priority;
+  final pulumi.Input<int?>? priority;
   /// The provisioning state of the request routing rule resource.
   final pulumi.Input<String> provisioningState;
   /// Redirect configuration resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? redirectConfiguration;
+  final pulumi.Input<SubResourceResponse?>? redirectConfiguration;
   /// Rewrite Rule Set resource in Basic rule of the application gateway.
-  final pulumi.Input<SubResourceResponse>? rewriteRuleSet;
+  final pulumi.Input<SubResourceResponse?>? rewriteRuleSet;
   /// Rule type.
-  final pulumi.Input<String>? ruleType;
+  final pulumi.Input<String?>? ruleType;
   /// Type of the resource.
   final pulumi.Input<String> type;
   /// URL path map resource of the application gateway.
-  final pulumi.Input<SubResourceResponse>? urlPathMap;
+  final pulumi.Input<SubResourceResponse?>? urlPathMap;
 
   /// Creates a new [ApplicationGatewayRequestRoutingRuleResponse].
   /// [backendAddressPool] Backend address pool resource of the application gateway.
@@ -94,7 +94,7 @@ class ApplicationGatewayRequestRoutingRuleResponse {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loadDistributionPolicy: (() { final guardedValue = map['loadDistributionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      priority: (() { final guardedValue = map['priority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       redirectConfiguration: (() { final guardedValue = map['redirectConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rewriteRuleSet: (() { final guardedValue = map['rewriteRuleSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

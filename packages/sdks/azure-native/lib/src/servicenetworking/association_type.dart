@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Association Type
-enum AssociationType {
+enum AssociationType implements pulumi.PulumiEnum<String> {
   subnets("subnets");
 
   const AssociationType(this.wireValue);
+  @override
   final String wireValue;
 
   static AssociationType fromValue(String value) {

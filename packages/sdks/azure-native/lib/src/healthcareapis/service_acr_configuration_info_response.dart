@@ -6,9 +6,9 @@ import 'service_oci_artifact_entry_response.dart';
 /// Azure container registry configuration information
 class ServiceAcrConfigurationInfoResponse {
   /// The list of the ACR login servers.
-  final pulumi.Input<List<String>>? loginServers;
+  final pulumi.Input<List<String>?>? loginServers;
   /// The list of Open Container Initiative (OCI) artifacts.
-  final pulumi.Input<List<ServiceOciArtifactEntryResponse>>? ociArtifacts;
+  final pulumi.Input<List<ServiceOciArtifactEntryResponse>?>? ociArtifacts;
 
   /// Creates a new [ServiceAcrConfigurationInfoResponse].
   /// [loginServers] The list of the ACR login servers.

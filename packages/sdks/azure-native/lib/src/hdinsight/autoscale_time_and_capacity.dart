@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Time and capacity request parameters
 class AutoscaleTimeAndCapacity {
   /// The maximum instance count of the cluster
-  final pulumi.Input<int>? maxInstanceCount;
+  final pulumi.Input<int?>? maxInstanceCount;
   /// The minimum instance count of the cluster
-  final pulumi.Input<int>? minInstanceCount;
+  final pulumi.Input<int?>? minInstanceCount;
   /// 24-hour time in the form xx:xx
-  final pulumi.Input<String>? time;
+  final pulumi.Input<String?>? time;
 
   /// Creates a new [AutoscaleTimeAndCapacity].
   /// [maxInstanceCount] The maximum instance count of the cluster
@@ -31,8 +31,8 @@ class AutoscaleTimeAndCapacity {
 
   factory AutoscaleTimeAndCapacity.fromMap(Map<String, dynamic> map) {
     return AutoscaleTimeAndCapacity(
-      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstanceCount: (() { final guardedValue = map['maxInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstanceCount: (() { final guardedValue = map['minInstanceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       time: (() { final guardedValue = map['time']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

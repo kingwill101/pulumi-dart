@@ -255,7 +255,33 @@ class MachineExtension extends pulumi.CustomResource {
     publisher = registerOutput<String?>('publisher');
     settings = registerOutput<dynamic>('settings');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
+  }
+
+  /// Creates a typed reference to an existing [MachineExtension] resource.
+  MachineExtension.reference(String urn)
+    : super(
+        'azure-native:connectedvmwarevsphere:MachineExtension',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoUpgradeMinorVersion = registerOutput<bool?>('autoUpgradeMinorVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    enableAutomaticUpgrade = registerOutput<bool?>('enableAutomaticUpgrade');
+    forceUpdateTag = registerOutput<String?>('forceUpdateTag');
+    instanceView = registerOutput<MachineExtensionPropertiesResponseInstanceView?>('instanceView', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MachineExtensionPropertiesResponseInstanceView.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    protectedSettings = registerOutput<dynamic>('protectedSettings');
+    provisioningState = registerOutput<String>('provisioningState');
+    publisher = registerOutput<String?>('publisher');
+    settings = registerOutput<dynamic>('settings');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     typeHandlerVersion = registerOutput<String?>('typeHandlerVersion');
   }

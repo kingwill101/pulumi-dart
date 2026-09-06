@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_devtestlab_get_lab_args_doc}
 class GetLabArgs {
   /// Specify the $expand query. Example: 'properties($select=defaultStorageAccount)'
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the lab.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

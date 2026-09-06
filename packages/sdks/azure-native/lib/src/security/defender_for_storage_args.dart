@@ -9,11 +9,11 @@ import 'defender_for_storage_setting_properties.dart';
 /// {@macro pulumi_security_defender_for_storage_args_doc}
 class DefenderForStorageArgs {
   /// Defender for Storage resource properties.
-  final pulumi.Input<DefenderForStorageSettingProperties>? properties;
+  final pulumi.Input<DefenderForStorageSettingProperties?>? properties;
   /// The identifier of the resource.
   final pulumi.Input<String> resourceId;
   /// Defender for Storage setting name.
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<String?>? settingName;
 
   /// Creates a new [DefenderForStorageArgs].
   /// [properties] Defender for Storage resource properties.

@@ -7,21 +7,21 @@ import 'gremlin_database_restore_resource_response.dart';
 /// Parameters to indicate the information about the restore.
 class RestoreParametersResponse {
   /// List of specific databases available for restore.
-  final pulumi.Input<List<DatabaseRestoreResourceResponse>>? databasesToRestore;
+  final pulumi.Input<List<DatabaseRestoreResourceResponse>?>? databasesToRestore;
   /// List of specific gremlin databases available for restore.
-  final pulumi.Input<List<GremlinDatabaseRestoreResourceResponse>>? gremlinDatabasesToRestore;
+  final pulumi.Input<List<GremlinDatabaseRestoreResourceResponse>?>? gremlinDatabasesToRestore;
   /// Describes the mode of the restore.
-  final pulumi.Input<String>? restoreMode;
+  final pulumi.Input<String?>? restoreMode;
   /// The id of the restorable database account from which the restore has to be initiated. For example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
-  final pulumi.Input<String>? restoreSource;
+  final pulumi.Input<String?>? restoreSource;
   /// Time to which the account has to be restored (ISO-8601 format).
-  final pulumi.Input<String>? restoreTimestampInUtc;
+  final pulumi.Input<String?>? restoreTimestampInUtc;
   /// Specifies whether the restored account will have Time-To-Live disabled upon the successful restore.
-  final pulumi.Input<bool>? restoreWithTtlDisabled;
+  final pulumi.Input<bool?>? restoreWithTtlDisabled;
   /// The source backup location for restore.
-  final pulumi.Input<String>? sourceBackupLocation;
+  final pulumi.Input<String?>? sourceBackupLocation;
   /// List of specific tables available for restore.
-  final pulumi.Input<List<String>>? tablesToRestore;
+  final pulumi.Input<List<String>?>? tablesToRestore;
 
   /// Creates a new [RestoreParametersResponse].
   /// [databasesToRestore] List of specific databases available for restore.

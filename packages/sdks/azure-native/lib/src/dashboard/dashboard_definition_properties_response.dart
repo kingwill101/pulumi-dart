@@ -7,7 +7,7 @@ class DashboardDefinitionPropertiesResponse {
   /// The provisioning state of the dashboard definition resource.
   final pulumi.Input<String> provisioningState;
   /// The dashboard definition data in JSON format.
-  final pulumi.Input<String>? serializedData;
+  final pulumi.Input<String?>? serializedData;
 
   /// Creates a new [DashboardDefinitionPropertiesResponse].
   /// [provisioningState] The provisioning state of the dashboard definition resource.

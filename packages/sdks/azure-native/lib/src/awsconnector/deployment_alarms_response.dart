@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeploymentAlarms
 class DeploymentAlarmsResponse {
   /// One or more CloudWatch alarm names. Use a ',' to separate the alarms.
-  final pulumi.Input<List<String>>? alarmNames;
+  final pulumi.Input<List<String>?>? alarmNames;
   /// Determines whether to use the CloudWatch alarm option in the service deployment process.
-  final pulumi.Input<bool>? enable;
+  final pulumi.Input<bool?>? enable;
   /// Determines whether to configure Amazon ECS to roll back the service if a service deployment fails. If rollback is used, when a service deployment fails, the service is rolled back to the last deployment that completed successfully.
-  final pulumi.Input<bool>? rollback;
+  final pulumi.Input<bool?>? rollback;
 
   /// Creates a new [DeploymentAlarmsResponse].
   /// [alarmNames] One or more CloudWatch alarm names. Use a ',' to separate the alarms.

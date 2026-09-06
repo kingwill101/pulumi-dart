@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Status condition of Kubernetes object
 class ObjectStatusConditionDefinitionResponse {
   /// Last time this status condition has changed
-  final pulumi.Input<String>? lastTransitionTime;
+  final pulumi.Input<String?>? lastTransitionTime;
   /// A more verbose description of the object status condition
-  final pulumi.Input<String>? message;
+  final pulumi.Input<String?>? message;
   /// Reason for the specified status condition type status
-  final pulumi.Input<String>? reason;
+  final pulumi.Input<String?>? reason;
   /// Status of the Kubernetes object condition type
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Object status condition type for this object
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [ObjectStatusConditionDefinitionResponse].
   /// [lastTransitionTime] Last time this status condition has changed

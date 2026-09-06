@@ -6,23 +6,23 @@ import 'ip_address_range.dart';
 /// Network adapter configuration.
 class NetworkAdapter {
   /// Adapter Name.
-  final pulumi.Input<String>? adapterName;
+  final pulumi.Input<String?>? adapterName;
   /// Array of DNS addresses.
-  final pulumi.Input<List<String>>? dnsAddressArray;
+  final pulumi.Input<List<String>?>? dnsAddressArray;
   /// Gateway id.
-  final pulumi.Input<String>? gateway;
+  final pulumi.Input<String?>? gateway;
   /// IP address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// IP address range.
-  final pulumi.Input<IpAddressRange>? ipAddressRange;
+  final pulumi.Input<IpAddressRange?>? ipAddressRange;
   /// Type of IP assignment.
-  final pulumi.Input<String> ipAssignmentType;
+  final pulumi.Input<dynamic> ipAssignmentType;
   /// MAC address.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Subnet mask.
-  final pulumi.Input<String>? subnetMask;
+  final pulumi.Input<String?>? subnetMask;
   /// VLAN ID for the network setup.
-  final pulumi.Input<String>? vlanId;
+  final pulumi.Input<String?>? vlanId;
 
   /// Creates a new [NetworkAdapter].
   /// [adapterName] Adapter Name.
@@ -67,7 +67,7 @@ class NetworkAdapter {
       gateway: (() { final guardedValue = map['gateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipAddressRange: (() { final guardedValue = map['ipAddressRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IpAddressRange.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      ipAssignmentType: pulumi.Input.fromValue(map['ipAssignmentType'] as String),
+      ipAssignmentType: pulumi.Input.fromValue(map['ipAssignmentType']),
       macAddress: (() { final guardedValue = map['macAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetMask: (() { final guardedValue = map['subnetMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -6,13 +6,13 @@ import 'virtual_hub_route_v2.dart';
 /// VirtualHubRouteTableV2 Resource.
 class VirtualHubRouteTableV2 {
   /// List of all connections attached to this route table v2.
-  final pulumi.Input<List<String>>? attachedConnections;
+  final pulumi.Input<List<String>?>? attachedConnections;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// List of all routes.
-  final pulumi.Input<List<VirtualHubRouteV2>>? routes;
+  final pulumi.Input<List<VirtualHubRouteV2>?>? routes;
 
   /// Creates a new [VirtualHubRouteTableV2].
   /// [attachedConnections] List of all connections attached to this route table v2.

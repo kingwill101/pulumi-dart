@@ -8,11 +8,11 @@ import 'on_premise_settings_response.dart';
 /// Business case settings.
 class SettingsResponse {
   /// Azure arc settings.
-  final pulumi.Input<AzureArcSettingsResponse>? azureArcSettings;
+  final pulumi.Input<AzureArcSettingsResponse?>? azureArcSettings;
   /// Azure settings for a business case.
   final pulumi.Input<AzureSettingsResponse> azureSettings;
   /// On-premise settings.
-  final pulumi.Input<OnPremiseSettingsResponse>? onPremiseSettings;
+  final pulumi.Input<OnPremiseSettingsResponse?>? onPremiseSettings;
 
   /// Creates a new [SettingsResponse].
   /// [azureArcSettings] Azure arc settings.

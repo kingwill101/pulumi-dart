@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dataflow Source Operation properties
 class DataflowSourceOperationSettingsResponse {
   /// Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
-  final pulumi.Input<String>? assetRef;
+  final pulumi.Input<String?>? assetRef;
   /// List of source locations. Can be Broker or Kafka topics. Supports wildcards # and +.
   final pulumi.Input<List<String>> dataSources;
   /// Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
   final pulumi.Input<String> endpointRef;
   /// Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
-  final pulumi.Input<String>? schemaRef;
+  final pulumi.Input<String?>? schemaRef;
   /// Content is a JSON Schema. Allowed: JSON Schema/draft-7.
-  final pulumi.Input<String>? serializationFormat;
+  final pulumi.Input<String?>? serializationFormat;
 
   /// Creates a new [DataflowSourceOperationSettingsResponse].
   /// [assetRef] Reference to the resource in Azure Device Registry where the data in the endpoint originates from.
@@ -21,13 +21,13 @@ class DataflowSourceOperationSettingsResponse {
   /// [endpointRef] Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
   /// [schemaRef] Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
   /// [serializationFormat] Content is a JSON Schema. Allowed: JSON Schema/draft-7.
-  const DataflowSourceOperationSettingsResponse({
+  DataflowSourceOperationSettingsResponse({
     this.assetRef,
     required this.dataSources,
     required this.endpointRef,
     this.schemaRef,
-    this.serializationFormat,
-  });
+    pulumi.Input<String?>? serializationFormat,
+  }) : serializationFormat = serializationFormat ?? pulumi.Input.fromValue('Json');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

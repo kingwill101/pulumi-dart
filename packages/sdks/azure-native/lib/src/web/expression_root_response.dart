@@ -7,13 +7,13 @@ import 'expression_response.dart';
 /// The expression root.
 class ExpressionRootResponse {
   /// The azure resource error info.
-  final pulumi.Input<AzureResourceErrorInfoResponse>? error;
+  final pulumi.Input<AzureResourceErrorInfoResponse?>? error;
   /// The path.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// The sub expressions.
-  final pulumi.Input<List<ExpressionResponse>>? subexpressions;
+  final pulumi.Input<List<ExpressionResponse>?>? subexpressions;
   /// The text.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
   /// Anything
   final pulumi.Input<dynamic>? value;
 

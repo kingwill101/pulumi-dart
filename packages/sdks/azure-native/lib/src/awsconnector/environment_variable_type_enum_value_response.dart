@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of EnvironmentVariableTypeEnumValue
 class EnvironmentVariableTypeEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentVariableTypeEnumValueResponse].
   /// [value] Property value

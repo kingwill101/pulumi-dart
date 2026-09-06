@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'identity_info.dart';
 import 'inbound_ip_rule.dart';
 import 'namespace_sku.dart';
-import 'private_endpoint_connection_eventgrid.dart';
+import 'private_endpoint_connection.dart';
 import 'topic_spaces_configuration.dart';
 import 'topics_configuration.dart';
 
@@ -14,36 +14,36 @@ import 'topics_configuration.dart';
 /// {@macro pulumi_eventgrid_namespace_args_doc}
 class NamespaceArgs {
   /// Identity information for the Namespace resource.
-  final pulumi.Input<IdentityInfo>? identity;
+  final pulumi.Input<IdentityInfo?>? identity;
   /// This can be used to restrict traffic from specific IPs instead of all IPs. Note: These are considered only if PublicNetworkAccess is enabled.
-  final pulumi.Input<List<InboundIpRule>>? inboundIpRules;
+  final pulumi.Input<List<InboundIpRule>?>? inboundIpRules;
   /// This is an optional property and it allows the user to specify if the namespace resource supports zone-redundancy capability or not. If this
   /// property is not specified explicitly by the user, its default value depends on the following conditions:
   /// a. For Availability Zones enabled regions - The default property value would be true.
   /// b. For non-Availability Zones enabled regions - The default property value would be false.
   /// Once specified, this property cannot be updated.
-  final pulumi.Input<bool>? isZoneRedundant;
+  final pulumi.Input<bool?>? isZoneRedundant;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Minimum TLS version of the publisher allowed to publish to this namespace. Only TLS version 1.2 is supported.
-  final pulumi.Input<String>? minimumTlsVersionAllowed;
+  final pulumi.Input<dynamic>? minimumTlsVersionAllowed;
   /// Name of the namespace.
-  final pulumi.Input<String>? namespaceName;
+  final pulumi.Input<String?>? namespaceName;
   /// List of private endpoint connections.
-  final pulumi.Input<List<PrivateEndpointConnectionEventgrid>>? privateEndpointConnections;
+  final pulumi.Input<List<PrivateEndpointConnection>?>? privateEndpointConnections;
   /// This determines if traffic is allowed over public network. By default it is enabled.
   /// You can further restrict to specific IPs by configuring &lt;seealso cref="P:Microsoft.Azure.Events.ResourceProvider.Common.Contracts.PubSub.NamespaceProperties.InboundIpRules" /&gt;
-  final pulumi.Input<String>? publicNetworkAccess;
+  final pulumi.Input<dynamic>? publicNetworkAccess;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
   /// Represents available Sku pricing tiers.
-  final pulumi.Input<NamespaceSku>? sku;
+  final pulumi.Input<NamespaceSku?>? sku;
   /// Tags of the resource.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Topic spaces configuration information for the namespace resource
-  final pulumi.Input<TopicSpacesConfiguration>? topicSpacesConfiguration;
+  final pulumi.Input<TopicSpacesConfiguration?>? topicSpacesConfiguration;
   /// Topics configuration information for the namespace resource
-  final pulumi.Input<TopicsConfiguration>? topicsConfiguration;
+  final pulumi.Input<TopicsConfiguration?>? topicsConfiguration;
 
   /// Creates a new [NamespaceArgs].
   /// [identity] Identity information for the Namespace resource.
@@ -83,7 +83,7 @@ class NamespaceArgs {
       'location': ?location,
       'minimumTlsVersionAllowed': ?minimumTlsVersionAllowed,
       'namespaceName': ?namespaceName,
-      'privateEndpointConnections': ?privateEndpointConnections,
+      'privateEndpointConnections': ?pulumi.Input.mapOptionalInputValue<List<PrivateEndpointConnection>, List<Map<String, dynamic>>>(privateEndpointConnections, (value) => pulumi.Input.encodeList<PrivateEndpointConnection, Map<String, dynamic>>(value, (value) => value.toMap())),
       'publicNetworkAccess': ?publicNetworkAccess,
       'resourceGroupName': resourceGroupName,
       'sku': ?pulumi.Input.mapOptionalInputValue<NamespaceSku, Map<String, dynamic>>(sku, (value) => value.toMap()),
@@ -99,10 +99,10 @@ class NamespaceArgs {
       inboundIpRules: (() { final guardedValue = map['inboundIpRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InboundIpRule>(guardedValue, (value) => InboundIpRule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       isZoneRedundant: (() { final guardedValue = map['isZoneRedundant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minimumTlsVersionAllowed: (() { final guardedValue = map['minimumTlsVersionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      minimumTlsVersionAllowed: (() { final guardedValue = map['minimumTlsVersionAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       namespaceName: (() { final guardedValue = map['namespaceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<PrivateEndpointConnectionEventgrid>()); })(),
-      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateEndpointConnection>(guardedValue, (value) => PrivateEndpointConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NamespaceSku.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

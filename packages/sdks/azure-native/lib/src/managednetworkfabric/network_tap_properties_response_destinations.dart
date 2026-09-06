@@ -8,11 +8,11 @@ class NetworkTapPropertiesResponseDestinations {
   /// The destination Id. ARM Resource ID of either NNI or Internal Networks.
   final pulumi.Input<String> destinationId;
   /// ARM Resource ID of destination Tap Rule that contains match configurations.
-  final pulumi.Input<String>? destinationTapRuleId;
+  final pulumi.Input<String?>? destinationTapRuleId;
   /// Type of destination. Input can be IsolationDomain or Direct.
   final pulumi.Input<String> destinationType;
   /// Isolation Domain Properties.
-  final pulumi.Input<IsolationDomainPropertiesResponse>? isolationDomainProperties;
+  final pulumi.Input<IsolationDomainPropertiesResponse?>? isolationDomainProperties;
   /// Destination name.
   final pulumi.Input<String> name;
 

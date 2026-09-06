@@ -26,8 +26,8 @@ class AbsoluteMonthlyScheduleResponse {
 
   factory AbsoluteMonthlyScheduleResponse.fromMap(Map<String, dynamic> map) {
     return AbsoluteMonthlyScheduleResponse(
-      dayOfMonth: pulumi.Input.fromValue(map['dayOfMonth'] as int),
-      intervalMonths: pulumi.Input.fromValue(map['intervalMonths'] as int),
+      dayOfMonth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOfMonth'])),
+      intervalMonths: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalMonths'])),
     );
   }
 }

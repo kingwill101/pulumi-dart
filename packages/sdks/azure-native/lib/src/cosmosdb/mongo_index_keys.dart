@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB MongoDB collection resource object
 class MongoIndexKeys {
   /// List of keys for each MongoDB collection in the Azure Cosmos DB service
-  final pulumi.Input<List<String>>? keys;
+  final pulumi.Input<List<String>?>? keys;
 
   /// Creates a new [MongoIndexKeys].
   /// [keys] List of keys for each MongoDB collection in the Azure Cosmos DB service

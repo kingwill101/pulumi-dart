@@ -194,4 +194,20 @@ class JobPrivateEndpoint extends pulumi.CustomResource {
     targetServerAzureResourceId = registerOutput<String>('targetServerAzureResourceId');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [JobPrivateEndpoint] resource.
+  JobPrivateEndpoint.reference(String urn)
+    : super(
+        'azure-native:sql:JobPrivateEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    privateEndpointId = registerOutput<String>('privateEndpointId');
+    targetServerAzureResourceId = registerOutput<String>('targetServerAzureResourceId');
+    type = registerOutput<String>('type');
+  }
 }

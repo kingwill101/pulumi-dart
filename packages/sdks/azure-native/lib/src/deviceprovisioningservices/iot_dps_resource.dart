@@ -261,7 +261,30 @@ class IotDpsResource extends pulumi.CustomResource {
     sku = registerOutput<IotDpsSkuInfoResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotDpsSkuInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     subscriptionid = registerOutput<String?>('subscriptionid');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IotDpsResource] resource.
+  IotDpsResource.reference(String urn)
+    : super(
+        'azure-native:deviceprovisioningservices:IotDpsResource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    etag = registerOutput<String?>('etag');
+    identity = registerOutput<ManagedServiceIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedServiceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<IotDpsPropertiesDescriptionResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotDpsPropertiesDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resourcegroup = registerOutput<String?>('resourcegroup');
+    sku = registerOutput<IotDpsSkuInfoResponse>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IotDpsSkuInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    subscriptionid = registerOutput<String?>('subscriptionid');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

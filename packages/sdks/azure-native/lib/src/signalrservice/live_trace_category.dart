@@ -7,11 +7,11 @@ class LiveTraceCategory {
   /// Indicates whether or the live trace category is enabled.
   /// Available values: true, false.
   /// Case insensitive.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Gets or sets the live trace category's name.
   /// Available values: ConnectivityLogs, MessagingLogs.
   /// Case insensitive.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [LiveTraceCategory].
   /// [enabled] Indicates whether or the live trace category is enabled.

@@ -13,7 +13,7 @@ class BudgetTimePeriod {
   /// - Constraints for **CategoryType: Cost** - No constraints. If not provided, we default this to 10 years from the start date.
   ///
   /// - Constraints for **CategoryType: ReservationUtilization** - End date cannot be more than 3 years after the start date.
-  final pulumi.Input<String>? endDate;
+  final pulumi.Input<String?>? endDate;
   /// The start date for the budget.
   ///
   /// - Constraints for **CategoryType: Cost** - Must be first of the month and should be less than the end date. Budget start date must be on or after June 1, 2017. Future start date should not be more than twelve months. Past start date should  be selected within the timegrain period.

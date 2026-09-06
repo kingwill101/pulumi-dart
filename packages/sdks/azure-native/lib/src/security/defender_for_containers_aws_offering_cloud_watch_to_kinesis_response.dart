@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The cloudwatch to kinesis connection configuration
 class DefenderForContainersAwsOfferingCloudWatchToKinesisResponse {
   /// The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingCloudWatchToKinesisResponse].
   /// [cloudRoleArn] The cloud role ARN in AWS used by CloudWatch to transfer data into Kinesis

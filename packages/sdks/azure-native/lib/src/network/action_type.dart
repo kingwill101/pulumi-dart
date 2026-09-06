@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the override action to be applied when rule matches.
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   valueAnomalyScoring("AnomalyScoring"),
   valueAllow("Allow"),
   valueBlock("Block"),
@@ -7,6 +9,7 @@ enum ActionType {
   valueJSChallenge("JSChallenge");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

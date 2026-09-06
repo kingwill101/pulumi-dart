@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ContentSafety {
   /// [Required] Specifies the status of content safety.
-  final pulumi.Input<String> contentSafetyStatus;
+  final pulumi.Input<dynamic> contentSafetyStatus;
 
   /// Creates a new [ContentSafety].
   /// [contentSafetyStatus] [Required] Specifies the status of content safety.
@@ -20,7 +20,7 @@ class ContentSafety {
 
   factory ContentSafety.fromMap(Map<String, dynamic> map) {
     return ContentSafety(
-      contentSafetyStatus: pulumi.Input.fromValue(map['contentSafetyStatus'] as String),
+      contentSafetyStatus: pulumi.Input.fromValue(map['contentSafetyStatus']),
     );
   }
 }

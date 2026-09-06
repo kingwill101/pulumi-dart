@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of DeploymentStatusEnumValue
 class DeploymentStatusEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [DeploymentStatusEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class DeploymentStatusEnumValue {
 
   factory DeploymentStatusEnumValue.fromMap(Map<String, dynamic> map) {
     return DeploymentStatusEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

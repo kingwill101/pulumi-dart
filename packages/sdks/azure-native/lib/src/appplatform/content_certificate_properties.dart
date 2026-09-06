@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of certificate imported from key vault.
 class ContentCertificateProperties {
   /// The content of uploaded certificate.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The type of the certificate source.
   /// Expected value is 'ContentCertificate'.
   final pulumi.Input<String> type;

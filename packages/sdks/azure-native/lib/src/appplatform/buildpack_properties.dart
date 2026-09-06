@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Buildpack properties payload
 class BuildpackProperties {
   /// Id of the buildpack
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [BuildpackProperties].
   /// [id] Id of the buildpack

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Emission destination type.
-enum DestinationType {
+enum DestinationType implements pulumi.PulumiEnum<String> {
   azureMonitor("AzureMonitor");
 
   const DestinationType(this.wireValue);
+  @override
   final String wireValue;
 
   static DestinationType fromValue(String value) {

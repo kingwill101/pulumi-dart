@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SQL database assessment settings.
 class SqlDbSettings {
   /// Gets or sets the azure SQL compute tier.
-  final pulumi.Input<String>? azureSqlComputeTier;
+  final pulumi.Input<dynamic>? azureSqlComputeTier;
   /// Gets or sets the azure PAAS SQL instance type.
-  final pulumi.Input<String>? azureSqlDataBaseType;
+  final pulumi.Input<dynamic>? azureSqlDataBaseType;
   /// Gets or sets the azure SQL purchase model.
-  final pulumi.Input<String>? azureSqlPurchaseModel;
+  final pulumi.Input<dynamic>? azureSqlPurchaseModel;
   /// Gets or sets the azure SQL service tier.
-  final pulumi.Input<String>? azureSqlServiceTier;
+  final pulumi.Input<dynamic>? azureSqlServiceTier;
 
   /// Creates a new [SqlDbSettings].
   /// [azureSqlComputeTier] Gets or sets the azure SQL compute tier.
@@ -36,10 +36,10 @@ class SqlDbSettings {
 
   factory SqlDbSettings.fromMap(Map<String, dynamic> map) {
     return SqlDbSettings(
-      azureSqlComputeTier: (() { final guardedValue = map['azureSqlComputeTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureSqlDataBaseType: (() { final guardedValue = map['azureSqlDataBaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureSqlPurchaseModel: (() { final guardedValue = map['azureSqlPurchaseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      azureSqlServiceTier: (() { final guardedValue = map['azureSqlServiceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      azureSqlComputeTier: (() { final guardedValue = map['azureSqlComputeTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureSqlDataBaseType: (() { final guardedValue = map['azureSqlDataBaseType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureSqlPurchaseModel: (() { final guardedValue = map['azureSqlPurchaseModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      azureSqlServiceTier: (() { final guardedValue = map['azureSqlServiceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

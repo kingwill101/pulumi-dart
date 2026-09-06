@@ -184,4 +184,21 @@ class SyncGroup extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uniqueId = registerOutput<String>('uniqueId');
   }
+
+  /// Creates a typed reference to an existing [SyncGroup] resource.
+  SyncGroup.reference(String urn)
+    : super(
+        'azure-native:storagesync:SyncGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    this.name = registerOutput<String>('name');
+    syncGroupStatus = registerOutput<String>('syncGroupStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+  }
 }

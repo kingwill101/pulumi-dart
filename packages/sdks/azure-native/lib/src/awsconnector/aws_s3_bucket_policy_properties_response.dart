@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of awsS3BucketPolicy
 class AwsS3BucketPolicyPropertiesResponse {
   /// &lt;p&gt;The bucket policy as a JSON document.&lt;/p&gt;
-  final pulumi.Input<String>? policy;
+  final pulumi.Input<String?>? policy;
 
   /// Creates a new [AwsS3BucketPolicyPropertiesResponse].
   /// [policy] &lt;p&gt;The bucket policy as a JSON document.&lt;/p&gt;

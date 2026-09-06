@@ -15,11 +15,11 @@ class GetBigDataPoolResult {
   /// Auto-scaling properties
   final AutoScalePropertiesResponse? autoScale;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The cache size
   final int? cacheSize;
   /// The time when the Big Data pool was created.
-  final String creationDate;
+  final String? creationDate;
   /// List of custom libraries/packages associated with the spark pool.
   final List<LibraryInfoResponse>? customLibraries;
   /// The default folder where Spark logs will be written.
@@ -27,19 +27,19 @@ class GetBigDataPoolResult {
   /// Dynamic Executor Allocation
   final DynamicExecutorAllocationResponse? dynamicExecutorAllocation;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Whether autotune is required or not.
   final bool? isAutotuneEnabled;
   /// Whether compute isolation is required or not.
   final bool? isComputeIsolationEnabled;
   /// The time when the Big Data pool was updated successfully.
-  final String lastSucceededTimestamp;
+  final String? lastSucceededTimestamp;
   /// Library version requirements
   final LibraryRequirementsResponse? libraryRequirements;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The number of nodes in the Big Data pool.
   final int? nodeCount;
   /// The level of compute power that each node in the Big Data pool has.
@@ -59,7 +59,7 @@ class GetBigDataPoolResult {
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetBigDataPoolResult].
   /// [autoPause] Auto-pausing properties
@@ -90,19 +90,19 @@ class GetBigDataPoolResult {
   const GetBigDataPoolResult({
     this.autoPause,
     this.autoScale,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.cacheSize,
-    required this.creationDate,
+    this.creationDate,
     this.customLibraries,
     this.defaultSparkLogFolder,
     this.dynamicExecutorAllocation,
-    required this.id,
+    this.id,
     this.isAutotuneEnabled,
     this.isComputeIsolationEnabled,
-    required this.lastSucceededTimestamp,
+    this.lastSucceededTimestamp,
     this.libraryRequirements,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.nodeCount,
     this.nodeSize,
     this.nodeSizeFamily,
@@ -112,26 +112,26 @@ class GetBigDataPoolResult {
     this.sparkEventsFolder,
     this.sparkVersion,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'autoPause': ?autoPause?.toMap(),
       'autoScale': ?autoScale?.toMap(),
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'cacheSize': ?cacheSize,
-      'creationDate': creationDate,
+      'creationDate': ?creationDate,
       'customLibraries': ?(() { final guardedValue = customLibraries; if (guardedValue == null) return null; return pulumi.Input.encodeList<LibraryInfoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'defaultSparkLogFolder': ?defaultSparkLogFolder,
       'dynamicExecutorAllocation': ?dynamicExecutorAllocation?.toMap(),
-      'id': id,
+      'id': ?id,
       'isAutotuneEnabled': ?isAutotuneEnabled,
       'isComputeIsolationEnabled': ?isComputeIsolationEnabled,
-      'lastSucceededTimestamp': lastSucceededTimestamp,
+      'lastSucceededTimestamp': ?lastSucceededTimestamp,
       'libraryRequirements': ?libraryRequirements?.toMap(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'nodeCount': ?nodeCount,
       'nodeSize': ?nodeSize,
       'nodeSizeFamily': ?nodeSizeFamily,
@@ -141,7 +141,7 @@ class GetBigDataPoolResult {
       'sparkEventsFolder': ?sparkEventsFolder,
       'sparkVersion': ?sparkVersion,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
@@ -149,20 +149,20 @@ class GetBigDataPoolResult {
     return GetBigDataPoolResult(
       autoPause: (() { final guardedValue = map['autoPause']; if (guardedValue == null) return null; return AutoPausePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       autoScale: (() { final guardedValue = map['autoScale']; if (guardedValue == null) return null; return AutoScalePropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      cacheSize: (() { final guardedValue = map['cacheSize']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      creationDate: map['creationDate'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      cacheSize: (() { final guardedValue = map['cacheSize']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      creationDate: (() { final guardedValue = map['creationDate']; if (guardedValue == null) return null; return guardedValue as String; })(),
       customLibraries: (() { final guardedValue = map['customLibraries']; if (guardedValue == null) return null; return pulumi.Input.decodeList<LibraryInfoResponse>(guardedValue, (value) => LibraryInfoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       defaultSparkLogFolder: (() { final guardedValue = map['defaultSparkLogFolder']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dynamicExecutorAllocation: (() { final guardedValue = map['dynamicExecutorAllocation']; if (guardedValue == null) return null; return DynamicExecutorAllocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isAutotuneEnabled: (() { final guardedValue = map['isAutotuneEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       isComputeIsolationEnabled: (() { final guardedValue = map['isComputeIsolationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      lastSucceededTimestamp: map['lastSucceededTimestamp'] as String,
+      lastSucceededTimestamp: (() { final guardedValue = map['lastSucceededTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
       libraryRequirements: (() { final guardedValue = map['libraryRequirements']; if (guardedValue == null) return null; return LibraryRequirementsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       nodeSize: (() { final guardedValue = map['nodeSize']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeSizeFamily: (() { final guardedValue = map['nodeSizeFamily']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -171,7 +171,7 @@ class GetBigDataPoolResult {
       sparkEventsFolder: (() { final guardedValue = map['sparkEventsFolder']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sparkVersion: (() { final guardedValue = map['sparkVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

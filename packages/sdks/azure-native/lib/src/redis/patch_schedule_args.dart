@@ -9,7 +9,7 @@ import 'schedule_entry.dart';
 /// {@macro pulumi_redis_patch_schedule_args_doc}
 class PatchScheduleArgs {
   /// The name of the RedisPatchSchedule
-  final pulumi.Input<String>? default_;
+  final pulumi.Input<String?>? default_;
   /// The name of the redis cache.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
-enum SecondaryInstanceType {
+enum SecondaryInstanceType implements pulumi.PulumiEnum<String> {
   valueGeo("Geo"),
   valueStandby("Standby");
 
   const SecondaryInstanceType(this.wireValue);
+  @override
   final String wireValue;
 
   static SecondaryInstanceType fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the status of the workflow run
-enum WorkflowRunStatus {
+enum WorkflowRunStatus implements pulumi.PulumiEnum<String> {
   valueQueued("queued"),
   valueInprogress("inprogress"),
   valueCompleted("completed");
 
   const WorkflowRunStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkflowRunStatus fromValue(String value) {

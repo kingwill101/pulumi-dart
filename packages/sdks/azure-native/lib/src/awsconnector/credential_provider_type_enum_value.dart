@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of CredentialProviderTypeEnumValue
 class CredentialProviderTypeEnumValue {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<dynamic>? value;
 
   /// Creates a new [CredentialProviderTypeEnumValue].
   /// [value] Property value
@@ -21,7 +21,7 @@ class CredentialProviderTypeEnumValue {
 
   factory CredentialProviderTypeEnumValue.fromMap(Map<String, dynamic> map) {
     return CredentialProviderTypeEnumValue(
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

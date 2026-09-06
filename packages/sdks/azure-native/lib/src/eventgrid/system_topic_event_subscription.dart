@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_function_event_subscription_destination_response.dart';
 import 'dead_letter_with_resource_identity_response.dart';
 import 'delivery_with_resource_identity_response.dart';
 import 'event_subscription_filter_response.dart';
@@ -233,7 +232,7 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
   late final pulumi.Output<DeliveryWithResourceIdentityResponse?> deliveryWithResourceIdentity;
   /// Information about the destination where events have to be delivered for the event subscription.
   /// Uses Azure Event Grid's identity to acquire the authentication tokens being used during delivery / dead-lettering.
-  late final pulumi.Output<AzureFunctionEventSubscriptionDestinationResponse?> destination;
+  late final pulumi.Output<dynamic> destination;
   /// The event delivery schema for the event subscription.
   late final pulumi.Output<String?> eventDeliverySchema;
   /// Expiration time of the event subscription.
@@ -273,11 +272,37 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
     deadLetterDestination = registerOutput<StorageBlobDeadLetterDestinationResponse?>('deadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBlobDeadLetterDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deadLetterWithResourceIdentity = registerOutput<DeadLetterWithResourceIdentityResponse?>('deadLetterWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeadLetterWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deliveryWithResourceIdentity = registerOutput<DeliveryWithResourceIdentityResponse?>('deliveryWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    destination = registerOutput<AzureFunctionEventSubscriptionDestinationResponse?>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureFunctionEventSubscriptionDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destination = registerOutput<dynamic>('destination');
     eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
     expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
     filter = registerOutput<EventSubscriptionFilterResponse?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<List<String>?>('labels');
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topic = registerOutput<String>('topic');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [SystemTopicEventSubscription] resource.
+  SystemTopicEventSubscription.reference(String urn)
+    : super(
+        'azure-native:eventgrid:SystemTopicEventSubscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    deadLetterDestination = registerOutput<StorageBlobDeadLetterDestinationResponse?>('deadLetterDestination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBlobDeadLetterDestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deadLetterWithResourceIdentity = registerOutput<DeadLetterWithResourceIdentityResponse?>('deadLetterWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeadLetterWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deliveryWithResourceIdentity = registerOutput<DeliveryWithResourceIdentityResponse?>('deliveryWithResourceIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryWithResourceIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destination = registerOutput<dynamic>('destination');
+    eventDeliverySchema = registerOutput<String?>('eventDeliverySchema');
+    expirationTimeUtc = registerOutput<String?>('expirationTimeUtc');
+    filter = registerOutput<EventSubscriptionFilterResponse?>('filter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventSubscriptionFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<List<String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     provisioningState = registerOutput<String>('provisioningState');
     retryPolicy = registerOutput<RetryPolicyResponse?>('retryPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetryPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -7,7 +7,7 @@ class AzureResourceErrorInfoResponse {
   /// The error code.
   final pulumi.Input<String> code;
   /// The error details.
-  final pulumi.Input<List<AzureResourceErrorInfoResponse>>? details;
+  final pulumi.Input<List<AzureResourceErrorInfoResponse>?>? details;
   /// The error message.
   final pulumi.Input<String> message;
 

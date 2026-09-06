@@ -17,48 +17,48 @@ import 'storage_profile.dart';
 /// {@macro pulumi_connectedvmwarevsphere_virtual_machine_args_doc}
 class VirtualMachineArgs {
   /// Gets or sets the extended location.
-  final pulumi.Input<ExtendedLocation>? extendedLocation;
+  final pulumi.Input<ExtendedLocation?>? extendedLocation;
   /// Firmware type
-  final pulumi.Input<String>? firmwareType;
+  final pulumi.Input<dynamic>? firmwareType;
   /// Guest agent status properties.
-  final pulumi.Input<GuestAgentProfile>? guestAgentProfile;
+  final pulumi.Input<GuestAgentProfile?>? guestAgentProfile;
   /// Hardware properties.
-  final pulumi.Input<HardwareProfile>? hardwareProfile;
+  final pulumi.Input<HardwareProfile?>? hardwareProfile;
   /// The identity of the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// Gets or sets the inventory Item ID for the virtual machine.
-  final pulumi.Input<String>? inventoryItemId;
+  final pulumi.Input<String?>? inventoryItemId;
   /// Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Gets or sets the location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machine.
-  final pulumi.Input<String>? moRefId;
+  final pulumi.Input<String?>? moRefId;
   /// Network properties.
-  final pulumi.Input<NetworkProfile>? networkProfile;
+  final pulumi.Input<NetworkProfile?>? networkProfile;
   /// OS properties.
-  final pulumi.Input<OsProfile>? osProfile;
+  final pulumi.Input<OsProfile?>? osProfile;
   /// Placement properties.
-  final pulumi.Input<PlacementProfile>? placementProfile;
+  final pulumi.Input<PlacementProfile?>? placementProfile;
   /// The Resource Group Name.
   final pulumi.Input<String> resourceGroupName;
   /// Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will
   /// deploy.
-  final pulumi.Input<String>? resourcePoolId;
+  final pulumi.Input<String?>? resourcePoolId;
   /// Gets the security profile.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// Gets or sets the SMBIOS UUID of the vm.
-  final pulumi.Input<String>? smbiosUuid;
+  final pulumi.Input<String?>? smbiosUuid;
   /// Storage properties.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// Gets or sets the Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Gets or sets the ARM Id of the template resource to deploy the virtual machine.
-  final pulumi.Input<String>? templateId;
+  final pulumi.Input<String?>? templateId;
   /// Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  final pulumi.Input<String>? vCenterId;
+  final pulumi.Input<String?>? vCenterId;
   /// Name of the virtual machine resource.
-  final pulumi.Input<String>? virtualMachineName;
+  final pulumi.Input<String?>? virtualMachineName;
 
   /// Creates a new [VirtualMachineArgs].
   /// [extendedLocation] Gets or sets the extended location.
@@ -135,7 +135,7 @@ class VirtualMachineArgs {
   factory VirtualMachineArgs.fromMap(Map<String, dynamic> map) {
     return VirtualMachineArgs(
       extendedLocation: (() { final guardedValue = map['extendedLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExtendedLocation.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      firmwareType: (() { final guardedValue = map['firmwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      firmwareType: (() { final guardedValue = map['firmwareType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       guestAgentProfile: (() { final guardedValue = map['guestAgentProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GuestAgentProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       hardwareProfile: (() { final guardedValue = map['hardwareProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HardwareProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

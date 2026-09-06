@@ -10,12 +10,12 @@ class CustomRegistryCredentials {
   /// the case of a system-assigned identity, the Client ID will be determined by the runner. This
   /// identity may be used to authenticate to key vault to retrieve credentials or it may be the only
   /// source of authentication used for accessing the registry.
-  final pulumi.Input<String>? identity;
+  final pulumi.Input<String?>? identity;
   /// The password for logging into the custom registry. The password is a secret
   /// object that allows multiple ways of providing the value for it.
-  final pulumi.Input<SecretObject>? password;
+  final pulumi.Input<SecretObject?>? password;
   /// The username for logging into the custom registry.
-  final pulumi.Input<SecretObject>? userName;
+  final pulumi.Input<SecretObject?>? userName;
 
   /// Creates a new [CustomRegistryCredentials].
   /// [identity] Indicates the managed identity assigned to the custom credential. If a user-assigned identity

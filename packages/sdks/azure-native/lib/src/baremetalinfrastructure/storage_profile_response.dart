@@ -6,9 +6,9 @@ import 'disk_response.dart';
 /// Specifies the storage settings for the Azure Bare Metal instance disks.
 class StorageProfileResponse {
   /// IP Address to connect to storage.
-  final pulumi.Input<String>? nfsIpAddress;
+  final pulumi.Input<String?>? nfsIpAddress;
   /// Specifies information about the operating system disk used by bare metal instance.
-  final pulumi.Input<List<DiskResponse>>? osDisks;
+  final pulumi.Input<List<DiskResponse>?>? osDisks;
 
   /// Creates a new [StorageProfileResponse].
   /// [nfsIpAddress] IP Address to connect to storage.

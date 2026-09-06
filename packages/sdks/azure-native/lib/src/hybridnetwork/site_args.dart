@@ -9,15 +9,15 @@ import 'site_properties_format.dart';
 /// {@macro pulumi_hybridnetwork_site_args_doc}
 class SiteArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Site properties.
-  final pulumi.Input<SitePropertiesFormat>? properties;
+  final pulumi.Input<SitePropertiesFormat?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the network service site.
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SiteArgs].
   /// [location] The geo-location where the resource lives

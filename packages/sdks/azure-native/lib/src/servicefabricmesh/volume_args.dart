@@ -9,19 +9,19 @@ import 'volume_provider_parameters_azure_file.dart';
 /// {@macro pulumi_servicefabricmesh_volume_args_doc}
 class VolumeArgs {
   /// This type describes a volume provided by an Azure Files file share.
-  final pulumi.Input<VolumeProviderParametersAzureFile>? azureFileParameters;
+  final pulumi.Input<VolumeProviderParametersAzureFile?>? azureFileParameters;
   /// User readable description of the volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Provider of the volume.
-  final pulumi.Input<String> provider;
+  final pulumi.Input<dynamic> provider;
   /// Azure resource group name
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The identity of the volume.
-  final pulumi.Input<String>? volumeResourceName;
+  final pulumi.Input<String?>? volumeResourceName;
 
   /// Creates a new [VolumeArgs].
   /// [azureFileParameters] This type describes a volume provided by an Azure Files file share.
@@ -58,7 +58,7 @@ class VolumeArgs {
       azureFileParameters: (() { final guardedValue = map['azureFileParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeProviderParametersAzureFile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provider: pulumi.Input.fromValue(map['provider'] as String),
+      provider: pulumi.Input.fromValue(map['provider']),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       volumeResourceName: (() { final guardedValue = map['volumeResourceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes a blob input data source that contains stream data.
 class GatewayMessageBusStreamInputDataSource {
   /// The name of the Service Bus topic.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
   /// Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
   /// Expected value is 'GatewayMessageBus'.
   final pulumi.Input<String> type;

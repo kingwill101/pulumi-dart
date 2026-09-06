@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Provisioning status of Inbound Rule
 class InboundRuleStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the inbound rule
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the inbound rule [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

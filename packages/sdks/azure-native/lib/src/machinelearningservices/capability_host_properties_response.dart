@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CapabilityHostPropertiesResponse {
   /// List of Aca Environment connections.
-  final pulumi.Input<List<String>>? acaEnvironmentConnections;
+  final pulumi.Input<List<String>?>? acaEnvironmentConnections;
   /// List of AI services connections.
-  final pulumi.Input<List<String>>? aiServicesConnections;
+  final pulumi.Input<List<String>?>? aiServicesConnections;
   /// Kind of this capability host.
-  final pulumi.Input<String>? capabilityHostKind;
+  final pulumi.Input<String?>? capabilityHostKind;
   /// Customer subnet info to help set up this capability host.
-  final pulumi.Input<String>? customerSubnet;
+  final pulumi.Input<String?>? customerSubnet;
   /// The asset description text.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of messages containing errors.
   final pulumi.Input<List<String>> messages;
   /// The asset property dictionary.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// Provisioning state for the CapabilityHost.
   final pulumi.Input<String> provisioningState;
   /// List of Storage connections.
-  final pulumi.Input<List<String>>? storageConnections;
+  final pulumi.Input<List<String>?>? storageConnections;
   /// Tag dictionary. Tags can be added, removed, and updated.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// List of Thread storage connections.
-  final pulumi.Input<List<String>>? threadStorageConnections;
+  final pulumi.Input<List<String>?>? threadStorageConnections;
   /// List of VectorStore connections.
-  final pulumi.Input<List<String>>? vectorStoreConnections;
+  final pulumi.Input<List<String>?>? vectorStoreConnections;
 
   /// Creates a new [CapabilityHostPropertiesResponse].
   /// [acaEnvironmentConnections] List of Aca Environment connections.
@@ -41,10 +41,10 @@ class CapabilityHostPropertiesResponse {
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [threadStorageConnections] List of Thread storage connections.
   /// [vectorStoreConnections] List of VectorStore connections.
-  const CapabilityHostPropertiesResponse({
+  CapabilityHostPropertiesResponse({
     this.acaEnvironmentConnections,
     this.aiServicesConnections,
-    this.capabilityHostKind,
+    pulumi.Input<String?>? capabilityHostKind,
     this.customerSubnet,
     this.description,
     required this.messages,
@@ -54,7 +54,7 @@ class CapabilityHostPropertiesResponse {
     this.tags,
     this.threadStorageConnections,
     this.vectorStoreConnections,
-  });
+  }) : capabilityHostKind = capabilityHostKind ?? pulumi.Input.fromValue('Agents');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

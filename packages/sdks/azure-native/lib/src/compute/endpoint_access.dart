@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// This property allows you to specify if the requests will be allowed to access the host endpoints. Possible values are: 'Allow', 'Deny'.
-enum EndpointAccess {
+enum EndpointAccess implements pulumi.PulumiEnum<String> {
   allow("Allow"),
   deny("Deny");
 
   const EndpointAccess(this.wireValue);
+  @override
   final String wireValue;
 
   static EndpointAccess fromValue(String value) {

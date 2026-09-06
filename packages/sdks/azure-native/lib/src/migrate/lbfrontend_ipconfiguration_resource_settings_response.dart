@@ -6,16 +6,16 @@ import 'subnet_reference_response.dart';
 /// Defines load balancer frontend IP configuration properties.
 class LBFrontendIPConfigurationResourceSettingsResponse {
   /// Gets or sets the frontend IP configuration name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Gets or sets the IP address of the Load Balancer.This is only specified if a specific
   /// private IP address shall be allocated from the subnet specified in subnetRef.
-  final pulumi.Input<String>? privateIpAddress;
+  final pulumi.Input<String?>? privateIpAddress;
   /// Gets or sets PrivateIP allocation method (Static/Dynamic).
-  final pulumi.Input<String>? privateIpAllocationMethod;
+  final pulumi.Input<String?>? privateIpAllocationMethod;
   /// Defines reference to subnet.
-  final pulumi.Input<SubnetReferenceResponse>? subnet;
+  final pulumi.Input<SubnetReferenceResponse?>? subnet;
   /// Gets or sets the csv list of zones.
-  final pulumi.Input<String>? zones;
+  final pulumi.Input<String?>? zones;
 
   /// Creates a new [LBFrontendIPConfigurationResourceSettingsResponse].
   /// [name] Gets or sets the frontend IP configuration name.

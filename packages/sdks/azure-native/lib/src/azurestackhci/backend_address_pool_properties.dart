@@ -8,11 +8,11 @@ import 'virtual_network_arm_reference.dart';
 /// Backend address pool for the load balancer.
 class BackendAddressPoolProperties {
   /// List of backend addresses for the backend pool
-  final pulumi.Input<List<LoadBalancerBackendAddress>>? loadBalancerBackendAddresses;
+  final pulumi.Input<List<LoadBalancerBackendAddress>?>? loadBalancerBackendAddresses;
   /// Reference to the logical network for this backend pool. Mutually exclusive with virtualNetwork
-  final pulumi.Input<LogicalNetworkArmReference>? logicalNetwork;
+  final pulumi.Input<LogicalNetworkArmReference?>? logicalNetwork;
   /// Reference to the virtual network for this backend pool. Mutually exclusive with logicalNetwork
-  final pulumi.Input<VirtualNetworkArmReference>? virtualNetwork;
+  final pulumi.Input<VirtualNetworkArmReference?>? virtualNetwork;
 
   /// Creates a new [BackendAddressPoolProperties].
   /// [loadBalancerBackendAddresses] List of backend addresses for the backend pool

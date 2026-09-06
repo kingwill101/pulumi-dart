@@ -11,22 +11,22 @@ import 'defender_cspm_aws_offering_vm_scanners_response.dart';
 /// The CSPM P1 for AWS offering
 class DefenderCspmAwsOfferingResponse {
   /// Defenders CSPM Permissions Management offering configurations
-  final pulumi.Input<DefenderCspmAwsOfferingCiemResponse>? ciem;
+  final pulumi.Input<DefenderCspmAwsOfferingCiemResponse?>? ciem;
   /// The Microsoft Defender Data Sensitivity discovery configuration
-  final pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscoveryResponse>? dataSensitivityDiscovery;
+  final pulumi.Input<DefenderCspmAwsOfferingDataSensitivityDiscoveryResponse?>? dataSensitivityDiscovery;
   /// The databases DSPM configuration
-  final pulumi.Input<DefenderCspmAwsOfferingDatabasesDspmResponse>? databasesDspm;
+  final pulumi.Input<DefenderCspmAwsOfferingDatabasesDspmResponse?>? databasesDspm;
   /// The offering description.
   final pulumi.Input<String> description;
   /// The Microsoft Defender container agentless discovery K8s configuration
-  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse>? mdcContainersAgentlessDiscoveryK8S;
+  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersAgentlessDiscoveryK8SResponse?>? mdcContainersAgentlessDiscoveryK8S;
   /// The Microsoft Defender container image assessment configuration
-  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessmentResponse>? mdcContainersImageAssessment;
+  final pulumi.Input<DefenderCspmAwsOfferingMdcContainersImageAssessmentResponse?>? mdcContainersImageAssessment;
   /// The type of the security offering.
   /// Expected value is 'DefenderCspmAws'.
   final pulumi.Input<String> offeringType;
   /// The Microsoft Defender for CSPM offering VM scanning configuration
-  final pulumi.Input<DefenderCspmAwsOfferingVmScannersResponse>? vmScanners;
+  final pulumi.Input<DefenderCspmAwsOfferingVmScannersResponse?>? vmScanners;
 
   /// Creates a new [DefenderCspmAwsOfferingResponse].
   /// [ciem] Defenders CSPM Permissions Management offering configurations

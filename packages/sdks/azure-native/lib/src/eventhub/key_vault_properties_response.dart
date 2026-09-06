@@ -5,13 +5,13 @@ import 'user_assigned_identity_properties_response.dart';
 
 /// Properties to configure keyVault Properties
 class KeyVaultPropertiesResponse {
-  final pulumi.Input<UserAssignedIdentityPropertiesResponse>? identity;
+  final pulumi.Input<UserAssignedIdentityPropertiesResponse?>? identity;
   /// Name of the Key from KeyVault
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// Uri of KeyVault
-  final pulumi.Input<String>? keyVaultUri;
+  final pulumi.Input<String?>? keyVaultUri;
   /// Key Version
-  final pulumi.Input<String>? keyVersion;
+  final pulumi.Input<String?>? keyVersion;
 
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [identity] Optional.

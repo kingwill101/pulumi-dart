@@ -34,6 +34,17 @@ Future<GetConnectionMonitorTestResult> getConnectionMonitorTest(
   return GetConnectionMonitorTestResult.fromMap(result);
 }
 
+pulumi.Output<GetConnectionMonitorTestResult> getConnectionMonitorTestOutput(
+  GetConnectionMonitorTestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getConnectionMonitorTest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConnectionMonitorTestResult.fromMap);
+}
+
 /// Gets the peer ASN with the specified name under the given subscription.
 ///
 /// Uses Azure REST API version 2022-10-01.
@@ -52,6 +63,17 @@ Future<GetPeerAsnResult> getPeerAsn(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeerAsnResult.fromMap(result);
+}
+
+pulumi.Output<GetPeerAsnResult> getPeerAsnOutput(
+  GetPeerAsnArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getPeerAsn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeerAsnResult.fromMap);
 }
 
 /// Gets an existing peering with the specified name under the given subscription and resource group.
@@ -74,6 +96,17 @@ Future<GetPeeringResult> getPeering(
   return GetPeeringResult.fromMap(result);
 }
 
+pulumi.Output<GetPeeringResult> getPeeringOutput(
+  GetPeeringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getPeering',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringResult.fromMap);
+}
+
 /// Gets an existing peering service with the specified name under the given subscription and resource group.
 ///
 /// Uses Azure REST API version 2022-10-01.
@@ -92,6 +125,17 @@ Future<GetPeeringServiceResult> getPeeringService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPeeringServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetPeeringServiceResult> getPeeringServiceOutput(
+  GetPeeringServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getPeeringService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPeeringServiceResult.fromMap);
 }
 
 /// Gets an existing prefix with the specified name under the given subscription, resource group and peering service.
@@ -114,6 +158,17 @@ Future<GetPrefixResult> getPrefix(
   return GetPrefixResult.fromMap(result);
 }
 
+pulumi.Output<GetPrefixResult> getPrefixOutput(
+  GetPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrefixResult.fromMap);
+}
+
 /// Gets an existing registered ASN with the specified name under the given subscription, resource group and peering.
 ///
 /// Uses Azure REST API version 2022-10-01.
@@ -134,6 +189,17 @@ Future<GetRegisteredAsnResult> getRegisteredAsn(
   return GetRegisteredAsnResult.fromMap(result);
 }
 
+pulumi.Output<GetRegisteredAsnResult> getRegisteredAsnOutput(
+  GetRegisteredAsnArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getRegisteredAsn',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegisteredAsnResult.fromMap);
+}
+
 /// Gets an existing registered prefix with the specified name under the given subscription, resource group and peering.
 ///
 /// Uses Azure REST API version 2022-10-01.
@@ -152,4 +218,15 @@ Future<GetRegisteredPrefixResult> getRegisteredPrefix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegisteredPrefixResult.fromMap(result);
+}
+
+pulumi.Output<GetRegisteredPrefixResult> getRegisteredPrefixOutput(
+  GetRegisteredPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:peering:getRegisteredPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegisteredPrefixResult.fromMap);
 }

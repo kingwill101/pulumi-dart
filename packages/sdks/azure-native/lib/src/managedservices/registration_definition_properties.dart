@@ -9,13 +9,13 @@ class RegistrationDefinitionProperties {
   /// The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
   final pulumi.Input<List<Authorization>> authorizations;
   /// The description of the registration definition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
-  final pulumi.Input<List<EligibleAuthorization>>? eligibleAuthorizations;
+  final pulumi.Input<List<EligibleAuthorization>?>? eligibleAuthorizations;
   /// The identifier of the managedBy tenant.
   final pulumi.Input<String> managedByTenantId;
   /// The name of the registration definition.
-  final pulumi.Input<String>? registrationDefinitionName;
+  final pulumi.Input<String?>? registrationDefinitionName;
 
   /// Creates a new [RegistrationDefinitionProperties].
   /// [authorizations] The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.

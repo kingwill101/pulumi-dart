@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The partition strategy to use for Kafka.
-enum KafkaPartitionStrategy {
+enum KafkaPartitionStrategy implements pulumi.PulumiEnum<String> {
   default_("default"),
   static("static"),
   topic("topic"),
   property("property");
 
   const KafkaPartitionStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static KafkaPartitionStrategy fromValue(String value) {

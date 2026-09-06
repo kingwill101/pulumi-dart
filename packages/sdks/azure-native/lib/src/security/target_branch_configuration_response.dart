@@ -8,9 +8,9 @@ class TargetBranchConfigurationResponse {
   ///
   /// Enabled - PR Annotations are enabled on the resource's default branch.
   /// Disabled - PR Annotations are disabled on the resource's default branch.
-  final pulumi.Input<String>? annotateDefaultBranch;
+  final pulumi.Input<String?>? annotateDefaultBranch;
   /// Gets or sets branches that should have annotations.
-  final pulumi.Input<List<String>>? branchNames;
+  final pulumi.Input<List<String>?>? branchNames;
 
   /// Creates a new [TargetBranchConfigurationResponse].
   /// [annotateDefaultBranch] Configuration of PR Annotations on default branch.

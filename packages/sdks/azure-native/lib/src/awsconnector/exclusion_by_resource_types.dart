@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of ExclusionByResourceTypes
 class ExclusionByResourceTypes {
   /// &lt;p&gt;A comma-separated list of resource types to exclude from recording by the configuration recorder.&lt;/p&gt;
-  final pulumi.Input<List<String>>? resourceTypes;
+  final pulumi.Input<List<dynamic>?>? resourceTypes;
 
   /// Creates a new [ExclusionByResourceTypes].
   /// [resourceTypes] &lt;p&gt;A comma-separated list of resource types to exclude from recording by the configuration recorder.&lt;/p&gt;
@@ -21,7 +21,7 @@ class ExclusionByResourceTypes {
 
   factory ExclusionByResourceTypes.fromMap(Map<String, dynamic> map) {
     return ExclusionByResourceTypes(
-      resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      resourceTypes: (() { final guardedValue = map['resourceTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
     );
   }
 }

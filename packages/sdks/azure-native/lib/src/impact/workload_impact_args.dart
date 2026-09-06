@@ -9,9 +9,9 @@ import 'workload_impact_properties.dart';
 /// {@macro pulumi_impact_workload_impact_args_doc}
 class WorkloadImpactArgs {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<WorkloadImpactProperties>? properties;
+  final pulumi.Input<WorkloadImpactProperties?>? properties;
   /// workloadImpact resource
-  final pulumi.Input<String>? workloadImpactName;
+  final pulumi.Input<String?>? workloadImpactName;
 
   /// Creates a new [WorkloadImpactArgs].
   /// [properties] The resource-specific properties for this resource.

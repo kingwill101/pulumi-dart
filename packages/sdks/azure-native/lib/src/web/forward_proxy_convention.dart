@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The convention used to determine the url of the request made.
-enum ForwardProxyConvention {
+enum ForwardProxyConvention implements pulumi.PulumiEnum<String> {
   valueNoProxy("NoProxy"),
   valueStandard("Standard"),
   valueCustom("Custom");
 
   const ForwardProxyConvention(this.wireValue);
+  @override
   final String wireValue;
 
   static ForwardProxyConvention fromValue(String value) {

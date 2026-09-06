@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The OS Type
-enum OSType {
+enum OSType implements pulumi.PulumiEnum<String> {
   linux("Linux"),
   windows("Windows");
 
   const OSType(this.wireValue);
+  @override
   final String wireValue;
 
   static OSType fromValue(String value) {

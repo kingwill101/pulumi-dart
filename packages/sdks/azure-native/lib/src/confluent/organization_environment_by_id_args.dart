@@ -10,17 +10,17 @@ import 'stream_governance_config.dart';
 /// {@macro pulumi_confluent_organization_environment_by_id_args_doc}
 class OrganizationEnvironmentByIdArgs {
   /// Confluent environment id
-  final pulumi.Input<String>? environmentId;
+  final pulumi.Input<String?>? environmentId;
   /// Type of environment
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<SCMetadataEntity>? metadata;
+  final pulumi.Input<SCMetadataEntity?>? metadata;
   /// Organization resource name
   final pulumi.Input<String> organizationName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Stream governance configuration
-  final pulumi.Input<StreamGovernanceConfig>? streamGovernanceConfig;
+  final pulumi.Input<StreamGovernanceConfig?>? streamGovernanceConfig;
 
   /// Creates a new [OrganizationEnvironmentByIdArgs].
   /// [environmentId] Confluent environment id

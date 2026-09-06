@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The retention details of the MT.
 class RetentionVolumeResponse {
   /// The volume capacity.
-  final pulumi.Input<double>? capacityInBytes;
+  final pulumi.Input<double?>? capacityInBytes;
   /// The free space available in this volume.
-  final pulumi.Input<double>? freeSpaceInBytes;
+  final pulumi.Input<double?>? freeSpaceInBytes;
   /// The threshold percentage.
-  final pulumi.Input<int>? thresholdPercentage;
+  final pulumi.Input<int?>? thresholdPercentage;
   /// The volume name.
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [RetentionVolumeResponse].
   /// [capacityInBytes] The volume capacity.
@@ -36,9 +36,9 @@ class RetentionVolumeResponse {
 
   factory RetentionVolumeResponse.fromMap(Map<String, dynamic> map) {
     return RetentionVolumeResponse(
-      capacityInBytes: (() { final guardedValue = map['capacityInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      freeSpaceInBytes: (() { final guardedValue = map['freeSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      thresholdPercentage: (() { final guardedValue = map['thresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      capacityInBytes: (() { final guardedValue = map['capacityInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      freeSpaceInBytes: (() { final guardedValue = map['freeSpaceInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      thresholdPercentage: (() { final guardedValue = map['thresholdPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       volumeName: (() { final guardedValue = map['volumeName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

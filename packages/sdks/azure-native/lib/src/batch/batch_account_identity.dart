@@ -8,7 +8,7 @@ class BatchAccountIdentity {
   /// The type of identity used for the Batch account.
   final pulumi.Input<ResourceIdentityType> type;
   /// The list of user identities associated with the Batch account.
-  final pulumi.Input<List<String>>? userAssignedIdentities;
+  final pulumi.Input<List<String>?>? userAssignedIdentities;
 
   /// Creates a new [BatchAccountIdentity].
   /// [type] The type of identity used for the Batch account.

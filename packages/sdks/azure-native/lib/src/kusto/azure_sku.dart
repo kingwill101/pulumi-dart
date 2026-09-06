@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Azure SKU definition.
 class AzureSku {
   /// The number of instances of the cluster.
-  final pulumi.Input<int>? capacity;
+  final pulumi.Input<int?>? capacity;
   /// SKU name.
-  final pulumi.Input<String> name;
+  final pulumi.Input<dynamic> name;
   /// SKU tier.
-  final pulumi.Input<String> tier;
+  final pulumi.Input<dynamic> tier;
 
   /// Creates a new [AzureSku].
   /// [capacity] The number of instances of the cluster.
@@ -31,9 +31,9 @@ class AzureSku {
 
   factory AzureSku.fromMap(Map<String, dynamic> map) {
     return AzureSku(
-      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      name: pulumi.Input.fromValue(map['name'] as String),
-      tier: pulumi.Input.fromValue(map['tier'] as String),
+      capacity: (() { final guardedValue = map['capacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      name: pulumi.Input.fromValue(map['name']),
+      tier: pulumi.Input.fromValue(map['tier']),
     );
   }
 }

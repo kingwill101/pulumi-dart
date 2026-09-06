@@ -2,6 +2,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'extended_location_response.dart';
 import 'network_interface_args.dart';
 import 'network_interface_dns_settings_response.dart';
+import 'network_interface_ipconfiguration_response.dart';
+import 'network_interface_tap_configuration_response.dart';
 import 'network_security_group_response.dart';
 import 'private_endpoint_response.dart';
 import 'private_link_service_response.dart';
@@ -527,7 +529,7 @@ class NetworkInterface extends pulumi.CustomResource {
   /// A list of references to linked BareMetal resources.
   late final pulumi.Output<List<String>> hostedWorkloads;
   /// A list of IPConfigurations of the network interface.
-  late final pulumi.Output<List<Map<String, dynamic>>?> ipConfigurations;
+  late final pulumi.Output<List<NetworkInterfaceIPConfigurationResponse>?> ipConfigurations;
   /// Resource location.
   late final pulumi.Output<String?> location;
   /// The MAC address of the network interface.
@@ -553,7 +555,7 @@ class NetworkInterface extends pulumi.CustomResource {
   /// Resource tags.
   late final pulumi.Output<Map<String, String>?> tags;
   /// A list of TapConfigurations of the network interface.
-  late final pulumi.Output<List<Map<String, dynamic>>> tapConfigurations;
+  late final pulumi.Output<List<NetworkInterfaceTapConfigurationResponse>> tapConfigurations;
   /// Resource type.
   late final pulumi.Output<String> type;
   /// The reference to a virtual machine.
@@ -588,8 +590,8 @@ class NetworkInterface extends pulumi.CustomResource {
     enableIPForwarding = registerOutput<bool?>('enableIPForwarding');
     etag = registerOutput<String>('etag');
     extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostedWorkloads = registerOutput<List<String>>('hostedWorkloads');
-    ipConfigurations = registerOutput<List<Map<String, dynamic>>?>('ipConfigurations');
+    hostedWorkloads = registerOutput<List<String>>('hostedWorkloads', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipConfigurations = registerOutput<List<NetworkInterfaceIPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(guardedValue, (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     macAddress = registerOutput<String>('macAddress');
     migrationPhase = registerOutput<String?>('migrationPhase');
@@ -601,8 +603,49 @@ class NetworkInterface extends pulumi.CustomResource {
     privateLinkService = registerOutput<PrivateLinkServiceResponse?>('privateLinkService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     resourceGuid = registerOutput<String>('resourceGuid');
-    tags = registerOutput<Map<String, String>?>('tags');
-    tapConfigurations = registerOutput<List<Map<String, dynamic>>>('tapConfigurations');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tapConfigurations = registerOutput<List<NetworkInterfaceTapConfigurationResponse>>('tapConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    type = registerOutput<String>('type');
+    virtualMachine = registerOutput<SubResourceResponse>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vnetEncryptionSupported = registerOutput<bool>('vnetEncryptionSupported');
+    workloadType = registerOutput<String?>('workloadType');
+  }
+
+  /// Creates a typed reference to an existing [NetworkInterface] resource.
+  NetworkInterface.reference(String urn)
+    : super(
+        'azure-native:network:NetworkInterface',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auxiliaryMode = registerOutput<String?>('auxiliaryMode');
+    auxiliarySku = registerOutput<String?>('auxiliarySku');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    defaultOutboundConnectivityEnabled = registerOutput<bool>('defaultOutboundConnectivityEnabled');
+    disableTcpStateTracking = registerOutput<bool?>('disableTcpStateTracking');
+    dnsSettings = registerOutput<NetworkInterfaceDnsSettingsResponse?>('dnsSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkInterfaceDnsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dscpConfiguration = registerOutput<SubResourceResponse>('dscpConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableAcceleratedNetworking = registerOutput<bool?>('enableAcceleratedNetworking');
+    enableIPForwarding = registerOutput<bool?>('enableIPForwarding');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostedWorkloads = registerOutput<List<String>>('hostedWorkloads', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ipConfigurations = registerOutput<List<NetworkInterfaceIPConfigurationResponse>?>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceIPConfigurationResponse>(guardedValue, (value) => NetworkInterfaceIPConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    macAddress = registerOutput<String>('macAddress');
+    migrationPhase = registerOutput<String?>('migrationPhase');
+    this.name = registerOutput<String>('name');
+    networkSecurityGroup = registerOutput<NetworkSecurityGroupResponse?>('networkSecurityGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkSecurityGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nicType = registerOutput<String?>('nicType');
+    primary = registerOutput<bool>('primary');
+    privateEndpoint = registerOutput<PrivateEndpointResponse>('privateEndpoint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    privateLinkService = registerOutput<PrivateLinkServiceResponse?>('privateLinkService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrivateLinkServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    resourceGuid = registerOutput<String>('resourceGuid');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tapConfigurations = registerOutput<List<NetworkInterfaceTapConfigurationResponse>>('tapConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkInterfaceTapConfigurationResponse>(guardedValue, (value) => NetworkInterfaceTapConfigurationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     type = registerOutput<String>('type');
     virtualMachine = registerOutput<SubResourceResponse>('virtualMachine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vnetEncryptionSupported = registerOutput<bool>('vnetEncryptionSupported');

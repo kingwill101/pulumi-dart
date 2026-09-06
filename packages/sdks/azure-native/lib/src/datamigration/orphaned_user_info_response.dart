@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information of orphaned users on the SQL server database.
 class OrphanedUserInfoResponse {
   /// Parent database of the user
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// Name of the orphaned user
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [OrphanedUserInfoResponse].
   /// [databaseName] Parent database of the user

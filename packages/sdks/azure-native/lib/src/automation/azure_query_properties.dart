@@ -6,11 +6,11 @@ import 'tag_settings_properties.dart';
 /// Azure query for the update configuration.
 class AzureQueryProperties {
   /// List of locations to scope the query to.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// List of Subscription or Resource Group ARM Ids.
-  final pulumi.Input<List<String>>? scope;
+  final pulumi.Input<List<String>?>? scope;
   /// Tag settings for the VM.
-  final pulumi.Input<TagSettingsProperties>? tagSettings;
+  final pulumi.Input<TagSettingsProperties?>? tagSettings;
 
   /// Creates a new [AzureQueryProperties].
   /// [locations] List of locations to scope the query to.

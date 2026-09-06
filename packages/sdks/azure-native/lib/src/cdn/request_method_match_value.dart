@@ -1,4 +1,6 @@
-enum RequestMethodMatchValue {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum RequestMethodMatchValue implements pulumi.PulumiEnum<String> {
   gET("GET"),
   hEAD("HEAD"),
   pOST("POST"),
@@ -8,6 +10,7 @@ enum RequestMethodMatchValue {
   tRACE("TRACE");
 
   const RequestMethodMatchValue(this.wireValue);
+  @override
   final String wireValue;
 
   static RequestMethodMatchValue fromValue(String value) {

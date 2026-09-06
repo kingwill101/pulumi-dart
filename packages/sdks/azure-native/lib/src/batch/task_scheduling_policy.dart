@@ -10,9 +10,9 @@ class TaskSchedulingPolicy {
 
   /// Creates a new [TaskSchedulingPolicy].
   /// [nodeFillType] How tasks should be distributed across compute nodes.
-  const TaskSchedulingPolicy({
-    required this.nodeFillType,
-  });
+  TaskSchedulingPolicy({
+    pulumi.Input<ComputeNodeFillType>? nodeFillType,
+  }) : nodeFillType = nodeFillType ?? pulumi.Input.fromValue(ComputeNodeFillType.fromValue('Spread'));
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

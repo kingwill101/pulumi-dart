@@ -6,9 +6,9 @@ import 'method.dart';
 /// The authentication client credentials of the custom Open ID Connect provider.
 class OpenIdConnectClientCredentialV1 {
   /// The app setting that contains the client secret for the custom Open ID Connect provider.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// The method that should be used to authenticate the user.
-  final pulumi.Input<Method>? method;
+  final pulumi.Input<Method?>? method;
 
   /// Creates a new [OpenIdConnectClientCredentialV1].
   /// [clientSecretSettingName] The app setting that contains the client secret for the custom Open ID Connect provider.

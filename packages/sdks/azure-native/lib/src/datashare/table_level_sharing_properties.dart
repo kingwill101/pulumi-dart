@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Table level sharing properties dto for kusto data set properties
 class TableLevelSharingProperties {
   /// External tables to be excluded in the data set
-  final pulumi.Input<List<String>>? externalTablesToExclude;
+  final pulumi.Input<List<String>?>? externalTablesToExclude;
   /// External tables to be included in the data set
-  final pulumi.Input<List<String>>? externalTablesToInclude;
+  final pulumi.Input<List<String>?>? externalTablesToInclude;
   /// Materialized views to be excluded in the data set
-  final pulumi.Input<List<String>>? materializedViewsToExclude;
+  final pulumi.Input<List<String>?>? materializedViewsToExclude;
   /// Materialized views to be included in the data set
-  final pulumi.Input<List<String>>? materializedViewsToInclude;
+  final pulumi.Input<List<String>?>? materializedViewsToInclude;
   /// Tables to be excluded in the data set
-  final pulumi.Input<List<String>>? tablesToExclude;
+  final pulumi.Input<List<String>?>? tablesToExclude;
   /// Tables to be included in the data set
-  final pulumi.Input<List<String>>? tablesToInclude;
+  final pulumi.Input<List<String>?>? tablesToInclude;
 
   /// Creates a new [TableLevelSharingProperties].
   /// [externalTablesToExclude] External tables to be excluded in the data set

@@ -7,7 +7,7 @@ class EnvironmentSettingResponse {
   /// The name of the environment variable.
   final pulumi.Input<String> name;
   /// The value of the environment variable.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [EnvironmentSettingResponse].
   /// [name] The name of the environment variable.

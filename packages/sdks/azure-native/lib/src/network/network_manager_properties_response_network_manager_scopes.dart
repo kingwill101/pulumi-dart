@@ -8,9 +8,9 @@ class NetworkManagerPropertiesResponseNetworkManagerScopes {
   /// List of cross tenant scopes.
   final pulumi.Input<List<CrossTenantScopesResponse>> crossTenantScopes;
   /// List of management groups.
-  final pulumi.Input<List<String>>? managementGroups;
+  final pulumi.Input<List<String>?>? managementGroups;
   /// List of subscriptions.
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
 
   /// Creates a new [NetworkManagerPropertiesResponseNetworkManagerScopes].
   /// [crossTenantScopes] List of cross tenant scopes.

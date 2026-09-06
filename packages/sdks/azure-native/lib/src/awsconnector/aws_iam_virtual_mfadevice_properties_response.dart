@@ -6,15 +6,15 @@ import 'tag_response.dart';
 /// Definition of awsIamVirtualMFADevice
 class AwsIamVirtualMFADevicePropertiesResponse {
   /// Property path
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Property serialNumber
-  final pulumi.Input<String>? serialNumber;
+  final pulumi.Input<String?>? serialNumber;
   /// Property tags
-  final pulumi.Input<List<TagResponse>>? tags;
+  final pulumi.Input<List<TagResponse>?>? tags;
   /// Property users
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
   /// Property virtualMfaDeviceName
-  final pulumi.Input<String>? virtualMfaDeviceName;
+  final pulumi.Input<String?>? virtualMfaDeviceName;
 
   /// Creates a new [AwsIamVirtualMFADevicePropertiesResponse].
   /// [path] Property path

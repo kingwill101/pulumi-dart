@@ -12,9 +12,9 @@ class MigrateSqlServerSqlMISyncTaskInputResponse {
   /// Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
   final pulumi.Input<AzureActiveDirectoryAppResponse> azureApp;
   /// Backup file share information for all selected databases.
-  final pulumi.Input<FileShareResponse>? backupFileShare;
+  final pulumi.Input<FileShareResponse?>? backupFileShare;
   /// Number of database migrations to start in parallel
-  final pulumi.Input<double>? numberOfParallelDatabaseMigrations;
+  final pulumi.Input<double?>? numberOfParallelDatabaseMigrations;
   /// Databases to migrate
   final pulumi.Input<List<MigrateSqlServerSqlMIDatabaseInputResponse>> selectedDatabases;
   /// Connection information for source SQL Server
@@ -58,7 +58,7 @@ class MigrateSqlServerSqlMISyncTaskInputResponse {
     return MigrateSqlServerSqlMISyncTaskInputResponse(
       azureApp: pulumi.Input.fromValue(AzureActiveDirectoryAppResponse.fromMap((map['azureApp']! as Map).cast<String, dynamic>())),
       backupFileShare: (() { final guardedValue = map['backupFileShare']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FileShareResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfParallelDatabaseMigrations: (() { final guardedValue = map['numberOfParallelDatabaseMigrations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      numberOfParallelDatabaseMigrations: (() { final guardedValue = map['numberOfParallelDatabaseMigrations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       selectedDatabases: pulumi.Input.fromValue(pulumi.Input.decodeList<MigrateSqlServerSqlMIDatabaseInputResponse>(map['selectedDatabases']!, (value) => MigrateSqlServerSqlMIDatabaseInputResponse.fromMap((value as Map).cast<String, dynamic>()))),
       sourceConnectionInfo: pulumi.Input.fromValue(SqlConnectionInfoResponse.fromMap((map['sourceConnectionInfo']! as Map).cast<String, dynamic>())),
       storageResourceId: pulumi.Input.fromValue(map['storageResourceId'] as String),

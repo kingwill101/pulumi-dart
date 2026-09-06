@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_integrationspaces_infrastructure_resource_args_doc}
 class InfrastructureResourceArgs {
   /// The name of the infrastructure resource in the space.
-  final pulumi.Input<String>? infrastructureResourceName;
+  final pulumi.Input<String?>? infrastructureResourceName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The id of the infrastructure resource.

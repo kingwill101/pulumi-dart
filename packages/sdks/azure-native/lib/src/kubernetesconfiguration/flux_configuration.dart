@@ -4,6 +4,7 @@ import 'bucket_definition_response.dart';
 import 'flux_configuration_args.dart';
 import 'git_repository_definition_response.dart';
 import 'kustomization_definition_response.dart';
+import 'object_status_definition_response.dart';
 import 'system_data_response.dart';
 
 /// The Flux Configuration object returned in Get & Put response.
@@ -958,7 +959,7 @@ class FluxConfiguration extends pulumi.CustomResource {
   /// Datetime the fluxConfiguration synced its status on the cluster with Azure.
   late final pulumi.Output<String> statusUpdatedAt;
   /// Statuses of the Flux Kubernetes resources created by the fluxConfiguration or created by the managed objects provisioned by the fluxConfiguration.
-  late final pulumi.Output<List<Map<String, dynamic>>> statuses;
+  late final pulumi.Output<List<ObjectStatusDefinitionResponse>> statuses;
   /// Whether this configuration should suspend its reconciliation of its kustomizations and sources.
   late final pulumi.Output<bool?> suspend;
   /// Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
@@ -986,7 +987,7 @@ class FluxConfiguration extends pulumi.CustomResource {
     azureBlob = registerOutput<AzureBlobDefinitionResponse?>('azureBlob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<BucketDefinitionResponse?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     complianceState = registerOutput<String>('complianceState');
-    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     errorMessage = registerOutput<String>('errorMessage');
     gitRepository = registerOutput<GitRepositoryDefinitionResponse?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRepositoryDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kustomizations = registerOutput<Map<String, KustomizationDefinitionResponse>?>('kustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<KustomizationDefinitionResponse>(guardedValue, (value) => KustomizationDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
@@ -1000,7 +1001,41 @@ class FluxConfiguration extends pulumi.CustomResource {
     sourceSyncedCommitId = registerOutput<String>('sourceSyncedCommitId');
     sourceUpdatedAt = registerOutput<String>('sourceUpdatedAt');
     statusUpdatedAt = registerOutput<String>('statusUpdatedAt');
-    statuses = registerOutput<List<Map<String, dynamic>>>('statuses');
+    statuses = registerOutput<List<ObjectStatusDefinitionResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectStatusDefinitionResponse>(guardedValue, (value) => ObjectStatusDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    suspend = registerOutput<bool?>('suspend');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    waitForReconciliation = registerOutput<bool?>('waitForReconciliation');
+  }
+
+  /// Creates a typed reference to an existing [FluxConfiguration] resource.
+  FluxConfiguration.reference(String urn)
+    : super(
+        'azure-native:kubernetesconfiguration:FluxConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    azureBlob = registerOutput<AzureBlobDefinitionResponse?>('azureBlob', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureBlobDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bucket = registerOutput<BucketDefinitionResponse?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    complianceState = registerOutput<String>('complianceState');
+    configurationProtectedSettings = registerOutput<Map<String, String>?>('configurationProtectedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    errorMessage = registerOutput<String>('errorMessage');
+    gitRepository = registerOutput<GitRepositoryDefinitionResponse?>('gitRepository', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GitRepositoryDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kustomizations = registerOutput<Map<String, KustomizationDefinitionResponse>?>('kustomizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<KustomizationDefinitionResponse>(guardedValue, (value) => KustomizationDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    namespace = registerOutput<String?>('namespace');
+    provisioningState = registerOutput<String>('provisioningState');
+    reconciliationWaitDuration = registerOutput<String?>('reconciliationWaitDuration');
+    repositoryPublicKey = registerOutput<String>('repositoryPublicKey');
+    scope = registerOutput<String?>('scope');
+    sourceKind = registerOutput<String?>('sourceKind');
+    sourceSyncedCommitId = registerOutput<String>('sourceSyncedCommitId');
+    sourceUpdatedAt = registerOutput<String>('sourceUpdatedAt');
+    statusUpdatedAt = registerOutput<String>('statusUpdatedAt');
+    statuses = registerOutput<List<ObjectStatusDefinitionResponse>>('statuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectStatusDefinitionResponse>(guardedValue, (value) => ObjectStatusDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     suspend = registerOutput<bool?>('suspend');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');

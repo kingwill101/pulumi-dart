@@ -9,10 +9,10 @@ import 'group_quotas_entity_properties.dart';
 /// {@macro pulumi_quota_group_quota_args_doc}
 class GroupQuotaArgs {
   /// The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
-  final pulumi.Input<String>? groupQuotaName;
+  final pulumi.Input<String?>? groupQuotaName;
   /// Management Group Id.
   final pulumi.Input<String> managementGroupId;
-  final pulumi.Input<GroupQuotasEntityProperties>? properties;
+  final pulumi.Input<GroupQuotasEntityProperties?>? properties;
 
   /// Creates a new [GroupQuotaArgs].
   /// [groupQuotaName] The GroupQuota name. The name should be unique for the provided context tenantId/MgId.

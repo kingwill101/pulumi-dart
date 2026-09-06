@@ -9,7 +9,7 @@ class WatchlistUserInfoResponse {
   /// The name of the user.
   final pulumi.Input<String> name;
   /// The object id of the user.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
 
   /// Creates a new [WatchlistUserInfoResponse].
   /// [email] The email of the user.

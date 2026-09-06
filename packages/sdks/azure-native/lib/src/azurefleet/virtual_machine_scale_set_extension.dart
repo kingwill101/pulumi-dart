@@ -6,9 +6,9 @@ import 'virtual_machine_scale_set_extension_properties.dart';
 /// Describes a Virtual Machine Scale Set Extension.
 class VirtualMachineScaleSetExtension {
   /// The name of the extension.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Describes the properties of a Virtual Machine Scale Set Extension.
-  final pulumi.Input<VirtualMachineScaleSetExtensionProperties>? properties;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProperties?>? properties;
 
   /// Creates a new [VirtualMachineScaleSetExtension].
   /// [name] The name of the extension.

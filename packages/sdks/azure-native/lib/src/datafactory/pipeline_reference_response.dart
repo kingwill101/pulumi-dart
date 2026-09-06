@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Pipeline reference type.
 class PipelineReferenceResponse {
   /// Reference name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Reference pipeline name.
   final pulumi.Input<String> referenceName;
   /// Pipeline reference type.

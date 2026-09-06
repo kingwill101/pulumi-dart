@@ -6,7 +6,7 @@ import 'log_setup_response.dart';
 /// Definition of Logging
 class LoggingEksClusterResponse {
   /// &lt;p&gt;The cluster control plane logging configuration for your cluster.&lt;/p&gt;
-  final pulumi.Input<List<LogSetupResponse>>? clusterLogging;
+  final pulumi.Input<List<LogSetupResponse>?>? clusterLogging;
 
   /// Creates a new [LoggingEksClusterResponse].
   /// [clusterLogging] &lt;p&gt;The cluster control plane logging configuration for your cluster.&lt;/p&gt;

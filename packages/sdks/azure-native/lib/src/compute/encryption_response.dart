@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption at rest settings for disk or snapshot
 class EncryptionResponse {
   /// ResourceId of the disk encryption set to use for enabling encryption at rest.
-  final pulumi.Input<String>? diskEncryptionSetId;
+  final pulumi.Input<String?>? diskEncryptionSetId;
   /// The type of key used to encrypt the data of the disk.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [EncryptionResponse].
   /// [diskEncryptionSetId] ResourceId of the disk encryption set to use for enabling encryption at rest.

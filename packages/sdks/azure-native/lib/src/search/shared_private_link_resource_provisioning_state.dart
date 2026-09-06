@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The provisioning state of the shared private link resource. Valid values are Updating, Deleting, Failed, Succeeded or Incomplete.
-enum SharedPrivateLinkResourceProvisioningState {
+enum SharedPrivateLinkResourceProvisioningState implements pulumi.PulumiEnum<String> {
   updating("Updating"),
   deleting("Deleting"),
   failed("Failed"),
@@ -7,6 +9,7 @@ enum SharedPrivateLinkResourceProvisioningState {
   incomplete("Incomplete");
 
   const SharedPrivateLinkResourceProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static SharedPrivateLinkResourceProvisioningState fromValue(String value) {

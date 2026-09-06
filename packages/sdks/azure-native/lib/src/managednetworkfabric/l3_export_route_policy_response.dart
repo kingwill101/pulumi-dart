@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Array of ARM Resource ID of the RoutePolicies.
 class L3ExportRoutePolicyResponse {
   /// ARM Resource ID of the RoutePolicy.
-  final pulumi.Input<String>? exportIpv4RoutePolicyId;
+  final pulumi.Input<String?>? exportIpv4RoutePolicyId;
   /// ARM Resource ID of the RoutePolicy.
-  final pulumi.Input<String>? exportIpv6RoutePolicyId;
+  final pulumi.Input<String?>? exportIpv6RoutePolicyId;
 
   /// Creates a new [L3ExportRoutePolicyResponse].
   /// [exportIpv4RoutePolicyId] ARM Resource ID of the RoutePolicy.

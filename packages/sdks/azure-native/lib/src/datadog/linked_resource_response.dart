@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The definition of a linked resource.
 class LinkedResourceResponse {
   /// The ARM id of the linked resource.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The location of the linked resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
 
   /// Creates a new [LinkedResourceResponse].
   /// [id] The ARM id of the linked resource.

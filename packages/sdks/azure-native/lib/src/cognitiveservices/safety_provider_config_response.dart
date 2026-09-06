@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Gets or sets the source to which safety providers applies.
 class SafetyProviderConfigResponse {
   /// If blocking would occur.
-  final pulumi.Input<bool>? blocking;
+  final pulumi.Input<bool?>? blocking;
   /// Name of RAI Safety Provider.
-  final pulumi.Input<String>? safetyProviderName;
+  final pulumi.Input<String?>? safetyProviderName;
   /// Content source to apply the Content Filters.
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [SafetyProviderConfigResponse].
   /// [blocking] If blocking would occur.

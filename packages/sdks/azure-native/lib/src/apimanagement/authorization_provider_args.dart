@@ -9,13 +9,13 @@ import 'authorization_provider_oauth2_settings.dart';
 /// {@macro pulumi_apimanagement_authorization_provider_args_doc}
 class AuthorizationProviderArgs {
   /// Identifier of the authorization provider.
-  final pulumi.Input<String>? authorizationProviderId;
+  final pulumi.Input<String?>? authorizationProviderId;
   /// Authorization Provider name. Must be 1 to 300 characters long.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Identity provider name. Must be 1 to 300 characters long.
-  final pulumi.Input<String>? identityProvider;
+  final pulumi.Input<String?>? identityProvider;
   /// OAuth2 settings
-  final pulumi.Input<AuthorizationProviderOAuth2Settings>? oauth2;
+  final pulumi.Input<AuthorizationProviderOAuth2Settings?>? oauth2;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the API Management service.

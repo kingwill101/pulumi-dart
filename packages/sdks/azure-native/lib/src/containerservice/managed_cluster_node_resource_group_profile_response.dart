@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Node resource group lockdown profile for a managed cluster.
 class ManagedClusterNodeResourceGroupProfileResponse {
   /// The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'
-  final pulumi.Input<String>? restrictionLevel;
+  final pulumi.Input<String?>? restrictionLevel;
 
   /// Creates a new [ManagedClusterNodeResourceGroupProfileResponse].
   /// [restrictionLevel] The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted'

@@ -7,7 +7,7 @@ class X12EnvelopeOverrideResponse {
   /// The date format.
   final pulumi.Input<String> dateFormat;
   /// The functional identifier code.
-  final pulumi.Input<String>? functionalIdentifierCode;
+  final pulumi.Input<String?>? functionalIdentifierCode;
   /// The header version.
   final pulumi.Input<String> headerVersion;
   /// The message id on which this envelope settings has to be applied.

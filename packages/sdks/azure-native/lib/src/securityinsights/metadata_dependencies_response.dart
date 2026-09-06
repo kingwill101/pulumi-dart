@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Dependencies for the content item, what other content items it requires to work.  Can describe more complex dependencies using a recursive/nested structure. For a single dependency an id/kind/version can be supplied or operator/criteria for complex dependencies.
 class MetadataDependenciesResponse {
   /// Id of the content item we depend on
-  final pulumi.Input<String>? contentId;
+  final pulumi.Input<String?>? contentId;
   /// This is the list of dependencies we must fulfill, according to the AND/OR operator
-  final pulumi.Input<List<MetadataDependenciesResponse>>? criteria;
+  final pulumi.Input<List<MetadataDependenciesResponse>?>? criteria;
   /// Type of the content item we depend on
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the content item
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Operator used for list of dependencies in criteria array.
-  final pulumi.Input<String>? operator;
+  final pulumi.Input<String?>? operator;
   /// Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MetadataDependenciesResponse].
   /// [contentId] Id of the content item we depend on

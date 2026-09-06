@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Virtual machine instance provisioning status.
 class VirtualMachineInstanceStatusProvisioningStatusResponse {
   /// The ID of the operation performed on the virtual machine instance
-  final pulumi.Input<String>? operationId;
+  final pulumi.Input<String?>? operationId;
   /// The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
   final pulumi.Input<String> status;
 

@@ -7,7 +7,7 @@ class KekIdentityPropertiesResponse {
   /// Boolean specifying whether to use system assigned identity or not
   final pulumi.Input<dynamic>? useSystemAssignedIdentity;
   /// User assigned identity resource Id
-  final pulumi.Input<String>? userAssignedIdentity;
+  final pulumi.Input<String?>? userAssignedIdentity;
 
   /// Creates a new [KekIdentityPropertiesResponse].
   /// [useSystemAssignedIdentity] Boolean specifying whether to use system assigned identity or not

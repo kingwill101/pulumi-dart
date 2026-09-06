@@ -3,6 +3,7 @@ import 'compute_resource_response.dart';
 import 'io_tdevice_info_response.dart';
 import 'io_tedge_agent_info_response.dart';
 import 'io_trole_args.dart';
+import 'mount_point_map_response.dart';
 import 'system_data_response.dart';
 
 /// Compute role.
@@ -386,7 +387,7 @@ class IoTRole extends pulumi.CustomResource {
   /// Role status.
   late final pulumi.Output<String> roleStatus;
   /// Mount points of shares in role(s).
-  late final pulumi.Output<List<Map<String, dynamic>>?> shareMappings;
+  late final pulumi.Output<List<MountPointMapResponse>?> shareMappings;
   /// Metadata pertaining to creation and last modification of Role
   late final pulumi.Output<SystemDataResponse> systemData;
   /// The hierarchical type of the object.
@@ -416,7 +417,31 @@ class IoTRole extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
     roleStatus = registerOutput<String>('roleStatus');
-    shareMappings = registerOutput<List<Map<String, dynamic>>?>('shareMappings');
+    shareMappings = registerOutput<List<MountPointMapResponse>?>('shareMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountPointMapResponse>(guardedValue, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [IoTRole] resource.
+  IoTRole.reference(String urn)
+    : super(
+        'azure-native:databoxedge:IoTRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    computeResource = registerOutput<ComputeResourceResponse?>('computeResource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostPlatform = registerOutput<String>('hostPlatform');
+    hostPlatformType = registerOutput<String>('hostPlatformType');
+    ioTDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTDeviceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTDeviceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ioTEdgeAgentInfo = registerOutput<IoTEdgeAgentInfoResponse?>('ioTEdgeAgentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTEdgeAgentInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ioTEdgeDeviceDetails = registerOutput<IoTDeviceInfoResponse>('ioTEdgeDeviceDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTDeviceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    roleStatus = registerOutput<String>('roleStatus');
+    shareMappings = registerOutput<List<MountPointMapResponse>?>('shareMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MountPointMapResponse>(guardedValue, (value) => MountPointMapResponse.fromMap((value as Map).cast<String, dynamic>())); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }

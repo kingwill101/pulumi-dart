@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The secret info when type is keyVaultSecretReference. It's for scenario that user provides a secret stored in user's keyvault and source is Azure Kubernetes. The key Vault's resource id is linked to secretStore.keyVaultId.
 class KeyVaultSecretReferenceSecretInfoResponse {
   /// Name of the Key Vault secret.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The secret type.
   /// Expected value is 'keyVaultSecretReference'.
   final pulumi.Input<String> secretType;
   /// Version of the Key Vault secret.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [KeyVaultSecretReferenceSecretInfoResponse].
   /// [name] Name of the Key Vault secret.

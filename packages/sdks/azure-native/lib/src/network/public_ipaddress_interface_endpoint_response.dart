@@ -11,43 +11,43 @@ import 'sub_resource_response.dart';
 /// Public IP address resource.
 class PublicIPAddressInterfaceEndpointResponse {
   /// The DDoS protection custom policy associated with the public IP address.
-  final pulumi.Input<DdosSettingsInterfaceEndpointResponse>? ddosSettings;
+  final pulumi.Input<DdosSettingsInterfaceEndpointResponse?>? ddosSettings;
   /// The FQDN of the DNS record associated with the public IP address.
-  final pulumi.Input<PublicIPAddressDnsSettingsInterfaceEndpointResponse>? dnsSettings;
+  final pulumi.Input<PublicIPAddressDnsSettingsInterfaceEndpointResponse?>? dnsSettings;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The idle timeout of the public IP address.
-  final pulumi.Input<int>? idleTimeoutInMinutes;
+  final pulumi.Input<int?>? idleTimeoutInMinutes;
   /// The IP address associated with the public IP address resource.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// The IP configuration associated with the public IP address.
   final pulumi.Input<IPConfigurationResponse> ipConfiguration;
   /// The list of tags associated with the public IP address.
-  final pulumi.Input<List<IpTagResponse>>? ipTags;
+  final pulumi.Input<List<IpTagResponse>?>? ipTags;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The provisioning state of the PublicIP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The public IP address version.
-  final pulumi.Input<String>? publicIPAddressVersion;
+  final pulumi.Input<String?>? publicIPAddressVersion;
   /// The public IP address allocation method.
-  final pulumi.Input<String>? publicIPAllocationMethod;
+  final pulumi.Input<String?>? publicIPAllocationMethod;
   /// The Public IP Prefix this Public IP Address should be allocated from.
-  final pulumi.Input<SubResourceResponse>? publicIPPrefix;
+  final pulumi.Input<SubResourceResponse?>? publicIPPrefix;
   /// The resource GUID property of the public IP resource.
-  final pulumi.Input<String>? resourceGuid;
+  final pulumi.Input<String?>? resourceGuid;
   /// The public IP address SKU.
-  final pulumi.Input<PublicIPAddressSkuInterfaceEndpointResponse>? sku;
+  final pulumi.Input<PublicIPAddressSkuInterfaceEndpointResponse?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Resource type.
   final pulumi.Input<String> type;
   /// A list of availability zones denoting the IP allocated for the resource needs to come from.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [PublicIPAddressInterfaceEndpointResponse].
   /// [ddosSettings] The DDoS protection custom policy associated with the public IP address.
@@ -121,7 +121,7 @@ class PublicIPAddressInterfaceEndpointResponse {
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PublicIPAddressDnsSettingsInterfaceEndpointResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipConfiguration: pulumi.Input.fromValue(IPConfigurationResponse.fromMap((map['ipConfiguration']! as Map).cast<String, dynamic>())),
       ipTags: (() { final guardedValue = map['ipTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IpTagResponse>(guardedValue, (value) => IpTagResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),

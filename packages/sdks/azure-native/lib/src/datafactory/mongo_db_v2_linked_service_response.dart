@@ -7,22 +7,22 @@ import 'parameter_specification_response.dart';
 /// Linked service for MongoDB data source.
 class MongoDbV2LinkedServiceResponse {
   /// List of tags that can be used for describing the linked service.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// The integration runtime reference.
-  final pulumi.Input<IntegrationRuntimeReferenceResponse>? connectVia;
+  final pulumi.Input<IntegrationRuntimeReferenceResponse?>? connectVia;
   /// The MongoDB connection string. Type: string, SecureString or AzureKeyVaultSecretReference. Type: string, SecureString or AzureKeyVaultSecretReference.
   final pulumi.Input<dynamic> connectionString;
   /// The name of the MongoDB database that you want to access. Type: string (or Expression with resultType string).
   final pulumi.Input<dynamic> database;
   /// Linked service description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Parameters for linked service.
-  final pulumi.Input<Map<String, ParameterSpecificationResponse>>? parameters;
+  final pulumi.Input<Map<String, ParameterSpecificationResponse>?>? parameters;
   /// Type of linked service.
   /// Expected value is 'MongoDbV2'.
   final pulumi.Input<String> type;
   /// Version of the linked service.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [MongoDbV2LinkedServiceResponse].
   /// [annotations] List of tags that can be used for describing the linked service.

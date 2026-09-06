@@ -6,7 +6,7 @@ import 'virtual_network_gateway_auto_scale_bounds_response.dart';
 /// Virtual Network Gateway Autoscale Configuration details
 class VirtualNetworkGatewayAutoScaleConfigurationResponse {
   /// The bounds of the autoscale configuration
-  final pulumi.Input<VirtualNetworkGatewayAutoScaleBoundsResponse>? bounds;
+  final pulumi.Input<VirtualNetworkGatewayAutoScaleBoundsResponse?>? bounds;
 
   /// Creates a new [VirtualNetworkGatewayAutoScaleConfigurationResponse].
   /// [bounds] The bounds of the autoscale configuration

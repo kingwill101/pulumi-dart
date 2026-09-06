@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Describes the override action to be applied when rule matches.
-enum ActionType {
+enum ActionType implements pulumi.PulumiEnum<String> {
   allow("Allow"),
   block("Block"),
   log("Log"),
@@ -9,6 +11,7 @@ enum ActionType {
   cAPTCHA("CAPTCHA");
 
   const ActionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ActionType fromValue(String value) {

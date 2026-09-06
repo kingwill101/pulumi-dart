@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Purpose of debug credential.
-enum GatewayListDebugCredentialsContractPurpose {
+enum GatewayListDebugCredentialsContractPurpose implements pulumi.PulumiEnum<String> {
   valueTracing("tracing");
 
   const GatewayListDebugCredentialsContractPurpose(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayListDebugCredentialsContractPurpose fromValue(String value) {

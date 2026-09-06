@@ -10,21 +10,21 @@ import 'restore_point_source_metadata.dart';
 /// {@macro pulumi_compute_restore_point_args_doc}
 class RestorePointArgs {
   /// ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
-  final pulumi.Input<String>? consistencyMode;
+  final pulumi.Input<dynamic>? consistencyMode;
   /// List of disk resource ids that the customer wishes to exclude from the restore point. If no disks are specified, all disks will be included.
-  final pulumi.Input<List<ApiEntityReference>>? excludeDisks;
+  final pulumi.Input<List<ApiEntityReference>?>? excludeDisks;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the restore point collection.
   final pulumi.Input<String> restorePointCollectionName;
   /// The name of the restore point.
-  final pulumi.Input<String>? restorePointName;
+  final pulumi.Input<String?>? restorePointName;
   /// Gets the details of the VM captured at the time of the restore point creation.
-  final pulumi.Input<RestorePointSourceMetadata>? sourceMetadata;
+  final pulumi.Input<RestorePointSourceMetadata?>? sourceMetadata;
   /// Resource Id of the source restore point from which a copy needs to be created.
-  final pulumi.Input<ApiEntityReference>? sourceRestorePoint;
+  final pulumi.Input<ApiEntityReference?>? sourceRestorePoint;
   /// Gets the creation time of the restore point.
-  final pulumi.Input<String>? timeCreated;
+  final pulumi.Input<String?>? timeCreated;
 
   /// Creates a new [RestorePointArgs].
   /// [consistencyMode] ConsistencyMode of the RestorePoint. Can be specified in the input while creating a restore point. For now, only CrashConsistent is accepted as a valid input. Please refer to https://aka.ms/RestorePoints for more details.
@@ -61,7 +61,7 @@ class RestorePointArgs {
 
   factory RestorePointArgs.fromMap(Map<String, dynamic> map) {
     return RestorePointArgs(
-      consistencyMode: (() { final guardedValue = map['consistencyMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      consistencyMode: (() { final guardedValue = map['consistencyMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       excludeDisks: (() { final guardedValue = map['excludeDisks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ApiEntityReference>(guardedValue, (value) => ApiEntityReference.fromMap((value as Map).cast<String, dynamic>()))); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       restorePointCollectionName: pulumi.Input.fromValue(map['restorePointCollectionName'] as String),

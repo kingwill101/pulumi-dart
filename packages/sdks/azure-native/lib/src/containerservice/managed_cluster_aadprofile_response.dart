@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad).
 class ManagedClusterAADProfileResponse {
   /// The list of AAD group object IDs that will have admin role of the cluster.
-  final pulumi.Input<List<String>>? adminGroupObjectIDs;
+  final pulumi.Input<List<String>?>? adminGroupObjectIDs;
   /// (DEPRECATED) The client AAD application ID. Learn more at https://aka.ms/aks/aad-legacy.
-  final pulumi.Input<String>? clientAppID;
+  final pulumi.Input<String?>? clientAppID;
   /// Whether to enable Azure RBAC for Kubernetes authorization.
-  final pulumi.Input<bool>? enableAzureRBAC;
+  final pulumi.Input<bool?>? enableAzureRBAC;
   /// Whether to enable managed AAD.
-  final pulumi.Input<bool>? managed;
+  final pulumi.Input<bool?>? managed;
   /// (DEPRECATED) The server AAD application ID. Learn more at https://aka.ms/aks/aad-legacy.
-  final pulumi.Input<String>? serverAppID;
+  final pulumi.Input<String?>? serverAppID;
   /// (DEPRECATED) The server AAD application secret. Learn more at https://aka.ms/aks/aad-legacy.
-  final pulumi.Input<String>? serverAppSecret;
+  final pulumi.Input<String?>? serverAppSecret;
   /// The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  final pulumi.Input<String>? tenantID;
+  final pulumi.Input<String?>? tenantID;
 
   /// Creates a new [ManagedClusterAADProfileResponse].
   /// [adminGroupObjectIDs] The list of AAD group object IDs that will have admin role of the cluster.

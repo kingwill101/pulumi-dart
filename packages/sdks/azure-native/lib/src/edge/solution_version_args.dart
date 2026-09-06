@@ -10,15 +10,15 @@ import 'solution_version_properties.dart';
 /// {@macro pulumi_edge_solution_version_args_doc}
 class SolutionVersionArgs {
   /// The complex type of the extended location.
-  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation>? extendedLocation;
+  final pulumi.Input<AzureResourceManagerCommonTypesExtendedLocation?>? extendedLocation;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<SolutionVersionProperties>? properties;
+  final pulumi.Input<SolutionVersionProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Name of the solution
   final pulumi.Input<String> solutionName;
   /// Name of the solution version
-  final pulumi.Input<String>? solutionVersionName;
+  final pulumi.Input<String?>? solutionVersionName;
   /// Name of the target
   final pulumi.Input<String> targetName;
 

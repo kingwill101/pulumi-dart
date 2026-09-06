@@ -12,23 +12,23 @@ class GetClientResult {
   /// The name presented by the client for authentication. The default value is the name of the resource.
   final String? authenticationName;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The client certificate authentication information.
   final ClientCertificateAuthenticationResponse? clientCertificateAuthentication;
   /// Description for the Client resource.
   final String? description;
   /// Fully qualified identifier of the resource.
-  final String id;
+  final String? id;
   /// Name of the resource.
-  final String name;
+  final String? name;
   /// Provisioning state of the Client resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Indicates if the client is enabled or not. Default value is Enabled.
   final String? state;
   /// The system metadata relating to the Event Grid resource.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetClientResult].
   /// [attributes] Attributes for the client. Supported values are int, bool, string, string[].
@@ -42,33 +42,33 @@ class GetClientResult {
   /// [state] Indicates if the client is enabled or not. Default value is Enabled.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  const GetClientResult({
+  GetClientResult({
     this.attributes,
     this.authenticationName,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.clientCertificateAuthentication,
     this.description,
-    required this.id,
-    required this.name,
-    required this.provisioningState,
-    this.state,
-    required this.systemData,
-    required this.type,
-  });
+    this.id,
+    this.name,
+    this.provisioningState,
+    String? state,
+    this.systemData,
+    this.type,
+  }) : state = state ?? 'Enabled';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'attributes': ?attributes,
       'authenticationName': ?authenticationName,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'clientCertificateAuthentication': ?clientCertificateAuthentication?.toMap(),
       'description': ?description,
-      'id': id,
-      'name': name,
-      'provisioningState': provisioningState,
+      'id': ?id,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'state': ?state,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
@@ -76,15 +76,15 @@ class GetClientResult {
     return GetClientResult(
       attributes: (() { final guardedValue = map['attributes']; if (guardedValue == null) return null; return guardedValue; })(),
       authenticationName: (() { final guardedValue = map['authenticationName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       clientCertificateAuthentication: (() { final guardedValue = map['clientCertificateAuthentication']; if (guardedValue == null) return null; return ClientCertificateAuthenticationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

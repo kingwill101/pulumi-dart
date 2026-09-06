@@ -6,15 +6,15 @@ import 'private_endpoint_destination_response.dart';
 /// Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
 class PrivateEndpointOutboundRuleResponse {
   /// Category of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? category;
+  final pulumi.Input<String?>? category;
   /// Private Endpoint destination for a Private Endpoint Outbound Rule for the managed network of a machine learning workspace.
-  final pulumi.Input<PrivateEndpointDestinationResponse>? destination;
+  final pulumi.Input<PrivateEndpointDestinationResponse?>? destination;
   /// Error information about an outbound rule of a machine learning workspace if RuleStatus is failed.
   final pulumi.Input<String> errorInformation;
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   final pulumi.Input<List<String>> parentRuleNames;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
   /// Type of a managed network Outbound Rule of a machine learning workspace.
   /// Expected value is 'PrivateEndpoint'.
   final pulumi.Input<String> type;

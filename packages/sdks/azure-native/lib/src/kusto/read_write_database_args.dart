@@ -9,24 +9,24 @@ import 'key_vault_properties.dart';
 /// {@macro pulumi_kusto_read_write_database_args_doc}
 class ReadWriteDatabaseArgs {
   /// By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.
-  final pulumi.Input<String>? callerRole;
+  final pulumi.Input<String?>? callerRole;
   /// The name of the Kusto cluster.
   final pulumi.Input<String> clusterName;
   /// The name of the database in the Kusto cluster.
-  final pulumi.Input<String>? databaseName;
+  final pulumi.Input<String?>? databaseName;
   /// The time the data should be kept in cache for fast queries in TimeSpan.
-  final pulumi.Input<String>? hotCachePeriod;
+  final pulumi.Input<String?>? hotCachePeriod;
   /// KeyVault properties for the database encryption.
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
   /// Kind of the database
   /// Expected value is 'ReadWrite'.
   final pulumi.Input<String> kind;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The time the data should be kept before it stops being accessible to queries in TimeSpan.
-  final pulumi.Input<String>? softDeletePeriod;
+  final pulumi.Input<String?>? softDeletePeriod;
 
   /// Creates a new [ReadWriteDatabaseArgs].
   /// [callerRole] By default, any user who run operation on a database become an Admin on it. This property allows the caller to exclude the caller from Admins list.

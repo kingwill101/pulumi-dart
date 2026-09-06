@@ -257,4 +257,17 @@ class UserSettings extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     properties = registerOutput<UserPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
+
+  /// Creates a typed reference to an existing [UserSettings] resource.
+  UserSettings.reference(String urn)
+    : super(
+        'azure-native:portal:UserSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    properties = registerOutput<UserPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UserPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
 }

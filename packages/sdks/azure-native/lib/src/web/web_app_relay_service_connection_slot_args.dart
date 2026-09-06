@@ -7,19 +7,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_web_web_app_relay_service_connection_slot_args_doc}
 class WebAppRelayServiceConnectionSlotArgs {
-  final pulumi.Input<String>? biztalkUri;
-  final pulumi.Input<String>? entityConnectionString;
-  final pulumi.Input<String>? entityName;
-  final pulumi.Input<String>? hostname;
+  final pulumi.Input<String?>? biztalkUri;
+  final pulumi.Input<String?>? entityConnectionString;
+  final pulumi.Input<String?>? entityName;
+  final pulumi.Input<String?>? hostname;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
-  final pulumi.Input<int>? port;
-  final pulumi.Input<String>? resourceConnectionString;
+  final pulumi.Input<int?>? port;
+  final pulumi.Input<String?>? resourceConnectionString;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
-  final pulumi.Input<String>? resourceType;
+  final pulumi.Input<String?>? resourceType;
   /// Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
   final pulumi.Input<String> slot;
 
@@ -73,7 +73,7 @@ class WebAppRelayServiceConnectionSlotArgs {
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceConnectionString: (() { final guardedValue = map['resourceConnectionString']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceType: (() { final guardedValue = map['resourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

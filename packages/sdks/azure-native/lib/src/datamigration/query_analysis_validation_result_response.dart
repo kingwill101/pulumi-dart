@@ -7,9 +7,9 @@ import 'validation_error_response.dart';
 /// Results for query analysis comparison between the source and target
 class QueryAnalysisValidationResultResponse {
   /// List of queries executed and it's execution results in source and target
-  final pulumi.Input<QueryExecutionResultResponse>? queryResults;
+  final pulumi.Input<QueryExecutionResultResponse?>? queryResults;
   /// Errors that are part of the execution
-  final pulumi.Input<ValidationErrorResponse>? validationErrors;
+  final pulumi.Input<ValidationErrorResponse?>? validationErrors;
 
   /// Creates a new [QueryAnalysisValidationResultResponse].
   /// [queryResults] List of queries executed and it's execution results in source and target

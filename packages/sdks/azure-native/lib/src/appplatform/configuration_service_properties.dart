@@ -6,17 +6,17 @@ import 'configuration_service_settings.dart';
 /// Application Configuration Service properties payload
 class ConfigurationServiceProperties {
   /// The generation of the Application Configuration Service.
-  final pulumi.Input<String>? generation;
+  final pulumi.Input<dynamic>? generation;
   /// The settings of Application Configuration Service.
-  final pulumi.Input<ConfigurationServiceSettings>? settings;
+  final pulumi.Input<ConfigurationServiceSettings?>? settings;
 
   /// Creates a new [ConfigurationServiceProperties].
   /// [generation] The generation of the Application Configuration Service.
   /// [settings] The settings of Application Configuration Service.
-  const ConfigurationServiceProperties({
-    this.generation,
+  ConfigurationServiceProperties({
+    pulumi.Input<dynamic>? generation,
     this.settings,
-  });
+  }) : generation = generation ?? pulumi.Input.fromValue('Gen1');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -27,7 +27,7 @@ class ConfigurationServiceProperties {
 
   factory ConfigurationServiceProperties.fromMap(Map<String, dynamic> map) {
     return ConfigurationServiceProperties(
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       settings: (() { final guardedValue = map['settings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationServiceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

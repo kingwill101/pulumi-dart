@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The auth mode used for accessing the system datastores of the workspace.
-enum SystemDatastoresAuthMode {
+enum SystemDatastoresAuthMode implements pulumi.PulumiEnum<String> {
   accessKey("AccessKey"),
   identity("Identity"),
   userDelegationSAS("UserDelegationSAS");
 
   const SystemDatastoresAuthMode(this.wireValue);
+  @override
   final String wireValue;
 
   static SystemDatastoresAuthMode fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the type of the os.
-enum OsType {
+enum OsType implements pulumi.PulumiEnum<String> {
   valueWindows("Windows"),
   valueLinux("Linux"),
   valueOther("Other");
 
   const OsType(this.wireValue);
+  @override
   final String wireValue;
 
   static OsType fromValue(String value) {

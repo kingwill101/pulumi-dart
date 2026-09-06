@@ -6,7 +6,7 @@ import 'referenced_resource_response.dart';
 /// List of manual private endpoints.
 class ArtifactStorePrivateEndPointsFormatResponse {
   /// list of private endpoints.
-  final pulumi.Input<List<ReferencedResourceResponse>>? manualPrivateEndPointConnections;
+  final pulumi.Input<List<ReferencedResourceResponse>?>? manualPrivateEndPointConnections;
 
   /// Creates a new [ArtifactStorePrivateEndPointsFormatResponse].
   /// [manualPrivateEndPointConnections] list of private endpoints.

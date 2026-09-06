@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The network function type.
-enum VirtualNetworkFunctionNFVIType {
+enum VirtualNetworkFunctionNFVIType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueAzureCore("AzureCore"),
   valueAzureOperatorNexus("AzureOperatorNexus");
 
   const VirtualNetworkFunctionNFVIType(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualNetworkFunctionNFVIType fromValue(String value) {

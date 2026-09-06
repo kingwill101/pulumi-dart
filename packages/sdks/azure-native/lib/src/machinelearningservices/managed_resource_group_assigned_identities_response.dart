@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details for managed resource group assigned identities.
 class ManagedResourceGroupAssignedIdentitiesResponse {
   /// Identity principal Id
-  final pulumi.Input<String>? principalId;
+  final pulumi.Input<String?>? principalId;
 
   /// Creates a new [ManagedResourceGroupAssignedIdentitiesResponse].
   /// [principalId] Identity principal Id

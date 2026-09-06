@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DynamicRoutingEnrichment {
   /// Dynamic routing enrichment key.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Dynamic routing enrichment value.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [DynamicRoutingEnrichment].
   /// [key] Dynamic routing enrichment key.

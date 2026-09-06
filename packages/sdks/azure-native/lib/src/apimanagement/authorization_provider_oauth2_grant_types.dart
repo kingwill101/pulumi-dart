@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Authorization Provider oauth2 grant types settings
 class AuthorizationProviderOAuth2GrantTypes {
   /// OAuth2 authorization code grant parameters
-  final pulumi.Input<Map<String, String>>? authorizationCode;
+  final pulumi.Input<Map<String, String>?>? authorizationCode;
   /// OAuth2 client credential grant parameters
-  final pulumi.Input<Map<String, String>>? clientCredentials;
+  final pulumi.Input<Map<String, String>?>? clientCredentials;
 
   /// Creates a new [AuthorizationProviderOAuth2GrantTypes].
   /// [authorizationCode] OAuth2 authorization code grant parameters

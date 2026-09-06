@@ -7,12 +7,12 @@ class PSCredentialExecutionParameter {
   /// The parameter name
   final pulumi.Input<String> name;
   /// password for login
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// script execution parameter type
   /// Expected value is 'Credential'.
   final pulumi.Input<String> type;
   /// username for login
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [PSCredentialExecutionParameter].
   /// [name] The parameter name

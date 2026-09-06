@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRulePropertyArrayChangedValuesCondition {
-  final pulumi.Input<String>? arrayType;
-  final pulumi.Input<String>? changeType;
+  final pulumi.Input<dynamic>? arrayType;
+  final pulumi.Input<dynamic>? changeType;
 
   /// Creates a new [AutomationRulePropertyArrayChangedValuesCondition].
   /// [arrayType] Optional.
@@ -23,8 +23,8 @@ class AutomationRulePropertyArrayChangedValuesCondition {
 
   factory AutomationRulePropertyArrayChangedValuesCondition.fromMap(Map<String, dynamic> map) {
     return AutomationRulePropertyArrayChangedValuesCondition(
-      arrayType: (() { final guardedValue = map['arrayType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      changeType: (() { final guardedValue = map['changeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      arrayType: (() { final guardedValue = map['arrayType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      changeType: (() { final guardedValue = map['changeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

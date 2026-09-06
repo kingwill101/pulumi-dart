@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A region that this managed HSM Pool has been extended to.
 class MHSMGeoReplicatedRegionResponse {
   /// A boolean value that indicates whether the region is the primary region or a secondary region.
-  final pulumi.Input<bool>? isPrimary;
+  final pulumi.Input<bool?>? isPrimary;
   /// Name of the geo replicated region.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Provisioning state of the geo replicated region.
   final pulumi.Input<String> provisioningState;
 

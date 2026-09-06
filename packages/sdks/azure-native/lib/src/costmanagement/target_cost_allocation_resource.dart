@@ -8,9 +8,9 @@ class TargetCostAllocationResource {
   /// If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
   final pulumi.Input<String> name;
   /// Method of cost allocation for the rule
-  final pulumi.Input<String> policyType;
+  final pulumi.Input<dynamic> policyType;
   /// Type of resources contained in this cost allocation rule
-  final pulumi.Input<String> resourceType;
+  final pulumi.Input<dynamic> resourceType;
   /// Target resources for cost allocation. This list cannot contain more than 25 values.
   final pulumi.Input<List<CostAllocationProportion>> values;
 
@@ -38,8 +38,8 @@ class TargetCostAllocationResource {
   factory TargetCostAllocationResource.fromMap(Map<String, dynamic> map) {
     return TargetCostAllocationResource(
       name: pulumi.Input.fromValue(map['name'] as String),
-      policyType: pulumi.Input.fromValue(map['policyType'] as String),
-      resourceType: pulumi.Input.fromValue(map['resourceType'] as String),
+      policyType: pulumi.Input.fromValue(map['policyType']),
+      resourceType: pulumi.Input.fromValue(map['resourceType']),
       values: pulumi.Input.fromValue(pulumi.Input.decodeList<CostAllocationProportion>(map['values']!, (value) => CostAllocationProportion.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

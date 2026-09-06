@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Threshold direction
-enum DynamicThresholdDirection {
+enum DynamicThresholdDirection implements pulumi.PulumiEnum<String> {
   lowerThan("LowerThan"),
   greaterThan("GreaterThan"),
   greaterOrLowerThan("GreaterOrLowerThan");
 
   const DynamicThresholdDirection(this.wireValue);
+  @override
   final String wireValue;
 
   static DynamicThresholdDirection fromValue(String value) {

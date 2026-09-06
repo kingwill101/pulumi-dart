@@ -40,6 +40,17 @@ Future<GetHybridConnectionResult> getHybridConnection(
   return GetHybridConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetHybridConnectionResult> getHybridConnectionOutput(
+  GetHybridConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getHybridConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridConnectionResult.fromMap);
+}
+
 /// Hybrid connection authorization rule for a hybrid connection by name.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -58,6 +69,17 @@ Future<GetHybridConnectionAuthorizationRuleResult> getHybridConnectionAuthorizat
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHybridConnectionAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetHybridConnectionAuthorizationRuleResult> getHybridConnectionAuthorizationRuleOutput(
+  GetHybridConnectionAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getHybridConnectionAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHybridConnectionAuthorizationRuleResult.fromMap);
 }
 
 /// Returns the description for the specified namespace.
@@ -80,6 +102,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Authorization rule for a namespace by name.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -98,6 +131,17 @@ Future<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceAuthorizationRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRuleOutput(
+  GetNamespaceAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getNamespaceAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceAuthorizationRuleResult.fromMap);
 }
 
 /// Gets a description for the specified Private Endpoint Connection name.
@@ -120,6 +164,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
   return GetPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Returns the description for the specified WCF relay.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -138,6 +193,17 @@ Future<GetWCFRelayResult> getWCFRelay(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWCFRelayResult.fromMap(result);
+}
+
+pulumi.Output<GetWCFRelayResult> getWCFRelayOutput(
+  GetWCFRelayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getWCFRelay',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWCFRelayResult.fromMap);
 }
 
 /// Get authorizationRule for a WCF relay by name.
@@ -160,6 +226,17 @@ Future<GetWCFRelayAuthorizationRuleResult> getWCFRelayAuthorizationRule(
   return GetWCFRelayAuthorizationRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetWCFRelayAuthorizationRuleResult> getWCFRelayAuthorizationRuleOutput(
+  GetWCFRelayAuthorizationRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:getWCFRelayAuthorizationRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWCFRelayAuthorizationRuleResult.fromMap);
+}
+
 /// Primary and secondary connection strings to the hybrid connection.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -178,6 +255,17 @@ Future<ListHybridConnectionKeysResult> listHybridConnectionKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListHybridConnectionKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListHybridConnectionKeysResult> listHybridConnectionKeysOutput(
+  ListHybridConnectionKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:listHybridConnectionKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListHybridConnectionKeysResult.fromMap);
 }
 
 /// Primary and secondary connection strings to the namespace.
@@ -200,6 +288,17 @@ Future<ListNamespaceKeysResult> listNamespaceKeys(
   return ListNamespaceKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListNamespaceKeysResult> listNamespaceKeysOutput(
+  ListNamespaceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:listNamespaceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListNamespaceKeysResult.fromMap);
+}
+
 /// Primary and secondary connection strings to the WCF relay.
 ///
 /// Uses Azure REST API version 2024-01-01.
@@ -218,4 +317,15 @@ Future<ListWCFRelayKeysResult> listWCFRelayKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWCFRelayKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWCFRelayKeysResult> listWCFRelayKeysOutput(
+  ListWCFRelayKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:relay:listWCFRelayKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWCFRelayKeysResult.fromMap);
 }

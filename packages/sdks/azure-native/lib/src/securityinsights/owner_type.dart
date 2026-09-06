@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the owner the incident is assigned to.
-enum OwnerType {
+enum OwnerType implements pulumi.PulumiEnum<String> {
   valueUnknown("Unknown"),
   valueUser("User"),
   valueGroup("Group");
 
   const OwnerType(this.wireValue);
+  @override
   final String wireValue;
 
   static OwnerType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Secret to be added to volume.
 class SecretVolumeItem {
   /// Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Name of the Container App secret from which to pull the secret value.
-  final pulumi.Input<String>? secretRef;
+  final pulumi.Input<String?>? secretRef;
 
   /// Creates a new [SecretVolumeItem].
   /// [path] Path to project secret to. If no path is provided, path defaults to name of secret listed in secretRef.

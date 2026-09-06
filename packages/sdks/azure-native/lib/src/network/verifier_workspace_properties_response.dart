@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Properties of Verifier Workspace resource.
 class VerifierWorkspacePropertiesResponse {
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Provisioning states of a resource.
   final pulumi.Input<String> provisioningState;
 

@@ -8,27 +8,27 @@ class ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult {
   /// The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource.
   final String? nextLink;
   /// The list of eventImpactedResources.
-  final List<EventImpactedResourceResponse> value;
+  final List<EventImpactedResourceResponse>? value;
 
   /// Creates a new [ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult].
   /// [nextLink] The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource.
   /// [value] The list of eventImpactedResources.
   const ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<EventImpactedResourceResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<EventImpactedResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult.fromMap(Map<String, dynamic> map) {
     return ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<EventImpactedResourceResponse>(map['value']!, (value) => EventImpactedResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventImpactedResourceResponse>(guardedValue, (value) => EventImpactedResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

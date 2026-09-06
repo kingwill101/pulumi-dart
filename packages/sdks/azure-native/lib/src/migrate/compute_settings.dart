@@ -55,8 +55,8 @@ class ComputeSettings {
 
   factory ComputeSettings.fromMap(Map<String, dynamic> map) {
     return ComputeSettings(
-      hyperthreadCoreToMemoryRatio: pulumi.Input.fromValue(map['hyperthreadCoreToMemoryRatio'] as double),
-      price: pulumi.Input.fromValue(map['price'] as double),
+      hyperthreadCoreToMemoryRatio: pulumi.Input.fromValue((map['hyperthreadCoreToMemoryRatio'] as num).toDouble()),
+      price: pulumi.Input.fromValue((map['price'] as num).toDouble()),
       rhelLinuxServerLicensing: pulumi.Input.fromValue(LinuxServerLicensingSettings.fromMap((map['rhelLinuxServerLicensing']! as Map).cast<String, dynamic>())),
       sqlServerLicensing: pulumi.Input.fromValue(pulumi.Input.decodeList<SqlServerLicensingSettings>(map['sqlServerLicensing']!, (value) => SqlServerLicensingSettings.fromMap((value as Map).cast<String, dynamic>()))),
       suseLinuxServerLicensing: pulumi.Input.fromValue(LinuxServerLicensingSettings.fromMap((map['suseLinuxServerLicensing']! as Map).cast<String, dynamic>())),

@@ -6,13 +6,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class IpamPoolPropertiesResponse {
   /// List of IP address prefixes of the resource.
   final pulumi.Input<List<String>> addressPrefixes;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// String representing a friendly name for the resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// List of IP address type for the IpamPool.
   final pulumi.Input<List<String>> ipAddressType;
   /// String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
-  final pulumi.Input<String>? parentPoolName;
+  final pulumi.Input<String?>? parentPoolName;
   /// Provisioning states of a resource.
   final pulumi.Input<String> provisioningState;
 

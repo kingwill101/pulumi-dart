@@ -6,7 +6,7 @@ import 'recovery_group_properties.dart';
 /// Represents a recovery orchestration group resource in the Azure Resilience Management provider namespace.
 class RecoveryGroup {
   /// The resource-specific properties for this resource.
-  final pulumi.Input<RecoveryGroupProperties>? properties;
+  final pulumi.Input<RecoveryGroupProperties?>? properties;
 
   /// Creates a new [RecoveryGroup].
   /// [properties] The resource-specific properties for this resource.

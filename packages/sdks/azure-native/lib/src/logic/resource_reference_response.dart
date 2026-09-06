@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource reference.
 class ResourceReferenceResponse {
   /// The resource id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets the resource name.
   final pulumi.Input<String> name;
   /// Gets the resource type.

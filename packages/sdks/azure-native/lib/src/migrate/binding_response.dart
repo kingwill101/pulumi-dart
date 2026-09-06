@@ -7,19 +7,19 @@ import 'port_mapping_response.dart';
 /// Binding for a web application.
 class BindingResponse {
   /// WebApplication certificate.
-  final pulumi.Input<CertResponse>? cert;
+  final pulumi.Input<CertResponse?>? cert;
   /// Gets or sets the binding host name.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Gets the ID.
   final pulumi.Input<String> id;
   /// Gets or sets the IP Address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Gets or sets the application port.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// WebApplication port mapping.
-  final pulumi.Input<PortMappingResponse>? portMapping;
+  final pulumi.Input<PortMappingResponse?>? portMapping;
   /// Gets or sets the protocol.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [BindingResponse].
   /// [cert] WebApplication certificate.

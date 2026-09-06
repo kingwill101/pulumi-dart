@@ -6,7 +6,7 @@ import 'criteria_for_job_response.dart';
 /// Definition of CriteriaBlockForJob
 class CriteriaBlockForJobResponse {
   /// &lt;p&gt;An array of conditions, one for each condition that determines which buckets to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.&lt;/p&gt;
-  final pulumi.Input<List<CriteriaForJobResponse>>? and;
+  final pulumi.Input<List<CriteriaForJobResponse>?>? and;
 
   /// Creates a new [CriteriaBlockForJobResponse].
   /// [and] &lt;p&gt;An array of conditions, one for each condition that determines which buckets to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.&lt;/p&gt;

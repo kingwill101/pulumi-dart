@@ -1,8 +1,11 @@
-enum TrustScope {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum TrustScope implements pulumi.PulumiEnum<String> {
   valueGlobalTransactions("GlobalTransactions"),
   valueServiceBroker("ServiceBroker");
 
   const TrustScope(this.wireValue);
+  @override
   final String wireValue;
 
   static TrustScope fromValue(String value) {

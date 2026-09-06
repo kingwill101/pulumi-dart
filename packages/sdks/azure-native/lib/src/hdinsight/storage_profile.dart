@@ -6,7 +6,7 @@ import 'storage_account.dart';
 /// The storage profile.
 class StorageProfile {
   /// The list of storage accounts in the cluster.
-  final pulumi.Input<List<StorageAccount>>? storageaccounts;
+  final pulumi.Input<List<StorageAccount>?>? storageaccounts;
 
   /// Creates a new [StorageProfile].
   /// [storageaccounts] The list of storage accounts in the cluster.

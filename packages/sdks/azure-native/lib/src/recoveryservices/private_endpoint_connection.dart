@@ -7,13 +7,13 @@ import 'private_link_service_connection_state.dart';
 /// Private Endpoint Connection Response Properties
 class PrivateEndpointConnection {
   /// Group Ids for the Private Endpoint
-  final pulumi.Input<List<String>>? groupIds;
+  final pulumi.Input<List<dynamic>?>? groupIds;
   /// Gets or sets private endpoint associated with the private endpoint connection
-  final pulumi.Input<PrivateEndpoint>? privateEndpoint;
+  final pulumi.Input<PrivateEndpoint?>? privateEndpoint;
   /// Gets or sets private link service connection state
-  final pulumi.Input<PrivateLinkServiceConnectionState>? privateLinkServiceConnectionState;
+  final pulumi.Input<PrivateLinkServiceConnectionState?>? privateLinkServiceConnectionState;
   /// Gets or sets provisioning state of the private endpoint connection
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
 
   /// Creates a new [PrivateEndpointConnection].
   /// [groupIds] Group Ids for the Private Endpoint
@@ -38,10 +38,10 @@ class PrivateEndpointConnection {
 
   factory PrivateEndpointConnection.fromMap(Map<String, dynamic> map) {
     return PrivateEndpointConnection(
-      groupIds: (() { final guardedValue = map['groupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      groupIds: (() { final guardedValue = map['groupIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       privateEndpoint: (() { final guardedValue = map['privateEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateEndpoint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateLinkServiceConnectionState: (() { final guardedValue = map['privateLinkServiceConnectionState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PrivateLinkServiceConnectionState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

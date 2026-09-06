@@ -3,10 +3,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AutomationRulePropertyValuesChangedConditionResponse {
-  final pulumi.Input<String>? changeType;
-  final pulumi.Input<String>? operator;
-  final pulumi.Input<String>? propertyName;
-  final pulumi.Input<List<String>>? propertyValues;
+  final pulumi.Input<String?>? changeType;
+  final pulumi.Input<String?>? operator;
+  final pulumi.Input<String?>? propertyName;
+  final pulumi.Input<List<String>?>? propertyValues;
 
   /// Creates a new [AutomationRulePropertyValuesChangedConditionResponse].
   /// [changeType] Optional.

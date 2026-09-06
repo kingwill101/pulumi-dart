@@ -6,13 +6,13 @@ import 'property_value_type_enum_value.dart';
 /// Definition of ModifyingProperties
 class ModifyingProperties {
   /// &lt;p&gt;The current value of the domain property that is being modified.&lt;/p&gt;
-  final pulumi.Input<String>? activeValue;
+  final pulumi.Input<String?>? activeValue;
   /// &lt;p&gt;The name of the property that is currently being modified.&lt;/p&gt;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// &lt;p&gt;The value that the property that is currently being modified will eventually have.&lt;/p&gt;
-  final pulumi.Input<String>? pendingValue;
+  final pulumi.Input<String?>? pendingValue;
   /// &lt;p&gt;The type of value that is currently being modified. Properties can have two types:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;PLAIN_TEXT&lt;/code&gt;: Contain direct values such as '1', 'True', or 'c5.large.search'.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;STRINGIFIED_JSON&lt;/code&gt;: Contain content in JSON format, such as {'Enabled':'True'}'.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
-  final pulumi.Input<PropertyValueTypeEnumValue>? valueType;
+  final pulumi.Input<PropertyValueTypeEnumValue?>? valueType;
 
   /// Creates a new [ModifyingProperties].
   /// [activeValue] &lt;p&gt;The current value of the domain property that is being modified.&lt;/p&gt;

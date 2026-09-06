@@ -7,11 +7,11 @@ import 'host_caching.dart';
 /// This is the data disk image.
 class GalleryDataDiskImage {
   /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
-  final pulumi.Input<HostCaching>? hostCaching;
+  final pulumi.Input<HostCaching?>? hostCaching;
   /// This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
   final pulumi.Input<int> lun;
   /// The source for the disk image.
-  final pulumi.Input<GalleryDiskImageSource>? source;
+  final pulumi.Input<GalleryDiskImageSource?>? source;
 
   /// Creates a new [GalleryDataDiskImage].
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -34,7 +34,7 @@ class GalleryDataDiskImage {
   factory GalleryDataDiskImage.fromMap(Map<String, dynamic> map) {
     return GalleryDataDiskImage(
       hostCaching: (() { final guardedValue = map['hostCaching']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HostCaching.fromValue(guardedValue as String)); })(),
-      lun: pulumi.Input.fromValue(map['lun'] as int),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GalleryDiskImageSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

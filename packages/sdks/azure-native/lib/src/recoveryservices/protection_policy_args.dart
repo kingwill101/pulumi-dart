@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'azure_file_share_protection_policy.dart';
 
 /// {@template pulumi_recoveryservices_protection_policy_args_doc}
 /// The set of arguments for ProtectionPolicy.
@@ -9,17 +8,17 @@ import 'azure_file_share_protection_policy.dart';
 /// {@macro pulumi_recoveryservices_protection_policy_args_doc}
 class ProtectionPolicyArgs {
   /// Optional ETag.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Backup policy to be created.
-  final pulumi.Input<String>? policyName;
+  final pulumi.Input<String?>? policyName;
   /// ProtectionPolicyResource properties
-  final pulumi.Input<AzureFileShareProtectionPolicy>? properties;
+  final pulumi.Input<dynamic>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// The name of the recovery services vault.
   final pulumi.Input<String> vaultName;
 
@@ -46,7 +45,7 @@ class ProtectionPolicyArgs {
       'eTag': ?eTag,
       'location': ?location,
       'policyName': ?policyName,
-      'properties': ?pulumi.Input.mapOptionalInputValue<AzureFileShareProtectionPolicy, Map<String, dynamic>>(properties, (value) => value.toMap()),
+      'properties': ?properties,
       'resourceGroupName': resourceGroupName,
       'tags': ?tags,
       'vaultName': vaultName,
@@ -58,7 +57,7 @@ class ProtectionPolicyArgs {
       eTag: (() { final guardedValue = map['eTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AzureFileShareProtectionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       vaultName: pulumi.Input.fromValue(map['vaultName'] as String),

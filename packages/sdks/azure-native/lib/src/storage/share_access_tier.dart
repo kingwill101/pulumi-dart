@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Access tier for specific share. GpV2 account can choose between TransactionOptimized (default), Hot, and Cool. FileStorage account can choose Premium.
-enum ShareAccessTier {
+enum ShareAccessTier implements pulumi.PulumiEnum<String> {
   valueTransactionOptimized("TransactionOptimized"),
   valueHot("Hot"),
   valueCool("Cool"),
   valuePremium("Premium");
 
   const ShareAccessTier(this.wireValue);
+  @override
   final String wireValue;
 
   static ShareAccessTier fromValue(String value) {

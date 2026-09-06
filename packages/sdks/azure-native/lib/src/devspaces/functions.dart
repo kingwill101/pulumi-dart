@@ -22,6 +22,17 @@ Future<GetControllerResult> getController(
   return GetControllerResult.fromMap(result);
 }
 
+pulumi.Output<GetControllerResult> getControllerOutput(
+  GetControllerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devspaces:getController',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetControllerResult.fromMap);
+}
+
 /// Lists connection details for the underlying container resources of an Azure Dev Spaces Controller.
 ///
 /// Uses Azure REST API version 2019-04-01.
@@ -38,4 +49,15 @@ Future<ListControllerConnectionDetailsResult> listControllerConnectionDetails(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListControllerConnectionDetailsResult.fromMap(result);
+}
+
+pulumi.Output<ListControllerConnectionDetailsResult> listControllerConnectionDetailsOutput(
+  ListControllerConnectionDetailsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:devspaces:listControllerConnectionDetails',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListControllerConnectionDetailsResult.fromMap);
 }

@@ -1,6 +1,8 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Gets or sets the Azure Location or Azure region where to which the machines
 /// will be migrated.
-enum AzureLocation {
+enum AzureLocation implements pulumi.PulumiEnum<String> {
   unknown("Unknown"),
   eastAsia("EastAsia"),
   southeastAsia("SoutheastAsia"),
@@ -70,6 +72,7 @@ enum AzureLocation {
   spainCentral("SpainCentral");
 
   const AzureLocation(this.wireValue);
+  @override
   final String wireValue;
 
   static AzureLocation fromValue(String value) {

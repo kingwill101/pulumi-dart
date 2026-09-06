@@ -6,9 +6,9 @@ import 'mapper_policy_recurrence.dart';
 /// CDC Policy.
 class MapperPolicy {
   /// Mode of running the CDC: batch vs continuous.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Defines the frequency and interval for running the CDC for batch mode.
-  final pulumi.Input<MapperPolicyRecurrence>? recurrence;
+  final pulumi.Input<MapperPolicyRecurrence?>? recurrence;
 
   /// Creates a new [MapperPolicy].
   /// [mode] Mode of running the CDC: batch vs continuous.

@@ -16,7 +16,7 @@ class VolumeArgs {
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Volume Resource
-  final pulumi.Input<String>? volumeName;
+  final pulumi.Input<String?>? volumeName;
 
   /// Creates a new [VolumeArgs].
   /// [capacityGiB] Requested capacity in GiB
@@ -44,7 +44,7 @@ class VolumeArgs {
 
   factory VolumeArgs.fromMap(Map<String, dynamic> map) {
     return VolumeArgs(
-      capacityGiB: pulumi.Input.fromValue(map['capacityGiB'] as double),
+      capacityGiB: pulumi.Input.fromValue((map['capacityGiB'] as num).toDouble()),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

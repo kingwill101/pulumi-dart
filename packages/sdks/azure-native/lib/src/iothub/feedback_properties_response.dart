@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The properties of the feedback queue for cloud-to-device messages.
 class FeedbackPropertiesResponse {
   /// The lock duration for the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final pulumi.Input<String>? lockDurationAsIso8601;
+  final pulumi.Input<String?>? lockDurationAsIso8601;
   /// The number of times the IoT hub attempts to deliver a message on the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final pulumi.Input<int>? maxDeliveryCount;
+  final pulumi.Input<int?>? maxDeliveryCount;
   /// The period of time for which a message is available to consume before it is expired by the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  final pulumi.Input<String>? ttlAsIso8601;
+  final pulumi.Input<String?>? ttlAsIso8601;
 
   /// Creates a new [FeedbackPropertiesResponse].
   /// [lockDurationAsIso8601] The lock duration for the feedback queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
@@ -32,7 +32,7 @@ class FeedbackPropertiesResponse {
   factory FeedbackPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return FeedbackPropertiesResponse(
       lockDurationAsIso8601: (() { final guardedValue = map['lockDurationAsIso8601']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ttlAsIso8601: (() { final guardedValue = map['ttlAsIso8601']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

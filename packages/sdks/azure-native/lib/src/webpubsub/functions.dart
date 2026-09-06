@@ -36,6 +36,17 @@ Future<GetWebPubSubResult> getWebPubSub(
   return GetWebPubSubResult.fromMap(result);
 }
 
+pulumi.Output<GetWebPubSubResult> getWebPubSubOutput(
+  GetWebPubSubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubResult.fromMap);
+}
+
 /// Get a custom certificate.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -54,6 +65,17 @@ Future<GetWebPubSubCustomCertificateResult> getWebPubSubCustomCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebPubSubCustomCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetWebPubSubCustomCertificateResult> getWebPubSubCustomCertificateOutput(
+  GetWebPubSubCustomCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubCustomCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubCustomCertificateResult.fromMap);
 }
 
 /// Get a custom domain.
@@ -76,6 +98,17 @@ Future<GetWebPubSubCustomDomainResult> getWebPubSubCustomDomain(
   return GetWebPubSubCustomDomainResult.fromMap(result);
 }
 
+pulumi.Output<GetWebPubSubCustomDomainResult> getWebPubSubCustomDomainOutput(
+  GetWebPubSubCustomDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubCustomDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubCustomDomainResult.fromMap);
+}
+
 /// Get a hub setting.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -94,6 +127,17 @@ Future<GetWebPubSubHubResult> getWebPubSubHub(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebPubSubHubResult.fromMap(result);
+}
+
+pulumi.Output<GetWebPubSubHubResult> getWebPubSubHubOutput(
+  GetWebPubSubHubArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubHub',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubHubResult.fromMap);
 }
 
 /// Get the specified private endpoint connection
@@ -116,6 +160,17 @@ Future<GetWebPubSubPrivateEndpointConnectionResult> getWebPubSubPrivateEndpointC
   return GetWebPubSubPrivateEndpointConnectionResult.fromMap(result);
 }
 
+pulumi.Output<GetWebPubSubPrivateEndpointConnectionResult> getWebPubSubPrivateEndpointConnectionOutput(
+  GetWebPubSubPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubPrivateEndpointConnectionResult.fromMap);
+}
+
 /// Get the replica and its properties.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -134,6 +189,17 @@ Future<GetWebPubSubReplicaResult> getWebPubSubReplica(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetWebPubSubReplicaResult.fromMap(result);
+}
+
+pulumi.Output<GetWebPubSubReplicaResult> getWebPubSubReplicaOutput(
+  GetWebPubSubReplicaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubReplica',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubReplicaResult.fromMap);
 }
 
 /// Get the specified shared private link resource
@@ -156,6 +222,17 @@ Future<GetWebPubSubSharedPrivateLinkResourceResult> getWebPubSubSharedPrivateLin
   return GetWebPubSubSharedPrivateLinkResourceResult.fromMap(result);
 }
 
+pulumi.Output<GetWebPubSubSharedPrivateLinkResourceResult> getWebPubSubSharedPrivateLinkResourceOutput(
+  GetWebPubSubSharedPrivateLinkResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:getWebPubSubSharedPrivateLinkResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWebPubSubSharedPrivateLinkResourceResult.fromMap);
+}
+
 /// Get the access keys of the resource.
 ///
 /// Uses Azure REST API version 2024-03-01.
@@ -174,4 +251,15 @@ Future<ListWebPubSubKeysResult> listWebPubSubKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListWebPubSubKeysResult.fromMap(result);
+}
+
+pulumi.Output<ListWebPubSubKeysResult> listWebPubSubKeysOutput(
+  ListWebPubSubKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:webpubsub:listWebPubSubKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListWebPubSubKeysResult.fromMap);
 }

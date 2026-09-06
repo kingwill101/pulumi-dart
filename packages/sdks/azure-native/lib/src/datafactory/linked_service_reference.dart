@@ -9,7 +9,7 @@ class LinkedServiceReference {
   /// Reference LinkedService name.
   final pulumi.Input<String> referenceName;
   /// Linked service reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [LinkedServiceReference].
   /// [parameters] Arguments for LinkedService.
@@ -33,7 +33,7 @@ class LinkedServiceReference {
     return LinkedServiceReference(
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

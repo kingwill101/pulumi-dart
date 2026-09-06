@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Specification for an App Service Environment to use for this resource.
 class HostingEnvironmentProfileResponse {
   /// Resource ID of the App Service Environment.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the App Service Environment.
   final pulumi.Input<String> name;
   /// Resource type of the App Service Environment.

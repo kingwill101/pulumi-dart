@@ -10,7 +10,7 @@ class MongoClusterFirewallRuleArgs {
   /// The end IP address of the mongo cluster firewall rule. Must be IPv4 format.
   final pulumi.Input<String> endIpAddress;
   /// The name of the mongo cluster firewall rule.
-  final pulumi.Input<String>? firewallRuleName;
+  final pulumi.Input<String?>? firewallRuleName;
   /// The name of the mongo cluster.
   final pulumi.Input<String> mongoClusterName;
   /// The name of the resource group. The name is case insensitive.

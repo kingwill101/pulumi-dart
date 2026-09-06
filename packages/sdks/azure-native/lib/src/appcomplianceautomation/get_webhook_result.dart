@@ -5,41 +5,41 @@ import 'system_data_response.dart';
 /// Result data returned by getWebhook.
 class GetWebhookResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// content type
   final String? contentType;
   /// webhook deliveryStatus
-  final String deliveryStatus;
+  final String? deliveryStatus;
   /// whether to enable ssl verification
   final String? enableSslVerification;
   /// under which event notification should be sent.
   final List<String>? events;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// webhook payload url
   final String? payloadUrl;
   /// Azure Resource Provisioning State
-  final String provisioningState;
+  final String? provisioningState;
   /// whether to send notification under any event.
   final String? sendAllEvents;
   /// Webhook status.
   final String? status;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Tenant id.
-  final String tenantId;
+  final String? tenantId;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// whether to update webhookKey.
   final String? updateWebhookKey;
   /// Webhook id in database.
-  final String webhookId;
+  final String? webhookId;
   /// webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   final String? webhookKey;
   /// whether webhookKey is enabled.
-  final String webhookKeyEnabled;
+  final String? webhookKeyEnabled;
 
   /// Creates a new [GetWebhookResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -61,69 +61,69 @@ class GetWebhookResult {
   /// [webhookKey] webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   /// [webhookKeyEnabled] whether webhookKey is enabled.
   const GetWebhookResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.contentType,
-    required this.deliveryStatus,
+    this.deliveryStatus,
     this.enableSslVerification,
     this.events,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.payloadUrl,
-    required this.provisioningState,
+    this.provisioningState,
     this.sendAllEvents,
     this.status,
-    required this.systemData,
-    required this.tenantId,
-    required this.type,
+    this.systemData,
+    this.tenantId,
+    this.type,
     this.updateWebhookKey,
-    required this.webhookId,
+    this.webhookId,
     this.webhookKey,
-    required this.webhookKeyEnabled,
+    this.webhookKeyEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'contentType': ?contentType,
-      'deliveryStatus': deliveryStatus,
+      'deliveryStatus': ?deliveryStatus,
       'enableSslVerification': ?enableSslVerification,
       'events': ?events,
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'payloadUrl': ?payloadUrl,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'sendAllEvents': ?sendAllEvents,
       'status': ?status,
-      'systemData': systemData.toMap(),
-      'tenantId': tenantId,
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'tenantId': ?tenantId,
+      'type': ?type,
       'updateWebhookKey': ?updateWebhookKey,
-      'webhookId': webhookId,
+      'webhookId': ?webhookId,
       'webhookKey': ?webhookKey,
-      'webhookKeyEnabled': webhookKeyEnabled,
+      'webhookKeyEnabled': ?webhookKeyEnabled,
     };
   }
 
   factory GetWebhookResult.fromMap(Map<String, dynamic> map) {
     return GetWebhookResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       contentType: (() { final guardedValue = map['contentType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      deliveryStatus: map['deliveryStatus'] as String,
+      deliveryStatus: (() { final guardedValue = map['deliveryStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
       enableSslVerification: (() { final guardedValue = map['enableSslVerification']; if (guardedValue == null) return null; return guardedValue as String; })(),
       events: (() { final guardedValue = map['events']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       payloadUrl: (() { final guardedValue = map['payloadUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sendAllEvents: (() { final guardedValue = map['sendAllEvents']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      tenantId: map['tenantId'] as String,
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tenantId: (() { final guardedValue = map['tenantId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
       updateWebhookKey: (() { final guardedValue = map['updateWebhookKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      webhookId: map['webhookId'] as String,
+      webhookId: (() { final guardedValue = map['webhookId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       webhookKey: (() { final guardedValue = map['webhookKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      webhookKeyEnabled: map['webhookKeyEnabled'] as String,
+      webhookKeyEnabled: (() { final guardedValue = map['webhookKeyEnabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

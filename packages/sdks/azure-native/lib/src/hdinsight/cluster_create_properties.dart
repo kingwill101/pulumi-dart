@@ -15,33 +15,33 @@ import 'storage_profile.dart';
 /// The cluster create parameters.
 class ClusterCreateProperties {
   /// The cluster definition.
-  final pulumi.Input<ClusterDefinition>? clusterDefinition;
+  final pulumi.Input<ClusterDefinition?>? clusterDefinition;
   /// The version of the cluster.
-  final pulumi.Input<String>? clusterVersion;
+  final pulumi.Input<String?>? clusterVersion;
   /// The compute isolation properties.
-  final pulumi.Input<ComputeIsolationProperties>? computeIsolationProperties;
+  final pulumi.Input<ComputeIsolationProperties?>? computeIsolationProperties;
   /// The compute profile.
-  final pulumi.Input<ComputeProfile>? computeProfile;
+  final pulumi.Input<ComputeProfile?>? computeProfile;
   /// The disk encryption properties.
-  final pulumi.Input<DiskEncryptionProperties>? diskEncryptionProperties;
+  final pulumi.Input<DiskEncryptionProperties?>? diskEncryptionProperties;
   /// The encryption-in-transit properties.
-  final pulumi.Input<EncryptionInTransitProperties>? encryptionInTransitProperties;
+  final pulumi.Input<EncryptionInTransitProperties?>? encryptionInTransitProperties;
   /// The cluster kafka rest proxy configuration.
-  final pulumi.Input<KafkaRestProperties>? kafkaRestProperties;
+  final pulumi.Input<KafkaRestProperties?>? kafkaRestProperties;
   /// The minimal supported tls version.
-  final pulumi.Input<String>? minSupportedTlsVersion;
+  final pulumi.Input<String?>? minSupportedTlsVersion;
   /// The network properties.
-  final pulumi.Input<NetworkProperties>? networkProperties;
+  final pulumi.Input<NetworkProperties?>? networkProperties;
   /// The type of operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
   /// The private link configurations.
-  final pulumi.Input<List<PrivateLinkConfiguration>>? privateLinkConfigurations;
+  final pulumi.Input<List<PrivateLinkConfiguration>?>? privateLinkConfigurations;
   /// The security profile.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// The storage profile.
-  final pulumi.Input<StorageProfile>? storageProfile;
+  final pulumi.Input<StorageProfile?>? storageProfile;
   /// The cluster tier.
-  final pulumi.Input<String>? tier;
+  final pulumi.Input<dynamic>? tier;
 
   /// Creates a new [ClusterCreateProperties].
   /// [clusterDefinition] The cluster definition.
@@ -58,7 +58,7 @@ class ClusterCreateProperties {
   /// [securityProfile] The security profile.
   /// [storageProfile] The storage profile.
   /// [tier] The cluster tier.
-  const ClusterCreateProperties({
+  ClusterCreateProperties({
     this.clusterDefinition,
     this.clusterVersion,
     this.computeIsolationProperties,
@@ -72,8 +72,8 @@ class ClusterCreateProperties {
     this.privateLinkConfigurations,
     this.securityProfile,
     this.storageProfile,
-    this.tier,
-  });
+    pulumi.Input<dynamic>? tier,
+  }) : tier = tier ?? pulumi.Input.fromValue('Standard');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -105,11 +105,11 @@ class ClusterCreateProperties {
       kafkaRestProperties: (() { final guardedValue = map['kafkaRestProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KafkaRestProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       minSupportedTlsVersion: (() { final guardedValue = map['minSupportedTlsVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkProperties: (() { final guardedValue = map['networkProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       privateLinkConfigurations: (() { final guardedValue = map['privateLinkConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PrivateLinkConfiguration>(guardedValue, (value) => PrivateLinkConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       securityProfile: (() { final guardedValue = map['securityProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SecurityProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageProfile: (() { final guardedValue = map['storageProfile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageProfile.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

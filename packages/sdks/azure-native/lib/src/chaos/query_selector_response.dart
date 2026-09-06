@@ -6,7 +6,7 @@ import 'simple_filter_response.dart';
 /// Model that represents a query selector.
 class QuerySelectorResponse {
   /// Model that represents available filter types that can be applied to a targets list.
-  final pulumi.Input<SimpleFilterResponse>? filter;
+  final pulumi.Input<SimpleFilterResponse?>? filter;
   /// String of the selector ID.
   final pulumi.Input<String> id;
   /// Azure Resource Graph (ARG) Query Language query for target resources.

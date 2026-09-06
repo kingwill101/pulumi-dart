@@ -8,30 +8,30 @@ import 'virtual_machine_network_interface_ipconfiguration.dart';
 /// Describes a virtual machine network interface configurations.
 class VirtualMachineNetworkInterfaceConfiguration {
   /// Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
-  final pulumi.Input<String>? auxiliaryMode;
+  final pulumi.Input<dynamic>? auxiliaryMode;
   /// Specifies whether the Auxiliary sku is enabled for the Network Interface resource.
-  final pulumi.Input<String>? auxiliarySku;
+  final pulumi.Input<dynamic>? auxiliarySku;
   /// Specify what happens to the network interface when the VM is deleted
-  final pulumi.Input<String>? deleteOption;
+  final pulumi.Input<dynamic>? deleteOption;
   /// Specifies whether the network interface is disabled for tcp state tracking.
-  final pulumi.Input<bool>? disableTcpStateTracking;
+  final pulumi.Input<bool?>? disableTcpStateTracking;
   /// The dns settings to be applied on the network interfaces.
-  final pulumi.Input<VirtualMachineNetworkInterfaceDnsSettingsConfiguration>? dnsSettings;
-  final pulumi.Input<SubResource>? dscpConfiguration;
+  final pulumi.Input<VirtualMachineNetworkInterfaceDnsSettingsConfiguration?>? dnsSettings;
+  final pulumi.Input<SubResource?>? dscpConfiguration;
   /// Specifies whether the network interface is accelerated networking-enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Specifies whether the network interface is FPGA networking-enabled.
-  final pulumi.Input<bool>? enableFpga;
+  final pulumi.Input<bool?>? enableFpga;
   /// Whether IP forwarding enabled on this NIC.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// Specifies the IP configurations of the network interface.
   final pulumi.Input<List<VirtualMachineNetworkInterfaceIPConfiguration>> ipConfigurations;
   /// The network interface configuration name.
   final pulumi.Input<String> name;
   /// The network security group.
-  final pulumi.Input<SubResource>? networkSecurityGroup;
+  final pulumi.Input<SubResource?>? networkSecurityGroup;
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
 
   /// Creates a new [VirtualMachineNetworkInterfaceConfiguration].
   /// [auxiliaryMode] Specifies whether the Auxiliary mode is enabled for the Network Interface resource.
@@ -83,9 +83,9 @@ class VirtualMachineNetworkInterfaceConfiguration {
 
   factory VirtualMachineNetworkInterfaceConfiguration.fromMap(Map<String, dynamic> map) {
     return VirtualMachineNetworkInterfaceConfiguration(
-      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      auxiliaryMode: (() { final guardedValue = map['auxiliaryMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      auxiliarySku: (() { final guardedValue = map['auxiliarySku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      deleteOption: (() { final guardedValue = map['deleteOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       disableTcpStateTracking: (() { final guardedValue = map['disableTcpStateTracking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       dnsSettings: (() { final guardedValue = map['dnsSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachineNetworkInterfaceDnsSettingsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       dscpConfiguration: (() { final guardedValue = map['dscpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

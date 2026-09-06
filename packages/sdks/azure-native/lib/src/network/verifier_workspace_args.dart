@@ -9,17 +9,17 @@ import 'verifier_workspace_properties.dart';
 /// {@macro pulumi_network_verifier_workspace_args_doc}
 class VerifierWorkspaceArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// Properties of Verifier Workspace resource.
-  final pulumi.Input<VerifierWorkspaceProperties>? properties;
+  final pulumi.Input<VerifierWorkspaceProperties?>? properties;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Workspace name.
-  final pulumi.Input<String>? workspaceName;
+  final pulumi.Input<String?>? workspaceName;
 
   /// Creates a new [VerifierWorkspaceArgs].
   /// [location] The geo-location where the resource lives

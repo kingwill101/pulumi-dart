@@ -6,9 +6,9 @@ import 'criteria_block_for_job.dart';
 /// Definition of S3BucketCriteriaForJob
 class S3BucketCriteriaForJob {
   /// &lt;p&gt;The property- and tag-based conditions that determine which buckets to exclude from the job.&lt;/p&gt;
-  final pulumi.Input<CriteriaBlockForJob>? excludes;
+  final pulumi.Input<CriteriaBlockForJob?>? excludes;
   /// &lt;p&gt;The property- and tag-based conditions that determine which buckets to include in the job.&lt;/p&gt;
-  final pulumi.Input<CriteriaBlockForJob>? includes;
+  final pulumi.Input<CriteriaBlockForJob?>? includes;
 
   /// Creates a new [S3BucketCriteriaForJob].
   /// [excludes] &lt;p&gt;The property- and tag-based conditions that determine which buckets to exclude from the job.&lt;/p&gt;

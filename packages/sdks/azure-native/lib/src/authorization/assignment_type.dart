@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of policy assignment. Possible values are NotSpecified, System, SystemHidden, and Custom. Immutable.
-enum AssignmentType {
+enum AssignmentType implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueSystem("System"),
   valueSystemHidden("SystemHidden"),
   valueCustom("Custom");
 
   const AssignmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static AssignmentType fromValue(String value) {

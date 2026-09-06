@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The repository type of the source control
-enum RepoType {
+enum RepoType implements pulumi.PulumiEnum<String> {
   github("Github"),
   azureDevOps("AzureDevOps");
 
   const RepoType(this.wireValue);
+  @override
   final String wireValue;
 
   static RepoType fromValue(String value) {

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The response from the List namespace operation.
 class NWRuleSetIpRules {
   /// The IP Filter Action
-  final pulumi.Input<String>? action;
+  final pulumi.Input<dynamic>? action;
   /// IP Mask
-  final pulumi.Input<String>? ipMask;
+  final pulumi.Input<String?>? ipMask;
 
   /// Creates a new [NWRuleSetIpRules].
   /// [action] The IP Filter Action
@@ -26,7 +26,7 @@ class NWRuleSetIpRules {
 
   factory NWRuleSetIpRules.fromMap(Map<String, dynamic> map) {
     return NWRuleSetIpRules(
-      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       ipMask: (() { final guardedValue = map['ipMask']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

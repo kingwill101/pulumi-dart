@@ -6,7 +6,7 @@ import 'rule_group_scope.dart';
 /// Defines the scope of the managed rules.
 class ManagedRuleSetScope {
   /// List of rule group scopes.
-  final pulumi.Input<List<RuleGroupScope>>? ruleGroupScopes;
+  final pulumi.Input<List<RuleGroupScope>?>? ruleGroupScopes;
   /// Defines the rule set type.
   /// Examples: DefaultRuleSet, Microsoft_DefaultRuleSet,
   /// Microsoft_BotManagerRuleSet, Microsoft_HTTPDDoSRuleSet, BotProtection

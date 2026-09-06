@@ -8,27 +8,27 @@ class ListSiteIdentifiersAssignedToHostNameResult {
   /// The link to the next page of items
   final String? nextLink;
   /// The Identifier items on this page
-  final List<IdentifierResponse> value;
+  final List<IdentifierResponse>? value;
 
   /// Creates a new [ListSiteIdentifiersAssignedToHostNameResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Identifier items on this page
   const ListSiteIdentifiersAssignedToHostNameResult({
     this.nextLink,
-    required this.value,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'nextLink': ?nextLink,
-      'value': pulumi.Input.encodeList<IdentifierResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<IdentifierResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListSiteIdentifiersAssignedToHostNameResult.fromMap(Map<String, dynamic> map) {
     return ListSiteIdentifiersAssignedToHostNameResult(
       nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      value: pulumi.Input.decodeList<IdentifierResponse>(map['value']!, (value) => IdentifierResponse.fromMap((value as Map).cast<String, dynamic>())),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<IdentifierResponse>(guardedValue, (value) => IdentifierResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

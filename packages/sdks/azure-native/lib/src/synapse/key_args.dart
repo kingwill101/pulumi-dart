@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_synapse_key_args_doc}
 class KeyArgs {
   /// Used to activate the workspace after a customer managed key is provided.
-  final pulumi.Input<bool>? isActiveCMK;
+  final pulumi.Input<bool?>? isActiveCMK;
   /// The name of the workspace key
-  final pulumi.Input<String>? keyName;
+  final pulumi.Input<String?>? keyName;
   /// The Key Vault Url of the workspace key.
-  final pulumi.Input<String>? keyVaultUrl;
+  final pulumi.Input<String?>? keyVaultUrl;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the workspace.

@@ -9,11 +9,11 @@ import 'mesh_membership_properties.dart';
 /// {@macro pulumi_containerservice_mesh_membership_args_doc}
 class MeshMembershipArgs {
   /// The fully qualified resource ID of the resource that manages this resource. Indicates if this resource is managed by another Azure resource. If this is present, complete mode deployment will not delete the resource if it is removed from the template since it is managed by another resource.
-  final pulumi.Input<String>? managedBy;
+  final pulumi.Input<String?>? managedBy;
   /// The name of the mesh membership.
-  final pulumi.Input<String>? meshMembershipName;
+  final pulumi.Input<String?>? meshMembershipName;
   /// Mesh membership properties of a managed cluster.
-  final pulumi.Input<MeshMembershipProperties>? properties;
+  final pulumi.Input<MeshMembershipProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the managed cluster resource.

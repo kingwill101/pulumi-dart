@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Availability group replica configuration.
 class AgReplica {
   /// Replica commit mode in availability group.
-  final pulumi.Input<String>? commit;
+  final pulumi.Input<dynamic>? commit;
   /// Replica failover mode in availability group.
-  final pulumi.Input<String>? failover;
+  final pulumi.Input<dynamic>? failover;
   /// Replica readable secondary mode in availability group.
-  final pulumi.Input<String>? readableSecondary;
+  final pulumi.Input<dynamic>? readableSecondary;
   /// Replica Role in availability group.
-  final pulumi.Input<String>? role;
+  final pulumi.Input<dynamic>? role;
   /// Sql VirtualMachine Instance Id.
-  final pulumi.Input<String>? sqlVirtualMachineInstanceId;
+  final pulumi.Input<String?>? sqlVirtualMachineInstanceId;
 
   /// Creates a new [AgReplica].
   /// [commit] Replica commit mode in availability group.
@@ -41,10 +41,10 @@ class AgReplica {
 
   factory AgReplica.fromMap(Map<String, dynamic> map) {
     return AgReplica(
-      commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failover: (() { final guardedValue = map['failover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      readableSecondary: (() { final guardedValue = map['readableSecondary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      commit: (() { final guardedValue = map['commit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      failover: (() { final guardedValue = map['failover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      readableSecondary: (() { final guardedValue = map['readableSecondary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      role: (() { final guardedValue = map['role']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sqlVirtualMachineInstanceId: (() { final guardedValue = map['sqlVirtualMachineInstanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Storage workload type.
-enum StorageWorkloadType {
+enum StorageWorkloadType implements pulumi.PulumiEnum<String> {
   gENERAL("GENERAL"),
   oLTP("OLTP"),
   dW("DW");
 
   const StorageWorkloadType(this.wireValue);
+  @override
   final String wireValue;
 
   static StorageWorkloadType fromValue(String value) {

@@ -6,19 +6,19 @@ import 'trigger_pipeline_reference.dart';
 /// Trigger that runs every time a custom event is received.
 class CustomEventsTrigger {
   /// List of tags that can be used for describing the trigger.
-  final pulumi.Input<List<dynamic>>? annotations;
+  final pulumi.Input<List<dynamic>?>? annotations;
   /// Trigger description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of event types that cause this trigger to fire.
   final pulumi.Input<List<dynamic>> events;
   /// Pipelines that need to be started.
-  final pulumi.Input<List<TriggerPipelineReference>>? pipelines;
+  final pulumi.Input<List<TriggerPipelineReference>?>? pipelines;
   /// The ARM resource ID of the Azure Event Grid Topic.
   final pulumi.Input<String> scope;
   /// The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final pulumi.Input<String>? subjectBeginsWith;
+  final pulumi.Input<String?>? subjectBeginsWith;
   /// The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
-  final pulumi.Input<String>? subjectEndsWith;
+  final pulumi.Input<String?>? subjectEndsWith;
   /// Trigger type.
   /// Expected value is 'CustomEventsTrigger'.
   final pulumi.Input<String> type;

@@ -6,11 +6,11 @@ import 'auto_scale_run_error_response.dart';
 /// The results and errors from an execution of a pool autoscale formula.
 class AutoScaleRunResponse {
   /// An error that occurred when autoscaling a pool.
-  final pulumi.Input<AutoScaleRunErrorResponse>? error;
+  final pulumi.Input<AutoScaleRunErrorResponse?>? error;
   /// The time at which the autoscale formula was last evaluated.
   final pulumi.Input<String> evaluationTime;
   /// Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
-  final pulumi.Input<String>? results;
+  final pulumi.Input<String?>? results;
 
   /// Creates a new [AutoScaleRunResponse].
   /// [error] An error that occurred when autoscaling a pool.

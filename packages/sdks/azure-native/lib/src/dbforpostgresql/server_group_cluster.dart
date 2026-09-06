@@ -4,6 +4,8 @@ import 'server_group_cluster_args.dart';
 import 'server_group_cluster_auth_config_response.dart';
 import 'server_group_cluster_data_encryption_response.dart';
 import 'server_group_cluster_maintenance_window_response.dart';
+import 'server_name_item_response.dart';
+import 'simple_private_endpoint_connection_response.dart';
 import 'system_data_response.dart';
 
 /// Represents a cluster.
@@ -1530,13 +1532,13 @@ class ServerGroupCluster extends pulumi.CustomResource {
   /// Preferred primary availability zone (AZ) for all cluster servers.
   late final pulumi.Output<String?> preferredPrimaryZone;
   /// The private endpoint connections for a cluster.
-  late final pulumi.Output<List<Map<String, dynamic>>> privateEndpointConnections;
+  late final pulumi.Output<List<SimplePrivateEndpointConnectionResponse>> privateEndpointConnections;
   /// Provisioning state of the cluster
   late final pulumi.Output<String> provisioningState;
   /// The array of read replica clusters.
   late final pulumi.Output<List<String>> readReplicas;
   /// The list of server names in the cluster
-  late final pulumi.Output<List<Map<String, dynamic>>> serverNames;
+  late final pulumi.Output<List<ServerNameItemResponse>> serverNames;
   /// The Azure region of source cluster for read replica clusters.
   late final pulumi.Output<String?> sourceLocation;
   /// The resource id of source cluster for read replica clusters.
@@ -1592,15 +1594,64 @@ class ServerGroupCluster extends pulumi.CustomResource {
     pointInTimeUTC = registerOutput<String?>('pointInTimeUTC');
     postgresqlVersion = registerOutput<String?>('postgresqlVersion');
     preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
-    privateEndpointConnections = registerOutput<List<Map<String, dynamic>>>('privateEndpointConnections');
+    privateEndpointConnections = registerOutput<List<SimplePrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SimplePrivateEndpointConnectionResponse>(guardedValue, (value) => SimplePrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisioningState = registerOutput<String>('provisioningState');
-    readReplicas = registerOutput<List<String>>('readReplicas');
-    serverNames = registerOutput<List<Map<String, dynamic>>>('serverNames');
+    readReplicas = registerOutput<List<String>>('readReplicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverNames = registerOutput<List<ServerNameItemResponse>>('serverNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerNameItemResponse>(guardedValue, (value) => ServerNameItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     sourceLocation = registerOutput<String?>('sourceLocation');
     sourceResourceId = registerOutput<String?>('sourceResourceId');
     state = registerOutput<String>('state');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ServerGroupCluster] resource.
+  ServerGroupCluster.reference(String urn)
+    : super(
+        'azure-native:dbforpostgresql:ServerGroupCluster',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aadAuthEnabled = registerOutput<String>('aadAuthEnabled');
+    administratorLogin = registerOutput<String>('administratorLogin');
+    authConfig = registerOutput<ServerGroupClusterAuthConfigResponse?>('authConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterAuthConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    citusVersion = registerOutput<String?>('citusVersion');
+    coordinatorEnablePublicIpAccess = registerOutput<bool?>('coordinatorEnablePublicIpAccess');
+    coordinatorServerEdition = registerOutput<String?>('coordinatorServerEdition');
+    coordinatorStorageQuotaInMb = registerOutput<int?>('coordinatorStorageQuotaInMb');
+    coordinatorVCores = registerOutput<int?>('coordinatorVCores');
+    dataEncryption = registerOutput<ServerGroupClusterDataEncryptionResponse?>('dataEncryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterDataEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    databaseName = registerOutput<String?>('databaseName');
+    earliestRestoreTime = registerOutput<String>('earliestRestoreTime');
+    enableGeoBackup = registerOutput<bool?>('enableGeoBackup');
+    enableHa = registerOutput<bool?>('enableHa');
+    enableShardsOnCoordinator = registerOutput<bool?>('enableShardsOnCoordinator');
+    identity = registerOutput<IdentityPropertiesResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IdentityPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maintenanceWindow = registerOutput<ServerGroupClusterMaintenanceWindowResponse?>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServerGroupClusterMaintenanceWindowResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<int?>('nodeCount');
+    nodeEnablePublicIpAccess = registerOutput<bool?>('nodeEnablePublicIpAccess');
+    nodeServerEdition = registerOutput<String?>('nodeServerEdition');
+    nodeStorageQuotaInMb = registerOutput<int?>('nodeStorageQuotaInMb');
+    nodeVCores = registerOutput<int?>('nodeVCores');
+    passwordEnabled = registerOutput<String>('passwordEnabled');
+    pointInTimeUTC = registerOutput<String?>('pointInTimeUTC');
+    postgresqlVersion = registerOutput<String?>('postgresqlVersion');
+    preferredPrimaryZone = registerOutput<String?>('preferredPrimaryZone');
+    privateEndpointConnections = registerOutput<List<SimplePrivateEndpointConnectionResponse>>('privateEndpointConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SimplePrivateEndpointConnectionResponse>(guardedValue, (value) => SimplePrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisioningState = registerOutput<String>('provisioningState');
+    readReplicas = registerOutput<List<String>>('readReplicas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverNames = registerOutput<List<ServerNameItemResponse>>('serverNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServerNameItemResponse>(guardedValue, (value) => ServerNameItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    sourceLocation = registerOutput<String?>('sourceLocation');
+    sourceResourceId = registerOutput<String?>('sourceResourceId');
+    state = registerOutput<String>('state');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

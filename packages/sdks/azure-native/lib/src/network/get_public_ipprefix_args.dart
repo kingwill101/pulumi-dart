@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_get_public_ipprefix_args_doc}
 class GetPublicIPPrefixArgs {
   /// Expands referenced resources.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// The name of the public IP prefix.
   final pulumi.Input<String> publicIpPrefixName;
   /// The name of the resource group.

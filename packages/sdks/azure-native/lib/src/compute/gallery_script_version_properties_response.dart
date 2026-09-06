@@ -14,7 +14,7 @@ class GalleryScriptVersionPropertiesResponse {
   /// This is the replication status of the gallery image version.
   final pulumi.Input<ReplicationStatusResponse> replicationStatus;
   /// The safety profile of the Gallery Script Version.
-  final pulumi.Input<GalleryScriptVersionSafetyProfileResponse>? safetyProfile;
+  final pulumi.Input<GalleryScriptVersionSafetyProfileResponse?>? safetyProfile;
 
   /// Creates a new [GalleryScriptVersionPropertiesResponse].
   /// [provisioningState] The provisioning state, which only appears in the response.

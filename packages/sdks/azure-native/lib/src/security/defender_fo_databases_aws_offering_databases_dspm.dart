@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The databases data security posture management (DSPM) configuration
 class DefenderFoDatabasesAwsOfferingDatabasesDspm {
   /// The cloud role ARN in AWS for this feature
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
   /// Is databases data security posture management (DSPM) protection enabled
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [DefenderFoDatabasesAwsOfferingDatabasesDspm].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature

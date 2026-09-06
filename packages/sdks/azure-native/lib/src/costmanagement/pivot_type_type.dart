@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Data type to show in view.
-enum PivotTypeType {
+enum PivotTypeType implements pulumi.PulumiEnum<String> {
   valueDimension("Dimension"),
   valueTagKey("TagKey");
 
   const PivotTypeType(this.wireValue);
+  @override
   final String wireValue;
 
   static PivotTypeType fromValue(String value) {

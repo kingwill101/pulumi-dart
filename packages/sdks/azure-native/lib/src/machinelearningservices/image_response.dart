@@ -4,21 +4,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ImageResponse {
   /// Image reference URL if type is docker. Environment name if type is azureml
-  final pulumi.Input<String>? reference;
+  final pulumi.Input<String?>? reference;
   /// Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Version of image being used. If latest then skip this field
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ImageResponse].
   /// [reference] Image reference URL if type is docker. Environment name if type is azureml
   /// [type] Type of the image. Possible values are: docker - For docker images. azureml - For AzureML Environment images (custom and curated)
   /// [version] Version of image being used. If latest then skip this field
-  const ImageResponse({
+  ImageResponse({
     this.reference,
-    this.type,
+    pulumi.Input<String?>? type,
     this.version,
-  });
+  }) : type = type ?? pulumi.Input.fromValue('docker');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

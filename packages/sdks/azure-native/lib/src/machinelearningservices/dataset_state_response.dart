@@ -6,11 +6,11 @@ import 'dataset_state_response_deprecated_by.dart';
 /// Dataset state
 class DatasetStateResponse {
   /// Reference to better Dataset or a Definition
-  final pulumi.Input<DatasetStateResponseDeprecatedBy>? deprecatedBy;
+  final pulumi.Input<DatasetStateResponseDeprecatedBy?>? deprecatedBy;
   /// eTag description
   final pulumi.Input<String> etag;
   /// Dataset state
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [DatasetStateResponse].
   /// [deprecatedBy] Reference to better Dataset or a Definition

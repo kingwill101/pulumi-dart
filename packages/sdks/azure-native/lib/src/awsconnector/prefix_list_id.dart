@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PrefixListId
 class PrefixListId {
   /// &lt;p&gt;A description for the security group rule that references this prefix list ID.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*&lt;/p&gt;
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// &lt;p&gt;The ID of the prefix.&lt;/p&gt;
-  final pulumi.Input<String>? prefixListId;
+  final pulumi.Input<String?>? prefixListId;
 
   /// Creates a new [PrefixListId].
   /// [description] &lt;p&gt;A description for the security group rule that references this prefix list ID.&lt;/p&gt; &lt;p&gt;Constraints: Up to 255 characters in length. Allowed characters are a-z, A-Z, 0-9, spaces, and ._-:/()#,@[]+=;{}!$*&lt;/p&gt;

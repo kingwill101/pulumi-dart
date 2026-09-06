@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a NAT rule.
 class AzureFirewallNatRuleResponse {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses for this rule. Supports IP ranges, prefixes, and service tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Name of the NAT rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Array of AzureFirewallNetworkRuleProtocols applicable to this NAT rule.
-  final pulumi.Input<List<String>>? protocols;
+  final pulumi.Input<List<String>?>? protocols;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
   /// The translated address for this NAT rule.
-  final pulumi.Input<String>? translatedAddress;
+  final pulumi.Input<String?>? translatedAddress;
   /// The translated FQDN for this NAT rule.
-  final pulumi.Input<String>? translatedFqdn;
+  final pulumi.Input<String?>? translatedFqdn;
   /// The translated port for this NAT rule.
-  final pulumi.Input<String>? translatedPort;
+  final pulumi.Input<String?>? translatedPort;
 
   /// Creates a new [AzureFirewallNatRuleResponse].
   /// [description] Description of the rule.

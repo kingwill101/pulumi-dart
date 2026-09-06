@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The authentication type to use.
-enum ServiceNowAuthenticationType {
+enum ServiceNowAuthenticationType implements pulumi.PulumiEnum<String> {
   basic("Basic"),
   oAuth2("OAuth2");
 
   const ServiceNowAuthenticationType(this.wireValue);
+  @override
   final String wireValue;
 
   static ServiceNowAuthenticationType fromValue(String value) {

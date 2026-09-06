@@ -1,4 +1,6 @@
-enum KnownSyslogDataSourceFacilityNames {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum KnownSyslogDataSourceFacilityNames implements pulumi.PulumiEnum<String> {
   valueAlert("alert"),
   valueAudit("audit"),
   valueAuth("auth"),
@@ -28,6 +30,7 @@ enum KnownSyslogDataSourceFacilityNames {
   value("*");
 
   const KnownSyslogDataSourceFacilityNames(this.wireValue);
+  @override
   final String wireValue;
 
   static KnownSyslogDataSourceFacilityNames fromValue(String value) {

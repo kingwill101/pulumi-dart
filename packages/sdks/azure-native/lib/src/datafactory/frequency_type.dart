@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Frequency of period in terms of 'Hour', 'Minute' or 'Second'.
-enum FrequencyType {
+enum FrequencyType implements pulumi.PulumiEnum<String> {
   hour("Hour"),
   minute("Minute"),
   second("Second");
 
   const FrequencyType(this.wireValue);
+  @override
   final String wireValue;
 
   static FrequencyType fromValue(String value) {

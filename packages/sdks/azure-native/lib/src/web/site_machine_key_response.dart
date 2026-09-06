@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// MachineKey of an app.
 class SiteMachineKeyResponse {
   /// Algorithm used for decryption.
-  final pulumi.Input<String>? decryption;
+  final pulumi.Input<String?>? decryption;
   /// Decryption key.
-  final pulumi.Input<String>? decryptionKey;
+  final pulumi.Input<String?>? decryptionKey;
   /// MachineKey validation.
-  final pulumi.Input<String>? validation;
+  final pulumi.Input<String?>? validation;
   /// Validation key.
-  final pulumi.Input<String>? validationKey;
+  final pulumi.Input<String?>? validationKey;
 
   /// Creates a new [SiteMachineKeyResponse].
   /// [decryption] Algorithm used for decryption.

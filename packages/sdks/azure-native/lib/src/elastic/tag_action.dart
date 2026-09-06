@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Valid actions for a filtering tag.
-enum TagAction {
+enum TagAction implements pulumi.PulumiEnum<String> {
   valueInclude("Include"),
   valueExclude("Exclude");
 
   const TagAction(this.wireValue);
+  @override
   final String wireValue;
 
   static TagAction fromValue(String value) {

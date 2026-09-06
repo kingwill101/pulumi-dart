@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The evaluator type of the policy (i.e. AllowedValuesPolicy, MaxValuePolicy).
-enum PolicyEvaluatorType {
+enum PolicyEvaluatorType implements pulumi.PulumiEnum<String> {
   allowedValuesPolicy("AllowedValuesPolicy"),
   maxValuePolicy("MaxValuePolicy");
 
   const PolicyEvaluatorType(this.wireValue);
+  @override
   final String wireValue;
 
   static PolicyEvaluatorType fromValue(String value) {

@@ -11,13 +11,13 @@ class EdifactDelimiterOverrideResponse {
   /// The decimal point indicator.
   final pulumi.Input<String> decimalPointIndicator;
   /// The message association assigned code.
-  final pulumi.Input<String>? messageAssociationAssignedCode;
+  final pulumi.Input<String?>? messageAssociationAssignedCode;
   /// The message id.
-  final pulumi.Input<String>? messageId;
+  final pulumi.Input<String?>? messageId;
   /// The message release.
-  final pulumi.Input<String>? messageRelease;
+  final pulumi.Input<String?>? messageRelease;
   /// The message version.
-  final pulumi.Input<String>? messageVersion;
+  final pulumi.Input<String?>? messageVersion;
   /// The release indicator.
   final pulumi.Input<int> releaseIndicator;
   /// The repetition separator.
@@ -27,7 +27,7 @@ class EdifactDelimiterOverrideResponse {
   /// The segment terminator suffix.
   final pulumi.Input<String> segmentTerminatorSuffix;
   /// The target namespace on which this delimiter settings has to be applied.
-  final pulumi.Input<String>? targetNamespace;
+  final pulumi.Input<String?>? targetNamespace;
 
   /// Creates a new [EdifactDelimiterOverrideResponse].
   /// [componentSeparator] The component separator.
@@ -76,16 +76,16 @@ class EdifactDelimiterOverrideResponse {
 
   factory EdifactDelimiterOverrideResponse.fromMap(Map<String, dynamic> map) {
     return EdifactDelimiterOverrideResponse(
-      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
-      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
+      componentSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['componentSeparator'])),
+      dataElementSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataElementSeparator'])),
       decimalPointIndicator: pulumi.Input.fromValue(map['decimalPointIndicator'] as String),
       messageAssociationAssignedCode: (() { final guardedValue = map['messageAssociationAssignedCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messageId: (() { final guardedValue = map['messageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messageRelease: (() { final guardedValue = map['messageRelease']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       messageVersion: (() { final guardedValue = map['messageVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      releaseIndicator: pulumi.Input.fromValue(map['releaseIndicator'] as int),
-      repetitionSeparator: pulumi.Input.fromValue(map['repetitionSeparator'] as int),
-      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      releaseIndicator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['releaseIndicator'])),
+      repetitionSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['repetitionSeparator'])),
+      segmentTerminator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['segmentTerminator'])),
       segmentTerminatorSuffix: pulumi.Input.fromValue(map['segmentTerminatorSuffix'] as String),
       targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

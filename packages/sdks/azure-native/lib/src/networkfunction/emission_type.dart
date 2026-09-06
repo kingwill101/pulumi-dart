@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Emission format type.
-enum EmissionType {
+enum EmissionType implements pulumi.PulumiEnum<String> {
   iPFIX("IPFIX");
 
   const EmissionType(this.wireValue);
+  @override
   final String wireValue;
 
   static EmissionType fromValue(String value) {

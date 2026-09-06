@@ -204,4 +204,23 @@ class WorkloadNetworkPublicIP extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [WorkloadNetworkPublicIP] resource.
+  WorkloadNetworkPublicIP.reference(String urn)
+    : super(
+        'azure-native:avs:WorkloadNetworkPublicIP',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    displayName = registerOutput<String?>('displayName');
+    this.name = registerOutput<String>('name');
+    numberOfPublicIPs = registerOutput<double?>('numberOfPublicIPs');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIPBlock = registerOutput<String>('publicIPBlock');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

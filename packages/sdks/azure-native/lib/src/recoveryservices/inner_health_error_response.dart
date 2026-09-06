@@ -5,33 +5,33 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Implements InnerHealthError class. HealthError object has a list of InnerHealthErrors as child errors. InnerHealthError is used because this will prevent an infinite loop of structures when Hydra tries to auto-generate the contract. We are exposing the related health errors as inner health errors and all API consumers can utilize this in the same fashion as Exception -&gt; InnerException.
 class InnerHealthErrorResponse {
   /// Error creation time (UTC).
-  final pulumi.Input<String>? creationTimeUtc;
+  final pulumi.Input<String?>? creationTimeUtc;
   /// Value indicating whether the health error is customer resolvable.
-  final pulumi.Input<String>? customerResolvability;
+  final pulumi.Input<String?>? customerResolvability;
   /// ID of the entity.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
   /// Category of error.
-  final pulumi.Input<String>? errorCategory;
+  final pulumi.Input<String?>? errorCategory;
   /// Error code.
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// The health error unique id.
-  final pulumi.Input<String>? errorId;
+  final pulumi.Input<String?>? errorId;
   /// Level of error.
-  final pulumi.Input<String>? errorLevel;
+  final pulumi.Input<String?>? errorLevel;
   /// Error message.
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// Source of error.
-  final pulumi.Input<String>? errorSource;
+  final pulumi.Input<String?>? errorSource;
   /// Type of error.
-  final pulumi.Input<String>? errorType;
+  final pulumi.Input<String?>? errorType;
   /// Possible causes of error.
-  final pulumi.Input<String>? possibleCauses;
+  final pulumi.Input<String?>? possibleCauses;
   /// Recommended action to resolve error.
-  final pulumi.Input<String>? recommendedAction;
+  final pulumi.Input<String?>? recommendedAction;
   /// DRA error message.
-  final pulumi.Input<String>? recoveryProviderErrorMessage;
+  final pulumi.Input<String?>? recoveryProviderErrorMessage;
   /// Summary message of the entity.
-  final pulumi.Input<String>? summaryMessage;
+  final pulumi.Input<String?>? summaryMessage;
 
   /// Creates a new [InnerHealthErrorResponse].
   /// [creationTimeUtc] Error creation time (UTC).

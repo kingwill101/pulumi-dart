@@ -12,19 +12,19 @@ class CommitmentPlanArgs {
   /// The name of Cognitive Services account.
   final pulumi.Input<String> accountName;
   /// The name of the commitmentPlan associated with the Cognitive Services Account
-  final pulumi.Input<String>? commitmentPlanName;
+  final pulumi.Input<String?>? commitmentPlanName;
   /// The Kind of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Properties of Cognitive Services account commitment plan.
-  final pulumi.Input<CommitmentPlanProperties>? properties;
+  final pulumi.Input<CommitmentPlanProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The resource model definition representing SKU
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CommitmentPlanArgs].
   /// [accountName] The name of Cognitive Services account.

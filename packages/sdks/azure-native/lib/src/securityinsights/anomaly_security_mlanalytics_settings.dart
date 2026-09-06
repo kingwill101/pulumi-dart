@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'anomaly_security_mlanalytics_settings_args.dart';
+import 'security_mlanalytics_settings_data_source_response.dart';
 import 'system_data_response.dart';
 
 /// Represents Anomaly Security ML Analytics Settings
@@ -607,7 +608,7 @@ class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
   /// The name of the resource
   late final pulumi.Output<String> name;
   /// The required data sources for this SecurityMLAnalyticsSettings
-  late final pulumi.Output<List<Map<String, dynamic>>?> requiredDataConnectors;
+  late final pulumi.Output<List<SecurityMLAnalyticsSettingsDataSourceResponse>?> requiredDataConnectors;
   /// The anomaly settings definition Id
   late final pulumi.Output<String?> settingsDefinitionId;
   /// The anomaly SecurityMLAnalyticsSettings status
@@ -648,12 +649,43 @@ class AnomalySecurityMLAnalyticsSettings extends pulumi.CustomResource {
     kind = registerOutput<String>('kind');
     lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
     this.name = registerOutput<String>('name');
-    requiredDataConnectors = registerOutput<List<Map<String, dynamic>>?>('requiredDataConnectors');
+    requiredDataConnectors = registerOutput<List<SecurityMLAnalyticsSettingsDataSourceResponse>?>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityMLAnalyticsSettingsDataSourceResponse>(guardedValue, (value) => SecurityMLAnalyticsSettingsDataSourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     settingsDefinitionId = registerOutput<String?>('settingsDefinitionId');
     settingsStatus = registerOutput<String>('settingsStatus');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tactics = registerOutput<List<String>?>('tactics');
-    techniques = registerOutput<List<String>?>('techniques');
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [AnomalySecurityMLAnalyticsSettings] resource.
+  AnomalySecurityMLAnalyticsSettings.reference(String urn)
+    : super(
+        'azure-native:securityinsights:AnomalySecurityMLAnalyticsSettings',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    anomalySettingsVersion = registerOutput<int?>('anomalySettingsVersion');
+    anomalyVersion = registerOutput<String>('anomalyVersion');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    customizableObservations = registerOutput<dynamic>('customizableObservations');
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    etag = registerOutput<String?>('etag');
+    frequency = registerOutput<String>('frequency');
+    isDefaultSettings = registerOutput<bool>('isDefaultSettings');
+    kind = registerOutput<String>('kind');
+    lastModifiedUtc = registerOutput<String>('lastModifiedUtc');
+    this.name = registerOutput<String>('name');
+    requiredDataConnectors = registerOutput<List<SecurityMLAnalyticsSettingsDataSourceResponse>?>('requiredDataConnectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecurityMLAnalyticsSettingsDataSourceResponse>(guardedValue, (value) => SecurityMLAnalyticsSettingsDataSourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    settingsDefinitionId = registerOutput<String?>('settingsDefinitionId');
+    settingsStatus = registerOutput<String>('settingsStatus');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tactics = registerOutput<List<String>?>('tactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    techniques = registerOutput<List<String>?>('techniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
   }
 }

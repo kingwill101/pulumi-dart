@@ -8,15 +8,15 @@ import 'weekly_retention_format_response.dart';
 /// Monthly retention schedule.
 class MonthlyRetentionScheduleResponse {
   /// Retention duration of retention Policy.
-  final pulumi.Input<RetentionDurationResponse>? retentionDuration;
+  final pulumi.Input<RetentionDurationResponse?>? retentionDuration;
   /// Daily retention format for monthly retention policy.
-  final pulumi.Input<DailyRetentionFormatResponse>? retentionScheduleDaily;
+  final pulumi.Input<DailyRetentionFormatResponse?>? retentionScheduleDaily;
   /// Retention schedule format type for monthly retention policy.
-  final pulumi.Input<String>? retentionScheduleFormatType;
+  final pulumi.Input<String?>? retentionScheduleFormatType;
   /// Weekly retention format for monthly retention policy.
-  final pulumi.Input<WeeklyRetentionFormatResponse>? retentionScheduleWeekly;
+  final pulumi.Input<WeeklyRetentionFormatResponse?>? retentionScheduleWeekly;
   /// Retention times of retention policy.
-  final pulumi.Input<List<String>>? retentionTimes;
+  final pulumi.Input<List<String>?>? retentionTimes;
 
   /// Creates a new [MonthlyRetentionScheduleResponse].
   /// [retentionDuration] Retention duration of retention Policy.

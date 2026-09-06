@@ -25595,7 +25595,7 @@ class VirtualMachineScaleSet extends pulumi.CustomResource {
     skuProfile = registerOutput<SkuProfileResponse?>('skuProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     spotRestorePolicy = registerOutput<SpotRestorePolicyResponse?>('spotRestorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotRestorePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     timeCreated = registerOutput<String>('timeCreated');
     type = registerOutput<String>('type');
     uniqueId = registerOutput<String>('uniqueId');
@@ -25603,6 +25603,52 @@ class VirtualMachineScaleSet extends pulumi.CustomResource {
     virtualMachineProfile = registerOutput<VirtualMachineScaleSetVMProfileResponse?>('virtualMachineProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetVMProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     zonalPlatformFaultDomainAlignMode = registerOutput<String?>('zonalPlatformFaultDomainAlignMode');
     zoneBalance = registerOutput<bool?>('zoneBalance');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineScaleSet] resource.
+  VirtualMachineScaleSet.reference(String urn)
+    : super(
+        'azure-native:compute:VirtualMachineScaleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    additionalCapabilities = registerOutput<AdditionalCapabilitiesResponse?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdditionalCapabilitiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    automaticRepairsPolicy = registerOutput<AutomaticRepairsPolicyResponse?>('automaticRepairsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticRepairsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    constrainedMaximumCapacity = registerOutput<bool?>('constrainedMaximumCapacity');
+    doNotRunExtensionsOnOverprovisionedVMs = registerOutput<bool?>('doNotRunExtensionsOnOverprovisionedVMs');
+    etag = registerOutput<String>('etag');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostGroup = registerOutput<SubResourceResponse?>('hostGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    identity = registerOutput<VirtualMachineScaleSetIdentityResponse?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    orchestrationMode = registerOutput<String?>('orchestrationMode');
+    overprovision = registerOutput<bool?>('overprovision');
+    plan = registerOutput<PlanResponse?>('plan', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlanResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    platformFaultDomainCount = registerOutput<int?>('platformFaultDomainCount');
+    priorityMixPolicy = registerOutput<PriorityMixPolicyResponse?>('priorityMixPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PriorityMixPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    proximityPlacementGroup = registerOutput<SubResourceResponse?>('proximityPlacementGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    resiliencyPolicy = registerOutput<ResiliencyPolicyResponse?>('resiliencyPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResiliencyPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scaleInPolicy = registerOutput<ScaleInPolicyResponse?>('scaleInPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleInPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scheduledEventsPolicy = registerOutput<ScheduledEventsPolicyResponse?>('scheduledEventsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledEventsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    singlePlacementGroup = registerOutput<bool?>('singlePlacementGroup');
+    sku = registerOutput<SkuResponse?>('sku', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    skuProfile = registerOutput<SkuProfileResponse?>('skuProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SkuProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    spotRestorePolicy = registerOutput<SpotRestorePolicyResponse?>('spotRestorePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpotRestorePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    timeCreated = registerOutput<String>('timeCreated');
+    type = registerOutput<String>('type');
+    uniqueId = registerOutput<String>('uniqueId');
+    upgradePolicy = registerOutput<UpgradePolicyResponse?>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    virtualMachineProfile = registerOutput<VirtualMachineScaleSetVMProfileResponse?>('virtualMachineProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineScaleSetVMProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    zonalPlatformFaultDomainAlignMode = registerOutput<String?>('zonalPlatformFaultDomainAlignMode');
+    zoneBalance = registerOutput<bool?>('zoneBalance');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

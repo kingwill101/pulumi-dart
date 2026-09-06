@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Default handling for logs that don't match any of the specified filtering conditions.
-enum DefaultBehavior {
+enum DefaultBehavior implements pulumi.PulumiEnum<String> {
   dROP("DROP"),
   kEEP("KEEP");
 
   const DefaultBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static DefaultBehavior fromValue(String value) {

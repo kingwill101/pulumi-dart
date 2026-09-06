@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The settings for the CORS configuration of the service instance.
 class ServiceCorsConfigurationInfoResponse {
   /// If credentials are allowed via CORS.
-  final pulumi.Input<bool>? allowCredentials;
+  final pulumi.Input<bool?>? allowCredentials;
   /// The headers to be allowed via CORS.
-  final pulumi.Input<List<String>>? headers;
+  final pulumi.Input<List<String>?>? headers;
   /// The max age to be allowed via CORS.
-  final pulumi.Input<double>? maxAge;
+  final pulumi.Input<double?>? maxAge;
   /// The methods to be allowed via CORS.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// The origins to be allowed via CORS.
-  final pulumi.Input<List<String>>? origins;
+  final pulumi.Input<List<String>?>? origins;
 
   /// Creates a new [ServiceCorsConfigurationInfoResponse].
   /// [allowCredentials] If credentials are allowed via CORS.
@@ -43,7 +43,7 @@ class ServiceCorsConfigurationInfoResponse {
     return ServiceCorsConfigurationInfoResponse(
       allowCredentials: (() { final guardedValue = map['allowCredentials']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       headers: (() { final guardedValue = map['headers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      maxAge: (() { final guardedValue = map['maxAge']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       methods: (() { final guardedValue = map['methods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       origins: (() { final guardedValue = map['origins']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

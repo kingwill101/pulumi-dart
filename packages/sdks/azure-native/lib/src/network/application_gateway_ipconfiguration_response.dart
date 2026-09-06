@@ -8,13 +8,13 @@ class ApplicationGatewayIPConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the IP configuration that is unique within an Application Gateway.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the application gateway IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Reference to the subnet resource. A subnet from where application gateway gets its private address.
-  final pulumi.Input<SubResourceResponse>? subnet;
+  final pulumi.Input<SubResourceResponse?>? subnet;
   /// Type of the resource.
   final pulumi.Input<String> type;
 

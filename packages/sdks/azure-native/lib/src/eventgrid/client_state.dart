@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the client is enabled or not. Default value is Enabled.
-enum ClientState {
+enum ClientState implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const ClientState(this.wireValue);
+  @override
   final String wireValue;
 
   static ClientState fromValue(String value) {

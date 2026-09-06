@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SwaggerSpecification {
   /// The api versions.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// The swagger spec folder uri.
-  final pulumi.Input<String>? swaggerSpecFolderUri;
+  final pulumi.Input<String?>? swaggerSpecFolderUri;
 
   /// Creates a new [SwaggerSpecification].
   /// [apiVersions] The api versions.

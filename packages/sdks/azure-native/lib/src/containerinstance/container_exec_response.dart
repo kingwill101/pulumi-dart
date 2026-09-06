@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The container execution command, for liveness or readiness probe
 class ContainerExecResponse {
   /// The commands to execute within the container.
-  final pulumi.Input<List<String>>? command;
+  final pulumi.Input<List<String>?>? command;
 
   /// Creates a new [ContainerExecResponse].
   /// [command] The commands to execute within the container.

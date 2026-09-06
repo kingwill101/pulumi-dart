@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Sticky Sessions for Single Revision Mode
 class IngressResponseStickySessions {
   /// Sticky Session Affinity
-  final pulumi.Input<String>? affinity;
+  final pulumi.Input<String?>? affinity;
 
   /// Creates a new [IngressResponseStickySessions].
   /// [affinity] Sticky Session Affinity

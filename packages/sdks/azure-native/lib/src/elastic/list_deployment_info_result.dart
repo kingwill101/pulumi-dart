@@ -5,19 +5,19 @@ import 'marketplace_saa_sinfo_response.dart';
 /// Result data returned by listDeploymentInfo.
 class ListDeploymentInfoResult {
   /// Deployment URL of the elasticsearch in Elastic cloud deployment.
-  final String deploymentUrl;
+  final String? deploymentUrl;
   /// Disk capacity of the elasticsearch in Elastic cloud deployment.
-  final String diskCapacity;
+  final String? diskCapacity;
   /// Elasticsearch endpoint in Elastic cloud deployment. This is either the aliased_endpoint if available, or the service_url otherwise.
-  final String elasticsearchEndPoint;
+  final String? elasticsearchEndPoint;
   /// Marketplace SaaS Info of the resource.
-  final MarketplaceSaaSInfoResponse marketplaceSaasInfo;
+  final MarketplaceSaaSInfoResponse? marketplaceSaasInfo;
   /// RAM capacity of the elasticsearch in Elastic cloud deployment.
-  final String memoryCapacity;
+  final String? memoryCapacity;
   /// The Elastic deployment status.
-  final String status;
+  final String? status;
   /// Version of the elasticsearch in Elastic cloud deployment.
-  final String version;
+  final String? version;
 
   /// Creates a new [ListDeploymentInfoResult].
   /// [deploymentUrl] Deployment URL of the elasticsearch in Elastic cloud deployment.
@@ -28,36 +28,36 @@ class ListDeploymentInfoResult {
   /// [status] The Elastic deployment status.
   /// [version] Version of the elasticsearch in Elastic cloud deployment.
   const ListDeploymentInfoResult({
-    required this.deploymentUrl,
-    required this.diskCapacity,
-    required this.elasticsearchEndPoint,
-    required this.marketplaceSaasInfo,
-    required this.memoryCapacity,
-    required this.status,
-    required this.version,
+    this.deploymentUrl,
+    this.diskCapacity,
+    this.elasticsearchEndPoint,
+    this.marketplaceSaasInfo,
+    this.memoryCapacity,
+    this.status,
+    this.version,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'deploymentUrl': deploymentUrl,
-      'diskCapacity': diskCapacity,
-      'elasticsearchEndPoint': elasticsearchEndPoint,
-      'marketplaceSaasInfo': marketplaceSaasInfo.toMap(),
-      'memoryCapacity': memoryCapacity,
-      'status': status,
-      'version': version,
+      'deploymentUrl': ?deploymentUrl,
+      'diskCapacity': ?diskCapacity,
+      'elasticsearchEndPoint': ?elasticsearchEndPoint,
+      'marketplaceSaasInfo': ?marketplaceSaasInfo?.toMap(),
+      'memoryCapacity': ?memoryCapacity,
+      'status': ?status,
+      'version': ?version,
     };
   }
 
   factory ListDeploymentInfoResult.fromMap(Map<String, dynamic> map) {
     return ListDeploymentInfoResult(
-      deploymentUrl: map['deploymentUrl'] as String,
-      diskCapacity: map['diskCapacity'] as String,
-      elasticsearchEndPoint: map['elasticsearchEndPoint'] as String,
-      marketplaceSaasInfo: MarketplaceSaaSInfoResponse.fromMap((map['marketplaceSaasInfo']! as Map).cast<String, dynamic>()),
-      memoryCapacity: map['memoryCapacity'] as String,
-      status: map['status'] as String,
-      version: map['version'] as String,
+      deploymentUrl: (() { final guardedValue = map['deploymentUrl']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diskCapacity: (() { final guardedValue = map['diskCapacity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      elasticsearchEndPoint: (() { final guardedValue = map['elasticsearchEndPoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      marketplaceSaasInfo: (() { final guardedValue = map['marketplaceSaasInfo']; if (guardedValue == null) return null; return MarketplaceSaaSInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      memoryCapacity: (() { final guardedValue = map['memoryCapacity']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

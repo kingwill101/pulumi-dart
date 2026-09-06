@@ -6,11 +6,11 @@ import 'gallery_application_custom_action_parameter_response.dart';
 /// A custom action that can be performed with a Gallery Application Version.
 class GalleryApplicationCustomActionResponse {
   /// Description to help the users understand what this custom action does.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the custom action.  Must be unique within the Gallery Application Version.
   final pulumi.Input<String> name;
   /// The parameters that this custom action uses
-  final pulumi.Input<List<GalleryApplicationCustomActionParameterResponse>>? parameters;
+  final pulumi.Input<List<GalleryApplicationCustomActionParameterResponse>?>? parameters;
   /// The script to run when executing this custom action.
   final pulumi.Input<String> script;
 

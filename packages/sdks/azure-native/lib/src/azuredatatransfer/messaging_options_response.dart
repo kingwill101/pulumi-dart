@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The option associated with messaging flows.
 class MessagingOptionsResponse {
   /// Billing tier for this messaging flow
-  final pulumi.Input<String>? billingTier;
+  final pulumi.Input<String?>? billingTier;
 
   /// Creates a new [MessagingOptionsResponse].
   /// [billingTier] Billing tier for this messaging flow

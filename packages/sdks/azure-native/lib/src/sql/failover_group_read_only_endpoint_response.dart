@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Read-only endpoint of the failover group instance.
 class FailoverGroupReadOnlyEndpointResponse {
   /// Failover policy of the read-only endpoint for the failover group.
-  final pulumi.Input<String>? failoverPolicy;
+  final pulumi.Input<String?>? failoverPolicy;
   /// The target partner server where the read-only endpoint points to.
-  final pulumi.Input<String>? targetServer;
+  final pulumi.Input<String?>? targetServer;
 
   /// Creates a new [FailoverGroupReadOnlyEndpointResponse].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.

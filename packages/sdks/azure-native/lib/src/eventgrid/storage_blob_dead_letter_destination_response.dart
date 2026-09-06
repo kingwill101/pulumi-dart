@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about the storage blob based dead letter destination.
 class StorageBlobDeadLetterDestinationResponse {
   /// The name of the Storage blob container that is the destination of the deadletter events
-  final pulumi.Input<String>? blobContainerName;
+  final pulumi.Input<String?>? blobContainerName;
   /// Type of the endpoint for the dead letter destination
   /// Expected value is 'StorageBlob'.
   final pulumi.Input<String> endpointType;
   /// The Azure Resource ID of the storage account that is the destination of the deadletter events
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
 
   /// Creates a new [StorageBlobDeadLetterDestinationResponse].
   /// [blobContainerName] The name of the Storage blob container that is the destination of the deadletter events

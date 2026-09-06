@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of RepoUpgradeOnBootEnumValue
 class RepoUpgradeOnBootEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [RepoUpgradeOnBootEnumValueResponse].
   /// [value] Property value

@@ -9,15 +9,15 @@ import 'account_sku.dart';
 /// {@macro pulumi_codesigning_code_signing_account_args_doc}
 class CodeSigningAccountArgs {
   /// Artifact Signing account name.
-  final pulumi.Input<String>? accountName;
+  final pulumi.Input<String?>? accountName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// SKU of the artifact signing account.
-  final pulumi.Input<AccountSku>? sku;
+  final pulumi.Input<AccountSku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CodeSigningAccountArgs].
   /// [accountName] Artifact Signing account name.

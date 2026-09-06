@@ -7,15 +7,15 @@ import 'cert_based_security_principal.dart';
 /// Additional Confidential Ledger properties.
 class LedgerProperties {
   /// Array of all AAD based Security Principals.
-  final pulumi.Input<List<AADBasedSecurityPrincipal>>? aadBasedSecurityPrincipals;
+  final pulumi.Input<List<AADBasedSecurityPrincipal>?>? aadBasedSecurityPrincipals;
   /// Array of all cert based Security Principals.
-  final pulumi.Input<List<CertBasedSecurityPrincipal>>? certBasedSecurityPrincipals;
+  final pulumi.Input<List<CertBasedSecurityPrincipal>?>? certBasedSecurityPrincipals;
   /// SKU associated with the ledger
-  final pulumi.Input<String>? ledgerSku;
+  final pulumi.Input<dynamic>? ledgerSku;
   /// Type of Confidential Ledger
-  final pulumi.Input<String>? ledgerType;
+  final pulumi.Input<dynamic>? ledgerType;
   /// Object representing RunningState for Ledger.
-  final pulumi.Input<String>? runningState;
+  final pulumi.Input<dynamic>? runningState;
 
   /// Creates a new [LedgerProperties].
   /// [aadBasedSecurityPrincipals] Array of all AAD based Security Principals.
@@ -45,9 +45,9 @@ class LedgerProperties {
     return LedgerProperties(
       aadBasedSecurityPrincipals: (() { final guardedValue = map['aadBasedSecurityPrincipals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AADBasedSecurityPrincipal>(guardedValue, (value) => AADBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))); })(),
       certBasedSecurityPrincipals: (() { final guardedValue = map['certBasedSecurityPrincipals']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<CertBasedSecurityPrincipal>(guardedValue, (value) => CertBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ledgerSku: (() { final guardedValue = map['ledgerSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ledgerType: (() { final guardedValue = map['ledgerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runningState: (() { final guardedValue = map['runningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      ledgerSku: (() { final guardedValue = map['ledgerSku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      ledgerType: (() { final guardedValue = map['ledgerType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      runningState: (() { final guardedValue = map['runningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

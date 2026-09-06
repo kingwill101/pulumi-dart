@@ -253,14 +253,49 @@ class Metadata extends pulumi.CustomResource {
     lastPublishDate = registerOutput<String?>('lastPublishDate');
     this.name = registerOutput<String>('name');
     parentId = registerOutput<String>('parentId');
-    previewImages = registerOutput<List<String>?>('previewImages');
-    previewImagesDark = registerOutput<List<String>?>('previewImagesDark');
-    providers = registerOutput<List<String>?>('providers');
+    previewImages = registerOutput<List<String>?>('previewImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    previewImagesDark = registerOutput<List<String>?>('previewImagesDark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providers = registerOutput<List<String>?>('providers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<MetadataSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     support = registerOutput<MetadataSupportResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSupportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics');
-    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques');
+    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    type = registerOutput<String>('type');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Metadata] resource.
+  Metadata.reference(String urn)
+    : super(
+        'azure-native:securityinsights:Metadata',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    author = registerOutput<MetadataAuthorResponse?>('author', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataAuthorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    categories = registerOutput<MetadataCategoriesResponse?>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataCategoriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentId = registerOutput<String?>('contentId');
+    contentSchemaVersion = registerOutput<String?>('contentSchemaVersion');
+    customVersion = registerOutput<String?>('customVersion');
+    dependencies = registerOutput<MetadataDependenciesResponse?>('dependencies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataDependenciesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String?>('etag');
+    firstPublishDate = registerOutput<String?>('firstPublishDate');
+    icon = registerOutput<String?>('icon');
+    kind = registerOutput<String>('kind');
+    lastPublishDate = registerOutput<String?>('lastPublishDate');
+    this.name = registerOutput<String>('name');
+    parentId = registerOutput<String>('parentId');
+    previewImages = registerOutput<List<String>?>('previewImages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    previewImagesDark = registerOutput<List<String>?>('previewImagesDark', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    providers = registerOutput<List<String>?>('providers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    source = registerOutput<MetadataSourceResponse?>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    support = registerOutput<MetadataSupportResponse?>('support', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetadataSupportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    threatAnalysisTactics = registerOutput<List<String>?>('threatAnalysisTactics', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    threatAnalysisTechniques = registerOutput<List<String>?>('threatAnalysisTechniques', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     type = registerOutput<String>('type');
     version = registerOutput<String?>('version');
   }

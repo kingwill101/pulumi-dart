@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// A flag to determine whether or not LdapSigning is enabled or disabled.
-enum LdapSigning {
+enum LdapSigning implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const LdapSigning(this.wireValue);
+  @override
   final String wireValue;
 
   static LdapSigning fromValue(String value) {

@@ -12,10 +12,10 @@ class JitNetworkAccessPolicyArgs {
   /// The location where ASC stores the data of the subscription. can be retrieved from Get locations
   final pulumi.Input<String> ascLocation;
   /// Name of a Just-in-Time access configuration policy.
-  final pulumi.Input<String>? jitNetworkAccessPolicyName;
+  final pulumi.Input<String?>? jitNetworkAccessPolicyName;
   /// Kind of the resource
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<List<JitNetworkAccessRequest>>? requests;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<List<JitNetworkAccessRequest>?>? requests;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Configurations for Microsoft.Compute/virtualMachines resource type.

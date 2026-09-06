@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Failover policy of the read-only endpoint for the failover group.
-enum ReadOnlyEndpointFailoverPolicy {
+enum ReadOnlyEndpointFailoverPolicy implements pulumi.PulumiEnum<String> {
   valueDisabled("Disabled"),
   valueEnabled("Enabled");
 
   const ReadOnlyEndpointFailoverPolicy(this.wireValue);
+  @override
   final String wireValue;
 
   static ReadOnlyEndpointFailoverPolicy fromValue(String value) {

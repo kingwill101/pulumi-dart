@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Task type.
-enum TaskType {
+enum TaskType implements pulumi.PulumiEnum<String> {
   valueConnectMongoDb("Connect.MongoDb"),
   valueConnectToSourceSqlServer("ConnectToSource.SqlServer"),
   valueConnectToSourceSqlServerSync("ConnectToSource.SqlServer.Sync"),
@@ -40,6 +42,7 @@ enum TaskType {
   valueMigrateSchemaSqlServerSqlDb("MigrateSchemaSqlServerSqlDb");
 
   const TaskType(this.wireValue);
+  @override
   final String wireValue;
 
   static TaskType fromValue(String value) {

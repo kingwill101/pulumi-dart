@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// the type of action that should occur when the scale rule fires.
-enum ScaleType {
+enum ScaleType implements pulumi.PulumiEnum<String> {
   valueChangeCount("ChangeCount"),
   valuePercentChangeCount("PercentChangeCount"),
   valueExactCount("ExactCount"),
   valueServiceAllowedNextValue("ServiceAllowedNextValue");
 
   const ScaleType(this.wireValue);
+  @override
   final String wireValue;
 
   static ScaleType fromValue(String value) {

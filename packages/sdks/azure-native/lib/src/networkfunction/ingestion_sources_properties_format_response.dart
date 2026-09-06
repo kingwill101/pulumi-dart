@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Ingestion policy properties.
 class IngestionSourcesPropertiesFormatResponse {
   /// Resource ID.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Ingestion source type.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<String?>? sourceType;
 
   /// Creates a new [IngestionSourcesPropertiesFormatResponse].
   /// [resourceId] Resource ID.

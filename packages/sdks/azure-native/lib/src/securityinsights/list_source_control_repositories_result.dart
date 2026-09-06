@@ -6,29 +6,29 @@ import 'repo_response.dart';
 /// Result data returned by listSourceControlRepositories.
 class ListSourceControlRepositoriesResult {
   /// The link to the next page of items
-  final String nextLink;
+  final String? nextLink;
   /// The Repo items on this page
-  final List<RepoResponse> value;
+  final List<RepoResponse>? value;
 
   /// Creates a new [ListSourceControlRepositoriesResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Repo items on this page
   const ListSourceControlRepositoriesResult({
-    required this.nextLink,
-    required this.value,
+    this.nextLink,
+    this.value,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'nextLink': nextLink,
-      'value': pulumi.Input.encodeList<RepoResponse, Map<String, dynamic>>(value, (value) => value.toMap()),
+      'nextLink': ?nextLink,
+      'value': ?(() { final guardedValue = value; if (guardedValue == null) return null; return pulumi.Input.encodeList<RepoResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory ListSourceControlRepositoriesResult.fromMap(Map<String, dynamic> map) {
     return ListSourceControlRepositoriesResult(
-      nextLink: map['nextLink'] as String,
-      value: pulumi.Input.decodeList<RepoResponse>(map['value']!, (value) => RepoResponse.fromMap((value as Map).cast<String, dynamic>())),
+      nextLink: (() { final guardedValue = map['nextLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RepoResponse>(guardedValue, (value) => RepoResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

@@ -4,12 +4,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'managed_identity_properties.dart';
 
 class KeyVaultSecretStoreProperties {
-  final pulumi.Input<String>? keyvaultName;
-  final pulumi.Input<ManagedIdentityProperties>? managedIdentityProperties;
-  final pulumi.Input<String>? resourceGroup;
-  final pulumi.Input<String>? secretStoreId;
-  final pulumi.Input<String>? subscriptionId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? keyvaultName;
+  final pulumi.Input<ManagedIdentityProperties?>? managedIdentityProperties;
+  final pulumi.Input<String?>? resourceGroup;
+  final pulumi.Input<String?>? secretStoreId;
+  final pulumi.Input<String?>? subscriptionId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [KeyVaultSecretStoreProperties].
   /// [keyvaultName] Optional.

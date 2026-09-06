@@ -9,13 +9,13 @@ import 'project_properties.dart';
 /// {@macro pulumi_migrate_project_args_doc}
 class ProjectArgs {
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Azure location in which project is created.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Azure Migrate project.
-  final pulumi.Input<String>? projectName;
+  final pulumi.Input<String?>? projectName;
   /// Properties of the project.
-  final pulumi.Input<ProjectProperties>? properties;
+  final pulumi.Input<ProjectProperties?>? properties;
   /// Name of the Azure Resource Group that project is part of.
   final pulumi.Input<String> resourceGroupName;
   /// Tags provided by Azure Tagging service.

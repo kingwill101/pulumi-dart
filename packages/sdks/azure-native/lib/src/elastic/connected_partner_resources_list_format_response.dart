@@ -6,7 +6,7 @@ import 'connected_partner_resource_properties_response.dart';
 /// Connected Partner Resources List Format
 class ConnectedPartnerResourcesListFormatResponse {
   /// Connected Partner Resource Properties
-  final pulumi.Input<ConnectedPartnerResourcePropertiesResponse>? properties;
+  final pulumi.Input<ConnectedPartnerResourcePropertiesResponse?>? properties;
 
   /// Creates a new [ConnectedPartnerResourcesListFormatResponse].
   /// [properties] Connected Partner Resource Properties

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Zone redundancy state for resources
-enum RedundancyState {
+enum RedundancyState implements pulumi.PulumiEnum<String> {
   zonal("Zonal"),
   none("None");
 
   const RedundancyState(this.wireValue);
+  @override
   final String wireValue;
 
   static RedundancyState fromValue(String value) {

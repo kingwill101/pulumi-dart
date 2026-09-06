@@ -1,4 +1,6 @@
-enum ReplicationProtectedItemOperation {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum ReplicationProtectedItemOperation implements pulumi.PulumiEnum<String> {
   valueReverseReplicate("ReverseReplicate"),
   valueCommit("Commit"),
   valuePlannedFailover("PlannedFailover"),
@@ -15,6 +17,7 @@ enum ReplicationProtectedItemOperation {
   valueCompleteMigration("CompleteMigration");
 
   const ReplicationProtectedItemOperation(this.wireValue);
+  @override
   final String wireValue;
 
   static ReplicationProtectedItemOperation fromValue(String value) {

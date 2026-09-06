@@ -14,11 +14,11 @@ class GetExpressRouteCircuitPeeringResult {
   /// The Azure ASN.
   final int? azureASN;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The list of circuit connections associated with Azure Private Peering for this circuit.
   final List<ExpressRouteCircuitConnectionResponse>? connections;
   /// A unique read-only string that changes whenever the resource is updated.
-  final String etag;
+  final String? etag;
   /// The ExpressRoute connection.
   final ExpressRouteConnectionIdResponse? expressRouteConnection;
   /// The GatewayManager Etag.
@@ -28,7 +28,7 @@ class GetExpressRouteCircuitPeeringResult {
   /// The IPv6 peering configuration.
   final Ipv6ExpressRouteCircuitPeeringConfigResponse? ipv6PeeringConfig;
   /// Who was the last to modify the peering.
-  final String lastModifiedBy;
+  final String? lastModifiedBy;
   /// The Microsoft peering configuration.
   final ExpressRouteCircuitPeeringConfigResponse? microsoftPeeringConfig;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
@@ -36,7 +36,7 @@ class GetExpressRouteCircuitPeeringResult {
   /// The peer ASN.
   final double? peerASN;
   /// The list of peered circuit connections associated with Azure Private Peering for this circuit.
-  final List<PeerExpressRouteCircuitConnectionResponse> peeredConnections;
+  final List<PeerExpressRouteCircuitConnectionResponse>? peeredConnections;
   /// The peering type.
   final String? peeringType;
   /// The primary port.
@@ -44,7 +44,7 @@ class GetExpressRouteCircuitPeeringResult {
   /// The primary address prefix.
   final String? primaryPeerAddressPrefix;
   /// The provisioning state of the express route circuit peering resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// The reference to the RouteFilter resource.
   final SubResourceResponse? routeFilter;
   /// The secondary port.
@@ -58,7 +58,7 @@ class GetExpressRouteCircuitPeeringResult {
   /// The peering stats of express route circuit.
   final ExpressRouteCircuitStatsResponse? stats;
   /// Type of the resource.
-  final String type;
+  final String? type;
   /// The VLAN ID.
   final int? vlanId;
 
@@ -90,89 +90,89 @@ class GetExpressRouteCircuitPeeringResult {
   /// [vlanId] The VLAN ID.
   const GetExpressRouteCircuitPeeringResult({
     this.azureASN,
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.connections,
-    required this.etag,
+    this.etag,
     this.expressRouteConnection,
     this.gatewayManagerEtag,
     this.id,
     this.ipv6PeeringConfig,
-    required this.lastModifiedBy,
+    this.lastModifiedBy,
     this.microsoftPeeringConfig,
     this.name,
     this.peerASN,
-    required this.peeredConnections,
+    this.peeredConnections,
     this.peeringType,
     this.primaryAzurePort,
     this.primaryPeerAddressPrefix,
-    required this.provisioningState,
+    this.provisioningState,
     this.routeFilter,
     this.secondaryAzurePort,
     this.secondaryPeerAddressPrefix,
     this.sharedKey,
     this.state,
     this.stats,
-    required this.type,
+    this.type,
     this.vlanId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'azureASN': ?azureASN,
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'connections': ?(() { final guardedValue = connections; if (guardedValue == null) return null; return pulumi.Input.encodeList<ExpressRouteCircuitConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'etag': etag,
+      'etag': ?etag,
       'expressRouteConnection': ?expressRouteConnection?.toMap(),
       'gatewayManagerEtag': ?gatewayManagerEtag,
       'id': ?id,
       'ipv6PeeringConfig': ?ipv6PeeringConfig?.toMap(),
-      'lastModifiedBy': lastModifiedBy,
+      'lastModifiedBy': ?lastModifiedBy,
       'microsoftPeeringConfig': ?microsoftPeeringConfig?.toMap(),
       'name': ?name,
       'peerASN': ?peerASN,
-      'peeredConnections': pulumi.Input.encodeList<PeerExpressRouteCircuitConnectionResponse, Map<String, dynamic>>(peeredConnections, (value) => value.toMap()),
+      'peeredConnections': ?(() { final guardedValue = peeredConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PeerExpressRouteCircuitConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'peeringType': ?peeringType,
       'primaryAzurePort': ?primaryAzurePort,
       'primaryPeerAddressPrefix': ?primaryPeerAddressPrefix,
-      'provisioningState': provisioningState,
+      'provisioningState': ?provisioningState,
       'routeFilter': ?routeFilter?.toMap(),
       'secondaryAzurePort': ?secondaryAzurePort,
       'secondaryPeerAddressPrefix': ?secondaryPeerAddressPrefix,
       'sharedKey': ?sharedKey,
       'state': ?state,
       'stats': ?stats?.toMap(),
-      'type': type,
+      'type': ?type,
       'vlanId': ?vlanId,
     };
   }
 
   factory GetExpressRouteCircuitPeeringResult.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitPeeringResult(
-      azureASN: (() { final guardedValue = map['azureASN']; if (guardedValue == null) return null; return guardedValue as int; })(),
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureASN: (() { final guardedValue = map['azureASN']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connections: (() { final guardedValue = map['connections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExpressRouteCircuitConnectionResponse>(guardedValue, (value) => ExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      etag: map['etag'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expressRouteConnection: (() { final guardedValue = map['expressRouteConnection']; if (guardedValue == null) return null; return ExpressRouteConnectionIdResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       gatewayManagerEtag: (() { final guardedValue = map['gatewayManagerEtag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv6PeeringConfig: (() { final guardedValue = map['ipv6PeeringConfig']; if (guardedValue == null) return null; return Ipv6ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      lastModifiedBy: map['lastModifiedBy'] as String,
+      lastModifiedBy: (() { final guardedValue = map['lastModifiedBy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       microsoftPeeringConfig: (() { final guardedValue = map['microsoftPeeringConfig']; if (guardedValue == null) return null; return ExpressRouteCircuitPeeringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return guardedValue as double; })(),
-      peeredConnections: pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(map['peeredConnections']!, (value) => PeerExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
+      peerASN: (() { final guardedValue = map['peerASN']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      peeredConnections: (() { final guardedValue = map['peeredConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PeerExpressRouteCircuitConnectionResponse>(guardedValue, (value) => PeerExpressRouteCircuitConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       peeringType: (() { final guardedValue = map['peeringType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryAzurePort: (() { final guardedValue = map['primaryAzurePort']; if (guardedValue == null) return null; return guardedValue as String; })(),
       primaryPeerAddressPrefix: (() { final guardedValue = map['primaryPeerAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       routeFilter: (() { final guardedValue = map['routeFilter']; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       secondaryAzurePort: (() { final guardedValue = map['secondaryAzurePort']; if (guardedValue == null) return null; return guardedValue as String; })(),
       secondaryPeerAddressPrefix: (() { final guardedValue = map['secondaryPeerAddressPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sharedKey: (() { final guardedValue = map['sharedKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stats: (() { final guardedValue = map['stats']; if (guardedValue == null) return null; return ExpressRouteCircuitStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
-      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vlanId: (() { final guardedValue = map['vlanId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

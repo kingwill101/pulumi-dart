@@ -24,11 +24,11 @@ class MongoDbCollectionInfoResponse {
   /// The qualified name of the database or collection. For a collection, this is the database-qualified name.
   final pulumi.Input<String> qualifiedName;
   /// The shard key on the collection, or null if the collection is not sharded
-  final pulumi.Input<MongoDbShardKeyInfoResponse>? shardKey;
+  final pulumi.Input<MongoDbShardKeyInfoResponse?>? shardKey;
   /// Whether the database has sharding enabled. Note that the migration task will enable sharding on the target if necessary.
   final pulumi.Input<bool> supportsSharding;
   /// The name of the collection that this is a view of, if IsView is true
-  final pulumi.Input<String>? viewOf;
+  final pulumi.Input<String?>? viewOf;
 
   /// Creates a new [MongoDbCollectionInfoResponse].
   /// [averageDocumentSize] The average document size, or -1 if the average size is unknown
@@ -77,10 +77,10 @@ class MongoDbCollectionInfoResponse {
 
   factory MongoDbCollectionInfoResponse.fromMap(Map<String, dynamic> map) {
     return MongoDbCollectionInfoResponse(
-      averageDocumentSize: pulumi.Input.fromValue(map['averageDocumentSize'] as double),
-      dataSize: pulumi.Input.fromValue(map['dataSize'] as double),
+      averageDocumentSize: pulumi.Input.fromValue((map['averageDocumentSize'] as num).toDouble()),
+      dataSize: pulumi.Input.fromValue((map['dataSize'] as num).toDouble()),
       databaseName: pulumi.Input.fromValue(map['databaseName'] as String),
-      documentCount: pulumi.Input.fromValue(map['documentCount'] as double),
+      documentCount: pulumi.Input.fromValue((map['documentCount'] as num).toDouble()),
       isCapped: pulumi.Input.fromValue(map['isCapped'] as bool),
       isSystemCollection: pulumi.Input.fromValue(map['isSystemCollection'] as bool),
       isView: pulumi.Input.fromValue(map['isView'] as bool),

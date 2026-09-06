@@ -32,6 +32,17 @@ Future<GetPrivateStoreCollectionResult> getPrivateStoreCollection(
   return GetPrivateStoreCollectionResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateStoreCollectionResult> getPrivateStoreCollectionOutput(
+  GetPrivateStoreCollectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:getPrivateStoreCollection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateStoreCollectionResult.fromMap);
+}
+
 /// Gets information about a specific offer.
 ///
 /// Uses Azure REST API version 2023-01-01.
@@ -52,6 +63,17 @@ Future<GetPrivateStoreCollectionOfferResult> getPrivateStoreCollectionOffer(
   return GetPrivateStoreCollectionOfferResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateStoreCollectionOfferResult> getPrivateStoreCollectionOfferOutput(
+  GetPrivateStoreCollectionOfferArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:getPrivateStoreCollectionOffer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateStoreCollectionOfferResult.fromMap);
+}
+
 /// Get information about the user solution
 ///
 /// Uses Azure REST API version 2023-03-01-preview.
@@ -68,6 +90,17 @@ Future<GetUserSolutionResult> getUserSolution(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUserSolutionResult.fromMap(result);
+}
+
+pulumi.Output<GetUserSolutionResult> getUserSolutionOutput(
+  GetUserSolutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:getUserSolution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUserSolutionResult.fromMap);
 }
 
 /// List new plans notifications
@@ -90,6 +123,17 @@ Future<ListPrivateStoreNewPlansNotificationsResult> listPrivateStoreNewPlansNoti
   return ListPrivateStoreNewPlansNotificationsResult.fromMap(result);
 }
 
+pulumi.Output<ListPrivateStoreNewPlansNotificationsResult> listPrivateStoreNewPlansNotificationsOutput(
+  ListPrivateStoreNewPlansNotificationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:listPrivateStoreNewPlansNotifications',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPrivateStoreNewPlansNotificationsResult.fromMap);
+}
+
 /// List stop sell notifications for both stop sell offers and stop sell plans
 ///
 /// Uses Azure REST API version 2023-01-01.
@@ -110,6 +154,17 @@ Future<ListPrivateStoreStopSellOffersPlansNotificationsResult> listPrivateStoreS
   return ListPrivateStoreStopSellOffersPlansNotificationsResult.fromMap(result);
 }
 
+pulumi.Output<ListPrivateStoreStopSellOffersPlansNotificationsResult> listPrivateStoreStopSellOffersPlansNotificationsOutput(
+  ListPrivateStoreStopSellOffersPlansNotificationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:listPrivateStoreStopSellOffersPlansNotifications',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPrivateStoreStopSellOffersPlansNotificationsResult.fromMap);
+}
+
 /// List all the subscriptions in the private store context
 ///
 /// Uses Azure REST API version 2023-01-01.
@@ -128,4 +183,15 @@ Future<ListPrivateStoreSubscriptionsContextResult> listPrivateStoreSubscriptions
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPrivateStoreSubscriptionsContextResult.fromMap(result);
+}
+
+pulumi.Output<ListPrivateStoreSubscriptionsContextResult> listPrivateStoreSubscriptionsContextOutput(
+  ListPrivateStoreSubscriptionsContextArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:marketplace:listPrivateStoreSubscriptionsContext',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPrivateStoreSubscriptionsContextResult.fromMap);
 }

@@ -11,15 +11,15 @@ import 'http_logs_config.dart';
 /// {@macro pulumi_web_web_app_diagnostic_logs_configuration_args_doc}
 class WebAppDiagnosticLogsConfigurationArgs {
   /// Application logs configuration.
-  final pulumi.Input<ApplicationLogsConfig>? applicationLogs;
+  final pulumi.Input<ApplicationLogsConfig?>? applicationLogs;
   /// Detailed error messages configuration.
-  final pulumi.Input<EnabledConfig>? detailedErrorMessages;
+  final pulumi.Input<EnabledConfig?>? detailedErrorMessages;
   /// Failed requests tracing configuration.
-  final pulumi.Input<EnabledConfig>? failedRequestsTracing;
+  final pulumi.Input<EnabledConfig?>? failedRequestsTracing;
   /// HTTP logs configuration.
-  final pulumi.Input<HttpLogsConfig>? httpLogs;
+  final pulumi.Input<HttpLogsConfig?>? httpLogs;
   /// Kind of resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Name of the app.
   final pulumi.Input<String> name;
   /// The name of the resource group. The name is case insensitive.

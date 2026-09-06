@@ -1,3 +1,5 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The provisioning state of the resource.
 ///
 /// Pending - Provisioning pending.
@@ -7,7 +9,7 @@
 /// PendingDeletion - Deletion pending.
 /// DeletionSuccess - Deletion successful.
 /// DeletionFailure - Deletion failure.
-enum DevOpsProvisioningState {
+enum DevOpsProvisioningState implements pulumi.PulumiEnum<String> {
   valueSucceeded("Succeeded"),
   valueFailed("Failed"),
   valueCanceled("Canceled"),
@@ -17,6 +19,7 @@ enum DevOpsProvisioningState {
   valueDeletionFailure("DeletionFailure");
 
   const DevOpsProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static DevOpsProvisioningState fromValue(String value) {

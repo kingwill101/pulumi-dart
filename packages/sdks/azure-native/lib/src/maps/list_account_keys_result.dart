@@ -4,13 +4,13 @@
 /// Result data returned by listAccountKeys.
 class ListAccountKeysResult {
   /// The primary key for accessing the Maps REST APIs.
-  final String primaryKey;
+  final String? primaryKey;
   /// The last updated date and time of the primary key.
-  final String primaryKeyLastUpdated;
+  final String? primaryKeyLastUpdated;
   /// The secondary key for accessing the Maps REST APIs.
-  final String secondaryKey;
+  final String? secondaryKey;
   /// The last updated date and time of the secondary key.
-  final String secondaryKeyLastUpdated;
+  final String? secondaryKeyLastUpdated;
 
   /// Creates a new [ListAccountKeysResult].
   /// [primaryKey] The primary key for accessing the Maps REST APIs.
@@ -18,27 +18,27 @@ class ListAccountKeysResult {
   /// [secondaryKey] The secondary key for accessing the Maps REST APIs.
   /// [secondaryKeyLastUpdated] The last updated date and time of the secondary key.
   const ListAccountKeysResult({
-    required this.primaryKey,
-    required this.primaryKeyLastUpdated,
-    required this.secondaryKey,
-    required this.secondaryKeyLastUpdated,
+    this.primaryKey,
+    this.primaryKeyLastUpdated,
+    this.secondaryKey,
+    this.secondaryKeyLastUpdated,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'primaryKey': primaryKey,
-      'primaryKeyLastUpdated': primaryKeyLastUpdated,
-      'secondaryKey': secondaryKey,
-      'secondaryKeyLastUpdated': secondaryKeyLastUpdated,
+      'primaryKey': ?primaryKey,
+      'primaryKeyLastUpdated': ?primaryKeyLastUpdated,
+      'secondaryKey': ?secondaryKey,
+      'secondaryKeyLastUpdated': ?secondaryKeyLastUpdated,
     };
   }
 
   factory ListAccountKeysResult.fromMap(Map<String, dynamic> map) {
     return ListAccountKeysResult(
-      primaryKey: map['primaryKey'] as String,
-      primaryKeyLastUpdated: map['primaryKeyLastUpdated'] as String,
-      secondaryKey: map['secondaryKey'] as String,
-      secondaryKeyLastUpdated: map['secondaryKeyLastUpdated'] as String,
+      primaryKey: (() { final guardedValue = map['primaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      primaryKeyLastUpdated: (() { final guardedValue = map['primaryKeyLastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKey: (() { final guardedValue = map['secondaryKey']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secondaryKeyLastUpdated: (() { final guardedValue = map['secondaryKeyLastUpdated']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Kubernetes reference
 class LocalKubernetesReferenceResponse {
   /// APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
-  final pulumi.Input<String>? apiGroup;
+  final pulumi.Input<String?>? apiGroup;
   /// Kind is the type of resource being referenced
   final pulumi.Input<String> kind;
   /// Name is the name of resource being referenced

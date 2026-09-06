@@ -9,15 +9,15 @@ class GenericProtectionPolicyResponse {
   /// Expected value is 'GenericProtectionPolicy'.
   final pulumi.Input<String> backupManagementType;
   /// Name of this policy's fabric.
-  final pulumi.Input<String>? fabricName;
+  final pulumi.Input<String?>? fabricName;
   /// Number of items associated with this policy.
-  final pulumi.Input<int>? protectedItemsCount;
+  final pulumi.Input<int?>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// List of sub-protection policies which includes schedule and retention
-  final pulumi.Input<List<SubProtectionPolicyResponse>>? subProtectionPolicy;
+  final pulumi.Input<List<SubProtectionPolicyResponse>?>? subProtectionPolicy;
   /// TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  final pulumi.Input<String>? timeZone;
+  final pulumi.Input<String?>? timeZone;
 
   /// Creates a new [GenericProtectionPolicyResponse].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -50,7 +50,7 @@ class GenericProtectionPolicyResponse {
     return GenericProtectionPolicyResponse(
       backupManagementType: pulumi.Input.fromValue(map['backupManagementType'] as String),
       fabricName: (() { final guardedValue = map['fabricName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       subProtectionPolicy: (() { final guardedValue = map['subProtectionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubProtectionPolicyResponse>(guardedValue, (value) => SubProtectionPolicyResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

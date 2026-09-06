@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Onboarding configuration.
 class OnboardingConfigurationResponse {
   /// Azure Arc virtual machine ID.
-  final pulumi.Input<String>? arcVirtualMachineId;
+  final pulumi.Input<String?>? arcVirtualMachineId;
   /// Location of the resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Resource ID.
-  final pulumi.Input<String>? resourceId;
+  final pulumi.Input<String?>? resourceId;
   /// Tenant ID of the resource.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
   /// Type of the onboarding resource to support polymorphic resource.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [OnboardingConfigurationResponse].
   /// [arcVirtualMachineId] Azure Arc virtual machine ID.

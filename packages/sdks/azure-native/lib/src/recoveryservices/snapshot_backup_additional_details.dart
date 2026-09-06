@@ -5,10 +5,10 @@ import 'user_assigned_managed_identity_details.dart';
 
 /// Snapshot Backup related fields for WorkloadType SaPHanaSystem
 class SnapshotBackupAdditionalDetails {
-  final pulumi.Input<String>? instantRPDetails;
-  final pulumi.Input<int>? instantRpRetentionRangeInDays;
+  final pulumi.Input<String?>? instantRPDetails;
+  final pulumi.Input<int?>? instantRpRetentionRangeInDays;
   /// User assigned managed identity details
-  final pulumi.Input<UserAssignedManagedIdentityDetails>? userAssignedManagedIdentityDetails;
+  final pulumi.Input<UserAssignedManagedIdentityDetails?>? userAssignedManagedIdentityDetails;
 
   /// Creates a new [SnapshotBackupAdditionalDetails].
   /// [instantRPDetails] Optional.
@@ -31,7 +31,7 @@ class SnapshotBackupAdditionalDetails {
   factory SnapshotBackupAdditionalDetails.fromMap(Map<String, dynamic> map) {
     return SnapshotBackupAdditionalDetails(
       instantRPDetails: (() { final guardedValue = map['instantRPDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userAssignedManagedIdentityDetails: (() { final guardedValue = map['userAssignedManagedIdentityDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UserAssignedManagedIdentityDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

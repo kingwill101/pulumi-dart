@@ -6,29 +6,29 @@ import 'table_level_sharing_properties_response.dart';
 /// Result data returned by getKustoPoolAttachedDatabaseConfiguration.
 class GetKustoPoolAttachedDatabaseConfigurationResult {
   /// The list of databases from the clusterResourceId which are currently attached to the kusto pool.
-  final List<String> attachedDatabaseNames;
+  final List<String>? attachedDatabaseNames;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The name of the database which you would like to attach, use * if you want to follow all current and future databases.
-  final String databaseName;
+  final String? databaseName;
   /// The default principals modification kind
-  final String defaultPrincipalsModificationKind;
+  final String? defaultPrincipalsModificationKind;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// The resource id of the kusto pool where the databases you would like to attach reside.
-  final String kustoPoolResourceId;
+  final String? kustoPoolResourceId;
   /// Resource location.
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The provisioned state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Table level sharing specifications
   final TableLevelSharingPropertiesResponse? tableLevelSharingProperties;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetKustoPoolAttachedDatabaseConfigurationResult].
   /// [attachedDatabaseNames] The list of databases from the clusterResourceId which are currently attached to the kusto pool.
@@ -44,51 +44,51 @@ class GetKustoPoolAttachedDatabaseConfigurationResult {
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetKustoPoolAttachedDatabaseConfigurationResult({
-    required this.attachedDatabaseNames,
-    required this.azureApiVersion,
-    required this.databaseName,
-    required this.defaultPrincipalsModificationKind,
-    required this.id,
-    required this.kustoPoolResourceId,
+    this.attachedDatabaseNames,
+    this.azureApiVersion,
+    this.databaseName,
+    this.defaultPrincipalsModificationKind,
+    this.id,
+    this.kustoPoolResourceId,
     this.location,
-    required this.name,
-    required this.provisioningState,
-    required this.systemData,
+    this.name,
+    this.provisioningState,
+    this.systemData,
     this.tableLevelSharingProperties,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'attachedDatabaseNames': attachedDatabaseNames,
-      'azureApiVersion': azureApiVersion,
-      'databaseName': databaseName,
-      'defaultPrincipalsModificationKind': defaultPrincipalsModificationKind,
-      'id': id,
-      'kustoPoolResourceId': kustoPoolResourceId,
+      'attachedDatabaseNames': ?attachedDatabaseNames,
+      'azureApiVersion': ?azureApiVersion,
+      'databaseName': ?databaseName,
+      'defaultPrincipalsModificationKind': ?defaultPrincipalsModificationKind,
+      'id': ?id,
+      'kustoPoolResourceId': ?kustoPoolResourceId,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
-      'systemData': systemData.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
+      'systemData': ?systemData?.toMap(),
       'tableLevelSharingProperties': ?tableLevelSharingProperties?.toMap(),
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetKustoPoolAttachedDatabaseConfigurationResult.fromMap(Map<String, dynamic> map) {
     return GetKustoPoolAttachedDatabaseConfigurationResult(
-      attachedDatabaseNames: (map['attachedDatabaseNames'] as List).cast<String>(),
-      azureApiVersion: map['azureApiVersion'] as String,
-      databaseName: map['databaseName'] as String,
-      defaultPrincipalsModificationKind: map['defaultPrincipalsModificationKind'] as String,
-      id: map['id'] as String,
-      kustoPoolResourceId: map['kustoPoolResourceId'] as String,
+      attachedDatabaseNames: (() { final guardedValue = map['attachedDatabaseNames']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      databaseName: (() { final guardedValue = map['databaseName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultPrincipalsModificationKind: (() { final guardedValue = map['defaultPrincipalsModificationKind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kustoPoolResourceId: (() { final guardedValue = map['kustoPoolResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tableLevelSharingProperties: (() { final guardedValue = map['tableLevelSharingProperties']; if (guardedValue == null) return null; return TableLevelSharingPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

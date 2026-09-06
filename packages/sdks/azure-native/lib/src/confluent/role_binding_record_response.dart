@@ -6,17 +6,17 @@ import 'metadata_entity_response.dart';
 /// Details on principal, role name and crn pattern of a role binding
 class RoleBindingRecordResponse {
   /// A CRN that specifies the scope and resource patterns necessary for the role to bind
-  final pulumi.Input<String>? crnPattern;
+  final pulumi.Input<String?>? crnPattern;
   /// Id of the role binding
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The type of the resource.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// Metadata of the record
-  final pulumi.Input<MetadataEntityResponse>? metadata;
+  final pulumi.Input<MetadataEntityResponse?>? metadata;
   /// The principal User or Group to bind the role to
-  final pulumi.Input<String>? principal;
+  final pulumi.Input<String?>? principal;
   /// The name of the role to bind to the principal
-  final pulumi.Input<String>? roleName;
+  final pulumi.Input<String?>? roleName;
 
   /// Creates a new [RoleBindingRecordResponse].
   /// [crnPattern] A CRN that specifies the scope and resource patterns necessary for the role to bind

@@ -5,26 +5,26 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rule of type network.
 class NetworkRuleResponse {
   /// Description of the rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of destination IP addresses or Service Tags.
-  final pulumi.Input<List<String>>? destinationAddresses;
+  final pulumi.Input<List<String>?>? destinationAddresses;
   /// List of destination FQDNs.
-  final pulumi.Input<List<String>>? destinationFqdns;
+  final pulumi.Input<List<String>?>? destinationFqdns;
   /// List of destination IpGroups for this rule.
-  final pulumi.Input<List<String>>? destinationIpGroups;
+  final pulumi.Input<List<String>?>? destinationIpGroups;
   /// List of destination ports.
-  final pulumi.Input<List<String>>? destinationPorts;
+  final pulumi.Input<List<String>?>? destinationPorts;
   /// Array of FirewallPolicyRuleNetworkProtocols.
-  final pulumi.Input<List<String>>? ipProtocols;
+  final pulumi.Input<List<String>?>? ipProtocols;
   /// Name of the rule.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Rule Type.
   /// Expected value is 'NetworkRule'.
   final pulumi.Input<String> ruleType;
   /// List of source IP addresses for this rule.
-  final pulumi.Input<List<String>>? sourceAddresses;
+  final pulumi.Input<List<String>?>? sourceAddresses;
   /// List of source IpGroups for this rule.
-  final pulumi.Input<List<String>>? sourceIpGroups;
+  final pulumi.Input<List<String>?>? sourceIpGroups;
 
   /// Creates a new [NetworkRuleResponse].
   /// [description] Description of the rule.

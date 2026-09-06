@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// specified for managed disk.
 class DiffDiskSettingsResponse {
   /// Specifies the ephemeral disk settings for operating system disk.
-  final pulumi.Input<String>? option;
+  final pulumi.Input<String?>? option;
   /// Specifies the ephemeral disk placement for operating system disk. Possible
   /// values are: **CacheDisk,** **ResourceDisk.** The defaulting behavior is:
   /// **CacheDisk** if one is configured for the VM size otherwise **ResourceDisk**
@@ -15,7 +15,7 @@ class DiffDiskSettingsResponse {
   /// https://learn.microsoft.com/azure/virtual-machines/windows/sizes and Linux VM at
   /// https://learn.microsoft.com/azure/virtual-machines/linux/sizes to check which VM
   /// sizes exposes a cache disk.
-  final pulumi.Input<String>? placement;
+  final pulumi.Input<String?>? placement;
 
   /// Creates a new [DiffDiskSettingsResponse].
   /// [option] Specifies the ephemeral disk settings for operating system disk.

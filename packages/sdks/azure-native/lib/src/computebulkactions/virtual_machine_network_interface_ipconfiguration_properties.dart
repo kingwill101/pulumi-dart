@@ -7,19 +7,19 @@ import 'virtual_machine_public_ipaddress_configuration.dart';
 /// Describes a virtual machine network interface IP configuration properties.
 class VirtualMachineNetworkInterfaceIPConfigurationProperties {
   /// Specifies an array of references to backend address pools of application gateways. A virtual machine can reference backend address pools of multiple application gateways. Multiple virtual machines cannot use the same application gateway.
-  final pulumi.Input<List<SubResource>>? applicationGatewayBackendAddressPools;
+  final pulumi.Input<List<SubResource>?>? applicationGatewayBackendAddressPools;
   /// Specifies an array of references to application security group.
-  final pulumi.Input<List<SubResource>>? applicationSecurityGroups;
+  final pulumi.Input<List<SubResource>?>? applicationSecurityGroups;
   /// Specifies an array of references to backend address pools of load balancers. A virtual machine can reference backend address pools of one public and one internal load balancer. [Multiple virtual machines cannot use the same basic sku load balancer].
-  final pulumi.Input<List<SubResource>>? loadBalancerBackendAddressPools;
+  final pulumi.Input<List<SubResource>?>? loadBalancerBackendAddressPools;
   /// Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
-  final pulumi.Input<String>? privateIPAddressVersion;
+  final pulumi.Input<dynamic>? privateIPAddressVersion;
   /// The publicIPAddressConfiguration.
-  final pulumi.Input<VirtualMachinePublicIPAddressConfiguration>? publicIPAddressConfiguration;
+  final pulumi.Input<VirtualMachinePublicIPAddressConfiguration?>? publicIPAddressConfiguration;
   /// Specifies the identifier of the subnet.
-  final pulumi.Input<SubResource>? subnet;
+  final pulumi.Input<SubResource?>? subnet;
 
   /// Creates a new [VirtualMachineNetworkInterfaceIPConfigurationProperties].
   /// [applicationGatewayBackendAddressPools] Specifies an array of references to backend address pools of application gateways. A virtual machine can reference backend address pools of multiple application gateways. Multiple virtual machines cannot use the same application gateway.
@@ -57,7 +57,7 @@ class VirtualMachineNetworkInterfaceIPConfigurationProperties {
       applicationSecurityGroups: (() { final guardedValue = map['applicationSecurityGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       loadBalancerBackendAddressPools: (() { final guardedValue = map['loadBalancerBackendAddressPools']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<SubResource>(guardedValue, (value) => SubResource.fromMap((value as Map).cast<String, dynamic>()))); })(),
       primary: (() { final guardedValue = map['primary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      privateIPAddressVersion: (() { final guardedValue = map['privateIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      privateIPAddressVersion: (() { final guardedValue = map['privateIPAddressVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       publicIPAddressConfiguration: (() { final guardedValue = map['publicIPAddressConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachinePublicIPAddressConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       subnet: (() { final guardedValue = map['subnet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

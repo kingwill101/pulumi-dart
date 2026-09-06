@@ -13,7 +13,7 @@ class MigrateMISyncCompleteCommandPropertiesResponse {
   /// Array of errors. This is ignored if submitted.
   final pulumi.Input<List<ODataErrorResponse>> errors;
   /// Command input
-  final pulumi.Input<MigrateMISyncCompleteCommandInputResponse>? input;
+  final pulumi.Input<MigrateMISyncCompleteCommandInputResponse?>? input;
   /// Command output. This is ignored if submitted.
   final pulumi.Input<MigrateMISyncCompleteCommandOutputResponse> output;
   /// The state of the command. This is ignored if submitted.

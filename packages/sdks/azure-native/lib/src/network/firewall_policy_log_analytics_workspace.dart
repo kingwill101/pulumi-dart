@@ -6,9 +6,9 @@ import 'sub_resource.dart';
 /// Log Analytics Workspace for Firewall Policy Insights.
 class FirewallPolicyLogAnalyticsWorkspace {
   /// Region to configure the Workspace.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The workspace Id for Firewall Policy Insights.
-  final pulumi.Input<SubResource>? workspaceId;
+  final pulumi.Input<SubResource?>? workspaceId;
 
   /// Creates a new [FirewallPolicyLogAnalyticsWorkspace].
   /// [region] Region to configure the Workspace.

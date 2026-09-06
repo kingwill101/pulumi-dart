@@ -9,9 +9,9 @@ class LegalHoldPropertiesResponse {
   /// The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.
   final pulumi.Input<bool> hasLegalHold;
   /// Protected append blob writes history.
-  final pulumi.Input<ProtectedAppendWritesHistoryResponse>? protectedAppendWritesHistory;
+  final pulumi.Input<ProtectedAppendWritesHistoryResponse?>? protectedAppendWritesHistory;
   /// The list of LegalHold tags of a blob container.
-  final pulumi.Input<List<TagPropertyResponse>>? tags;
+  final pulumi.Input<List<TagPropertyResponse>?>? tags;
 
   /// Creates a new [LegalHoldPropertiesResponse].
   /// [hasLegalHold] The hasLegalHold public property is set to true by SRP if there are at least one existing tag. The hasLegalHold public property is set to false by SRP if all existing legal hold tags are cleared out. There can be a maximum of 1000 blob containers with hasLegalHold=true for a given account.

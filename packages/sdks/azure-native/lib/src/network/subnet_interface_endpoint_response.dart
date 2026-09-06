@@ -16,15 +16,15 @@ import 'sub_resource_response.dart';
 /// Subnet in a virtual network resource.
 class SubnetInterfaceEndpointResponse {
   /// The address prefix for the subnet.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// List of  address prefixes for the subnet.
-  final pulumi.Input<List<String>>? addressPrefixes;
+  final pulumi.Input<List<String>?>? addressPrefixes;
   /// Gets an array of references to the delegations on the subnet.
-  final pulumi.Input<List<DelegationInterfaceEndpointResponse>>? delegations;
+  final pulumi.Input<List<DelegationInterfaceEndpointResponse>?>? delegations;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// An array of references to interface endpoints
   final pulumi.Input<List<InterfaceEndpointResponse>> interfaceEndpoints;
   /// Array of IP configuration profiles which reference this subnet.
@@ -32,25 +32,25 @@ class SubnetInterfaceEndpointResponse {
   /// Gets an array of references to the network interface IP configurations using subnet.
   final pulumi.Input<List<IPConfigurationInterfaceEndpointResponse>> ipConfigurations;
   /// The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Nat gateway associated with this subnet.
-  final pulumi.Input<SubResourceResponse>? natGateway;
+  final pulumi.Input<SubResourceResponse?>? natGateway;
   /// The reference of the NetworkSecurityGroup resource.
-  final pulumi.Input<NetworkSecurityGroupInterfaceEndpointResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupInterfaceEndpointResponse?>? networkSecurityGroup;
   /// The provisioning state of the resource.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// A read-only string identifying the intention of use for this subnet based on delegations and other user-defined properties.
   final pulumi.Input<String> purpose;
   /// Gets an array of references to the external resources using subnet.
-  final pulumi.Input<List<ResourceNavigationLinkInterfaceEndpointResponse>>? resourceNavigationLinks;
+  final pulumi.Input<List<ResourceNavigationLinkInterfaceEndpointResponse>?>? resourceNavigationLinks;
   /// The reference of the RouteTable resource.
-  final pulumi.Input<RouteTableInterfaceEndpointResponse>? routeTable;
+  final pulumi.Input<RouteTableInterfaceEndpointResponse?>? routeTable;
   /// Gets an array of references to services injecting into this subnet.
-  final pulumi.Input<List<ServiceAssociationLinkInterfaceEndpointResponse>>? serviceAssociationLinks;
+  final pulumi.Input<List<ServiceAssociationLinkInterfaceEndpointResponse>?>? serviceAssociationLinks;
   /// An array of service endpoint policies.
-  final pulumi.Input<List<ServiceEndpointPolicyInterfaceEndpointResponse>>? serviceEndpointPolicies;
+  final pulumi.Input<List<ServiceEndpointPolicyInterfaceEndpointResponse>?>? serviceEndpointPolicies;
   /// An array of service endpoints.
-  final pulumi.Input<List<ServiceEndpointPropertiesFormatInterfaceEndpointResponse>>? serviceEndpoints;
+  final pulumi.Input<List<ServiceEndpointPropertiesFormatInterfaceEndpointResponse>?>? serviceEndpoints;
 
   /// Creates a new [SubnetInterfaceEndpointResponse].
   /// [addressPrefix] The address prefix for the subnet.

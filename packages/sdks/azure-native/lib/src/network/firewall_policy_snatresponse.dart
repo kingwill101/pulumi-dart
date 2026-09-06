@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The private IP addresses/IP ranges to which traffic will not be SNAT.
 class FirewallPolicySNATResponse {
   /// The operation mode for automatically learning private ranges to not be SNAT
-  final pulumi.Input<String>? autoLearnPrivateRanges;
+  final pulumi.Input<String?>? autoLearnPrivateRanges;
   /// List of private IP addresses/IP address ranges to not be SNAT.
-  final pulumi.Input<List<String>>? privateRanges;
+  final pulumi.Input<List<String>?>? privateRanges;
 
   /// Creates a new [FirewallPolicySNATResponse].
   /// [autoLearnPrivateRanges] The operation mode for automatically learning private ranges to not be SNAT

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The cluster tier.
-enum Tier {
+enum Tier implements pulumi.PulumiEnum<String> {
   valueStandard("Standard"),
   valuePremium("Premium");
 
   const Tier(this.wireValue);
+  @override
   final String wireValue;
 
   static Tier fromValue(String value) {

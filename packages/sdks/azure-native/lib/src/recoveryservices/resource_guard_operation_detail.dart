@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ResourceGuardOperationDetail {
-  final pulumi.Input<String>? defaultResourceRequest;
-  final pulumi.Input<String>? vaultCriticalOperation;
+  final pulumi.Input<String?>? defaultResourceRequest;
+  final pulumi.Input<String?>? vaultCriticalOperation;
 
   /// Creates a new [ResourceGuardOperationDetail].
   /// [defaultResourceRequest] Optional.

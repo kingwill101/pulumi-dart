@@ -10,9 +10,9 @@ class X12DelimiterOverrides {
   /// The data element separator.
   final pulumi.Input<int> dataElementSeparator;
   /// The message id.
-  final pulumi.Input<String>? messageId;
+  final pulumi.Input<String?>? messageId;
   /// The protocol version.
-  final pulumi.Input<String>? protocolVersion;
+  final pulumi.Input<String?>? protocolVersion;
   /// The replacement character.
   final pulumi.Input<int> replaceCharacter;
   /// The value indicating whether to replace separators in payload.
@@ -22,7 +22,7 @@ class X12DelimiterOverrides {
   /// The segment terminator suffix.
   final pulumi.Input<SegmentTerminatorSuffix> segmentTerminatorSuffix;
   /// The target namespace on which this delimiter settings has to be applied.
-  final pulumi.Input<String>? targetNamespace;
+  final pulumi.Input<String?>? targetNamespace;
 
   /// Creates a new [X12DelimiterOverrides].
   /// [componentSeparator] The component separator.
@@ -62,13 +62,13 @@ class X12DelimiterOverrides {
 
   factory X12DelimiterOverrides.fromMap(Map<String, dynamic> map) {
     return X12DelimiterOverrides(
-      componentSeparator: pulumi.Input.fromValue(map['componentSeparator'] as int),
-      dataElementSeparator: pulumi.Input.fromValue(map['dataElementSeparator'] as int),
+      componentSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['componentSeparator'])),
+      dataElementSeparator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataElementSeparator'])),
       messageId: (() { final guardedValue = map['messageId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolVersion: (() { final guardedValue = map['protocolVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      replaceCharacter: pulumi.Input.fromValue(map['replaceCharacter'] as int),
+      replaceCharacter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replaceCharacter'])),
       replaceSeparatorsInPayload: pulumi.Input.fromValue(map['replaceSeparatorsInPayload'] as bool),
-      segmentTerminator: pulumi.Input.fromValue(map['segmentTerminator'] as int),
+      segmentTerminator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['segmentTerminator'])),
       segmentTerminatorSuffix: pulumi.Input.fromValue(SegmentTerminatorSuffix.fromValue(map['segmentTerminatorSuffix']! as String)),
       targetNamespace: (() { final guardedValue = map['targetNamespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

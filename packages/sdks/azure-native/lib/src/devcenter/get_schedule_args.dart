@@ -16,7 +16,7 @@ class GetScheduleArgs {
   /// The name of the schedule that uniquely identifies it.
   final pulumi.Input<String> scheduleName;
   /// The maximum number of resources to return from the operation. Example: '$top=10'.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [GetScheduleArgs].
   /// [poolName] Name of the pool.
@@ -48,7 +48,7 @@ class GetScheduleArgs {
       projectName: pulumi.Input.fromValue(map['projectName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       scheduleName: pulumi.Input.fromValue(map['scheduleName'] as String),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

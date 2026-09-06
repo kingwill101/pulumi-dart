@@ -6,7 +6,7 @@ import 'system_created_storage_account.dart';
 /// Details of storage account to be used for the Registry
 class StorageAccountDetails {
   /// Details of system created storage account to be used for the registry
-  final pulumi.Input<SystemCreatedStorageAccount>? systemCreatedStorageAccount;
+  final pulumi.Input<SystemCreatedStorageAccount?>? systemCreatedStorageAccount;
 
   /// Creates a new [StorageAccountDetails].
   /// [systemCreatedStorageAccount] Details of system created storage account to be used for the registry

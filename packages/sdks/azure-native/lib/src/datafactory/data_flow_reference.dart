@@ -11,7 +11,7 @@ class DataFlowReference {
   /// Reference data flow name.
   final pulumi.Input<String> referenceName;
   /// Data flow reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [DataFlowReference].
   /// [datasetParameters] Reference data flow parameters from dataset.
@@ -39,7 +39,7 @@ class DataFlowReference {
       datasetParameters: (() { final guardedValue = map['datasetParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

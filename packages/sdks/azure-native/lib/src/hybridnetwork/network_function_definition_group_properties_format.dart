@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Network function definition group properties.
 class NetworkFunctionDefinitionGroupPropertiesFormat {
   /// The network function definition group description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
 
   /// Creates a new [NetworkFunctionDefinitionGroupPropertiesFormat].
   /// [description] The network function definition group description.

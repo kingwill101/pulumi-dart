@@ -7,9 +7,9 @@ import 'instance_view_status_response.dart';
 /// The instance view of a restore point.
 class RestorePointInstanceViewResponse {
   /// The disk restore points information.
-  final pulumi.Input<List<DiskRestorePointInstanceViewResponse>>? diskRestorePoints;
+  final pulumi.Input<List<DiskRestorePointInstanceViewResponse>?>? diskRestorePoints;
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
 
   /// Creates a new [RestorePointInstanceViewResponse].
   /// [diskRestorePoints] The disk restore points information.

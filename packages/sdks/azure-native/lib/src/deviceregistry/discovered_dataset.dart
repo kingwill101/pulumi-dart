@@ -7,13 +7,13 @@ import 'topic.dart';
 /// Defines the dataset properties.
 class DiscoveredDataset {
   /// Array of data points that are part of the dataset. Each data point can have per-data point configuration.
-  final pulumi.Input<List<DiscoveredDataPoint>>? dataPoints;
+  final pulumi.Input<List<DiscoveredDataPoint>?>? dataPoints;
   /// Stringified JSON that contains connector-specific properties that describes configuration for the specific dataset.
-  final pulumi.Input<String>? datasetConfiguration;
+  final pulumi.Input<String?>? datasetConfiguration;
   /// Name of the dataset.
   final pulumi.Input<String> name;
   /// Object that describes the topic information for the specific dataset.
-  final pulumi.Input<Topic>? topic;
+  final pulumi.Input<Topic?>? topic;
 
   /// Creates a new [DiscoveredDataset].
   /// [dataPoints] Array of data points that are part of the dataset. Each data point can have per-data point configuration.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource graph configuration.
 class ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse {
   /// The api version.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Whether it's enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceGraphConfigurationResponse].
   /// [apiVersion] The api version.

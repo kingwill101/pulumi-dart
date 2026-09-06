@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Group of the gallery sharing profile
 class SharingProfileGroupResponse {
   /// A list of subscription/tenant ids the gallery is aimed to be shared to.
-  final pulumi.Input<List<String>>? ids;
+  final pulumi.Input<List<String>?>? ids;
   /// This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [SharingProfileGroupResponse].
   /// [ids] A list of subscription/tenant ids the gallery is aimed to be shared to.

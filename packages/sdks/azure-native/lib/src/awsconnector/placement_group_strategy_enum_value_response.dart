@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of PlacementGroupStrategyEnumValue
 class PlacementGroupStrategyEnumValueResponse {
   /// Property value
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [PlacementGroupStrategyEnumValueResponse].
   /// [value] Property value

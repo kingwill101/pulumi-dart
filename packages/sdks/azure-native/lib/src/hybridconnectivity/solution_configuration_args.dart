@@ -10,9 +10,9 @@ class SolutionConfigurationArgs {
   /// The fully qualified Azure Resource manager identifier of the resource.
   final pulumi.Input<String> resourceUri;
   /// Represent Solution Configuration Resource.
-  final pulumi.Input<String>? solutionConfiguration;
+  final pulumi.Input<String?>? solutionConfiguration;
   /// Solution settings
-  final pulumi.Input<Map<String, String>>? solutionSettings;
+  final pulumi.Input<Map<String, String>?>? solutionSettings;
   /// The type of the solution
   final pulumi.Input<String> solutionType;
 

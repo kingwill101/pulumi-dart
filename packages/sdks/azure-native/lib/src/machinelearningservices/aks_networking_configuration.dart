@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Advance configuration for AKS networking
 class AksNetworkingConfiguration {
   /// An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.
-  final pulumi.Input<String>? dnsServiceIP;
+  final pulumi.Input<String?>? dnsServiceIP;
   /// A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
-  final pulumi.Input<String>? dockerBridgeCidr;
+  final pulumi.Input<String?>? dockerBridgeCidr;
   /// A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
-  final pulumi.Input<String>? serviceCidr;
+  final pulumi.Input<String?>? serviceCidr;
   /// Virtual network subnet resource ID the compute nodes belong to
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [AksNetworkingConfiguration].
   /// [dnsServiceIP] An IP address assigned to the Kubernetes DNS service. It must be within the Kubernetes service address range specified in serviceCidr.

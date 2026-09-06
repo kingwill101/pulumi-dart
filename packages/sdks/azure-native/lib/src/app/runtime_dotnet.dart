@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// .NET app configuration
 class RuntimeDotnet {
   /// Auto configure the ASP.NET Core Data Protection feature
-  final pulumi.Input<bool>? autoConfigureDataProtection;
+  final pulumi.Input<bool?>? autoConfigureDataProtection;
 
   /// Creates a new [RuntimeDotnet].
   /// [autoConfigureDataProtection] Auto configure the ASP.NET Core Data Protection feature

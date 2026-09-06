@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// controller details
 class ControllerDetailsResponse {
   /// controller arm resource id
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ControllerDetailsResponse].
   /// [id] controller arm resource id

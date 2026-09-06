@@ -9,7 +9,7 @@ import 'auto_execute_status.dart';
 /// {@macro pulumi_sql_server_advisor_args_doc}
 class ServerAdvisorArgs {
   /// The name of the Server Advisor.
-  final pulumi.Input<String>? advisorName;
+  final pulumi.Input<String?>? advisorName;
   /// Gets the auto-execute status (whether to let the system execute the recommendations) of this advisor. Possible values are 'Enabled' and 'Disabled'
   final pulumi.Input<AutoExecuteStatus> autoExecuteStatus;
   /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.

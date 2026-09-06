@@ -17,57 +17,57 @@ import 'test.dart';
 /// {@macro pulumi_testbase_draft_package_args_doc}
 class DraftPackageArgs {
   /// The name of the app file.
-  final pulumi.Input<String>? appFileName;
+  final pulumi.Input<String?>? appFileName;
   /// Application name
-  final pulumi.Input<String>? applicationName;
+  final pulumi.Input<String?>? applicationName;
   /// Comments added by user.
-  final pulumi.Input<String>? comments;
+  final pulumi.Input<String?>? comments;
   /// The resource name of the Test Base Draft Package.
-  final pulumi.Input<String>? draftPackageName;
+  final pulumi.Input<String?>? draftPackageName;
   /// Specifies whether this draft package is used to edit a package.
-  final pulumi.Input<bool>? editPackage;
+  final pulumi.Input<bool?>? editPackage;
   /// The executable launch command for script auto-fill. Will be used to run the application.
-  final pulumi.Input<String>? executableLaunchCommand;
+  final pulumi.Input<String?>? executableLaunchCommand;
   /// The list of first party applications to test along with user application.
-  final pulumi.Input<List<FirstPartyAppDefinition>>? firstPartyApps;
+  final pulumi.Input<List<FirstPartyAppDefinition>?>? firstPartyApps;
   /// The flighting ring for feature update.
-  final pulumi.Input<String>? flightingRing;
+  final pulumi.Input<String?>? flightingRing;
   /// The list of gallery apps to test along with user application.
-  final pulumi.Input<List<GalleryAppDefinition>>? galleryApps;
+  final pulumi.Input<List<GalleryAppDefinition>?>? galleryApps;
   /// The highlight files in the package.
-  final pulumi.Input<List<HighlightedFile>>? highlightedFiles;
+  final pulumi.Input<List<HighlightedFile>?>? highlightedFiles;
   /// Specifies the baseline os and target os for inplace upgrade.
-  final pulumi.Input<InplaceUpgradeOSInfo>? inplaceUpgradeOSPair;
+  final pulumi.Input<InplaceUpgradeOSInfo?>? inplaceUpgradeOSPair;
   /// The metadata of Intune enrollment.
-  final pulumi.Input<IntuneEnrollmentMetadata>? intuneEnrollmentMetadata;
+  final pulumi.Input<IntuneEnrollmentMetadata?>? intuneEnrollmentMetadata;
   /// Metadata used to generate draft package folder and scripts.
-  final pulumi.Input<DraftPackageIntuneAppMetadata>? intuneMetadata;
+  final pulumi.Input<DraftPackageIntuneAppMetadata?>? intuneMetadata;
   /// Specifies the package id from which the draft package copied.
-  final pulumi.Input<String>? packageId;
+  final pulumi.Input<String?>? packageId;
   /// Tags of the package to be created.
-  final pulumi.Input<Map<String, String>>? packageTags;
+  final pulumi.Input<Map<String, String>?>? packageTags;
   /// The process name for script auto-fill. Will be used to identify the application process.
-  final pulumi.Input<String>? processName;
+  final pulumi.Input<String?>? processName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The source type.
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<dynamic>? sourceType;
   /// Tab state.
-  final pulumi.Input<TabState>? tabState;
+  final pulumi.Input<TabState?>? tabState;
   /// Specifies the target OSs of specific OS Update types.
-  final pulumi.Input<List<TargetOSInfo>>? targetOSList;
+  final pulumi.Input<List<TargetOSInfo>?>? targetOSList;
   /// The resource name of the Test Base Account.
   final pulumi.Input<String> testBaseAccountName;
   /// OOB, functional or flow driven. Mapped to the data in 'tests' property.
-  final pulumi.Input<List<String>>? testTypes;
+  final pulumi.Input<List<dynamic>?>? testTypes;
   /// The detailed test information.
-  final pulumi.Input<List<Test>>? tests;
+  final pulumi.Input<List<Test>?>? tests;
   /// Indicates whether user choose to enable script auto-fill.
-  final pulumi.Input<bool>? useAutofill;
+  final pulumi.Input<bool?>? useAutofill;
   /// Specifies whether a sample package should be used instead of the one uploaded by the user.
-  final pulumi.Input<bool>? useSample;
+  final pulumi.Input<bool?>? useSample;
   /// Application version
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DraftPackageArgs].
   /// [appFileName] The name of the app file.
@@ -96,12 +96,12 @@ class DraftPackageArgs {
   /// [useAutofill] Indicates whether user choose to enable script auto-fill.
   /// [useSample] Specifies whether a sample package should be used instead of the one uploaded by the user.
   /// [version] Application version
-  const DraftPackageArgs({
+  DraftPackageArgs({
     this.appFileName,
     this.applicationName,
     this.comments,
     this.draftPackageName,
-    this.editPackage,
+    pulumi.Input<bool?>? editPackage,
     this.executableLaunchCommand,
     this.firstPartyApps,
     this.flightingRing,
@@ -114,7 +114,7 @@ class DraftPackageArgs {
     this.packageTags,
     this.processName,
     required this.resourceGroupName,
-    this.sourceType,
+    pulumi.Input<dynamic>? sourceType,
     this.tabState,
     this.targetOSList,
     required this.testBaseAccountName,
@@ -123,7 +123,7 @@ class DraftPackageArgs {
     this.useAutofill,
     this.useSample,
     this.version,
-  });
+  }) : editPackage = editPackage ?? pulumi.Input.fromValue(false), sourceType = sourceType ?? pulumi.Input.fromValue('Native');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -175,11 +175,11 @@ class DraftPackageArgs {
       packageTags: (() { final guardedValue = map['packageTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       processName: (() { final guardedValue = map['processName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tabState: (() { final guardedValue = map['tabState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TabState.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       targetOSList: (() { final guardedValue = map['targetOSList']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TargetOSInfo>(guardedValue, (value) => TargetOSInfo.fromMap((value as Map).cast<String, dynamic>()))); })(),
       testBaseAccountName: pulumi.Input.fromValue(map['testBaseAccountName'] as String),
-      testTypes: (() { final guardedValue = map['testTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
+      testTypes: (() { final guardedValue = map['testTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<dynamic>()); })(),
       tests: (() { final guardedValue = map['tests']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Test>(guardedValue, (value) => Test.fromMap((value as Map).cast<String, dynamic>()))); })(),
       useAutofill: (() { final guardedValue = map['useAutofill']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       useSample: (() { final guardedValue = map['useSample']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

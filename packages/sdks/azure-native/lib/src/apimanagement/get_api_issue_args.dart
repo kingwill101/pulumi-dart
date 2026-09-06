@@ -10,7 +10,7 @@ class GetApiIssueArgs {
   /// API identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> apiId;
   /// Expand the comment attachments.
-  final pulumi.Input<bool>? expandCommentsAttachments;
+  final pulumi.Input<bool?>? expandCommentsAttachments;
   /// Issue identifier. Must be unique in the current API Management service instance.
   final pulumi.Input<String> issueId;
   /// The name of the resource group. The name is case insensitive.

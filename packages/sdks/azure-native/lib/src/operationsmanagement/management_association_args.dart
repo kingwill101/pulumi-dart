@@ -9,11 +9,11 @@ import 'management_association_properties.dart';
 /// {@macro pulumi_operationsmanagement_management_association_args_doc}
 class ManagementAssociationArgs {
   /// Resource location
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// User ManagementAssociation Name.
-  final pulumi.Input<String>? managementAssociationName;
+  final pulumi.Input<String?>? managementAssociationName;
   /// Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
-  final pulumi.Input<ManagementAssociationProperties>? properties;
+  final pulumi.Input<ManagementAssociationProperties?>? properties;
   /// Provider name for the parent resource.
   final pulumi.Input<String> providerName;
   /// The name of the resource group to get. The name is case insensitive.

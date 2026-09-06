@@ -12,17 +12,17 @@ class EnclaveConnectionArgs {
   /// Destination Endpoint Resource Id.
   final pulumi.Input<String> destinationEndpointId;
   /// The name of the Enclave Connection Resource
-  final pulumi.Input<String>? enclaveConnectionName;
+  final pulumi.Input<String?>? enclaveConnectionName;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Source CIDR.
-  final pulumi.Input<String>? sourceCidr;
+  final pulumi.Input<String?>? sourceCidr;
   /// Source Resource Id.
   final pulumi.Input<String> sourceResourceId;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [EnclaveConnectionArgs].
   /// [communityResourceId] Community Resource Id.

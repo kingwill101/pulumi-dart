@@ -7,11 +7,11 @@ import 'sub_resource.dart';
 /// The properties that define a direct peering.
 class PeeringPropertiesDirect {
   /// The set of connections that constitute a direct peering.
-  final pulumi.Input<List<DirectConnection>>? connections;
+  final pulumi.Input<List<DirectConnection>?>? connections;
   /// The type of direct peering.
-  final pulumi.Input<String>? directPeeringType;
+  final pulumi.Input<dynamic>? directPeeringType;
   /// The reference of the peer ASN.
-  final pulumi.Input<SubResource>? peerAsn;
+  final pulumi.Input<SubResource?>? peerAsn;
 
   /// Creates a new [PeeringPropertiesDirect].
   /// [connections] The set of connections that constitute a direct peering.
@@ -34,7 +34,7 @@ class PeeringPropertiesDirect {
   factory PeeringPropertiesDirect.fromMap(Map<String, dynamic> map) {
     return PeeringPropertiesDirect(
       connections: (() { final guardedValue = map['connections']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DirectConnection>(guardedValue, (value) => DirectConnection.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      directPeeringType: (() { final guardedValue = map['directPeeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      directPeeringType: (() { final guardedValue = map['directPeeringType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       peerAsn: (() { final guardedValue = map['peerAsn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SubResource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

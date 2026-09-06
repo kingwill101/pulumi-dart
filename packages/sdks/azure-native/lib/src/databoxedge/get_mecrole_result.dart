@@ -6,26 +6,26 @@ import 'system_data_response.dart';
 /// Result data returned by getMECRole.
 class GetMECRoleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Activation key of the MEC.
   final AsymmetricEncryptedSecretResponse? connectionString;
   /// Controller Endpoint.
   final String? controllerEndpoint;
   /// The path ID that uniquely identifies the object.
-  final String id;
+  final String? id;
   /// Role type.
   /// Expected value is 'MEC'.
-  final String kind;
+  final String? kind;
   /// The object name.
-  final String name;
+  final String? name;
   /// Unique Id of the Resource.
   final String? resourceUniqueId;
   /// Role status.
-  final String roleStatus;
+  final String? roleStatus;
   /// Metadata pertaining to creation and last modification of Role
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The hierarchical type of the object.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetMECRoleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -39,45 +39,45 @@ class GetMECRoleResult {
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
   const GetMECRoleResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.connectionString,
     this.controllerEndpoint,
-    required this.id,
-    required this.kind,
-    required this.name,
+    this.id,
+    this.kind,
+    this.name,
     this.resourceUniqueId,
-    required this.roleStatus,
-    required this.systemData,
-    required this.type,
+    this.roleStatus,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'connectionString': ?connectionString?.toMap(),
       'controllerEndpoint': ?controllerEndpoint,
-      'id': id,
-      'kind': kind,
-      'name': name,
+      'id': ?id,
+      'kind': ?kind,
+      'name': ?name,
       'resourceUniqueId': ?resourceUniqueId,
-      'roleStatus': roleStatus,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'roleStatus': ?roleStatus,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetMECRoleResult.fromMap(Map<String, dynamic> map) {
     return GetMECRoleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       connectionString: (() { final guardedValue = map['connectionString']; if (guardedValue == null) return null; return AsymmetricEncryptedSecretResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       controllerEndpoint: (() { final guardedValue = map['controllerEndpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceUniqueId: (() { final guardedValue = map['resourceUniqueId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      roleStatus: map['roleStatus'] as String,
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      roleStatus: (() { final guardedValue = map['roleStatus']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

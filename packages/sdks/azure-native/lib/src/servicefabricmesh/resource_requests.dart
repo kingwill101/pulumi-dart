@@ -26,8 +26,8 @@ class ResourceRequests {
 
   factory ResourceRequests.fromMap(Map<String, dynamic> map) {
     return ResourceRequests(
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      memoryInGB: pulumi.Input.fromValue(map['memoryInGB'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      memoryInGB: pulumi.Input.fromValue((map['memoryInGB'] as num).toDouble()),
     );
   }
 }

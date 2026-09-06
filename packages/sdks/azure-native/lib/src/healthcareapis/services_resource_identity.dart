@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Setting indicating whether the service has a managed identity associated with it.
 class ServicesResourceIdentity {
   /// Type of identity being specified, currently SystemAssigned and None are allowed.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<dynamic>? type;
 
   /// Creates a new [ServicesResourceIdentity].
   /// [type] Type of identity being specified, currently SystemAssigned and None are allowed.
@@ -21,7 +21,7 @@ class ServicesResourceIdentity {
 
   factory ServicesResourceIdentity.fromMap(Map<String, dynamic> map) {
     return ServicesResourceIdentity(
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

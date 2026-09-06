@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether to use the default server policy.
-enum SecurityAlertPolicyUseServerDefault {
+enum SecurityAlertPolicyUseServerDefault implements pulumi.PulumiEnum<String> {
   valueEnabled("Enabled"),
   valueDisabled("Disabled");
 
   const SecurityAlertPolicyUseServerDefault(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityAlertPolicyUseServerDefault fromValue(String value) {

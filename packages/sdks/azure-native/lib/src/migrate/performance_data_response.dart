@@ -6,14 +6,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class PerformanceDataResponse {
   /// Percentile of the utilization data values to be considered while assessing
   /// machines.
-  final pulumi.Input<String>? percentile;
+  final pulumi.Input<String?>? percentile;
   /// Gets or sets the end time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataEndTime;
+  final pulumi.Input<String?>? perfDataEndTime;
   /// Gets or sets the start time to consider performance data for assessment.
-  final pulumi.Input<String>? perfDataStartTime;
+  final pulumi.Input<String?>? perfDataStartTime;
   /// Time Range for which the historic utilization data should be considered for
   /// assessment.
-  final pulumi.Input<String>? timeRange;
+  final pulumi.Input<String?>? timeRange;
 
   /// Creates a new [PerformanceDataResponse].
   /// [percentile] Percentile of the utilization data values to be considered while assessing

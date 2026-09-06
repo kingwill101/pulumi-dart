@@ -7,9 +7,9 @@ import 'otlp_configuration.dart';
 /// Configuration of Open Telemetry destinations
 class DestinationsConfiguration {
   /// Open telemetry datadog destination configuration
-  final pulumi.Input<DataDogConfiguration>? dataDogConfiguration;
+  final pulumi.Input<DataDogConfiguration?>? dataDogConfiguration;
   /// Open telemetry otlp configurations
-  final pulumi.Input<List<OtlpConfiguration>>? otlpConfigurations;
+  final pulumi.Input<List<OtlpConfiguration>?>? otlpConfigurations;
 
   /// Creates a new [DestinationsConfiguration].
   /// [dataDogConfiguration] Open telemetry datadog destination configuration

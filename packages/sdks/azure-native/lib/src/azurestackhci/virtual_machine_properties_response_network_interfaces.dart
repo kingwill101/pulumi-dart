@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VirtualMachinePropertiesResponseNetworkInterfaces {
   /// ID - Resource Id of the network interface
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [VirtualMachinePropertiesResponseNetworkInterfaces].
   /// [id] ID - Resource Id of the network interface

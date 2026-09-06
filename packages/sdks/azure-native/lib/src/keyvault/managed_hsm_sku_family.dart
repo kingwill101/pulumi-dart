@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// SKU Family of the managed HSM Pool
-enum ManagedHsmSkuFamily {
+enum ManagedHsmSkuFamily implements pulumi.PulumiEnum<String> {
   valueB("B"),
   valueC("C");
 
   const ManagedHsmSkuFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedHsmSkuFamily fromValue(String value) {

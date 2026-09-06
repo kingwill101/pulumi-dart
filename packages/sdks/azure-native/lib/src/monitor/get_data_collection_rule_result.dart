@@ -12,7 +12,7 @@ import 'stream_declaration_response.dart';
 /// Result data returned by getDataCollectionRule.
 class GetDataCollectionRuleResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The resource ID of the data collection endpoint that this rule can be used with.
   final String? dataCollectionEndpointId;
   /// The specification of data flows.
@@ -25,31 +25,31 @@ class GetDataCollectionRuleResult {
   /// The specification of destinations.
   final DataCollectionRuleResponseDestinations? destinations;
   /// Resource entity tag (ETag).
-  final String etag;
+  final String? etag;
   /// Fully qualified ID of the resource.
-  final String id;
+  final String? id;
   /// Managed service identity of the resource.
   final DataCollectionRuleResourceResponseIdentity? identity;
   /// The immutable ID of this data collection rule. This property is READ-ONLY.
-  final String immutableId;
+  final String? immutableId;
   /// The kind of the resource.
   final String? kind;
   /// The geo-location where the resource lives.
-  final String location;
+  final String? location;
   /// Metadata about the resource
-  final DataCollectionRuleResponseMetadata metadata;
+  final DataCollectionRuleResponseMetadata? metadata;
   /// The name of the resource.
-  final String name;
+  final String? name;
   /// The resource provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Declaration of custom streams used in this rule.
   final Map<String, StreamDeclarationResponse>? streamDeclarations;
   /// Metadata pertaining to creation and last modification of the resource.
-  final DataCollectionRuleResourceResponseSystemData systemData;
+  final DataCollectionRuleResourceResponseSystemData? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// The type of the resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetDataCollectionRuleResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -72,72 +72,72 @@ class GetDataCollectionRuleResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource.
   const GetDataCollectionRuleResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.dataCollectionEndpointId,
     this.dataFlows,
     this.dataSources,
     this.description,
     this.destinations,
-    required this.etag,
-    required this.id,
+    this.etag,
+    this.id,
     this.identity,
-    required this.immutableId,
+    this.immutableId,
     this.kind,
-    required this.location,
-    required this.metadata,
-    required this.name,
-    required this.provisioningState,
+    this.location,
+    this.metadata,
+    this.name,
+    this.provisioningState,
     this.streamDeclarations,
-    required this.systemData,
+    this.systemData,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'dataCollectionEndpointId': ?dataCollectionEndpointId,
       'dataFlows': ?(() { final guardedValue = dataFlows; if (guardedValue == null) return null; return pulumi.Input.encodeList<DataFlowResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'dataSources': ?dataSources?.toMap(),
       'description': ?description,
       'destinations': ?destinations?.toMap(),
-      'etag': etag,
-      'id': id,
+      'etag': ?etag,
+      'id': ?id,
       'identity': ?identity?.toMap(),
-      'immutableId': immutableId,
+      'immutableId': ?immutableId,
       'kind': ?kind,
-      'location': location,
-      'metadata': metadata.toMap(),
-      'name': name,
-      'provisioningState': provisioningState,
+      'location': ?location,
+      'metadata': ?metadata?.toMap(),
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'streamDeclarations': ?(() { final guardedValue = streamDeclarations; if (guardedValue == null) return null; return pulumi.Input.encodeMapValues<StreamDeclarationResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetDataCollectionRuleResult.fromMap(Map<String, dynamic> map) {
     return GetDataCollectionRuleResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataCollectionEndpointId: (() { final guardedValue = map['dataCollectionEndpointId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataFlows: (() { final guardedValue = map['dataFlows']; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataFlowResponse>(guardedValue, (value) => DataFlowResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       dataSources: (() { final guardedValue = map['dataSources']; if (guardedValue == null) return null; return DataCollectionRuleResponseDataSources.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return DataCollectionRuleResponseDestinations.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      etag: map['etag'] as String,
-      id: map['id'] as String,
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return DataCollectionRuleResourceResponseIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      immutableId: map['immutableId'] as String,
+      immutableId: (() { final guardedValue = map['immutableId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      metadata: DataCollectionRuleResponseMetadata.fromMap((map['metadata']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return DataCollectionRuleResponseMetadata.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       streamDeclarations: (() { final guardedValue = map['streamDeclarations']; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<StreamDeclarationResponse>(guardedValue, (value) => StreamDeclarationResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: DataCollectionRuleResourceResponseSystemData.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return DataCollectionRuleResourceResponseSystemData.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network protocol this rule applies to.
-enum SecurityConfigurationRuleProtocol {
+enum SecurityConfigurationRuleProtocol implements pulumi.PulumiEnum<String> {
   valueTcp("Tcp"),
   valueUdp("Udp"),
   valueIcmp("Icmp"),
@@ -8,6 +10,7 @@ enum SecurityConfigurationRuleProtocol {
   valueAh("Ah");
 
   const SecurityConfigurationRuleProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityConfigurationRuleProtocol fromValue(String value) {

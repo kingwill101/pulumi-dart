@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The KPI GroupBy field metadata.
 class KpiGroupByMetadataResponse {
   /// The display name.
-  final pulumi.Input<Map<String, String>>? displayName;
+  final pulumi.Input<Map<String, String>?>? displayName;
   /// The name of the field.
-  final pulumi.Input<String>? fieldName;
+  final pulumi.Input<String?>? fieldName;
   /// The type of the field.
-  final pulumi.Input<String>? fieldType;
+  final pulumi.Input<String?>? fieldType;
 
   /// Creates a new [KpiGroupByMetadataResponse].
   /// [displayName] The display name.

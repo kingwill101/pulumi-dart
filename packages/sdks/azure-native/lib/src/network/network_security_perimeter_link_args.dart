@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_network_network_security_perimeter_link_args_doc}
 class NetworkSecurityPerimeterLinkArgs {
   /// Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
-  final pulumi.Input<String>? autoApprovedRemotePerimeterResourceId;
+  final pulumi.Input<String?>? autoApprovedRemotePerimeterResourceId;
   /// A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of the NSP link.
-  final pulumi.Input<String>? linkName;
+  final pulumi.Input<String?>? linkName;
   /// Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles.
-  final pulumi.Input<List<String>>? localInboundProfiles;
+  final pulumi.Input<List<String>?>? localInboundProfiles;
   /// The name of the network security perimeter.
   final pulumi.Input<String> networkSecurityPerimeterName;
   /// Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode.
-  final pulumi.Input<List<String>>? remoteInboundProfiles;
+  final pulumi.Input<List<String>?>? remoteInboundProfiles;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
 

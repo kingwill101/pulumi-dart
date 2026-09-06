@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Stage configuration for Pipeline input stage.
 class PipelineInputResponse {
   /// Description for stage.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Next stage in the pipeline.
   final pulumi.Input<List<String>> next;
   /// ARM resource type.

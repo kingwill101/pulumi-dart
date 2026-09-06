@@ -8,13 +8,13 @@ import 'virtual_machine_instance_properties_storage_profile_os_disk.dart';
 /// StorageProfile - contains information about the disks and storage information for the virtual machine instance
 class VirtualMachineInstancePropertiesStorageProfile {
   /// adds data disks to the virtual machine instance
-  final pulumi.Input<List<VirtualHardDiskArmReference>>? dataDisks;
+  final pulumi.Input<List<VirtualHardDiskArmReference>?>? dataDisks;
   /// Which Image to use for the virtual machine instance
-  final pulumi.Input<ImageArmReference>? imageReference;
+  final pulumi.Input<ImageArmReference?>? imageReference;
   /// VHD to attach as OS disk
-  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfileOsDisk>? osDisk;
+  final pulumi.Input<VirtualMachineInstancePropertiesStorageProfileOsDisk?>? osDisk;
   /// Id of the storage container that hosts the VM configuration file
-  final pulumi.Input<String>? vmConfigStoragePathId;
+  final pulumi.Input<String?>? vmConfigStoragePathId;
 
   /// Creates a new [VirtualMachineInstancePropertiesStorageProfile].
   /// [dataDisks] adds data disks to the virtual machine instance

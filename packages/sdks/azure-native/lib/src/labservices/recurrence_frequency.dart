@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The frequency of the recurrence.
-enum RecurrenceFrequency {
+enum RecurrenceFrequency implements pulumi.PulumiEnum<String> {
   valueDaily("Daily"),
   valueWeekly("Weekly");
 
   const RecurrenceFrequency(this.wireValue);
+  @override
   final String wireValue;
 
   static RecurrenceFrequency fromValue(String value) {

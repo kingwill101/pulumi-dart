@@ -9,7 +9,7 @@ class VaultModelPropertiesResponse {
   /// Gets or sets the service resource Id.
   final pulumi.Input<String> serviceResourceId;
   /// Gets or sets the type of vault.
-  final pulumi.Input<String>? vaultType;
+  final pulumi.Input<String?>? vaultType;
 
   /// Creates a new [VaultModelPropertiesResponse].
   /// [provisioningState] Gets or sets the provisioning state of the vault.

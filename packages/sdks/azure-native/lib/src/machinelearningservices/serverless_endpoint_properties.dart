@@ -6,11 +6,11 @@ import 'model_settings.dart';
 
 class ServerlessEndpointProperties {
   /// [Required] Specifies the authentication mode for the Serverless endpoint.
-  final pulumi.Input<String> authMode;
+  final pulumi.Input<dynamic> authMode;
   /// Specifies the content safety options. If omitted, the default content safety settings will be configured
-  final pulumi.Input<ContentSafety>? contentSafety;
+  final pulumi.Input<ContentSafety?>? contentSafety;
   /// The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-  final pulumi.Input<ModelSettings>? modelSettings;
+  final pulumi.Input<ModelSettings?>? modelSettings;
 
   /// Creates a new [ServerlessEndpointProperties].
   /// [authMode] [Required] Specifies the authentication mode for the Serverless endpoint.
@@ -32,7 +32,7 @@ class ServerlessEndpointProperties {
 
   factory ServerlessEndpointProperties.fromMap(Map<String, dynamic> map) {
     return ServerlessEndpointProperties(
-      authMode: pulumi.Input.fromValue(map['authMode'] as String),
+      authMode: pulumi.Input.fromValue(map['authMode']),
       contentSafety: (() { final guardedValue = map['contentSafety']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ContentSafety.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

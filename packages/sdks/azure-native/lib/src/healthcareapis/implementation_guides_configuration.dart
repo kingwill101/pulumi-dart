@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The settings for Implementation Guides - defining capabilities for national standards, vendor consortiums, clinical societies, etc.
 class ImplementationGuidesConfiguration {
   /// If US Core Missing Data requirement is enabled.
-  final pulumi.Input<bool>? usCoreMissingData;
+  final pulumi.Input<bool?>? usCoreMissingData;
 
   /// Creates a new [ImplementationGuidesConfiguration].
   /// [usCoreMissingData] If US Core Missing Data requirement is enabled.

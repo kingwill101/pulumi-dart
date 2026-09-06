@@ -309,4 +309,20 @@ class ReplicationRecoveryServicesProvider extends pulumi.CustomResource {
     properties = registerOutput<RecoveryServicesProviderPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecoveryServicesProviderPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [ReplicationRecoveryServicesProvider] resource.
+  ReplicationRecoveryServicesProvider.reference(String urn)
+    : super(
+        'azure-native:recoveryservices:ReplicationRecoveryServicesProvider',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<RecoveryServicesProviderPropertiesResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecoveryServicesProviderPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

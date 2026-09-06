@@ -6,9 +6,9 @@ import 'error_response_response.dart';
 /// Sensor integration request model.
 class SensorIntegrationResponse {
   /// Sensor integration enable state.
-  final pulumi.Input<String>? enabled;
+  final pulumi.Input<String?>? enabled;
   /// Common error response for all Azure Resource Manager APIs to return error details for failed operations. (This also follows the OData error response format.).
-  final pulumi.Input<ErrorResponseResponse>? provisioningInfo;
+  final pulumi.Input<ErrorResponseResponse?>? provisioningInfo;
   /// Sensor integration instance provisioning state.
   final pulumi.Input<String> provisioningState;
 

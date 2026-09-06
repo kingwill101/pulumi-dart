@@ -5,15 +5,15 @@ import 'system_data_response.dart';
 /// Result data returned by getWebAppHybridConnectionSlot.
 class GetWebAppHybridConnectionSlotResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The hostname of the endpoint.
   final String? hostname;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// Kind of resource.
   final String? kind;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The port of the endpoint.
   final int? port;
   /// The ARM URI to the Service Bus relay.
@@ -30,9 +30,9 @@ class GetWebAppHybridConnectionSlotResult {
   /// The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   final String? serviceBusSuffix;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetWebAppHybridConnectionSlotResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -50,11 +50,11 @@ class GetWebAppHybridConnectionSlotResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetWebAppHybridConnectionSlotResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.hostname,
-    required this.id,
+    this.id,
     this.kind,
-    required this.name,
+    this.name,
     this.port,
     this.relayArmUri,
     this.relayName,
@@ -62,17 +62,17 @@ class GetWebAppHybridConnectionSlotResult {
     this.sendKeyValue,
     this.serviceBusNamespace,
     this.serviceBusSuffix,
-    required this.systemData,
-    required this.type,
+    this.systemData,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'hostname': ?hostname,
-      'id': id,
+      'id': ?id,
       'kind': ?kind,
-      'name': name,
+      'name': ?name,
       'port': ?port,
       'relayArmUri': ?relayArmUri,
       'relayName': ?relayName,
@@ -80,27 +80,27 @@ class GetWebAppHybridConnectionSlotResult {
       'sendKeyValue': ?sendKeyValue,
       'serviceBusNamespace': ?serviceBusNamespace,
       'serviceBusSuffix': ?serviceBusSuffix,
-      'systemData': systemData.toMap(),
-      'type': type,
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetWebAppHybridConnectionSlotResult.fromMap(Map<String, dynamic> map) {
     return GetWebAppHybridConnectionSlotResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return guardedValue as int; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       relayArmUri: (() { final guardedValue = map['relayArmUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
       relayName: (() { final guardedValue = map['relayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sendKeyName: (() { final guardedValue = map['sendKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sendKeyValue: (() { final guardedValue = map['sendKeyValue']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceBusNamespace: (() { final guardedValue = map['serviceBusNamespace']; if (guardedValue == null) return null; return guardedValue as String; })(),
       serviceBusSuffix: (() { final guardedValue = map['serviceBusSuffix']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

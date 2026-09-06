@@ -8,14 +8,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_eventgrid_client_group_args_doc}
 class ClientGroupArgs {
   /// The client group name.
-  final pulumi.Input<String>? clientGroupName;
+  final pulumi.Input<String?>? clientGroupName;
   /// Description for the Client Group resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of the namespace.
   final pulumi.Input<String> namespaceName;
   /// The grouping query for the clients.
   /// Example : attributes.keyName IN ['a', 'b', 'c'].
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
   /// The name of the resource group within the user's subscription.
   final pulumi.Input<String> resourceGroupName;
 

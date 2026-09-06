@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The encryption-in-transit properties.
 class EncryptionInTransitProperties {
   /// Indicates whether or not inter cluster node communication is encrypted in transit.
-  final pulumi.Input<bool>? isEncryptionInTransitEnabled;
+  final pulumi.Input<bool?>? isEncryptionInTransitEnabled;
 
   /// Creates a new [EncryptionInTransitProperties].
   /// [isEncryptionInTransitEnabled] Indicates whether or not inter cluster node communication is encrypted in transit.
-  const EncryptionInTransitProperties({
-    this.isEncryptionInTransitEnabled,
-  });
+  EncryptionInTransitProperties({
+    pulumi.Input<bool?>? isEncryptionInTransitEnabled,
+  }) : isEncryptionInTransitEnabled = isEncryptionInTransitEnabled ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

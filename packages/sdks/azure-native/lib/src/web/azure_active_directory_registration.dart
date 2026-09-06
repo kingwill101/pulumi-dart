@@ -8,23 +8,23 @@ class AzureActiveDirectoryRegistration {
   /// This setting is required for enabling OpenID Connection authentication with Azure Active Directory or
   /// other 3rd party OpenID Connect providers.
   /// More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// An alternative to the client secret thumbprint, that is the issuer of a certificate used for signing purposes. This property acts as
   /// a replacement for the Client Secret Certificate Thumbprint. It is also optional.
-  final pulumi.Input<String>? clientSecretCertificateIssuer;
+  final pulumi.Input<String?>? clientSecretCertificateIssuer;
   /// An alternative to the client secret thumbprint, that is the subject alternative name of a certificate used for signing purposes. This property acts as
   /// a replacement for the Client Secret Certificate Thumbprint. It is also optional.
-  final pulumi.Input<String>? clientSecretCertificateSubjectAlternativeName;
+  final pulumi.Input<String?>? clientSecretCertificateSubjectAlternativeName;
   /// An alternative to the client secret, that is the thumbprint of a certificate used for signing purposes. This property acts as
   /// a replacement for the Client Secret. It is also optional.
-  final pulumi.Input<String>? clientSecretCertificateThumbprint;
+  final pulumi.Input<String?>? clientSecretCertificateThumbprint;
   /// The app setting name that contains the client secret of the relying party application.
-  final pulumi.Input<String>? clientSecretSettingName;
+  final pulumi.Input<String?>? clientSecretSettingName;
   /// The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.
   /// When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.
   /// This URI is a case-sensitive identifier for the token issuer.
   /// More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
-  final pulumi.Input<String>? openIdIssuer;
+  final pulumi.Input<String?>? openIdIssuer;
 
   /// Creates a new [AzureActiveDirectoryRegistration].
   /// [clientId] The Client ID of this relying party application, known as the client_id.

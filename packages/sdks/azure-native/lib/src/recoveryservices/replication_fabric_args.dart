@@ -9,9 +9,9 @@ import 'fabric_creation_input_properties.dart';
 /// {@macro pulumi_recoveryservices_replication_fabric_args_doc}
 class ReplicationFabricArgs {
   /// Name of the ASR fabric.
-  final pulumi.Input<String>? fabricName;
+  final pulumi.Input<String?>? fabricName;
   /// Fabric creation input.
-  final pulumi.Input<FabricCreationInputProperties>? properties;
+  final pulumi.Input<FabricCreationInputProperties?>? properties;
   /// The name of the resource group where the recovery services vault is present.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the recovery services vault.

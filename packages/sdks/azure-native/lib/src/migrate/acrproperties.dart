@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Class for ACR Properties.
 class ACRProperties {
   /// Gets or sets the azure container registry name.
-  final pulumi.Input<String>? registryName;
+  final pulumi.Input<String?>? registryName;
   /// Gets or sets the resource group of the resource.
-  final pulumi.Input<String>? resourceGroup;
+  final pulumi.Input<String?>? resourceGroup;
   /// Gets or sets the subscription id of the resource.
-  final pulumi.Input<String>? subscriptionId;
+  final pulumi.Input<String?>? subscriptionId;
   /// Gets or sets the tenant id.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [ACRProperties].
   /// [registryName] Gets or sets the azure container registry name.

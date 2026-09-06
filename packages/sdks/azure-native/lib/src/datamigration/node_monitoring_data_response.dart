@@ -61,14 +61,14 @@ class NodeMonitoringDataResponse {
   factory NodeMonitoringDataResponse.fromMap(Map<String, dynamic> map) {
     return NodeMonitoringDataResponse(
       additionalProperties: pulumi.Input.fromValue((map['additionalProperties'] as Map).cast<String, dynamic>()),
-      availableMemoryInMB: pulumi.Input.fromValue(map['availableMemoryInMB'] as int),
-      concurrentJobsLimit: pulumi.Input.fromValue(map['concurrentJobsLimit'] as int),
-      concurrentJobsRunning: pulumi.Input.fromValue(map['concurrentJobsRunning'] as int),
-      cpuUtilization: pulumi.Input.fromValue(map['cpuUtilization'] as int),
-      maxConcurrentJobs: pulumi.Input.fromValue(map['maxConcurrentJobs'] as int),
+      availableMemoryInMB: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availableMemoryInMB'])),
+      concurrentJobsLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrentJobsLimit'])),
+      concurrentJobsRunning: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrentJobsRunning'])),
+      cpuUtilization: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuUtilization'])),
+      maxConcurrentJobs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentJobs'])),
       nodeName: pulumi.Input.fromValue(map['nodeName'] as String),
-      receivedBytes: pulumi.Input.fromValue(map['receivedBytes'] as double),
-      sentBytes: pulumi.Input.fromValue(map['sentBytes'] as double),
+      receivedBytes: pulumi.Input.fromValue((map['receivedBytes'] as num).toDouble()),
+      sentBytes: pulumi.Input.fromValue((map['sentBytes'] as num).toDouble()),
     );
   }
 }

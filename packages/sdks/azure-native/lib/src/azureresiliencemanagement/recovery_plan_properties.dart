@@ -8,7 +8,7 @@ class RecoveryPlanProperties {
   /// A description of the recovery orchestration plan.
   final pulumi.Input<String> planDescription;
   /// The type of the recovery orchestration plan, which can be set during creation but cannot be changed afterward.
-  final pulumi.Input<String> planType;
+  final pulumi.Input<dynamic> planType;
   /// Settings for the recovery orchestration groups associated with the recovery orchestration plan.
   final pulumi.Input<RecoveryGroupsSetting> recoveryGroupsSetting;
 
@@ -33,7 +33,7 @@ class RecoveryPlanProperties {
   factory RecoveryPlanProperties.fromMap(Map<String, dynamic> map) {
     return RecoveryPlanProperties(
       planDescription: pulumi.Input.fromValue(map['planDescription'] as String),
-      planType: pulumi.Input.fromValue(map['planType'] as String),
+      planType: pulumi.Input.fromValue(map['planType']),
       recoveryGroupsSetting: pulumi.Input.fromValue(RecoveryGroupsSetting.fromMap((map['recoveryGroupsSetting']! as Map).cast<String, dynamic>())),
     );
   }

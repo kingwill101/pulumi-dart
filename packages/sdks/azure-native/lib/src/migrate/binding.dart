@@ -7,17 +7,17 @@ import 'port_mapping.dart';
 /// Binding for a web application.
 class Binding {
   /// WebApplication certificate.
-  final pulumi.Input<Cert>? cert;
+  final pulumi.Input<Cert?>? cert;
   /// Gets or sets the binding host name.
-  final pulumi.Input<String>? hostName;
+  final pulumi.Input<String?>? hostName;
   /// Gets or sets the IP Address.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Gets or sets the application port.
-  final pulumi.Input<String>? port;
+  final pulumi.Input<String?>? port;
   /// WebApplication port mapping.
-  final pulumi.Input<PortMapping>? portMapping;
+  final pulumi.Input<PortMapping?>? portMapping;
   /// Gets or sets the protocol.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<String?>? protocol;
 
   /// Creates a new [Binding].
   /// [cert] WebApplication certificate.

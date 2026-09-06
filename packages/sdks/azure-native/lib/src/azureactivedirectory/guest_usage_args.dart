@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_azureactivedirectory_guest_usage_args_doc}
 class GuestUsageArgs {
   /// Location of the Guest Usages resource.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The initial domain name of the Azure AD B2C tenant.
-  final pulumi.Input<String>? resourceName;
+  final pulumi.Input<String?>? resourceName;
   /// Key-value pairs of additional resource provisioning properties.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// An identifier for the tenant for which the resource is being created
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [GuestUsageArgs].
   /// [location] Location of the Guest Usages resource.

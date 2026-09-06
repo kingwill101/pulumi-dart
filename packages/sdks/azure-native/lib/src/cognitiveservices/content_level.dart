@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Level at which content is filtered.
-enum ContentLevel {
+enum ContentLevel implements pulumi.PulumiEnum<String> {
   low("Low"),
   medium("Medium"),
   high("High");
 
   const ContentLevel(this.wireValue);
+  @override
   final String wireValue;
 
   static ContentLevel fromValue(String value) {

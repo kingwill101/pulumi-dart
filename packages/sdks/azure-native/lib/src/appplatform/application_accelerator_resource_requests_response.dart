@@ -31,7 +31,7 @@ class ApplicationAcceleratorResourceRequestsResponse {
   factory ApplicationAcceleratorResourceRequestsResponse.fromMap(Map<String, dynamic> map) {
     return ApplicationAcceleratorResourceRequestsResponse(
       cpu: pulumi.Input.fromValue(map['cpu'] as String),
-      instanceCount: pulumi.Input.fromValue(map['instanceCount'] as int),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       memory: pulumi.Input.fromValue(map['memory'] as String),
     );
   }

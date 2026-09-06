@@ -9,22 +9,22 @@ import 'asymmetric_encrypted_secret.dart';
 /// {@macro pulumi_databoxedge_mecrole_args_doc}
 class MECRoleArgs {
   /// Activation key of the MEC.
-  final pulumi.Input<AsymmetricEncryptedSecret>? connectionString;
+  final pulumi.Input<AsymmetricEncryptedSecret?>? connectionString;
   /// Controller Endpoint.
-  final pulumi.Input<String>? controllerEndpoint;
+  final pulumi.Input<String?>? controllerEndpoint;
   /// The device name.
   final pulumi.Input<String> deviceName;
   /// Role type.
   /// Expected value is 'MEC'.
   final pulumi.Input<String> kind;
   /// The role name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource group name.
   final pulumi.Input<String> resourceGroupName;
   /// Unique Id of the Resource.
-  final pulumi.Input<String>? resourceUniqueId;
+  final pulumi.Input<String?>? resourceUniqueId;
   /// Role status.
-  final pulumi.Input<String> roleStatus;
+  final pulumi.Input<dynamic> roleStatus;
 
   /// Creates a new [MECRoleArgs].
   /// [connectionString] Activation key of the MEC.
@@ -68,7 +68,7 @@ class MECRoleArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       resourceUniqueId: (() { final guardedValue = map['resourceUniqueId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      roleStatus: pulumi.Input.fromValue(map['roleStatus'] as String),
+      roleStatus: pulumi.Input.fromValue(map['roleStatus']),
     );
   }
 }

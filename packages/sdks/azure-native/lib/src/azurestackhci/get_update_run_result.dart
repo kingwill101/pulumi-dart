@@ -7,7 +7,7 @@ import 'system_data_response.dart';
 /// Result data returned by getUpdateRun.
 class GetUpdateRunResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// More detailed description of the step.
   final String? description;
   /// Duration of the update run.
@@ -19,7 +19,7 @@ class GetUpdateRunResult {
   /// Expected execution time of a given step. This is optionally authored in the update action plan and can be empty.
   final String? expectedExecutionTime;
   /// Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-  final String id;
+  final String? id;
   /// Timestamp of the most recently completed step in the update run.
   final String? lastUpdatedTime;
   /// Completion time of this step or the last completed sub-step.
@@ -27,9 +27,9 @@ class GetUpdateRunResult {
   /// The geo-location where the resource lives
   final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Provisioning state of the UpdateRuns proxy resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// When the step started, or empty if it has not started executing.
   final String? startTimeUtc;
   /// State of the update run.
@@ -39,11 +39,11 @@ class GetUpdateRunResult {
   /// Recursive model for child steps of this step.
   final List<StepResponse>? steps;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Timestamp of the update run was started.
   final String? timeStarted;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
 
   /// Creates a new [GetUpdateRunResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -66,72 +66,72 @@ class GetUpdateRunResult {
   /// [timeStarted] Timestamp of the update run was started.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   const GetUpdateRunResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.description,
     this.duration,
     this.endTimeUtc,
     this.errorMessage,
     this.expectedExecutionTime,
-    required this.id,
+    this.id,
     this.lastUpdatedTime,
     this.lastUpdatedTimeUtc,
     this.location,
-    required this.name,
-    required this.provisioningState,
+    this.name,
+    this.provisioningState,
     this.startTimeUtc,
     this.state,
     this.status,
     this.steps,
-    required this.systemData,
+    this.systemData,
     this.timeStarted,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'description': ?description,
       'duration': ?duration,
       'endTimeUtc': ?endTimeUtc,
       'errorMessage': ?errorMessage,
       'expectedExecutionTime': ?expectedExecutionTime,
-      'id': id,
+      'id': ?id,
       'lastUpdatedTime': ?lastUpdatedTime,
       'lastUpdatedTimeUtc': ?lastUpdatedTimeUtc,
       'location': ?location,
-      'name': name,
-      'provisioningState': provisioningState,
+      'name': ?name,
+      'provisioningState': ?provisioningState,
       'startTimeUtc': ?startTimeUtc,
       'state': ?state,
       'status': ?status,
       'steps': ?(() { final guardedValue = steps; if (guardedValue == null) return null; return pulumi.Input.encodeList<StepResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'timeStarted': ?timeStarted,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetUpdateRunResult.fromMap(Map<String, dynamic> map) {
     return GetUpdateRunResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return guardedValue as String; })(),
       endTimeUtc: (() { final guardedValue = map['endTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       errorMessage: (() { final guardedValue = map['errorMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
       expectedExecutionTime: (() { final guardedValue = map['expectedExecutionTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdatedTime: (() { final guardedValue = map['lastUpdatedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastUpdatedTimeUtc: (() { final guardedValue = map['lastUpdatedTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
-      provisioningState: map['provisioningState'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startTimeUtc: (() { final guardedValue = map['startTimeUtc']; if (guardedValue == null) return null; return guardedValue as String; })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
       steps: (() { final guardedValue = map['steps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepResponse>(guardedValue, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       timeStarted: (() { final guardedValue = map['timeStarted']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

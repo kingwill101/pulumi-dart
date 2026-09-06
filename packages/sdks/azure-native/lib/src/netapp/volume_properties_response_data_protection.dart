@@ -9,13 +9,13 @@ import 'volume_snapshot_properties_response.dart';
 /// DataProtection type volumes include an object containing details of the replication
 class VolumePropertiesResponseDataProtection {
   /// Backup Properties
-  final pulumi.Input<VolumeBackupPropertiesResponse>? backup;
+  final pulumi.Input<VolumeBackupPropertiesResponse?>? backup;
   /// Replication properties
-  final pulumi.Input<ReplicationObjectResponse>? replication;
+  final pulumi.Input<ReplicationObjectResponse?>? replication;
   /// Snapshot properties.
-  final pulumi.Input<VolumeSnapshotPropertiesResponse>? snapshot;
+  final pulumi.Input<VolumeSnapshotPropertiesResponse?>? snapshot;
   /// VolumeRelocation properties
-  final pulumi.Input<VolumeRelocationPropertiesResponse>? volumeRelocation;
+  final pulumi.Input<VolumeRelocationPropertiesResponse?>? volumeRelocation;
 
   /// Creates a new [VolumePropertiesResponseDataProtection].
   /// [backup] Backup Properties

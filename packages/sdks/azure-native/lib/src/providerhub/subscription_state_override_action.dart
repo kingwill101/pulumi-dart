@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SubscriptionStateOverrideAction {
   /// The action.
-  final pulumi.Input<String> action;
+  final pulumi.Input<dynamic> action;
   /// The state.
-  final pulumi.Input<String> state;
+  final pulumi.Input<dynamic> state;
 
   /// Creates a new [SubscriptionStateOverrideAction].
   /// [action] The action.
@@ -25,8 +25,8 @@ class SubscriptionStateOverrideAction {
 
   factory SubscriptionStateOverrideAction.fromMap(Map<String, dynamic> map) {
     return SubscriptionStateOverrideAction(
-      action: pulumi.Input.fromValue(map['action'] as String),
-      state: pulumi.Input.fromValue(map['state'] as String),
+      action: pulumi.Input.fromValue(map['action']),
+      state: pulumi.Input.fromValue(map['state']),
     );
   }
 }

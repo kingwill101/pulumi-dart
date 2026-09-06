@@ -5,17 +5,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Default network policy of the namespace, specifying ingress and egress rules.
 class NetworkPoliciesResponse {
   /// Egress policy for the network.
-  final pulumi.Input<String>? egress;
+  final pulumi.Input<String?>? egress;
   /// Ingress policy for the network.
-  final pulumi.Input<String>? ingress;
+  final pulumi.Input<String?>? ingress;
 
   /// Creates a new [NetworkPoliciesResponse].
   /// [egress] Egress policy for the network.
   /// [ingress] Ingress policy for the network.
-  const NetworkPoliciesResponse({
-    this.egress,
-    this.ingress,
-  });
+  NetworkPoliciesResponse({
+    pulumi.Input<String?>? egress,
+    pulumi.Input<String?>? ingress,
+  }) : egress = egress ?? pulumi.Input.fromValue('AllowAll'), ingress = ingress ?? pulumi.Input.fromValue('AllowSameNamespace');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

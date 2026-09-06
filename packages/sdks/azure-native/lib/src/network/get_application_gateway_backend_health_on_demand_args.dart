@@ -12,25 +12,25 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
   /// The name of the application gateway.
   final pulumi.Input<String> applicationGatewayName;
   /// Reference to backend pool of application gateway to which probe request will be sent.
-  final pulumi.Input<SubResource>? backendAddressPool;
+  final pulumi.Input<SubResource?>? backendAddressPool;
   /// Reference to backend http setting of application gateway to be used for test probe.
-  final pulumi.Input<SubResource>? backendHttpSettings;
+  final pulumi.Input<SubResource?>? backendHttpSettings;
   /// Expands BackendAddressPool and BackendHttpSettings referenced in backend health.
-  final pulumi.Input<String>? expand;
+  final pulumi.Input<String?>? expand;
   /// Host name to send the probe to.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Criterion for classifying a healthy probe response.
-  final pulumi.Input<ApplicationGatewayProbeHealthResponseMatch>? match;
+  final pulumi.Input<ApplicationGatewayProbeHealthResponseMatch?>? match;
   /// Relative path of probe. Valid path starts from '/'. Probe is sent to &lt;Protocol&gt;://&lt;host&gt;:&lt;port&gt;&lt;path&gt;.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Whether the host header should be picked from the backend http settings. Default value is false.
-  final pulumi.Input<bool>? pickHostNameFromBackendHttpSettings;
+  final pulumi.Input<bool?>? pickHostNameFromBackendHttpSettings;
   /// The protocol used for the probe.
-  final pulumi.Input<String>? protocol;
+  final pulumi.Input<dynamic>? protocol;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The probe timeout in seconds. Probe marked as failed if valid response is not received with this timeout period. Acceptable values are from 1 second to 86400 seconds.
-  final pulumi.Input<int>? timeout;
+  final pulumi.Input<int?>? timeout;
 
   /// Creates a new [GetApplicationGatewayBackendHealthOnDemandArgs].
   /// [applicationGatewayName] The name of the application gateway.
@@ -84,9 +84,9 @@ class GetApplicationGatewayBackendHealthOnDemandArgs {
       match: (() { final guardedValue = map['match']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ApplicationGatewayProbeHealthResponseMatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pickHostNameFromBackendHttpSettings: (() { final guardedValue = map['pickHostNameFromBackendHttpSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -8,37 +8,37 @@ import 'token_auth_configuration.dart';
 
 class ResourceTypeEndpoint {
   /// Api version.
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// The api versions.
-  final pulumi.Input<List<String>>? apiVersions;
+  final pulumi.Input<List<String>?>? apiVersions;
   /// The data boundary.
-  final pulumi.Input<String>? dataBoundary;
+  final pulumi.Input<dynamic>? dataBoundary;
   /// The dsts configuration.
-  final pulumi.Input<ResourceTypeEndpointDstsConfiguration>? dstsConfiguration;
+  final pulumi.Input<ResourceTypeEndpointDstsConfiguration?>? dstsConfiguration;
   /// Whether the endpoint is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The endpoint type.
-  final pulumi.Input<String>? endpointType;
+  final pulumi.Input<dynamic>? endpointType;
   /// The endpoint uri.
-  final pulumi.Input<String>? endpointUri;
+  final pulumi.Input<String?>? endpointUri;
   /// The extensions.
-  final pulumi.Input<List<ResourceTypeExtension>>? extensions;
+  final pulumi.Input<List<ResourceTypeExtension>?>? extensions;
   /// The features rule.
-  final pulumi.Input<ResourceTypeEndpointFeaturesRule>? featuresRule;
+  final pulumi.Input<ResourceTypeEndpointFeaturesRule?>? featuresRule;
   /// Resource type endpoint kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<dynamic>? kind;
   /// The locations.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
   /// The sku link.
-  final pulumi.Input<String>? skuLink;
+  final pulumi.Input<String?>? skuLink;
   /// The timeout.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
   /// The token auth configuration.
-  final pulumi.Input<TokenAuthConfiguration>? tokenAuthConfiguration;
+  final pulumi.Input<TokenAuthConfiguration?>? tokenAuthConfiguration;
   /// List of zones.
-  final pulumi.Input<List<String>>? zones;
+  final pulumi.Input<List<String>?>? zones;
 
   /// Creates a new [ResourceTypeEndpoint].
   /// [apiVersion] Api version.
@@ -57,7 +57,7 @@ class ResourceTypeEndpoint {
   /// [timeout] The timeout.
   /// [tokenAuthConfiguration] The token auth configuration.
   /// [zones] List of zones.
-  const ResourceTypeEndpoint({
+  ResourceTypeEndpoint({
     this.apiVersion,
     this.apiVersions,
     this.dataBoundary,
@@ -67,14 +67,14 @@ class ResourceTypeEndpoint {
     this.endpointUri,
     this.extensions,
     this.featuresRule,
-    this.kind,
+    pulumi.Input<dynamic>? kind,
     this.locations,
     this.requiredFeatures,
     this.skuLink,
     this.timeout,
     this.tokenAuthConfiguration,
     this.zones,
-  });
+  }) : kind = kind ?? pulumi.Input.fromValue('Managed');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -101,14 +101,14 @@ class ResourceTypeEndpoint {
     return ResourceTypeEndpoint(
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiVersions: (() { final guardedValue = map['apiVersions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      dataBoundary: (() { final guardedValue = map['dataBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      dataBoundary: (() { final guardedValue = map['dataBoundary']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dstsConfiguration: (() { final guardedValue = map['dstsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeEndpointDstsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      endpointType: (() { final guardedValue = map['endpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       endpointUri: (() { final guardedValue = map['endpointUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       extensions: (() { final guardedValue = map['extensions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ResourceTypeExtension>(guardedValue, (value) => ResourceTypeExtension.fromMap((value as Map).cast<String, dynamic>()))); })(),
       featuresRule: (() { final guardedValue = map['featuresRule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ResourceTypeEndpointFeaturesRule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       requiredFeatures: (() { final guardedValue = map['requiredFeatures']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       skuLink: (() { final guardedValue = map['skuLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

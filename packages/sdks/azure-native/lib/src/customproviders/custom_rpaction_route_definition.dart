@@ -9,7 +9,7 @@ class CustomRPActionRouteDefinition {
   /// The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
   final pulumi.Input<String> name;
   /// The routing types that are supported for action requests.
-  final pulumi.Input<String>? routingType;
+  final pulumi.Input<dynamic>? routingType;
 
   /// Creates a new [CustomRPActionRouteDefinition].
   /// [endpoint] The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
@@ -33,7 +33,7 @@ class CustomRPActionRouteDefinition {
     return CustomRPActionRouteDefinition(
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      routingType: (() { final guardedValue = map['routingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      routingType: (() { final guardedValue = map['routingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

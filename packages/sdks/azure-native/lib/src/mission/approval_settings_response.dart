@@ -6,35 +6,35 @@ import 'mandatory_approver_response.dart';
 /// ApprovalSettings Properties
 class ApprovalSettingsResponse {
   /// Approval required for enclave connection creation (Required or NotRequired).
-  final pulumi.Input<String>? connectionCreation;
+  final pulumi.Input<String?>? connectionCreation;
   /// Approval required for enclave connection deletion (Required or NotRequired).
-  final pulumi.Input<String>? connectionDeletion;
+  final pulumi.Input<String?>? connectionDeletion;
   /// Approval required for enclave connection update (Required or NotRequired).
-  final pulumi.Input<String>? connectionUpdate;
+  final pulumi.Input<String?>? connectionUpdate;
   /// Approval required for virtual enclave creation (Required or NotRequired).
-  final pulumi.Input<String>? enclaveCreation;
+  final pulumi.Input<String?>? enclaveCreation;
   /// Approval required for virtual enclave deletion (Required or NotRequired).
-  final pulumi.Input<String>? enclaveDeletion;
+  final pulumi.Input<String?>? enclaveDeletion;
   /// Approval required for endpoint creation (Required or NotRequired).
-  final pulumi.Input<String>? endpointCreation;
+  final pulumi.Input<String?>? endpointCreation;
   /// Approval required for endpoint deletion (Required or NotRequired).
-  final pulumi.Input<String>? endpointDeletion;
+  final pulumi.Input<String?>? endpointDeletion;
   /// Approval required for endpoint update (Required or NotRequired).
-  final pulumi.Input<String>? endpointUpdate;
+  final pulumi.Input<String?>? endpointUpdate;
   /// Approval required for toggling maintenance mode (Required or NotRequired).
-  final pulumi.Input<String>? maintenanceMode;
+  final pulumi.Input<String?>? maintenanceMode;
   /// List of mandatory approvers for the approval request
-  final pulumi.Input<List<MandatoryApproverResponse>>? mandatoryApprovers;
+  final pulumi.Input<List<MandatoryApproverResponse>?>? mandatoryApprovers;
   /// Minimum number of approvers required for the approval request
-  final pulumi.Input<double>? minimumApproversRequired;
+  final pulumi.Input<double?>? minimumApproversRequired;
   /// Notification will be sent on any action taken (Approve/Reject) on an Approval Request
-  final pulumi.Input<String>? notificationOnApprovalAction;
+  final pulumi.Input<String?>? notificationOnApprovalAction;
   /// Notification will be sent on creation of an Approval Request
-  final pulumi.Input<String>? notificationOnApprovalCreation;
+  final pulumi.Input<String?>? notificationOnApprovalCreation;
   /// Notification will be sent on deletion of an Approval Request
-  final pulumi.Input<String>? notificationOnApprovalDeletion;
+  final pulumi.Input<String?>? notificationOnApprovalDeletion;
   /// Approval required for deploying service catalog templates (Required or NotRequired).
-  final pulumi.Input<String>? serviceCatalogDeployment;
+  final pulumi.Input<String?>? serviceCatalogDeployment;
 
   /// Creates a new [ApprovalSettingsResponse].
   /// [connectionCreation] Approval required for enclave connection creation (Required or NotRequired).
@@ -102,7 +102,7 @@ class ApprovalSettingsResponse {
       endpointUpdate: (() { final guardedValue = map['endpointUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceMode: (() { final guardedValue = map['maintenanceMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mandatoryApprovers: (() { final guardedValue = map['mandatoryApprovers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MandatoryApproverResponse>(guardedValue, (value) => MandatoryApproverResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      minimumApproversRequired: (() { final guardedValue = map['minimumApproversRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      minimumApproversRequired: (() { final guardedValue = map['minimumApproversRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       notificationOnApprovalAction: (() { final guardedValue = map['notificationOnApprovalAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationOnApprovalCreation: (() { final guardedValue = map['notificationOnApprovalCreation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationOnApprovalDeletion: (() { final guardedValue = map['notificationOnApprovalDeletion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

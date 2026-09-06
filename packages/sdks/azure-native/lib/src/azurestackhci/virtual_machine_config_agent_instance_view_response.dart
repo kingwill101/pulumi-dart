@@ -6,9 +6,9 @@ import 'instance_view_status_response.dart';
 /// The instance view of the VM Config Agent running on the virtual machine.
 class VirtualMachineConfigAgentInstanceViewResponse {
   /// The resource status information.
-  final pulumi.Input<List<InstanceViewStatusResponse>>? statuses;
+  final pulumi.Input<List<InstanceViewStatusResponse>?>? statuses;
   /// The VM Config Agent full version.
-  final pulumi.Input<String>? vmConfigAgentVersion;
+  final pulumi.Input<String?>? vmConfigAgentVersion;
 
   /// Creates a new [VirtualMachineConfigAgentInstanceViewResponse].
   /// [statuses] The resource status information.

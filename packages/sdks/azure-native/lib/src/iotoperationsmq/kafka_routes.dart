@@ -7,9 +7,9 @@ import 'mqtt_to_kafka_routes.dart';
 /// Kafka Routes properties. NOTE - Enum only one method is allowed to be passed.
 class KafkaRoutes {
   /// Kafka to Mqtt route.
-  final pulumi.Input<KafkaToMqttRoutes>? kafkaToMqtt;
+  final pulumi.Input<KafkaToMqttRoutes?>? kafkaToMqtt;
   /// Mqtt to Kafka route.
-  final pulumi.Input<MqttToKafkaRoutes>? mqttToKafka;
+  final pulumi.Input<MqttToKafkaRoutes?>? mqttToKafka;
 
   /// Creates a new [KafkaRoutes].
   /// [kafkaToMqtt] Kafka to Mqtt route.

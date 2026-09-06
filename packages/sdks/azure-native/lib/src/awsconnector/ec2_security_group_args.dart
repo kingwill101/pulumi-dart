@@ -9,15 +9,15 @@ import 'ec2_security_group_properties.dart';
 /// {@macro pulumi_awsconnector_ec2_security_group_args_doc}
 class Ec2SecurityGroupArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of Ec2SecurityGroup
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<Ec2SecurityGroupProperties>? properties;
+  final pulumi.Input<Ec2SecurityGroupProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [Ec2SecurityGroupArgs].
   /// [location] The geo-location where the resource lives

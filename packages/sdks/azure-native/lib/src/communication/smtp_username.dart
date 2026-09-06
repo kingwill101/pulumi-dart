@@ -4,9 +4,9 @@ import 'system_data_response.dart';
 
 /// The object describing the smtp username resource.
 ///
-/// Uses Azure REST API version 2024-09-01-preview.
+/// Uses Azure REST API version 2026-03-18.
 ///
-/// Other available API versions: 2025-05-01-preview, 2025-09-01, 2026-03-18. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-09-01-preview, 2025-05-01-preview, 2025-09-01. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native communication [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 ///
 /// {{% examples %}}
 /// ## Example Usage
@@ -200,6 +200,24 @@ class SmtpUsername extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    entraApplicationId = registerOutput<String>('entraApplicationId');
+    this.name = registerOutput<String>('name');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+    type = registerOutput<String>('type');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [SmtpUsername] resource.
+  SmtpUsername.reference(String urn)
+    : super(
+        'azure-native:communication:SmtpUsername',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     entraApplicationId = registerOutput<String>('entraApplicationId');
     this.name = registerOutput<String>('name');

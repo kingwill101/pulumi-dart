@@ -9,15 +9,15 @@ import 'sku.dart';
 /// {@macro pulumi_devcenter_plan_args_doc}
 class PlanArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the devcenter plan.
-  final pulumi.Input<String>? planName;
+  final pulumi.Input<String?>? planName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The SKU for DevCenters created using this definition.
-  final pulumi.Input<Sku>? sku;
+  final pulumi.Input<Sku?>? sku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PlanArgs].
   /// [location] The geo-location where the resource lives

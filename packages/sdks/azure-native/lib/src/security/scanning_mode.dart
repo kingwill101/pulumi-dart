@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The scanning mode for the VM scan.
-enum ScanningMode {
+enum ScanningMode implements pulumi.PulumiEnum<String> {
   default_("Default");
 
   const ScanningMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ScanningMode fromValue(String value) {

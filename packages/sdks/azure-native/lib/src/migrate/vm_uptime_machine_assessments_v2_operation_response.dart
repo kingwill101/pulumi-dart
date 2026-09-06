@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Details on the total up-time for the VM.
 class VmUptimeMachineAssessmentsV2OperationResponse {
   /// Number of days in a month for VM uptime.
-  final pulumi.Input<int>? daysPerMonth;
+  final pulumi.Input<int?>? daysPerMonth;
   /// Number of hours per day for VM uptime.
-  final pulumi.Input<int>? hoursPerDay;
+  final pulumi.Input<int?>? hoursPerDay;
 
   /// Creates a new [VmUptimeMachineAssessmentsV2OperationResponse].
   /// [daysPerMonth] Number of days in a month for VM uptime.
@@ -26,8 +26,8 @@ class VmUptimeMachineAssessmentsV2OperationResponse {
 
   factory VmUptimeMachineAssessmentsV2OperationResponse.fromMap(Map<String, dynamic> map) {
     return VmUptimeMachineAssessmentsV2OperationResponse(
-      daysPerMonth: (() { final guardedValue = map['daysPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      hoursPerDay: (() { final guardedValue = map['hoursPerDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      daysPerMonth: (() { final guardedValue = map['daysPerMonth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      hoursPerDay: (() { final guardedValue = map['hoursPerDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

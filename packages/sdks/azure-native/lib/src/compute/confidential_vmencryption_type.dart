@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// confidential VM encryption types
-enum ConfidentialVMEncryptionType {
+enum ConfidentialVMEncryptionType implements pulumi.PulumiEnum<String> {
   encryptedVMGuestStateOnlyWithPmk("EncryptedVMGuestStateOnlyWithPmk"),
   encryptedWithPmk("EncryptedWithPmk"),
   encryptedWithCmk("EncryptedWithCmk"),
   nonPersistedTPM("NonPersistedTPM");
 
   const ConfidentialVMEncryptionType(this.wireValue);
+  @override
   final String wireValue;
 
   static ConfidentialVMEncryptionType fromValue(String value) {

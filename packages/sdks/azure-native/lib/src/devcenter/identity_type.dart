@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Values can be systemAssignedIdentity or userAssignedIdentity
-enum IdentityType {
+enum IdentityType implements pulumi.PulumiEnum<String> {
   valueSystemAssignedIdentity("systemAssignedIdentity"),
   valueUserAssignedIdentity("userAssignedIdentity"),
   valueDelegatedResourceIdentity("delegatedResourceIdentity");
 
   const IdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static IdentityType fromValue(String value) {

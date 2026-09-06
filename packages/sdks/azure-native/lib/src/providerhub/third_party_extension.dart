@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ThirdPartyExtension {
   /// Name of third party extension.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ThirdPartyExtension].
   /// [name] Name of third party extension.

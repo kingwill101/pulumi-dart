@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'event_response.dart';
 import 'notification_channel_args.dart';
 import 'system_data_response.dart';
 
@@ -212,7 +213,7 @@ class NotificationChannel extends pulumi.CustomResource {
   /// The email recipient to send notifications to (can be a list of semi-colon separated email addresses).
   late final pulumi.Output<String?> emailRecipient;
   /// The list of event for which this notification is enabled.
-  late final pulumi.Output<List<Map<String, dynamic>>?> events;
+  late final pulumi.Output<List<EventResponse>?> events;
   /// The geo-location where the resource lives
   late final pulumi.Output<String?> location;
   /// The name of the resource
@@ -250,13 +251,38 @@ class NotificationChannel extends pulumi.CustomResource {
     createdDate = registerOutput<String>('createdDate');
     description = registerOutput<String?>('description');
     emailRecipient = registerOutput<String?>('emailRecipient');
-    events = registerOutput<List<Map<String, dynamic>>?>('events');
+    events = registerOutput<List<EventResponse>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String?>('location');
     this.name = registerOutput<String>('name');
     notificationLocale = registerOutput<String?>('notificationLocale');
     provisioningState = registerOutput<String>('provisioningState');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
+    webHookUrl = registerOutput<String?>('webHookUrl');
+  }
+
+  /// Creates a typed reference to an existing [NotificationChannel] resource.
+  NotificationChannel.reference(String urn)
+    : super(
+        'azure-native:devtestlab:NotificationChannel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    createdDate = registerOutput<String>('createdDate');
+    description = registerOutput<String?>('description');
+    emailRecipient = registerOutput<String?>('emailRecipient');
+    events = registerOutput<List<EventResponse>?>('events', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventResponse>(guardedValue, (value) => EventResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    notificationLocale = registerOutput<String?>('notificationLocale');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     uniqueIdentifier = registerOutput<String>('uniqueIdentifier');
     webHookUrl = registerOutput<String?>('webHookUrl');

@@ -32,6 +32,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Get the non-security related metadata of an IoT hub.
 ///
 /// Uses Azure REST API version 2023-06-30.
@@ -50,6 +61,17 @@ Future<GetIotHubResourceResult> getIotHubResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetIotHubResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetIotHubResourceResult> getIotHubResourceOutput(
+  GetIotHubResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:getIotHubResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotHubResourceResult.fromMap);
 }
 
 /// Get a consumer group from the Event Hub-compatible device-to-cloud endpoint for an IoT hub.
@@ -72,6 +94,17 @@ Future<GetIotHubResourceEventHubConsumerGroupResult> getIotHubResourceEventHubCo
   return GetIotHubResourceEventHubConsumerGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetIotHubResourceEventHubConsumerGroupResult> getIotHubResourceEventHubConsumerGroupOutput(
+  GetIotHubResourceEventHubConsumerGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:getIotHubResourceEventHubConsumerGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetIotHubResourceEventHubConsumerGroupResult.fromMap);
+}
+
 /// Get private endpoint connection properties
 ///
 /// Uses Azure REST API version 2023-06-30.
@@ -90,6 +123,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Get the security metadata for an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
@@ -112,6 +156,17 @@ Future<ListIotHubResourceKeysResult> listIotHubResourceKeys(
   return ListIotHubResourceKeysResult.fromMap(result);
 }
 
+pulumi.Output<ListIotHubResourceKeysResult> listIotHubResourceKeysOutput(
+  ListIotHubResourceKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:listIotHubResourceKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIotHubResourceKeysResult.fromMap);
+}
+
 /// Get a shared access policy by name from an IoT hub. For more information, see: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security.
 ///
 /// Uses Azure REST API version 2023-06-30.
@@ -130,4 +185,15 @@ Future<ListIotHubResourceKeysForKeyNameResult> listIotHubResourceKeysForKeyName(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListIotHubResourceKeysForKeyNameResult.fromMap(result);
+}
+
+pulumi.Output<ListIotHubResourceKeysForKeyNameResult> listIotHubResourceKeysForKeyNameOutput(
+  ListIotHubResourceKeysForKeyNameArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:iothub:listIotHubResourceKeysForKeyName',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListIotHubResourceKeysForKeyNameResult.fromMap);
 }

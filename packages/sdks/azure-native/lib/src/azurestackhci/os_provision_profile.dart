@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Operating system profile.
 class OsProvisionProfile {
   /// GPG Public Key used for package verification
-  final pulumi.Input<String>? gpgPubKey;
+  final pulumi.Input<String?>? gpgPubKey;
   /// Hash of the OS package downloaded
-  final pulumi.Input<String>? imageHash;
+  final pulumi.Input<String?>? imageHash;
   /// Operation sub type of OS Provisioning
-  final pulumi.Input<String>? operationType;
+  final pulumi.Input<dynamic>? operationType;
   /// Location of the operating system image.
-  final pulumi.Input<String>? osImageLocation;
+  final pulumi.Input<String?>? osImageLocation;
   /// Name of the operating system.
-  final pulumi.Input<String>? osName;
+  final pulumi.Input<String?>? osName;
   /// Type of the operating system.
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<String?>? osType;
   /// Version of the operating system.
-  final pulumi.Input<String>? osVersion;
+  final pulumi.Input<String?>? osVersion;
   /// Validated Solution Recipe version to be used for the job
-  final pulumi.Input<String>? vsrVersion;
+  final pulumi.Input<String?>? vsrVersion;
 
   /// Creates a new [OsProvisionProfile].
   /// [gpgPubKey] GPG Public Key used for package verification
@@ -30,16 +30,16 @@ class OsProvisionProfile {
   /// [osType] Type of the operating system.
   /// [osVersion] Version of the operating system.
   /// [vsrVersion] Validated Solution Recipe version to be used for the job
-  const OsProvisionProfile({
+  OsProvisionProfile({
     this.gpgPubKey,
     this.imageHash,
-    this.operationType,
+    pulumi.Input<dynamic>? operationType,
     this.osImageLocation,
     this.osName,
     this.osType,
     this.osVersion,
     this.vsrVersion,
-  });
+  }) : operationType = operationType ?? pulumi.Input.fromValue('Provision');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -58,7 +58,7 @@ class OsProvisionProfile {
     return OsProvisionProfile(
       gpgPubKey: (() { final guardedValue = map['gpgPubKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       imageHash: (() { final guardedValue = map['imageHash']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      operationType: (() { final guardedValue = map['operationType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       osImageLocation: (() { final guardedValue = map['osImageLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osName: (() { final guardedValue = map['osName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

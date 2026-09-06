@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum PlatformValues {
+enum PlatformValues implements pulumi.PulumiEnum<String> {
   windows("Windows");
 
   const PlatformValues(this.wireValue);
+  @override
   final String wireValue;
 
   static PlatformValues fromValue(String value) {

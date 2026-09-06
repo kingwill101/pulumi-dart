@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the resource.
-enum ManagedCassandraResourceIdentityType {
+enum ManagedCassandraResourceIdentityType implements pulumi.PulumiEnum<String> {
   systemAssigned("SystemAssigned"),
   none("None");
 
   const ManagedCassandraResourceIdentityType(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedCassandraResourceIdentityType fromValue(String value) {

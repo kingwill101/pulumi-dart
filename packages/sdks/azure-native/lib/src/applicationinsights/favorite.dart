@@ -253,7 +253,30 @@ class Favorite extends pulumi.CustomResource {
     isGeneratedFromTemplate = registerOutput<bool?>('isGeneratedFromTemplate');
     this.name = registerOutput<String?>('name');
     sourceType = registerOutput<String?>('sourceType');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeModified = registerOutput<String>('timeModified');
+    userId = registerOutput<String>('userId');
+    version = registerOutput<String?>('version');
+  }
+
+  /// Creates a typed reference to an existing [Favorite] resource.
+  Favorite.reference(String urn)
+    : super(
+        'azure-native:applicationinsights:Favorite',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    category = registerOutput<String?>('category');
+    config = registerOutput<String?>('config');
+    favoriteId = registerOutput<String>('favoriteId');
+    favoriteType = registerOutput<String?>('favoriteType');
+    isGeneratedFromTemplate = registerOutput<bool?>('isGeneratedFromTemplate');
+    this.name = registerOutput<String?>('name');
+    sourceType = registerOutput<String?>('sourceType');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeModified = registerOutput<String>('timeModified');
     userId = registerOutput<String>('userId');
     version = registerOutput<String?>('version');

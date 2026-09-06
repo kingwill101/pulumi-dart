@@ -6,7 +6,7 @@ import 'customer_managed_key_details_response.dart';
 /// Details of the encryption associated with the workspace
 class EncryptionDetailsResponse {
   /// Customer Managed Key Details
-  final pulumi.Input<CustomerManagedKeyDetailsResponse>? cmk;
+  final pulumi.Input<CustomerManagedKeyDetailsResponse?>? cmk;
   /// Double Encryption enabled
   final pulumi.Input<bool> doubleEncryptionEnabled;
 

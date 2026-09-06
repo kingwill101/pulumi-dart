@@ -6,25 +6,25 @@ import 'storage_qo_spolicy_details.dart';
 /// Virtual disk model
 class VirtualDisk {
   /// Gets or sets the disk bus.
-  final pulumi.Input<int>? bus;
+  final pulumi.Input<int?>? bus;
   /// Gets or sets the disk bus type.
-  final pulumi.Input<String>? busType;
+  final pulumi.Input<String?>? busType;
   /// Gets or sets a value indicating diff disk.
-  final pulumi.Input<String>? createDiffDisk;
+  final pulumi.Input<dynamic>? createDiffDisk;
   /// Gets or sets the disk id.
-  final pulumi.Input<String>? diskId;
+  final pulumi.Input<String?>? diskId;
   /// Gets or sets the disk total size.
-  final pulumi.Input<int>? diskSizeGB;
+  final pulumi.Input<int?>? diskSizeGB;
   /// Gets or sets the disk lun.
-  final pulumi.Input<int>? lun;
+  final pulumi.Input<int?>? lun;
   /// Gets or sets the name of the disk.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The QoS policy for the disk.
-  final pulumi.Input<StorageQoSPolicyDetails>? storageQoSPolicy;
+  final pulumi.Input<StorageQoSPolicyDetails?>? storageQoSPolicy;
   /// Gets or sets the disk id in the template.
-  final pulumi.Input<String>? templateDiskId;
+  final pulumi.Input<String?>? templateDiskId;
   /// Gets or sets the disk vhd type.
-  final pulumi.Input<String>? vhdType;
+  final pulumi.Input<String?>? vhdType;
 
   /// Creates a new [VirtualDisk].
   /// [bus] Gets or sets the disk bus.
@@ -67,12 +67,12 @@ class VirtualDisk {
 
   factory VirtualDisk.fromMap(Map<String, dynamic> map) {
     return VirtualDisk(
-      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bus: (() { final guardedValue = map['bus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       busType: (() { final guardedValue = map['busType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      createDiffDisk: (() { final guardedValue = map['createDiffDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      createDiffDisk: (() { final guardedValue = map['createDiffDisk']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       diskId: (() { final guardedValue = map['diskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      diskSizeGB: (() { final guardedValue = map['diskSizeGB']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      lun: (() { final guardedValue = map['lun']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageQoSPolicy: (() { final guardedValue = map['storageQoSPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(StorageQoSPolicyDetails.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       templateDiskId: (() { final guardedValue = map['templateDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

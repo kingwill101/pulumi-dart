@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The recipient type.
-enum RecipientType {
+enum RecipientType implements pulumi.PulumiEnum<String> {
   requestor("Requestor"),
   approver("Approver"),
   admin("Admin");
 
   const RecipientType(this.wireValue);
+  @override
   final String wireValue;
 
   static RecipientType fromValue(String value) {

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed application management policy.
 class ApplicationManagementPolicy {
   /// The managed application management mode.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<dynamic>? mode;
 
   /// Creates a new [ApplicationManagementPolicy].
   /// [mode] The managed application management mode.
@@ -21,7 +21,7 @@ class ApplicationManagementPolicy {
 
   factory ApplicationManagementPolicy.fromMap(Map<String, dynamic> map) {
     return ApplicationManagementPolicy(
-      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mode: (() { final guardedValue = map['mode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

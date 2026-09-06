@@ -6,9 +6,9 @@ import 'flow_response.dart';
 /// A connection resource id in addition to all child flow resources under this connection.
 class ListFlowsByPipelineConnectionResponse {
   /// List of flows associated with the connection.
-  final pulumi.Input<List<FlowResponse>>? flows;
+  final pulumi.Input<List<FlowResponse>?>? flows;
   /// ID of the connection.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [ListFlowsByPipelineConnectionResponse].
   /// [flows] List of flows associated with the connection.

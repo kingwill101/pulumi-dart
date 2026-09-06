@@ -1,7 +1,6 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'long_term_retention_policy.dart';
 
 /// Azure SQL workload-specific backup policy.
 class AzureSqlProtectionPolicy {
@@ -9,11 +8,11 @@ class AzureSqlProtectionPolicy {
   /// Expected value is 'AzureSql'.
   final pulumi.Input<String> backupManagementType;
   /// Number of items associated with this policy.
-  final pulumi.Input<int>? protectedItemsCount;
+  final pulumi.Input<int?>? protectedItemsCount;
   /// ResourceGuard Operation Requests
-  final pulumi.Input<List<String>>? resourceGuardOperationRequests;
+  final pulumi.Input<List<String>?>? resourceGuardOperationRequests;
   /// Retention policy details.
-  final pulumi.Input<LongTermRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<dynamic>? retentionPolicy;
 
   /// Creates a new [AzureSqlProtectionPolicy].
   /// [backupManagementType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
@@ -32,16 +31,16 @@ class AzureSqlProtectionPolicy {
       'backupManagementType': backupManagementType,
       'protectedItemsCount': ?protectedItemsCount,
       'resourceGuardOperationRequests': ?resourceGuardOperationRequests,
-      'retentionPolicy': ?pulumi.Input.mapOptionalInputValue<LongTermRetentionPolicy, Map<String, dynamic>>(retentionPolicy, (value) => value.toMap()),
+      'retentionPolicy': ?retentionPolicy,
     };
   }
 
   factory AzureSqlProtectionPolicy.fromMap(Map<String, dynamic> map) {
     return AzureSqlProtectionPolicy(
       backupManagementType: pulumi.Input.fromValue(map['backupManagementType'] as String),
-      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      protectedItemsCount: (() { final guardedValue = map['protectedItemsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       resourceGuardOperationRequests: (() { final guardedValue = map['resourceGuardOperationRequests']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

@@ -225,4 +225,30 @@ class Configuration extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     value = registerOutput<String?>('value');
   }
+
+  /// Creates a typed reference to an existing [Configuration] resource.
+  Configuration.reference(String urn)
+    : super(
+        'azure-native:dbformysql:Configuration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedValues = registerOutput<String>('allowedValues');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    currentValue = registerOutput<String?>('currentValue');
+    dataType = registerOutput<String>('dataType');
+    defaultValue = registerOutput<String>('defaultValue');
+    description = registerOutput<String>('description');
+    documentationLink = registerOutput<String>('documentationLink');
+    isConfigPendingRestart = registerOutput<String>('isConfigPendingRestart');
+    isDynamicConfig = registerOutput<String>('isDynamicConfig');
+    isReadOnly = registerOutput<String>('isReadOnly');
+    this.name = registerOutput<String>('name');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    value = registerOutput<String?>('value');
+  }
 }

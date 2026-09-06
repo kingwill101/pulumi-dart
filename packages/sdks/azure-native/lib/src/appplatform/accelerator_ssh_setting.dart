@@ -8,11 +8,11 @@ class AcceleratorSshSetting {
   /// Expected value is 'SSH'.
   final pulumi.Input<String> authType;
   /// Public SSH Key of git repository.
-  final pulumi.Input<String>? hostKey;
+  final pulumi.Input<String?>? hostKey;
   /// SSH Key algorithm of git repository.
-  final pulumi.Input<String>? hostKeyAlgorithm;
+  final pulumi.Input<String?>? hostKeyAlgorithm;
   /// Private SSH Key algorithm of git repository.
-  final pulumi.Input<String>? privateKey;
+  final pulumi.Input<String?>? privateKey;
 
   /// Creates a new [AcceleratorSshSetting].
   /// [authType] The type of the auth setting.

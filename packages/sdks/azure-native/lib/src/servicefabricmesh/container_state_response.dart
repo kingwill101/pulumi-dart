@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The container state.
 class ContainerStateResponse {
   /// Human-readable status of this state.
-  final pulumi.Input<String>? detailStatus;
+  final pulumi.Input<String?>? detailStatus;
   /// The container exit code.
-  final pulumi.Input<String>? exitCode;
+  final pulumi.Input<String?>? exitCode;
   /// Date/time when the container state finished.
-  final pulumi.Input<String>? finishTime;
+  final pulumi.Input<String?>? finishTime;
   /// Date/time when the container state started.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
   /// The state of this container
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [ContainerStateResponse].
   /// [detailStatus] Human-readable status of this state.

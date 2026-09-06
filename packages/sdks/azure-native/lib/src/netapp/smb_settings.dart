@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// SMB settings for the cache
 class SmbSettings {
   /// Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbAccessBasedEnumeration;
+  final pulumi.Input<dynamic>? smbAccessBasedEnumeration;
   /// Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol cache.
-  final pulumi.Input<String>? smbEncryption;
+  final pulumi.Input<dynamic>? smbEncryption;
   /// Enables non-browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
-  final pulumi.Input<String>? smbNonBrowsable;
+  final pulumi.Input<dynamic>? smbNonBrowsable;
 
   /// Creates a new [SmbSettings].
   /// [smbAccessBasedEnumeration] Enables access-based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
@@ -31,9 +31,9 @@ class SmbSettings {
 
   factory SmbSettings.fromMap(Map<String, dynamic> map) {
     return SmbSettings(
-      smbAccessBasedEnumeration: (() { final guardedValue = map['smbAccessBasedEnumeration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      smbEncryption: (() { final guardedValue = map['smbEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      smbNonBrowsable: (() { final guardedValue = map['smbNonBrowsable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      smbAccessBasedEnumeration: (() { final guardedValue = map['smbAccessBasedEnumeration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      smbEncryption: (() { final guardedValue = map['smbEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      smbNonBrowsable: (() { final guardedValue = map['smbNonBrowsable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

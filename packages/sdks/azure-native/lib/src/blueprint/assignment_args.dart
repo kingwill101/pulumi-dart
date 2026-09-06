@@ -12,19 +12,19 @@ import 'resource_group_value.dart';
 /// {@macro pulumi_blueprint_assignment_args_doc}
 class AssignmentArgs {
   /// Name of the blueprint assignment.
-  final pulumi.Input<String>? assignmentName;
+  final pulumi.Input<String?>? assignmentName;
   /// ID of the published version of a blueprint definition.
-  final pulumi.Input<String>? blueprintId;
+  final pulumi.Input<String?>? blueprintId;
   /// Multi-line explain this resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// One-liner string explain this resource.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Managed identity for this blueprint assignment.
   final pulumi.Input<ManagedServiceIdentity> identity;
   /// The location of this blueprint assignment.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Defines how resources deployed by a blueprint assignment are locked.
-  final pulumi.Input<AssignmentLockSettings>? locks;
+  final pulumi.Input<AssignmentLockSettings?>? locks;
   /// Blueprint assignment parameter values.
   final pulumi.Input<Map<String, ParameterValue>> parameters;
   /// Names and locations of resource group placeholders.
@@ -32,7 +32,7 @@ class AssignmentArgs {
   /// The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   final pulumi.Input<String> resourceScope;
   /// The target subscription scope of the blueprint assignment (format: '/subscriptions/{subscriptionId}'). For management group level assignments, the property is required.
-  final pulumi.Input<String>? scope;
+  final pulumi.Input<String?>? scope;
 
   /// Creates a new [AssignmentArgs].
   /// [assignmentName] Name of the blueprint assignment.

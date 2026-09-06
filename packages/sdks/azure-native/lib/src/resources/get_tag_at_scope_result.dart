@@ -5,15 +5,15 @@ import 'tags_response.dart';
 /// Result data returned by getTagAtScope.
 class GetTagAtScopeResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// The ID of the tags wrapper resource.
-  final String id;
+  final String? id;
   /// The name of the tags wrapper resource.
-  final String name;
+  final String? name;
   /// The set of tags.
-  final TagsResponse properties;
+  final TagsResponse? properties;
   /// The type of the tags wrapper resource.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetTagAtScopeResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -22,30 +22,30 @@ class GetTagAtScopeResult {
   /// [properties] The set of tags.
   /// [type] The type of the tags wrapper resource.
   const GetTagAtScopeResult({
-    required this.azureApiVersion,
-    required this.id,
-    required this.name,
-    required this.properties,
-    required this.type,
+    this.azureApiVersion,
+    this.id,
+    this.name,
+    this.properties,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
-      'id': id,
-      'name': name,
-      'properties': properties.toMap(),
-      'type': type,
+      'azureApiVersion': ?azureApiVersion,
+      'id': ?id,
+      'name': ?name,
+      'properties': ?properties?.toMap(),
+      'type': ?type,
     };
   }
 
   factory GetTagAtScopeResult.fromMap(Map<String, dynamic> map) {
     return GetTagAtScopeResult(
-      azureApiVersion: map['azureApiVersion'] as String,
-      id: map['id'] as String,
-      name: map['name'] as String,
-      properties: TagsResponse.fromMap((map['properties']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      properties: (() { final guardedValue = map['properties']; if (guardedValue == null) return null; return TagsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

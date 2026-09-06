@@ -9,7 +9,7 @@ class ProvisioningDetails {
   /// Operating system profile.
   final pulumi.Input<OsProvisionProfile> osProfile;
   /// User configuration.
-  final pulumi.Input<List<UserDetails>>? userDetails;
+  final pulumi.Input<List<UserDetails>?>? userDetails;
 
   /// Creates a new [ProvisioningDetails].
   /// [osProfile] Operating system profile.

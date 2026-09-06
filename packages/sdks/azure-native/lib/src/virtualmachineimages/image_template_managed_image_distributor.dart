@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Distribute as a Managed Disk Image.
 class ImageTemplateManagedImageDistributor {
   /// Tags that will be applied to the artifact once it has been created/updated by the distributor.
-  final pulumi.Input<Map<String, String>>? artifactTags;
+  final pulumi.Input<Map<String, String>?>? artifactTags;
   /// Resource Id of the Managed Disk Image
   final pulumi.Input<String> imageId;
   /// Azure location for the image, should match if image already exists

@@ -14,7 +14,7 @@ class ServerInstanceArgs {
   /// The name of SAP Instance resource for SAP Migration.
   final pulumi.Input<String> sapInstanceName;
   /// The name of the Server instance resource for SAP Migration.
-  final pulumi.Input<String>? serverInstanceName;
+  final pulumi.Input<String?>? serverInstanceName;
 
   /// Creates a new [ServerInstanceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.

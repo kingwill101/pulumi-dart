@@ -1,5 +1,4 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'action_group_response.dart';
 import 'action_rule_by_name_args.dart';
 
 /// Action rule object containing target scope, conditions and suppression logic
@@ -467,7 +466,7 @@ class ActionRuleByName extends pulumi.CustomResource {
   /// Azure resource name
   late final pulumi.Output<String> name;
   /// action rule properties
-  late final pulumi.Output<ActionGroupResponse> properties;
+  late final pulumi.Output<dynamic> properties;
   /// Resource tags
   late final pulumi.Output<Map<String, String>?> tags;
   /// Azure resource type
@@ -490,8 +489,25 @@ class ActionRuleByName extends pulumi.CustomResource {
     azureApiVersion = registerOutput<String>('azureApiVersion');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    properties = registerOutput<ActionGroupResponse>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActionGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ActionRuleByName] resource.
+  ActionRuleByName.reference(String urn)
+    : super(
+        'azure-native:alertsmanagement:ActionRuleByName',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    properties = registerOutput<dynamic>('properties');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
   }
 }

@@ -8,7 +8,7 @@ class ResourceProviderCapabilitiesResponse {
   /// The quota id.
   final pulumi.Input<String> quotaId;
   /// The required features.
-  final pulumi.Input<List<String>>? requiredFeatures;
+  final pulumi.Input<List<String>?>? requiredFeatures;
 
   /// Creates a new [ResourceProviderCapabilitiesResponse].
   /// [effect] The effect.

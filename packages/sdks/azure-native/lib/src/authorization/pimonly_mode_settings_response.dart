@@ -6,11 +6,11 @@ import 'users_or_service_principal_set_response.dart';
 /// The PIM Only Mode settings.
 class PIMOnlyModeSettingsResponse {
   /// The list of excluded assignment types allowed.
-  final pulumi.Input<List<String>>? excludedAssignmentTypes;
+  final pulumi.Input<List<String>?>? excludedAssignmentTypes;
   /// The list of excluded entities that the rule does not apply to.
-  final pulumi.Input<List<UsersOrServicePrincipalSetResponse>>? excludes;
+  final pulumi.Input<List<UsersOrServicePrincipalSetResponse>?>? excludes;
   /// Determines whether the setting is enabled, disabled or report only.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
 
   /// Creates a new [PIMOnlyModeSettingsResponse].
   /// [excludedAssignmentTypes] The list of excluded assignment types allowed.

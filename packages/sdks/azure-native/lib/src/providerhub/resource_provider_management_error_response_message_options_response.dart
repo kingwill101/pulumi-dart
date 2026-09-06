@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Options for error response messages.
 class ResourceProviderManagementErrorResponseMessageOptionsResponse {
   /// Type of server failure response message.
-  final pulumi.Input<String>? serverFailureResponseMessageType;
+  final pulumi.Input<String?>? serverFailureResponseMessageType;
 
   /// Creates a new [ResourceProviderManagementErrorResponseMessageOptionsResponse].
   /// [serverFailureResponseMessageType] Type of server failure response message.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Managed application locking policy.
 class ApplicationPackageLockingPolicyDefinition {
   /// The deny assignment excluded actions.
-  final pulumi.Input<List<String>>? allowedActions;
+  final pulumi.Input<List<String>?>? allowedActions;
   /// The deny assignment excluded data actions.
-  final pulumi.Input<List<String>>? allowedDataActions;
+  final pulumi.Input<List<String>?>? allowedDataActions;
 
   /// Creates a new [ApplicationPackageLockingPolicyDefinition].
   /// [allowedActions] The deny assignment excluded actions.

@@ -10,21 +10,21 @@ import 'identity.dart';
 /// {@macro pulumi_fluidrelay_fluid_relay_server_args_doc}
 class FluidRelayServerArgs {
   /// All encryption configuration for a resource.
-  final pulumi.Input<EncryptionProperties>? encryption;
+  final pulumi.Input<EncryptionProperties?>? encryption;
   /// The Fluid Relay server resource name.
-  final pulumi.Input<String>? fluidRelayServerName;
+  final pulumi.Input<String?>? fluidRelayServerName;
   /// The type of identity used for the resource.
-  final pulumi.Input<Identity>? identity;
+  final pulumi.Input<Identity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Provision states for FluidRelay RP
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<dynamic>? provisioningState;
   /// The resource group containing the resource.
   final pulumi.Input<String> resourceGroup;
   /// Sku of the storage associated with the resource
-  final pulumi.Input<String>? storagesku;
+  final pulumi.Input<dynamic>? storagesku;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FluidRelayServerArgs].
   /// [encryption] All encryption configuration for a resource.
@@ -65,9 +65,9 @@ class FluidRelayServerArgs {
       fluidRelayServerName: (() { final guardedValue = map['fluidRelayServerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(Identity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroup: pulumi.Input.fromValue(map['resourceGroup'] as String),
-      storagesku: (() { final guardedValue = map['storagesku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storagesku: (() { final guardedValue = map['storagesku']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

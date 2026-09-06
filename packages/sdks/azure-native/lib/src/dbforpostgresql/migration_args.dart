@@ -9,55 +9,55 @@ import 'migration_secret_parameters.dart';
 /// {@macro pulumi_dbforpostgresql_migration_args_doc}
 class MigrationArgs {
   /// Indicates if cancel must be triggered for the entire migration.
-  final pulumi.Input<String>? cancel;
+  final pulumi.Input<dynamic>? cancel;
   /// When you want to trigger cancel for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
-  final pulumi.Input<List<String>>? dbsToCancelMigrationOn;
+  final pulumi.Input<List<String>?>? dbsToCancelMigrationOn;
   /// Names of databases to migrate.
-  final pulumi.Input<List<String>>? dbsToMigrate;
+  final pulumi.Input<List<String>?>? dbsToMigrate;
   /// When you want to trigger cutover for specific databases set 'triggerCutover' to 'True' and the names of the specific databases in this array.
-  final pulumi.Input<List<String>>? dbsToTriggerCutoverOn;
+  final pulumi.Input<List<String>?>? dbsToTriggerCutoverOn;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Indicates if roles and permissions must be migrated.
-  final pulumi.Input<String>? migrateRoles;
+  final pulumi.Input<dynamic>? migrateRoles;
   /// Identifier of the private endpoint migration instance.
-  final pulumi.Input<String>? migrationInstanceResourceId;
+  final pulumi.Input<String?>? migrationInstanceResourceId;
   /// Mode used to perform the migration: Online or Offline.
-  final pulumi.Input<String>? migrationMode;
+  final pulumi.Input<dynamic>? migrationMode;
   /// Name of migration.
-  final pulumi.Input<String>? migrationName;
+  final pulumi.Input<String?>? migrationName;
   /// Supported option for a migration.
-  final pulumi.Input<String>? migrationOption;
+  final pulumi.Input<dynamic>? migrationOption;
   /// End time (UTC) for migration window.
-  final pulumi.Input<String>? migrationWindowEndTimeInUtc;
+  final pulumi.Input<String?>? migrationWindowEndTimeInUtc;
   /// Start time (UTC) for migration window.
-  final pulumi.Input<String>? migrationWindowStartTimeInUtc;
+  final pulumi.Input<String?>? migrationWindowStartTimeInUtc;
   /// Indicates if databases on the target server can be overwritten when already present. If set to 'False', when the migration workflow detects that the database already exists on the target server, it will wait for a confirmation.
-  final pulumi.Input<String>? overwriteDbsInTarget;
+  final pulumi.Input<dynamic>? overwriteDbsInTarget;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Migration secret parameters.
-  final pulumi.Input<MigrationSecretParameters>? secretParameters;
+  final pulumi.Input<MigrationSecretParameters?>? secretParameters;
   /// The name of the server.
   final pulumi.Input<String> serverName;
   /// Indicates whether to setup logical replication on source server, if needed.
-  final pulumi.Input<String>? setupLogicalReplicationOnSourceDbIfNeeded;
+  final pulumi.Input<dynamic>? setupLogicalReplicationOnSourceDbIfNeeded;
   /// Fully qualified domain name (FQDN) or IP address of the source server. This property is optional. When provided, the migration service will always use it to connect to the source server.
-  final pulumi.Input<String>? sourceDbServerFullyQualifiedDomainName;
+  final pulumi.Input<String?>? sourceDbServerFullyQualifiedDomainName;
   /// Identifier of the source database server resource, when 'sourceType' is 'PostgreSQLSingleServer'. For other source types this must be set to ipaddress:port@username or hostname:port@username.
-  final pulumi.Input<String>? sourceDbServerResourceId;
+  final pulumi.Input<String?>? sourceDbServerResourceId;
   /// Source server type used for the migration: ApsaraDB_RDS, AWS, AWS_AURORA, AWS_EC2, AWS_RDS, AzureVM, Crunchy_PostgreSQL, Digital_Ocean_Droplets, Digital_Ocean_PostgreSQL, EDB, EDB_Oracle_Server, EDB_PostgreSQL, GCP, GCP_AlloyDB, GCP_CloudSQL, GCP_Compute, Heroku_PostgreSQL, Huawei_Compute, Huawei_RDS, OnPremises, PostgreSQLCosmosDB, PostgreSQLFlexibleServer, PostgreSQLSingleServer, or Supabase_PostgreSQL
-  final pulumi.Input<String>? sourceType;
+  final pulumi.Input<dynamic>? sourceType;
   /// SSL mode used by a migration. Default SSL mode for 'PostgreSQLSingleServer' is 'VerifyFull'. Default SSL mode for other source types is 'Prefer'.
-  final pulumi.Input<String>? sslMode;
+  final pulumi.Input<dynamic>? sslMode;
   /// Indicates if data migration must start right away.
-  final pulumi.Input<String>? startDataMigration;
+  final pulumi.Input<dynamic>? startDataMigration;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
-  final pulumi.Input<String>? targetDbServerFullyQualifiedDomainName;
+  final pulumi.Input<String?>? targetDbServerFullyQualifiedDomainName;
   /// Indicates if cutover must be triggered for the entire migration.
-  final pulumi.Input<String>? triggerCutover;
+  final pulumi.Input<dynamic>? triggerCutover;
 
   /// Creates a new [MigrationArgs].
   /// [cancel] Indicates if cancel must be triggered for the entire migration.
@@ -145,31 +145,31 @@ class MigrationArgs {
 
   factory MigrationArgs.fromMap(Map<String, dynamic> map) {
     return MigrationArgs(
-      cancel: (() { final guardedValue = map['cancel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      cancel: (() { final guardedValue = map['cancel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       dbsToCancelMigrationOn: (() { final guardedValue = map['dbsToCancelMigrationOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dbsToMigrate: (() { final guardedValue = map['dbsToMigrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       dbsToTriggerCutoverOn: (() { final guardedValue = map['dbsToTriggerCutoverOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      migrateRoles: (() { final guardedValue = map['migrateRoles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrateRoles: (() { final guardedValue = map['migrateRoles']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       migrationInstanceResourceId: (() { final guardedValue = map['migrationInstanceResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      migrationMode: (() { final guardedValue = map['migrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrationMode: (() { final guardedValue = map['migrationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       migrationName: (() { final guardedValue = map['migrationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      migrationOption: (() { final guardedValue = map['migrationOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      migrationOption: (() { final guardedValue = map['migrationOption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       migrationWindowEndTimeInUtc: (() { final guardedValue = map['migrationWindowEndTimeInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrationWindowStartTimeInUtc: (() { final guardedValue = map['migrationWindowStartTimeInUtc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      overwriteDbsInTarget: (() { final guardedValue = map['overwriteDbsInTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      overwriteDbsInTarget: (() { final guardedValue = map['overwriteDbsInTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       secretParameters: (() { final guardedValue = map['secretParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MigrationSecretParameters.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       serverName: pulumi.Input.fromValue(map['serverName'] as String),
-      setupLogicalReplicationOnSourceDbIfNeeded: (() { final guardedValue = map['setupLogicalReplicationOnSourceDbIfNeeded']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      setupLogicalReplicationOnSourceDbIfNeeded: (() { final guardedValue = map['setupLogicalReplicationOnSourceDbIfNeeded']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       sourceDbServerFullyQualifiedDomainName: (() { final guardedValue = map['sourceDbServerFullyQualifiedDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceDbServerResourceId: (() { final guardedValue = map['sourceDbServerResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sslMode: (() { final guardedValue = map['sslMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startDataMigration: (() { final guardedValue = map['startDataMigration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceType: (() { final guardedValue = map['sourceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      sslMode: (() { final guardedValue = map['sslMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
+      startDataMigration: (() { final guardedValue = map['startDataMigration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targetDbServerFullyQualifiedDomainName: (() { final guardedValue = map['targetDbServerFullyQualifiedDomainName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      triggerCutover: (() { final guardedValue = map['triggerCutover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      triggerCutover: (() { final guardedValue = map['triggerCutover']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

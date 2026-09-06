@@ -7,7 +7,7 @@ class DelegationPropertiesResponse {
   /// The current provisioning state.
   final pulumi.Input<String> provisioningState;
   /// The service name to which the NVA is delegated.
-  final pulumi.Input<String>? serviceName;
+  final pulumi.Input<String?>? serviceName;
 
   /// Creates a new [DelegationPropertiesResponse].
   /// [provisioningState] The current provisioning state.

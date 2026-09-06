@@ -8,17 +8,17 @@ import 'unused_access_configuration.dart';
 /// Definition of awsAccessAnalyzerAnalyzer
 class AwsAccessAnalyzerAnalyzerProperties {
   /// The configuration for the analyzer
-  final pulumi.Input<UnusedAccessConfiguration>? analyzerConfiguration;
+  final pulumi.Input<UnusedAccessConfiguration?>? analyzerConfiguration;
   /// Analyzer name
-  final pulumi.Input<String>? analyzerName;
+  final pulumi.Input<String?>? analyzerName;
   /// Property archiveRules
-  final pulumi.Input<List<ArchiveRule>>? archiveRules;
+  final pulumi.Input<List<ArchiveRule>?>? archiveRules;
   /// Amazon Resource Name (ARN) of the analyzer
-  final pulumi.Input<String>? arn;
+  final pulumi.Input<String?>? arn;
   /// An array of key-value pairs to apply to this resource.
-  final pulumi.Input<List<Tag>>? tags;
+  final pulumi.Input<List<Tag>?>? tags;
   /// The type of the analyzer, must be one of ACCOUNT, ORGANIZATION, ACCOUNT_UNUSED_ACCESS or ORGANIZATION_UNUSED_ACCESS
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [AwsAccessAnalyzerAnalyzerProperties].
   /// [analyzerConfiguration] The configuration for the analyzer

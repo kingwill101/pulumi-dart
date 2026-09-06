@@ -11,39 +11,39 @@ import 'sub_resource_response.dart';
 /// A network interface in a resource group.
 class NetworkInterfaceInterfaceEndpointResponse {
   /// The DNS settings in network interface.
-  final pulumi.Input<NetworkInterfaceDnsSettingsInterfaceEndpointResponse>? dnsSettings;
+  final pulumi.Input<NetworkInterfaceDnsSettingsInterfaceEndpointResponse?>? dnsSettings;
   /// If the network interface is accelerated networking enabled.
-  final pulumi.Input<bool>? enableAcceleratedNetworking;
+  final pulumi.Input<bool?>? enableAcceleratedNetworking;
   /// Indicates whether IP forwarding is enabled on this network interface.
-  final pulumi.Input<bool>? enableIPForwarding;
+  final pulumi.Input<bool?>? enableIPForwarding;
   /// A unique read-only string that changes whenever the resource is updated.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// A list of references to linked BareMetal resources
   final pulumi.Input<List<String>> hostedWorkloads;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// A reference to the interface endpoint to which the network interface is linked.
   final pulumi.Input<InterfaceEndpointResponse> interfaceEndpoint;
   /// A list of IPConfigurations of the network interface.
-  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponseV1>>? ipConfigurations;
+  final pulumi.Input<List<NetworkInterfaceIPConfigurationResponseV1>?>? ipConfigurations;
   /// Resource location.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The MAC address of the network interface.
-  final pulumi.Input<String>? macAddress;
+  final pulumi.Input<String?>? macAddress;
   /// Resource name.
   final pulumi.Input<String> name;
   /// The reference of the NetworkSecurityGroup resource.
-  final pulumi.Input<NetworkSecurityGroupInterfaceEndpointResponse>? networkSecurityGroup;
+  final pulumi.Input<NetworkSecurityGroupInterfaceEndpointResponse?>? networkSecurityGroup;
   /// Gets whether this is a primary network interface on a virtual machine.
-  final pulumi.Input<bool>? primary;
+  final pulumi.Input<bool?>? primary;
   /// The provisioning state of the public IP resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
-  final pulumi.Input<String>? provisioningState;
+  final pulumi.Input<String?>? provisioningState;
   /// The resource GUID property of the network interface resource.
-  final pulumi.Input<String>? resourceGuid;
+  final pulumi.Input<String?>? resourceGuid;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
   /// A list of TapConfigurations of the network interface.
-  final pulumi.Input<List<NetworkInterfaceTapConfigurationResponseV1>>? tapConfigurations;
+  final pulumi.Input<List<NetworkInterfaceTapConfigurationResponseV1>?>? tapConfigurations;
   /// Resource type.
   final pulumi.Input<String> type;
   /// The reference of a virtual machine.

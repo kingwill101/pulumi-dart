@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dbforpostgresql_backups_automatic_and_on_demand_args_doc}
 class BackupsAutomaticAndOnDemandArgs {
   /// Name of the backup.
-  final pulumi.Input<String>? backupName;
+  final pulumi.Input<String?>? backupName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the server.

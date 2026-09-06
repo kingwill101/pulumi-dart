@@ -6,21 +6,21 @@ import 'label_class_response.dart';
 /// Label category definition
 class LabelCategoryResponse {
   /// Dictionary of label classes in this category.
-  final pulumi.Input<Map<String, LabelClassResponse>>? classes;
+  final pulumi.Input<Map<String, LabelClassResponse>?>? classes;
   /// Display name of the label category.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicates whether it is allowed to select multiple classes in this category.
-  final pulumi.Input<String>? multiSelect;
+  final pulumi.Input<String?>? multiSelect;
 
   /// Creates a new [LabelCategoryResponse].
   /// [classes] Dictionary of label classes in this category.
   /// [displayName] Display name of the label category.
   /// [multiSelect] Indicates whether it is allowed to select multiple classes in this category.
-  const LabelCategoryResponse({
+  LabelCategoryResponse({
     this.classes,
     this.displayName,
-    this.multiSelect,
-  });
+    pulumi.Input<String?>? multiSelect,
+  }) : multiSelect = multiSelect ?? pulumi.Input.fromValue('Disabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

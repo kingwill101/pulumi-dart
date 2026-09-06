@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Property value
-enum PointInTimeRecoveryStatus {
+enum PointInTimeRecoveryStatus implements pulumi.PulumiEnum<String> {
   dISABLED("DISABLED"),
   eNABLED("ENABLED");
 
   const PointInTimeRecoveryStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static PointInTimeRecoveryStatus fromValue(String value) {

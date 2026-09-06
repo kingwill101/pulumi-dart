@@ -9,17 +9,17 @@ class MicrosoftCommonEmailReceiver {
   /// The name of the email receiver. Names must be unique across all receivers within an action group.
   final pulumi.Input<String> name;
   /// Indicates whether to use common alert schema.
-  final pulumi.Input<bool>? useCommonAlertSchema;
+  final pulumi.Input<bool?>? useCommonAlertSchema;
 
   /// Creates a new [MicrosoftCommonEmailReceiver].
   /// [emailAddress] The email address of this receiver.
   /// [name] The name of the email receiver. Names must be unique across all receivers within an action group.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  const MicrosoftCommonEmailReceiver({
+  MicrosoftCommonEmailReceiver({
     required this.emailAddress,
     required this.name,
-    this.useCommonAlertSchema,
-  });
+    pulumi.Input<bool?>? useCommonAlertSchema,
+  }) : useCommonAlertSchema = useCommonAlertSchema ?? pulumi.Input.fromValue(false);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

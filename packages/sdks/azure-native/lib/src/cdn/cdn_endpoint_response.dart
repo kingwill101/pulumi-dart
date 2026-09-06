@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defines the ARM Resource ID for the linked endpoints
 class CdnEndpointResponse {
   /// ARM Resource ID string.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
 
   /// Creates a new [CdnEndpointResponse].
   /// [id] ARM Resource ID string.

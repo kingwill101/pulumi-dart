@@ -4,17 +4,17 @@
 /// Result data returned by listManagedClusterAccessProfile.
 class ListManagedClusterAccessProfileResult {
   /// Resource Id
-  final String id;
+  final String? id;
   /// Base64-encoded Kubernetes configuration file.
   final String? kubeConfig;
   /// Resource location
-  final String location;
+  final String? location;
   /// Resource name
-  final String name;
+  final String? name;
   /// Resource tags
   final Map<String, String>? tags;
   /// Resource type
-  final String type;
+  final String? type;
 
   /// Creates a new [ListManagedClusterAccessProfileResult].
   /// [id] Resource Id
@@ -24,33 +24,33 @@ class ListManagedClusterAccessProfileResult {
   /// [tags] Resource tags
   /// [type] Resource type
   const ListManagedClusterAccessProfileResult({
-    required this.id,
+    this.id,
     this.kubeConfig,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'kubeConfig': ?kubeConfig,
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory ListManagedClusterAccessProfileResult.fromMap(Map<String, dynamic> map) {
     return ListManagedClusterAccessProfileResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kubeConfig: (() { final guardedValue = map['kubeConfig']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

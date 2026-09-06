@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The SKU that defines the tier and kind of the peering.
 class PeeringSku {
   /// The name of the peering SKU.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PeeringSku].
   /// [name] The name of the peering SKU.

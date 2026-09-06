@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protect LDAP communication using SSL certificate (LDAPS)
-enum SslEnum {
+enum SslEnum implements pulumi.PulumiEnum<String> {
   enabled("Enabled"),
   disabled("Disabled");
 
   const SslEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static SslEnum fromValue(String value) {

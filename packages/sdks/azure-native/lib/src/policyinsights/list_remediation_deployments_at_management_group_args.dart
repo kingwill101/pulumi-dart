@@ -14,7 +14,7 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
   /// The name of the remediation.
   final pulumi.Input<String> remediationName;
   /// Maximum number of records to return.
-  final pulumi.Input<int>? top;
+  final pulumi.Input<int?>? top;
 
   /// Creates a new [ListRemediationDeploymentsAtManagementGroupArgs].
   /// [managementGroupId] Management group ID.
@@ -42,7 +42,7 @@ class ListRemediationDeploymentsAtManagementGroupArgs {
       managementGroupId: pulumi.Input.fromValue(map['managementGroupId'] as String),
       managementGroupsNamespace: pulumi.Input.fromValue(map['managementGroupsNamespace'] as String),
       remediationName: pulumi.Input.fromValue(map['remediationName'] as String),
-      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      top: (() { final guardedValue = map['top']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

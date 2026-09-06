@@ -7,17 +7,17 @@ import 'set_value_response.dart';
 class OverrideTaskStepPropertiesResponse {
   /// Gets or sets the collection of override arguments to be used when
   /// executing a build step.
-  final pulumi.Input<List<ArgumentResponse>>? arguments;
+  final pulumi.Input<List<ArgumentResponse>?>? arguments;
   /// The source context against which run has to be queued.
-  final pulumi.Input<String>? contextPath;
+  final pulumi.Input<String?>? contextPath;
   /// The file against which run has to be queued.
-  final pulumi.Input<String>? file;
+  final pulumi.Input<String?>? file;
   /// The name of the target build stage for the docker build.
-  final pulumi.Input<String>? target;
+  final pulumi.Input<String?>? target;
   /// Base64 encoded update trigger token that will be attached with the base image trigger webhook.
-  final pulumi.Input<String>? updateTriggerToken;
+  final pulumi.Input<String?>? updateTriggerToken;
   /// The collection of overridable values that can be passed when running a Task.
-  final pulumi.Input<List<SetValueResponse>>? values;
+  final pulumi.Input<List<SetValueResponse>?>? values;
 
   /// Creates a new [OverrideTaskStepPropertiesResponse].
   /// [arguments] Gets or sets the collection of override arguments to be used when

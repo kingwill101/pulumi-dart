@@ -6,15 +6,15 @@ import 'scale_rule_metric_dimension_response.dart';
 /// The trigger that results in a scaling action.
 class MetricTriggerResponse {
   /// List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
-  final pulumi.Input<List<ScaleRuleMetricDimensionResponse>>? dimensions;
+  final pulumi.Input<List<ScaleRuleMetricDimensionResponse>?>? dimensions;
   /// a value indicating whether metric should divide per instance.
-  final pulumi.Input<bool>? dividePerInstance;
+  final pulumi.Input<bool?>? dividePerInstance;
   /// the name of the metric that defines what the rule monitors.
   final pulumi.Input<String> metricName;
   /// the namespace of the metric that defines what the rule monitors.
-  final pulumi.Input<String>? metricNamespace;
+  final pulumi.Input<String?>? metricNamespace;
   /// the location of the resource the rule monitors.
-  final pulumi.Input<String>? metricResourceLocation;
+  final pulumi.Input<String?>? metricResourceLocation;
   /// the resource identifier of the resource the rule monitors.
   final pulumi.Input<String> metricResourceUri;
   /// the operator that is used to compare the metric data and the threshold.
@@ -85,7 +85,7 @@ class MetricTriggerResponse {
       metricResourceUri: pulumi.Input.fromValue(map['metricResourceUri'] as String),
       operator: pulumi.Input.fromValue(map['operator'] as String),
       statistic: pulumi.Input.fromValue(map['statistic'] as String),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
       timeAggregation: pulumi.Input.fromValue(map['timeAggregation'] as String),
       timeGrain: pulumi.Input.fromValue(map['timeGrain'] as String),
       timeWindow: pulumi.Input.fromValue(map['timeWindow'] as String),

@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Protocol this tunnel will use for allowing traffic to backends.
-enum TunnelType {
+enum TunnelType implements pulumi.PulumiEnum<String> {
   valueHttpConnect("HttpConnect");
 
   const TunnelType(this.wireValue);
+  @override
   final String wireValue;
 
   static TunnelType fromValue(String value) {

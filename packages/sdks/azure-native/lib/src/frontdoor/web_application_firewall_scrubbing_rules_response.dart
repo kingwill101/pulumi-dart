@@ -7,11 +7,11 @@ class WebApplicationFirewallScrubbingRulesResponse {
   /// The variable to be scrubbed from the logs.
   final pulumi.Input<String> matchVariable;
   /// When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
   /// When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.
   final pulumi.Input<String> selectorMatchOperator;
   /// Defines the state of a log scrubbing rule. Default value is enabled.
-  final pulumi.Input<String>? state;
+  final pulumi.Input<String?>? state;
 
   /// Creates a new [WebApplicationFirewallScrubbingRulesResponse].
   /// [matchVariable] The variable to be scrubbed from the logs.

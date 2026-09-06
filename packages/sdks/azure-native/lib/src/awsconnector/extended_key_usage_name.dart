@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ExtendedKeyUsageName enum
-enum ExtendedKeyUsageName {
+enum ExtendedKeyUsageName implements pulumi.PulumiEnum<String> {
   aNY("ANY"),
   cODESIGNING("CODE_SIGNING"),
   cUSTOM("CUSTOM"),
@@ -14,6 +16,7 @@ enum ExtendedKeyUsageName {
   tLSWEBSERVERAUTHENTICATION("TLS_WEB_SERVER_AUTHENTICATION");
 
   const ExtendedKeyUsageName(this.wireValue);
+  @override
   final String wireValue;
 
   static ExtendedKeyUsageName fromValue(String value) {

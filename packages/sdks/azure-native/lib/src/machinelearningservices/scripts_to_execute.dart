@@ -6,9 +6,9 @@ import 'script_reference.dart';
 /// Customized setup scripts
 class ScriptsToExecute {
   /// Script that's run only once during provision of the compute.
-  final pulumi.Input<ScriptReference>? creationScript;
+  final pulumi.Input<ScriptReference?>? creationScript;
   /// Script that's run every time the machine starts.
-  final pulumi.Input<ScriptReference>? startupScript;
+  final pulumi.Input<ScriptReference?>? startupScript;
 
   /// Creates a new [ScriptsToExecute].
   /// [creationScript] Script that's run only once during provision of the compute.

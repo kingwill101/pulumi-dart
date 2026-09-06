@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cert Manager private key properties
 class CertManagerPrivateKey {
   /// algorithm for private key.
-  final pulumi.Input<String> algorithm;
+  final pulumi.Input<dynamic> algorithm;
   /// cert-manager private key rotationPolicy.
-  final pulumi.Input<String> rotationPolicy;
+  final pulumi.Input<dynamic> rotationPolicy;
 
   /// Creates a new [CertManagerPrivateKey].
   /// [algorithm] algorithm for private key.
@@ -26,8 +26,8 @@ class CertManagerPrivateKey {
 
   factory CertManagerPrivateKey.fromMap(Map<String, dynamic> map) {
     return CertManagerPrivateKey(
-      algorithm: pulumi.Input.fromValue(map['algorithm'] as String),
-      rotationPolicy: pulumi.Input.fromValue(map['rotationPolicy'] as String),
+      algorithm: pulumi.Input.fromValue(map['algorithm']),
+      rotationPolicy: pulumi.Input.fromValue(map['rotationPolicy']),
     );
   }
 }

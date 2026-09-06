@@ -7,7 +7,7 @@ import 'policy_parameters_response.dart';
 class PolicyInfoResponse {
   final pulumi.Input<String> policyId;
   /// Policy parameters for the backup instance
-  final pulumi.Input<PolicyParametersResponse>? policyParameters;
+  final pulumi.Input<PolicyParametersResponse?>? policyParameters;
   final pulumi.Input<String> policyVersion;
 
   /// Creates a new [PolicyInfoResponse].

@@ -11,13 +11,13 @@ import 'identity_properties.dart';
 class CredentialSetArgs {
   /// List of authentication credentials stored for an upstream.
   /// Usually consists of a primary and an optional secondary credential.
-  final pulumi.Input<List<AuthCredential>>? authCredentials;
+  final pulumi.Input<List<AuthCredential>?>? authCredentials;
   /// The name of the credential set.
-  final pulumi.Input<String>? credentialSetName;
+  final pulumi.Input<String?>? credentialSetName;
   /// Identities associated with the resource. This is used to access the KeyVault secrets.
-  final pulumi.Input<IdentityProperties>? identity;
+  final pulumi.Input<IdentityProperties?>? identity;
   /// The credentials are stored for this upstream or login server.
-  final pulumi.Input<String>? loginServer;
+  final pulumi.Input<String?>? loginServer;
   /// The name of the container registry.
   final pulumi.Input<String> registryName;
   /// The name of the resource group. The name is case insensitive.

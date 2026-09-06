@@ -768,4 +768,24 @@ class SynapseWorkspaceSqlPoolTableDataSetMapping extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [SynapseWorkspaceSqlPoolTableDataSetMapping] resource.
+  SynapseWorkspaceSqlPoolTableDataSetMapping.reference(String urn)
+    : super(
+        'azure-native:datashare:SynapseWorkspaceSqlPoolTableDataSetMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    dataSetId = registerOutput<String>('dataSetId');
+    dataSetMappingStatus = registerOutput<String>('dataSetMappingStatus');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    synapseWorkspaceSqlPoolTableResourceId = registerOutput<String>('synapseWorkspaceSqlPoolTableResourceId');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

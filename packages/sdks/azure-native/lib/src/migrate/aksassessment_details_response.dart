@@ -61,15 +61,15 @@ class AKSAssessmentDetailsResponse {
 
   factory AKSAssessmentDetailsResponse.fromMap(Map<String, dynamic> map) {
     return AKSAssessmentDetailsResponse(
-      confidenceRatingInPercentage: pulumi.Input.fromValue(map['confidenceRatingInPercentage'] as double),
+      confidenceRatingInPercentage: pulumi.Input.fromValue((map['confidenceRatingInPercentage'] as num).toDouble()),
       createdTimestamp: pulumi.Input.fromValue(map['createdTimestamp'] as String),
-      machineCount: pulumi.Input.fromValue(map['machineCount'] as int),
+      machineCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['machineCount'])),
       pricesTimestamp: pulumi.Input.fromValue(map['pricesTimestamp'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      totalMonthlyCost: pulumi.Input.fromValue(map['totalMonthlyCost'] as double),
+      totalMonthlyCost: pulumi.Input.fromValue((map['totalMonthlyCost'] as num).toDouble()),
       updatedTimestamp: pulumi.Input.fromValue(map['updatedTimestamp'] as String),
-      webAppCount: pulumi.Input.fromValue(map['webAppCount'] as int),
-      webServerCount: pulumi.Input.fromValue(map['webServerCount'] as int),
+      webAppCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['webAppCount'])),
+      webServerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['webServerCount'])),
     );
   }
 }

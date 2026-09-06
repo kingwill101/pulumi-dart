@@ -7,10 +7,10 @@ import 'workload_inquiry_details.dart';
 class InquiryInfo {
   /// Inquiry Details which will have workload specific details.
   /// For e.g. - For SQL and oracle this will contain different details.
-  final pulumi.Input<List<WorkloadInquiryDetails>>? inquiryDetails;
+  final pulumi.Input<List<WorkloadInquiryDetails>?>? inquiryDetails;
   /// Inquiry Status for this container such as
   /// InProgress | Failed | Succeeded
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [InquiryInfo].
   /// [inquiryDetails] Inquiry Details which will have workload specific details.

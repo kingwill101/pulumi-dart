@@ -12,19 +12,19 @@ class SourceTriggerResponse {
   /// The source event corresponding to the trigger.
   final pulumi.Input<List<String>> sourceTriggerEvents;
   /// The current status of trigger.
-  final pulumi.Input<String>? status;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [SourceTriggerResponse].
   /// [name] The name of the trigger.
   /// [sourceRepository] The properties that describes the source(code) for the task.
   /// [sourceTriggerEvents] The source event corresponding to the trigger.
   /// [status] The current status of trigger.
-  const SourceTriggerResponse({
+  SourceTriggerResponse({
     required this.name,
     required this.sourceRepository,
     required this.sourceTriggerEvents,
-    this.status,
-  });
+    pulumi.Input<String?>? status,
+  }) : status = status ?? pulumi.Input.fromValue('Enabled');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

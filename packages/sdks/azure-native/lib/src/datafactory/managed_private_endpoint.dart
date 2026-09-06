@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Properties of a managed private endpoint
 class ManagedPrivateEndpoint {
   /// Fully qualified domain names
-  final pulumi.Input<List<String>>? fqdns;
+  final pulumi.Input<List<String>?>? fqdns;
   /// The groupId to which the managed private endpoint is created
-  final pulumi.Input<String>? groupId;
+  final pulumi.Input<String?>? groupId;
   /// The ARM resource ID of the resource to which the managed private endpoint is created
-  final pulumi.Input<String>? privateLinkResourceId;
+  final pulumi.Input<String?>? privateLinkResourceId;
 
   /// Creates a new [ManagedPrivateEndpoint].
   /// [fqdns] Fully qualified domain names

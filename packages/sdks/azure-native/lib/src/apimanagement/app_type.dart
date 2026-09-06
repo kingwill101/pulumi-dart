@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines the type of application which send the create user request. Default is legacy portal.
-enum AppType {
+enum AppType implements pulumi.PulumiEnum<String> {
   valuePortal("portal"),
   valueDeveloperPortal("developerPortal");
 
   const AppType(this.wireValue);
+  @override
   final String wireValue;
 
   static AppType fromValue(String value) {

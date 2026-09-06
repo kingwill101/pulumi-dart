@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_offazure_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// Private link resource name.
-  final pulumi.Input<String>? peConnectionName;
+  final pulumi.Input<String?>? peConnectionName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Site name.

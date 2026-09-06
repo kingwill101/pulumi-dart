@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The resource set description.
 class ResourceSetDescription {
   /// The elements included in the set.
-  final pulumi.Input<List<String>>? elements;
+  final pulumi.Input<List<String>?>? elements;
   /// The elements that are not included in the set, in case elements contains '*' indicating 'all'.
-  final pulumi.Input<List<String>>? exceptions;
+  final pulumi.Input<List<String>?>? exceptions;
 
   /// Creates a new [ResourceSetDescription].
   /// [elements] The elements included in the set.

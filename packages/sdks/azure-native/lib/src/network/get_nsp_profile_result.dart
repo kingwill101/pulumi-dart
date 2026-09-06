@@ -4,21 +4,21 @@
 /// Result data returned by getNspProfile.
 class GetNspProfileResult {
   /// Version number that increases with every update to access rules within the profile.
-  final String accessRulesVersion;
+  final String? accessRulesVersion;
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Version number that increases with every update to diagnostic settings within the profile.
-  final String diagnosticSettingsVersion;
+  final String? diagnosticSettingsVersion;
   /// Resource ID.
-  final String id;
+  final String? id;
   /// Resource location.
   final String? location;
   /// Resource name.
-  final String name;
+  final String? name;
   /// Resource tags.
   final Map<String, String>? tags;
   /// Resource type.
-  final String type;
+  final String? type;
 
   /// Creates a new [GetNspProfileResult].
   /// [accessRulesVersion] Version number that increases with every update to access rules within the profile.
@@ -30,39 +30,39 @@ class GetNspProfileResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   const GetNspProfileResult({
-    required this.accessRulesVersion,
-    required this.azureApiVersion,
-    required this.diagnosticSettingsVersion,
-    required this.id,
+    this.accessRulesVersion,
+    this.azureApiVersion,
+    this.diagnosticSettingsVersion,
+    this.id,
     this.location,
-    required this.name,
+    this.name,
     this.tags,
-    required this.type,
+    this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'accessRulesVersion': accessRulesVersion,
-      'azureApiVersion': azureApiVersion,
-      'diagnosticSettingsVersion': diagnosticSettingsVersion,
-      'id': id,
+      'accessRulesVersion': ?accessRulesVersion,
+      'azureApiVersion': ?azureApiVersion,
+      'diagnosticSettingsVersion': ?diagnosticSettingsVersion,
+      'id': ?id,
       'location': ?location,
-      'name': name,
+      'name': ?name,
       'tags': ?tags,
-      'type': type,
+      'type': ?type,
     };
   }
 
   factory GetNspProfileResult.fromMap(Map<String, dynamic> map) {
     return GetNspProfileResult(
-      accessRulesVersion: map['accessRulesVersion'] as String,
-      azureApiVersion: map['azureApiVersion'] as String,
-      diagnosticSettingsVersion: map['diagnosticSettingsVersion'] as String,
-      id: map['id'] as String,
+      accessRulesVersion: (() { final guardedValue = map['accessRulesVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      diagnosticSettingsVersion: (() { final guardedValue = map['diagnosticSettingsVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      name: map['name'] as String,
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      type: map['type'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

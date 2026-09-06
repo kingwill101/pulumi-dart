@@ -9,15 +9,15 @@ import 'open_search_domain_status_properties.dart';
 /// {@macro pulumi_awsconnector_open_search_domain_status_args_doc}
 class OpenSearchDomainStatusArgs {
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of OpenSearchDomainStatus
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<OpenSearchDomainStatusProperties>? properties;
+  final pulumi.Input<OpenSearchDomainStatusProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [OpenSearchDomainStatusArgs].
   /// [location] The geo-location where the resource lives

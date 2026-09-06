@@ -7,7 +7,7 @@ class PolybaseSettings {
   /// Determines the number of rows to attempt to retrieve before the PolyBase recalculates the percentage of rejected rows. Type: integer (or Expression with resultType integer), minimum: 0.
   final pulumi.Input<dynamic>? rejectSampleValue;
   /// Reject type.
-  final pulumi.Input<String>? rejectType;
+  final pulumi.Input<dynamic>? rejectType;
   /// Specifies the value or the percentage of rows that can be rejected before the query fails. Type: number (or Expression with resultType number), minimum: 0.
   final pulumi.Input<dynamic>? rejectValue;
   /// Specifies how to handle missing values in delimited text files when PolyBase retrieves data from the text file. Type: boolean (or Expression with resultType boolean).
@@ -37,7 +37,7 @@ class PolybaseSettings {
   factory PolybaseSettings.fromMap(Map<String, dynamic> map) {
     return PolybaseSettings(
       rejectSampleValue: (() { final guardedValue = map['rejectSampleValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      rejectType: (() { final guardedValue = map['rejectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      rejectType: (() { final guardedValue = map['rejectType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       rejectValue: (() { final guardedValue = map['rejectValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       useTypeDefault: (() { final guardedValue = map['useTypeDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );

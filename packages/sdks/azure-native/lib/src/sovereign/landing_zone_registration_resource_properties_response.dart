@@ -10,7 +10,7 @@ class LandingZoneRegistrationResourcePropertiesResponse {
   /// The resource id of the top level management group
   final pulumi.Input<String> existingTopLevelMgId;
   /// The managed identity to be assigned to this landing zone registration.
-  final pulumi.Input<ManagedIdentityPropertiesResponse>? managedIdentity;
+  final pulumi.Input<ManagedIdentityPropertiesResponse?>? managedIdentity;
   /// The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
   final pulumi.Input<String> provisioningState;
 

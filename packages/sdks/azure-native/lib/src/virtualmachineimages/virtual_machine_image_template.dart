@@ -2,7 +2,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'image_template_auto_run_response.dart';
 import 'image_template_identity_response.dart';
 import 'image_template_last_run_status_response.dart';
-import 'image_template_managed_image_source_response.dart';
 import 'image_template_properties_response_error_handling.dart';
 import 'image_template_properties_response_optimize.dart';
 import 'image_template_properties_response_validate.dart';
@@ -31,9 +30,9 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
   /// Maximum duration to wait while building the image template (includes all customizations, optimization, validations, and distributions). Omit or specify 0 to use the default (4 hours).
   late final pulumi.Output<int?> buildTimeoutInMinutes;
   /// Specifies the properties used to describe the customization steps of the image, like Image source etc
-  late final pulumi.Output<List<Map<String, dynamic>>?> customize;
+  late final pulumi.Output<List<dynamic>?> customize;
   /// The distribution targets where the image output needs to go to.
-  late final pulumi.Output<List<Map<String, dynamic>>> distribute;
+  late final pulumi.Output<List<dynamic>> distribute;
   /// Error handling options upon a build failure
   late final pulumi.Output<ImageTemplatePropertiesResponseErrorHandling?> errorHandling;
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. This read-only field differs from 'stagingResourceGroup' only if the value specified in the 'stagingResourceGroup' field is empty.
@@ -55,7 +54,7 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
   /// Provisioning state of the resource
   late final pulumi.Output<String> provisioningState;
   /// Specifies the properties used to describe the source image.
-  late final pulumi.Output<ImageTemplateManagedImageSourceResponse> source;
+  late final pulumi.Output<dynamic> source;
   /// The staging resource group id in the same subscription as the image template that will be used to build the image. If this field is empty, a resource group with a random name will be created. If the resource group specified in this field doesn't exist, it will be created with the same name. If the resource group specified exists, it must be empty and in the same region as the image template. The resource group created will be deleted during template deletion if this field is empty or the resource group specified doesn't exist, but if the resource group specified exists the resources created in the resource group will be deleted during template deletion and the resource group itself will remain.
   late final pulumi.Output<String?> stagingResourceGroup;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
@@ -86,22 +85,55 @@ class VirtualMachineImageTemplate extends pulumi.CustomResource {
     autoRun = registerOutput<ImageTemplateAutoRunResponse?>('autoRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateAutoRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureApiVersion = registerOutput<String>('azureApiVersion');
     buildTimeoutInMinutes = registerOutput<int?>('buildTimeoutInMinutes');
-    customize = registerOutput<List<Map<String, dynamic>>?>('customize');
-    distribute = registerOutput<List<Map<String, dynamic>>>('distribute');
+    customize = registerOutput<List<dynamic>?>('customize', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    distribute = registerOutput<List<dynamic>>('distribute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
     errorHandling = registerOutput<ImageTemplatePropertiesResponseErrorHandling?>('errorHandling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseErrorHandling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exactStagingResourceGroup = registerOutput<String>('exactStagingResourceGroup');
     identity = registerOutput<ImageTemplateIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastRunStatus = registerOutput<ImageTemplateLastRunStatusResponse>('lastRunStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateLastRunStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
-    managedResourceTags = registerOutput<Map<String, String>?>('managedResourceTags');
+    managedResourceTags = registerOutput<Map<String, String>?>('managedResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     optimize = registerOutput<ImageTemplatePropertiesResponseOptimize?>('optimize', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseOptimize.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningError = registerOutput<ProvisioningErrorResponse>('provisioningError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisioningErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
-    source = registerOutput<ImageTemplateManagedImageSourceResponse>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateManagedImageSourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    source = registerOutput<dynamic>('source');
     stagingResourceGroup = registerOutput<String?>('stagingResourceGroup');
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    validate = registerOutput<ImageTemplatePropertiesResponseValidate?>('validate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseValidate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    vmProfile = registerOutput<ImageTemplateVmProfileResponse?>('vmProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateVmProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [VirtualMachineImageTemplate] resource.
+  VirtualMachineImageTemplate.reference(String urn)
+    : super(
+        'azure-native:virtualmachineimages:VirtualMachineImageTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoRun = registerOutput<ImageTemplateAutoRunResponse?>('autoRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateAutoRunResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    buildTimeoutInMinutes = registerOutput<int?>('buildTimeoutInMinutes');
+    customize = registerOutput<List<dynamic>?>('customize', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    distribute = registerOutput<List<dynamic>>('distribute', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<dynamic>(); });
+    errorHandling = registerOutput<ImageTemplatePropertiesResponseErrorHandling?>('errorHandling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseErrorHandling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exactStagingResourceGroup = registerOutput<String>('exactStagingResourceGroup');
+    identity = registerOutput<ImageTemplateIdentityResponse>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastRunStatus = registerOutput<ImageTemplateLastRunStatusResponse>('lastRunStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateLastRunStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    managedResourceTags = registerOutput<Map<String, String>?>('managedResourceTags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    optimize = registerOutput<ImageTemplatePropertiesResponseOptimize?>('optimize', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseOptimize.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningError = registerOutput<ProvisioningErrorResponse>('provisioningError', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProvisioningErrorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    source = registerOutput<dynamic>('source');
+    stagingResourceGroup = registerOutput<String?>('stagingResourceGroup');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     validate = registerOutput<ImageTemplatePropertiesResponseValidate?>('validate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplatePropertiesResponseValidate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     vmProfile = registerOutput<ImageTemplateVmProfileResponse?>('vmProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ImageTemplateVmProfileResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

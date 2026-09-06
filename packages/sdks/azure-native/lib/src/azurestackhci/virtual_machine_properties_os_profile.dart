@@ -7,17 +7,17 @@ import 'virtual_machine_properties_windows_configuration.dart';
 /// OsProfile - describes the configuration of the operating system and sets login data
 class VirtualMachinePropertiesOsProfile {
   /// AdminPassword - admin password
-  final pulumi.Input<String>? adminPassword;
+  final pulumi.Input<String?>? adminPassword;
   /// AdminUsername - admin username
-  final pulumi.Input<String>? adminUsername;
+  final pulumi.Input<String?>? adminUsername;
   /// ComputerName - name of the compute
-  final pulumi.Input<String>? computerName;
+  final pulumi.Input<String?>? computerName;
   /// LinuxConfiguration - linux specific configuration values for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesLinuxConfiguration>? linuxConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesLinuxConfiguration?>? linuxConfiguration;
   /// OsType - string specifying whether the OS is Linux or Windows
-  final pulumi.Input<String>? osType;
+  final pulumi.Input<dynamic>? osType;
   /// Windows Configuration for the virtual machine
-  final pulumi.Input<VirtualMachinePropertiesWindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<VirtualMachinePropertiesWindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachinePropertiesOsProfile].
   /// [adminPassword] AdminPassword - admin password
@@ -52,7 +52,7 @@ class VirtualMachinePropertiesOsProfile {
       adminUsername: (() { final guardedValue = map['adminUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       computerName: (() { final guardedValue = map['computerName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linuxConfiguration: (() { final guardedValue = map['linuxConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachinePropertiesLinuxConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      osType: (() { final guardedValue = map['osType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       windowsConfiguration: (() { final guardedValue = map['windowsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VirtualMachinePropertiesWindowsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

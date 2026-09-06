@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Definition of InstanceIpv4Prefix
 class InstanceIpv4Prefix {
   /// &lt;p&gt;One or more IPv4 prefixes assigned to the network interface.&lt;/p&gt;
-  final pulumi.Input<String>? ipv4Prefix;
+  final pulumi.Input<String?>? ipv4Prefix;
 
   /// Creates a new [InstanceIpv4Prefix].
   /// [ipv4Prefix] &lt;p&gt;One or more IPv4 prefixes assigned to the network interface.&lt;/p&gt;

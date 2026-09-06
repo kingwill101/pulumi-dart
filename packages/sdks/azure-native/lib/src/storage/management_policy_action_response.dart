@@ -8,11 +8,11 @@ import 'management_policy_version_response.dart';
 /// Actions are applied to the filtered blobs when the execution condition is met.
 class ManagementPolicyActionResponse {
   /// The management policy action for base blob
-  final pulumi.Input<ManagementPolicyBaseBlobResponse>? baseBlob;
+  final pulumi.Input<ManagementPolicyBaseBlobResponse?>? baseBlob;
   /// The management policy action for snapshot
-  final pulumi.Input<ManagementPolicySnapShotResponse>? snapshot;
+  final pulumi.Input<ManagementPolicySnapShotResponse?>? snapshot;
   /// The management policy action for version
-  final pulumi.Input<ManagementPolicyVersionResponse>? version;
+  final pulumi.Input<ManagementPolicyVersionResponse?>? version;
 
   /// Creates a new [ManagementPolicyActionResponse].
   /// [baseBlob] The management policy action for base blob

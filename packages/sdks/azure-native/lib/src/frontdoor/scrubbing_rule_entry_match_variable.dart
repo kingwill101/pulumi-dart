@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The variable to be scrubbed from the logs.
-enum ScrubbingRuleEntryMatchVariable {
+enum ScrubbingRuleEntryMatchVariable implements pulumi.PulumiEnum<String> {
   requestIPAddress("RequestIPAddress"),
   requestUri("RequestUri"),
   queryStringArgNames("QueryStringArgNames"),
@@ -9,6 +11,7 @@ enum ScrubbingRuleEntryMatchVariable {
   requestBodyJsonArgNames("RequestBodyJsonArgNames");
 
   const ScrubbingRuleEntryMatchVariable(this.wireValue);
+  @override
   final String wireValue;
 
   static ScrubbingRuleEntryMatchVariable fromValue(String value) {

@@ -7,9 +7,9 @@ import 'runtime_response_java.dart';
 /// Container App Runtime configuration.
 class RuntimeResponse {
   /// .NET app configuration
-  final pulumi.Input<RuntimeResponseDotnet>? dotnet;
+  final pulumi.Input<RuntimeResponseDotnet?>? dotnet;
   /// Java app configuration
-  final pulumi.Input<RuntimeResponseJava>? java;
+  final pulumi.Input<RuntimeResponseJava?>? java;
 
   /// Creates a new [RuntimeResponse].
   /// [dotnet] .NET app configuration

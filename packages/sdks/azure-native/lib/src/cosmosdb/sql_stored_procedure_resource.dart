@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Cosmos DB SQL storedProcedure resource object
 class SqlStoredProcedureResource {
   /// Body of the Stored Procedure
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// Name of the Cosmos DB SQL storedProcedure
   final pulumi.Input<String> id;
 

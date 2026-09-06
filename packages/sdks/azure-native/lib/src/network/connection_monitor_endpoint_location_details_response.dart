@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Connection monitor endpoint location details only being used for 'AzureArcNetwork' type endpoints, which contains the region details.
 class ConnectionMonitorEndpointLocationDetailsResponse {
   /// Region for connection monitor endpoint.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [ConnectionMonitorEndpointLocationDetailsResponse].
   /// [region] Region for connection monitor endpoint.

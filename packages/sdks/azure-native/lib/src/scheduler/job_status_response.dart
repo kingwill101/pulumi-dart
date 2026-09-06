@@ -40,9 +40,9 @@ class JobStatusResponse {
 
   factory JobStatusResponse.fromMap(Map<String, dynamic> map) {
     return JobStatusResponse(
-      executionCount: pulumi.Input.fromValue(map['executionCount'] as int),
-      failureCount: pulumi.Input.fromValue(map['failureCount'] as int),
-      faultedCount: pulumi.Input.fromValue(map['faultedCount'] as int),
+      executionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['executionCount'])),
+      failureCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureCount'])),
+      faultedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['faultedCount'])),
       lastExecutionTime: pulumi.Input.fromValue(map['lastExecutionTime'] as String),
       nextExecutionTime: pulumi.Input.fromValue(map['nextExecutionTime'] as String),
     );

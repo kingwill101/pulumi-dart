@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the account of data.
-enum DataAccountType {
+enum DataAccountType implements pulumi.PulumiEnum<String> {
   valueStorageAccount("StorageAccount"),
   valueManagedDisk("ManagedDisk");
 
   const DataAccountType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataAccountType fromValue(String value) {

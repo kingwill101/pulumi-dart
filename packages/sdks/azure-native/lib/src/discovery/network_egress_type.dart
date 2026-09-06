@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Network egress type provisioned for the supercomputer workloads.
 /// Defaults to LoadBalancer if not specified.
 /// If None is specified, the customer is responsible for providing outbound connectivity for Supercomputer functionality.
-enum NetworkEgressType {
+enum NetworkEgressType implements pulumi.PulumiEnum<String> {
   loadBalancer("LoadBalancer"),
   none("None");
 
   const NetworkEgressType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkEgressType fromValue(String value) {

@@ -9,9 +9,9 @@ import 'private_endpoint_connection_properties.dart';
 /// {@macro pulumi_migrate_private_endpoint_connection_args_doc}
 class PrivateEndpointConnectionArgs {
   /// For optimistic concurrency control.
-  final pulumi.Input<String>? eTag;
+  final pulumi.Input<String?>? eTag;
   /// Unique name of a private endpoint connection within a project.
-  final pulumi.Input<String>? privateEndpointConnectionName;
+  final pulumi.Input<String?>? privateEndpointConnectionName;
   /// Name of the Azure Migrate project.
   final pulumi.Input<String> projectName;
   /// Properties of the private endpoint endpoint connection.

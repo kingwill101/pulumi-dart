@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The state.
-enum SubscriptionFeatureRegistrationState {
+enum SubscriptionFeatureRegistrationState implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueNotRegistered("NotRegistered"),
   valuePending("Pending"),
@@ -9,6 +11,7 @@ enum SubscriptionFeatureRegistrationState {
   valueUnregistered("Unregistered");
 
   const SubscriptionFeatureRegistrationState(this.wireValue);
+  @override
   final String wireValue;
 
   static SubscriptionFeatureRegistrationState fromValue(String value) {

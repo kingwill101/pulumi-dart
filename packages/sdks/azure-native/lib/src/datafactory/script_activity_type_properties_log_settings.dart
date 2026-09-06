@@ -6,9 +6,9 @@ import 'log_location_settings.dart';
 /// Log settings of script activity.
 class ScriptActivityTypePropertiesLogSettings {
   /// The destination of logs. Type: string.
-  final pulumi.Input<String> logDestination;
+  final pulumi.Input<dynamic> logDestination;
   /// Log location settings customer needs to provide when enabling log.
-  final pulumi.Input<LogLocationSettings>? logLocationSettings;
+  final pulumi.Input<LogLocationSettings?>? logLocationSettings;
 
   /// Creates a new [ScriptActivityTypePropertiesLogSettings].
   /// [logDestination] The destination of logs. Type: string.
@@ -27,7 +27,7 @@ class ScriptActivityTypePropertiesLogSettings {
 
   factory ScriptActivityTypePropertiesLogSettings.fromMap(Map<String, dynamic> map) {
     return ScriptActivityTypePropertiesLogSettings(
-      logDestination: pulumi.Input.fromValue(map['logDestination'] as String),
+      logDestination: pulumi.Input.fromValue(map['logDestination']),
       logLocationSettings: (() { final guardedValue = map['logLocationSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LogLocationSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

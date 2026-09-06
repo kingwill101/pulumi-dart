@@ -7,7 +7,7 @@ class ContainerNetworkInterfaceIpConfigurationResponse {
   /// A unique read-only string that changes whenever the resource is updated.
   final pulumi.Input<String> etag;
   /// The name of the resource. This name can be used to access the resource.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The provisioning state of the container network interface IP configuration resource.
   final pulumi.Input<String> provisioningState;
   /// Sub Resource type.

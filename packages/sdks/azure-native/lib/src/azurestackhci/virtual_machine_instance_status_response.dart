@@ -6,13 +6,13 @@ import 'virtual_machine_instance_status_provisioning_status_response.dart';
 /// The observed state of virtual machine instances
 class VirtualMachineInstanceStatusResponse {
   /// VirtualMachine provisioning error code
-  final pulumi.Input<String>? errorCode;
+  final pulumi.Input<String?>? errorCode;
   /// Descriptive error message
-  final pulumi.Input<String>? errorMessage;
+  final pulumi.Input<String?>? errorMessage;
   /// The power state of the virtual machine instance
-  final pulumi.Input<String>? powerState;
+  final pulumi.Input<String?>? powerState;
   /// Provisioning status of the virtual machine instance
-  final pulumi.Input<VirtualMachineInstanceStatusProvisioningStatusResponse>? provisioningStatus;
+  final pulumi.Input<VirtualMachineInstanceStatusProvisioningStatusResponse?>? provisioningStatus;
 
   /// Creates a new [VirtualMachineInstanceStatusResponse].
   /// [errorCode] VirtualMachine provisioning error code

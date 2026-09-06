@@ -17,18 +17,18 @@ import 'virtual_machine_scale_set_storage_profile_response.dart';
 /// Describes the base virtual machine profile for fleet
 class BaseVirtualMachineProfileResponse {
   /// Specifies the gallery applications that should be made available to the VM/VMSS
-  final pulumi.Input<ApplicationProfileResponse>? applicationProfile;
+  final pulumi.Input<ApplicationProfileResponse?>? applicationProfile;
   /// Specifies the capacity reservation related details of a scale set. Minimum
   /// api-version: 2021-04-01.
-  final pulumi.Input<CapacityReservationProfileResponse>? capacityReservation;
+  final pulumi.Input<CapacityReservationProfileResponse?>? capacityReservation;
   /// Specifies the boot diagnostic settings state.
-  final pulumi.Input<DiagnosticsProfileResponse>? diagnosticsProfile;
+  final pulumi.Input<DiagnosticsProfileResponse?>? diagnosticsProfile;
   /// Specifies a collection of settings for extensions installed on virtual machines
   /// in the scale set.
-  final pulumi.Input<VirtualMachineScaleSetExtensionProfileResponse>? extensionProfile;
+  final pulumi.Input<VirtualMachineScaleSetExtensionProfileResponse?>? extensionProfile;
   /// Specifies the hardware profile related details of a scale set. Minimum
   /// api-version: 2021-11-01.
-  final pulumi.Input<VirtualMachineScaleSetHardwareProfileResponse>? hardwareProfile;
+  final pulumi.Input<VirtualMachineScaleSetHardwareProfileResponse?>? hardwareProfile;
   /// Specifies that the image or disk that is being used was licensed on-premises.
   /// &lt;br&gt;&lt;br&gt; Possible values for Windows Server operating system are: &lt;br&gt;&lt;br&gt;
   /// Windows_Client &lt;br&gt;&lt;br&gt; Windows_Server &lt;br&gt;&lt;br&gt; Possible values for Linux
@@ -39,27 +39,27 @@ class BaseVirtualMachineProfileResponse {
   /// &lt;br&gt;&lt;br&gt; [Azure Hybrid Use Benefit for Linux
   /// Server](https://learn.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)
   /// &lt;br&gt;&lt;br&gt; Minimum api-version: 2015-06-15
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// Specifies properties of the network interfaces of the virtual machines in the
   /// scale set.
-  final pulumi.Input<VirtualMachineScaleSetNetworkProfileResponse>? networkProfile;
+  final pulumi.Input<VirtualMachineScaleSetNetworkProfileResponse?>? networkProfile;
   /// Specifies the operating system settings for the virtual machines in the scale
   /// set.
-  final pulumi.Input<VirtualMachineScaleSetOSProfileResponse>? osProfile;
+  final pulumi.Input<VirtualMachineScaleSetOSProfileResponse?>? osProfile;
   /// Specifies Scheduled Event related configurations.
-  final pulumi.Input<ScheduledEventsProfileResponse>? scheduledEventsProfile;
+  final pulumi.Input<ScheduledEventsProfileResponse?>? scheduledEventsProfile;
   /// Specifies the security posture to be used for all virtual machines in the scale
   /// set. Minimum api-version: 2023-03-01
-  final pulumi.Input<SecurityPostureReferenceResponse>? securityPostureReference;
+  final pulumi.Input<SecurityPostureReferenceResponse?>? securityPostureReference;
   /// Specifies the Security related profile settings for the virtual machines in the
   /// scale set.
-  final pulumi.Input<SecurityProfileResponse>? securityProfile;
+  final pulumi.Input<SecurityProfileResponse?>? securityProfile;
   /// Specifies the service artifact reference id used to set same image version for
   /// all virtual machines in the scale set when using 'latest' image version.
   /// Minimum api-version: 2022-11-01
-  final pulumi.Input<ServiceArtifactReferenceResponse>? serviceArtifactReference;
+  final pulumi.Input<ServiceArtifactReferenceResponse?>? serviceArtifactReference;
   /// Specifies the storage settings for the virtual machine disks.
-  final pulumi.Input<VirtualMachineScaleSetStorageProfileResponse>? storageProfile;
+  final pulumi.Input<VirtualMachineScaleSetStorageProfileResponse?>? storageProfile;
   /// Specifies the time in which this VM profile for the Virtual Machine Scale Set
   /// was created. Minimum API version for this property is 2023-09-01. This value
   /// will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile
@@ -68,7 +68,7 @@ class BaseVirtualMachineProfileResponse {
   /// UserData for the virtual machines in the scale set, which must be base-64
   /// encoded. Customer should not pass any secrets in here. Minimum api-version:
   /// 2021-03-01.
-  final pulumi.Input<String>? userData;
+  final pulumi.Input<String?>? userData;
 
   /// Creates a new [BaseVirtualMachineProfileResponse].
   /// [applicationProfile] Specifies the gallery applications that should be made available to the VM/VMSS

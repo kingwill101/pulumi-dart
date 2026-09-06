@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AllowedUnauthorizedActionsExtension {
   /// The action.
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   /// The intent.
-  final pulumi.Input<String>? intent;
+  final pulumi.Input<dynamic>? intent;
 
   /// Creates a new [AllowedUnauthorizedActionsExtension].
   /// [action] The action.
@@ -26,7 +26,7 @@ class AllowedUnauthorizedActionsExtension {
   factory AllowedUnauthorizedActionsExtension.fromMap(Map<String, dynamic> map) {
     return AllowedUnauthorizedActionsExtension(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      intent: (() { final guardedValue = map['intent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      intent: (() { final guardedValue = map['intent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

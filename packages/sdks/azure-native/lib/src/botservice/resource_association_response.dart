@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information about resource association
 class ResourceAssociationResponse {
   /// Access Mode of the resource association
-  final pulumi.Input<String>? accessMode;
+  final pulumi.Input<String?>? accessMode;
   /// Name of the resource association
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ResourceAssociationResponse].
   /// [accessMode] Access Mode of the resource association

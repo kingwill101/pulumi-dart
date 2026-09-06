@@ -449,4 +449,25 @@ class DscNodeConfiguration extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [DscNodeConfiguration] resource.
+  DscNodeConfiguration.reference(String urn)
+    : super(
+        'azure-native:automation:DscNodeConfiguration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    configuration = registerOutput<DscConfigurationAssociationPropertyResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DscConfigurationAssociationPropertyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTime = registerOutput<String?>('creationTime');
+    incrementNodeConfigurationBuild = registerOutput<bool?>('incrementNodeConfigurationBuild');
+    lastModifiedTime = registerOutput<String?>('lastModifiedTime');
+    this.name = registerOutput<String>('name');
+    nodeCount = registerOutput<double?>('nodeCount');
+    source = registerOutput<String?>('source');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }

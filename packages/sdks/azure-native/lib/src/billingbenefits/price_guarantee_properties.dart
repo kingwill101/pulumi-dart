@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Set only in price guarantee scenario.
 class PriceGuaranteeProperties {
   /// The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
-  final pulumi.Input<String>? priceGuaranteeDate;
+  final pulumi.Input<String?>? priceGuaranteeDate;
   /// Supported values: Protected, Locked
-  final pulumi.Input<String>? pricingPolicy;
+  final pulumi.Input<dynamic>? pricingPolicy;
 
   /// Creates a new [PriceGuaranteeProperties].
   /// [priceGuaranteeDate] The date on which prices are to be used for guarantee calculation. Validation: expected to be 00 hours, Format: 2024-09-30T00:00:00Z. Must be in UTC.
@@ -27,7 +27,7 @@ class PriceGuaranteeProperties {
   factory PriceGuaranteeProperties.fromMap(Map<String, dynamic> map) {
     return PriceGuaranteeProperties(
       priceGuaranteeDate: (() { final guardedValue = map['priceGuaranteeDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      pricingPolicy: (() { final guardedValue = map['pricingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      pricingPolicy: (() { final guardedValue = map['pricingPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

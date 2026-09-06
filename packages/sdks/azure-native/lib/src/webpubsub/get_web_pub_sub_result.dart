@@ -15,7 +15,7 @@ import 'web_pub_sub_tls_settings_response.dart';
 /// Result data returned by getWebPubSub.
 class GetWebPubSubResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// DisableLocalAuth
   /// Enable or disable aad auth
   /// When set as true, connection with AuthType=aad won't work.
@@ -25,13 +25,13 @@ class GetWebPubSubResult {
   /// When set as true, connection with AccessKey=xxx won't work.
   final bool? disableLocalAuth;
   /// The publicly accessible IP of the resource.
-  final String externalIP;
+  final String? externalIP;
   /// FQDN of the service instance.
-  final String hostName;
+  final String? hostName;
   /// Deprecated.
-  final String hostNamePrefix;
+  final String? hostNamePrefix;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// A class represent managed identities used for request and response
   final ManagedIdentityResponse? identity;
   /// The kind of the service
@@ -39,21 +39,21 @@ class GetWebPubSubResult {
   /// Live trace configuration of a Microsoft.SignalRService resource.
   final LiveTraceConfigurationResponse? liveTraceConfiguration;
   /// The geo-location where the resource lives
-  final String location;
+  final String? location;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// Network ACLs for the resource
   final WebPubSubNetworkACLsResponse? networkACLs;
   /// Private endpoint connections to the resource.
-  final List<PrivateEndpointConnectionResponse> privateEndpointConnections;
+  final List<PrivateEndpointConnectionResponse>? privateEndpointConnections;
   /// Provisioning state of the resource.
-  final String provisioningState;
+  final String? provisioningState;
   /// Enable or disable public network access. Default to "Enabled".
   /// When it's Enabled, network ACLs still apply.
   /// When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
   final String? publicNetworkAccess;
   /// The publicly accessible port of the resource which is designed for browser/client side usage.
-  final int publicPort;
+  final int? publicPort;
   /// Enable or disable the regional endpoint. Default to "Enabled".
   /// When it's Disabled, new connections will not be routed to this endpoint, however existing connections will not be affected.
   /// This property is replica specific. Disable the regional endpoint without replica is not allowed.
@@ -65,23 +65,23 @@ class GetWebPubSubResult {
   /// When it's false, the data plane of the resource is started.
   final String? resourceStopped;
   /// The publicly accessible port of the resource which is designed for customer server side usage.
-  final int serverPort;
+  final int? serverPort;
   /// The list of shared private link resources.
-  final List<SharedPrivateLinkResourceResponse> sharedPrivateLinkResources;
+  final List<SharedPrivateLinkResourceResponse>? sharedPrivateLinkResources;
   /// The billing information of the resource.
   final ResourceSkuResponse? sku;
   /// SocketIO settings for the resource
   final WebPubSubSocketIOSettingsResponse? socketIO;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// Resource tags.
   final Map<String, String>? tags;
   /// TLS settings for the resource
   final WebPubSubTlsSettingsResponse? tls;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Version of the resource. Probably you need the same or higher version of client SDKs.
-  final String version;
+  final String? version;
 
   /// Creates a new [GetWebPubSubResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -113,103 +113,103 @@ class GetWebPubSubResult {
   /// [tls] TLS settings for the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the resource. Probably you need the same or higher version of client SDKs.
-  const GetWebPubSubResult({
-    required this.azureApiVersion,
-    this.disableAadAuth,
-    this.disableLocalAuth,
-    required this.externalIP,
-    required this.hostName,
-    required this.hostNamePrefix,
-    required this.id,
+  GetWebPubSubResult({
+    this.azureApiVersion,
+    bool? disableAadAuth,
+    bool? disableLocalAuth,
+    this.externalIP,
+    this.hostName,
+    this.hostNamePrefix,
+    this.id,
     this.identity,
     this.kind,
     this.liveTraceConfiguration,
-    required this.location,
-    required this.name,
+    this.location,
+    this.name,
     this.networkACLs,
-    required this.privateEndpointConnections,
-    required this.provisioningState,
-    this.publicNetworkAccess,
-    required this.publicPort,
-    this.regionEndpointEnabled,
+    this.privateEndpointConnections,
+    this.provisioningState,
+    String? publicNetworkAccess,
+    this.publicPort,
+    String? regionEndpointEnabled,
     this.resourceLogConfiguration,
-    this.resourceStopped,
-    required this.serverPort,
-    required this.sharedPrivateLinkResources,
+    String? resourceStopped,
+    this.serverPort,
+    this.sharedPrivateLinkResources,
     this.sku,
     this.socketIO,
-    required this.systemData,
+    this.systemData,
     this.tags,
     this.tls,
-    required this.type,
-    required this.version,
-  });
+    this.type,
+    this.version,
+  }) : disableAadAuth = disableAadAuth ?? false, disableLocalAuth = disableLocalAuth ?? false, publicNetworkAccess = publicNetworkAccess ?? 'Enabled', regionEndpointEnabled = regionEndpointEnabled ?? 'Enabled', resourceStopped = resourceStopped ?? 'false';
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'disableAadAuth': ?disableAadAuth,
       'disableLocalAuth': ?disableLocalAuth,
-      'externalIP': externalIP,
-      'hostName': hostName,
-      'hostNamePrefix': hostNamePrefix,
-      'id': id,
+      'externalIP': ?externalIP,
+      'hostName': ?hostName,
+      'hostNamePrefix': ?hostNamePrefix,
+      'id': ?id,
       'identity': ?identity?.toMap(),
       'kind': ?kind,
       'liveTraceConfiguration': ?liveTraceConfiguration?.toMap(),
-      'location': location,
-      'name': name,
+      'location': ?location,
+      'name': ?name,
       'networkACLs': ?networkACLs?.toMap(),
-      'privateEndpointConnections': pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(privateEndpointConnections, (value) => value.toMap()),
-      'provisioningState': provisioningState,
+      'privateEndpointConnections': ?(() { final guardedValue = privateEndpointConnections; if (guardedValue == null) return null; return pulumi.Input.encodeList<PrivateEndpointConnectionResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'provisioningState': ?provisioningState,
       'publicNetworkAccess': ?publicNetworkAccess,
-      'publicPort': publicPort,
+      'publicPort': ?publicPort,
       'regionEndpointEnabled': ?regionEndpointEnabled,
       'resourceLogConfiguration': ?resourceLogConfiguration?.toMap(),
       'resourceStopped': ?resourceStopped,
-      'serverPort': serverPort,
-      'sharedPrivateLinkResources': pulumi.Input.encodeList<SharedPrivateLinkResourceResponse, Map<String, dynamic>>(sharedPrivateLinkResources, (value) => value.toMap()),
+      'serverPort': ?serverPort,
+      'sharedPrivateLinkResources': ?(() { final guardedValue = sharedPrivateLinkResources; if (guardedValue == null) return null; return pulumi.Input.encodeList<SharedPrivateLinkResourceResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'sku': ?sku?.toMap(),
       'socketIO': ?socketIO?.toMap(),
-      'systemData': systemData.toMap(),
+      'systemData': ?systemData?.toMap(),
       'tags': ?tags,
       'tls': ?tls?.toMap(),
-      'type': type,
-      'version': version,
+      'type': ?type,
+      'version': ?version,
     };
   }
 
   factory GetWebPubSubResult.fromMap(Map<String, dynamic> map) {
     return GetWebPubSubResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       disableAadAuth: (() { final guardedValue = map['disableAadAuth']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       disableLocalAuth: (() { final guardedValue = map['disableLocalAuth']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      externalIP: map['externalIP'] as String,
-      hostName: map['hostName'] as String,
-      hostNamePrefix: map['hostNamePrefix'] as String,
-      id: map['id'] as String,
+      externalIP: (() { final guardedValue = map['externalIP']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostName: (() { final guardedValue = map['hostName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      hostNamePrefix: (() { final guardedValue = map['hostNamePrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return ManagedIdentityResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
       liveTraceConfiguration: (() { final guardedValue = map['liveTraceConfiguration']; if (guardedValue == null) return null; return LiveTraceConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      location: map['location'] as String,
-      name: map['name'] as String,
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkACLs: (() { final guardedValue = map['networkACLs']; if (guardedValue == null) return null; return WebPubSubNetworkACLsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      privateEndpointConnections: pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(map['privateEndpointConnections']!, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())),
-      provisioningState: map['provisioningState'] as String,
+      privateEndpointConnections: (() { final guardedValue = map['privateEndpointConnections']; if (guardedValue == null) return null; return pulumi.Input.decodeList<PrivateEndpointConnectionResponse>(guardedValue, (value) => PrivateEndpointConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicNetworkAccess: (() { final guardedValue = map['publicNetworkAccess']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      publicPort: map['publicPort'] as int,
+      publicPort: (() { final guardedValue = map['publicPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       regionEndpointEnabled: (() { final guardedValue = map['regionEndpointEnabled']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceLogConfiguration: (() { final guardedValue = map['resourceLogConfiguration']; if (guardedValue == null) return null; return ResourceLogConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       resourceStopped: (() { final guardedValue = map['resourceStopped']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      serverPort: map['serverPort'] as int,
-      sharedPrivateLinkResources: pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(map['sharedPrivateLinkResources']!, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())),
+      serverPort: (() { final guardedValue = map['serverPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      sharedPrivateLinkResources: (() { final guardedValue = map['sharedPrivateLinkResources']; if (guardedValue == null) return null; return pulumi.Input.decodeList<SharedPrivateLinkResourceResponse>(guardedValue, (value) => SharedPrivateLinkResourceResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
       sku: (() { final guardedValue = map['sku']; if (guardedValue == null) return null; return ResourceSkuResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       socketIO: (() { final guardedValue = map['socketIO']; if (guardedValue == null) return null; return WebPubSubSocketIOSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return WebPubSubTlsSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      type: map['type'] as String,
-      version: map['version'] as String,
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

@@ -9,19 +9,19 @@ import 'office365_policy_properties.dart';
 /// {@macro pulumi_network_virtual_appliance_site_args_doc}
 class VirtualApplianceSiteArgs {
   /// Address Prefix.
-  final pulumi.Input<String>? addressPrefix;
+  final pulumi.Input<String?>? addressPrefix;
   /// Resource ID.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Name of the virtual appliance site.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The name of the Network Virtual Appliance.
   final pulumi.Input<String> networkVirtualApplianceName;
   /// Office 365 Policy.
-  final pulumi.Input<Office365PolicyProperties>? o365Policy;
+  final pulumi.Input<Office365PolicyProperties?>? o365Policy;
   /// The name of the resource group.
   final pulumi.Input<String> resourceGroupName;
   /// The name of the site.
-  final pulumi.Input<String>? siteName;
+  final pulumi.Input<String?>? siteName;
 
   /// Creates a new [VirtualApplianceSiteArgs].
   /// [addressPrefix] Address Prefix.

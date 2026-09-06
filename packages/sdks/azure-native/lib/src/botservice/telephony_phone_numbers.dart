@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A telephone number for the Telephony channel
 class TelephonyPhoneNumbers {
   /// The endpoint of ACS.
-  final pulumi.Input<String>? acsEndpoint;
+  final pulumi.Input<String?>? acsEndpoint;
   /// The resource id of ACS.
-  final pulumi.Input<String>? acsResourceId;
+  final pulumi.Input<String?>? acsResourceId;
   /// The secret of ACS.
-  final pulumi.Input<String>? acsSecret;
+  final pulumi.Input<String?>? acsSecret;
   /// The service region of cognitive service.
-  final pulumi.Input<String>? cognitiveServiceRegion;
+  final pulumi.Input<String?>? cognitiveServiceRegion;
   /// The resource id of cognitive service.
-  final pulumi.Input<String>? cognitiveServiceResourceId;
+  final pulumi.Input<String?>? cognitiveServiceResourceId;
   /// The subscription key of cognitive service.
-  final pulumi.Input<String>? cognitiveServiceSubscriptionKey;
+  final pulumi.Input<String?>? cognitiveServiceSubscriptionKey;
   /// The default locale of the phone number.
-  final pulumi.Input<String>? defaultLocale;
+  final pulumi.Input<String?>? defaultLocale;
   /// The element id.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Optional Property that will determine the offering type of the phone.
-  final pulumi.Input<String>? offerType;
+  final pulumi.Input<String?>? offerType;
   /// The phone number.
-  final pulumi.Input<String>? phoneNumber;
+  final pulumi.Input<String?>? phoneNumber;
 
   /// Creates a new [TelephonyPhoneNumbers].
   /// [acsEndpoint] The endpoint of ACS.

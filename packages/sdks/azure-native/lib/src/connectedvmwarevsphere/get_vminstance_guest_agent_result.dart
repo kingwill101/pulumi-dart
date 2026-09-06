@@ -9,33 +9,33 @@ import 'system_data_response.dart';
 /// Result data returned by getVMInstanceGuestAgent.
 class GetVMInstanceGuestAgentResult {
   /// The Azure API version of the resource.
-  final String azureApiVersion;
+  final String? azureApiVersion;
   /// Username / Password Credentials to provision guest agent.
   final GuestCredentialVMInstanceGuestAgentResponse? credentials;
   /// Gets the name of the corresponding resource in Kubernetes.
-  final String customResourceName;
+  final String? customResourceName;
   /// HTTP Proxy configuration for the VM.
   final HttpProxyConfigurationResponse? httpProxyConfig;
   /// Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  final String id;
+  final String? id;
   /// The name of the resource
-  final String name;
+  final String? name;
   /// The resource id of the private link scope this machine is assigned to, if any.
   final String? privateLinkScopeResourceId;
   /// Gets or sets the guest agent provisioning action.
   final String? provisioningAction;
   /// Gets the provisioning state.
-  final String provisioningState;
+  final String? provisioningState;
   /// Gets or sets the guest agent status.
-  final String status;
+  final String? status;
   /// The resource status information.
-  final List<ResourceStatusResponse> statuses;
+  final List<ResourceStatusResponse>? statuses;
   /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
-  final SystemDataResponse systemData;
+  final SystemDataResponse? systemData;
   /// The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  final String type;
+  final String? type;
   /// Gets or sets a unique identifier for this resource.
-  final String uuid;
+  final String? uuid;
 
   /// Creates a new [GetVMInstanceGuestAgentResult].
   /// [azureApiVersion] The Azure API version of the resource.
@@ -53,57 +53,57 @@ class GetVMInstanceGuestAgentResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Gets or sets a unique identifier for this resource.
   const GetVMInstanceGuestAgentResult({
-    required this.azureApiVersion,
+    this.azureApiVersion,
     this.credentials,
-    required this.customResourceName,
+    this.customResourceName,
     this.httpProxyConfig,
-    required this.id,
-    required this.name,
+    this.id,
+    this.name,
     this.privateLinkScopeResourceId,
     this.provisioningAction,
-    required this.provisioningState,
-    required this.status,
-    required this.statuses,
-    required this.systemData,
-    required this.type,
-    required this.uuid,
+    this.provisioningState,
+    this.status,
+    this.statuses,
+    this.systemData,
+    this.type,
+    this.uuid,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'azureApiVersion': azureApiVersion,
+      'azureApiVersion': ?azureApiVersion,
       'credentials': ?credentials?.toMap(),
-      'customResourceName': customResourceName,
+      'customResourceName': ?customResourceName,
       'httpProxyConfig': ?httpProxyConfig?.toMap(),
-      'id': id,
-      'name': name,
+      'id': ?id,
+      'name': ?name,
       'privateLinkScopeResourceId': ?privateLinkScopeResourceId,
       'provisioningAction': ?provisioningAction,
-      'provisioningState': provisioningState,
-      'status': status,
-      'statuses': pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(statuses, (value) => value.toMap()),
-      'systemData': systemData.toMap(),
-      'type': type,
-      'uuid': uuid,
+      'provisioningState': ?provisioningState,
+      'status': ?status,
+      'statuses': ?(() { final guardedValue = statuses; if (guardedValue == null) return null; return pulumi.Input.encodeList<ResourceStatusResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'systemData': ?systemData?.toMap(),
+      'type': ?type,
+      'uuid': ?uuid,
     };
   }
 
   factory GetVMInstanceGuestAgentResult.fromMap(Map<String, dynamic> map) {
     return GetVMInstanceGuestAgentResult(
-      azureApiVersion: map['azureApiVersion'] as String,
+      azureApiVersion: (() { final guardedValue = map['azureApiVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       credentials: (() { final guardedValue = map['credentials']; if (guardedValue == null) return null; return GuestCredentialVMInstanceGuestAgentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      customResourceName: map['customResourceName'] as String,
+      customResourceName: (() { final guardedValue = map['customResourceName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return HttpProxyConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
-      id: map['id'] as String,
-      name: map['name'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateLinkScopeResourceId: (() { final guardedValue = map['privateLinkScopeResourceId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       provisioningAction: (() { final guardedValue = map['provisioningAction']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      provisioningState: map['provisioningState'] as String,
-      status: map['status'] as String,
-      statuses: pulumi.Input.decodeList<ResourceStatusResponse>(map['statuses']!, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())),
-      systemData: SystemDataResponse.fromMap((map['systemData']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      uuid: map['uuid'] as String,
+      provisioningState: (() { final guardedValue = map['provisioningState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statuses: (() { final guardedValue = map['statuses']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceStatusResponse>(guardedValue, (value) => ResourceStatusResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      systemData: (() { final guardedValue = map['systemData']; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uuid: (() { final guardedValue = map['uuid']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

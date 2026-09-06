@@ -7,7 +7,7 @@ class RelationshipLinkFieldMappingResponse {
   /// The field name on the Interaction Type.
   final pulumi.Input<String> interactionFieldName;
   /// Link type.
-  final pulumi.Input<String>? linkType;
+  final pulumi.Input<String?>? linkType;
   /// The field name on the Relationship metadata.
   final pulumi.Input<String> relationshipFieldName;
 

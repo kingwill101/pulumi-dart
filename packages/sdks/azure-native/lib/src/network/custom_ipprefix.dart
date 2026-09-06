@@ -165,7 +165,7 @@ class CustomIPPrefix extends pulumi.CustomResource {
   /// The Azure API version of the resource.
   late final pulumi.Output<String> azureApiVersion;
   /// The list of all Children for IPv6 /48 CustomIpPrefix.
-  late final pulumi.Output<List<Map<String, dynamic>>> childCustomIpPrefixes;
+  late final pulumi.Output<List<SubResourceResponse>> childCustomIpPrefixes;
   /// The prefix range in CIDR notation. Should include the start address and the prefix length.
   late final pulumi.Output<String?> cidr;
   /// The commissioned state of the Custom IP Prefix.
@@ -193,7 +193,7 @@ class CustomIPPrefix extends pulumi.CustomResource {
   /// The provisioning state of the custom IP prefix resource.
   late final pulumi.Output<String> provisioningState;
   /// The list of all referenced PublicIpPrefixes.
-  late final pulumi.Output<List<Map<String, dynamic>>> publicIpPrefixes;
+  late final pulumi.Output<List<SubResourceResponse>> publicIpPrefixes;
   /// The resource GUID property of the custom IP prefix resource.
   late final pulumi.Output<String> resourceGuid;
   /// Signed message for WAN validation.
@@ -222,7 +222,7 @@ class CustomIPPrefix extends pulumi.CustomResource {
     asn = registerOutput<String?>('asn');
     authorizationMessage = registerOutput<String?>('authorizationMessage');
     azureApiVersion = registerOutput<String>('azureApiVersion');
-    childCustomIpPrefixes = registerOutput<List<Map<String, dynamic>>>('childCustomIpPrefixes');
+    childCustomIpPrefixes = registerOutput<List<SubResourceResponse>>('childCustomIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     cidr = registerOutput<String?>('cidr');
     commissionedState = registerOutput<String?>('commissionedState');
     customIpPrefixParent = registerOutput<SubResourceResponse?>('customIpPrefixParent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -236,11 +236,45 @@ class CustomIPPrefix extends pulumi.CustomResource {
     noInternetAdvertise = registerOutput<bool?>('noInternetAdvertise');
     prefixType = registerOutput<String?>('prefixType');
     provisioningState = registerOutput<String>('provisioningState');
-    publicIpPrefixes = registerOutput<List<Map<String, dynamic>>>('publicIpPrefixes');
+    publicIpPrefixes = registerOutput<List<SubResourceResponse>>('publicIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
     resourceGuid = registerOutput<String>('resourceGuid');
     signedMessage = registerOutput<String?>('signedMessage');
-    tags = registerOutput<Map<String, String>?>('tags');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
-    zones = registerOutput<List<String>?>('zones');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [CustomIPPrefix] resource.
+  CustomIPPrefix.reference(String urn)
+    : super(
+        'azure-native:network:CustomIPPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    asn = registerOutput<String?>('asn');
+    authorizationMessage = registerOutput<String?>('authorizationMessage');
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    childCustomIpPrefixes = registerOutput<List<SubResourceResponse>>('childCustomIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    cidr = registerOutput<String?>('cidr');
+    commissionedState = registerOutput<String?>('commissionedState');
+    customIpPrefixParent = registerOutput<SubResourceResponse?>('customIpPrefixParent', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubResourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    expressRouteAdvertise = registerOutput<bool?>('expressRouteAdvertise');
+    extendedLocation = registerOutput<ExtendedLocationResponse?>('extendedLocation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExtendedLocationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    failedReason = registerOutput<String>('failedReason');
+    geo = registerOutput<String?>('geo');
+    location = registerOutput<String?>('location');
+    this.name = registerOutput<String>('name');
+    noInternetAdvertise = registerOutput<bool?>('noInternetAdvertise');
+    prefixType = registerOutput<String?>('prefixType');
+    provisioningState = registerOutput<String>('provisioningState');
+    publicIpPrefixes = registerOutput<List<SubResourceResponse>>('publicIpPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubResourceResponse>(guardedValue, (value) => SubResourceResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    resourceGuid = registerOutput<String>('resourceGuid');
+    signedMessage = registerOutput<String?>('signedMessage');
+    tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    zones = registerOutput<List<String>?>('zones', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

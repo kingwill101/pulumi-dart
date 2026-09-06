@@ -7,27 +7,27 @@ class SiteSpnPropertiesResponse {
   /// Gets or sets the AAD Authority URL which was used to request the token for
   /// the
   /// service principal.
-  final pulumi.Input<String>? aadAuthority;
+  final pulumi.Input<String?>? aadAuthority;
   /// Gets or sets the application/client Id for the service principal with which
   /// the
   /// on-premise management/data plane components would communicate
   /// with our Azure
   /// services.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// Gets or sets the intended audience for the service principal.
-  final pulumi.Input<String>? audience;
+  final pulumi.Input<String?>? audience;
   /// Gets or sets the object Id of the service principal with which the on-premise
   ///
   /// management/data plane components would communicate with our Azure
   /// services.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// Gets or sets the raw certificate data for building certificate expiry flows.
-  final pulumi.Input<String>? rawCertData;
+  final pulumi.Input<String?>? rawCertData;
   /// Gets or sets the tenant Id for the service principal with which the
   /// on-premise
   /// management/data plane components would communicate with
   /// our Azure services.
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [SiteSpnPropertiesResponse].
   /// [aadAuthority] Gets or sets the AAD Authority URL which was used to request the token for

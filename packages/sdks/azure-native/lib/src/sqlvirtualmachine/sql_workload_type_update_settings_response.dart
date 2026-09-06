@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Set workload type to optimize storage for SQL Server.
 class SqlWorkloadTypeUpdateSettingsResponse {
   /// SQL Server workload type.
-  final pulumi.Input<String>? sqlWorkloadType;
+  final pulumi.Input<String?>? sqlWorkloadType;
 
   /// Creates a new [SqlWorkloadTypeUpdateSettingsResponse].
   /// [sqlWorkloadType] SQL Server workload type.

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The recurrence type : weekly, monthly, etc.
-enum AccessReviewRecurrencePatternType {
+enum AccessReviewRecurrencePatternType implements pulumi.PulumiEnum<String> {
   weekly("weekly"),
   absoluteMonthly("absoluteMonthly");
 
   const AccessReviewRecurrencePatternType(this.wireValue);
+  @override
   final String wireValue;
 
   static AccessReviewRecurrencePatternType fromValue(String value) {

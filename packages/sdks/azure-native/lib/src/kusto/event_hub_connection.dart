@@ -218,4 +218,24 @@ class EventHubConnection extends pulumi.CustomResource {
     tableName = registerOutput<String?>('tableName');
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [EventHubConnection] resource.
+  EventHubConnection.reference(String urn)
+    : super(
+        'azure-native:kusto:EventHubConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    consumerGroup = registerOutput<String>('consumerGroup');
+    dataFormat = registerOutput<String?>('dataFormat');
+    eventHubResourceId = registerOutput<String>('eventHubResourceId');
+    location = registerOutput<String?>('location');
+    mappingRuleName = registerOutput<String?>('mappingRuleName');
+    this.name = registerOutput<String>('name');
+    tableName = registerOutput<String?>('tableName');
+    type = registerOutput<String>('type');
+  }
 }

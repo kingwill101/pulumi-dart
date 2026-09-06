@@ -6,7 +6,7 @@ import 'cors_rule.dart';
 /// Definition of CorsConfiguration
 class CorsConfiguration {
   /// A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration.
-  final pulumi.Input<List<CorsRule>>? corsRules;
+  final pulumi.Input<List<CorsRule>?>? corsRules;
 
   /// Creates a new [CorsConfiguration].
   /// [corsRules] A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration.

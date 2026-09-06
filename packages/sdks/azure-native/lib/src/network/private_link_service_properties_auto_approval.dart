@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The auto-approval list of the private link service.
 class PrivateLinkServicePropertiesAutoApproval {
   /// The list of subscriptions.
-  final pulumi.Input<List<String>>? subscriptions;
+  final pulumi.Input<List<String>?>? subscriptions;
 
   /// Creates a new [PrivateLinkServicePropertiesAutoApproval].
   /// [subscriptions] The list of subscriptions.

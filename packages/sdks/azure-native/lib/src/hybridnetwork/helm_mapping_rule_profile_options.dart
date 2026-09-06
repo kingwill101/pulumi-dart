@@ -7,9 +7,9 @@ import 'helm_upgrade_options.dart';
 /// The helm deployment options
 class HelmMappingRuleProfileOptions {
   /// The helm deployment install options
-  final pulumi.Input<HelmInstallOptions>? installOptions;
+  final pulumi.Input<HelmInstallOptions?>? installOptions;
   /// The helm deployment upgrade options
-  final pulumi.Input<HelmUpgradeOptions>? upgradeOptions;
+  final pulumi.Input<HelmUpgradeOptions?>? upgradeOptions;
 
   /// Creates a new [HelmMappingRuleProfileOptions].
   /// [installOptions] The helm deployment install options

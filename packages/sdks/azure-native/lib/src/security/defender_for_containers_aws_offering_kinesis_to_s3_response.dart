@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The kinesis to s3 connection configuration
 class DefenderForContainersAwsOfferingKinesisToS3Response {
   /// The cloud role ARN in AWS used by Kinesis to transfer data into S3
-  final pulumi.Input<String>? cloudRoleArn;
+  final pulumi.Input<String?>? cloudRoleArn;
 
   /// Creates a new [DefenderForContainersAwsOfferingKinesisToS3Response].
   /// [cloudRoleArn] The cloud role ARN in AWS used by Kinesis to transfer data into S3

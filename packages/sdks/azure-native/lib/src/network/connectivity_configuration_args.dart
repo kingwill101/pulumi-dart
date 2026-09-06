@@ -12,17 +12,17 @@ class ConnectivityConfigurationArgs {
   /// Groups for configuration
   final pulumi.Input<List<ConnectivityGroupItem>> appliesToGroups;
   /// The name of the network manager connectivity configuration.
-  final pulumi.Input<String>? configurationName;
+  final pulumi.Input<String?>? configurationName;
   /// Connectivity topology type.
-  final pulumi.Input<String> connectivityTopology;
+  final pulumi.Input<dynamic> connectivityTopology;
   /// Flag if need to remove current existing peerings.
-  final pulumi.Input<String>? deleteExistingPeering;
+  final pulumi.Input<dynamic>? deleteExistingPeering;
   /// A description of the connectivity configuration.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// List of hubItems
-  final pulumi.Input<List<Hub>>? hubs;
+  final pulumi.Input<List<Hub>?>? hubs;
   /// Flag if global mesh is supported.
-  final pulumi.Input<String>? isGlobal;
+  final pulumi.Input<dynamic>? isGlobal;
   /// The name of the network manager.
   final pulumi.Input<String> networkManagerName;
   /// The name of the resource group.
@@ -68,11 +68,11 @@ class ConnectivityConfigurationArgs {
     return ConnectivityConfigurationArgs(
       appliesToGroups: pulumi.Input.fromValue(pulumi.Input.decodeList<ConnectivityGroupItem>(map['appliesToGroups']!, (value) => ConnectivityGroupItem.fromMap((value as Map).cast<String, dynamic>()))),
       configurationName: (() { final guardedValue = map['configurationName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      connectivityTopology: pulumi.Input.fromValue(map['connectivityTopology'] as String),
-      deleteExistingPeering: (() { final guardedValue = map['deleteExistingPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      connectivityTopology: pulumi.Input.fromValue(map['connectivityTopology']),
+      deleteExistingPeering: (() { final guardedValue = map['deleteExistingPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hubs: (() { final guardedValue = map['hubs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Hub>(guardedValue, (value) => Hub.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      isGlobal: (() { final guardedValue = map['isGlobal']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       networkManagerName: pulumi.Input.fromValue(map['networkManagerName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
     );

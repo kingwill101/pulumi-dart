@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Site redundancy mode
-enum RedundancyMode {
+enum RedundancyMode implements pulumi.PulumiEnum<String> {
   valueNone("None"),
   valueManual("Manual"),
   valueFailover("Failover"),
@@ -7,6 +9,7 @@ enum RedundancyMode {
   valueGeoRedundant("GeoRedundant");
 
   const RedundancyMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RedundancyMode fromValue(String value) {

@@ -10,19 +10,19 @@ import 'managed_service_identity.dart';
 /// {@macro pulumi_app_builder_args_doc}
 class BuilderArgs {
   /// The name of the builder.
-  final pulumi.Input<String>? builderName;
+  final pulumi.Input<String?>? builderName;
   /// List of mappings of container registries and the managed identity used to connect to it.
-  final pulumi.Input<List<ContainerRegistry>>? containerRegistries;
+  final pulumi.Input<List<ContainerRegistry>?>? containerRegistries;
   /// Resource ID of the container apps environment that the builder is associated with.
   final pulumi.Input<String> environmentId;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BuilderArgs].
   /// [builderName] The name of the builder.

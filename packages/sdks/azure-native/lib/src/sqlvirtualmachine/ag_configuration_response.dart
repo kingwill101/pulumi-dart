@@ -6,7 +6,7 @@ import 'ag_replica_response.dart';
 /// Availability group configuration.
 class AgConfigurationResponse {
   /// Replica configurations.
-  final pulumi.Input<List<AgReplicaResponse>>? replicas;
+  final pulumi.Input<List<AgReplicaResponse>?>? replicas;
 
   /// Creates a new [AgConfigurationResponse].
   /// [replicas] Replica configurations.

@@ -6,7 +6,7 @@ import 'provisioning_request.dart';
 /// Represents the properties of an Azure Linux restricted operating environment Provision Os job.
 class ProvisionOsJobProperties {
   /// Deployment mode to trigger job.
-  final pulumi.Input<String>? deploymentMode;
+  final pulumi.Input<dynamic>? deploymentMode;
   /// Job Type supported.
   /// Expected value is 'ProvisionOs'.
   final pulumi.Input<String> jobType;
@@ -33,7 +33,7 @@ class ProvisionOsJobProperties {
 
   factory ProvisionOsJobProperties.fromMap(Map<String, dynamic> map) {
     return ProvisionOsJobProperties(
-      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      deploymentMode: (() { final guardedValue = map['deploymentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       jobType: pulumi.Input.fromValue(map['jobType'] as String),
       provisioningRequest: pulumi.Input.fromValue(ProvisioningRequest.fromMap((map['provisioningRequest']! as Map).cast<String, dynamic>())),
     );

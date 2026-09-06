@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates if the search service has an upgrade available.
-enum UpgradeAvailable {
+enum UpgradeAvailable implements pulumi.PulumiEnum<String> {
   notAvailable("notAvailable"),
   available("available");
 
   const UpgradeAvailable(this.wireValue);
+  @override
   final String wireValue;
 
   static UpgradeAvailable fromValue(String value) {

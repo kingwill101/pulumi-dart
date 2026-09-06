@@ -6,7 +6,7 @@ import 'move_resource_error_body_response.dart';
 /// An error response from the azure resource mover service.
 class MoveResourceErrorResponse {
   /// The move resource error body.
-  final pulumi.Input<MoveResourceErrorBodyResponse>? properties;
+  final pulumi.Input<MoveResourceErrorBodyResponse?>? properties;
 
   /// Creates a new [MoveResourceErrorResponse].
   /// [properties] The move resource error body.

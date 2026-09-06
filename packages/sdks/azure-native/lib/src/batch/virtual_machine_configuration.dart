@@ -15,32 +15,32 @@ import 'windows_configuration.dart';
 /// The configuration for compute nodes in a pool based on the Azure Virtual Machines infrastructure.
 class VirtualMachineConfiguration {
   /// If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.
-  final pulumi.Input<ContainerConfiguration>? containerConfiguration;
+  final pulumi.Input<ContainerConfiguration?>? containerConfiguration;
   /// This property must be specified if the compute nodes in the pool need to have empty data disks attached to them.
-  final pulumi.Input<List<DataDisk>>? dataDisks;
+  final pulumi.Input<List<DataDisk>?>? dataDisks;
   /// If specified, encryption is performed on each node in the pool during node provisioning.
-  final pulumi.Input<DiskEncryptionConfiguration>? diskEncryptionConfiguration;
+  final pulumi.Input<DiskEncryptionConfiguration?>? diskEncryptionConfiguration;
   /// If specified, the extensions mentioned in this configuration will be installed on each node.
-  final pulumi.Input<List<VMExtension>>? extensions;
+  final pulumi.Input<List<VMExtension>?>? extensions;
   /// A reference to an Azure Virtual Machines Marketplace image or the Azure Image resource of a custom Virtual Machine. To get the list of all imageReferences verified by Azure Batch, see the 'List supported node agent SKUs' operation.
   final pulumi.Input<ImageReference> imageReference;
   /// This only applies to images that contain the Windows operating system, and should only be used when you hold valid on-premises licenses for the nodes which will be deployed. If omitted, no on-premises licensing discount is applied. Values are:
   ///
   /// Windows_Server - The on-premises license is for Windows Server.
   /// Windows_Client - The on-premises license is for Windows Client.
-  final pulumi.Input<String>? licenseType;
+  final pulumi.Input<String?>? licenseType;
   /// The Batch node agent is a program that runs on each node in the pool, and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. You must specify a node agent SKU which matches the selected image reference. To get the list of supported node agent SKUs along with their list of verified image references, see the 'List supported node agent SKUs' operation.
   final pulumi.Input<String> nodeAgentSkuId;
   /// This configuration will specify rules on how nodes in the pool will be physically allocated.
-  final pulumi.Input<NodePlacementConfiguration>? nodePlacementConfiguration;
+  final pulumi.Input<NodePlacementConfiguration?>? nodePlacementConfiguration;
   /// Contains configuration for ephemeral OSDisk settings.
-  final pulumi.Input<OSDisk>? osDisk;
+  final pulumi.Input<OSDisk?>? osDisk;
   /// Specifies the security profile settings for the virtual machine or virtual machine scale set.
-  final pulumi.Input<SecurityProfile>? securityProfile;
+  final pulumi.Input<SecurityProfile?>? securityProfile;
   /// The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
-  final pulumi.Input<ServiceArtifactReference>? serviceArtifactReference;
+  final pulumi.Input<ServiceArtifactReference?>? serviceArtifactReference;
   /// This property must not be specified if the imageReference specifies a Linux OS image.
-  final pulumi.Input<WindowsConfiguration>? windowsConfiguration;
+  final pulumi.Input<WindowsConfiguration?>? windowsConfiguration;
 
   /// Creates a new [VirtualMachineConfiguration].
   /// [containerConfiguration] If specified, setup is performed on each node in the pool to allow tasks to run in containers. All regular tasks and job manager tasks run on this pool must specify the containerSettings property, and all other tasks may specify it.

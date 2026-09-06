@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Capacity rule.
 class ResourceTypeRegistrationPropertiesCapacityRuleResponse {
   /// Capacity policy.
-  final pulumi.Input<String>? capacityPolicy;
+  final pulumi.Input<String?>? capacityPolicy;
   /// Sku alias
-  final pulumi.Input<String>? skuAlias;
+  final pulumi.Input<String?>? skuAlias;
 
   /// Creates a new [ResourceTypeRegistrationPropertiesCapacityRuleResponse].
   /// [capacityPolicy] Capacity policy.

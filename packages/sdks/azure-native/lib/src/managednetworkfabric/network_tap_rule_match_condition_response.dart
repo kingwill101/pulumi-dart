@@ -8,15 +8,15 @@ import 'vlan_match_condition_response.dart';
 /// Defines the match condition that is supported to filter the traffic.
 class NetworkTapRuleMatchConditionResponse {
   /// Encapsulation Type that needs to be matched.
-  final pulumi.Input<String>? encapsulationType;
+  final pulumi.Input<String?>? encapsulationType;
   /// IP condition that needs to be matched.
-  final pulumi.Input<IpMatchConditionResponse>? ipCondition;
+  final pulumi.Input<IpMatchConditionResponse?>? ipCondition;
   /// Defines the port condition that needs to be matched.
-  final pulumi.Input<PortConditionResponse>? portCondition;
+  final pulumi.Input<PortConditionResponse?>? portCondition;
   /// List of the protocols that need to be matched.
-  final pulumi.Input<List<String>>? protocolTypes;
+  final pulumi.Input<List<String>?>? protocolTypes;
   /// Vlan match condition that needs to be matched.
-  final pulumi.Input<VlanMatchConditionResponse>? vlanMatchCondition;
+  final pulumi.Input<VlanMatchConditionResponse?>? vlanMatchCondition;
 
   /// Creates a new [NetworkTapRuleMatchConditionResponse].
   /// [encapsulationType] Encapsulation Type that needs to be matched.
@@ -24,13 +24,13 @@ class NetworkTapRuleMatchConditionResponse {
   /// [portCondition] Defines the port condition that needs to be matched.
   /// [protocolTypes] List of the protocols that need to be matched.
   /// [vlanMatchCondition] Vlan match condition that needs to be matched.
-  const NetworkTapRuleMatchConditionResponse({
-    this.encapsulationType,
+  NetworkTapRuleMatchConditionResponse({
+    pulumi.Input<String?>? encapsulationType,
     this.ipCondition,
     this.portCondition,
     this.protocolTypes,
     this.vlanMatchCondition,
-  });
+  }) : encapsulationType = encapsulationType ?? pulumi.Input.fromValue('None');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

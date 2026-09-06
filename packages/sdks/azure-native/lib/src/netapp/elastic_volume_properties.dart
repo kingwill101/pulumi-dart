@@ -8,23 +8,23 @@ import 'elastic_volume_data_protection_properties.dart';
 /// Elastic Volume properties
 class ElasticVolumeProperties {
   /// Resource identifier used to identify the Elastic Backup.
-  final pulumi.Input<String>? backupResourceId;
+  final pulumi.Input<String?>? backupResourceId;
   /// Data protection configuration option for the volume, including snapshot policies and backup.
-  final pulumi.Input<ElasticVolumeDataProtectionProperties>? dataProtection;
+  final pulumi.Input<ElasticVolumeDataProtectionProperties?>? dataProtection;
   /// Set of export policy rules
-  final pulumi.Input<ElasticExportPolicy>? exportPolicy;
+  final pulumi.Input<ElasticExportPolicy?>? exportPolicy;
   /// A unique file path for the volume. Used when creating mount targets. This needs to be unique within the elastic capacity pool.
   final pulumi.Input<String> filePath;
   /// Set of support protocol types for the elastic volume
-  final pulumi.Input<List<String>> protocolTypes;
+  final pulumi.Input<List<dynamic>> protocolTypes;
   /// Maximum size allowed for a volume in bytes. Valid values are in the range 1GiB to 16TiB. Values expressed in bytes as multiples of 1 GiB.
   final pulumi.Input<double> size;
   /// SMB Properties
-  final pulumi.Input<ElasticSmbProperties>? smbProperties;
+  final pulumi.Input<ElasticSmbProperties?>? smbProperties;
   /// Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
-  final pulumi.Input<String>? snapshotDirectoryVisibility;
+  final pulumi.Input<dynamic>? snapshotDirectoryVisibility;
   /// Resource identifier used to identify the Elastic Snapshot.
-  final pulumi.Input<String>? snapshotResourceId;
+  final pulumi.Input<String?>? snapshotResourceId;
 
   /// Creates a new [ElasticVolumeProperties].
   /// [backupResourceId] Resource identifier used to identify the Elastic Backup.
@@ -68,10 +68,10 @@ class ElasticVolumeProperties {
       dataProtection: (() { final guardedValue = map['dataProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticVolumeDataProtectionProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       exportPolicy: (() { final guardedValue = map['exportPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticExportPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filePath: pulumi.Input.fromValue(map['filePath'] as String),
-      protocolTypes: pulumi.Input.fromValue((map['protocolTypes'] as List).cast<String>()),
-      size: pulumi.Input.fromValue(map['size'] as double),
+      protocolTypes: pulumi.Input.fromValue((map['protocolTypes'] as List).cast<dynamic>()),
+      size: pulumi.Input.fromValue((map['size'] as num).toDouble()),
       smbProperties: (() { final guardedValue = map['smbProperties']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ElasticSmbProperties.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      snapshotDirectoryVisibility: (() { final guardedValue = map['snapshotDirectoryVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      snapshotDirectoryVisibility: (() { final guardedValue = map['snapshotDirectoryVisibility']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       snapshotResourceId: (() { final guardedValue = map['snapshotResourceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

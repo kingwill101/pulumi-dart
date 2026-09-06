@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The OutboundType used for egress traffic.
-enum OutboundType {
+enum OutboundType implements pulumi.PulumiEnum<String> {
   valueLoadbalancer("Loadbalancer"),
   valueUserDefinedRouting("UserDefinedRouting");
 
   const OutboundType(this.wireValue);
+  @override
   final String wireValue;
 
   static OutboundType fromValue(String value) {

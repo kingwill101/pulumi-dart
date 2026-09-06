@@ -9,13 +9,13 @@ import 'management_lock_owner.dart';
 /// {@macro pulumi_authorization_management_lock_by_scope_args_doc}
 class ManagementLockByScopeArgs {
   /// The level of the lock. Possible values are: NotSpecified, CanNotDelete, ReadOnly. CanNotDelete means authorized users are able to read and modify the resources, but not delete. ReadOnly means authorized users can only read from a resource, but they can't modify or delete it.
-  final pulumi.Input<String> level;
+  final pulumi.Input<dynamic> level;
   /// The name of lock.
-  final pulumi.Input<String>? lockName;
+  final pulumi.Input<String?>? lockName;
   /// Notes about the lock. Maximum of 512 characters.
-  final pulumi.Input<String>? notes;
+  final pulumi.Input<String?>? notes;
   /// The owners of the lock.
-  final pulumi.Input<List<ManagementLockOwner>>? owners;
+  final pulumi.Input<List<ManagementLockOwner>?>? owners;
   /// The scope for the lock. When providing a scope for the assignment, use '/subscriptions/{subscriptionId}' for subscriptions, '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for resource groups, and '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}' for resources.
   final pulumi.Input<String> scope;
 
@@ -45,7 +45,7 @@ class ManagementLockByScopeArgs {
 
   factory ManagementLockByScopeArgs.fromMap(Map<String, dynamic> map) {
     return ManagementLockByScopeArgs(
-      level: pulumi.Input.fromValue(map['level'] as String),
+      level: pulumi.Input.fromValue(map['level']),
       lockName: (() { final guardedValue = map['lockName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notes: (() { final guardedValue = map['notes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       owners: (() { final guardedValue = map['owners']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagementLockOwner>(guardedValue, (value) => ManagementLockOwner.fromMap((value as Map).cast<String, dynamic>()))); })(),

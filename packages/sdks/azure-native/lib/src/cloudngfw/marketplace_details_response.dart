@@ -7,7 +7,7 @@ class MarketplaceDetailsResponse {
   /// Marketplace Subscription Id
   final pulumi.Input<String> marketplaceSubscriptionId;
   /// Marketplace Subscription Status
-  final pulumi.Input<String>? marketplaceSubscriptionStatus;
+  final pulumi.Input<String?>? marketplaceSubscriptionStatus;
   /// Offer Id
   final pulumi.Input<String> offerId;
   /// Publisher Id

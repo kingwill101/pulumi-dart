@@ -5,11 +5,11 @@ import 'endpoint_model_sku_rate_limit_rule_properties_response.dart';
 
 class EndpointModelSkuRateLimitPropertiesResponse {
   /// The count value of Call Rate Limit.
-  final pulumi.Input<double>? count;
+  final pulumi.Input<double?>? count;
   /// The renewal period in seconds of Call Rate Limit.
-  final pulumi.Input<double>? renewalPeriod;
+  final pulumi.Input<double?>? renewalPeriod;
   /// The call rate limit for the model.
-  final pulumi.Input<List<EndpointModelSkuRateLimitRulePropertiesResponse>>? rules;
+  final pulumi.Input<List<EndpointModelSkuRateLimitRulePropertiesResponse>?>? rules;
 
   /// Creates a new [EndpointModelSkuRateLimitPropertiesResponse].
   /// [count] The count value of Call Rate Limit.
@@ -31,8 +31,8 @@ class EndpointModelSkuRateLimitPropertiesResponse {
 
   factory EndpointModelSkuRateLimitPropertiesResponse.fromMap(Map<String, dynamic> map) {
     return EndpointModelSkuRateLimitPropertiesResponse(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
-      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
+      renewalPeriod: (() { final guardedValue = map['renewalPeriod']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<EndpointModelSkuRateLimitRulePropertiesResponse>(guardedValue, (value) => EndpointModelSkuRateLimitRulePropertiesResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

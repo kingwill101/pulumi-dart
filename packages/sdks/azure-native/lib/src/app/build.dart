@@ -651,4 +651,26 @@ class Build extends pulumi.CustomResource {
     type = registerOutput<String>('type');
     uploadEndpoint = registerOutput<String>('uploadEndpoint');
   }
+
+  /// Creates a typed reference to an existing [Build] resource.
+  Build.reference(String urn)
+    : super(
+        'azure-native:app:Build',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    buildStatus = registerOutput<String>('buildStatus');
+    configuration = registerOutput<BuildConfigurationResponse?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationContainerRegistry = registerOutput<ContainerRegistryWithCustomImageResponse?>('destinationContainerRegistry', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerRegistryWithCustomImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    logStreamEndpoint = registerOutput<String>('logStreamEndpoint');
+    this.name = registerOutput<String>('name');
+    provisioningState = registerOutput<String>('provisioningState');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tokenEndpoint = registerOutput<String>('tokenEndpoint');
+    type = registerOutput<String>('type');
+    uploadEndpoint = registerOutput<String>('uploadEndpoint');
+  }
 }

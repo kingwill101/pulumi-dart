@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Determines how new connections are handled by the load balancer when all backend instances are probed down.
-enum ProbeNoHealthyBackendsBehavior {
+enum ProbeNoHealthyBackendsBehavior implements pulumi.PulumiEnum<String> {
   valueAllProbedDown("AllProbedDown"),
   valueAllProbedUp("AllProbedUp");
 
   const ProbeNoHealthyBackendsBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static ProbeNoHealthyBackendsBehavior fromValue(String value) {

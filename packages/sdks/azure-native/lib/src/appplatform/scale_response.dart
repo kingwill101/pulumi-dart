@@ -6,21 +6,21 @@ import 'scale_rule_response.dart';
 /// Azure Spring Apps scaling configurations.
 class ScaleResponse {
   /// Optional. Maximum number of container replicas. Defaults to 10 if not set.
-  final pulumi.Input<int>? maxReplicas;
+  final pulumi.Input<int?>? maxReplicas;
   /// Optional. Minimum number of container replicas.
-  final pulumi.Input<int>? minReplicas;
+  final pulumi.Input<int?>? minReplicas;
   /// Scaling rules.
-  final pulumi.Input<List<ScaleRuleResponse>>? rules;
+  final pulumi.Input<List<ScaleRuleResponse>?>? rules;
 
   /// Creates a new [ScaleResponse].
   /// [maxReplicas] Optional. Maximum number of container replicas. Defaults to 10 if not set.
   /// [minReplicas] Optional. Minimum number of container replicas.
   /// [rules] Scaling rules.
-  const ScaleResponse({
-    this.maxReplicas,
+  ScaleResponse({
+    pulumi.Input<int?>? maxReplicas,
     this.minReplicas,
     this.rules,
-  });
+  }) : maxReplicas = maxReplicas ?? pulumi.Input.fromValue(10);
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -32,8 +32,8 @@ class ScaleResponse {
 
   factory ScaleResponse.fromMap(Map<String, dynamic> map) {
     return ScaleResponse(
-      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxReplicas: (() { final guardedValue = map['maxReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReplicas: (() { final guardedValue = map['minReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ScaleRuleResponse>(guardedValue, (value) => ScaleRuleResponse.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }

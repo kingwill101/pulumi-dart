@@ -5,12 +5,12 @@ import 'managed_identity_properties_response.dart';
 
 class KeyVaultSecretStorePropertiesResponse {
   final pulumi.Input<String> inputType;
-  final pulumi.Input<String>? keyvaultName;
-  final pulumi.Input<ManagedIdentityPropertiesResponse>? managedIdentityProperties;
-  final pulumi.Input<String>? resourceGroup;
-  final pulumi.Input<String>? secretStoreId;
-  final pulumi.Input<String>? subscriptionId;
-  final pulumi.Input<String>? tenantId;
+  final pulumi.Input<String?>? keyvaultName;
+  final pulumi.Input<ManagedIdentityPropertiesResponse?>? managedIdentityProperties;
+  final pulumi.Input<String?>? resourceGroup;
+  final pulumi.Input<String?>? secretStoreId;
+  final pulumi.Input<String?>? subscriptionId;
+  final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [KeyVaultSecretStorePropertiesResponse].
   /// [inputType] Required.

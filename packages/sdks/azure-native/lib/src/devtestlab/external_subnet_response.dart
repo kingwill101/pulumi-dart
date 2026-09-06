@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subnet information as returned by the Microsoft.Network API.
 class ExternalSubnetResponse {
   /// Gets or sets the identifier.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Gets or sets the name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [ExternalSubnetResponse].
   /// [id] Gets or sets the identifier.

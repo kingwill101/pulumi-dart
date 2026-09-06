@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Release channel
-enum UpgradeReleaseChannel {
+enum UpgradeReleaseChannel implements pulumi.PulumiEnum<String> {
   rapid("Rapid"),
   stable("Stable");
 
   const UpgradeReleaseChannel(this.wireValue);
+  @override
   final String wireValue;
 
   static UpgradeReleaseChannel fromValue(String value) {

@@ -6,11 +6,11 @@ import 'inquiry_validation_response.dart';
 /// Details of an inquired protectable item.
 class WorkloadInquiryDetailsResponse {
   /// Inquiry validation such as permissions and other backup validations.
-  final pulumi.Input<InquiryValidationResponse>? inquiryValidation;
+  final pulumi.Input<InquiryValidationResponse?>? inquiryValidation;
   /// Contains the protectable item Count inside this Container.
-  final pulumi.Input<double>? itemCount;
+  final pulumi.Input<double?>? itemCount;
   /// Type of the Workload such as SQL, Oracle etc.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [WorkloadInquiryDetailsResponse].
   /// [inquiryValidation] Inquiry validation such as permissions and other backup validations.
@@ -33,7 +33,7 @@ class WorkloadInquiryDetailsResponse {
   factory WorkloadInquiryDetailsResponse.fromMap(Map<String, dynamic> map) {
     return WorkloadInquiryDetailsResponse(
       inquiryValidation: (() { final guardedValue = map['inquiryValidation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InquiryValidationResponse.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      itemCount: (() { final guardedValue = map['itemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      itemCount: (() { final guardedValue = map['itemCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

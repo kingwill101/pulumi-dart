@@ -6,7 +6,7 @@ import 'managed_hsm_sku_name.dart';
 /// SKU details
 class ManagedHsmSku {
   /// SKU Family of the managed HSM Pool
-  final pulumi.Input<String> family;
+  final pulumi.Input<dynamic> family;
   /// SKU of the managed HSM Pool
   final pulumi.Input<ManagedHsmSkuName> name;
 
@@ -27,7 +27,7 @@ class ManagedHsmSku {
 
   factory ManagedHsmSku.fromMap(Map<String, dynamic> map) {
     return ManagedHsmSku(
-      family: pulumi.Input.fromValue(map['family'] as String),
+      family: pulumi.Input.fromValue(map['family']),
       name: pulumi.Input.fromValue(ManagedHsmSkuName.fromValue(map['name']! as String)),
     );
   }

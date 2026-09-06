@@ -6,7 +6,7 @@ import 'workbook_template_gallery_response.dart';
 /// Localized template data and gallery information.
 class WorkbookTemplateLocalizedGalleryResponse {
   /// Workbook galleries supported by the template.
-  final pulumi.Input<List<WorkbookTemplateGalleryResponse>>? galleries;
+  final pulumi.Input<List<WorkbookTemplateGalleryResponse>?>? galleries;
   /// Valid JSON object containing workbook template payload.
   final pulumi.Input<dynamic>? templateData;
 

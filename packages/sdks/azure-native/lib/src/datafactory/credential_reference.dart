@@ -7,7 +7,7 @@ class CredentialReference {
   /// Reference credential name.
   final pulumi.Input<String> referenceName;
   /// Credential reference type.
-  final pulumi.Input<String> type;
+  final pulumi.Input<dynamic> type;
 
   /// Creates a new [CredentialReference].
   /// [referenceName] Reference credential name.
@@ -27,7 +27,7 @@ class CredentialReference {
   factory CredentialReference.fromMap(Map<String, dynamic> map) {
     return CredentialReference(
       referenceName: pulumi.Input.fromValue(map['referenceName'] as String),
-      type: pulumi.Input.fromValue(map['type'] as String),
+      type: pulumi.Input.fromValue(map['type']),
     );
   }
 }

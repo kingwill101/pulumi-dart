@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Provisioning state of the console.
-enum ProvisioningState {
+enum ProvisioningState implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueAccepted("Accepted"),
   valuePending("Pending"),
@@ -11,6 +13,7 @@ enum ProvisioningState {
   valueSucceeded("Succeeded");
 
   const ProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static ProvisioningState fromValue(String value) {

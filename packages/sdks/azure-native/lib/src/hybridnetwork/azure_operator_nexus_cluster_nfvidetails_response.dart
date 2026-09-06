@@ -6,9 +6,9 @@ import 'referenced_resource_response.dart';
 /// The AzureOperatorNexusCluster NFVI detail.
 class AzureOperatorNexusClusterNFVIDetailsResponse {
   /// The reference to the custom location.
-  final pulumi.Input<ReferencedResourceResponse>? customLocationReference;
+  final pulumi.Input<ReferencedResourceResponse?>? customLocationReference;
   /// Name of the nfvi.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The NFVI type.
   /// Expected value is 'AzureOperatorNexus'.
   final pulumi.Input<String> nfviType;

@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Information on the client (user or application) that made some action
 class ClientInfoResponse {
   /// The email of the client.
-  final pulumi.Input<String>? email;
+  final pulumi.Input<String?>? email;
   /// The name of the client.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The object id of the client.
-  final pulumi.Input<String>? objectId;
+  final pulumi.Input<String?>? objectId;
   /// The user principal name of the client.
-  final pulumi.Input<String>? userPrincipalName;
+  final pulumi.Input<String?>? userPrincipalName;
 
   /// Creates a new [ClientInfoResponse].
   /// [email] The email of the client.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Delta table format supported.
-enum DeltaTableFormatEnum {
+enum DeltaTableFormatEnum implements pulumi.PulumiEnum<String> {
   boolean("boolean"),
   int8("int8"),
   int16("int16"),
@@ -17,6 +19,7 @@ enum DeltaTableFormatEnum {
   utf8("utf8");
 
   const DeltaTableFormatEnum(this.wireValue);
+  @override
   final String wireValue;
 
   static DeltaTableFormatEnum fromValue(String value) {

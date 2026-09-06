@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The provisioning state.
-enum WorkflowProvisioningState {
+enum WorkflowProvisioningState implements pulumi.PulumiEnum<String> {
   valueNotSpecified("NotSpecified"),
   valueAccepted("Accepted"),
   valueRunning("Running"),
@@ -24,6 +26,7 @@ enum WorkflowProvisioningState {
   valueInProgress("InProgress");
 
   const WorkflowProvisioningState(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkflowProvisioningState fromValue(String value) {

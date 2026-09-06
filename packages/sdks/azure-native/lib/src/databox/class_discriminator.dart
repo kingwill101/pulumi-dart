@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the type of job details.
-enum ClassDiscriminator {
+enum ClassDiscriminator implements pulumi.PulumiEnum<String> {
   valueDataBox("DataBox"),
   valueDataBoxDisk("DataBoxDisk"),
   valueDataBoxHeavy("DataBoxHeavy"),
   valueDataBoxCustomerDisk("DataBoxCustomerDisk");
 
   const ClassDiscriminator(this.wireValue);
+  @override
   final String wireValue;
 
   static ClassDiscriminator fromValue(String value) {

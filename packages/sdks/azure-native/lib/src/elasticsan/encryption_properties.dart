@@ -7,9 +7,9 @@ import 'key_vault_properties.dart';
 /// The encryption settings on the volume group.
 class EncryptionProperties {
   /// The identity to be used with service-side encryption at rest.
-  final pulumi.Input<EncryptionIdentity>? encryptionIdentity;
+  final pulumi.Input<EncryptionIdentity?>? encryptionIdentity;
   /// Properties provided by key vault.
-  final pulumi.Input<KeyVaultProperties>? keyVaultProperties;
+  final pulumi.Input<KeyVaultProperties?>? keyVaultProperties;
 
   /// Creates a new [EncryptionProperties].
   /// [encryptionIdentity] The identity to be used with service-side encryption at rest.

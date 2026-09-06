@@ -6,7 +6,7 @@ import 'target_assessment_arm_ids.dart';
 /// Properties of a compound assessment.
 class CompoundAssessmentProperties {
   /// Fallback machine assessment ARM ID.
-  final pulumi.Input<String>? fallbackMachineAssessmentArmId;
+  final pulumi.Input<String?>? fallbackMachineAssessmentArmId;
   /// ARM IDs of the target assessments.
   final pulumi.Input<TargetAssessmentArmIds> targetAssessmentArmIds;
 

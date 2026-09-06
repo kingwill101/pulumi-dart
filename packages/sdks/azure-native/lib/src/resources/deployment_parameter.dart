@@ -6,11 +6,11 @@ import 'key_vault_parameter_reference.dart';
 /// Deployment parameter for the template.
 class DeploymentParameter {
   /// Input expression to the parameter.
-  final pulumi.Input<String>? expression;
+  final pulumi.Input<String?>? expression;
   /// Azure Key Vault parameter reference.
-  final pulumi.Input<KeyVaultParameterReference>? reference;
+  final pulumi.Input<KeyVaultParameterReference?>? reference;
   /// Type of the value.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
   /// Input value to the parameter.
   final pulumi.Input<dynamic>? value;
 

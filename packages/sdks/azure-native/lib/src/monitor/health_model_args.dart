@@ -12,17 +12,17 @@ class HealthModelArgs {
   /// The name of the Azure Monitor Workspace. The name is case insensitive
   final pulumi.Input<String> azureMonitorWorkspaceName;
   /// Name of health model resource
-  final pulumi.Input<String>? healthModelName;
+  final pulumi.Input<String?>? healthModelName;
   /// The managed service identities assigned to this resource.
-  final pulumi.Input<ManagedServiceIdentity>? identity;
+  final pulumi.Input<ManagedServiceIdentity?>? identity;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The resource-specific properties for this resource.
-  final pulumi.Input<HealthModelProperties>? properties;
+  final pulumi.Input<HealthModelProperties?>? properties;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [HealthModelArgs].
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive

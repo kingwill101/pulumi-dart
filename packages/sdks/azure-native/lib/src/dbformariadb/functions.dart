@@ -30,6 +30,17 @@ Future<GetConfigurationResult> getConfiguration(
   return GetConfigurationResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigurationResult> getConfigurationOutput(
+  GetConfigurationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getConfiguration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigurationResult.fromMap);
+}
+
 /// Gets information about a database.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -46,6 +57,17 @@ Future<GetDatabaseResult> getDatabase(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatabaseResult.fromMap(result);
+}
+
+pulumi.Output<GetDatabaseResult> getDatabaseOutput(
+  GetDatabaseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getDatabase',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatabaseResult.fromMap);
 }
 
 /// Gets information about a server firewall rule.
@@ -66,6 +88,17 @@ Future<GetFirewallRuleResult> getFirewallRule(
   return GetFirewallRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
+  GetFirewallRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getFirewallRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallRuleResult.fromMap);
+}
+
 /// Gets a private endpoint connection.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -82,6 +115,17 @@ Future<GetPrivateEndpointConnectionResult> getPrivateEndpointConnection(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrivateEndpointConnectionResult.fromMap(result);
+}
+
+pulumi.Output<GetPrivateEndpointConnectionResult> getPrivateEndpointConnectionOutput(
+  GetPrivateEndpointConnectionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getPrivateEndpointConnection',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateEndpointConnectionResult.fromMap);
 }
 
 /// Gets information about a server.
@@ -102,6 +146,17 @@ Future<GetServerResult> getServer(
   return GetServerResult.fromMap(result);
 }
 
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
+}
+
 /// Gets a virtual network rule.
 ///
 /// Uses Azure REST API version 2018-06-01.
@@ -118,4 +173,15 @@ Future<GetVirtualNetworkRuleResult> getVirtualNetworkRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVirtualNetworkRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetVirtualNetworkRuleResult> getVirtualNetworkRuleOutput(
+  GetVirtualNetworkRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:dbformariadb:getVirtualNetworkRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVirtualNetworkRuleResult.fromMap);
 }

@@ -93,6 +93,17 @@ Future<GetAccessReviewHistoryDefinitionByIdResult> getAccessReviewHistoryDefinit
   return GetAccessReviewHistoryDefinitionByIdResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessReviewHistoryDefinitionByIdResult> getAccessReviewHistoryDefinitionByIdOutput(
+  GetAccessReviewHistoryDefinitionByIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getAccessReviewHistoryDefinitionById',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessReviewHistoryDefinitionByIdResult.fromMap);
+}
+
 /// Get single access review definition
 ///
 /// Uses Azure REST API version 2021-12-01-preview.
@@ -113,6 +124,17 @@ Future<GetAccessReviewScheduleDefinitionByIdResult> getAccessReviewScheduleDefin
   return GetAccessReviewScheduleDefinitionByIdResult.fromMap(result);
 }
 
+pulumi.Output<GetAccessReviewScheduleDefinitionByIdResult> getAccessReviewScheduleDefinitionByIdOutput(
+  GetAccessReviewScheduleDefinitionByIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getAccessReviewScheduleDefinitionById',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAccessReviewScheduleDefinitionByIdResult.fromMap);
+}
+
 /// Use this function to access the current configuration of the native Azure provider.
 /// [options] Invoke options controlling this call.
 Future<GetClientConfigResult> getClientConfig(
@@ -126,6 +148,17 @@ Future<GetClientConfigResult> getClientConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetClientConfigResult> getClientConfigOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getClientConfig',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetClientConfigResult.fromMap);
 }
 
 /// Use this function to get an Azure authentication token for the current login context.
@@ -142,6 +175,17 @@ Future<GetClientTokenResult> getClientToken(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetClientTokenResult.fromMap(result);
+}
+
+pulumi.Output<GetClientTokenResult> getClientTokenOutput(
+  GetClientTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getClientToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetClientTokenResult.fromMap);
 }
 
 /// Get the specified deny assignment.
@@ -162,6 +206,17 @@ Future<GetDenyAssignmentResult> getDenyAssignment(
   return GetDenyAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetDenyAssignmentResult> getDenyAssignmentOutput(
+  GetDenyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getDenyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDenyAssignmentResult.fromMap);
+}
+
 /// Gets a management lock at the resource group level.
 ///
 /// Uses Azure REST API version 2020-05-01.
@@ -178,6 +233,17 @@ Future<GetManagementLockAtResourceGroupLevelResult> getManagementLockAtResourceG
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagementLockAtResourceGroupLevelResult.fromMap(result);
+}
+
+pulumi.Output<GetManagementLockAtResourceGroupLevelResult> getManagementLockAtResourceGroupLevelOutput(
+  GetManagementLockAtResourceGroupLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getManagementLockAtResourceGroupLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementLockAtResourceGroupLevelResult.fromMap);
 }
 
 /// Get the management lock of a resource or any level below resource.
@@ -198,6 +264,17 @@ Future<GetManagementLockAtResourceLevelResult> getManagementLockAtResourceLevel(
   return GetManagementLockAtResourceLevelResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementLockAtResourceLevelResult> getManagementLockAtResourceLevelOutput(
+  GetManagementLockAtResourceLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getManagementLockAtResourceLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementLockAtResourceLevelResult.fromMap);
+}
+
 /// Gets a management lock at the subscription level.
 ///
 /// Uses Azure REST API version 2020-05-01.
@@ -214,6 +291,17 @@ Future<GetManagementLockAtSubscriptionLevelResult> getManagementLockAtSubscripti
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagementLockAtSubscriptionLevelResult.fromMap(result);
+}
+
+pulumi.Output<GetManagementLockAtSubscriptionLevelResult> getManagementLockAtSubscriptionLevelOutput(
+  GetManagementLockAtSubscriptionLevelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getManagementLockAtSubscriptionLevel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementLockAtSubscriptionLevelResult.fromMap);
 }
 
 /// Get a management lock by scope.
@@ -234,6 +322,17 @@ Future<GetManagementLockByScopeResult> getManagementLockByScope(
   return GetManagementLockByScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetManagementLockByScopeResult> getManagementLockByScopeOutput(
+  GetManagementLockByScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getManagementLockByScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagementLockByScopeResult.fromMap);
+}
+
 /// Get the specified role eligibility schedule request.
 ///
 /// Uses Azure REST API version 2020-10-01.
@@ -250,6 +349,17 @@ Future<GetPimRoleEligibilityScheduleResult> getPimRoleEligibilitySchedule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPimRoleEligibilityScheduleResult.fromMap(result);
+}
+
+pulumi.Output<GetPimRoleEligibilityScheduleResult> getPimRoleEligibilityScheduleOutput(
+  GetPimRoleEligibilityScheduleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPimRoleEligibilitySchedule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPimRoleEligibilityScheduleResult.fromMap);
 }
 
 /// This operation retrieves a single policy assignment, given its name and the scope it was created at.
@@ -272,6 +382,17 @@ Future<GetPolicyAssignmentResult> getPolicyAssignment(
   return GetPolicyAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyAssignmentResult> getPolicyAssignmentOutput(
+  GetPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyAssignmentResult.fromMap);
+}
+
 /// This operation retrieves the policy definition in the given subscription with the given name.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -290,6 +411,17 @@ Future<GetPolicyDefinitionResult> getPolicyDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyDefinitionResult> getPolicyDefinitionOutput(
+  GetPolicyDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefinitionResult.fromMap);
 }
 
 /// This operation retrieves the policy definition in the given management group with the given name.
@@ -312,6 +444,17 @@ Future<GetPolicyDefinitionAtManagementGroupResult> getPolicyDefinitionAtManageme
   return GetPolicyDefinitionAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyDefinitionAtManagementGroupResult> getPolicyDefinitionAtManagementGroupOutput(
+  GetPolicyDefinitionAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyDefinitionAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefinitionAtManagementGroupResult.fromMap);
+}
+
 /// This operation retrieves the policy definition version in the given subscription with the given name.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -330,6 +473,17 @@ Future<GetPolicyDefinitionVersionResult> getPolicyDefinitionVersion(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyDefinitionVersionResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyDefinitionVersionResult> getPolicyDefinitionVersionOutput(
+  GetPolicyDefinitionVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyDefinitionVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefinitionVersionResult.fromMap);
 }
 
 /// This operation retrieves the policy definition version in the given management group with the given name.
@@ -352,6 +506,17 @@ Future<GetPolicyDefinitionVersionAtManagementGroupResult> getPolicyDefinitionVer
   return GetPolicyDefinitionVersionAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicyDefinitionVersionAtManagementGroupResult> getPolicyDefinitionVersionAtManagementGroupOutput(
+  GetPolicyDefinitionVersionAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyDefinitionVersionAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyDefinitionVersionAtManagementGroupResult.fromMap);
+}
+
 /// This operation retrieves a single policy exemption, given its name and the scope it was created at.
 ///
 /// Uses Azure REST API version 2022-07-01-preview.
@@ -370,6 +535,17 @@ Future<GetPolicyExemptionResult> getPolicyExemption(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicyExemptionResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicyExemptionResult> getPolicyExemptionOutput(
+  GetPolicyExemptionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicyExemption',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicyExemptionResult.fromMap);
 }
 
 /// This operation retrieves the policy set definition in the given subscription with the given name.
@@ -392,6 +568,17 @@ Future<GetPolicySetDefinitionResult> getPolicySetDefinition(
   return GetPolicySetDefinitionResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicySetDefinitionResult> getPolicySetDefinitionOutput(
+  GetPolicySetDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicySetDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicySetDefinitionResult.fromMap);
+}
+
 /// This operation retrieves the policy set definition in the given management group with the given name.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -410,6 +597,17 @@ Future<GetPolicySetDefinitionAtManagementGroupResult> getPolicySetDefinitionAtMa
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPolicySetDefinitionAtManagementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetPolicySetDefinitionAtManagementGroupResult> getPolicySetDefinitionAtManagementGroupOutput(
+  GetPolicySetDefinitionAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicySetDefinitionAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicySetDefinitionAtManagementGroupResult.fromMap);
 }
 
 /// This operation retrieves the policy set definition version in the given subscription with the given name and version.
@@ -432,6 +630,17 @@ Future<GetPolicySetDefinitionVersionResult> getPolicySetDefinitionVersion(
   return GetPolicySetDefinitionVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicySetDefinitionVersionResult> getPolicySetDefinitionVersionOutput(
+  GetPolicySetDefinitionVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicySetDefinitionVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicySetDefinitionVersionResult.fromMap);
+}
+
 /// This operation retrieves the policy set definition version in the given management group with the given name and version.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -452,6 +661,17 @@ Future<GetPolicySetDefinitionVersionAtManagementGroupResult> getPolicySetDefinit
   return GetPolicySetDefinitionVersionAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetPolicySetDefinitionVersionAtManagementGroupResult> getPolicySetDefinitionVersionAtManagementGroupOutput(
+  GetPolicySetDefinitionVersionAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPolicySetDefinitionVersionAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPolicySetDefinitionVersionAtManagementGroupResult.fromMap);
+}
+
 /// Get a single private link association
 ///
 /// Uses Azure REST API version 2020-05-01.
@@ -470,6 +690,17 @@ Future<GetPrivateLinkAssociationResult> getPrivateLinkAssociation(
   return GetPrivateLinkAssociationResult.fromMap(result);
 }
 
+pulumi.Output<GetPrivateLinkAssociationResult> getPrivateLinkAssociationOutput(
+  GetPrivateLinkAssociationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getPrivateLinkAssociation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrivateLinkAssociationResult.fromMap);
+}
+
 /// Get a resource management private link(resource-level).
 ///
 /// Uses Azure REST API version 2020-05-01.
@@ -486,6 +717,17 @@ Future<GetResourceManagementPrivateLinkResult> getResourceManagementPrivateLink(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourceManagementPrivateLinkResult.fromMap(result);
+}
+
+pulumi.Output<GetResourceManagementPrivateLinkResult> getResourceManagementPrivateLinkOutput(
+  GetResourceManagementPrivateLinkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getResourceManagementPrivateLink',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourceManagementPrivateLinkResult.fromMap);
 }
 
 /// Get a role assignment by scope and name.
@@ -508,6 +750,17 @@ Future<GetRoleAssignmentResult> getRoleAssignment(
   return GetRoleAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleAssignmentResult> getRoleAssignmentOutput(
+  GetRoleAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getRoleAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleAssignmentResult.fromMap);
+}
+
 /// Get role definition by ID (GUID).
 ///
 /// Uses Azure REST API version 2022-05-01-preview.
@@ -526,6 +779,17 @@ Future<GetRoleDefinitionResult> getRoleDefinition(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRoleDefinitionResult.fromMap(result);
+}
+
+pulumi.Output<GetRoleDefinitionResult> getRoleDefinitionOutput(
+  GetRoleDefinitionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getRoleDefinition',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleDefinitionResult.fromMap);
 }
 
 /// Get the specified role management policy for a resource scope
@@ -548,6 +812,17 @@ Future<GetRoleManagementPolicyResult> getRoleManagementPolicy(
   return GetRoleManagementPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleManagementPolicyResult> getRoleManagementPolicyOutput(
+  GetRoleManagementPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getRoleManagementPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleManagementPolicyResult.fromMap);
+}
+
 /// Get the specified role management policy assignment for a resource scope
 ///
 /// Uses Azure REST API version 2024-09-01-preview.
@@ -568,6 +843,17 @@ Future<GetRoleManagementPolicyAssignmentResult> getRoleManagementPolicyAssignmen
   return GetRoleManagementPolicyAssignmentResult.fromMap(result);
 }
 
+pulumi.Output<GetRoleManagementPolicyAssignmentResult> getRoleManagementPolicyAssignmentOutput(
+  GetRoleManagementPolicyAssignmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getRoleManagementPolicyAssignment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRoleManagementPolicyAssignmentResult.fromMap);
+}
+
 /// Get access review history definition by definition Id
 ///
 /// Uses Azure REST API version 2021-12-01-preview.
@@ -586,6 +872,17 @@ Future<GetScopeAccessReviewHistoryDefinitionByIdResult> getScopeAccessReviewHist
   return GetScopeAccessReviewHistoryDefinitionByIdResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeAccessReviewHistoryDefinitionByIdResult> getScopeAccessReviewHistoryDefinitionByIdOutput(
+  GetScopeAccessReviewHistoryDefinitionByIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getScopeAccessReviewHistoryDefinitionById',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeAccessReviewHistoryDefinitionByIdResult.fromMap);
+}
+
 /// Get single access review definition
 ///
 /// Uses Azure REST API version 2021-12-01-preview.
@@ -602,6 +899,17 @@ Future<GetScopeAccessReviewScheduleDefinitionByIdResult> getScopeAccessReviewSch
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeAccessReviewScheduleDefinitionByIdResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeAccessReviewScheduleDefinitionByIdResult> getScopeAccessReviewScheduleDefinitionByIdOutput(
+  GetScopeAccessReviewScheduleDefinitionByIdArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getScopeAccessReviewScheduleDefinitionById',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeAccessReviewScheduleDefinitionByIdResult.fromMap);
 }
 
 /// This operation retrieves a single variable, given its name and the subscription it was created at.
@@ -624,6 +932,17 @@ Future<GetVariableResult> getVariable(
   return GetVariableResult.fromMap(result);
 }
 
+pulumi.Output<GetVariableResult> getVariableOutput(
+  GetVariableArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getVariable',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableResult.fromMap);
+}
+
 /// This operation retrieves a single variable, given its name and the  management group it was created at.
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
@@ -642,6 +961,17 @@ Future<GetVariableAtManagementGroupResult> getVariableAtManagementGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVariableAtManagementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetVariableAtManagementGroupResult> getVariableAtManagementGroupOutput(
+  GetVariableAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getVariableAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableAtManagementGroupResult.fromMap);
 }
 
 /// This operation retrieves a single variable value; given its name, subscription it was created at and the variable it's created for.
@@ -664,6 +994,17 @@ Future<GetVariableValueResult> getVariableValue(
   return GetVariableValueResult.fromMap(result);
 }
 
+pulumi.Output<GetVariableValueResult> getVariableValueOutput(
+  GetVariableValueArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getVariableValue',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableValueResult.fromMap);
+}
+
 /// This operation retrieves a single variable value; given its name,  management group it was created at and the variable it's created for.
 ///
 /// Uses Azure REST API version 2022-08-01-preview.
@@ -684,6 +1025,17 @@ Future<GetVariableValueAtManagementGroupResult> getVariableValueAtManagementGrou
   return GetVariableValueAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetVariableValueAtManagementGroupResult> getVariableValueAtManagementGroupOutput(
+  GetVariableValueAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:getVariableValueAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVariableValueAtManagementGroupResult.fromMap);
+}
+
 /// This operation lists all the policy definition versions for all policy definitions within a subscription.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -701,6 +1053,17 @@ Future<ListPolicyDefinitionVersionAllResult> listPolicyDefinitionVersionAll(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPolicyDefinitionVersionAllResult.fromMap(result);
+}
+
+pulumi.Output<ListPolicyDefinitionVersionAllResult> listPolicyDefinitionVersionAllOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicyDefinitionVersionAll',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPolicyDefinitionVersionAllResult.fromMap);
 }
 
 /// This operation lists all the policy definition versions for all policy definitions at the management group scope.
@@ -723,6 +1086,17 @@ Future<ListPolicyDefinitionVersionAllAtManagementGroupResult> listPolicyDefiniti
   return ListPolicyDefinitionVersionAllAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<ListPolicyDefinitionVersionAllAtManagementGroupResult> listPolicyDefinitionVersionAllAtManagementGroupOutput(
+  ListPolicyDefinitionVersionAllAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicyDefinitionVersionAllAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPolicyDefinitionVersionAllAtManagementGroupResult.fromMap);
+}
+
 /// This operation lists all the built-in policy definition versions for all built-in policy definitions.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -742,6 +1116,17 @@ Future<ListPolicyDefinitionVersionAllBuiltinsResult> listPolicyDefinitionVersion
   return ListPolicyDefinitionVersionAllBuiltinsResult.fromMap(result);
 }
 
+pulumi.Output<ListPolicyDefinitionVersionAllBuiltinsResult> listPolicyDefinitionVersionAllBuiltinsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicyDefinitionVersionAllBuiltins',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPolicyDefinitionVersionAllBuiltinsResult.fromMap);
+}
+
 /// This operation lists all the policy set definition versions for all policy set definitions within a subscription.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -759,6 +1144,17 @@ Future<ListPolicySetDefinitionVersionAllResult> listPolicySetDefinitionVersionAl
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListPolicySetDefinitionVersionAllResult.fromMap(result);
+}
+
+pulumi.Output<ListPolicySetDefinitionVersionAllResult> listPolicySetDefinitionVersionAllOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicySetDefinitionVersionAll',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPolicySetDefinitionVersionAllResult.fromMap);
 }
 
 /// This operation lists all the policy set definition versions for all policy set definitions at the management group scope.
@@ -781,6 +1177,17 @@ Future<ListPolicySetDefinitionVersionAllAtManagementGroupResult> listPolicySetDe
   return ListPolicySetDefinitionVersionAllAtManagementGroupResult.fromMap(result);
 }
 
+pulumi.Output<ListPolicySetDefinitionVersionAllAtManagementGroupResult> listPolicySetDefinitionVersionAllAtManagementGroupOutput(
+  ListPolicySetDefinitionVersionAllAtManagementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicySetDefinitionVersionAllAtManagementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListPolicySetDefinitionVersionAllAtManagementGroupResult.fromMap);
+}
+
 /// This operation lists all the built-in policy set definition versions for all built-in policy set definitions.
 ///
 /// Uses Azure REST API version 2025-01-01.
@@ -800,6 +1207,17 @@ Future<ListPolicySetDefinitionVersionAllBuiltinsResult> listPolicySetDefinitionV
   return ListPolicySetDefinitionVersionAllBuiltinsResult.fromMap(result);
 }
 
+pulumi.Output<ListPolicySetDefinitionVersionAllBuiltinsResult> listPolicySetDefinitionVersionAllBuiltinsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listPolicySetDefinitionVersionAllBuiltins',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(ListPolicySetDefinitionVersionAllBuiltinsResult.fromMap);
+}
+
 /// Use this function to list all subscriptions for the authenticated account. See https://learn.microsoft.com/en-us/rest/api/resources/subscriptions/list for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_authorization_list_subscriptions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -814,4 +1232,15 @@ Future<ListSubscriptionsResult> listSubscriptions(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return ListSubscriptionsResult.fromMap(result);
+}
+
+pulumi.Output<ListSubscriptionsResult> listSubscriptionsOutput(
+  ListSubscriptionsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'azure-native:authorization:listSubscriptions',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(ListSubscriptionsResult.fromMap);
 }

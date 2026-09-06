@@ -10,16 +10,16 @@ import 'pass_name.dart';
 class AdditionalUnattendContent {
   /// The component name. Currently, the only allowable value is
   /// Microsoft-Windows-Shell-Setup.
-  final pulumi.Input<ComponentName>? componentName;
+  final pulumi.Input<ComponentName?>? componentName;
   /// Specifies the XML formatted content that is added to the unattend.xml file for
   /// the specified path and component. The XML must be less than 4KB and must
   /// include the root element for the setting or feature that is being inserted.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The pass name. Currently, the only allowable value is OobeSystem.
-  final pulumi.Input<PassName>? passName;
+  final pulumi.Input<PassName?>? passName;
   /// Specifies the name of the setting to which the content applies. Possible values
   /// are: FirstLogonCommands and AutoLogon.
-  final pulumi.Input<String>? settingName;
+  final pulumi.Input<dynamic>? settingName;
 
   /// Creates a new [AdditionalUnattendContent].
   /// [componentName] The component name. Currently, the only allowable value is
@@ -47,7 +47,7 @@ class AdditionalUnattendContent {
       componentName: (() { final guardedValue = map['componentName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ComponentName.fromValue(guardedValue as String)); })(),
       content: (() { final guardedValue = map['content']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       passName: (() { final guardedValue = map['passName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PassName.fromValue(guardedValue as String)); })(),
-      settingName: (() { final guardedValue = map['settingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      settingName: (() { final guardedValue = map['settingName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
     );
   }
 }

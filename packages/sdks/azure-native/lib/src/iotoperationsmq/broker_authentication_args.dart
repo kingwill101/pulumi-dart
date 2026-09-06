@@ -12,7 +12,7 @@ class BrokerAuthenticationArgs {
   /// The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.
   final pulumi.Input<List<BrokerAuthenticatorMethods>> authenticationMethods;
   /// Name of MQ broker/authentication resource
-  final pulumi.Input<String>? authenticationName;
+  final pulumi.Input<String?>? authenticationName;
   /// Name of MQ broker resource
   final pulumi.Input<String> brokerName;
   /// Extended Location
@@ -20,13 +20,13 @@ class BrokerAuthenticationArgs {
   /// The array of listener Resources it supports.
   final pulumi.Input<List<String>> listenerRef;
   /// The geo-location where the resource lives
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of MQ resource
   final pulumi.Input<String> mqName;
   /// The name of the resource group. The name is case insensitive.
   final pulumi.Input<String> resourceGroupName;
   /// Resource tags.
-  final pulumi.Input<Map<String, String>>? tags;
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [BrokerAuthenticationArgs].
   /// [authenticationMethods] The list of authentication methods supported by the Authentication Resource. For each array element, NOTE - Enum only authenticator type supported.

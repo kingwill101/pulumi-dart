@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The disks sku name. Can be Standard_LRS, Premium_LRS, StandardSSD_LRS, UltraSSD_LRS, Premium_ZRS, StandardSSD_ZRS, or PremiumV2_LRS.
 class DiskSkuResponse {
   /// The sku name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The sku tier.
   final pulumi.Input<String> tier;
 

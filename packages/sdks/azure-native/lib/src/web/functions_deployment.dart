@@ -6,7 +6,7 @@ import 'functions_deployment_storage.dart';
 /// Configuration section for the function app deployment.
 class FunctionsDeployment {
   /// Storage for deployed package used by the function app.
-  final pulumi.Input<FunctionsDeploymentStorage>? storage;
+  final pulumi.Input<FunctionsDeploymentStorage?>? storage;
 
   /// Creates a new [FunctionsDeployment].
   /// [storage] Storage for deployed package used by the function app.

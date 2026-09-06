@@ -293,4 +293,24 @@ class CapacityPoolBucket extends pulumi.CustomResource {
     systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     type = registerOutput<String>('type');
   }
+
+  /// Creates a typed reference to an existing [CapacityPoolBucket] resource.
+  CapacityPoolBucket.reference(String urn)
+    : super(
+        'azure-native:netapp:CapacityPoolBucket',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    azureApiVersion = registerOutput<String>('azureApiVersion');
+    fileSystemUser = registerOutput<FileSystemUserResponse?>('fileSystemUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FileSystemUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    path = registerOutput<String?>('path');
+    provisioningState = registerOutput<String>('provisioningState');
+    server = registerOutput<BucketServerPropertiesResponse?>('server', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketServerPropertiesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+    systemData = registerOutput<SystemDataResponse>('systemData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+  }
 }
