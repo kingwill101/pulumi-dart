@@ -73,6 +73,8 @@ import 'placement_group_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -93,7 +95,7 @@ import 'placement_group_state.dart';
 /// 			Name:             pulumi.String("node1"),
 /// 			Image:            pulumi.String("debian-12"),
 /// 			ServerType:       pulumi.String("cx23"),
-/// 			PlacementGroupId: my_placement_group.ID(),
+/// 			PlacementGroupId: my_placement_group.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -211,11 +213,11 @@ class PlacementGroup extends pulumi.CustomResource {
           'hcloud:index/placementGroup:PlacementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    servers = registerOutput<List<int>>('servers');
+    servers = registerOutput<List<int>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     type = registerOutput<String>('type');
   }
 
@@ -224,11 +226,12 @@ class PlacementGroup extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PlacementGroupState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PlacementGroup._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -242,9 +245,24 @@ class PlacementGroup extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    servers = registerOutput<List<int>>('servers');
+    servers = registerOutput<List<int>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PlacementGroup] resource.
+  PlacementGroup.reference(String urn)
+    : super(
+        'hcloud:index/placementGroup:PlacementGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    servers = registerOutput<List<int>>('servers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     type = registerOutput<String>('type');
   }
 }

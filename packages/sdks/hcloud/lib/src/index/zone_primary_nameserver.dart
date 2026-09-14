@@ -6,11 +6,11 @@ class ZonePrimaryNameserver {
   /// Public IPv4 or IPv6 address of the primary nameserver.
   final pulumi.Input<String> address;
   /// Port of the primary nameserver.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// Transaction signature (TSIG) algorithm used to generate the TSIG key.
-  final pulumi.Input<String>? tsigAlgorithm;
+  final pulumi.Input<String?>? tsigAlgorithm;
   /// Transaction signature (TSIG) key
-  final pulumi.Input<String>? tsigKey;
+  final pulumi.Input<String?>? tsigKey;
 
   /// Creates a new [ZonePrimaryNameserver].
   /// [address] Public IPv4 or IPv6 address of the primary nameserver.
@@ -36,7 +36,7 @@ class ZonePrimaryNameserver {
   factory ZonePrimaryNameserver.fromMap(Map<String, dynamic> map) {
     return ZonePrimaryNameserver(
       address: pulumi.Input.fromValue(map['address'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tsigAlgorithm: (() { final guardedValue = map['tsigAlgorithm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tsigKey: (() { final guardedValue = map['tsigKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

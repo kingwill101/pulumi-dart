@@ -5,23 +5,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering FloatingIp resources.
 class FloatingIpState {
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// Description of the Floating IP.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of home location (routing is optimized for that location). Optional if `serverId` argument is passed.
-  final pulumi.Input<String>? homeLocation;
+  final pulumi.Input<String?>? homeLocation;
   /// (string) IP Address of the Floating IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// (string) IPv6 subnet. (Only set if `type` is `ipv6`)
-  final pulumi.Input<String>? ipNetwork;
+  final pulumi.Input<String?>? ipNetwork;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Floating IP.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Server to assign the Floating IP to. Optional if `homeLocation` argument is passed.
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
   /// Type of the Floating IP. `ipv4` `ipv6`
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [FloatingIpState].
   /// [deleteProtection] Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
@@ -68,7 +68,7 @@ class FloatingIpState {
       ipNetwork: (() { final guardedValue = map['ipNetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

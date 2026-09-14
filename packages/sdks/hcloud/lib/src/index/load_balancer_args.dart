@@ -10,20 +10,20 @@ import 'load_balancer_target.dart';
 /// {@macro pulumi_index_load_balancer_load_balancer_args_doc}
 class LoadBalancerArgs {
   /// Configuration of the algorithm the Load Balancer use.
-  final pulumi.Input<LoadBalancerAlgorithm>? algorithm;
+  final pulumi.Input<LoadBalancerAlgorithm?>? algorithm;
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Type of the Load Balancer.
   final pulumi.Input<String> loadBalancerType;
   /// The location name of the Load Balancer. Require when no networkZone is set. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Name of the Load Balancer.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Network Zone of the Load Balancer. Require when no location is set.
-  final pulumi.Input<String>? networkZone;
-  final pulumi.Input<List<LoadBalancerTarget>>? targets;
+  final pulumi.Input<String?>? networkZone;
+  final pulumi.Input<List<LoadBalancerTarget>?>? targets;
 
   /// Creates a new [LoadBalancerArgs].
   /// [algorithm] Configuration of the algorithm the Load Balancer use.

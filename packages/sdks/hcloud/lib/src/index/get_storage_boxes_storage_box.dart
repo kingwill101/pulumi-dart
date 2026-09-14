@@ -74,7 +74,7 @@ class GetStorageBoxesStorageBox {
     return GetStorageBoxesStorageBox(
       accessSettings: pulumi.Input.fromValue(GetStorageBoxesStorageBoxAccessSettings.fromMap((map['accessSettings']! as Map).cast<String, dynamic>())),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),

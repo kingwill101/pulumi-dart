@@ -7,9 +7,9 @@ class GetVolumesVolume {
   final pulumi.Input<int> id;
   final pulumi.Input<Map<String, String>> labels;
   final pulumi.Input<String> linuxDevice;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   final pulumi.Input<String> name;
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
   final pulumi.Input<int> size;
 
   /// Creates a new [GetVolumesVolume].
@@ -48,13 +48,13 @@ class GetVolumesVolume {
   factory GetVolumesVolume.fromMap(Map<String, dynamic> map) {
     return GetVolumesVolume(
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       linuxDevice: pulumi.Input.fromValue(map['linuxDevice'] as String),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      size: pulumi.Input.fromValue(map['size'] as int),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

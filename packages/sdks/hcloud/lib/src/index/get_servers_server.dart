@@ -18,8 +18,8 @@ class GetServersServer {
   final pulumi.Input<Map<String, String>> labels;
   final pulumi.Input<String> location;
   final pulumi.Input<String> name;
-  final pulumi.Input<List<GetServersServerNetwork>>? networks;
-  final pulumi.Input<int>? placementGroupId;
+  final pulumi.Input<List<GetServersServerNetwork>?>? networks;
+  final pulumi.Input<int?>? placementGroupId;
   final pulumi.Input<int> primaryDiskSize;
   final pulumi.Input<bool> rebuildProtection;
   final pulumi.Input<String> rescue;
@@ -105,7 +105,7 @@ class GetServersServer {
       datacenter: pulumi.Input.fromValue(map['datacenter'] as String),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
       firewallIds: pulumi.Input.fromValue((map['firewallIds'] as List).cast<int>()),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       image: pulumi.Input.fromValue(map['image'] as String),
       ipv4Address: pulumi.Input.fromValue(map['ipv4Address'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -115,8 +115,8 @@ class GetServersServer {
       location: pulumi.Input.fromValue(map['location'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networks: (() { final guardedValue = map['networks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetServersServerNetwork>(guardedValue, (value) => GetServersServerNetwork.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      primaryDiskSize: pulumi.Input.fromValue(map['primaryDiskSize'] as int),
+      placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      primaryDiskSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['primaryDiskSize'])),
       rebuildProtection: pulumi.Input.fromValue(map['rebuildProtection'] as bool),
       rescue: pulumi.Input.fromValue(map['rescue'] as String),
       serverType: pulumi.Input.fromValue(map['serverType'] as String),

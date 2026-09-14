@@ -44,13 +44,13 @@ class ManagedCertificate extends pulumi.CustomResource {
           'hcloud:index/managedCertificate:ManagedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notValidAfter = registerOutput<String>('notValidAfter');
     notValidBefore = registerOutput<String>('notValidBefore');
@@ -62,11 +62,12 @@ class ManagedCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ManagedCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ManagedCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -82,9 +83,29 @@ class ManagedCertificate extends pulumi.CustomResource {
         ) {
     certificate = registerOutput<String>('certificate');
     created = registerOutput<String>('created');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    notValidAfter = registerOutput<String>('notValidAfter');
+    notValidBefore = registerOutput<String>('notValidBefore');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [ManagedCertificate] resource.
+  ManagedCertificate.reference(String urn)
+    : super(
+        'hcloud:index/managedCertificate:ManagedCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificate = registerOutput<String>('certificate');
+    created = registerOutput<String>('created');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     notValidAfter = registerOutput<String>('notValidAfter');
     notValidBefore = registerOutput<String>('notValidBefore');

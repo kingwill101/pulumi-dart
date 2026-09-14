@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering SshKey resources.
 class SshKeyState {
   /// Fingerprint of the SSH public key.
-  final pulumi.Input<String>? fingerprint;
+  final pulumi.Input<String?>? fingerprint;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the SSH Key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
-  final pulumi.Input<String>? publicKey;
+  final pulumi.Input<String?>? publicKey;
 
   /// Creates a new [SshKeyState].
   /// [fingerprint] Fingerprint of the SSH public key.

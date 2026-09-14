@@ -30,13 +30,14 @@ class ProviderProvider extends pulumi.ProviderResource {
           'hcloud',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
+          additionalSecretOutputs: const ['token'],
         ) {
     endpoint = registerOutput<String?>('endpoint');
     endpointHetzner = registerOutput<String?>('endpointHetzner');
     pollFunction = registerOutput<String?>('pollFunction');
     pollInterval = registerOutput<String?>('pollInterval');
-    token = registerOutput<String?>('token');
+    token = registerOutput<String?>('token', isSecret: true);
   }
 
   /// This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.

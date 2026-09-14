@@ -10,19 +10,19 @@ import 'get_firewall_rule.dart';
 /// {@macro pulumi_index_get_firewall_get_firewall_args_doc}
 class GetFirewallArgs {
   /// Configuration of the Applied Resources
-  final pulumi.Input<List<GetFirewallApplyTo>>? applyTos;
+  final pulumi.Input<List<GetFirewallApplyTo>?>? applyTos;
   /// ID of the firewall.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// (map) User-defined labels (key-value pairs)
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Return most recent firewall if multiple are found.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Name of the firewall.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// (string) Configuration of a Rule from this Firewall.
-  final pulumi.Input<List<GetFirewallRule>>? rules;
+  final pulumi.Input<List<GetFirewallRule>?>? rules;
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetFirewallArgs].
   /// [applyTos] Configuration of the Applied Resources
@@ -57,7 +57,7 @@ class GetFirewallArgs {
   factory GetFirewallArgs.fromMap(Map<String, dynamic> map) {
     return GetFirewallArgs(
       applyTos: (() { final guardedValue = map['applyTos']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<GetFirewallApplyTo>(guardedValue, (value) => GetFirewallApplyTo.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       mostRecent: (() { final guardedValue = map['mostRecent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

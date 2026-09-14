@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_datacenter_get_datacenter_args_doc}
 class GetDatacenterArgs {
   /// ID of the Datacenter.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// Name of the Datacenter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GetDatacenterArgs].
   /// [id] ID of the Datacenter.
@@ -29,7 +29,7 @@ class GetDatacenterArgs {
 
   factory GetDatacenterArgs.fromMap(Map<String, dynamic> map) {
     return GetDatacenterArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

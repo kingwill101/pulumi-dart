@@ -147,6 +147,8 @@ import 'rdns_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -161,7 +163,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "server1", &hcloud.RdnsArgs{
-/// 			ServerId:  server1.ID(),
+/// 			ServerId:  server1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress: server1.Ipv4Address,
 /// 			DnsPtr:    pulumi.String("example.com"),
 /// 		})
@@ -177,7 +179,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "primary_ip1", &hcloud.RdnsArgs{
-/// 			PrimaryIpId: primaryIp1.ID(),
+/// 			PrimaryIpId: primaryIp1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:   primaryIp1.IpAddress,
 /// 			DnsPtr:      pulumi.String("example.com"),
 /// 		})
@@ -193,7 +195,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "floating_ip1", &hcloud.RdnsArgs{
-/// 			FloatingIpId: floatingIp1.ID(),
+/// 			FloatingIpId: floatingIp1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:    floatingIp1.IpAddress,
 /// 			DnsPtr:       pulumi.String("example.com"),
 /// 		})
@@ -208,7 +210,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "load_balancer1", &hcloud.RdnsArgs{
-/// 			LoadBalancerId: loadBalancer1.ID(),
+/// 			LoadBalancerId: loadBalancer1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:      loadBalancer1.Ipv4,
 /// 			DnsPtr:         pulumi.String("example.com"),
 /// 		})
@@ -460,7 +462,7 @@ class Rdns extends pulumi.CustomResource {
           'hcloud:index/rdns:Rdns',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
@@ -475,11 +477,12 @@ class Rdns extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RdnsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rdns._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -493,6 +496,23 @@ class Rdns extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dnsPtr = registerOutput<String>('dnsPtr');
+    floatingIpId = registerOutput<int?>('floatingIpId');
+    ipAddress = registerOutput<String>('ipAddress');
+    loadBalancerId = registerOutput<int?>('loadBalancerId');
+    primaryIpId = registerOutput<int?>('primaryIpId');
+    serverId = registerOutput<int?>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [Rdns] resource.
+  Rdns.reference(String urn)
+    : super(
+        'hcloud:index/rdns:Rdns',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
     ipAddress = registerOutput<String>('ipAddress');

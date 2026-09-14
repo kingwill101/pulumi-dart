@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'load_balancer_algorithm.dart';
 import 'load_balancer_args.dart';
 import 'load_balancer_state.dart';
+import 'load_balancer_target.dart';
 
 /// Provides a Hetzner Cloud Load Balancer to represent a Load Balancer in the Hetzner Cloud.
 ///
@@ -80,6 +81,8 @@ import 'load_balancer_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -104,8 +107,8 @@ import 'load_balancer_state.dart';
 /// 		}
 /// 		_, err = hcloud.NewLoadBalancerTarget(ctx, "load_balancer_target", &hcloud.LoadBalancerTargetArgs{
 /// 			Type:           pulumi.String("server"),
-/// 			LoadBalancerId: loadBalancer.ID(),
-/// 			ServerId:       myServer.ID(),
+/// 			LoadBalancerId: loadBalancer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:       myServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -241,7 +244,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<String> networkIp;
   /// The Network Zone of the Load Balancer. Require when no location is set.
   late final pulumi.Output<String> networkZone;
-  late final pulumi.Output<List<Map<String, dynamic>>> targets;
+  late final pulumi.Output<List<LoadBalancerTarget>> targets;
 
   /// Creates a new [LoadBalancer].
   /// [name] The Pulumi resource name.
@@ -255,20 +258,20 @@ class LoadBalancer extends pulumi.CustomResource {
           'hcloud:index/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancerType = registerOutput<String>('loadBalancerType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkId = registerOutput<int>('networkId');
     networkIp = registerOutput<String>('networkIp');
     networkZone = registerOutput<String>('networkZone');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    targets = registerOutput<List<LoadBalancerTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerTarget>(guardedValue, (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [LoadBalancer] resource's state with the given [name] and [id].
@@ -276,11 +279,12 @@ class LoadBalancer extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancer._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -298,13 +302,36 @@ class LoadBalancer extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     ipv4 = registerOutput<String>('ipv4');
     ipv6 = registerOutput<String>('ipv6');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     loadBalancerType = registerOutput<String>('loadBalancerType');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     networkId = registerOutput<int>('networkId');
     networkIp = registerOutput<String>('networkIp');
     networkZone = registerOutput<String>('networkZone');
-    targets = registerOutput<List<Map<String, dynamic>>>('targets');
+    targets = registerOutput<List<LoadBalancerTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerTarget>(guardedValue, (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancer] resource.
+  LoadBalancer.reference(String urn)
+    : super(
+        'hcloud:index/loadBalancer:LoadBalancer',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    algorithm = registerOutput<LoadBalancerAlgorithm>('algorithm', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAlgorithm.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    ipv4 = registerOutput<String>('ipv4');
+    ipv6 = registerOutput<String>('ipv6');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    loadBalancerType = registerOutput<String>('loadBalancerType');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networkId = registerOutput<int>('networkId');
+    networkIp = registerOutput<String>('networkIp');
+    networkZone = registerOutput<String>('networkZone');
+    targets = registerOutput<List<LoadBalancerTarget>>('targets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LoadBalancerTarget>(guardedValue, (value) => LoadBalancerTarget.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

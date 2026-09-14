@@ -63,6 +63,8 @@ import 'network_subnet_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -77,7 +79,7 @@ import 'network_subnet_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewNetworkSubnet(ctx, "foonet", &hcloud.NetworkSubnetArgs{
-/// 			NetworkId:   mynet.ID(),
+/// 			NetworkId:   mynet.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Type:        pulumi.String("cloud"),
 /// 			NetworkZone: pulumi.String("eu-central"),
 /// 			IpRange:     pulumi.String("10.0.1.0/24"),
@@ -197,7 +199,7 @@ class NetworkSubnet extends pulumi.CustomResource {
           'hcloud:index/networkSubnet:NetworkSubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     gateway = registerOutput<String>('gateway');
     ipRange = registerOutput<String>('ipRange');
@@ -212,11 +214,12 @@ class NetworkSubnet extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkSubnetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return NetworkSubnet._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,6 +233,23 @@ class NetworkSubnet extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    gateway = registerOutput<String>('gateway');
+    ipRange = registerOutput<String>('ipRange');
+    networkId = registerOutput<int>('networkId');
+    networkZone = registerOutput<String>('networkZone');
+    type = registerOutput<String>('type');
+    vswitchId = registerOutput<int?>('vswitchId');
+  }
+
+  /// Creates a typed reference to an existing [NetworkSubnet] resource.
+  NetworkSubnet.reference(String urn)
+    : super(
+        'hcloud:index/networkSubnet:NetworkSubnet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     gateway = registerOutput<String>('gateway');
     ipRange = registerOutput<String>('ipRange');
     networkId = registerOutput<int>('networkId');

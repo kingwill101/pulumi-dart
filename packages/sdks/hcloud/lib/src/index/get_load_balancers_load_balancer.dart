@@ -14,7 +14,7 @@ class GetLoadBalancersLoadBalancer {
   final pulumi.Input<Map<String, String>> labels;
   final pulumi.Input<String> loadBalancerType;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<int> networkId;
   final pulumi.Input<String> networkIp;
   final pulumi.Input<String> networkZone;
@@ -76,14 +76,14 @@ class GetLoadBalancersLoadBalancer {
     return GetLoadBalancersLoadBalancer(
       algorithms: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerAlgorithm>(map['algorithms']!, (value) => GetLoadBalancersLoadBalancerAlgorithm.fromMap((value as Map).cast<String, dynamic>()))),
       deleteProtection: pulumi.Input.fromValue(map['deleteProtection'] as bool),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       ipv4: pulumi.Input.fromValue(map['ipv4'] as String),
       ipv6: pulumi.Input.fromValue(map['ipv6'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       loadBalancerType: pulumi.Input.fromValue(map['loadBalancerType'] as String),
       location: pulumi.Input.fromValue(map['location'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkId'])),
       networkIp: pulumi.Input.fromValue(map['networkIp'] as String),
       networkZone: pulumi.Input.fromValue(map['networkZone'] as String),
       services: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerService>(map['services']!, (value) => GetLoadBalancersLoadBalancerService.fromMap((value as Map).cast<String, dynamic>()))),

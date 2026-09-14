@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering VolumeAttachment resources.
 class VolumeAttachmentState {
   /// Automount the volume upon attaching it.
-  final pulumi.Input<bool>? automount;
+  final pulumi.Input<bool?>? automount;
   /// Server to attach the Volume to.
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
   /// ID of the Volume.
-  final pulumi.Input<int>? volumeId;
+  final pulumi.Input<int?>? volumeId;
 
   /// Creates a new [VolumeAttachmentState].
   /// [automount] Automount the volume upon attaching it.
@@ -32,8 +32,8 @@ class VolumeAttachmentState {
   factory VolumeAttachmentState.fromMap(Map<String, dynamic> map) {
     return VolumeAttachmentState(
       automount: (() { final guardedValue = map['automount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

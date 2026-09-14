@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'zone_rrset_args.dart';
+import 'zone_rrset_record.dart';
 import 'zone_rrset_state.dart';
 
 /// Provides a Hetzner Cloud Zone Resource Record Set (RRSet) resource.
@@ -41,7 +42,7 @@ class ZoneRrset extends pulumi.CustomResource {
   /// Name of the Zone RRSet.
   late final pulumi.Output<String> name;
   /// Records of the Zone RRSet.
-  late final pulumi.Output<List<Map<String, dynamic>>> records;
+  late final pulumi.Output<List<ZoneRrsetRecord>> records;
   /// Time To Live (TTL) of the Zone RRSet.
   late final pulumi.Output<int?> ttl;
   /// Type of the Zone RRSet.
@@ -61,12 +62,12 @@ class ZoneRrset extends pulumi.CustomResource {
           'hcloud:index/zoneRrset:ZoneRrset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     changeProtection = registerOutput<bool>('changeProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<ZoneRrsetRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneRrsetRecord>(guardedValue, (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
     zone = registerOutput<String>('zone');
@@ -77,11 +78,12 @@ class ZoneRrset extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ZoneRrsetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ZoneRrset._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -96,9 +98,27 @@ class ZoneRrset extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     changeProtection = registerOutput<bool>('changeProtection');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    records = registerOutput<List<Map<String, dynamic>>>('records');
+    records = registerOutput<List<ZoneRrsetRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneRrsetRecord>(guardedValue, (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>())); });
+    ttl = registerOutput<int?>('ttl');
+    type = registerOutput<String>('type');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [ZoneRrset] resource.
+  ZoneRrset.reference(String urn)
+    : super(
+        'hcloud:index/zoneRrset:ZoneRrset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    changeProtection = registerOutput<bool>('changeProtection');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    records = registerOutput<List<ZoneRrsetRecord>>('records', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZoneRrsetRecord>(guardedValue, (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>())); });
     ttl = registerOutput<int?>('ttl');
     type = registerOutput<String>('type');
     zone = registerOutput<String>('zone');

@@ -61,7 +61,7 @@ class GetZoneRrsetsRrset {
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       records: pulumi.Input.fromValue(pulumi.Input.decodeList<GetZoneRrsetsRrsetRecord>(map['records']!, (value) => GetZoneRrsetsRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: pulumi.Input.fromValue(map['ttl'] as int),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
       type: pulumi.Input.fromValue(map['type'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

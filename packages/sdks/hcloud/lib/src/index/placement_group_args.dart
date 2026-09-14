@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_placement_group_placement_group_args_doc}
 class PlacementGroupArgs {
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Placement Group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Type of the Placement Group.
   final pulumi.Input<String> type;
 

@@ -34,7 +34,7 @@ class GetServersServerNetwork {
       aliasIps: pulumi.Input.fromValue((map['aliasIps'] as List).cast<String>()),
       ip: pulumi.Input.fromValue(map['ip'] as String),
       macAddress: pulumi.Input.fromValue(map['macAddress'] as String),
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkId'])),
     );
   }
 }

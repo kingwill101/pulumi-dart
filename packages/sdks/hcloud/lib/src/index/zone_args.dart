@@ -9,17 +9,17 @@ import 'zone_primary_nameserver.dart';
 /// {@macro pulumi_index_zone_zone_args_doc}
 class ZoneArgs {
   /// Whether delete protection is enabled.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Mode of the Zone.
   final pulumi.Input<String> mode;
   /// Name of the Zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
-  final pulumi.Input<List<ZonePrimaryNameserver>>? primaryNameservers;
+  final pulumi.Input<List<ZonePrimaryNameserver>?>? primaryNameservers;
   /// Default Time To Live (TTL) of the Zone.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
 
   /// Creates a new [ZoneArgs].
   /// [deleteProtection] Whether delete protection is enabled.
@@ -55,7 +55,7 @@ class ZoneArgs {
       mode: pulumi.Input.fromValue(map['mode'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       primaryNameservers: (() { final guardedValue = map['primaryNameservers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ZonePrimaryNameserver>(guardedValue, (value) => ZonePrimaryNameserver.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

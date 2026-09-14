@@ -40,11 +40,11 @@ class GetLoadBalancersLoadBalancerServiceHttp {
   factory GetLoadBalancersLoadBalancerServiceHttp.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerServiceHttp(
       certificates: pulumi.Input.fromValue((map['certificates'] as List).cast<String>()),
-      cookieLifetime: pulumi.Input.fromValue(map['cookieLifetime'] as int),
+      cookieLifetime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cookieLifetime'])),
       cookieName: pulumi.Input.fromValue(map['cookieName'] as String),
       redirectHttp: pulumi.Input.fromValue(map['redirectHttp'] as bool),
       stickySessions: pulumi.Input.fromValue(map['stickySessions'] as bool),
-      timeoutIdle: pulumi.Input.fromValue(map['timeoutIdle'] as int),
+      timeoutIdle: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutIdle'])),
     );
   }
 }

@@ -170,10 +170,10 @@ class SshKey extends pulumi.CustomResource {
           'hcloud:index/sshKey:SshKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
   }
@@ -183,11 +183,12 @@ class SshKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SshKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SshKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,7 +203,22 @@ class SshKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    publicKey = registerOutput<String>('publicKey');
+  }
+
+  /// Creates a typed reference to an existing [SshKey] resource.
+  SshKey.reference(String urn)
+    : super(
+        'hcloud:index/sshKey:SshKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
   }

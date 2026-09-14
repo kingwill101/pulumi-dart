@@ -31,7 +31,7 @@ class GetLoadBalancerTarget {
   factory GetLoadBalancerTarget.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerTarget(
       labelSelector: pulumi.Input.fromValue(map['labelSelector'] as String),
-      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      serverId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverId'])),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }

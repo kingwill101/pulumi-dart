@@ -106,6 +106,8 @@ import 'primary_ip_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -132,7 +134,7 @@ import 'primary_ip_state.dart';
 /// 			Location:   pulumi.String("fsn1"),
 /// 			PublicNets: hcloud.ServerPublicNetArray{
 /// 				&hcloud.ServerPublicNetArgs{
-/// 					Ipv4: main.ID(),
+/// 					Ipv4: main.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 				},
 /// 			},
 /// 		})
@@ -286,7 +288,7 @@ class PrimaryIp extends pulumi.CustomResource {
           'hcloud:index/primaryIp:PrimaryIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.42.0').merge(options),
         ) {
     assigneeId = registerOutput<int>('assigneeId');
     assigneeType = registerOutput<String>('assigneeType');
@@ -295,7 +297,7 @@ class PrimaryIp extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool>('deleteProtection');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');
@@ -306,11 +308,12 @@ class PrimaryIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     PrimaryIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return PrimaryIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -331,7 +334,29 @@ class PrimaryIp extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool>('deleteProtection');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [PrimaryIp] resource.
+  PrimaryIp.reference(String urn)
+    : super(
+        'hcloud:index/primaryIp:PrimaryIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assigneeId = registerOutput<int>('assigneeId');
+    assigneeType = registerOutput<String>('assigneeType');
+    autoDelete = registerOutput<bool>('autoDelete');
+    datacenter = registerOutput<String>('datacenter');
+    deleteProtection = registerOutput<bool>('deleteProtection');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     type = registerOutput<String>('type');

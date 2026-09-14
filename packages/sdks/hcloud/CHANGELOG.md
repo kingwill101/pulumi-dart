@@ -2,6 +2,10 @@
 
 All notable changes to this package will be documented in this file.
 
+## 1.42.0+1
+
+- Regenerate the Dart SDK from upstream provider schema.
+
 ## 1.41.0+1
 
 - Add provider documentation and a runnable example.

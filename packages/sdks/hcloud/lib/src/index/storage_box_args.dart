@@ -10,21 +10,21 @@ import 'storage_box_snapshot_plan.dart';
 /// {@macro pulumi_index_storage_box_storage_box_args_doc}
 class StorageBoxArgs {
   /// Access settings of the Storage Box.
-  final pulumi.Input<StorageBoxAccessSettings>? accessSettings;
+  final pulumi.Input<StorageBoxAccessSettings?>? accessSettings;
   /// Prevent the Storage Box from being accidentally deleted outside of Terraform.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Location.
   final pulumi.Input<String> location;
   /// Name of the Storage Box.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   final pulumi.Input<String> password;
   /// Details of the active snapshot plan.
-  final pulumi.Input<StorageBoxSnapshotPlan>? snapshotPlan;
+  final pulumi.Input<StorageBoxSnapshotPlan?>? snapshotPlan;
   /// SSH public keys in OpenSSH format to inject into the Storage Box. It is not possible to update the SSH Keys through the API, so changing this attribute forces a replace of the Storage Box.
-  final pulumi.Input<List<String>>? sshKeys;
+  final pulumi.Input<List<String>?>? sshKeys;
   /// Name of the Storage Box Type.
   final pulumi.Input<String> storageBoxType;
 

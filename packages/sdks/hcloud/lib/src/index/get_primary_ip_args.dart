@@ -8,13 +8,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_primary_ip_get_primary_ip_args_doc}
 class GetPrimaryIpArgs {
   /// ID of the Primary IP.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// IP address of the Primary IP.
-  final pulumi.Input<String>? ipAddress;
+  final pulumi.Input<String?>? ipAddress;
   /// Name of the Primary IP.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetPrimaryIpArgs].
   /// [id] ID of the Primary IP.
@@ -39,7 +39,7 @@ class GetPrimaryIpArgs {
 
   factory GetPrimaryIpArgs.fromMap(Map<String, dynamic> map) {
     return GetPrimaryIpArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

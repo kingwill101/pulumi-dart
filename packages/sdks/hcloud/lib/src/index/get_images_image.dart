@@ -9,10 +9,14 @@ class GetImagesImage {
   final pulumi.Input<String> created;
   /// Point in time when the Image was marked as deprecated (in RFC3339 format).
   final pulumi.Input<String> deprecated;
+  /// Date of the Image deprecation announcement.
+  final pulumi.Input<String> deprecationAnnounced;
   /// Description of the Image.
   final pulumi.Input<String> description;
   /// ID of the Image.
   final pulumi.Input<int> id;
+  /// Whether the Image is deprecated.
+  final pulumi.Input<bool> isDeprecated;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   final pulumi.Input<Map<String, String>> labels;
   /// Name of the Image, only present when the type is `system`.
@@ -25,31 +29,39 @@ class GetImagesImage {
   final pulumi.Input<bool> rapidDeploy;
   /// Type of the Image, for example `system`, `backup` or `snapshot`.
   final pulumi.Input<String> type;
+  /// Date of the Image removal. After this date, the Image cannot be used anymore.
+  final pulumi.Input<String> unavailableAfter;
 
   /// Creates a new [GetImagesImage].
   /// [architecture] CPU architecture compatible with the Image.
   /// [created] Point in time when the Image was created (in RFC3339 format).
   /// [deprecated] Point in time when the Image was marked as deprecated (in RFC3339 format).
+  /// [deprecationAnnounced] Date of the Image deprecation announcement.
   /// [description] Description of the Image.
   /// [id] ID of the Image.
+  /// [isDeprecated] Whether the Image is deprecated.
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [name] Name of the Image, only present when the type is `system`.
   /// [osFlavor] Flavor of the operating system contained in the Image.
   /// [osVersion] Version of the operating system contained in the Image.
   /// [rapidDeploy] Whether the Image is optimized for a rapid deployment.
   /// [type] Type of the Image, for example `system`, `backup` or `snapshot`.
+  /// [unavailableAfter] Date of the Image removal. After this date, the Image cannot be used anymore.
   const GetImagesImage({
     required this.architecture,
     required this.created,
     required this.deprecated,
+    required this.deprecationAnnounced,
     required this.description,
     required this.id,
+    required this.isDeprecated,
     required this.labels,
     required this.name,
     required this.osFlavor,
     required this.osVersion,
     required this.rapidDeploy,
     required this.type,
+    required this.unavailableAfter,
   });
 
   Map<String, dynamic> toMap() {
@@ -57,14 +69,17 @@ class GetImagesImage {
       'architecture': architecture,
       'created': created,
       'deprecated': deprecated,
+      'deprecationAnnounced': deprecationAnnounced,
       'description': description,
       'id': id,
+      'isDeprecated': isDeprecated,
       'labels': labels,
       'name': name,
       'osFlavor': osFlavor,
       'osVersion': osVersion,
       'rapidDeploy': rapidDeploy,
       'type': type,
+      'unavailableAfter': unavailableAfter,
     };
   }
 
@@ -73,14 +88,17 @@ class GetImagesImage {
       architecture: pulumi.Input.fromValue(map['architecture'] as String),
       created: pulumi.Input.fromValue(map['created'] as String),
       deprecated: pulumi.Input.fromValue(map['deprecated'] as String),
+      deprecationAnnounced: pulumi.Input.fromValue(map['deprecationAnnounced'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
+      isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
       labels: pulumi.Input.fromValue((map['labels'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       osFlavor: pulumi.Input.fromValue(map['osFlavor'] as String),
       osVersion: pulumi.Input.fromValue(map['osVersion'] as String),
       rapidDeploy: pulumi.Input.fromValue(map['rapidDeploy'] as bool),
       type: pulumi.Input.fromValue(map['type'] as String),
+      unavailableAfter: pulumi.Input.fromValue(map['unavailableAfter'] as String),
     );
   }
 }

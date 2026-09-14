@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_snapshot_snapshot_args_doc}
 class SnapshotArgs {
   /// Description of the snapshot.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Server to the snapshot should be created from.
   final pulumi.Input<int> serverId;
 
@@ -36,7 +36,7 @@ class SnapshotArgs {
     return SnapshotArgs(
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      serverId: pulumi.Input.fromValue(map['serverId'] as int),
+      serverId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['serverId'])),
     );
   }
 }

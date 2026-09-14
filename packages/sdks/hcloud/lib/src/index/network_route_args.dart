@@ -36,7 +36,7 @@ class NetworkRouteArgs {
     return NetworkRouteArgs(
       destination: pulumi.Input.fromValue(map['destination'] as String),
       gateway: pulumi.Input.fromValue(map['gateway'] as String),
-      networkId: pulumi.Input.fromValue(map['networkId'] as int),
+      networkId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['networkId'])),
     );
   }
 }

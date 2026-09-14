@@ -4,15 +4,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StorageBoxAccessSettings {
   /// Whether access from outside the Hetzner network is allowed.
-  final pulumi.Input<bool>? reachableExternally;
+  final pulumi.Input<bool?>? reachableExternally;
   /// Whether the Samba subsystem is enabled.
-  final pulumi.Input<bool>? sambaEnabled;
+  final pulumi.Input<bool?>? sambaEnabled;
   /// Whether the SSH subsystem is enabled.
-  final pulumi.Input<bool>? sshEnabled;
+  final pulumi.Input<bool?>? sshEnabled;
   /// Whether the WebDAV subsystem is enabled.
-  final pulumi.Input<bool>? webdavEnabled;
+  final pulumi.Input<bool?>? webdavEnabled;
   /// Whether the ZFS snapshot folder is visible.
-  final pulumi.Input<bool>? zfsEnabled;
+  final pulumi.Input<bool?>? zfsEnabled;
 
   /// Creates a new [StorageBoxAccessSettings].
   /// [reachableExternally] Whether access from outside the Hetzner network is allowed.
